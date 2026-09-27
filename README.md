@@ -30,6 +30,12 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 ## Dažniausi pakeitimai
 
+**Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
+
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=2` ir `site.js?v=2`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+
+**Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
+
 **Aktyvuoti temą ar modelį.** Faile `assets/js/site.js`, skyriuje „2. KURSO STRUKTŪRA“:
 temai `COURSE` sąraše nustatykite `status: 'active'` ir `href: { lt: 'tema-2.html' }`;
 modeliui – tą patį `MODELS` sąraše. Naują puslapį įrašykite į `PAGES` (nurodykite `parent`, kad veiktų naršymo kelias).

@@ -22,7 +22,6 @@
     lt: {
       courseShort: 'Taikomoji matematika',
       courseFull: 'Taikomoji matematika socialiniuose moksluose',
-      lecturer: 'Doc. dr. Marius Kušlys',
       home: 'Pradžia',
       skip: 'Pereiti prie turinio',
       langLabel: 'Kalba',
@@ -36,6 +35,7 @@
       model: 'Modelis',
       models: 'Taikomieji modeliai',
       back: 'Atgal',
+      backTo: function (t) { return 'Atgal: ' + t; },
       nextModel: 'Kitas modelis',
       steps: 'Žingsniai',
       stepOf: function (i, n) { return 'Žingsniai: ' + i + ' iš ' + n; },
@@ -71,7 +71,6 @@
     en: {
       courseShort: 'Applied Mathematics',
       courseFull: 'Applied Mathematics for Social Sciences',
-      lecturer: 'Assoc. Prof. Dr. Marius Kušlys',
       home: 'Home',
       skip: 'Skip to content',
       langLabel: 'Language',
@@ -85,6 +84,7 @@
       model: 'Model',
       models: 'Applied models',
       back: 'Back',
+      backTo: function (t) { return 'Back: ' + t; },
       nextModel: 'Next model',
       steps: 'Steps',
       stepOf: function (i, n) { return 'Steps: ' + i + ' of ' + n; },
@@ -195,6 +195,7 @@
 
   var ICON = {
     brand: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v16h16"/><path d="M7 15l4-4 3 3 5-6"/></svg>',
+    chevL: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>',
     chevR: '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>',
     arrowR: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>',
     flag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg>',
@@ -220,10 +221,21 @@
     if (!h) return;
     var cur = '<span aria-current="true" lang="' + LANG + '">' + LANG.toUpperCase() + '</span>';
     var oth = '<a href="' + counterpartHref() + '" hreflang="' + OTHER + '" lang="' + OTHER + '">' + OTHER.toUpperCase() + '</a>';
+    var p = PAGES[PAGE];
+    var back = '';
+    if (p && p.parent && PAGES[p.parent]) {
+      var par = PAGES[p.parent];
+      var parTitle = p.parent === 'home' ? T.home : tr(par.title);
+      back = '<a class="back-btn" href="' + par.href[LANG] + '" aria-label="' + esc(T.backTo(parTitle)) + '">' +
+        ICON.chevL + '<span>' + esc(T.back) + '</span></a>';
+      h.classList.add('has-back');
+    }
     h.innerHTML =
       '<a class="skip" href="#main">' + esc(T.skip) + '</a>' +
       '<div class="wrap">' +
-        '<a class="brand" href="index.html"><span class="brand-mark">' + ICON.brand + '</span><span>' + esc(T.courseShort) + '</span></a>' +
+        '<div class="head-left">' + back +
+        '<a class="brand" href="index.html" aria-label="' + esc(T.courseShort) + '"><span class="brand-mark">' + ICON.brand + '</span><span class="brand-text">' + esc(T.courseShort) + '</span></a>' +
+        '</div>' +
         '<nav class="lang-switch" aria-label="' + esc(T.langLabel) + '">' +
           (LANG === 'lt' ? cur + oth : oth + cur) +
         '</nav>' +
@@ -253,7 +265,7 @@
   function buildFooter() {
     var f = $('#site-footer');
     if (!f) return;
-    f.innerHTML = '<div class="wrap"><p><strong>' + esc(T.courseFull) + '</strong></p><p>' + esc(T.lecturer) + '</p></div>';
+    f.innerHTML = '<div class="wrap"><p><strong>' + esc(T.courseFull) + '</strong></p></div>';
   }
 
   /* ------------------------------------------------------------------
@@ -617,8 +629,10 @@
       '<div class="tryit-eq" aria-live="polite"></div>' +
       '<svg class="plot" viewBox="0 0 312 312" role="img" aria-label="y = mx + b">' +
         '<defs><clipPath id="le-clip"><rect x="' + (O - N * S - 6) + '" y="' + (O - N * S - 6) + '" width="' + (2 * N * S + 12) + '" height="' + (2 * N * S + 12) + '"/></clipPath></defs>' + grid +
-        '<line class="ax" x1="4" y1="' + O + '" x2="308" y2="' + O + '"/>' +
-        '<line class="ax" x1="' + O + '" y1="4" x2="' + O + '" y2="308"/>' +
+        '<line class="ax" x1="4" y1="' + O + '" x2="302" y2="' + O + '"/>' +
+        '<line class="ax" x1="' + O + '" y1="10" x2="' + O + '" y2="308"/>' +
+        '<path class="ah" d="M310 ' + O + 'L301 ' + (O - 4.5) + 'L301 ' + (O + 4.5) + 'Z"/>' +
+        '<path class="ah" d="M' + O + ' 2L' + (O - 4.5) + ' 11L' + (O + 4.5) + ' 11Z"/>' +
         '<text class="m" x="296" y="' + (O - 8) + '">x</text>' +
         '<text class="m" x="' + (O + 8) + '" y="16">y</text>' +
         '<line class="ln js-line" clip-path="url(#le-clip)" x1="0" y1="0" x2="0" y2="0"/>' +
