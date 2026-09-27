@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 tema. Tiesinės funkcijos ir modeliai · Taikomoji matematika</title>
+<meta name="description" content="Tiesės nuolydis, laisvasis narys, kryptinė tiesės lygtis ir taikomieji tiesiniai modeliai.">
+<meta name="theme-color" content="#5b4bf5">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js"></script>
+</head>
+<body data-page="t1">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">1 tema</span>
+    <h1>Tiesinės funkcijos ir modeliai</h1>
+    <p class="lead">Pirmiausia – pagrindinės sąvokos, tada – taikomieji modeliai.</p>
+    <ul class="jump">
+      <li><a href="#savokos">Sąvokos</a></li>
+      <li><a href="#modeliai">Taikomieji modeliai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ SĄVOKOS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">Pagrindinės sąvokos</h2>
+
+    <!-- 1 -->
+    <article class="card concept" id="nuolydis">
+      <div class="concept-head"><span class="num">1</span><h3>Kas yra tiesės nuolydis?</h3></div>
+      <p>Nuolydis \(m\) matuoja tiesės statumą. Jis parodo, <strong>kaip pasikeis \(y\) reikšmė, jei \(x\) reikšmė padidės 1 vienetu.</strong></p>
+
+      <div class="fig-grid" role="group" aria-label="Nuolydžio atvejai">
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <line class="ax" x1="12" y1="76" x2="112" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="8"/>
+            <line class="ln" x1="30" y1="70" x2="106" y2="18"/>
+          </svg>
+          <figcaption>\(m &gt; 0\)<span class="sub">tiesė kyla</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <line class="ax" x1="12" y1="76" x2="112" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="8"/>
+            <line class="ln" x1="30" y1="18" x2="106" y2="70"/>
+          </svg>
+          <figcaption>\(m &lt; 0\)<span class="sub">tiesė leidžiasi</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <line class="ax" x1="12" y1="76" x2="112" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="8"/>
+            <line class="ln" x1="28" y1="40" x2="108" y2="40"/>
+          </svg>
+          <figcaption>\(m = 0\)<span class="sub">horizontali tiesė</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <line class="ax" x1="12" y1="76" x2="112" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="8"/>
+            <line class="ln" x1="70" y1="12" x2="70" y2="70"/>
+          </svg>
+          <figcaption>\(m\) – neapibrėžtas<span class="sub">vertikali tiesė</span></figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="card concept" id="nuolydis-skaiciavimas">
+      <div class="concept-head"><span class="num">2</span><h3>Kaip apskaičiuoti nuolydį, žinant du taškus?</h3></div>
+      <p>Paimkite du tiesės taškus \(A(x_1;\,y_1)\) ir \(B(x_2;\,y_2)\):</p>
+      <div class="formula">\[ m = \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1} = \operatorname{tg}\alpha \]</div>
+
+      <figure class="fig">
+        <svg viewBox="0 0 340 222" role="img" aria-label="Du tiesės taškai A ir B, pokyčiai Δx ir Δy bei kampas α">
+          <line class="guide" x1="110" y1="150" x2="110" y2="200"/>
+          <line class="guide" x1="250" y1="60" x2="250" y2="150"/>
+          <line class="guide" x1="30" y1="150" x2="110" y2="150"/>
+          <line class="guide" x1="30" y1="60" x2="250" y2="60"/>
+          <line class="ax" x1="22" y1="200" x2="334" y2="200"/>
+          <line class="ax" x1="30" y1="210" x2="30" y2="6"/>
+          <text class="m" x="324" y="192">x</text>
+          <text class="m" x="38" y="16">y</text>
+          <line class="ln" x1="52" y1="187.3" x2="306" y2="24"/>
+          <line class="leg" x1="110" y1="150" x2="250" y2="150"/>
+          <line class="leg" x1="250" y1="150" x2="250" y2="60"/>
+          <path class="arc" d="M136 150 A26 26 0 0 0 131.9 135.9"/>
+          <text class="m tip" x="140" y="146">α</text>
+          <circle class="pt" cx="110" cy="150" r="6"/>
+          <circle class="pt" cx="250" cy="60" r="6"/>
+          <text class="m" x="100" y="138" text-anchor="end">A<tspan class="n">(</tspan>x<tspan class="n" font-size="11" dy="4">1</tspan><tspan class="n" dy="-4">;</tspan> y<tspan class="n" font-size="11" dy="4">1</tspan><tspan class="n" dy="-4">)</tspan></text>
+          <text class="m" x="240" y="50" text-anchor="end">B<tspan class="n">(</tspan>x<tspan class="n" font-size="11" dy="4">2</tspan><tspan class="n" dy="-4">;</tspan> y<tspan class="n" font-size="11" dy="4">2</tspan><tspan class="n" dy="-4">)</tspan></text>
+          <text class="m exam" x="180" y="172" text-anchor="middle"><tspan class="n">Δ</tspan>x <tspan class="n">=</tspan> x<tspan class="n" font-size="11" dy="4">2</tspan><tspan class="n" dy="-4"> − </tspan>x<tspan class="n" font-size="11" dy="4">1</tspan></text>
+          <text class="m exam" x="258" y="100"><tspan class="n">Δ</tspan>y <tspan class="n">=</tspan></text>
+          <text class="m exam" x="258" y="120">y<tspan class="n" font-size="11" dy="4">2</tspan><tspan class="n" dy="-4"> − </tspan>y<tspan class="n" font-size="11" dy="4">1</tspan></text>
+          <text class="m" x="110" y="218" text-anchor="middle">x<tspan class="n" font-size="11" dy="4">1</tspan></text>
+          <text class="m" x="250" y="218" text-anchor="middle">x<tspan class="n" font-size="11" dy="4">2</tspan></text>
+          <text class="m" x="22" y="155" text-anchor="end">y<tspan class="n" font-size="11" dy="4">1</tspan></text>
+          <text class="m" x="22" y="65" text-anchor="end">y<tspan class="n" font-size="11" dy="4">2</tspan></text>
+        </svg>
+      </figure>
+
+      <div class="example-box">
+        <span class="label">Pavyzdys</span>
+        Taškai \(A(3;\,46000)\) ir \(B(7;\,26000)\):
+        \[ \begin{aligned} m &amp;= \frac{26000 - 46000}{7 - 3} \\ &amp;= \frac{-20000}{4} = -5000 \end{aligned} \]
+      </div>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Kodėl taip?</summary>
+        <div class="more-body">
+          <p>\(\Delta y = y_2 - y_1\) – kiek pasikeitė \(y\), o \(\Delta x = x_2 - x_1\) – kiek pasikeitė \(x\), einant nuo taško \(A\) iki taško \(B\). Padalijus \(\Delta y\) iš \(\Delta x\), gaunama, kiek \(y\) pasikeičia, kai \(x\) padidėja 1 vienetu. Tai ir yra nuolydis.</p>
+          <p>Abu skirtumai skaičiuojami ta pačia tvarka: iš taško \(B\) koordinatės atimama taško \(A\) koordinatė.</p>
+          <p>\(\alpha\) – brėžinyje pažymėtas kampas, todėl nuolydį galima užrašyti ir kaip \(\operatorname{tg}\alpha\).</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- 3 -->
+    <article class="card concept" id="laisvasis-narys">
+      <div class="concept-head"><span class="num">3</span><h3>Kas yra laisvasis narys?</h3></div>
+      <p>Laisvasis narys \(b\) nurodo tiesės poziciją vertikalios ašies atžvilgiu. <strong>Jis lygus \(y\) reikšmei, kai \(x = 0\).</strong></p>
+      <p>Taške \((0;\,b)\) tiesė kerta vertikalią ašį.</p>
+
+      <figure class="fig">
+        <svg viewBox="0 0 320 196" role="img" aria-label="Tiesė kerta vertikalią ašį taške (0; b)">
+          <line class="ax" x1="10" y1="160" x2="314" y2="160"/>
+          <line class="ax" x1="110" y1="190" x2="110" y2="6"/>
+          <text class="m" x="304" y="152">x</text>
+          <text class="m" x="118" y="16">y</text>
+          <text class="mu muted" x="100" y="176" text-anchor="end">0</text>
+          <line class="ln" x1="20" y1="130.5" x2="300" y2="4.5"/>
+          <line class="leg" x1="110" y1="160" x2="110" y2="90"/>
+          <text class="m exam" x="118" y="132">b</text>
+          <circle class="pt-hi" cx="110" cy="90" r="7"/>
+          <text class="m" x="100" y="80" text-anchor="end"><tspan class="n">(0;</tspan> b<tspan class="n">)</tspan></text>
+        </svg>
+      </figure>
+    </article>
+
+    <!-- 4 -->
+    <article class="card concept" id="laisvojo-nario-skaiciavimas">
+      <div class="concept-head"><span class="num">4</span><h3>Kaip apskaičiuoti laisvąjį narį?</h3></div>
+      <p>Kai nuolydis \(m\) jau žinomas, paimkite bet kurį tiesės tašką \(A(x_1;\,y_1)\):</p>
+      <div class="formula">\[ b = -m x_1 + y_1 \]</div>
+
+      <div class="example-box">
+        <span class="label">Pavyzdys</span>
+        Tęsiame: \(m = -5000\), \(A(3;\,46000)\).
+        \[ \begin{aligned} b &amp;= -(-5000)\cdot 3 + 46000 \\ &amp;= 15000 + 46000 = 61000 \end{aligned} \]
+      </div>
+
+      <p class="tip">Jei žinomas tiesės taškas, kurio \(x = 0\), skaičiuoti nereikia: \(b\) lygus to taško \(y\) reikšmei.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Kodėl taip?</summary>
+        <div class="more-body">
+          <p>Taškas \(A\) yra tiesėje, todėl jo koordinatės tenkina lygtį \(y = mx + b\):</p>
+          \[ y_1 = m x_1 + b \]
+          <p>Perkėlę \(m x_1\) į kitą lygybės pusę, gauname \(b = -m x_1 + y_1\).</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- 5 -->
+    <article class="card concept" id="kryptine-lygtis">
+      <div class="concept-head"><span class="num">5</span><h3>Kaip sudaryti kryptinę tiesės lygtį?</h3></div>
+      <div class="formula">\[ y = mx + b \]</div>
+      <ol class="steps-list">
+        <li>Apskaičiuokite nuolydį \(m\) iš dviejų taškų.</li>
+        <li>Apskaičiuokite laisvąjį narį \(b\).</li>
+        <li>Įrašykite \(m\) ir \(b\) į lygtį \(y = mx + b\).</li>
+      </ol>
+      <div class="example-box">
+        <span class="label">Pavyzdys</span>
+        \(m = -5000\), \(b = 61000\):
+        \[ y = -5000x + 61000 \]
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="card concept" id="ka-rodo-lygtis">
+      <div class="concept-head"><span class="num">6</span><h3>Ką ši lygtis rodo?</h3></div>
+      <ul class="kv">
+        <li><span class="sym">\(m\)</span><span>tiesės statumas: kiek pasikeičia \(y\), kai \(x\) padidėja 1 vienetu;</span></li>
+        <li><span class="sym">\(b\)</span><span>tiesės pozicija vertikalios ašies atžvilgiu: \(y\) reikšmė, kai \(x = 0\).</span></li>
+      </ul>
+
+      <div class="example-box">
+        <span class="label">Taikymo pavyzdys</span>
+        Tiesinio nusidėvėjimo uždavinyje gauta įrenginio vertės lygtis \(V(t) = -5000t + 61000\): kasmet vertė sumažėja 5000 Eur (\(m = -5000\)), o pradinė vertė – 61000 Eur (\(b = 61000\)).
+      </div>
+
+      <div data-widget="line-explorer"></div>
+    </article>
+  </section>
+
+  <!-- ============ MODELIAI ============ -->
+  <section class="section" id="modeliai" aria-labelledby="h-models">
+    <h2 id="h-models">Taikomieji modeliai</h2>
+    <p class="section-intro">Pasirinkite modelį.</p>
+    <div class="model-grid" data-models="t1"></div>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

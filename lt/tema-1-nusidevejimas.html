@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiesinis nusidėvėjimas · 1 tema · Taikomoji matematika</title>
+<meta name="description" content="Tiesinis nusidėvėjimas: modelis, sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir savikontrolės klausimas.">
+<meta name="theme-color" content="#5b4bf5">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js"></script>
+</head>
+<body data-page="dep">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">1 tema · Taikomasis modelis</span>
+    <h1>Tiesinis nusidėvėjimas</h1>
+    <p class="lead">Taikant tiesinio nusidėvėjimo modelį daroma prielaida, kad per kiekvieną laikotarpį turto vertė sumažėja tokia pačia suma, todėl jo <button type="button" class="term" data-term="Apskaitinė turto vertė" data-def="Turto vertė laiko momentu \(t\), t. y. \(t\) metų pabaigoje. Žymima \(V(t)\).">apskaitinės vertės</button> grafikas yra mažėjanti tiesė.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#testas">Pasitikrinkite</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Modelis</h2>
+
+    <article class="card">
+      <h3 class="subhead">Kokie duomenys naudojami</h3>
+      <ul class="kv">
+        <li><span class="sym">\(V(0)\)</span><span>pradinė turto vertė;</span></li>
+        <li><span class="sym">\(V(T)\)</span><span>likutinė / likvidacinė turto vertė;</span></li>
+        <li><span class="sym">\(T\)</span><span>tikėtina turto naudojimo trukmė;</span></li>
+        <li><span class="sym">\(V(t)\)</span><span>apskaitinė turto vertė \(t\) metų pabaigoje.</span></li>
+      </ul>
+      <p class="tip">Atvirkštiniame uždavinyje pradinė vertė nežinoma. Tada duotos dvi apskaitinės vertės dviem laiko momentais – du taškai \((t_1;\,V_1)\) ir \((t_2;\,V_2)\).</p>
+
+      <h3 class="subhead" style="margin-top:22px">Kokie skaičiavimai atliekami</h3>
+      <p class="formula-label">Nusidėvėjimo tempas (teigiamas skaičius, eurais per laikotarpį)</p>
+      <div class="formula">\[ D = \frac{V(0) - V(T)}{T} \]</div>
+      <p class="formula-label">Vertės funkcija – <button type="button" class="term" data-term="Kryptinė tiesės lygtis" data-def="\(y = mx + b\), kur \(m\) – nuolydis, \(b\) – laisvasis narys.">kryptinė tiesės lygtis</button>, kai \(m = -D\) ir \(b = V(0)\)</p>
+      <div class="formula">\[ \begin{gathered} V(t) = V(0) - \frac{V(0) - V(T)}{T}\cdot t, \\ 0 \le t \le T \end{gathered} \]</div>
+
+      <figure class="fig">
+        <svg viewBox="0 0 340 244" role="img" aria-label="Serverio vertės grafikas: V(0) = 10000, V(2) = 7200, V(5) = 3000">
+          <line class="guide" x1="164" y1="81.6" x2="164" y2="204"/>
+          <line class="guide" x1="64" y1="81.6" x2="164" y2="81.6"/>
+          <line class="guide" x1="314" y1="153" x2="314" y2="204"/>
+          <line class="guide" x1="64" y1="153" x2="314" y2="153"/>
+          <line class="ax" x1="56" y1="204" x2="334" y2="204"/>
+          <line class="ax" x1="64" y1="212" x2="64" y2="20"/>
+          <text x="8" y="13"><tspan class="i">V</tspan>(<tspan class="i">t</tspan>), Eur</text>
+          <text x="334" y="240" text-anchor="end"><tspan class="i">t</tspan>, metai</text>
+          <text class="muted" x="52" y="38" text-anchor="end">10000</text>
+          <text class="muted" x="52" y="86" text-anchor="end">7200</text>
+          <text class="muted" x="52" y="157" text-anchor="end">3000</text>
+          <text class="muted" x="64" y="222" text-anchor="middle">0</text>
+          <text class="muted" x="114" y="222" text-anchor="middle">1</text>
+          <text class="muted" x="164" y="222" text-anchor="middle">2</text>
+          <text class="muted" x="214" y="222" text-anchor="middle">3</text>
+          <text class="muted" x="264" y="222" text-anchor="middle">4</text>
+          <text class="muted" x="314" y="222" text-anchor="middle">5</text>
+          <line class="ln" x1="64" y1="34" x2="314" y2="153"/>
+          <circle class="pt" cx="64" cy="34" r="6"/>
+          <circle class="pt-hi" cx="164" cy="81.6" r="6"/>
+          <circle class="pt" cx="314" cy="153" r="6"/>
+          <text x="76" y="30"><tspan class="i">V</tspan>(0) = 10000</text>
+          <text class="exam" x="174" y="72"><tspan class="i">V</tspan>(2) = 7200</text>
+          <text x="310" y="178" text-anchor="end"><tspan class="i">V</tspan>(5) = 3000</text>
+        </svg>
+        <figcaption>Serverio pavyzdys (žr. žemiau): \(V(t) = 10000 - 1400t,\ 0 \le t \le 5\)</figcaption>
+      </figure>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Kodėl \(m = -D\)?</span></summary>
+        <div class="more-body">
+          <p>Turto vertė mažėja, todėl tiesė leidžiasi ir jos <button type="button" class="term" data-term="Nuolydis" data-def="Rodo, kaip pasikeis \(y\) reikšmė, jei \(x\) reikšmė padidės 1 vienetu.">nuolydis</button> yra neigiamas. O nusidėvėjimo tempas \(D\) užrašomas teigiamu skaičiumi – tai suma, kuria vertė sumažėja per vieną laikotarpį. Todėl \(m = -D\).</p>
+        </div>
+      </details>
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Kodėl \(b = V(0)\)?</span></summary>
+        <div class="more-body">
+          <p><button type="button" class="term" data-term="Laisvasis narys" data-def="\(y\) reikšmė, kai \(x = 0\).">Laisvasis narys</button> lygus funkcijos reikšmei, kai \(t = 0\). Pradžioje turto vertė yra pradinė, t. y. tiesei priklauso taškas \((0;\,V(0))\), todėl iš karto \(b = V(0)\).</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card">
+      <h3>Sprendimo eiga</h3>
+      <ol class="steps-list">
+        <li><strong>Užrašykite duomenis:</strong> \(V(0)\), \(V(T)\), \(T\).
+          <span class="alt">Atvirkštiniame uždavinyje – dvi apskaitines vertes dviem laiko momentais kaip du taškus \((t_1;\,V_1)\) ir \((t_2;\,V_2)\).</span></li>
+        <li><strong>Raskite tiesės nuolydį:</strong> \(m = -D = -\dfrac{V(0) - V(T)}{T}\).
+          <span class="alt">Atvirkštiniame uždavinyje: \(m = \dfrac{V_2 - V_1}{t_2 - t_1}\), o \(D = -m\).</span></li>
+        <li><strong>Raskite laisvąjį narį.</strong> Kai pradinė vertė žinoma, iš taško \((0;\,V(0))\) iš karto gauname \(b = V(0)\).
+          <span class="alt">Atvirkštiniame uždavinyje: \(b = -m t_1 + V_1\).</span></li>
+        <li><strong>Užrašykite</strong> \(V(t) = V(0) - D\cdot t\) ir nurodykite <button type="button" class="term" data-term="Apibrėžimo sritis" data-def="\(t\) reikšmės, kurias galima įstatyti į vertės funkciją: \(0 \le t \le T\).">apibrėžimo sritį</button> \(0 \le t \le T\).</li>
+        <li><strong>Atsakykite į klausimą.</strong> Norėdami rasti apskaitinę vertę, įstatykite \(t\) reikšmę. Norėdami rasti laiko momentą, spręskite lygtį \(V(t) = A\) arba nelygybę \(V(t) &lt; A\).</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Nelygybės ženklas.</strong> Dalydami nelygybę iš neigiamo skaičiaus, pakeiskite nelygybės ženklą.</li>
+            <li><strong>Metų pabaiga.</strong> Apskaitinė turto vertė fiksuojama metų pabaigoje. Jei gavote \(t &gt; 5{,}43\), vertė pirmą kartą tampa mažesnė <em>šeštųjų</em>, o ne penktųjų metų pabaigoje.</li>
+            <li><strong>Ženklai.</strong> Nusidėvėjimo tempas \(D\) – teigiamas skaičius, o tiesės nuolydis \(m = -D\) – neigiamas.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sudarant tiesinį modelį (pavyzdžiui, tiesinio nusidėvėjimo, pelno funkcijos sudarymo, lūžio taško radimo) būtina parašyti, kokie duomenys yra duoti uždavinio sąlygoje.</li>
+            <li>Įvedant naujus, paskaitose arba sąlygoje neįvardytus kintamuosius arba keičiant matavimo vienetus, būtina tai parašyti uždavinio sprendime.</li>
+            <li>Jei uždavinys pateikia kelis klausimus, atsakymai į juos visus turi būti aiškiai pateikti.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-examples">
+    <h2 id="h-examples">Sprendimo pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada atverkite sprendimą po vieną žingsnį.</p>
+
+    <!-- 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Interneto serveris</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Pradinė interneto serverio vertė 10000 eurų, kuris nusidėvi tiesiškai per 5 metus. Likutinė serverio vertė – 3000 eurų. Koks yra nusidėvėjimo tempas? Kokia bus serverio apskaitinė vertė antrųjų metų pabaigoje?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span>Duomenys</h4>
+          <p>Pradinė turto vertė: \(V(0) = 10000\).<br>
+          <button type="button" class="term" data-term="Tikėtina turto naudojimo trukmė" data-def="Laikotarpis \(T\), kurio pabaigoje turto vertė lygi likutinei vertei \(V(T)\).">Tikėtina turto naudojimo trukmė</button>: \(T = 5\).<br>
+          <button type="button" class="term" data-term="Likutinė (likvidacinė) turto vertė" data-def="Turto vertė naudojimo trukmės pabaigoje. Žymima \(V(T)\).">Likutinė turto vertė</button>: \(V(5) = 3000\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span>Nusidėvėjimo tempas</h4>
+          \[ \begin{aligned} D &= \frac{V(0) - V(T)}{T} = \frac{10000 - 3000}{5} \\ &= \frac{7000}{5} = 1400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span>Laisvasis narys yra pradinė turto vertė</h4>
+          \[ b = V(0) = 10000 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span>Vertės funkcija</h4>
+          \[ V(t) = 10000 - 1400t, \quad 0 \le t \le 5 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span>Vertė antrųjų metų pabaigoje</h4>
+          \[ V(2) = -1400\cdot 2 + 10000 = 7200 \text{ Eur} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Nusidėvėjimo tempas – 1400 Eur per metus, \(V(t) = 10000 - 1400t\) Eur, o apskaitinė turto vertė antrųjų metų pabaigoje – 7200 Eur.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Pristatymo furgonas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Pristatymo furgonas, įsigytas už 34000 eurų, nusidėvi tiesiškai per 8 metus. Jo likvidacinė vertė – 6000 eurų. Raskite tiesinio nusidėvėjimo tempą ir apskaitinę vertę \(t\) metų pabaigoje. Raskite apskaitinę vertę penktųjų metų pabaigoje. Kurių metų pabaigoje apskaitinė vertė pirmą kartą tampa mažesnė už 15000 eurų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span>Duomenys</h4>
+          <p>Pradinė turto vertė: \(V(0) = 34000\).<br>
+          Tikėtina turto naudojimo trukmė: \(T = 8\).<br>
+          Likutinė turto vertė: \(V(8) = 6000\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span>Nusidėvėjimo tempas</h4>
+          \[ D = \frac{34000 - 6000}{8} = \frac{28000}{8} = 3500 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span>Laisvasis narys yra pradinė turto vertė</h4>
+          \[ b = V(0) = 34000 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span>Vertės funkcija</h4>
+          \[ V(t) = -3500t + 34000, \quad 0 \le t \le 8 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span>Vertė penktųjų metų pabaigoje</h4>
+          \[ V(5) = -3500\cdot 5 + 34000 = 16500 \text{ Eur} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span>Kada vertė tampa mažesnė už 15000 Eur?</h4>
+          <p>Išspręskite nelygybę; <strong>dalydami iš \(-3500\), pakeiskite nelygybės ženklą</strong>:</p>
+          \[ \begin{aligned} &amp;-3500t + 34000 &lt; 15000 \\ \Longrightarrow\;&amp; 3500t &gt; 19000 \\ \Longrightarrow\;&amp; t &gt; \frac{19000}{3500} \approx 5{,}43 \end{aligned} \]
+          <p>Apskaitinė turto vertė fiksuojama metų pabaigoje, todėl pirmoji vertė, mažesnė už 15000 Eur, yra \(V(6) = -21000 + 34000 = 13000\) Eur, o \(V(5) = 16500\) Eur dar viršija šią ribą.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            3500 Eur per metus; \(V(t) = -3500t + 34000\) Eur, \(0 \le t \le 8\); penktųjų metų pabaigoje – 16500 Eur; apskaitinė turto vertė pirmą kartą tampa mažesnė už 15000 Eur šeštųjų metų pabaigoje.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys · Atvirkštinis uždavinys</span>
+        <h3>Įrenginys</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įrenginys nusidėvi tiesiškai. Jo apskaitinė vertė trečiųjų metų pabaigoje yra 46000 eurų, o septintųjų metų pabaigoje – 26000 eurų. Raskite metinį nusidėvėjimo tempą, pradinę įrenginio vertę ir nusidėvėjimo lygtį. Kokia yra likvidacinė vertė, jei tikėtina turto naudojimo trukmė – 10 metų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span>Du tiesės taškai</h4>
+          <p>Pradinė turto vertė nežinoma, todėl tiesė sudaroma pagal du taškus \((3;\,46000)\) ir \((7;\,26000)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span>Tiesės nuolydis ir nusidėvėjimo tempas</h4>
+          \[ \begin{aligned} m &amp;= \frac{26000 - 46000}{7 - 3} \\ &amp;= \frac{-20000}{4} = -5000 \\ D &amp;= 5000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span>Laisvasis narys, naudojant tašką \((3;\,46000)\)</h4>
+          \[ \begin{aligned} b &amp;= -m t_1 + V_1 = -(-5000)\cdot 3 + 46000 \\ &amp;= 15000 + 46000 = 61000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span>Vertės funkcija</h4>
+          \[ V(t) = -5000t + 61000 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span>Likvidacinė vertė, kai \(T = 10\)</h4>
+          <p>Apibrėžimo sritis: \(0 \le t \le 10\).</p>
+          \[ V(10) = -5000\cdot 10 + 61000 = 11000 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Nusidėvėjimo tempas – 5000 Eur per metus, pradinė turto vertė – 61000 Eur, \(V(t) = -5000t + 61000\) Eur, \(0 \le t \le 10\), o likvidacinė vertė po 10 metų – 11000 Eur.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ TESTAS ============ -->
+  <section class="section" id="testas" aria-labelledby="h-test">
+    <h2 id="h-test">Pasitikrinkite</h2>
+
+    <div class="quiz">
+      <article class="card q" data-type="open" data-time="1,5">
+        <p class="q-text">Biuro įranga įsigyta už 52000 Eur ir nusidėvi tiesiškai per 8 metus iki 4000 Eur likutinės vertės. Raskite apskaitinę vertę trečiųjų metų pabaigoje. Atsakymą pateikite eurais, sveikuoju skaičiumi.</p>
+        <div class="q-answer"><span class="value">34000</span></div>
+      </article>
+    </div>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
