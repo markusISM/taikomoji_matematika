@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tiesinis nusidėvėjimas · 1 tema · Taikomoji matematika</title>
-<meta name="description" content="Tiesinis nusidėvėjimas: modelis, sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir savikontrolės klausimas.">
+<meta name="description" content="Tiesinis nusidėvėjimas: modelis, sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir savikontrolės klausimai.">
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=2">
+<link rel="stylesheet" href="../assets/css/style.css?v=3">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=2"></script>
+<script defer src="../assets/js/site.js?v=3"></script>
 </head>
 <body data-page="dep">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -52,34 +52,37 @@
       <div class="formula">\[ \begin{gathered} V(t) = V(0) - \frac{V(0) - V(T)}{T}\cdot t, \\ 0 \le t \le T \end{gathered} \]</div>
 
       <figure class="fig">
-        <svg viewBox="0 0 340 244" role="img" aria-label="Serverio vertės grafikas: V(0) = 10000, V(2) = 7200, V(5) = 3000">
-          <line class="guide" x1="164" y1="81.6" x2="164" y2="204"/>
-          <line class="guide" x1="64" y1="81.6" x2="164" y2="81.6"/>
-          <line class="guide" x1="314" y1="153" x2="314" y2="204"/>
-          <line class="guide" x1="64" y1="153" x2="314" y2="153"/>
+        <svg viewBox="0 0 340 244" role="img" aria-label="Maišyklės vertės grafikas: V(0) = 24000, V(3) = 16500, V(8) = 4000">
+          <line class="guide" x1="160" y1="87.1" x2="160" y2="204"/>
+          <line class="guide" x1="64" y1="87.1" x2="160" y2="87.1"/>
+          <line class="guide" x1="320" y1="175.7" x2="320" y2="204"/>
+          <line class="guide" x1="64" y1="175.7" x2="320" y2="175.7"/>
           <line class="ax" x1="56" y1="204" x2="329" y2="204"/>
           <line class="ax" x1="64" y1="212" x2="64" y2="12"/>
           <path class="ah" d="M337 204L328 199.5L328 208.5Z"/><path class="ah" d="M64 4L59.5 13L68.5 13Z"/>
           <text x="2" y="12" style="font-size:12px"><tspan class="i">V</tspan>(<tspan class="i">t</tspan>), Eur</text>
           <text x="334" y="240" text-anchor="end"><tspan class="i">t</tspan>, metai</text>
-          <text class="muted" x="52" y="38" text-anchor="end">10000</text>
-          <text class="muted" x="52" y="86" text-anchor="end">7200</text>
-          <text class="muted" x="52" y="157" text-anchor="end">3000</text>
+          <text class="muted" x="52" y="38" text-anchor="end">24000</text>
+          <text class="muted" x="52" y="91" text-anchor="end">16500</text>
+          <text class="muted" x="52" y="180" text-anchor="end">4000</text>
           <text class="muted" x="64" y="222" text-anchor="middle">0</text>
-          <text class="muted" x="114" y="222" text-anchor="middle">1</text>
-          <text class="muted" x="164" y="222" text-anchor="middle">2</text>
-          <text class="muted" x="214" y="222" text-anchor="middle">3</text>
-          <text class="muted" x="264" y="222" text-anchor="middle">4</text>
-          <text class="muted" x="314" y="222" text-anchor="middle">5</text>
-          <line class="ln" x1="64" y1="34" x2="314" y2="153"/>
+          <text class="muted" x="96" y="222" text-anchor="middle">1</text>
+          <text class="muted" x="128" y="222" text-anchor="middle">2</text>
+          <text class="muted" x="160" y="222" text-anchor="middle">3</text>
+          <text class="muted" x="192" y="222" text-anchor="middle">4</text>
+          <text class="muted" x="224" y="222" text-anchor="middle">5</text>
+          <text class="muted" x="256" y="222" text-anchor="middle">6</text>
+          <text class="muted" x="288" y="222" text-anchor="middle">7</text>
+          <text class="muted" x="320" y="222" text-anchor="middle">8</text>
+          <line class="ln" x1="64" y1="34" x2="320" y2="175.7"/>
           <circle class="pt" cx="64" cy="34" r="6"/>
-          <circle class="pt-hi" cx="164" cy="81.6" r="6"/>
-          <circle class="pt" cx="314" cy="153" r="6"/>
-          <text x="76" y="30"><tspan class="i">V</tspan>(0) = 10000</text>
-          <text class="exam" x="174" y="72"><tspan class="i">V</tspan>(2) = 7200</text>
-          <text x="310" y="178" text-anchor="end"><tspan class="i">V</tspan>(5) = 3000</text>
+          <circle class="pt-hi" cx="160" cy="87.1" r="6"/>
+          <circle class="pt" cx="320" cy="175.7" r="6"/>
+          <text x="76" y="30"><tspan class="i">V</tspan>(0) = 24000</text>
+          <text class="exam" x="170" y="78"><tspan class="i">V</tspan>(3) = 16500</text>
+          <text x="314" y="196" text-anchor="end"><tspan class="i">V</tspan>(8) = 4000</text>
         </svg>
-        <figcaption>Serverio pavyzdys (žr. žemiau): \(V(t) = 10000 - 1400t,\ 0 \le t \le 5\)</figcaption>
+        <figcaption>1 pavyzdys (žr. žemiau): \(V(t) = 24000 - 2500t,\ 0 \le t \le 8\)</figcaption>
       </figure>
 
       <details class="more more--why">
@@ -143,39 +146,36 @@
     <article class="card example" id="pavyzdys-1">
       <header class="example-head">
         <span class="example-tag">1 pavyzdys</span>
-        <h3>Interneto serveris</h3>
+        <h3>Tešlos maišyklė</h3>
       </header>
       <div class="problem">
         <span class="label">Sąlyga</span>
-        Pradinė interneto serverio vertė 10000 eurų, kuris nusidėvi tiesiškai per 5 metus. Likutinė serverio vertė – 3000 eurų. Koks yra nusidėvėjimo tempas? Kokia bus serverio apskaitinė vertė antrųjų metų pabaigoje?
+        Pramoninės tešlos maišyklės pradinė vertė yra 24000 EUR. Ji nudėvima tiesiniu būdu per 8 metus, o likvidacinė vertė yra 4000 EUR. Koks maišyklės nusidėvėjimo tempas? Raskite reiškinį, nusakantį apskaitinę vertę \(t\) metų pabaigoje. Kokia bus maišyklės apskaitinė vertė trečiųjų metų pabaigoje?
       </div>
       <div class="steps">
         <section class="step">
-          <h4><span class="step-no">1</span>Duomenys</h4>
-          <p>Pradinė turto vertė: \(V(0) = 10000\).<br>
-          <button type="button" class="term" data-term="Tikėtina turto naudojimo trukmė" data-def="Laikotarpis \(T\), kurio pabaigoje turto vertė lygi likutinei vertei \(V(T)\).">Tikėtina turto naudojimo trukmė</button>: \(T = 5\).<br>
-          <button type="button" class="term" data-term="Likutinė (likvidacinė) turto vertė" data-def="Turto vertė naudojimo trukmės pabaigoje. Žymima \(V(T)\).">Likutinė turto vertė</button>: \(V(5) = 3000\).</p>
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Pradinė turto vertė: \(V(0) = 24000\).<br>
+          <button type="button" class="term" data-term="Tikėtina turto naudojimo trukmė" data-def="Laikotarpis \(T\), kurio pabaigoje turto vertė lygi likutinei vertei \(V(T)\).">Tikėtina turto naudojimo trukmė</button>: \(T = 8\).<br>
+          <button type="button" class="term" data-term="Likutinė (likvidacinė) turto vertė" data-def="Turto vertė naudojimo trukmės pabaigoje. Žymima \(V(T)\).">Likvidacinė turto vertė</button>: \(V(8) = 4000\).</p>
         </section>
         <section class="step">
-          <h4><span class="step-no">2</span>Nusidėvėjimo tempas</h4>
-          \[ \begin{aligned} D &= \frac{V(0) - V(T)}{T} = \frac{10000 - 3000}{5} \\ &= \frac{7000}{5} = 1400 \end{aligned} \]
+          <h4><span class="step-no">2</span><span>Nusidėvėjimo tempas</span></h4>
+          \[ \begin{aligned} D &amp;= \frac{V(0) - V(T)}{T} = \frac{24000 - 4000}{8} \\ &amp;= \frac{20000}{8} = 2500 \end{aligned} \]
+          <p>Kasmet maišyklės vertė sumažėja 2500 eurų.</p>
         </section>
         <section class="step">
-          <h4><span class="step-no">3</span>Laisvasis narys yra pradinė turto vertė</h4>
-          \[ b = V(0) = 10000 \]
+          <h4><span class="step-no">3</span><span>Apskaitinė vertė \(t\) metų pabaigoje</span></h4>
+          \[ \begin{aligned} V(t) &amp;= V(0) - \frac{V(0) - V(T)}{T}\cdot t \\ &amp;= 24000 - 2500t, \quad 0 \le t \le 8 \end{aligned} \]
         </section>
         <section class="step">
-          <h4><span class="step-no">4</span>Vertės funkcija</h4>
-          \[ V(t) = 10000 - 1400t, \quad 0 \le t \le 5 \]
-        </section>
-        <section class="step">
-          <h4><span class="step-no">5</span>Vertė antrųjų metų pabaigoje</h4>
-          \[ V(2) = -1400\cdot 2 + 10000 = 7200 \text{ Eur} \]
+          <h4><span class="step-no">4</span><span>Apskaitinė vertė trečiųjų metų pabaigoje</span></h4>
+          \[ \begin{aligned} V(3) &amp;= 24000 - 2500\cdot 3 \\ &amp;= 24000 - 7500 = 16500 \end{aligned} \]
         </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
-            Nusidėvėjimo tempas – 1400 Eur per metus, \(V(t) = 10000 - 1400t\) Eur, o apskaitinė turto vertė antrųjų metų pabaigoje – 7200 Eur.
+            Nusidėvėjimo tempas yra 2500 eurų per metus; apskaitinė vertė \(t\) metų pabaigoje yra \(V(t) = 24000 - 2500t\); trečiųjų metų pabaigoje maišyklės vertė yra 16500 eurų.
           </div>
         </section>
       </div>
@@ -193,29 +193,29 @@
       </div>
       <div class="steps">
         <section class="step">
-          <h4><span class="step-no">1</span>Duomenys</h4>
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
           <p>Pradinė turto vertė: \(V(0) = 34000\).<br>
           Tikėtina turto naudojimo trukmė: \(T = 8\).<br>
           Likutinė turto vertė: \(V(8) = 6000\).</p>
         </section>
         <section class="step">
-          <h4><span class="step-no">2</span>Nusidėvėjimo tempas</h4>
+          <h4><span class="step-no">2</span><span>Nusidėvėjimo tempas</span></h4>
           \[ D = \frac{34000 - 6000}{8} = \frac{28000}{8} = 3500 \]
         </section>
         <section class="step">
-          <h4><span class="step-no">3</span>Laisvasis narys yra pradinė turto vertė</h4>
+          <h4><span class="step-no">3</span><span>Laisvasis narys yra pradinė turto vertė</span></h4>
           \[ b = V(0) = 34000 \]
         </section>
         <section class="step">
-          <h4><span class="step-no">4</span>Vertės funkcija</h4>
+          <h4><span class="step-no">4</span><span>Vertės funkcija</span></h4>
           \[ V(t) = -3500t + 34000, \quad 0 \le t \le 8 \]
         </section>
         <section class="step">
-          <h4><span class="step-no">5</span>Vertė penktųjų metų pabaigoje</h4>
+          <h4><span class="step-no">5</span><span>Vertė penktųjų metų pabaigoje</span></h4>
           \[ V(5) = -3500\cdot 5 + 34000 = 16500 \text{ Eur} \]
         </section>
         <section class="step">
-          <h4><span class="step-no">6</span>Kada vertė tampa mažesnė už 15000 Eur?</h4>
+          <h4><span class="step-no">6</span><span>Kada vertė tampa mažesnė už 15000 Eur?</span></h4>
           <p>Išspręskite nelygybę; <strong>dalydami iš \(-3500\), pakeiskite nelygybės ženklą</strong>:</p>
           \[ \begin{aligned} &amp;-3500t + 34000 &lt; 15000 \\ \Longrightarrow\;&amp; 3500t &gt; 19000 \\ \Longrightarrow\;&amp; t &gt; \frac{19000}{3500} \approx 5{,}43 \end{aligned} \]
           <p>Apskaitinė turto vertė fiksuojama metų pabaigoje, todėl pirmoji vertė, mažesnė už 15000 Eur, yra \(V(6) = -21000 + 34000 = 13000\) Eur, o \(V(5) = 16500\) Eur dar viršija šią ribą.</p>
@@ -241,23 +241,23 @@
       </div>
       <div class="steps">
         <section class="step">
-          <h4><span class="step-no">1</span>Du tiesės taškai</h4>
+          <h4><span class="step-no">1</span><span>Du tiesės taškai</span></h4>
           <p>Pradinė turto vertė nežinoma, todėl tiesė sudaroma pagal du taškus \((3;\,46000)\) ir \((7;\,26000)\).</p>
         </section>
         <section class="step">
-          <h4><span class="step-no">2</span>Tiesės nuolydis ir nusidėvėjimo tempas</h4>
+          <h4><span class="step-no">2</span><span>Tiesės nuolydis ir nusidėvėjimo tempas</span></h4>
           \[ \begin{aligned} m &amp;= \frac{26000 - 46000}{7 - 3} \\ &amp;= \frac{-20000}{4} = -5000 \\ D &amp;= 5000 \end{aligned} \]
         </section>
         <section class="step">
-          <h4><span class="step-no">3</span>Laisvasis narys, naudojant tašką \((3;\,46000)\)</h4>
+          <h4><span class="step-no">3</span><span>Laisvasis narys, naudojant tašką \((3;\,46000)\)</span></h4>
           \[ \begin{aligned} b &amp;= -m t_1 + V_1 = -(-5000)\cdot 3 + 46000 \\ &amp;= 15000 + 46000 = 61000 \end{aligned} \]
         </section>
         <section class="step">
-          <h4><span class="step-no">4</span>Vertės funkcija</h4>
+          <h4><span class="step-no">4</span><span>Vertės funkcija</span></h4>
           \[ V(t) = -5000t + 61000 \]
         </section>
         <section class="step">
-          <h4><span class="step-no">5</span>Likvidacinė vertė, kai \(T = 10\)</h4>
+          <h4><span class="step-no">5</span><span>Likvidacinė vertė, kai \(T = 10\)</span></h4>
           <p>Apibrėžimo sritis: \(0 \le t \le 10\).</p>
           \[ V(10) = -5000\cdot 10 + 61000 = 11000 \]
         </section>
@@ -276,9 +276,35 @@
     <h2 id="h-test">Pasitikrinkite</h2>
 
     <div class="quiz">
+      <article class="card q" data-type="mc">
+        <p class="q-text">Ką tiesinio nusidėvėjimo modelyje \(V(t) = V(0) - D\cdot t\) reiškia koeficientas \(D\)?</p>
+        <ol class="q-options">
+          <li>Apskaitinę vertę po vienų metų.</li>
+          <li data-correct>Metinį nusidėvėjimo tempą – sumą, kuria turto vertė sumažėja kiekvienais metais.</li>
+          <li>Likutinę (likvidacinę) vertę.</li>
+          <li>Naudojimo metų skaičių.</li>
+        </ol>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">Spaustuvė perka laminavimo aparatą už 6000 €. Numatoma, kad jis bus naudojamas 4 metus, o jo likvidacinė vertė bus 800 €. Koks yra metinis nusidėvėjimo tempas \(D\)?</p>
+        <ol class="q-options">
+          <li data-correct>1300 €</li>
+          <li>1450 €</li>
+          <li>800 €</li>
+          <li>1500 €</li>
+        </ol>
+        <div class="q-explain">\[ D = \frac{6000 - 800}{4} = 1300 \]</div>
+      </article>
+
       <article class="card q" data-type="open" data-time="1,5">
         <p class="q-text">Biuro įranga įsigyta už 52000 Eur ir nusidėvi tiesiškai per 8 metus iki 4000 Eur likutinės vertės. Raskite apskaitinę vertę trečiųjų metų pabaigoje. Atsakymą pateikite eurais, sveikuoju skaičiumi.</p>
         <div class="q-answer"><span class="value">34000</span></div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">CNC staklių apskaitinė vertė po 3 metų buvo 52000 €, o po 9 metų – 28000 €. Nusidėvėjimas skaičiuojamas tiesiniu metodu. Raskite pradinę staklių vertę.</p>
+        <div class="q-answer"><span class="value">64000 EUR</span></div>
       </article>
     </div>
   </section>
@@ -287,8 +313,8 @@
     <h2 id="h-src">Šaltiniai</h2>
     <p class="section-intro">Daugiau informacijos apie šį modelį rasite:</p>
     <ul class="src-list">
-      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>.<span class="src-ch">1 skyrius</span><span class="src-note">Tiesinio nusidėvėjimo modelis.</span></span></li>
-      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>.<span class="src-ch">2 skyrius</span><span class="src-note">1 pavyzdys (interneto serveris).</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">1 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">2 skyrius</span></span></li>
     </ul>
   </section>
 

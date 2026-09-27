@@ -45,7 +45,7 @@
       restart: 'Iš naujo',
       question: function (n) { return n + ' klausimas'; },
       openQ: 'Skaičiavimo klausimas',
-      mcQ: 'Pasirink atsakymą',
+      mcQ: 'Pasirinkite atsakymą',
       minutes: function (m) { return '~' + m + ' min.'; },
       timeTitle: 'Rekomenduojamas sprendimo laikas',
       solveFirst: 'Pirmiausia išspręskite patys, tada pasitikrinkite.',
