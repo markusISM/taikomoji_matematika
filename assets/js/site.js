@@ -430,7 +430,7 @@
       (q.hasAttribute('data-draft') ? ' <span class="badge badge--draft">' + esc(T.draft) + '</span>' : '') + '</span>';
     var time = q.getAttribute('data-time');
     var right = time ? '<span class="q-time" title="' + esc(T.timeTitle) + '">' + ICON.clock + esc(T.minutes(time)) + '</span>' :
-      '<span class="q-kind">' + esc(type === 'mc' ? T.mcQ : T.openQ) + '</span>';
+      (type === 'mc' ? '<span class="q-kind">' + esc(T.mcQ) + '</span>' : '');
     meta.innerHTML = left + right;
     q.insertBefore(meta, q.firstChild);
 
