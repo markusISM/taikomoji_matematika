@@ -32,7 +32,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=4` ir `site.js?v=4`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=5` ir `site.js?v=5`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
@@ -73,6 +73,18 @@ modeliui – tą patį `MODELS` sąraše. Naują puslapį įrašykite į `PAGES`
 </article>
 ```
 `data-time` – rekomenduojamas laikas minutėmis (neprivalomas). `data-draft` – parodo žymą „Juodraštis“.
+
+**Savarankiški uždaviniai.** Tas pats komponentas kaip testo klausimai, tik konteineriui nurodykite `data-numbering="task"` – tada rašoma „1 uždavinys“, „2 uždavinys“. Numeracija kiekviename bloke prasideda iš naujo.
+```html
+<div class="quiz" data-numbering="task"> … <article class="card q" data-type="open"> … </article> … </div>
+```
+
+**Paklausos ir pasiūlos grafikas.** Paklausa \(p = ax + b\), pasiūla \(p = cx + d\); pusiausvyros taškas apskaičiuojamas automatiškai. `data-numeric="0"` – vietoj skaičių rodomi \(p_e\), \(x_e\).
+```html
+<div data-widget="market-chart" data-a="-0.04" data-b="560" data-c="0.06" data-d="160"
+     data-xmax="7000" data-ymax="600" data-numeric="1"></div>
+```
+Grafikų užrašai (ašys, legenda) imami iš `site.js` žodyno abiem kalbomis. Statiniuose SVG užrašuose naudokite `<tspan data-i18n="unitYears">metai</tspan>`.
 
 **Sąvokos apibrėžimas (iššokantis langelis).**
 ```html

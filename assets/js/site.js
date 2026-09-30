@@ -44,6 +44,7 @@
       showAll: 'Rodyti visus',
       restart: 'Iš naujo',
       question: function (n) { return n + ' klausimas'; },
+      taskN: function (n) { return n + ' uždavinys'; },
       openQ: 'Skaičiavimo klausimas',
       mcQ: 'Pasirinkite atsakymą',
       minutes: function (m) { return '~' + m + ' min.'; },
@@ -66,7 +67,15 @@
       slopeDown: 'm < 0 – tiesė leidžiasi',
       slopeZero: 'm = 0 – tiesė horizontali',
       intercept: function (b) { return 'Tiesė kerta vertikalią ašį taške (0; ' + b + ')'; },
-      decimal: ','
+      decimal: ',',
+      // Grafikų užrašai
+      unitEur: 'Eur',
+      unitQty: 'vnt.',
+      unitYears: 'metai',
+      demand: 'Paklausa (D)',
+      supply: 'Pasiūla (S)',
+      eqPoint: 'Pusiausvyros taškas (E)',
+      marketChart: 'Paklausos ir pasiūlos tiesės ir pusiausvyros taškas E'
     },
     en: {
       courseShort: 'Applied Mathematics',
@@ -93,6 +102,7 @@
       showAll: 'Show all',
       restart: 'Start over',
       question: function (n) { return 'Question ' + n; },
+      taskN: function (n) { return 'Problem ' + n; },
       openQ: 'Calculation question',
       mcQ: 'Choose an answer',
       minutes: function (m) { return '~' + m + ' min'; },
@@ -115,7 +125,15 @@
       slopeDown: 'm < 0 – the line falls',
       slopeZero: 'm = 0 – the line is horizontal',
       intercept: function (b) { return 'The line crosses the vertical axis at (0; ' + b + ')'; },
-      decimal: '.'
+      decimal: '.',
+      // Chart labels
+      unitEur: 'EUR',
+      unitQty: 'units',
+      unitYears: 'years',
+      demand: 'Demand (D)',
+      supply: 'Supply (S)',
+      eqPoint: 'Equilibrium point (E)',
+      marketChart: 'Demand and supply lines and the equilibrium point E'
     }
   };
 
@@ -149,7 +167,7 @@
       { id: 'dep', status: 'active', href: { lt: 'tema-1-nusidevejimas.html' },
         title: { lt: 'Tiesinis nusidėvėjimas', en: 'Linear Depreciation' },
         desc: { lt: 'Per kiekvieną laikotarpį turto vertė sumažėja tokia pačia suma.' } },
-      { id: 'eq', status: 'soon',
+      { id: 'eq', status: 'active', href: { lt: 'tema-1-rinkos-pusiausvyra.html' },
         title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' },
         desc: { lt: 'Paklausa ir pasiūla: pusiausvyros kaina ir kiekis, kai \\(D = S\\).' } },
       { id: 'be', status: 'soon',
@@ -169,6 +187,8 @@
                title: { lt: '1 tema', en: 'Topic 1' } },
     dep:     { parent: 't1', topic: 't1', model: 'dep', href: { lt: 'tema-1-nusidevejimas.html', en: null },
                title: { lt: 'Tiesinis nusidėvėjimas', en: 'Linear Depreciation' } },
+    eq:      { parent: 't1', topic: 't1', model: 'eq', href: { lt: 'tema-1-rinkos-pusiausvyra.html', en: null },
+               title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
                title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
     final:   { parent: 'home', href: { lt: 'baigiamasis-egzaminas.html', en: null },
@@ -422,11 +442,12 @@
                  <div class="q-explain">…</div>     (neprivaloma)
                </article>
      ------------------------------------------------------------------ */
-  function initQuestion(q, index) {
+  function initQuestion(q, index, numbering) {
     var type = q.getAttribute('data-type') || 'open';
     var meta = document.createElement('div');
     meta.className = 'q-meta';
-    var left = '<span><span class="q-num">' + esc(T.question(index + 1)) + '</span>' +
+    var label = numbering === 'task' ? T.taskN(index + 1) : T.question(index + 1);
+    var left = '<span><span class="q-num">' + esc(label) + '</span>' +
       (q.hasAttribute('data-draft') ? ' <span class="badge badge--draft">' + esc(T.draft) + '</span>' : '') + '</span>';
     var time = q.getAttribute('data-time');
     var right = time ? '<span class="q-time" title="' + esc(T.timeTitle) + '">' + ICON.clock + esc(T.minutes(time)) + '</span>' :
@@ -614,6 +635,88 @@
     return T.decimal === ',' ? s.replace('.', '{,}') : s;
   }
 
+  /* ------------------------------------------------------------------
+     8a. PAKLAUSOS IR PASIŪLOS GRAFIKAS
+     <div data-widget="market-chart" data-a="-0.04" data-b="560" data-c="0.06" data-d="160"
+          data-xmax="7000" data-ymax="600" data-numeric="1"></div>
+     Paklausa p = ax + b, pasiūla p = cx + d. data-numeric="0" – be skaičių (p_e, x_e).
+     ------------------------------------------------------------------ */
+  function clean(v) { return Number(Number(v).toPrecision(10)); }
+  function decStr(v) { var s = String(clean(v)); return T.decimal === ',' ? s.replace('.', ',') : s; }
+  function decTex(v) { var s = String(clean(v)); return T.decimal === ',' ? s.replace('.', '{,}') : s; }
+  function lineTex(m, k) {
+    var t = 'p = ' + (m < 0 ? '-' : '') + decTex(Math.abs(m)) + 'x';
+    if (k !== 0) t += (k < 0 ? ' - ' : ' + ') + decTex(Math.abs(k));
+    return t;
+  }
+
+  function initMarketChart(box) {
+    var a = +box.getAttribute('data-a'), b = +box.getAttribute('data-b');
+    var c = +box.getAttribute('data-c'), d = +box.getAttribute('data-d');
+    var xmax = +box.getAttribute('data-xmax'), ymax = +box.getAttribute('data-ymax');
+    var numeric = box.getAttribute('data-numeric') === '1';
+    var xe = clean((b - d) / (c - a)), pe = clean(a * xe + b);
+    var L = 56, B = 206, W = 262, H = 180;
+    function X(q) { return +(L + q / xmax * W).toFixed(1); }
+    function Y(p) { return +(B - p / ymax * H).toFixed(1); }
+    var qd = Math.min(xmax, -b / a), qs = Math.min(xmax, (ymax - d) / c);
+    var ex = X(xe), ey = Y(pe);
+    var sub = function (base, s) { return '<tspan class="i">' + base + '</tspan><tspan class="i" font-size="10" dy="4">' + s + '</tspan>'; };
+
+    var yTicks = numeric ? [b, pe, d] : [pe];
+    var ticks = '';
+    var used = [];
+    yTicks.forEach(function (v) {
+      var y = Y(v);
+      if (used.some(function (u) { return Math.abs(u - y) < 13; })) return;
+      used.push(y);
+      ticks += '<line class="ax" x1="' + (L - 4) + '" y1="' + y + '" x2="' + L + '" y2="' + y + '"/>' +
+        '<text class="muted" x="' + (L - 7) + '" y="' + (y + 4) + '" text-anchor="end">' +
+        (numeric ? decStr(v) : sub('p', 'e')) + '</text>';
+    });
+    ticks += '<text class="muted" x="' + ex + '" y="' + (B + 17) + '" text-anchor="middle">' +
+      (numeric ? decStr(xe) : sub('x', 'e')) + '</text>';
+
+    var svg =
+      '<svg viewBox="0 0 340 250" role="img" aria-label="' + esc(T.marketChart) +
+        (numeric ? ' (' + decStr(xe) + '; ' + decStr(pe) + ')' : '') + '">' +
+      '<line class="guide" x1="' + ex + '" y1="' + ey + '" x2="' + ex + '" y2="' + B + '"/>' +
+      '<line class="guide" x1="' + L + '" y1="' + ey + '" x2="' + ex + '" y2="' + ey + '"/>' +
+      '<line class="ax" x1="' + (L - 8) + '" y1="' + B + '" x2="' + (L + W + 10) + '" y2="' + B + '"/>' +
+      '<line class="ax" x1="' + L + '" y1="' + (B + 8) + '" x2="' + L + '" y2="18"/>' +
+      '<path class="ah" d="M' + (L + W + 18) + ' ' + B + 'L' + (L + W + 9) + ' ' + (B - 4.5) + 'L' + (L + W + 9) + ' ' + (B + 4.5) + 'Z"/>' +
+      '<path class="ah" d="M' + L + ' 10L' + (L - 4.5) + ' 19L' + (L + 4.5) + ' 19Z"/>' +
+      '<text x="2" y="12" style="font-size:12px"><tspan class="i">p</tspan>, ' + esc(T.unitEur) + '</text>' +
+      '<text x="336" y="246" text-anchor="end"><tspan class="i">x</tspan>, ' + esc(T.unitQty) + '</text>' +
+      '<text class="muted" x="' + (L - 7) + '" y="' + (B + 15) + '" text-anchor="end">0</text>' +
+      ticks +
+      '<line class="ln" x1="' + X(0) + '" y1="' + Y(b) + '" x2="' + X(qd) + '" y2="' + Y(a * qd + b) + '"/>' +
+      '<line class="ln2" x1="' + X(0) + '" y1="' + Y(d) + '" x2="' + X(qs) + '" y2="' + Y(c * qs + d) + '"/>' +
+      '<text class="acc b" x="' + (X(qd) + 5) + '" y="' + (Y(a * qd + b) + 5) + '">D</text>' +
+      '<text class="c2 b" x="' + (X(qs) + 5) + '" y="' + (Y(c * qs + d) + 5) + '">S</text>' +
+      '<circle class="pt-hi" cx="' + ex + '" cy="' + ey + '" r="6"/>' +
+      '<text class="exam b" x="' + ex + '" y="' + (ey - 12) + '" text-anchor="middle">E</text>' +
+      '</svg>';
+
+    var legend = '<ul class="chart-legend">' +
+      '<li><span class="sw"></span><span>' + esc(T.demand) + (numeric ? ': <span class="js-tex" data-tex="' + esc(lineTex(a, b)) + '"></span>' : '') + '</span></li>' +
+      '<li><span class="sw sw-s"></span><span>' + esc(T.supply) + (numeric ? ': <span class="js-tex" data-tex="' + esc(lineTex(c, d)) + '"></span>' : '') + '</span></li>' +
+      '<li><span class="sw sw-e"></span><span>' + esc(T.eqPoint) + (numeric ? ': <span class="js-tex" data-tex="(' + decTex(xe) + ';\\,' + decTex(pe) + ')"></span>' : '') + '</span></li>' +
+      '</ul>';
+
+    box.classList.add('fig', 'market-chart');
+    box.innerHTML = svg + legend;
+    $all('.js-tex', box).forEach(function (el) { renderInline(el, el.getAttribute('data-tex')); });
+  }
+
+  /* Statiniai užrašai, kurių tekstas imamas iš UI žodyno: <tspan data-i18n="unitYears">metai</tspan> */
+  function fillI18n() {
+    $all('[data-i18n]').forEach(function (el) {
+      var v = T[el.getAttribute('data-i18n')];
+      if (typeof v === 'string') el.textContent = v;
+    });
+  }
+
   function initLineExplorer(box) {
     var S = 26, O = 156, N = 5; // mastelis, centras, ašių ribos ±5
     var grid = '';
@@ -698,9 +801,14 @@
     buildCoursePath();
     buildModelGrid();
     buildPager();
+    fillI18n();
+    $all('[data-widget="market-chart"]').forEach(initMarketChart);
     renderMath(document.body);
     $all('.example').forEach(initExample);
-    $all('.q').forEach(initQuestion);
+    $all('.quiz').forEach(function (qz) {
+      var numbering = qz.getAttribute('data-numbering');
+      $all('.q', qz).forEach(function (q, i) { initQuestion(q, i, numbering); });
+    });
     $all('[data-widget="line-explorer"]').forEach(initLineExplorer);
     initTerms();
   }
