@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=13">
+<link rel="stylesheet" href="../assets/css/style.css?v=14">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=13"></script>
+<script defer src="../assets/js/site.js?v=14"></script>
 </head>
 <body data-page="t3">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -181,17 +181,18 @@
       <div class="concept-head"><span class="num">5</span><h3>Gauso metodo algoritmas</h3></div>
       <h4 class="phase-title">I. Tiesioginė eiga</h4>
       <ol class="steps-list">
-        <li>Jei pirmosios lygties pirmasis koeficientas lygus 0, tai ta lygtis sukeičiama vietomis su ta, kurios pirmasis koeficientas nelygus 0; šis koeficientas vadinamas <strong>pagrindiniu</strong>.</li>
-        <li>Pirmoji lygtis padalijama iš pagrindinio koeficiento.</li>
-        <li>Su pirmąja lygtimi pagal pirmą ir trečią elementariuosius pertvarkius pašalinami kitų lygčių pirmieji dėmenys.</li>
-        <li>Grįžtama į 1 žingsnį ir veiksmai kartojami su sistema, į kurią neįeina pirmoji lygtis.</li>
-        <li>Nežinomųjų šalinimas baigiamas, kai visi elementai po pagrindine įstrižaine tampa nuliai, o pagrindinės įstrižainės koeficientai – vienetai. Jei kuriame nors pertvarkymų žingsnyje gaunama lygtis \(0 = 0\), tai tą lygtį galima atmesti; jei gaunama beprasmė lygtis \(0 = a\), \(a \neq 0\), tai sistema sprendinių neturi.</li>
+        <li><strong>Pagrindinis elementas.</strong> Pažiūrėkite į pirmosios lygties pirmąjį koeficientą. Jei jis lygus 0, šią lygtį sukeiskite vietomis su žemiau esančia lygtimi, kurios pirmasis koeficientas nelygus 0. Šis nenulinis koeficientas ir bus <strong>pagrindinis elementas</strong>.</li>
+        <li><strong>Vienetas įstrižainėje.</strong> Pirmąją lygtį padalykite iš pagrindinio elemento – jo vietoje atsiras 1.</li>
+        <li><strong>Nuliai po pagrindiniu elementu.</strong> Pirmąją lygtį padauginkite iš tinkamo skaičiaus ir pridėkite prie kiekvienos žemiau esančios lygties (1-asis ir 3-iasis pertvarkiai) – taip iš jų dingsta pirmasis nežinomasis.</li>
+        <li><strong>Kartojimas.</strong> Pirmąją lygtį palikite nuošalyje ir 1–3 žingsnius pakartokite su likusiomis lygtimis: dabar šalinamas antrasis nežinomasis, paskui – trečiasis ir t. t.</li>
+        <li><strong>Pabaiga.</strong> Tiesioginė eiga baigta, kai po pagrindine įstrižaine liko tik nuliai, o įstrižainėje – vienetai. Jei pakeliui atsirado lygtis \(0 = 0\), ją galima išbraukti. Jei atsirado lygtis \(0 = a\), kai \(a \neq 0\), toliau skaičiuoti nebereikia – sistema sprendinių neturi.</li>
       </ol>
       <h4 class="phase-title">II. Atbulinė eiga</h4>
       <ol class="steps-list" style="counter-reset: s 5">
-        <li>Pradedant nuo paskutinės lygties, nuosekliai apskaičiuojamos visų nežinomųjų reikšmės.</li>
+        <li><strong>Reikšmės iš apačios į viršų.</strong> Iš paskutinės lygties raskite paskutinįjį nežinomąjį ir įstatykite jį į priešpaskutinę lygtį. Taip kildami aukštyn, raskite visų nežinomųjų reikšmes.</li>
       </ol>
-      <p class="tip">Pagrindinis koeficientas dar vadinamas <strong>pagrindiniu elementu</strong>. Kai jis lygus 1, uždavinių sprendimo gairėse jis vadinamas <strong>vedančiuoju vienetu</strong>.</p>
+      <p class="src-inline"><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span>Algoritmas parengtas pagal: V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015, 1 skyrius.</span></p>
+      <p class="tip">Kai pagrindinis elementas lygus 1, uždavinių sprendimo gairėse jis vadinamas <strong>vedančiuoju vienetu</strong>.</p>
 
       <details class="more more--why">
         <summary><span class="ico" aria-hidden="true">?</span>Bendroji schema: 3 lygtys su 3 nežinomaisiais</summary>

@@ -772,3 +772,7 @@ svg .ln2-dash { stroke: var(--chart-2); stroke-width: 3; stroke-dasharray: 7 5; 
   .mats--flow .arrow.rot .katex { display: inline-block; transform: rotate(90deg); }
 }
 @media (max-width: 440px) { .scheme .katex { font-size: .8em; } }
+.src-inline { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0 0; font-size: .86rem; color: var(--muted); }
+.src-inline .src-ico { width: 28px; height: 28px; border-radius: 8px; }
+.src-inline .src-ico svg { width: 16px; height: 16px; }
+.src-inline cite { font-style: italic; }
