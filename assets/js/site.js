@@ -32,15 +32,10 @@
       midterm: 'Tarpinis egzaminas',
       final: 'Baigiamasis egzaminas',
       open: 'Atidaryti',
-      model: 'Modelis',
-      models: 'Taikomieji modeliai',
-      part: 'Skiltis',
-      nextPart: 'Kita skiltis',
-      chapter: 'Skyrius',
+      chapterN: function (n) { return n + ' skyrius'; },
       nextChapter: 'Kitas skyrius',
       back: 'Atgal',
       backTo: function (t) { return 'Atgal: ' + t; },
-      nextModel: 'Kitas modelis',
       steps: 'Žingsniai',
       stepOf: function (i, n) { return 'Žingsniai: ' + i + ' iš ' + n; },
       nextStep: 'Kitas žingsnis',
@@ -105,15 +100,10 @@
       midterm: 'Midterm exam',
       final: 'Final exam',
       open: 'Open',
-      model: 'Model',
-      models: 'Applied models',
-      part: 'Part',
-      nextPart: 'Next part',
-      chapter: 'Section',
+      chapterN: function (n) { return 'Section ' + n; },
       nextChapter: 'Next section',
       back: 'Back',
       backTo: function (t) { return 'Back: ' + t; },
-      nextModel: 'Next model',
       steps: 'Steps',
       stepOf: function (i, n) { return 'Steps: ' + i + ' of ' + n; },
       nextStep: 'Next step',
@@ -194,7 +184,7 @@
       title: { lt: 'Baigiamasis egzaminas', en: 'Final exam' } }
   ];
 
-  /* Kiekvienos temos taikomieji modeliai (kortelės temos puslapyje). */
+  /* Kiekvienos temos taikymų skyriai (kortelės temos puslapio skiltyje „Taikymai“). */
   var MODELS = {
     t1: [
       { id: 'dep', status: 'active', href: { lt: 'tema-1-nusidevejimas.html' },
@@ -249,9 +239,6 @@
     ]
   };
 
-  /* Temos, kurių taikymai vadinami skiltimis, o ne modeliais. */
-  var UNIT = { t2: 'part', t3: 'part', t4: 'chapter' };
-  function unitLabel(t) { return UNIT[t] === 'chapter' ? T.chapter : (UNIT[t] ? T.part : T.model); }
 
   /* Puslapiai: failo vardas kiekviena kalba ir tėvinis puslapis (kelio juostai).
      Kai sukursite anglišką puslapį, įrašykite jo failo vardą į href.en. */
@@ -417,7 +404,7 @@
       var list = MODELS[box.getAttribute('data-models')] || [];
       var html = '';
       list.forEach(function (m, i) {
-        var head = '<span class="m-no">' + esc(unitLabel(box.getAttribute('data-models'))) + ' ' + (i + 1) + '</span><h3>' + esc(tr(m.title)) + '</h3>' +
+        var head = '<span class="m-no">' + esc(T.chapterN(i + 1)) + '</span><h3>' + esc(tr(m.title)) + '</h3>' +
           '<p>' + tr(m.desc) + '</p>';
         if (m.status === 'active' && m.href && m.href[LANG]) {
           html += '<a class="model-card" href="' + m.href[LANG] + '">' + head +
@@ -442,7 +429,7 @@
       var list = MODELS[p.topic] || [];
       var idx = -1;
       list.forEach(function (m, i) { if (m.id === p.model) idx = i; });
-      var nxt = list[idx + 1], nextLbl = UNIT[p.topic] === 'chapter' ? T.nextChapter : (UNIT[p.topic] ? T.nextPart : T.nextModel);
+      var nxt = list[idx + 1], nextLbl = T.nextChapter;
       if (nxt) {
         if (nxt.status === 'active' && nxt.href && nxt.href[LANG]) {
           html += '<a class="next" href="' + nxt.href[LANG] + '"><span class="dir">' + esc(nextLbl) + ' →</span>' +

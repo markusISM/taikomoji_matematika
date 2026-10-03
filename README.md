@@ -8,21 +8,21 @@ Statinis dvikalbis tinklapis (LT / EN), pritaikytas pirmiausia telefonui. Server
 index.html                     nukreipia į lt/index.html
 lt/                            lietuviški puslapiai
   index.html                   pagrindinis: kurso struktūra
-  tema-1.html                  1 tema: sąvokos + modelių kortelės
-  tema-1-nusidevejimas.html    Tiesinis nusidėvėjimas
-  tema-1-rinkos-pusiausvyra.html  Rinkos pusiausvyra
-  tema-1-pajamos-sanaudos-pelnas.html  Pajamos, sąnaudos, pelnas ir lūžio taškas
-  tema-1-gamybos-priemoniu-pasirinkimas.html  Gamybos priemonių pasirinkimas
-  tema-2.html                  2 tema: matricos sąvokos, rūšys, veiksmai + taikymų skiltys
-  tema-2-pagrindiniai-veiksmai.html  Pagrindinių matricos veiksmų taikymai
-  tema-2-sudetingesni-veiksmai.html  Sudėtingesni matricų veiksmų taikymai
-  tema-2-rinkos-dalies-prognozavimas.html  Rinkos dalies prognozavimas (Markovo grandinės)
-  tema-3.html                  3 tema: tiesinių lygčių sistemos, Gauso metodas, sprendinių skaičius + taikymų skiltys
-  tema-3-planavimas-vienintelis.html  Racionalusis planavimas (vienintelis sprendinys)
-  tema-3-planavimas-daug.html  Racionalusis planavimas (be galo daug sprendinių)
-  tema-3-stabiliosios-rinkos-dalys.html  Stabiliosios rinkos dalys (P·X = X)
-  tema-4.html                  4 tema: TP uždavinio esmė, tikslo funkcija, apribojimai, standartiniai uždaviniai, sprendimo idėja + 4 skyriai
-  tema-4-nelygybiu-sistemos.html  Skyrius 1: tiesinių nelygybių sistemos (brėžiniai lp-chart)
+  tema-1.html                  1 tema: sąvokos + taikymų skyriai
+  tema-1-nusidevejimas.html    1 skyrius: tiesinis nusidėvėjimas
+  tema-1-rinkos-pusiausvyra.html  2 skyrius: rinkos pusiausvyra
+  tema-1-pajamos-sanaudos-pelnas.html  3 skyrius: pajamos, sąnaudos, pelnas ir lūžio taškas
+  tema-1-gamybos-priemoniu-pasirinkimas.html  4 skyrius: gamybos priemonių pasirinkimas
+  tema-2.html                  2 tema: matricos sąvokos, rūšys, veiksmai + taikymų skyriai
+  tema-2-pagrindiniai-veiksmai.html  1 skyrius: pagrindinių matricos veiksmų taikymai
+  tema-2-sudetingesni-veiksmai.html  2 skyrius: sudėtingesni matricų veiksmų taikymai
+  tema-2-rinkos-dalies-prognozavimas.html  3 skyrius: rinkos dalies prognozavimas (Markovo grandinės)
+  tema-3.html                  3 tema: tiesinių lygčių sistemos, Gauso metodas, sprendinių skaičius + taikymų skyriai
+  tema-3-planavimas-vienintelis.html  1 skyrius: racionalusis planavimas (vienintelis sprendinys)
+  tema-3-planavimas-daug.html  2 skyrius: racionalusis planavimas (be galo daug sprendinių)
+  tema-3-stabiliosios-rinkos-dalys.html  3 skyrius: stabiliosios rinkos dalys (P·X = X)
+  tema-4.html                  4 tema: TP uždavinio esmė, tikslo funkcija, apribojimai, standartiniai uždaviniai, sprendimo idėja + 4 taikymų skyriai
+  tema-4-nelygybiu-sistemos.html  1 skyrius: tiesinių nelygybių sistemos (brėžiniai lp-chart)
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -45,13 +45,13 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=21` ir `site.js?v=21`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=22` ir `site.js?v=22`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
-**Aktyvuoti temą ar modelį.** Faile `assets/js/site.js`, skyriuje „2. KURSO STRUKTŪRA“:
+**Aktyvuoti temą ar skyrių.** Faile `assets/js/site.js`, skyriuje „2. KURSO STRUKTŪRA“:
 temai `COURSE` sąraše nustatykite `status: 'active'` ir `href: { lt: 'tema-2.html' }`;
-modeliui – tą patį `MODELS` sąraše. Naują puslapį įrašykite į `PAGES` (nurodykite `parent`, kad veiktų naršymo kelias).
+taikymų skyriui – tą patį `MODELS` sąraše. Naują puslapį įrašykite į `PAGES` (nurodykite `parent`, kad veiktų naršymo kelias).
 
 **Naujas puslapis.** Nukopijuokite esamą puslapį (pvz., `tema-1-nusidevejimas.html`), pakeiskite `<body data-page="...">` į raktą iš `PAGES` ir turinį `<main>` viduje. Antraštė, kelias, poraštė ir apatinė navigacija sugeneruojamos automatiškai.
 
@@ -115,7 +115,7 @@ Grafikų užrašai (ašys, legenda) imami iš `site.js` žodyno abiem kalbomis. 
 
 **Lentelės sąlygoje.** Platesnę lentelę dėkite į `<div class="tbl-wrap">` ir naudokite `class="vtable compact"` – siaurame ekrane ji neišeis už ribų. **Matmenų grandinė:** `<div class="dimchain"><span class="dc">padaliniai × <b>prekės</b></span><span class="op">·</span>…<span class="dc res">…</span></div>` – telefone išsidėsto stulpeliu.
 
-**Skiltys ir skyriai vietoj modelių.** Temoms, įrašytoms `UNIT` sąraše (`site.js`), kortelės vadinamos „Skiltis 1, 2…“ (`'part'`) arba „Skyrius 1, 2…“ (`'chapter'`, 4 tema), o apatinė nuoroda – „Kita skiltis“ arba „Kitas skyrius“.
+**Taikymai ir skyriai.** Visose temose temos puslapio skiltis su kortelėmis vadinama „Taikymai“ (`id="taikymai"`), o kiekvienas taikymų puslapis – skyriumi: kortelėse rodoma „1 skyrius, 2 skyrius…“ (pagal eilę `MODELS` sąraše), apatinė nuoroda – „Kitas skyrius“. Skyriaus puslapio viršuje rašoma `<span class="eyebrow">N tema · Taikymai · M skyrius</span>`, įžangoje – „Šiame skyriuje…“, šaltinių bloke – „Daugiau informacijos apie šį skyrių rasite:“.
 
 **TP brėžinys (4 tema).** `<div data-widget="lp-chart" data-spec='{"x":[min,max,padala,užrašai kas k],"y":[…],"nn":"xy","c":[{"a":2,"b":3,"s":"le","r":12,"lab":"2x + 3y = 12","col":1,"lt":0.85,"arr":[0.2,0.7]}],"pts":[{"x":2,"y":4,"lab":"A(2; 4)","p":"ne","hi":true}],"test":[0,0]}'></div>` – nubrėžia ašis su vienetine atkarpa, tiesę \(ax + by = r\) su rodyklėmis į sprendinių pusę (`s`: `le` ≤, `ge` ≥), užrašą `lab` (`lt` – vieta 0–1, `lo` – poslinkis, `la` – lygiavimas), nuspalvina visų apribojimų ir `nn` sąlygų sankirtą, pažymi viršūnes (`p` – užrašo kryptis n, ne, e, se, s, sw, w, nw). Vieno pavyzdžio brėžiniams naudokite tuos pačius `x`, `y` ir tiesių spalvas `col`.
 
