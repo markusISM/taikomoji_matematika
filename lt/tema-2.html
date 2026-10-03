@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 tema. Matricos · Taikomoji matematika</title>
+<meta name="description" content="Matricos sąvoka, matmenys, pagrindinė įstrižainė, matricų rūšys ir pagrindiniai veiksmai: sudėtis, atimtis, daugyba iš skaliaro, transponavimas ir sandauga.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=9">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=9"></script>
+</head>
+<body data-page="t2">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">2 tema</span>
+    <h1>Matricos</h1>
+    <ul class="jump">
+      <li><a href="#savokos">Sąvokos</a></li>
+      <li><a href="#rusys">Rūšys</a></li>
+      <li><a href="#veiksmai">Veiksmai</a></li>
+      <li><a href="#taikymai">Taikymai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ SĄVOKOS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">Pagrindinės sąvokos</h2>
+
+    <!-- 1 -->
+    <article class="card concept" id="matrica">
+      <div class="concept-head"><span class="num">1</span><h3>Kas yra matrica?</h3></div>
+      <p>Matrica yra stačiakampė skaičių lentelė. Matricoje esantys skaičiai yra jos elementai.</p>
+      <p>Matrica, turinti \(m\) eilučių ir \(n\) stulpelių, yra \(m \times n\) matmenų, o jos \(i\)-osios eilutės ir \(j\)-ojo stulpelio elementas žymimas \(a_{ij}\).</p>
+      <div class="formula">\[ A = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \end{pmatrix} \]</div>
+      <p class="tip">Matmenyse ir elemento indeksuose pirmiausia nurodoma eilutė, paskui – stulpelis.</p>
+    </article>
+
+    <!-- 2 -->
+    <article class="card concept" id="matmenys">
+      <div class="concept-head"><span class="num">2</span><h3>Matricos matmenys</h3></div>
+      <p>Matmenys rodo, kiek matrica turi eilučių ir kiek stulpelių:</p>
+      <div class="mats">
+        <div class="mat-item"><span>\(A = \begin{pmatrix} 3 &amp; 0 &amp; 1 \\ 5 &amp; 1 &amp; \htmlClass{hd}{-4} \end{pmatrix}\)</span><span class="cap">\(2 \times 3\)</span></div>
+        <div class="mat-item"><span>\(B = \begin{pmatrix} 7 &amp; -2 \\ 0 &amp; 1 \\ 1 &amp; 4 \end{pmatrix}\)</span><span class="cap">\(3 \times 2\)</span></div>
+        <div class="mat-item"><span>\(C = \begin{pmatrix} 1 \\ 5 \\ 4 \end{pmatrix}\)</span><span class="cap">\(3 \times 1\)</span></div>
+        <div class="mat-item"><span>\(D = \begin{pmatrix} 9 &amp; 0 &amp; 3 &amp; 7 \end{pmatrix}\)</span><span class="cap">\(1 \times 4\)</span></div>
+      </div>
+      <p>Matricoje \(A\) pažymėtas elementas \(a_{23} = -4\): jis yra 2-ojoje eilutėje ir 3-iajame stulpelyje. Matrica \(C\) turi vieną stulpelį, o matrica \(D\) – vieną eilutę.</p>
+    </article>
+
+    <!-- 3 -->
+    <article class="card concept" id="istrizaine">
+      <div class="concept-head"><span class="num">3</span><h3>Pagrindinė įstrižainė</h3></div>
+      <p><button type="button" class="term" data-term="Kvadratinė matrica" data-def="\(n \times n\) matmenų matrica, kurioje eilučių ir stulpelių skaičius yra vienodas.">Kvadratinės</button> matricos elementai \(a_{11}, a_{22}, \ldots, a_{nn}\), einantys iš viršutinio kairiojo kampo į apatinį dešinįjį, sudaro <strong>pagrindinę įstrižainę</strong>.</p>
+      <div class="formula">\[ A = \begin{pmatrix} \htmlClass{hd}{-3} &amp; 8 &amp; 6 \\ 2 &amp; \htmlClass{hd}{9} &amp; 4 \\ 1 &amp; 3 &amp; \htmlClass{hd}{2} \end{pmatrix} \]</div>
+      <p>Šios matricos pagrindinę įstrižainę sudaro elementai \(a_{11} = -3\), \(a_{22} = 9\) ir \(a_{33} = 2\).</p>
+    </article>
+  </section>
+
+  <!-- ============ RŪŠYS ============ -->
+  <section class="section" id="rusys" aria-labelledby="h-types">
+    <h2 id="h-types">Matricų rūšys</h2>
+
+    <article class="card concept">
+      <div class="concept-head"><span class="num">4</span><h3>Kvadratinė, nulinė ir vienetinė matrica</h3></div>
+
+      <div class="subtype">
+        <h4>Kvadratinė matrica</h4>
+        <p>\(n \times n\) matmenų matrica (kurioje eilučių ir stulpelių skaičius yra vienodas) vadinama kvadratine.</p>
+        <div class="formula">\[ A = \begin{pmatrix} -3 &amp; 8 &amp; 6 \\ 2 &amp; 9 &amp; 4 \\ 1 &amp; 3 &amp; 2 \end{pmatrix} \]</div>
+      </div>
+
+      <div class="subtype">
+        <h4>Nulinė matrica</h4>
+        <p>Visi nulinės matricos \(O\) elementai lygūs nuliui. Ji gali būti bet kokių matmenų:</p>
+        <div class="mats">
+          <span>\(O = \begin{pmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}\)</span>
+          <span>\(O_2 = \begin{pmatrix} 0 &amp; 0 \\ 0 &amp; 0 \end{pmatrix}\)</span>
+          <span>\(O_3 = \begin{pmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}\)</span>
+        </div>
+        <p>Sudėtyje nulinė matrica atlieka nulio vaidmenį: \(A + O = A\).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Vienetinė matrica</h4>
+        <p>Vienetinė matrica \(I_n\) (kitaip \(E_n\)) yra kvadratinė matrica, kurios pagrindinės įstrižainės elementai lygūs 1, o visi kiti elementai lygūs 0:</p>
+        <div class="mats">
+          <span>\(I_2 = E_2 = \begin{pmatrix} \htmlClass{hd}{1} &amp; 0 \\ 0 &amp; \htmlClass{hd}{1} \end{pmatrix}\)</span>
+          <span>\(I_3 = E_3 = \begin{pmatrix} \htmlClass{hd}{1} &amp; 0 &amp; 0 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} \end{pmatrix}\)</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ VEIKSMAI ============ -->
+  <section class="section" id="veiksmai" aria-labelledby="h-ops">
+    <h2 id="h-ops">Pagrindiniai matricų veiksmai</h2>
+
+    <!-- 5 -->
+    <article class="card concept" id="sudetis">
+      <div class="concept-head"><span class="num">5</span><h3>Sudėtis ir atimtis</h3></div>
+      <p>Dvi matricos yra <strong>vienmatės</strong>, jei sutampa jų eilučių ir stulpelių skaičius. Dvi vienmatės matricos yra lygios, jei jų atitinkami elementai yra lygūs.</p>
+      <p>Dviejų vienmačių matricų \(A\) ir \(B\) suma \(A + B\) vadinama matrica \(C\), kurios elementai yra atitinkamų matricos \(A\) ir matricos \(B\) elementų sumos; skirtumas \(A - B\) – matrica, kurios elementai yra atitinkamų elementų skirtumai:</p>
+      <div class="formula">\[ c_{ij} = a_{ij} + b_{ij}, \qquad c_{ij} = a_{ij} - b_{ij} \]</div>
+      <p class="formula-label">Sudėtis</p>
+      <div class="formula">\[ \begin{aligned} &amp;\begin{pmatrix} 1 &amp; 3 &amp; 4 \\ -1 &amp; 2 &amp; 0 \end{pmatrix} + \begin{pmatrix} 1 &amp; 4 &amp; 3 \\ 6 &amp; 1 &amp; -2 \end{pmatrix} \\ ={} &amp;\begin{pmatrix} 2 &amp; 7 &amp; 7 \\ 5 &amp; 3 &amp; -2 \end{pmatrix} \end{aligned} \]</div>
+      <p class="formula-label">Atimtis</p>
+      <div class="formula">\[ \begin{pmatrix} 1 &amp; 2 \\ -1 &amp; 3 \\ 4 &amp; 0 \end{pmatrix} - \begin{pmatrix} 2 &amp; -1 \\ 3 &amp; 2 \\ 1 &amp; 0 \end{pmatrix} = \begin{pmatrix} -1 &amp; 3 \\ -4 &amp; 1 \\ 3 &amp; 0 \end{pmatrix} \]</div>
+      <p>Skirtingų matmenų matricų sudėti arba atimti negalima.</p>
+    </article>
+
+    <!-- 6 -->
+    <article class="card concept" id="skaliaras">
+      <div class="concept-head"><span class="num">6</span><h3>Daugyba iš skaliaro</h3></div>
+      <p>Skaičiaus \(k\) ir matricos \(A\) sandauga \(kA\) vadinama matrica \(B\), kurios elementai yra atitinkami matricos \(A\) elementai, padauginti iš to skaičiaus \(k\):</p>
+      <div class="formula">\[ b_{ij} = k a_{ij} \]</div>
+      <div class="formula">\[ \begin{gathered} A = \begin{pmatrix} 3 &amp; 0 &amp; -1 \\ 2 &amp; 4 &amp; 4 \end{pmatrix} \\ \Longrightarrow\; kA = \begin{pmatrix} 3k &amp; 0 &amp; -k \\ 2k &amp; 4k &amp; 4k \end{pmatrix} \end{gathered} \]</div>
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Sudėties ir daugybos iš skaliaro savybės</summary>
+        <div class="more-body">
+          <ul>
+            <li>\((A + B) + C = A + (B + C)\) (asociatyvumo dėsnis);</li>
+            <li>\(A + B = B + A\) (komutatyvumo dėsnis);</li>
+            <li>\(A + O = A\);</li>
+            <li>\(A + (-A) = O\);</li>
+            <li>\((k + m)A = kA + mA\), \(k\) ir \(m\) yra realieji skaičiai (skaliarai);</li>
+            <li>\(k(A + B) = kA + kB\), \(k\) yra realusis skaičius (skaliaras).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <!-- 7 -->
+    <article class="card concept" id="transponavimas">
+      <div class="concept-head"><span class="num">7</span><h3>Transponavimas</h3></div>
+      <p>Matricos \(A\) stulpelių elementus sukeitę vietomis su atitinkamais eilučių elementais, gausime matricą \(A^T\), vadinamą matricos \(A\) transponuotąja.</p>
+      <p>Jei \(A\) yra \(m \times n\) matmenų matrica, tai \(A^T\) yra \(n \times m\) matmenų matrica, kurios elementai yra \(a_{ji}\): matricos \(A\) eilutės tampa matricos \(A^T\) stulpeliais.</p>
+      <div class="formula">\[ \begin{gathered} A = \begin{pmatrix} \htmlClass{hr}{1} &amp; \htmlClass{hr}{2} &amp; \htmlClass{hr}{3} \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{pmatrix}  \\ \Longrightarrow\; A^T = \begin{pmatrix} \htmlClass{hr}{1} &amp; 4 &amp; 7 \\ \htmlClass{hr}{2} &amp; 5 &amp; 8 \\ \htmlClass{hr}{3} &amp; 6 &amp; 9 \end{pmatrix} \end{gathered} \]</div>
+      <p>Pirmoji matricos \(A\) eilutė tapo pirmuoju matricos \(A^T\) stulpeliu. Transponavimas nekeičia lentelėje esančios informacijos – tik sukeičia eilutes ir stulpelius.</p>
+    </article>
+
+    <!-- 8 -->
+    <article class="card concept" id="sandauga">
+      <div class="concept-head"><span class="num">8</span><h3>Matricų sandauga</h3></div>
+      <p>\(m \times n\) matmenų matricos \(A\) ir \(n \times k\) matmenų matricos \(B\) sandauga \(AB\) yra \(m \times k\) matmenų matrica \(C\), kurios bet kuris elementas \(c_{ij}\) lygus matricos \(A\) \(i\)-osios eilutės elementų ir atitinkamų \(B\) \(j\)-ojo stulpelio elementų sandaugų sumai:</p>
+      <div class="formula">\[ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{in}b_{nj} \]</div>
+      <p>Pirmosios matricos stulpelių skaičius turi sutapti su antrosios matricos eilučių skaičiumi:</p>
+      <div class="formula">\[ (m \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times k) = m \times k \]</div>
+      <p>Jei du viduriniai skaičiai nesutampa, sandauga neapibrėžta.</p>
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Matricų daugybos savybės</summary>
+        <div class="more-body">
+          <ul>
+            <li>\((AB)C = A(BC)\) (asociatyvumo dėsnis);</li>
+            <li>\(A(B + C) = AB + AC\) (distributyvumo dėsnis iš kairės);</li>
+            <li>\((A + B)C = AC + BC\) (distributyvumo dėsnis iš dešinės);</li>
+            <li>\(AB \neq BA\) (komutatyvumo dėsnis negalioja);</li>
+            <li>\(AB = O\) nereiškia, kad \(A\) arba \(B\) lygi \(O\);</li>
+            <li>\(AB = AC\) ir \(A \neq O\) nereiškia, kad \(B = C\).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <!-- Sandaugos pavyzdys žingsniais -->
+    <article class="card example" id="sandaugos-pavyzdys">
+      <header class="example-head">
+        <span class="example-tag">Pavyzdys</span>
+        <h3>Sandauga žingsnis po žingsnio</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        Apskaičiuokite sandaugą
+        \[ \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; 8 \\ 7 &amp; 6 \\ 5 &amp; 4 \end{pmatrix} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Matmenys</span></h4>
+          \[ (2 \times \htmlClass{hd}{3}) \cdot (\htmlClass{hd}{3} \times 2) = 2 \times 2 \]
+          <p>Viduriniai skaičiai sutampa, todėl sandauga apibrėžta ir bus \(2 \times 2\) matmenų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Elementas \(c_{11}\)</span></h4>
+          <p>1-oji eilutė dauginama iš 1-ojo stulpelio:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{1} &amp; \htmlClass{hr}{2} &amp; \htmlClass{hr}{3} \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{9} &amp; 8 \\ \htmlClass{hc}{7} &amp; 6 \\ \htmlClass{hc}{5} &amp; 4 \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 1\cdot 9 + 2\cdot 7 + 3\cdot 5 \\ &amp;= 9 + 14 + 15 = 38 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Elementas \(c_{12}\)</span></h4>
+          <p>1-oji eilutė dauginama iš 2-ojo stulpelio:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{1} &amp; \htmlClass{hr}{2} &amp; \htmlClass{hr}{3} \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; \htmlClass{hc}{8} \\ 7 &amp; \htmlClass{hc}{6} \\ 5 &amp; \htmlClass{hc}{4} \end{pmatrix} \]
+          \[ \begin{aligned} c_{12} &amp;= 1\cdot 8 + 2\cdot 6 + 3\cdot 4 \\ &amp;= 8 + 12 + 12 = 32 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Elementas \(c_{21}\)</span></h4>
+          <p>2-oji eilutė dauginama iš 1-ojo stulpelio:</p>
+          \[ \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ \htmlClass{hr}{4} &amp; \htmlClass{hr}{5} &amp; \htmlClass{hr}{6} \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{9} &amp; 8 \\ \htmlClass{hc}{7} &amp; 6 \\ \htmlClass{hc}{5} &amp; 4 \end{pmatrix} \]
+          \[ \begin{aligned} c_{21} &amp;= 4\cdot 9 + 5\cdot 7 + 6\cdot 5 \\ &amp;= 36 + 35 + 30 = 101 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Elementas \(c_{22}\)</span></h4>
+          <p>2-oji eilutė dauginama iš 2-ojo stulpelio:</p>
+          \[ \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ \htmlClass{hr}{4} &amp; \htmlClass{hr}{5} &amp; \htmlClass{hr}{6} \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; \htmlClass{hc}{8} \\ 7 &amp; \htmlClass{hc}{6} \\ 5 &amp; \htmlClass{hc}{4} \end{pmatrix} \]
+          \[ \begin{aligned} c_{22} &amp;= 4\cdot 8 + 5\cdot 6 + 6\cdot 4 \\ &amp;= 32 + 30 + 24 = 86 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; 8 \\ 7 &amp; 6 \\ 5 &amp; 4 \end{pmatrix} \\ ={} &amp;\begin{pmatrix} 38 &amp; 32 \\ 101 &amp; 86 \end{pmatrix} \end{aligned} \]
+          </div>
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Ar galima sudauginti atvirkštine tvarka?</summary>
+            <div class="more-body">
+              <p>Matricų daugybai komutatyvumo dėsnis negalioja – bendruoju atveju \(A\cdot B \neq B\cdot A\). Šiame pavyzdyje sandauga atvirkštine tvarka apibrėžta, nes \((3 \times 2)\cdot(2 \times 3) = 3 \times 3\), tačiau ji būtų visai kitų, \(3 \times 3\), matmenų matrica.</p>
+            </div>
+          </details>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ TAIKYMAI ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Taikymai</h2>
+    <p class="section-intro">Matricos taikomos gamybos ir pardavimų planavimui, sąnaudų analizei ir rinkos dalies prognozavimui. Pasirinkite skiltį.</p>
+    <div class="model-grid" data-models="t2"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">2 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">2.4–2.5, 9.1 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

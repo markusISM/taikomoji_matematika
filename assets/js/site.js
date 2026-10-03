@@ -34,6 +34,8 @@
       open: 'Atidaryti',
       model: 'Modelis',
       models: 'Taikomieji modeliai',
+      part: 'Skiltis',
+      nextPart: 'Kita skiltis',
       back: 'Atgal',
       backTo: function (t) { return 'Atgal: ' + t; },
       nextModel: 'Kitas modelis',
@@ -103,6 +105,8 @@
       open: 'Open',
       model: 'Model',
       models: 'Applied models',
+      part: 'Part',
+      nextPart: 'Next part',
       back: 'Back',
       backTo: function (t) { return 'Back: ' + t; },
       nextModel: 'Next model',
@@ -167,7 +171,8 @@
   var COURSE = [
     { id: 't1', num: 1, status: 'active', href: { lt: 'tema-1.html' },
       title: { lt: 'Tiesinės funkcijos ir modeliai', en: 'Linear Functions and Models' } },
-    { id: 't2', num: 2, status: 'soon', title: { lt: 'Matricos', en: null } },
+    { id: 't2', num: 2, status: 'active', href: { lt: 'tema-2.html' },
+      title: { lt: 'Matricos', en: 'Matrices' } },
     { id: 't3', num: 3, status: 'soon', title: { lt: 'Tiesinių lygčių sistemos', en: null } },
     { id: 't4', num: 4, status: 'soon', title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: null } },
     { id: 't5', num: 5, status: 'soon', title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: null } },
@@ -199,7 +204,22 @@
         title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' },
         desc: { lt: 'Kaip gamybos būdo pasirinkimas priklauso nuo planuojamos paklausos.' } }
     ]
+    ,
+    t2: [
+      { id: 'm21', status: 'active', href: { lt: 'tema-2-pagrindiniai-veiksmai.html' },
+        title: { lt: 'Pagrindinių matricos veiksmų taikymai', en: 'Basic Matrix Operations' },
+        desc: { lt: 'Sudėtis, atimtis ir daugyba iš skaliaro ekonominėse ir vadybinėse situacijose.' } },
+      { id: 'm22', status: 'soon',
+        title: { lt: 'Sudėtingesni matricų veiksmų taikymai', en: 'Advanced Matrix Applications' },
+        desc: { lt: 'Transponavimas ir daugyba.' } },
+      { id: 'm23', status: 'soon',
+        title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' },
+        desc: { lt: 'Markovo grandinės: rinkos dalys po vieno ar kelių periodų.' } }
+    ]
   };
+
+  /* Temos, kurių taikymai vadinami skiltimis, o ne modeliais. */
+  var UNIT = { t2: 'part' };
 
   /* Puslapiai: failo vardas kiekviena kalba ir tėvinis puslapis (kelio juostai).
      Kai sukursite anglišką puslapį, įrašykite jo failo vardą į href.en. */
@@ -213,6 +233,10 @@
                title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' } },
     be:      { parent: 't1', topic: 't1', model: 'be', href: { lt: 'tema-1-pajamos-sanaudos-pelnas.html', en: null },
                title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue and Profit' } },
+    t2:      { parent: 'home', href: { lt: 'tema-2.html', en: null },
+               title: { lt: '2 tema', en: 'Topic 2' } },
+    m21:     { parent: 't2', topic: 't2', model: 'm21', href: { lt: 'tema-2-pagrindiniai-veiksmai.html', en: null },
+               title: { lt: 'Pagrindinių matricos veiksmų taikymai', en: 'Basic Matrix Operations' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
@@ -345,7 +369,7 @@
       var list = MODELS[box.getAttribute('data-models')] || [];
       var html = '';
       list.forEach(function (m, i) {
-        var head = '<span class="m-no">' + esc(T.model) + ' ' + (i + 1) + '</span><h3>' + esc(tr(m.title)) + '</h3>' +
+        var head = '<span class="m-no">' + esc(UNIT[box.getAttribute('data-models')] ? T.part : T.model) + ' ' + (i + 1) + '</span><h3>' + esc(tr(m.title)) + '</h3>' +
           '<p>' + tr(m.desc) + '</p>';
         if (m.status === 'active' && m.href && m.href[LANG]) {
           html += '<a class="model-card" href="' + m.href[LANG] + '">' + head +
@@ -370,13 +394,13 @@
       var list = MODELS[p.topic] || [];
       var idx = -1;
       list.forEach(function (m, i) { if (m.id === p.model) idx = i; });
-      var nxt = list[idx + 1];
+      var nxt = list[idx + 1], nextLbl = UNIT[p.topic] ? T.nextPart : T.nextModel;
       if (nxt) {
         if (nxt.status === 'active' && nxt.href && nxt.href[LANG]) {
-          html += '<a class="next" href="' + nxt.href[LANG] + '"><span class="dir">' + esc(T.nextModel) + ' →</span>' +
+          html += '<a class="next" href="' + nxt.href[LANG] + '"><span class="dir">' + esc(nextLbl) + ' →</span>' +
             '<span class="t">' + esc(tr(nxt.title)) + '</span></a>';
         } else {
-          html += '<div class="pager-soon next" aria-disabled="true"><span class="dir">' + esc(T.nextModel) + '</span>' +
+          html += '<div class="pager-soon next" aria-disabled="true"><span class="dir">' + esc(nextLbl) + '</span>' +
             '<span class="t">' + esc(tr(nxt.title)) + ' <span class="badge">' + esc(T.soon) + '</span></span></div>';
         }
       }
@@ -1014,6 +1038,8 @@
         { left: '\\(', right: '\\)', display: false }
       ],
       throwOnError: false,
+      trust: function (c) { return c.command === '\\htmlClass'; },
+      strict: function (code) { return code === 'htmlExtension' ? 'ignore' : 'warn'; },
       ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option', 'svg']
     });
   }

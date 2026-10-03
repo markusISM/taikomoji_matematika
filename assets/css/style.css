@@ -672,3 +672,22 @@ a.model-card:hover { transform: translateY(-2px); border-color: var(--accent); }
 .badge-list li { display: flex; gap: 10px; align-items: baseline; margin: 0; }
 .badge-list .bn { flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--exam); color: #fff; font-size: .75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; transform: translateY(3px); }
 .model-note { margin: 12px 0 0; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); font-size: .95rem; }
+
+/* ---------- Matricos ---------- */
+.mats { display: flex; flex-wrap: wrap; gap: 12px 22px; justify-content: center; align-items: center; margin: 12px 0; }
+.mats > * { flex: none; }
+.mat-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.mat-item .cap { font-size: .85rem; color: var(--muted); }
+.mats .arrow { font-size: 1.4rem; color: var(--muted); }
+.problem .mats { margin: 12px 0 4px; }
+.katex .hd { color: var(--exam); }
+.katex .hr { color: var(--chart); background: color-mix(in srgb, var(--chart) 14%, transparent); border-radius: 3px; padding: 0 1px; }
+.katex .hc { color: var(--chart-2); background: color-mix(in srgb, var(--chart-2) 16%, transparent); border-radius: 3px; padding: 0 1px; }
+.subtype { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--border); }
+.subtype:first-of-type { margin-top: 6px; padding-top: 0; border-top: 0; }
+.subtype h4 { margin: 0 0 6px; font-size: 1rem; }
+.vtable.hdr td, .vtable.hdr th { padding: 5px 9px; }
+.q-text > p { margin: 0 0 8px; }
+.q-text > p:last-child { margin-bottom: 0; }
+.mats--col { flex-direction: column; gap: 6px; }
+.mats--col .vtable { margin: 0; }

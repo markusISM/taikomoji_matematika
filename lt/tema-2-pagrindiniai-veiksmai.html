@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagrindinių matricos veiksmų taikymai · 2 tema · Taikomoji matematika</title>
+<meta name="description" content="Matricų sudėtis, atimtis ir daugyba iš skaliaro ekonominėse ir vadybinėse situacijose: sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=9">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=9"></script>
+</head>
+<body data-page="m21">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">2 tema · Taikymai</span>
+    <h1>Pagrindinių matricos veiksmų taikymai</h1>
+    <p class="lead">Šioje skiltyje supažindinama, kaip ekonominėse ir vadybinėse situacijose gali būti taikomi pagrindiniai matricų veiksmai: sudėtis, atimtis ir daugyba iš skaliaro.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Modelis</h2>
+
+    <article class="card">
+      <p>Versle matrica yra skaičių lentelė be antraščių: eilutės atitinka vieną klasifikaciją (parduotuves, gamyklas, konsultantus, mėnesius), o stulpeliai – kitą (produktus, padalinius, tiekėjus). Antraštės matricos viduje nerašomos, todėl kiekvieno uždavinio pradžioje verta nurodyti, ką reiškia eilutės ir stulpeliai, ir visose uždavinio matricose išlaikyti tą pačią tvarką.</p>
+
+      <div class="mats mats--col">
+        <table class="vtable hdr" aria-label="Kovo pardavimo apimtys, tūkst. Eur">
+          <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+          <tbody>
+            <tr><th>Ana</th><td>30</td><td>20</td><td>10</td></tr>
+            <tr><th>Petras</th><td>40</td><td>60</td><td>0</td></tr>
+          </tbody>
+        </table>
+        <span class="arrow" aria-hidden="true">↓</span>
+        <span>\(R = \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix}\)</span>
+      </div>
+      <p class="formula-note" style="text-align:center">Kovo pardavimo apimtys tūkstančiais eurų iš 1 pavyzdžio: lentelė su antraštėmis ir ją atitinkanti matrica.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Veiksmai</h3>
+      <p><strong>Matricų suma ir skirtumas.</strong> Jei \(A\) ir \(B\) yra <button type="button" class="term" data-term="Vienmatės matricos" data-def="Dvi matricos yra vienmatės, jei sutampa jų eilučių ir stulpelių skaičius.">vienmatės</button> matricos, tai \(A + B\) ir \(A - B\) gaunamos sudedant arba atimant atitinkamus elementus:</p>
+      <div class="formula">\[ c_{ij} = a_{ij} + b_{ij}, \qquad c_{ij} = a_{ij} - b_{ij} \]</div>
+      <p>Skirtingų matmenų matricų sudėti arba atimti negalima. Net jei matmenys sutampa, veiksmas turi prasmę tik tada, kai abiejų lentelių duomenys suklasifikuoti vienodai ir išdėstyti ta pačia tvarka. Priešingu atveju dviejų elementų suma neturi ekonominės prasmės.</p>
+      <p><strong>Matricų daugyba iš skaliaro.</strong> Jei \(A\) yra matrica, o \(c\) – skaičius, tai \(cA\) gaunama kiekvieną matricos elementą padauginus iš \(c\):</p>
+      <div class="formula">\[ b_{ij} = c\cdot a_{ij} \]</div>
+      <p><a href="tema-2.html#veiksmai">Veiksmų apibrėžimai ir pavyzdžiai – 2 temos puslapyje →</a></p>
+
+      <h3 class="subhead" style="margin-top:22px">Kokį klausimą atsako kiekvienas veiksmas</h3>
+      <ul class="kv">
+        <li><span class="sym">\(A + B\)</span><span><strong>suma</strong> – bendras dviejų laikotarpių, dviejų padalinių arba dviejų šaltinių rezultatas;</span></li>
+        <li><span class="sym">\(A - B\)</span><span><strong>skirtumas</strong> – pokytis, nuokrypis nuo plano arba dydis, kuriuo viena reikšmė viršija kitą; neigiamas elementas reiškia sumažėjimą arba trūkumą;</span></li>
+        <li><span class="sym">\(cA\)</span><span><strong>daugyba iš skaliaro</strong> – vienodas procentinis pokytis, taikomas kiekvienam elementui: kainų padidėjimas, komisiniai, mokestis, biudžeto indeksavimas.</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ============ 2. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Nurodykite, ką reiškia kiekvienos lentelės eilutės ir stulpeliai, ir patikrinkite, ar visose lentelėse duomenys išdėstyti ta pačia tvarka.</li>
+        <li>Duomenis užrašykite matricomis ir nurodykite kiekvienos matricos matmenis.</li>
+        <li>Pagal uždavinio formuluotę pasirinkite veiksmą: iš viso, bendras kiekis – sudėtis; pokytis, skirtumas, nuokrypis, kiek daugiau – atimtis; padidėja \(p\)&nbsp;%, komisiniai, mokestis – daugyba iš skaliaro.</li>
+        <li>Patikrinkite, ar sudedamos arba atimamos matricos yra vienmatės.</li>
+        <li>Atlikite veiksmą su atitinkamais elementais.</li>
+        <li>Paaiškinkite atsakymą: nurodykite, ką reiškia jo eilutės ir stulpeliai, perskaitykite elementus, apie kuriuos klausiama, ir paaiškinkite kiekvieno neigiamo elemento ženklo prasmę.</li>
+      </ol>
+
+      <div class="model-note"><strong>Procentiniai pokyčiai.</strong> Padidėjimas \(p\)&nbsp;% atitinka skaliarą \(1 + \dfrac{p}{100}\), kai reikia rasti naują reikšmę, ir skaliarą \(\dfrac{p}{100}\), kai reikia rasti tik padidėjimą. Sumažėjimas \(p\)&nbsp;% atitinka skaliarą \(1 - \dfrac{p}{100}\).</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Atimties tvarka.</strong> Pokytis – vėlesnio laikotarpio matrica minus ankstesnio, nuokrypis nuo plano – faktinis kiekis minus planuotas. Sukeitus matricas, ženklai bus priešingi.</li>
+            <li><strong>Skaliaras.</strong> Nauja reikšmė, kai padidėjimas 6&nbsp;%, gaunama dauginant iš 1,06, o vien padidėjimas – dauginant iš 0,06.</li>
+            <li><strong>Skirtinga tvarka.</strong> Net vienmačių matricų suma neturi ekonominės prasmės, jei eilutės ar stulpeliai išdėstyti skirtinga tvarka.</li>
+            <li><strong>Neigiami elementai.</strong> Neigiamas elementas reiškia sumažėjimą arba trūkumą – jo prasmę reikia paaiškinti atsakyme.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Atliekant sudėties, atimties ar daugybos iš skaliaro veiksmus pakanka parodyti atliekamą veiksmą naudojant uždavinyje pateiktus ar sprendime įvestus žymenis bei gautą rezultatą. Perrašyti matricų nėra būtina, taip pat nėra būtina surašyti visus atliekamus aritmetinius veiksmus.</li>
+            <li>Nepamirškite pateikti rezultato interpretacijos, jei to prašo uždavinio sąlyga. Interpretacija turi pateikti gautosios matricos elementų prasmės paaiškinimą.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: alternatyvus 2.1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Konsultantų pajamos ir komisiniai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Sodo technikos prekybos įmonės konsultantai Ana ir Petras parduoda A, B ir C modelių įrenginius. Kovo ir balandžio pardavimo apimtys tūkstančiais eurų pateiktos matricose:
+        <div class="mats">
+          <span>\(R = \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix}\)</span>
+          <span>\(S = \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix}\)</span>
+        </div>
+        <ol>
+          <li>Nustatykite kiekvieno konsultanto pajamas už kiekvieno modelio įrenginių pardavimus per abu mėnesius.</li>
+          <li>Nustatykite kiekvieno konsultanto pajamų už kiekvieno modelio įrenginių pardavimus pokytį per šiuos du mėnesius.</li>
+          <li>Jei konsultantams mokami 1&nbsp;% pajamų dydžio komisiniai, kiek komisinių kiekvienas konsultantas gavo už kiekvieno modelio įrenginių pardavimus balandį?</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Abiejose matricose pirmoji eilutė atitinka Aną, antroji – Petrą, o trys stulpeliai – A, B ir C modelius. Abi matricos yra \(2 \times 3\) matmenų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pajamos per abu mėnesius</span></h4>
+          <p>Dviejų mėnesių pajamos yra abiejų matricų suma:</p>
+          \[ \begin{aligned} &amp;R + S \\ &amp;= \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix} + \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} \\ &amp;= \begin{pmatrix} 80 &amp; 50 &amp; 30 \\ 60 &amp; 100 &amp; 30 \end{pmatrix} \end{aligned} \]
+          <p>Ana už A modelį gavo 80 tūkst. eurų pajamų, už B modelį – 50, už C modelį – 30; Petras – atitinkamai 60, 100 ir 30 tūkst. eurų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pajamų pokytis</span></h4>
+          <p>Pokytis yra matricų skirtumas: iš balandžio matricos atimama kovo matrica:</p>
+          \[ \begin{aligned} &amp;S - R \\ &amp;= \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} - \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix} \\ &amp;= \begin{pmatrix} 20 &amp; 10 &amp; 10 \\ -20 &amp; -20 &amp; 30 \end{pmatrix} \end{aligned} \]
+          <p>Anos visų modelių pardavimai išaugo. Petro A ir B modelių pardavimai sumažėjo po 20 tūkst. eurų, o išaugo tik C modelio pardavimai – 30 tūkst. eurų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Balandžio komisiniai</span></h4>
+          <p>Komisiniai, sudarantys 1&nbsp;% balandžio pajamų, apskaičiuojami dauginant matricą iš skaičiaus: \(0{,}01\cdot S\).</p>
+          \[ \begin{aligned} 0{,}01\cdot S &amp;= 0{,}01\cdot \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} \\ &amp;= \begin{pmatrix} 0{,}5 &amp; 0{,}3 &amp; 0{,}2 \\ 0{,}2 &amp; 0{,}4 &amp; 0{,}3 \end{pmatrix} \end{aligned} \]
+          <p>Elementai vėl pateikti tūkstančiais eurų, todėl balandį Ana už trijų modelių pardavimus gavo 500, 300 ir 200 eurų komisinių, o Petras – 200, 400 ir 300 eurų.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Dviejų mėnesių pajamos, pajamų pokytis ir balandžio komisiniai pateikti trijose pirmiau užrašytose matricose:
+            <div class="mats">
+              <span>\(R + S = \begin{pmatrix} 80 &amp; 50 &amp; 30 \\ 60 &amp; 100 &amp; 30 \end{pmatrix}\)</span>
+              <span>\(S - R = \begin{pmatrix} 20 &amp; 10 &amp; 10 \\ -20 &amp; -20 &amp; 30 \end{pmatrix}\)</span>
+              <span>\(0{,}01\cdot S = \begin{pmatrix} 0{,}5 &amp; 0{,}3 &amp; 0{,}2 \\ 0{,}2 &amp; 0{,}4 &amp; 0{,}3 \end{pmatrix}\)</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 1 uždavinys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Atsargos mėnesio pabaigoje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Drabužių prekybos įmonė turi tris parduotuves. Ji apskaito trijų prekių grupių – marškinių, kelnių ir švarkų – atsargas vienetais. Mėnesio pradžios atsargos surašytos matricoje \(O\). Per mėnesį parduotuvės gavo matricoje \(D\) nurodytus prekių kiekius ir pardavė matricoje \(S\) nurodytus kiekius. Raskite atsargas mėnesio pabaigoje.
+        <div class="mats">
+          <span>\(O = \begin{pmatrix} 120 &amp; 90 &amp; 60 \\ 80 &amp; 70 &amp; 40 \\ 150 &amp; 110 &amp; 90 \end{pmatrix}\)</span>
+          <span>\(D = \begin{pmatrix} 40 &amp; 30 &amp; 25 \\ 60 &amp; 20 &amp; 15 \\ 35 &amp; 45 &amp; 30 \end{pmatrix}\)</span>
+          <span>\(S = \begin{pmatrix} 95 &amp; 70 &amp; 55 \\ 110 &amp; 60 &amp; 30 \\ 140 &amp; 90 &amp; 75 \end{pmatrix}\)</span>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Eilutės – 1, 2 ir 3 parduotuvės. Stulpeliai – marškiniai, kelnės ir švarkai. Elementai – kiekiai vienetais.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Veiksmas</span></h4>
+          <p>Atsargos mėnesio pabaigoje yra pradinės atsargos, pridėjus gautas prekes ir atėmus parduotas prekes. Visos trys matricos yra \(3 \times 3\) matmenų, o jų duomenys suklasifikuoti vienodai, todėl veiksmus atlikti galima:</p>
+          \[ E = O + D - S \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Skaičiavimas</span></h4>
+          <p>Skaičiuokite kiekvieną elementą atskirai. 1 parduotuvės marškinių kiekis yra \(120 + 40 - 95 = 65\); likę aštuoni elementai randami taip pat:</p>
+          \[ E = \begin{pmatrix} 65 &amp; 50 &amp; 30 \\ 30 &amp; 30 &amp; 25 \\ 45 &amp; 65 &amp; 45 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Paaiškinimas</span></h4>
+          <p>Atsakymo eilutės atitinka parduotuves, o stulpeliai – prekių grupes, todėl elementai rodo kiekvienoje parduotuvėje likusių prekių kiekius.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Atsargos mėnesio pabaigoje, vienetais:
+            \[ E = \begin{pmatrix} 65 &amp; 50 &amp; 30 \\ 30 &amp; 30 &amp; 25 \\ 45 &amp; 65 &amp; 45 \end{pmatrix} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 2 uždavinys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Nuokrypis nuo gamybos plano</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamintojas trijose gamyklose gamina tris produktus. Planuota mėnesio gamyba surašyta matricoje \(P\), o faktinė – matricoje \(A\); abiejų matricų elementai pateikti vienetais. Raskite faktinės gamybos nuokrypį nuo plano ir jį paaiškinkite. Kuri gamykla įvykdė arba viršijo visų produktų gamybos planą ir kurio produkto visose gamyklose pagaminta daugiau, nei planuota?
+        <div class="mats">
+          <span>\(P = \begin{pmatrix} 1200 &amp; 800 &amp; 500 \\ 900 &amp; 1100 &amp; 600 \\ 1500 &amp; 700 &amp; 400 \end{pmatrix}\)</span>
+          <span>\(A = \begin{pmatrix} 1150 &amp; 860 &amp; 500 \\ 980 &amp; 1150 &amp; 640 \\ 1420 &amp; 760 &amp; 370 \end{pmatrix}\)</span>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Eilutės – 1, 2 ir 3 gamyklos. Stulpeliai – 1, 2 ir 3 produktai. Elementai – kiekiai vienetais.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Nuokrypis nuo plano</span></h4>
+          <p>Nuokrypis nuo plano yra faktinis kiekis minus planuotas kiekis, todėl faktinės gamybos matrica turi būti pirmoji:</p>
+          \[ \begin{aligned} &amp;A - P \\ &amp;= {\footnotesize\begin{pmatrix} 1150-1200 &amp; 860-800 &amp; 500-500 \\ 980-900 &amp; 1150-1100 &amp; 640-600 \\ 1420-1500 &amp; 760-700 &amp; 370-400 \end{pmatrix}} \\ &amp;= \begin{pmatrix} -50 &amp; 60 &amp; 0 \\ 80 &amp; 50 &amp; 40 \\ -80 &amp; 60 &amp; -30 \end{pmatrix} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ženklų prasmė</span></h4>
+          <p>Kiekvieno elemento ženklas turi prasmę: teigiamas elementas reiškia, kad pagaminta daugiau, nei planuota, neigiamas – plano neįvykdymą, o nulis – tiksliai įvykdytą planą. Tik 1 gamykloje 3 produkto pagaminta tiksliai tiek, kiek planuota.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Eilutės ir stulpeliai</span></h4>
+          <p>Skaitydami matricą eilutėmis ir stulpeliais, atsakome į du vadybinius klausimus. 2 eilutėje visi elementai teigiami, todėl 2 gamykla viršijo visų produktų gamybos planą. 2 stulpelyje taip pat visi elementai teigiami, todėl visose gamyklose 2 produkto pagaminta daugiau, nei planuota. Didžiausias plano neįvykdymas – 80 vienetų 1 produkto 3 gamykloje.</p>
+          \[ A - P = \begin{pmatrix} -50 &amp; \htmlClass{hc}{60} &amp; 0 \\ \htmlClass{hr}{80} &amp; \htmlClass{hr}{50} &amp; \htmlClass{hr}{40} \\ \htmlClass{hd}{-80} &amp; \htmlClass{hc}{60} &amp; -30 \end{pmatrix} \]
+          <p class="formula-note" style="text-align:center">Mėlynai pažymėta 2 eilutė, žaliai – 2 stulpelis, oranžiniu – didžiausias plano neįvykdymas.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Faktinės gamybos nuokrypis nuo plano, vienetais:
+            \[ A - P = \begin{pmatrix} -50 &amp; 60 &amp; 0 \\ 80 &amp; 50 &amp; 40 \\ -80 &amp; 60 &amp; -30 \end{pmatrix} \]
+            2 gamykla įvykdė arba viršijo visų produktų gamybos planą, o 2 produkto visose gamyklose pagaminta daugiau, nei planuota. Pagrindinė problema yra 1 produktas: 1 ir 3 gamyklose jo pagaminta atitinkamai 50 ir 80 vienetų mažiau, nei planuota.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: gairių 3 uždavinys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Sąnaudų padidėjimas procentais</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė valdo du viešbučius. Jos metinės veiklos sąnaudos tūkstančiais eurų surašytos matricoje \(C\) pagal sąnaudų grupes: personalas, energija ir reikmenys. Numatoma, kad kitais metais visos sąnaudos padidės 6&nbsp;%. Užrašykite kitų metų sąnaudų matricą ir sąnaudų padidėjimo matricą. Kiek padidės bendrosios įmonės veiklos sąnaudos?
+        <div class="mats">
+          <span>\(C = \begin{pmatrix} 480 &amp; 120 &amp; 90 \\ 350 &amp; 95 &amp; 70 \end{pmatrix}\)</span>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Eilutės – 1 ir 2 viešbučiai. Stulpeliai – personalas, energija ir reikmenys. Elementai – metinės sąnaudos tūkstančiais eurų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Kitų metų sąnaudos</span></h4>
+          <p>Kiekvienas elementas kinta tuo pačiu procentu, todėl atliekama daugyba iš skaliaro. Kitų metų sąnaudos sudarys 106&nbsp;% šių metų sąnaudų, taigi skaliaras yra \(1 + \dfrac{6}{100} = 1{,}06\):</p>
+          \[ \begin{aligned} &amp;1{,}06\cdot C \\ &amp;= \begin{pmatrix} 1{,}06\cdot 480 &amp; 1{,}06\cdot 120 &amp; 1{,}06\cdot 90 \\ 1{,}06\cdot 350 &amp; 1{,}06\cdot 95 &amp; 1{,}06\cdot 70 \end{pmatrix} \\ &amp;= \begin{pmatrix} 508{,}8 &amp; 127{,}2 &amp; 95{,}4 \\ 371 &amp; 100{,}7 &amp; 74{,}2 \end{pmatrix} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sąnaudų padidėjimas</span></h4>
+          <p>Vien padidėjimas sudaro 6&nbsp;% šių metų sąnaudų, taigi skaliaras yra \(0{,}06\):</p>
+          \[ 0{,}06\cdot C = \begin{pmatrix} 28{,}8 &amp; 7{,}2 &amp; 5{,}4 \\ 21 &amp; 5{,}7 &amp; 4{,}2 \end{pmatrix} \]
+          <p>Abu rezultatai dera tarpusavyje, nes \(C + 0{,}06C = 1{,}06C\). Tai yra daugybos iš skaliaro savybė \((k + m)A = kA + mA\). Prie 480 pridėję 28,8, gauname 508,8; taip pat tikrinamas kiekvienas elementas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Bendras padidėjimas</span></h4>
+          <p>Įmonės bendrųjų sąnaudų padidėjimas yra visų padidėjimo matricos elementų suma:</p>
+          \[ \begin{aligned} &amp;28{,}8 + 7{,}2 + 5{,}4 + 21 + 5{,}7 + 4{,}2 \\ &amp;= 72{,}3 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Kitais metais 1 viešbučio personalo sąnaudos bus 508,8 tūkst. eurų, energijos – 127,2 tūkst., o reikmenų – 95,4 tūkst.; 2 viešbučio atitinkamos sąnaudos bus 371, 100,7 ir 74,2 tūkst. eurų. Atitinkami padidėjimai 1 viešbutyje yra 28,8, 7,2 ir 5,4 tūkst. eurų, o 2 viešbutyje – 21, 5,7 ir 4,2 tūkst. eurų. Bendrosios įmonės veiklos sąnaudos padidės 72,3 tūkst. eurų. Iš jų 28,8 tūkst. eurų sudaro 1 viešbučio personalo sąnaudų padidėjimas – gerokai didesnis už bet kurios kitos sąnaudų grupės padidėjimą.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SAVARANKIŠKAS DARBAS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose, tada pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Alaus darykla verda trijų rūšių alų ir produkciją laiko dviejuose sandėliuose. Savaitės pradžios atsargos (matrica \(O\)), per savaitę iš daryklos pristatytas kiekis (matrica \(D\)) ir per savaitę klientams išsiųstas kiekis (matrica \(S\)) dėžėmis surašyti matricose:</p>
+          <div class="mats">
+            <span>\(O = \begin{pmatrix} 120 &amp; 80 &amp; 40 \\ 90 &amp; 140 &amp; 60 \end{pmatrix}\)</span>
+            <span>\(D = \begin{pmatrix} 60 &amp; 50 &amp; 30 \\ 40 &amp; 30 &amp; 20 \end{pmatrix}\)</span>
+            <span>\(S = \begin{pmatrix} 95 &amp; 70 &amp; 45 \\ 85 &amp; 110 &amp; 55 \end{pmatrix}\)</span>
+          </div>
+          <p>Kiekvienos matricos pirmoji eilutė žymi I sandėlį, antroji – II sandėlį; trys stulpeliai žymi lagerį, elį ir stautą. Raskite kiekvieno sandėlio atsargas savaitės pabaigoje. Darykla papildo atsargas, kai jų lieka mažiau nei 50 dėžių. Kurias atsargas reikia papildyti?</p>
+        </div>
+        <div class="q-answer">
+          <p>Atsargos savaitės pabaigoje yra</p>
+          \[ E = O + D - S = \begin{pmatrix} 85 &amp; 60 &amp; 25 \\ 45 &amp; 60 &amp; 25 \end{pmatrix} \]
+          <p>Papildyti reikia šias atsargas, kurių liko mažiau nei 50 dėžių: stauto I sandėlyje (25 dėžės), lagerio II sandėlyje (45 dėžės) ir stauto II sandėlyje (25 dėžės).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Trijų odontologijos klinikų grupė sudaro trijų rūšių sąnaudų ketvirčio biudžetą. Biudžete numatytos (matrica \(B\)) ir faktinės sumos (matrica \(F\)) tūkstančiais eurų surašytos matricose:</p>
+          <div class="mats">
+            <span>\(B = \begin{pmatrix} 40 &amp; 120 &amp; 15 \\ 55 &amp; 160 &amp; 20 \\ 35 &amp; 100 &amp; 12 \end{pmatrix}\)</span>
+            <span>\(F = \begin{pmatrix} 44 &amp; 118 &amp; 17 \\ 52 &amp; 155 &amp; 22 \\ 38 &amp; 106 &amp; 14 \end{pmatrix}\)</span>
+          </div>
+          <p>Trys eilutės žymi A, B ir C klinikas; trys stulpeliai – medžiagų, darbo užmokesčio ir komunalinių paslaugų sąnaudas. Raskite, kiek kiekviena klinika viršijo kiekvienos rūšies sąnaudų biudžetą arba kiek išleido mažiau, negu numatyta. Kuri klinika viršijo visų rūšių sąnaudų biudžetą? Kurios rūšies sąnaudų biudžetas viršytas kiekvienoje klinikoje? Kiek viršytas bendras grupės biudžetas?</p>
+        </div>
+        <div class="q-answer">
+          <p>Nuokrypiai nuo biudžeto yra</p>
+          \[ F - B = \begin{pmatrix} 4 &amp; -2 &amp; 2 \\ -3 &amp; -5 &amp; 2 \\ 3 &amp; 6 &amp; 2 \end{pmatrix} \]
+          <p>Teigiamas elementas reiškia, kad biudžetas viršytas. C klinika viršijo visų trijų rūšių sąnaudų biudžetą, o komunalinių paslaugų sąnaudų biudžetas viršytas visose trijose klinikose. Bendras grupės biudžetas viršytas 9 tūkstančiais eurų.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kino teatrų tinklas valdo tris kino teatrus ir parduoda trijų rūšių bilietus. Praėjusio mėnesio pajamos tūkstančiais eurų surašytos matricoje:</p>
+          <div class="mats">
+            <span>\(R = \begin{pmatrix} 42 &amp; 18 &amp; 10 \\ 36 &amp; 16 &amp; 8 \\ 28 &amp; 12 &amp; 8 \end{pmatrix}\)</span>
+          </div>
+          <p>Trys eilutės žymi I, II ir III kino teatrus; trys stulpeliai – visos kainos, lengvatinius ir vaikiškus bilietus. Nuo kito mėnesio visų bilietų kainos padidėja 5&nbsp;%. Tarkime, kad parduotų bilietų skaičius nesikeičia. Raskite kiekvieno kino teatro kito mėnesio pajamas ir pajamų padidėjimą pagal kiekvieną bilietų rūšį.</p>
+        </div>
+        <div class="q-answer">
+          <p>Kito mėnesio pajamos ir jų padidėjimas yra</p>
+          <div class="mats">
+            <span>\(1{,}05\cdot R = \begin{pmatrix} 44{,}1 &amp; 18{,}9 &amp; 10{,}5 \\ 37{,}8 &amp; 16{,}8 &amp; 8{,}4 \\ 29{,}4 &amp; 12{,}6 &amp; 8{,}4 \end{pmatrix}\)</span>
+            <span>\(0{,}05\cdot R = \begin{pmatrix} 2{,}1 &amp; 0{,}9 &amp; 0{,}5 \\ 1{,}8 &amp; 0{,}8 &amp; 0{,}4 \\ 1{,}4 &amp; 0{,}6 &amp; 0{,}4 \end{pmatrix}\)</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią skiltį rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
