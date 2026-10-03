@@ -21,7 +21,8 @@ lt/                            lietuviški puslapiai
   tema-3-planavimas-vienintelis.html  Racionalusis planavimas (vienintelis sprendinys)
   tema-3-planavimas-daug.html  Racionalusis planavimas (be galo daug sprendinių)
   tema-3-stabiliosios-rinkos-dalys.html  Stabiliosios rinkos dalys (P·X = X)
-  tema-4.html                  4 tema: TP uždavinio esmė, tikslo funkcija, apribojimai, standartiniai uždaviniai, sprendimo idėja + 4 skyriai (ruošiami)
+  tema-4.html                  4 tema: TP uždavinio esmė, tikslo funkcija, apribojimai, standartiniai uždaviniai, sprendimo idėja + 4 skyriai
+  tema-4-nelygybiu-sistemos.html  Skyrius 1: tiesinių nelygybių sistemos (brėžiniai lp-chart)
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -44,7 +45,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=20` ir `site.js?v=20`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=21` ir `site.js?v=21`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
@@ -115,6 +116,8 @@ Grafikų užrašai (ašys, legenda) imami iš `site.js` žodyno abiem kalbomis. 
 **Lentelės sąlygoje.** Platesnę lentelę dėkite į `<div class="tbl-wrap">` ir naudokite `class="vtable compact"` – siaurame ekrane ji neišeis už ribų. **Matmenų grandinė:** `<div class="dimchain"><span class="dc">padaliniai × <b>prekės</b></span><span class="op">·</span>…<span class="dc res">…</span></div>` – telefone išsidėsto stulpeliu.
 
 **Skiltys ir skyriai vietoj modelių.** Temoms, įrašytoms `UNIT` sąraše (`site.js`), kortelės vadinamos „Skiltis 1, 2…“ (`'part'`) arba „Skyrius 1, 2…“ (`'chapter'`, 4 tema), o apatinė nuoroda – „Kita skiltis“ arba „Kitas skyrius“.
+
+**TP brėžinys (4 tema).** `<div data-widget="lp-chart" data-spec='{"x":[min,max,padala,užrašai kas k],"y":[…],"nn":"xy","c":[{"a":2,"b":3,"s":"le","r":12,"lab":"2x + 3y = 12","col":1,"lt":0.85,"arr":[0.2,0.7]}],"pts":[{"x":2,"y":4,"lab":"A(2; 4)","p":"ne","hi":true}],"test":[0,0]}'></div>` – nubrėžia ašis su vienetine atkarpa, tiesę \(ax + by = r\) su rodyklėmis į sprendinių pusę (`s`: `le` ≤, `ge` ≥), užrašą `lab` (`lt` – vieta 0–1, `lo` – poslinkis, `la` – lygiavimas), nuspalvina visų apribojimų ir `nn` sąlygų sankirtą, pažymi viršūnes (`p` – užrašo kryptis n, ne, e, se, s, sw, w, nw). Vieno pavyzdžio brėžiniams naudokite tuos pačius `x`, `y` ir tiesių spalvas `col`.
 
 **Išplėstinė matrica ir pertvarkiai (3 tema).** Išplėstinė matrica: `\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ … \end{array}\right)`. Pertvarkis šalia jos – antras masyvas su tiek pat eilučių: `\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}` (tuščiai eilutei – `\phantom{0}`, dalybai – `\htmlClass{ha}{{:}\,k}`). Eilučių skaičiavimas: `<table class="rowcalc">` su `th` pavadinimu, `td` skaičiais, `td.rhs` (už brūkšnio), `td.z` (gautas nulis) ir paskutine eilute `tr.res`. Sprendinių atvejų brėžiniai – `.geo3`, tiesioginė ir atbulinė eiga – `.phases`.
 

@@ -867,3 +867,39 @@ svg .lp-arrowhead { fill: var(--exam); }
 .anat-d { margin: 8px 0 4px; font-size: .9rem; color: var(--muted); }
 .anat-card ul { margin: 0; padding-left: 1.1em; font-size: .95rem; }
 .anat-card li { margin: 0 0 2px; }
+
+/* ---------- TP brėžinys (lp-chart) ---------- */
+.lp-chart-fig { max-width: 440px; margin: 14px auto 6px; }
+.lp-chart-fig svg { display: block; width: 100%; height: auto; }
+svg .lp-l1 { stroke: var(--chart); stroke-width: 2.4; }
+svg .lp-l2 { stroke: var(--chart-2); stroke-width: 2.4; }
+svg .lp-l3 { stroke: var(--chart-3); stroke-width: 2.4; }
+svg .lp-a1 { stroke: var(--chart); stroke-width: 2; }
+svg .lp-a2 { stroke: var(--chart-2); stroke-width: 2; }
+svg .lp-a3 { stroke: var(--chart-3); stroke-width: 2; }
+svg .lp-h1 { fill: var(--chart); }
+svg .lp-h2 { fill: var(--chart-2); }
+svg .lp-h3 { fill: var(--chart-3); }
+svg .lp-tick { fill: var(--muted); font-size: 10.5px; }
+svg .lp-lab { font-family: KaTeX_Main, "Times New Roman", serif; font-size: 13.5px; font-weight: 600; }
+svg .lp-pt { font-size: 12px; font-weight: 700; fill: var(--text); }
+svg .lp-test { fill: var(--surface); stroke: var(--exam); stroke-width: 2; }
+svg .halo { paint-order: stroke; stroke: var(--surface); stroke-width: 3.5px; stroke-linejoin: round; }
+svg .lp-region { fill: var(--chart); fill-opacity: .16; }
+
+/* ---------- Tiesinių nelygybių sistemos (4.1) ---------- */
+.hp-fig { max-width: 400px; margin: 14px auto 6px; }
+svg .hp-in { font-family: KaTeX_Main, "Times New Roman", serif; font-size: 15px; font-weight: 700; fill: var(--chart); }
+svg .hp-out { font-family: KaTeX_Main, "Times New Roman", serif; font-size: 15px; fill: var(--muted); }
+.vtable.xy-tbl { margin: 8px auto; font-size: .95rem; }
+.vtable.xy-tbl th, .vtable.xy-tbl td { text-align: center; padding: 4px 14px; min-width: 2.6em; }
+.xy-row { display: flex; flex-wrap: wrap; gap: 10px 16px; justify-content: center; margin: 10px 0; }
+.xy-item { flex: 1 1 140px; max-width: 220px; padding: 8px 10px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); text-align: center; }
+.xy-cap { margin: 0; font-weight: 700; }
+.xy-calc { margin: 4px 0 0; font-size: .88rem; color: var(--muted); line-height: 1.6; }
+.xy-item .vtable.xy-tbl { margin: 6px auto 0; background: var(--surface); }
+.card-title { margin: 0 0 8px; font-size: 1.08rem; }
+.vert-list { padding-left: 1.1em; }
+.vert-list li { margin: 0 0 10px; }
+.steps-list > li > ul { margin: 6px 0 0; padding-left: 1.1em; }
+.steps-list > li > ul > li { margin: 0 0 6px; }

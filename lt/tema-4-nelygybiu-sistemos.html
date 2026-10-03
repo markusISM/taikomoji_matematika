@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiesinių nelygybių sistemos · Taikomoji matematika</title>
+<meta name="description" content="Kaip grafiškai išspręsti tiesinę nelygybę ir tiesinių nelygybių sistemą su dviem kintamaisiais: ribojanti tiesė, tikrinimo taškas, pusplokštumė, leistinųjų sprendinių aibė ir jos viršūnės.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=21">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=21"></script>
+</head>
+<body data-page="m41">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">4 tema · Skyrius 1</span>
+    <h1>Tiesinių nelygybių sistemos</h1>
+    <p class="lead">Šiame skyriuje mokomasi grafiškai spręsti tiesines nelygybes su dviem kintamaisiais ir jų sistemas: rasti leistinųjų sprendinių aibę ir visas jos viršūnes.</p>
+    <ul class="jump">
+      <li><a href="#esme">Esmė</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#specialieji">Specialieji atvejai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. ESMĖ ============ -->
+  <section class="section" id="esme" aria-labelledby="h-model">
+    <h2 id="h-model">Nelygybės sprendinys – plokštumos dalis</h2>
+
+    <article class="card">
+      <p><strong>Tiesinė nelygybė su dviem kintamaisiais</strong> – tai tokio pavidalo sąlyga:</p>
+      <div class="formula">\[ ax + by \leq c \qquad \text{arba} \qquad ax + by \geq c \]</div>
+      <p>Skaičių pora \((x;\, y)\) yra nelygybės sprendinys, jeigu įstačius šiuos skaičius gaunama teisinga nelygybė. Kiekviena skaičių pora yra taškas koordinačių plokštumoje, todėl nelygybės sprendinius galime pavaizduoti dvimatėje koordinačių sistemoje.</p>
+      <p><strong>Visų</strong> sprendinių aibė yra <strong>pusplokštumė</strong>: tiesė \(ax + by = c\) padalija plokštumą į dvi dalis. Visi vienos dalies taškai tenkina nelygybę – ši plokštumos dalis ir yra nelygybės sprendinys. Kitos dalies taškai nelygybės netenkina.</p>
+
+      <figure class="fig hp-fig">
+        <svg viewBox="0 0 320 190" role="img" aria-label="Tiesė ax + by = c dalija plokštumą į dvi pusplokštumes">
+          <path class="lp-region" d="M20 20L230 20L90 176L20 176Z"/>
+          <path class="lp-l1" d="M250 -2L70 198"/>
+          <text class="lp-lab c1 halo" x="214" y="58"><tspan class="i">a</tspan><tspan class="i">x</tspan> + <tspan class="i">b</tspan><tspan class="i">y</tspan> = <tspan class="i">c</tspan></text>
+          <text class="hp-in halo" x="70" y="104" text-anchor="middle"><tspan class="i">ax</tspan> + <tspan class="i">by</tspan> ≤ <tspan class="i">c</tspan></text>
+          <text class="hp-out halo" x="250" y="150" text-anchor="middle"><tspan class="i">ax</tspan> + <tspan class="i">by</tspan> ≥ <tspan class="i">c</tspan></text>
+          <circle class="lp-test" cx="58" cy="146" r="4.5"/>
+          <text class="muted halo" x="64" y="164">O</text>
+        </svg>
+        <figcaption>Tiesė \(ax + by = c\) dalija plokštumą į dvi pusplokštumes. Kai \(c &gt; 0\), koordinačių pradžia \(O\) tenkina nelygybę \(ax + by \leq c\), nes \(0 \leq c\).</figcaption>
+      </figure>
+
+      <p>Šiame kurse naudojami tik ženklai \(\leq\) ir \(\geq\), todėl pati ribojanti tiesė visada priklauso sprendinių aibei – jos taškai tenkina sąlygą su lygybės ženklu.</p>
+
+      <div class="subtype">
+        <h4>Nelygybių sistema</h4>
+        <p><strong>Tiesinių nelygybių sistema</strong> – tai kelios sąlygos, kurios turi būti tenkinamos kartu. Jos visada rašomos vienoje sistemoje, su riestiniu skliaustu, parodančiu, kad visos sąlygos turi galioti vienu metu:</p>
+        <div class="formula">\[ \begin{cases} a_1x + b_1y \leq c_1 \\ a_2x + b_2y \leq c_2 \\ \quad\vdots \end{cases} \]</div>
+        <p>Sistemos sprendinių aibė yra atskirų pusplokštumių <strong>sankirta</strong> – taškų, priklausančių visoms šioms pusplokštumėms kartu, aibė. Ji vadinama <strong>leistinųjų sprendinių aibe</strong>.</p>
+        <p>Leistinųjų sprendinių aibė gali būti <strong>aprėžta</strong> – daugiakampis, kurį galima sutalpinti į skritulį, – arba <strong>neaprėžta</strong>, be galo besitęsianti kuria nors kryptimi. Jos kampiniai taškai vadinami <strong>viršūnėmis</strong>.</p>
+        <p class="tip">Pagrindinis brėžinio tikslas – rasti viršūnes. Tolesniuose skyriuose leistinųjų sprendinių aibę sudarys visi gamybos ar pirkimo planai, kuriuos leidžia turimi ištekliai, o geriausias planas visada randamas <a href="tema-4.html#leistinoji-aibe">vienoje iš jos viršūnių</a>.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li><strong>Nubrėžkite kiekvieną nelygybę atitinkančią ribojančią tiesę.</strong>
+          <ul>
+            <li>Nelygybės ženklą pakeiskite ženklu \(=\) ir gausite ribojančios tiesės lygtį.</li>
+            <li>Raskite du tiesės taškus. Kai tik įmanoma, naudokite susikirtimo su ašimis taškus: įrašę \(x = 0\), raskite susikirtimo su \(Oy\) ašimi tašką, o įrašę \(y = 0\) – susikirtimo su \(Ox\) ašimi tašką.</li>
+            <li>Abu taškus surašykite į reikšmių lentelę: \(x\) reikšmes – pirmoje eilutėje, \(y\) reikšmes – antroje.
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>6</td></tr><tr><th scope="row">\(y\)</th><td>4</td><td>0</td></tr></table>
+            </li>
+            <li>Jeigu tiesė eina per koordinačių pradžią, abu susikirtimo su ašimis taškai sutampa, todėl reikia pasirinkti dar vieną patogų tašką (<a href="#per-pradzia">žr. specialiuosius atvejus</a>).</li>
+            <li>Jeigu tiesė lygiagreti ašiai, reikšmių lentelės visai nereikia: \(x = 4\) yra vertikali tiesė, einanti per \(Ox\) ašies tašką 4, o \(y = 2\) – horizontali tiesė, einanti per \(Oy\) ašies tašką 2 (<a href="#lygiagrecios">žr. specialiuosius atvejus</a>).</li>
+            <li>Per abu taškus nubrėžkite tiesę ir šalia užrašykite jos lygtį.</li>
+          </ul>
+        </li>
+        <li><strong>Nustatykite sprendinių pusplokštumę.</strong>
+          <ul>
+            <li>Pasirinkite <strong>tikrinimo tašką</strong>, kuris nepriklauso tiesei. Jei tiesė neina per koordinačių pradžią \(O(0;\, 0)\), rinkitės ją, nes įstatyti nulius yra paprasčiausia.</li>
+            <li>Tikrinimo taško koordinates įstatykite į nelygybę ir užrašykite skaičiavimą, pavyzdžiui:
+              \[ \begin{aligned} &amp;2\cdot 0 + 3\cdot 0 \leq 12 \\ &amp;\Longrightarrow\; 0 \leq 12 \quad \text{(teisinga)} \end{aligned} \]</li>
+            <li>Jeigu gauta nelygybė teisinga, sprendinių aibė yra pusplokštumė, kuriai priklauso tikrinimo taškas. Jeigu neteisinga, sprendinių aibė yra priešinga pusplokštumė.</li>
+            <li>Sprendinių pusplokštumę pažymėkite ant ribojančios tiesės nubrėžtomis rodyklėmis, nukreiptomis į tą pusplokštumę.</li>
+          </ul>
+        </li>
+        <li><strong>Raskite sistemos leistinųjų sprendinių aibę.</strong>
+          <ul>
+            <li>Leistinųjų sprendinių aibė yra visų nelygybių sprendinių pusplokštumių sankirta.</li>
+            <li>Galutiniame brėžinyje ant kiekvienos tiesės pažymėkite rodykles ir nuspalvinkite tik leistinųjų sprendinių aibę. Atskirai spalvinant kiekvieną pusplokštumę tame pačiame brėžinyje, spalvos persidengia ir užgožia atsakymą.</li>
+          </ul>
+        </li>
+        <li><strong>Raskite visas leistinųjų sprendinių aibės viršūnes.</strong>
+          <ul>
+            <li>Jeigu viršūnė yra ant ašies, jos koordinatės jau žinomos: paimkite jas iš 1 žingsnyje sudarytos reikšmių lentelės ir antrą kartą neskaičiuokite.</li>
+            <li>Jeigu viršūnė yra dviejų apribojimus atitinkančių tiesių susikirtimo taškas, užrašykite šių tiesių lygčių sistemą ir išspręskite ją <a href="tema-3.html">3 temoje</a> nagrinėtais metodais.</li>
+            <li>Surašykite visas viršūnes su jų koordinatėmis, žymėdami jas \(O, A, B, C, \ldots\) iš eilės palei aibės kraštą.</li>
+          </ul>
+        </li>
+      </ol>
+
+      <div class="must">
+        <p class="must-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg>Kas turi būti kiekviename brėžinyje</p>
+        <ul class="badge-list">
+          <li><span class="bn">1</span><span>ašių žymėjimai (\(x\) ir \(y\));</span></li>
+          <li><span class="bn">2</span><span>koordinačių pradžios taškas \(O\);</span></li>
+          <li><span class="bn">3</span><span>vienetinės atkarpos dydis abiejose ašyse;</span></li>
+          <li><span class="bn">4</span><span>kiekvienos tiesės lygtis;</span></li>
+          <li><span class="bn">5</span><span>leistinųjų sprendinių aibė.</span></li>
+        </ul>
+        <p style="margin:10px 0 0">Vieno pavyzdžio visuose brėžiniuose išlaikykite tą patį mastelį, kiekvienai tiesei naudokite tą pačią spalvą ir tuos pačius žymėjimus, kad kiekvienas brėžinys aiškiai tęstų ankstesnį.</p>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Tikrinimo taškas ant tiesės.</strong> Jei tiesė eina per koordinačių pradžią, \(O(0;\, 0)\) tikrinimo tašku rinktis negalima.</li>
+            <li><strong>Ženklas \(\geq\).</strong> Kai apribojimuose yra ženklas \(\geq\) ir dešinioji pusė teigiama, koordinačių pradžia nelygybės netenkina – rodyklės nukreiptos nuo jos.</li>
+            <li><strong>Nuspalvintos visos pusplokštumės.</strong> Galutiniame brėžinyje spalvinama tik sankirta.</li>
+            <li><strong>Viršūnės koordinatės „nuskaitytos“ iš brėžinio.</strong> Tiesių susikirtimo taškas randamas sprendžiant lygčių sistemą, o ne matuojant brėžinyje.</li>
+            <li><strong>Trūksta privalomų brėžinio elementų.</strong> Be vienetinės atkarpos ar tiesių lygčių brėžinys nelaikomas išsamiu.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant uždavinį grafiškai, turi būti pateiktos apribojimų tiesių reikšmių lentelės.</li>
+            <li>Grafike privalo būti pažymėti šie elementai: ašių pavadinimai, koordinačių pradžios taškas, vienetinės atkarpos dydis, tiesių pavadinimai, leistina sprendinių aibė.</li>
+            <li>Tiesių susikirtimo taškų koordinatės turi būti nustatytos algebriškai. Nustatant taškų koordinates, lygčių sistemą galima spręsti naudojant skaičiuotuvą, tačiau būtina nurodyti, kokios lygtis naudotos susikirtimo taško radimui.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite nubrėžti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Viena nelygybė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Grafiškai išspręskite nelygybę \(2x + 3y \leq 12\).</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribojanti tiesė</span></h4>
+          <p>Nelygybės ženklą pakeičiame lygybės ženklu:</p>
+          \[ 2x + 3y = 12 \]
+          <p>Tiesės susikirtimo su ašimis taškai randami paeiliui prilyginant kiekvieną kintamąjį nuliui:</p>
+          \[ \begin{aligned} x = 0:&amp;\quad 3y = 12 \;\Longrightarrow\; y = 4 \\ y = 0:&amp;\quad 2x = 12 \;\Longrightarrow\; x = 6 \end{aligned} \]
+          <p>Tiesės reikšmių lentelė:</p>
+          <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>6</td></tr><tr><th scope="row">\(y\)</th><td>4</td><td>0</td></tr></table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Tikrinimo taškas</span></h4>
+          <p>Tiesė neina per koordinačių pradžią, todėl tikrinimo tašku galima pasirinkti \(O(0;\, 0)\):</p>
+          \[ \begin{aligned} &amp;2\cdot 0 + 3\cdot 0 \leq 12 \\ &amp;\Longrightarrow\; 0 \leq 12 \quad \text{(teisinga)} \end{aligned} \]
+          <p>Gauta nelygybė teisinga, todėl sprendinių aibė yra pusplokštumė, kuriai priklauso koordinačių pradžia, – žemiau tiesės esanti pusplokštumė. Į ją nukreiptos ant tiesės pažymėtos rodyklės.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,8,1,2],"y":[-2,6,1,2],"c":[{"a":2,"b":3,"s":"le","r":12,"lab":"2x + 3y = 12","col":1,"lt":0.55}],"test":[0,0],"pts":[{"x":0,"y":4},{"x":6,"y":0}],"aria":"Nelygybės 2x + 3y ≤ 12 sprendinių aibė"}'></div>
+            <figcaption>1 pav. Nelygybės \(2x + 3y \leq 12\) sprendinių aibė: nuspalvinta pusplokštumė kartu su ją ribojančia tiese.</figcaption>
+          </figure>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Sprendinių aibė yra uždara pusplokštumė, kurią riboja tiesė \(2x + 3y = 12\) ir kuriai priklauso koordinačių pradžia.</p>
+          </div>
+          <p>Ribojanti tiesė priklauso sprendinių aibei, nes nelygybės ženklas yra \(\leq\), o ne \(&lt;\).</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Dviejų nelygybių sistema</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Raskite sistemos leistinųjų sprendinių aibę ir nustatykite jos viršūnes:</p>
+        \[ \begin{cases} x + y \leq 6 \\ 2x + y \leq 8 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmoji ribojanti tiesė</span></h4>
+          \[ x + y = 6 \]
+          \[ \begin{aligned} x = 0:&amp;\quad y = 6 \\ y = 0:&amp;\quad x = 6 \end{aligned} \]
+          <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>6</td></tr><tr><th scope="row">\(y\)</th><td>6</td><td>0</td></tr></table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmosios nelygybės pusplokštumė</span></h4>
+          <p>Tikrinimo taškas \(O(0;\, 0)\):</p>
+          \[ 0 + 0 \leq 6 \;\Longrightarrow\; 0 \leq 6 \quad \text{(teisinga)} \]
+          <p>Sprendinių aibė yra pusplokštumė, kuriai priklauso koordinačių pradžia.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,8,1,2],"y":[-2,9,1,2],"c":[{"a":1,"b":1,"s":"le","r":6,"lab":"x + y = 6","col":1,"lt":0.62}],"pts":[{"x":0,"y":6},{"x":6,"y":0}],"aria":"Nelygybės x + y ≤ 6 sprendinių pusplokštumė"}'></div>
+            <figcaption>2 pav. Nelygybės \(x + y \leq 6\) sprendinių pusplokštumė.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Antroji ribojanti tiesė</span></h4>
+          \[ 2x + y = 8 \]
+          \[ \begin{aligned} x = 0:&amp;\quad y = 8 \\ y = 0:&amp;\quad 2x = 8 \;\Longrightarrow\; x = 4 \end{aligned} \]
+          <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>4</td></tr><tr><th scope="row">\(y\)</th><td>8</td><td>0</td></tr></table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Antrosios nelygybės pusplokštumė</span></h4>
+          <p>Vėl pasirenkame tikrinimo tašką \(O(0;\, 0)\):</p>
+          \[ 2\cdot 0 + 0 \leq 8 \;\Longrightarrow\; 0 \leq 8 \quad \text{(teisinga)} \]
+          <p>Šios nelygybės sprendinių aibė taip pat yra pusplokštumė, kuriai priklauso koordinačių pradžia.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,8,1,2],"y":[-2,9,1,2],"c":[{"a":2,"b":1,"s":"le","r":8,"lab":"2x + y = 8","col":2,"lt":0.35}],"pts":[{"x":0,"y":8},{"x":4,"y":0}],"aria":"Nelygybės 2x + y ≤ 8 sprendinių pusplokštumė"}'></div>
+            <figcaption>3 pav. Nelygybės \(2x + y \leq 8\) sprendinių pusplokštumė.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Sistemos leistinųjų sprendinių aibė yra abiejų pusplokštumių sankirta: taškai, kurie kartu yra ant abiejų tiesių arba žemiau jų. Ji vaizduojama viename brėžinyje, ant abiejų tiesių pažymint rodykles ir nuspalvinant tik sankirtą.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,8,1,2],"y":[-2,9,1,2],"c":[{"a":1,"b":1,"s":"le","r":6,"lab":"x + y = 6","col":1,"lt":0.72},{"a":2,"b":1,"s":"le","r":8,"lab":"2x + y = 8","col":2,"lt":0.22}],"pts":[{"x":2,"y":4,"lab":"A(2; 4)","p":"e","hi":true}],"aria":"Sistemos leistinųjų sprendinių aibė ir jos viršūnė A(2; 4)"}'></div>
+            <figcaption>4 pav. Sistemos leistinųjų sprendinių aibė ir vienintelė jos viršūnė \(A(2;\, 4)\).</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Viršūnė</span></h4>
+          <p>Leistinųjų sprendinių aibė neaprėžta – ji be galo tęsiasi žemyn ir į kairę – ir turi tik vieną viršūnę, abiejų tiesių susikirtimo tašką. Ji nėra ant ašies, todėl randama sprendžiant šių dviejų tiesių lygčių sistemą:</p>
+          \[ \begin{gathered} \begin{cases} x + y = 6 \\ 2x + y = 8 \end{cases} \\ \Longrightarrow\; x = 2,\; y = 4 \;\Longrightarrow\; A(2;\, 4) \end{gathered} \]
+          <p class="formula-note">Iš antrosios lygties atėmus pirmąją, gaunama \(x = 2\); tada \(y = 6 - 2 = 4\).</p>
+          <p>Patikriname abiejose lygtyse: \(2 + 4 = 6\) ir \(2\cdot 2 + 4 = 8\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Leistinųjų sprendinių aibė yra neaprėžta sritis, esanti ant abiejų tiesių arba žemiau jų; vienintelė jos viršūnė yra \(A(2;\, 4)\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Aprėžta leistinųjų sprendinių aibė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Raskite sistemos leistinųjų sprendinių aibę ir nustatykite visas jos viršūnes:</p>
+        \[ \begin{cases} 2x + y \leq 12 \\ x + y \leq 8 \\ x + 2y \leq 14 \\ x;\, y \geq 0 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Trys ribojančios tiesės</span></h4>
+          <p>Kiekviena tiesė brėžiama per du jos susikirtimo su ašimis taškus, todėl reikia trijų reikšmių lentelių:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 12\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 12\)<br>\(y = 0:\; x = 6\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>6</td></tr><tr><th scope="row">\(y\)</th><td>12</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 8\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 8\)<br>\(y = 0:\; x = 8\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>8</td></tr><tr><th scope="row">\(y\)</th><td>8</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 14\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 7\)<br>\(y = 0:\; x = 14\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>14</td></tr><tr><th scope="row">\(y\)</th><td>7</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Tikrinimo taškas</span></h4>
+          <p>Koordinačių pradžia nepriklauso nė vienai iš trijų tiesių, todėl ją pasirenkame visų trijų nelygybių tikrinimo tašku:</p>
+          \[ \begin{aligned} 2\cdot 0 + 0 \leq 12 \;&amp;\Longrightarrow\; 0 \leq 12 \quad \text{(teisinga)} \\ 0 + 0 \leq 8 \;&amp;\Longrightarrow\; 0 \leq 8 \quad \text{(teisinga)} \\ 0 + 2\cdot 0 \leq 14 \;&amp;\Longrightarrow\; 0 \leq 14 \quad \text{(teisinga)} \end{aligned} \]
+          <p>Visoms trims sprendinių pusplokštumėms priklauso koordinačių pradžia. Likusioms dviem sąlygoms \(x \geq 0\) ir \(y \geq 0\) tikrinimo taško nereikia: jas ribojančios tiesės yra pačios ašys, o abi sąlygos kartu apriboja brėžinį pirmuoju ketvirčiu.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Leistinųjų sprendinių aibė yra visų penkių pusplokštumių sankirta. Tai aprėžta sritis – penkiakampis, ir nuspalvinamas tik jis.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,15,1,2],"y":[-1,13,1,2],"nn":"xy","c":[{"a":2,"b":1,"s":"le","r":12,"lab":"2x + y = 12","col":1,"lt":0.1,"arr":[0.3,0.62]},{"a":1,"b":1,"s":"le","r":8,"lab":"x + y = 8","col":2,"lt":0.78,"lo":8,"arr":[0.35,0.62]},{"a":1,"b":2,"s":"le","r":14,"lab":"x + 2y = 14","col":3,"lt":0.6,"arr":[0.3,0.82]}],"pts":[{"x":0,"y":7,"lab":"A(0; 7)","p":"ne"},{"x":2,"y":6,"lab":"B(2; 6)","p":"e"},{"x":4,"y":4,"lab":"C(4; 4)","p":"e"},{"x":6,"y":0,"lab":"D(6; 0)","p":"ne"},{"x":0,"y":0}],"aria":"Aprėžta leistinųjų sprendinių aibė OABCD"}'></div>
+            <figcaption>5 pav. Aprėžta leistinųjų sprendinių aibė \(OABCD\) su visomis penkiomis viršūnėmis.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Viršūnės</span></h4>
+          <p>Viršūnes nagrinėjame iš eilės palei aibės kraštą.</p>
+          <ul class="vert-list">
+            <li>\(O(0;\, 0)\) yra koordinačių pradžia, kurioje susikerta abi ašys.</li>
+            <li>\(A\) yra ant \(Oy\) ašies. Tai tiesės susikirtimo su \(Oy\) ašimi taškas; tiesės \(x + 2y = 14\) reikšmių lentelėje jis jau nurodytas: \(A(0;\, 7)\).</li>
+            <li>\(B\) yra tiesių \(x + 2y = 14\) ir \(x + y = 8\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + 2y = 14 \\ x + y = 8 \end{cases} \\ \Longrightarrow\; x = 2,\; y = 6 \;\Longrightarrow\; B(2;\, 6) \end{gathered} \]</li>
+            <li>\(C\) yra tiesių \(x + y = 8\) ir \(2x + y = 12\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + y = 8 \\ 2x + y = 12 \end{cases} \\ \Longrightarrow\; x = 4,\; y = 4 \;\Longrightarrow\; C(4;\, 4) \end{gathered} \]</li>
+            <li>\(D\) yra ant \(Ox\) ašies. Tai tiesės susikirtimo su \(Ox\) ašimi taškas, paimtas iš tiesės \(2x + y = 12\) reikšmių lentelės: \(D(6;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Leistinųjų sprendinių aibė yra aprėžtas penkiakampis \(OABCD\), kurio viršūnės yra \(O(0;\, 0)\), \(A(0;\, 7)\), \(B(2;\, 6)\), \(C(4;\, 4)\) ir \(D(6;\, 0)\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Neaprėžta leistinųjų sprendinių aibė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Raskite sistemos leistinųjų sprendinių aibę ir nustatykite visas jos viršūnes:</p>
+        \[ \begin{cases} x + 2y \geq 8 \\ 3x + y \geq 9 \\ x;\, y \geq 0 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Dvi ribojančios tiesės</span></h4>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 8\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 8 \Rightarrow y = 4\)<br>\(y = 0:\; x = 8\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>8</td></tr><tr><th scope="row">\(y\)</th><td>4</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(3x + y = 9\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 9\)<br>\(y = 0:\; 3x = 9 \Rightarrow x = 3\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>3</td></tr><tr><th scope="row">\(y\)</th><td>9</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Tikrinimo taškas</span></h4>
+          <p>Kiekvieną nelygybę tikriname taške \(O(0;\, 0)\):</p>
+          \[ \begin{aligned} 0 + 2\cdot 0 \geq 8 \;&amp;\Longrightarrow\; 0 \geq 8 \quad \text{(neteisinga)} \\ 3\cdot 0 + 0 \geq 9 \;&amp;\Longrightarrow\; 0 \geq 9 \quad \text{(neteisinga)} \end{aligned} \]
+          <p>Abi gautos nelygybės neteisingos, todėl abiem atvejais sprendinių aibė yra pusplokštumė, kuriai koordinačių pradžia <em>nepriklauso</em>, – virš tiesės esanti pusplokštumė.</p>
+          <p class="tip">Taip paprastai būna, kai naudojamas ženklas \(\geq\): kai apribojimuose yra ženklas \(\geq\), rodyklės nukreiptos nuo koordinačių pradžios.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Leistinųjų sprendinių aibė yra abiejų pusplokštumių ir pirmojo ketvirčio sankirta. Ji neaprėžta: be galo tęsiasi aukštyn ir į dešinę.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,10,1,2],"y":[-1,10,1,2],"nn":"xy","c":[{"a":1,"b":2,"s":"ge","r":8,"lab":"x + 2y = 8","col":1,"lt":0.55,"lo":-14,"arr":[0.35,0.7]},{"a":3,"b":1,"s":"ge","r":9,"lab":"3x + y = 9","col":2,"lt":0.35,"lo":-14,"arr":[0.18,0.55]}],"pts":[{"x":0,"y":9,"lab":"A(0; 9)","p":"e"},{"x":2,"y":3,"lab":"B(2; 3)","p":"ne"},{"x":8,"y":0,"lab":"C(8; 0)","p":"ne"}],"aria":"Neaprėžta leistinųjų sprendinių aibė su viršūnėmis A, B, C"}'></div>
+            <figcaption>6 pav. Neaprėžta leistinųjų sprendinių aibė, kurios viršūnės yra \(A(0;\, 9)\), \(B(2;\, 3)\) ir \(C(8;\, 0)\).</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Viršūnės</span></h4>
+          <ul class="vert-list">
+            <li>\(A\) yra ant \(Oy\) ašies. Tai tiesės susikirtimo su \(Oy\) ašimi taškas, paimtas iš tiesės \(3x + y = 9\) reikšmių lentelės: \(A(0;\, 9)\).</li>
+            <li>\(B\) yra abiejų tiesių susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} 3x + y = 9 \\ x + 2y = 8 \end{cases} \\ \Longrightarrow\; x = 2,\; y = 3 \;\Longrightarrow\; B(2;\, 3) \end{gathered} \]</li>
+            <li>\(C\) yra ant \(Ox\) ašies. Tai tiesės susikirtimo su \(Ox\) ašimi taškas; tiesei \(x + 2y = 8\) gauname \(C(8;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Leistinųjų sprendinių aibė neaprėžta, jos viršūnės yra \(A(0;\, 9)\), \(B(2;\, 3)\) ir \(C(8;\, 0)\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SPECIALIEJI ATVEJAI ============ -->
+  <section class="section" id="specialieji" aria-labelledby="h-special">
+    <h2 id="h-special">Specialieji atvejai</h2>
+
+    <article class="card" id="per-pradzia">
+      <h3 class="card-title">Ribojanti tiesė eina per koordinačių pradžią</h3>
+      <p>Nagrinėkime nelygybę \(y \leq 2x\). Du būdai, tikę visiems ankstesniems pavyzdžiams, dabar netinka, tačiau abu sunkumus galima lengvai įveikti.</p>
+      <p><strong>Susikirtimo su ašimis taškų naudoti negalima.</strong> Įrašę \(x = 0\), gauname \(y = 0\), o įrašę \(y = 0\), gauname \(x = 0\): abiem atvejais gaunamas tas pats taškas – koordinačių pradžia, o vieno taško tiesei nubrėžti nepakanka. Koordinačių pradžią palikime pirmuoju tašku ir pasirinkime kitą patogią \(x\) reikšmę, pavyzdžiui, \(x = 3\); tada \(y = 2\cdot 3 = 6\).</p>
+      <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>3</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>6</td></tr></table>
+      <p><strong>Koordinačių pradžia negali būti tikrinimo taškas.</strong> Ji priklauso tiesei, o tikrinimo taškas turi būti ne ant jos. Tinka bet kuris tiesei nepriklausantis taškas; paprasčiausia pasirinkti \((1;\, 0)\):</p>
+      <div class="formula">\[ 0 \leq 2\cdot 1 \;\Longrightarrow\; 0 \leq 2 \quad \text{(teisinga)} \]</div>
+      <p>Taigi sprendinių aibė yra pusplokštumė, kuriai priklauso \((1;\, 0)\), – žemiau tiesės ir į dešinę nuo jos.</p>
+      <figure class="fig lp-chart-fig">
+        <div data-widget="lp-chart" data-spec='{"x":[-2,5,1,1],"y":[-3,8,1,2],"c":[{"a":-2,"b":1,"s":"le","r":0,"lab":"y = 2x","col":1,"lt":0.92,"arr":[0.62,0.8]}],"test":[1,0],"pts":[{"x":3,"y":6}],"aria":"Nelygybės y ≤ 2x sprendinių aibė"}'></div>
+        <figcaption>7 pav. Nelygybės \(y \leq 2x\) sprendinių aibė. Ribojanti tiesė eina per koordinačių pradžią, todėl tikrinimo taškas yra \((1;\, 0)\).</figcaption>
+      </figure>
+    </article>
+
+    <article class="card" id="lygiagrecios">
+      <h3 class="card-title">Tiesės, lygiagrečios ašiai</h3>
+      <p>Nagrinėkime sistemą</p>
+      <div class="formula">\[ \begin{cases} x \leq 4 \\ y \geq 2 \\ x \geq 0 \end{cases} \]</div>
+      <p>Nelygybė, kurioje nėra vieno iš kintamųjų, vis tiek apibrėžia pusplokštumę, o jos ribojančiai tiesei reikšmių lentelės visai nereikia – lygtis tiesę nurodo tiesiogiai.</p>
+      <ul>
+        <li><strong>Tiesė \(x = 4\) yra vertikali</strong>, lygiagreti \(Oy\) ašiai: kiekvieno jos taško \(x = 4\), kad ir kokia būtų \(y\) reikšmė. Ji brėžiama per \(Ox\) ašies tašką 4.</li>
+        <li><strong>Tiesė \(y = 2\) yra horizontali</strong>, lygiagreti \(Ox\) ašiai, ir brėžiama per \(Oy\) ašies tašką 2.</li>
+      </ul>
+      <p><strong>Tikrinimo taškas</strong> abiem atvejais yra koordinačių pradžia, nes nė viena tiesė per ją neina:</p>
+      <div class="formula">\[ \begin{aligned} x \leq 4:&amp;\quad 0 \leq 4 \quad \text{(teisinga)} \\ y \geq 2:&amp;\quad 0 \geq 2 \quad \text{(neteisinga)} \end{aligned} \]</div>
+      <p>Taigi pirmosios nelygybės sprendinių pusplokštumė yra į kairę nuo \(x = 4\), o antrosios – virš \(y = 2\). Kartu su sąlyga \(x \geq 0\) jos apibrėžia vertikalią juostą, neaprėžtą iš viršaus.</p>
+      <figure class="fig lp-chart-fig">
+        <div data-widget="lp-chart" data-spec='{"x":[-1,7,1,1],"y":[-1,7,1,1],"nn":"x","c":[{"a":1,"b":0,"s":"le","r":4,"lab":"x = 4","col":1,"lt":0.93,"la":"start","lo":-8,"arr":[0.55,0.8]},{"a":0,"b":1,"s":"ge","r":2,"lab":"y = 2","col":2,"lt":0.95,"arr":[0.3,0.82]}],"pts":[{"x":0,"y":2,"lab":"A(0; 2)","p":"nw"},{"x":4,"y":2,"lab":"B(4; 2)","p":"se"}],"aria":"Sistemos leistinųjų sprendinių aibė – vertikali juosta virš y = 2"}'></div>
+        <figcaption>8 pav. Sistemos leistinųjų sprendinių aibė, kurios viršūnės yra \(A(0;\, 2)\) ir \(B(4;\, 2)\).</figcaption>
+      </figure>
+      <p><strong>Viršūnėms rasti algebrinių skaičiavimų nereikia.</strong> \(A(0;\, 2)\) yra tiesės \(y = 2\) susikirtimo su \(Oy\) ašimi taškas. Taške \(B\) vertikali tiesė susikerta su horizontalia, todėl po vieną koordinatę tiesiogiai gauname iš kiekvienos tiesės lygties: \(x = 4\) ir \(y = 2\), taigi \(B(4;\, 2)\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: sudarykite reikšmių lenteles, užrašykite tikrinimo taško skaičiavimus, nubrėžkite brėžinį su visais privalomais elementais ir algebriškai raskite viršūnes. Atsakyme pateiktas brėžinys ir viršūnės – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Grafiškai pavaizduokite tiesinių nelygybių sistemos sprendinių aibę ir raskite leistinųjų sprendinių aibės viršūnes:</p>
+          \[ \begin{cases} 2x + y \leq 10 \\ x + 2y \leq 10 \\ x + y \leq 6 \\ x;\, y \geq 0 \end{cases} \]
+        </div>
+        <div class="q-answer">
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,11,1,2],"y":[-1,11,1,2],"nn":"xy","c":[{"a":2,"b":1,"s":"le","r":10,"lab":"2x + y = 10","col":1,"lt":0.12,"arr":[0.3,0.6]},{"a":1,"b":2,"s":"le","r":10,"lab":"x + 2y = 10","col":2,"lt":0.62,"arr":[0.35,0.82]},{"a":1,"b":1,"s":"le","r":6,"lab":"x + y = 6","col":3,"lt":0.2,"arr":[0.3,0.7]}],"pts":[{"x":0,"y":5,"lab":"A(0; 5)","p":"w"},{"x":2,"y":4,"lab":"B(2; 4)","p":"ne"},{"x":4,"y":2,"lab":"C(4; 2)","p":"e"},{"x":5,"y":0,"lab":"D(5; 0)","p":"ne"},{"x":0,"y":0}],"aria":"1 uždavinio sistemos leistinųjų sprendinių aibė"}'></div>
+            <figcaption>1 uždavinio sistemos leistinųjų sprendinių aibė.</figcaption>
+          </figure>
+          <p><strong>Atsakymas.</strong> Leistinųjų sprendinių aibė yra aprėžta. Tai penkiakampis, kurio viršūnės yra</p>
+          \[ \begin{gathered} O(0;\, 0),\; A(0;\, 5),\; B(2;\, 4), \\ C(4;\, 2),\; D(5;\, 0) \end{gathered} \]
+          <p>Tiesė \(x + 2y = 10\) eina per viršūnę \(A(0;\, 5)\), o tiesė \(2x + y = 10\) – per viršūnę \(D(5;\, 0)\), taigi visos trys nelygybės dalyvauja aprėžiant aibę.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Grafiškai pavaizduokite tiesinių nelygybių sistemos sprendinių aibę ir raskite leistinųjų sprendinių aibės viršūnes:</p>
+          \[ \begin{cases} x + 2y \geq 10 \\ 2x + y \geq 11 \\ x;\, y \geq 0 \end{cases} \]
+        </div>
+        <div class="q-answer">
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,11,1,2],"y":[-1,12,1,2],"nn":"xy","c":[{"a":1,"b":2,"s":"ge","r":10,"lab":"x + 2y = 10","col":1,"lt":0.7,"lo":-14,"arr":[0.3,0.53]},{"a":2,"b":1,"s":"ge","r":11,"lab":"2x + y = 11","col":2,"lt":0.35,"lo":-14,"arr":[0.18,0.55]}],"pts":[{"x":0,"y":11,"lab":"A(0; 11)","p":"e"},{"x":4,"y":3,"lab":"B(4; 3)","p":"ne"},{"x":10,"y":0,"lab":"C(10; 0)","p":"n"}],"aria":"2 uždavinio sistemos leistinųjų sprendinių aibė"}'></div>
+            <figcaption>2 uždavinio sistemos leistinųjų sprendinių aibė.</figcaption>
+          </figure>
+          <p><strong>Atsakymas.</strong> Leistinųjų sprendinių aibė yra neaprėžta – ji be galo tęsiasi aukštyn ir į dešinę. Jos viršūnės yra</p>
+          \[ A(0;\, 11),\; B(4;\, 3),\; C(10;\, 0) \]
+          <p>Koordinačių pradžia nepriklauso leistinųjų sprendinių aibei: įstačius jos koordinates, abi nelygybės yra neteisingos, todėl abi rodyklės nukreiptos nuo koordinačių pradžios.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">4 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

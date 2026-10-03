@@ -234,7 +234,7 @@
         desc: { lt: 'Rinkos dalys, kurios ilguoju laikotarpiu nebekinta: \\(P\\cdot X = X\\).' } }
     ],
     t4: [
-      { id: 'm41', status: 'soon',
+      { id: 'm41', status: 'active', href: { lt: 'tema-4-nelygybiu-sistemos.html' },
         title: { lt: 'Tiesinių nelygybių sistemos', en: 'Systems of Linear Inequalities' },
         desc: { lt: 'Pusplokštumės, leistinųjų sprendinių aibė ir jos viršūnės.' } },
       { id: 'm42', status: 'soon',
@@ -283,6 +283,8 @@
                title: { lt: 'Stabiliosios rinkos dalys', en: 'Long-Run Market Shares' } },
     t4:      { parent: 'home', href: { lt: 'tema-4.html', en: null },
                title: { lt: '4 tema', en: 'Topic 4' } },
+    m41:     { parent: 't4', topic: 't4', model: 'm41', href: { lt: 'tema-4-nelygybiu-sistemos.html', en: null },
+               title: { lt: 'Tiesinių nelygybių sistemos', en: 'Systems of Linear Inequalities' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
@@ -1094,6 +1096,141 @@
     else el.textContent = tex;
   }
 
+
+  /* ------------------------------------------------------------------
+     TIESINIO PROGRAMAVIMO BRĖŽINYS (lp-chart)
+     <div data-widget="lp-chart" data-spec='{...}'></div>
+     spec: x/y: [min, max, padala, užrašai kas k padalų];
+           c: apribojimai {a, b, s: "le"|"ge", r, lab, col: 1–3, lt: užrašo vieta 0–1,
+              arr: rodyklių vietos [0–1], lo: užrašo poslinkis px};
+           nn: "xy" | "x" | "y" – neneigiamumo sąlygos (tik aibei);
+           shade: true – nuspalvinti visų apribojimų sankirtą;
+           pts: [{x, y, lab, p: n|ne|e|se|s|sw|w|nw, hi: true}];
+           test: [x, y] – tikrinimo taškas; aria: aprašas.
+     ------------------------------------------------------------------ */
+  function initLpChart(box) {
+    var sp;
+    try { sp = JSON.parse(box.getAttribute('data-spec')); } catch (e) { return; }
+    var xr = sp.x, yr = sp.y, W = 340, Lp = 30, Rp = 22, Tp = 22, Bp = 26, MAXH = 330;
+    var s = Math.min((W - Lp - Rp) / (xr[1] - xr[0]), (MAXH - Tp - Bp) / (yr[1] - yr[0]));
+    var pw = s * (xr[1] - xr[0]), ph = s * (yr[1] - yr[0]);
+    var x0 = Lp + ((W - Lp - Rp) - pw) / 2, H = Math.round(Tp + ph + Bp);
+    function X(x) { return +(x0 + (x - xr[0]) * s).toFixed(1); }
+    function Y(y) { return +(Tp + (yr[1] - y) * s).toFixed(1); }
+    var cons = sp.c || [];
+
+    // pusplokštumė a*x + b*y <= r
+    function hp(c) { return c.s === 'ge' ? { a: -c.a, b: -c.b, r: -c.r } : { a: c.a, b: c.b, r: c.r }; }
+    function clip(poly, h) {
+      var out = [];
+      for (var i = 0; i < poly.length; i++) {
+        var P = poly[i], Q = poly[(i + 1) % poly.length];
+        var fp = h.a * P[0] + h.b * P[1] - h.r, fq = h.a * Q[0] + h.b * Q[1] - h.r;
+        if (fp <= 1e-9) out.push(P);
+        if ((fp < -1e-9 && fq > 1e-9) || (fp > 1e-9 && fq < -1e-9)) {
+          var t = fp / (fp - fq);
+          out.push([P[0] + t * (Q[0] - P[0]), P[1] + t * (Q[1] - P[1])]);
+        }
+      }
+      return out;
+    }
+    var rect = [[xr[0], yr[0]], [xr[1], yr[0]], [xr[1], yr[1]], [xr[0], yr[1]]];
+    // tiesės atkarpa lango ribose
+    function seg(c) {
+      var pts = [], E = 1e-9;
+      if (Math.abs(c.b) > E) [xr[0], xr[1]].forEach(function (x) { var y = (c.r - c.a * x) / c.b; if (y >= yr[0] - E && y <= yr[1] + E) pts.push([x, y]); });
+      if (Math.abs(c.a) > E) [yr[0], yr[1]].forEach(function (y) { var x = (c.r - c.b * y) / c.a; if (x >= xr[0] - E && x <= xr[1] + E) pts.push([x, y]); });
+      pts.sort(function (p, q) { return p[0] - q[0] || p[1] - q[1]; });
+      return pts.length >= 2 ? [pts[0], pts[pts.length - 1]] : null;
+    }
+    function eq(str) {
+      return esc(str).replace(/([a-z])/g, '<tspan class="i">$1</tspan>');
+    }
+
+    var g = '';
+    // tinklelis
+    var tx = xr[2] || 1, ty = yr[2] || 1, lx = xr[3] || 1, ly = yr[3] || 1;
+    var i0 = Math.ceil(xr[0] / tx - 1e-9), i1 = Math.floor(xr[1] / tx + 1e-9);
+    var j0 = Math.ceil(yr[0] / ty - 1e-9), j1 = Math.floor(yr[1] / ty + 1e-9);
+    for (var i = i0; i <= i1; i++) g += '<line class="grid" x1="' + X(i * tx) + '" y1="' + Y(yr[0]) + '" x2="' + X(i * tx) + '" y2="' + Y(yr[1]) + '"/>';
+    for (var j = j0; j <= j1; j++) g += '<line class="grid" x1="' + X(xr[0]) + '" y1="' + Y(j * ty) + '" x2="' + X(xr[1]) + '" y2="' + Y(j * ty) + '"/>';
+
+    // leistinųjų sprendinių aibė
+    if (sp.shade !== false) {
+      var poly = rect.slice();
+      var all = cons.map(hp);
+      if ((sp.nn || '').indexOf('x') >= 0) all.push({ a: -1, b: 0, r: 0 });
+      if ((sp.nn || '').indexOf('y') >= 0) all.push({ a: 0, b: -1, r: 0 });
+      all.forEach(function (h) { if (poly.length) poly = clip(poly, h); });
+      if (poly.length > 2) g += '<path class="lp-region" d="M' + poly.map(function (p) { return X(p[0]) + ' ' + Y(p[1]); }).join('L') + 'Z"/>';
+    }
+
+    // ašys
+    var ax0 = Math.min(Math.max(0, xr[0]), xr[1]), ay0 = Math.min(Math.max(0, yr[0]), yr[1]);
+    var xe = X(xr[1]) + 12, yt = Y(yr[1]) - 12;
+    g += '<line class="ax" x1="' + X(xr[0]) + '" y1="' + Y(ay0) + '" x2="' + xe + '" y2="' + Y(ay0) + '"/>' +
+         '<path class="ah" d="M' + (xe + 7) + ' ' + Y(ay0) + 'l-9 -4.5v9z"/>' +
+         '<line class="ax" x1="' + X(ax0) + '" y1="' + Y(yr[0]) + '" x2="' + X(ax0) + '" y2="' + yt + '"/>' +
+         '<path class="ah" d="M' + X(ax0) + ' ' + (yt - 7) + 'l-4.5 9h9z"/>' +
+         '<text class="m" x="' + (xe + 2) + '" y="' + (Y(ay0) + 17) + '" text-anchor="middle">x</text>' +
+         '<text class="m" x="' + (X(ax0) - 11) + '" y="' + (yt - 1) + '" text-anchor="middle">y</text>';
+    // padalos ir skaičiai (vienetinė atkarpa)
+    for (i = i0; i <= i1; i++) {
+      if (i === 0) continue;
+      var vx = clean(i * tx);
+      g += '<line class="ax" x1="' + X(vx) + '" y1="' + (Y(ay0) - 3) + '" x2="' + X(vx) + '" y2="' + (Y(ay0) + 3) + '"/>';
+      if (i % lx === 0 && !(i === -1 && lx === 1)) g += '<text class="lp-tick halo" x="' + X(vx) + '" y="' + (Y(ay0) + 14) + '" text-anchor="middle">' + decStr(vx) + '</text>';
+    }
+    for (j = j0; j <= j1; j++) {
+      if (j === 0) continue;
+      var vy = clean(j * ty);
+      g += '<line class="ax" x1="' + (X(ax0) - 3) + '" y1="' + Y(vy) + '" x2="' + (X(ax0) + 3) + '" y2="' + Y(vy) + '"/>';
+      if (j % ly === 0 && !(j === -1 && ly === 1)) g += '<text class="lp-tick halo" x="' + (X(ax0) - 6) + '" y="' + (Y(vy) + 3.5) + '" text-anchor="end">' + decStr(vy) + '</text>';
+    }
+    g += '<text class="m halo" x="' + (X(ax0) - 7) + '" y="' + (Y(ay0) + 15) + '" text-anchor="end">O</text>';
+
+    // tiesės, rodyklės ir jų lygtys
+    cons.forEach(function (c) {
+      var sg = seg(c);
+      if (!sg) return;
+      var k = c.col || 1;
+      g += '<line class="lp-l' + k + '" x1="' + X(sg[0][0]) + '" y1="' + Y(sg[0][1]) + '" x2="' + X(sg[1][0]) + '" y2="' + Y(sg[1][1]) + '"/>';
+      var n = c.s === 'ge' ? [c.a, c.b] : [-c.a, -c.b];
+      var nl = Math.sqrt(n[0] * n[0] + n[1] * n[1]), ux = n[0] / nl, uy = -n[1] / nl; // svg kryptis
+      (c.arr || [0.22, 0.7]).forEach(function (t) {
+        var px = X(sg[0][0] + t * (sg[1][0] - sg[0][0])), py = Y(sg[0][1] + t * (sg[1][1] - sg[0][1]));
+        var qx = px + 15 * ux, qy = py + 15 * uy;
+        var hx = qx + 5 * ux, hy = qy + 5 * uy, wx = -uy * 4, wy = ux * 4;
+        g += '<line class="lp-a' + k + '" x1="' + px + '" y1="' + py + '" x2="' + qx.toFixed(1) + '" y2="' + qy.toFixed(1) + '"/>' +
+             '<path class="lp-h' + k + '" d="M' + hx.toFixed(1) + ' ' + hy.toFixed(1) + 'L' + (qx + wx).toFixed(1) + ' ' + (qy + wy).toFixed(1) + 'L' + (qx - wx).toFixed(1) + ' ' + (qy - wy).toFixed(1) + 'Z"/>';
+      });
+      if (c.lab) {
+        var t = c.lt == null ? 0.88 : c.lt, off = c.lo == null ? 12 : c.lo;
+        var lxp = X(sg[0][0] + t * (sg[1][0] - sg[0][0])) - off * ux, lyp = Y(sg[0][1] + t * (sg[1][1] - sg[0][1])) - off * uy;
+        var dir = off >= 0 ? -ux : ux;
+        var anc = c.la || (Math.abs(dir) < 0.3 ? 'middle' : (dir > 0 ? 'start' : 'end'));
+        var wEst = c.lab.length * 7.4;
+        if (anc === 'start' && lxp + wEst > W - 2) { anc = 'end'; lxp = Math.min(lxp, W - 3); }
+        if (anc === 'end' && lxp - wEst < 2) { anc = 'start'; lxp = Math.max(lxp, 3); }
+        if (anc === 'middle') lxp = Math.min(Math.max(lxp, wEst / 2 + 2), W - wEst / 2 - 2);
+        g += '<text class="lp-lab c' + k + ' halo" x="' + lxp.toFixed(1) + '" y="' + (lyp + 4).toFixed(1) + '" text-anchor="' + anc + '">' + eq(c.lab) + '</text>';
+      }
+    });
+
+    // tikrinimo taškas
+    if (sp.test) g += '<circle class="lp-test" cx="' + X(sp.test[0]) + '" cy="' + Y(sp.test[1]) + '" r="4.5"/>';
+
+    // viršūnės
+    var OFF = { n: [0, -9, 'middle'], ne: [7, -7, 'start'], e: [9, 4, 'start'], se: [7, 15, 'start'], s: [0, 17, 'middle'], sw: [-7, 15, 'end'], w: [-9, 4, 'end'], nw: [-7, -7, 'end'] };
+    (sp.pts || []).forEach(function (p) {
+      var o = OFF[p.p || 'ne'];
+      g += '<circle class="' + (p.hi ? 'pt-hi' : 'pt') + '" cx="' + X(p.x) + '" cy="' + Y(p.y) + '" r="' + (p.hi ? 5 : 4) + '"/>';
+      if (p.lab) g += '<text class="lp-pt halo" x="' + (X(p.x) + o[0]) + '" y="' + (Y(p.y) + o[1]) + '" text-anchor="' + o[2] + '">' + esc(p.lab) + '</text>';
+    });
+
+    box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(sp.aria || '') + '">' + g + '</svg>';
+  }
+
   /* ------------------------------------------------------------------
      Paleidimas
      ------------------------------------------------------------------ */
@@ -1108,6 +1245,7 @@
     $all('[data-widget="market-chart"]').forEach(initMarketChart);
     $all('[data-widget="breakeven-chart"]').forEach(initBreakEvenChart);
     $all('[data-widget="means-chart"]').forEach(initMeansChart);
+    $all('[data-widget="lp-chart"]').forEach(initLpChart);
     renderMath(document.body);
     $all('.example').forEach(initExample);
     $all('.quiz').forEach(function (qz) {
