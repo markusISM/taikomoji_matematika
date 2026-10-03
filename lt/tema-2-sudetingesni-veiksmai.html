@@ -38,7 +38,8 @@
 
     <article class="card">
       <p><strong>Transponavimas.</strong> Jei \(A\) yra \(m \times n\) matmenų matrica, kurios elementai yra \(a_{ij}\), tai jos transponuotoji matrica \(A^T\) yra \(n \times m\) matmenų matrica, kurios elementai yra \(a_{ji}\): matricos \(A\) eilutės tampa matricos \(A^T\) stulpeliais. Transponavimas nekeičia lentelėje esančios informacijos – tik sukeičia eilutes ir stulpelius. Taikomuosiuose uždaviniuose jo reikia, kai dvi lenteles būtina sudauginti, tačiau jų antraštės nesutampa.</p>
-      <p><strong>Matricų daugyba.</strong> Jei \(A\) yra \(m \times n\) matmenų matrica, o \(B\) – \(n \times p\) matmenų matrica, tai sandauga \(A\cdot B\) yra apibrėžta ir yra \(m \times p\) matmenų. Elementas \(c_{ij}\) gaunamas iš \(i\)-osios matricos \(A\) eilutės ir \(j\)-ojo matricos \(B\) stulpelio: atitinkami elementai sudauginami, o sandaugos sudedamos.</p>
+      <p><strong>Matricų daugyba.</strong> \(m \times n\) matmenų matricos \(A\) ir \(n \times k\) matmenų matricos \(B\) sandauga \(AB\) yra \(m \times k\) matmenų matrica \(C\), kurios bet kuris elementas \(c_{ij}\) lygus matricos \(A\) \(i\)-osios eilutės elementų ir atitinkamų \(B\) \(j\)-ojo stulpelio elementų sandaugų sumai:</p>
+      <div class="formula">\[ (m \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times k) = m \times k \]</div>
       <div class="formula">\[ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{in}b_{nj} \]</div>
       <p><a href="tema-2.html#sandauga">Matricų sandauga išsamiai – 2 temos puslapyje →</a></p>
 
@@ -77,7 +78,7 @@
         <li>Nurodykite, ką reiškia kiekvienos lentelės eilutės ir stulpeliai, ir užrašykite kiekvienos matricos matmenis.</li>
         <li>Nuspręskite, kas turi būti atsakyme: kokia klasifikacija žymės jo eilutes, o kokia – stulpelius. Pagal abiejose lentelėse pasikartojančią klasifikaciją bus sumuojama, todėl atsakyme jos nebeliks.</li>
         <li>Išdėstykite matricas taip, kad bendra klasifikacija atitiktų pirmosios matricos stulpelius ir antrosios matricos eilutes. Jei vienoje lentelėje ji išdėstyta atvirkščiai, tą lentelę transponuokite.</li>
-        <li>Patikrinkite, ar matmenys suderinti: \((m \times n)\cdot(n \times p) = m \times p\). Jei du viduriniai skaičiai nesutampa, sandauga neapibrėžta ir duomenys išdėstyti netinkamai.</li>
+        <li>Patikrinkite, ar matmenys suderinti: \((m \times n)\cdot(n \times k) = m \times k\). Jei du viduriniai skaičiai nesutampa, sandauga neapibrėžta ir duomenys išdėstyti netinkamai.</li>
         <li>Kiekvieną elementą apskaičiuokite daugindami eilutę iš stulpelio: sudauginkite atitinkamus elementus ir sandaugas sudėkite.</li>
         <li>Nurodykite atsakymo eilučių ir stulpelių reikšmę, žodžiais paaiškinkite vieną elementą ir atsakykite į vadybinį klausimą: palyginkite alternatyvas, pasirinkite pigesnę arba patikrinkite, ar rezultatas neviršija nustatytos ribos.</li>
       </ol>
