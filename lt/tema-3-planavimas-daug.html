@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Racionalusis planavimas: be galo daug sprendinių · Taikomoji matematika</title>
+<meta name="description" content="Planavimo uždaviniai, kurių lygčių sistema turi be galo daug sprendinių: parametras, jo leistinos reikšmės ir visi galimi planai.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=16">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=16"></script>
+</head>
+<body data-page="m32">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">3 tema · Taikymai</span>
+    <h1>Racionalusis planavimas: be galo daug sprendinių</h1>
+    <p class="lead">Šioje skiltyje nagrinėjami planavimo uždaviniai, kurių lygčių sistema turi be galo daug sprendinių: kaip sprendinius užrašyti su parametru ir atrinkti tuos planus, kurie turi ekonominę prasmę.</p>
+    <ul class="jump">
+      <li><a href="#principai">Modelis</a></li>
+      <li><a href="#daug">Kai sprendinių daug</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS – PRIMINIMAS ============ -->
+  <section class="section" id="principai" aria-labelledby="h-model">
+    <h2 id="h-model">Modelio sudarymas: trumpas priminimas</h2>
+
+    <article class="card">
+      <p>Lygčių sistema sudaroma taip pat, kaip ir tada, kai sprendinys vienintelis:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Kintamieji</strong><span>Kiekvienam ieškomam kiekiui – vienas kintamasis, apibrėžtas sakiniu su matavimo vienetu.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Lygtys</strong><span>Kiekvienam ištekliui ar reikalavimui – lygtis „sunaudojama = turima“.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Gauso metodas</strong><span>Sistema užrašoma išplėstine matrica ir pertvarkoma į trikampį pavidalą.</span></div></div>
+      </div>
+      <p class="more-link"><a href="tema-3-planavimas-vienintelis.html#modelis">Išsamiau apie modelio sudarymą – 1 skiltyje →</a></p>
+    </article>
+  </section>
+
+  <!-- ============ 2. KAI SPRENDINIŲ DAUG ============ -->
+  <section class="section" id="daug" aria-labelledby="h-many">
+    <h2 id="h-many">Kada sprendinių be galo daug ir ką daryti</h2>
+
+    <article class="card">
+      <p>Planavimo uždavinyje sprendinių būna be galo daug, kai <strong>sąlygų yra mažiau nei ieškomų kiekių</strong>: pavyzdžiui, reikia nustatyti trijų rūšių gaminių kiekius, o reikalavimai tik du. Taip nutinka ir tada, kai kuri nors lygtis nesuteikia naujos informacijos – Gauso metodu ji virsta nuline eilute.</p>
+      <p>Abiem atvejais baigus tiesioginę eigą <strong>nenulinių eilučių lieka mažiau nei kintamųjų</strong>. Kiekvienas kintamasis, kuriam neliko pagrindinio elemento, yra laisvasis – jis gali įgyti bet kurią reikšmę (<a href="tema-3.html#trys-atvejai">žr. 3 temą</a>).</p>
+
+      <div class="subtype">
+        <h4>Ką daryti</h4>
+        <ol class="steps-list">
+          <li><strong>Laisvieji kintamieji.</strong> Jų skaičius lygus kintamųjų skaičiaus ir nenulinių eilučių skaičiaus skirtumui.</li>
+          <li><strong>Parametras.</strong> Kintamąjį, kuriam nėra vedančiojo vieneto, prilyginkite parametrui: \(z = t\).</li>
+          <li><strong>Kiti kintamieji per parametrą.</strong> Atbuline eiga išreikškite likusius kintamuosius per \(t\).</li>
+          <li><strong>Ekonominė prasmė.</strong> Matematiškai tinka bet kuri \(t\) reikšmė, tačiau kiekiai negali būti neigiami, o vienetais skaičiuojami daiktai – trupmeniniai. Kiekvienam kintamajam užrašykite nelygybę „\(\geq 0\)“ ir iš jų raskite, kokias reikšmes gali įgyti \(t\).</li>
+          <li><strong>Galimi planai.</strong> Kiekviena leistina \(t\) reikšmė duoda vieną planą (atskirąjį sprendinį). Suskaičiuokite planus, surašykite juos į lentelę ir atsakykite į papildomus sąlygos klausimus.</li>
+        </ol>
+      </div>
+
+      <figure class="fig numline">
+        <svg viewBox="0 0 320 84" role="img" aria-label="Parametro t leistinos reikšmės skaičių tiesėje: sveikieji skaičiai nuo a iki b">
+          <rect class="nl-band" x="70" y="30" width="180" height="20" rx="4"/>
+          <path class="ax" d="M10 40H302"/>
+          <path class="ah" d="M310 40l-9-4.5v9z"/>
+          <path class="nl-br" d="M76 26h-6v28h6M244 26h6v28h-6"/>
+          <circle class="pt" cx="70" cy="40" r="5"/><circle class="pt" cx="100" cy="40" r="5"/><circle class="pt" cx="130" cy="40" r="5"/><circle class="pt" cx="160" cy="40" r="5"/><circle class="pt" cx="190" cy="40" r="5"/><circle class="pt" cx="220" cy="40" r="5"/><circle class="pt" cx="250" cy="40" r="5"/>
+          <text class="m" x="70" y="72" text-anchor="middle">a</text>
+          <text class="m" x="250" y="72" text-anchor="middle">b</text>
+          <text class="m" x="304" y="66" text-anchor="middle">t</text>
+          <text class="muted" x="70" y="18" text-anchor="middle">t ≥ a</text>
+          <text class="muted" x="250" y="18" text-anchor="middle">t ≤ b</text>
+        </svg>
+        <figcaption>Nelygybės kartu duoda intervalą \([a;\, b]\); tinka tik jo sveikosios reikšmės: \(t \in [a;\, b] \cap \mathbb{Z}\).</figcaption>
+      </figure>
+
+      <p class="tip">Visi gauti planai vienodai gerai tenkina uždavinio sąlygas, todėl vien skaičiavimai neleidžia pasirinkti vieno plano. Tai vadybinis sprendimas, priimamas pagal modelyje neįtrauktus kriterijus, pavyzdžiui, įsigijimo kainą ar eksploatavimo sąnaudas. Parametro koeficientai parodo pasirinkimo pasekmes: kiek pasikeičia kiti kiekiai, kai \(t\) padidėja vienetu.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Ženklas dalijant iš neigiamo skaičiaus.</strong> Nelygybę padalijus iš neigiamo skaičiaus, jos ženklas keičiasi priešingu.</li>
+            <li><strong>Pamirštas parametras.</strong> Ne tik išreikšti kintamieji, bet ir pats laisvasis kintamasis turi būti neneigiamas: \(t \geq 0\).</li>
+            <li><strong>Trupmeninė riba.</strong> Jei gaunama, pavyzdžiui, \(t \leq 18\tfrac{1}{3}\), sveikoji riba yra \(t \leq 18\).</li>
+            <li><strong>Parametras ne tam kintamajam.</strong> Parametru žymimas kintamasis, kuriam neliko pagrindinio elemento; kiti išreiškiami per jį.</li>
+            <li><strong>Pateiktas tik vienas planas.</strong> Atsakyme turi būti bendrasis sprendinys su parametro reikšmių intervalu, o konkretūs planai – jei jų prašoma.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant taikomuosius tiesinių lygčių sistemų uždavinius, uždavinio pradžioje privaloma pateikti įvedamų kintamųjų apibrėžimus. Apibrėžimuose turi būti aiškiai nurodoma, kad kintamasis žymi tam tikro objekto kiekį.</li>
+            <li>Jei autoriui patogiau, sprendime galima, bet nebūtina, pateikti uždavinio sąlygą susistemizuotą lentelėje.</li>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tiesinių lygčių sistema. Pateikti sistemą tik išplėstinėje matricoje nepakanka.</li>
+            <li>Tiesinių lygčių sistemą būtina spręsti Gauso metodu. Būtina nurodyti, kokie veiksmai atliekami eliminuojant elementus po pagrindine įstrižaine.</li>
+            <li>Uždavinio sprendimo pabaigoje turi būti aiškiai pateiktas atsakymas.</li>
+            <li>Jei tiesinių lygčių sistema turi be galo daug sprendinių, juos būtina išreikšti su parametru. Taikomajame uždavinyje būtina nurodyti intervalą, kokias reikšmes gali įgyti parametras. Sąlygai prašant, būtina pateikti atskirąjį sprendinį(-ius).</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: alternatyvus 3.3 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Šaldiklių pirkimo planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Prekybos centrų tinklas nori įsigyti 20 vitrininių šaldiklių, kurių bendra talpa būtų 4800 litrų. Siūlomi trys modeliai: kompaktiškas, kurio talpa 150 litrų, standartinis, kurio talpa 300 litrų, ir didelis, kurio talpa 600 litrų. Kiek kiekvieno modelio šaldiklių tinklas turėtų įsigyti?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– įsigyjamų kompaktiškų šaldiklių skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– įsigyjamų standartinių šaldiklių skaičius;</span></li>
+            <li><span class="sym">\(z\)</span><span>– įsigyjamų didelių šaldiklių skaičius.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lygčių sistema</span></h4>
+          <p>Reikalavimai yra du, todėl gauname tik dvi lygtis su trimis kintamaisiais: viena lygtimi skaičiuojami šaldikliai, kita – litrai.</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Lygtis</th></tr></thead>
+              <tbody>
+                <tr><td>Iš viso 20 šaldiklių</td><td>\(x + y + z = 20\)</td></tr>
+                <tr><td>Bendra talpa 4800 litrų</td><td>\(150x + 300y + 600z = 4800\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Lygčių mažiau nei kintamųjų, todėl vienintelio sprendinio būti negali.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Gauso metodas</span></h4>
+          <p>Antrąją lygtį padalijame iš 150 ir gauname \(x + 2y + 4z = 32\). Tada pirmąją eilutę dauginame iš \(-1\) ir pridedame prie antrosios:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 20 \\ 1 &amp; 2 &amp; 4 &amp; 32 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 20 \\ \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; 3 &amp; 12 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Parametras</span></h4>
+          <p>Yra 3 kintamieji ir 2 nenulinės eilutės, todėl laisvasis kintamasis vienas: \(3 - 2 = 1\). Kintamajam \(z\) neliko pagrindinio elemento, todėl pažymime \(z = t\) ir atbuline eiga išreiškiame kitus kintamuosius:</p>
+          <p>Iš antrosios eilutės \(y + 3t = 12\), iš pirmosios \(x + y + t = 20\):</p>
+          \[ \begin{aligned} y &amp;= 12 - 3t \\ x &amp;= 20 - (12 - 3t) - t = 8 + 2t \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Parametro reikšmės</span></h4>
+          <p>Šaldiklių skaičiai turi būti neneigiami sveikieji skaičiai:</p>
+          \[ \begin{aligned} x \geq 0:&amp;\quad 8 + 2t \geq 0 \;\Longrightarrow\; t \geq -4 \\ y \geq 0:&amp;\quad 12 - 3t \geq 0 \;\Longrightarrow\; t \leq 4 \\ z \geq 0:&amp;\quad t \geq 0 \end{aligned} \]
+          <p>Visos trys sąlygos kartu: \(t \in [0;\, 4] \cap \mathbb{Z}\), t. y. \(t\) gali būti 0, 1, 2, 3 arba 4.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Galimi planai</span></h4>
+          <div class="tbl-wrap">
+            <table class="vtable compact plans">
+              <thead><tr><th scope="col">\(t\)</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Kompaktiški \(x\)</th><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td></tr>
+                <tr><th scope="row">Standartiniai \(y\)</th><td>12</td><td>9</td><td>6</td><td>3</td><td>0</td></tr>
+                <tr><th scope="row">Dideli \(z\)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Kiekviename plane yra 20 šaldiklių, kurių bendra talpa – 4800 litrų. Pavyzdžiui, kai \(t = 2\): \(12 + 6 + 2 = 20\) ir \(150\cdot 12 + 300\cdot 6 + 600\cdot 2 = 4800\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{gathered} (x;\, y;\, z) = (8 + 2t;\; 12 - 3t;\; t), \\ t \in [0;\, 4] \cap \mathbb{Z} \end{gathered} \]
+            <p>Galimi penki pirkimo variantai: 8 kompaktiški ir 12 standartinių šaldiklių; 10 kompaktiškų, 9 standartiniai ir 1 didelis; 12 kompaktiškų, 6 standartiniai ir 2 dideli; 14 kompaktiškų, 3 standartiniai ir 3 dideli; arba 16 kompaktiškų ir 4 dideli šaldikliai.</p>
+          </div>
+          <p>Parametro koeficientai rodo pasirinkimo pasekmes: kiekvienas papildomas didelis šaldiklis reiškia dviem kompaktiškais daugiau ir trimis standartiniais mažiau. Kurį variantą rinktis, tinklas sprendžia pagal kainą ar eksploatavimo sąnaudas.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 3 uždavinys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Kavos aparatai su papildomu reikalavimu</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Viešbučių tinklas nori įsigyti 30 kavos aparatų, kurių bendras našumas būtų 1000 puodelių per valandą. Galimi trys modeliai, kurių našumas yra 20, 40 ir 60 puodelių per valandą. Kiek kiekvieno modelio aparatų galima įsigyti? Tinklas taip pat reikalauja bent 8 didžiausio modelio aparatų. Kurie planai tenkina šį reikalavimą?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <p>Tegu \(x\), \(y\) ir \(z\) yra atitinkamai 20, 40 ir 60 puodelių per valandą našumo aparatų skaičiai.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lygčių sistema</span></h4>
+          <p>Du reikalavimai – aparatų skaičius ir bendras našumas – duoda dvi lygtis su trimis nežinomaisiais:</p>
+          \[ \begin{cases} x + y + z = 30 \\ 20x + 40y + 60z = 1000 \end{cases} \]
+          <p>Reikalavimas „bent 8 didžiausio modelio aparatai“ yra nelygybė, o ne lygtis, todėl jį patikrinsime vėliau, kai turėsime visus planus.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Gauso metodas</span></h4>
+          <p>Našumo lygtį padalijame iš 20 ir gauname \(x + 2y + 3z = 50\). Tada prie antrosios eilutės pridedame pirmąją, padaugintą iš \(-1\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 30 \\ 1 &amp; 2 &amp; 3 &amp; 50 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 30 \\ \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; 2 &amp; 20 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Parametras</span></h4>
+          <p>Dvi nenulinės eilutės ir trys kintamieji, todėl laisvasis kintamasis vienas. Kintamajam \(z\) neliko vedančiojo vieneto, todėl pažymime \(z = t\):</p>
+          <p>Iš antrosios eilutės \(y + 2t = 20\), iš pirmosios \(x + y + t = 30\):</p>
+          \[ \begin{aligned} y &amp;= 20 - 2t \\ x &amp;= 30 - (20 - 2t) - t = 10 + t \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Parametro reikšmės</span></h4>
+          <p>Aparatų skaičiai turi būti sveikieji ir neneigiami. Kadangi \(x = 10 + t\) yra teigiamas esant bet kokiam \(t \geq 0\), vienintelis papildomas apribojimas yra</p>
+          \[ y \geq 0:\quad 20 - 2t \geq 0 \;\Longrightarrow\; t \leq 10 \]
+          <p>Taigi \(t \in [0;\, 10] \cap \mathbb{Z}\) – gaunama vienuolika skirtingų pirkimo planų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Papildomas reikalavimas</span></h4>
+          <p>Reikalavimas \(z \geq 8\) reiškia \(t \geq 8\), todėl iš vienuolikos planų lieka trys:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact plans">
+              <thead><tr><th scope="col">\(t = z\)</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">\(x\)</th><td>18</td><td>19</td><td>20</td></tr>
+                <tr><th scope="row">\(y\)</th><td>4</td><td>2</td><td>0</td></tr>
+                <tr><th scope="row">\(z\)</th><td>8</td><td>9</td><td>10</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Patikrinkite vieną iš jų, \((19;\, 2;\, 9)\): \(19 + 2 + 9 = 30\) aparatų ir</p>
+          \[ 20\cdot 19 + 40\cdot 2 + 60\cdot 9 = 1000 \]
+          <p>puodelių per valandą.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Galimi vienuolika planų:</p>
+            \[ \begin{gathered} (x;\, y;\, z) = (10 + t;\; 20 - 2t;\; t), \\ t \in [0;\, 10] \cap \mathbb{Z} \end{gathered} \]
+            <p>Jei didžiausio modelio aparatų turi būti bent 8, lieka trys planai: \((18;\, 4;\, 8)\), \((19;\, 2;\, 9)\) ir \((20;\, 0;\, 10)\).</p>
+          </div>
+          <p>Visi jie tiksliai tenkina reikalavimus, todėl tinklas gali rinktis pagal kainą ar patikimumą.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 4 uždavinys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Keturi gaminiai ir trys ištekliai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Pakavimo dirbtuvės gamina keturis gaminius: dėžutes, dėžes, padėklus ir dėklus. Vienai dėžutei reikia 2 žmogaus darbo valandų, 1 staklių darbo valandos ir 3&nbsp;kg medžiagos; vienai dėžei – 1 žmogaus darbo valandos, 2 staklių darbo valandų ir 1&nbsp;kg medžiagos; vienam padėklui – 3 žmogaus darbo valandų, 1 staklių darbo valandos ir 2&nbsp;kg medžiagos; vienam dėklui – 4 žmogaus darbo valandų, 5 staklių darbo valandų ir 5&nbsp;kg medžiagos. Per pamainą turima 100 žmogaus darbo valandų, 90 staklių darbo valandų ir 110&nbsp;kg medžiagos. Raskite visus gamybos planus, pagal kuriuos kiekvienas išteklius būtų visiškai sunaudotas.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <p>Tegu \(x_1\), \(x_2\), \(x_3\) ir \(x_4\) yra per pamainą pagamintų dėžučių, dėžių, padėklų ir dėklų skaičiai.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lentelė ir lygčių sistema</span></h4>
+          <p>Kiekvienam ištekliui skiriame po vieną eilutę, o kiekvienam gaminiui – stulpelį (\(x_1\) – dėžutės, \(x_2\) – dėžės, \(x_3\) – padėklai, \(x_4\) – dėklai):</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact tight hdr-wrap">
+              <thead><tr><th scope="col"></th><th scope="col">Dėžutės \(x_1\)</th><th scope="col">Dėžės \(x_2\)</th><th scope="col">Padėklai \(x_3\)</th><th scope="col">Dėklai \(x_4\)</th><th scope="col">Turima</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Darbas, val.</th><td>2</td><td>1</td><td>3</td><td>4</td><td>100</td></tr>
+                <tr><th scope="row">Staklės, val.</th><td>1</td><td>2</td><td>1</td><td>5</td><td>90</td></tr>
+                <tr><th scope="row">Medžiaga, kg</th><td>3</td><td>1</td><td>2</td><td>5</td><td>110</td></tr>
+              </tbody>
+            </table>
+          </div>
+          \[ \begin{cases} 2x_1 + x_2 + 3x_3 + 4x_4 = 100 \\ x_1 + 2x_2 + x_3 + 5x_4 = 90 \\ 3x_1 + x_2 + 2x_3 + 5x_4 = 110 \end{cases} \]
+          <p>Trys lygtys ir keturi nežinomieji, todėl sistema negali turėti vienintelio sprendinio.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <p>Kad gautume vedantįjį vienetą, sukeičiame pirmąsias dvi eilutes vietomis, tada pirmojo stulpelio elementus po juo paverčiame nuliais:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 2 &amp; 1 &amp; 3 &amp; 4 &amp; 100 \\ 3 &amp; 1 &amp; 2 &amp; 5 &amp; 110 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ \htmlClass{hc}{0} &amp; -3 &amp; 1 &amp; -6 &amp; -80 \\ \htmlClass{hc}{0} &amp; -5 &amp; -1 &amp; -10 &amp; -160 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Antrasis vedantysis vienetas</span></h4>
+          <p>Trečiosios eilutės elementai dalijasi iš \(-5\) be liekanos, todėl prieš dalijant 2-ąją ir 3-iąją eilutes sukeičiame vietomis:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; -5 &amp; -1 &amp; -10 &amp; -160 \\ 0 &amp; -3 &amp; 1 &amp; -6 &amp; -80 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \\ \phantom{0} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0{,}2 &amp; 2 &amp; 32 \\ 0 &amp; -3 &amp; 1 &amp; -6 &amp; -80 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Nulis antrajame stulpelyje</span></h4>
+          <p>Prie trečiosios eilutės pridedame antrąją, padaugintą iš 3, tada rezultatą dalijame iš 1,6:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0{,}2 &amp; 2 &amp; 32 \\ 0 &amp; -3 &amp; 1 &amp; -6 &amp; -80 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; 1 &amp; 0{,}2 &amp; 2 &amp; 32 \\ 0 &amp; \htmlClass{hc}{0} &amp; 1{,}6 &amp; 0 &amp; 16 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,1{,}6} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; 1 &amp; 0{,}2 &amp; 2 &amp; 32 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 0 &amp; 10 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Parametras</span></h4>
+          <p>Yra trys nenulinės eilutės ir keturi kintamieji, todėl vienas kintamasis yra laisvasis. Paskutinė eilutė reiškia \(x_3 = 10\), o kintamajam \(x_4\) nėra pagrindinio elemento, todėl jis yra laisvasis. Pažymime \(x_4 = t\) ir įstatome į aukščiau esančias lygtis:</p>
+          \[ \begin{aligned} &amp;x_2 + 0{,}2\cdot 10 + 2t = 32 \\ &amp;\Longrightarrow\; x_2 = 30 - 2t \\[4pt] &amp;x_1 + 2(30 - 2t) + 10 + 5t = 90 \\ &amp;\Longrightarrow\; x_1 = 20 - t \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Parametro reikšmės</span></h4>
+          <p>Kiekiai turi būti neneigiami sveikieji skaičiai:</p>
+          \[ \begin{aligned} x_1 \geq 0:&amp;\quad 20 - t \geq 0 \;\Longrightarrow\; t \leq 20 \\ x_2 \geq 0:&amp;\quad 30 - 2t \geq 0 \;\Longrightarrow\; t \leq 15 \\ x_4 \geq 0:&amp;\quad t \geq 0 \end{aligned} \]
+          <p>Taigi \(t \in [0;\, 15] \cap \mathbb{Z}\) – gaunama šešiolika planų. Trys iš jų:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact plans">
+              <thead><tr><th scope="col">\(t\)</th><th scope="col">0</th><th scope="col">5</th><th scope="col">15</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">\(x_1\)</th><td>20</td><td>15</td><td>5</td></tr>
+                <tr><th scope="row">\(x_2\)</th><td>30</td><td>20</td><td>0</td></tr>
+                <tr><th scope="row">\(x_3\)</th><td>10</td><td>10</td><td>10</td></tr>
+                <tr><th scope="row">\(x_4\)</th><td>0</td><td>5</td><td>15</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Ką rodo rezultatas</span></h4>
+          <p>Prieš pasirenkant reikėtų pastebėti du dalykus. Pirma, kiekviename plane yra 10 padėklų: ištekliai nulemia šį kiekį nepriklausomai nuo kitų dirbtuvių sprendimų. Antra, parametras parodo pasirinkimo pasekmes – dėl kiekvieno papildomo dėklo tenka pagaminti viena dėžute ir dviem dėžėmis mažiau.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{gathered} (x_1;\, x_2;\, x_3;\, x_4) = {} \\ (20 - t;\; 30 - 2t;\; 10;\; t), \\ t \in [0;\, 15] \cap \mathbb{Z} \end{gathered} \]
+          </div>
+          <p>Kiekvienas toks planas tiksliai sunaudoja visus tris išteklius, todėl yra šešiolika galimų gamybos planų.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: apibrėžkite kintamuosius, sudarykite lygčių sistemą, išspręskite ją Gauso metodu, išreikškite sprendinius su parametru ir nurodykite jo reikšmių intervalą. Atsakyme pateikti kintamieji, sistema ir galutinis atsakymas – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Stalių dirbtuvė gamina vidaus duris, lauko duris ir durų staktas. Vienoms vidaus durims pagaminti reikia 4 staklių darbo valandų ir 5 lentų, vienoms lauko durims – 5 valandų ir 6 lentų, o vienai durų staktai – 2 valandų ir 3 lentų. Kitą mėnesį dirbtuvė turi 240 staklių darbo valandų ir 300 lentų. Reikia pilnai panaudoti ir darbo laiką, ir lentas. Raskite visus galimus gamybos planus ir nurodykite, kiek jų yra.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– vidaus durų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– lauko durų skaičius;</span></li>
+            <li><span class="sym">\(z\)</span><span>– durų staktų skaičius.</span></li>
+          </ul>
+          <p><strong>Lygčių sistema.</strong> Pirmoji lygtis aprašo staklių darbo valandų skaičių, o antroji – lentų skaičių:</p>
+          \[ \begin{cases} 4x + 5y + 2z = 240 \\ 5x + 6y + 3z = 300 \end{cases} \]
+          <p><strong>Atsakymas.</strong> Yra trys kintamieji ir dvi nenulinės eilutės, todėl sistema turi vieną parametrą ir be galo daug sprendinių:</p>
+          \[ x = 60 - 3t, \quad y = 2t, \quad z = t \]
+          <p>Gaminių skaičius turi būti sveikasis ir neneigiamas, todėl \(t \in [0;\, 20] \cap \mathbb{Z}\), taigi galimas <strong>dvidešimt vienas gamybos planas</strong>: nuo 60 vidaus durų, negaminant kitų gaminių, iki 40 lauko durų ir 20 durų staktų, negaminant vidaus durų. Pagal kiekvieną planą stalių dirbtuvė pagamina dvigubai daugiau lauko durų nei durų staktų, o gaminant viena durų stakta daugiau kartu pagaminama dvejomis lauko durimis daugiau ir trejomis vidaus durimis mažiau.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Delikatesų parduotuvė sudaro keturių rūšių dovanų rinkinius. Klasikinį rinkinį sudaro 1 stiklainis medaus, 1 butelis vyno, 2 dėžutės šokolado ir 3 pakeliai kavos; prabangų rinkinį – 1 stiklainis medaus, 2 buteliai vyno, 3 dėžutės šokolado ir 4 pakeliai kavos; vyno mėgėjo rinkinį – 1 stiklainis medaus, 3 buteliai vyno, 1 dėžutė šokolado ir 2 pakeliai kavos; rinkinį be alkoholio – 1 stiklainis medaus, 1 dėžutė šokolado ir 2 pakeliai kavos. Parduotuvė turi 100 stiklainių medaus, 140 butelių vyno, 150 dėžučių šokolado ir 250 pakelių kavos. Visas šias prekes reikia sudėti į dovanų rinkinius. Raskite visus galimus rinkinių sudarymo būdus ir nurodykite, kiek jų yra.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– klasikinių dovanų rinkinių skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– prabangių dovanų rinkinių skaičius;</span></li>
+            <li><span class="sym">\(z\)</span><span>– vyno mėgėjų dovanų rinkinių skaičius;</span></li>
+            <li><span class="sym">\(w\)</span><span>– dovanų rinkinių be alkoholio skaičius.</span></li>
+          </ul>
+          <p><strong>Lygčių sistema.</strong> Kiekvienos turimos prekės kiekiui užrašoma po vieną lygtį: medaus stiklainių, vyno butelių, šokolado dėžučių ir kavos pakelių:</p>
+          \[ \begin{cases} x + y + z + w = 100 \\ x + 2y + 3z = 140 \\ 2x + 3y + z + w = 150 \\ 3x + 4y + 2z + 2w = 250 \end{cases} \]
+          <p><strong>Atsakymas.</strong> Iš keturių lygčių lieka tik trys nenulinės eilutės – kavos kiekio lygtis yra medaus ir šokolado kiekių lygčių suma. Taigi, esant keturiems kintamiesiems, sistema turi vieną parametrą ir be galo daug sprendinių:</p>
+          \[ \begin{gathered} x = 90 - 2t, \quad y = t - 20, \\ z = 30, \quad w = t \end{gathered} \]
+          <p>Dovanų rinkinių skaičius turi būti sveikasis ir neneigiamas, todėl \(t \in [20;\, 45] \cap \mathbb{Z}\), taigi galimi <strong>dvidešimt šeši rinkinių sudarymo būdai</strong>: nuo \((50;\, 0;\, 30;\, 20)\) iki \((0;\, 25;\, 30;\, 45)\). Kiekvienu atveju vyno mėgėjų dovanų rinkinių skaičius yra 30, o sudarant vienu rinkiniu be alkoholio daugiau kartu sudaroma vienu prabangiu rinkiniu daugiau ir dviem klasikiniais rinkiniais mažiau.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">1 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">5 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

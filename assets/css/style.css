@@ -803,3 +803,18 @@ svg .ln2-dash { stroke: var(--chart-2); stroke-width: 3; stroke-dasharray: 7 5; 
   .vtable.req-tbl td:first-child { background: var(--surface-2); font-size: .86rem; color: var(--muted); }
   .vtable.req-tbl td:last-child { white-space: normal; }
 }
+
+/* ---------- Racionalusis planavimas (3.2) ---------- */
+.more-link { margin: 14px 0 0; font-weight: 650; }
+.numline { max-width: 420px; margin: 16px auto 6px; }
+svg .nl-band { fill: var(--chart); fill-opacity: .14; }
+svg .nl-br { stroke: var(--chart); stroke-width: 2.4; fill: none; }
+.vtable.plans th, .vtable.plans td { text-align: center; }
+.vtable.plans tbody th { text-align: left; white-space: nowrap; }
+.vtable.tight th, .vtable.tight td { padding: 3px 4px; font-size: .7rem; }
+.vtable.hdr-wrap thead th { text-align: center; }
+@media (max-width: 440px) {
+  .vtable.hdr-wrap thead th { font-size: 0; }
+  .vtable.hdr-wrap thead th .katex { font-size: .82rem; }
+  .vtable.hdr-wrap thead th:last-child { font-size: .7rem; }
+}
