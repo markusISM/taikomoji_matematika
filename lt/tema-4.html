@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=19">
+<link rel="stylesheet" href="../assets/css/style.css?v=20">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=19"></script>
+<script defer src="../assets/js/site.js?v=20"></script>
 </head>
 <body data-page="t4">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -43,12 +43,44 @@
       <p>Tiesinio programavimo (TP) uždavinyje ieškoma geriausio sprendimo, kai galimybės ribotos. Reikia rasti tokias kintamųjų reikšmes, kurioms <strong>tikslo funkcija</strong> įgyja <strong>didžiausią</strong> arba <strong>mažiausią</strong> reikšmę, ir kartu tenkinami visi <strong>apribojimai</strong>.</p>
       <p>Pavyzdžiui, įmonė nori gauti kuo didesnį pelną, tačiau jos darbo laikas ir žaliavos riboti; arba nori kuo pigiau pasiekti reikiamą reklamos auditoriją. Taip sprendžiami optimalaus gamybos plano, reklamos ir investicijų portfelio uždaviniai.</p>
       <p>Uždavinys vadinamas <strong>tiesiniu</strong>, nes ir tikslo funkcija, ir apribojimai yra tiesiniai: kintamieji juose yra tik pirmojo laipsnio, kaip ir <a href="tema-3.html#sistema">tiesinėse lygtyse</a>.</p>
-      <div class="phases phases--3">
-        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Tikslo funkcija</strong><span>Pelnas, pajamos, grąža \(\to \max\); sąnaudos, rizika \(\to \min\).</span></div></div>
-        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Techniniai apribojimai</strong><span>Darbo laikas, žaliavos, paklausa ir kiti ištekliai ar reikalavimai.</span></div></div>
-        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Natūralieji apribojimai</strong><span>Neneigiamumo, sveikaskaitiškumo, binariniai ir kiti.</span></div></div>
+      <div class="subtype">
+        <h4>TP uždavinio sandara</h4>
+        <p>Kiekvieną TP uždavinį sudaro trys dalys:</p>
+        <div class="anat">
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Tikslo funkcija</strong></div>
+            <p class="anat-d">Ką siekiama padidinti arba sumažinti:</p>
+            <ul>
+              <li>pelnas \(\to \max\)</li>
+              <li>sąnaudos \(\to \min\)</li>
+              <li>pajamos \(\to \max\)</li>
+              <li>grąža \(\to \max\)</li>
+              <li>rizika \(\to \min\)</li>
+            </ul>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Techniniai apribojimai</strong></div>
+            <p class="anat-d">Riboti ištekliai ir reikalavimai:</p>
+            <ul>
+              <li>darbo laikas</li>
+              <li>žaliavos</li>
+              <li>paklausa</li>
+              <li>kiti</li>
+            </ul>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Natūralieji apribojimai</strong></div>
+            <p class="anat-d">Kylantys iš kintamųjų prasmės:</p>
+            <ul>
+              <li>neneigiamumo</li>
+              <li>sveikaskaitiškumo</li>
+              <li>binariniai</li>
+              <li>kiti</li>
+            </ul>
+          </div>
+        </div>
+        <p>Kiekviena dalis išsamiau aptariama toliau.</p>
       </div>
-      <p class="formula-note" style="text-align:center">TP uždavinio sandara</p>
     </article>
 
     <!-- 2 -->
@@ -142,7 +174,7 @@
           \[ \begin{gathered} P = p_1x_1 + p_2x_2 + \cdots + p_nx_n \to \max \\[4pt] \begin{cases} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \leq b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \leq b_2 \\ \quad\vdots \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n \leq b_m \\ x_1;\, x_2;\, \ldots;\, x_n \geq 0 \end{cases} \end{gathered} \]
           <p>Standartinis minimizavimo uždavinys:</p>
           \[ \begin{gathered} C = c_1x_1 + c_2x_2 + \cdots + c_nx_n \to \min \\[4pt] \begin{cases} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \geq b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \geq b_2 \\ \quad\vdots \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n \geq b_m \\ x_1;\, x_2;\, \ldots;\, x_n \geq 0 \end{cases} \end{gathered} \]
-          <p>Geometriniu metodu sprendžiami uždaviniai su dviem kintamaisiais, kai \(x_1 = x\), \(x_2 = y\). Daugiau kintamųjų turintys uždaviniai sprendžiami simpleksų metodu (5 tema). Sąnaudų funkcija skaidrėse žymima \(C\), o uždavinių sprendimo gairėse ir pavyzdžiuose – \(TC\).</p>
+          <p>Geometriniu metodu sprendžiami uždaviniai su dviem kintamaisiais, kai \(x_1 = x\), \(x_2 = y\). Daugiau kintamųjų turintys uždaviniai sprendžiami simpleksų metodu (5 tema). Sąnaudų funkcija gali būti žymima \(C\) arba \(TC\).</p>
         </div>
       </details>
 
@@ -174,7 +206,7 @@
 
       <div class="subtype">
         <h4>1 etapas: leistinųjų sprendinių aibė</h4>
-        <p>Kiekviena tiesinė nelygybė su dviem kintamaisiais plokštumoje apibrėžia <strong>pusplokštumę</strong>: tiesė \(ax + by = c\) padalija plokštumą į dvi dalis, ir viena iš jų yra nelygybės sprendinių aibė. Sistemos sprendinių aibė yra visų pusplokštumių <strong>sankirta</strong> – taškai, tenkinantys visas nelygybes kartu. Tai ir yra <strong>leistinųjų sprendinių aibė</strong> (skaidrėse ir reikalavimuose – <em>leistina sprendinių aibė</em>).</p>
+        <p>Kiekviena tiesinė nelygybė su dviem kintamaisiais plokštumoje apibrėžia <strong>pusplokštumę</strong>: tiesė \(ax + by = c\) padalija plokštumą į dvi dalis, ir viena iš jų yra nelygybės sprendinių aibė. Sistemos sprendinių aibė yra visų pusplokštumių <strong>sankirta</strong> – taškai, tenkinantys visas nelygybes kartu. Tai ir yra <strong>leistinųjų sprendinių aibė</strong>.</p>
         <p>Jos kampiniai taškai vadinami <strong>viršūnėmis</strong>. Leistinųjų sprendinių aibė gali būti <strong>aprėžta</strong> (daugiakampis) arba <strong>neaprėžta</strong> (be galo besitęsianti kuria nors kryptimi).</p>
       </div>
 
@@ -204,7 +236,7 @@
             <text class="m" x="48" y="12">y</text>
             <text class="muted" x="122" y="170">P didėja</text>
           </svg>
-          <figcaption>Schema be skaičių. Nuspalvinta leistinųjų sprendinių aibė \(OABCD\); punktyrinės tiesės – taškai, kuriuose tikslo funkcija \(P\) įgyja vienodą reikšmę. Kuo toliau tiesė pasislinkusi rodyklės kryptimi, tuo didesnė \(P\) reikšmė. Paskutinis aibės taškas, kurį ji paliečia, – viršūnė \(B\).</figcaption>
+          <figcaption>Nuspalvinta leistinųjų sprendinių aibė \(OABCD\); punktyrinės tiesės – taškai, kuriuose tikslo funkcija \(P\) įgyja vienodą reikšmę. Kuo toliau tiesė pasislinkusi rodyklės kryptimi, tuo didesnė \(P\) reikšmė. Paskutinis aibės taškas, kurį ji paliečia, – viršūnė \(B\).</figcaption>
         </figure>
         <p>Tiesinės tikslo funkcijos reikšmė leistinųjų sprendinių aibėje tolygiai didėja viena kryptimi, todėl didžiausią (ar mažiausią) reikšmę ji įgyja <strong>vienoje iš aibės viršūnių</strong>. Viršūnių yra baigtinis skaičius, todėl pakanka:</p>
         <ol class="steps-list">
@@ -221,9 +253,9 @@
         <div class="more-body">
           <p>Kartais uždavinys neturi vieno optimalaus sprendinio:</p>
           <ul>
-            <li><strong>Sprendiniai atkarpoje.</strong> Kai tikslo funkcijos tiesės lygiagrečios vienai iš aibės kraštinių, ta pati didžiausia reikšmė pasiekiama dviejose gretimose viršūnėse ir visuose atkarpos tarp jų taškuose. Pavyzdžiui, uždavinyje \(P = 5x + 2y \to \max\), kai \(3x + 2y \leq 40\), \(10x + 4y \leq 100\), \(x;\, y \geq 0\), tikslo funkcijos koeficientai proporcingi antrosios nelygybės koeficientams: \(10x + 4y = 2(5x + 2y)\).</li>
-            <li><strong>Sprendinys nepasiekiamas.</strong> Kai leistinųjų sprendinių aibė neaprėžta, o tikslo funkcija maksimizuojama, jos reikšmė gali didėti be galo – didžiausios reikšmės nėra. Pavyzdžiui, \(P = 5x + 1{,}5y \to \max\), kai \(3x + 2y \geq 40\), \(10x + 4y \geq 100\), \(x;\, y \geq 0\).</li>
-            <li><strong>Leistinoji sprendinių aibė neegzistuoja.</strong> Kai apribojimai prieštarauja vienas kitam, nėra nė vieno taško, tenkinančio juos visus. Pavyzdžiui, sąlygos \(3x + 2y \geq 40\) ir \(10x + 4y \leq 60\), kai \(x;\, y \geq 0\), kartu neįvykdomos.</li>
+            <li><strong>Sprendiniai atkarpoje.</strong> Kai tikslo funkcijos tiesės lygiagrečios vienai iš leistinųjų sprendinių aibės kraštinių, ta pati didžiausia (ar mažiausia) reikšmė pasiekiama dviejose gretimose viršūnėse ir visuose atkarpos tarp jų taškuose. Optimalių sprendinių tada be galo daug.</li>
+            <li><strong>Sprendinys nepasiekiamas.</strong> Kai leistinųjų sprendinių aibė neaprėžta, o tikslo funkcija maksimizuojama, jos reikšmė gali didėti be galo – didžiausios reikšmės nėra.</li>
+            <li><strong>Leistinoji sprendinių aibė neegzistuoja.</strong> Kai apribojimai prieštarauja vienas kitam, nėra nė vieno taško, tenkinančio juos visus, todėl uždavinys sprendinių neturi.</li>
           </ul>
         </div>
       </details>

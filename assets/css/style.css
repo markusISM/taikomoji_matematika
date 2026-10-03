@@ -744,8 +744,8 @@ svg .node { fill: var(--surface); stroke: var(--text); stroke-width: 1.5; }
 @media (min-width: 560px) { .phases { grid-template-columns: 1fr 1fr; } }
 .phase { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
 .phase .ph-ico { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 700; }
-.phase strong { display: block; }
-.phase span:not(.ph-ico) { display: block; font-size: .92rem; color: var(--muted); }
+.phase > div > strong { display: block; }
+.phase > div > span { display: block; font-size: .92rem; color: var(--muted); }
 .phase-title { margin: 6px 0 10px; font-size: 1rem; color: var(--accent-strong); }
 .phase-title + .steps-list { margin-bottom: 4px; }
 .geo3 { display: grid; gap: 10px; margin: 14px 0 6px; }
@@ -857,3 +857,13 @@ svg .lp-iso { stroke: var(--exam); stroke-width: 1.6; stroke-dasharray: 6 5; fil
 svg .lp-arrow { stroke: var(--exam); stroke-width: 2; fill: none; }
 svg .lp-arrowhead { fill: var(--exam); }
 @media (max-width: 440px) { .small-math .katex-display > .katex { font-size: .86em; } }
+
+.anat { display: grid; gap: 10px; margin: 10px 0 8px; }
+@media (min-width: 560px) { .anat { grid-template-columns: repeat(3, 1fr); } }
+.anat-card { padding: 12px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+.anat-head { display: flex; gap: 10px; align-items: center; }
+.anat-head .ph-ico { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: .9rem; }
+.anat-head strong { line-height: 1.25; }
+.anat-d { margin: 8px 0 4px; font-size: .9rem; color: var(--muted); }
+.anat-card ul { margin: 0; padding-left: 1.1em; font-size: .95rem; }
+.anat-card li { margin: 0 0 2px; }
