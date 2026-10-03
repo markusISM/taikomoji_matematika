@@ -42,7 +42,6 @@
         <li><span class="sym">\(x\) arba \(q\)</span><span>gaminių skaičius;</span></li>
         <li><span class="sym">\(p\)</span><span>kaina;</span></li>
         <li><span class="sym">\(F\) arba \(FC\)</span><span><button type="button" class="term" data-term="Pastoviosios sąnaudos" data-def="Sąnaudos, kurios nepriklauso nuo pagamintų vienetų skaičiaus.">pastoviosios sąnaudos</button>;</span></li>
-        <li><span class="sym">\(VC\)</span><span>kintamosios sąnaudos;</span></li>
         <li><span class="sym">\(V\) arba \(AVC\)</span><span>vidutinės kintamosios sąnaudos arba vieno vieneto gamybos sąnaudos;</span></li>
         <li><span class="sym">\(TC\) arba \(C\)</span><span>bendrosios sąnaudos;</span></li>
         <li><span class="sym">\(R\) arba \(TR\)</span><span>bendrosios pajamos;</span></li>
@@ -50,8 +49,6 @@
       </ul>
 
       <h3 class="subhead" style="margin-top:22px">Kaip skaičiuojame sąnaudas, pajamas ir pelną</h3>
-      <p class="formula-label">Kintamosios sąnaudos</p>
-      <div class="formula">\[ VC = V\cdot x \]</div>
       <p class="formula-label">Bendrosios sąnaudos</p>
       <div class="formula">\[ TC(x) = F + V\cdot x \]</div>
       <p class="formula-label">Pajamos</p>
@@ -107,7 +104,7 @@
         <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
         <div class="more-body">
           <ul>
-            <li><strong>Skliaustai pelno funkcijoje.</strong> Iš pajamų atimama visa sąnaudų funkcija: \(P(x) = R(x) - (F + V\cdot x)\). Be skliaustų kintamosios sąnaudos būtų pridėtos, o ne atimtos.</li>
+            <li><strong>Skliaustai pelno funkcijoje.</strong> Iš pajamų atimama visa sąnaudų funkcija: \(P(x) = R(x) - (F + V\cdot x)\). Be skliaustų narys \(V\cdot x\) būtų pridėtas, o ne atimtas.</li>
             <li><strong>Sąnaudos procentais nuo kainos.</strong> „20 % pardavimo kainos“ reiškia \(V = 0{,}2p\), o ne \(V = 20\).</li>
             <li><strong>Neigiamas pelnas.</strong> Neigiamą pelno reikšmę nurodykite kaip nuostolį: \(P = -3600\) reiškia 3600 eurų nuostolį.</li>
             <li><strong>Lūžio taškas – kiekis.</strong> \(x_L\) yra gamybos kiekis vienetais. Jį atitinkančias pajamas skaičiuokite tik tada, kai to prašoma.</li>
@@ -119,10 +116,9 @@
         <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
         <div class="more-body">
           <ol>
-            <li>Sudarant tiesinį modelį (pavyzdžiui, tiesinio nusidėvėjimo, pelno funkcijos sudarymo, lūžio taško radimo) būtina parašyti, kokie duomenys yra duoti uždavinio sąlygoje.</li>
+            <li>Sudarant sąnaudų, pajamų ar pelno funkciją arba ieškant lūžio taško būtina parašyti, kokie duomenys yra duoti uždavinio sąlygoje.</li>
             <li>Įvedant naujus, paskaitose arba sąlygoje neįvardytus kintamuosius arba keičiant matavimo vienetus, būtina tai parašyti uždavinio sprendime.</li>
             <li>Jei uždavinys pateikia kelis klausimus, atsakymai į juos visus turi būti aiškiai pateikti.</li>
-            <li>Sprendžiant paklausos/pasiūlos ar kitų tiesinių funkcijų sudarymo uždavinius būtina nurodyti taškus ar kitą informaciją, kuri naudojama parametrų radimui.</li>
           </ol>
           <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
         </div>
@@ -245,6 +241,10 @@
           <p>Laisvasis narys yra pastoviosios sąnaudos; naudojant tašką \((150;\,4300)\):</p>
           \[ \begin{aligned} F &amp;= -Vx_1 + TC_1 \\ &amp;= -20\cdot 150 + 4300 \\ &amp;= -3000 + 4300 = 1300 \end{aligned} \]
           \[ TC(x) = 20x + 1300 \]
+          <div class="tip">
+            <p style="margin:0 0 8px"><strong>Kodėl \(V = 20\) eurų?</strong> Pagaminus 90 vienetų daugiau (nuo 150 iki 240), sąnaudos padidėjo 1800 eurų (nuo 4300 iki 6100), t. y. po 20 eurų kiekvienam papildomam vienetui. Tiek kainuoja pagaminti vieną vienetą – tai vieneto kintamosios sąnaudos.</p>
+            <p style="margin:0"><strong>Kodėl \(F = 1300\) eurų?</strong> Iš 4300 eurų, išleistų 150 vienetų pagaminti, \(20\cdot 150 = 3000\) eurų tenka patiems vienetams (po 20 eurų kiekvienam). Likę 1300 eurų nepriklauso nuo pagamintų vienetų skaičiaus – tai pastoviosios sąnaudos. Tiek kainuotų ir tada, kai nepagaminama nė vieno vieneto: \(TC(0) = 1300\).</p>
+          </div>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>300 vienetų sąnaudos</span></h4>
