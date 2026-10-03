@@ -158,8 +158,15 @@
       <div class="concept-head"><span class="num">8</span><h3>Matricų sandauga</h3></div>
 
       <div class="subtype">
+        <h4>Apibrėžimas</h4>
+        <p>\(m \times n\) matmenų matricos \(A\) ir \(n \times k\) matmenų matricos \(B\) sandauga \(AB\) yra \(m \times k\) matmenų matrica \(C\), kurios bet kuris elementas \(c_{ij}\) lygus matricos \(A\) \(i\)-osios eilutės elementų ir atitinkamų \(B\) \(j\)-ojo stulpelio elementų sandaugų sumai:</p>
+        <div class="formula">\[ (m \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times k) = m \times k \]</div>
+        <div class="formula">\[ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{in}b_{nj} \]</div>
+      </div>
+
+      <div class="subtype">
         <h4>Bendrasis pavyzdys</h4>
-        <p>Sudauginkime \(2 \times 3\) matmenų matricą \(A\) ir \(3 \times 2\) matmenų matricą \(B\). Vietoj skaičių rašome bendrinius elementus – taip matyti, iš kur atsiranda kiekvienas rezultato elementas:</p>
+        <p>Kaip tai veikia, pažiūrėkime bendruoju pavyzdžiu. Sudauginkime \(2 \times 3\) matmenų matricą \(A\) ir \(3 \times 2\) matmenų matricą \(B\). Vietoj skaičių rašome bendrinius elementus – taip matyti, iš kur atsiranda kiekvienas rezultato elementas:</p>
         <div class="mats">
           <span>\(A = \begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \end{pmatrix}\)</span>
           <span>\(B = \begin{pmatrix} b_{11} &amp; b_{12} \\ b_{21} &amp; b_{22} \\ b_{31} &amp; b_{32} \end{pmatrix}\)</span>
@@ -193,13 +200,6 @@
         <p>Taip randami visi keturi elementai:</p>
         <div class="formula">\[ \begin{aligned} c_{11} &amp;= a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31} \\ c_{12} &amp;= a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32} \\ c_{21} &amp;= a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31} \\ c_{22} &amp;= a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32} \end{aligned} \]</div>
         <p>Kiekvienoje sumoje antrasis \(a\) indeksas sutampa su pirmuoju \(b\) indeksu – tai ir yra poromis dauginami eilutės ir stulpelio elementai.</p>
-      </div>
-
-      <div class="subtype">
-        <h4>Bendruoju atveju</h4>
-        <p>\(m \times n\) matmenų matricos \(A\) ir \(n \times k\) matmenų matricos \(B\) sandauga \(AB\) yra \(m \times k\) matmenų matrica \(C\), kurios bet kuris elementas \(c_{ij}\) lygus matricos \(A\) \(i\)-osios eilutės elementų ir atitinkamų \(B\) \(j\)-ojo stulpelio elementų sandaugų sumai:</p>
-        <div class="formula">\[ (m \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times k) = m \times k \]</div>
-        <div class="formula">\[ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{in}b_{nj} \]</div>
       </div>
 
       <details class="more more--why">
