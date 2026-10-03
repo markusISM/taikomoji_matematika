@@ -25,6 +25,7 @@ lt/                            lietuviški puslapiai
   tema-4-nelygybiu-sistemos.html  1 skyrius: tiesinių nelygybių sistemos (brėžiniai lp-chart)
   tema-4-maksimizavimas.html   2 skyrius: standartiniai maksimizavimo uždaviniai
   tema-4-minimizavimas.html    3 skyrius: standartiniai minimizavimo uždaviniai
+  tema-4-nestandartiniai.html  4 skyrius: nestandartiniai uždaviniai
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -47,7 +48,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=24` ir `site.js?v=24`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=25` ir `site.js?v=25`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
@@ -119,7 +120,7 @@ Grafikų užrašai (ašys, legenda) imami iš `site.js` žodyno abiem kalbomis. 
 
 **Taikymai ir skyriai.** Visose temose temos puslapio skiltis su kortelėmis vadinama „Taikymai“ (`id="taikymai"`), o kiekvienas taikymų puslapis – skyriumi: kortelėse rodoma „1 skyrius, 2 skyrius…“ (pagal eilę `MODELS` sąraše), apatinė nuoroda – „Kitas skyrius“. Skyriaus puslapio viršuje rašoma `<span class="eyebrow">N tema · Taikymai · M skyrius</span>`, įžangoje – „Šiame skyriuje…“, šaltinių bloke – „Daugiau informacijos apie šį skyrių rasite:“.
 
-**TP brėžinys (4 tema).** `<div data-widget="lp-chart" data-spec='{"x":[min,max,padala,užrašai kas k],"y":[…],"nn":"xy","c":[{"a":2,"b":3,"s":"le","r":12,"lab":"2x + 3y = 12","col":1,"lt":0.85,"arr":[0.2,0.7]}],"pts":[{"x":2,"y":4,"lab":"A(2; 4)","p":"ne","hi":true}],"test":[0,0]}'></div>` – nubrėžia ašis su vienetine atkarpa, tiesę \(ax + by = r\) su rodyklėmis į sprendinių pusę (`s`: `le` ≤, `ge` ≥), užrašą `lab` (`lt` – vieta 0–1, `lo` – poslinkis, `la` – lygiavimas), nuspalvina visų apribojimų ir `nn` sąlygų sankirtą, pažymi viršūnes (`p` – užrašo kryptis n, ne, e, se, s, sw, w, nw). Papildomai: `"maxh":420` – didesnis brėžinio aukštis, kai \(y\) intervalas ilgas; `"rot":true` – tiesės užrašas pasukamas lygiagrečiai tiesei (tinka, kai šalia tiesės mažai vietos). Vieno pavyzdžio brėžiniams naudokite tuos pačius `x`, `y` ir tiesių spalvas `col`.
+**TP brėžinys (4 tema).** `<div data-widget="lp-chart" data-spec='{"x":[min,max,padala,užrašai kas k],"y":[…],"nn":"xy","c":[{"a":2,"b":3,"s":"le","r":12,"lab":"2x + 3y = 12","col":1,"lt":0.85,"arr":[0.2,0.7]}],"pts":[{"x":2,"y":4,"lab":"A(2; 4)","p":"ne","hi":true}],"test":[0,0]}'></div>` – nubrėžia ašis su vienetine atkarpa, tiesę \(ax + by = r\) su rodyklėmis į sprendinių pusę (`s`: `le` ≤, `ge` ≥), užrašą `lab` (`lt` – vieta 0–1, `lo` – poslinkis, `la` – lygiavimas), nuspalvina visų apribojimų ir `nn` sąlygų sankirtą, pažymi viršūnes (`p` – užrašo kryptis n, ne, e, se, s, sw, w, nw). Papildomai: `"maxh":420` – didesnis brėžinio aukštis, kai \(y\) intervalas ilgas; `"free":true` – skirtingi ašių masteliai (kai aibė labai maža, palyginti su ašių intervalais); `"rot":true` – tiesės užrašas pasukamas lygiagrečiai tiesei (tinka, kai šalia tiesės mažai vietos). Vieno pavyzdžio brėžiniams naudokite tuos pačius `x`, `y` ir tiesių spalvas `col`.
 
 **Išplėstinė matrica ir pertvarkiai (3 tema).** Išplėstinė matrica: `\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ … \end{array}\right)`. Pertvarkis šalia jos – antras masyvas su tiek pat eilučių: `\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}` (tuščiai eilutei – `\phantom{0}`, dalybai – `\htmlClass{ha}{{:}\,k}`). Eilučių skaičiavimas: `<table class="rowcalc">` su `th` pavadinimu, `td` skaičiais, `td.rhs` (už brūkšnio), `td.z` (gautas nulis) ir paskutine eilute `tr.res`. Sprendinių atvejų brėžiniai – `.geo3`, tiesioginė ir atbulinė eiga – `.phases`.
 

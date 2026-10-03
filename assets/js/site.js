@@ -233,7 +233,7 @@
       { id: 'm43', status: 'active', href: { lt: 'tema-4-minimizavimas.html' },
         title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' },
         desc: { lt: 'Mažiausios sąnaudos, kai reikalavimai turi būti įvykdyti: apribojimai \\(\\geq\\).' } },
-      { id: 'm44', status: 'soon',
+      { id: 'm44', status: 'active', href: { lt: 'tema-4-nestandartiniai.html' },
         title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' },
         desc: { lt: 'Visumos dalys, mišiniai, pristatymo planai ir maišyti apribojimų ženklai.' } }
     ]
@@ -276,6 +276,8 @@
                title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' } },
     m43:     { parent: 't4', topic: 't4', model: 'm43', href: { lt: 'tema-4-minimizavimas.html', en: null },
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
+    m44:     { parent: 't4', topic: 't4', model: 'm44', href: { lt: 'tema-4-nestandartiniai.html', en: null },
+               title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
@@ -1098,6 +1100,7 @@
            shade: true – nuspalvinti visų apribojimų sankirtą;
            pts: [{x, y, lab, p: n|ne|e|se|s|sw|w|nw, hi: true}];
            maxh – didžiausias brėžinio aukštis (numatytasis 330);
+           free: true – ašių masteliai skirtingi (brėžinys užpildo visą plotą);
            rot: true – tiesės užrašas pasukamas lygiagrečiai tiesei (lt – vieta, lo – atstumas);
            test: [x, y] – tikrinimo taškas; aria: aprašas.
      ------------------------------------------------------------------ */
@@ -1106,10 +1109,12 @@
     try { sp = JSON.parse(box.getAttribute('data-spec')); } catch (e) { return; }
     var xr = sp.x, yr = sp.y, W = 340, Lp = 30, Rp = 22, Tp = 22, Bp = 26, MAXH = sp.maxh || 330;
     var s = Math.min((W - Lp - Rp) / (xr[1] - xr[0]), (MAXH - Tp - Bp) / (yr[1] - yr[0]));
-    var pw = s * (xr[1] - xr[0]), ph = s * (yr[1] - yr[0]);
+    var sx = s, sy = s;
+    if (sp.free) { sx = (W - Lp - Rp) / (xr[1] - xr[0]); sy = (MAXH - Tp - Bp) / (yr[1] - yr[0]); }
+    var pw = sx * (xr[1] - xr[0]), ph = sy * (yr[1] - yr[0]);
     var x0 = Lp + ((W - Lp - Rp) - pw) / 2, H = Math.round(Tp + ph + Bp);
-    function X(x) { return +(x0 + (x - xr[0]) * s).toFixed(1); }
-    function Y(y) { return +(Tp + (yr[1] - y) * s).toFixed(1); }
+    function X(x) { return +(x0 + (x - xr[0]) * sx).toFixed(1); }
+    function Y(y) { return +(Tp + (yr[1] - y) * sy).toFixed(1); }
     var cons = sp.c || [];
 
     // pusplokštumė a*x + b*y <= r
@@ -1189,6 +1194,7 @@
       var k = c.col || 1;
       g += '<line class="lp-l' + k + '" x1="' + X(sg[0][0]) + '" y1="' + Y(sg[0][1]) + '" x2="' + X(sg[1][0]) + '" y2="' + Y(sg[1][1]) + '"/>';
       var n = c.s === 'ge' ? [c.a, c.b] : [-c.a, -c.b];
+      n = [n[0] / sx, n[1] / sy]; // statmuo ekrano koordinatėse (kai ašių masteliai skiriasi)
       var nl = Math.sqrt(n[0] * n[0] + n[1] * n[1]), ux = n[0] / nl, uy = -n[1] / nl; // svg kryptis
       (c.arr || [0.22, 0.7]).forEach(function (t) {
         var px = X(sg[0][0] + t * (sg[1][0] - sg[0][0])), py = Y(sg[0][1] + t * (sg[1][1] - sg[0][1]));

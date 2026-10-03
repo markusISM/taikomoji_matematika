@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nestandartiniai uždaviniai · Taikomoji matematika</title>
+<meta name="description" content="Nestandartiniai tiesinio programavimo uždaviniai: visumos dalys, trečiasis kiekis, transporto uždavinys ir tikslo funkcija su pastoviuoju nariu. Matematinio modelio sudarymas ir pavyzdžiai žingsnis po žingsnio.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=25">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=25"></script>
+</head>
+<body data-page="m44">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">4 tema · Taikymai · 4 skyrius</span>
+    <h1>Nestandartiniai uždaviniai</h1>
+    <p class="lead">Šiame skyriuje mokomasi sudaryti sudėtingesnių tiesinio programavimo uždavinių matematinį modelį – kai sąlygos pateikiamos kaip visumos dalys, mišinio savybės ar pristatymo planas, o tikslo funkcijoje yra pastovusis narys.</p>
+    <ul class="jump">
+      <li><a href="#ivadas">Įvadas</a></li>
+      <li><a href="#budai">Modeliavimo būdai</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. ĮVADAS ============ -->
+  <section class="section" id="ivadas" aria-labelledby="h-intro">
+    <h2 id="h-intro">Kodėl uždavinys yra nestandartinis</h2>
+
+    <article class="card">
+      <p><a href="tema-4-maksimizavimas.html">2</a> ir <a href="tema-4-minimizavimas.html">3 skyriuose</a> modelis susidarydavo beveik savaime: kiekviena duomenų lentelės eilutė virsdavo vienu apribojimu, o kainų eilutė – tikslo funkcija. Nestandartiniame uždavinyje taip tiesiogiai perskaityti duomenų negalima:</p>
+      <ul>
+        <li>sąlygos pateikiamos kaip visumos dalys, dviejų kiekių palyginimai arba mišinio savybės;</li>
+        <li>prašoma rasti daugiau negu du kiekius;</li>
+        <li>tikslo funkcijoje yra fiksuotas mokestis;</li>
+        <li>tame pačiame modelyje kartu naudojami ženklai \(\leq\) ir \(\geq\).</li>
+      </ul>
+      <p><strong>Sprendimo metodas visiškai nesikeičia.</strong> Leistinųjų sprendinių aibė braižoma taip pat, viršūnės randamos taip pat, o tikslo funkcijos reikšmės apskaičiuojamos kiekvienoje viršūnėje ir palyginamos. Visi sunkumai sutelkti viename žingsnyje – sudarant modelį, todėl šiame skyriuje daugiausia dėmesio skiriama šiam žingsniui.</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Matematinis modelis</strong><span>Čia slypi visi sunkumai – jam skirtas šis skyrius.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Aibė ir viršūnės</strong><span>Kaip <a href="tema-4-nelygybiu-sistemos.html#eiga">1 skyriuje</a>.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Optimali reikšmė</strong><span>Kaip <a href="tema-4-maksimizavimas.html#eiga">2</a> ir <a href="tema-4-minimizavimas.html#eiga">3 skyriuose</a>.</span></div></div>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos sudarant modelį</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Visumos dalis palyginta su kitu kiekiu.</strong> „Bent du trečdaliai visų testų su suaugusiaisiais“ yra \(x \geq \tfrac{2}{3}(x + y)\), o ne \(x \geq \tfrac{2}{3}y\).</li>
+            <li><strong>Trečiasis kiekis įvestas kaip naujas kintamasis.</strong> Kai bendras kiekis žinomas, trečiasis kiekis užrašomas reiškiniu su \(x\) ir \(y\), pavyzdžiui, \(100 - x - y\).</li>
+            <li><strong>Pamiršta trečiojo kiekio neneigiamumo sąlyga.</strong> Iš \(100 - x - y \geq 0\) gaunamas apribojimas \(x + y \leq 100\).</li>
+            <li><strong>Padauginus iš neigiamo skaičiaus, nepakeistas nelygybės ženklas.</strong> Iš \(-2x - y \leq -100\) gaunama \(2x + y \geq 100\).</li>
+            <li><strong>Atmestas pastovusis narys.</strong> Jis nekeičia to, kuri viršūnė geriausia, tačiau yra tikslo funkcijos reikšmės dalis.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant taikomuosius tiesinio programavimo uždavinius, uždavinio pradžioje privaloma pateikti įvedamų kintamųjų apibrėžimus. Apibrėžimuose turi būti aiškiai nurodoma, kad kintamasis žymi tam tikro objekto kiekį.</li>
+            <li>Jei autoriui patogiau, sprendime galima, bet nebūtina, pateikti uždavinio sąlygą susistemizuotą lentelėje.</li>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tikslo funkcija ir apribojimų sistema. Turi būti aiškiai nurodyta, ar tikslo funkciją siekiama maksimizuoti, ar minimizuoti. Visi apribojimai, įskaitant ir neneigiamumo apribojimus, privalo būti aiškiai pateikti vienoje sistemoje, šalia tikslo funkcijos.</li>
+            <li>Sprendžiant uždavinį grafiškai, turi būti pateiktos apribojimų tiesių reikšmių lentelės.</li>
+            <li>Grafike privalo būti pažymėti šie elementai: ašių pavadinimai, koordinačių pradžios taškas, vienetinės atkarpos dydis, tiesių pavadinimai, leistina sprendinių aibė.</li>
+            <li>Tiesių susikirtimo taškų koordinatės turi būti nustatytos algebriškai. Nustatant taškų koordinates, lygčių sistemą galima spręsti naudojant skaičiuotuvą, tačiau būtina nurodyti, kokios lygtis naudotos susikirtimo taško radimui.</li>
+            <li>Tikslo funkcijos reikšmės privalo būti apskaičiuotos visose leistinos sprendinių aibės viršūnėse, išskyrus koordinačių pradžios tašką. Šis veiksmas turi būti pažymėtas aiškiai ir atitikti matematinio korektiškumo taisykles.</li>
+            <li>Uždavinio sprendimo pabaigoje turi būti aiškiai suformuluojamas galutinis atsakymas.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. MODELIAVIMO BŪDAI ============ -->
+  <section class="section" id="budai" aria-labelledby="h-ways">
+    <h2 id="h-ways">Keturi modeliavimo būdai</h2>
+
+    <article class="card concept" id="visumos-dalis">
+      <div class="concept-head"><span class="num">1</span><h3>Visumos dalis</h3></div>
+      <p>Sąlyga „bent du trečdaliai visų testų turi būti atliekami su suaugusiaisiais“ vieną kiekį lygina <strong>su bendru kiekiu</strong>, o ne su kitu kiekiu. Užrašykite ją tiksliai taip, kaip pasakyta, tada panaikinkite trupmeną ir visus narius perkelkite į kairę pusę:</p>
+      <div class="formula">\[ \begin{gathered} x \geq \tfrac{2}{3}(x + y) \;\Longrightarrow\; 3x \geq 2(x + y) \\ \Longrightarrow\; 3x \geq 2x + 2y \;\Longrightarrow\; x - 2y \geq 0 \end{gathered} \]</div>
+      <ul class="dodont">
+        <li class="do"><span class="mk" aria-hidden="true">✓</span><span>\(x \geq \tfrac{2}{3}(x + y)\) – suaugusiųjų testai lyginami su visais testais.</span></li>
+        <li class="dont"><span class="mk" aria-hidden="true">✗</span><span>\(x \geq \tfrac{2}{3}y\) – suaugusiųjų testai lyginami tik su paauglių testais.</span></li>
+      </ul>
+      <p style="margin-top:12px">Procentais išreikšta sąlyga nagrinėjama taip pat: „bent 40&nbsp;% produkcijos“ reiškia \(x \geq 0{,}4(x + y)\).</p>
+    </article>
+
+    <article class="card concept" id="treciasis-kiekis">
+      <div class="concept-head"><span class="num">2</span><h3>Trečiasis kiekis, kurį lemia kiti du</h3></div>
+      <p>Kai trijų kiekių suma turi būti lygi nustatytam bendram kiekiui, laisvai pasirinkti galima tik du iš jų. Jeigu bendras kiekis yra 100, o pirmieji du kiekiai yra \(x\) ir \(y\), trečiasis yra \(100 - x - y\) – tai ne naujas kintamasis, o reiškinys su dviem jau įvestais kintamaisiais:</p>
+      <div class="tbl-wrap">
+        <table class="vtable model-tbl">
+          <thead><tr><th scope="col">Dalis</th><th scope="col">Kiekis</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Pirmoji</th><td>\(\htmlClass{hd}{x}\)</td></tr>
+            <tr><th scope="row">Antroji</th><td>\(\htmlClass{hd}{y}\)</td></tr>
+            <tr><th scope="row">Trečioji</th><td>\(100 - x - y\)</td></tr>
+            <tr><th scope="row">Iš viso</th><td>100</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Tada kiekviena mišinio sąlyga užrašoma tik naudojant \(x\) ir \(y\), be to, atsiranda vienas naujas natūralusis apribojimas, nes trečiasis kiekis taip pat negali būti neigiamas:</p>
+      <div class="formula">\[ 100 - x - y \geq 0 \;\Longrightarrow\; x + y \leq 100 \]</div>
+    </article>
+
+    <article class="card concept" id="transporto">
+      <div class="concept-head"><span class="num">3</span><h3>Transporto uždavinys</h3></div>
+      <p>Du sandėliai, aprūpinantys dvi parduotuves, reiškia keturis nežinomus siunčiamus kiekius, tačiau pasirinkti galima tik du iš jų. Jeigu pirmasis sandėlis pirmajai parduotuvei siunčia \(x\) vienetų, antrasis turi išsiųsti likusią tos parduotuvės užsakymo dalį: jeigu užsakyta 15 vienetų, ši dalis yra \(15 - x\). Tas pats galioja antrajai parduotuvei, todėl du kintamieji aprašo visą pristatymo planą:</p>
+      <div class="tbl-wrap">
+        <table class="vtable model-tbl">
+          <thead><tr><th scope="col">Siunčiama</th><th scope="col">Į 1 par&shy;duotuvę</th><th scope="col">Į 2 par&shy;duotuvę</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Iš 1 sandėlio</th><td>\(\htmlClass{hd}{x}\)</td><td>\(\htmlClass{hd}{y}\)</td></tr>
+            <tr><th scope="row">Iš 2 sandėlio</th><td>\(15 - x\)</td><td>\(20 - y\)</td></tr>
+            <tr><th scope="row">Užsakyta</th><td>15</td><td>20</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="formula-note" style="text-align:center">Kiekvieno stulpelio suma lygi užsakymui, todėl antrojo sandėlio siuntos išreiškiamos per \(x\) ir \(y\).</p>
+    </article>
+
+    <article class="card concept" id="pastovusis-narys">
+      <div class="concept-head"><span class="num">4</span><h3>Tikslo funkcija su pastoviuoju nariu</h3></div>
+      <p>Kai yra fiksuotas mokestis arba pelnas užrašomas kaip pajamų ir sąnaudų skirtumas, gaunama tokia tikslo funkcija kaip</p>
+      <div class="formula">\[ P = \underbrace{2000}_{\text{pastovusis narys}} + 3x + 2y \]</div>
+      <p>Pastovusis narys visuose leistinųjų sprendinių aibės taškuose yra vienodas, todėl jis nekeičia to, kuri viršūnė yra geriausia, tačiau jis yra tikslo funkcijos reikšmės dalis ir jo atmesti negalima.</p>
+    </article>
+
+    <p class="tip">Verta prisiminti dar vieną dalyką: ne kiekviena užrašyta sąlyga tampa leistinųjų sprendinių aibės kraštine. Sąlyga, kurią jau užtikrina kitos sąlygos, vadinama <strong>pertekline</strong>. Ją užrašyti nėra klaida – ji tiesiog neatsispindi brėžinyje. Toliau pateiktame <a href="#pavyzdys-3">3 pavyzdyje</a> yra dvi tokios sąlygos.</p>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite sudaryti modelį ir išspręsti uždavinį patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: gairių 1 pavyzdys (visumos dalys ir fiksuotas mokestis) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Skonio testų planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Rinkos tyrimų įmonė parduotuvėse atlieka skonio testus. Už tyrimą užsakovas jai moka fiksuotą 2000 eurų mokestį ir po 6 eurus už kiekvieną atliktą testą. Testas su suaugusiuoju įmonei kainuoja 3 eurus, o su paaugliu – 4 eurus. Užsakovas reikalauja iš viso atlikti ne daugiau kaip 900 testų, bent 200 testų su paaugliais ir bent du trečdalius visų testų su suaugusiaisiais. Kiek kiekvienos rūšies testų turi atlikti įmonė, kad jos pelnas būtų didžiausias? Koks yra didžiausias pelnas?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– su suaugusiaisiais atliekamų testų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– su paaugliais atliekamų testų skaičius.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sąlygos ir tikslo funkcija</span></h4>
+          <p>Kiekvieną uždavinio sąlygos sakinį atskirai užrašome nelygybe:</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Nelygybė</th></tr></thead>
+              <tbody>
+                <tr><td>Iš viso ne daugiau kaip 900 testų</td><td>\(x + y \leq 900\)</td></tr>
+                <tr><td>Bent 200 testų su paaugliais</td><td>\(y \geq 200\)</td></tr>
+                <tr><td>Bent du trečdaliai visų testų su suaugusiaisiais</td><td>\(x \geq \tfrac{2}{3}(x + y)\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Paskutinė sąlyga lygina \(x\) su bendru testų skaičiumi, kaip <a href="#visumos-dalis">1 modeliavimo būde</a>:</p>
+          \[ \begin{gathered} x \geq \tfrac{2}{3}(x + y) \;\Longrightarrow\; 3x \geq 2x + 2y \\ \Longrightarrow\; x - 2y \geq 0 \end{gathered} \]
+          <p>Pelnas yra užsakovo sumokėtos sumos ir testų sąnaudų skirtumas, kaip <a href="#pastovusis-narys">4 modeliavimo būde</a>:</p>
+          \[ \begin{aligned} P &amp;= \underbrace{2000 + 6(x + y)}_{\text{užsakovo sumokėta}} - \underbrace{(3x + 4y)}_{\text{testų sąnaudos}} \\ &amp;= 2000 + 3x + 2y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          \[ \begin{gathered} P = 2000 + 3x + 2y \to \max \\[4pt] \begin{cases} x + y \leq 900 \\ y \geq 200 \\ x - 2y \geq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>Modelyje kartu yra ženklai \(\leq\) ir \(\geq\), o tikslo funkcijoje – pastovusis narys, todėl uždavinys nestandartinis.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <p>Tiesei \(y = 200\) reikšmių lentelės nereikia: tai horizontali tiesė, einanti per \(Oy\) ašies tašką 200. Tiesė \(x - 2y = 0\) eina per koordinačių pradžią, todėl reikia pasirinkti antrą patogų tašką; pasirinkę \(x = 600\), gauname \(y = 300\):</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 900\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 900\)<br>\(y = 0:\; x = 900\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>900</td></tr><tr><th scope="row">\(y\)</th><td>900</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x - 2y = 0\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 0\)<br>\(x = 600:\; 2y = 600 \Rightarrow y = 300\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>600</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>300</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškai</span></h4>
+          <p>Koordinačių pradžia yra pirmųjų dviejų nelygybių tikrinimo taškas:</p>
+          \[ \begin{alignedat}{2} 0 + 0 \leq 900 \;&amp;\Rightarrow\; 0 \leq 900 \; &amp;&amp; \text{(teisinga)} \\ 0 \geq 200 \;&amp; &amp;&amp; \text{(neteisinga)} \end{alignedat} \]
+          <p>Trečiosios nelygybės ribojančiai tiesei koordinačių pradžia priklauso, todėl reikia kito tikrinimo taško; paprasčiausia pasirinkti \((100;\, 0)\):</p>
+          \[ \begin{aligned} &amp;100 - 2\cdot 0 \geq 0 \\ &amp;\Longrightarrow\; 100 \geq 0 \quad \text{(teisinga)} \end{aligned} \]
+          <p>Taigi sprendinių aibė yra žemiau tiesės \(x + y = 900\), virš tiesės \(y = 200\) ir žemiau tiesės \(x - 2y = 0\) (pusplokštumėje, kuriai priklauso \((100;\, 0)\)).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Visų trijų pusplokštumių sankirta yra trikampis \(ABC\). Kad jis būtų gerai matomas, brėžinyje \(Oy\) ašies mastelis didesnis negu \(Ox\) ašies:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-50,950,50,4],"y":[-50,450,50,2],"free":true,"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":900,"lab":"x + y = 900","col":1,"lt":0.78,"arr":[0.45,0.62],"rot":true,"lo":11},{"a":0,"b":1,"s":"ge","r":200,"lab":"y = 200","col":2,"lt":0.2,"arr":[0.35,0.55],"lo":-12},{"a":1,"b":-2,"s":"ge","r":0,"lab":"x − 2y = 0","col":3,"rot":true,"lt":0.22,"lo":11,"arr":[0.35,0.85]}],"pts":[{"x":400,"y":200,"lab":"A","p":"sw"},{"x":700,"y":200,"lab":"B","p":"s"},{"x":600,"y":300,"lab":"C","p":"n"}],"aria":"Skonio testų uždavinio leistinųjų sprendinių aibė – trikampis ABC"}'></div>
+            <figcaption>1 pav. Skonio testų uždavinio leistinųjų sprendinių aibė.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <p>Nė viena šio trikampio viršūnė nėra ant ašies, todėl visos trys randamos sprendžiant sistemas:</p>
+          <ul class="vert-list">
+            <li>\(A\) yra tiesių \(y = 200\) ir \(x - 2y = 0\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} y = 200 \\ x - 2y = 0 \end{cases} \\ \Longrightarrow\; x = 400,\; y = 200 \\ \Longrightarrow\; A(400;\, 200) \end{gathered} \]</li>
+            <li>\(B\) yra tiesių \(y = 200\) ir \(x + y = 900\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} y = 200 \\ x + y = 900 \end{cases} \\ \Longrightarrow\; x = 700,\; y = 200 \\ \Longrightarrow\; B(700;\, 200) \end{gathered} \]</li>
+            <li>\(C\) yra tiesių \(x + y = 900\) ir \(x - 2y = 0\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + y = 900 \\ x - 2y = 0 \end{cases} \\ \Longrightarrow\; x = 600,\; y = 300 \\ \Longrightarrow\; C(600;\, 300) \end{gathered} \]
+              <p class="formula-note">Iš pirmosios lygties atėmus antrąją, gaunama \(3y = 900\), \(y = 300\); tada \(x = 2y = 600\).</p></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Pelnas viršūnėse</span></h4>
+          <p>Koordinačių pradžia nepriklauso leistinųjų sprendinių aibei, todėl pelnas skaičiuojamas kiekvienoje viršūnėje. Pastovusis narys 2000 įeina į kiekvieną reikšmę:</p>
+          \[ \begin{aligned} P_A &amp;= 2000 + 3\cdot 400 + 2\cdot 200 \\ &amp;= 2000 + 1200 + 400 = 3600 \\ P_B &amp;= 2000 + 3\cdot 700 + 2\cdot 200 \\ &amp;= 2000 + 2100 + 400 = 4500 \\ P_C &amp;= 2000 + 3\cdot 600 + 2\cdot 300 \\ &amp;= 2000 + 1800 + 600 = 4400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Didžiausia reikšmė</span></h4>
+          <p>Didžiausia reikšmė yra \(\htmlClass{hd}{4500}\), ji pasiekiama viršūnėje \(B(700;\, 200)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Įmonė turi atlikti 700 testų su suaugusiaisiais ir 200 testų su paaugliais. Didžiausias pelnas yra \(P_{\max}(700;\, 200) = 4500\) EUR.</p>
+          </div>
+          <p>Išnaudojamas visas leidžiamas 900 testų skaičius, o paauglių kvota tenkinama mažiausiu leistinu lygiu – 200 testų. Tuomet suaugusiųjų dalis yra \(\tfrac{700}{900} \approx 0{,}778\), gerokai didesnė už reikalaujamus du trečdalius, todėl optimaliame plane ši sąlyga nėra ribojanti.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 2 pavyzdys (trys rūšys, du kintamieji) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Kavos mišinio sudėtis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Kavos skrudinimo cechas turi paruošti 100&nbsp;kg kavos mišinio iš trijų rūšių pupelių. Kiekvienos rūšies kofeino kiekis, arabikos pupelių dalis ir kaina pateikti lentelėje. Mišinyje turi būti ne daugiau kaip 2&nbsp;% kofeino ir bent 75&nbsp;% arabikos pupelių. Kiek kilogramų kiekvienos rūšies pupelių reikia paimti, kad mišinys būtų kuo pigesnis? Kokios yra mažiausios išlaidos?</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th scope="col"></th><th scope="col">A rūšis</th><th scope="col">B rūšis</th><th scope="col">C rūšis</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Kofeinas, %</th><td>1</td><td>2</td><td>3</td></tr>
+              <tr><th scope="row">Arabikos pupelės, %</th><td>60</td><td>90</td><td>80</td></tr>
+              <tr><th scope="row">Kaina, EUR už kg</th><td>8</td><td>12</td><td>10</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– A rūšies pupelių kilogramų skaičius mišinyje;</span></li>
+            <li><span class="sym">\(y\)</span><span>– B rūšies pupelių kilogramų skaičius mišinyje.</span></li>
+          </ul>
+          <p>Trečiasis kiekis nėra trečias kintamasis. Mišinys sveria 100&nbsp;kg, todėl C rūšies pupelių kiekis yra \(100 - x - y\) kilogramų, kaip <a href="#treciasis-kiekis">2 modeliavimo būde</a>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sąlygos ir tikslo funkcija</span></h4>
+          <p>C rūšies pupelių kiekis negali būti neigiamas, todėl gauname pirmąją sąlygą:</p>
+          \[ 100 - x - y \geq 0 \;\Longrightarrow\; x + y \leq 100 \]
+          <p>Mišinyje yra ne daugiau kaip 2&nbsp;% kofeino, t. y. ne daugiau kaip 2&nbsp;kg kofeino 100&nbsp;kg mišinio. Kofeino mišinyje yra \(0{,}01x + 0{,}02y + 0{,}03(100 - x - y)\) kg; abi nelygybės puses padauginę iš 100, gauname:</p>
+          \[ \begin{aligned} &amp;x + 2y + 3(100 - x - y) \leq 2\cdot 100 \\ &amp;\Longrightarrow\; x + 2y + 300 - 3x - 3y \leq 200 \\ &amp;\Longrightarrow\; -2x - y \leq -100 \end{aligned} \]
+          <p>Dabar abi puses dauginame iš \(-1\), ir nelygybės ženklas pakeičiamas priešingu:</p>
+          \[ 2x + y \geq 100 \]
+          <p>Mišinyje yra bent 75&nbsp;% arabikos pupelių, t. y. bent 75&nbsp;kg 100&nbsp;kg mišinio. Arabikos pupelių yra \(0{,}6x + 0{,}9y + 0{,}8(100 - x - y)\) kg; vėl padauginę iš 100, gauname:</p>
+          \[ \begin{aligned} &amp;60x + 90y + 80(100 - x - y) \geq 75\cdot 100 \\ &amp;\Longrightarrow\; -20x + 10y \geq -500 \\ &amp;\Longrightarrow\; 2x - y \leq 50 \end{aligned} \]
+          <p class="formula-note">Paskutiniame žingsnyje abi puses padalijome iš \(-10\), todėl ženklas \(\geq\) pasikeitė į \(\leq\).</p>
+          <p>Mišinio kaina yra visų trijų rūšių pupelių kainų suma:</p>
+          \[ \begin{aligned} TC &amp;= 8x + 12y + 10(100 - x - y) \\ &amp;= 1000 - 2x + 2y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          \[ \begin{gathered} TC = 1000 - 2x + 2y \to \min \\[4pt] \begin{cases} 2x + y \geq 100 \\ 2x - y \leq 50 \\ x + y \leq 100 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <p>Tiesės \(2x - y = 50\) susikirtimo su \(Oy\) ašimi taško koordinatė yra neigiama ir čia nenaudinga, todėl vietoj jo pasirenkamas patogus taškas: kai \(x = 50\), gauname \(y = 50\).</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 100\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 100\)<br>\(y = 0:\; 2x = 100 \Rightarrow x = 50\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>50</td></tr><tr><th scope="row">\(y\)</th><td>100</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(2x - y = 50\)</p>
+              <p class="xy-calc">\(y = 0:\; 2x = 50 \Rightarrow x = 25\)<br>\(x = 50:\; y = 50\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>25</td><td>50</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>50</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 100\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 100\)<br>\(y = 0:\; x = 100\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>100</td></tr><tr><th scope="row">\(y\)</th><td>100</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškas</span></h4>
+          <p>Koordinačių pradžia yra visų trijų nelygybių tikrinimo taškas:</p>
+          <div class="formula fit">\[ \begin{alignedat}{2} 2\cdot 0 + 0 \geq 100 \;&amp;\Rightarrow\; 0 \geq 100 \; &amp;&amp; \text{(neteisinga)} \\ 2\cdot 0 - 0 \leq 50 \;&amp;\Rightarrow\; 0 \leq 50 \; &amp;&amp; \text{(teisinga)} \\ 0 + 0 \leq 100 \;&amp;\Rightarrow\; 0 \leq 100 \; &amp;&amp; \text{(teisinga)} \end{alignedat} \]</div>
+          <p>Pirmosios nelygybės rodyklės nukreiptos nuo koordinačių pradžios, kitų dviejų – į ją.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Visų pusplokštumių sankirta yra trikampis \(ABC\):</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-5,105,5,4],"y":[-5,105,5,4],"maxh":360,"nn":"xy","c":[{"a":2,"b":1,"s":"ge","r":100,"lab":"2x + y = 100","col":1,"rot":true,"lt":0.3,"lo":11,"arr":[0.15,0.85]},{"a":2,"b":-1,"s":"le","r":50,"lab":"2x − y = 50","col":2,"lt":0.7,"arr":[0.35,0.8]},{"a":1,"b":1,"s":"le","r":100,"lab":"x + y = 100","col":3,"lt":0.25,"arr":[0.2,0.75]}],"pts":[{"x":0,"y":100,"lab":"A","p":"ne"},{"x":37.5,"y":25,"lab":"B","p":"w"},{"x":50,"y":50,"lab":"C","p":"e"}],"aria":"Kavos mišinio uždavinio leistinųjų sprendinių aibė – trikampis ABC"}'></div>
+            <figcaption>2 pav. Kavos mišinio uždavinio leistinųjų sprendinių aibė.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <ul class="vert-list">
+            <li>\(A\) yra ant \(Oy\) ašies. Tai tiesės \(2x + y = 100\) susikirtimo su \(Oy\) ašimi taškas; jo koordinatės jau pateiktos šios tiesės reikšmių lentelėje: \(A(0;\, 100)\). Tiesė \(x + y = 100\) eina per tą patį tašką.</li>
+            <li>\(B\) yra tiesių \(2x + y = 100\) ir \(2x - y = 50\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} 2x + y = 100 \\ 2x - y = 50 \end{cases} \\ \Longrightarrow\; x = 37{,}5,\; y = 25 \\ \Longrightarrow\; B(37{,}5;\, 25) \end{gathered} \]
+              <p class="formula-note">Sudėję lygtis, gauname \(4x = 150\), \(x = 37{,}5\); tada \(y = 100 - 75 = 25\).</p></li>
+            <li>\(C\) yra tiesių \(2x - y = 50\) ir \(x + y = 100\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} 2x - y = 50 \\ x + y = 100 \end{cases} \\ \Longrightarrow\; x = 50,\; y = 50 \\ \Longrightarrow\; C(50;\, 50) \end{gathered} \]
+              <p class="formula-note">Sudėję lygtis, gauname \(3x = 150\), \(x = 50\); tada \(y = 100 - 50 = 50\).</p></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Išlaidos viršūnėse</span></h4>
+          \[ \begin{aligned} TC_A &amp;= 1000 - 2\cdot 0 + 2\cdot 100 = 1200 \\ TC_B &amp;= 1000 - 2\cdot 37{,}5 + 2\cdot 25 \\ &amp;= 1000 - 75 + 50 = 975 \\ TC_C &amp;= 1000 - 2\cdot 50 + 2\cdot 50 = 1000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Mažiausia reikšmė</span></h4>
+          <p>Mažiausia reikšmė yra \(\htmlClass{hd}{975}\), ji pasiekiama viršūnėje \(B(37{,}5;\, 25)\). Trečiosios rūšies kiekį nustatome pagal du kintamuosius:</p>
+          \[ 100 - 37{,}5 - 25 = 37{,}5 \text{ kg} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Cechas turi paimti 37,5&nbsp;kg A rūšies, 25&nbsp;kg B rūšies ir 37,5&nbsp;kg C rūšies pupelių. Mažiausios 100&nbsp;kg mišinio išlaidos yra \(TC_{\min}(37{,}5;\, 25) = 975\) EUR.</p>
+          </div>
+          <p>Šis mišinys tiksliai atitinka abi kokybės ribas. Kofeino kiekis yra</p>
+          \[ \frac{37{,}5 + 2\cdot 25 + 3\cdot 37{,}5}{100} = 2\,\%, \]
+          <p>o arabikos pupelių dalis –</p>
+          \[ \frac{60\cdot 37{,}5 + 90\cdot 25 + 80\cdot 37{,}5}{100} = 75\,\%. \]
+          <p>To ir tikimasi iš pigiausio mišinio, kuris vis dar tenkina reikalavimus.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 3 pavyzdys (pristatymo planas) -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Vandens pristatymo iš dviejų sandėlių planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Įmonė laiko vandenį buteliuose dviejuose sandėliuose ir iš jų aprūpina du prekybos centrus. Pirmajame sandėlyje yra 12 padėklų, antrajame – 30 padėklų; pirmasis prekybos centras užsakė 15 padėklų, o antrasis – 20 padėklų. Vieno padėklo vežimo kiekvienu maršrutu kaina pateikta lentelėje. Kaip paskirstyti siunčiamus padėklus, kad transportavimo išlaidos būtų kuo mažesnės? Kokios yra mažiausios išlaidos?</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th scope="col">EUR už padėklą</th><th scope="col">Į \(M_1\)</th><th scope="col">Į \(M_2\)</th><th scope="col">Turima</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Iš sandėlio \(D_1\)</th><td>6</td><td>9</td><td>12</td></tr>
+              <tr><th scope="row">Iš sandėlio \(D_2\)</th><td>8</td><td>5</td><td>30</td></tr>
+              <tr><th scope="row">Užsakyta</th><td>15</td><td>20</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– iš sandėlio \(D_1\) į prekybos centrą \(M_1\) siunčiamų padėklų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– iš sandėlio \(D_1\) į prekybos centrą \(M_2\) siunčiamų padėklų skaičius.</span></li>
+          </ul>
+          <p>Kiti du siunčiami kiekiai nustatomi pagal šiuos, kaip <a href="#transporto">3 modeliavimo būde</a>: užsakymai turi būti įvykdyti, todėl \(M_1\) gauna \(15 - x\) padėklų iš \(D_2\), o \(M_2\) gauna \(20 - y\) padėklų iš \(D_2\).</p>
+          <div class="tbl-wrap">
+            <table class="vtable model-tbl">
+              <thead><tr><th scope="col">Siunčiama</th><th scope="col">Į \(M_1\)</th><th scope="col">Į \(M_2\)</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Iš \(D_1\)</th><td>\(\htmlClass{hd}{x}\)</td><td>\(\htmlClass{hd}{y}\)</td></tr>
+                <tr><th scope="row">Iš \(D_2\)</th><td>\(15 - x\)</td><td>\(20 - y\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sąlygos ir tikslo funkcija</span></h4>
+          <p>Sandėlis negali išsiųsti daugiau, negu turi:</p>
+          \[ \begin{aligned} D_1:&amp;\quad x + y \leq 12 \\ D_2:&amp;\quad (15 - x) + (20 - y) \leq 30 \\ &amp;\quad \Longrightarrow\; x + y \geq 5 \end{aligned} \]
+          <p>Nė vienas siunčiamas kiekis negali būti neigiamas. Be \(x \geq 0\) ir \(y \geq 0\), dar reikia \(15 - x \geq 0\) ir \(20 - y \geq 0\), t. y. \(x \leq 15\) ir \(y \leq 20\). Abi pastarąsias sąlygas jau užtikrina \(x + y \leq 12\), todėl jos yra <strong>perteklinės</strong> ir brėžinyje neatsispindi.</p>
+          <p>Transportavimo išlaidos gaunamos sudėjus visų keturių maršrutų išlaidas:</p>
+          \[ \begin{aligned} TC &amp;= 6x + 9y + 8(15 - x) + 5(20 - y) \\ &amp;= 220 - 2x + 4y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          \[ \begin{gathered} TC = 220 - 2x + 4y \to \min \\[4pt] \begin{cases} x + y \leq 12 \\ x + y \geq 5 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 12\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 12\)<br>\(y = 0:\; x = 12\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>12</td></tr><tr><th scope="row">\(y\)</th><td>12</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 5\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 5\)<br>\(y = 0:\; x = 5\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>5</td></tr><tr><th scope="row">\(y\)</th><td>5</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškas</span></h4>
+          <p>Koordinačių pradžia yra abiejų nelygybių tikrinimo taškas:</p>
+          \[ \begin{alignedat}{2} 0 + 0 \leq 12 \;&amp;\Rightarrow\; 0 \leq 12 \; &amp;&amp; \text{(teisinga)} \\ 0 + 0 \geq 5 \;&amp;\Rightarrow\; 0 \geq 5 \; &amp;&amp; \text{(neteisinga)} \end{alignedat} \]
+          <p>Abi tiesės lygiagrečios, todėl leistinųjų sprendinių aibė yra juostos tarp jų dalis, apribota ašimis.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,14,1,2],"y":[-1,14,1,2],"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":12,"lab":"x + y = 12","col":1,"lt":0.3,"arr":[0.2,0.7]},{"a":1,"b":1,"s":"ge","r":5,"lab":"x + y = 5","col":2,"lt":0.75,"lo":-14,"arr":[0.3,0.5]}],"pts":[{"x":0,"y":5,"lab":"A","p":"w"},{"x":5,"y":0,"lab":"B","p":"s"},{"x":12,"y":0,"lab":"C","p":"ne"},{"x":0,"y":12,"lab":"D","p":"ne"}],"aria":"Vandens pristatymo uždavinio leistinųjų sprendinių aibė ABCD tarp dviejų lygiagrečių tiesių"}'></div>
+            <figcaption>3 pav. Vandens pristatymo uždavinio leistinųjų sprendinių aibė.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <p>Čia kiekviena viršūnė yra ant ašies, todėl nereikia spręsti jokios sistemos: visų keturių viršūnių koordinatės jau pateiktos dviejose reikšmių lentelėse – \(A(0;\, 5)\) ir \(B(5;\, 0)\) yra ant tiesės \(x + y = 5\), o \(C(12;\, 0)\) ir \(D(0;\, 12)\) – ant tiesės \(x + y = 12\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Išlaidos viršūnėse</span></h4>
+          \[ \begin{aligned} TC_A &amp;= 220 - 2\cdot 0 + 4\cdot 5 = 240 \\ TC_B &amp;= 220 - 2\cdot 5 + 4\cdot 0 = 210 \\ TC_C &amp;= 220 - 2\cdot 12 + 4\cdot 0 = 196 \\ TC_D &amp;= 220 - 2\cdot 0 + 4\cdot 12 = 268 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Mažiausia reikšmė</span></h4>
+          <p>Mažiausia reikšmė yra \(\htmlClass{hd}{196}\), ji pasiekiama viršūnėje \(C(12;\, 0)\). Du kintamieji nusako visą pristatymo planą: \(D_1\) siunčia \(x = 12\) padėklų į \(M_1\) ir \(y = 0\) padėklų į \(M_2\), todėl \(D_2\) siunčia \(15 - 12 = 3\) padėklus į \(M_1\) ir \(20 - 0 = 20\) padėklų į \(M_2\).</p>
+          <div class="tbl-wrap">
+            <table class="vtable model-tbl">
+              <thead><tr><th scope="col">Siunčiami padėklai</th><th scope="col">Į \(M_1\)</th><th scope="col">Į \(M_2\)</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Iš \(D_1\)</th><td>12</td><td>0</td></tr>
+                <tr><th scope="row">Iš \(D_2\)</th><td>3</td><td>20</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Pirmasis sandėlis turi išsiųsti visus 12 padėklų į pirmąjį prekybos centrą, o antrasis – 3 padėklus į pirmąjį ir 20 padėklų į antrąjį prekybos centrą. Mažiausios išlaidos yra \(TC_{\min}(12;\, 0) = 196\) EUR.</p>
+          </div>
+          <p>Planą lengva suprasti: kiekvienas prekybos centras kiek įmanoma aprūpinamas iš sandėlio, iš kurio vežti pigiau – \(D_1\) aprūpina \(M_1\) (6, palyginti su 8), o \(D_2\) aprūpina \(M_2\) (5, palyginti su 9). Pirmasis sandėlis visiškai ištuštinamas, antrasis išsiunčia 23 iš turimų 30 padėklų.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: apibrėžkite kintamuosius, kiekvieną sąlygos sakinį užrašykite nelygybe, sudarykite matematinį modelį, nubrėžkite leistinųjų sprendinių aibę, algebriškai raskite viršūnes ir apskaičiuokite tikslo funkcijos reikšmę kiekvienoje iš jų. Atsakyme pateikti kintamieji, matematinis modelis ir galutinis rezultatas – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gamintojas iš avižų, riešutų ir razinų gamina javainius 200&nbsp;kg partijomis. Avižos kainuoja 3 eurus už kilogramą, riešutai – 9 eurus, o razinos – 2 eurus. Avižose yra 10&nbsp;% baltymų, riešutuose – 25&nbsp;%, razinose – 5&nbsp;%, o javainiuose turi būti bent 11&nbsp;% baltymų. Riešutai turi sudaryti bent 10&nbsp;% partijos, o razinos – ne daugiau kaip 25&nbsp;%. Kiek kiekvienos sudedamosios dalies turėtų būti vienoje partijoje, kad jos sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– avižų kiekis vienoje partijoje kilogramais;</span></li>
+            <li><span class="sym">\(y\)</span><span>– riešutų kiekis vienoje partijoje kilogramais;</span></li>
+          </ul>
+          <p>tuomet razinų kiekis yra \(200 - x - y\) kilogramų.</p>
+          <p><strong>Matematinis modelis.</strong> Baltymų kiekio sąlyga yra \(0{,}1x + 0{,}25y + 0{,}05(200 - x - y) \geq 22\), t. y. \(x + 4y \geq 240\); razinų kiekio sąlyga yra \(200 - x - y \leq 50\), t. y. \(x + y \geq 150\); razinų kiekis negali būti neigiamas, todėl \(x + y \leq 200\):</p>
+          \[ \begin{aligned} TC &amp;= 3x + 9y + 2(200 - x - y) \\ &amp;= 400 + x + 7y \to \min \end{aligned} \]
+          \[ \begin{cases} x + 4y \geq 240 \\ x + y \geq 150 \\ y \geq 20 \\ x + y \leq 200 \\ x;\, y \geq 0 \end{cases} \]
+          <p><strong>Atsakymas.</strong> Mažiausia tikslo funkcijos reikšmė yra</p>
+          \[ TC_{\min}(160;\, 20) = 700 \]
+          <p>Vieną partiją turėtų sudaryti 160&nbsp;kg avižų, 20&nbsp;kg riešutų ir 20&nbsp;kg razinų; tuomet jos sąnaudos būtų 700 eurų. Baltymų kiekis sudaro lygiai 11&nbsp;%, o riešutų – lygiai 10&nbsp;%. Razinos sudaro tik 10&nbsp;% partijos, gerokai mažiau nei leidžiama 25&nbsp;% riba.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Didmenininkas I sandėlyje laiko 40 padėklų prekių, o II sandėlyje – 70 padėklų. A parduotuvė užsakė 50 padėklų, o B parduotuvė – 45 padėklus. Vieno padėklo pristatymas iš I sandėlio į A parduotuvę kainuoja 5 eurus, o į B parduotuvę – 3 eurus; iš II sandėlio į A parduotuvę – 6 eurus, o į B parduotuvę – 9 eurus. A parduotuvė reikalauja, kad bent 20 jai skirtų padėklų būtų pristatyti iš I sandėlio. Kaip reikėtų pristatyti prekes, kad sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– iš I sandėlio į A parduotuvę pristatomų padėklų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– iš I sandėlio į B parduotuvę pristatomų padėklų skaičius;</span></li>
+          </ul>
+          <p>tuomet iš II sandėlio į A parduotuvę pristatoma \(50 - x\) padėklų, o į B parduotuvę – \(45 - y\) padėklų.</p>
+          <p><strong>Matematinis modelis.</strong> I sandėlyje yra 40 padėklų, todėl \(x + y \leq 40\); II sandėlyje yra 70 padėklų, todėl \((50 - x) + (45 - y) \leq 70\), t. y. \(x + y \geq 25\). Kiekvieno iš keturių pristatymų kiekis turi būti neneigiamas. Dviem pristatymams iš II sandėlio gauname \(50 - x \geq 0\) ir \(45 - y \geq 0\), t. y. \(x \leq 50\) ir \(y \leq 45\). Šios dvi sąlygos išplaukia iš \(x + y \leq 40\), todėl jos yra perteklinės, tačiau priklauso modeliui ir užrašomos kartu su kitomis:</p>
+          \[ \begin{aligned} TC &amp;= 5x + 3y + 6(50 - x) + 9(45 - y) \\ &amp;= 705 - x - 6y \to \min \end{aligned} \]
+          \[ \begin{cases} x + y \leq 40 \\ x + y \geq 25 \\ x \geq 20 \\ x \leq 50 \\ y \leq 45 \\ x;\, y \geq 0 \end{cases} \]
+          <p><strong>Atsakymas.</strong> Mažiausia tikslo funkcijos reikšmė yra</p>
+          \[ TC_{\min}(20;\, 20) = 565 \]
+          <p>Iš I sandėlio reikėtų pristatyti 20 padėklų į A parduotuvę ir 20 padėklų į B parduotuvę, o iš II sandėlio – 30 padėklų į A parduotuvę ir 25 padėklus į B parduotuvę; tuomet pristatymo sąnaudos būtų 565 eurai. I sandėlis ištuštinamas, o A parduotuvė iš jo gauna lygiai 20 padėklų, kaip ir reikalaujama. II sandėlyje lieka 15 padėklų.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">4 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
