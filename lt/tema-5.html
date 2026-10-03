@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5 tema. Tiesinis programavimas: simpleksų metodas · Taikomoji matematika</title>
+<meta name="description" content="Simpleksų metodo esmė: tariami kintamieji, pradinė simpleksų lentelė, pagrindinis stulpelis, pagrindinė eilutė ir pagrindinis elementas, iteracijos; minimizavimo uždavinys ir dualusis uždavinys.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=26">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=26"></script>
+</head>
+<body data-page="t5">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">5 tema</span>
+    <h1>Tiesinis programavimas: simpleksų metodas</h1>
+    <ul class="jump">
+      <li><a href="#esme">Esmė</a></li>
+      <li><a href="#maksimizavimas">Maksimizavimas</a></li>
+      <li><a href="#minimizavimas">Minimizavimas</a></li>
+      <li><a href="#taikymai">Taikymai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ ESMĖ ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">Metodo esmė</h2>
+
+    <article class="card concept" id="esme">
+      <div class="concept-head"><span class="num">1</span><h3>Kas yra simpleksų metodas?</h3></div>
+      <p><a href="tema-4.html">4 temoje</a> tiesinio programavimo uždavinius sprendėme grafiškai. Šis būdas tinka tik tada, kai kintamieji du: trečiojo kintamojo plokštumoje pavaizduoti nebeįmanoma, o praktikoje gaminių, išteklių ar variantų dažnai būna daugiau.</p>
+      <p><strong>Simpleksų metodas</strong> – algebrinis tiesinio programavimo uždavinių sprendimo būdas, tinkantis bet kokiam kintamųjų skaičiui. Brėžinio nereikia: visi skaičiavimai atliekami lentelėje, taikant tuos pačius elementariuosius eilučių pertvarkius kaip <a href="tema-3.html#algoritmas">Gauso metodu</a>. Metodą 1947 m. sukūrė amerikiečių matematikas George B. Dantzig.</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Lygčių sistema</strong><span>Apribojimai ir tikslo funkcija užrašomi lygtimis.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Pradinė lentelė</strong><span>Ji aprašo planą, pagal kurį dar niekas negaminama.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Iteracijos</strong><span>Kiekviena nauja lentelė aprašo geresnį planą, kol pagerinti nebeįmanoma.</span></div></div>
+      </div>
+      <p class="tip"><strong>Ryšys su grafiniu metodu.</strong> Kiekviena simpleksų lentelė atitinka vieną leistinųjų sprendinių aibės viršūnę, o kiekviena iteracija – perėjimą į gretimą viršūnę, kurioje tikslo funkcijos reikšmė didesnė. Optimumo ir čia ieškoma viršūnėse, tik ne brėžinyje, o skaičiuojant.</p>
+    </article>
+  </section>
+
+  <!-- ============ MAKSIMIZAVIMAS ============ -->
+  <section class="section" id="maksimizavimas" aria-labelledby="h-max">
+    <h2 id="h-max">Maksimizavimo uždavinio sprendimas</h2>
+
+    <article class="card concept" id="lygtys">
+      <div class="concept-head"><span class="num">2</span><h3>Nuo modelio prie lygčių sistemos</h3></div>
+      <p>Simpleksų metodu sprendžiamas standartinis maksimizavimo uždavinys – toks pat kaip <a href="tema-4-maksimizavimas.html#modelis">4 temoje</a>, tik kintamųjų gali būti daugiau. Pavyzdžiui, su trimis kintamaisiais ir trimis apribojimais:</p>
+      <div class="formula">\[ \begin{gathered} P = p_1x + p_2y + p_3z \to \max \\[4pt] \begin{cases} a_{11}x + a_{12}y + a_{13}z \leq b_1 \\ a_{21}x + a_{22}y + a_{23}z \leq b_2 \\ a_{31}x + a_{32}y + a_{33}z \leq b_3 \\ x;\, y;\, z \geq 0 \end{cases} \end{gathered} \]</div>
+
+      <div class="subtype">
+        <h4>Tariami kintamieji</h4>
+        <p>Eilučių pertvarkiai taikomi lygtims, todėl kiekviena nelygybė pirmiausia paverčiama lygtimi. Į kiekvieno apribojimo kairę pusę pridedamas naujas neneigiamas kintamasis – <strong>tariamas kintamasis</strong> \(s_1\), \(s_2\) arba \(s_3\). Jis parodo, kiek to ištekliaus lieka nepanaudota:</p>
+        <div class="formula fit">\[ \underbrace{a_{11}x + a_{12}y + a_{13}z}_{\text{sunaudojama}} + \underbrace{s_1}_{\text{lieka}} = \underbrace{b_1}_{\text{turima}} \]</div>
+        <p>Tariami kintamieji dar vadinami fiktyviaisiais.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Tikslo funkcija – irgi lygtis</h4>
+        <p>Tikslo funkcija užrašoma lygtimi, visus jos narius perkeliant į kairę pusę. Pelno koeficientai tada pakeičia ženklą:</p>
+        <div class="formula">\[ \begin{gathered} P = p_1x + p_2y + p_3z \\ \Longrightarrow\; -p_1x - p_2y - p_3z + P = 0 \end{gathered} \]</div>
+        <p>Gaunama keturių lygčių sistema:</p>
+        <div class="formula">\[ \begin{cases} a_{11}x + a_{12}y + a_{13}z + s_1 = b_1 \\ a_{21}x + a_{22}y + a_{23}z + s_2 = b_2 \\ a_{31}x + a_{32}y + a_{33}z + s_3 = b_3 \\ -p_1x - p_2y - p_3z + P = 0 \end{cases} \]</div>
+        <p>Reikia rasti tokias neneigiamas visų kintamųjų reikšmes, su kuriomis \(P\) yra didžiausias.</p>
+      </div>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tikslo funkcija ir apribojimų sistema. Nepakanka modelio pateikti tik simpleksų lentelėje. Turi būti aiškiai nurodyta, ar siekiama tikslo funkciją maksimizuoti, ar minimizuoti. Visi apribojimai, įskaitant ir neneigiamumo apribojimus, privalo būti aiškiai pateikti vienoje sistemoje, šalia tikslo funkcijos.</li>
+            <li>Nėra būtina pateikti fiktyvių kintamųjų paaiškinimo bei nelygybių sistemos konvertavimo į lygčių sistemą.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card concept" id="pradine-lentele">
+      <div class="concept-head"><span class="num">3</span><h3>Pradinė simpleksų lentelė</h3></div>
+      <p><strong>Simpleksų lentelė</strong> – ta pati lygčių sistema, užrašyta be kintamųjų žymėjimų: paliekami tik koeficientai. Todėl kiekvieno skaičiaus vietą lemia stulpelių ir eilučių tvarka:</p>
+      <ul>
+        <li><strong>kiekvienam kintamajam – stulpelis</strong>, visada ta pačia tvarka: sprendimo kintamieji \(x, y, z\), tariami kintamieji \(s_1, s_2, s_3\), tada \(P\) ir laisvųjų narių stulpelis \(n\); vertikalios linijos tik atskiria šias grupes;</li>
+        <li><strong>kiekvienai lygčiai – eilutė</strong>; tikslo funkcijos eilutė rašoma paskutinė, po linija;</li>
+        <li><strong>rašomi visi koeficientai</strong>, taip pat ir nuliai.</li>
+      </ul>
+      <div class="tbl-wrap">
+        <table class="vtable sx-tbl">
+          <thead><tr><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col">\(z\)</th><th scope="col" class="g">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+          <tbody>
+            <tr><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(a_{13}\)</td><td class="g idb">1</td><td class="idb">0</td><td class="idb">0</td><td class="g">0</td><td class="g">\(b_1\)</td></tr>
+            <tr><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(a_{23}\)</td><td class="g idb">0</td><td class="idb">1</td><td class="idb">0</td><td class="g">0</td><td class="g">\(b_2\)</td></tr>
+            <tr><td>\(a_{31}\)</td><td>\(a_{32}\)</td><td>\(a_{33}\)</td><td class="g idb">0</td><td class="idb">0</td><td class="idb">1</td><td class="g">0</td><td class="g">\(b_3\)</td></tr>
+            <tr class="tf"><td>\(-p_1\)</td><td>\(-p_2\)</td><td>\(-p_3\)</td><td class="g">0</td><td>0</td><td>0</td><td class="g">1</td><td class="g">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="formula-note" style="text-align:center">Tariamų kintamųjų stulpeliai (paryškinti) kartu sudaro vienetinę matricą.</p>
+
+      <div class="subtype">
+        <h4>Ką rodo pradinė lentelė</h4>
+        <p>Pradinė lentelė aprašo planą, pagal kurį <strong>dar niekas negaminama</strong>: \(x = y = z = 0\), visi ištekliai lieka nepanaudoti – \(s_1 = b_1\), \(s_2 = b_2\), \(s_3 = b_3\), o \(P = 0\).</p>
+        <p>Tikslo funkcijos eilutės neigiami elementai rodo, kad šį planą galima pagerinti: elementas \(-p_2\) reiškia, kad kiekvienas pagamintas antrojo gaminio vienetas pelną padidintų \(p_2\) eurų.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="iteracija">
+      <div class="concept-head"><span class="num">4</span><h3>Iteracija: kaip gaunama geresnė lentelė</h3></div>
+      <p>Kiekviename žingsnyje – <strong>iteracijoje</strong> – į planą įtraukiamas vienas naujas kintamasis. Tam atliekami keturi veiksmai:</p>
+      <ol class="flow">
+        <li><span class="ph-ico" aria-hidden="true">1</span><div><strong>Pagrindinis stulpelis</strong><span class="d">Tikslo funkcijos eilutėje (tik kintamųjų stulpeliuose) randamas didžiausio modulio neigiamas elementas. Jo stulpelis – pagrindinis.</span></div></li>
+        <li><span class="ph-ico" aria-hidden="true">2</span><div><strong>Pagrindinė eilutė</strong><span class="d">Kiekvieno apribojimo laisvasis narys dalijamas iš tos eilutės teigiamo pagrindinio stulpelio elemento. Eilutė, kurios dalmuo mažiausias, – pagrindinė. Jos ir pagrindinio stulpelio susikirtime yra pagrindinis elementas.</span></div></li>
+        <li><span class="ph-ico" aria-hidden="true">3</span><div><strong>Pagrindinis elementas – vienetas</strong><span class="d">Visa pagrindinė eilutė, įskaitant laisvąjį narį, dalijama iš pagrindinio elemento.</span></div></li>
+        <li><span class="ph-ico" aria-hidden="true">4</span><div><strong>Kiti pagrindinio stulpelio elementai – nuliai</strong><span class="d">Pagrindinė eilutė dauginama iš kiekvienos kitos eilutės pagrindinio stulpelio elemento su priešingu ženklu ir pridedama prie tos eilutės.</span></div></li>
+        <li class="flow-q"><span class="fq">Ar tikslo funkcijos eilutėje dar yra neigiamų elementų?</span><span class="flow-out"><span class="yes">Taip – grįžtama į 1 veiksmą</span><span class="no">Ne – lentelė optimali</span></span></li>
+      </ol>
+
+      <div class="subtype">
+        <h4>Pagrindinis stulpelis, eilutė ir elementas lentelėje</h4>
+        <p>Tarkime, didžiausio modulio neigiamas elementas yra \(-p_2\), o mažiausias dalmuo – antrojoje eilutėje. Dalmenys užrašomi šalia eilučių, o tikslo funkcijos eilutė dalmenų skaičiavime nedalyvauja:</p>
+        <div class="tbl-wrap">
+          <table class="vtable sx-tbl">
+            <thead><tr><th scope="col">\(x\)</th><th scope="col" class="pc">\(y\)</th><th scope="col">\(z\)</th><th scope="col" class="g">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th><th scope="col" class="ann"></th></tr></thead>
+            <tbody>
+              <tr><td class="dot">·</td><td class="pc">\(a_{12}\)</td><td class="dot">·</td><td class="g dot">·</td><td class="dot">·</td><td class="dot">·</td><td class="g dot">·</td><td class="g">\(b_1\)</td><td class="ann">\(b_1 : a_{12}\)</td></tr>
+              <tr class="pr"><td class="dot">·</td><td class="pc pe">\(a_{22}\)</td><td class="dot">·</td><td class="g dot">·</td><td class="dot">·</td><td class="dot">·</td><td class="g dot">·</td><td class="g">\(b_2\)</td><td class="ann">\(b_2 : a_{22}\)</td></tr>
+              <tr><td class="dot">·</td><td class="pc">\(a_{32}\)</td><td class="dot">·</td><td class="g dot">·</td><td class="dot">·</td><td class="dot">·</td><td class="g dot">·</td><td class="g">\(b_3\)</td><td class="ann">\(b_3 : a_{32}\)</td></tr>
+              <tr class="tf"><td>\(-p_1\)</td><td class="pc"><strong>\(-p_2\)</strong></td><td>\(-p_3\)</td><td class="g">0</td><td>0</td><td>0</td><td class="g">1</td><td class="g">0</td><td class="ann"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="sx-legend">
+          <li><span class="sw sw-pc" aria-hidden="true"></span>pagrindinis stulpelis</li>
+          <li><span class="sw sw-pr" aria-hidden="true"></span>pagrindinė eilutė</li>
+          <li><span class="sw sw-pe" aria-hidden="true"></span>pagrindinis elementas</li>
+        </ul>
+        <p>Dalmuo atsako į klausimą, kiek naujojo gaminio leistų pagaminti tos eilutės išteklius. Mažiausias dalmuo rodo išteklių, kuris baigsis pirmas, todėl jis riboja visus kitus. Eilutės, kurių pagrindinio stulpelio elementas lygus nuliui arba neigiamas, dalmenų skaičiavime nedalyvauja.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Kaip žymimi pertvarkiai</h4>
+        <p>Pertvarkiai žymimi kaip <a href="tema-3.html#algoritmas">Gauso metode</a>. Dalyba iš pagrindinio elemento rašoma šalia pagrindinės eilutės: \({:}\,a_{22}\). Daugikliai rašomi skliaustuose šalia pagrindinės eilutės – po vieną kiekvienai eilutei, kurios elementą reikia paversti nuliu, – o rodyklė nukreipiama į tą eilutę:</p>
+        <div class="tbl-wrap">
+          <table class="vtable arr-tbl">
+            <tbody>
+              <tr><th scope="row">1 eilutė</th><td>\(\uparrow\)</td><td></td><td></td></tr>
+              <tr><th scope="row">Pagrindinė eilutė</th><td class="pv">\((-a_{12})\)</td><td class="pv">\((-a_{32})\)</td><td class="pv">\((p_2)\)</td></tr>
+              <tr><th scope="row">3 eilutė</th><td></td><td>\(\downarrow\)</td><td>\(\vert\)</td></tr>
+              <tr><th scope="row">Tikslo funkcijos eilutė</th><td></td><td></td><td>\(\downarrow\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="formula-note" style="text-align:center">Čia \(a_{12}\), \(a_{32}\) ir \(-p_2\) – kitų eilučių pagrindinio stulpelio elementai; daugiklis visada yra toks elementas su priešingu ženklu.</p>
+        <p>Atlikus pertvarkius, pagrindinis stulpelis tampa vienetinis: pagrindinėje eilutėje – 1, visur kitur – 0. Taip pagrindinio stulpelio kintamasis įtraukiamas į planą.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Kada skaičiavimai baigiami</h4>
+        <p>Kol tikslo funkcijos eilutėje yra neigiamas elementas, yra kintamasis, kurį įtraukus pelnas dar padidėtų, todėl iteracija kartojama. Kai neigiamų elementų nebelieka, planą pagerinti nebeįmanoma – lentelė yra <strong>optimali</strong>. Kaip iš jos perskaityti optimalų planą, didžiausią pelną, nepanaudotus išteklius ir šešėlines kainas, aptarsime <a href="#taikymai">1 skyriuje</a>.</p>
+      </div>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Suformulavus pradinę simpleksų lentelę, būtina parodyti pagrindinį stulpelį ir pagrindinę eilutę. Taip pat turi būti parodyti santykių skaičiavimai, kuriais remiantis pasirinkta pagrindinė eilutė.</li>
+            <li>Sprendžiant uždavinį simpleksų metodu, būtina nurodyti atliekamus veiksmus eliminuojant elementus virš/po pagrindinio elemento.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ MINIMIZAVIMAS ============ -->
+  <section class="section" id="minimizavimas" aria-labelledby="h-min">
+    <h2 id="h-min">Minimizavimo uždavinio sprendimas</h2>
+
+    <article class="card concept" id="dualusis">
+      <div class="concept-head"><span class="num">5</span><h3>Kodėl reikalingas dualusis uždavinys</h3></div>
+      <p>Maksimizavimo uždavinio pradinė lentelė aprašo planą „nieko negaminti“. Toks planas tinka, kai visų apribojimų ženklas yra \(\leq\). Standartinio minimizavimo uždavinio apribojimų ženklas yra \(\geq\): planas „nieko nedaryti“ neįvykdo nė vieno reikalavimo, todėl pradinės lentelės tiesiogiai sudaryti negalima.</p>
+      <p>Todėl iš minimizavimo uždavinio skaičių sudaromas kitas uždavinys – <strong>dualusis uždavinys</strong>. Jis yra standartinis maksimizavimo uždavinys ir sprendžiamas jau aprašytu būdu, o pradinio uždavinio atsakymas perskaitomas iš galutinės dualiojo uždavinio lentelės.</p>
+      <p>Pavyzdžiui, nagrinėkime standartinį minimizavimo uždavinį su dviem kintamaisiais ir trimis apribojimais:</p>
+      <div class="formula">\[ \begin{gathered} TC = c_1x + c_2y \to \min \\[4pt] \begin{cases} a_{11}x + a_{12}y \geq b_1 \\ a_{21}x + a_{22}y \geq b_2 \\ a_{31}x + a_{32}y \geq b_3 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]</div>
+    </article>
+
+    <article class="card concept" id="dualiojo-sudarymas">
+      <div class="concept-head"><span class="num">6</span><h3>Kaip sudaromas dualusis uždavinys</h3></div>
+
+      <div class="subtype">
+        <h4>1. Koeficientų lentelė</h4>
+        <p>Visi modelio skaičiai surašomi į vieną lentelę – be nelygybių ženklų ir be kintamųjų:</p>
+        <ul>
+          <li>kiekvienam apribojimui – eilutė, pažymėta \(s_1, s_2, s_3\): šiais žymenimis bus žymimi dualiojo uždavinio kintamieji;</li>
+          <li>kiekvienam kintamajam – stulpelis \(x\), \(y\), o reikalaujami kiekiai – laisvųjų narių stulpelyje \(n\);</li>
+          <li>paskutinė eilutė \(TC\) – tikslo funkcijos koeficientai; jos langelis \(n\) stulpelyje lieka tuščias.</li>
+        </ul>
+      </div>
+
+      <div class="subtype">
+        <h4>2. Lentelės transponavimas</h4>
+        <p>Lentelė <strong>transponuojama</strong>: kiekviena eilutė tampa stulpeliu, o kiekvienas stulpelis – eilute, kartu su žymėjimais. Stulpelis \(n\) lieka paskutinis, o žymėjimas \(TC\) pakeičiamas į \(P\), nes ši eilutė tampa maksimizavimo uždavinio tikslo funkcija:</p>
+        <div class="mats mats--flow">
+          <span><table class="vtable sx-tbl">
+            <thead><tr><th scope="col"></th><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+            <tbody>
+              <tr class="pr"><th scope="row">\(s_1\)</th><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td class="g">\(b_1\)</td></tr>
+              <tr><th scope="row">\(s_2\)</th><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td class="g">\(b_2\)</td></tr>
+              <tr><th scope="row">\(s_3\)</th><td>\(a_{31}\)</td><td>\(a_{32}\)</td><td class="g">\(b_3\)</td></tr>
+              <tr class="tf"><th scope="row">\(TC\)</th><td>\(c_1\)</td><td>\(c_2\)</td><td class="g"></td></tr>
+            </tbody>
+          </table></span>
+          <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+          <span><table class="vtable sx-tbl">
+            <thead><tr><th scope="col"></th><th scope="col" class="tc">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">\(x\)</th><td class="tc">\(a_{11}\)</td><td>\(a_{21}\)</td><td>\(a_{31}\)</td><td class="g">\(c_1\)</td></tr>
+              <tr><th scope="row">\(y\)</th><td class="tc">\(a_{12}\)</td><td>\(a_{22}\)</td><td>\(a_{32}\)</td><td class="g">\(c_2\)</td></tr>
+              <tr class="tf"><th scope="row">\(P\)</th><td class="tc">\(b_1\)</td><td>\(b_2\)</td><td>\(b_3\)</td><td class="g"></td></tr>
+            </tbody>
+          </table></span>
+        </div>
+        <p class="formula-note" style="text-align:center">Pirmoji eilutė \(s_1\) tapo pirmuoju stulpeliu \(s_1\).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>3. Dualusis uždavinys</h4>
+        <p>Transponuota lentelė skaitoma taip pat, kaip buvo sudaryta pirmoji: eilutės \(x\) ir \(y\) – du apribojimai su ženklu \(\leq\), eilutė \(P\) – tikslo funkcija, kurios ieškoma maksimumo, o kintamieji yra \(s_1, s_2, s_3\):</p>
+        <div class="formula">\[ \begin{gathered} P = b_1s_1 + b_2s_2 + b_3s_3 \to \max \\[4pt] \begin{cases} a_{11}s_1 + a_{21}s_2 + a_{31}s_3 \leq c_1 \\ a_{12}s_1 + a_{22}s_2 + a_{32}s_3 \leq c_2 \\ s_1;\, s_2;\, s_3 \geq 0 \end{cases} \end{gathered} \]</div>
+        <p>Atkreipkite dėmesį, kas susikeitė vietomis: reikalaujami kiekiai \(b_1, b_2, b_3\) tapo tikslo funkcijos koeficientais, kainos \(c_1, c_2\) – laisvaisiais nariais, o vietoj dviejų kintamųjų ir trijų apribojimų dabar yra trys kintamieji ir du apribojimai.</p>
+      </div>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant minimizavimo uždavinį, būtina parodyti modelio duomenų lentelės transponavimą.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card concept" id="dualiojo-lentele">
+      <div class="concept-head"><span class="num">7</span><h3>Pradinė dualiojo uždavinio lentelė</h3></div>
+      <p>Dualusis uždavinys sprendžiamas kaip bet kuris maksimizavimo uždavinys. Svarbi viena detalė: jo tariami kintamieji žymimi ne \(s\), o <strong>pradinio uždavinio kintamųjų raidėmis</strong> \(x\) ir \(y\) – po vieną kiekvienam dualiojo uždavinio apribojimui. Būtent toks žymėjimas leidžia pabaigoje rasti pradinio uždavinio atsakymą, todėl jo būtina laikytis.</p>
+      <div class="formula">\[ \begin{cases} a_{11}s_1 + a_{21}s_2 + a_{31}s_3 + \htmlClass{hd}{x} = c_1 \\ a_{12}s_1 + a_{22}s_2 + a_{32}s_3 + \htmlClass{hd}{y} = c_2 \\ -b_1s_1 - b_2s_2 - b_3s_3 + P = 0 \end{cases} \]</div>
+      <p>Lentelė sudaroma pagal tas pačias taisykles; stulpelių tvarka \(s_1, s_2, s_3 \mid x, y \mid P \mid n\):</p>
+      <div class="tbl-wrap">
+        <table class="vtable sx-tbl">
+          <thead><tr><th scope="col">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+          <tbody>
+            <tr><td>\(a_{11}\)</td><td>\(a_{21}\)</td><td>\(a_{31}\)</td><td class="g idb">1</td><td class="idb">0</td><td class="g">0</td><td class="g">\(c_1\)</td></tr>
+            <tr><td>\(a_{12}\)</td><td>\(a_{22}\)</td><td>\(a_{32}\)</td><td class="g idb">0</td><td class="idb">1</td><td class="g">0</td><td class="g">\(c_2\)</td></tr>
+            <tr class="tf"><td>\(-b_1\)</td><td>\(-b_2\)</td><td>\(-b_3\)</td><td class="g">0</td><td>0</td><td class="g">1</td><td class="g">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Toliau atliekamos tos pačios <a href="#iteracija">iteracijos</a>, kol tikslo funkcijos eilutėje nelieka neigiamų elementų. Kur galutinėje lentelėje rasti pradinio uždavinio sprendinį ir mažiausias išlaidas, aptarsime <a href="#taikymai">2 skyriuje</a>.</p>
+
+      <div class="subtype">
+        <h4>Minimizavimo uždavinio sprendimo eiga</h4>
+        <ol class="steps-list">
+          <li>Užrašykite minimizavimo uždavinio matematinį modelį.</li>
+          <li>Visus koeficientus surašykite į lentelę su eilutėmis \(s_1, s_2, \ldots, TC\) ir stulpeliais \(x, y, n\).</li>
+          <li>Transponuokite lentelę, žymėjimą \(TC\) pakeiskite į \(P\).</li>
+          <li>Pagal transponuotą lentelę užrašykite dualųjį maksimizavimo uždavinį.</li>
+          <li>Sudarykite pradinę lentelę, tariamus kintamuosius žymėdami \(x\) ir \(y\).</li>
+          <li>Kartokite iteracijas, kol tikslo funkcijos eilutėje nelieka neigiamų elementų.</li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ TAIKYMAI ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Taikymai</h2>
+    <p class="section-intro">Simpleksų metodu sprendžiami tie patys gamybos planavimo ir išlaidų mažinimo uždaviniai kaip 4 temoje, tik su daugiau kintamųjų. Pasirinkite skyrių.</p>
+    <div class="model-grid" data-models="t5"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">5 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">4 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

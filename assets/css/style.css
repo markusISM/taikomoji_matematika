@@ -903,3 +903,51 @@ svg .hp-out { font-family: KaTeX_Main, "Times New Roman", serif; font-size: 15px
 .vert-list li { margin: 0 0 10px; }
 .steps-list > li > ul { margin: 6px 0 0; padding-left: 1.1em; }
 .steps-list > li > ul > li { margin: 0 0 6px; }
+
+/* ---------- 5 tema: simpleksų lentelės ir iteracijos schema ---------- */
+.vtable.sx-tbl { font-size: .86rem; }
+.vtable.sx-tbl th, .vtable.sx-tbl td { text-align: center; padding: 5px 7px; white-space: nowrap; }
+.vtable.sx-tbl th { background: var(--surface-2); }
+.vtable.sx-tbl .g { border-left: 2px solid var(--muted); }
+.vtable.sx-tbl tr.tf td { border-top: 2px solid var(--muted); }
+.vtable.sx-tbl td.idb { background: var(--success-soft); color: var(--success); font-weight: 700; }
+.vtable.sx-tbl .pc { background: color-mix(in srgb, var(--chart) 14%, transparent); }
+.vtable.sx-tbl tr.pr td { background: color-mix(in srgb, var(--exam) 12%, transparent); }
+.vtable.sx-tbl tr.pr td.pc, .vtable.sx-tbl td.pe { background: color-mix(in srgb, var(--exam) 30%, transparent); font-weight: 700; outline: 2px solid var(--exam); outline-offset: -2px; }
+.vtable.sx-tbl td.ann, .vtable.sx-tbl th.ann { border: 0; background: transparent; color: var(--muted); text-align: left; padding-left: 8px; }
+.vtable.sx-tbl tr.pr td.ann { background: transparent; color: var(--exam); font-weight: 700; }
+.vtable.sx-tbl td.dot { color: var(--muted); }
+.vtable.sx-tbl tbody th { text-align: left; }
+@media (max-width: 440px) {
+  .vtable.sx-tbl { font-size: .74rem; }
+  .vtable.sx-tbl th, .vtable.sx-tbl td { padding: 4px 4px; }
+  .vtable.sx-tbl td.ann { padding-left: 5px; }
+}
+.sx-legend { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center; font-size: .86rem; color: var(--muted); }
+.sx-legend li { display: flex; align-items: center; gap: 6px; }
+.sx-legend .sw { width: 14px; height: 14px; border-radius: 3px; flex: none; }
+.sx-legend .sw-pc { background: color-mix(in srgb, var(--chart) 25%, transparent); }
+.sx-legend .sw-pr { background: color-mix(in srgb, var(--exam) 20%, transparent); }
+.sx-legend .sw-pe { background: color-mix(in srgb, var(--exam) 30%, transparent); outline: 2px solid var(--exam); outline-offset: -2px; }
+.vtable.arr-tbl { font-size: .9rem; }
+.vtable.arr-tbl td { text-align: center; min-width: 52px; }
+.vtable.arr-tbl td.pv { color: var(--exam); font-weight: 700; }
+.vtable.arr-tbl tbody th { text-align: left; font-weight: 650; }
+.flow { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 0; }
+.flow > li { position: relative; display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+.flow > li + li { margin-top: 22px; }
+.flow > li + li::before { content: "↓"; position: absolute; top: -21px; left: 22px; color: var(--muted); font-weight: 700; line-height: 20px; }
+.flow .ph-ico { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 700; }
+.flow strong { display: block; }
+.flow span.d { display: block; font-size: .92rem; color: var(--muted); }
+.flow > li.flow-q { background: var(--tip-soft); border: 1px dashed var(--tip); flex-direction: column; gap: 8px; }
+.flow-q .fq { font-weight: 700; color: var(--text); }
+.flow-out { display: flex; flex-wrap: wrap; gap: 8px; }
+.flow-out span { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: .88rem; font-weight: 650; }
+.flow-out .yes { background: var(--surface); border: 1px solid var(--border); color: var(--text); }
+.flow-out .no { background: var(--success-soft); color: var(--success); }
+.vtable.arr-tbl tbody th { white-space: normal; max-width: 9.5em; }
+@media (max-width: 440px) { .vtable.arr-tbl td { min-width: 44px; padding: 6px 6px; } }
+.vtable.sx-tbl tr.pr th, .vtable.sx-tbl .tc { background: color-mix(in srgb, var(--exam) 12%, transparent); }
+.vtable.sx-tbl tr.tf td.ann { border-top: 0; }
+.sx-legend { margin-bottom: 12px; }

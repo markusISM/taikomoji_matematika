@@ -171,7 +171,8 @@
       title: { lt: 'Tiesinių lygčių sistemos', en: 'Systems of Linear Equations' } },
     { id: 't4', num: 4, status: 'active', href: { lt: 'tema-4.html' },
       title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: 'Linear Programming: Geometric Methods' } },
-    { id: 't5', num: 5, status: 'soon', title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: null } },
+    { id: 't5', num: 5, status: 'active', href: { lt: 'tema-5.html' },
+      title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: 'Linear Programming: The Simplex Method' } },
     { id: 'midterm', type: 'exam', href: { lt: 'tarpinis-egzaminas.html' },
       title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
     { id: 't6', num: 6, status: 'soon', title: { lt: 'Pirmos eilės išvestinės', en: null } },
@@ -236,6 +237,14 @@
       { id: 'm44', status: 'active', href: { lt: 'tema-4-nestandartiniai.html' },
         title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' },
         desc: { lt: 'Visumos dalys, mišiniai, pristatymo planai ir maišyti apribojimų ženklai.' } }
+    ],
+    t5: [
+      { id: 'm51', status: 'soon',
+        title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' },
+        desc: { lt: 'Gamybos planas su bet kokiu kintamųjų skaičiumi: optimalus planas, likę ištekliai ir šešėlinės kainos.' } },
+      { id: 'm52', status: 'soon',
+        title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' },
+        desc: { lt: 'Dualusis uždavinys: mažiausios išlaidos ir reikalavimų viršijimas.' } }
     ]
   };
 
@@ -278,6 +287,8 @@
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
     m44:     { parent: 't4', topic: 't4', model: 'm44', href: { lt: 'tema-4-nestandartiniai.html', en: null },
                title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' } },
+    t5:      { parent: 'home', href: { lt: 'tema-5.html', en: null },
+               title: { lt: '5 tema', en: 'Topic 5' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
