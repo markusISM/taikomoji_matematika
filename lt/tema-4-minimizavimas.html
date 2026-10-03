@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standartiniai minimizavimo uždaviniai · Taikomoji matematika</title>
+<meta name="description" content="Standartinis minimizavimo uždavinys su dviem kintamaisiais: matematinio modelio sudarymas, neaprėžta leistinųjų sprendinių aibė, viršūnės ir mažiausia tikslo funkcijos reikšmė. Pavyzdžiai žingsnis po žingsnio.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=24">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=24"></script>
+</head>
+<body data-page="m43">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">4 tema · Taikymai · 3 skyrius</span>
+    <h1>Standartiniai minimizavimo uždaviniai</h1>
+    <p class="lead">Šiame skyriuje mokomasi sudaryti standartinio minimizavimo uždavinio matematinį modelį ir jį išspręsti grafiškai: nubrėžti neaprėžtą leistinųjų sprendinių aibę, rasti jos viršūnes ir išrinkti tą, kurioje sąnaudos mažiausios.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#optimalus">Optimalus planas</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Standartinis minimizavimo uždavinys</h2>
+
+    <article class="card">
+      <p><strong>Standartiniame minimizavimo uždavinyje</strong> ieškoma mažiausios tiesinės tikslo funkcijos reikšmės, kai visų techninių apribojimų ženklas yra \(\geq\), o kiekiai negali būti neigiami. Kai yra du kintamieji, jo pavidalas visada toks:</p>
+      <div class="formula">\[ \begin{gathered} TC = c_1x + c_2y \to \min \\[4pt] \begin{cases} a_{11}x + a_{12}y \geq b_1 \\ a_{21}x + a_{22}y \geq b_2 \\ \quad\vdots \\ x;\, y \geq 0 \end{cases} \end{gathered} \]</div>
+      <p>Modelį sudaro tie patys trijų rūšių elementai kaip ir <a href="tema-4-maksimizavimas.html#modelis">maksimizavimo uždavinyje</a>:</p>
+      <div class="anat">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Tikslo funkcija</strong></div>
+          <p class="anat-d">Dydis, kurio reikšmė turi būti kuo mažesnė:</p>
+          <ul>
+            <li>bendrosios sąnaudos;</li>
+            <li>bendrosios išlaidos;</li>
+            <li>rizika.</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Techniniai apribojimai</strong></div>
+          <p class="anat-d">Reikalavimai, kuriuos būtina tenkinti. Jie riboja iš apačios, todėl jų ženklas yra \(\geq\):</p>
+          <ul>
+            <li>patiekale būtinas maistinių medžiagų kiekis;</li>
+            <li>auditorija, kurią turi pasiekti reklama;</li>
+            <li>prekių kiekis, kurį reikia pristatyti.</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Natūralieji apribojimai</strong></div>
+          <p class="anat-d">Neneigiamumo sąlygos \(x;\, y \geq 0\):</p>
+          <ul>
+            <li>negalima pirkti, nuomotis ar užsakyti neigiamo kiekio.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>Kaip sudaromas modelis</h4>
+        <p>Modelis sudaromas tais pačiais žingsniais kaip <a href="tema-4-maksimizavimas.html#modelis">maksimizavimo uždavinyje</a>. Skiriasi apribojimų prasmė: jie nusako ne turimus išteklius, o <strong>reikalavimus</strong> – pasiekta, pagaminta ar pristatyta turi būti ne mažiau, nei reikalaujama.</p>
+
+        <p><strong>1. Sprendimo kintamieji.</strong> Kiekvienas kintamasis nusako konkretaus objekto kiekį per konkretų laikotarpį:</p>
+        <ul class="dodont">
+          <li class="do"><span class="mk" aria-hidden="true">✓</span><span>„\(x\) – per dieną pirmojoje radijo stotyje perkamo transliavimo laiko minučių skaičius.“</span></li>
+          <li class="dont"><span class="mk" aria-hidden="true">✗</span><span>„\(x\) – pirmoji radijo stotis.“ Neaišku, ką \(x\) skaičiuoja: minutes, reklamas ar eurus.</span></li>
+        </ul>
+
+        <p style="margin-top:16px"><strong>2. Kiekvienam reikalavimui – viena nelygybė.</strong> Abiem variantais kartu pasiektas kiekis turi būti ne mažesnis už reikalaujamą:</p>
+        <div class="formula fit">\[ \underbrace{a_1x}_{\text{A variantu}} + \underbrace{a_2y}_{\text{B variantu}} \geq \underbrace{b}_{\text{reikalaujama}} \]</div>
+        <p>Duomenis patogu surašyti į lentelę: kiekvienam reikalavimui – eilutė, kiekvienam variantui – stulpelis, o paskutiniame stulpelyje – reikiamas kiekis. Kiekviena reikalavimų eilutė virsta vienu apribojimu, o išlaidų eilutė – tikslo funkcija:</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact model-tbl">
+            <thead><tr><th scope="col"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">Reikia</th></tr></thead>
+            <tbody>
+              <tr class="hl"><th scope="row">1 reikalavimas</th><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(b_1\)</td></tr>
+              <tr><th scope="row">2 reikalavimas</th><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(b_2\)</td></tr>
+              <tr><th scope="row">Išlaidos</th><td>\(c_1\)</td><td>\(c_2\)</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mats mats--col">
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span>\(\begin{gathered} TC = c_1x + c_2y \to \min \\[4pt] \begin{cases} \htmlClass{hr}{a_{11}x + a_{12}y \geq b_1} \\ a_{21}x + a_{22}y \geq b_2 \\ x;\, y \geq 0 \end{cases} \end{gathered}\)</span>
+        </div>
+        <p class="formula-note" style="text-align:center">Pirmoji reikalavimų eilutė tapo pirmuoju apribojimu, išlaidų eilutė – tikslo funkcija.</p>
+
+        <p style="margin-top:16px"><strong>3. Kitos sąlygos – irgi nelygybės.</strong> Kiekviena kita žodžiais išreikšta sąlyga taip pat užrašoma nelygybe:</p>
+        <div class="tbl-wrap">
+          <table class="vtable req-tbl">
+            <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Nelygybė</th></tr></thead>
+            <tbody>
+              <tr><td>Pagal susitarimą turi būti atlikta bent \(M\) A reisų</td><td>\(x \geq M\)</td></tr>
+              <tr><td>Iš viso reikia ne mažiau kaip \(N\) vienetų</td><td>\(x + y \geq N\)</td></tr>
+              <tr><td>B variantų turi būti bent du kartus daugiau negu A variantų</td><td>\(y \geq 2x\), t. y.<br>\(-2x + y \geq 0\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tip">Abu kintamieji perkeliami į kairę nelygybės pusę. Jei perkėlus gaunamas ženklas \(\leq\), abi nelygybės puses galima padauginti iš \(-1\): ženklas pasikeičia į \(\geq\), pavyzdžiui, \(2x - y \leq 0 \iff -2x + y \geq 0\).</p>
+
+        <p style="margin-top:16px"><strong>4. Neneigiamumo sąlygos.</strong> Prie apribojimų sistemos visada prirašoma \(x;\, y \geq 0\).</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. OPTIMALUS PLANAS ============ -->
+  <section class="section" id="optimalus" aria-labelledby="h-opt">
+    <h2 id="h-opt">Kaip randamas optimalus planas</h2>
+
+    <article class="card">
+      <p>Standartinis minimizavimo uždavinys sprendžiamas taip pat kaip <a href="tema-4-maksimizavimas.html#optimalus">maksimizavimo uždavinys</a>: pirmiausia nustatoma <strong>leistinųjų sprendinių aibė</strong> – visi planai, tenkinantys visus reikalavimus, – o tada iš jos išrenkamas taškas, kuriame tikslo funkcija įgyja <strong>mažiausią reikšmę</strong>:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Leistinųjų sprendinių aibė</strong><span>Nubrėžiama <a href="tema-4-nelygybiu-sistemos.html#eiga">1 skyriuje</a> aprašytu metodu.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Viršūnės</strong><span>Nustatomos visų aibės viršūnių koordinatės.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Mažiausia reikšmė</strong><span>Viršūnių koordinatės įstatomos į tikslo funkciją ir išrenkama mažiausia reikšmė.</span></div></div>
+      </div>
+      <p>Pavyzdžiui, jei aibės viršūnės yra \(A, B, C, D\), tikslo funkcijos reikšmės apskaičiuojamos <strong>visose</strong> viršūnėse:</p>
+      <div class="formula">\[ \begin{aligned} TC_A &amp;= c_1x_A + c_2y_A \\ TC_B &amp;= c_1x_B + c_2y_B \\ &amp;\;\;\vdots \\ TC_D &amp;= c_1x_D + c_2y_D \end{aligned} \]</div>
+      <p>Mažiausia iš jų yra minimumas, o viršūnė, kurioje jis pasiekiamas, – <strong>optimalus planas</strong>. Atsakymas užrašomas kartu su šiuo planu: \(TC_{\min}(x;\, y) = \ldots\)</p>
+
+      <div class="subtype">
+        <h4>Trys skirtumai nuo maksimizavimo uždavinio</h4>
+        <div class="anat">
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Rodyklės nukreiptos nuo koordinačių pradžios</strong></div>
+            <p style="margin:8px 0 0">Koordinačių pradžia netenkina nė vieno pavidalo \(ax + by \geq c\) reikalavimo, kai \(c &gt; 0\), todėl patikrinę koordinačių pradžios tašką gauname neteisingą nelygybę, o sprendinių pusplokštumė yra kitoje kiekvienos tiesės pusėje.</p>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Leistinųjų sprendinių aibė yra neaprėžta</strong></div>
+            <p style="margin:8px 0 0">Ji be galo tęsiasi tolyn nuo koordinačių pradžios, todėl tikslo funkcija joje neturi didžiausios reikšmės, tačiau turi mažiausią, ir ši mažiausia reikšmė vėl pasiekiama viršūnėje.</p>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Reikšmė skaičiuojama kiekvienoje viršūnėje</strong></div>
+            <p style="margin:8px 0 0">Koordinačių pradžia apskritai nepriklauso leistinųjų sprendinių aibei, todėl nėra ko praleisti: tikslo funkcijos reikšmė skaičiuojama visose viršūnėse.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li><strong>Apibrėžkite sprendimo kintamuosius.</strong> Kiekvienas jų nusako konkretaus objekto kiekį per konkretų laikotarpį.</li>
+        <li><strong>Susisteminkite duomenis.</strong> Jeigu duomenis galima pateikti lentelėje, kiekvienam reikalavimui skirkite eilutę, kiekvienam variantui – stulpelį, o paskutiniame stulpelyje nurodykite reikiamą kiekį. Šis žingsnis neprivalomas.</li>
+        <li><strong>Užrašykite matematinį modelį:</strong> tikslo funkciją su \(\to \min\), o šalia – visus apribojimus, techninius ir neneigiamumo, sujungtus į vieną sistemą.</li>
+        <li><strong>Pavaizduokite leistinųjų sprendinių aibę.</strong>
+          <ul>
+            <li>Kiekvienai ribojančiai tiesei sudarykite reikšmių lentelę.</li>
+            <li>Kiekvienai nelygybei pasirinkite tikrinimo tašką.</li>
+            <li>Ant tiesių pažymėkite rodykles ir nuspalvinkite tik leistinųjų sprendinių aibę.</li>
+          </ul>
+        </li>
+        <li><strong>Raskite visas viršūnes.</strong>
+          <ul>
+            <li>Viršūnė ant ašies yra aibę toje vietoje ribojančios tiesės susikirtimo su ašimi taškas, jau nurodytas tos tiesės reikšmių lentelėje.</li>
+            <li>Dviejų tiesių susikirtimo taškas randamas sprendžiant jų lygčių sistemą, kaip <a href="tema-3.html">3 temoje</a>.</li>
+          </ul>
+        </li>
+        <li><strong>Apskaičiuokite tikslo funkcijos reikšmę kiekvienoje viršūnėje</strong> ir užrašykite visą skaičiavimą: įstatytas koordinates ir gautą reikšmę.</li>
+        <li><strong>Palyginkite reikšmes.</strong> Mažiausia iš jų yra minimumas, o viršūnė, kurioje jis pasiekiamas, atitinka optimalų planą.</li>
+        <li><strong>Užrašykite atsakymą</strong> uždavinio sąlygos žodžiais, nurodydami matavimo vienetus.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Rodyklės nukreiptos į koordinačių pradžią.</strong> Kai ženklas \(\geq\) ir dešinioji pusė teigiama, tikrinimo taške \(O(0;\, 0)\) gaunama neteisinga nelygybė, todėl sprendinių pusplokštumė yra kitoje tiesės pusėje.</li>
+            <li><strong>Į palyginimą įtraukta koordinačių pradžia.</strong> \(TC_O = 0\), tačiau taškas \(O\) nepriklauso leistinųjų sprendinių aibei – jame neįvykdomas nė vienas reikalavimas.</li>
+            <li><strong>Praleista viršūnė.</strong> Neaprėžtos aibės viršūnės yra ir ant ašių, todėl tikslo funkcijos reikšmė skaičiuojama visose viršūnėse, įskaitant esančias ant \(Ox\) ir \(Oy\) ašių.</li>
+            <li><strong>Viršūnės koordinatės „nuskaitytos“ iš brėžinio.</strong> Tiesių susikirtimo taškas randamas algebriškai – sprendžiant lygčių sistemą.</li>
+            <li><strong>Sistemoje trūksta neneigiamumo sąlygų.</strong> Sąlygos \(x;\, y \geq 0\) yra modelio dalis, todėl jos rašomos kartu su techniniais apribojimais.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant taikomuosius tiesinio programavimo uždavinius, uždavinio pradžioje privaloma pateikti įvedamų kintamųjų apibrėžimus. Apibrėžimuose turi būti aiškiai nurodoma, kad kintamasis žymi tam tikro objekto kiekį.</li>
+            <li>Jei autoriui patogiau, sprendime galima, bet nebūtina, pateikti uždavinio sąlygą susistemizuotą lentelėje.</li>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tikslo funkcija ir apribojimų sistema. Turi būti aiškiai nurodyta, ar tikslo funkciją siekiama maksimizuoti, ar minimizuoti. Visi apribojimai, įskaitant ir neneigiamumo apribojimus, privalo būti aiškiai pateikti vienoje sistemoje, šalia tikslo funkcijos.</li>
+            <li>Sprendžiant uždavinį grafiškai, turi būti pateiktos apribojimų tiesių reikšmių lentelės.</li>
+            <li>Grafike privalo būti pažymėti šie elementai: ašių pavadinimai, koordinačių pradžios taškas, vienetinės atkarpos dydis, tiesių pavadinimai, leistina sprendinių aibė.</li>
+            <li>Tiesių susikirtimo taškų koordinatės turi būti nustatytos algebriškai. Nustatant taškų koordinates, lygčių sistemą galima spręsti naudojant skaičiuotuvą, tačiau būtina nurodyti, kokios lygtis naudotos susikirtimo taško radimui.</li>
+            <li>Tikslo funkcijos reikšmės privalo būti apskaičiuotos visose leistinos sprendinių aibės viršūnėse, išskyrus koordinačių pradžios tašką. Šis veiksmas turi būti pažymėtas aiškiai ir atitikti matematinio korektiškumo taisykles.</li>
+            <li>Uždavinio sprendimo pabaigoje turi būti aiškiai suformuluojamas galutinis atsakymas.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite sudaryti modelį ir išspręsti uždavinį patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: alternatyvus 4.2 (pakeičia paskaitos / gairių radijo reklamos pavyzdį) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Vadybos mokymų pirkimo planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Įmonė perka vadybos mokymus darbuotojams iš dviejų teikėjų. Vieną I teikėjo užsiėmimą sudaro 2 vadovavimo, 1 finansų ir 1 derybų mokymo valanda; vieną II teikėjo užsiėmimą – 1 vadovavimo, 1 finansų ir 3 derybų mokymo valandos. Programa kiekvienam dalyviui turi suteikti bent 16 vadovavimo, bent 12 finansų ir bent 18 derybų mokymo valandų. Vienas I teikėjo užsiėmimas kainuoja 40 eurų dalyviui, vienas II teikėjo užsiėmimas – 30 eurų. Kiek užsiėmimų reikėtų pirkti iš kiekvieno teikėjo, kad išlaidos vienam dalyviui būtų kuo mažesnės? Kokios yra mažiausios išlaidos?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <p>Įmonė turi nuspręsti, kiek užsiėmimų pirkti iš kiekvieno teikėjo:</p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– iš I teikėjo perkamų užsiėmimų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– iš II teikėjo perkamų užsiėmimų skaičius.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Duomenų lentelė</span></h4>
+          <p>Kiekvienai mokymų sričiai skiriame eilutę, kiekvienam teikėjui – stulpelį, o paskutiniame stulpelyje nurodome reikalaujamą valandų skaičių:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">I teikėjas</th><th scope="col">II teikėjas</th><th scope="col">Reikia</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Vadovavimas, val.</th><td>2</td><td>1</td><td>16</td></tr>
+                <tr><th scope="row">Finansai, val.</th><td>1</td><td>1</td><td>12</td></tr>
+                <tr><th scope="row">Derybos, val.</th><td>1</td><td>3</td><td>18</td></tr>
+                <tr><th scope="row">Išlaidos, EUR</th><td>40</td><td>30</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          <p>Kiekviena mokymų sritis nusako vieną reikalavimą: abiejų teikėjų užsiėmimai kartu turi suteikti ne mažiau valandų, nei reikalaujama. Pavyzdžiui, \(x\) I teikėjo užsiėmimų suteikia \(2x\) vadovavimo valandų, \(y\) II teikėjo užsiėmimų – \(1\cdot y\) valandų, o iš viso reikia bent 16 valandų:</p>
+          <div class="formula fit">\[ \underbrace{2x}_{\text{I teikėjas}} + \underbrace{y}_{\text{II teikėjas}} \geq \underbrace{16}_{\text{reikia}} \]</div>
+          <p>Taip pat sudarome finansų ir derybų apribojimus. Išlaidų eilutė nusako tikslo funkciją: \(x\) I teikėjo užsiėmimų kainuoja \(40x\) eurų, o \(y\) II teikėjo užsiėmimų – \(30y\) eurų. Matematinis modelis:</p>
+          \[ \begin{gathered} TC = 40x + 30y \to \min \\[4pt] \begin{cases} 2x + y \geq 16 \\ x + y \geq 12 \\ x + 3y \geq 18 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>Visų techninių apribojimų ženklas yra \(\geq\), todėl tai standartinis minimizavimo uždavinys.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <p>Kiekvieną nelygybę atitinkanti tiesė brėžiama per jos susikirtimo su ašimis taškus:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 16\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 16\)<br>\(y = 0:\; 2x = 16 \Rightarrow x = 8\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>8</td></tr><tr><th scope="row">\(y\)</th><td>16</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 12\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 12\)<br>\(y = 0:\; x = 12\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>12</td></tr><tr><th scope="row">\(y\)</th><td>12</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 3y = 18\)</p>
+              <p class="xy-calc">\(x = 0:\; 3y = 18 \Rightarrow y = 6\)<br>\(y = 0:\; x = 18\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>18</td></tr><tr><th scope="row">\(y\)</th><td>6</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškas</span></h4>
+          <p>Koordinačių pradžia nepriklauso nė vienai tiesei, todėl ją pasirenkame visų trijų nelygybių tikrinimo tašku:</p>
+          \[ \begin{alignedat}{2} 2\cdot 0 + 0 \geq 16 \;&amp;\Rightarrow\; 0 \geq 16 \; &amp;&amp; \text{(neteisinga)} \\ 0 + 0 \geq 12 \;&amp;\Rightarrow\; 0 \geq 12 \; &amp;&amp; \text{(neteisinga)} \\ 0 + 3\cdot 0 \geq 18 \;&amp;\Rightarrow\; 0 \geq 18 \; &amp;&amp; \text{(neteisinga)} \end{alignedat} \]
+          <p>Visos gautos nelygybės neteisingos, todėl kiekviena sprendinių pusplokštumė yra ta, kuriai koordinačių pradžia nepriklauso, o visos trys rodyklės nukreiptos nuo jos.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Leistinųjų sprendinių aibė yra visų pusplokštumių ir pirmojo ketvirčio sankirta. Ji neaprėžta – be galo tęsiasi aukštyn ir į dešinę – ir turi keturias viršūnes:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,20,1,2],"y":[-1,18,1,2],"nn":"xy","c":[{"a":2,"b":1,"s":"ge","r":16,"lab":"2x + y = 16","col":1,"lt":0.2,"lo":-14,"arr":[0.3,0.75]},{"a":1,"b":1,"s":"ge","r":12,"lab":"x + y = 12","col":2,"lt":0.43,"lo":-14,"arr":[0.2,0.8]},{"a":1,"b":3,"s":"ge","r":18,"lab":"x + 3y = 18","col":3,"lt":0.65,"lo":-14,"arr":[0.25,0.85]}],"pts":[{"x":0,"y":16,"lab":"A","p":"ne"},{"x":4,"y":8,"lab":"B","p":"sw"},{"x":9,"y":3,"lab":"C","p":"sw"},{"x":18,"y":0,"lab":"D","p":"n"}],"aria":"Mokymų uždavinio neaprėžta leistinųjų sprendinių aibė su viršūnėmis A, B, C, D"}'></div>
+            <figcaption>1 pav. Mokymų uždavinio leistinųjų sprendinių aibė su keturiomis viršūnėmis.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <p>Viršūnes nagrinėjame iš eilės palei aibės kraštą.</p>
+          <ul class="vert-list">
+            <li>\(A\) yra ant \(Oy\) ašies. Tai tiesės \(2x + y = 16\) susikirtimo su \(Oy\) ašimi taškas; jo koordinatės jau pateiktos šios tiesės reikšmių lentelėje: \(A(0;\, 16)\).</li>
+            <li>\(B\) yra tiesių \(2x + y = 16\) ir \(x + y = 12\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} 2x + y = 16 \\ x + y = 12 \end{cases} \\ \Longrightarrow\; x = 4,\; y = 8 \;\Longrightarrow\; B(4;\, 8) \end{gathered} \]
+              <p class="formula-note">Iš pirmosios lygties atėmus antrąją, gaunama \(x = 4\); tada \(y = 12 - 4 = 8\).</p></li>
+            <li>\(C\) yra tiesių \(x + y = 12\) ir \(x + 3y = 18\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + y = 12 \\ x + 3y = 18 \end{cases} \\ \Longrightarrow\; x = 9,\; y = 3 \;\Longrightarrow\; C(9;\, 3) \end{gathered} \]
+              <p class="formula-note">Iš antrosios lygties atėmus pirmąją, gaunama \(2y = 6\), \(y = 3\); tada \(x = 12 - 3 = 9\).</p></li>
+            <li>\(D\) yra ant \(Ox\) ašies. Tai tiesės \(x + 3y = 18\) susikirtimo su \(Ox\) ašimi taškas; jo koordinatės jau pateiktos šios tiesės reikšmių lentelėje: \(D(18;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Išlaidos viršūnėse</span></h4>
+          <p>Kiekvienos viršūnės koordinates įstatome į tikslo funkciją \(TC = 40x + 30y\):</p>
+          \[ \begin{aligned} TC_A &amp;= 40\cdot 0 + 30\cdot 16 = 480 \\ TC_B &amp;= 40\cdot 4 + 30\cdot 8 \\ &amp;= 160 + 240 = 400 \\ TC_C &amp;= 40\cdot 9 + 30\cdot 3 \\ &amp;= 360 + 90 = 450 \\ TC_D &amp;= 40\cdot 18 + 30\cdot 0 = 720 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Mažiausia reikšmė</span></h4>
+          <p>Palyginame keturias reikšmes: \(480\), \(400\), \(450\) ir \(720\). Mažiausia iš jų yra \(\htmlClass{hd}{400}\), ji pasiekiama viršūnėje \(B(4;\, 8)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Įmonė turėtų pirkti 4 užsiėmimus iš I teikėjo ir 8 iš II teikėjo. Mažiausios išlaidos yra \(TC_{\min}(4;\, 8) = 400\) eurų vienam dalyviui.</p>
+          </div>
+          <p>Ši programa suteikia tiksliai \(2\cdot 4 + 8 = 16\) vadovavimo ir tiksliai \(4 + 8 = 12\) finansų mokymo valandų, o deryboms skiriama \(4 + 3\cdot 8 = 28\) valandų – dešimčia daugiau už reikalaujamas 18. Vadovavimo ir finansų reikalavimai yra ribojantys; derybų valandos bet kuriuo atveju įeina į užsiėmimus.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 2 pavyzdys (dviejų tipų mašinų nuoma) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Sniego valymo mašinų nuoma</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Savivaldybė kiekvieną naktį turi nuvalyti sniegą nuo bent 24&nbsp;km kelių ir bent 18&nbsp;km šaligatvių. Naktinei pamainai galima išsinuomoti dviejų tipų mašinas. Per vieną pamainą mažoji mašina nuvalo 1&nbsp;km kelių ir 2&nbsp;km šaligatvių, o didžioji – 3&nbsp;km kelių ir 1&nbsp;km šaligatvių. Mažosios mašinos naktinė pamaina kainuoja 30 eurų, o didžiosios – 50 eurų. Kiek kiekvienos mašinos pamainų reikia užsakyti, kad vienos nakties darbo išlaidos būtų kuo mažesnės?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– mažosios mašinos naktinių pamainų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– didžiosios mašinos naktinių pamainų skaičius.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Duomenų lentelė</span></h4>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Mažoji mašina</th><th scope="col">Didžioji mašina</th><th scope="col">Reikia</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Keliai, km</th><td>1</td><td>3</td><td>24</td></tr>
+                <tr><th scope="row">Šaligatviai, km</th><td>2</td><td>1</td><td>18</td></tr>
+                <tr><th scope="row">Išlaidos, EUR</th><td>30</td><td>50</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          <p>Kiekviena lentelės eilutė nusako vieną reikalavimą: abiejų tipų mašinų kartu nuvalytas ilgis turi būti ne mažesnis už reikalaujamą. Pavyzdžiui, keliams:</p>
+          <div class="formula fit">\[ \underbrace{x}_{\text{mažoji}} + \underbrace{3y}_{\text{didžioji}} \geq \underbrace{24}_{\text{reikia}} \]</div>
+          <p>Išlaidų eilutė nusako tikslo funkciją:</p>
+          \[ \begin{gathered} TC = 30x + 50y \to \min \\[4pt] \begin{cases} x + 3y \geq 24 \\ 2x + y \geq 18 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 3y = 24\)</p>
+              <p class="xy-calc">\(x = 0:\; 3y = 24 \Rightarrow y = 8\)<br>\(y = 0:\; x = 24\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>24</td></tr><tr><th scope="row">\(y\)</th><td>8</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 18\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 18\)<br>\(y = 0:\; 2x = 18 \Rightarrow x = 9\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>9</td></tr><tr><th scope="row">\(y\)</th><td>18</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškas</span></h4>
+          <p>Koordinačių pradžia yra abiejų nelygybių tikrinimo taškas:</p>
+          \[ \begin{alignedat}{2} 0 + 3\cdot 0 \geq 24 \;&amp;\Rightarrow\; 0 \geq 24 \; &amp;&amp; \text{(neteisinga)} \\ 2\cdot 0 + 0 \geq 18 \;&amp;\Rightarrow\; 0 \geq 18 \; &amp;&amp; \text{(neteisinga)} \end{alignedat} \]
+          <p>Abi gautos nelygybės neteisingos, todėl abi rodyklės nukreiptos nuo koordinačių pradžios, o leistinųjų sprendinių aibė yra virš abiejų tiesių ir į dešinę nuo jų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Leistinųjų sprendinių aibė neaprėžta ir turi tris viršūnes:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,26,2,3],"y":[-1,20,2,3],"nn":"xy","c":[{"a":1,"b":3,"s":"ge","r":24,"lab":"x + 3y = 24","col":1,"lt":0.62,"lo":-14,"arr":[0.4,0.8]},{"a":2,"b":1,"s":"ge","r":18,"lab":"2x + y = 18","col":2,"lt":0.2,"lo":-14,"arr":[0.25,0.8]}],"pts":[{"x":0,"y":18,"lab":"A","p":"ne"},{"x":6,"y":6,"lab":"B","p":"sw"},{"x":24,"y":0,"lab":"C","p":"n"}],"aria":"Sniego valymo uždavinio neaprėžta leistinųjų sprendinių aibė su viršūnėmis A, B, C"}'></div>
+            <figcaption>2 pav. Sniego valymo uždavinio leistinųjų sprendinių aibė.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <ul class="vert-list">
+            <li>\(A\) yra ant \(Oy\) ašies. Tai tiesės \(2x + y = 18\) susikirtimo su \(Oy\) ašimi taškas; jo koordinatės jau pateiktos šios tiesės reikšmių lentelėje: \(A(0;\, 18)\).</li>
+            <li>\(B\) yra tiesių \(2x + y = 18\) ir \(x + 3y = 24\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} 2x + y = 18 \\ x + 3y = 24 \end{cases} \\ \Longrightarrow\; x = 6,\; y = 6 \;\Longrightarrow\; B(6;\, 6) \end{gathered} \]
+              <p class="formula-note">Iš pirmosios lygties \(y = 18 - 2x\); įstatę į antrąją, gauname \(x + 54 - 6x = 24\), \(x = 6\); tada \(y = 18 - 12 = 6\).</p></li>
+            <li>\(C\) yra ant \(Ox\) ašies. Tai tiesės \(x + 3y = 24\) susikirtimo su \(Ox\) ašimi taškas; jo koordinatės jau pateiktos šios tiesės reikšmių lentelėje: \(C(24;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Išlaidos viršūnėse</span></h4>
+          \[ \begin{aligned} TC_A &amp;= 30\cdot 0 + 50\cdot 18 = 900 \\ TC_B &amp;= 30\cdot 6 + 50\cdot 6 \\ &amp;= 180 + 300 = 480 \\ TC_C &amp;= 30\cdot 24 + 50\cdot 0 = 720 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Mažiausia reikšmė</span></h4>
+          <p>Mažiausia reikšmė yra \(\htmlClass{hd}{480}\), ji pasiekiama viršūnėje \(B(6;\, 6)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Savivaldybė turi išsinuomoti mažąsias mašinas 6 naktinėms pamainoms ir didžiąsias mašinas 6 naktinėms pamainoms. Mažiausios vienos nakties išlaidos yra \(TC_{\min}(6;\, 6) = 480\) EUR.</p>
+          </div>
+          <p>Šiame taške abu reikalavimai tenkinami tiksliai: nuvaloma \(6 + 3\cdot 6 = 24\)&nbsp;km kelių ir \(2\cdot 6 + 6 = 18\)&nbsp;km šaligatvių, taigi papildomai, viršijant savivaldybės reikalavimus, nieko nevaloma.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 3 pavyzdys (iš anksto nustatytas reikalavimas) -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Prekių pristatymo planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Didmenininkas pristato prekes į parduotuves dviejų tipų sunkvežimiais. Per vieną reisą mažasis sunkvežimis veža 2 tonas prekių ir aptarnauja 2 parduotuves, o didysis sunkvežimis veža 5 tonas ir aptarnauja 1 parduotuvę. Per savaitę reikia pervežti bent 40 tonų prekių ir atlikti bent 24 pristatymus į parduotuves, o pagal susitarimą su vežėju per savaitę turi būti atlikti bent 5 mažojo sunkvežimio reisai. Vienas mažojo sunkvežimio reisas kainuoja 60 eurų, o didžiojo – 100 eurų. Kiek kiekvieno sunkvežimio reisų reikia atlikti per savaitę, kad transportavimo išlaidos būtų kuo mažesnės?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– mažojo sunkvežimio reisų skaičius per savaitę;</span></li>
+            <li><span class="sym">\(y\)</span><span>– didžiojo sunkvežimio reisų skaičius per savaitę.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Duomenų lentelė</span></h4>
+          <div class="tbl-wrap">
+            <table class="vtable compact tight">
+              <thead><tr><th scope="col"></th><th scope="col">Mažasis sunkve&shy;žimis</th><th scope="col">Didysis sunkve&shy;žimis</th><th scope="col">Reikia</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Prekės, t per reisą</th><td>2</td><td>5</td><td>40</td></tr>
+                <tr><th scope="row">Parduotuvės per reisą</th><td>2</td><td>1</td><td>24</td></tr>
+                <tr><th scope="row">Išlaidos, EUR per reisą</th><td>60</td><td>100</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          <p>Abi lentelės eilutės virsta reikalavimais, pavyzdžiui, prekių masei:</p>
+          <div class="formula fit">\[ \underbrace{2x}_{\text{mažasis}} + \underbrace{5y}_{\text{didysis}} \geq \underbrace{40}_{\text{reikia}} \]</div>
+          <p>Be dviejų lentelės eilučių, yra trečia sąlyga – <strong>susitarimas su vežėju</strong>: bent 5 mažojo sunkvežimio reisai, taigi \(x \geq 5\). Todėl modelis yra</p>
+          \[ \begin{gathered} TC = 60x + 100y \to \min \\[4pt] \begin{cases} 2x + 5y \geq 40 \\ 2x + y \geq 24 \\ x \geq 5 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <p>Pirmųjų dviejų tiesių reikšmių lentelės:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + 5y = 40\)</p>
+              <p class="xy-calc">\(x = 0:\; 5y = 40 \Rightarrow y = 8\)<br>\(y = 0:\; 2x = 40 \Rightarrow x = 20\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>20</td></tr><tr><th scope="row">\(y\)</th><td>8</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 24\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 24\)<br>\(y = 0:\; 2x = 24 \Rightarrow x = 12\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>12</td></tr><tr><th scope="row">\(y\)</th><td>24</td><td>0</td></tr></table>
+            </div>
+          </div>
+          <p>Trečiajai tiesei reikšmių lentelės nereikia: \(x = 5\) yra vertikali tiesė, einanti per \(Ox\) ašies tašką 5.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškas</span></h4>
+          <p>Nė viena tiesė neina per koordinačių pradžią, todėl ji yra visų trijų nelygybių tikrinimo taškas:</p>
+          <div class="formula fit">\[ \begin{alignedat}{2} 2\cdot 0 + 5\cdot 0 \geq 40 \,&amp;\Rightarrow\, 0 \geq 40 \, &amp;&amp; \text{(neteisinga)} \\ 2\cdot 0 + 0 \geq 24 \,&amp;\Rightarrow\, 0 \geq 24 \, &amp;&amp; \text{(neteisinga)} \\ 0 \geq 5 \,&amp; &amp;&amp; \text{(neteisinga)} \end{alignedat} \]</div>
+          <p>Visos trys gautos nelygybės neteisingos, todėl leistinųjų sprendinių aibė yra į priešingą nuo koordinačių pradžios pusę: virš pirmųjų dviejų tiesių ir į dešinę nuo tiesės \(x = 5\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Vertikali tiesė \(x = 5\) „nukerta“ aibės kairę pusę, todėl ant \(Oy\) ašies viršūnės nėra:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,22,1,5],"y":[-1,26,1,5],"maxh":400,"nn":"xy","c":[{"a":2,"b":5,"s":"ge","r":40,"lab":"2x + 5y = 40","col":1,"lt":0.65,"lo":-14,"arr":[0.25,0.85]},{"a":2,"b":1,"s":"ge","r":24,"lab":"2x + y = 24","col":2,"lt":0.55,"lo":-14,"arr":[0.3,0.75]},{"a":1,"b":0,"s":"ge","r":5,"lab":"x = 5","col":3,"lt":0.93,"la":"start","lo":-8,"arr":[0.45,0.75]}],"pts":[{"x":5,"y":14,"lab":"A","p":"w"},{"x":10,"y":4,"lab":"B","p":"sw"},{"x":20,"y":0,"lab":"C","p":"n"}],"aria":"Prekių pristatymo uždavinio neaprėžta leistinųjų sprendinių aibė su viršūnėmis A, B, C"}'></div>
+            <figcaption>3 pav. Prekių pristatymo uždavinio leistinųjų sprendinių aibė.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <ul class="vert-list">
+            <li>\(A\) yra tiesių \(x = 5\) ir \(2x + y = 24\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x = 5 \\ 2x + y = 24 \end{cases} \\ \Longrightarrow\; x = 5,\; y = 14 \;\Longrightarrow\; A(5;\, 14) \end{gathered} \]
+              <p class="formula-note">Įstatę \(x = 5\) į antrąją lygtį, gauname \(10 + y = 24\), \(y = 14\).</p></li>
+            <li>\(B\) yra tiesių \(2x + y = 24\) ir \(2x + 5y = 40\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} 2x + y = 24 \\ 2x + 5y = 40 \end{cases} \\ \Longrightarrow\; x = 10,\; y = 4 \;\Longrightarrow\; B(10;\, 4) \end{gathered} \]
+              <p class="formula-note">Iš antrosios lygties atėmus pirmąją, gaunama \(4y = 16\), \(y = 4\); tada \(2x = 24 - 4 = 20\), \(x = 10\).</p></li>
+            <li>\(C\) yra ant \(Ox\) ašies. Tai tiesės \(2x + 5y = 40\) susikirtimo su \(Ox\) ašimi taškas; jo koordinatės jau pateiktos šios tiesės reikšmių lentelėje: \(C(20;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Išlaidos viršūnėse</span></h4>
+          \[ \begin{aligned} TC_A &amp;= 60\cdot 5 + 100\cdot 14 \\ &amp;= 300 + 1400 = 1700 \\ TC_B &amp;= 60\cdot 10 + 100\cdot 4 \\ &amp;= 600 + 400 = 1000 \\ TC_C &amp;= 60\cdot 20 + 100\cdot 0 = 1200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Mažiausia reikšmė</span></h4>
+          <p>Mažiausia reikšmė yra \(\htmlClass{hd}{1000}\), ji pasiekiama viršūnėje \(B(10;\, 4)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Didmenininkas turi per savaitę atlikti 10 mažojo sunkvežimio reisų ir 4 didžiojo sunkvežimio reisus. Mažiausios savaitės išlaidos yra \(TC_{\min}(10;\, 4) = 1000\) EUR.</p>
+          </div>
+          <p>Šiame taške tiksliai tenkinami ir prekių masės, ir pristatymų į parduotuves skaičiaus reikalavimai: \(2\cdot 10 + 5\cdot 4 = 40\) tonų ir \(2\cdot 10 + 4 = 24\) pristatymai. Susitarimas su vežėju nėra ribojantis: atliekama 10 mažojo sunkvežimio reisų, nors reikalauta tik 5.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: apibrėžkite kintamuosius, sudarykite matematinį modelį, nubrėžkite leistinųjų sprendinių aibę, algebriškai raskite viršūnes ir apskaičiuokite išlaidas kiekvienoje iš jų. Atsakyme pateikti kintamieji, matematinis modelis ir galutinis rezultatas – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Žirgynas žiemai perka dviejų rūšių pašarus. Viename A pašaro maiše yra 3&nbsp;kg baltymų ir 1&nbsp;kg skaidulų, o viename B pašaro maiše – 1&nbsp;kg baltymų ir 2&nbsp;kg skaidulų. Žirgams reikia bent 60&nbsp;kg baltymų ir bent 60&nbsp;kg skaidulų. A pašaro maišas kainuoja 60 eurų, o B pašaro maišas – 40 eurų. Kiek kiekvienos rūšies pašaro maišų žirgynas turėtų pirkti, kad sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– A pašaro maišų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– B pašaro maišų skaičius.</span></li>
+          </ul>
+          <p><strong>Matematinis modelis:</strong></p>
+          \[ \begin{gathered} TC = 60x + 40y \to \min \\[4pt] \begin{cases} 3x + y \geq 60 \\ x + 2y \geq 60 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Atsakymas.</strong> Mažiausia tikslo funkcijos reikšmė yra</p>
+          \[ TC_{\min}(12;\, 24) = 1680 \]
+          <p>Žirgynas turėtų pirkti 12 maišų A pašaro ir 24 maišus B pašaro; tuomet sąnaudos būtų 1680 eurų. Abu poreikiai tenkinami tiksliai – pašare yra 60&nbsp;kg baltymų ir 60&nbsp;kg skaidulų.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonė planuoja reklamos kampaniją dviejose žiniasklaidos priemonėse. Vienas internetinis reklamos skelbimas pasiekia 3 tūkstančius jaunesnių nei 35 metų žmonių ir 1 tūkstantį vyresnių nei 35 metų žmonių; vienas reklamos skelbimas laikraštyje pasiekia 1 tūkstantį jaunesnių nei 35 metų žmonių ir 2 tūkstančius vyresnių nei 35 metų žmonių. Kampanija turi pasiekti bent 180 tūkstančių jaunesnių nei 35 metų žmonių ir bent 140 tūkstančių vyresnių nei 35 metų žmonių. Rinkodaros skyrius reikalauja, kad bent 40&nbsp;% visų skelbimų būtų paskelbti laikraštyje. Vienas internetinis reklamos skelbimas kainuoja 400 eurų, o vienas skelbimas laikraštyje – 900 eurų. Kiek kiekvienos rūšies skelbimų reikia paskelbti, kad reklamos išlaidos būtų mažiausios? Kokios yra mažiausios išlaidos?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– internetinių reklamos skelbimų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– reklamos skelbimų laikraštyje skaičius.</span></li>
+          </ul>
+          <p><strong>Matematinis modelis.</strong> Rinkodaros skyriaus reikalavimas yra \(y \geq 0{,}4(x + y)\), t. y. \(0{,}6y \geq 0{,}4x\), arba \(2x - 3y \leq 0\):</p>
+          \[ \begin{gathered} TC = 400x + 900y \to \min \\[4pt] \begin{cases} 3x + y \geq 180 \\ x + 2y \geq 140 \\ 2x - 3y \leq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Atsakymas.</strong> Mažiausia tikslo funkcijos reikšmė yra</p>
+          \[ TC_{\min}(60;\, 40) = 60000 \]
+          <p>Įmonė turėtų paskelbti 60 internetinių reklamos skelbimų ir 40 skelbimų laikraštyje; tuomet reklamos išlaidos būtų 60000 eurų. Skelbimai laikraštyje sudaro lygiai 40&nbsp;% visų šimto skelbimų, o vyresni nei 35 metų žmonės pasiekiami lygiai 140 tūkstančių kartų. Jaunesni nei 35 metų žmonės pasiekiami 220 tūkstančių kartų vietoj reikalaujamų 180 tūkstančių.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">4 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

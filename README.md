@@ -24,6 +24,7 @@ lt/                            lietuviški puslapiai
   tema-4.html                  4 tema: TP uždavinio esmė, tikslo funkcija, apribojimai, standartiniai uždaviniai, sprendimo idėja + 4 taikymų skyriai
   tema-4-nelygybiu-sistemos.html  1 skyrius: tiesinių nelygybių sistemos (brėžiniai lp-chart)
   tema-4-maksimizavimas.html   2 skyrius: standartiniai maksimizavimo uždaviniai
+  tema-4-minimizavimas.html    3 skyrius: standartiniai minimizavimo uždaviniai
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -46,7 +47,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=23` ir `site.js?v=23`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=24` ir `site.js?v=24`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
