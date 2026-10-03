@@ -1109,7 +1109,7 @@
      TIESINIO PROGRAMAVIMO BRĖŽINYS (lp-chart)
      <div data-widget="lp-chart" data-spec='{...}'></div>
      spec: x/y: [min, max, padala, užrašai kas k padalų];
-           c: apribojimai {a, b, s: "le"|"ge", r, lab, col: 1–3, lt: užrašo vieta 0–1,
+           c: apribojimai {a, b, s: "le"|"ge", r, lab, col: 1–5, lt: užrašo vieta 0–1,
               arr: rodyklių vietos [0–1], lo: užrašo poslinkis px};
            nn: "xy" | "x" | "y" – neneigiamumo sąlygos (tik aibei);
            shade: true – nuspalvinti visų apribojimų sankirtą;

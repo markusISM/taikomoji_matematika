@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=28">
+<link rel="stylesheet" href="../assets/css/style.css?v=29">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=28"></script>
+<script defer src="../assets/js/site.js?v=29"></script>
 </head>
 <body data-page="m42">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -527,6 +527,142 @@
         </section>
       </div>
     </article>
+
+    <!-- 4 pavyzdys: TM-4.5 gairės (investicijų portfelis; apribojimai ≤ ir ≥) -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Investicijų portfelio sudarymas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Fondo valdytojas investuoja kliento 600 tūkstančių eurų. Galima rinktis dvi investavimo priemones: akcijų fondą, kurio tikėtina metinė grąža yra 12&nbsp;%, ir vyriausybės obligacijų fondą, kurio tikėtina metinė grąža yra 6&nbsp;%. Klientas nustatė keturias sąlygas:</p>
+        <ul>
+          <li>reikia investuoti bent 300 tūkstančių eurų; likusi suma gali likti einamojoje sąskaitoje;</li>
+          <li>į akcijų fondą reikia investuoti bent 50 tūkstančių eurų;</li>
+          <li>į obligacijų fondą galima investuoti ne daugiau kaip 450 tūkstančių eurų;</li>
+          <li>bent trečdalis investuojamos sumos turi būti investuota į obligacijų fondą.</li>
+        </ul>
+        <p>Kaip reikėtų paskirstyti pinigus tarp abiejų fondų, kad tikėtina metinė grąža būtų didžiausia? Kokia yra didžiausia grąža?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– į akcijų fondą investuojama suma tūkstančiais eurų;</span></li>
+            <li><span class="sym">\(y\)</span><span>– į obligacijų fondą investuojama suma tūkstančiais eurų.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Tikslo funkcija ir sąlygos</span></h4>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Akcijų fondas</th><th scope="col">Obligacijų fondas</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Tikėtina metinė grąža</th><td>12&nbsp;%</td><td>6&nbsp;%</td></tr>
+                <tr><th scope="row">Investuojama suma, tūkst. €</th><td>\(x\)</td><td>\(y\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Tikėtina metinė portfelio grąža tūkstančiais eurų (12&nbsp;% = 0,12, 6&nbsp;% = 0,06):</p>
+          \[ P = 0{,}12x + 0{,}06y \to \max \]
+          <p>Kiekviena sąlyga užrašoma nelygybe:</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Nelygybė</th></tr></thead>
+              <tbody>
+                <tr><td>Valdytojas turi 600 tūkst. eurų ir neprivalo investuoti visos sumos</td><td>\(x + y \leq 600\)</td></tr>
+                <tr><td>Reikia investuoti bent 300 tūkst. eurų</td><td>\(x + y \geq 300\)</td></tr>
+                <tr><td>Į akcijų fondą – bent 50 tūkst. eurų</td><td>\(x \geq 50\)</td></tr>
+                <tr><td>Į obligacijų fondą – ne daugiau kaip 450 tūkst. eurų</td><td>\(y \leq 450\)</td></tr>
+                <tr><td>Bent trečdalis investuojamos sumos – obligacijų fonde</td><td>\(y \geq \tfrac{1}{3}(x + y)\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Investuojama suma yra \(x + y\), o trečdalis jos turi tekti obligacijų fondui. Paskutinę nelygybę pertvarkome taip, kad abu kintamieji būtų kairėje pusėje:</p>
+          \[ \begin{gathered} y \geq \tfrac{1}{3}(x + y) \;\Longrightarrow\; 3y \geq x + y \\ \Longrightarrow\; 2y \geq x \;\Longrightarrow\; x - 2y \leq 0 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          \[ \begin{gathered} P = 0{,}12x + 0{,}06y \to \max \\[4pt] \begin{cases} x + y \leq 600 \\ x + y \geq 300 \\ x \geq 50 \\ y \leq 450 \\ x - 2y \leq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p class="tip">Šis uždavinys skiriasi nuo ankstesnių: jame yra ir apribojimų su ženklu \(\geq\) (\(x + y \geq 300\) ir \(x \geq 50\)), todėl griežtai jis nėra standartinis maksimizavimo uždavinys (plačiau – <a href="tema-4-nestandartiniai.html">4 skyriuje</a>). Vis dėlto sprendžiamas lygiai taip pat. Vienintelis skirtumas – koordinačių pradžia nepriklauso leistinųjų sprendinių aibei, todėl tikslo funkcijos reikšmė skaičiuojama visose aibės viršūnėse.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <p>Tieses \(x + y = 600\) ir \(x + y = 300\) brėžiame per jų susikirtimo su ašimis taškus. Tiesė \(x - 2y = 0\) eina per koordinačių pradžią, todėl antrą jos tašką pasirenkame laisvai: kai \(x = 200\), gauname \(y = 100\):</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 600\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 600\)<br>\(y = 0:\; x = 600\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>600</td></tr><tr><th scope="row">\(y\)</th><td>600</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 300\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 300\)<br>\(y = 0:\; x = 300\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>300</td></tr><tr><th scope="row">\(y\)</th><td>300</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x - 2y = 0\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 0\)<br>\(x = 200:\; 2y = 200 \Rightarrow y = 100\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>200</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>100</td></tr></table>
+            </div>
+          </div>
+          <p>Tiesėms \(x = 50\) ir \(y = 450\) reikšmių lentelių nereikia: jos lygiagrečios ašims. Tiesė \(x = 50\) – vertikali, einanti per \(Ox\) ašies tašką 50, o \(y = 450\) – horizontali, einanti per \(Oy\) ašies tašką 450.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškai</span></h4>
+          <p>Koordinačių pradžia nepriklauso pirmosioms keturioms tiesėms, todėl ji yra jų tikrinimo taškas:</p>
+          \[ \begin{alignedat}{2} 0 + 0 \leq 600 \;&amp;\Rightarrow\; 0 \leq 600 \;\; &amp;&amp; \text{(teisinga)} \\ 0 + 0 \geq 300 \;&amp;\Rightarrow\; 0 \geq 300 \;\; &amp;&amp; \text{(neteisinga)} \\ 0 \geq 50 \;&amp; &amp;&amp; \text{(neteisinga)} \\ 0 \leq 450 \;&amp; &amp;&amp; \text{(teisinga)} \end{alignedat} \]
+          <p>Kai nelygybė teisinga, sprendinių pusplokštumė yra koordinačių pradžios pusėje: žemiau tiesės \(x + y = 600\) ir žemiau tiesės \(y = 450\). Kai nelygybė neteisinga, pusplokštumė yra kitoje tiesės pusėje: virš tiesės \(x + y = 300\) ir į dešinę nuo tiesės \(x = 50\).</p>
+          <p>Tiesei \(x - 2y = 0\) koordinačių pradžia priklauso, todėl pasirenkame kitą tikrinimo tašką, pavyzdžiui, \((0;\, 100)\):</p>
+          \[ \begin{aligned} &amp;0 - 2\cdot 100 \leq 0 \\ &amp;\Longrightarrow\; -200 \leq 0 \quad \text{(teisinga)} \end{aligned} \]
+          <p>Sprendinių aibė yra pusplokštumė, kuriai priklauso \((0;\, 100)\), – virš tiesės \(x - 2y = 0\) esanti pusplokštumė.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Penkių pusplokštumių ir pirmojo ketvirčio sankirta yra penkiakampis \(ABCDE\). Koordinačių pradžia jam nepriklauso, nes reikia investuoti bent 300 tūkst. eurų:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-30,660,50,2],"y":[-30,660,50,2],"maxh":420,"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":600,"lab":"x + y = 600","col":1,"rot":true,"lt":0.84,"lo":12,"arr":[0.35,0.6]},{"a":1,"b":1,"s":"ge","r":300,"lab":"x + y = 300","col":4,"lt":0.83,"lo":-24,"arr":[0.36,0.56]},{"a":1,"b":0,"s":"ge","r":50,"lab":"x = 50","col":3,"lt":0.93,"la":"start","lo":-8,"arr":[0.2,0.5]},{"a":0,"b":1,"s":"le","r":450,"lab":"y = 450","col":5,"lt":0.85,"lo":10,"arr":[0.45,0.8]},{"a":1,"b":-2,"s":"le","r":0,"lab":"x − 2y = 0","col":2,"rot":true,"lt":0.85,"lo":11,"arr":[0.45,0.75]}],"pts":[{"x":50,"y":250,"lab":"A","p":"e"},{"x":200,"y":100,"lab":"B","p":"e"},{"x":400,"y":200,"lab":"C","p":"e"},{"x":150,"y":450,"lab":"D","p":"ne"},{"x":50,"y":450,"lab":"E","p":"nw"}],"aria":"Investicijų portfelio uždavinio leistinųjų sprendinių aibė – penkiakampis ABCDE"}'></div>
+            <figcaption>4 pav. Investicijų portfelio uždavinio leistinųjų sprendinių aibė; ašyse – sumos tūkstančiais eurų.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <p>Nė viena viršūnė nėra ant ašies, todėl kiekviena jų yra dviejų tiesių susikirtimo taškas:</p>
+          <ul class="vert-list">
+            <li>\(A\) yra tiesių \(x = 50\) ir \(x + y = 300\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x = 50 \\ x + y = 300 \end{cases} \\ \Longrightarrow\; x = 50,\; y = 250 \\ \Longrightarrow\; A(50;\, 250) \end{gathered} \]
+              <p class="formula-note">Įstatę \(x = 50\) į antrąją lygtį, gauname \(y = 250\).</p></li>
+            <li>\(B\) yra tiesių \(x + y = 300\) ir \(x - 2y = 0\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + y = 300 \\ x - 2y = 0 \end{cases} \\ \Longrightarrow\; x = 200,\; y = 100 \\ \Longrightarrow\; B(200;\, 100) \end{gathered} \]
+              <p class="formula-note">Iš pirmosios lygties atėmę antrąją, gauname \(3y = 300\), \(y = 100\); tada \(x = 2y = 200\).</p></li>
+            <li>\(C\) yra tiesių \(x - 2y = 0\) ir \(x + y = 600\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x - 2y = 0 \\ x + y = 600 \end{cases} \\ \Longrightarrow\; x = 400,\; y = 200 \\ \Longrightarrow\; C(400;\, 200) \end{gathered} \]
+              <p class="formula-note">Iš antrosios lygties atėmę pirmąją, gauname \(3y = 600\), \(y = 200\); tada \(x = 2y = 400\).</p></li>
+            <li>\(D\) yra tiesių \(x + y = 600\) ir \(y = 450\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + y = 600 \\ y = 450 \end{cases} \\ \Longrightarrow\; x = 150,\; y = 450 \\ \Longrightarrow\; D(150;\, 450) \end{gathered} \]
+              <p class="formula-note">Įstatę \(y = 450\) į pirmąją lygtį, gauname \(x = 150\).</p></li>
+            <li>\(E\) yra dviejų ašims lygiagrečių tiesių \(x = 50\) ir \(y = 450\) susikirtimo taškas: \(E(50;\, 450)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Grąža viršūnėse</span></h4>
+          <p>Koordinačių pradžia nėra šios aibės viršūnė, todėl grąžą apskaičiuojame visose penkiose viršūnėse:</p>
+          \[ \begin{aligned} P_A &amp;= 0{,}12\cdot 50 + 0{,}06\cdot 250 \\ &amp;= 6 + 15 = 21 \\ P_B &amp;= 0{,}12\cdot 200 + 0{,}06\cdot 100 \\ &amp;= 24 + 6 = 30 \\ P_C &amp;= 0{,}12\cdot 400 + 0{,}06\cdot 200 \\ &amp;= 48 + 12 = 60 \\ P_D &amp;= 0{,}12\cdot 150 + 0{,}06\cdot 450 \\ &amp;= 18 + 27 = 45 \\ P_E &amp;= 0{,}12\cdot 50 + 0{,}06\cdot 450 \\ &amp;= 6 + 27 = 33 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Didžiausia reikšmė</span></h4>
+          <p>Didžiausia reikšmė yra \(\htmlClass{hd}{60}\), ji pasiekiama viršūnėje \(C(400;\, 200)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Valdytojas turėtų investuoti 400 tūkst. eurų į akcijų fondą ir 200 tūkst. eurų į obligacijų fondą. Tuomet tikėtina metinė grąža būtų didžiausia: \(P_{\max}(400;\, 200) = 60\) tūkst. eurų, t. y. 10&nbsp;% kapitalo.</p>
+          </div>
+          <p>Dvi kliento sąlygos tenkinamos tiksliai: investuojamas visas kapitalas, \(400 + 200 = 600\), o obligacijų fondui tenka lygiai trečdalis investuotos sumos, \(200 : 600 = \tfrac{1}{3}\). Kitos trys sąlygos tenkinamos su atsarga: į akcijų fondą investuojama 400 tūkst. eurų vietoj reikalaujamų 50, į obligacijų fondą – 200 tūkst. vietoj leidžiamų 450, o investuota suma yra 600 tūkst. vietoj reikalaujamų 300. Taigi planą lemia trečdalio taisyklė: akcijų fondo tikėtina metinė grąža 6 procentiniais punktais didesnė, todėl be šios taisyklės valdytojas į jį investuotų visą kapitalą.</p>
+        </section>
+      </div>
+    </article> <!-- /4 pavyzdys -->
   </section>
 
   <!-- ============ 5. SAVARANKIŠKAI ============ -->
