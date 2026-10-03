@@ -43,12 +43,12 @@
         <table class="vtable hdr" aria-label="Kovo pardavimo apimtys, tūkst. Eur">
           <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
           <tbody>
-            <tr><th>Ana</th><td>30</td><td>20</td><td>10</td></tr>
+            <tr><th>Ona</th><td>30</td><td>20</td><td>10</td></tr>
             <tr><th>Petras</th><td>40</td><td>60</td><td>0</td></tr>
           </tbody>
         </table>
         <span class="arrow" aria-hidden="true">↓</span>
-        <span>\(R = \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix}\)</span>
+        <span>\(K = \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix}\)</span>
       </div>
       <p class="formula-note" style="text-align:center">Kovo pardavimo apimtys tūkstančiais eurų iš 1 pavyzdžio: lentelė su antraštėmis ir ją atitinkanti matrica.</p>
 
@@ -123,10 +123,10 @@
       </header>
       <div class="problem">
         <span class="label">Sąlyga</span>
-        Sodo technikos prekybos įmonės konsultantai Ana ir Petras parduoda A, B ir C modelių įrenginius. Kovo ir balandžio pardavimo apimtys tūkstančiais eurų pateiktos matricose:
+        Sodo technikos prekybos įmonės konsultantai Ona ir Petras parduoda A, B ir C modelių įrenginius. Kovo ir balandžio pardavimo apimtys tūkstančiais eurų pateiktos matricose:
         <div class="mats">
-          <span>\(R = \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix}\)</span>
-          <span>\(S = \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix}\)</span>
+          <span>\(K = \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix}\)</span>
+          <span>\(B = \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix}\)</span>
         </div>
         <ol>
           <li>Nustatykite kiekvieno konsultanto pajamas už kiekvieno modelio įrenginių pardavimus per abu mėnesius.</li>
@@ -137,34 +137,34 @@
       <div class="steps">
         <section class="step">
           <h4><span class="step-no">1</span><span>Duomenys</span></h4>
-          <p>Abiejose matricose pirmoji eilutė atitinka Aną, antroji – Petrą, o trys stulpeliai – A, B ir C modelius. Abi matricos yra \(2 \times 3\) matmenų.</p>
+          <p>Abiejose matricose pirmoji eilutė atitinka Oną, antroji – Petrą, o trys stulpeliai – A, B ir C modelius. Abi matricos yra \(2 \times 3\) matmenų.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">2</span><span>Pajamos per abu mėnesius</span></h4>
           <p>Dviejų mėnesių pajamos yra abiejų matricų suma:</p>
-          \[ \begin{aligned} &amp;R + S \\ &amp;= \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix} + \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} \\ &amp;= \begin{pmatrix} 80 &amp; 50 &amp; 30 \\ 60 &amp; 100 &amp; 30 \end{pmatrix} \end{aligned} \]
-          <p>Ana už A modelį gavo 80 tūkst. eurų pajamų, už B modelį – 50, už C modelį – 30; Petras – atitinkamai 60, 100 ir 30 tūkst. eurų.</p>
+          \[ \begin{aligned} &amp;K + B \\ &amp;= \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix} + \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} \\ &amp;= \begin{pmatrix} 80 &amp; 50 &amp; 30 \\ 60 &amp; 100 &amp; 30 \end{pmatrix} \end{aligned} \]
+          <p>Ona už A modelį gavo 80 tūkst. eurų pajamų, už B modelį – 50, už C modelį – 30; Petras – atitinkamai 60, 100 ir 30 tūkst. eurų.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Pajamų pokytis</span></h4>
           <p>Pokytis yra matricų skirtumas: iš balandžio matricos atimama kovo matrica:</p>
-          \[ \begin{aligned} &amp;S - R \\ &amp;= \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} - \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix} \\ &amp;= \begin{pmatrix} 20 &amp; 10 &amp; 10 \\ -20 &amp; -20 &amp; 30 \end{pmatrix} \end{aligned} \]
-          <p>Anos visų modelių pardavimai išaugo. Petro A ir B modelių pardavimai sumažėjo po 20 tūkst. eurų, o išaugo tik C modelio pardavimai – 30 tūkst. eurų.</p>
+          \[ \begin{aligned} &amp;B - K \\ &amp;= \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} - \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix} \\ &amp;= \begin{pmatrix} 20 &amp; 10 &amp; 10 \\ -20 &amp; -20 &amp; 30 \end{pmatrix} \end{aligned} \]
+          <p>Onos visų modelių pardavimai išaugo. Petro A ir B modelių pardavimai sumažėjo po 20 tūkst. eurų, o išaugo tik C modelio pardavimai – 30 tūkst. eurų.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Balandžio komisiniai</span></h4>
-          <p>Komisiniai, sudarantys 1&nbsp;% balandžio pajamų, apskaičiuojami dauginant matricą iš skaičiaus: \(0{,}01\cdot S\).</p>
-          \[ \begin{aligned} 0{,}01\cdot S &amp;= 0{,}01\cdot \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} \\ &amp;= \begin{pmatrix} 0{,}5 &amp; 0{,}3 &amp; 0{,}2 \\ 0{,}2 &amp; 0{,}4 &amp; 0{,}3 \end{pmatrix} \end{aligned} \]
-          <p>Elementai vėl pateikti tūkstančiais eurų, todėl balandį Ana už trijų modelių pardavimus gavo 500, 300 ir 200 eurų komisinių, o Petras – 200, 400 ir 300 eurų.</p>
+          <p>Komisiniai, sudarantys 1&nbsp;% balandžio pajamų, apskaičiuojami dauginant matricą iš skaičiaus: \(0{,}01\cdot B\).</p>
+          \[ \begin{aligned} 0{,}01\cdot B &amp;= 0{,}01\cdot \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} \\ &amp;= \begin{pmatrix} 0{,}5 &amp; 0{,}3 &amp; 0{,}2 \\ 0{,}2 &amp; 0{,}4 &amp; 0{,}3 \end{pmatrix} \end{aligned} \]
+          <p>Elementai vėl pateikti tūkstančiais eurų, todėl balandį Ona už trijų modelių pardavimus gavo 500, 300 ir 200 eurų komisinių, o Petras – 200, 400 ir 300 eurų.</p>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
             Dviejų mėnesių pajamos, pajamų pokytis ir balandžio komisiniai pateikti trijose pirmiau užrašytose matricose:
             <div class="mats">
-              <span>\(R + S = \begin{pmatrix} 80 &amp; 50 &amp; 30 \\ 60 &amp; 100 &amp; 30 \end{pmatrix}\)</span>
-              <span>\(S - R = \begin{pmatrix} 20 &amp; 10 &amp; 10 \\ -20 &amp; -20 &amp; 30 \end{pmatrix}\)</span>
-              <span>\(0{,}01\cdot S = \begin{pmatrix} 0{,}5 &amp; 0{,}3 &amp; 0{,}2 \\ 0{,}2 &amp; 0{,}4 &amp; 0{,}3 \end{pmatrix}\)</span>
+              <span>\(K + B = \begin{pmatrix} 80 &amp; 50 &amp; 30 \\ 60 &amp; 100 &amp; 30 \end{pmatrix}\)</span>
+              <span>\(B - K = \begin{pmatrix} 20 &amp; 10 &amp; 10 \\ -20 &amp; -20 &amp; 30 \end{pmatrix}\)</span>
+              <span>\(0{,}01\cdot B = \begin{pmatrix} 0{,}5 &amp; 0{,}3 &amp; 0{,}2 \\ 0{,}2 &amp; 0{,}4 &amp; 0{,}3 \end{pmatrix}\)</span>
             </div>
           </div>
         </section>
@@ -185,6 +185,7 @@
           <span>\(D = \begin{pmatrix} 40 &amp; 30 &amp; 25 \\ 60 &amp; 20 &amp; 15 \\ 35 &amp; 45 &amp; 30 \end{pmatrix}\)</span>
           <span>\(S = \begin{pmatrix} 95 &amp; 70 &amp; 55 \\ 110 &amp; 60 &amp; 30 \\ 140 &amp; 90 &amp; 75 \end{pmatrix}\)</span>
         </div>
+        <p style="margin:8px 0 0">Matricų eilutės žymi 1, 2 ir 3 parduotuves, o stulpeliai – marškinius, kelnes ir švarkus; elementai – kiekiai vienetais.</p>
       </div>
       <div class="steps">
         <section class="step">
@@ -228,6 +229,7 @@
           <span>\(P = \begin{pmatrix} 1200 &amp; 800 &amp; 500 \\ 900 &amp; 1100 &amp; 600 \\ 1500 &amp; 700 &amp; 400 \end{pmatrix}\)</span>
           <span>\(A = \begin{pmatrix} 1150 &amp; 860 &amp; 500 \\ 980 &amp; 1150 &amp; 640 \\ 1420 &amp; 760 &amp; 370 \end{pmatrix}\)</span>
         </div>
+        <p style="margin:8px 0 0">Matricų eilutės žymi 1, 2 ir 3 gamyklas, o stulpeliai – 1, 2 ir 3 produktus.</p>
       </div>
       <div class="steps">
         <section class="step">
@@ -272,6 +274,7 @@
         <div class="mats">
           <span>\(C = \begin{pmatrix} 480 &amp; 120 &amp; 90 \\ 350 &amp; 95 &amp; 70 \end{pmatrix}\)</span>
         </div>
+        <p style="margin:8px 0 0">Matricos eilutės žymi 1 ir 2 viešbučius, o stulpeliai – personalo, energijos ir reikmenų sąnaudas.</p>
       </div>
       <div class="steps">
         <section class="step">
