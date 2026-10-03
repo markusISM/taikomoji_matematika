@@ -212,7 +212,7 @@
       { id: 'm22', status: 'active', href: { lt: 'tema-2-sudetingesni-veiksmai.html' },
         title: { lt: 'Sudėtingesni matricų veiksmų taikymai', en: 'Advanced Matrix Applications' },
         desc: { lt: 'Matricų daugyba ir transponavimas ekonominėse ir vadybinėse situacijose.' } },
-      { id: 'm23', status: 'soon',
+      { id: 'm23', status: 'active', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html' },
         title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' },
         desc: { lt: 'Markovo grandinės: rinkos dalys po vieno ar kelių periodų.' } }
     ]
@@ -239,6 +239,8 @@
                title: { lt: 'Pagrindinių matricos veiksmų taikymai', en: 'Basic Matrix Operations' } },
     m22:     { parent: 't2', topic: 't2', model: 'm22', href: { lt: 'tema-2-sudetingesni-veiksmai.html', en: null },
                title: { lt: 'Sudėtingesni matricų veiksmų taikymai', en: 'Advanced Matrix Applications' } },
+    m23:     { parent: 't2', topic: 't2', model: 'm23', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html', en: null },
+               title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },

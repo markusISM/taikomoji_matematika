@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rinkos dalies prognozavimas · 2 tema · Taikomoji matematika</title>
+<meta name="description" content="Rinkos dalies prognozavimas taikant Markovo grandines: pradinės būsenos vektorius, žingsnio matrica, kito laikotarpio rinkos dalys, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=11">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=11"></script>
+</head>
+<body data-page="m23">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">2 tema · Taikymai</span>
+    <h1>Rinkos dalies prognozavimas</h1>
+    <p class="lead">Šioje skiltyje supažindinama, kaip taikant Markovo grandines ir matricų daugybą prognozuojamos įmonių rinkos dalys.</p>
+    <ul class="jump">
+      <li><a href="#logika">Markovo grandinė</a></li>
+      <li><a href="#duomenys">Ko reikia prognozei</a></li>
+      <li><a href="#zingsnio-matrica">Žingsnio matrica</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MARKOVO GRANDINIŲ LOGIKA ============ -->
+  <section class="section" id="logika" aria-labelledby="h-logic">
+    <h2 id="h-logic">Markovo grandinių logika</h2>
+
+    <article class="card">
+      <p>Daugumoje rinkų klientai ne visada lieka pas tą patį tiekėją. Kiekvienu laikotarpiu dalis jų pereina pas konkurentus, o dalis ateina iš konkurentų, todėl rinkos dalys keičiasi net ir nesikeičiant kitoms aplinkybėms. Jei rinkos tyrimu nustatoma, kokia kiekvienos įmonės klientų dalis pereina į kiekvieną kitą įmonę, ir galima daryti prielaidą, kad šios dalys kiekvienu laikotarpiu išlieka tokios pačios, kito laikotarpio rinkos dalis galima apskaičiuoti iš dabartinių rinkos dalių vienu matricų daugybos veiksmu. Taip aprašyta laikotarpių seka vadinama <strong>Markovo grandine</strong>.</p>
+
+      <div class="dimchain markov-chain" aria-label="X0, padauginus iš P, gaunamas X1; X1 padauginus iš P gaunamas X2">
+        <span class="dc">\(X_0\) – dabar</span>
+        <span class="op">dauginame iš \(P\)</span>
+        <span class="dc">\(X_1\) – po 1 laikotarpio</span>
+        <span class="op">dauginame iš \(P\)</span>
+        <span class="dc">\(X_2\) – po 2 laikotarpių</span>
+        <span class="op">…</span>
+      </div>
+      <p class="formula-note" style="text-align:center">Kiekvieno laikotarpio rinkos dalys gaunamos ankstesniojo laikotarpio dalis padauginus iš tos pačios žingsnio matricos \(P\).</p>
+
+      <p>Modelyje daroma prielaida, kad klientų perėjimo dalys išlieka pastovios ir bendras klientų skaičius rinkoje nesikeičia.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Markovo grandinės apibrėžimas ir kiti taikymai</summary>
+        <div class="more-body">
+          <p>Markovo grandinė yra tokia eksperimentų, bandymų ar stebėjimų seka, kad žingsnio tikimybių matrica iš vienos būsenos į kitą yra pastovi, o sekanti būsena priklauso tik nuo dabartinės būsenos. Be rinkos dalies prognozavimo, Markovo grandinės taikomos akcijų rinkos, draudimo įvykių ir politinių procesų prognozavimui.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. KO REIKIA PROGNOZEI ============ -->
+  <section class="section" id="duomenys" aria-labelledby="h-data">
+    <h2 id="h-data">Ką turime žinoti, kad galėtume prognozuoti rinkos dalis</h2>
+
+    <article class="card">
+      <ul class="kv">
+        <li><span class="sym">\(X_0\)</span><span><strong>pradinis rinkos pasiskirstymas</strong> – dabartinės įmonių rinkos dalys (pradinės būsenos tikimybių vektorius);</span></li>
+        <li><span class="sym">\(P\)</span><span><strong>žingsnio matrica</strong> – kokia kiekvienos įmonės klientų dalis per vieną laikotarpį lieka ir kokia pereina į kiekvieną kitą įmonę.</span></li>
+      </ul>
+      <p>Tuomet kito laikotarpio rinkos dalys yra</p>
+      <div class="formula">\[ X_t = P\cdot X_{t-1} \]</div>
+      <p>Taigi vienu daugybos veiksmu apskaičiuojamos kito laikotarpio rinkos dalys, o kartojant daugybą – vėlesnių laikotarpių rinkos dalys:</p>
+      <div class="formula">\[ \begin{gathered} X_1 = P\cdot X_0, \quad X_2 = P\cdot X_1, \\ X_3 = P\cdot X_2, \quad \ldots \end{gathered} \]</div>
+
+      <h3 class="subhead" style="margin-top:22px">Kaip sudaromas pradinių rinkos dalių vektorius \(X_0\)</h3>
+      <p><strong>Pradinės būsenos tikimybių vektorius</strong> \(X_0\) yra vieno stulpelio matrica, kurioje dabartinės rinkos dalys užrašytos dešimtainėmis trupmenomis. Jo elementų suma visada lygi 1, nes visos įmonės kartu apima visą rinką:</p>
+      <div class="formula">\[ \begin{gathered} X_0 = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \\ x_1 + x_2 + \ldots + x_n = 1 \end{gathered} \]</div>
+      <div class="stmt">
+        <q>Pirmasis užima 40&nbsp;% rinkos, antrasis – 40&nbsp;%, trečiasis – 20&nbsp;%.</q>
+        <div class="mats">
+          <span>\(X_0 = \begin{pmatrix} 0{,}4 \\ 0{,}4 \\ 0{,}2 \end{pmatrix}\)</span>
+          <span>\(0{,}4 + 0{,}4 + 0{,}2 = 1\)</span>
+        </div>
+        <p class="formula-note" style="margin:6px 0 0;text-align:center">1 pavyzdžio pradinės rinkos dalys: procentai paverčiami dešimtainėmis trupmenomis.</p>
+      </div>
+      <p class="tip">Įmonės vektoriuje \(X_0\) surašomos ta pačia tvarka kaip ir žingsnio matricoje \(P\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. ŽINGSNIO MATRICA ============ -->
+  <section class="section" id="zingsnio-matrica" aria-labelledby="h-step">
+    <h2 id="h-step">Kaip sudaroma žingsnio matrica</h2>
+
+    <article class="card">
+      <h3 class="subhead">Ką reiškia elementas \(p_{ij}\)</h3>
+      <p><strong>Žingsnio matricoje \(P\)</strong> pateiktos perėjimo tikimybės: <strong>\(p_{ij}\) yra tikimybė, kad klientas pereis iš \(j\)-osios įmonės į \(i\)-ąją.</strong> Šią indeksų tvarką būtina įsiminti: antrasis indeksas rodo, <em>iš kur</em> klientas išeina (stulpelis), o pirmasis – <em>kur</em> jis pereina (eilutė).</p>
+      <div class="tbl-wrap">
+        <table class="vtable pij" aria-label="Žingsnio matricos elementų prasmė">
+          <thead><tr><th></th><th>iš 1</th><th>iš 2</th><th>iš 3</th></tr></thead>
+          <tbody>
+            <tr><th class="to">į 1</th><td class="dg">\(p_{11}\)</td><td>\(p_{12}\)</td><td>\(p_{13}\)</td></tr>
+            <tr><th class="to">į 2</th><td>\(p_{21}\)</td><td class="dg">\(p_{22}\)</td><td>\(p_{23}\)</td></tr>
+            <tr><th class="to">į 3</th><td>\(p_{31}\)</td><td>\(p_{32}\)</td><td class="dg">\(p_{33}\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Tai reiškia, kad:</p>
+      <ul>
+        <li>\(j\)-asis stulpelis aprašo, kas nutinka \(j\)-osios įmonės klientams – kur jie pereina;</li>
+        <li>pagrindinės įstrižainės elementas \(p_{jj}\) yra \(j\)-osios įmonės klientų dalis, kuri lieka toje pačioje įmonėje, t. y. išlaikomų klientų dalis (lentelėje pažymėta oranžine);</li>
+        <li>kiekvieno stulpelio elementų suma lygi 1, nes kiekvienas \(j\)-osios įmonės klientas turi likti kurioje nors įmonėje.</li>
+      </ul>
+
+      <h3 class="subhead" style="margin-top:22px">Kai rinkoje yra dvi įmonės</h3>
+      <figure class="fig">
+        <svg viewBox="0 0 320 178" role="img" aria-label="Dviejų įmonių perėjimų schema: p11 ir p21 iš 1 įmonės, p12 ir p22 iš 2 įmonės">
+          <defs>
+            <marker id="mk1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" style="fill:var(--chart)"/></marker>
+            <marker id="mk2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" style="fill:var(--chart-2)"/></marker>
+          </defs>
+          <!-- kilpos -->
+          <path class="tr1" d="M76 70 C 52 18, 118 18, 94 70" marker-end="url(#mk1)"/>
+          <path class="tr2" d="M226 70 C 202 18, 268 18, 244 70" marker-end="url(#mk2)"/>
+          <!-- perėjimai -->
+          <path class="tr1" d="M112 86 Q 160 58 206 86" marker-end="url(#mk1)"/>
+          <path class="tr2" d="M208 112 Q 160 140 114 112" marker-end="url(#mk2)"/>
+          <!-- mazgai -->
+          <circle class="node" cx="85" cy="98" r="26"/>
+          <circle class="node" cx="235" cy="98" r="26"/>
+          <text class="b" x="85" y="103" text-anchor="middle">1</text>
+          <text class="b" x="235" y="103" text-anchor="middle">2</text>
+          <!-- užrašai -->
+          <text class="m" x="85" y="20" text-anchor="middle" style="fill:var(--chart)">p<tspan font-size="10" dy="4">11</tspan></text>
+          <text class="m" x="235" y="20" text-anchor="middle" style="fill:var(--chart-2)">p<tspan font-size="10" dy="4">22</tspan></text>
+          <text class="m" x="160" y="58" text-anchor="middle" style="fill:var(--chart)">p<tspan font-size="10" dy="4">21</tspan></text>
+          <text class="m" x="160" y="156" text-anchor="middle" style="fill:var(--chart-2)">p<tspan font-size="10" dy="4">12</tspan></text>
+          <text class="muted" x="85" y="146" text-anchor="middle" style="font-size:11px">1 įmonė</text>
+          <text class="muted" x="235" y="146" text-anchor="middle" style="font-size:11px">2 įmonė</text>
+        </svg>
+      </figure>
+      <div class="formula">\[ P = \begin{pmatrix} \htmlClass{hr}{p_{11}} &amp; \htmlClass{hc}{p_{12}} \\ \htmlClass{hr}{p_{21}} &amp; \htmlClass{hc}{p_{22}} \end{pmatrix} \]</div>
+      <p>Mėlynos rodyklės – 1 įmonės klientai: dalis \(p_{11}\) lieka, dalis \(p_{21}\) pereina į 2 įmonę. Jos sudaro <strong>pirmąjį stulpelį</strong>. Žalios rodyklės – 2 įmonės klientai; jos sudaro <strong>antrąjį stulpelį</strong>. Rodyklė iš 1 įmonės į 2 įmonę žymima \(p_{21}\): pirmasis indeksas – kur pereina, antrasis – iš kur.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Kaip iš sąlygos sudaryti matricą</h3>
+      <ol class="steps-list">
+        <li>Surašykite įmones pasirinkta tvarka ir tos pačios tvarkos laikykitės visose matricose.</li>
+        <li>Matricą \(P\) sudarykite po vieną stulpelį. \(j\)-asis stulpelis aprašo \(j\)-osios įmonės klientus: išlaikomų klientų dalis rašoma pagrindinėje įstrižainėje, o išeinančių klientų dalys – tų įmonių, į kurias jie pereina, eilutėse.</li>
+        <li>Jei sąlygoje pateiktos tik prarandamų klientų dalys, išlaikomų klientų dalis lygi 1 minus prarandamų dalių suma.</li>
+        <li>Patikrinkite, ar kiekvieno stulpelio elementų suma lygi 1. Jei taip nėra, tai rodo, kad procentinė dalis įrašyta netinkamoje vietoje.</li>
+      </ol>
+      <div class="stmt">
+        <q>80&nbsp;% tiekėjo A klientų kitą kartą pasirinktų tą patį tiekėją, 10&nbsp;% pasirinktų tiekėją B ir 10&nbsp;% – tiekėją C.</q>
+        <p style="margin:0 0 6px">Šis teiginys aprašo tiekėjo A (1-osios įmonės) klientus, todėl pagal jį užpildomas <strong>pirmasis stulpelis</strong>:</p>
+        <ul class="kv">
+          <li><span class="sym">\(p_{11} = 0{,}8\)</span><span>lieka pas A (įstrižainė);</span></li>
+          <li><span class="sym">\(p_{21} = 0{,}1\)</span><span>pereina pas B (2 eilutė);</span></li>
+          <li><span class="sym">\(p_{31} = 0{,}1\)</span><span>pereina pas C (3 eilutė).</span></li>
+        </ul>
+        <div class="formula">\[ \begin{gathered} \begin{pmatrix} \htmlClass{hr}{0{,}8} &amp; \cdot &amp; \cdot \\ \htmlClass{hr}{0{,}1} &amp; \cdot &amp; \cdot \\ \htmlClass{hr}{0{,}1} &amp; \cdot &amp; \cdot \end{pmatrix} \\ 0{,}8 + 0{,}1 + 0{,}1 = 1 \end{gathered} \]</div>
+        <p class="formula-note" style="margin:6px 0 0;text-align:center">1 pavyzdžio pirmasis teiginys. Kiti du teiginiai taip pat užpildo antrąjį ir trečiąjį stulpelius.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PROGNOZĖ ============ -->
+  <section class="section" id="prognoze" aria-labelledby="h-forecast">
+    <h2 id="h-forecast">Kaip apskaičiuojamos kito laikotarpio rinkos dalys</h2>
+
+    <article class="card">
+      <p>Kai rinkoje yra \(n\) įmonių, \(P\) yra \(n \times n\), o \(X_0\) – \(n \times 1\) matmenų matrica, todėl sandauga apibrėžta, o rezultatas vėl yra vieno stulpelio matrica:</p>
+      <div class="formula">\[ (n \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times 1) = n \times 1 \]</div>
+      <p>Naujos matricos struktūra, pavyzdžiui, kai įmonės trys:</p>
+      <div class="formula">\[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]</div>
+      <p>Elementas \(c_{i1}\) – \(i\)-osios įmonės rinkos dalis po vieno laikotarpio. Jis gaunamas \(i\)-ąją matricos \(P\) eilutę dauginant iš stulpelio \(X_0\):</p>
+      <div class="formula">\[ c_{i1} = p_{i1}x_1 + p_{i2}x_2 + \ldots + p_{in}x_n \]</div>
+      <p>Patikrinkite, ar vektoriaus \(X_1\) elementų suma lygi 1, tada išreikškite juos procentais. Norėdami apskaičiuoti dar kito laikotarpio rinkos dalis, kartokite daugybą, vektorių \(X_1\) naudodami vietoje \(X_0\).</p>
+      <p><a href="tema-2.html#sandauga">Matricų sandauga išsamiai – 2 temos puslapyje →</a></p>
+    </article>
+  </section>
+
+  <!-- ============ 5. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Surašykite įmones pasirinkta tvarka ir tos pačios tvarkos laikykitės visose matricose.</li>
+        <li>Vektorių \(X_0\) užrašykite dešimtainių trupmenų stulpeliu ir patikrinkite, ar elementų suma lygi 1.</li>
+        <li>Matricą \(P\) sudarykite po vieną stulpelį. \(j\)-asis stulpelis aprašo \(j\)-osios įmonės klientus: išlaikomų klientų dalis rašoma pagrindinėje įstrižainėje, o išeinančių klientų dalys – tų įmonių, į kurias jie pereina, eilutėse. Jei sąlygoje pateiktos tik prarandamų klientų dalys, išlaikomų klientų dalis lygi 1 minus prarandamų dalių suma.</li>
+        <li>Patikrinkite, ar kiekvieno stulpelio elementų suma lygi 1. Jei taip nėra, tai rodo, kad procentinė dalis įrašyta netinkamoje vietoje.</li>
+        <li>Sudauginkite \(X_1 = P\cdot X_0\): atsakymo \(i\)-asis elementas gaunamas \(i\)-ąją matricos \(P\) eilutę dauginant iš stulpelio \(X_0\).</li>
+        <li>Patikrinkite, ar vektoriaus \(X_1\) elementų suma lygi 1, tada išreikškite juos procentais.</li>
+        <li>Norėdami apskaičiuoti dar kito laikotarpio rinkos dalis, kartokite daugybą, vektorių \(X_1\) naudodami vietoje \(X_0\).</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Eilutė vietoj stulpelio.</strong> Teiginys apie vienos įmonės klientus užpildo stulpelį, o ne eilutę: \(p_{ij}\) – perėjimas iš \(j\)-osios įmonės į \(i\)-ąją.</li>
+            <li><strong>Stulpelio suma nelygi 1.</strong> Tai rodo, kad procentinė dalis įrašyta netinkamoje vietoje.</li>
+            <li><strong>Neapskaičiuota išlaikomų klientų dalis.</strong> Jei duotos tik prarandamų klientų dalys, įstrižainėje rašoma 1 minus prarandamų dalių suma.</li>
+            <li><strong>Antrasis laikotarpis nuo \(X_0\).</strong> \(X_2\) skaičiuojamas iš \(X_1\): \(X_2 = P\cdot X_1\).</li>
+            <li><strong>Skirtinga įmonių tvarka.</strong> Vektoriuje \(X_0\) ir matricoje \(P\) įmonės turi būti surašytos ta pačia tvarka.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant rinkos dalies prognozavimo uždavinius būtina pateikti sudarytą žingsnio matricą \(P\) bei pradinį būsenos tikimybių vektorių \(X_0\). Skaičiuojant sekančių laikotarpių prognozuojamą rinkos pasiskirstymą būtina parašyti atliekamą matricų veiksmą.</li>
+            <li>Atliekant matricų daugybos veiksmą būtina nurodyti dauginamas matricas, jų matmenis bei naujos matricos struktūrą. Perrašyti matricų nėra būtina, taip pat nėra būtina surašyti visus atliekamus aritmetinius veiksmus.</li>
+            <li>Nepamirškite pateikti rezultato interpretacijos, jei to prašo uždavinio sąlyga. Interpretacija turi pateikti gautosios matricos elementų prasmės paaiškinimą.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 6. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: alternatyvus 2.2 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Elektros tiekėjų rinkos dalys</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Šalyje veikia trys elektros tiekėjai (A, B ir C). Pirmasis užima 40&nbsp;% rinkos, antrasis – 40&nbsp;%, trečiasis – 20&nbsp;%. Tyrimas parodė, kad:
+        <ul>
+          <li>80&nbsp;% tiekėjo A klientų kitą kartą pasirinktų tą patį tiekėją, 10&nbsp;% pasirinktų tiekėją B ir 10&nbsp;% – tiekėją C.</li>
+          <li>85&nbsp;% tiekėjo B klientų liktų pas tą patį tiekėją, 10&nbsp;% pasirinktų tiekėją A ir 5&nbsp;% – tiekėją C.</li>
+          <li>Galiausiai 80&nbsp;% tiekėjo C klientų liktų pas tą patį tiekėją, 10&nbsp;% pasirinktų tiekėją A ir 10&nbsp;% – tiekėją B.</li>
+        </ul>
+        Tarkime, kad šie pasirinkimo įpročiai ateityje nesikeis. Nustatykite šių elektros tiekėjų rinkos dalis po vieno laikotarpio.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pradinės rinkos dalys</span></h4>
+          <p>Įmonių tvarka: A, B, C. Pradinės būsenos matricoje surašomos dabartinės rinkos dalys:</p>
+          \[ X_0 = \begin{pmatrix} 0{,}4 \\ 0{,}4 \\ 0{,}2 \end{pmatrix}, \qquad 0{,}4 + 0{,}4 + 0{,}2 = 1 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Žingsnio matrica</span></h4>
+          <p>Elementas \(p_{ij}\) yra tikimybė, kad klientas iš tiekėjo \(j\) pereis pas tiekėją \(i\), todėl kiekvienas stulpelis aprašo, kur pereina vieno tiekėjo klientai. Pirmasis teiginys užpildo pirmąjį stulpelį (A klientai: 0,8; 0,1; 0,1), antrasis – antrąjį (B klientai: 0,1; 0,85; 0,05), trečiasis – trečiąjį (C klientai: 0,1; 0,1; 0,8):</p>
+          \[ P = \begin{pmatrix} 0{,}8 &amp; 0{,}1 &amp; 0{,}1 \\ 0{,}1 &amp; 0{,}85 &amp; 0{,}1 \\ 0{,}1 &amp; 0{,}05 &amp; 0{,}8 \end{pmatrix} \]
+          <p>Kiekvieno stulpelio elementų suma lygi 1: \(0{,}8 + 0{,}1 + 0{,}1 = 1\), \(0{,}1 + 0{,}85 + 0{,}05 = 1\), \(0{,}1 + 0{,}1 + 0{,}8 = 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matmenys ir naujos matricos struktūra</span></h4>
+          <p>Rinkos dalys po vieno laikotarpio yra \(X_1 = P\cdot X_0\):</p>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 1) = 3 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]
+          <p>\(c_{11}\), \(c_{21}\) ir \(c_{31}\) – tiekėjų A, B ir C rinkos dalys po vieno laikotarpio.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Elementų skaičiavimas</span></h4>
+          <p>\(c_{11}\) gaunamas 1-ąją matricos \(P\) eilutę dauginant iš stulpelio \(X_0\):</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{0{,}8} &amp; \htmlClass{hr}{0{,}1} &amp; \htmlClass{hr}{0{,}1} \\ 0{,}1 &amp; 0{,}85 &amp; 0{,}1 \\ 0{,}1 &amp; 0{,}05 &amp; 0{,}8 \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{0{,}4} \\ \htmlClass{hc}{0{,}4} \\ \htmlClass{hc}{0{,}2} \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 0{,}8\cdot 0{,}4 + 0{,}1\cdot 0{,}4 + 0{,}1\cdot 0{,}2 \\ &amp;= 0{,}32 + 0{,}04 + 0{,}02 = 0{,}38 \\ c_{21} &amp;= 0{,}1\cdot 0{,}4 + 0{,}85\cdot 0{,}4 + 0{,}1\cdot 0{,}2 \\ &amp;= 0{,}04 + 0{,}34 + 0{,}02 = 0{,}4 \\ c_{31} &amp;= 0{,}1\cdot 0{,}4 + 0{,}05\cdot 0{,}4 + 0{,}8\cdot 0{,}2 \\ &amp;= 0{,}04 + 0{,}02 + 0{,}16 = 0{,}22 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0{,}38 \\ 0{,}4 \\ 0{,}22 \end{pmatrix} \]
+          <p>Visų trijų dalių suma lygi 1, kaip ir turi būti.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Po vieno laikotarpio tiekėjas A užims 38&nbsp;% rinkos, tiekėjas B – 40&nbsp;%, o tiekėjas C – 22&nbsp;%. Tiekėjas A praranda 2 procentinius punktus, tiekėjas C tiek pat laimi; tiekėjas B, geriausiai išlaikantis savo klientus, tampa didžiausiu tiekėju.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 1 uždavinys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Du prekybos centrų tinklai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Du prekybos centrų tinklai „Alpha“ ir „Beta“ dalijasi vietos rinka. Šiuo metu „Alpha“ turi 55&nbsp;% klientų, o „Beta“ – 45&nbsp;%. Kiekvieną mėnesį 12&nbsp;% „Alpha“ klientų pereina į „Beta“, o 20&nbsp;% „Beta“ klientų – į „Alpha“. Raskite rinkos dalis kitą mėnesį ir dar kitą mėnesį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Įmonių tvarka: „Alpha“, „Beta“. Dabartinės rinkos dalys: „Alpha“ – 55&nbsp;%, „Beta“ – 45&nbsp;%.</p>
+          \[ X_0 = \begin{pmatrix} 0{,}55 \\ 0{,}45 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Žingsnio matrica</span></h4>
+          <p>Duotos tik prarandamų klientų dalys, todėl kiekviena išlaikomų klientų dalis lygi 1 minus prarandamų klientų dalis. „Alpha“ išlaiko \(1 - 0{,}12 = 0{,}88\), o „Beta“ – \(1 - 0{,}2 = 0{,}8\). Pirmasis stulpelis aprašo „Alpha“ klientus (0,88 lieka, 0,12 pereina į „Beta“), o antrasis – „Beta“ klientus (0,20 pereina į „Alpha“, 0,80 lieka):</p>
+          \[ P = \begin{pmatrix} 0{,}88 &amp; 0{,}2 \\ 0{,}12 &amp; 0{,}8 \end{pmatrix} \]
+          <p>Abiejų stulpelių elementų sumos lygios 1.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matmenys ir naujos matricos struktūra</span></h4>
+          \[ (2 \times \htmlClass{hd}{2})\cdot(\htmlClass{hd}{2} \times 1) = 2 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \end{pmatrix} \]
+          <p>\(c_{11}\) ir \(c_{21}\) – „Alpha“ ir „Beta“ rinkos dalys kitą mėnesį.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Kitą mėnesį</span></h4>
+          \[ \begin{aligned} c_{11} &amp;= 0{,}88\cdot 0{,}55 + 0{,}2\cdot 0{,}45 \\ &amp;= 0{,}484 + 0{,}09 = 0{,}574 \\ c_{21} &amp;= 0{,}12\cdot 0{,}55 + 0{,}8\cdot 0{,}45 \\ &amp;= 0{,}066 + 0{,}36 = 0{,}426 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0{,}574 \\ 0{,}426 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Dar kitą mėnesį</span></h4>
+          <p>Dar kitą mėnesį, skaičiuojant nuo \(X_1\): \(X_2 = P\cdot X_1\). Matmenys ir struktūra tokie patys: \(X_2 = \begin{pmatrix} c_{11} \\ c_{21} \end{pmatrix}\).</p>
+          \[ \begin{aligned} c_{11} &amp;= 0{,}88\cdot 0{,}574 + 0{,}2\cdot 0{,}426 \\ &amp;= 0{,}50512 + 0{,}0852 = 0{,}59032 \\ c_{21} &amp;= 0{,}12\cdot 0{,}574 + 0{,}8\cdot 0{,}426 \\ &amp;= 0{,}06888 + 0{,}3408 = 0{,}40968 \end{aligned} \]
+          \[ X_2 = \begin{pmatrix} 0{,}5903 \\ 0{,}4097 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Rezultatų paaiškinimas</span></h4>
+          <p>„Alpha“ rinkos dalis pirmąjį mėnesį padidėja 2,4 procentinio punkto, o antrąjį – tik 1,6 procentinio punkto. Augimas lėtėja, nes kuo daugiau klientų turi „Alpha“, tuo daugiau jų praranda esant 12&nbsp;% perėjimo daliai. Tuo metu mažėjant „Beta“ klientų skaičiui, esant 20&nbsp;% perėjimo daliai iš jos išeina vis mažiau klientų. „Alpha“ klientų skaičius auga ne dėl didesnio absoliutaus pritraukiamų klientų skaičiaus, o dėl mažesnės prarandamų savo klientų dalies.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Kitą mėnesį „Alpha“ turės 57,4&nbsp;%, o „Beta“ – 42,6&nbsp;% rinkos; dar kitą mėnesį „Alpha“ turės 59,03&nbsp;%, o „Beta“ – 40,97&nbsp;%.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 2 uždavinys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Srautinio transliavimo paslaugos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Trys srautinio transliavimo paslaugų teikėjai S1, S2 ir S3 turi atitinkamai 40&nbsp;%, 35&nbsp;% ir 25&nbsp;% šalies rinkos. Kiekvieną ketvirtį S1 išlaiko 80&nbsp;% savo prenumeratorių, 15&nbsp;% praranda S2 naudai, o 5&nbsp;% – S3 naudai; S2 išlaiko 85&nbsp;%, 10&nbsp;% praranda S1 naudai, o 5&nbsp;% – S3 naudai; S3 išlaiko 70&nbsp;%, 20&nbsp;% praranda S1 naudai, o 10&nbsp;% – S2 naudai. Raskite rinkos dalis po vieno ketvirčio ir paaiškinkite, kas lemia rezultatą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Įmonių tvarka: S1, S2, S3. Dabartinės rinkos dalys: 40&nbsp;%, 35&nbsp;%, 25&nbsp;%.</p>
+          \[ X_0 = \begin{pmatrix} 0{,}4 \\ 0{,}35 \\ 0{,}25 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Žingsnio matrica</span></h4>
+          <p>Kiekvienas sąlygos teiginys aprašo vienos įmonės klientus, todėl pagal jį užpildomas vienas stulpelis. S1 klientai aprašomi pirmuoju stulpeliu (0,80 lieka, 0,15 pereina į S2, 0,05 – į S3), S2 klientai – antruoju (0,10 pereina į S1, 0,85 lieka, 0,05 pereina į S3), o S3 klientai – trečiuoju (0,20 pereina į S1, 0,10 – į S2, 0,70 lieka):</p>
+          \[ P = \begin{pmatrix} 0{,}8 &amp; 0{,}1 &amp; 0{,}2 \\ 0{,}15 &amp; 0{,}85 &amp; 0{,}1 \\ 0{,}05 &amp; 0{,}05 &amp; 0{,}7 \end{pmatrix} \]
+          <p>Stulpelių elementų sumos yra \(0{,}8 + 0{,}15 + 0{,}05 = 1\), \(0{,}1 + 0{,}85 + 0{,}05 = 1\) ir \(0{,}2 + 0{,}1 + 0{,}7 = 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matmenys ir naujos matricos struktūra</span></h4>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 1) = 3 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]
+          <p>\(c_{11}\), \(c_{21}\), \(c_{31}\) – S1, S2 ir S3 rinkos dalys po vieno ketvirčio.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Elementų skaičiavimas</span></h4>
+          \[ \begin{aligned} c_{11} &amp;= 0{,}8\cdot 0{,}4 + 0{,}1\cdot 0{,}35 + 0{,}2\cdot 0{,}25 \\ &amp;= 0{,}32 + 0{,}035 + 0{,}05 = 0{,}405 \\ c_{21} &amp;= 0{,}15\cdot 0{,}4 + 0{,}85\cdot 0{,}35 + 0{,}1\cdot 0{,}25 \\ &amp;= 0{,}06 + 0{,}2975 + 0{,}025 = 0{,}3825 \\ c_{31} &amp;= 0{,}05\cdot 0{,}4 + 0{,}05\cdot 0{,}35 + 0{,}7\cdot 0{,}25 \\ &amp;= 0{,}02 + 0{,}0175 + 0{,}175 = 0{,}2125 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0{,}405 \\ 0{,}3825 \\ 0{,}2125 \end{pmatrix} \]
+          <p>Elementų suma lygi 1.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Rezultatų paaiškinimas</span></h4>
+          <p>S1 rinkos dalis padidėja puse procentinio punkto, S2 – 3,25 procentinio punkto, o S3 sumažėja 3,75 procentinio punkto. Priežastį rodo pagrindinė įstrižainė: S3 kiekvieną ketvirtį išlaiko tik 70&nbsp;% savo prenumeratorių, o konkurentai – 80&nbsp;% ir 85&nbsp;%. Be to, S3 yra mažiausia įmonė, todėl iš kitų įmonių pritraukiamų klientų nepakanka prarastiems klientams pakeisti. Jei sąlygos nesikeis, S3 rinkos dalis toliau mažės.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Po vieno ketvirčio S1 rinkos dalis yra 40,5&nbsp;%, S2 – 38,25&nbsp;%, S3 – 21,25&nbsp;%. Labiausiai išauga S2 rinkos dalis, o sumažėja S3 rinkos dalis, nes S3 išlaikomų klientų dalis yra gerokai mažesnė nei konkurentų.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: gairių 3 uždavinys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Ar lojalumo programa padarys banką lyderiu</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Regioninėje bankų rinkoje bankui A tenka 45&nbsp;% sąskaitų, bankui B – 35&nbsp;%, o kitiems bankams kartu – 20&nbsp;%. Kiekvienais metais bankas A išlaiko 85&nbsp;% savo klientų, 10&nbsp;% praranda B naudai, o 5&nbsp;% – kitų bankų naudai; bankas B išlaiko 80&nbsp;%, 15&nbsp;% praranda A naudai, o 5&nbsp;% – kitų bankų naudai; kiti bankai išlaiko 75&nbsp;%, 15&nbsp;% praranda A naudai, o 10&nbsp;% – B naudai. Banko B rinkodaros direktorius teigia, kad lojalumo programa, kuri padidintų B išlaikomų klientų dalį nuo 80&nbsp;% iki 90&nbsp;%, o likę klientai po lygiai pasiskirstytų tarp A ir kitų bankų, per dvejus metus leistų B tapti rinkos lyderiu. Patikrinkite šį teiginį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Tvarka: bankas A, bankas B, kiti bankai. Dabartinės rinkos dalys: 45&nbsp;%, 35&nbsp;%, 20&nbsp;%.</p>
+          <div class="mats">
+            <span>\(X_0 = \begin{pmatrix} 0{,}45 \\ 0{,}35 \\ 0{,}2 \end{pmatrix}\)</span>
+            <span>\(P = \begin{pmatrix} 0{,}85 &amp; 0{,}15 &amp; 0{,}15 \\ 0{,}1 &amp; 0{,}8 &amp; 0{,}1 \\ 0{,}05 &amp; 0{,}05 &amp; 0{,}75 \end{pmatrix}\)</span>
+          </div>
+          <p>Kiekvieno stulpelio elementų suma lygi 1.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Matmenys ir naujos matricos struktūra</span></h4>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 1) = 3 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]
+          <p>\(c_{11}\), \(c_{21}\), \(c_{31}\) – banko A, banko B ir kitų bankų rinkos dalys po vienų metų. Visų kitų sandaugų matmenys ir struktūra tokie patys.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Po vienų metų (dabartinės sąlygos)</span></h4>
+          \[ \small\begin{aligned} c_{11} &amp;= 0{,}85\cdot 0{,}45 + 0{,}15\cdot 0{,}35 + 0{,}15\cdot 0{,}2 \\ &amp;= 0{,}3825 + 0{,}0525 + 0{,}03 = 0{,}465 \\ c_{21} &amp;= 0{,}1\cdot 0{,}45 + 0{,}8\cdot 0{,}35 + 0{,}1\cdot 0{,}2 \\ &amp;= 0{,}045 + 0{,}28 + 0{,}02 = 0{,}345 \\ c_{31} &amp;= 0{,}05\cdot 0{,}45 + 0{,}05\cdot 0{,}35 + 0{,}75\cdot 0{,}2 \\ &amp;= 0{,}0225 + 0{,}0175 + 0{,}15 = 0{,}19 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0{,}465 \\ 0{,}345 \\ 0{,}19 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Po antrųjų metų (dabartinės sąlygos)</span></h4>
+          <p>Skaičiuojant nuo \(X_1\): \(X_2 = P\cdot X_1\).</p>
+          \[ \small\begin{aligned} c_{11} &amp;= 0{,}85\cdot 0{,}465 + 0{,}15\cdot 0{,}345 + 0{,}15\cdot 0{,}19 \\ &amp;= 0{,}39525 + 0{,}05175 + 0{,}0285 = 0{,}4755 \\ c_{21} &amp;= 0{,}1\cdot 0{,}465 + 0{,}8\cdot 0{,}345 + 0{,}1\cdot 0{,}19 \\ &amp;= 0{,}0465 + 0{,}276 + 0{,}019 = 0{,}3415 \\ c_{31} &amp;= 0{,}05\cdot 0{,}465 + 0{,}05\cdot 0{,}345 + 0{,}75\cdot 0{,}19 \\ &amp;= 0{,}02325 + 0{,}01725 + 0{,}1425 = 0{,}183 \end{aligned} \]
+          \[ X_2 = \begin{pmatrix} 0{,}4755 \\ 0{,}3415 \\ 0{,}183 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Naujoji žingsnio matrica</span></h4>
+          <p>Dabar pakeiskite tik antrąjį stulpelį, kuris aprašo B banko klientus. B išlaiko 0,90, o likusi dalis 0,10 pasiskirsto po lygiai: 0,05 pereina į A, 0,05 – į kitus bankus. Kiti du stulpeliai nesikeičia. Naująją žingsnio matricą pažymėkime \(Q\):</p>
+          \[ Q = \begin{pmatrix} 0{,}85 &amp; \htmlClass{hc}{0{,}05} &amp; 0{,}15 \\ 0{,}1 &amp; \htmlClass{hc}{0{,}9} &amp; 0{,}1 \\ 0{,}05 &amp; \htmlClass{hc}{0{,}05} &amp; 0{,}75 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Rinkos dalys su lojalumo programa</span></h4>
+          <p>Pakartokite abu daugybos veiksmus su naująja matrica. Po vienų metų (\(X_1 = Q\cdot X_0\)):</p>
+          \[ \small\begin{aligned} c_{11} &amp;= 0{,}85\cdot 0{,}45 + 0{,}05\cdot 0{,}35 + 0{,}15\cdot 0{,}2 \\ &amp;= 0{,}3825 + 0{,}0175 + 0{,}03 = 0{,}43 \\ c_{21} &amp;= 0{,}1\cdot 0{,}45 + 0{,}9\cdot 0{,}35 + 0{,}1\cdot 0{,}2 \\ &amp;= 0{,}045 + 0{,}315 + 0{,}02 = 0{,}38 \\ c_{31} &amp;= 0{,}05\cdot 0{,}45 + 0{,}05\cdot 0{,}35 + 0{,}75\cdot 0{,}2 \\ &amp;= 0{,}0225 + 0{,}0175 + 0{,}15 = 0{,}19 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0{,}43 \\ 0{,}38 \\ 0{,}19 \end{pmatrix} \]
+          <p>Po antrųjų metų (\(X_2 = Q\cdot X_1\)):</p>
+          \[ \small\begin{aligned} c_{11} &amp;= 0{,}85\cdot 0{,}43 + 0{,}05\cdot 0{,}38 + 0{,}15\cdot 0{,}19 \\ &amp;= 0{,}3655 + 0{,}019 + 0{,}0285 = 0{,}413 \\ c_{21} &amp;= 0{,}1\cdot 0{,}43 + 0{,}9\cdot 0{,}38 + 0{,}1\cdot 0{,}19 \\ &amp;= 0{,}043 + 0{,}342 + 0{,}019 = 0{,}404 \\ c_{31} &amp;= 0{,}05\cdot 0{,}43 + 0{,}05\cdot 0{,}38 + 0{,}75\cdot 0{,}19 \\ &amp;= 0{,}0215 + 0{,}019 + 0{,}1425 = 0{,}183 \end{aligned} \]
+          \[ X_2 = \begin{pmatrix} 0{,}413 \\ 0{,}404 \\ 0{,}183 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Rezultatų paaiškinimas</span></h4>
+          <p>Lojalumo programa visiškai pakeičia rinkos kitimo kryptį: banko B rinkos dalis, užuot sumažėjusi iki 34,15&nbsp;%, padidėja iki 40,4&nbsp;%, o banko A dalis, užuot išaugusi iki 47,55&nbsp;%, pasiekia tik 41,3&nbsp;%. Tačiau po dvejų metų A vis dar pirmauja 0,9 procentinio punkto, todėl pateiktas teiginys nepasitvirtina. Vis dėlto dviejų scenarijų palyginimas yra svarus argumentas programos naudai: per dvejus metus ji bankui B duoda 6,25 procentinio punkto didesnę rinkos dalį, o didėjantis atotrūkis beveik panaikinamas.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Esant dabartinėms sąlygoms, po dvejų metų A rinkos dalis būtų 47,55&nbsp;%, B – 34,15&nbsp;%, o kitų bankų – 18,3&nbsp;%. Išlaikomų klientų dalį padidinus iki 90&nbsp;%, rinkos dalys būtų 41,3&nbsp;%, 40,4&nbsp;% ir 18,3&nbsp;%. Bankas B nuo lyderio atsiliktų tik 0,9 procentinio punkto, tačiau per dvejus metus rinkos lyderiu netaptų, todėl rinkodaros direktoriaus teiginys nepasitvirtina, nors programa gerokai pagerintų B padėtį.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 7. SAVARANKIŠKAS DARBAS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: pateikite \(X_0\) ir \(P\), daugybos matmenis ir naujos matricos struktūrą, tada apskaičiuokite elementus. Pabaigoje pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Rinką dalijasi du gyvūnų pašaro prekės ženklai – A ir B. A prekės ženklas turi 60&nbsp;% rinkos, o B – 40&nbsp;%. Tyrimo metu nustatyta, kad 85&nbsp;% A prekės ženklo pirkėjų kitą kartą pirktų to paties prekės ženklo pašarą, o 15&nbsp;% pasirinktų B prekės ženklą; 75&nbsp;% B prekės ženklo pirkėjų liktų prie B prekės ženklo, o 25&nbsp;% pasirinktų A prekės ženklą. Tarkime, kad išvardyti pasirinkimo įpročiai galios ir ateityje. Raskite abiejų prekės ženklų rinkos dalis po vieno ir po dviejų periodų.</p>
+        </div>
+        <div class="q-answer">
+          <p>Rinkos dalys po vieno ir po dviejų periodų yra</p>
+          <div class="mats">
+            <span>\(X_1 = \begin{pmatrix} 0{,}61 \\ 0{,}39 \end{pmatrix}\)</span>
+            <span>\(X_2 = \begin{pmatrix} 0{,}616 \\ 0{,}384 \end{pmatrix}\)</span>
+          </div>
+          <p>Po vieno periodo A prekės ženklas turi 61&nbsp;% rinkos, o po dviejų – 61,6&nbsp;%: per pirmąjį periodą jo rinkos dalis padidėja 1 procentiniu punktu, o per antrąjį – dar 0,6 procentinio punkto, taigi jos augimas lėtėja.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Rinką dalijasi trys sporto programėlės – A, B ir C. A programėlė turi 50&nbsp;% rinkos, B – 30&nbsp;%, C – 20&nbsp;%. Naudotojų tyrimo metu nustatyta, kad:</p>
+          <ul>
+            <li>80&nbsp;% A programėlės naudotojų kitą mėnesį toliau naudotųsi ta pačia programėle, 12&nbsp;% pasirinktų B, o 8&nbsp;% – C programėlę;</li>
+            <li>75&nbsp;% B programėlės naudotojų toliau naudotųsi ta pačia programėle, 15&nbsp;% pasirinktų A, o 10&nbsp;% – C programėlę;</li>
+            <li>70&nbsp;% C programėlės naudotojų toliau naudotųsi ta pačia programėle, 20&nbsp;% pasirinktų A, o 10&nbsp;% – B programėlę.</li>
+          </ul>
+          <p>Tarkime, kad išvardyti pasirinkimo įpročiai galios ir ateityje. Raskite trijų programėlių rinkos dalis po vieno mėnesio.</p>
+        </div>
+        <div class="q-answer">
+          <p>Rinkos dalys po vieno mėnesio yra</p>
+          \[ X_1 = \begin{pmatrix} 0{,}485 \\ 0{,}305 \\ 0{,}21 \end{pmatrix} \]
+          <p>A programėlė turi 48,5&nbsp;% rinkos, B programėlė – 30,5&nbsp;%, C programėlė – 21&nbsp;%. Nors C programėlė prasčiausiai išlaiko savo naudotojus, jos rinkos dalis vis tiek padidėja vienu procentiniu punktu, nes ji pritraukia daugiau naudotojų iš dviejų didesnių programėlių, negu jų praranda šioms programėlėms.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Rinką dalijasi trys naujienų portalai – A, B ir C. A portalas turi 40&nbsp;% rinkos, B – 35&nbsp;%, C – 25&nbsp;%. Rinkos žingsnio matrica yra</p>
+          <div class="mats">
+            <span>\(P = \begin{pmatrix} 0{,}75 &amp; 0{,}1 &amp; 0{,}2 \\ 0{,}15 &amp; 0{,}8 &amp; 0{,}1 \\ 0{,}1 &amp; 0{,}1 &amp; 0{,}7 \end{pmatrix}\)</span>
+          </div>
+          <p>Jos stulpeliai atitinkamai žymi A, B ir C portalus. C portalo redaktorius teigia, kad, padidinus prie C portalo liekančių skaitytojų dalį nuo 70&nbsp;% iki 80&nbsp;%, C portalas per du periodus taptų didžiausias iš trijų. Papildomai išlaikomi skaitytojai būtų tie, kurie anksčiau pereidavo į A portalą, taigi į A portalą pereitų tik 10&nbsp;%, o į B portalą ir toliau pereitų 10&nbsp;%. Raskite rinkos dalis po dviejų periodų esant dabartinei rinkos padėčiai ir dar kartą jas raskite įgyvendinus redaktoriaus pasiūlymą. Ar redaktoriaus teiginys pasitvirtina?</p>
+        </div>
+        <div class="q-answer">
+          <p>Esant dabartinei rinkos padėčiai, rinkos dalys po dviejų periodų yra</p>
+          \[ X_2 = \begin{pmatrix} 0{,}37525 \\ 0{,}37475 \\ 0{,}25 \end{pmatrix} \]
+          <p>o įgyvendinus redaktoriaus pasiūlymą jos yra</p>
+          \[ X_2 = \begin{pmatrix} 0{,}334 \\ 0{,}3735 \\ 0{,}2925 \end{pmatrix} \]
+          <p>Redaktoriaus teiginys nepasitvirtina. C portalo rinkos dalis iš tiesų padidėja – nuo 25&nbsp;% iki 29,25&nbsp;%, užuot likusi 25&nbsp;%, tačiau jis išlieka mažiausias iš trijų. Pagrindinis pasiūlymo poveikis pasireiškia kitur: B portalas aplenkia A portalą ir tampa didžiausias – jo rinkos dalis yra 37,35&nbsp;%, o A portalo – 33,4&nbsp;%; be šio pokyčio abiejų portalų rinkos dalys vis dar būtų maždaug vienodos, po 37,5&nbsp;%.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią skiltį rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">1–2 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Finite Mathematics for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">8 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

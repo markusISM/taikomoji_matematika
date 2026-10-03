@@ -16,6 +16,7 @@ lt/                            lietuviški puslapiai
   tema-2.html                  2 tema: matricos sąvokos, rūšys, veiksmai + taikymų skiltys
   tema-2-pagrindiniai-veiksmai.html  Pagrindinių matricos veiksmų taikymai
   tema-2-sudetingesni-veiksmai.html  Sudėtingesni matricų veiksmų taikymai
+  tema-2-rinkos-dalies-prognozavimas.html  Rinkos dalies prognozavimas (Markovo grandinės)
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -38,7 +39,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=10` ir `site.js?v=10`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=11` ir `site.js?v=11`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 

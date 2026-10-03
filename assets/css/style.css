@@ -706,3 +706,24 @@ a.model-card:hover { transform: translateY(-2px); border-color: var(--accent); }
 .dimchain .op { color: var(--muted); font-weight: 700; }
 .dimchain .dc.res { background: var(--success-soft); border-color: color-mix(in srgb, var(--success) 40%, transparent); }
 @media (max-width: 560px) { .dimchain { flex-direction: column; gap: 3px; } }
+
+/* ---------- Rinkos dalies prognozavimas ---------- */
+.vtable td.dg { background: var(--exam-soft); color: var(--exam); font-weight: 700; }
+.vtable.pij td, .vtable.pij th { text-align: center; }
+.vtable.pij th.to { text-align: left; }
+.stmt { margin: 12px 0 0; padding: 12px 14px; border-radius: 12px; border: 1px dashed var(--border); background: var(--surface-2); }
+.stmt q { display: block; font-style: italic; margin-bottom: 8px; }
+.markov-legend { list-style: none; padding: 0; margin: 6px 0 0; display: flex; gap: 6px 18px; justify-content: center; flex-wrap: wrap; font-size: .88rem; color: var(--muted); }
+.markov-legend li { display: inline-flex; align-items: center; gap: 7px; margin: 0; }
+.markov-legend .sw { width: 14px; height: 10px; border-radius: 3px; background: var(--chart); }
+.markov-legend .sw-2 { background: var(--chart-2); }
+svg .bar1 { fill: var(--chart); }
+svg .bar2 { fill: var(--chart-2); }
+svg text.on-bar { fill: var(--surface); font-size: 12px; font-weight: 700; }
+svg .tr1 { stroke: var(--chart); stroke-width: 2.2; fill: none; }
+svg .tr2 { stroke: var(--chart-2); stroke-width: 2.2; fill: none; }
+svg .node { fill: var(--surface); stroke: var(--text); stroke-width: 1.5; }
+.markov-chain .op { font-weight: 600; font-size: .82rem; }
+.markov-chain .op::before { content: "→ "; }
+.markov-chain .op:last-child::before { content: ""; }
+@media (max-width: 560px) { .markov-chain .op::before { content: "↓ "; } }
