@@ -15,6 +15,7 @@ lt/                            lietuviški puslapiai
   tema-1-gamybos-priemoniu-pasirinkimas.html  Gamybos priemonių pasirinkimas
   tema-2.html                  2 tema: matricos sąvokos, rūšys, veiksmai + taikymų skiltys
   tema-2-pagrindiniai-veiksmai.html  Pagrindinių matricos veiksmų taikymai
+  tema-2-sudetingesni-veiksmai.html  Sudėtingesni matricų veiksmų taikymai
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -37,7 +38,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=9` ir `site.js?v=9`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=10` ir `site.js?v=10`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
@@ -104,6 +105,8 @@ Grafikų užrašai (ašys, legenda) imami iš `site.js` žodyno abiem kalbomis. 
 ```
 
 **Matricos.** Matrica rašoma `\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}` (HTML faile `&` rašomas `&amp;`). Kelios matricos greta: `<div class="mats"><span>\(A = …\)</span><span>\(B = …\)</span></div>` – siaurame ekrane jos persikelia į kitą eilutę. Elementą galima paryškinti: `\htmlClass{hd}{-4}` (oranžinė), `\htmlClass{hr}{1}` (mėlyna – eilutė), `\htmlClass{hc}{9}` (žalia – stulpelis).
+
+**Lentelės sąlygoje.** Platesnę lentelę dėkite į `<div class="tbl-wrap">` ir naudokite `class="vtable compact"` – siaurame ekrane ji neišeis už ribų. **Matmenų grandinė:** `<div class="dimchain"><span class="dc">padaliniai × <b>prekės</b></span><span class="op">·</span>…<span class="dc res">…</span></div>` – telefone išsidėsto stulpeliu.
 
 **Skiltys vietoj modelių.** Temoms, įrašytoms `UNIT` sąraše (`site.js`), kortelės vadinamos „Skiltis 1, 2…“, o apatinė nuoroda – „Kita skiltis“.
 

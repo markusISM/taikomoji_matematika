@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sudėtingesni matricų veiksmų taikymai · 2 tema · Taikomoji matematika</title>
+<meta name="description" content="Matricų daugyba ir transponavimas ekonominėse ir vadybinėse situacijose: daugybos tvarka, matmenys, naujos matricos struktūra, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=10">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=10"></script>
+</head>
+<body data-page="m22">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">2 tema · Taikymai</span>
+    <h1>Sudėtingesni matricų veiksmų taikymai</h1>
+    <p class="lead">Šioje skiltyje supažindinama, kaip ekonominėse ir vadybinėse situacijose gali būti taikomi matricų daugyba ir transponavimas.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Modelis</h2>
+
+    <article class="card">
+      <p><strong>Transponavimas.</strong> Jei \(A\) yra \(m \times n\) matmenų matrica, kurios elementai yra \(a_{ij}\), tai jos transponuotoji matrica \(A^T\) yra \(n \times m\) matmenų matrica, kurios elementai yra \(a_{ji}\): matricos \(A\) eilutės tampa matricos \(A^T\) stulpeliais. Transponavimas nekeičia lentelėje esančios informacijos – tik sukeičia eilutes ir stulpelius. Taikomuosiuose uždaviniuose jo reikia, kai dvi lenteles būtina sudauginti, tačiau jų antraštės nesutampa.</p>
+      <p><strong>Matricų daugyba.</strong> Jei \(A\) yra \(m \times n\) matmenų matrica, o \(B\) – \(n \times p\) matmenų matrica, tai sandauga \(A\cdot B\) yra apibrėžta ir yra \(m \times p\) matmenų. Elementas \(c_{ij}\) gaunamas iš \(i\)-osios matricos \(A\) eilutės ir \(j\)-ojo matricos \(B\) stulpelio: atitinkami elementai sudauginami, o sandaugos sudedamos.</p>
+      <div class="formula">\[ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{in}b_{nj} \]</div>
+      <p><a href="tema-2.html#sandauga">Matricų sandauga išsamiai – 2 temos puslapyje →</a></p>
+
+      <h3 class="subhead" style="margin-top:22px">Taikymams svarbi taisyklė</h3>
+      <p>Pirmosios matricos stulpelių skaičius turi sutapti su antrosios matricos eilučių skaičiumi. Tai reiškia, kad pirmosios lentelės stulpeliai ir antrosios lentelės eilutės turi aprašyti tuos pačius objektus. Pagal šiuos objektus sumuojama, todėl atsakyme jų nebelieka.</p>
+      <p><strong>Atsakyme lieka:</strong></p>
+      <ul>
+        <li>pirmosios matricos eilutės – jos tampa atsakymo eilutėmis;</li>
+        <li>antrosios matricos stulpeliai – jie tampa atsakymo stulpeliais.</li>
+      </ul>
+      <div class="dimchain" aria-label="Padaliniai kartu prekės, padauginta iš prekės kartu tiekėjai, lygu padaliniai kartu tiekėjai">
+        <span class="dc">padaliniai × <b>prekės</b></span>
+        <span class="op">·</span>
+        <span class="dc"><b>prekės</b> × tiekėjai</span>
+        <span class="op">=</span>
+        <span class="dc res">padaliniai × tiekėjai</span>
+      </div>
+      <p class="formula-note" style="text-align:center">1 pavyzdys: pagal prekes sumuojama, todėl atsakyme jų nebelieka.</p>
+      <p>Būtent tai lemia dviejų matricų daugybos tvarką. Matricų daugybai komutatyvumo dėsnis negalioja – bendruoju atveju \(A\cdot B \neq B\cdot A\). Tik viena iš dviejų tvarkų turi ekonominę prasmę, todėl tvarka nepasirenkama laisvai.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Kelių lentelių sujungimas</summary>
+        <div class="more-body">
+          <p>Sujungiant kelias lenteles, naudojamos dar dvi taisyklės: \(A(B + C) = AB + AC\) ir \((A + B)C = AC + BC\). Jos leidžia, pavyzdžiui, kiekius dauginti iš kainos ir vieneto sąnaudų skirtumo \((D - C)\), užuot atskirai skaičiavus pajamas ir sąnaudas.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Nurodykite, ką reiškia kiekvienos lentelės eilutės ir stulpeliai, ir užrašykite kiekvienos matricos matmenis.</li>
+        <li>Nuspręskite, kas turi būti atsakyme: kokia klasifikacija žymės jo eilutes, o kokia – stulpelius. Pagal abiejose lentelėse pasikartojančią klasifikaciją bus sumuojama, todėl atsakyme jos nebeliks.</li>
+        <li>Išdėstykite matricas taip, kad bendra klasifikacija atitiktų pirmosios matricos stulpelius ir antrosios matricos eilutes. Jei vienoje lentelėje ji išdėstyta atvirkščiai, tą lentelę transponuokite.</li>
+        <li>Patikrinkite, ar matmenys suderinti: \((m \times n)\cdot(n \times p) = m \times p\). Jei du viduriniai skaičiai nesutampa, sandauga neapibrėžta ir duomenys išdėstyti netinkamai.</li>
+        <li>Kiekvieną elementą apskaičiuokite daugindami eilutę iš stulpelio: sudauginkite atitinkamus elementus ir sandaugas sudėkite.</li>
+        <li>Nurodykite atsakymo eilučių ir stulpelių reikšmę, žodžiais paaiškinkite vieną elementą ir atsakykite į vadybinį klausimą: palyginkite alternatyvas, pasirinkite pigesnę arba patikrinkite, ar rezultatas neviršija nustatytos ribos.</li>
+      </ol>
+
+      <div class="model-note"><strong>Daugybos tvarkos tikrinimas.</strong> Prieš daugindami, garsiai pasakykite: „prekės vienetai“, padauginti iš „eurų už tos prekės vienetą“, duoda „eurus“. Jei sakinys neturi prasmės, matricos išdėstytos netinkama tvarka arba vieną iš jų reikia transponuoti.</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Netinkama daugybos tvarka.</strong> Matricų daugybai komutatyvumo dėsnis negalioja: tik viena iš dviejų tvarkų turi ekonominę prasmę.</li>
+            <li><strong>Netransponuota lentelė.</strong> Jei bendra klasifikacija vienoje lentelėje išdėstyta atvirkščiai, nei reikia, tą lentelę transponuokite (3 pavyzdys).</li>
+            <li><strong>Nesuderinti matmenys.</strong> Jei du viduriniai skaičiai nesutampa, sandauga neapibrėžta ir duomenys išdėstyti netinkamai.</li>
+            <li><strong>Nepaaiškintas rezultatas.</strong> Nurodykite, ką reiškia atsakymo eilutės ir stulpeliai, ir žodžiais paaiškinkite bent vieną elementą.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Atliekant matricų daugybos veiksmą būtina nurodyti dauginamas matricas, jų matmenis bei naujos matricos struktūrą. Perrašyti matricų nėra būtina, taip pat nėra būtina surašyti visus atliekamus aritmetinius veiksmus.</li>
+            <li>Nepamirškite pateikti rezultato interpretacijos, jei to prašo uždavinio sąlyga. Interpretacija turi pateikti gautosios matricos elementų prasmės paaiškinimą.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: gairių 3 skyrius (autoriaus pavyzdys) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Kanceliarinės prekės: kuris tiekėjas pigesnis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Audito įmonės 4 padaliniai užsakė žemiau pateiktus kanceliarinių prekių kiekius:
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th>Kiekiai</th><th>Popierius</th><th>Rašikliai</th><th>Žymekliai</th></tr></thead>
+            <tbody>
+              <tr><td>Padalinys nr. 1</td><td>8</td><td>10</td><td>6</td></tr>
+              <tr><td>Padalinys nr. 2</td><td>5</td><td>12</td><td>4</td></tr>
+              <tr><td>Padalinys nr. 3</td><td>2</td><td>6</td><td>2</td></tr>
+              <tr><td>Padalinys nr. 4</td><td>3</td><td>7</td><td>7</td></tr>
+            </tbody>
+          </table>
+        </div>
+        Prekių kainos (eurais) pas du tiekėjus yra pateiktos kitoje lentelėje.
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th>Kainos</th><th>Tiekėjas I</th><th>Tiekėjas II</th></tr></thead>
+            <tbody>
+              <tr><td>Popierius</td><td>5</td><td>6</td></tr>
+              <tr><td>Rašikliai</td><td>1,2</td><td>1</td></tr>
+              <tr><td>Žymekliai</td><td>1,5</td><td>1,8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        Apskaičiuokite, kokios būtų kiekvieno padalinio išlaidos kanceliarinėms prekėms perkant iš skirtingų tiekėjų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Matricos</span></h4>
+          <p>Abi lenteles užrašykite matricomis:</p>
+          <div class="mats">
+            <span>\(A = \begin{pmatrix} 8 &amp; 10 &amp; 6 \\ 5 &amp; 12 &amp; 4 \\ 2 &amp; 6 &amp; 2 \\ 3 &amp; 7 &amp; 7 \end{pmatrix}\)</span>
+            <span>\(B = \begin{pmatrix} 5 &amp; 6 \\ 1{,}2 &amp; 1 \\ 1{,}5 &amp; 1{,}8 \end{pmatrix}\)</span>
+          </div>
+          <p>\(A\) yra \(4 \times 3\) matmenų matrica (eilutės – padaliniai, stulpeliai – prekės), o \(B\) yra \(3 \times 2\) matmenų matrica (eilutės – prekės, stulpeliai – tiekėjai).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Daugybos tvarka ir matmenys</span></h4>
+          <p>Atsakymo eilutės turi atitikti padalinius, o stulpeliai – tiekėjus. Sumuojama pagal prekes, nes padalinio išlaidos yra visų jo užsakytų prekių išlaidų suma. Prekės jau yra matricos \(A\) stulpeliai ir matricos \(B\) eilutės, todėl tinkama sandauga yra \(A\cdot B\), o matmenys suderinti:</p>
+          \[ (4 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 2) = 4 \times 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Naujos matricos struktūra</span></h4>
+          <p>Sandauga \(C = A\cdot B\) turi keturias eilutes (padaliniai) ir du stulpelius (tiekėjai):</p>
+          \[ C = A\cdot B = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \\ c_{31} &amp; c_{32} \\ c_{41} &amp; c_{42} \end{pmatrix} \]
+          <p>Elementas \(c_{i1}\) – \(i\)-ojo padalinio išlaidos perkant iš I tiekėjo, \(c_{i2}\) – perkant iš II tiekėjo.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Elementų skaičiavimas</span></h4>
+          <p>Kiekvienas elementas gaunamas kiekių eilutę dauginant iš kainų stulpelio. 1 padalinio išlaidos perkant iš I tiekėjo:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{8} &amp; \htmlClass{hr}{10} &amp; \htmlClass{hr}{6} \\ 5 &amp; 12 &amp; 4 \\ 2 &amp; 6 &amp; 2 \\ 3 &amp; 7 &amp; 7 \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{5} &amp; 6 \\ \htmlClass{hc}{1{,}2} &amp; 1 \\ \htmlClass{hc}{1{,}5} &amp; 1{,}8 \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 8\cdot 5 + 10\cdot 1{,}2 + 6\cdot 1{,}5 \\ &amp;= 40 + 12 + 9 = 61 \end{aligned} \]
+          <p>Likę septyni elementai apskaičiuojami taip pat:</p>
+          \[ A\cdot B = \begin{pmatrix} 61 &amp; 68{,}8 \\ 45{,}4 &amp; 49{,}2 \\ 20{,}2 &amp; 21{,}6 \\ 33{,}9 &amp; 37{,}6 \end{pmatrix} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Visų elementų skaičiavimas</summary>
+            <div class="more-body">
+              \[ \begin{aligned} c_{12} &amp;= 8\cdot 6 + 10\cdot 1 + 6\cdot 1{,}8 \\ &amp;= 48 + 10 + 10{,}8 = 68{,}8 \\ c_{21} &amp;= 5\cdot 5 + 12\cdot 1{,}2 + 4\cdot 1{,}5 \\ &amp;= 25 + 14{,}4 + 6 = 45{,}4 \\ c_{22} &amp;= 5\cdot 6 + 12\cdot 1 + 4\cdot 1{,}8 \\ &amp;= 30 + 12 + 7{,}2 = 49{,}2 \\ c_{31} &amp;= 2\cdot 5 + 6\cdot 1{,}2 + 2\cdot 1{,}5 \\ &amp;= 10 + 7{,}2 + 3 = 20{,}2 \\ c_{32} &amp;= 2\cdot 6 + 6\cdot 1 + 2\cdot 1{,}8 \\ &amp;= 12 + 6 + 3{,}6 = 21{,}6 \\ c_{41} &amp;= 3\cdot 5 + 7\cdot 1{,}2 + 7\cdot 1{,}5 \\ &amp;= 15 + 8{,}4 + 10{,}5 = 33{,}9 \\ c_{42} &amp;= 3\cdot 6 + 7\cdot 1 + 7\cdot 1{,}8 \\ &amp;= 18 + 7 + 12{,}6 = 37{,}6 \end{aligned} \]
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Rezultato prasmė</span></h4>
+          <p>Atsakymo eilutės atitinka keturis padalinius, o stulpeliai – du tiekėjus, todėl kiekvienas elementas yra suma eurais, kurią vienas padalinys išleistų pirkdamas iš vieno tiekėjo. Pavyzdžiui, 1 padalinys išleistų 61 eurą pirkdamas iš I tiekėjo ir 68,80 euro pirkdamas iš II tiekėjo.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Tiekėjų palyginimas</span></h4>
+          <p>Palyginę abu stulpelius eilutėmis, matome, kad kiekvienam padaliniui pigiau pirkti iš I tiekėjo. Stulpelių sumos yra 160,50 euro perkant iš I tiekėjo ir 177,20 euro perkant iš II tiekėjo.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pirkdami iš I tiekėjo, keturi padaliniai išleistų atitinkamai 61,00, 45,40, 20,20 ir 33,90 euro; pirkdami iš II tiekėjo – 68,80, 49,20, 21,60 ir 37,60 euro. I tiekėjas yra pigesnis kiekvienam padaliniui ir visai įmonei: 160,50 euro, palyginti su 177,20 euro. Todėl įmonei reikėtų pirkti iš I tiekėjo ir šiam užsakymui sutaupyti 16,70 euro.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 1 uždavinys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Kavinių pajamos ir sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kavinių tinklas turi tris kavines, parduodančias tris produktus: kavą, sumuštinius ir pyragaičius. Per savaitę parduoti kiekiai pateikti matricoje \(Q\). Kiekvieno produkto pardavimo kaina ir vieneto sąnaudos eurais pateiktos matricoje \(B\). Raskite kiekvienos kavinės savaitės pajamas ir sąnaudas.
+        <div class="mats">
+          <span>\(Q = \begin{pmatrix} 900 &amp; 300 &amp; 200 \\ 500 &amp; 600 &amp; 100 \\ 1400 &amp; 150 &amp; 250 \end{pmatrix}\)</span>
+          <span>\(B = \begin{pmatrix} 3 &amp; 0{,}9 \\ 4{,}5 &amp; 2{,}7 \\ 2{,}8 &amp; 1{,}4 \end{pmatrix}\)</span>
+        </div>
+        <p style="margin:8px 0 0">Matricos \(Q\) eilutės – 1, 2 ir 3 kavinės, stulpeliai – kava, sumuštiniai ir pyragaičiai. Matricos \(B\) eilutės – tie patys trys produktai, stulpeliai – pardavimo kaina ir vieneto sąnaudos.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Matricos \(Q\) eilutės – 1, 2 ir 3 kavinės, stulpeliai – kava, sumuštiniai ir pyragaičiai. Matricos \(B\) eilutės – tie patys trys produktai, stulpeliai – pardavimo kaina ir vieneto sąnaudos. \(Q\) yra \(3 \times 3\), o \(B\) – \(3 \times 2\) matmenų matrica.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Daugybos tvarka ir matmenys</span></h4>
+          <p>Atsakymo eilutės turi atitikti kavines, o stulpeliai – pajamas ir sąnaudas; sumuojama pagal produktus. Jie yra matricos \(Q\) stulpeliai ir matricos \(B\) eilutės, todėl sandauga yra \(Q\cdot B\), o jos matmenys nustatomi taip:</p>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 2) = 3 \times 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Naujos matricos struktūra</span></h4>
+          <p>Sandauga \(C = Q\cdot B\) turi tris eilutes (kavinės) ir du stulpelius (pajamos ir sąnaudos):</p>
+          \[ C = Q\cdot B = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \\ c_{31} &amp; c_{32} \end{pmatrix} \]
+          <p>Elementas \(c_{i1}\) – \(i\)-osios kavinės savaitės pajamos, \(c_{i2}\) – jos sąnaudos.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Elementų skaičiavimas</span></h4>
+          <p>Kiekvienas elementas gaunamas kiekių eilutę dauginant iš eurų už vienetą stulpelio. 1 kavinės atveju:</p>
+          \[ \begin{aligned} c_{11} &amp;= 900\cdot 3 + 300\cdot 4{,}5 + 200\cdot 2{,}8 \\ &amp;= 2700 + 1350 + 560 = 4610 \end{aligned} \]
+          \[ \begin{aligned} c_{12} &amp;= 900\cdot 0{,}9 + 300\cdot 2{,}7 + 200\cdot 1{,}4 \\ &amp;= 810 + 810 + 280 = 1900 \end{aligned} \]
+          <p>Likusius elementus apskaičiavę taip pat, gauname:</p>
+          \[ Q\cdot B = \begin{pmatrix} 4610 &amp; 1900 \\ 4480 &amp; 2210 \\ 5575 &amp; 2015 \end{pmatrix} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Visų elementų skaičiavimas</summary>
+            <div class="more-body">
+              \[ \small\begin{aligned} c_{21} &amp;= 500\cdot 3 + 600\cdot 4{,}5 + 100\cdot 2{,}8 \\ &amp;= 1500 + 2700 + 280 = 4480 \\ c_{22} &amp;= 500\cdot 0{,}9 + 600\cdot 2{,}7 + 100\cdot 1{,}4 \\ &amp;= 450 + 1620 + 140 = 2210 \\ c_{31} &amp;= 1400\cdot 3 + 150\cdot 4{,}5 + 250\cdot 2{,}8 \\ &amp;= 4200 + 675 + 700 = 5575 \\ c_{32} &amp;= 1400\cdot 0{,}9 + 150\cdot 2{,}7 + 250\cdot 1{,}4 \\ &amp;= 1260 + 405 + 350 = 2015 \end{aligned} \]
+            </div>
+          </details>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Trijų kavinių savaitės pajamos yra atitinkamai 4610, 4480 ir 5575 eurai, o prekių sąnaudos – 1900, 2210 ir 2015 eurų.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 2 uždavinys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Darbo sąnaudos: kurias dirbtuves rinktis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Baldų įmonė gamina kėdes, stalus ir knygų spintas. Pirmojoje lentelėje pateiktas laikas valandomis, kurio reikia kiekviename padalinyje vienam kiekvieno gaminio vienetui pagaminti. Įmonė gali pateikti užsakymą vienoms iš dvejų savo dirbtuvių, kurių valandiniai darbo užmokesčio tarifai pateikti antrojoje lentelėje. Raskite vieno kiekvieno gaminio darbo sąnaudas kiekvienose dirbtuvėse ir patarkite, kurioms dirbtuvėms pateikti užsakymą.
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th>Valandos vienetui</th><th>Kėdė</th><th>Stalas</th><th>Knygų spinta</th></tr></thead>
+            <tbody>
+              <tr><td>Pjovimas</td><td>0,5</td><td>1,2</td><td>0,8</td></tr>
+              <tr><td>Surinkimas</td><td>0,8</td><td>1,5</td><td>1,4</td></tr>
+              <tr><td>Apdaila</td><td>0,4</td><td>0,9</td><td>0,6</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th>Darbo užmokestis, Eur/val.</th><th>Dirbtuvės A</th><th>Dirbtuvės B</th></tr></thead>
+            <tbody>
+              <tr><td>Pjovimas</td><td>14</td><td>12</td></tr>
+              <tr><td>Surinkimas</td><td>16</td><td>15</td></tr>
+              <tr><td>Apdaila</td><td>18</td><td>16</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Matricos</span></h4>
+          <div class="mats">
+            <span>\(H = \begin{pmatrix} 0{,}5 &amp; 1{,}2 &amp; 0{,}8 \\ 0{,}8 &amp; 1{,}5 &amp; 1{,}4 \\ 0{,}4 &amp; 0{,}9 &amp; 0{,}6 \end{pmatrix}\)</span>
+            <span>\(W = \begin{pmatrix} 14 &amp; 12 \\ 16 &amp; 15 \\ 18 &amp; 16 \end{pmatrix}\)</span>
+          </div>
+          <p>Matricos \(H\) eilutės – padaliniai (pjovimas, surinkimas, apdaila), stulpeliai – gaminiai; tai \(3 \times 3\) matmenų matrica. Matricos \(W\) eilutės – tie patys padaliniai, stulpeliai – dirbtuvės; tai \(3 \times 2\) matmenų matrica.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Transponavimas</span></h4>
+          <p>Atsakymo eilutės turi atitikti gaminius, o stulpeliai – dirbtuves; sumuojama pagal padalinius, nes gaminio darbo sąnaudos yra kiekviename padalinyje sumokėtų sumų suma. Tačiau matricoje \(H\) padaliniai yra eilutės, o ne stulpeliai, todėl matrica \(H\) išdėstyta netinkama kryptimi. Ją transponavus, gaminiai bus eilutėse, o padaliniai – stulpeliuose:</p>
+          \[ H^T = \begin{pmatrix} 0{,}5 &amp; 0{,}8 &amp; 0{,}4 \\ 1{,}2 &amp; 1{,}5 &amp; 0{,}9 \\ 0{,}8 &amp; 1{,}4 &amp; 0{,}6 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matmenys</span></h4>
+          <p>Dabar padaliniai yra matricos \(H^T\) stulpeliai ir matricos \(W\) eilutės, todėl sandaugos \(H^T\cdot W\) matmenys yra suderinti, o rezultato matmenys – tokie, kokių reikia:</p>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 2) = 3 \times 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Naujos matricos struktūra</span></h4>
+          <p>Sandauga \(C = H^T\cdot W\) turi tris eilutes (kėdė, stalas, knygų spinta) ir du stulpelius (dirbtuvės A ir B):</p>
+          \[ C = H^T\cdot W = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \\ c_{31} &amp; c_{32} \end{pmatrix} \]
+          <p>Elementas \(c_{i1}\) – \(i\)-ojo gaminio vieneto darbo sąnaudos A dirbtuvėse, \(c_{i2}\) – B dirbtuvėse.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Elementų skaičiavimas</span></h4>
+          <p>Kiekvienas elementas gaunamas valandas vienetui dauginant iš eurų už valandą; rezultatas – eurai vienetui. Kėdės A dirbtuvėse atveju:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{0{,}5} &amp; \htmlClass{hr}{0{,}8} &amp; \htmlClass{hr}{0{,}4} \\ 1{,}2 &amp; 1{,}5 &amp; 0{,}9 \\ 0{,}8 &amp; 1{,}4 &amp; 0{,}6 \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{14} &amp; 12 \\ \htmlClass{hc}{16} &amp; 15 \\ \htmlClass{hc}{18} &amp; 16 \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 0{,}5\cdot 14 + 0{,}8\cdot 16 + 0{,}4\cdot 18 \\ &amp;= 7 + 12{,}8 + 7{,}2 = 27 \end{aligned} \]
+          <p>Likusius penkis elementus apskaičiavę taip pat, gauname:</p>
+          \[ H^T\cdot W = \begin{pmatrix} 27 &amp; 24{,}4 \\ 57 &amp; 51{,}3 \\ 44{,}4 &amp; 40{,}2 \end{pmatrix} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Visų elementų skaičiavimas</summary>
+            <div class="more-body">
+              \[ \begin{aligned} c_{12} &amp;= 0{,}5\cdot 12 + 0{,}8\cdot 15 + 0{,}4\cdot 16 \\ &amp;= 6 + 12 + 6{,}4 = 24{,}4 \\ c_{21} &amp;= 1{,}2\cdot 14 + 1{,}5\cdot 16 + 0{,}9\cdot 18 \\ &amp;= 16{,}8 + 24 + 16{,}2 = 57 \\ c_{22} &amp;= 1{,}2\cdot 12 + 1{,}5\cdot 15 + 0{,}9\cdot 16 \\ &amp;= 14{,}4 + 22{,}5 + 14{,}4 = 51{,}3 \\ c_{31} &amp;= 0{,}8\cdot 14 + 1{,}4\cdot 16 + 0{,}6\cdot 18 \\ &amp;= 11{,}2 + 22{,}4 + 10{,}8 = 44{,}4 \\ c_{32} &amp;= 0{,}8\cdot 12 + 1{,}4\cdot 15 + 0{,}6\cdot 16 \\ &amp;= 9{,}6 + 21 + 9{,}6 = 40{,}2 \end{aligned} \]
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Palyginimas</span></h4>
+          <p>Eilutės atitinka tris gaminius, o stulpeliai – dvejas dirbtuves, todėl kiekvienas elementas yra vieno gaminio darbo sąnaudos. B dirbtuvės yra pigesnės kiekvienam gaminiui: kėdei – 2,60 euro, stalui – 5,70 euro, knygų spintai – 4,20 euro.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            A dirbtuvėse vieno gaminio darbo sąnaudos yra 27,00 eurai kėdei, 57,00 eurai stalui ir 44,40 euro knygų spintai, o B dirbtuvėse – atitinkamai 24,40, 51,30 ir 40,20 euro. B dirbtuvėse kiekvieno gaminio darbo sąnaudos yra mažesnės, todėl visas užsakymas turėtų būti pateiktas joms. Skaičiavimą buvo galima atlikti tik transponavus darbo laiko lentelę, nes joje padaliniai buvo pateikti eilutėse.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: gairių 3 uždavinys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Ar užteks padalinių pajėgumų</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamykla kitą mėnesį planuoja pagaminti 400 M1 modelio vienetų, 250 M2 modelio vienetų ir 150 M3 modelio vienetų. Laikas valandomis, kurio reikia vienam kiekvieno modelio vienetui mechaninio apdirbimo, surinkimo ir bandymų padaliniuose, pateiktas matricoje \(T\). Trijų padalinių mėnesio pajėgumai yra 2000, 1600 ir 800 valandų. Raskite bendrą kiekvienam padaliniui reikalingų valandų skaičių ir patikrinkite, ar planą galima įvykdyti.
+        <div class="mats">
+          <span>\(T = \begin{pmatrix} 2 &amp; 1{,}5 &amp; 0{,}5 \\ 3 &amp; 2 &amp; 1 \\ 4 &amp; 3 &amp; 1{,}5 \end{pmatrix}\)</span>
+        </div>
+        <p style="margin:8px 0 0">Matricos \(T\) eilutės – M1, M2 ir M3 modeliai, stulpeliai – mechaninis apdirbimas, surinkimas ir bandymai; elementai – valandos vienetui.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>Matricos \(T\) eilutės – M1, M2 ir M3 modeliai, stulpeliai – mechaninis apdirbimas, surinkimas ir bandymai. Elementai – valandos vienetui. Planuojama gamyba užrašoma vienos eilutės matrica \(q\), kurios stulpeliai atitinka tuos pačius tris modelius.</p>
+          \[ q = \begin{pmatrix} 400 &amp; 250 &amp; 150 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Daugybos tvarka ir matmenys</span></h4>
+          <p>Atsakymas turi būti viena eilutė, kurioje kiekvienam padaliniui pateikiama viena reikšmė, todėl padaliniai turi būti atsakymo stulpeliai. Jie yra matricos \(T\) stulpeliai. Sumuojama pagal modelius, kurie yra matricos \(q\) stulpeliai ir matricos \(T\) eilutės, todėl sandauga yra \(q\cdot T\):</p>
+          \[ (1 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 3) = 1 \times 3 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Naujos matricos struktūra</span></h4>
+          <p>Sandauga \(C = q\cdot T\) turi vieną eilutę ir tris stulpelius (padaliniai):</p>
+          \[ C = q\cdot T = \begin{pmatrix} c_{11} &amp; c_{12} &amp; c_{13} \end{pmatrix} \]
+          <p>Elementai \(c_{11}\), \(c_{12}\), \(c_{13}\) – planui reikalingos mechaninio apdirbimo, surinkimo ir bandymų valandos.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Elementų skaičiavimas</span></h4>
+          <p>Kiekvienas elementas gaunamas vienetų skaičių dauginant iš valandų vienetui; rezultatas – valandos. Mechaninio apdirbimo atveju:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{400} &amp; \htmlClass{hr}{250} &amp; \htmlClass{hr}{150} \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{2} &amp; 1{,}5 &amp; 0{,}5 \\ \htmlClass{hc}{3} &amp; 2 &amp; 1 \\ \htmlClass{hc}{4} &amp; 3 &amp; 1{,}5 \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 400\cdot 2 + 250\cdot 3 + 150\cdot 4 \\ &amp;= 800 + 750 + 600 = 2150 \end{aligned} \]
+          <p>Kiti du elementai randami taip pat:</p>
+          \[ \begin{aligned} c_{12} &amp;= 400\cdot 1{,}5 + 250\cdot 2 + 150\cdot 3 \\ &amp;= 600 + 500 + 450 = 1550 \\ c_{13} &amp;= 400\cdot 0{,}5 + 250\cdot 1 + 150\cdot 1{,}5 \\ &amp;= 200 + 250 + 225 = 675 \end{aligned} \]
+          \[ q\cdot T = \begin{pmatrix} 2150 &amp; 1550 &amp; 675 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Palyginimas su pajėgumais</span></h4>
+          <p>Elementai rodo, kiek valandų planui įvykdyti reikėtų mechaninio apdirbimo, surinkimo ir bandymų padaliniuose. Palyginę juos su 2000, 1600 ir 800 valandų pajėgumais, matome, kad surinkimo ir bandymų padaliniuose liktų atitinkamai 50 ir 125 nepanaudotos valandos, tačiau mechaniniam apdirbimui reikėtų 2150 valandų, kai pajėgumas yra 2000 valandų.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Planui reikia 2150 mechaninio apdirbimo valandų, 1550 surinkimo valandų ir 675 bandymų valandų. Tokio plano įvykdyti negalima: mechaniniam apdirbimui trūksta 150 valandų, o surinkimo ir bandymų pajėgumai išnaudojami nevisiškai. Gamykla turi arba padidinti mechaninio apdirbimo pajėgumą 150 valandų, pavyzdžiui, dirbdama viršvalandžius arba pasitelkdama subrangovus, arba sumažinti planuojamą tų modelių gamybą, kuriems mechaninio apdirbimo reikia daugiausia.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SAVARANKIŠKAS DARBAS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: nurodykite daugybos tvarką ir matmenis, naujos matricos struktūrą, tada apskaičiuokite elementus. Pabaigoje pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Dažų gamintojas dviejose gamyklose gamina matinius, pusiau matinius ir blizgius dažus. Kiekvienos gamyklos mėnesio gamybos kiekiai (\(Q\)) tonomis ir vienos tonos kiekvienos rūšies dažų gamybos sąnaudos (\(B\)) eurais surašyti matricose:</p>
+          <div class="mats">
+            <span>\(Q = \begin{pmatrix} 20 &amp; 15 &amp; 10 \\ 12 &amp; 18 &amp; 25 \end{pmatrix}\)</span>
+            <span>\(B = \begin{pmatrix} 300 &amp; 80 \\ 420 &amp; 110 \\ 260 &amp; 70 \end{pmatrix}\)</span>
+          </div>
+          <p>Matricos \(Q\) dvi eilutės žymi I ir II gamyklas, o trys stulpeliai – matinius, pusiau matinius ir blizgius dažus. Matricos \(B\) trys eilutės žymi trijų rūšių dažus, o du stulpeliai – medžiagų ir energijos sąnaudas. Raskite kiekvienos gamyklos mėnesio medžiagų ir energijos sąnaudas bei bendrąsias mėnesio sąnaudas.</p>
+        </div>
+        <div class="q-answer">
+          <p>Mėnesio sąnaudos yra</p>
+          \[ Q\cdot B = \begin{pmatrix} 14900 &amp; 3950 \\ 17660 &amp; 4690 \end{pmatrix} \]
+          <p>Pirmasis stulpelis žymi medžiagų sąnaudas, o antrasis – energijos sąnaudas eurais. I gamykla medžiagoms išleidžia 14900, energijai – 3950, iš viso 18850 eurų; II gamykla atitinkamai išleidžia 17660 ir 4690, iš viso 22350 eurų. Abi gamyklos kartu per mėnesį išleidžia 41200 eurų.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Tekstilės gamykla iš trijų žaliavų audžia tris audinius – popliną, džinsinį audinį ir saržą. Kiekvienos žaliavos kiekis kilogramais, reikalingas 100 metrų kiekvieno audinio, ir dviejų tiekėjų nustatytos vieno kilogramo kiekvienos žaliavos kainos eurais surašyti matricose:</p>
+          <div class="mats">
+            <span>\(M = \begin{pmatrix} 40 &amp; 25 &amp; 30 \\ 3 &amp; 5 &amp; 4 \\ 2 &amp; 3 &amp; 2 \end{pmatrix}\)</span>
+            <span>\(W = \begin{pmatrix} 20 &amp; 10 \\ 120 &amp; 160 \\ 180 &amp; 220 \end{pmatrix}\)</span>
+          </div>
+          <p>Matricos \(M\) trys eilutės žymi žaliavas – verpalus, dažus ir apdailos medžiagą, o trys stulpeliai – tris audinius. Matricos \(W\) trys eilutės žymi tas pačias tris žaliavas, o du stulpeliai – I ir II tiekėjus. Raskite žaliavų sąnaudas 100 metrų kiekvieno audinio, kai viskas perkama iš I tiekėjo ir kai viskas perkama iš II tiekėjo. Kuris tiekėjas pigesnis kiekvienam audiniui?</p>
+        </div>
+        <div class="q-answer">
+          <p>Pateikto pavidalo matricų sudauginti negalima; abiejose turi sutapti žaliavų klasifikacija, todėl pirmoji matrica transponuojama:</p>
+          \[ M^T\cdot W = \begin{pmatrix} 1520 &amp; 1320 \\ 1640 &amp; 1710 \\ 1440 &amp; 1380 \end{pmatrix} \]
+          <p>Trys eilutės žymi popliną, džinsinį audinį ir saržą, o du stulpeliai – du tiekėjus; reikšmės pateiktos eurais už 100 metrų. Poplinui (200 eurų) ir saržai (60 eurų) pigesnis II tiekėjas, o džinsiniam audiniui (70 eurų) – I tiekėjas.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Žaislų gamykla kitą mėnesį planuoja pagaminti 40 partijų medinių automobilių, 60 partijų konstravimo kaladėlių ir 25 partijas dėlionių. Kiekviena partija apdorojama trejomis staklėmis. Vienos partijos apdorojimo kiekvienomis staklėmis laikas valandomis surašytas matricoje \(T\):</p>
+          <div class="mats">
+            <span>\(q = \begin{pmatrix} 40 &amp; 60 &amp; 25 \end{pmatrix}\)</span>
+            <span>\(T = \begin{pmatrix} 4 &amp; 2 &amp; 3 \\ 2 &amp; 3 &amp; 1 \\ 5 &amp; 4 &amp; 6 \end{pmatrix}\)</span>
+          </div>
+          <p>Matricos \(T\) trys eilutės žymi trijų rūšių žaislus, o trys stulpeliai – formavimo, surinkimo ir dažymo stakles. Raskite, kiek kiekvienų staklių darbo valandų reikia planui įvykdyti.</p>
+        </div>
+        <div class="q-answer">
+          <p>Planui įvykdyti reikia</p>
+          \[ q\cdot T = \begin{pmatrix} 405 &amp; 360 &amp; 330 \end{pmatrix} \]
+          <p>valandų atitinkamai formavimo, surinkimo ir dažymo staklių darbo.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią skiltį rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

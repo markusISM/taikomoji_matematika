@@ -691,3 +691,18 @@ a.model-card:hover { transform: translateY(-2px); border-color: var(--accent); }
 .q-text > p:last-child { margin-bottom: 0; }
 .mats--col { flex-direction: column; gap: 6px; }
 .mats--col .vtable { margin: 0; }
+
+/* ---------- Matricų daugyba taikymuose ---------- */
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 10px 0; }
+.tbl-wrap .vtable { margin: 0 auto; }
+.vtable.compact { font-size: .76rem; }
+.vtable.compact th, .vtable.compact td { padding: 4px 5px; }
+.problem .tbl-wrap { margin-left: -13px; margin-right: -13px; }
+.vtable.compact th { font-size: .72rem; }
+.problem .tbl-caption { font-size: .82rem; font-weight: 650; color: var(--muted); margin: 12px 0 4px; text-align: center; }
+.dimchain { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 8px; margin: 12px 0 6px; font-size: .92rem; }
+.dimchain .dc { padding: 5px 10px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); white-space: nowrap; }
+.dimchain .dc b { color: var(--exam); font-weight: 700; }
+.dimchain .op { color: var(--muted); font-weight: 700; }
+.dimchain .dc.res { background: var(--success-soft); border-color: color-mix(in srgb, var(--success) 40%, transparent); }
+@media (max-width: 560px) { .dimchain { flex-direction: column; gap: 3px; } }
