@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standartiniai maksimizavimo uždaviniai · Taikomoji matematika</title>
+<meta name="description" content="Standartinis maksimizavimo uždavinys su dviem kintamaisiais: matematinio modelio sudarymas, leistinųjų sprendinių aibė, viršūnės ir didžiausia tikslo funkcijos reikšmė. Pavyzdžiai žingsnis po žingsnio.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=23">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=23"></script>
+</head>
+<body data-page="m42">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">4 tema · Taikymai · 2 skyrius</span>
+    <h1>Standartiniai maksimizavimo uždaviniai</h1>
+    <p class="lead">Šiame skyriuje mokomasi sudaryti standartinio maksimizavimo uždavinio matematinį modelį ir jį išspręsti grafiškai: nubrėžti leistinųjų sprendinių aibę, rasti jos viršūnes ir išrinkti tą, kurioje pelnas didžiausias.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#optimalus">Optimalus planas</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Standartinis maksimizavimo uždavinys</h2>
+
+    <article class="card">
+      <p><strong>Standartiniame maksimizavimo uždavinyje</strong> ieškoma didžiausios tiesinės tikslo funkcijos reikšmės, kai visų techninių apribojimų ženklas yra \(\leq\), o kiekiai negali būti neigiami. Kai yra du kintamieji, jo pavidalas visada toks:</p>
+      <div class="formula">\[ \begin{gathered} P = p_1x + p_2y \to \max \\[4pt] \begin{cases} a_{11}x + a_{12}y \leq b_1 \\ a_{21}x + a_{22}y \leq b_2 \\ \quad\vdots \\ x;\, y \geq 0 \end{cases} \end{gathered} \]</div>
+      <p>Tokį modelį sudaro trijų rūšių elementai:</p>
+      <div class="anat">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Tikslo funkcija</strong></div>
+          <p class="anat-d">Dydis, kurio reikšmė turi būti kuo didesnė:</p>
+          <ul>
+            <li>pelnas;</li>
+            <li>pajamos;</li>
+            <li>grąža;</li>
+            <li>reklamą pamatysiančių žmonių skaičius.</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Techniniai apribojimai</strong></div>
+          <p class="anat-d">Įmonės turimi ištekliai arba rinkoje galimas parduoti kiekis. Jie riboja iš viršaus, todėl jų ženklas yra \(\leq\):</p>
+          <ul>
+            <li>įrenginio darbo valandos;</li>
+            <li>turimos medžiagos;</li>
+            <li>didžiausia paklausa.</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Natūralieji apribojimai</strong></div>
+          <p class="anat-d">Neneigiamumo sąlygos \(x;\, y \geq 0\):</p>
+          <ul>
+            <li>įmonė negali pagaminti neigiamo gaminių skaičiaus.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>Kaip sudaromas modelis</h4>
+        <p>Modelis sudaromas panašiai kaip <a href="tema-3-planavimas-vienintelis.html#modelis">3 temos planavimo uždaviniuose</a>, tik vietoj lygybių rašomos nelygybės: ištekliaus nebūtina sunaudoti viso, tačiau negalima sunaudoti daugiau, nei turima.</p>
+
+        <p><strong>1. Sprendimo kintamieji.</strong> Kiekvienas kintamasis nusako konkretaus objekto kiekį per konkretų laikotarpį:</p>
+        <ul class="dodont">
+          <li class="do"><span class="mk" aria-hidden="true">✓</span><span>„\(x\) – per savaitę pagaminamų stalų skaičius.“</span></li>
+          <li class="dont"><span class="mk" aria-hidden="true">✗</span><span>„\(x\) – stalai.“ Neaišku, ką \(x\) skaičiuoja ir per kokį laikotarpį.</span></li>
+        </ul>
+
+        <p style="margin-top:16px"><strong>2. Kiekvienam ištekliui – viena nelygybė.</strong> Abiem gaminiams kartu sunaudojamas ištekliaus kiekis negali viršyti turimo kiekio:</p>
+        <div class="formula fit">\[ \underbrace{a_1x}_{\text{A gaminiams}} + \underbrace{a_2y}_{\text{B gaminiams}} \leq \underbrace{b}_{\text{turima}} \]</div>
+        <p>Duomenis patogu surašyti į lentelę: kiekvienam ištekliui – eilutė, kiekvienam gaminiui – stulpelis, o paskutiniame stulpelyje – turimas kiekis. Kiekviena išteklių eilutė virsta vienu apribojimu, o pelno eilutė – tikslo funkcija:</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact model-tbl">
+            <thead><tr><th scope="col"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">Turima</th></tr></thead>
+            <tbody>
+              <tr class="hl"><th scope="row">1 išteklius</th><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(b_1\)</td></tr>
+              <tr><th scope="row">2 išteklius</th><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(b_2\)</td></tr>
+              <tr><th scope="row">Pelnas</th><td>\(p_1\)</td><td>\(p_2\)</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mats mats--col">
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span>\(\begin{gathered} P = p_1x + p_2y \to \max \\[4pt] \begin{cases} \htmlClass{hr}{a_{11}x + a_{12}y \leq b_1} \\ a_{21}x + a_{22}y \leq b_2 \\ x;\, y \geq 0 \end{cases} \end{gathered}\)</span>
+        </div>
+        <p class="formula-note" style="text-align:center">Pirmoji išteklių eilutė tapo pirmuoju apribojimu, pelno eilutė – tikslo funkcija.</p>
+
+        <p style="margin-top:16px"><strong>3. Kitos sąlygos – irgi nelygybės.</strong> Kiekviena kita žodžiais išreikšta sąlyga taip pat užrašoma nelygybe su ženklu \(\leq\):</p>
+        <div class="tbl-wrap">
+          <table class="vtable req-tbl">
+            <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Nelygybė</th></tr></thead>
+            <tbody>
+              <tr><td>Per savaitę galima parduoti ne daugiau kaip \(N\) B gaminių</td><td>\(y \leq N\)</td></tr>
+              <tr><td>Linija per dieną gali apdoroti ne daugiau kaip \(M\) A gaminių</td><td>\(x \leq M\)</td></tr>
+              <tr><td>A gaminių turi būti bent du kartus daugiau negu B gaminių</td><td>\(x \geq 2y\), t. y.<br>\(-x + 2y \leq 0\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tip">Abu kintamieji perkeliami į kairę nelygybės pusę. Dešinioji pusė gali būti lygi nuliui – uždavinys lieka standartinis, nes visų techninių apribojimų ženklas yra \(\leq\).</p>
+
+        <p style="margin-top:16px"><strong>4. Neneigiamumo sąlygos.</strong> Prie apribojimų sistemos visada prirašoma \(x;\, y \geq 0\).</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. OPTIMALUS PLANAS ============ -->
+  <section class="section" id="optimalus" aria-labelledby="h-opt">
+    <h2 id="h-opt">Kaip randamas optimalus planas</h2>
+
+    <article class="card">
+      <p>Standartinis maksimizavimo uždavinys sprendžiamas taip pat kaip kiekvienas <a href="tema-4.html#leistinoji-aibe">TP uždavinys</a>: pirmiausia nustatoma <strong>leistinųjų sprendinių aibė</strong> – visi planai, tenkinantys visus apribojimus, – o tada iš jos išrenkamas taškas, kuriame tikslo funkcija įgyja <strong>didžiausią reikšmę</strong>. Šis taškas randamas ne spėjant, o nuosekliai:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Leistinųjų sprendinių aibė</strong><span>Nubrėžiama <a href="tema-4-nelygybiu-sistemos.html#eiga">1 skyriuje</a> aprašytu metodu.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Viršūnės</strong><span>Nustatomos visų aibės viršūnių koordinatės.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Didžiausia reikšmė</strong><span>Viršūnių koordinatės įstatomos į tikslo funkciją ir išrenkama didžiausia reikšmė.</span></div></div>
+      </div>
+      <p>Pavyzdžiui, jei aibės viršūnės yra \(O, A, B, C, D\), tikslo funkcijos reikšmės apskaičiuojamos visose viršūnėse, išskyrus koordinačių pradžią:</p>
+      <div class="formula">\[ \begin{aligned} P_A &amp;= p_1x_A + p_2y_A \\ P_B &amp;= p_1x_B + p_2y_B \\ &amp;\;\;\vdots \\ P_D &amp;= p_1x_D + p_2y_D \end{aligned} \]</div>
+      <p>Didžiausia iš jų yra maksimumas, o viršūnė, kurioje jis pasiekiamas, – <strong>optimalus planas</strong>. Atsakymas užrašomas kartu su šiuo planu: \(P_{\max}(x;\, y) = \ldots\)</p>
+
+      <div class="subtype">
+        <h4>Kodėl pakanka nagrinėti tik viršūnes</h4>
+        <p>Tiesinės tikslo funkcijos reikšmė leistinųjų sprendinių aibėje tolygiai didėja viena kryptimi, todėl aprėžtoje leistinųjų sprendinių aibėje didžiausią reikšmę ji įgyja viename iš tos aibės kampinių taškų. Leistinųjų sprendinių aibė turi baigtinį skaičių viršūnių, ir tuo grindžiamas grafinis metodas: <strong>apskaičiuokite tikslo funkcijos reikšmę kiekvienoje viršūnėje ir pasirinkite didžiausią</strong>. Daugiau nieko tikrinti nereikia, o brėžinyje nereikia brėžti papildomos tiesės.</p>
+        <p class="more-link"><a href="tema-4.html#leistinoji-aibe">Schema, kurioje matyti, kodėl optimumas yra viršūnėje, – 4 temos puslapyje →</a></p>
+      </div>
+
+      <div class="subtype">
+        <h4>Kodėl koordinačių pradžia nenagrinėjama</h4>
+        <p>Taške \(O(0;\, 0)\) nieko negaminama, todėl \(P_O = 0\). Kai vieneto pelnas teigiamas, kiekvienoje kitoje leistinųjų sprendinių aibės viršūnėje gaunama daugiau, todėl koordinačių pradžia negali būti atsakymas ir nėra prasmės skaičiuoti funkcijos reikšmę šiame taške.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li><strong>Apibrėžkite sprendimo kintamuosius.</strong> Kiekvienas jų nusako konkretaus objekto kiekį per konkretų laikotarpį.</li>
+        <li><strong>Susisteminkite duomenis.</strong> Jeigu duomenis galima pateikti lentelėje, kiekvienam ištekliui skirkite eilutę, kiekvienam gaminiui – stulpelį, o paskutiniame stulpelyje nurodykite turimą kiekį. Šis žingsnis neprivalomas.</li>
+        <li><strong>Užrašykite matematinį modelį:</strong> tikslo funkciją su \(\to \max\), o šalia – visus apribojimus, techninius ir neneigiamumo, sujungtus į vieną sistemą.</li>
+        <li><strong>Pavaizduokite leistinųjų sprendinių aibę.</strong>
+          <ul>
+            <li>Kiekvienai ribojančiai tiesei sudarykite reikšmių lentelę.</li>
+            <li>Kiekvienai nelygybei pasirinkite tikrinimo tašką.</li>
+            <li>Ant tiesių pažymėkite rodykles ir nuspalvinkite tik leistinųjų sprendinių aibę.</li>
+          </ul>
+        </li>
+        <li><strong>Raskite visas viršūnes.</strong>
+          <ul>
+            <li>Viršūnė ant ašies yra aibę toje vietoje ribojančios tiesės susikirtimo su ašimi taškas, jau nurodytas tos tiesės reikšmių lentelėje.</li>
+            <li>Dviejų tiesių susikirtimo taškas randamas sprendžiant jų lygčių sistemą, kaip <a href="tema-3.html">3 temoje</a>.</li>
+          </ul>
+        </li>
+        <li><strong>Apskaičiuokite tikslo funkcijos reikšmę kiekvienoje viršūnėje</strong>, išskyrus koordinačių pradžią, ir užrašykite visą skaičiavimą: įstatytas koordinates ir gautą reikšmę.</li>
+        <li><strong>Palyginkite reikšmes.</strong> Didžiausia iš jų yra maksimumas, o viršūnė, kurioje jis pasiekiamas, atitinka optimalų planą.</li>
+        <li><strong>Užrašykite atsakymą</strong> uždavinio sąlygos žodžiais, nurodydami matavimo vienetus.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Sistemoje trūksta neneigiamumo sąlygų.</strong> Sąlygos \(x;\, y \geq 0\) yra modelio dalis, todėl jos rašomos kartu su techniniais apribojimais.</li>
+            <li><strong>Netinkamai užrašyta proporcijos sąlyga.</strong> „\(x\) bent du kartus daugiau negu \(y\)“ yra \(x \geq 2y\), o ne \(2x \geq y\). Prieš brėžiant abu kintamieji perkeliami į kairę pusę: \(-x + 2y \leq 0\).</li>
+            <li><strong>Viršūnės koordinatės „nuskaitytos“ iš brėžinio.</strong> Tiesių susikirtimo taškas randamas algebriškai – sprendžiant lygčių sistemą.</li>
+            <li><strong>Praleista viršūnė.</strong> Tikslo funkcijos reikšmė skaičiuojama visose viršūnėse, išskyrus koordinačių pradžią. Praleidus vieną viršūnę, galima praleisti ir maksimumą.</li>
+            <li><strong>Optimali viršūnė parinkta „iš akies“.</strong> Viršūnė, kurios \(x\) ar \(y\) koordinatė didžiausia, nebūtinai duoda didžiausią reikšmę – lemia tik apskaičiuotos \(P\) reikšmės.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant taikomuosius tiesinio programavimo uždavinius, uždavinio pradžioje privaloma pateikti įvedamų kintamųjų apibrėžimus. Apibrėžimuose turi būti aiškiai nurodoma, kad kintamasis žymi tam tikro objekto kiekį.</li>
+            <li>Jei autoriui patogiau, sprendime galima, bet nebūtina, pateikti uždavinio sąlygą susistemizuotą lentelėje.</li>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tikslo funkcija ir apribojimų sistema. Turi būti aiškiai nurodyta, ar tikslo funkciją siekiama maksimizuoti, ar minimizuoti. Visi apribojimai, įskaitant ir neneigiamumo apribojimus, privalo būti aiškiai pateikti vienoje sistemoje, šalia tikslo funkcijos.</li>
+            <li>Sprendžiant uždavinį grafiškai, turi būti pateiktos apribojimų tiesių reikšmių lentelės.</li>
+            <li>Grafike privalo būti pažymėti šie elementai: ašių pavadinimai, koordinačių pradžios taškas, vienetinės atkarpos dydis, tiesių pavadinimai, leistina sprendinių aibė.</li>
+            <li>Tiesių susikirtimo taškų koordinatės turi būti nustatytos algebriškai. Nustatant taškų koordinates, lygčių sistemą galima spręsti naudojant skaičiuotuvą, tačiau būtina nurodyti, kokios lygtis naudotos susikirtimo taško radimui.</li>
+            <li>Tikslo funkcijos reikšmės privalo būti apskaičiuotos visose leistinos sprendinių aibės viršūnėse, išskyrus koordinačių pradžios tašką. Šis veiksmas turi būti pažymėtas aiškiai ir atitikti matematinio korektiškumo taisykles.</li>
+            <li>Uždavinio sprendimo pabaigoje turi būti aiškiai suformuluojamas galutinis atsakymas.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite sudaryti modelį ir išspręsti uždavinį patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: alternatyvus 4.1 (pakeičia paskaitos padangų pavyzdį) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Kosmetikos dirbtuvės gamybos planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Kosmetikos dirbtuvė partijomis gamina dušo želę ir šampūną, taikydama tris procesus: maišymą, pilstymą ir pakavimą. Vienai dušo želės partijai pagaminti reikia 1 maišymo, 3 pilstymo ir 1 pakavimo valandos. Vienai šampūno partijai reikia 1 maišymo, 1 pilstymo ir 2 pakavimo valandų. Dirbtuvė gali skirti ne daugiau kaip 9 valandas maišymui, 21 valandą pilstymui ir 14 valandų pakavimui. Pelnas už dušo želės partiją yra 50 eurų, už šampūno partiją – 40 eurų. Kiek kiekvieno gaminio partijų dirbtuvė turėtų pagaminti, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <p>Dirbtuvė turi nuspręsti, kiek kiekvieno gaminio partijų pagaminti:</p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– gaminamų dušo želės partijų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– gaminamų šampūno partijų skaičius.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Duomenų lentelė</span></h4>
+          <p>Kiekvienam procesui skiriame eilutę, kiekvienam gaminiui – stulpelį, o paskutiniame stulpelyje nurodome turimą laiką:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Dušo želė</th><th scope="col">Šampūnas</th><th scope="col">Turima</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Maišymas, val.</th><td>1</td><td>1</td><td>9</td></tr>
+                <tr><th scope="row">Pilstymas, val.</th><td>3</td><td>1</td><td>21</td></tr>
+                <tr><th scope="row">Pakavimas, val.</th><td>1</td><td>2</td><td>14</td></tr>
+                <tr><th scope="row">Pelnas, EUR</th><td>50</td><td>40</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          <p>Kiekviena proceso eilutė nusako vieną apribojimą: abiem gaminiams kartu skiriamas laikas negali viršyti turimo. Pavyzdžiui, \(x\) dušo želės partijų maišoma \(1\cdot x\) valandų, \(y\) šampūno partijų – \(1\cdot y\) valandų, o iš viso maišymui galima skirti 9 valandas:</p>
+          <div class="formula fit">\[ \underbrace{x}_{\text{dušo želei}} + \underbrace{y}_{\text{šampūnui}} \leq \underbrace{9}_{\text{turima}} \]</div>
+          <p>Taip pat sudarome pilstymo ir pakavimo apribojimus. Pelno eilutė nusako tikslo funkciją: \(x\) dušo želės partijų duoda \(50x\) eurų, o \(y\) šampūno partijų – \(40y\) eurų pelno. Matematinis modelis:</p>
+          \[ \begin{gathered} P = 50x + 40y \to \max \\[4pt] \begin{cases} x + y \leq 9 \\ 3x + y \leq 21 \\ x + 2y \leq 14 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>Visų techninių apribojimų ženklas yra \(\leq\), todėl tai standartinis maksimizavimo uždavinys.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <p>Kiekvieną nelygybę atitinkanti tiesė brėžiama per jos susikirtimo su ašimis taškus, todėl reikia trijų reikšmių lentelių:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 9\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 9\)<br>\(y = 0:\; x = 9\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>9</td></tr><tr><th scope="row">\(y\)</th><td>9</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(3x + y = 21\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 21\)<br>\(y = 0:\; 3x = 21 \Rightarrow x = 7\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>7</td></tr><tr><th scope="row">\(y\)</th><td>21</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 14\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 14 \Rightarrow y = 7\)<br>\(y = 0:\; x = 14\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>14</td></tr><tr><th scope="row">\(y\)</th><td>7</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškas</span></h4>
+          <p>Koordinačių pradžia nepriklauso nė vienai tiesei, todėl ją pasirenkame visų trijų nelygybių tikrinimo tašku:</p>
+          \[ \begin{alignedat}{2} 0 + 0 \leq 9 \;&amp;\Rightarrow\; 0 \leq 9 \;\; &amp;&amp; \text{(teisinga)} \\ 3\cdot 0 + 0 \leq 21 \;&amp;\Rightarrow\; 0 \leq 21 \;\; &amp;&amp; \text{(teisinga)} \\ 0 + 2\cdot 0 \leq 14 \;&amp;\Rightarrow\; 0 \leq 14 \;\; &amp;&amp; \text{(teisinga)} \end{alignedat} \]
+          <p>Visoms trims pusplokštumėms priklauso koordinačių pradžia, todėl visos rodyklės nukreiptos į jos pusę. Sąlygos \(x;\, y \geq 0\) apriboja brėžinį pirmuoju ketvirčiu.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Leistinųjų sprendinių aibė yra visų pusplokštumių sankirta. Ji aprėžta – tai penkiakampis \(OABCD\):</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,15,1,2],"y":[-1,22,1,2],"maxh":420,"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":9,"lab":"x + y = 9","col":1,"rot":true,"lt":0.27,"lo":11,"arr":[0.3,0.82]},{"a":3,"b":1,"s":"le","r":21,"lab":"3x + y = 21","col":2,"lt":0.14,"arr":[0.3,0.62]},{"a":1,"b":2,"s":"le","r":14,"lab":"x + 2y = 14","col":3,"lt":0.72,"arr":[0.15,0.88]}],"pts":[{"x":0,"y":7,"lab":"A","p":"w"},{"x":4,"y":5,"lab":"B","p":"sw"},{"x":6,"y":3,"lab":"C","p":"sw"},{"x":7,"y":0,"lab":"D","p":"nw"},{"x":0,"y":0,"p":null}],"aria":"Kosmetikos gamybos uždavinio leistinųjų sprendinių aibė OABCD"}'></div>
+            <figcaption>1 pav. Kosmetikos gamybos uždavinio leistinųjų sprendinių aibė su penkiomis viršūnėmis.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <p>Viršūnes nagrinėjame iš eilės palei aibės kraštą.</p>
+          <ul class="vert-list">
+            <li>\(O(0;\, 0)\) yra koordinačių pradžia.</li>
+            <li>\(A\) yra ant \(Oy\) ašies. Tai tiesės \(x + 2y = 14\) susikirtimo su \(Oy\) ašimi taškas; jo koordinatės jau pateiktos šios tiesės reikšmių lentelėje: \(A(0;\, 7)\).</li>
+            <li>\(B\) yra tiesių \(x + y = 9\) ir \(x + 2y = 14\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + y = 9 \\ x + 2y = 14 \end{cases} \\ \Longrightarrow\; x = 4,\; y = 5 \;\Longrightarrow\; B(4;\, 5) \end{gathered} \]
+              <p class="formula-note">Iš antrosios lygties atėmus pirmąją, gaunama \(y = 5\); tada \(x = 9 - 5 = 4\).</p></li>
+            <li>\(C\) yra tiesių \(x + y = 9\) ir \(3x + y = 21\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + y = 9 \\ 3x + y = 21 \end{cases} \\ \Longrightarrow\; x = 6,\; y = 3 \;\Longrightarrow\; C(6;\, 3) \end{gathered} \]
+              <p class="formula-note">Iš antrosios lygties atėmus pirmąją, gaunama \(2x = 12\), \(x = 6\); tada \(y = 9 - 6 = 3\).</p></li>
+            <li>\(D\) yra ant \(Ox\) ašies. Tai tiesės \(3x + y = 21\) susikirtimo su \(Ox\) ašimi taškas; jo koordinatės jau pateiktos šios tiesės reikšmių lentelėje: \(D(7;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Pelnas viršūnėse</span></h4>
+          <p>Kiekvienos viršūnės, išskyrus koordinačių pradžią, koordinates įstatome į tikslo funkciją \(P = 50x + 40y\):</p>
+          \[ \begin{aligned} P_A &amp;= 50\cdot 0 + 40\cdot 7 = 280 \\ P_B &amp;= 50\cdot 4 + 40\cdot 5 = 200 + 200 = 400 \\ P_C &amp;= 50\cdot 6 + 40\cdot 3 = 300 + 120 = 420 \\ P_D &amp;= 50\cdot 7 + 40\cdot 0 = 350 \end{aligned} \]
+          <p>Koordinačių pradžioje nieko negaminama, todėl \(P_O = 0\) – šios reikšmės skaičiuoti nereikia.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Didžiausia reikšmė</span></h4>
+          <p>Palyginame keturias reikšmes: \(280\), \(400\), \(420\) ir \(350\). Didžiausia iš jų yra \(\htmlClass{hd}{420}\), ji pasiekiama viršūnėje \(C(6;\, 3)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Dirbtuvė turėtų pagaminti 6 dušo želės ir 3 šampūno partijas. Didžiausias pelnas yra \(P_{\max}(6;\, 3) = 420\) eurų.</p>
+          </div>
+          <p>Pagal šį planą sunaudojama \(6 + 3 = 9\) maišymo ir \(3\cdot 6 + 3 = 21\) pilstymo valandų – visas abiejų procesų laikas, o pakavimui sunaudojama tik \(6 + 2\cdot 3 = 12\) iš turimų 14 valandų. Šiame plane ribojantys ištekliai yra maišymas ir pilstymas; dvi pakavimo valandos lieka nepanaudotos.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 2 pavyzdys (paklausos apribojimas) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Spaustuvės gamybos planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Spaustuvė gamina sieninius kalendorius ir užrašų knygeles. Vienam kalendoriui atspausdinti reikia 3 valandų, o vienai užrašų knygelei – 2 valandų; per savaitę spausdinimui galima skirti 72 valandas. Vienam kalendoriui įrišti reikia 1 valandos, o vienai užrašų knygelei – 2 valandų; per savaitę įrišimui galima skirti 40 valandų. Per savaitę galima parduoti ne daugiau kaip 15 užrašų knygelių. Vienas kalendorius duoda 30 centų pelno, o viena užrašų knygelė – 50 centų. Kiek kiekvieno gaminio reikia pagaminti per savaitę, kad pelnas būtų didžiausias?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per savaitę pagaminamų sieninių kalendorių skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– per savaitę pagaminamų užrašų knygelių skaičius.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Duomenų lentelė</span></h4>
+          <p>Lentelėje surašome du laiko išteklius:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact tight">
+              <thead><tr><th scope="col"></th><th scope="col">Kalen&shy;doriai</th><th scope="col">Užrašų knygelės</th><th scope="col">Turima</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Spausdinimas, val.</th><td>3</td><td>2</td><td>72</td></tr>
+                <tr><th scope="row">Įrišimas, val.</th><td>1</td><td>2</td><td>40</td></tr>
+                <tr><th scope="row">Pelnas, ct</th><td>30</td><td>50</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          <p>Abi laiko eilutės virsta apribojimais, pavyzdžiui, spausdinimui:</p>
+          <div class="formula fit">\[ \underbrace{3x}_{\text{kalendoriams}} + \underbrace{2y}_{\text{knygelėms}} \leq \underbrace{72}_{\text{turima}} \]</div>
+          <p>Be dviejų lentelės eilučių, yra trečia sąlyga – <strong>pardavimo apribojimas</strong>: galima parduoti ne daugiau kaip 15 užrašų knygelių, taigi \(y \leq 15\). Todėl modelis yra</p>
+          \[ \begin{gathered} P = 30x + 50y \to \max \\[4pt] \begin{cases} 3x + 2y \leq 72 \\ x + 2y \leq 40 \\ y \leq 15 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <p>Pirmųjų dviejų tiesių reikšmių lentelės:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(3x + 2y = 72\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 72 \Rightarrow y = 36\)<br>\(y = 0:\; 3x = 72 \Rightarrow x = 24\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>24</td></tr><tr><th scope="row">\(y\)</th><td>36</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 40\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 40 \Rightarrow y = 20\)<br>\(y = 0:\; x = 40\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>40</td></tr><tr><th scope="row">\(y\)</th><td>20</td><td>0</td></tr></table>
+            </div>
+          </div>
+          <p>Trečiajai tiesei reikšmių lentelės nereikia: \(y = 15\) yra horizontali tiesė, einanti per \(Oy\) ašies tašką 15.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškas</span></h4>
+          <p>Nė viena tiesė neina per koordinačių pradžią, todėl ji yra visų trijų nelygybių tikrinimo taškas:</p>
+          \[ \begin{alignedat}{2} 3\cdot 0 + 2\cdot 0 \leq 72 \;&amp;\Rightarrow\; 0 \leq 72 \;\; &amp;&amp; \text{(teisinga)} \\ 0 + 2\cdot 0 \leq 40 \;&amp;\Rightarrow\; 0 \leq 40 \;\; &amp;&amp; \text{(teisinga)} \\ 0 \leq 15 \;&amp; &amp;&amp; \text{(teisinga)} \end{alignedat} \]
+          <p>Visos trys sprendinių pusplokštumės yra koordinačių pradžios pusėje.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Kartu su sąlygomis \(x;\, y \geq 0\) gauname aprėžtą penkiakampį \(OABCD\). Horizontali tiesė \(y = 15\) „nukerta“ aibės viršų:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,42,2,4],"y":[-2,38,2,4],"nn":"xy","c":[{"a":3,"b":2,"s":"le","r":72,"lab":"3x + 2y = 72","col":1,"lt":0.12,"arr":[0.3,0.5]},{"a":1,"b":2,"s":"le","r":40,"lab":"x + 2y = 40","col":2,"lt":0.62,"arr":[0.2,0.88]},{"a":0,"b":1,"s":"le","r":15,"lab":"y = 15","col":3,"lt":0.9,"arr":[0.12,0.82]}],"pts":[{"x":0,"y":15,"lab":"A","p":"ne"},{"x":10,"y":15,"lab":"B","p":"n"},{"x":16,"y":12,"lab":"C","p":"e"},{"x":24,"y":0,"lab":"D","p":"ne"},{"x":0,"y":0,"p":null}],"aria":"Spaustuvės uždavinio leistinųjų sprendinių aibė OABCD"}'></div>
+            <figcaption>2 pav. Spaustuvės uždavinio leistinųjų sprendinių aibė.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <ul class="vert-list">
+            <li>\(O(0;\, 0)\) yra koordinačių pradžia.</li>
+            <li>\(A\) yra ant \(Oy\) ašies, tiesės \(y = 15\) susikirtimo su šia ašimi taške: \(A(0;\, 15)\).</li>
+            <li>\(B\) yra tiesių \(y = 15\) ir \(x + 2y = 40\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} y = 15 \\ x + 2y = 40 \end{cases} \\ \Longrightarrow\; x = 10,\; y = 15 \;\Longrightarrow\; B(10;\, 15) \end{gathered} \]
+              <p class="formula-note">Įstatę \(y = 15\) į antrąją lygtį, gauname \(x + 30 = 40\), \(x = 10\).</p></li>
+            <li>\(C\) yra tiesių \(x + 2y = 40\) ir \(3x + 2y = 72\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + 2y = 40 \\ 3x + 2y = 72 \end{cases} \\ \Longrightarrow\; x = 16,\; y = 12 \;\Longrightarrow\; C(16;\, 12) \end{gathered} \]
+              <p class="formula-note">Iš antrosios lygties atėmus pirmąją, gaunama \(2x = 32\), \(x = 16\); tada \(2y = 40 - 16 = 24\), \(y = 12\).</p></li>
+            <li>\(D\) yra ant \(Ox\) ašies. Tai tiesės \(3x + 2y = 72\) susikirtimo su \(Ox\) ašimi taškas; jo koordinatės jau pateiktos šios tiesės reikšmių lentelėje: \(D(24;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Pelnas viršūnėse</span></h4>
+          <p>Pelnas kiekvienoje viršūnėje, išskyrus koordinačių pradžią:</p>
+          \[ \begin{aligned} P_A &amp;= 30\cdot 0 + 50\cdot 15 = 750 \\ P_B &amp;= 30\cdot 10 + 50\cdot 15 \\ &amp;= 300 + 750 = 1050 \\ P_C &amp;= 30\cdot 16 + 50\cdot 12 \\ &amp;= 480 + 600 = 1080 \\ P_D &amp;= 30\cdot 24 + 50\cdot 0 = 720 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Didžiausia reikšmė</span></h4>
+          <p>Didžiausia reikšmė yra \(\htmlClass{hd}{1080}\), ji pasiekiama viršūnėje \(C(16;\, 12)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Spaustuvė turi per savaitę pagaminti 16 sieninių kalendorių ir 12 užrašų knygelių. Didžiausias savaitės pelnas yra \(P_{\max}(16;\, 12) = 1080\) ct.</p>
+          </div>
+          <p>Abu laiko ištekliai panaudojami iki paskutinės valandos: spausdinimo laikas \(3\cdot 16 + 2\cdot 12 = 72\) ir įrišimo laikas \(16 + 2\cdot 12 = 40\). Tačiau pagaminama tik 12 iš 15 užrašų knygelių, kurias būtų galima parduoti. Šią spaustuvę riboja turimas laikas, o ne rinka.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 3 pavyzdys (sąlyga, siejanti abu kiekius) -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Pieninės jogurto gamybos planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Pieninė partijomis gamina natūralų ir vaisinį jogurtą. Vienai natūralaus jogurto partijai reikia 1 tonos pieno, o vienai vaisinio jogurto partijai – 2 tonų; per dieną turima 40 tonų pieno. Fasavimo linija per dieną gali apdoroti ne daugiau kaip 30 natūralaus jogurto partijų. Rinkodaros sumetimais pieninė turi gaminti bent du kartus daugiau natūralaus jogurto partijų negu vaisinio jogurto partijų. Viena natūralaus jogurto partija duoda 40 eurų pelno, o viena vaisinio jogurto partija – 90 eurų. Kiek kiekvienos rūšies jogurto partijų reikia gaminti per dieną, kad pelnas būtų didžiausias?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per dieną pagaminamų natūralaus jogurto partijų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– per dieną pagaminamų vaisinio jogurto partijų skaičius.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sąlygos be lentelės</span></h4>
+          <p>Trys sąlygos yra skirtingo pobūdžio – žaliavos kiekis, gamybos pajėgumas ir proporcija, – todėl duomenų lentelė čia nepadėtų; kiekviena sąlyga tiesiogiai užrašoma nelygybe:</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Nelygybė</th></tr></thead>
+              <tbody>
+                <tr><td>Per dieną turima 40 tonų pieno</td><td>\(x + 2y \leq 40\)</td></tr>
+                <tr><td>Linija gali apdoroti ne daugiau kaip 30 natūralaus jogurto partijų</td><td>\(x \leq 30\)</td></tr>
+                <tr><td>Natūralaus jogurto partijų bent du kartus daugiau negu vaisinio</td><td>\(x \geq 2y\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Abu kintamieji turi būti kairėje pusėje, todėl paskutinę nelygybę pertvarkome:</p>
+          \[ x \geq 2y \;\Longrightarrow\; -x + 2y \leq 0 \]
+          <p>Dabar visų trijų techninių apribojimų ženklas yra \(\leq\), taigi tai standartinis maksimizavimo uždavinys – apribojimo dešinioji pusė gali būti lygi nuliui.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
+          \[ \begin{gathered} P = 40x + 90y \to \max \\[4pt] \begin{cases} x + 2y \leq 40 \\ x \leq 30 \\ -x + 2y \leq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
+          <p>Pirmoji tiesė brėžiama per jos susikirtimo su ašimis taškus. Tiesė \(-x + 2y = 0\) eina per koordinačių pradžią, todėl jos susikirtimo su ašimis taškai sutampa ir reikia pasirinkti antrą patogų tašką; pasirinkę \(x = 30\), gauname \(y = 15\):</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 40\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 40 \Rightarrow y = 20\)<br>\(y = 0:\; x = 40\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>40</td></tr><tr><th scope="row">\(y\)</th><td>20</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(-x + 2y = 0\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 0\)<br>\(x = 30:\; 2y = 30 \Rightarrow y = 15\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>30</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>15</td></tr></table>
+            </div>
+          </div>
+          <p>Tiesei \(x = 30\) reikšmių lentelės nereikia: tai vertikali tiesė, einanti per \(Ox\) ašies tašką 30.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Tikrinimo taškai</span></h4>
+          <p>Koordinačių pradžia yra pirmųjų dviejų nelygybių tikrinimo taškas:</p>
+          \[ \begin{alignedat}{2} 0 + 2\cdot 0 \leq 40 \;&amp;\Rightarrow\; 0 \leq 40 \;\; &amp;&amp; \text{(teisinga)} \\ 0 \leq 30 \;&amp; &amp;&amp; \text{(teisinga)} \end{alignedat} \]
+          <p>Trečiosios nelygybės ribojančiai tiesei koordinačių pradžia priklauso, todėl reikia kito tikrinimo taško; paprasčiausia pasirinkti \((10;\, 0)\):</p>
+          \[ \begin{aligned} &amp;-10 + 2\cdot 0 \leq 0 \\ &amp;\Longrightarrow\; -10 \leq 0 \quad \text{(teisinga)} \end{aligned} \]
+          <p>Sprendinių aibė yra pusplokštumė, kuriai priklauso \((10;\, 0)\), – žemiau tiesės \(-x + 2y = 0\) esanti pusplokštumė.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
+          <p>Visų pusplokštumių ir pirmojo ketvirčio sankirta yra aprėžtas keturkampis \(OABC\). Iš viršaus jį riboja tiesė \(-x + 2y = 0\), todėl ant \(Oy\) ašies, išskyrus koordinačių pradžią, viršūnių nėra:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,42,2,5],"y":[-2,22,2,5],"nn":"xy","c":[{"a":1,"b":2,"s":"le","r":40,"lab":"x + 2y = 40","col":1,"lt":0.2,"arr":[0.3,0.85]},{"a":1,"b":0,"s":"le","r":30,"lab":"x = 30","col":2,"lt":0.93,"la":"start","lo":-8,"arr":[0.15,0.62]},{"a":-1,"b":2,"s":"le","r":0,"lab":"−x + 2y = 0","col":3,"lt":0.3,"arr":[0.4,0.6],"rot":true,"lo":11}],"pts":[{"x":0,"y":0,"p":null},{"x":30,"y":0,"lab":"A","p":"ne"},{"x":30,"y":5,"lab":"B","p":"e"},{"x":20,"y":10,"lab":"C","p":"n"}],"aria":"Pieninės uždavinio leistinųjų sprendinių aibė OABC"}'></div>
+            <figcaption>3 pav. Pieninės uždavinio leistinųjų sprendinių aibė.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <ul class="vert-list">
+            <li>\(O(0;\, 0)\) yra koordinačių pradžia; per ją eina ir tiesė \(-x + 2y = 0\).</li>
+            <li>\(A\) yra ant \(Ox\) ašies, tiesės \(x = 30\) susikirtimo su šia ašimi taške: \(A(30;\, 0)\).</li>
+            <li>\(B\) yra tiesių \(x = 30\) ir \(x + 2y = 40\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x = 30 \\ x + 2y = 40 \end{cases} \\ \Longrightarrow\; x = 30,\; y = 5 \;\Longrightarrow\; B(30;\, 5) \end{gathered} \]
+              <p class="formula-note">Įstatę \(x = 30\) į antrąją lygtį, gauname \(2y = 10\), \(y = 5\).</p></li>
+            <li>\(C\) yra tiesių \(x + 2y = 40\) ir \(-x + 2y = 0\) susikirtimo taškas:
+              \[ \begin{gathered} \begin{cases} x + 2y = 40 \\ -x + 2y = 0 \end{cases} \\ \Longrightarrow\; x = 20,\; y = 10 \;\Longrightarrow\; C(20;\, 10) \end{gathered} \]
+              <p class="formula-note">Sudėję abi lygtis, gauname \(4y = 40\), \(y = 10\); tada iš antrosios lygties \(x = 2y = 20\).</p></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Pelnas viršūnėse</span></h4>
+          <p>Pelnas kiekvienoje viršūnėje, išskyrus koordinačių pradžią:</p>
+          \[ \begin{aligned} P_A &amp;= 40\cdot 30 + 90\cdot 0 = 1200 \\ P_B &amp;= 40\cdot 30 + 90\cdot 5 \\ &amp;= 1200 + 450 = 1650 \\ P_C &amp;= 40\cdot 20 + 90\cdot 10 \\ &amp;= 800 + 900 = 1700 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Didžiausia reikšmė</span></h4>
+          <p>Didžiausia reikšmė yra \(\htmlClass{hd}{1700}\), ji pasiekiama viršūnėje \(C(20;\, 10)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Pieninė turi per dieną pagaminti 20 partijų natūralaus jogurto ir 10 partijų vaisinio jogurto. Didžiausias dienos pelnas yra \(P_{\max}(20;\, 10) = 1700\) EUR.</p>
+          </div>
+          <p>Šiame taške visas pienas sunaudojamas: \(20 + 2\cdot 10 = 40\) tonų, o rinkodaros sąlyga tenkinama su lygybės ženklu: \(20 = 2\cdot 10\). Fasavimo linijos pajėgumas nėra ribojantis veiksnys – pagaminama tik 20 iš 30 galimų natūralaus jogurto partijų. Vaisinio jogurto partija duoda daugiau pelno negu natūralaus jogurto partija, todėl pagal geriausią planą vaisinio jogurto gaminama tiek daug, kiek leidžia rinkodaros sąlyga.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: apibrėžkite kintamuosius, sudarykite matematinį modelį, nubrėžkite leistinųjų sprendinių aibę, algebriškai raskite viršūnes ir apskaičiuokite pelną kiekvienoje iš jų. Atsakyme pateikti kintamieji, matematinis modelis ir galutinis rezultatas – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kepykla kepa sūrio pyragus ir vaisinius pyragus. Vienam sūrio pyragui reikia 1&nbsp;kg vaisių, o vienam vaisiniam pyragui – 2&nbsp;kg vaisių. Kepykla per dieną gauna 100&nbsp;kg vaisių, o jos krosnyje per dieną galima iškepti ne daugiau kaip 60 pyragų. Parduotuvė per dieną parduoda ne daugiau kaip 25 sūrio pyragus. Vieno sūrio pyrago pelnas yra 12 eurų, o vieno vaisinio pyrago – 10 eurų. Kiek kiekvienos rūšies pyragų kepykla turėtų iškepti per dieną, kad gautų didžiausią pelną? Koks yra didžiausias pelnas?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per dieną iškepamų sūrio pyragų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– per dieną iškepamų vaisinių pyragų skaičius.</span></li>
+          </ul>
+          <p><strong>Matematinis modelis.</strong> Sūrio pyragų pardavimo riba lemia apribojimą \(x \leq 25\), kurį atitinkanti tiesė yra lygiagreti \(Oy\) ašiai:</p>
+          \[ \begin{gathered} P = 12x + 10y \to \max \\[4pt] \begin{cases} x + 2y \leq 100 \\ x + y \leq 60 \\ x \leq 25 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Atsakymas.</strong> Didžiausia tikslo funkcijos reikšmė yra</p>
+          \[ P_{\max}(25;\, 35) = 650 \]
+          <p>Kepykla turėtų per dieną iškepti 25 sūrio pyragus ir 35 vaisinius pyragus; tuomet pelnas būtų 650 eurų. Visiškai išnaudojamas krosnies pajėgumas, o sūrio pyragų iškepama tiek, kiek leidžia paklausa. Lieka 5&nbsp;kg vaisių.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonė surenka fotografavimo dronus ir lenktyninius dronus. Vienam fotografavimo dronui reikia 2 elektroninių modulių, o vienam lenktyniniam dronui – 3. Įmonė per mėnesį gauna 240 modulių, o jos surinkimo linija per mėnesį gali surinkti ne daugiau kaip 90 dronų. Sutartyje su platintoju reikalaujama, kad lenktyniniai dronai sudarytų bent trečdalį visų surenkamų dronų. Vieno fotografavimo drono pelnas yra 300 eurų, o vieno lenktyninio drono – 200 eurų. Kiek kiekvienos rūšies dronų įmonė turėtų surinkti per mėnesį, kad gautų didžiausią pelną? Koks yra didžiausias pelnas?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per mėnesį surenkamų fotografavimo dronų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– per mėnesį surenkamų lenktyninių dronų skaičius.</span></li>
+          </ul>
+          <p><strong>Matematinis modelis.</strong> Sutarties sąlyga yra \(y \geq \tfrac{1}{3}(x + y)\), t. y. \(3y \geq x + y\), arba \(x - 2y \leq 0\):</p>
+          \[ \begin{gathered} P = 300x + 200y \to \max \\[4pt] \begin{cases} x + y \leq 90 \\ 2x + 3y \leq 240 \\ x - 2y \leq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Atsakymas.</strong> Didžiausia tikslo funkcijos reikšmė yra</p>
+          \[ P_{\max}(60;\, 30) = 24000 \]
+          <p>Įmonė turėtų per mėnesį surinkti 60 fotografavimo dronų ir 30 lenktyninių dronų; tuomet pelnas būtų 24000 eurų. Surinkimo linijos pajėgumas visiškai išnaudojamas, o lenktyniniai dronai sudaro lygiai trečdalį pagamintų dronų. Lieka 30 elektroninių modulių.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">4 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

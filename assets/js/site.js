@@ -227,7 +227,7 @@
       { id: 'm41', status: 'active', href: { lt: 'tema-4-nelygybiu-sistemos.html' },
         title: { lt: 'Tiesinių nelygybių sistemos', en: 'Systems of Linear Inequalities' },
         desc: { lt: 'Pusplokštumės, leistinųjų sprendinių aibė ir jos viršūnės.' } },
-      { id: 'm42', status: 'soon',
+      { id: 'm42', status: 'active', href: { lt: 'tema-4-maksimizavimas.html' },
         title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' },
         desc: { lt: 'Didžiausias pelnas ar pajamos, kai ištekliai riboti: apribojimai \\(\\leq\\).' } },
       { id: 'm43', status: 'soon',
@@ -272,6 +272,8 @@
                title: { lt: '4 tema', en: 'Topic 4' } },
     m41:     { parent: 't4', topic: 't4', model: 'm41', href: { lt: 'tema-4-nelygybiu-sistemos.html', en: null },
                title: { lt: 'Tiesinių nelygybių sistemos', en: 'Systems of Linear Inequalities' } },
+    m42:     { parent: 't4', topic: 't4', model: 'm42', href: { lt: 'tema-4-maksimizavimas.html', en: null },
+               title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
@@ -1093,12 +1095,14 @@
            nn: "xy" | "x" | "y" – neneigiamumo sąlygos (tik aibei);
            shade: true – nuspalvinti visų apribojimų sankirtą;
            pts: [{x, y, lab, p: n|ne|e|se|s|sw|w|nw, hi: true}];
+           maxh – didžiausias brėžinio aukštis (numatytasis 330);
+           rot: true – tiesės užrašas pasukamas lygiagrečiai tiesei (lt – vieta, lo – atstumas);
            test: [x, y] – tikrinimo taškas; aria: aprašas.
      ------------------------------------------------------------------ */
   function initLpChart(box) {
     var sp;
     try { sp = JSON.parse(box.getAttribute('data-spec')); } catch (e) { return; }
-    var xr = sp.x, yr = sp.y, W = 340, Lp = 30, Rp = 22, Tp = 22, Bp = 26, MAXH = 330;
+    var xr = sp.x, yr = sp.y, W = 340, Lp = 30, Rp = 22, Tp = 22, Bp = 26, MAXH = sp.maxh || 330;
     var s = Math.min((W - Lp - Rp) / (xr[1] - xr[0]), (MAXH - Tp - Bp) / (yr[1] - yr[0]));
     var pw = s * (xr[1] - xr[0]), ph = s * (yr[1] - yr[0]);
     var x0 = Lp + ((W - Lp - Rp) - pw) / 2, H = Math.round(Tp + ph + Bp);
@@ -1194,6 +1198,14 @@
       if (c.lab) {
         var t = c.lt == null ? 0.88 : c.lt, off = c.lo == null ? 12 : c.lo;
         var lxp = X(sg[0][0] + t * (sg[1][0] - sg[0][0])) - off * ux, lyp = Y(sg[0][1] + t * (sg[1][1] - sg[0][1])) - off * uy;
+        if (c.rot) {
+          // užrašas lygiagretus tiesei
+          var ang = Math.atan2(Y(sg[1][1]) - Y(sg[0][1]), X(sg[1][0]) - X(sg[0][0])) * 180 / Math.PI;
+          if (ang > 90) ang -= 180;
+          if (ang <= -90) ang += 180;
+          g += '<text class="lp-lab c' + k + ' halo" x="' + lxp.toFixed(1) + '" y="' + lyp.toFixed(1) + '" dy="0.35em" text-anchor="middle" transform="rotate(' + ang.toFixed(1) + ' ' + lxp.toFixed(1) + ' ' + lyp.toFixed(1) + ')">' + eq(c.lab) + '</text>';
+          return;
+        }
         var dir = off >= 0 ? -ux : ux;
         var anc = c.la || (Math.abs(dir) < 0.3 ? 'middle' : (dir > 0 ? 'start' : 'end'));
         var wEst = c.lab.length * 7.4;
