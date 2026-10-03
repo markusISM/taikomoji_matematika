@@ -776,3 +776,30 @@ svg .ln2-dash { stroke: var(--chart-2); stroke-width: 3; stroke-dasharray: 7 5; 
 .src-inline .src-ico { width: 28px; height: 28px; border-radius: 8px; }
 .src-inline .src-ico svg { width: 16px; height: 16px; }
 .src-inline cite { font-style: italic; }
+
+/* ---------- Racionalusis planavimas (3.1) ---------- */
+@media (min-width: 560px) { .phases--3 { grid-template-columns: repeat(3, 1fr); } }
+.phases--3 .phase { flex-direction: column; gap: 8px; }
+@media (max-width: 559px) { .phases--3 .phase { flex-direction: row; gap: 12px; } }
+.dodont { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; }
+.dodont li { display: flex; gap: 10px; align-items: baseline; margin: 0; padding: 8px 12px; border-radius: 10px; font-size: .95rem; }
+.dodont .mk { flex: none; font-weight: 800; width: 1.1em; text-align: center; }
+.dodont .do { background: var(--success-soft); }
+.dodont .do .mk { color: var(--success); }
+.dodont .dont { background: var(--danger-soft); }
+.dodont .dont .mk { color: var(--danger); }
+.vtable.model-tbl th, .vtable.model-tbl td { text-align: center; padding: 6px 9px; }
+.vtable.model-tbl tbody th { text-align: left; font-weight: 650; }
+.vtable tr.hl th, .vtable tr.hl td { background: color-mix(in srgb, var(--chart) 13%, transparent); color: var(--chart); }
+.vtable.req-tbl { font-size: .92rem; }
+.vtable.req-tbl th, .vtable.req-tbl td { text-align: left; vertical-align: middle; }
+.vtable.req-tbl td:last-child { white-space: nowrap; }
+@media (max-width: 440px) { .formula.fit .katex-display > .katex { font-size: .86em; } }
+@media (max-width: 560px) {
+  .vtable.req-tbl, .vtable.req-tbl tbody, .vtable.req-tbl tr, .vtable.req-tbl td { display: block; width: 100%; }
+  .vtable.req-tbl thead { display: none; }
+  .vtable.req-tbl tr { border: 1px solid var(--border); border-radius: 10px; margin: 0 0 8px; overflow: hidden; }
+  .vtable.req-tbl td { border: 0; padding: 6px 10px; }
+  .vtable.req-tbl td:first-child { background: var(--surface-2); font-size: .86rem; color: var(--muted); }
+  .vtable.req-tbl td:last-child { white-space: normal; }
+}

@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Racionalusis planavimas: vienintelis sprendinys · Taikomoji matematika</title>
+<meta name="description" content="Kaip pagal vadybinę situaciją sudaryti tiesinių lygčių sistemą ir ją išspręsti Gauso metodu: gamybos, pirkimų ir investicijų planai, turintys vienintelį sprendinį.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=15">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=15"></script>
+</head>
+<body data-page="m31">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">3 tema · Taikymai</span>
+    <h1>Racionalusis planavimas: vienintelis sprendinys</h1>
+    <p class="lead">Šioje skiltyje supažindinama, kaip pagal vadybinę situaciją sudaryti matematinį modelį – tiesinių lygčių sistemą – ir ją išspręsti Gauso metodu, kai uždavinys turi vienintelį sprendinį.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Nuo situacijos prie lygčių sistemos</h2>
+
+    <article class="card">
+      <p>Planavimo uždavinyje reikia nustatyti, <strong>kiek kiekvieno gaminio pagaminti, kiek prekių įsigyti arba kiek lėšų investuoti</strong>, kai keli ištekliai turi būti visiškai panaudoti arba keli reikalavimai tiksliai įvykdyti. Kiekvienas toks uždavinys sprendžiamas trimis etapais:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Kintamieji</strong><span>Įvardijami ieškomi dydžiai – tai, ką turi nuspręsti įmonė.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Lygtys</strong><span>Kiekvienam ištekliui ar reikalavimui sudaroma po lygtį.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Sprendimas</strong><span>Sistema sprendžiama Gauso metodu, atsakymas paaiškinamas.</span></div></div>
+      </div>
+
+      <div class="subtype">
+        <h4>1. Sprendimo kintamieji</h4>
+        <p>Kiekvienam dydžiui, kurį įmonė turi nustatyti, priskiriamas vienas kintamasis. Jo reikšmę užrašykite sakiniu ir nurodykite matavimo vienetą. Kintamųjų reikšmės yra uždavinio atsakymas, todėl netiksliai juos apibrėžus nebus galima paaiškinti atsakymo.</p>
+        <ul class="dodont">
+          <li class="do"><span class="mk" aria-hidden="true">✓</span><span>„Tegu \(x\) yra per dieną pagaminamų A tipo gaminių skaičius.“</span></li>
+          <li class="do"><span class="mk" aria-hidden="true">✓</span><span>„Tegu \(y\) yra į obligacijas investuota suma eurais.“</span></li>
+          <li class="dont"><span class="mk" aria-hidden="true">✗</span><span>„\(x\) – A tipas.“ Neaišku, ką \(x\) skaičiuoja: gaminius, minutes ar eurus.</span></li>
+        </ul>
+      </div>
+
+      <div class="subtype">
+        <h4>2. Kiekvienam ištekliui – viena lygtis</h4>
+        <p>Kiekvienam ištekliui sudaroma tos pačios formos lygtis: <strong>visų gaminių kartu sunaudojamas šio ištekliaus kiekis lygus turimam kiekiui</strong>.</p>
+        <div class="formula fit">\[ \underbrace{a_1x}_{\text{A gaminiams}} + \underbrace{a_2y}_{\text{B gaminiams}} + \underbrace{a_3z}_{\text{C gaminiams}} = \underbrace{b}_{\text{turima}} \]</div>
+        <p>Čia \(a_1\) yra ištekliaus kiekis, sunaudojamas vienam pirmojo gaminio vienetui, o \(b\) – visas turimas kiekis. Jei vienam A gaminiui reikia \(a_1\) ištekliaus vienetų, tai \(x\) tokių gaminių sunaudoja \(a_1 x\) vienetų.</p>
+        <p>Duomenis patogu surašyti į lentelę: kiekvienam ištekliui – viena eilutė, kiekvienam gaminiui (A, B, C) – vienas stulpelis, o paskutiniame stulpelyje – turimas kiekis. Tada <strong>kiekviena lentelės eilutė virsta viena lygtimi</strong>:</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact model-tbl">
+            <thead><tr><th scope="col"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">Turima</th></tr></thead>
+            <tbody>
+              <tr class="hl"><th scope="row">1 išteklius</th><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(a_{13}\)</td><td>\(b_1\)</td></tr>
+              <tr><th scope="row">2 išteklius</th><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(a_{23}\)</td><td>\(b_2\)</td></tr>
+              <tr><th scope="row">3 išteklius</th><td>\(a_{31}\)</td><td>\(a_{32}\)</td><td>\(a_{33}\)</td><td>\(b_3\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mats mats--col">
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span>\(\begin{cases} \htmlClass{hr}{a_{11}x + a_{12}y + a_{13}z = b_1} \\ a_{21}x + a_{22}y + a_{23}z = b_2 \\ a_{31}x + a_{32}y + a_{33}z = b_3 \end{cases}\)</span>
+        </div>
+        <p class="formula-note" style="text-align:center">Pirmoji lentelės eilutė tapo pirmąja lygtimi. Lentelės skaičiai sutampa su sistemos išplėstinės matricos elementais.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>3. Kiti reikalavimai – irgi lygtys</h4>
+        <p>Lygtimi užrašomas ir kiekvienas kitas žodžiais išreikštas reikalavimas:</p>
+        <div class="tbl-wrap">
+          <table class="vtable req-tbl">
+            <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Lygtis</th></tr></thead>
+            <tbody>
+              <tr><td>Iš viso reikia pagaminti \(N\) gaminių</td><td>\(x + y + z = N\)</td></tr>
+              <tr><td>Investuojama visa \(S\) eurų suma</td><td>\(x + y + z = S\)</td></tr>
+              <tr><td>Į obligacijas investuota suma \(y\) dvigubai didesnė už indėlį \(x\)</td><td>\(y = 2x\), t. y.<br>\(-2x + y = 0\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tip">Kai kintamasis atsiduria dešinėje lygybės pusėje, perkelkite jį į kairę ir kintamuosius surašykite ta pačia tvarka kaip kitose lygtyse – tada išplėstinę matricą bus lengva užrašyti.</p>
+      </div>
+
+      <p>Kai sistema sudaryta, ji sprendžiama <a href="tema-3.html#algoritmas">Gauso metodu</a>. Šioje skiltyje nagrinėjami uždaviniai, kurių sistema turi <strong>vienintelį sprendinį</strong>: yra tik vienas planas, pagal kurį visi ištekliai sunaudojami ir visi reikalavimai įvykdomi.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Pilnu sakiniu apibrėžkite sprendimo kintamuosius ir nurodykite matavimo vienetus.</li>
+        <li>Sudarykite lentelę: kiekvienam ištekliui ar reikalavimui skirkite vieną eilutę, kiekvienam kintamajam – vieną stulpelį. Elementai turi rodyti vienam vienetui sunaudojamą kiekį, o paskutinis stulpelis – turimą kiekį. Patikrinkite, ar visi dydžiai išreikšti tais pačiais matavimo vienetais.</li>
+        <li>Kiekvienai lentelės eilutei užrašykite po lygtį ir pridėkite lygtį kiekvienai papildomai žodžiais išreikštai sąlygai.</li>
+        <li>Užrašykite išplėstinę matricą.</li>
+        <li>Taikykite Gauso metodą: pirmojoje eilutėje gaukite pagrindinį elementą, lygų 1 (dažnai lengviau sukeisti eilutes vietomis negu dalyti), likusius pirmojo stulpelio elementus paverskite nuliais, tada tą patį kartokite su antrąja eilute ir t. t.</li>
+        <li>Išspręskite paskutinę lygtį ir įstatykite rastas reikšmes į aukščiau esančias lygtis.</li>
+        <li>Patikrinkite skaičius pradinėse lygtyse ir įvertinkite, ar jie turi ekonominę prasmę: kiekiai negali būti neigiami, o vienetais skaičiuojamų daiktų kiekiai turi būti sveikieji skaičiai.</li>
+        <li>Paaiškinkite atsakymą uždavinio sąlygos terminais.</li>
+      </ol>
+
+      <p class="tip"><strong>Skaičiavimų supaprastinimas.</strong> Jei lygtyje yra dešimtainių trupmenų ar procentų, pirmiausia visą eilutę padauginkite iš 10, 100 ar 1000, o paskui padalykite iš bendro daugiklio. Tai elementarusis pertvarkis „eilutės dauginimas iš nuliui nelygaus skaičiaus“, todėl jis nekeičia sprendinių ir padeda išvengti daugumos skaičiavimo klaidų.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Skirtingi matavimo vienetai.</strong> Vienam gaminiui reikalingas laikas nurodytas minutėmis, o turimas laikas – valandomis. Prieš sudarant lygtis viską reikia išreikšti tais pačiais vienetais.</li>
+            <li><strong>Sukeisti lentelės skaičiai.</strong> Lygtis sudaroma vienam ištekliui: jos koeficientai – kiek <em>šio</em> ištekliaus reikia kiekvienam gaminiui, o ne kiek skirtingų išteklių reikia vienam gaminiui.</li>
+            <li><strong>Neužrašytas reikalavimas.</strong> Kiekviena sąlyga (bendras kiekis, „tiek pat“, „dvigubai daugiau“) – atskira lygtis. Jei lygčių mažiau nei kintamųjų, vienintelio sprendinio gauti neįmanoma.</li>
+            <li><strong>Procentai neperskaičiuoti.</strong> 3&nbsp;% nuo \(x\) yra \(0{,}03x\), o ne \(3x\).</li>
+            <li><strong>Atsakymas be prasmės patikros.</strong> Neigiamas ar trupmeninis gaminių skaičius rodo klaidą sudarant lygtis arba skaičiuojant.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant taikomuosius tiesinių lygčių sistemų uždavinius, uždavinio pradžioje privaloma pateikti įvedamų kintamųjų apibrėžimus. Apibrėžimuose turi būti aiškiai nurodoma, kad kintamasis žymi tam tikro objekto kiekį.</li>
+            <li>Jei autoriui patogiau, sprendime galima, bet nebūtina, pateikti uždavinio sąlygą susistemizuotą lentelėje.</li>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tiesinių lygčių sistema. Pateikti sistemą tik išplėstinėje matricoje nepakanka.</li>
+            <li>Tiesinių lygčių sistemą būtina spręsti Gauso metodu. Būtina nurodyti, kokie veiksmai atliekami eliminuojant elementus po pagrindine įstrižaine.</li>
+            <li>Uždavinio sprendimo pabaigoje turi būti aiškiai pateiktas atsakymas.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite sudaryti sistemą ir ją išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: alternatyvus 3.1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Telefonų dėklų gamybos planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Nedidelė gamykla ketina gaminti trijų tipų telefonų dėklus: A, B ir C. A tipo dėklui pagaminti reikia 1 minutės I staklėmis, 1 minutės II staklėmis ir 2 minučių III staklėmis. B tipo dėklui reikia 1 minutės I staklėmis, 2 minučių II staklėmis ir 1 minutės III staklėmis. C tipo dėklui reikia 2 minučių I staklėmis, 2 minučių II staklėmis ir 1 minutės III staklėmis. Užsakymui vykdyti per dieną galima skirti 4 valandas I staklėmis, 5 valandas II staklėmis ir 3 valandas III staklėmis. Kiek kiekvieno tipo dėklų gamykla turėtų pagaminti, kad išnaudotų visą turimą laiką?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <p>Gamykla turi nuspręsti, kiek kiekvieno tipo dėklų pagaminti per dieną:</p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per dieną pagaminamų A tipo dėklų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– per dieną pagaminamų B tipo dėklų skaičius;</span></li>
+            <li><span class="sym">\(z\)</span><span>– per dieną pagaminamų C tipo dėklų skaičius.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Duomenų lentelė</span></h4>
+          <p>Vienam dėklui reikalingas laikas nurodytas minutėmis, o turimas laikas – valandomis. Pirmiausia turimą laiką išreiškiame minutėmis: 4&nbsp;val. = 240&nbsp;min, 5&nbsp;val. = 300&nbsp;min, 3&nbsp;val. = 180&nbsp;min.</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">A tipas</th><th scope="col">B tipas</th><th scope="col">C tipas</th><th scope="col">Iš viso, min</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">I staklės</th><td>1</td><td>1</td><td>2</td><td>240</td></tr>
+                <tr><th scope="row">II staklės</th><td>1</td><td>2</td><td>2</td><td>300</td></tr>
+                <tr><th scope="row">III staklės</th><td>2</td><td>1</td><td>1</td><td>180</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Kiekvienų staklių laikas turi būti išnaudotas iki paskutinės minutės, todėl kiekviena lentelės eilutė duoda vieną lygtį. Pavyzdžiui, I staklėmis \(x\) A tipo dėklų gaminami \(1\cdot x\) minučių, \(y\) B tipo dėklų – \(1\cdot y\) minučių, \(z\) C tipo dėklų – \(2z\) minučių, o iš viso turima 240 minučių:</p>
+          <div class="formula fit">\[ \underbrace{x}_{\text{A dėklams}} + \underbrace{y}_{\text{B dėklams}} + \underbrace{2z}_{\text{C dėklams}} = \underbrace{240}_{\text{turima}} \]</div>
+          <p>Taip pat sudarome II ir III staklių lygtis:</p>
+          \[ \begin{cases} x + y + 2z = 240 \\ x + 2y + 2z = 300 \\ 2x + y + z = 180 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <p>Pirmasis pagrindinis elementas jau lygus 1. Pirmąją eilutę dauginame iš \(-1\) ir pridedame prie antrosios, tada dauginame iš \(-2\) ir pridedame prie trečiosios:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 2 &amp; 240 \\ 1 &amp; 2 &amp; 2 &amp; 300 \\ 2 &amp; 1 &amp; 1 &amp; 180 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-1)} &amp; \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; 240 \\ \htmlClass{hc}{0} &amp; 1 &amp; 0 &amp; 60 \\ \htmlClass{hc}{0} &amp; -1 &amp; -3 &amp; -300 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Nulis antrajame stulpelyje</span></h4>
+          <p>Antrasis pagrindinis elementas lygus 1, o po juo esantį \(-1\) panaikina daugiklis \((1)\): antrąją eilutę pridedame prie trečiosios. Tada trečiąją eilutę dalijame iš \(-3\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; 240 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0 &amp; 60 \\ 0 &amp; -1 &amp; -3 &amp; -300 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; 240 \\ 0 &amp; 1 &amp; 0 &amp; 60 \\ 0 &amp; \htmlClass{hc}{0} &amp; -3 &amp; -240 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-3)} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; 240 \\ 0 &amp; 1 &amp; 0 &amp; 60 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 80 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Atbulinė eiga</span></h4>
+          <p>Iš paskutinės eilutės \(z = 80\), iš antrosios – \(y = 60\), o iš pirmosios:</p>
+          \[ x + 60 + 2\cdot 80 = 240 \;\Longrightarrow\; x = 20 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Patikrinimas</span></h4>
+          <p>Pagal šį planą I staklėmis dirbama \(20 + 60 + 2\cdot 80 = 240\) minučių, II staklėmis – \(20 + 2\cdot 60 + 2\cdot 80 = 300\), III staklėmis – \(2\cdot 20 + 60 + 80 = 180\): tiksliai tiek, kiek turima. Visi kiekiai yra teigiami sveikieji skaičiai, kaip ir turi būti skaičiuojant dėklus.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Gamykla per dieną turėtų pagaminti 20 A tipo, 60 B tipo ir 80 C tipo dėklų.</p>
+          </div>
+          <p>Tai vienintelis gamybos planas, pagal kurį išnaudojamas visas turimas visų trejų staklių laikas.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 1 uždavinys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Dviračių surinkimas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Dirbtuvės surenka dviejų modelių dviračius. Vienam miesto dviračiui reikia 3 surinkimo valandų ir 2 dažymo valandų; vienam kalnų dviračiui – 5 surinkimo valandų ir 2 dažymo valandų. Per savaitę turima 310 surinkimo valandų ir 160 dažymo valandų. Kiek kiekvieno modelio dviračių reikia surinkti, kad būtų išnaudotas visas turimas laikas?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per savaitę surinktų miesto dviračių skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– per savaitę surinktų kalnų dviračių skaičius.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lygčių sistema</span></h4>
+          <p>Ištekliai yra du – surinkimo ir dažymo laikas, todėl sudarome dvi lygtis. Visų dviračių surinkimui sunaudotos valandos turi būti lygios turimoms 310 valandų, o dažymui – 160 valandų:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Miesto</th><th scope="col">Kalnų</th><th scope="col">Iš viso, val.</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Surinkimas</th><td>3</td><td>5</td><td>310</td></tr>
+                <tr><th scope="row">Dažymas</th><td>2</td><td>2</td><td>160</td></tr>
+              </tbody>
+            </table>
+          </div>
+          \[ \begin{cases} 3x + 5y = 310 \\ 2x + 2y = 160 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Vedantysis vienetas</span></h4>
+          <p>Užrašome išplėstinę matricą. Pirmosios eilutės pirmasis elementas yra 3, o antrąją eilutę padalijus iš 2 gaunamas vienetas. Todėl antrąją eilutę dalijame iš 2, o tada abi eilutes sukeičiame vietomis:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{cc|c} 3 &amp; 5 &amp; 310 \\ 2 &amp; 2 &amp; 160 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,2} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 1 &amp; 80 \\ 3 &amp; 5 &amp; 310 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Nulis po pagrindiniu elementu</span></h4>
+          <p>Pirmąją eilutę dauginame iš \(-3\) ir pridedame prie antrosios, o rezultatą dalijame iš 2:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 1 &amp; 80 \\ 3 &amp; 5 &amp; 310 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 80 \\ \htmlClass{hc}{0} &amp; 2 &amp; 70 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,2} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 80 \\ 0 &amp; \htmlClass{hd}{1} &amp; 35 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Atbulinė eiga</span></h4>
+          \[ y = 35, \qquad x + 35 = 80 \;\Longrightarrow\; x = 45 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Patikrinimas</span></h4>
+          <p>\(3\cdot 45 + 5\cdot 35 = 135 + 175 = 310\) surinkimo valandų ir \(2\cdot 45 + 2\cdot 35 = 160\) dažymo valandų.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Dirbtuvės turi surinkti 45 miesto ir 35 kalnų dviračius.</p>
+          </div>
+          <p>Tai vienintelis derinys, kuriam sunaudojamos visos 310 surinkimo valandų ir visos 160 dažymo valandų.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 2 uždavinys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Investicijų portfelis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Investuotoja turi 120000 eurų, kuriuos nori paskirstyti trims investiciniams produktams: indėliui, duodančiam 3&nbsp;% metinių palūkanų, obligacijų fondui, duodančiam 5&nbsp;% metinę grąžą, ir akcijų fondui, duodančiam 9&nbsp;% metinę grąžą. Ji nori, kad portfelis duotų lygiai 7000 eurų pajamų per metus, o į akcijų fondą nori investuoti tiek pat, kiek skirti indėliui. Kiek ji turi investuoti į kiekvieną produktą?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sprendimo kintamieji</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– indėlio suma eurais;</span></li>
+            <li><span class="sym">\(y\)</span><span>– į obligacijų fondą investuota suma eurais;</span></li>
+            <li><span class="sym">\(z\)</span><span>– į akcijų fondą investuota suma eurais.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sąlygos virsta lygtimis</span></h4>
+          <p>Trys uždavinio sąlygos duoda tris lygtis:</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Lygtis</th></tr></thead>
+              <tbody>
+                <tr><td>Investuojama visa suma</td><td>\(x + y + z = 120000\)</td></tr>
+                <tr><td>Pajamos per metus – lygiai 7000 eurų</td><td>\(0{,}03x + 0{,}05y + 0{,}09z = 7000\)</td></tr>
+                <tr><td>Į akcijų fondą – tiek pat, kiek indėliui</td><td>\(z = x\), t. y.<br>\(x - z = 0\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Pajamų lygtyje kiekvienas narys yra metinės pajamos iš vieno produkto: pavyzdžiui, 3&nbsp;% nuo \(x\) eurų yra \(0{,}03x\) eurų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sistema be dešimtainių trupmenų</span></h4>
+          <p>Pajamų lygtį padauginame iš 100, kad neliktų dešimtainių trupmenų:</p>
+          \[ \begin{cases} x + y + z = 120000 \\ 3x + 5y + 9z = 700000 \\ x - z = 0 \end{cases} \]
+          <p>Trečiojoje lygtyje nėra \(y\), todėl išplėstinėje matricoje jo vietoje rašome 0.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <p>Pirmąją eilutę dauginame iš \(-3\) ir pridedame prie antrosios, tada dauginame iš \(-1\) ir pridedame prie trečiosios. Gautą antrąją eilutę dalijame iš 2:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 120000 \\ 3 &amp; 5 &amp; 9 &amp; 700000 \\ 1 &amp; 0 &amp; -1 &amp; 0 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-3)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 120000 \\ \htmlClass{hc}{0} &amp; 2 &amp; 6 &amp; 340000 \\ \htmlClass{hc}{0} &amp; -1 &amp; -2 &amp; -120000 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,2} \\ \phantom{0} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Nulis antrajame stulpelyje</span></h4>
+          <p>Antrojoje eilutėje dabar yra vedantysis vienetas. Ją pridėjus prie trečiosios eilutės, antrojo stulpelio elementas paverčiamas nuliu:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 120000 \\ 0 &amp; \htmlClass{hd}{1} &amp; 3 &amp; 170000 \\ 0 &amp; -1 &amp; -2 &amp; -120000 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 120000 \\ 0 &amp; 1 &amp; 3 &amp; 170000 \\ 0 &amp; \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; 50000 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Atbulinė eiga</span></h4>
+          <p>Iš paskutinės eilutės \(z = 50000\). Antroji eilutė reiškia \(y + 3z = 170000\), o pirmoji – \(x + y + z = 120000\):</p>
+          \[ \begin{aligned} y &amp;= 170000 - 3\cdot 50000 = 20000 \\ x &amp;= 120000 - 20000 - 50000 = 50000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Patikrinimas</span></h4>
+          <p>Metinės pajamos iš kiekvieno produkto:</p>
+          \[ \begin{aligned} 0{,}03\cdot 50000 &amp;= 1500 \\ 0{,}05\cdot 20000 &amp;= 1000 \\ 0{,}09\cdot 50000 &amp;= 4500 \end{aligned} \]
+          <p>Iš viso \(1500 + 1000 + 4500 = 7000\) eurų.</p>
+          <p>Investuojama \(50000 + 20000 + 50000 = 120000\) eurų, o investicija į akcijų fondą lygi indėliui, kaip ir reikalaujama.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Investuotoja turi skirti 50000 eurų indėliui, 20000 eurų obligacijų fondui ir 50000 eurų akcijų fondui.</p>
+          </div>
+          <p>Tik šis portfelis vienu metu tenkina visas tris jos sąlygas.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: apibrėžkite kintamuosius, sudarykite lygčių sistemą ir išspręskite ją Gauso metodu. Atsakyme pateikti kintamieji, sistema ir galutinis atsakymas – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Keramikos dirbtuvė gamina puodelius, dubenėlius ir vazas. Vienam puodeliui pagaminti reikia 2&nbsp;kg molio ir 1 darbo valandos, vienam dubenėliui – 3&nbsp;kg molio ir 2 darbo valandų, o vienai vazai – 5&nbsp;kg molio ir 3 darbo valandų. Kitą mėnesį dirbtuvė planuoja išdegti iš viso 450 gaminių. Ji turi 1350&nbsp;kg molio ir 800 darbo valandų, kuriuos reikia visiškai panaudoti. Kiek puodelių, dubenėlių ir vazų pagamins dirbtuvė?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– puodelių skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– dubenėlių skaičius;</span></li>
+            <li><span class="sym">\(z\)</span><span>– vazų skaičius.</span></li>
+          </ul>
+          <p><strong>Lygčių sistema.</strong> Pirmoji lygtis aprašo gaminių skaičių, antroji – molio kiekį, o trečioji – darbo valandų skaičių:</p>
+          \[ \begin{cases} x + y + z = 450 \\ 2x + 3y + 5z = 1350 \\ x + 2y + 3z = 800 \end{cases} \]
+          <p><strong>Atsakymas.</strong> Sistema turi vienintelį sprendinį \((x;\, y;\, z) = (200;\, 150;\, 100)\). Dirbtuvė pagamins 200 puodelių, 150 dubenėlių ir 100 vazų.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gyvūnų pašarų gamintojas maišo tris komponentus, kad gautų 1000&nbsp;kg pašaro. Viename kilograme A komponento yra 30&nbsp;% baltymų, ir jis kainuoja 0,80 euro; viename kilograme B komponento yra 12&nbsp;% baltymų, ir jis kainuoja 0,50 euro; viename kilograme C komponento yra 20&nbsp;% baltymų, ir jis kainuoja 0,60 euro. Mišinyje turi būti 19&nbsp;% baltymų, o visas kiekis turi kainuoti lygiai 610 eurų. Kiek kilogramų kiekvieno komponento reikia?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– A komponento kiekis kilogramais;</span></li>
+            <li><span class="sym">\(y\)</span><span>– B komponento kiekis kilogramais;</span></li>
+            <li><span class="sym">\(z\)</span><span>– C komponento kiekis kilogramais.</span></li>
+          </ul>
+          <p><strong>Lygčių sistema.</strong> Pirmoji lygtis aprašo mišinio masę, antroji – jame esantį baltymų kiekį (19&nbsp;% nuo 1000&nbsp;kg, t. y. 190&nbsp;kg), o trečioji – jo kainą:</p>
+          \[ \begin{cases} x + y + z = 1000 \\ 0{,}3x + 0{,}12y + 0{,}2z = 190 \\ 0{,}8x + 0{,}5y + 0{,}6z = 610 \end{cases} \]
+          <p><strong>Atsakymas.</strong> Sistema turi vienintelį sprendinį \((x;\, y;\, z) = (300;\, 500;\, 200)\). Mišinį sudaro 300&nbsp;kg A komponento, 500&nbsp;kg B komponento ir 200&nbsp;kg C komponento.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">1 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">5 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

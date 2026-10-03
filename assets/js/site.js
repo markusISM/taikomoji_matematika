@@ -218,7 +218,7 @@
         desc: { lt: 'Markovo grandinės: rinkos dalys po vieno ar kelių periodų.' } }
     ],
     t3: [
-      { id: 'm31', status: 'soon',
+      { id: 'm31', status: 'active', href: { lt: 'tema-3-planavimas-vienintelis.html' },
         title: { lt: 'Racionalusis planavimas (vienintelis sprendinys)', en: 'Rational Planning (Unique Solution)' },
         desc: { lt: 'Gamybos, pirkimų ar investicijų planas, kai sistema turi vienintelį sprendinį.' } },
       { id: 'm32', status: 'soon',
@@ -255,6 +255,8 @@
                title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' } },
     t3:      { parent: 'home', href: { lt: 'tema-3.html', en: null },
                title: { lt: '3 tema', en: 'Topic 3' } },
+    m31:     { parent: 't3', topic: 't3', model: 'm31', href: { lt: 'tema-3-planavimas-vienintelis.html', en: null },
+               title: { lt: 'Racionalusis planavimas (vienintelis sprendinys)', en: 'Rational Planning (Unique Solution)' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },

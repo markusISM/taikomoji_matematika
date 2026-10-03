@@ -17,7 +17,8 @@ lt/                            lietuviški puslapiai
   tema-2-pagrindiniai-veiksmai.html  Pagrindinių matricos veiksmų taikymai
   tema-2-sudetingesni-veiksmai.html  Sudėtingesni matricų veiksmų taikymai
   tema-2-rinkos-dalies-prognozavimas.html  Rinkos dalies prognozavimas (Markovo grandinės)
-  tema-3.html                  3 tema: tiesinių lygčių sistemos, Gauso metodas, sprendinių skaičius + taikymų skiltys (ruošiamos)
+  tema-3.html                  3 tema: tiesinių lygčių sistemos, Gauso metodas, sprendinių skaičius + taikymų skiltys
+  tema-3-planavimas-vienintelis.html  Racionalusis planavimas (vienintelis sprendinys)
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -40,7 +41,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=14` ir `site.js?v=14`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=15` ir `site.js?v=15`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
