@@ -60,9 +60,14 @@
     <!-- 3 -->
     <article class="card concept" id="istrizaine">
       <div class="concept-head"><span class="num">3</span><h3>Pagrindinė įstrižainė</h3></div>
-      <p><button type="button" class="term" data-term="Kvadratinė matrica" data-def="\(n \times n\) matmenų matrica, kurioje eilučių ir stulpelių skaičius yra vienodas.">Kvadratinės</button> matricos elementai \(a_{11}, a_{22}, \ldots, a_{nn}\), einantys iš viršutinio kairiojo kampo į apatinį dešinįjį, sudaro <strong>pagrindinę įstrižainę</strong>.</p>
-      <div class="formula">\[ A = \begin{pmatrix} \htmlClass{hd}{-3} &amp; 8 &amp; 6 \\ 2 &amp; \htmlClass{hd}{9} &amp; 4 \\ 1 &amp; 3 &amp; \htmlClass{hd}{2} \end{pmatrix} \]</div>
-      <p>Šios matricos pagrindinę įstrižainę sudaro elementai \(a_{11} = -3\), \(a_{22} = 9\) ir \(a_{33} = 2\).</p>
+      <p><strong>Pagrindinę įstrižainę</strong> sudaro elementai, kurių eilutės ir stulpelio numeriai sutampa: \(a_{11}, a_{22}, a_{33}, \ldots\) Ji prasideda viršutiniame kairiajame matricos kampe ir eina žemyn į dešinę.</p>
+      <div class="mats">
+        <div class="mat-item"><span>\(A = \begin{pmatrix} \htmlClass{hd}{-3} &amp; 8 &amp; 6 \\ 2 &amp; \htmlClass{hd}{9} &amp; 4 \\ 1 &amp; 3 &amp; \htmlClass{hd}{2} \end{pmatrix}\)</span><span class="cap">\(3 \times 3\)</span></div>
+        <div class="mat-item"><span>\(B = \begin{pmatrix} \htmlClass{hd}{7} &amp; -2 \\ 0 &amp; \htmlClass{hd}{1} \\ 1 &amp; 4 \end{pmatrix}\)</span><span class="cap">\(3 \times 2\)</span></div>
+      </div>
+      <p>Matricoje \(A\) eilučių ir stulpelių skaičius vienodas, todėl įstrižainė baigiasi apatiniame dešiniajame kampe: ją sudaro \(a_{11} = -3\), \(a_{22} = 9\) ir \(a_{33} = 2\).</p>
+      <p>Matricoje \(B\) yra trys eilutės, bet tik du stulpeliai, todėl įstrižainę sudaro tik du elementai: \(b_{11} = 7\) ir \(b_{22} = 1\). Elemento \(b_{33}\) nėra – matricoje nėra trečiojo stulpelio.</p>
+      <p class="tip">Pagrindinėje įstrižainėje yra tiek elementų, kiek mažesnis iš dviejų skaičių – eilučių ar stulpelių.</p>
     </article>
   </section>
 
@@ -151,11 +156,52 @@
     <!-- 8 -->
     <article class="card concept" id="sandauga">
       <div class="concept-head"><span class="num">8</span><h3>Matricų sandauga</h3></div>
-      <p>\(m \times n\) matmenų matricos \(A\) ir \(n \times k\) matmenų matricos \(B\) sandauga \(AB\) yra \(m \times k\) matmenų matrica \(C\), kurios bet kuris elementas \(c_{ij}\) lygus matricos \(A\) \(i\)-osios eilutės elementų ir atitinkamų \(B\) \(j\)-ojo stulpelio elementų sandaugų sumai:</p>
-      <div class="formula">\[ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{in}b_{nj} \]</div>
-      <p>Pirmosios matricos stulpelių skaičius turi sutapti su antrosios matricos eilučių skaičiumi:</p>
-      <div class="formula">\[ (m \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times k) = m \times k \]</div>
-      <p>Jei du viduriniai skaičiai nesutampa, sandauga neapibrėžta.</p>
+
+      <div class="subtype">
+        <h4>Bendrasis pavyzdys</h4>
+        <p>Sudauginkime \(2 \times 3\) matmenų matricą \(A\) ir \(3 \times 2\) matmenų matricą \(B\). Vietoj skaičių rašome bendrinius elementus – taip matyti, iš kur atsiranda kiekvienas rezultato elementas:</p>
+        <div class="mats">
+          <span>\(A = \begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \end{pmatrix}\)</span>
+          <span>\(B = \begin{pmatrix} b_{11} &amp; b_{12} \\ b_{21} &amp; b_{22} \\ b_{31} &amp; b_{32} \end{pmatrix}\)</span>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>Kodėl šias matricas galima sudauginti?</h4>
+        <p>Kiekvienas sandaugos elementas gaunamas matricos \(A\) eilutę dauginant iš matricos \(B\) stulpelio: pirmas eilutės elementas dauginamas iš pirmo stulpelio elemento, antras – iš antro, trečias – iš trečio, o sandaugos sudedamos. Kad visi elementai susidėtų į poras, <strong>eilutėje turi būti tiek pat elementų, kiek stulpelyje</strong>.</p>
+        <p>Matricos \(A\) eilutėje yra tiek elementų, kiek \(A\) turi stulpelių (3), o matricos \(B\) stulpelyje – tiek, kiek \(B\) turi eilučių (3). Abu skaičiai sutampa, todėl sandauga \(AB\) apibrėžta:</p>
+        <div class="formula">\[ (2 \times \htmlClass{hd}{3}) \cdot (\htmlClass{hd}{3} \times 2) \]</div>
+        <p>Taigi pirmosios matricos stulpelių skaičius turi sutapti su antrosios matricos eilučių skaičiumi. Jei šie du viduriniai skaičiai nesutampa, eilutės ir stulpelio elementų nepavyktų sudauginti poromis – sandauga neapibrėžta.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Naujos matricos matmenys</h4>
+        <p>Eilučių sandaugoje bus tiek, kiek eilučių turi \(A\), o stulpelių – tiek, kiek stulpelių turi \(B\). Matmenis nusako du kraštiniai skaičiai:</p>
+        <div class="formula">\[ (\htmlClass{hr}{2} \times 3) \cdot (3 \times \htmlClass{hc}{2}) = \htmlClass{hr}{2} \times \htmlClass{hc}{2} \]</div>
+      </div>
+
+      <div class="subtype">
+        <h4>Naujos matricos struktūra</h4>
+        <p>Sandauga \(C = AB\) yra \(2 \times 2\) matmenų matrica. Jos elementą \(i\)-ojoje eilutėje ir \(j\)-ajame stulpelyje žymime \(c_{ij}\):</p>
+        <div class="formula">\[ C = AB = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \end{pmatrix} \]</div>
+      </div>
+
+      <div class="subtype">
+        <h4>Kaip randami elementai \(c_{ij}\)</h4>
+        <p>Elemento indeksai nurodo, ką dauginti: <strong>\(c_{ij}\) gaunamas matricos \(A\) \(i\)-ąją eilutę dauginant iš matricos \(B\) \(j\)-ojo stulpelio</strong>. Pavyzdžiui, \(c_{11}\) – 1-oji eilutė ir 1-asis stulpelis:</p>
+        <div class="formula">\[ \begin{pmatrix} \htmlClass{hr}{a_{11}} &amp; \htmlClass{hr}{a_{12}} &amp; \htmlClass{hr}{a_{13}} \\ a_{21} &amp; a_{22} &amp; a_{23} \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{b_{11}} &amp; b_{12} \\ \htmlClass{hc}{b_{21}} &amp; b_{22} \\ \htmlClass{hc}{b_{31}} &amp; b_{32} \end{pmatrix} \]</div>
+        <p>Taip randami visi keturi elementai:</p>
+        <div class="formula">\[ \begin{aligned} c_{11} &amp;= a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31} \\ c_{12} &amp;= a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32} \\ c_{21} &amp;= a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31} \\ c_{22} &amp;= a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32} \end{aligned} \]</div>
+        <p>Kiekvienoje sumoje antrasis \(a\) indeksas sutampa su pirmuoju \(b\) indeksu – tai ir yra poromis dauginami eilutės ir stulpelio elementai.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Bendruoju atveju</h4>
+        <p>\(m \times n\) matmenų matricos \(A\) ir \(n \times k\) matmenų matricos \(B\) sandauga \(AB\) yra \(m \times k\) matmenų matrica \(C\), kurios bet kuris elementas \(c_{ij}\) lygus matricos \(A\) \(i\)-osios eilutės elementų ir atitinkamų \(B\) \(j\)-ojo stulpelio elementų sandaugų sumai:</p>
+        <div class="formula">\[ (m \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times k) = m \times k \]</div>
+        <div class="formula">\[ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{in}b_{nj} \]</div>
+      </div>
+
       <details class="more more--why">
         <summary><span class="ico" aria-hidden="true">?</span>Matricų daugybos savybės</summary>
         <div class="more-body">
@@ -189,25 +235,31 @@
           <p>Viduriniai skaičiai sutampa, todėl sandauga apibrėžta ir bus \(2 \times 2\) matmenų.</p>
         </section>
         <section class="step">
-          <h4><span class="step-no">2</span><span>Elementas \(c_{11}\)</span></h4>
+          <h4><span class="step-no">2</span><span>Naujos matricos struktūra</span></h4>
+          <p>Sandauga \(C\) turi dvi eilutes ir du stulpelius, taigi reikia rasti keturis elementus:</p>
+          \[ C = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \end{pmatrix} \]
+          <p>Elementą \(c_{ij}\) gausime pirmosios matricos \(i\)-ąją eilutę dauginę iš antrosios matricos \(j\)-ojo stulpelio.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Elementas \(c_{11}\)</span></h4>
           <p>1-oji eilutė dauginama iš 1-ojo stulpelio:</p>
           \[ \begin{pmatrix} \htmlClass{hr}{1} &amp; \htmlClass{hr}{2} &amp; \htmlClass{hr}{3} \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{9} &amp; 8 \\ \htmlClass{hc}{7} &amp; 6 \\ \htmlClass{hc}{5} &amp; 4 \end{pmatrix} \]
           \[ \begin{aligned} c_{11} &amp;= 1\cdot 9 + 2\cdot 7 + 3\cdot 5 \\ &amp;= 9 + 14 + 15 = 38 \end{aligned} \]
         </section>
         <section class="step">
-          <h4><span class="step-no">3</span><span>Elementas \(c_{12}\)</span></h4>
+          <h4><span class="step-no">4</span><span>Elementas \(c_{12}\)</span></h4>
           <p>1-oji eilutė dauginama iš 2-ojo stulpelio:</p>
           \[ \begin{pmatrix} \htmlClass{hr}{1} &amp; \htmlClass{hr}{2} &amp; \htmlClass{hr}{3} \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; \htmlClass{hc}{8} \\ 7 &amp; \htmlClass{hc}{6} \\ 5 &amp; \htmlClass{hc}{4} \end{pmatrix} \]
           \[ \begin{aligned} c_{12} &amp;= 1\cdot 8 + 2\cdot 6 + 3\cdot 4 \\ &amp;= 8 + 12 + 12 = 32 \end{aligned} \]
         </section>
         <section class="step">
-          <h4><span class="step-no">4</span><span>Elementas \(c_{21}\)</span></h4>
+          <h4><span class="step-no">5</span><span>Elementas \(c_{21}\)</span></h4>
           <p>2-oji eilutė dauginama iš 1-ojo stulpelio:</p>
           \[ \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ \htmlClass{hr}{4} &amp; \htmlClass{hr}{5} &amp; \htmlClass{hr}{6} \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{9} &amp; 8 \\ \htmlClass{hc}{7} &amp; 6 \\ \htmlClass{hc}{5} &amp; 4 \end{pmatrix} \]
           \[ \begin{aligned} c_{21} &amp;= 4\cdot 9 + 5\cdot 7 + 6\cdot 5 \\ &amp;= 36 + 35 + 30 = 101 \end{aligned} \]
         </section>
         <section class="step">
-          <h4><span class="step-no">5</span><span>Elementas \(c_{22}\)</span></h4>
+          <h4><span class="step-no">6</span><span>Elementas \(c_{22}\)</span></h4>
           <p>2-oji eilutė dauginama iš 2-ojo stulpelio:</p>
           \[ \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ \htmlClass{hr}{4} &amp; \htmlClass{hr}{5} &amp; \htmlClass{hr}{6} \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; \htmlClass{hc}{8} \\ 7 &amp; \htmlClass{hc}{6} \\ 5 &amp; \htmlClass{hc}{4} \end{pmatrix} \]
           \[ \begin{aligned} c_{22} &amp;= 4\cdot 8 + 5\cdot 6 + 6\cdot 4 \\ &amp;= 32 + 30 + 24 = 86 \end{aligned} \]
