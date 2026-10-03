@@ -411,13 +411,13 @@
           <h4><span class="step-no">2</span><span>Sąlygos ir tikslo funkcija</span></h4>
           <p>Sandėlis negali išsiųsti daugiau, negu turi:</p>
           \[ \begin{aligned} D_1:&amp;\quad x + y \leq 12 \\ D_2:&amp;\quad (15 - x) + (20 - y) \leq 30 \\ &amp;\quad \Longrightarrow\; x + y \geq 5 \end{aligned} \]
-          <p>Nė vienas siunčiamas kiekis negali būti neigiamas. Be \(x \geq 0\) ir \(y \geq 0\), dar reikia \(15 - x \geq 0\) ir \(20 - y \geq 0\), t. y. \(x \leq 15\) ir \(y \leq 20\). Abi pastarąsias sąlygas jau užtikrina \(x + y \leq 12\), todėl jos yra <strong>perteklinės</strong> ir brėžinyje neatsispindi.</p>
+          <p>Nė vienas siunčiamas kiekis negali būti neigiamas. Be \(x \geq 0\) ir \(y \geq 0\), dar reikia \(15 - x \geq 0\) ir \(20 - y \geq 0\), t. y. \(x \leq 15\) ir \(y \leq 20\). Šias neneigiamumo sąlygas taip pat įrašome į sistemą.</p>
           <p>Transportavimo išlaidos gaunamos sudėjus visų keturių maršrutų išlaidas:</p>
           \[ \begin{aligned} TC &amp;= 6x + 9y + 8(15 - x) + 5(20 - y) \\ &amp;= 220 - 2x + 4y \end{aligned} \]
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Matematinis modelis</span></h4>
-          \[ \begin{gathered} TC = 220 - 2x + 4y \to \min \\[4pt] \begin{cases} x + y \leq 12 \\ x + y \geq 5 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          \[ \begin{gathered} TC = 220 - 2x + 4y \to \min \\[4pt] \begin{cases} x + y \leq 12 \\ x + y \geq 5 \\ x \leq 15 \\ y \leq 20 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Ribojančios tiesės</span></h4>
@@ -433,22 +433,24 @@
               <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>5</td></tr><tr><th scope="row">\(y\)</th><td>5</td><td>0</td></tr></table>
             </div>
           </div>
+          <p>Tiesėms \(x = 15\) ir \(y = 20\) reikšmių lentelių nereikia: \(x = 15\) yra vertikali tiesė, einanti per \(Ox\) ašies tašką 15, o \(y = 20\) – horizontali tiesė, einanti per \(Oy\) ašies tašką 20.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Tikrinimo taškas</span></h4>
-          <p>Koordinačių pradžia yra abiejų nelygybių tikrinimo taškas:</p>
-          \[ \begin{alignedat}{2} 0 + 0 \leq 12 \;&amp;\Rightarrow\; 0 \leq 12 \; &amp;&amp; \text{(teisinga)} \\ 0 + 0 \geq 5 \;&amp;\Rightarrow\; 0 \geq 5 \; &amp;&amp; \text{(neteisinga)} \end{alignedat} \]
-          <p>Abi tiesės lygiagrečios, todėl leistinųjų sprendinių aibė yra juostos tarp jų dalis, apribota ašimis.</p>
+          <p>Koordinačių pradžia yra visų keturių nelygybių tikrinimo taškas:</p>
+          \[ \begin{alignedat}{2} 0 + 0 \leq 12 \;&amp;\Rightarrow\; 0 \leq 12 \; &amp;&amp; \text{(teisinga)} \\ 0 + 0 \geq 5 \;&amp;\Rightarrow\; 0 \geq 5 \; &amp;&amp; \text{(neteisinga)} \\ 0 \leq 15 \;&amp; &amp;&amp; \text{(teisinga)} \\ 0 \leq 20 \;&amp; &amp;&amp; \text{(teisinga)} \end{alignedat} \]
+          <p>Tiesės \(x + y = 12\) ir \(x + y = 5\) lygiagrečios, todėl leistinųjų sprendinių aibė yra juostos tarp jų dalis, apribota ašimis.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Leistinųjų sprendinių aibė</span></h4>
           <figure class="fig lp-chart-fig">
-            <div data-widget="lp-chart" data-spec='{"x":[-1,14,1,2],"y":[-1,14,1,2],"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":12,"lab":"x + y = 12","col":1,"lt":0.3,"arr":[0.2,0.7]},{"a":1,"b":1,"s":"ge","r":5,"lab":"x + y = 5","col":2,"lt":0.75,"lo":-14,"arr":[0.3,0.5]}],"pts":[{"x":0,"y":5,"lab":"A","p":"w"},{"x":5,"y":0,"lab":"B","p":"s"},{"x":12,"y":0,"lab":"C","p":"ne"},{"x":0,"y":12,"lab":"D","p":"ne"}],"aria":"Vandens pristatymo uždavinio leistinųjų sprendinių aibė ABCD tarp dviejų lygiagrečių tiesių"}'></div>
+            <div data-widget="lp-chart" data-spec='{"x":[-1,17,1,2],"y":[-1,22,1,2],"maxh":400,"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":12,"lab":"x + y = 12","col":1,"lt":0.3,"arr":[0.2,0.7]},{"a":1,"b":1,"s":"ge","r":5,"lab":"x + y = 5","col":2,"lt":0.75,"lo":-14,"arr":[0.3,0.5]},{"a":1,"b":0,"s":"le","r":15,"lab":"x = 15","col":3,"lt":0.75,"la":"end","lo":-8,"arr":[0.3,0.6]},{"a":0,"b":1,"s":"le","r":20,"lab":"y = 20","col":3,"lt":0.5,"arr":[0.2,0.8]}],"pts":[{"x":0,"y":5,"lab":"A","p":"w"},{"x":5,"y":0,"lab":"B","p":"s"},{"x":12,"y":0,"lab":"C","p":"ne"},{"x":0,"y":12,"lab":"D","p":"ne"}],"aria":"Vandens pristatymo uždavinio leistinųjų sprendinių aibė ABCD tarp dviejų lygiagrečių tiesių"}'></div>
             <figcaption>3 pav. Vandens pristatymo uždavinio leistinųjų sprendinių aibė.</figcaption>
           </figure>
         </section>
         <section class="step">
           <h4><span class="step-no">7</span><span>Viršūnės</span></h4>
+          <p>Tiesės \(x = 15\) ir \(y = 20\) yra toli nuo juostos tarp tiesių \(x + y = 5\) ir \(x + y = 12\), todėl šį kartą jos papildomų leistinųjų sprendinių aibės viršūnių nesukuria.</p>
           <p>Čia kiekviena viršūnė yra ant ašies, todėl nereikia spręsti jokios sistemos: visų keturių viršūnių koordinatės jau pateiktos dviejose reikšmių lentelėse – \(A(0;\, 5)\) ir \(B(5;\, 0)\) yra ant tiesės \(x + y = 5\), o \(C(12;\, 0)\) ir \(D(0;\, 12)\) – ant tiesės \(x + y = 12\).</p>
         </section>
         <section class="step">
