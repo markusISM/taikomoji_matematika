@@ -20,7 +20,8 @@
   --accent-soft: #e7eef9;
   --on-accent: #ffffff;
   --chart: #1c4fb0;
-  --chart-2: #0e8577;
+  --chart-2: #008a78;
+  --chart-3: #7048b8;
   --success: #0f7d56;
   --success-soft: #e2f5ec;
   --danger: #c2303f;
@@ -55,8 +56,9 @@
     --accent-strong: #9dbcff;
     --accent-soft: #16254a;
     --on-accent: #0a0f1c;
-    --chart: #7ea4ff;
-    --chart-2: #3fd0bf;
+    --chart: #6189ec;
+    --chart-2: #0fa595;
+    --chart-3: #9a78ea;
     --success: #43cf93;
     --success-soft: #11301f;
     --danger: #ff7383;
@@ -341,6 +343,14 @@ svg .grid { stroke: var(--border); stroke-width: 1; }
 svg .ah { fill: var(--muted); }
 svg .ln { stroke: var(--chart); stroke-width: 3; fill: none; stroke-linecap: round; }
 svg .ln2 { stroke: var(--chart-2); stroke-width: 3; fill: none; stroke-linecap: round; }
+svg .ln3 { stroke: var(--chart-3); stroke-width: 3; fill: none; stroke-linecap: round; }
+svg .env { fill: none; stroke: var(--muted); stroke-opacity: .3; stroke-width: 11; stroke-linejoin: round; stroke-linecap: round; }
+svg .strip { fill-opacity: .22; }
+svg .strip.s1 { fill: var(--chart); }
+svg .strip.s2 { fill: var(--chart-2); }
+svg .strip.s3 { fill: var(--chart-3); }
+svg .badge circle { fill: var(--exam); stroke: var(--surface); stroke-width: 1.5; }
+svg .badge text { fill: #fff; font-size: 10px; font-weight: 700; }
 svg .guide { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 4 4; fill: none; }
 svg .leg { stroke: var(--exam); stroke-width: 2.2; fill: none; }
 svg .pt { fill: var(--chart); stroke: var(--surface); stroke-width: 2; }
@@ -355,12 +365,16 @@ svg tspan.n { font-family: KaTeX_Main, "Times New Roman", serif; font-style: nor
 svg text.acc { fill: var(--accent-strong); }
 svg text.exam { fill: var(--exam); }
 svg text.tip { fill: var(--tip); }
+svg text.c1 { fill: var(--chart); }
 svg text.c2 { fill: var(--chart-2); }
+svg text.c3 { fill: var(--chart-3); }
 svg text.b { font-weight: 700; font-size: 14px; }
 .chart-legend { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; font-size: .88rem; color: var(--muted); }
 .chart-legend li { margin: 0; display: inline-flex; align-items: center; gap: 7px; }
 .chart-legend .sw { flex: none; width: 18px; height: 4px; border-radius: 2px; background: var(--chart); }
 .chart-legend .sw-s { background: var(--chart-2); }
+.chart-legend .sw-3 { background: var(--chart-3); }
+.chart-legend .sw-env { height: 9px; border-radius: 5px; background: color-mix(in srgb, var(--muted) 34%, transparent); }
 .chart-legend .sw-e { width: 10px; height: 10px; border-radius: 50%; background: var(--exam); }
 .step .market-chart { margin-top: 14px; }
 svg .zone-loss { fill: var(--danger); opacity: .13; }
@@ -640,3 +654,21 @@ a.model-card:hover { transform: translateY(-2px); border-color: var(--accent); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- Gamybos priemonių pasirinkimas ---------- */
+.vtable { border-collapse: collapse; margin: 10px auto 4px; font-variant-numeric: tabular-nums; font-size: .95rem; }
+.vtable th, .vtable td { border: 1px solid var(--border); padding: 6px 12px; text-align: right; }
+.vtable th { background: var(--surface-2); font-weight: 700; }
+.vtable td:first-child, .vtable th:first-child { text-align: left; }
+.must {
+  margin: 16px 0 0; padding: 14px 12px 14px 12px; border-radius: 12px; background: var(--exam-soft); color: var(--text);
+  border-left: 4px solid var(--exam);
+}
+.must-title { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font-weight: 700; color: var(--exam); }
+.must-title svg { width: 18px; height: 18px; flex: none; }
+.must p { margin: 0 0 8px; }
+.must .fig { margin: 10px -6px 0; background: var(--surface); border-radius: 10px; padding: 6px 0 10px; }
+.badge-list { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; font-size: .92rem; }
+.badge-list li { display: flex; gap: 10px; align-items: baseline; margin: 0; }
+.badge-list .bn { flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--exam); color: #fff; font-size: .75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; transform: translateY(3px); }
+.model-note { margin: 12px 0 0; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); font-size: .95rem; }

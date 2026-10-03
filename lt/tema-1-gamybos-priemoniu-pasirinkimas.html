@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamybos priemonių pasirinkimas · 1 tema · Taikomoji matematika</title>
+<meta name="description" content="Gamybos priemonių pasirinkimas: kelių gamybos būdų sąnaudų tiesės, grafikas, susikirtimo taškai ir atsakymas intervalais. Pavyzdžiai žingsnis po žingsnio, testas ir savarankiški uždaviniai.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=8">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=8"></script>
+</head>
+<body data-page="means">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">1 tema · Taikomasis modelis</span>
+    <h1>Gamybos priemonių pasirinkimas</h1>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#testas">Pasitikrinkite</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Modelis</h2>
+
+    <article class="card">
+      <p>Tą patį detalių kiekį galima gauti keliais alternatyviais būdais, kurių kiekvienas turi savo pastoviąsias sąnaudas ir vieneto kintamąsias sąnaudas:</p>
+      <div class="formula">\[ \begin{gathered} TC_i(x) = F_i + V_i\cdot x, \\ i = 1, 2, \ldots, n \end{gathered} \]</div>
+      <p>Todėl kiekvieno gamybos būdo sąnaudų grafikas yra tiesė, kurios laisvasis narys \(F_i\) yra sąnaudos nieko negaminant, o <button type="button" class="term" data-term="Nuolydis" data-def="Rodo, kaip pasikeis \(y\) reikšmė, jei \(x\) reikšmė padidės 1 vienetu.">nuolydis</button> \(V_i\) – vieno papildomo vieneto sąnaudos. Perkant iš kito tiekėjo, \(F = 0\), o vieneto sąnaudos yra pirkimo kaina.</p>
+      <p>Reikia nustatyti ne tai, kuris gamybos būdas apskritai yra geriausias – tokio nėra, – o kaip tinkamiausias būdas priklauso nuo planuojamos paklausos. Atsakymas nustatomas iš grafiko ir užrašomas \(x\) intervalais.</p>
+
+      <div data-widget="means-chart" data-lines="a:0:230|b:70000:90|c:250000:10" data-xmax="3000" data-ymax="700000" data-numeric="0"></div>
+      <p class="formula-note" style="text-align:center;margin-top:6px">Esant kiekvienam kiekiui, mažiausių sąnaudų gamybos būdą rodo žemiausiai esanti tiesė. Juosta po ašimi rodo, kuris būdas pigiausias kiekviename intervale. Tiesės nubraižytos pagal 1 pavyzdį.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Kiekvienam gamybos būdui užrašykite \(TC_i(x) = F_i + V_i x\).</li>
+        <li>Pasirinkite kiekį \(x_{\max}\), pakankamai didelį nagrinėjamam intervalui apimti, ir apskaičiuokite po du kiekvienos tiesės taškus: \((0;\,F_i)\) ir \((x_{\max};\,F_i + V_i x_{\max})\). Dviejų taškų pakanka, nes visos nagrinėjamos sąnaudų funkcijos yra tiesinės.</li>
+        <li>Vienoje koordinačių sistemoje nubraižykite visas tieses: horizontaliojoje ašyje žymėkite kiekį \(x\), vertikaliojoje – bendrąsias sąnaudas \(TC\).</li>
+        <li>Išnagrinėkite grafiką. Esant bet kuriam kiekiui, žemiausiai esanti tiesė rodo mažiausių sąnaudų gamybos būdą. Kiekiai, ties kuriais pasikeičia žemiausiai esanti tiesė, atitinka dviejų tiesių susikirtimo taškus.</li>
+        <li>Tiksliai raskite šiuos susikirtimo taškus, spręsdami lygtį \(TC_i(x) = TC_j(x)\) toms tiesių poroms, kurios susikerta žemiausiai grafike. Aukščiau esančių tiesių susikirtimai neturi reikšmės, nes ties jais trečiasis gamybos būdas yra pigesnis.</li>
+        <li>Atsakymą užrašykite intervalais, iš kurių paskutinis yra <button type="button" class="term" data-term="Neaprėžtas intervalas" data-def="Intervalas, neturintis viršutinio rėžio, pvz., \([2250;\,+\infty)\).">neaprėžtas</button>. Susikirtimo taške abiejų būdų sąnaudos vienodos, todėl galima rinktis bet kurį iš jų.</li>
+      </ol>
+
+      <div class="model-note"><strong>Uždavinys apie pelną.</strong> Jei, nepriklausomai nuo gamybos būdo, produktas parduodamas ta pačia kaina ir tokiu pačiu kiekiu, visų būdų pajamos yra vienodos. Todėl mažiausių sąnaudų gamybos būdas duoda ir didžiausią pelną.</div>
+
+      <div class="must" id="grafikas">
+        <p class="must-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg>Grafikas</p>
+        <p><strong>Jei uždavinys reikalauja rinktis tarp daugiau nei dviejų gamybos būdų, grafiko brėžimas yra būtinas</strong> – tik iš jo matyti, kurių tiesių susikirtimo taškai lemia sprendimą.</p>
+        <p>Grafike privalo būti pažymėti šie elementai: ašių pavadinimai, koordinačių pradžios taškas, vienetinės atkarpos dydis ir tiesių pavadinimai – prie kiekvienos tiesės aiškiai nurodykite, kurią sąnaudų funkciją ji atitinka.</p>
+        <div data-widget="means-chart" data-lines="a:0:230|b:70000:90|c:250000:10" data-xmax="3000" data-ymax="700000" data-xstep="500" data-ystep="100000" data-annotate="1"></div>
+        <ol class="badge-list">
+          <li><span class="bn">1</span><span>Ašių pavadinimai: \(x\) – kiekis (vnt.), \(TC\) – bendrosios sąnaudos (Eur).</span></li>
+          <li><span class="bn">2</span><span>Koordinačių pradžios taškas.</span></li>
+          <li><span class="bn">3</span><span>Vienetinės atkarpos dydis: viena padala – 500 vnt. ir 100000 Eur.</span></li>
+          <li><span class="bn">4</span><span>Tiesių pavadinimai: \(TC_a\), \(TC_b\), \(TC_c\).</span></li>
+        </ol>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Ne tas susikirtimo taškas.</strong> Svarbūs tik tie susikirtimo taškai, ties kuriais pasikeičia žemiausiai esanti tiesė. Aukščiau esančių tiesių susikirtimai neturi reikšmės.</li>
+            <li><strong>„Geriausias būdas apskritai“.</strong> Tokio nėra: tinkamiausias būdas priklauso nuo planuojamos paklausos, todėl atsakymas užrašomas \(x\) intervalais.</li>
+            <li><strong>Pirkimas iš tiekėjo.</strong> Perkant iš kito tiekėjo, \(F = 0\), o vieneto sąnaudos yra pirkimo kaina.</li>
+            <li><strong>Paskutinis intervalas.</strong> Jis neaprėžtas, pvz., \([2250;\,+\infty)\).</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Jei uždavinys pateikia kelis klausimus, atsakymai į juos visus turi būti aiškiai pateikti.</li>
+            <li>Sprendžiant gamybos priemonių pasirinkimo uždavinį, būtina parašyti įvedamo kintamojo prasmę. Jei reikia rinktis tarp daugiau nei dviejų gamybos būdų, uždavinio sprendime privalo būti pateiktas grafikas.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: paskaitos pavyzdys (gairių 3 skyrius) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Komplektinių detalių gamybos būdas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamybos bendrovė, rinkdamasi naujo gaminio komplektinių detalių gamybos būdą, svarsto tris variantus:
+        <ol type="a">
+          <li>Komplektines detales pirkti iš kito gamintojo po 230 eurų už vienetą;</li>
+          <li>Už 70000 eurų pirkti pusiau automatines stakles ir detales gamintis; šiuo atveju detalės gamybos ir medžiagų sąnaudos būtų 90 eurų;</li>
+          <li>Pirkti našią ir galingą detalių gamybos liniją už 250000 eurų, šiuo atveju vienos detalės gamybos medžiagų sąnaudos būtų 10 eurų.</li>
+        </ol>
+        Nustatykite, kaip gamybos būdo pasirinkimas priklauso nuo planuojamos paklausos.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sąnaudų funkcijos</span></h4>
+          <p>Kai \(x\) – reikalingų detalių skaičius:</p>
+          \[ \begin{aligned} TC_a &amp;= 230x \\ TC_b &amp;= 70000 + 90x \\ TC_c &amp;= 250000 + 10x \end{aligned} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span><span>Kodėl \(TC_a\) neturi laisvojo nario?</span></summary>
+            <div class="more-body">
+              <p>Perkant iš kito tiekėjo, \(F = 0\), o vieneto sąnaudos yra pirkimo kaina – šiuo atveju 230 eurų.</p>
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Po du kiekvienos tiesės taškus</span></h4>
+          <p>Pasirinkite \(x_{\max} = 3000\) ir apskaičiuokite po du kiekvienos tiesės taškus:</p>
+          <table class="vtable">
+            <thead><tr><th>\(x\)</th><th>0</th><th>3000</th></tr></thead>
+            <tbody>
+              <tr><td>\(TC_a\)</td><td>0</td><td>690000</td></tr>
+              <tr><td>\(TC_b\)</td><td>70000</td><td>340000</td></tr>
+              <tr><td>\(TC_c\)</td><td>250000</td><td>280000</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Grafikas</span></h4>
+          <p>Per šias taškų poras nubraižykite tris tieses.</p>
+          <div data-widget="means-chart" data-lines="a:0:230|b:70000:90|c:250000:10" data-xmax="3000" data-ymax="700000" data-xstep="500" data-ystep="100000"></div>
+          <p class="formula-note" style="text-align:center;margin-top:6px">Esant kiekvienam kiekiui, mažiausių sąnaudų gamybos būdą rodo žemiausiai esanti tiesė.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Susikirtimo taškai</span></h4>
+          <p>Grafike matyti, kad prie koordinačių pradžios žemiausiai yra a tiesė, tada b ir galiausiai c. Žemiausiai esanti tiesė pasikeičia a ir b bei b ir c susikirtimo taškuose. Išspręskite šias dvi lygtis:</p>
+          \[ \begin{aligned} 230x &amp;= 70000 + 90x \\ \Longrightarrow\; 140x &amp;= 70000 \\ \Longrightarrow\; x &amp;= 500 \end{aligned} \]
+          \[ \begin{aligned} 70000 + 90x &amp;= 250000 + 10x \\ \Longrightarrow\; 80x &amp;= 180000 \\ \Longrightarrow\; x &amp;= 2250 \end{aligned} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span><span>Kodėl nereikia a ir c tiesių susikirtimo taško?</span></summary>
+            <div class="more-body">
+              <p>Aukščiau esančių tiesių susikirtimai neturi reikšmės, nes ties jais trečiasis gamybos būdas yra pigesnis. Grafike a ir c tiesės susikerta virš b tiesės, todėl ties tuo kiekiu pigiausias yra b būdas.</p>
+            </div>
+          </details>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            a metodas tinkamiausias, kai \(x \in [0;\,500]\), b metodas – kai \(x \in [500;\,2250]\), c metodas – kai \(x \in [2250;\,+\infty)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 1 uždavinys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Pasirinkimas ir sutaupyta suma</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamintojui reikia detalės. Jis turi tris galimybes: (a) pirkti ją iš tiekėjo po 60 eurų už vienetą; (b) už 24000 eurų pirkti pusiau automatinę gamybos liniją, tuomet vienos detalės sąnaudos būtų 36 eurai; (c) už 87000 eurų pirkti automatinę gamybos liniją, tuomet vienos detalės sąnaudos būtų 15 eurų. Nustatykite, kaip pasirinkimas priklauso nuo planuojamos paklausos. Kurį būdą reikėtų rinktis esant 2500 detalių paklausai ir kiek būtų sutaupyta, palyginti su kitu geriausiu būdu?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Trys sąnaudų funkcijos</span></h4>
+          <p>Kai \(x\) – reikalingų detalių skaičius:</p>
+          \[ \begin{aligned} TC_a &amp;= 60x \\ TC_b &amp;= 24000 + 36x \\ TC_c &amp;= 87000 + 15x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Po du kiekvienos tiesės taškus</span></h4>
+          <p>Pasirinkite \(x_{\max} = 4000\) ir apskaičiuokite po du kiekvienos tiesės taškus:</p>
+          <table class="vtable">
+            <thead><tr><th>\(x\)</th><th>0</th><th>4000</th></tr></thead>
+            <tbody>
+              <tr><td>\(TC_a\)</td><td>0</td><td>240000</td></tr>
+              <tr><td>\(TC_b\)</td><td>24000</td><td>168000</td></tr>
+              <tr><td>\(TC_c\)</td><td>87000</td><td>147000</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Grafikas</span></h4>
+          <p>Nubraižykite tieses.</p>
+          <div data-widget="means-chart" data-lines="a:0:60|b:24000:36|c:87000:15" data-xmax="4000" data-ymax="250000" data-xstep="500" data-ystep="50000"></div>
+          <p class="formula-note" style="text-align:center;margin-top:6px">Žemiausiai esanti tiesė pasikeičia, kai \(x = 1000\) ir \(x = 3000\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Susikirtimo taškai</span></h4>
+          <p>Žemiausiai yra a tiesė, tada b ir galiausiai c, todėl reikia apskaičiuoti a ir b bei b ir c susikirtimo taškus:</p>
+          \[ \begin{aligned} 60x &amp;= 24000 + 36x \\ \Longrightarrow\; 24x &amp;= 24000 \\ \Longrightarrow\; x &amp;= 1000 \end{aligned} \]
+          \[ \begin{aligned} 24000 + 36x &amp;= 87000 + 15x \\ \Longrightarrow\; 21x &amp;= 63000 \\ \Longrightarrow\; x &amp;= 3000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>2500 detalių paklausa</span></h4>
+          <p>2500 vienetų paklausa patenka į intervalą \([1000;\,3000]\), kuriame žemiausiai yra b tiesė:</p>
+          \[ \begin{aligned} TC_b(2500) &amp;= 24000 + 36\cdot 2500 \\ &amp;= 114000 \end{aligned} \]
+          <p>Kitų dviejų būdų sąnaudos yra \(TC_a(2500) = 150000\) eurų ir \(TC_c(2500) = 87000 + 37500 = 124500\) eurų, todėl kitas geriausias būdas yra c, o sutaupoma \(124500 - 114000 = 10500\) eurų.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            a metodas tinkamiausias, kai \(x \in [0;\,1000]\), b metodas – kai \(x \in [1000;\,3000]\), c metodas – kai \(x \in [3000;\,+\infty)\). Esant 2500 detalių paklausai, reikia rinktis b metodą: sąnaudos yra 114000 eurų, o sutaupoma 10500 eurų.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 2 uždavinys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Kurios staklės duoda didesnį pelną</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Produktą galima gaminti I arba II staklėmis. I staklių mėnesio pastoviosios sąnaudos yra 21000 eurų, o II staklių – 15000 eurų; vieneto kintamosios sąnaudos gaminant I staklėmis yra 18 eurų, o II staklėmis – 28 eurai. Produktas parduodamas už 60 eurų. Kurios staklės duoda didžiausią pelną, kai planuojama parduoti 500, 600 arba 700 vienetų? Esant kokiam pardavimų kiekiui abi staklės duoda vienodą pelną?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sąnaudų funkcijos</span></h4>
+          <p>Tegu \(x\) – per mėnesį pagaminamų ir parduodamų vienetų skaičius. Abiejų staklių atveju kaina ir parduodamas kiekis yra vienodi, todėl pajamos \(R = 60x\) taip pat vienodos, o didesnį pelną duoda tos staklės, kurių sąnaudų tiesė yra žemiau:</p>
+          \[ \begin{aligned} TC_{\mathrm{I}} &amp;= 21000 + 18x \\ TC_{\mathrm{II}} &amp;= 15000 + 28x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Po du kiekvienos tiesės taškus</span></h4>
+          <p>Pasirinkite \(x_{\max} = 1000\) ir apskaičiuokite po du kiekvienos tiesės taškus:</p>
+          <table class="vtable">
+            <thead><tr><th>\(x\)</th><th>0</th><th>1000</th></tr></thead>
+            <tbody>
+              <tr><td>\(TC_{\mathrm{I}}\)</td><td>21000</td><td>39000</td></tr>
+              <tr><td>\(TC_{\mathrm{II}}\)</td><td>15000</td><td>43000</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Grafikas</span></h4>
+          <p>Nubraižykite tieses.</p>
+          <div data-widget="means-chart" data-lines="I:21000:18|II:15000:28" data-xmax="1000" data-ymax="50000" data-xstep="200" data-ystep="10000"></div>
+          <p class="formula-note" style="text-align:center;margin-top:6px">Į kairę nuo susikirtimo taško mažesnės yra II staklių sąnaudos, į dešinę – I staklių.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Susikirtimo taškas</span></h4>
+          <p>Tiesės susikerta viename taške; raskite jį atitinkantį kiekį:</p>
+          \[ \begin{aligned} 21000 + 18x &amp;= 15000 + 28x \\ \Longrightarrow\; 10x &amp;= 6000 \\ \Longrightarrow\; x &amp;= 600 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pelnas</span></h4>
+          <p>Grafike matyti, kad iki 600 vienetų žemiau yra II staklių sąnaudų tiesė, o virš 600 vienetų – I staklių. Pelno skaičiavimai tai patvirtina:</p>
+          \[ \begin{aligned} P_{\mathrm{I}}(x) &amp;= 60x - (21000 + 18x) \\ &amp;= 42x - 21000 \\ P_{\mathrm{II}}(x) &amp;= 60x - (15000 + 28x) \\ &amp;= 32x - 15000 \end{aligned} \]
+          <table class="vtable">
+            <thead><tr><th>\(x\)</th><th>500</th><th>600</th><th>700</th></tr></thead>
+            <tbody>
+              <tr><td>\(P_{\mathrm{I}}\)</td><td>0</td><td>4200</td><td>8400</td></tr>
+              <tr><td>\(P_{\mathrm{II}}\)</td><td>1000</td><td>4200</td><td>7400</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Kai planuojama parduoti 500 vienetų, reikia rinktis II stakles (1000 eurų pelnas, palyginti su 0); kai 600 vienetų – abi staklės duoda vienodą 4200 eurų pelną, todėl galima rinktis bet kurias; kai 700 vienetų – reikia rinktis I stakles (8400 eurų pelnas, palyginti su 7400 eurų). Abi staklės duoda vienodą pelną, kai per mėnesį parduodama 600 vienetų.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. TESTAS ============ -->
+  <section class="section" id="testas" aria-labelledby="h-test">
+    <h2 id="h-test">Pasitikrinkite</h2>
+
+    <div class="quiz">
+      <article class="card q" data-type="mc">
+        <p class="q-text">Dirbtuvė gali gaminti detalę A būdu, kai bendrosios sąnaudos yra \(TC = 18x\)&nbsp;€, arba B būdu, kai bendrosios sąnaudos yra \(TC = 9000 + 6x\)&nbsp;€; čia \(x\) – detalių skaičius. Raskite gamybos kiekį, kuriam esant abiejų būdų sąnaudos yra vienodos.</p>
+        <ol class="q-options">
+          <li>375 detalių</li>
+          <li>500 detalių</li>
+          <li data-correct>750 detalių</li>
+          <li>1500 detalių</li>
+        </ol>
+        <div class="q-explain">\[ \begin{aligned} 18x &amp;= 9000 + 6x \\ \Longrightarrow\; 12x &amp;= 9000 \\ \Longrightarrow\; x &amp;= 750 \end{aligned} \]</div>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">Spausdinimo įmonė renkasi: įsigyti plačiaformatį spausdintuvą, kai bendrosios sąnaudos būtų \(TC = 14000 + 4x\)&nbsp;€, arba ir toliau užsakyti kiekvieną didelio formato spaudinį iš kitos įmonės už pastovią \(V\)&nbsp;€ kainą. Vadovybė nori, kad abiejų variantų sąnaudos būtų vienodos gaminant 2800 spaudinių. Raskite užsakomo spaudinio kainą \(V\), kuriai esant ši sąlyga tenkinama.</p>
+        <ol class="q-options">
+          <li>5&nbsp;€/spaudinį</li>
+          <li data-correct>9&nbsp;€/spaudinį</li>
+          <li>4&nbsp;€/spaudinį</li>
+          <li>14&nbsp;€/spaudinį</li>
+        </ol>
+        <div class="q-explain">\[ \begin{aligned} 14000 + 4\cdot 2800 &amp;= V\cdot 2800 \\ \Longrightarrow\; 25200 &amp;= 2800V \\ \Longrightarrow\; V &amp;= 9 \end{aligned} \]</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAS DARBAS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimą užrašykite taip pat kaip pavyzdžiuose: kiekvieną tiesę brėžkite per du taškus, iš grafiko nustatykite žemiausiai esančią tiesę, o tada tiksliai apskaičiuokite susikirtimo taškų koordinates.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <p class="q-text">Elektrinius paspirtukus surenkančiai įmonei kiekvienam paspirtukui reikia vieno akumuliatorių bloko. Svarstomi trys akumuliatorių blokų įsigijimo būdai: a) įrengti naują automatinę gamybos liniją, kuri kainuoja 160000 eurų, o vieno akumuliatorių bloko gamybos sąnaudos būtų 20 eurų; b) akumuliatorių blokus pirkti iš išorinio tiekėjo po 180 eurų už vienetą; c) įrengti naudotą gamybos liniją, kuri kainuoja 48000 eurų, o vieno akumuliatorių bloko gamybos sąnaudos būtų 60 eurų. Nustatykite, kuris iš trijų būdų yra pigiausias, atsižvelgiant į reikiamą akumuliatorių blokų skaičių. Kurį būdą įmonė turėtų pasirinkti, jei planuoja per metus surinkti 2000 paspirtukų, ir kiek taip sutaupytų, palyginti su kitu pigiausiu būdu?</p>
+        <div class="q-answer">
+          <p>Susikirtimo taškai yra \((400;\,72000)\) ir \((2800;\,216000)\). Pigiausias yra b) variantas intervale \([0;\,400]\), c) variantas intervale \([400;\,2800]\) ir a) variantas intervale \([2800;\,+\infty)\). Kai planuojamas gamybos kiekis yra 2000 akumuliatorių blokų, pigiausia naudota gamybos linija: \(TC_c = 168000\) eurų, palyginti su \(TC_a = 200000\) eurų ir \(TC_b = 360000\) eurų, taigi per metus sutaupoma 32000 eurų, palyginti su nauja automatine gamybos linija.</p>
+          <div data-widget="means-chart" data-lines="a:160000:20|b:0:180|c:48000:60" data-xmax="4000" data-ymax="300000" data-xstep="500" data-ystep="50000"></div>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">Sporto įrangos gamintojui kiekvienam gaminamam dviratininko šalmui reikia vieno suformuoto korpuso. Svarstomi trys korpusų įsigijimo būdai: a) pirkti presą, kuris kainuoja 36000 eurų, o vieno korpuso formavimo sąnaudos būtų 45 eurai; b) pirkti automatinę formavimo liniją, kuri kainuoja 108000 eurų, o vieno korpuso formavimo sąnaudos būtų 15 eurų; c) korpusus užsakyti dirbtuvėje po 95 eurus už vienetą. Nustatykite, kuris iš trijų būdų yra pigiausias, atsižvelgiant į reikiamą korpusų skaičių. Kurį būdą gamintojas turėtų pasirinkti, jei planuoja per metus pagaminti 3000 šalmų, ir kiek taip sutaupytų, palyginti su kitu pigiausiu būdu?</p>
+        <div class="q-answer">
+          <p>Susikirtimo taškai yra \((720;\,68400)\) ir \((2400;\,144000)\). Pigiausias yra c) variantas intervale \([0;\,720]\), a) variantas intervale \([720;\,2400]\) ir b) variantas intervale \([2400;\,+\infty)\). Kai planuojamas gamybos kiekis yra 3000 korpusų, pigiausia automatinė formavimo linija: \(TC_b = 153000\) eurų, palyginti su \(TC_a = 171000\) eurų ir \(TC_c = 285000\) eurų, taigi per metus sutaupoma 18000 eurų, palyginti su presu.</p>
+          <div data-widget="means-chart" data-lines="a:36000:45|b:108000:15|c:0:95" data-xmax="3000" data-ymax="300000" data-xstep="500" data-ystep="50000"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį modelį rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">1 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

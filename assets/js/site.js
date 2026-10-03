@@ -82,7 +82,11 @@
       beLetter: 'L',
       lossZone: 'Nuostolis',
       profitZone: 'Pelnas',
-      beChart: 'Pajamų ir bendrųjų sąnaudų tiesės ir lūžio taškas'
+      beChart: 'Pajamų ir bendrųjų sąnaudų tiesės ir lūžio taškas',
+      meansChart: 'Gamybos būdų bendrųjų sąnaudų tiesės',
+      lowestCost: 'Mažiausios sąnaudos',
+      crossPoint: 'Susikirtimo taškas',
+      cheapest: 'pigiausias'
     },
     en: {
       courseShort: 'Applied Mathematics',
@@ -147,7 +151,11 @@
       beLetter: 'B',
       lossZone: 'Loss',
       profitZone: 'Profit',
-      beChart: 'Revenue and total cost lines and the break-even point'
+      beChart: 'Revenue and total cost lines and the break-even point',
+      meansChart: 'Total cost lines of the production methods',
+      lowestCost: 'Lowest cost',
+      crossPoint: 'Intersection point',
+      cheapest: 'cheapest'
     }
   };
 
@@ -187,8 +195,8 @@
       { id: 'be', status: 'active', href: { lt: 'tema-1-pajamos-sanaudos-pelnas.html' },
         title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue and Profit' },
         desc: { lt: 'Lūžio taškas – gamybos kiekis, su kuriuo pajamos prilygsta sąnaudoms.' } },
-      { id: 'means', status: 'soon',
-        title: { lt: 'Gamybos priemonių pasirinkimas', en: null },
+      { id: 'means', status: 'active', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
+        title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' },
         desc: { lt: 'Kaip gamybos būdo pasirinkimas priklauso nuo planuojamos paklausos.' } }
     ]
   };
@@ -205,6 +213,8 @@
                title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' } },
     be:      { parent: 't1', topic: 't1', model: 'be', href: { lt: 'tema-1-pajamos-sanaudos-pelnas.html', en: null },
                title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue and Profit' } },
+    means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
+               title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
                title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
     final:   { parent: 'home', href: { lt: 'baigiamasis-egzaminas.html', en: null },
@@ -786,6 +796,150 @@
     $all('.js-tex', box).forEach(function (el) { renderInline(el, el.getAttribute('data-tex')); });
   }
 
+  /* Gamybos priemonių pasirinkimo grafikas.
+     data-lines="a:0:230|b:70000:90|c:250000:10" – būdo pavadinimas : F : V (TC = F + V·x).
+     Žemiausiai esanti tiesė (mažiausios sąnaudos) paryškinama, jos lūžio taškai pažymimi,
+     po x ašimi rodoma juosta „pigiausias būdas“. data-annotate="1" – privalomų grafiko elementų žymos 1–4. */
+  function initMeansChart(box) {
+    var lines = box.getAttribute('data-lines').split('|').map(function (t, i) {
+      var a = t.split(':');
+      return { name: a[0], F: +a[1], V: +a[2], i: i };
+    });
+    var xmax = +box.getAttribute('data-xmax'), ymax = +box.getAttribute('data-ymax');
+    var xstep = +box.getAttribute('data-xstep') || 0, ystep = +box.getAttribute('data-ystep') || 0;
+    var numeric = box.getAttribute('data-numeric') !== '0';
+    var annotate = box.getAttribute('data-annotate') === '1';
+    var L = 58, B = 206, W = 250, H = 180, TOP = B - H;
+    function X(q) { return +(L + q / xmax * W).toFixed(1); }
+    function Y(v) { return +(B - v / ymax * H).toFixed(1); }
+    function tc(l, x) { return l.F + l.V * x; }
+    var cls = ['ln', 'ln2', 'ln3'], tcls = ['c1', 'c2', 'c3'], sw = ['', ' sw-s', ' sw-3'];
+    function texName(n) { return /^[IVX]+$/.test(n) ? '\\mathrm{' + n + '}' : n; }
+    function subName(n) {
+      return 'TC<tspan font-size="10" dy="4">' + esc(n) + '</tspan>';
+    }
+
+    // Žemiausiai esanti tiesė: kurios tiesės sąnaudos mažiausios kiekviename intervale
+    function lowest(x) {
+      var best = lines[0];
+      lines.forEach(function (l) { if (tc(l, x) < tc(best, x) - 1e-9) best = l; });
+      return best;
+    }
+    var segs = [], N = 2000, cur = lowest(0), start = 0;
+    for (var k = 1; k <= N; k++) {
+      var xx = xmax * k / N, nb = lowest(xx);
+      if (nb !== cur) {
+        var xs = clean((nb.F - cur.F) / (cur.V - nb.V));
+        segs.push({ l: cur, a: start, b: xs });
+        cur = nb; start = xs;
+      }
+    }
+    segs.push({ l: cur, a: start, b: xmax });
+    var bps = segs.slice(1).map(function (sg) { return { x: sg.a, y: clean(tc(sg.l, sg.a)) }; });
+
+    var g = '';
+    // tinklelis ir padalos (vienetinė atkarpa)
+    if (numeric && xstep) for (var gx = xstep; gx <= xmax + 1e-9; gx += xstep)
+      g += '<line class="grid" x1="' + X(gx) + '" y1="' + TOP + '" x2="' + X(gx) + '" y2="' + B + '"/>' +
+           '<line class="ax" x1="' + X(gx) + '" y1="' + B + '" x2="' + X(gx) + '" y2="' + (B + 4) + '"/>';
+    if (numeric && ystep) for (var gy = ystep; gy <= ymax + 1e-9; gy += ystep)
+      g += '<line class="grid" x1="' + L + '" y1="' + Y(gy) + '" x2="' + (L + W) + '" y2="' + Y(gy) + '"/>' +
+           '<line class="ax" x1="' + (L - 4) + '" y1="' + Y(gy) + '" x2="' + L + '" y2="' + Y(gy) + '"/>' +
+           '<text class="muted" style="font-size:11px" x="' + (L - 7) + '" y="' + (Y(gy) + 4) + '" text-anchor="end">' + decStr(gy) + '</text>';
+
+    // mažiausių sąnaudų laužtė
+    var env = segs.map(function (sg) { return X(sg.a) + ',' + Y(tc(sg.l, sg.a)) + ' ' + X(sg.b) + ',' + Y(tc(sg.l, sg.b)); }).join(' ');
+    g += '<polyline class="env" points="' + env + '"/>';
+
+    // susikirtimo taškų pagalbinės linijos
+    bps.forEach(function (p) {
+      g += '<line class="guide" x1="' + X(p.x) + '" y1="' + Y(p.y) + '" x2="' + X(p.x) + '" y2="' + B + '"/>';
+    });
+
+    // ašys
+    g += '<line class="ax" x1="' + (L - 8) + '" y1="' + B + '" x2="' + (L + W + 10) + '" y2="' + B + '"/>' +
+         '<line class="ax" x1="' + L + '" y1="' + (B + 8) + '" x2="' + L + '" y2="18"/>' +
+         '<path class="ah" d="M' + (L + W + 18) + ' ' + B + 'L' + (L + W + 9) + ' ' + (B - 4.5) + 'L' + (L + W + 9) + ' ' + (B + 4.5) + 'Z"/>' +
+         '<path class="ah" d="M' + L + ' 10L' + (L - 4.5) + ' 19L' + (L + 4.5) + ' 19Z"/>' +
+         '<text x="' + (L + 9) + '" y="16" style="font-size:12px"><tspan class="i">TC</tspan>, ' + esc(T.unitEur) + '</text>' +
+         '<text x="336" y="262" text-anchor="end" style="font-size:12px"><tspan class="i">x</tspan>, ' + esc(T.unitQty) + '</text>' +
+         '<text class="muted" x="' + (L - 7) + '" y="' + (B + 15) + '" text-anchor="end">0</text>';
+
+    // x ašies užrašai: susikirtimo taškų kiekiai paryškinti, artimi įprasti užrašai praleidžiami
+    if (numeric) {
+      // pirmiausia susikirtimo taškų kiekiai, tada įprasti užrašai, kurie su jais nepersidengia
+      var placed = [{ a: L - 16, b: L - 2 }];
+      var span = function (x, str) { var w = str.length * 7 + 4; return { a: x - w / 2, b: x + w / 2 }; };
+      var free = function (sp) { return placed.every(function (o) { return sp.b < o.a || sp.a > o.b; }); };
+      bps.forEach(function (p) {
+        var str = decStr(p.x); placed.push(span(X(p.x), str));
+        g += '<text class="exam" style="font-size:11px;font-weight:700" x="' + X(p.x) + '" y="' + (B + 15) + '" text-anchor="middle">' + str + '</text>';
+      });
+      if (xstep) for (var lx = xstep; lx <= xmax + 1e-9; lx += xstep) {
+        var str2 = decStr(clean(lx)), sp2 = span(X(lx), str2);
+        if (free(sp2)) {
+          placed.push(sp2);
+          g += '<text class="muted" style="font-size:11px" x="' + X(lx) + '" y="' + (B + 15) + '" text-anchor="middle">' + str2 + '</text>';
+        }
+      }
+    }
+
+    // juosta „pigiausias būdas“
+    var sy = B + 22;
+    g += '<text class="muted" style="font-size:10px" x="' + (L - 6) + '" y="' + (sy + 10) + '" text-anchor="end">' + esc(T.cheapest) + '</text>';
+    segs.forEach(function (sg) {
+      var x1 = X(sg.a) + (sg.a > 0 ? 1 : 0), x2 = X(sg.b) - (sg.b < xmax ? 1 : 0);
+      g += '<rect class="strip s' + (sg.l.i + 1) + '" x="' + x1 + '" y="' + sy + '" width="' + Math.max(0, x2 - x1).toFixed(1) + '" height="14" rx="3"/>';
+      if (x2 - x1 > 16) g += '<text style="font-size:11px;font-weight:700" x="' + ((x1 + x2) / 2).toFixed(1) + '" y="' + (sy + 11) + '" text-anchor="middle">' + esc(sg.l.name) + '</text>';
+    });
+
+    // tiesės ir jų pavadinimai
+    var labs = [];
+    lines.forEach(function (l) {
+      var xe = xmax, ye = tc(l, xmax), top = false;
+      if (ye > ymax) { xe = (ymax - l.F) / l.V; ye = ymax; top = true; }
+      g += '<line class="' + cls[l.i] + '" x1="' + X(0) + '" y1="' + Y(l.F) + '" x2="' + X(xe) + '" y2="' + Y(ye) + '"/>';
+      labs.push({ l: l, x: X(xe) + (top ? 4 : 5), y: Y(ye) + (top ? 13 : 4), top: top });
+    });
+    var side = labs.filter(function (o) { return !o.top; }).sort(function (a, b) { return a.y - b.y; });
+    for (var s2 = 1; s2 < side.length; s2++) if (side[s2].y - side[s2 - 1].y < 13) side[s2].y = side[s2 - 1].y + 13;
+    labs.forEach(function (o) {
+      g += '<text class="' + tcls[o.l.i] + ' b" x="' + o.x + '" y="' + o.y + '">' + subName(o.l.name) + '</text>';
+    });
+
+    // susikirtimo taškai
+    bps.forEach(function (p) { g += '<circle class="pt-hi" cx="' + X(p.x) + '" cy="' + Y(p.y) + '" r="5.5"/>'; });
+
+    // privalomų elementų žymos
+    if (annotate) {
+      var badge = function (n, x, y) {
+        return '<g class="badge"><circle cx="' + x + '" cy="' + y + '" r="7.5"/><text x="' + x + '" y="' + (y + 3.6) + '" text-anchor="middle">' + n + '</text></g>';
+      };
+      var hi = labs.slice().sort(function (a, b) { return a.y - b.y; })[0];
+      if (xstep) g += '<line class="leg" style="stroke-width:3.5" x1="' + L + '" y1="' + B + '" x2="' + X(xstep) + '" y2="' + B + '"/>';
+      if (ystep) g += '<line class="leg" style="stroke-width:3.5" x1="' + L + '" y1="' + B + '" x2="' + L + '" y2="' + Y(ystep) + '"/>';
+      g += badge(1, L + 66, 12) + badge(1, 276, 258) +
+           badge(2, L - 24, B + 11) +
+           (xstep ? badge(3, ((L + X(xstep)) / 2).toFixed(1), B + 11) : '') +
+           badge(4, (hi.x + 9).toFixed(1), hi.y - 17 < 8 ? hi.y + 13 : hi.y - 17);
+    }
+
+    var svg = '<svg viewBox="0 0 340 268" role="img" aria-label="' + esc(T.meansChart) + '">' + g + '</svg>';
+
+    var legend = '<ul class="chart-legend">';
+    lines.forEach(function (l) {
+      var f = l.F ? decTex(l.F) + ' + ' + decTex(l.V) + 'x' : decTex(l.V) + 'x';
+      var tex = 'TC_{' + texName(l.name) + '}' + (numeric ? '(x) = ' + f : '');
+      legend += '<li><span class="sw' + sw[l.i] + '"></span><span class="js-tex" data-tex="' + esc(tex) + '"></span></li>';
+    });
+    legend += '<li><span class="sw sw-env"></span><span>' + esc(T.lowestCost) + '</span></li>' +
+      '<li><span class="sw sw-e"></span><span>' + esc(T.crossPoint) + '</span></li></ul>';
+
+    box.classList.add('fig', 'market-chart');
+    box.innerHTML = svg + legend;
+    $all('.js-tex', box).forEach(function (el) { renderInline(el, el.getAttribute('data-tex')); });
+  }
+
   /* Statiniai užrašai, kurių tekstas imamas iš UI žodyno: <tspan data-i18n="unitYears">metai</tspan> */
   function fillI18n() {
     $all('[data-i18n]').forEach(function (el) {
@@ -881,6 +1035,7 @@
     fillI18n();
     $all('[data-widget="market-chart"]').forEach(initMarketChart);
     $all('[data-widget="breakeven-chart"]').forEach(initBreakEvenChart);
+    $all('[data-widget="means-chart"]').forEach(initMeansChart);
     renderMath(document.body);
     $all('.example').forEach(initExample);
     $all('.quiz').forEach(function (qz) {
