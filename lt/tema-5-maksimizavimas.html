@@ -1,0 +1,1592 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standartiniai maksimizavimo uždaviniai (simpleksų metodas) · Taikomoji matematika</title>
+<meta name="description" content="Standartinių maksimizavimo uždavinių sprendimas simpleksų metodu: pradinė lentelė, iteracijos, galutinės lentelės skaitymas – optimalus planas, didžiausias pelnas, nepanaudoti ištekliai ir šešėlinės kainos. Pavyzdžiai žingsnis po žingsnio.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=27">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=27"></script>
+</head>
+<body data-page="m51">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">5 tema · Taikymai · 1 skyrius</span>
+    <h1>Standartiniai maksimizavimo uždaviniai</h1>
+    <p class="lead">Šiame skyriuje simpleksų metodu sprendžiami gamybos planavimo uždaviniai: sudaroma pradinė lentelė, atliekamos iteracijos, o iš galutinės lentelės perskaitomas optimalus planas, didžiausias pelnas, nepanaudoti ištekliai ir šešėlinės kainos.</p>
+    <ul class="jump">
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#galutine">Galutinė lentelė</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <p>Metodo esmė ir veiksmų žymėjimai aptarti <a href="tema-5.html#iteracija">5 temos puslapyje</a>. Uždavinys sprendžiamas tokia tvarka:</p>
+      <ol class="steps-list">
+        <li><strong>Apibrėžkite kintamuosius ir užrašykite matematinį modelį:</strong> tikslo funkciją su \(\to \max\) ir šalia – visų apribojimų sistemą.</li>
+        <li><strong>Įveskite tariamus kintamuosius</strong> \(s_1, s_2, \ldots\) – po vieną kiekvienam apribojimui – ir užrašykite tikslo funkciją lygtimi, visus narius perkeldami į kairę pusę.</li>
+        <li><strong>Sudarykite pradinę lentelę:</strong> kiekvienam kintamajam – stulpelis tvarka \(x \ldots \mid s \ldots \mid P \mid n\), kiekvienai lygčiai – eilutė; tikslo funkcijos lygtį rašykite paskutinę.</li>
+        <li><strong>Pagrindinis stulpelis</strong> – tas, kuriame yra didžiausio modulio neigiamas tikslo funkcijos eilutės elementas. Jei neigiamų elementų nėra, lentelė optimali.</li>
+        <li><strong>Pagrindinė eilutė</strong> – ta, kuriai priklauso mažiausias dalmuo, gautas laisvuosius narius dalijant iš teigiamų pagrindinio stulpelio elementų.</li>
+        <li><strong>Pertvarkykite lentelę:</strong> padalykite pagrindinę eilutę iš pagrindinio elemento, tada eilučių pertvarkymais kitus pagrindinio stulpelio elementus paverskite nuliais.</li>
+        <li><strong>Grįžkite į 4 žingsnį.</strong></li>
+        <li><strong>Iš galutinės lentelės perskaitykite atsakymus</strong> į visus uždavinio klausimus (<a href="#galutine">žr. toliau</a>).</li>
+      </ol>
+
+      <div class="tip">
+        <p><strong>Apribojimų paprastinti negalima.</strong> Prieš sudarant lentelę gali kilti pagunda apribojimą, pavyzdžiui, \(2x + 2y \leq 100\), supaprastinti iki \(x + y \leq 50\). To daryti negalima. Abi nelygybės aprašo tą pačią leistinųjų sprendinių aibę, todėl optimalus planas ir didžiausias pelnas būtų tokie patys, tačiau tos eilutės tariamas kintamasis ir šešėlinė kaina nebereikštų to, ką turėtų reikšti: <a href="#pavyzdys-3">3 pavyzdyje</a> šešėlinė kaina gautųsi 10 eurų už du kvadratinius metrus vietoj 5 eurų už vieną.</p>
+        <p style="margin:8px 0 0">Vienintelė išimtis – dalyba iš 10, 100, 1000 ir t. t., kartu pakeičiant to ištekliaus matavimo vienetą: valandas į dešimtis valandų, kilogramus į tonas. Šį pakeitimą būtina įtraukti ir į aiškinimą, kad tos eilutės šešėlinė kaina reikštų pelną už papildomas dešimt valandų, o tariamas kintamasis – dešimčių valandų skaičių.</p>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Tuščias langelis vietoje nulio.</strong> Lentelėje rašomi visi koeficientai, taip pat ir nuliai; praleistas nulis – dažniausia vėlesnių klaidų priežastis.</li>
+            <li><strong>Nepakeisti tikslo funkcijos koeficientų ženklai.</strong> Tikslo funkcija užrašoma lygtimi su \(P\) kairėje pusėje, todėl pelno koeficientai lentelėje rašomi su minusu.</li>
+            <li><strong>Netinkamai skaičiuojami dalmenys.</strong> Dalijama tik iš teigiamų pagrindinio stulpelio elementų; tikslo funkcijos eilutė šiame tikrinime nedalyvauja.</li>
+            <li><strong>Supaprastintas apribojimas.</strong> Padalijus apribojimą, pavyzdžiui, iš 2, šešėlinė kaina ir likęs ištekliaus kiekis būtų klaidingi.</li>
+            <li><strong>Kintamojo reikšmė skaitoma iš ne vienetinio stulpelio.</strong> Reikšmė skaitoma tik iš vienetinio stulpelio – toje eilutėje, kur yra jo vienetas; kiti kintamieji lygūs nuliui.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant taikomuosius tiesinio programavimo uždavinius, uždavinio pradžioje privaloma pateikti įvedamų kintamųjų apibrėžimus. Apibrėžimuose turi būti aiškiai nurodoma, kad kintamasis žymi tam tikro objekto kiekį.</li>
+            <li>Jei autoriui patogiau, sprendime galima, bet nebūtina, pateikti uždavinio sąlygą susistemizuotą lentelėje.</li>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tikslo funkcija ir apribojimų sistema. Nepakanka modelio pateikti tik simpleksų lentelėje. Turi būti aiškiai nurodyta, ar siekiama tikslo funkciją maksimizuoti, ar minimizuoti. Visi apribojimai, įskaitant ir neneigiamumo apribojimus, privalo būti aiškiai pateikti vienoje sistemoje, šalia tikslo funkcijos.</li>
+            <li>Nėra būtina pateikti fiktyvių kintamųjų paaiškinimo bei nelygybių sistemos konvertavimo į lygčių sistemą.</li>
+            <li>Suformulavus pradinę simpleksų lentelę, būtina parodyti pagrindinį stulpelį ir pagrindinę eilutę. Taip pat turi būti parodyti santykių skaičiavimai, kuriais remiantis pasirinkta pagrindinė eilutė.</li>
+            <li>Sprendžiant uždavinį simpleksų metodu, būtina nurodyti atliekamus veiksmus eliminuojant elementus virš/po pagrindinio elemento.</li>
+            <li>Uždavinio sprendimo pabaigoje turi būti aiškiai suformuluojami atsakymai į visus uždavinio klausimus.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. GALUTINĖ LENTELĖ ============ -->
+  <section class="section" id="galutine" aria-labelledby="h-final">
+    <h2 id="h-final">Galutinės lentelės skaitymas</h2>
+
+    <article class="card">
+      <p>Kai tikslo funkcijos eilutėje nebelieka neigiamų elementų, lentelė yra optimali. Joje yra viskas, ko klausiama uždavinyje, – tereikia atsakymus perskaityti tinkamose vietose. Pavyzdžiui, uždavinio su trimis kintamaisiais ir trimis apribojimais galutinė lentelė galėtų atrodyti taip:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr><th scope="col">\(x\)</th><th scope="col" class="bc">\(y\)</th><th scope="col" class="bc">\(z\)</th><th scope="col" class="g bc">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr><td class="dot">·</td><td class="bc">0</td><td class="bc">0</td><td class="g bc">1</td><td class="dot">·</td><td class="dot">·</td><td class="g">0</td><td class="g nv">\(q_1\)</td></tr>
+<tr><td class="dot">·</td><td class="bc">1</td><td class="bc">0</td><td class="g bc">0</td><td class="dot">·</td><td class="dot">·</td><td class="g">0</td><td class="g nv">\(q_2\)</td></tr>
+<tr><td class="dot">·</td><td class="bc">0</td><td class="bc">1</td><td class="g bc">0</td><td class="dot">·</td><td class="dot">·</td><td class="g">0</td><td class="g nv">\(q_3\)</td></tr>
+<tr class="tf"><td class="dot">·</td><td class="bc">0</td><td class="bc">0</td><td class="g bc sp">0</td><td class="sp">\(k_2\)</td><td class="sp">\(k_3\)</td><td class="g">1</td><td class="g pv">\(P_{\max}\)</td></tr>
+</tbody></table></div>
+      <ul class="sx-legend">
+        <li><span class="sw sw-bc" aria-hidden="true"></span>vienetiniai stulpeliai</li>
+        <li><span class="sw sw-nv" aria-hidden="true"></span>jų kintamųjų reikšmės</li>
+        <li><span class="sw sw-pv" aria-hidden="true"></span>didžiausias pelnas</li>
+        <li><span class="sw sw-sp" aria-hidden="true"></span>šešėlinės kainos</li>
+      </ul>
+
+      <div class="subtype">
+        <h4>1. Kiekiai</h4>
+        <p>Ieškome <strong>vienetinių stulpelių</strong> – stulpelių, kuriuose yra vienas vienetas, o visi kiti elementai lygūs nuliui. Tokio stulpelio kintamojo reikšmė yra laisvasis narys tos eilutės, kurioje yra jo vienetas. Šioje lentelėje vienetiniai yra \(s_1\), \(y\) ir \(z\) stulpeliai, todėl</p>
+        <div class="formula">\[ s_1 = q_1,\qquad y = q_2,\qquad z = q_3 \]</div>
+        <p>Kintamieji, kurių stulpeliai nėra vienetiniai, – čia \(x\), \(s_2\) ir \(s_3\) – lygūs nuliui.</p>
+        <details class="more more--why">
+          <summary><span class="ico" aria-hidden="true">?</span>Kodėl kiti kintamieji lygūs nuliui</summary>
+          <div class="more-body">
+            <p>Lentelė tebėra ta pati lygčių sistema, tik perrašyta; joje kintamųjų daugiau negu lygčių, todėl ji turi ne vieną sprendinį, o visą jų šeimą. Lentelėje pasirenkamas vienas šios šeimos sprendinys: visi kintamieji, kurių stulpeliai nėra vienetiniai, prilyginami nuliui. Tada kiekvienoje eilutėje lieka po vieną lygtį, kurioje yra tik vienas kintamasis su koeficientu 1, todėl šis kintamasis lygus savo eilutės \(n\) stulpelio skaičiui ir jo reikšmę galima perskaityti tiesiogiai.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="subtype">
+        <h4>2. Didžiausias pelnas</h4>
+        <p>Didžiausias pelnas yra paskutinis tikslo funkcijos eilutės elementas, esantis \(n\) stulpelyje: \(P = P_{\max}\). Jį visada verta patikrinti, įstačius rastą planą į tikslo funkciją.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>3. Šešėlinės kainos</h4>
+        <p>Šešėlinės kainos yra tikslo funkcijos eilutėje, <strong>po tariamų kintamųjų stulpeliais</strong> – po vieną kiekvienam ištekliui ta pačia tvarka, kuria buvo užrašyti apribojimai. Šioje lentelėje tai \(0\), \(k_2\) ir \(k_3\).</p>
+        <p>Ištekliaus <strong>šešėlinė kaina</strong> – tai dydis, kuriuo padidėtų didžiausias pelnas, jei šio ištekliaus būtų vienu vienetu daugiau, o visa kita nesikeistų. Ji rodo, kiek daugiausia verta mokėti už papildomą ištekliaus vienetą.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>4. Nepanaudoti ištekliai</h4>
+        <p>Kiekvienas tariamas kintamasis įvestas kaip nepanaudota vieno ištekliaus dalis, todėl jo reikšmė tiesiogiai parodo, kiek to ištekliaus lieka. Šioje lentelėje \(s_1 = q_1\) – tiek lieka pirmojo ištekliaus, o \(s_2 = s_3 = 0\) – antrasis ir trečiasis ištekliai panaudojami visi.</p>
+        <p class="tip">Abu rodmenys patvirtina vienas kitą: ištekliaus, kurio lieka, šešėlinė kaina visada lygi nuliui, o išteklius, kurio šešėlinė kaina teigiama, visada panaudojamas iki paskutinio vieneto.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti uždavinį patys, tada sprendimą atskleiskite žingsnis po žingsnio. Telefone plačias lenteles galima slinkti į šoną.</p>
+
+    <!-- 1 pavyzdys: alternatyvus 5.1 (pakeičia paskaitos / gairių baldų pavyzdį iš S. Tan) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Stiklo gamyklos gamybos planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Stiklo gamykla gamina stiklainius, vazas ir dubenėlius, taikydama tris procesus: lydymą, formavimą ir atkaitinimą. Įmonė gali skirti ne daugiau kaip 400 valandų lydymui, 600 valandų formavimui ir 300 valandų atkaitinimui. Vienam stiklainiui pagaminti reikia 2 lydymo, 1 formavimo ir 3 atkaitinimo valandų. Vienai vazai reikia 2 lydymo, 1 formavimo ir 1 atkaitinimo valandos. Vienam dubenėliui reikia 1 lydymo, 2 formavimo ir 1 atkaitinimo valandos. Pelnas už stiklainį yra 10 eurų, už vazą – 30 eurų, už dubenėlį – 20 eurų.</p>
+        <ol type="a">
+          <li>Kiek kiekvieno gaminio gamykla turėtų pagaminti, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?</li>
+          <li>Kiek kiekvieno ištekliaus lieka nepanaudota, kai sprendinys optimalus?</li>
+          <li>Raskite šešėlines kainas. Paaiškinkite jų prasmę.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kintamieji ir duomenys</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– gaminamų stiklainių skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– gaminamų vazų skaičius;</span></li>
+            <li><span class="sym">\(z\)</span><span>– gaminamų dubenėlių skaičius.</span></li>
+          </ul>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Stiklai&shy;nis</th><th scope="col">Vaza</th><th scope="col">Dube&shy;nėlis</th><th scope="col">Turima</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Lydymas, val.</th><td>2</td><td>2</td><td>1</td><td>400</td></tr>
+                <tr><th scope="row">Forma&shy;vimas, val.</th><td>1</td><td>1</td><td>2</td><td>600</td></tr>
+                <tr><th scope="row">Atkaiti&shy;nimas, val.</th><td>3</td><td>1</td><td>1</td><td>300</td></tr>
+                <tr><th scope="row">Pelnas, EUR</th><td>10</td><td>30</td><td>20</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Matematinis modelis ir lygčių sistema</span></h4>
+          <p>Kiekviena lentelės eilutė nusako vieną apribojimą, o pelno eilutė – tikslo funkciją:</p>
+          \[ \begin{gathered} P = 10x + 30y + 20z \to \max \\[4pt] \begin{cases} 2x + 2y + z \leq 400 \\ x + y + 2z \leq 600 \\ 3x + y + z \leq 300 \\ x;\, y;\, z \geq 0 \end{cases} \end{gathered} \]
+          <p>Kiekviena nelygybė paverčiama lygtimi, įvedant tariamą kintamąjį: \(s_1\), \(s_2\), \(s_3\) – nepanaudotos lydymo, formavimo ir atkaitinimo valandos. Tikslo funkcija užrašoma lygtimi, visus jos narius perkeliant į kairę pusę:</p>
+          \[ \begin{cases} 2x + 2y + z + s_1 = 400 \\ x + y + 2z + s_2 = 600 \\ 3x + y + z + s_3 = 300 \\ -10x - 30y - 20z + P = 0 \end{cases} \]
+          <p class="formula-note">Egzamine šios sistemos rašyti nebūtina, tačiau ji padeda suprasti, iš kur atsiranda lentelės skaičiai.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pradinė simpleksų lentelė</span></h4>
+          <p>Keturias lygtis surašome į lentelę: stulpeliai \(x, y, z \mid s_1, s_2, s_3 \mid P \mid n\), viena eilutė – viena lygtis, tikslo funkcijos lygtis – paskutinė. Rašomi visi koeficientai, taip pat ir nuliai:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td class="g idb">1</td>
+<td class="idb">0</td>
+<td class="idb">0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td class="g idb">0</td>
+<td class="idb">1</td>
+<td class="idb">0</td>
+<td class="g">0</td>
+<td class="g">600</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td class="g idb">0</td>
+<td class="idb">0</td>
+<td class="idb">1</td>
+<td class="g">0</td>
+<td class="g">300</td>
+</tr>
+<tr class="tf">
+<td>−10</td>
+<td>−30</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+</tr>
+</tbody></table></div>
+          <p>Tariamų kintamųjų stulpeliai sudaro vienetinę matricą, todėl ši lentelė aprašo planą, pagal kurį niekas negaminama: \(x = y = z = 0\), visos valandos lieka nepanaudotos – \(s_1 = 400\), \(s_2 = 600\), \(s_3 = 300\), o \(P = 0\).</p>
+          <p>Tikslo funkcijos eilutėje pelno koeficientai įrašyti su priešingu ženklu. Neigiamas elementas reiškia, kad to stulpelio kintamasis dar didina pelną: \(-30\) rodo, kad kiekviena vaza pelną padidintų 30 eurų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>1 iteracija: pagrindinis stulpelis, eilutė ir elementas</span></h4>
+          <p><strong>Pagrindinis stulpelis.</strong> Tikslo funkcijos eilutės kintamųjų stulpeliuose yra \(-10,\; -30,\; -20,\; 0,\; 0,\; 0\). Didžiausio modulio neigiamas elementas yra \(-30\), esantis \(y\) stulpelyje, todėl \(y\) stulpelis – pagrindinis: į gamybos planą įtraukiamos vazos. Taip renkamasi todėl, kad vaza žada didžiausią pelno prieaugį vienam pagamintam vienetui.</p>
+          <p><strong>Pagrindinė eilutė.</strong> Kiekvieną laisvąjį narį daliname iš tos eilutės pagrindinio stulpelio elemento (tikslo funkcijos eilutė nedalyvauja):</p>
+          \[ \begin{gathered} 400 : 2 = 200 \\ 600 : 1 = 600 \\ 300 : 1 = 300 \end{gathered} \]
+          <p>Mažiausias dalmuo yra 200, todėl pirmoji eilutė – pagrindinė, o pagrindinis elementas – 2.</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td>2</td>
+<td class="pc pe">2</td>
+<td>1</td>
+<td class="g">1</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+<td class="ann">: 2</td>
+<td class="ann">400 : 2 = 200</td>
+</tr>
+<tr>
+<td>1</td>
+<td class="pc">1</td>
+<td>2</td>
+<td class="g">0</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">600</td>
+<td class="ann"></td>
+<td class="ann">600 : 1 = 600</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="pc">1</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">300</td>
+<td class="ann"></td>
+<td class="ann">300 : 1 = 300</td>
+</tr>
+<tr class="tf">
+<td>−10</td>
+<td class="pc">−30</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+          <p class="formula-note">Dalmuo atsako į klausimą: jei būtų gaminamos tik vazos, kiek jų leistų pagaminti šios eilutės išteklius? Lydymo laiko pakaktų 200 vazų, formavimo – 600, atkaitinimo – 300. Lydymo laikas baigiasi pirmas, todėl jis nustato ribą.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>1 iteracija: lentelės pertvarkymas</span></h4>
+          <p>Pirmąją eilutę dalijame iš 2 – pagrindinis elementas tampa vienetu. Tada kitų eilučių \(y\) stulpelio elementus paverčiame nuliais: daugiklis visada yra tos eilutės pagrindinio stulpelio elementas su priešingu ženklu. Antrojoje ir trečiojoje eilutėje \(y\) stulpelio elementas yra 1, todėl abiem daugiklis \((-1)\); tikslo funkcijos eilutėje yra \(-30\), todėl jos daugiklis \((30)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td>1</td>
+<td class="pc pe">1</td>
+<td>0,5</td>
+<td class="g">0,5</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann">(−1)</td>
+<td class="ann">(30)</td>
+</tr>
+<tr>
+<td>1</td>
+<td class="pc">1</td>
+<td>2</td>
+<td class="g">0</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">600</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="pc">1</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">300</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td>−10</td>
+<td class="pc">−30</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+          <p>Atlikę eilučių pertvarkymus, gauname:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0,5</td>
+<td class="g">0,5</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">200</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1,5</td>
+<td class="g">−0,5</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>0,5</td>
+<td class="g">−0,5</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr class="tf">
+<td>20</td>
+<td>0</td>
+<td>−5</td>
+<td class="g">15</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">6000</td>
+</tr>
+</tbody></table></div>
+          <p><strong>Kas pasikeitė.</strong> Dabar \(y\) stulpelis vienetinis, o \(s_1\) stulpelis – nebe: \(y\) įtrauktas į planą, \(s_1\) pašalintas. Vienetiniai yra \(y\) (vienetas pirmojoje eilutėje), \(s_2\) (antrojoje) ir \(s_3\) (trečiojoje) stulpeliai, todėl</p>
+          \[ \begin{gathered} y = 200,\quad s_2 = 400,\quad s_3 = 100 \\ x = z = s_1 = 0,\quad P = 6000 \end{gathered} \]
+          <p>Gamykla gamintų 200 vazų: būtų panaudotos visos 400 lydymo valandų, liktų 400 formavimo ir 100 atkaitinimo valandų, o pelnas būtų 6000 eurų. Šis planas geresnis už pradinį, bet dar ne geriausias.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>2 iteracija: pagrindinis stulpelis, eilutė ir elementas</span></h4>
+          <p>Tikslo funkcijos eilutėje dar yra neigiamas elementas \(-5\), esantis \(z\) stulpelyje, todėl pelną dar galima didinti: dabar į planą įtraukiami dubenėliai. Dalmenys:</p>
+          \[ \begin{gathered} 200 : 0{,}5 = 400 \\ 400 : 1{,}5 \approx 266{,}7 \\ 100 : 0{,}5 = 200 \end{gathered} \]
+          <p>Mažiausias dalmuo yra 200, todėl trečioji eilutė – pagrindinė, o pagrindinis elementas – \(0{,}5\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="pc">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td class="pc">0,5</td>
+<td class="g">0,5</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann"></td>
+<td class="ann">200 : 0,5 = 400</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td class="pc">1,5</td>
+<td class="g">−0,5</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+<td class="ann"></td>
+<td class="ann">400 : 1,5 ≈ 266,7</td>
+</tr>
+<tr class="pr">
+<td>2</td>
+<td>0</td>
+<td class="pc pe">0,5</td>
+<td class="g">−0,5</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">100</td>
+<td class="ann">: 0,5</td>
+<td class="ann">100 : 0,5 = 200</td>
+</tr>
+<tr class="tf">
+<td>20</td>
+<td>0</td>
+<td class="pc">−5</td>
+<td class="g">15</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">6000</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>2 iteracija: lentelės pertvarkymas</span></h4>
+          <p>Trečiąją eilutę dalijame iš \(0{,}5\). Kitų eilučių daugikliai vėl yra jų \(z\) stulpelio elementai su priešingu ženklu: \((-0{,}5)\) pirmajai, \((-1{,}5)\) antrajai ir \((5)\) tikslo funkcijos eilutei:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="pc">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td class="pc">0,5</td>
+<td class="g">0,5</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td class="pc">1,5</td>
+<td class="g">−0,5</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+<td class="ann">│</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+</tr>
+<tr class="pr">
+<td>4</td>
+<td>0</td>
+<td class="pc pe">1</td>
+<td class="g">−1</td>
+<td>0</td>
+<td>2</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann">(−0,5)</td>
+<td class="ann">(−1,5)</td>
+<td class="ann">(5)</td>
+</tr>
+<tr class="tf">
+<td>20</td>
+<td>0</td>
+<td class="pc">−5</td>
+<td class="g">15</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">6000</td>
+<td class="ann"></td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+          <p>Atlikę eilučių pertvarkymus, gauname:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>−1</td>
+<td>1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>0</td>
+<td>−1</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr>
+<td>−6</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td>1</td>
+<td>−3</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td class="g">−1</td>
+<td>0</td>
+<td>2</td>
+<td class="g">0</td>
+<td class="g">200</td>
+</tr>
+<tr class="tf">
+<td>40</td>
+<td>0</td>
+<td>0</td>
+<td class="g">10</td>
+<td>0</td>
+<td>10</td>
+<td class="g">1</td>
+<td class="g">7000</td>
+</tr>
+</tbody></table></div>
+          <p>Dabar \(z\) įtrauktas į planą, o \(s_3\) pašalintas.</p>
+          <p><strong>Baigimo taisyklė.</strong> Tikslo funkcijos eilutė yra \(40,\; 0,\; 0,\; 10,\; 0,\; 10\) – neigiamų elementų nebeliko, todėl ši lentelė optimali. Teigiamas elementas rodo, kad įtraukus to stulpelio kintamąjį pelnas sumažėtų: po \(x\) esantis 40 reiškia, kad kiekvienas pagamintas stiklainis pelną sumažintų 40 eurų, nes jam reikalingos valandos būtų atimtos iš pelningesnių gaminių.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Galutinės lentelės skaitymas</span></h4>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="bc">\(y\)</th>
+<th scope="col" class="bc">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col" class="bc">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>−1</td>
+<td class="bc">1</td>
+<td class="bc">0</td>
+<td class="g">1</td>
+<td class="bc">0</td>
+<td>−1</td>
+<td class="g">0</td>
+<td class="g nv">100</td>
+</tr>
+<tr>
+<td>−6</td>
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g">1</td>
+<td class="bc">1</td>
+<td>−3</td>
+<td class="g">0</td>
+<td class="g nv">100</td>
+</tr>
+<tr>
+<td>4</td>
+<td class="bc">0</td>
+<td class="bc">1</td>
+<td class="g">−1</td>
+<td class="bc">0</td>
+<td>2</td>
+<td class="g">0</td>
+<td class="g nv">200</td>
+</tr>
+<tr class="tf">
+<td>40</td>
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g sp">10</td>
+<td class="bc sp">0</td>
+<td class="sp">10</td>
+<td class="g">1</td>
+<td class="g pv">7000</td>
+</tr>
+</tbody></table></div>
+          <ul class="read-list">
+            <li class="r-bc"><strong>Kiekiai.</strong> Vienetiniai yra \(y\) (vienetas pirmojoje eilutėje), \(s_2\) (antrojoje) ir \(z\) (trečiojoje) stulpeliai, todėl \(y = 100\), \(s_2 = 100\), \(z = 200\). Stulpeliai \(x\), \(s_1\), \(s_3\) nėra vienetiniai, todėl \(x = s_1 = s_3 = 0\).</li>
+            <li class="r-pv"><strong>Didžiausias pelnas</strong> – paskutinis tikslo funkcijos eilutės elementas: \(P = 7000\). Patikriname: \(10\cdot 0 + 30\cdot 100 + 20\cdot 200 = 7000\).</li>
+            <li class="r-sp"><strong>Šešėlinės kainos</strong> – tikslo funkcijos eilutėje po \(s_1, s_2, s_3\): lydymo \(10\), formavimo \(0\), atkaitinimo \(10\).</li>
+            <li><strong>Nepanaudoti ištekliai</strong> – tariamų kintamųjų reikšmės: \(s_1 = 0\), \(s_2 = 100\), \(s_3 = 0\). Patikriname pagal apribojimus: lydymui panaudojama \(2\cdot 0 + 2\cdot 100 + 200 = 400\) iš 400 valandų, formavimui – \(0 + 100 + 2\cdot 200 = 500\) iš 600, atkaitinimui – \(3\cdot 0 + 100 + 200 = 300\) iš 300.</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Stiklo gamykla turėtų negaminti stiklainių, pagaminti 100 vazų ir 200 dubenėlių; didžiausias pelnas yra \(P_{\max}(0;\, 100;\, 200) = 7000\) eurų.</p>
+            <p>b) Lieka nepanaudota 100 formavimo valandų; lydymo ir atkaitinimo valandos panaudojamos visos.</p>
+            <p>c) Šešėlinės kainos: lydymo – 10 eurų už valandą, formavimo – 0, atkaitinimo – 10 eurų už valandą. Viena papildoma lydymo arba atkaitinimo valanda pelną padidintų 10 eurų, o papildomas formavimo laikas pelno nepadidintų, nes jo ir taip lieka.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 2 pavyzdys (keramikos dirbtuvė) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Keramikos dirbtuvės gamybos planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Keramikos dirbtuvė gamina puodelius ir dubenėlius. Vienam puodeliui reikia 2 formavimo valandų ir 2&nbsp;kg molio, vienam dubenėliui – 1 formavimo valandos ir 3&nbsp;kg molio. Per mėnesį dirbtuvė gali skirti 100 formavimo valandų ir turi 180&nbsp;kg molio. Pelnas už puodelį yra 24 eurai, už dubenėlį – 20 eurų. Kiek puodelių ir dubenėlių reikėtų pagaminti, kad pelnas būtų didžiausias? Ar lieka nepanaudotų išteklių? Raskite šešėlines kainas.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kintamieji ir duomenys</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per mėnesį pagaminamų puodelių skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– per mėnesį pagaminamų dubenėlių skaičius.</span></li>
+          </ul>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Puodelis</th><th scope="col">Dubenėlis</th><th scope="col">Turima</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Formavimas, val.</th><td>2</td><td>1</td><td>100</td></tr>
+                <tr><th scope="row">Molis, kg</th><td>2</td><td>3</td><td>180</td></tr>
+                <tr><th scope="row">Pelnas, EUR</th><td>24</td><td>20</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Matematinis modelis ir lygčių sistema</span></h4>
+          \[ \begin{gathered} P = 24x + 20y \to \max \\[4pt] \begin{cases} 2x + y \leq 100 \\ 2x + 3y \leq 180 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>Įvedę tariamus kintamuosius \(s_1\) (nepanaudotos formavimo valandos) ir \(s_2\) (nepanaudotas molis, kg), gauname:</p>
+          \[ \begin{cases} 2x + y + s_1 = 100 \\ 2x + 3y + s_2 = 180 \\ -24x - 20y + P = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pradinė lentelė ir 1 iteracijos pasirinkimas</span></h4>
+          <p>Kintamieji du, apribojimai du, todėl lentelėje yra stulpeliai \(x, y \mid s_1, s_2 \mid P \mid n\) ir trys eilutės. Didžiausio modulio neigiamas tikslo funkcijos eilutės elementas yra \(-24\), todėl pagrindinis stulpelis yra \(x\). Iš dalmenų \(100 : 2 = 50\) ir \(180 : 2 = 90\) mažesnis priklauso pirmajai eilutei, todėl pagrindinis elementas yra 2:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">2</td>
+<td>1</td>
+<td class="g">1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">100</td>
+<td class="ann">: 2</td>
+<td class="ann">100 : 2 = 50</td>
+</tr>
+<tr>
+<td class="pc">2</td>
+<td>3</td>
+<td class="g">0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">180</td>
+<td class="ann"></td>
+<td class="ann">180 : 2 = 90</td>
+</tr>
+<tr class="tf">
+<td class="pc">−24</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>1 iteracija: lentelės pertvarkymas</span></h4>
+          <p>Pirmąją eilutę dalijame iš 2, o kitus \(x\) stulpelio elementus paverčiame nuliais: antrajai eilutei daugiklis \((-2)\), tikslo funkcijos eilutei – \((24)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">1</td>
+<td>0,5</td>
+<td class="g">0,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">50</td>
+<td class="ann">(−2)</td>
+<td class="ann">(24)</td>
+</tr>
+<tr>
+<td class="pc">2</td>
+<td>3</td>
+<td class="g">0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">180</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td class="pc">−24</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0,5</td>
+<td class="g">0,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">50</td>
+</tr>
+<tr>
+<td>0</td>
+<td>2</td>
+<td class="g">−1</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">80</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>−8</td>
+<td class="g">12</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1200</td>
+</tr>
+</tbody></table></div>
+          <p>Dabar \(x\) įtrauktas į planą, \(s_1\) pašalintas: \(x = 50\), \(s_2 = 80\), \(P = 1200\). Tikslo funkcijos eilutėje dar yra neigiamas elementas \(-8\), todėl planą galima pagerinti.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>2 iteracija: pasirinkimas</span></h4>
+          <p>Neigiamas elementas \(-8\) yra \(y\) stulpelyje, todėl jis – pagrindinis. Dalmenys yra \(50 : 0{,}5 = 100\) ir \(80 : 2 = 40\); mažesnis priklauso antrajai eilutei, todėl pagrindinis elementas yra 2:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td class="pc">0,5</td>
+<td class="g">0,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">50</td>
+<td class="ann"></td>
+<td class="ann">50 : 0,5 = 100</td>
+</tr>
+<tr class="pr">
+<td>0</td>
+<td class="pc pe">2</td>
+<td class="g">−1</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">80</td>
+<td class="ann">: 2</td>
+<td class="ann">80 : 2 = 40</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td class="pc">−8</td>
+<td class="g">12</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1200</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>2 iteracija: lentelės pertvarkymas</span></h4>
+          <p>Antrąją eilutę dalijame iš 2, o kitų eilučių \(y\) stulpelio elementus paverčiame nuliais daugikliais \((-0{,}5)\) ir \((8)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td class="pc">0,5</td>
+<td class="g">0,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">50</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+</tr>
+<tr class="pr">
+<td>0</td>
+<td class="pc pe">1</td>
+<td class="g">−0,5</td>
+<td>0,5</td>
+<td class="g">0</td>
+<td class="g">40</td>
+<td class="ann">(−0,5)</td>
+<td class="ann">(8)</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td class="pc">−8</td>
+<td class="g">12</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1200</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td class="g">0,75</td>
+<td>−0,25</td>
+<td class="g">0</td>
+<td class="g">30</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td class="g">−0,5</td>
+<td>0,5</td>
+<td class="g">0</td>
+<td class="g">40</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>0</td>
+<td class="g">8</td>
+<td>4</td>
+<td class="g">1</td>
+<td class="g">1520</td>
+</tr>
+</tbody></table></div>
+          <p>Neigiamų elementų nebeliko, todėl ši lentelė optimali.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Galutinės lentelės skaitymas</span></h4>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="bc">\(x\)</th>
+<th scope="col" class="bc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td class="bc">1</td>
+<td class="bc">0</td>
+<td class="g">0,75</td>
+<td>−0,25</td>
+<td class="g">0</td>
+<td class="g nv">30</td>
+</tr>
+<tr>
+<td class="bc">0</td>
+<td class="bc">1</td>
+<td class="g">−0,5</td>
+<td>0,5</td>
+<td class="g">0</td>
+<td class="g nv">40</td>
+</tr>
+<tr class="tf">
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g sp">8</td>
+<td class="sp">4</td>
+<td class="g">1</td>
+<td class="g pv">1520</td>
+</tr>
+</tbody></table></div>
+          <ul class="read-list">
+            <li class="r-bc"><strong>Kiekiai.</strong> Vienetiniai yra \(x\) ir \(y\) stulpeliai, todėl \(x = 30\) ir \(y = 40\); \(s_1\) ir \(s_2\) stulpeliai nėra vienetiniai, todėl \(s_1 = s_2 = 0\).</li>
+            <li class="r-pv"><strong>Didžiausias pelnas:</strong> \(P = 1520\). Patikriname: \(24\cdot 30 + 20\cdot 40 = 720 + 800 = 1520\).</li>
+            <li class="r-sp"><strong>Šešėlinės kainos:</strong> po \(s_1\) ir \(s_2\) esantys elementai 8 ir 4.</li>
+            <li><strong>Nepanaudoti ištekliai:</strong> \(s_1 = s_2 = 0\) – abu ištekliai panaudojami iki paskutinio vieneto: \(2\cdot 30 + 40 = 100\) formavimo valandų ir \(2\cdot 30 + 3\cdot 40 = 180\)&nbsp;kg molio.</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Dirbtuvė turėtų pagaminti 30 puodelių ir 40 dubenėlių; \(P_{\max}(30;\, 40) = 1520\) eurų per mėnesį. Nė vieno ištekliaus nelieka: panaudojamos visos 100 formavimo valandų ir visi 180&nbsp;kg molio. Šešėlinės kainos yra 8 eurai už formavimo valandą ir 4 eurai už molio kilogramą – viena papildoma formavimo valanda pelną padidintų 8 eurais, o vienas papildomas molio kilogramas – 4 eurais.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 3 pavyzdys (krepšių siuvimo dirbtuvė) -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Krepšių siuvimo dirbtuvės planas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Dirbtuvė siuva kuprines ir rankines per petį. Kiekvienai kuprinei ir kiekvienai rankinei per petį reikia 2&nbsp;m² drobės. Kuprinei reikia 1 siuvimo valandos ir 3 apdailos valandų, rankinei per petį – 2 siuvimo valandų ir 1 apdailos valandos. Kiekvieną savaitę dirbtuvė turi 100&nbsp;m² drobės, 90 siuvimo valandų ir 105 apdailos valandas. Pelnas už kuprinę yra 20 eurų, už rankinę per petį – 30 eurų. Kiek kiekvienos rūšies krepšių reikėtų pasiūti per savaitę, kad pelnas būtų didžiausias? Ar lieka nepanaudotų išteklių? Raskite šešėlines kainas.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kintamieji ir duomenys</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per savaitę pasiuvamų kuprinių skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– per savaitę pasiuvamų rankinių per petį skaičius.</span></li>
+          </ul>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Kuprinė</th><th scope="col">Rankinė per petį</th><th scope="col">Turima</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Drobė, m²</th><td>2</td><td>2</td><td>100</td></tr>
+                <tr><th scope="row">Siuvimas, val.</th><td>1</td><td>2</td><td>90</td></tr>
+                <tr><th scope="row">Apdaila, val.</th><td>3</td><td>1</td><td>105</td></tr>
+                <tr><th scope="row">Pelnas, EUR</th><td>20</td><td>30</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Matematinis modelis ir lygčių sistema</span></h4>
+          \[ \begin{gathered} P = 20x + 30y \to \max \\[4pt] \begin{cases} 2x + 2y \leq 100 \\ x + 2y \leq 90 \\ 3x + y \leq 105 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>Abiem gaminiams reikia po 2&nbsp;m² drobės, todėl kyla pagunda pirmąjį apribojimą padalyti iš 2. Į lentelę jis įrašomas <strong>nepakeistas</strong>, kad tariamas kintamasis reikštų kvadratinius metrus, o šešėlinė kaina – pelną už papildomą kvadratinį metrą (<a href="#eiga">žr. sprendimo eigą</a>).</p>
+          \[ \begin{cases} 2x + 2y + s_1 = 100 \\ x + 2y + s_2 = 90 \\ 3x + y + s_3 = 105 \\ -20x - 30y + P = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pradinė lentelė ir 1 iteracijos pasirinkimas</span></h4>
+          <p>Pagrindinis stulpelis yra \(y\) (\(-30\) yra didžiausio modulio neigiamas elementas), o iš dalmenų 50, 45 ir 105 mažiausias priklauso antrajai eilutei:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td class="pc">2</td>
+<td class="g">1</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">100</td>
+<td class="ann"></td>
+<td class="ann">100 : 2 = 50</td>
+</tr>
+<tr class="pr">
+<td>1</td>
+<td class="pc pe">2</td>
+<td class="g">0</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">90</td>
+<td class="ann">: 2</td>
+<td class="ann">90 : 2 = 45</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="pc">1</td>
+<td class="g">0</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">105</td>
+<td class="ann"></td>
+<td class="ann">105 : 1 = 105</td>
+</tr>
+<tr class="tf">
+<td>−20</td>
+<td class="pc">−30</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>1 iteracija: lentelės pertvarkymas</span></h4>
+          <p>Antrąją eilutę dalijame iš 2. Pirmosios eilutės elementas paverčiamas nuliu daugikliu \((-2)\), nes pagrindiniame stulpelyje yra 2, trečiosios – daugikliu \((-1)\), o tikslo funkcijos eilutės – \((30)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td class="pc">2</td>
+<td class="g">1</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">100</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+<tr class="pr">
+<td>0,5</td>
+<td class="pc pe">1</td>
+<td class="g">0</td>
+<td>0,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">45</td>
+<td class="ann">(−2)</td>
+<td class="ann">(−1)</td>
+<td class="ann">(30)</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="pc">1</td>
+<td class="g">0</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">105</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td>−20</td>
+<td class="pc">−30</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">10</td>
+</tr>
+<tr>
+<td>0,5</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">45</td>
+</tr>
+<tr>
+<td>2,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>−0,5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">60</td>
+</tr>
+<tr class="tf">
+<td>−5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>15</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1350</td>
+</tr>
+</tbody></table></div>
+          <p>Dabar \(y = 45\), \(s_1 = 10\), \(s_3 = 60\), \(P = 1350\). Tikslo funkcijos eilutėje dar yra \(-5\) po \(x\), todėl atliekama antroji iteracija.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>2 iteracija: pasirinkimas</span></h4>
+          <p>Pagrindinis stulpelis yra \(x\). Dalmenys yra \(10 : 1 = 10\), \(45 : 0{,}5 = 90\) ir \(60 : 2{,}5 = 24\); mažiausias – pirmojoje eilutėje, o pagrindinis elementas yra 1:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">10</td>
+<td class="ann">: 1</td>
+<td class="ann">10 : 1 = 10</td>
+</tr>
+<tr>
+<td class="pc">0,5</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">45</td>
+<td class="ann"></td>
+<td class="ann">45 : 0,5 = 90</td>
+</tr>
+<tr>
+<td class="pc">2,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>−0,5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">60</td>
+<td class="ann"></td>
+<td class="ann">60 : 2,5 = 24</td>
+</tr>
+<tr class="tf">
+<td class="pc">−5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>15</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1350</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>2 iteracija: lentelės pertvarkymas</span></h4>
+          <p>Pagrindinis elementas jau lygus vienetui, todėl dalyti nereikia – iš karto atliekami eilučių pertvarkymai su daugikliais \((-0{,}5)\), \((-2{,}5)\) ir \((5)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simpleksų lentelė su pastabomis">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">10</td>
+<td class="ann">(−0,5)</td>
+<td class="ann">(−2,5)</td>
+<td class="ann">(5)</td>
+</tr>
+<tr>
+<td class="pc">0,5</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">45</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+<td class="ann">│</td>
+</tr>
+<tr>
+<td class="pc">2,5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>−0,5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">60</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td class="pc">−5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>15</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1350</td>
+<td class="ann"></td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">10</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td class="g">−0,5</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">40</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td class="g">−2,5</td>
+<td>2</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">35</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>0</td>
+<td class="g">5</td>
+<td>10</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1400</td>
+</tr>
+</tbody></table></div>
+          <p>Tikslo funkcijos eilutėje nėra neigiamų elementų, todėl lentelė optimali.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Galutinės lentelės skaitymas</span></h4>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="bc">\(x\)</th>
+<th scope="col" class="bc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="bc">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td class="bc">1</td>
+<td class="bc">0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td class="bc">0</td>
+<td class="g">0</td>
+<td class="g nv">10</td>
+</tr>
+<tr>
+<td class="bc">0</td>
+<td class="bc">1</td>
+<td class="g">−0,5</td>
+<td>1</td>
+<td class="bc">0</td>
+<td class="g">0</td>
+<td class="g nv">40</td>
+</tr>
+<tr>
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g">−2,5</td>
+<td>2</td>
+<td class="bc">1</td>
+<td class="g">0</td>
+<td class="g nv">35</td>
+</tr>
+<tr class="tf">
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g sp">5</td>
+<td class="sp">10</td>
+<td class="bc sp">0</td>
+<td class="g">1</td>
+<td class="g pv">1400</td>
+</tr>
+</tbody></table></div>
+          <ul class="read-list">
+            <li class="r-bc"><strong>Kiekiai.</strong> Vienetiniai \(x\), \(y\) ir \(s_3\) stulpeliai duoda \(x = 10\), \(y = 40\) ir \(s_3 = 35\), o \(s_1 = s_2 = 0\).</li>
+            <li class="r-pv"><strong>Didžiausias pelnas:</strong> \(P = 1400\). Patikriname: \(20\cdot 10 + 30\cdot 40 = 200 + 1200 = 1400\).</li>
+            <li class="r-sp"><strong>Šešėlinės kainos:</strong> drobės – 5, siuvimo – 10, apdailos – 0.</li>
+            <li><strong>Nepanaudoti ištekliai:</strong> drobė ir siuvimo laikas panaudojami visi, lieka 35 apdailos valandos. Kaip visada, lieka būtent to ištekliaus, kurio šešėlinė kaina lygi 0.</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Dirbtuvė turėtų pasiūti 10 kuprinių ir 40 rankinių per petį; \(P_{\max}(10;\, 40) = 1400\) eurų per savaitę. Panaudojami visi 100&nbsp;m² drobės ir visos 90 siuvimo valandų, o 35 apdailos valandos lieka nepanaudotos. Šešėlinės kainos: 5 eurai už drobės kvadratinį metrą, 10 eurų už siuvimo valandą ir 0 už apdailą. Vienas papildomas drobės kvadratinis metras pelną padidintų 5 eurais, o viena papildoma siuvimo valanda – 10 eurų; papildomas apdailos laikas pelno nepadidintų, nes jo ir taip lieka.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: apibrėžkite kintamuosius, sudarykite matematinį modelį, pradinę simpleksų lentelę, parodykite pagrindinį stulpelį, dalmenis ir pertvarkius, o iš galutinės lentelės perskaitykite atsakymus. Atsakyme pateikti kintamieji, matematinis modelis ir galutiniai atsakymai – pagal juos pasitikrinkite. Kiekvienas uždavinys išsprendžiamas per dvi iteracijas.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Metalo dirbtuvė gamina sodo vartus ir turėklų sekcijas. Vieniems vartams pagaminti reikia 2 pjovimo valandų, 2 suvirinimo valandų ir 1 dažymo valandos; vienai turėklų sekcijai – 1 pjovimo valandos, 3 suvirinimo valandų ir 3 dažymo valandų. Per savaitę dirbtuvė gali skirti 100 pjovimo valandų, 180 suvirinimo valandų ir 160 dažymo valandų. Vienų vartų pelnas yra 30 eurų, o vienos turėklų sekcijos – 25 eurai.</p>
+          <ol type="a">
+            <li>Kiek vartų ir turėklų sekcijų dirbtuvė turėtų pagaminti per savaitę, kad gautų didžiausią pelną? Koks yra didžiausias pelnas?</li>
+            <li>Kiek ir kokių resursų lieka nepanaudota?</li>
+            <li>Kokios yra trijų resursų šešėlinės kainos? Paaiškinkite jų prasmę dirbtuvei.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per savaitę pagaminamų vartų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– per savaitę pagaminamų turėklų sekcijų skaičius.</span></li>
+          </ul>
+          <p><strong>Matematinis modelis:</strong></p>
+          \[ \begin{gathered} P = 30x + 25y \to \max \\[4pt] \begin{cases} 2x + y \leq 100 \\ 2x + 3y \leq 180 \\ x + 3y \leq 160 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Atsakymas.</strong> a) Didžiausia tikslo funkcijos reikšmė yra</p>
+          \[ P_{\max}(30;\, 40) = 1900 \]
+          <p>Dirbtuvė turėtų per savaitę pagaminti 30 vartų ir 40 turėklų sekcijų; tuomet pelnas būtų 1900 eurų.</p>
+          <p>b) Galutinėje simpleksų lentelėje \(s_1 = s_2 = 0\) ir \(s_3 = 10\). Pjovimo ir suvirinimo darbo laikas visiškai išnaudojamas, o 10 dažymo valandų lieka nepanaudota.</p>
+          <p>c) Galutinės simpleksų lentelės tikslo funkcijos eilutėje, nepanaudotų resursų kiekių stulpeliuose, pateiktos šešėlinės kainos yra 10, 5 ir 0 eurų. Viena papildoma pjovimo valanda padidintų pelną 10 eurų, o viena papildoma suvirinimo valanda – 5 eurais. Papildoma dažymo valanda pelno nepadidintų, nes jau yra 10 nepanaudotų dažymo valandų. Jei dirbtuvė gali papildomai įsigyti tik vieno resurso, reikėtų rinktis pjovimo laiką.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kosmetikos gamintojas partijomis gamina dušo gelį, šampūną ir rankų kremą. Vienai dušo gelio partijai pagaminti reikia 2 maišymo valandų, 1 išpilstymo valandos ir 2 pakavimo valandų; vienai šampūno partijai – 1 maišymo valandos, 1 išpilstymo valandos ir 2 pakavimo valandų; vienai rankų kremo partijai – 1 maišymo valandos, 2 išpilstymo valandų ir 3 pakavimo valandų. Per mėnesį gamintojas gali skirti 130 maišymo valandų, 160 išpilstymo valandų ir 270 pakavimo valandų. Vienos dušo gelio partijos pelnas yra 20 eurų, vienos šampūno partijos – 25 eurai, o vienos rankų kremo partijos – 40 eurų.</p>
+          <ol type="a">
+            <li>Kiek kiekvieno produkto partijų reikėtų pagaminti per mėnesį, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?</li>
+            <li>Kiek ir kokių resursų lieka nepanaudota?</li>
+            <li>Kokios yra trijų resursų šešėlinės kainos? Paaiškinkite jų prasmę gamintojui.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Kintamieji:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– per mėnesį pagaminamų dušo gelio partijų skaičius;</span></li>
+            <li><span class="sym">\(y\)</span><span>– šampūno partijų skaičius;</span></li>
+            <li><span class="sym">\(z\)</span><span>– rankų kremo partijų skaičius.</span></li>
+          </ul>
+          <p><strong>Matematinis modelis:</strong></p>
+          \[ \begin{gathered} P = 20x + 25y + 40z \to \max \\[4pt] \begin{cases} 2x + y + z \leq 130 \\ x + y + 2z \leq 160 \\ 2x + 2y + 3z \leq 270 \\ x;\, y;\, z \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Atsakymas.</strong> a) Didžiausia tikslo funkcijos reikšmė yra</p>
+          \[ P_{\max}(0;\, 60;\, 50) = 3500 \]
+          <p>Gamintojas turėtų visai negaminti dušo gelio, o per mėnesį pagaminti 60 šampūno partijų ir 50 rankų kremo partijų; tuomet pelnas būtų 3500 eurų. Dušo gelis į gamybos planą neįtraukiamas: jam reikalingos darbo valandos yra vertingesnės gaminant kitus du produktus.</p>
+          <p>b) Galutinėje simpleksų lentelėje \(s_1 = 20\) ir \(s_2 = s_3 = 0\). Išpilstymo ir pakavimo darbo laikas visiškai išnaudojamas, o 20 maišymo valandų lieka nepanaudota.</p>
+          <p>c) Šešėlinės kainos tikslo funkcijos eilutėje yra 0, 5 ir 10 eurų. Papildoma maišymo valanda pelno nepadidintų, nes 20 maišymo valandų lieka nepanaudota. Papildoma išpilstymo valanda padidintų pelną 5 eurais, o papildoma pakavimo valanda – 10 eurų. Pakavimo laikas yra labiausiai šį planą ribojantis resursas.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">5 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">4 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

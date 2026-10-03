@@ -27,6 +27,7 @@ lt/                            lietuviški puslapiai
   tema-4-minimizavimas.html    3 skyrius: standartiniai minimizavimo uždaviniai
   tema-4-nestandartiniai.html  4 skyrius: nestandartiniai uždaviniai
   tema-5.html                  5 tema: simpleksų metodo esmė, pradinė lentelė, iteracija, dualusis uždavinys + 2 taikymų skyriai
+  tema-5-maksimizavimas.html   1 skyrius: standartiniai maksimizavimo uždaviniai (simpleksų lentelės, galutinės lentelės skaitymas)
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -49,7 +50,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=26` ir `site.js?v=26`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=27` ir `site.js?v=27`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
@@ -121,7 +122,7 @@ Grafikų užrašai (ašys, legenda) imami iš `site.js` žodyno abiem kalbomis. 
 
 **Taikymai ir skyriai.** Visose temose temos puslapio skiltis su kortelėmis vadinama „Taikymai“ (`id="taikymai"`), o kiekvienas taikymų puslapis – skyriumi: kortelėse rodoma „1 skyrius, 2 skyrius…“ (pagal eilę `MODELS` sąraše), apatinė nuoroda – „Kitas skyrius“. Skyriaus puslapio viršuje rašoma `<span class="eyebrow">N tema · Taikymai · M skyrius</span>`, įžangoje – „Šiame skyriuje…“, šaltinių bloke – „Daugiau informacijos apie šį skyrių rasite:“.
 
-**Simpleksų lentelė (5 tema).** `<table class="vtable sx-tbl">`: grupės pradžios langeliams klasė `g` (vertikali linija), tikslo funkcijos eilutei `tr.tf` (linija viršuje), tariamų kintamųjų vienetinei matricai `td.idb`, pagrindiniam stulpeliui `pc`, pagrindinei eilutei `tr.pr`, pagrindiniam elementui `pc pe`, dalmenims ir pertvarkiams – `td.ann`; legendai `ul.sx-legend`. Pertvarkių rodyklių schema – `vtable arr-tbl`; iteracijos eiga – `ol.flow` su paskutiniu `li.flow-q`.
+**Simpleksų lentelė (5 tema).** `<table class="vtable sx-tbl">`: grupės pradžios langeliams klasė `g` (vertikali linija), tikslo funkcijos eilutei `tr.tf` (linija viršuje), tariamų kintamųjų vienetinei matricai `td.idb`, pagrindiniam stulpeliui `pc`, pagrindinei eilutei `tr.pr`, pagrindiniam elementui `pc pe`, dalmenims ir pertvarkiams – `td.ann`; legendai `ul.sx-legend`. Pertvarkių rodyklių schema – `vtable arr-tbl`; iteracijos eiga – `ol.flow` su paskutiniu `li.flow-q`. Galutinės lentelės skaitymui: vienetiniai stulpeliai `bc`, jų kintamųjų reikšmės `td.nv`, didžiausia tikslo funkcijos reikšmė `td.pv`, šešėlinės kainos `td.sp` (legendoje `sw-bc`, `sw-nv`, `sw-pv`, `sw-sp`), o paaiškinimų sąrašas – `ul.read-list` su `li.r-bc`, `li.r-pv`, `li.r-sp`. Lentelės su dalmenimis ar daugikliais dešinėje gali būti platesnės už telefono ekraną, todėl jų apvalkalas yra `<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="…">` – lentelė slenkama į šoną, o ne spaudžiama.
 
 **TP brėžinys (4 tema).** `<div data-widget="lp-chart" data-spec='{"x":[min,max,padala,užrašai kas k],"y":[…],"nn":"xy","c":[{"a":2,"b":3,"s":"le","r":12,"lab":"2x + 3y = 12","col":1,"lt":0.85,"arr":[0.2,0.7]}],"pts":[{"x":2,"y":4,"lab":"A(2; 4)","p":"ne","hi":true}],"test":[0,0]}'></div>` – nubrėžia ašis su vienetine atkarpa, tiesę \(ax + by = r\) su rodyklėmis į sprendinių pusę (`s`: `le` ≤, `ge` ≥), užrašą `lab` (`lt` – vieta 0–1, `lo` – poslinkis, `la` – lygiavimas), nuspalvina visų apribojimų ir `nn` sąlygų sankirtą, pažymi viršūnes (`p` – užrašo kryptis n, ne, e, se, s, sw, w, nw). Papildomai: `"maxh":420` – didesnis brėžinio aukštis, kai \(y\) intervalas ilgas; `"free":true` – skirtingi ašių masteliai (kai aibė labai maža, palyginti su ašių intervalais); `"rot":true` – tiesės užrašas pasukamas lygiagrečiai tiesei (tinka, kai šalia tiesės mažai vietos). Vieno pavyzdžio brėžiniams naudokite tuos pačius `x`, `y` ir tiesių spalvas `col`.
 

@@ -951,3 +951,20 @@ svg .hp-out { font-family: KaTeX_Main, "Times New Roman", serif; font-size: 15px
 .vtable.sx-tbl tr.pr th, .vtable.sx-tbl .tc { background: color-mix(in srgb, var(--exam) 12%, transparent); }
 .vtable.sx-tbl tr.tf td.ann { border-top: 0; }
 .sx-legend { margin-bottom: 12px; }
+.vtable.sx-tbl th.bc, .vtable.sx-tbl td.bc { background: var(--success-soft); }
+.vtable.sx-tbl td.bc { color: var(--success); font-weight: 700; }
+.vtable.sx-tbl td.nv { background: var(--success-soft); color: var(--success); font-weight: 700; outline: 2px solid var(--success); outline-offset: -2px; }
+.vtable.sx-tbl td.pv { background: var(--accent-soft); color: var(--accent-strong); font-weight: 800; outline: 2px solid var(--accent-strong); outline-offset: -2px; }
+.vtable.sx-tbl td.sp { background: var(--exam-soft); color: var(--exam); font-weight: 700; outline: 2px solid var(--exam); outline-offset: -2px; }
+.sx-legend .sw-bc { background: var(--success-soft); outline: 1px solid var(--success); }
+.sx-legend .sw-nv { background: var(--success-soft); outline: 2px solid var(--success); outline-offset: -2px; }
+.sx-legend .sw-pv { background: var(--accent-soft); outline: 2px solid var(--accent-strong); outline-offset: -2px; }
+.sx-legend .sw-sp { background: var(--exam-soft); outline: 2px solid var(--exam); outline-offset: -2px; }
+.tbl-wrap.sx-scroll { padding-bottom: 4px; }
+.scroll-hint { font-size: .84rem; color: var(--muted); text-align: center; margin: 4px 0 0; }
+@media (min-width: 700px) { .scroll-hint { display: none; } }
+.read-list { list-style: none; padding: 0; margin: 10px 0 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.read-list li { padding: 8px 12px; border-radius: 10px; background: var(--surface-2); border-left: 4px solid var(--border); }
+.read-list li.r-bc { border-left-color: var(--success); }
+.read-list li.r-pv { border-left-color: var(--accent-strong); }
+.read-list li.r-sp { border-left-color: var(--exam); }
