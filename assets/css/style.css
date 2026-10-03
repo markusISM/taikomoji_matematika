@@ -729,3 +729,46 @@ svg .node { fill: var(--surface); stroke: var(--text); stroke-width: 1.5; }
 .mchain .vec { flex: none; min-width: 34px; font-size: 1.1rem; color: var(--accent-strong); }
 .mchain .tr { display: flex; align-items: center; gap: 12px; padding: 4px 0 4px 22px; color: var(--muted); font-size: .92rem; }
 .mchain .arr { font-size: 1.25rem; line-height: 1; color: var(--accent-strong); }
+
+/* ---------- Tiesinių lygčių sistemos (3 tema) ---------- */
+.katex .ha { color: var(--accent-strong); }
+.rowcalc { border-collapse: collapse; margin: 10px auto 4px; font-variant-numeric: tabular-nums; font-size: .9rem; }
+.rowcalc th { text-align: left; font-weight: 600; font-size: .8rem; color: var(--muted); padding: 3px 10px 3px 0; white-space: nowrap; }
+.rowcalc td { text-align: right; padding: 3px 7px; min-width: 2.1em; white-space: nowrap; }
+.rowcalc td.rhs { border-left: 1.5px solid var(--muted); padding-left: 9px; }
+.rowcalc tr.res th, .rowcalc tr.res td { border-top: 2px solid var(--border); font-weight: 700; color: var(--text); padding-top: 5px; }
+.rowcalc td.z { color: var(--chart-2); }
+.mats .arrow .katex { font-size: 1em; }
+.scheme { gap: 10px 14px; }
+.phases { display: grid; gap: 10px; margin: 14px 0 0; }
+@media (min-width: 560px) { .phases { grid-template-columns: 1fr 1fr; } }
+.phase { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+.phase .ph-ico { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 700; }
+.phase strong { display: block; }
+.phase span:not(.ph-ico) { display: block; font-size: .92rem; color: var(--muted); }
+.phase-title { margin: 6px 0 10px; font-size: 1rem; color: var(--accent-strong); }
+.phase-title + .steps-list { margin-bottom: 4px; }
+.geo3 { display: grid; gap: 10px; margin: 14px 0 6px; }
+.geo3 figure { margin: 0; display: grid; grid-template-columns: 104px 1fr; gap: 12px; align-items: center; padding: 8px 12px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+.geo3 svg { display: block; width: 100%; height: auto; }
+.geo3 figcaption strong { display: block; font-size: .95rem; }
+.geo3 figcaption .sub { display: block; font-size: .86rem; color: var(--muted); }
+@media (min-width: 560px) {
+  .geo3 { grid-template-columns: repeat(3, 1fr); }
+  .geo3 figure { grid-template-columns: 1fr; text-align: center; padding: 10px; }
+  .geo3 svg { max-width: 150px; margin: 0 auto; }
+}
+svg .ln-wide { stroke: var(--chart); stroke-width: 8; stroke-opacity: .35; fill: none; stroke-linecap: round; }
+svg .ln2-dash { stroke: var(--chart-2); stroke-width: 3; stroke-dasharray: 7 5; fill: none; stroke-linecap: round; }
+.cases3 { gap: 16px 22px; }
+.cases3 .cap { text-align: center; }
+.vtable.count-tbl th, .vtable.count-tbl td { text-align: left; vertical-align: top; }
+.vtable.count-tbl tbody th { font-weight: 650; background: transparent; }
+.back-list { margin: 8px 0 0; padding-left: 1.2em; }
+.back-list li { margin: 0 0 6px; }
+@media (max-width: 440px) { .mats--sm .katex { font-size: .8em; } }
+@media (max-width: 560px) {
+  .mats--flow { flex-direction: column; gap: 4px; }
+  .mats--flow .arrow.rot .katex { display: inline-block; transform: rotate(90deg); }
+}
+@media (max-width: 440px) { .scheme .katex { font-size: .8em; } }

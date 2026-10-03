@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3 tema. Tiesinių lygčių sistemos · Taikomoji matematika</title>
+<meta name="description" content="Tiesinių lygčių sistema ir jos išplėstinė matrica, elementarieji pertvarkiai, Gauso metodas žingsnis po žingsnio ir sprendinių skaičius: vienintelis sprendinys, sprendinių nėra, be galo daug sprendinių.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=13">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=13"></script>
+</head>
+<body data-page="t3">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">3 tema</span>
+    <h1>Tiesinių lygčių sistemos</h1>
+    <ul class="jump">
+      <li><a href="#savokos">Sąvokos</a></li>
+      <li><a href="#gauso-metodas">Gauso metodas</a></li>
+      <li><a href="#sprendiniai">Sprendinių skaičius</a></li>
+      <li><a href="#taikymai">Taikymai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ SĄVOKOS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">Pagrindinės sąvokos</h2>
+
+    <!-- 1 -->
+    <article class="card concept" id="sistema">
+      <div class="concept-head"><span class="num">1</span><h3>Kas yra tiesinių lygčių sistema?</h3></div>
+      <p>Tiesinių lygčių sistemą sudaro kelios tiesinės lygtys su tais pačiais nežinomaisiais. Tiesinėje lygtyje nežinomieji yra tik pirmojo laipsnio: jie nekeliami laipsniu ir nedauginami vienas iš kito.</p>
+      <p><strong>Sistemos sprendinys</strong> – tokios nežinomųjų reikšmės, kurios tenkina <strong>visas</strong> sistemos lygtis vienu metu.</p>
+      <div class="example-box">
+        <span class="label">Pavyzdys</span>
+        \[ \begin{cases} 2x - 3y = -8 \\ 4x + y = -2 \end{cases} \]
+        <p>Pora \(x = -1\), \(y = 2\) yra šios sistemos sprendinys, nes tenkina abi lygtis:</p>
+        \[ \begin{aligned} 2\cdot(-1) - 3\cdot 2 &amp;= -8 \\ 4\cdot(-1) + 2 &amp;= -2 \end{aligned} \]
+        <p>Sprendinys užrašomas skliaustuose nežinomųjų tvarka: \((-1;\,2)\).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Bendrasis užrašas</h4>
+        <p>Trijų lygčių su trimis nežinomaisiais sistema bendruoju atveju užrašoma taip:</p>
+        <div class="formula">\[ \begin{cases} a_{11}x + a_{12}y + a_{13}z = b_1 \\ a_{21}x + a_{22}y + a_{23}z = b_2 \\ a_{31}x + a_{32}y + a_{33}z = b_3 \end{cases} \]</div>
+        <p>Koeficiento \(a_{ij}\) pirmasis indeksas \(i\) rodo lygties numerį, o antrasis \(j\) – nežinomojo numerį (1 – \(x\), 2 – \(y\), 3 – \(z\)). Skaičiai \(b_1\), \(b_2\), \(b_3\) yra lygčių dešiniosios pusės.</p>
+        <p class="tip">Indeksų tvarka tokia pati kaip <a href="tema-2.html#matrica">matricos elemento \(a_{ij}\)</a>: pirmiausia eilutė (lygtis), paskui stulpelis (nežinomasis).</p>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="card concept" id="isplestine-matrica">
+      <div class="concept-head"><span class="num">2</span><h3>Išplėstinė matrica</h3></div>
+      <p>Sistemos koeficientai perrašomi į <strong>išplėstinę matricą</strong>: kiekviena lygtis tampa viena matricos eilute, o lygčių dešiniosios pusės rašomos už vertikalaus brūkšnio. Nežinomieji nebėra rašomi, todėl skaičiuojant reikia pertvarkyti tik skaičius.</p>
+      <div class="mats mats--col">
+        <span>\(\begin{cases} \htmlClass{hc}{a_{11}}x + a_{12}y + a_{13}z = \htmlClass{hd}{b_1} \\ \htmlClass{hc}{a_{21}}x + a_{22}y + a_{23}z = \htmlClass{hd}{b_2} \\ \htmlClass{hc}{a_{31}}x + a_{32}y + a_{33}z = \htmlClass{hd}{b_3} \end{cases}\)</span>
+        <span class="arrow" aria-hidden="true">↓</span>
+        <span>\(\left(\begin{array}{ccc|c} \htmlClass{hc}{a_{11}} &amp; a_{12} &amp; a_{13} &amp; \htmlClass{hd}{b_1} \\ \htmlClass{hc}{a_{21}} &amp; a_{22} &amp; a_{23} &amp; \htmlClass{hd}{b_2} \\ \htmlClass{hc}{a_{31}} &amp; a_{32} &amp; a_{33} &amp; \htmlClass{hd}{b_3} \end{array}\right)\)</span>
+      </div>
+      <p class="formula-note" style="text-align:center">Žalsvai pažymėti nežinomojo \(x\) koeficientai – jie sudaro pirmąjį stulpelį. Oranžine spalva pažymėtos dešiniosios pusės – jos rašomos už brūkšnio.</p>
+
+      <div class="subtype">
+        <h4>Kaip perkelti koeficientus</h4>
+        <ul>
+          <li>Kiekviena lygtis – viena eilutė, kiekvienas nežinomasis – vienas stulpelis.</li>
+          <li>Nežinomuosius visose lygtyse rašykite ta pačia tvarka (pavyzdžiui, \(x, y, z, w\)).</li>
+          <li>Jei prieš nežinomąjį nėra skaičiaus, jo koeficientas yra \(1\) (arba \(-1\), jei prieš jį parašytas minusas).</li>
+          <li>Jei kurio nors nežinomojo lygtyje nėra, jo koeficientas yra \(0\) – nulio praleisti negalima.</li>
+          <li>Nežinomieji turi būti kairėje lygybės pusėje, o skaičiai – dešinėje. Jei nežinomasis parašytas dešinėje pusėje, pirmiausia jį perkelkite į kairę: pavyzdžiui, \(y = 2x\) užrašoma kaip \(-2x + y = 0\).</li>
+        </ul>
+      </div>
+
+      <div class="subtype">
+        <h4>Pavyzdys</h4>
+        <p>Sistemos su keturiais nežinomaisiais išplėstinė matrica:</p>
+        <div class="mats mats--col">
+          <span>\(\begin{cases} x - y - 4z + 9w = 22 \\ 2x - 3y + z + 5w = -3 \\ x + 2y - 4w = -3 \\ 3x - 2y - 5z + w = 3 \end{cases}\)</span>
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; \htmlClass{hd}{-1} &amp; -4 &amp; 9 &amp; 22 \\ 2 &amp; -3 &amp; \htmlClass{hd}{1} &amp; 5 &amp; -3 \\ \htmlClass{hd}{1} &amp; 2 &amp; \htmlClass{hd}{0} &amp; -4 &amp; -3 \\ 3 &amp; -2 &amp; -5 &amp; \htmlClass{hd}{1} &amp; 3 \end{array}\right)\)</span>
+        </div>
+        <p>Oranžine spalva pažymėti koeficientai, kurie lygtyse neparašyti: vienetai prieš nežinomuosius ir \(0\) trečiojoje eilutėje, nes trečiojoje lygtyje nėra \(z\). Stulpeliai iš eilės atitinka nežinomuosius \(x\), \(y\), \(z\), \(w\).</p>
+      </div>
+      <p class="tip">Išplėstinė matrica turi tiek eilučių, kiek sistemoje yra lygčių, ir vienu stulpeliu daugiau, nei yra nežinomųjų.</p>
+    </article>
+
+    <!-- 3 -->
+    <article class="card concept" id="pertvarkiai">
+      <div class="concept-head"><span class="num">3</span><h3>Elementarieji pertvarkiai</h3></div>
+      <p>Sistemos, turinčios tą pačią sprendinių aibę, yra <strong>ekvivalenčios</strong> (žymima \(\sim\)). Trys veiksmai nekeičia sistemos sprendinių aibės – tai <strong>elementarieji pertvarkiai</strong>:</p>
+
+      <div class="subtype">
+        <h4>1. Lygties dauginimas iš skaičiaus, nelygaus 0</h4>
+        <div class="mats mats--flow">
+          <span>\(\begin{cases} 2x - 3y = -8 &amp; \htmlClass{ha}{\vert\cdot(-2)} \\ 4x + y = -2 \end{cases}\)</span>
+          <span class="arrow" aria-hidden="true">\(\sim\)</span>
+          <span>\(\begin{cases} -4x + 6y = 16 \\ 4x + y = -2 \end{cases}\)</span>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>2. Lygčių keitimas vietomis</h4>
+        <div class="mats mats--flow">
+          <span>\(\begin{cases} 2x - 3y = -8 \\ 4x + y = -2 \end{cases}\)</span>
+          <span class="arrow" aria-hidden="true">\(\sim\)</span>
+          <span>\(\begin{cases} 4x + y = -2 \\ 2x - 3y = -8 \end{cases}\)</span>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>3. Lygties, padaugintos iš skaičiaus, nelygaus 0, pridėjimas prie kitos lygties</h4>
+        <div class="mats mats--flow">
+          <span>\(\begin{cases} 2x - 3y = -8 &amp; \htmlClass{ha}{\vert\cdot(-2)} \\ 4x + y = -2 &amp; \htmlClass{ha}{\downarrow} \end{cases}\)</span>
+          <span class="arrow" aria-hidden="true">\(\sim\)</span>
+          <span>\(\begin{cases} 2x - 3y = -8 \\ 0x + 7y = 14 \end{cases}\)</span>
+        </div>
+        <p>Pirmoji lygtis, padauginta iš \(-2\), pridedama prie antrosios: \((-4x + 6y) + (4x + y) = 16 + (-2)\), t. y. \(7y = 14\). Pirmoji lygtis lieka nepakitusi, o iš antrosios dingo \(x\).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Tie patys pertvarkiai išplėstinėje matricoje</h4>
+        <p>Išplėstinėje matricoje kiekviena lygtis yra eilutė, todėl pertvarkiai atliekami su eilutėmis. Atliekamas pertvarkis užrašomas šalia matricos: <strong>skaičius skliaustuose</strong> nurodo, iš ko dauginama eilutė, prie kurios jis parašytas, o <strong>rodyklė</strong> rodo eilutę, prie kurios pridedamas gautas rezultatas; žymuo \({:}\,k\) šalia eilutės reiškia, kad eilutė dalijama iš \(k\).</p>
+        <div class="mats mats--flow">
+          <span>\(\left(\begin{array}{cc|c} 2 &amp; -3 &amp; -8 \\ 4 &amp; 1 &amp; -2 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+          <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+          <span>\(\left(\begin{array}{cc|c} 2 &amp; -3 &amp; -8 \\ \htmlClass{hc}{0} &amp; 7 &amp; 14 \end{array}\right)\)</span>
+        </div>
+        <p>Nauja antroji eilutė gaunama stulpelis po stulpelio – įskaitant ir skaičių už brūkšnio:</p>
+        <table class="rowcalc">
+          <tr><th scope="row">2-oji eilutė</th><td>4</td><td>1</td><td class="rhs">−2</td></tr>
+          <tr><th scope="row">1-oji eilutė · (−2)</th><td>−4</td><td>6</td><td class="rhs">16</td></tr>
+          <tr class="res"><th scope="row">Nauja 2-oji eilutė</th><td class="z">0</td><td>7</td><td class="rhs">14</td></tr>
+        </table>
+        <p>Pakinta tik ta eilutė, į kurią rodo rodyklė. Eilutė, kurią dauginome, lieka tokia pati.</p>
+        <p>Antrojoje eilutėje liko vienas nežinomasis: \(7y = 14 \;\vert\, {:}\,7\), taigi \(y = 2\). Įstatę \(y = 2\) į pirmąją lygtį gauname \(2x - 3\cdot 2 = -8\), \(x = -1\) – tai jau matytas sprendinys \((-1;\,2)\). Pertvarkiais šalinti nežinomuosius, kol lieka lygtis su vienu nežinomuoju, – tai ir yra Gauso metodo idėja.</p>
+      </div>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Kodėl pertvarkiai nekeičia sprendinių?</summary>
+        <div class="more-body">
+          <p>Jei skaičiai tenkina abi lygtis, jie tenkina ir lygtį, gautą vieną lygtį padauginus iš skaičiaus ar pridėjus ją prie kitos. Be to, kiekvieną pertvarkį galima atšaukti: padalyti iš to paties skaičiaus, sukeisti lygtis atgal, atimti tą pačią lygtį. Todėl pertvarkant sprendinių neatsiranda ir jie neprarandami.</p>
+          <p>Dauginti iš \(0\) negalima, nes lygtis virstų \(0 = 0\) ir jos informacija būtų prarasta – tokio veiksmo atšaukti nebeįmanoma.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ GAUSO METODAS ============ -->
+  <section class="section" id="gauso-metodas" aria-labelledby="h-gauss">
+    <h2 id="h-gauss">Gauso metodas</h2>
+
+    <!-- 4 -->
+    <article class="card concept" id="ideja">
+      <div class="concept-head"><span class="num">4</span><h3>Metodo idėja: trikampis pavidalas</h3></div>
+      <p>Gauso metodo tikslas – pertvarkyti sistemą į <strong>trikampį pavidalą</strong>: elementariaisiais pertvarkiais visi išplėstinės matricos elementai po <a href="tema-2.html#istrizaine">pagrindine įstrižaine</a> paverčiami nuliais. Tam naudojami 1-asis ir 3-iasis pertvarkiai, o jei reikia – ir 2-asis (lygčių keitimas vietomis).</p>
+      <div class="mats mats--flow">
+        <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{a_{11}} &amp; a_{12} &amp; a_{13} &amp; b_1 \\ a_{21} &amp; \htmlClass{hd}{a_{22}} &amp; a_{23} &amp; b_2 \\ a_{31} &amp; a_{32} &amp; \htmlClass{hd}{a_{33}} &amp; b_3 \end{array}\right)\)</span>
+        <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+        <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; a''_{23} &amp; b''_2 \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; b'''_3 \end{array}\right)\)</span>
+      </div>
+      <p class="formula-note" style="text-align:center">Oranžine spalva pažymėta pagrindinė įstrižainė, žalsvai – po ja gauti nuliai. Brūkšneliai (\(a'\), \(b''\), …) rodo, kad po pertvarkių elementų reikšmės pasikeitė.</p>
+      <p>Paskutinė matrica atitinka trikampę sistemą:</p>
+      <div class="formula">\[ \left\{ \begin{aligned} x + a'_{12}y + a'_{13}z &amp;= b'_1 \\ y + a''_{23}z &amp;= b''_2 \\ z &amp;= b'''_3 \end{aligned} \right. \]</div>
+      <p>Tokią sistemą išspręsti lengva: paskutinėje lygtyje liko vienas nežinomasis \(z\). Jį įstačius į antrąją lygtį randamas \(y\), o įstačius \(y\) ir \(z\) į pirmąją – \(x\).</p>
+      <div class="phases">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">↓</span><div><strong>I. Tiesioginė eiga</strong><span>Iš viršaus į apačią: po pagrindine įstrižaine gaunami nuliai.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">↑</span><div><strong>II. Atbulinė eiga</strong><span>Iš apačios į viršų: nuo paskutinės lygties apskaičiuojamos visų nežinomųjų reikšmės.</span></div></div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="card concept" id="algoritmas">
+      <div class="concept-head"><span class="num">5</span><h3>Gauso metodo algoritmas</h3></div>
+      <h4 class="phase-title">I. Tiesioginė eiga</h4>
+      <ol class="steps-list">
+        <li>Jei pirmosios lygties pirmasis koeficientas lygus 0, tai ta lygtis sukeičiama vietomis su ta, kurios pirmasis koeficientas nelygus 0; šis koeficientas vadinamas <strong>pagrindiniu</strong>.</li>
+        <li>Pirmoji lygtis padalijama iš pagrindinio koeficiento.</li>
+        <li>Su pirmąja lygtimi pagal pirmą ir trečią elementariuosius pertvarkius pašalinami kitų lygčių pirmieji dėmenys.</li>
+        <li>Grįžtama į 1 žingsnį ir veiksmai kartojami su sistema, į kurią neįeina pirmoji lygtis.</li>
+        <li>Nežinomųjų šalinimas baigiamas, kai visi elementai po pagrindine įstrižaine tampa nuliai, o pagrindinės įstrižainės koeficientai – vienetai. Jei kuriame nors pertvarkymų žingsnyje gaunama lygtis \(0 = 0\), tai tą lygtį galima atmesti; jei gaunama beprasmė lygtis \(0 = a\), \(a \neq 0\), tai sistema sprendinių neturi.</li>
+      </ol>
+      <h4 class="phase-title">II. Atbulinė eiga</h4>
+      <ol class="steps-list" style="counter-reset: s 5">
+        <li>Pradedant nuo paskutinės lygties, nuosekliai apskaičiuojamos visų nežinomųjų reikšmės.</li>
+      </ol>
+      <p class="tip">Pagrindinis koeficientas dar vadinamas <strong>pagrindiniu elementu</strong>. Kai jis lygus 1, uždavinių sprendimo gairėse jis vadinamas <strong>vedančiuoju vienetu</strong>.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Bendroji schema: 3 lygtys su 3 nežinomaisiais</summary>
+        <div class="more-body">
+          <p>Taip algoritmas atrodo išplėstinėje matricoje. Pirmoji eilutė dalijama iš \(a_{11}\), tada su ja gaunami nuliai pirmajame stulpelyje; tas pats kartojama su antrąja eilute, o pabaigoje trečioji eilutė dalijama iš savo pagrindinio elemento:</p>
+          <div class="mats scheme mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{a_{11}} &amp; a_{12} &amp; a_{13} &amp; b_1 \\ a_{21} &amp; a_{22} &amp; a_{23} &amp; b_2 \\ a_{31} &amp; a_{32} &amp; a_{33} &amp; b_3 \end{array}\right)\begin{array}{l} \htmlClass{ha}{{:}\,a_{11}} \\ \phantom{0} \\ \phantom{0} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ a_{21} &amp; a_{22} &amp; a_{23} &amp; b_2 \\ a_{31} &amp; a_{32} &amp; a_{33} &amp; b_3 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-a_{21})} &amp; \htmlClass{ha}{(-a_{31})} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ \htmlClass{hc}{0} &amp; \htmlClass{hd}{a'_{22}} &amp; a'_{23} &amp; b'_2 \\ \htmlClass{hc}{0} &amp; a'_{32} &amp; a'_{33} &amp; b'_3 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,a'_{22}} \\ \phantom{0} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ 0 &amp; \htmlClass{hd}{1} &amp; a''_{23} &amp; b''_2 \\ 0 &amp; a'_{32} &amp; a'_{33} &amp; b'_3 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-a'_{32})} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ 0 &amp; 1 &amp; a''_{23} &amp; b''_2 \\ 0 &amp; \htmlClass{hc}{0} &amp; \htmlClass{hd}{a''_{33}} &amp; b''_3 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,a''_{33}} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ 0 &amp; 1 &amp; a''_{23} &amp; b''_2 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; b'''_3 \end{array}\right)\)</span>
+          </div>
+          <p>Kai pagrindinis elementas lygus 1, po juo esantis elementas paverčiamas nuliu pagrindinę eilutę padauginus iš <strong>priešingo</strong> skaičiaus: \(a_{21}\) panaikina daugiklis \((-a_{21})\), \(a_{31}\) – daugiklis \((-a_{31})\).</p>
+        </div>
+      </details>
+
+      <div class="subtype">
+        <h4>Praktiniai patarimai</h4>
+        <ul>
+          <li><strong>Daugiklis.</strong> Kai pagrindinis elementas lygus 1, po juo esantį skaičių \(a\) panaikina daugiklis \((-a)\): po vieneto esantį 2 – daugiklis \((-2)\), 4 – daugiklis \((-4)\).</li>
+          <li><strong>Keisti vietomis ar dalyti?</strong> Dažnai lengviau sukeisti eilutes vietomis negu dalyti: jei žemiau esanti eilutė reikiamoje vietoje turi 1, perkelkite ją aukštyn (žr. 4 pavyzdį).</li>
+          <li><strong>Kai dalijant gautųsi trupmenos,</strong> pagrindinės eilutės galima ir nedalyti. Svarbiausia gauti nulius po pagrindine įstrižaine: daugikliai parenkami taip, kad sudėjus gautume 0 (žr. 1 ir 2 pavyzdžius).</li>
+          <li><strong>Dešimtainės trupmenos.</strong> Jei lygtyje yra dešimtainių trupmenų ar procentų, pirmiausia visą eilutę padauginkite iš 10, 100 ar 1000. Tai irgi elementarusis pertvarkis, todėl sprendiniai nepasikeičia.</li>
+          <li><strong>Patikrinimas.</strong> Gautas reikšmes įstatykite į <em>pradines</em> lygtis – taip lengvai pastebėsite skaičiavimo klaidą.</li>
+        </ul>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Pamirštas skaičius už brūkšnio.</strong> Pertvarkis taikomas visai eilutei, įskaitant dešiniąją pusę.</li>
+            <li><strong>Pakeista ne ta eilutė.</strong> Pakinta tik eilutė, į kurią rodo rodyklė; eilutė, kurią dauginome, lieka tokia pati.</li>
+            <li><strong>Ženklo klaida.</strong> Dauginant iš neigiamo skaičiaus, pasikeičia visų eilutės elementų ženklai.</li>
+            <li><strong>Praleistas nulis.</strong> Jei nežinomojo lygtyje nėra, matricoje jo vietoje rašomas \(0\); be jo stulpeliai pasislenka.</li>
+            <li><strong>Atbulinė eiga nuo viršaus.</strong> Pradedama nuo paskutinės lygties, kurioje liko vienas nežinomasis.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tiesinių lygčių sistema. Pateikti sistemą tik išplėstinėje matricoje nepakanka.</li>
+            <li>Tiesinių lygčių sistemą būtina spręsti Gauso metodu. Būtina nurodyti, kokie veiksmai atliekami eliminuojant elementus po pagrindine įstrižaine.</li>
+            <li>Uždavinio sprendimo pabaigoje turi būti aiškiai pateiktas atsakymas.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: 3 lygtys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Trys lygtys su trimis nežinomaisiais</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        Gauso metodu išspręskite sistemą
+        \[ \begin{cases} x + y + 2z = -1 \\ 2x - y + 2z = -4 \\ 4x + y + 4z = -2 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išplėstinė matrica</span></h4>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 2 &amp; -1 \\ 2 &amp; -1 &amp; 2 &amp; -4 \\ 4 &amp; 1 &amp; 4 &amp; -2 \end{array}\right) \]
+          <p>Pirmasis pagrindinis elementas \(a_{11} = 1\), todėl keisti eilučių vietomis ar dalyti nereikia.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <p>Po vienetu esantį 2 panaikina daugiklis \((-2)\), o 4 – daugiklis \((-4)\). Pirmąją eilutę dauginame iš \(-2\) ir pridedame prie antrosios, tada dauginame iš \(-4\) ir pridedame prie trečiosios:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 2 &amp; -1 \\ 2 &amp; -1 &amp; 2 &amp; -4 \\ 4 &amp; 1 &amp; 4 &amp; -2 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ \htmlClass{hc}{0} &amp; -3 &amp; -2 &amp; -2 \\ \htmlClass{hc}{0} &amp; -3 &amp; -4 &amp; 2 \end{array}\right)\)</span>
+          </div>
+          <table class="rowcalc">
+            <tr><th scope="row">2-oji eilutė</th><td>2</td><td>−1</td><td>2</td><td class="rhs">−4</td></tr>
+            <tr><th scope="row">1-oji eilutė · (−2)</th><td>−2</td><td>−2</td><td>−4</td><td class="rhs">2</td></tr>
+            <tr class="res"><th scope="row">Nauja 2-oji eilutė</th><td class="z">0</td><td>−3</td><td>−2</td><td class="rhs">−2</td></tr>
+          </table>
+          <table class="rowcalc">
+            <tr><th scope="row">3-ioji eilutė</th><td>4</td><td>1</td><td>4</td><td class="rhs">−2</td></tr>
+            <tr><th scope="row">1-oji eilutė · (−4)</th><td>−4</td><td>−4</td><td>−8</td><td class="rhs">4</td></tr>
+            <tr class="res"><th scope="row">Nauja 3-ioji eilutė</th><td class="z">0</td><td>−3</td><td>−4</td><td class="rhs">2</td></tr>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Nulis antrajame stulpelyje</span></h4>
+          <p>Antrasis pagrindinis elementas yra \(a_{22} = -3\). Po juo taip pat yra \(-3\), todėl dalyti nereikia: pakanka antrąją eilutę padauginti iš \(-1\) ir pridėti prie trečiosios, nes \(-3 + (-1)\cdot(-3) = 0\).</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ 0 &amp; \htmlClass{hd}{-3} &amp; -2 &amp; -2 \\ 0 &amp; -3 &amp; -4 &amp; 2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ 0 &amp; -3 &amp; -2 &amp; -2 \\ 0 &amp; \htmlClass{hc}{0} &amp; -2 &amp; 4 \end{array}\right)\)</span>
+          </div>
+          <table class="rowcalc">
+            <tr><th scope="row">3-ioji eilutė</th><td>0</td><td>−3</td><td>−4</td><td class="rhs">2</td></tr>
+            <tr><th scope="row">2-oji eilutė · (−1)</th><td>0</td><td>3</td><td>2</td><td class="rhs">2</td></tr>
+            <tr class="res"><th scope="row">Nauja 3-ioji eilutė</th><td>0</td><td class="z">0</td><td>−2</td><td class="rhs">4</td></tr>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Trikampė sistema</span></h4>
+          <p>Visi elementai po pagrindine įstrižaine lygūs nuliui. Matricą vėl užrašome sistema:</p>
+          \[ \left\{ \begin{aligned} x + y + 2z &amp;= -1 \\ -3y - 2z &amp;= -2 \\ -2z &amp;= 4 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Atbulinė eiga</span></h4>
+          <p>Pradedame nuo paskutinės lygties ir kylame aukštyn:</p>
+          \[ \begin{aligned} -2z = 4 \;\vert\,{:}\,(-2) \quad&amp;\Longrightarrow\quad z = -2 \\ -3y - 2\cdot(-2) = -2 \quad&amp;\Longrightarrow\quad y = 2 \\ x + 2 + 2\cdot(-2) = -1 \quad&amp;\Longrightarrow\quad x = 1 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Patikrinimas</span></h4>
+          <p>Įstatome reikšmes į pradines lygtis:</p>
+          \[ \begin{aligned} 1 + 2 + 2\cdot(-2) &amp;= -1 \\ 2\cdot 1 - 2 + 2\cdot(-2) &amp;= -4 \\ 4\cdot 1 + 2 + 4\cdot(-2) &amp;= -2 \end{aligned} \]
+          <p>Visos trys lygybės teisingos.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ (x;\, y;\, z) = (1;\, 2;\, -2) \]
+          </div>
+          <p>Sistema turi vienintelį sprendinį.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: 4 lygtys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Keturios lygtys su keturiais nežinomaisiais</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        Gauso metodu išspręskite sistemą
+        \[ \begin{cases} x - y - 4z + 9w = 22 \\ 2x - 3y + z + 5w = -3 \\ x + 2y - 4w = -3 \\ 3x - 2y - 5z + w = 3 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išplėstinė matrica</span></h4>
+          <p>Šios sistemos išplėstinę matricą jau sudarėme <a href="#isplestine-matrica">2 sąvokoje</a>. Pirmasis pagrindinis elementas lygus 1.</p>
+          \[ \left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 2 &amp; -3 &amp; 1 &amp; 5 &amp; -3 \\ 1 &amp; 2 &amp; 0 &amp; -4 &amp; -3 \\ 3 &amp; -2 &amp; -5 &amp; 1 &amp; 3 \end{array}\right) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <p>Pirmąją eilutę dauginame iš \(-2\), \(-1\) ir \(-3\) ir pridedame atitinkamai prie 2-osios, 3-iosios ir 4-osios eilutės:</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 2 &amp; -3 &amp; 1 &amp; 5 &amp; -3 \\ 1 &amp; 2 &amp; 0 &amp; -4 &amp; -3 \\ 3 &amp; -2 &amp; -5 &amp; 1 &amp; 3 \end{array}\right)\begin{array}{ccc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-1)} &amp; \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ \htmlClass{hc}{0} &amp; -1 &amp; 9 &amp; -13 &amp; -47 \\ \htmlClass{hc}{0} &amp; 3 &amp; 4 &amp; -13 &amp; -25 \\ \htmlClass{hc}{0} &amp; 1 &amp; 7 &amp; -26 &amp; -63 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Nuliai antrajame stulpelyje</span></h4>
+          <p>Antrasis pagrindinis elementas yra \(-1\). Kad po juo esantys 3 ir 1 virstų nuliais, antrąją eilutę dauginame iš 3 ir pridedame prie trečiosios, o padauginę iš 1 – prie ketvirtosios: \(3 + 3\cdot(-1) = 0\), \(1 + 1\cdot(-1) = 0\).</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 0 &amp; \htmlClass{hd}{-1} &amp; 9 &amp; -13 &amp; -47 \\ 0 &amp; 3 &amp; 4 &amp; -13 &amp; -25 \\ 0 &amp; 1 &amp; 7 &amp; -26 &amp; -63 \end{array}\right)\begin{array}{cc} \phantom{0} &amp; \\ \htmlClass{ha}{(3)} &amp; \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 0 &amp; -1 &amp; 9 &amp; -13 &amp; -47 \\ 0 &amp; \htmlClass{hc}{0} &amp; 31 &amp; -52 &amp; -166 \\ 0 &amp; \htmlClass{hc}{0} &amp; 16 &amp; -39 &amp; -110 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Nulis trečiajame stulpelyje</span></h4>
+          <p>Trečiasis pagrindinis elementas yra 31, o po juo – 16. Dalijant iš 31 gautųsi trupmenos, todėl jų išvengiame: ketvirtąją eilutę dauginame iš 31 (1-asis pertvarkis), o trečiąją, padaugintą iš \(-16\), pridedame prie jos (3-iasis pertvarkis). Tada \(16\cdot 31 + (-16)\cdot 31 = 0\).</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 0 &amp; -1 &amp; 9 &amp; -13 &amp; -47 \\ 0 &amp; 0 &amp; \htmlClass{hd}{31} &amp; -52 &amp; -166 \\ 0 &amp; 0 &amp; 16 &amp; -39 &amp; -110 \end{array}\right)\begin{array}{cc} \phantom{0} &amp; \\ \phantom{0} &amp; \\ \htmlClass{ha}{(-16)} &amp; \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{(31)} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 0 &amp; -1 &amp; 9 &amp; -13 &amp; -47 \\ 0 &amp; 0 &amp; 31 &amp; -52 &amp; -166 \\ 0 &amp; 0 &amp; \htmlClass{hc}{0} &amp; -377 &amp; -754 \end{array}\right)\)</span>
+          </div>
+          <p>Nauja ketvirtoji eilutė (pirmieji du jos elementai lieka nuliai):</p>
+          \[ \begin{aligned} 16\cdot 31 + 31\cdot(-16) &amp;= 0 \\ -39\cdot 31 + (-52)\cdot(-16) &amp;= -377 \\ -110\cdot 31 + (-166)\cdot(-16) &amp;= -754 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Atbulinė eiga</span></h4>
+          <p>Matrica yra trikampio pavidalo. Pradedame nuo paskutinės eilutės ir kylame aukštyn:</p>
+          <ul class="back-list">
+            <li>4-oji eilutė: \(-377w = -754 \;\vert\,{:}\,(-377)\), todėl \(w = 2\);</li>
+            <li>3-ioji eilutė: \(31z - 52\cdot 2 = -166\), todėl \(z = -2\);</li>
+            <li>2-oji eilutė: \(-y + 9\cdot(-2) - 13\cdot 2 = -47\), todėl \(y = 3\);</li>
+            <li>1-oji eilutė: \(x - 3 - 4\cdot(-2) + 9\cdot 2 = 22\), todėl \(x = -1\).</li>
+          </ul>
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Patikrinimas</summary>
+            <div class="more-body">
+              \[ \begin{aligned} -1 - 3 - 4\cdot(-2) + 9\cdot 2 &amp;= 22 \\ 2\cdot(-1) - 3\cdot 3 + (-2) + 5\cdot 2 &amp;= -3 \\ -1 + 2\cdot 3 - 4\cdot 2 &amp;= -3 \\ 3\cdot(-1) - 2\cdot 3 - 5\cdot(-2) + 2 &amp;= 3 \end{aligned} \]
+            </div>
+          </details>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ (x;\, y;\, z;\, w) = (-1;\, 3;\, -2;\, 2) \]
+          </div>
+          <p>Sistema turi vienintelį sprendinį.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SPRENDINIŲ SKAIČIUS ============ -->
+  <section class="section" id="sprendiniai" aria-labelledby="h-sol">
+    <h2 id="h-sol">Sprendinių skaičius</h2>
+
+    <!-- 6 -->
+    <article class="card concept" id="trys-atvejai">
+      <div class="concept-head"><span class="num">6</span><h3>Trys galimi atvejai</h3></div>
+      <p>Tiesinių lygčių sistema gali turėti vienintelį sprendinį, neturėti sprendinių arba turėti be galo daug sprendinių. Kitų galimybių nėra: pavyzdžiui, sistema negali turėti lygiai dviejų sprendinių.</p>
+      <p>Tai lengva pamatyti, kai lygtys dvi, o nežinomieji du: kiekviena lygtis vaizduoja tiesę plokštumoje, o sprendinys – abiejų tiesių bendrą tašką.</p>
+      <div class="geo3">
+        <figure>
+          <svg viewBox="0 0 120 90" role="img" aria-label="Dvi tiesės susikerta viename taške">
+            <path class="ax" d="M8 82H114M12 86V6"/>
+            <path class="ln" d="M14 77L110 19.4"/>
+            <path class="ln2" d="M14 21L110 69"/>
+            <circle class="pt-hi" cx="60" cy="44" r="5"/>
+          </svg>
+          <figcaption><strong>Vienintelis sprendinys</strong><span class="sub">Tiesės susikerta viename taške.</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" role="img" aria-label="Dvi lygiagrečios tiesės">
+            <path class="ax" d="M8 82H114M12 86V6"/>
+            <path class="ln" d="M14 52L110 14"/>
+            <path class="ln2" d="M14 76L110 38"/>
+          </svg>
+          <figcaption><strong>Sprendinių nėra</strong><span class="sub">Tiesės lygiagrečios – bendro taško nėra.</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" role="img" aria-label="Dvi sutampančios tiesės">
+            <path class="ax" d="M8 82H114M12 86V6"/>
+            <path class="ln-wide" d="M14 72L110 20"/>
+            <path class="ln2-dash" d="M14 72L110 20"/>
+          </svg>
+          <figcaption><strong>Be galo daug sprendinių</strong><span class="sub">Tiesės sutampa – bendras kiekvienas taškas.</span></figcaption>
+        </figure>
+      </div>
+      <p>Kai nežinomieji trys, kiekviena lygtis vaizduoja plokštumą erdvėje. Plokštumos gali kirstis viename taške (vienintelis sprendinys), turėti bendrą tiesę (be galo daug sprendinių) arba neturėti visoms bendro taško (sprendinių nėra).</p>
+
+      <div class="subtype">
+        <h4>Kaip atpažinti atvejį iš matricos</h4>
+        <p>Kurį atvejį turime, matyti baigus tiesioginę eigą (\(\ast\) žymi bet kokį skaičių):</p>
+        <div class="mats cases3">
+          <div class="mat-item"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; \htmlClass{hd}{1} &amp; \ast &amp; \ast \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; \ast \end{array}\right)\)</span><span class="cap"><strong>Vienintelis sprendinys</strong></span></div>
+          <div class="mat-item"><span>\(\left(\begin{array}{ccc|c} 1 &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 1 &amp; \ast &amp; \ast \\ \htmlClass{hr}{0} &amp; \htmlClass{hr}{0} &amp; \htmlClass{hr}{0} &amp; \htmlClass{hr}{c} \end{array}\right)\)</span><span class="cap"><strong>Sprendinių nėra</strong> (\(c \neq 0\))</span></div>
+          <div class="mat-item"><span>\(\left(\begin{array}{ccc|c} 1 &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 1 &amp; \ast &amp; \ast \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} \end{array}\right)\)</span><span class="cap"><strong>Be galo daug sprendinių</strong></span></div>
+        </div>
+        <ul>
+          <li><strong>Vienintelis sprendinys</strong> – kiekvienam nežinomajam yra nelygus nuliui pagrindinis elementas (jei eilučių nedalijome, jis nebūtinai lygus 1), o beprasmių ir nulinių eilučių nėra.</li>
+          <li><strong>Sprendinių nėra</strong> – gaunama eilutė \(0 \;\; 0 \;\; 0 \mid c\), kurioje \(c \neq 0\). Ji reiškia neįmanomą lygybę \(0 = c\).</li>
+          <li><strong>Be galo daug sprendinių</strong> – gaunama nulinė eilutė \(0 \;\; 0 \;\; 0 \mid 0\) (lygtis \(0 = 0\)), kurią galima atmesti, ir nenulinių eilučių lieka mažiau nei nežinomųjų.</li>
+        </ul>
+      </div>
+
+      <div class="subtype">
+        <h4>Kaip užrašyti be galo daug sprendinių</h4>
+        <ol>
+          <li>Nulines eilutes atmeskite.</li>
+          <li>Suskaičiuokite <strong>laisvuosius nežinomuosius</strong>: jų skaičius lygus nežinomųjų skaičiaus ir nenulinių eilučių skaičiaus skirtumui.</li>
+          <li>Nežinomuosius, kuriems nėra pagrindinio elemento, prilyginkite parametrams: \(w = t\), \(t \in \mathbb{R}\) (jei reikia daugiau – \(u\) ir t. t.).</li>
+          <li>Parametrus perkelkite į dešiniąją pusę ir atbuline eiga per juos išreikškite kitus nežinomuosius.</li>
+        </ol>
+        <p>Atsakyme nurodoma, kokias reikšmes gali įgyti parametras, pavyzdžiui, \(t \in \mathbb{R}\). Toks užrašas apima visus sprendinius. Įrašę konkrečią parametro reikšmę, gauname vieną <strong>atskirąjį sprendinį</strong> (žr. 4 pavyzdį).</p>
+      </div>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Jei tiesinių lygčių sistema turi be galo daug sprendinių, juos būtina išreikšti su parametru. Taikomajame uždavinyje būtina nurodyti intervalą, kokias reikšmes gali įgyti parametras. Sąlygai prašant, būtina pateikti atskirąjį sprendinį(-ius).</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+
+    <!-- 3 pavyzdys: sprendinių nėra -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Sistema, neturinti sprendinių</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        Gauso metodu išspręskite sistemą
+        \[ \begin{cases} x + y + z = 2 \\ 2x - 3y + z = 11 \\ 4x - y + 3z = 10 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <p>Pirmasis pagrindinis elementas lygus 1. Pirmąją eilutę dauginame iš \(-2\) ir pridedame prie antrosios, tada dauginame iš \(-4\) ir pridedame prie trečiosios:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 2 \\ 2 &amp; -3 &amp; 1 &amp; 11 \\ 4 &amp; -1 &amp; 3 &amp; 10 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 2 \\ \htmlClass{hc}{0} &amp; -5 &amp; -1 &amp; 7 \\ \htmlClass{hc}{0} &amp; -5 &amp; -1 &amp; 2 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Nulis antrajame stulpelyje</span></h4>
+          <p>Antrojoje ir trečiojoje eilutėse koeficientai vienodi, todėl antrąją eilutę dauginame iš \(-1\) ir pridedame prie trečiosios:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 2 \\ 0 &amp; \htmlClass{hd}{-5} &amp; -1 &amp; 7 \\ 0 &amp; -5 &amp; -1 &amp; 2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 2 \\ 0 &amp; -5 &amp; -1 &amp; 7 \\ \htmlClass{hr}{0} &amp; \htmlClass{hr}{0} &amp; \htmlClass{hr}{0} &amp; \htmlClass{hr}{-5} \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Beprasmė lygybė</span></h4>
+          <p>Paskutinė eilutė reiškia lygtį</p>
+          \[ 0x + 0y + 0z = -5, \quad \text{t. y.} \quad 0 = -5 \]
+          <p>Nėra tokių \(x\), \(y\), \(z\), su kuriais ši lygybė būtų teisinga. Tolesni skaičiavimai nebereikalingi.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Sistema sprendinių neturi: \(\varnothing\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: be galo daug sprendinių -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Sistema, turinti be galo daug sprendinių</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        Gauso metodu išspręskite sistemą
+        \[ \begin{cases} 2x - y - z + 3w = 3 \\ x - y + w = 1 \\ 3x - 4y + 2z + w = 4 \\ x + y - 3z + 4w = 1 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Lygčių keitimas vietomis</span></h4>
+          <p>Pirmosios lygties pirmasis koeficientas lygus 2, o antrosios – 1. Užuot daliję, sukeičiame 1-ąją ir 2-ąją lygtis vietomis ir užrašome išplėstinę matricą:</p>
+          \[ \left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 2 &amp; -1 &amp; -1 &amp; 3 &amp; 3 \\ 3 &amp; -4 &amp; 2 &amp; 1 &amp; 4 \\ 1 &amp; 1 &amp; -3 &amp; 4 &amp; 1 \end{array}\right) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 2 &amp; -1 &amp; -1 &amp; 3 &amp; 3 \\ 3 &amp; -4 &amp; 2 &amp; 1 &amp; 4 \\ 1 &amp; 1 &amp; -3 &amp; 4 &amp; 1 \end{array}\right)\begin{array}{ccc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-3)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; 1 &amp; -1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -1 &amp; 2 &amp; -2 &amp; 1 \\ \htmlClass{hc}{0} &amp; 2 &amp; -3 &amp; 3 &amp; 0 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Nuliai antrajame stulpelyje</span></h4>
+          <p>Antrasis pagrindinis elementas lygus 1: po juo esantį \(-1\) panaikina daugiklis \((1)\), o 2 – daugiklis \((-2)\).</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; -1 &amp; 1 &amp; 1 \\ 0 &amp; -1 &amp; 2 &amp; -2 &amp; 1 \\ 0 &amp; 2 &amp; -3 &amp; 3 &amp; 0 \end{array}\right)\begin{array}{cc} \phantom{0} &amp; \\ \htmlClass{ha}{(1)} &amp; \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hc}{0} &amp; 1 &amp; -1 &amp; 2 \\ 0 &amp; \htmlClass{hc}{0} &amp; -1 &amp; 1 &amp; -2 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Nulinė eilutė</span></h4>
+          <p>Trečiąją eilutę pridėjus prie ketvirtosios, ketvirtoji eilutė tampa nuline:</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; -1 &amp; 2 \\ 0 &amp; 0 &amp; -1 &amp; 1 &amp; -2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; -1 &amp; 2 \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} \end{array}\right)\)</span>
+          </div>
+          <p>Lygtis \(0 = 0\) teisinga su bet kokiomis reikšmėmis, todėl ją atmetame.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Parametras</span></h4>
+          <p>Liko 3 nenulinės eilutės, o nežinomųjų yra 4, taigi laisvasis nežinomasis vienas: \(4 - 3 = 1\). Nežinomajam \(w\) pagrindinio elemento nėra, todėl pažymime \(w = t\), \(t \in \mathbb{R}\), ir narius su \(t\) perkeliame į dešiniąją pusę:</p>
+          \[ \left(\begin{array}{ccc|c} 1 &amp; -1 &amp; 0 &amp; 1 - t \\ 0 &amp; 1 &amp; -1 &amp; 1 - t \\ 0 &amp; 0 &amp; 1 &amp; 2 + t \end{array}\right) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Atbulinė eiga</span></h4>
+          \[ \begin{aligned} &amp;z = 2 + t \\ &amp;y - (2 + t) = 1 - t \;\Longrightarrow\; y = 3 \\ &amp;x - 3 = 1 - t \;\Longrightarrow\; x = 4 - t \end{aligned} \]
+          <p>Patikrinimas su \(t = 0\), t. y. \((4;\, 3;\, 2;\, 0)\): \(8 - 3 - 2 + 0 = 3\), \(4 - 3 + 0 = 1\), \(12 - 12 + 4 + 0 = 4\), \(4 + 3 - 6 + 0 = 1\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{gathered} (x;\, y;\, z;\, w) = (4 - t;\, 3;\, 2 + t;\, t), \\ t \in \mathbb{R} \end{gathered} \]
+          </div>
+          <p>Kiekviena parametro \(t\) reikšmė duoda vis kitą sprendinį, todėl sprendinių be galo daug. Pavyzdžiui, atskirieji sprendiniai: kai \(t = 0\), gaunama \((4;\, 3;\, 2;\, 0)\), kai \(t = 1\), – \((3;\, 3;\, 3;\, 1)\). Atkreipkite dėmesį: \(y = 3\) visuose sprendiniuose.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="card concept" id="lygciu-skaicius">
+      <div class="concept-head"><span class="num">7</span><h3>Lygčių ir nežinomųjų skaičius</h3></div>
+      <p>Bendruoju atveju lygčių skaičius sistemoje nebūtinai sutampa su nežinomųjų skaičiumi.</p>
+      <div class="tbl-wrap">
+        <table class="vtable count-tbl">
+          <thead><tr><th scope="col">Lygčių skaičius</th><th scope="col">Galimi atvejai</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Mažesnis nei nežinomųjų</th><td>be galo daug sprendinių arba nė vieno sprendinio</td></tr>
+            <tr><th scope="row">Didesnis nei nežinomųjų</th><td>vienintelis sprendinys, be galo daug sprendinių arba nė vieno sprendinio</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Kai lygčių mažiau nei nežinomųjų, vienintelio sprendinio būti negali: nenulinių eilučių bus mažiau nei nežinomųjų, todėl, jei sistema turi sprendinių, liks bent vienas laisvasis nežinomasis. Kai lygčių tiek pat, kiek nežinomųjų, galimi visi trys atvejai – tai rodo 1, 3 ir 4 pavyzdžiai.</p>
+      <p class="tip">Laisvųjų nežinomųjų (parametrų) skaičių lemia ne pradinis lygčių skaičius, o <strong>nenulinių eilučių</strong> skaičius, likęs po tiesioginės eigos. Jei kuri nors lygtis virto nuline eilute, parametrų bus daugiau – žr. 5 pavyzdį.</p>
+    </article>
+
+    <!-- 5 pavyzdys: 3 lygtys, 4 nežinomieji -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Trys lygtys su keturiais nežinomaisiais</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        Gauso metodu išspręskite sistemą
+        \[ \begin{cases} x + y + z + w = 6 \\ 3x + 2y + z + w = 1 \\ 5x + 4y + 3z + 3w = 13 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 1 &amp; 6 \\ 3 &amp; 2 &amp; 1 &amp; 1 &amp; 1 \\ 5 &amp; 4 &amp; 3 &amp; 3 &amp; 13 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-3)} &amp; \htmlClass{ha}{(-5)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 1 &amp; 1 &amp; 1 &amp; 6 \\ \htmlClass{hc}{0} &amp; -1 &amp; -2 &amp; -2 &amp; -17 \\ \htmlClass{hc}{0} &amp; -1 &amp; -2 &amp; -2 &amp; -17 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Nulinė eilutė</span></h4>
+          <p>Antroji ir trečioji eilutės sutapo. Antrąją eilutę padauginę iš \(-1\) ir pridėję prie trečiosios, gauname nulinę eilutę, kurią atmetame:</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 1 &amp; 1 &amp; 1 &amp; 6 \\ 0 &amp; \htmlClass{hd}{-1} &amp; -2 &amp; -2 &amp; -17 \\ 0 &amp; -1 &amp; -2 &amp; -2 &amp; -17 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 1 &amp; 1 &amp; 1 &amp; 6 \\ 0 &amp; -1 &amp; -2 &amp; -2 &amp; -17 \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Du parametrai</span></h4>
+          <p>Liko 2 nenulinės eilutės, o nežinomųjų yra 4, todėl laisvieji nežinomieji du: \(4 - 2 = 2\). Pagrindinių elementų nėra nežinomiesiems \(z\) ir \(w\), todėl pažymime \(w = t\), \(z = u\), \(t, u \in \mathbb{R}\), ir narius su parametrais perkeliame į dešiniąją pusę:</p>
+          <div class="mats mats--sm">
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 6 - t - u \\ 0 &amp; -1 &amp; -17 + 2t + 2u \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-1)} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Atbulinė eiga</span></h4>
+          \[ \begin{aligned} &amp;y = 17 - 2t - 2u \\ &amp;x + 17 - 2t - 2u = 6 - t - u \\ &amp;\Longrightarrow\; x = -11 + t + u \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{gathered} (x;\, y;\, z;\, w) = {} \\ (-11 + t + u;\; 17 - 2t - 2u;\; u;\; t), \\ t, u \in \mathbb{R} \end{gathered} \]
+          </div>
+          <p>Nors lygčių buvo trys, viena iš jų nesuteikė naujos informacijos (virto nuline eilute), todėl parametrų yra du, o ne vienas.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ TAIKYMAI ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Taikymai</h2>
+    <p class="section-intro">Tiesinių lygčių sistemos taikomos sudarant racionalųjį gamybos planą, planuojant pirkimus, sudarant investicijų portfelį ir nustatant stabiliąsias rinkos dalis. Pasirinkite skiltį.</p>
+    <div class="model-grid" data-models="t3"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">1 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">2.1–2.3, 9.2 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

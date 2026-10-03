@@ -173,7 +173,8 @@
       title: { lt: 'Tiesinės funkcijos ir modeliai', en: 'Linear Functions and Models' } },
     { id: 't2', num: 2, status: 'active', href: { lt: 'tema-2.html' },
       title: { lt: 'Matricos', en: 'Matrices' } },
-    { id: 't3', num: 3, status: 'soon', title: { lt: 'Tiesinių lygčių sistemos', en: null } },
+    { id: 't3', num: 3, status: 'active', href: { lt: 'tema-3.html' },
+      title: { lt: 'Tiesinių lygčių sistemos', en: 'Systems of Linear Equations' } },
     { id: 't4', num: 4, status: 'soon', title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: null } },
     { id: 't5', num: 5, status: 'soon', title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: null } },
     { id: 'midterm', type: 'exam', href: { lt: 'tarpinis-egzaminas.html' },
@@ -215,11 +216,22 @@
       { id: 'm23', status: 'active', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html' },
         title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' },
         desc: { lt: 'Markovo grandinės: rinkos dalys po vieno ar kelių periodų.' } }
+    ],
+    t3: [
+      { id: 'm31', status: 'soon',
+        title: { lt: 'Racionalusis planavimas (vienintelis sprendinys)', en: 'Rational Planning (Unique Solution)' },
+        desc: { lt: 'Gamybos, pirkimų ar investicijų planas, kai sistema turi vienintelį sprendinį.' } },
+      { id: 'm32', status: 'soon',
+        title: { lt: 'Racionalusis planavimas (daug sprendinių)', en: 'Rational Planning (Infinitely Many Solutions)' },
+        desc: { lt: 'Kai sprendinių be galo daug: parametras ir galimi planai.' } },
+      { id: 'm33', status: 'soon',
+        title: { lt: 'Stabiliosios rinkos dalys', en: 'Long-Run Market Shares' },
+        desc: { lt: 'Rinkos dalys, kurios ilguoju laikotarpiu nebekinta: \\(P\\cdot X = X\\).' } }
     ]
   };
 
   /* Temos, kurių taikymai vadinami skiltimis, o ne modeliais. */
-  var UNIT = { t2: 'part' };
+  var UNIT = { t2: 'part', t3: 'part' };
 
   /* Puslapiai: failo vardas kiekviena kalba ir tėvinis puslapis (kelio juostai).
      Kai sukursite anglišką puslapį, įrašykite jo failo vardą į href.en. */
@@ -241,6 +253,8 @@
                title: { lt: 'Sudėtingesni matricų veiksmų taikymai', en: 'Advanced Matrix Applications' } },
     m23:     { parent: 't2', topic: 't2', model: 'm23', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html', en: null },
                title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' } },
+    t3:      { parent: 'home', href: { lt: 'tema-3.html', en: null },
+               title: { lt: '3 tema', en: 'Topic 3' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
