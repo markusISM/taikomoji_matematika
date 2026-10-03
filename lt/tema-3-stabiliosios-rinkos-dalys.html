@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stabiliosios rinkos dalys · Taikomoji matematika</title>
+<meta name="description" content="Kaip taikant Markovo grandinės modelį ir tiesinių lygčių sistemą randamos ilgalaikės (stabiliosios) įmonių rinkos dalys: lygtis P·X = X ir sąlyga x + y + z = 1.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=18">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=18"></script>
+</head>
+<body data-page="m33">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">3 tema · Taikymai</span>
+    <h1>Stabiliosios rinkos dalys</h1>
+    <p class="lead">Šioje skiltyje supažindinama, kaip taikant Markovo grandinės modelį ir tiesinių lygčių sistemą randamos ilgalaikės – stabiliosios – įmonių rinkos dalys.</p>
+    <ul class="jump">
+      <li><a href="#priminimas">Markovo grandinė</a></li>
+      <li><a href="#stabilumas">Stabilioji būsena</a></li>
+      <li><a href="#sistema">Lygčių sistema</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. PRIMINIMAS ============ -->
+  <section class="section" id="priminimas" aria-labelledby="h-recall">
+    <h2 id="h-recall">Priminimas: Markovo grandinė</h2>
+
+    <article class="card">
+      <p>Klientai pereina iš vienos konkuruojančios įmonės į kitą. <strong>Žingsnio matrica</strong> \(P\) aprašo šį judėjimą: \(p_{ij}\) yra \(j\)-osios įmonės klientų dalis, pereinanti į \(i\)-ąją įmonę. Taigi \(j\)-asis stulpelis aprašo \(j\)-osios įmonės klientus, o kiekvieno stulpelio elementų suma lygi 1.</p>
+      <div class="formula">\[ \begin{gathered} P = \begin{pmatrix} \htmlClass{hc}{p_{11}} &amp; p_{12} &amp; p_{13} \\ \htmlClass{hc}{p_{21}} &amp; p_{22} &amp; p_{23} \\ \htmlClass{hc}{p_{31}} &amp; p_{32} &amp; p_{33} \end{pmatrix} \\[4pt] \htmlClass{hc}{p_{11} + p_{21} + p_{31}} = 1 \end{gathered} \]</div>
+      <p>Jei \(X_t\) yra rinkos dalių stulpelis \(t\)-uoju laikotarpiu, tai kito laikotarpio rinkos dalys gaunamos padauginus iš tos pačios žingsnio matricos:</p>
+      <div class="formula">\[ X_t = P\cdot X_{t-1} \]</div>
+      <p class="more-link"><a href="tema-2-rinkos-dalies-prognozavimas.html#zingsnio-matrica">Kaip sudaroma žingsnio matrica – 2 temos skiltyje „Rinkos dalies prognozavimas“ →</a></p>
+    </article>
+  </section>
+
+  <!-- ============ 2. STABILIOJI BŪSENA ============ -->
+  <section class="section" id="stabilumas" aria-labelledby="h-stable">
+    <h2 id="h-stable">Kai rinkos dalys nustoja kisti</h2>
+
+    <article class="card">
+      <p><strong>Trumpasis ir ilgasis laikotarpiai.</strong> Kartojant daugybą \(X_t = P\cdot X_{t-1}\), sekama rinkos raida laikotarpis po laikotarpio. Kaskart vyksta tas pats: rinkos dalys kinta viena kryptimi, tačiau kiekvieną laikotarpį vis mažiau, kol galiausiai nustoja kisti.</p>
+
+      <figure class="fig conv">
+        <svg viewBox="0 0 320 178" role="img" aria-label="Schema: trijų įmonių rinkos dalys keičiasi vis mažiau ir nusistovi">
+          <path class="guide" d="M44 85.4H300M44 70.2H300M44 104.4H300"/>
+          <path class="ax" d="M40 152H306M40 152V12"/>
+          <path class="ah" d="M312 152l-9-4.5v9z"/>
+          <path class="ah" d="M40 6l-4.5 9h9z"/>
+          <path class="ln" d="M44.0 32.2 L68.4 52.4 L92.8 64.9 L117.2 72.7 L141.6 77.5 L166.0 80.5 L190.4 82.4 L214.8 83.5 L239.2 84.2 L263.6 84.7 L288.0 85.0"/>
+          <path class="ln2" d="M44.0 96.8 L68.4 86.7 L92.8 80.4 L117.2 76.5 L141.6 74.1 L166.0 72.6 L190.4 71.7 L214.8 71.1 L239.2 70.8 L263.6 70.6 L288.0 70.4"/>
+          <path class="ln3" d="M44.0 131.0 L68.4 120.9 L92.8 114.6 L117.2 110.7 L141.6 108.3 L166.0 106.8 L190.4 105.9 L214.8 105.3 L239.2 105.0 L263.6 104.8 L288.0 104.6"/>
+          <text class="muted" x="304" y="170" text-anchor="end">laikotarpiai</text>
+          <text class="muted" x="48" y="14">rinkos dalis</text>
+          <text class="mu" x="44" y="170" text-anchor="middle">X₀</text>
+          <text class="muted" x="300" y="62" text-anchor="end">stabiliosios dalys</text>
+        </svg>
+        <figcaption>Schema be skaičių: trijų įmonių rinkos dalys keičiasi vis mažiau ir artėja prie pastovių reikšmių (punktyrinės linijos).</figcaption>
+      </figure>
+
+      <p><strong>Kodėl rinkos dalys stabilizuojasi.</strong> Kiekviena įmonė praranda pastovią savo klientų dalį ir pritraukia pastovias konkurentų klientų dalis. Didelė įmonė praranda daug klientų absoliučiais skaičiais, nes procentinė dalis taikoma dideliam klientų skaičiui; maža įmonė praranda nedaug. Yra tik vienas rinkos pasiskirstymas, kuriam esant kiekvienos įmonės ateinančių klientų skaičius tiksliai lygus išeinančių klientų skaičiui. Rinka artėja prie šio pasiskirstymo ir jį pasiekusi nebekinta.</p>
+
+      <p>Rinkos dalys yra <strong>stabilios nuo laiko momento</strong> \(T\), jei \(X_{t+1} = X_t\) visiems \(t &gt; T\). Rinkos būsena yra <strong>stabili</strong>, kai dar vienas laikotarpis nieko nebepakeičia:</p>
+      <div class="formula">\[ P\cdot X = X \]</div>
+      <p>Čia \(X\) yra <strong>stabiliųjų rinkos dalių vektorius</strong>.</p>
+
+      <p class="tip"><strong>Verslui svarbi išvada.</strong> Lygtyje \(P\cdot X = X\) yra \(P\), tačiau nėra \(X_0\): ilgalaikės rinkos dalys priklauso tik nuo klientų perėjimo, o ne nuo to, kas šiandien pirmauja rinkoje. Ilgalaikį rezultatą lemia klientų išlaikymas ir gebėjimas juos pritraukti – matricos \(P\) stulpeliai.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. LYGČIŲ SISTEMA ============ -->
+  <section class="section" id="sistema" aria-labelledby="h-system">
+    <h2 id="h-system">Lygčių sistemos sudarymas</h2>
+
+    <article class="card">
+      <p>Tarkime, rinkoje veikia trys įmonės. Nežinomas stabiliąsias rinkos dalis pažymime \(x\), \(y\), \(z\). Lygtis \(P\cdot X = X\) virsta tiesinių lygčių sistema keturiais žingsniais:</p>
+
+      <ol class="derive">
+        <li>
+          <span class="dl">1. Stabilumo sąlyga</span>
+          <div class="fit-wrap">\[ \begin{pmatrix} p_{11} &amp; p_{12} &amp; p_{13} \\ p_{21} &amp; p_{22} &amp; p_{23} \\ p_{31} &amp; p_{32} &amp; p_{33} \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} x \\ y \\ z \end{pmatrix} \]</div>
+        </li>
+        <li>
+          <span class="dl">2. Užrašome eilutėmis</span>
+          <p class="dn">Kiekvienos matricos \(P\) eilutės ir stulpelio \(X\) sandauga lygi atitinkamai rinkos daliai:</p>
+          \[ \begin{cases} p_{11}x + p_{12}y + p_{13}z = x \\ p_{21}x + p_{22}y + p_{23}z = y \\ p_{31}x + p_{32}y + p_{33}z = z \end{cases} \]
+        </li>
+        <li>
+          <span class="dl">3. Kintamuosius perkeliame į kairę</span>
+          <p class="dn">Kiekvienoje lygtyje kintamąjį iš dešiniosios pusės perkeliame į kairiąją – iš įstrižainės elemento atimamas 1, o dešiniosios pusės tampa nuliais:</p>
+          \[ \begin{cases} (\htmlClass{hd}{p_{11} - 1})x + p_{12}y + p_{13}z = 0 \\ p_{21}x + (\htmlClass{hd}{p_{22} - 1})y + p_{23}z = 0 \\ p_{31}x + p_{32}y + (\htmlClass{hd}{p_{33} - 1})z = 0 \end{cases} \]
+        </li>
+        <li>
+          <span class="dl">4. Vieną lygtį pakeičiame sąlyga \(x + y + z = 1\)</span>
+          <p class="dn">Gautos lygtys yra priklausomos, todėl pirmąją lygtį pakeičiame <strong>tikimybių sumos sąlyga</strong> – visų rinkos dalių suma sudaro visą rinką:</p>
+          \[ \begin{cases} \htmlClass{hr}{x + y + z = 1} \\ p_{21}x + (p_{22} - 1)y + p_{23}z = 0 \\ p_{31}x + p_{32}y + (p_{33} - 1)z = 0 \end{cases} \]
+        </li>
+      </ol>
+      <p>Ši sistema turi vienintelį sprendinį ir sprendžiama <a href="tema-3.html#algoritmas">Gauso metodu</a>. Tai tiesioginis dviejų temų ryšys: Markovo grandinės uždavinys išsprendžiamas sprendžiant tiesinių lygčių sistemą.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Kodėl vieną lygtį reikia pakeisti?</summary>
+        <div class="more-body">
+          <p>Sudėkime visas tris 3 žingsnio lygtis. Prie \(x\) gauname koeficientą</p>
+          \[ \begin{aligned} &amp;(p_{11} - 1) + p_{21} + p_{31} \\ &amp;= (p_{11} + p_{21} + p_{31}) - 1 = 0, \end{aligned} \]
+          <p>nes pirmojo stulpelio elementų suma lygi 1. Taip pat ir prie \(y\) bei \(z\). Taigi sudėjus visas lygtis gaunama \(0 = 0\): viena lygtis kartoja kitose esančią informaciją.</p>
+          <p>Todėl vien šių lygčių nepakanka sprendiniui nustatyti – sistema turi be galo daug sprendinių, tarp jų ir netinkamą sprendinį, kuriame visos rinkos dalys lygios nuliui. Trūksta sąlygos, kad rinkos dalių suma lygi 1. Ja pakeitus vieną lygtį, gaunama sistema, turinti vienintelį sprendinį.</p>
+        </div>
+      </details>
+
+      <p class="tip"><strong>Lygtis, kurią lengva pamiršti.</strong> Be sąlygos \(x + y + z = 1\) sistema turi be galo daug sprendinių. Jei taikant Gauso metodą gaunama nulinė eilutė, tai nėra klaida – tai požymis, kad stabiliosios būsenos lygtys yra priklausomos. Būtent todėl vieną jų reikia pakeisti tikimybių sumos sąlyga.</p>
+    </article>
+  </section>
+
+  <!-- ============ 4. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Sudarykite žingsnio matricą \(P\) po vieną stulpelį ir patikrinkite, ar kiekvieno stulpelio elementų suma lygi 1.</li>
+        <li>Nežinomas ilgalaikes rinkos dalis užrašykite vektoriumi \(X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}\) ir nurodykite, kad kintamieji žymi stabiliąsias rinkos dalis.</li>
+        <li>Lygtį \(P\cdot X = X\) užrašykite eilutėmis: kiekvienos matricos \(P\) eilutės ir stulpelio \(X\) sandauga lygi atitinkamai rinkos daliai.</li>
+        <li>Kiekvienoje lygtyje kintamąjį iš dešiniosios pusės perkelkite į kairiąją, kad visos dešiniosios pusės taptų lygios nuliui.</li>
+        <li>Eilutes padauginkite iš 10, 20 ar 100, kad neliktų dešimtainių trupmenų, ir padalykite iš bendro daugiklio.</li>
+        <li>Pirmąją lygtį pakeiskite lygtimi \(x + y + z = 1\).</li>
+        <li>Užrašykite išplėstinę matricą ir išspręskite sistemą Gauso metodu, šalia matricos žymėdami atliekamus pertvarkius.</li>
+        <li>Patikrinkite atsakymą: rinkos dalys turi būti teigiamos, jų suma turi būti lygi 1 ir jos turi tenkinti lygybę \(P\cdot X = X\).</li>
+        <li>Paaiškinkite rezultatą: palyginkite ilgalaikes rinkos dalis su dabartinėmis, nurodykite, kieno dalis didėja, o kieno mažėja, ir kurie matricos \(P\) elementai tai paaiškina.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Pamiršta sąlyga \(x + y + z = 1\).</strong> Be jos sistema turi be galo daug sprendinių, o Gauso metodu gaunama nulinė eilutė.</li>
+            <li><strong>Eilutė vietoj stulpelio.</strong> Teiginys apie vienos įmonės klientus užpildo matricos \(P\) stulpelį; kiekvieno stulpelio elementų suma turi būti lygi 1.</li>
+            <li><strong>Neatimtas vienetas.</strong> Perkeliant kintamąjį į kairę, iš įstrižainės elemento atimamas 1: \(0{,}8x - x = -0{,}2x\).</li>
+            <li><strong>Naudojamos dabartinės rinkos dalys.</strong> Ilgalaikėms rinkos dalims rasti \(X_0\) nereikia – jis reikalingas tik trumpojo laikotarpio prognozei.</li>
+            <li><strong>Neužrašytas paaiškinimas.</strong> Atsakyme rinkos dalis verta išreikšti procentais ir palyginti su dabartinėmis.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant stabiliųjų rinkos dalių uždavinius būtina nurodyti, kad kintamieji žymi stabiliąsias rinkos dalis. Taip pat būtina pateikti sudarytą žingsnio matricą \(P\).</li>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tiesinių lygčių sistema. Pateikti sistemą tik išplėstinėje matricoje nepakanka.</li>
+            <li>Tiesinių lygčių sistemą būtina spręsti Gauso metodu. Būtina nurodyti, kokie veiksmai atliekami eliminuojant elementus po pagrindine įstrižaine.</li>
+            <li>Uždavinio sprendimo pabaigoje turi būti aiškiai pateiktas atsakymas.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 5. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: alternatyvus 3.2 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Elektros tiekėjų ilgalaikės rinkos dalys</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <div class="q-text">
+          <p>Šalyje veikia trys elektros tiekėjai (A, B ir C). Pirmasis užima 40&nbsp;% rinkos, antrasis – 40&nbsp;%, trečiasis – 20&nbsp;%. Tyrimas parodė, kad:</p>
+          <ul>
+            <li>80&nbsp;% tiekėjo A klientų kitą kartą pasirinktų tą patį tiekėją, 10&nbsp;% pasirinktų tiekėją B ir 10&nbsp;% – tiekėją C;</li>
+            <li>85&nbsp;% tiekėjo B klientų liktų pas tą patį tiekėją, 10&nbsp;% pasirinktų tiekėją A ir 5&nbsp;% – tiekėją C;</li>
+            <li>galiausiai 80&nbsp;% tiekėjo C klientų liktų pas tą patį tiekėją, 10&nbsp;% pasirinktų tiekėją A ir 10&nbsp;% – tiekėją B.</li>
+          </ul>
+          <p>Tarkime, kad šie įpročiai ateityje nesikeis. Nustatykite ilgalaikes šių elektros tiekėjų rinkos dalis.</p>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Žingsnio matrica</span></h4>
+          <p>Kiekvienas tyrimo teiginys aprašo vieno tiekėjo klientus, todėl pagal jį užpildomas vienas stulpelis (A, B, C):</p>
+          \[ P = \begin{pmatrix} 0{,}8 &amp; 0{,}1 &amp; 0{,}1 \\ 0{,}1 &amp; 0{,}85 &amp; 0{,}1 \\ 0{,}1 &amp; 0{,}05 &amp; 0{,}8 \end{pmatrix} \]
+          <p>Stulpelių elementų sumos lygios 1. Dabartinių rinkos dalių – 40&nbsp;%, 40&nbsp;% ir 20&nbsp;% – šiam klausimui atsakyti nereikia; jos naudotos <a href="tema-2-rinkos-dalies-prognozavimas.html#pavyzdys-1">2 temos pavyzdyje</a>, kai skaičiuotos rinkos dalys po vieno laikotarpio.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Stabilumo sąlyga eilutėmis</span></h4>
+          <p>Tegu \(X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}\) yra tiekėjų A, B ir C stabiliųjų rinkos dalių vektorius. Sąlyga \(P\cdot X = X\), užrašyta eilutėmis:</p>
+          \[ \begin{cases} 0{,}8x + 0{,}1y + 0{,}1z = x \\ 0{,}1x + 0{,}85y + 0{,}1z = y \\ 0{,}1x + 0{,}05y + 0{,}8z = z \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kintamieji – į kairę</span></h4>
+          \[ \begin{cases} -0{,}2x + 0{,}1y + 0{,}1z = 0 \\ 0{,}1x - 0{,}15y + 0{,}1z = 0 \\ 0{,}1x + 0{,}05y - 0{,}2z = 0 \end{cases} \]
+          <p>Sudėję tris lygtis gauname \(0 = 0\), todėl jos yra priklausomos.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Tikimybių sumos sąlyga</span></h4>
+          <p>Pirmąją lygtį pakeičiame sąlyga \(x + y + z = 1\), o kitas dvi padauginame iš 20, kad neliktų dešimtainių trupmenų:</p>
+          \[ \begin{cases} x + y + z = 1 \\ 2x - 3y + 2z = 0 \\ 2x + y - 4z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <p>Pirmąją eilutę dauginame iš \(-2\) ir pridedame prie antrosios, tada dar kartą dauginame iš \(-2\) ir pridedame prie trečiosios. Antrąją eilutę dalijame iš \(-5\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 1 \\ 2 &amp; -3 &amp; 2 &amp; 0 \\ 2 &amp; 1 &amp; -4 &amp; 0 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -5 &amp; 0 &amp; -2 \\ \htmlClass{hc}{0} &amp; -1 &amp; -6 &amp; -2 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \\ \phantom{0} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Nulis antrajame stulpelyje</span></h4>
+          <p>Antrojoje eilutėje gautas vedantysis vienetas. Ją pridėjus prie trečiosios eilutės, antrojo stulpelio elementas paverčiamas nuliu; tada trečiąją eilutę dalijame iš \(-6\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0 &amp; 0{,}4 \\ 0 &amp; -1 &amp; -6 &amp; -2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0{,}4 \\ 0 &amp; \htmlClass{hc}{0} &amp; -6 &amp; -1{,}6 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-6)} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Atbulinė eiga</span></h4>
+          <p>Iš paskutinės eilutės gauname \(z\), iš antrosios – \(y\), o iš pirmosios – \(x\):</p>
+          \[ \begin{aligned} z &amp;= \frac{1{,}6}{6} = \frac{4}{15} \approx 0{,}2667 \\ y &amp;= 0{,}4 \\ x &amp;= 1 - 0{,}4 - \frac{4}{15} = \frac{1}{3} \approx 0{,}3333 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Patikrinimas</span></h4>
+          <p>Visos trys rinkos dalys teigiamos, o jų suma lygi 1. Įstatę jas į pirmąją sandaugos \(P\cdot X\) eilutę gauname</p>
+          \[ 0{,}8\cdot\tfrac{1}{3} + 0{,}1\cdot 0{,}4 + 0{,}1\cdot\tfrac{4}{15} = \tfrac{1}{3}, \]
+          <p>t. y. vėl gauname \(x\), taigi rinkos dalys iš tikrųjų nekinta.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Ilguoju laikotarpiu tiekėjas A užims apie 33,33&nbsp;% rinkos, tiekėjas B – 40&nbsp;%, o tiekėjas C – apie 26,67&nbsp;%.</p>
+          </div>
+          <p>Tiekėjas A, kurio pradinė rinkos dalis tokia pati kaip B, galiausiai nuo jo atsiliks beveik 7 procentiniais punktais, o tiekėjo C dalis išaugs nuo 20&nbsp;% iki beveik 27&nbsp;%.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 1 uždavinys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Du maltos kavos prekių ženklai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Du maltos kavos prekių ženklai „Aroma“ ir „Bravo“ dalijasi prekybos centro pardavimais. Kiekvieną mėnesį 20&nbsp;% „Aroma“ pirkėjų pereina prie „Bravo“, o 30&nbsp;% „Bravo“ pirkėjų – prie „Aroma“. Kokias rinkos dalis šie du prekių ženklai turės ilguoju laikotarpiu?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Žingsnio matrica</span></h4>
+          <p>Duotos tik prarandamų klientų dalys, todėl kiekviena išlaikomų klientų dalis lygi 1 minus prarandamų klientų dalis: „Aroma“ išlaiko 0,8, o „Bravo“ – 0,7. Pirmasis stulpelis aprašo „Aroma“ pirkėjus, o antrasis – „Bravo“:</p>
+          \[ P = \begin{pmatrix} 0{,}8 &amp; 0{,}3 \\ 0{,}2 &amp; 0{,}7 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Stabilumo sąlyga</span></h4>
+          <p>Tegu \(X = \begin{pmatrix} x \\ y \end{pmatrix}\) yra „Aroma“ ir „Bravo“ stabiliųjų rinkos dalių vektorius. Sąlyga \(P\cdot X = X\):</p>
+          \[ \begin{cases} 0{,}8x + 0{,}3y = x \\ 0{,}2x + 0{,}7y = y \end{cases} \]
+          <p>Kintamuosius perkėlę į kairę gauname:</p>
+          \[ \begin{cases} -0{,}2x + 0{,}3y = 0 \\ 0{,}2x - 0{,}3y = 0 \end{cases} \]
+          <p>Abi lygtys yra ta pati lygtis su priešingais ženklais – tai aiškiai parodo, kodėl vieną jų reikia pakeisti.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Tikimybių sumos sąlyga</span></h4>
+          <p>Pirmąją lygtį pakeičiame sąlyga \(x + y = 1\), o antrojoje panaikiname dešimtaines trupmenas, padauginę iš 10:</p>
+          \[ \begin{cases} x + y = 1 \\ 2x - 3y = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Gauso metodas</span></h4>
+          <p>Pirmoji eilutė dauginama iš \(-2\) ir pridedama prie antrosios, o rezultatas dalijamas iš \(-5\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 \\ 2 &amp; -3 &amp; 0 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -5 &amp; -2 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0{,}4 \end{array}\right)\)</span>
+          </div>
+          \[ y = 0{,}4, \qquad x = 1 - 0{,}4 = 0{,}6 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
+          <p>\(0{,}8\cdot 0{,}6 + 0{,}3\cdot 0{,}4 = 0{,}48 + 0{,}12 = 0{,}6\), taigi rinkos dalys nekinta.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Rezultatų paaiškinimas</span></h4>
+          <p>Ilguoju laikotarpiu „Aroma“ turi 60&nbsp;% rinkos, o „Bravo“ – 40&nbsp;%, kad ir kokios būtų dabartinės dalys. Santykį galima nustatyti tiesiog iš perėjimo dalių: „Aroma“ pritraukia 30&nbsp;% „Bravo“ pirkėjų, o praranda tik 20&nbsp;% savųjų; 0,3 ir 0,2 santykis yra lygiai toks pat kaip 60 ir 40. „Bravo“ prekės ženklo vadovui svarbu suprasti, kad vieną mėnesį klientų pritraukianti pardavimo skatinimo akcija nieko nepakeičia: reikia pakeisti 20&nbsp;% ir 30&nbsp;% perėjimo dalis.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Ilguoju laikotarpiu „Aroma“ turės 60&nbsp;%, o „Bravo“ – 40&nbsp;% rinkos.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 2 uždavinys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Maisto pristatymo programėlės: kitas mėnuo ir ilgasis laikotarpis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Mieste konkuruoja trys maisto pristatymo programėlės. Šiuo metu 1-ajai programėlei tenka 50&nbsp;% užsakymų, 2-ajai – 30&nbsp;%, o 3-iajai – 20&nbsp;%. Kiekvieną mėnesį 1-oji programėlė išlaiko 60&nbsp;% savo vartotojų, 20&nbsp;% praranda 2-osios naudai ir 20&nbsp;% – 3-iosios naudai; 2-oji išlaiko 80&nbsp;%, 10&nbsp;% praranda 1-osios naudai ir 10&nbsp;% – 3-iosios naudai; 3-ioji išlaiko 70&nbsp;%, 10&nbsp;% praranda 1-osios naudai ir 20&nbsp;% – 2-osios naudai. Raskite rinkos dalis kitą mėnesį ir ilguoju laikotarpiu bei aptarkite 1-osios programėlės padėtį.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Žingsnio matrica ir pradinės dalys</span></h4>
+          <p>Kiekvienai programėlei skiriame po vieną stulpelį:</p>
+          <div class="mats">
+            <span>\(P = \begin{pmatrix} 0{,}6 &amp; 0{,}1 &amp; 0{,}1 \\ 0{,}2 &amp; 0{,}8 &amp; 0{,}2 \\ 0{,}2 &amp; 0{,}1 &amp; 0{,}7 \end{pmatrix}\)</span>
+            <span>\(X_0 = \begin{pmatrix} 0{,}5 \\ 0{,}3 \\ 0{,}2 \end{pmatrix}\)</span>
+          </div>
+          <p>Kiekvieno stulpelio elementų suma lygi 1.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Kitas mėnuo: matmenys ir struktūra</span></h4>
+          <p>Trumpajam laikotarpiui pakanka vieno daugybos veiksmo \(X_1 = P\cdot X_0\):</p>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 1) = 3 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]
+          <p>\(c_{i1}\) gaunamas \(i\)-ąją matricos \(P\) eilutę dauginant iš stulpelio \(X_0\):</p>
+          \[ \begin{aligned} c_{11} &amp;= 0{,}6\cdot 0{,}5 + 0{,}1\cdot 0{,}3 + 0{,}1\cdot 0{,}2 \\ &amp;= 0{,}3 + 0{,}03 + 0{,}02 = 0{,}35 \\ c_{21} &amp;= 0{,}2\cdot 0{,}5 + 0{,}8\cdot 0{,}3 + 0{,}2\cdot 0{,}2 \\ &amp;= 0{,}1 + 0{,}24 + 0{,}04 = 0{,}38 \\ c_{31} &amp;= 0{,}2\cdot 0{,}5 + 0{,}1\cdot 0{,}3 + 0{,}7\cdot 0{,}2 \\ &amp;= 0{,}1 + 0{,}03 + 0{,}14 = 0{,}27 \end{aligned} \]
+          <p>Taigi kitą mėnesį rinkos dalys bus 35&nbsp;%, 38&nbsp;% ir 27&nbsp;%: 1-oji programėlė jau po vieno mėnesio praranda lyderės poziciją.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ilgasis laikotarpis: stabilumo sąlyga</span></h4>
+          <p>Tegu \(X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}\) yra trijų programėlių stabiliųjų rinkos dalių vektorius. Užrašome \(P\cdot X = X\) ir dešiniosios pusės narius perkeliame į kairiąją:</p>
+          \[ \begin{cases} -0{,}4x + 0{,}1y + 0{,}1z = 0 \\ 0{,}2x - 0{,}2y + 0{,}2z = 0 \\ 0{,}2x + 0{,}1y - 0{,}3z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Tikimybių sumos sąlyga</span></h4>
+          <p>Pirmąją lygtį pakeičiame sąlyga \(x + y + z = 1\), o kitose dviejose panaikiname dešimtaines trupmenas (padauginame atitinkamai iš 5 ir iš 10):</p>
+          \[ \begin{cases} x + y + z = 1 \\ x - y + z = 0 \\ 2x + y - 3z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; -1 &amp; 1 &amp; 0 \\ 2 &amp; 1 &amp; -3 &amp; 0 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-1)} &amp; \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -2 &amp; 0 &amp; -1 \\ \htmlClass{hc}{0} &amp; -1 &amp; -5 &amp; -2 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-2)} \\ \phantom{0} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Nulis antrajame stulpelyje</span></h4>
+          <p>Antrojoje eilutėje jau yra vedantysis vienetas; ją pridėjus prie trečiosios eilutės ir padalijus iš \(-5\), pertvarkiai baigiami:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0 &amp; 0{,}5 \\ 0 &amp; -1 &amp; -5 &amp; -2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0{,}5 \\ 0 &amp; \htmlClass{hc}{0} &amp; -5 &amp; -1{,}5 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Atbulinė eiga ir patikrinimas</span></h4>
+          \[ \begin{aligned} z &amp;= 0{,}3 \\ y &amp;= 0{,}5 \\ x &amp;= 1 - 0{,}5 - 0{,}3 = 0{,}2 \end{aligned} \]
+          <p>Patikrinimas – pirmoji sandaugos \(P\cdot X\) eilutė vėl lygi \(x\):</p>
+          \[ \begin{aligned} &amp;0{,}6\cdot 0{,}2 + 0{,}1\cdot 0{,}5 + 0{,}1\cdot 0{,}3 \\ &amp;= 0{,}12 + 0{,}05 + 0{,}03 = 0{,}2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Rezultatų paaiškinimas</span></h4>
+          <p>1-osios programėlės rinkos dalis nuo dabartinių 50&nbsp;% sumažėja iki 35&nbsp;% po vieno mėnesio ir iki 20&nbsp;% ilguoju laikotarpiu, o 2-osios padidėja nuo 30&nbsp;% iki 50&nbsp;%, 3-iosios – nuo 20&nbsp;% iki 30&nbsp;%. 1-oji programėlė praranda pozicijas ne dėl nepopuliarumo tarp naujų vartotojų – kiekvieną mėnesį ji pritraukia po 10&nbsp;% kiekvienos konkurentės klientų, – o dėl to, kad išlaiko tik 60&nbsp;% savųjų, mažiausiai iš visų trijų. Dabartinė lyderės pozicija yra praeities palikimas, kuris kas mėnesį silpsta.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Kitą mėnesį rinkos dalys bus 35&nbsp;%, 38&nbsp;% ir 27&nbsp;%; ilguoju laikotarpiu 1-oji programėlė turės 20&nbsp;%, 2-oji – 50&nbsp;%, o 3-ioji – 30&nbsp;% rinkos.</p>
+          </div>
+          <p>1-oji programėlė turi geriau išlaikyti klientus, nes esant dabartinėms perėjimo dalims jos pozicija toliau silpnėja, kad ir kiek naujų vartotojų ji pritrauktų.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: gairių 3 uždavinys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Sporto klubai: ar lyderis išliks didžiausias?</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Užduotis</span>
+        <p>Miestelyje konkuruoja trys sporto klubai. Šiuo metu A klubas turi 55&nbsp;% narių, B – 30&nbsp;%, o C – 15&nbsp;%. Kiekvienais metais A klubas išlaiko 80&nbsp;% savo narių, 15&nbsp;% praranda B naudai ir 5&nbsp;% – C naudai; B išlaiko 70&nbsp;%, 20&nbsp;% praranda A naudai ir 10&nbsp;% – C naudai; C išlaiko 75&nbsp;%, 15&nbsp;% praranda A naudai ir 10&nbsp;% – B naudai. A klubo vadovas mano, kad klubas išliks didžiausias. Nustatykite ilgalaikes rinkos dalis ir patikrinkite šį teiginį.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Žingsnio matrica</span></h4>
+          <p>Kiekvienam klubui skiriame po vieną stulpelį:</p>
+          \[ P = \begin{pmatrix} 0{,}8 &amp; 0{,}2 &amp; 0{,}15 \\ 0{,}15 &amp; 0{,}7 &amp; 0{,}1 \\ 0{,}05 &amp; 0{,}1 &amp; 0{,}75 \end{pmatrix} \]
+          <p>Stulpelių elementų sumos yra \(0{,}8 + 0{,}15 + 0{,}05 = 1\), \(0{,}2 + 0{,}7 + 0{,}1 = 1\) ir \(0{,}15 + 0{,}1 + 0{,}75 = 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Stabilumo sąlyga</span></h4>
+          <p>Tegu \(X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}\) yra A, B ir C klubų stabiliųjų rinkos dalių vektorius. Užrašome \(P\cdot X = X\) ir dešiniosios pusės narius perkeliame į kairiąją:</p>
+          \[ \begin{cases} -0{,}2x + 0{,}2y + 0{,}15z = 0 \\ 0{,}15x - 0{,}3y + 0{,}1z = 0 \\ 0{,}05x + 0{,}1y - 0{,}25z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Tikimybių sumos sąlyga</span></h4>
+          <p>Pirmąją lygtį pakeičiame sąlyga \(x + y + z = 1\), o kitas dvi padauginame iš 20:</p>
+          \[ \begin{cases} x + y + z = 1 \\ 3x - 6y + 2z = 0 \\ x + 2y - 5z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Nuliai pirmajame stulpelyje</span></h4>
+          <p>Pirmojo stulpelio elementus po vedančiuoju vienetu pavertus nuliais, trečiojoje eilutėje pirmasis nenulinis elementas jau yra 1, todėl paskutines dvi eilutes sukeičiame vietomis:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 1 \\ 3 &amp; -6 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; -5 &amp; 0 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-3)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -9 &amp; -1 &amp; -3 \\ \htmlClass{hc}{0} &amp; 1 &amp; -6 &amp; -1 \end{array}\right)\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; -6 &amp; -1 \\ 0 &amp; -9 &amp; -1 &amp; -3 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Nulis antrajame stulpelyje</span></h4>
+          <p>Prie trečiosios eilutės pridedame antrąją, padaugintą iš 9, ir padalijame iš \(-55\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; -6 &amp; -1 \\ 0 &amp; -9 &amp; -1 &amp; -3 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(9)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; -6 &amp; -1 \\ 0 &amp; \htmlClass{hc}{0} &amp; -55 &amp; -12 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-55)} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Atbulinė eiga</span></h4>
+          \[ \begin{aligned} z &amp;= \frac{12}{55} \approx 0{,}2182 \\ y &amp;= -1 + 6\cdot\frac{12}{55} = \frac{17}{55} \approx 0{,}3091 \\ x &amp;= 1 - \frac{17}{55} - \frac{12}{55} = \frac{26}{55} \approx 0{,}4727 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Patikrinimas</span></h4>
+          <p>Įstatome rastas dalis į pirmąją sandaugos \(P\cdot X\) eilutę:</p>
+          \[ \begin{aligned} 0{,}8\cdot 0{,}4727 &amp;= 0{,}3782 \\ 0{,}2\cdot 0{,}3091 &amp;= 0{,}0618 \\ 0{,}15\cdot 0{,}2182 &amp;= 0{,}0327 \end{aligned} \]
+          <p>Iš viso \(0{,}3782 + 0{,}0618 + 0{,}0327 = 0{,}4727 = x\), taigi rinkos dalys nekinta.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Rezultatų paaiškinimas</span></h4>
+          <p>Ilguoju laikotarpiu A klubas turi apie 47,3&nbsp;% narių, B – apie 30,9&nbsp;%, o C – apie 21,8&nbsp;%. Vadovas teisus, kad A klubas išliks didžiausias, tačiau šis teiginys užgožia svarbesnį faktą: klubo rinkos dalis sumažėja apie 7,7 procentinio punkto, beveik visa ši dalis atitenka C klubui, kurio rinkos dalis dėl 75&nbsp;% narių išlaikymo rodiklio padidėja nuo 15&nbsp;% iki beveik 22&nbsp;%. A klubas yra didžiausias, tačiau jis taip pat turi daugiausia ką prarasti, ir jo pozicija silpnėja, o ne stiprėja.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Ilgalaikės rinkos dalys yra apytiksliai 47,3&nbsp;% A klubui, 30,9&nbsp;% B klubui ir 21,8&nbsp;% C klubui.</p>
+          </div>
+          <p>A klubas išliks didžiausias, todėl vadovo teiginys teisingas, tačiau jo dalis sumažės nuo 55&nbsp;% iki maždaug 47&nbsp;%, o sparčiausiai augantis konkurentas bus C klubas.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 6. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: sudarykite žingsnio matricą, apibrėžkite stabiliųjų rinkos dalių vektorių, užrašykite lygčių sistemą su sąlyga \(x + y + z = 1\) ir išspręskite ją Gauso metodu. Pabaigoje pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Miesto rinką dalijasi trys prekybos centrų tinklai – A, B ir C. Tyrimo metu buvo nustatyta, kad:</p>
+          <ul>
+            <li>55&nbsp;% A prekybos tinklo klientų kitą mėnesį apsipirktų tame pačiame tinkle, 15&nbsp;% pasirinktų B tinklą, o 30&nbsp;% – C tinklą;</li>
+            <li>75&nbsp;% B prekybos tinklo klientų liktų tame pačiame tinkle, 15&nbsp;% pasirinktų A tinklą, o 10&nbsp;% – C tinklą;</li>
+            <li>60&nbsp;% C prekybos tinklo klientų liktų tame pačiame tinkle, 15&nbsp;% pasirinktų A tinklą, o 25&nbsp;% – B tinklą.</li>
+          </ul>
+          <p>Tarkime, kad išvardyti pasirinkimo įpročiai galios ir ateityje. Raskite trijų prekybos tinklų stabiliąsias rinkos dalis.</p>
+        </div>
+        <div class="q-answer">
+          <p>Stabiliųjų rinkos dalių vektorius yra</p>
+          \[ X = \begin{pmatrix} 1/4 \\ 9/20 \\ 3/10 \end{pmatrix} = \begin{pmatrix} 0{,}25 \\ 0{,}45 \\ 0{,}30 \end{pmatrix} \]
+          <p>Ilgainiui A prekybos tinklas turi 25&nbsp;% rinkos, B prekybos tinklas – 45&nbsp;%, o C prekybos tinklas – 30&nbsp;%. B prekybos tinklas, geriausiai išlaikantis savo klientus, tampa didžiausias, o A prekybos tinklas, kas mėnesį prarandantis 45&nbsp;% savo klientų, – mažiausias.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Rinką dalijasi trys muzikos transliavimo paslaugos teikėjai – A, B ir C. Naudotojų tyrimo metu buvo nustatyta, kad:</p>
+          <ul>
+            <li>70&nbsp;% A teikėjo naudotojų kitą mėnesį ir toliau naudotųsi jo paslauga, 20&nbsp;% pasirinktų B teikėją, o 10&nbsp;% – C teikėją;</li>
+            <li>60&nbsp;% B teikėjo naudotojų ir toliau naudotųsi jo paslauga, 20&nbsp;% pasirinktų A teikėją, o 20&nbsp;% – C teikėją;</li>
+            <li>60&nbsp;% C teikėjo naudotojų ir toliau naudotųsi jo paslauga, 10&nbsp;% pasirinktų A teikėją, o 30&nbsp;% – B teikėją.</li>
+          </ul>
+          <p>C paslaugos teikėjo vadovas teigia, kad C išlaiko 60&nbsp;% savo naudotojų ir kas mėnesį pritraukia dešimtadalį A teikėjo naudotojų bei penktadalį B teikėjo naudotojų, todėl ilgainiui C taps didžiausias iš trijų paslaugos teikėjų. Raskite trijų paslaugos teikėjų stabiliąsias rinkos dalis ir nustatykite, ar šis teiginys pasitvirtina.</p>
+        </div>
+        <div class="q-answer">
+          <p>Stabiliųjų rinkos dalių vektorius yra</p>
+          \[ X = \begin{pmatrix} 10/29 \\ 11/29 \\ 8/29 \end{pmatrix} \approx \begin{pmatrix} 0{,}345 \\ 0{,}379 \\ 0{,}276 \end{pmatrix} \]
+          <p>Ilgainiui A paslaugos teikėjas turi apie 34,5&nbsp;% rinkos, B paslaugos teikėjas – apie 37,9&nbsp;%, o C paslaugos teikėjas – apie 27,6&nbsp;%. Teiginys nepasitvirtina: C paslaugos teikėjas pritraukia <strong>abiejų kitų teikėjų</strong> naudotojų, tačiau kas mėnesį praranda 40&nbsp;% savo naudotojų, ir to pakanka, kad jis liktų mažiausias iš trijų. Didžiausias tampa B paslaugos teikėjas, nors geriausiai savo naudotojus išlaiko A paslaugos teikėjas.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">1–2 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

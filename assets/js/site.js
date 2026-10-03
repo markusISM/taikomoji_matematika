@@ -224,7 +224,7 @@
       { id: 'm32', status: 'active', href: { lt: 'tema-3-planavimas-daug.html' },
         title: { lt: 'Racionalusis planavimas (daug sprendinių)', en: 'Rational Planning (Infinitely Many Solutions)' },
         desc: { lt: 'Kai sprendinių be galo daug: parametras ir galimi planai.' } },
-      { id: 'm33', status: 'soon',
+      { id: 'm33', status: 'active', href: { lt: 'tema-3-stabiliosios-rinkos-dalys.html' },
         title: { lt: 'Stabiliosios rinkos dalys', en: 'Long-Run Market Shares' },
         desc: { lt: 'Rinkos dalys, kurios ilguoju laikotarpiu nebekinta: \\(P\\cdot X = X\\).' } }
     ]
@@ -259,6 +259,8 @@
                title: { lt: 'Racionalusis planavimas (vienintelis sprendinys)', en: 'Rational Planning (Unique Solution)' } },
     m32:     { parent: 't3', topic: 't3', model: 'm32', href: { lt: 'tema-3-planavimas-daug.html', en: null },
                title: { lt: 'Racionalusis planavimas (daug sprendinių)', en: 'Rational Planning (Infinitely Many Solutions)' } },
+    m33:     { parent: 't3', topic: 't3', model: 'm33', href: { lt: 'tema-3-stabiliosios-rinkos-dalys.html', en: null },
+               title: { lt: 'Stabiliosios rinkos dalys', en: 'Long-Run Market Shares' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },

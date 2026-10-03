@@ -20,6 +20,7 @@ lt/                            lietuviški puslapiai
   tema-3.html                  3 tema: tiesinių lygčių sistemos, Gauso metodas, sprendinių skaičius + taikymų skiltys
   tema-3-planavimas-vienintelis.html  Racionalusis planavimas (vienintelis sprendinys)
   tema-3-planavimas-daug.html  Racionalusis planavimas (be galo daug sprendinių)
+  tema-3-stabiliosios-rinkos-dalys.html  Stabiliosios rinkos dalys (P·X = X)
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -42,7 +43,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=17` ir `site.js?v=17`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=18` ir `site.js?v=18`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 

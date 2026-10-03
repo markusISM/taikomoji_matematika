@@ -818,3 +818,14 @@ svg .nl-br { stroke: var(--chart); stroke-width: 2.4; fill: none; }
   .vtable.hdr-wrap thead th .katex { font-size: .82rem; }
   .vtable.hdr-wrap thead th:last-child { font-size: .7rem; }
 }
+
+/* ---------- Stabiliosios rinkos dalys (3.3) ---------- */
+.conv { max-width: 440px; margin: 16px auto 8px; }
+.derive { list-style: none; padding: 0; margin: 14px 0 12px; }
+.derive li { margin: 0; padding: 10px 12px 4px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); position: relative; }
+.derive li + li { margin-top: 30px; }
+.derive li + li::before { content: "↓"; position: absolute; top: -27px; left: 50%; transform: translateX(-50%); color: var(--accent-strong); font-size: 1.2rem; line-height: 1; }
+.derive .dl { display: block; font-size: .9rem; font-weight: 700; color: var(--accent-strong); }
+.derive .dn { margin: 4px 0 0; font-size: .92rem; }
+.derive .katex-display { margin: .5em 0 .4em; overflow-x: auto; overflow-y: hidden; }
+@media (max-width: 440px) { .derive .fit-wrap .katex-display > .katex { font-size: .9em; } }
