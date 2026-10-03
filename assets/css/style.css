@@ -829,3 +829,31 @@ svg .nl-br { stroke: var(--chart); stroke-width: 2.4; fill: none; }
 .derive .dn { margin: 4px 0 0; font-size: .92rem; }
 .derive .katex-display { margin: .5em 0 .4em; overflow-x: auto; overflow-y: hidden; }
 @media (max-width: 440px) { .derive .fit-wrap .katex-display > .katex { font-size: .9em; } }
+
+/* ---------- Tiesinis programavimas (4 tema) ---------- */
+.vtable.sign-tbl td:last-child, .vtable.goal-tbl td:last-child { white-space: normal; }
+.vtable.sign-tbl td:nth-child(2) { text-align: center; font-size: 1.15rem; white-space: nowrap; }
+.vtable.sign-tbl td:first-child { width: 34%; }
+.vtable.goal-tbl td { width: 50%; }
+@media (max-width: 560px) {
+  .vtable.sign-tbl td:nth-child(2) { text-align: left; padding-top: 8px; padding-bottom: 0; }
+  .vtable.sign-tbl td:first-child, .vtable.goal-tbl td { width: auto; }
+  .vtable.goal-tbl td:first-child { background: transparent; color: var(--text); font-size: inherit; }
+  .vtable.goal-tbl td::before { display: block; font-size: .78rem; font-weight: 700; color: var(--muted); margin-bottom: 2px; }
+  .vtable.goal-tbl td:first-child::before { content: "Siekiama kuo didesnio"; }
+  .vtable.goal-tbl td:last-child::before { content: "Siekiama kuo mažesnio"; }
+}
+.duo { display: grid; gap: 12px; margin: 12px 0; }
+@media (min-width: 640px) { .duo { grid-template-columns: 1fr 1fr; } }
+.duo-card { padding: 12px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); min-width: 0; }
+.duo-card h4 { margin: 0 0 4px; font-size: 1rem; }
+.duo-card ul { margin: 6px 0 0; padding-left: 1.1em; font-size: .93rem; }
+.duo-card li { margin: 0 0 4px; }
+.duo-card .katex-display { margin: .5em 0; overflow-x: auto; overflow-y: hidden; }
+.lp-fig { max-width: 420px; margin: 12px auto 10px; }
+svg .lp-region { fill: var(--chart); fill-opacity: .16; stroke: none; }
+svg .lp-line { stroke: var(--chart); stroke-width: 2; fill: none; }
+svg .lp-iso { stroke: var(--exam); stroke-width: 1.6; stroke-dasharray: 6 5; fill: none; }
+svg .lp-arrow { stroke: var(--exam); stroke-width: 2; fill: none; }
+svg .lp-arrowhead { fill: var(--exam); }
+@media (max-width: 440px) { .small-math .katex-display > .katex { font-size: .86em; } }

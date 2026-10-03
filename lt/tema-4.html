@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4 tema. Tiesinis programavimas: geometriniai metodai · Taikomoji matematika</title>
+<meta name="description" content="Tiesinio programavimo uždavinio esmė: tikslo funkcija, techniniai ir natūralieji apribojimai, standartiniai maksimizavimo ir minimizavimo uždaviniai, leistinųjų sprendinių aibė ir optimalus sprendinys.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=19">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=19"></script>
+</head>
+<body data-page="t4">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">4 tema</span>
+    <h1>Tiesinis programavimas: geometriniai metodai</h1>
+    <ul class="jump">
+      <li><a href="#esme">Esmė</a></li>
+      <li><a href="#tikslo-funkcija">Tikslo funkcija</a></li>
+      <li><a href="#apribojimai">Apribojimai</a></li>
+      <li><a href="#standartiniai">Standartiniai uždaviniai</a></li>
+      <li><a href="#sprendimas">Sprendimas</a></li>
+      <li><a href="#skyriai">Skyriai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ SĄVOKOS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">Pagrindinės sąvokos</h2>
+
+    <!-- 1 -->
+    <article class="card concept" id="esme">
+      <div class="concept-head"><span class="num">1</span><h3>Kas yra tiesinio programavimo uždavinys?</h3></div>
+      <p>Tiesinio programavimo (TP) uždavinyje ieškoma geriausio sprendimo, kai galimybės ribotos. Reikia rasti tokias kintamųjų reikšmes, kurioms <strong>tikslo funkcija</strong> įgyja <strong>didžiausią</strong> arba <strong>mažiausią</strong> reikšmę, ir kartu tenkinami visi <strong>apribojimai</strong>.</p>
+      <p>Pavyzdžiui, įmonė nori gauti kuo didesnį pelną, tačiau jos darbo laikas ir žaliavos riboti; arba nori kuo pigiau pasiekti reikiamą reklamos auditoriją. Taip sprendžiami optimalaus gamybos plano, reklamos ir investicijų portfelio uždaviniai.</p>
+      <p>Uždavinys vadinamas <strong>tiesiniu</strong>, nes ir tikslo funkcija, ir apribojimai yra tiesiniai: kintamieji juose yra tik pirmojo laipsnio, kaip ir <a href="tema-3.html#sistema">tiesinėse lygtyse</a>.</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Tikslo funkcija</strong><span>Pelnas, pajamos, grąža \(\to \max\); sąnaudos, rizika \(\to \min\).</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Techniniai apribojimai</strong><span>Darbo laikas, žaliavos, paklausa ir kiti ištekliai ar reikalavimai.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Natūralieji apribojimai</strong><span>Neneigiamumo, sveikaskaitiškumo, binariniai ir kiti.</span></div></div>
+      </div>
+      <p class="formula-note" style="text-align:center">TP uždavinio sandara</p>
+    </article>
+
+    <!-- 2 -->
+    <article class="card concept" id="tikslo-funkcija">
+      <div class="concept-head"><span class="num">2</span><h3>Tikslo funkcija</h3></div>
+      <p><strong>Tikslo funkcija</strong> – dydis, kurio reikšmė turi būti kuo didesnė arba kuo mažesnė. Šalia jos rašoma rodyklė, nurodanti tikslą: \(\to \max\) (maksimizuoti) arba \(\to \min\) (minimizuoti).</p>
+      <div class="tbl-wrap">
+        <table class="vtable req-tbl goal-tbl">
+          <thead><tr><th scope="col">Siekiama kuo didesnio</th><th scope="col">Siekiama kuo mažesnio</th></tr></thead>
+          <tbody>
+            <tr><td>pelnas, pajamos, grąža, reklamą pamatysiančių žmonių skaičius</td><td>sąnaudos, išlaidos, rizika</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subtype">
+        <h4>Kaip sudaroma tikslo funkcija</h4>
+        <p>Kiekvienas kintamasis žymi kurio nors objekto kiekį. Jei vienas A gaminys duoda \(p_1\) eurų pelno, tai \(x\) tokių gaminių duoda \(p_1 x\) eurų. Visų gaminių pelnas sudedamas:</p>
+        <div class="formula fit">\[ P = \underbrace{p_1x}_{\text{iš A gaminių}} + \underbrace{p_2y}_{\text{iš B gaminių}} \to \max \]</div>
+        <p>Minimizavimo uždavinyje taip pat sudaromos sąnaudos: jei vienas A variantas kainuoja \(c_1\) eurų, o B variantas – \(c_2\) eurų, tai</p>
+        <div class="formula">\[ TC = c_1x + c_2y \to \min \]</div>
+        <p class="tip">Tikslo funkcijos koeficientai – vieno vieneto pelnas, kaina ar kitas rodiklis – paimami iš uždavinio sąlygos. Kartais tikslo funkcijoje būna ir pastovusis narys, pavyzdžiui, fiksuotas mokestis; tokie uždaviniai nagrinėjami 4 skyriuje.</p>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="card concept" id="apribojimai">
+      <div class="concept-head"><span class="num">3</span><h3>Apribojimai</h3></div>
+      <p><strong>Apribojimai</strong> – sąlygos, kurias turi tenkinti kiekvienas leistinas planas. Jie užrašomi tiesinėmis nelygybėmis ir jungiami į vieną sistemą.</p>
+
+      <div class="subtype">
+        <h4>Techniniai apribojimai</h4>
+        <p>Jie kyla iš įmonės išteklių (darbo laikas, žaliavos, įrenginių valandos) arba iš reikalavimų, kuriuos būtina įvykdyti (paklausa, auditorija, pristatymo kiekis). Kiekvienam ištekliui ar reikalavimui sudaroma po vieną nelygybę:</p>
+        <div class="formula">\[ \begin{gathered} \underbrace{a_1x + a_2y}_{\text{sunaudojama}} \;\leq\; \underbrace{b}_{\text{turima}} \\[6pt] \underbrace{a_1x + a_2y}_{\text{pasiekiama}} \;\geq\; \underbrace{b}_{\text{reikalaujama}} \end{gathered} \]</div>
+        <p>Čia \(a_1\) – kiek ištekliaus sunaudoja (arba kiek reikalavimo įvykdo) vienas A vienetas, \(a_2\) – vienas B vienetas, o \(b\) – turimas ar reikalaujamas kiekis.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Natūralieji apribojimai</h4>
+        <p>Jie kyla iš pačių kintamųjų prasmės. Svarbiausi – <strong>neneigiamumo</strong> apribojimai: negalima pagaminti neigiamo gaminių skaičiaus, todėl</p>
+        <div class="formula">\[ x;\, y \geq 0 \]</div>
+        <p>Natūralieji apribojimai taip pat gali reikalauti, kad kiekiai būtų sveikieji skaičiai (sveikaskaitiškumo) arba įgytų tik reikšmes 0 ir 1 (binariniai).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Ką reiškia nelygybės ženklas</h4>
+        <div class="tbl-wrap">
+          <table class="vtable req-tbl sign-tbl">
+            <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Ženklas</th><th scope="col">Ką tai reiškia praktiškai</th></tr></thead>
+            <tbody>
+              <tr><td>„turima“, „galima skirti ne daugiau kaip“, „galima parduoti ne daugiau kaip“</td><td>\(\leq\)</td><td>Išteklius riboja <strong>iš viršaus</strong>: jo galima sunaudoti mažiau arba lygiai tiek, kiek turima, bet ne daugiau. Lygybė reiškia, kad išteklius sunaudotas visiškai.</td></tr>
+              <tr><td>„bent“, „ne mažiau kaip“, „reikia pasiekti“</td><td>\(\geq\)</td><td>Reikalavimas riboja <strong>iš apačios</strong>: jį galima viršyti, bet negalima jo neįvykdyti. Lygybė reiškia, kad reikalavimas įvykdytas tiksliai.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tip">Palyginkite su <a href="tema-3-planavimas-vienintelis.html#modelis">3 temos planavimo uždaviniais</a>: ten ištekliai turėjo būti sunaudoti visiškai, todėl rašėme lygtis. TP uždavinyje dalis ištekliaus gali likti nepanaudota, todėl rašomos nelygybės. Dėl to galimų planų būna labai daug, ir iš jų reikia išrinkti geriausią.</p>
+        <p>Šiame kurse naudojami tik ženklai \(\leq\) ir \(\geq\): ribinė reikšmė (lygybė) visada leidžiama.</p>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="card concept" id="standartiniai">
+      <div class="concept-head"><span class="num">4</span><h3>Standartiniai uždaviniai</h3></div>
+      <p>Uždavinio matematinis modelis – tikslo funkcija ir šalia jos visų apribojimų sistema. Kai kintamieji du, dažniausiai pasitaiko du standartiniai modelio pavidalai:</p>
+      <div class="duo">
+        <div class="duo-card">
+          <h4>Standartinis maksimizavimo uždavinys</h4>
+          \[ \begin{gathered} P = p_1x + p_2y \to \max \\[4pt] \begin{cases} a_{11}x + a_{12}y \;\htmlClass{hd}{\leq}\; b_1 \\ a_{21}x + a_{22}y \;\htmlClass{hd}{\leq}\; b_2 \\ \quad\vdots \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <ul>
+            <li>Visų techninių apribojimų ženklas \(\leq\): ištekliai riboti.</li>
+            <li>Leistinųjų sprendinių aibė dažniausiai <strong>aprėžta</strong>.</li>
+            <li>Pavyzdys: kuo didesnis pelnas iš ribotų išteklių.</li>
+          </ul>
+        </div>
+        <div class="duo-card">
+          <h4>Standartinis minimizavimo uždavinys</h4>
+          \[ \begin{gathered} TC = c_1x + c_2y \to \min \\[4pt] \begin{cases} a_{11}x + a_{12}y \;\htmlClass{hd}{\geq}\; b_1 \\ a_{21}x + a_{22}y \;\htmlClass{hd}{\geq}\; b_2 \\ \quad\vdots \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <ul>
+            <li>Visų techninių apribojimų ženklas \(\geq\) – reikalavimai, kuriuos būtina įvykdyti.</li>
+            <li>Leistinųjų sprendinių aibė <strong>neaprėžta</strong>.</li>
+            <li>Pavyzdys: kuo mažesnės sąnaudos, įvykdžius visus reikalavimus.</li>
+          </ul>
+        </div>
+      </div>
+      <p>Uždaviniai, kurie neatitinka šių pavidalų – pavyzdžiui, kai tame pačiame modelyje yra ir \(\leq\), ir \(\geq\) apribojimų arba tikslo funkcijoje yra pastovusis narys, – vadinami <strong>nestandartiniais</strong>. Jie sprendžiami tuo pačiu metodu.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Bendrasis pavidalas, kai kintamųjų yra \(n\)</span></summary>
+        <div class="more-body small-math">
+          <p>Standartinis maksimizavimo uždavinys:</p>
+          \[ \begin{gathered} P = p_1x_1 + p_2x_2 + \cdots + p_nx_n \to \max \\[4pt] \begin{cases} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \leq b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \leq b_2 \\ \quad\vdots \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n \leq b_m \\ x_1;\, x_2;\, \ldots;\, x_n \geq 0 \end{cases} \end{gathered} \]
+          <p>Standartinis minimizavimo uždavinys:</p>
+          \[ \begin{gathered} C = c_1x_1 + c_2x_2 + \cdots + c_nx_n \to \min \\[4pt] \begin{cases} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \geq b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \geq b_2 \\ \quad\vdots \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n \geq b_m \\ x_1;\, x_2;\, \ldots;\, x_n \geq 0 \end{cases} \end{gathered} \]
+          <p>Geometriniu metodu sprendžiami uždaviniai su dviem kintamaisiais, kai \(x_1 = x\), \(x_2 = y\). Daugiau kintamųjų turintys uždaviniai sprendžiami simpleksų metodu (5 tema). Sąnaudų funkcija skaidrėse žymima \(C\), o uždavinių sprendimo gairėse ir pavyzdžiuose – \(TC\).</p>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sprendžiant taikomuosius tiesinio programavimo uždavinius, uždavinio pradžioje privaloma pateikti įvedamų kintamųjų apibrėžimus. Apibrėžimuose turi būti aiškiai nurodoma, kad kintamasis žymi tam tikro objekto kiekį.</li>
+            <li>Sprendime privalo būti pateiktas uždavinio matematinis modelis – tikslo funkcija ir apribojimų sistema. Turi būti aiškiai nurodyta, ar tikslo funkciją siekiama maksimizuoti, ar minimizuoti. Visi apribojimai, įskaitant ir neneigiamumo apribojimus, privalo būti aiškiai pateikti vienoje sistemoje, šalia tikslo funkcijos.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ SPRENDIMAS ============ -->
+  <section class="section" id="sprendimas" aria-labelledby="h-solve">
+    <h2 id="h-solve">Kaip sprendžiamas TP uždavinys</h2>
+
+    <!-- 5 -->
+    <article class="card concept" id="leistinoji-aibe">
+      <div class="concept-head"><span class="num">5</span><h3>Leistinųjų sprendinių aibė ir optimalus sprendinys</h3></div>
+      <p>Geometriniu metodu uždavinys sprendžiamas dviem etapais:</p>
+      <div class="phases">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Visi galimi planai</strong><span>Išsprendžiama apribojimų – tiesinių nelygybių – sistema. Jos sprendinių aibė yra <em>leistinųjų sprendinių aibė</em>: visi planai, tenkinantys visus apribojimus.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Geriausias planas</strong><span>Iš leistinųjų sprendinių išrenkamas tas, kuriame tikslo funkcijos reikšmė didžiausia (max) arba mažiausia (min). Jis vadinamas <em>optimaliu sprendiniu</em>.</span></div></div>
+      </div>
+
+      <div class="subtype">
+        <h4>1 etapas: leistinųjų sprendinių aibė</h4>
+        <p>Kiekviena tiesinė nelygybė su dviem kintamaisiais plokštumoje apibrėžia <strong>pusplokštumę</strong>: tiesė \(ax + by = c\) padalija plokštumą į dvi dalis, ir viena iš jų yra nelygybės sprendinių aibė. Sistemos sprendinių aibė yra visų pusplokštumių <strong>sankirta</strong> – taškai, tenkinantys visas nelygybes kartu. Tai ir yra <strong>leistinųjų sprendinių aibė</strong> (skaidrėse ir reikalavimuose – <em>leistina sprendinių aibė</em>).</p>
+        <p>Jos kampiniai taškai vadinami <strong>viršūnėmis</strong>. Leistinųjų sprendinių aibė gali būti <strong>aprėžta</strong> (daugiakampis) arba <strong>neaprėžta</strong> (be galo besitęsianti kuria nors kryptimi).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>2 etapas: optimali viršūnė</h4>
+        <figure class="fig lp-fig">
+          <svg viewBox="0 0 320 232" role="img" aria-label="Schema: leistinųjų sprendinių aibė OABCD ir lygiagrečios tikslo funkcijos tiesės; didžiausia reikšmė pasiekiama viršūnėje B">
+            <path class="lp-region" d="M40 205L40 23L118 49L196 114L235 205Z"/>
+            <path class="lp-line" d="M40 23L274 101M71.2 10L305.2 205M157 23L235 205"/>
+            <path class="lp-iso" d="M40 127L157 205M40 57.7L261 205M66 14.3L248 135.7"/>
+            <path class="ax" d="M36 205H310M40 209V8"/>
+            <path class="ah" d="M316 205l-9-4.5v9z"/>
+            <path class="ah" d="M40 2l-4.5 9h9z"/>
+            <path class="lp-arrow" d="M96 168L114 141"/>
+            <path class="lp-arrowhead" d="M118 135l-9.5 3.2 7 5z"/>
+            <circle class="pt" cx="40" cy="205" r="4"/>
+            <circle class="pt" cx="40" cy="23" r="4"/>
+            <circle class="pt-hi" cx="118" cy="49" r="6"/>
+            <circle class="pt" cx="196" cy="114" r="4"/>
+            <circle class="pt" cx="235" cy="205" r="4"/>
+            <text class="m" x="28" y="220">O</text>
+            <text class="m" x="24" y="27">A</text>
+            <text class="m b exam" x="112" y="38">B</text>
+            <text class="m" x="202" y="110">C</text>
+            <text class="m" x="236" y="222">D</text>
+            <text class="m" x="304" y="222">x</text>
+            <text class="m" x="48" y="12">y</text>
+            <text class="muted" x="122" y="170">P didėja</text>
+          </svg>
+          <figcaption>Schema be skaičių. Nuspalvinta leistinųjų sprendinių aibė \(OABCD\); punktyrinės tiesės – taškai, kuriuose tikslo funkcija \(P\) įgyja vienodą reikšmę. Kuo toliau tiesė pasislinkusi rodyklės kryptimi, tuo didesnė \(P\) reikšmė. Paskutinis aibės taškas, kurį ji paliečia, – viršūnė \(B\).</figcaption>
+        </figure>
+        <p>Tiesinės tikslo funkcijos reikšmė leistinųjų sprendinių aibėje tolygiai didėja viena kryptimi, todėl didžiausią (ar mažiausią) reikšmę ji įgyja <strong>vienoje iš aibės viršūnių</strong>. Viršūnių yra baigtinis skaičius, todėl pakanka:</p>
+        <ol class="steps-list">
+          <li>rasti visas leistinųjų sprendinių aibės viršūnes;</li>
+          <li>apskaičiuoti tikslo funkcijos reikšmę kiekvienoje viršūnėje;</li>
+          <li>išrinkti didžiausią (max) arba mažiausią (min) reikšmę.</li>
+        </ol>
+        <p>Atsakymas užrašomas kartu su optimaliu planu, pavyzdžiui, \(P_{\max}(x;\, y) = \ldots\) arba \(TC_{\min}(x;\, y) = \ldots\)</p>
+        <p class="tip">Punktyrinės tikslo funkcijos tiesės brėžinyje padeda suprasti, kodėl optimumas yra viršūnėje. Sprendžiant uždavinį jų brėžti nereikia – užtenka apskaičiuoti tikslo funkcijos reikšmes viršūnėse.</p>
+      </div>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Ypatingieji atvejai</summary>
+        <div class="more-body">
+          <p>Kartais uždavinys neturi vieno optimalaus sprendinio:</p>
+          <ul>
+            <li><strong>Sprendiniai atkarpoje.</strong> Kai tikslo funkcijos tiesės lygiagrečios vienai iš aibės kraštinių, ta pati didžiausia reikšmė pasiekiama dviejose gretimose viršūnėse ir visuose atkarpos tarp jų taškuose. Pavyzdžiui, uždavinyje \(P = 5x + 2y \to \max\), kai \(3x + 2y \leq 40\), \(10x + 4y \leq 100\), \(x;\, y \geq 0\), tikslo funkcijos koeficientai proporcingi antrosios nelygybės koeficientams: \(10x + 4y = 2(5x + 2y)\).</li>
+            <li><strong>Sprendinys nepasiekiamas.</strong> Kai leistinųjų sprendinių aibė neaprėžta, o tikslo funkcija maksimizuojama, jos reikšmė gali didėti be galo – didžiausios reikšmės nėra. Pavyzdžiui, \(P = 5x + 1{,}5y \to \max\), kai \(3x + 2y \geq 40\), \(10x + 4y \geq 100\), \(x;\, y \geq 0\).</li>
+            <li><strong>Leistinoji sprendinių aibė neegzistuoja.</strong> Kai apribojimai prieštarauja vienas kitam, nėra nė vieno taško, tenkinančio juos visus. Pavyzdžiui, sąlygos \(3x + 2y \geq 40\) ir \(10x + 4y \leq 60\), kai \(x;\, y \geq 0\), kartu neįvykdomos.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ SKYRIAI ============ -->
+  <section class="section" id="skyriai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Temos skyriai</h2>
+    <p class="section-intro">Pirmiausia išmokite grafiškai spręsti tiesinių nelygybių sistemas, tada – trijų rūšių tiesinio programavimo uždavinius. Pasirinkite skyrių.</p>
+    <div class="model-grid" data-models="t4"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">4 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">3 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

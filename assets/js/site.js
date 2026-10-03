@@ -36,6 +36,8 @@
       models: 'Taikomieji modeliai',
       part: 'Skiltis',
       nextPart: 'Kita skiltis',
+      chapter: 'Skyrius',
+      nextChapter: 'Kitas skyrius',
       back: 'Atgal',
       backTo: function (t) { return 'Atgal: ' + t; },
       nextModel: 'Kitas modelis',
@@ -107,6 +109,8 @@
       models: 'Applied models',
       part: 'Part',
       nextPart: 'Next part',
+      chapter: 'Section',
+      nextChapter: 'Next section',
       back: 'Back',
       backTo: function (t) { return 'Back: ' + t; },
       nextModel: 'Next model',
@@ -175,7 +179,8 @@
       title: { lt: 'Matricos', en: 'Matrices' } },
     { id: 't3', num: 3, status: 'active', href: { lt: 'tema-3.html' },
       title: { lt: 'Tiesinių lygčių sistemos', en: 'Systems of Linear Equations' } },
-    { id: 't4', num: 4, status: 'soon', title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: null } },
+    { id: 't4', num: 4, status: 'active', href: { lt: 'tema-4.html' },
+      title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: 'Linear Programming: Geometric Methods' } },
     { id: 't5', num: 5, status: 'soon', title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: null } },
     { id: 'midterm', type: 'exam', href: { lt: 'tarpinis-egzaminas.html' },
       title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
@@ -227,11 +232,26 @@
       { id: 'm33', status: 'active', href: { lt: 'tema-3-stabiliosios-rinkos-dalys.html' },
         title: { lt: 'Stabiliosios rinkos dalys', en: 'Long-Run Market Shares' },
         desc: { lt: 'Rinkos dalys, kurios ilguoju laikotarpiu nebekinta: \\(P\\cdot X = X\\).' } }
+    ],
+    t4: [
+      { id: 'm41', status: 'soon',
+        title: { lt: 'Tiesinių nelygybių sistemos', en: 'Systems of Linear Inequalities' },
+        desc: { lt: 'Pusplokštumės, leistinųjų sprendinių aibė ir jos viršūnės.' } },
+      { id: 'm42', status: 'soon',
+        title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' },
+        desc: { lt: 'Didžiausias pelnas ar pajamos, kai ištekliai riboti: apribojimai \\(\\leq\\).' } },
+      { id: 'm43', status: 'soon',
+        title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' },
+        desc: { lt: 'Mažiausios sąnaudos, kai reikalavimai turi būti įvykdyti: apribojimai \\(\\geq\\).' } },
+      { id: 'm44', status: 'soon',
+        title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' },
+        desc: { lt: 'Visumos dalys, mišiniai, pristatymo planai ir maišyti apribojimų ženklai.' } }
     ]
   };
 
   /* Temos, kurių taikymai vadinami skiltimis, o ne modeliais. */
-  var UNIT = { t2: 'part', t3: 'part' };
+  var UNIT = { t2: 'part', t3: 'part', t4: 'chapter' };
+  function unitLabel(t) { return UNIT[t] === 'chapter' ? T.chapter : (UNIT[t] ? T.part : T.model); }
 
   /* Puslapiai: failo vardas kiekviena kalba ir tėvinis puslapis (kelio juostai).
      Kai sukursite anglišką puslapį, įrašykite jo failo vardą į href.en. */
@@ -261,6 +281,8 @@
                title: { lt: 'Racionalusis planavimas (daug sprendinių)', en: 'Rational Planning (Infinitely Many Solutions)' } },
     m33:     { parent: 't3', topic: 't3', model: 'm33', href: { lt: 'tema-3-stabiliosios-rinkos-dalys.html', en: null },
                title: { lt: 'Stabiliosios rinkos dalys', en: 'Long-Run Market Shares' } },
+    t4:      { parent: 'home', href: { lt: 'tema-4.html', en: null },
+               title: { lt: '4 tema', en: 'Topic 4' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
@@ -393,7 +415,7 @@
       var list = MODELS[box.getAttribute('data-models')] || [];
       var html = '';
       list.forEach(function (m, i) {
-        var head = '<span class="m-no">' + esc(UNIT[box.getAttribute('data-models')] ? T.part : T.model) + ' ' + (i + 1) + '</span><h3>' + esc(tr(m.title)) + '</h3>' +
+        var head = '<span class="m-no">' + esc(unitLabel(box.getAttribute('data-models'))) + ' ' + (i + 1) + '</span><h3>' + esc(tr(m.title)) + '</h3>' +
           '<p>' + tr(m.desc) + '</p>';
         if (m.status === 'active' && m.href && m.href[LANG]) {
           html += '<a class="model-card" href="' + m.href[LANG] + '">' + head +
@@ -418,7 +440,7 @@
       var list = MODELS[p.topic] || [];
       var idx = -1;
       list.forEach(function (m, i) { if (m.id === p.model) idx = i; });
-      var nxt = list[idx + 1], nextLbl = UNIT[p.topic] ? T.nextPart : T.nextModel;
+      var nxt = list[idx + 1], nextLbl = UNIT[p.topic] === 'chapter' ? T.nextChapter : (UNIT[p.topic] ? T.nextPart : T.nextModel);
       if (nxt) {
         if (nxt.status === 'active' && nxt.href && nxt.href[LANG]) {
           html += '<a class="next" href="' + nxt.href[LANG] + '"><span class="dir">' + esc(nextLbl) + ' →</span>' +
