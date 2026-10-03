@@ -723,7 +723,9 @@ svg text.on-bar { fill: var(--surface); font-size: 12px; font-weight: 700; }
 svg .tr1 { stroke: var(--chart); stroke-width: 2.2; fill: none; }
 svg .tr2 { stroke: var(--chart-2); stroke-width: 2.2; fill: none; }
 svg .node { fill: var(--surface); stroke: var(--text); stroke-width: 1.5; }
-.markov-chain .op { font-weight: 600; font-size: .82rem; }
-.markov-chain .op::before { content: "→ "; }
-.markov-chain .op:last-child::before { content: ""; }
-@media (max-width: 560px) { .markov-chain .op::before { content: "↓ "; } }
+.mchain { list-style: none; padding: 0; margin: 16px auto 6px; max-width: 340px; }
+.mchain li { margin: 0; }
+.mchain .st { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+.mchain .vec { flex: none; min-width: 34px; font-size: 1.1rem; color: var(--accent-strong); }
+.mchain .tr { display: flex; align-items: center; gap: 12px; padding: 4px 0 4px 22px; color: var(--muted); font-size: .92rem; }
+.mchain .arr { font-size: 1.25rem; line-height: 1; color: var(--accent-strong); }

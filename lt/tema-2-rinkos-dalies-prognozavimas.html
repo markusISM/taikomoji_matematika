@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=11">
+<link rel="stylesheet" href="../assets/css/style.css?v=12">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=11"></script>
+<script defer src="../assets/js/site.js?v=12"></script>
 </head>
 <body data-page="m23">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -41,14 +41,14 @@
     <article class="card">
       <p>Daugumoje rinkų klientai ne visada lieka pas tą patį tiekėją. Kiekvienu laikotarpiu dalis jų pereina pas konkurentus, o dalis ateina iš konkurentų, todėl rinkos dalys keičiasi net ir nesikeičiant kitoms aplinkybėms. Jei rinkos tyrimu nustatoma, kokia kiekvienos įmonės klientų dalis pereina į kiekvieną kitą įmonę, ir galima daryti prielaidą, kad šios dalys kiekvienu laikotarpiu išlieka tokios pačios, kito laikotarpio rinkos dalis galima apskaičiuoti iš dabartinių rinkos dalių vienu matricų daugybos veiksmu. Taip aprašyta laikotarpių seka vadinama <strong>Markovo grandine</strong>.</p>
 
-      <div class="dimchain markov-chain" aria-label="X0, padauginus iš P, gaunamas X1; X1 padauginus iš P gaunamas X2">
-        <span class="dc">\(X_0\) – dabar</span>
-        <span class="op">dauginame iš \(P\)</span>
-        <span class="dc">\(X_1\) – po 1 laikotarpio</span>
-        <span class="op">dauginame iš \(P\)</span>
-        <span class="dc">\(X_2\) – po 2 laikotarpių</span>
-        <span class="op">…</span>
-      </div>
+      <ol class="mchain" aria-label="Laikotarpių seka">
+        <li class="st"><span class="vec">\(X_0\)</span><span>dabartinės rinkos dalys</span></li>
+        <li class="tr"><span class="arr" aria-hidden="true">↓</span><span>\(X_1 = P\cdot X_0\)</span></li>
+        <li class="st"><span class="vec">\(X_1\)</span><span>rinkos dalys po 1 laikotarpio</span></li>
+        <li class="tr"><span class="arr" aria-hidden="true">↓</span><span>\(X_2 = P\cdot X_1\)</span></li>
+        <li class="st"><span class="vec">\(X_2\)</span><span>rinkos dalys po 2 laikotarpių</span></li>
+        <li class="tr"><span class="arr" aria-hidden="true">↓</span><span>…</span></li>
+      </ol>
       <p class="formula-note" style="text-align:center">Kiekvieno laikotarpio rinkos dalys gaunamos ankstesniojo laikotarpio dalis padauginus iš tos pačios žingsnio matricos \(P\).</p>
 
       <p>Modelyje daroma prielaida, kad klientų perėjimo dalys išlieka pastovios ir bendras klientų skaičius rinkoje nesikeičia.</p>
@@ -216,7 +216,6 @@
           <ol>
             <li>Sprendžiant rinkos dalies prognozavimo uždavinius būtina pateikti sudarytą žingsnio matricą \(P\) bei pradinį būsenos tikimybių vektorių \(X_0\). Skaičiuojant sekančių laikotarpių prognozuojamą rinkos pasiskirstymą būtina parašyti atliekamą matricų veiksmą.</li>
             <li>Atliekant matricų daugybos veiksmą būtina nurodyti dauginamas matricas, jų matmenis bei naujos matricos struktūrą. Perrašyti matricų nėra būtina, taip pat nėra būtina surašyti visus atliekamus aritmetinius veiksmus.</li>
-            <li>Nepamirškite pateikti rezultato interpretacijos, jei to prašo uždavinio sąlyga. Interpretacija turi pateikti gautosios matricos elementų prasmės paaiškinimą.</li>
           </ol>
           <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
         </div>
