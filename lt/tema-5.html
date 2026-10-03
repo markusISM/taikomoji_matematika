@@ -107,6 +107,22 @@
       <p class="formula-note" style="text-align:center">Tariamų kintamųjų stulpeliai (paryškinti) kartu sudaro vienetinę matricą.</p>
 
       <div class="subtype">
+        <h4>Kiek lentelėje stulpelių ir eilučių</h4>
+        <p>Lentelės dydis priklauso nuo uždavinio. Pirmųjų stulpelių yra tiek, kiek sprendimo kintamųjų, o tariamų kintamųjų stulpelių – tiek, kiek apribojimų, nes kiekvienam apribojimui įvedamas savas tariamas kintamasis. Eilučių yra vienu daugiau negu apribojimų: paskutinė skirta tikslo funkcijai.</p>
+        <p>Pavyzdžiui, jei kintamieji keturi – \(x, y, z, w\), o apribojimai tik du, lentelėje pirmiausia yra keturi stulpeliai \(x, y, z, w\), tada du stulpeliai \(s_1\) ir \(s_2\), paskui \(P\) ir \(n\) – iš viso 8 stulpeliai ir 3 eilutės:</p>
+        <div class="tbl-wrap">
+          <table class="vtable sx-tbl">
+            <thead><tr><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col">\(z\)</th><th scope="col">\(w\)</th><th scope="col" class="g">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+            <tbody>
+              <tr><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(a_{13}\)</td><td>\(a_{14}\)</td><td class="g idb">1</td><td class="idb">0</td><td class="g">0</td><td class="g">\(b_1\)</td></tr>
+              <tr><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(a_{23}\)</td><td>\(a_{24}\)</td><td class="g idb">0</td><td class="idb">1</td><td class="g">0</td><td class="g">\(b_2\)</td></tr>
+              <tr class="tf"><td>\(-p_1\)</td><td>\(-p_2\)</td><td>\(-p_3\)</td><td>\(-p_4\)</td><td class="g">0</td><td>0</td><td class="g">1</td><td class="g">0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subtype">
         <h4>Ką rodo pradinė lentelė</h4>
         <p>Pradinė lentelė aprašo planą, pagal kurį <strong>dar niekas negaminama</strong>: \(x = y = z = 0\), visi ištekliai lieka nepanaudoti – \(s_1 = b_1\), \(s_2 = b_2\), \(s_3 = b_3\), o \(P = 0\).</p>
         <p>Tikslo funkcijos eilutės neigiami elementai rodo, kad šį planą galima pagerinti: elementas \(-p_2\) reiškia, kad kiekvienas pagamintas antrojo gaminio vienetas pelną padidintų \(p_2\) eurų.</p>
