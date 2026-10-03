@@ -75,7 +75,14 @@
       demand: 'Paklausa (D)',
       supply: 'Pasiūla (S)',
       eqPoint: 'Pusiausvyros taškas (E)',
-      marketChart: 'Paklausos ir pasiūlos tiesės ir pusiausvyros taškas E'
+      marketChart: 'Paklausos ir pasiūlos tiesės ir pusiausvyros taškas E',
+      revenue: 'Pajamos (R)',
+      cost: 'Bendrosios sąnaudos (TC)',
+      bePoint: 'Lūžio taškas',
+      beLetter: 'L',
+      lossZone: 'Nuostolis',
+      profitZone: 'Pelnas',
+      beChart: 'Pajamų ir bendrųjų sąnaudų tiesės ir lūžio taškas'
     },
     en: {
       courseShort: 'Applied Mathematics',
@@ -133,7 +140,14 @@
       demand: 'Demand (D)',
       supply: 'Supply (S)',
       eqPoint: 'Equilibrium point (E)',
-      marketChart: 'Demand and supply lines and the equilibrium point E'
+      marketChart: 'Demand and supply lines and the equilibrium point E',
+      revenue: 'Revenue (R)',
+      cost: 'Total cost (TC)',
+      bePoint: 'Break-even point',
+      beLetter: 'B',
+      lossZone: 'Loss',
+      profitZone: 'Profit',
+      beChart: 'Revenue and total cost lines and the break-even point'
     }
   };
 
@@ -170,8 +184,8 @@
       { id: 'eq', status: 'active', href: { lt: 'tema-1-rinkos-pusiausvyra.html' },
         title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' },
         desc: { lt: 'Paklausa ir pasiūla: pusiausvyros kaina ir kiekis, kai \\(D = S\\).' } },
-      { id: 'be', status: 'soon',
-        title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: null },
+      { id: 'be', status: 'active', href: { lt: 'tema-1-pajamos-sanaudos-pelnas.html' },
+        title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue and Profit' },
         desc: { lt: 'Lūžio taškas – gamybos kiekis, su kuriuo pajamos prilygsta sąnaudoms.' } },
       { id: 'means', status: 'soon',
         title: { lt: 'Gamybos priemonių pasirinkimas', en: null },
@@ -189,6 +203,8 @@
                title: { lt: 'Tiesinis nusidėvėjimas', en: 'Linear Depreciation' } },
     eq:      { parent: 't1', topic: 't1', model: 'eq', href: { lt: 'tema-1-rinkos-pusiausvyra.html', en: null },
                title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' } },
+    be:      { parent: 't1', topic: 't1', model: 'be', href: { lt: 'tema-1-pajamos-sanaudos-pelnas.html', en: null },
+               title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue and Profit' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
                title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
     final:   { parent: 'home', href: { lt: 'baigiamasis-egzaminas.html', en: null },
@@ -709,6 +725,67 @@
     $all('.js-tex', box).forEach(function (el) { renderInline(el, el.getAttribute('data-tex')); });
   }
 
+  /* ------------------------------------------------------------------
+     8b. LŪŽIO TAŠKO GRAFIKAS (pajamos R ir bendrosios sąnaudos TC)
+     <div data-widget="breakeven-chart" data-p="19" data-v="7" data-f="21600"
+          data-xmax="3000" data-ymax="60000" data-numeric="1"></div>
+     R(x) = p·x, TC(x) = F + V·x. data-numeric="0" – vietoj skaičių F ir x_L.
+     ------------------------------------------------------------------ */
+  function initBreakEvenChart(box) {
+    var p = +box.getAttribute('data-p'), V = +box.getAttribute('data-v'), F = +box.getAttribute('data-f');
+    var xmax = +box.getAttribute('data-xmax'), ymax = +box.getAttribute('data-ymax');
+    var numeric = box.getAttribute('data-numeric') === '1';
+    var xl = clean(F / (p - V)), yl = clean(p * xl);
+    var L = 56, B = 206, W = 250, H = 180;
+    function X(q) { return +(L + q / xmax * W).toFixed(1); }
+    function Y(v) { return +(B - v / ymax * H).toFixed(1); }
+    var qr = Math.min(xmax, ymax / p), qc = Math.min(xmax, (ymax - F) / V);
+    var lx = X(xl), ly = Y(yl), letter = T.beLetter;
+    var sub = function (base, s) { return '<tspan class="i">' + base + '</tspan><tspan class="i" font-size="10" dy="4">' + s + '</tspan>'; };
+    var qe = Math.min(qr, qc);
+
+    var svg =
+      '<svg viewBox="0 0 340 250" role="img" aria-label="' + esc(T.beChart) +
+        (numeric ? ' (' + decStr(xl) + ')' : '') + '">' +
+      // nuostolio ir pelno sritys
+      '<path class="zone-loss" d="M' + X(0) + ' ' + Y(0) + 'L' + X(0) + ' ' + Y(F) + 'L' + lx + ' ' + ly + 'Z"/>' +
+      '<path class="zone-profit" d="M' + lx + ' ' + ly + 'L' + X(qe) + ' ' + Y(p * qe) + 'L' + X(qe) + ' ' + Y(F + V * qe) + 'Z"/>' +
+      '<line class="guide" x1="' + lx + '" y1="' + ly + '" x2="' + lx + '" y2="' + B + '"/>' +
+      '<line class="ax" x1="' + (L - 8) + '" y1="' + B + '" x2="' + (L + W + 10) + '" y2="' + B + '"/>' +
+      '<line class="ax" x1="' + L + '" y1="' + (B + 8) + '" x2="' + L + '" y2="18"/>' +
+      '<path class="ah" d="M' + (L + W + 18) + ' ' + B + 'L' + (L + W + 9) + ' ' + (B - 4.5) + 'L' + (L + W + 9) + ' ' + (B + 4.5) + 'Z"/>' +
+      '<path class="ah" d="M' + L + ' 10L' + (L - 4.5) + ' 19L' + (L + 4.5) + ' 19Z"/>' +
+      '<text x="2" y="12" style="font-size:12px">' + esc(T.unitEur) + '</text>' +
+      '<text x="336" y="246" text-anchor="end"><tspan class="i">x</tspan>, ' + esc(T.unitQty) + '</text>' +
+      '<text class="muted" x="' + (L - 7) + '" y="' + (B + 15) + '" text-anchor="end">0</text>' +
+      '<line class="ax" x1="' + (L - 4) + '" y1="' + Y(F) + '" x2="' + L + '" y2="' + Y(F) + '"/>' +
+      '<text class="muted" x="' + (L - 7) + '" y="' + (Y(F) + 4) + '" text-anchor="end">' +
+        (numeric ? decStr(F) : '<tspan class="i">F</tspan>') + '</text>' +
+      '<text class="muted" x="' + lx + '" y="' + (B + 17) + '" text-anchor="middle">' +
+        (numeric ? decStr(xl) : sub('x', letter)) + '</text>' +
+      '<line class="ln" x1="' + X(0) + '" y1="' + Y(0) + '" x2="' + X(qr) + '" y2="' + Y(p * qr) + '"/>' +
+      '<line class="ln2" x1="' + X(0) + '" y1="' + Y(F) + '" x2="' + X(qc) + '" y2="' + Y(F + V * qc) + '"/>' +
+      '<text class="acc b" x="' + (X(qr) + 5) + '" y="' + (Y(p * qr) + 5) + '">R</text>' +
+      '<text class="c2 b" x="' + (X(qc) + 5) + '" y="' + (Y(F + V * qc) + 5) + '">TC</text>' +
+      '<circle class="pt-hi" cx="' + lx + '" cy="' + ly + '" r="6"/>' +
+      '<text class="exam b" x="' + (lx - 10) + '" y="' + (ly - 8) + '" text-anchor="end">' + letter + '</text>' +
+      '</svg>';
+
+    var rTex = 'R(x) = ' + decTex(p) + 'x';
+    var cTex = 'TC(x) = ' + decTex(F) + ' + ' + decTex(V) + 'x';
+    var legend = '<ul class="chart-legend">' +
+      '<li><span class="sw"></span><span>' + esc(T.revenue) + (numeric ? ': <span class="js-tex" data-tex="' + esc(rTex) + '"></span>' : '') + '</span></li>' +
+      '<li><span class="sw sw-s"></span><span>' + esc(T.cost) + (numeric ? ': <span class="js-tex" data-tex="' + esc(cTex) + '"></span>' : '') + '</span></li>' +
+      '<li><span class="sw sw-e"></span><span>' + esc(T.bePoint) + (numeric ? ': <span class="js-tex" data-tex="x_' + letter + ' = ' + decTex(xl) + '"></span>' : '') + '</span></li>' +
+      '<li><span class="sw sw-zone sw-loss"></span><span>' + esc(T.lossZone) + ' <span class="js-tex" data-tex="(x &lt; x_' + letter + ')"></span></span></li>' +
+      '<li><span class="sw sw-zone sw-profit"></span><span>' + esc(T.profitZone) + ' <span class="js-tex" data-tex="(x &gt; x_' + letter + ')"></span></span></li>' +
+      '</ul>';
+
+    box.classList.add('fig', 'market-chart');
+    box.innerHTML = svg + legend;
+    $all('.js-tex', box).forEach(function (el) { renderInline(el, el.getAttribute('data-tex')); });
+  }
+
   /* Statiniai užrašai, kurių tekstas imamas iš UI žodyno: <tspan data-i18n="unitYears">metai</tspan> */
   function fillI18n() {
     $all('[data-i18n]').forEach(function (el) {
@@ -803,6 +880,7 @@
     buildPager();
     fillI18n();
     $all('[data-widget="market-chart"]').forEach(initMarketChart);
+    $all('[data-widget="breakeven-chart"]').forEach(initBreakEvenChart);
     renderMath(document.body);
     $all('.example').forEach(initExample);
     $all('.quiz').forEach(function (qz) {

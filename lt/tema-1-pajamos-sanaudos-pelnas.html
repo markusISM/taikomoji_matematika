@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pajamos, sąnaudos, pelnas ir lūžio taškas · 1 tema · Taikomoji matematika</title>
+<meta name="description" content="Pajamos, sąnaudos, pelnas ir lūžio taškas: modelio rodikliai ir formulės, sprendimo eiga, pavyzdžiai žingsnis po žingsnio, testas ir savarankiški uždaviniai.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=7">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=7"></script>
+</head>
+<body data-page="be">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">1 tema · Taikomasis modelis</span>
+    <h1>Pajamos, sąnaudos, pelnas ir lūžio taškas</h1>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#testas">Pasitikrinkite</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Modelis</h2>
+
+    <article class="card">
+      <h3 class="subhead">Rodikliai</h3>
+      <ul class="kv">
+        <li><span class="sym">\(x\) arba \(q\)</span><span>gaminių skaičius;</span></li>
+        <li><span class="sym">\(p\)</span><span>kaina;</span></li>
+        <li><span class="sym">\(F\) arba \(FC\)</span><span><button type="button" class="term" data-term="Pastoviosios sąnaudos" data-def="Sąnaudos, kurios nepriklauso nuo pagamintų vienetų skaičiaus.">pastoviosios sąnaudos</button>;</span></li>
+        <li><span class="sym">\(VC\)</span><span>kintamosios sąnaudos;</span></li>
+        <li><span class="sym">\(V\) arba \(AVC\)</span><span>vidutinės kintamosios sąnaudos arba vieno vieneto gamybos sąnaudos;</span></li>
+        <li><span class="sym">\(TC\) arba \(C\)</span><span>bendrosios sąnaudos;</span></li>
+        <li><span class="sym">\(R\) arba \(TR\)</span><span>bendrosios pajamos;</span></li>
+        <li><span class="sym">\(P\) arba \(\Pi\)</span><span>pelnas.</span></li>
+      </ul>
+
+      <h3 class="subhead" style="margin-top:22px">Kaip skaičiuojame sąnaudas, pajamas ir pelną</h3>
+      <p class="formula-label">Kintamosios sąnaudos</p>
+      <div class="formula">\[ VC = V\cdot x \]</div>
+      <p class="formula-label">Bendrosios sąnaudos</p>
+      <div class="formula">\[ TC(x) = F + V\cdot x \]</div>
+      <p class="formula-label">Pajamos</p>
+      <div class="formula">\[ R(x) = p\cdot x \]</div>
+      <p class="formula-label">Pelnas</p>
+      <div class="formula">\[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= (p - V)x - F \end{aligned} \]</div>
+      <p>Visų trijų funkcijų grafikai yra tiesės.</p>
+
+      <div data-widget="breakeven-chart" data-p="19" data-v="7" data-f="21600" data-xmax="3000" data-ymax="60000" data-numeric="0"></div>
+      <p class="formula-note" style="text-align:center;margin-top:6px">Tiesės nubraižytos pagal 1 pavyzdį („Norvida“), kurį nagrinėsime toliau.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Lūžio taškas</h3>
+      <p><strong>Lūžio taškas</strong> – gamybos kiekis, su kuriuo pajamos prilygsta sąnaudoms:</p>
+      <div class="formula">\[ R = TC, \quad P = 0 \]</div>
+      <div class="formula">\[ x_L = \frac{F}{p - V} \]</div>
+      <p>Kai gamybos kiekis mažesnis už \(x_L\), įmonė patiria nuostolį, o kai didesnis – uždirba pelną.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Kaip gaunama lūžio taško formulė?</span></summary>
+        <div class="more-body">
+          <p>Lūžio taške pelnas lygus nuliui. Į pelno formulę \(P = px - Vx - F\) įrašome \(x = x_L\) ir \(P = 0\):</p>
+          \[ \begin{aligned} p x_L - V x_L - F &amp;= 0 \\ \Longrightarrow\; x_L(p - V) &amp;= F \\ \Longrightarrow\; x_L &amp;= \frac{F}{p - V} \end{aligned} \]
+        </div>
+      </details>
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Ką rodo pelno funkcija \(P(x) = (p - V)x - F\)?</span></summary>
+        <div class="more-body">
+          <p>Tai tiesė, kurios nuolydis \(p - V\) (vieneto įnašas), o laisvasis narys \(-F\).</p>
+          <ul>
+            <li>Kiekvienas papildomai parduotas vienetas pelną padidina \(p - V\) eurų.</li>
+            <li>Kai \(x = 0\), pajamų nėra, o pastoviąsias sąnaudas vis tiek reikia padengti: \(P(0) = -F\).</li>
+            <li>Kol \((p - V)x\) mažesnis už \(F\), pelnas neigiamas – įmonė patiria nuostolį. Lūžio taške \((p - V)x_L = F\).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Nustatykite \(F\), \(V\) ir \(p\). Vieneto kintamosios sąnaudos kartais nurodomos procentais nuo kainos („20 % pardavimo kainos“ reiškia \(V = 0{,}2p\)).</li>
+        <li>Jei duoti du gamybos kiekiai ir atitinkamos bendrosios sąnaudos, \((x_1;\,TC_1)\) ir \((x_2;\,TC_2)\), sąnaudų tiesę sudarykite įprastu būdu: \(V = \dfrac{TC_2 - TC_1}{x_2 - x_1}\), tada \(F = -Vx_1 + TC_1\).</li>
+        <li>Užrašykite tris funkcijas. Norėdami rasti pelną, iš pajamų funkcijos atimkite visą sąnaudų funkciją: \(P(x) = R(x) - (F + V\cdot x)\).</li>
+        <li>Apskaičiuokite \(x_L = \dfrac{F}{p - V}\) ir, jei prašoma, lūžio tašką atitinkančias pajamas. Jei gaunate ne sveikąjį skaičių, suapvalinkite jį iki artimiausio sveikojo vienetų skaičiaus.</li>
+        <li>Norėdami rasti pelną arba nuostolį esant duotam gamybos kiekiui, įstatykite jį į \(P(x)\); neigiamą reikšmę nurodykite kaip nuostolį. Norėdami rasti gamybos kiekį, reikalingą norimam pelnui gauti, spręskite lygtį \(P(x) = A\).</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Skliaustai pelno funkcijoje.</strong> Iš pajamų atimama visa sąnaudų funkcija: \(P(x) = R(x) - (F + V\cdot x)\). Be skliaustų kintamosios sąnaudos būtų pridėtos, o ne atimtos.</li>
+            <li><strong>Sąnaudos procentais nuo kainos.</strong> „20 % pardavimo kainos“ reiškia \(V = 0{,}2p\), o ne \(V = 20\).</li>
+            <li><strong>Neigiamas pelnas.</strong> Neigiamą pelno reikšmę nurodykite kaip nuostolį: \(P = -3600\) reiškia 3600 eurų nuostolį.</li>
+            <li><strong>Lūžio taškas – kiekis.</strong> \(x_L\) yra gamybos kiekis vienetais. Jį atitinkančias pajamas skaičiuokite tik tada, kai to prašoma.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
+        <div class="more-body">
+          <ol>
+            <li>Sudarant tiesinį modelį (pavyzdžiui, tiesinio nusidėvėjimo, pelno funkcijos sudarymo, lūžio taško radimo) būtina parašyti, kokie duomenys yra duoti uždavinio sąlygoje.</li>
+            <li>Įvedant naujus, paskaitose arba sąlygoje neįvardytus kintamuosius arba keičiant matavimo vienetus, būtina tai parašyti uždavinio sprendime.</li>
+            <li>Jei uždavinys pateikia kelis klausimus, atsakymai į juos visus turi būti aiškiai pateikti.</li>
+            <li>Sprendžiant paklausos/pasiūlos ar kitų tiesinių funkcijų sudarymo uždavinius būtina nurodyti taškus ar kitą informaciją, kuri naudojama parametrų radimui.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: alternatyvus 1.3 („Norvida“) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Įmonės lūžio taškas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        „Norvida“ vieną gaminio vienetą pagamina už 7&nbsp;EUR ir parduoda už 19&nbsp;EUR. Jei įmonės pastoviosios sąnaudos yra 21600&nbsp;EUR per mėnesį, nustatykite jos lūžio tašką.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(V = 7\)</span><span>vieneto kintamosios sąnaudos;</span></li>
+            <li><span class="sym">\(p = 19\)</span><span>vieneto kaina;</span></li>
+            <li><span class="sym">\(F = 21600\)</span><span>mėnesio pastoviosios sąnaudos.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lūžio taško kiekis</span></h4>
+          \[ \begin{aligned} x_L &amp;= \frac{F}{p - V} = \frac{21600}{19 - 7} \\ &amp;= \frac{21600}{12} = 1800 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Lūžio taškas – 1800 vienetų: įmonė negauna pelno ir nepatiria nuostolio, kai per mėnesį pagamina ir parduoda 1800 vienetų.
+          </div>
+          <div data-widget="breakeven-chart" data-p="19" data-v="7" data-f="21600" data-xmax="3000" data-ymax="60000" data-numeric="1"></div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: gairių 1 uždavinys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Dirbtuvių sąnaudos, pajamos ir pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvių mėnesio pastoviosios sąnaudos yra 25200 eurų, o vieneto kintamosios sąnaudos – 14 eurų. Produktas parduodamas už 26 eurus. Sudarykite bendrųjų sąnaudų, pajamų ir pelno funkcijas, raskite lūžio tašką ir jį atitinkančias pajamas. Apskaičiuokite pelną (nuostolį), kai gamybos kiekis yra 1800 ir 2500 vienetų. Kiek vienetų reikia parduoti, kad mėnesio pelnas būtų 18000 eurų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Duomenys</span></h4>
+          <p>\(F = 25200\), \(V = 14\), \(p = 26\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Trys funkcijos</span></h4>
+          \[ \begin{aligned} TC(x) &amp;= 25200 + 14x \\ R(x) &amp;= 26x \\ P(x) &amp;= 26x - (25200 + 14x) \\ &amp;= 12x - 25200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lūžio taškas ir pajamos</span></h4>
+          <p>Kai \(p - V = 26 - 14 = 12\):</p>
+          \[ x_L = \frac{25200}{12} = 2100 \]
+          \[ R(2100) = 26\cdot 2100 = 54600 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Pelnas ar nuostolis</span></h4>
+          <p>Į pelno funkciją įstatykite abu gamybos kiekius:</p>
+          \[ \begin{aligned} P(1800) &amp;= 12\cdot 1800 - 25200 \\ &amp;= -3600 \\ P(2500) &amp;= 12\cdot 2500 - 25200 \\ &amp;= 4800 \end{aligned} \]
+          <p>Pirmoji reikšmė neigiama, todėl nurodomas 3600 eurų nuostolis.</p>
+          <p class="tip">Tai atitinka lūžio taško prasmę: \(1800 &lt; 2100\), todėl dirbtuvės patiria nuostolį, o \(2500 &gt; 2100\) – uždirba pelną.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Kiekis norimam pelnui</span></h4>
+          <p>Norint gauti 18000 eurų pelną:</p>
+          \[ \begin{aligned} 12x - 25200 &amp;= 18000 \\ \Longrightarrow\; 12x &amp;= 43200 \\ \Longrightarrow\; x &amp;= 3600 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(TC(x) = 25200 + 14x\), \(R(x) = 26x\), \(P(x) = 12x - 25200\); lūžio taškas – 2100 vienetų (jį atitinkančios pajamos – 54600 eurų); pagaminus 1800 vienetų, dirbtuvės patiria 3600 eurų nuostolį, o pagaminus 2500 vienetų – uždirba 4800 eurų pelną; norint gauti 18000 eurų pelną, reikia parduoti 3600 vienetų.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: gairių 2 uždavinys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Sąnaudų funkcija iš dviejų taškų</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        150 vienetų gamybos sąnaudos yra 4300 eurų, o 240 vienetų – 6100 eurų. Tardami, kad sąryšis yra tiesinis, sudarykite sąnaudų funkciją ir nurodykite pastoviąsias sąnaudas bei vieneto kintamąsias sąnaudas. Apskaičiuokite numatomas 300 vienetų gamybos sąnaudas. Jei kiekvienas vienetas parduodamas už 45 eurus, raskite lūžio tašką ir pelną, kai gamybos kiekis yra 200 vienetų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Du taškai</span></h4>
+          <p>Duoti du sąnaudų tiesės taškai \((150;\,4300)\) ir \((240;\,6100)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Vieneto kintamosios sąnaudos</span></h4>
+          <p>Sąnaudų tiesės nuolydis yra vieneto kintamosios sąnaudos:</p>
+          \[ \begin{aligned} V &amp;= \frac{6100 - 4300}{240 - 150} \\ &amp;= \frac{1800}{90} = 20 \end{aligned} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span><span>Kodėl nuolydis yra \(V\), o laisvasis narys – \(F\)?</span></summary>
+            <div class="more-body">
+              <p>Sąnaudų funkcija \(TC(x) = V\cdot x + F\) yra kryptinė tiesės lygtis \(y = mx + b\), kai \(m = V\) ir \(b = F\). Todėl \(V\) randame kaip tiesės nuolydį, o \(F\) – kaip laisvąjį narį, lygiai taip pat kaip paklausos ar pasiūlos funkcijos parametrus.</p>
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pastoviosios sąnaudos</span></h4>
+          <p>Laisvasis narys yra pastoviosios sąnaudos; naudojant tašką \((150;\,4300)\):</p>
+          \[ \begin{aligned} F &amp;= -Vx_1 + TC_1 \\ &amp;= -20\cdot 150 + 4300 \\ &amp;= -3000 + 4300 = 1300 \end{aligned} \]
+          \[ TC(x) = 20x + 1300 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>300 vienetų sąnaudos</span></h4>
+          <p>\(TC(300) = 20\cdot 300 + 1300 = 7300\) eurų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Lūžio taškas ir pelnas</span></h4>
+          <p>Kai \(p = 45\) ir \(p - V = 45 - 20 = 25\):</p>
+          \[ x_L = \frac{1300}{25} = 52 \]
+          \[ \begin{aligned} P(x) &amp;= 45x - (20x + 1300) \\ &amp;= 25x - 1300 \\ P(200) &amp;= 25\cdot 200 - 1300 = 3700 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(TC(x) = 20x + 1300\) eurų: pastoviosios sąnaudos – 1300 eurų, o vieneto kintamosios sąnaudos – 20 eurų; 300 vienetų gamybos sąnaudos – 7300 eurų; lūžio taškas – 52 vienetai, o pelnas pagaminus 200 vienetų – 3700 eurų.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. TESTAS ============ -->
+  <section class="section" id="testas" aria-labelledby="h-test">
+    <h2 id="h-test">Pasitikrinkite</h2>
+
+    <div class="quiz">
+      <article class="card q" data-type="mc">
+        <p class="q-text">Ką bendrųjų sąnaudų funkcijoje \(TC = F + V\cdot x\) reiškia \(F\)?</p>
+        <ol class="q-options">
+          <li>Pajamas, tenkančias vienam vienetui.</li>
+          <li data-correct>Sąnaudas, kurios nepriklauso nuo pagamintų vienetų skaičiaus.</li>
+          <li>Lūžio taško kiekį.</li>
+          <li>Vieneto pardavimo kainą.</li>
+        </ol>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">Odos dirbinių dirbtuvės pastoviosios sąnaudos yra 3000&nbsp;€ per mėnesį, vienos piniginės kintamosios sąnaudos – 8&nbsp;€, o kiekviena piniginė parduodama už 20&nbsp;€. Koks yra lūžio taško kiekis?</p>
+        <ol class="q-options">
+          <li data-correct>250</li>
+          <li>375</li>
+          <li>150</li>
+          <li>300</li>
+        </ol>
+        <div class="q-explain">\(x_L = \dfrac{3000}{20 - 8} = 250\)</div>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">Įmonės lūžio taško kiekis yra \(x_L = \dfrac{F}{p - V}\). Jei pastoviosios sąnaudos \(F\) padidėja, o vieneto įnašas \(p - V\) išlieka toks pats, kaip pasikeičia lūžio taško kiekis?</p>
+        <ol class="q-options">
+          <li>Sumažėja.</li>
+          <li data-correct>Padidėja.</li>
+          <li>Išlieka toks pats.</li>
+          <li>Neįmanoma nustatyti nežinant tikslių \(F\) ir \(V\) reikšmių.</li>
+        </ol>
+        <div class="q-explain">\(x_L\) yra tiesiogiai proporcingas \(F\), todėl didesnis \(F\), kai vardiklis nesikeičia, padidina \(x_L\).</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAS DARBAS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose, tada pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <p class="q-text">Spaustuvės pastoviosios sąnaudos yra 9600&nbsp;€ per mėnesį, o vieno užsakymo kintamosios sąnaudos – 8&nbsp;€. Vieno užsakymo kaina yra 20&nbsp;€. Raskite mėnesio užsakymų skaičių, atitinkantį lūžio tašką.</p>
+        <div class="q-answer">800 užsakymų.</div>
+        <div class="q-solution">
+          \[ \begin{aligned} x_L &amp;= \frac{F}{p - V} = \frac{9600}{20 - 8} \\ &amp;= \frac{9600}{12} = 800 \end{aligned} \]
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">Baldų dirbtuvės pastoviosios sąnaudos yra 19500&nbsp;€, o vienos kėdės kintamosios sąnaudos – 45&nbsp;€. Pagaminus ir pardavus 1500 kėdžių, vadovybė nori gauti tiksliai 27000&nbsp;€ pelną. Raskite vienos kėdės kainą, užtikrinančią tokį pelną.</p>
+        <div class="q-answer">76&nbsp;€.</div>
+        <div class="q-solution">
+          \[ P(x) = (p - V)x - F \]
+          \[ \begin{aligned} (p - 45)\cdot 1500 &amp;= 27000 + 19500 \\ &amp;= 46500 \end{aligned} \]
+          \[ \begin{aligned} p - 45 &amp;= \frac{46500}{1500} = 31 \\ \Longrightarrow\; p &amp;= 76 \end{aligned} \]
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">Nedidelio gamintojo bendrosios sąnaudos buvo 9800&nbsp;€, kai buvo pagaminta 300 vienetų, ir 14200&nbsp;€, kai buvo pagaminta 700 vienetų. Gamintojas kiekvieną vienetą parduoda už 24&nbsp;€. Raskite gamybos kiekį, atitinkantį lūžio tašką.</p>
+        <div class="q-answer">500 vienetų.</div>
+        <div class="q-solution">
+          <p>Vieneto kintamosios sąnaudos (€/vienetą):</p>
+          \[ \begin{aligned} V &amp;= \frac{14200 - 9800}{700 - 300} \\ &amp;= \frac{4400}{400} = 11 \end{aligned} \]
+          <p>Pastoviosios sąnaudos (€):</p>
+          \[ F = 9800 - 11\cdot 300 = 6500 \]
+          <p>Lūžio taškas:</p>
+          \[ \begin{aligned} x_L &amp;= \frac{6500}{24 - 11} \\ &amp;= \frac{6500}{13} = 500 \end{aligned} \]
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį modelį rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">1 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

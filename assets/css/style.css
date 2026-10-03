@@ -363,6 +363,11 @@ svg text.b { font-weight: 700; font-size: 14px; }
 .chart-legend .sw-s { background: var(--chart-2); }
 .chart-legend .sw-e { width: 10px; height: 10px; border-radius: 50%; background: var(--exam); }
 .step .market-chart { margin-top: 14px; }
+svg .zone-loss { fill: var(--danger); opacity: .13; }
+svg .zone-profit { fill: var(--success); opacity: .15; }
+.chart-legend .sw-zone { width: 14px; height: 10px; border-radius: 3px; }
+.chart-legend .sw-loss { background: color-mix(in srgb, var(--danger) 30%, transparent); }
+.chart-legend .sw-profit { background: color-mix(in srgb, var(--success) 32%, transparent); }
 
 /* ---------- Išskleidžiami blokai ---------- */
 details.more {

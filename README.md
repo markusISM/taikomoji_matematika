@@ -10,6 +10,8 @@ lt/                            lietuviški puslapiai
   index.html                   pagrindinis: kurso struktūra
   tema-1.html                  1 tema: sąvokos + modelių kortelės
   tema-1-nusidevejimas.html    Tiesinis nusidėvėjimas
+  tema-1-rinkos-pusiausvyra.html  Rinkos pusiausvyra
+  tema-1-pajamos-sanaudos-pelnas.html  Pajamos, sąnaudos, pelnas ir lūžio taškas
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
 en/                            angliški puslapiai (kol kas tik index.html)
@@ -32,7 +34,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=6` ir `site.js?v=6`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=7` ir `site.js?v=7`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
@@ -85,6 +87,12 @@ modeliui – tą patį `MODELS` sąraše. Naują puslapį įrašykite į `PAGES`
      data-xmax="7000" data-ymax="600" data-numeric="1"></div>
 ```
 Grafikų užrašai (ašys, legenda) imami iš `site.js` žodyno abiem kalbomis. Statiniuose SVG užrašuose naudokite `<tspan data-i18n="unitYears">metai</tspan>`.
+
+**Lūžio taško grafikas.** Pajamos \(R(x) = px\), sąnaudos \(TC(x) = F + Vx\); lūžio taškas \(x_L = F/(p - V)\) apskaičiuojamas automatiškai, nuostolio ir pelno sritys nuspalvinamos. `data-numeric="0"` – vietoj skaičių rodomi \(F\), \(x_L\). Lūžio taško raidė imama iš žodyno (LT – L, EN – B).
+```html
+<div data-widget="breakeven-chart" data-p="19" data-v="7" data-f="21600"
+     data-xmax="3000" data-ymax="60000" data-numeric="1"></div>
+```
 
 **Sąvokos apibrėžimas (iššokantis langelis).**
 ```html
