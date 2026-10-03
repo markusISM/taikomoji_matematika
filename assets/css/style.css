@@ -390,6 +390,11 @@ details.more .more-body .katex-display { overflow-x: auto; overflow-y: hidden; p
 .more--mistake { border-color: color-mix(in srgb, var(--danger) 30%, var(--border)); }
 .more--mistake > summary { color: var(--danger); }
 .more--mistake > summary .ico { background: var(--danger-soft); color: var(--danger); }
+.more--alt > summary { color: var(--chart-2); font-size: .94rem; }
+.more--alt > summary .ico { background: color-mix(in srgb, var(--chart-2) 14%, transparent); color: var(--chart-2); }
+.step details.more { margin-top: 10px; }
+.step--answer details.more { margin-top: 14px; }
+.more-body ul ul { margin: 8px 0 0; }
 .more--exam { border-color: color-mix(in srgb, var(--exam) 35%, var(--border)); }
 .more--exam > summary { color: var(--exam); }
 .more--exam > summary .ico { background: var(--exam-soft); color: var(--exam); }

@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=5">
+<link rel="stylesheet" href="../assets/css/style.css?v=6">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=5"></script>
+<script defer src="../assets/js/site.js?v=6"></script>
 </head>
 <body data-page="eq">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -27,8 +27,8 @@
       <li><a href="#modelis">Modelis</a></li>
       <li><a href="#zingsniai">Žingsnis po žingsnio</a></li>
       <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
-      <li><a href="#savarankiskai">Savarankiškai</a></li>
       <li><a href="#testas">Pasitikrinkite</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
     </ul>
   </header>
 
@@ -74,7 +74,7 @@
 
     <article class="card">
       <ol class="steps-list">
-        <li>Atskirai užrašykite pirkėjų (paklausos) ir pardavėjų (pasiūlos) duomenis – po du taškus \((x;\,p)\).</li>
+        <li>Atskirai užrašykite pirkėjų (paklausos) ir pardavėjų (pasiūlos) duomenis – po du taškus \((x;\,p)\) arba vieną tašką ir pokyčius \(\Delta p\), \(\Delta x\).</li>
         <li>Sudarykite paklausos funkciją \(p = ax + b\).</li>
         <li>Sudarykite pasiūlos funkciją \(p = cx + d\).</li>
         <li>Patikrinkite ženklus: \(a &lt; 0\) ir \(c &gt; 0\).</li>
@@ -88,7 +88,11 @@
           <p>Tiesę apibrėžia du taškai, ir uždavinio sąlygoje jie visada yra. Jie pateikiami vienu iš šių būdų (pavyzdžiai – iš paspirtukų uždavinio):</p>
           <ul>
             <li><strong>Tiesiogiai pateiktos dvi poros.</strong> „Paklausos kiekis yra 2000 vienetų, kai vieneto kaina – 480 eurų. Kai vieneto kaina yra 360 eurų, paklausos kiekis padidėja iki 5000 vienetų.“ Taškai \((2000;\,480)\) ir \((5000;\,360)\) – pirmiausia kiekis, paskui kaina.</li>
-            <li><strong>Viena pora ir kitimo greitis.</strong> „Kiekvieną kartą vieneto kainai padidėjus 60 eurų virš 160 eurų, gamintojas rinkai pasiūlys dar 1000 vienetų.“ Nuo taško \((0;\,160)\) vieną kartą pritaikius nurodytą pokytį, gaunamas antrasis taškas \((1000;\,220)\). Kainos mažėjimą lydi paklausos kiekio didėjimas ir pasiūlos kiekio mažėjimas.</li>
+            <li><strong>Viena pora ir kitimo greitis.</strong> „Kiekvieną kartą vieneto kainai padidėjus 60 eurų virš 160 eurų, gamintojas rinkai pasiūlys dar 1000 vienetų.“ Nuo taško \((0;\,160)\) vieną kartą pritaikius nurodytą pokytį, gaunamas antrasis taškas \((1000;\,220)\). Kainos mažėjimą lydi paklausos kiekio didėjimas ir pasiūlos kiekio mažėjimas.
+              <ul>
+                <li><strong>Antro taško ieškoti nebūtina.</strong> Žinodami pokyčius, iš karto gauname nuolydį \(\dfrac{\Delta p}{\Delta x}\), o duoto taško koordinates naudojame laisvajam nariui rasti. Paspirtukų pasiūloje \(\Delta p = 60\), \(\Delta x = 1000\), todėl \(c = \dfrac{60}{1000} = 0{,}06\), o laisvasis narys randamas iš taško \((0;\,160)\). Paklausos atveju kaina mažėja, o kiekis didėja, todėl nuolydis neigiamas.</li>
+              </ul>
+            </li>
             <li><strong>Kaina, už kurią nieko nesiūloma.</strong> „Gamintojas nepasiūlys rinkai nė vieno paspirtuko, jei kaina bus 160 eurų ar mažesnė.“ Gaunamas taškas \((0;\,160)\): esant tokiai kainai pasiūlos kiekis lygus nuliui, todėl šis taškas yra kainos ašyje, o jo kaina iš karto yra pasiūlos tiesės laisvasis narys \(d\).</li>
           </ul>
         </div>
@@ -110,7 +114,6 @@
         <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>Ką būtina parašyti egzamine</summary>
         <div class="more-body">
           <ol>
-            <li>Sudarant tiesinį modelį (pavyzdžiui, tiesinio nusidėvėjimo, pelno funkcijos sudarymo, lūžio taško radimo) būtina parašyti, kokie duomenys yra duoti uždavinio sąlygoje.</li>
             <li>Įvedant naujus, paskaitose arba sąlygoje neįvardytus kintamuosius arba keičiant matavimo vienetus, būtina tai parašyti uždavinio sprendime.</li>
             <li>Jei uždavinys pateikia kelis klausimus, atsakymai į juos visus turi būti aiškiai pateikti.</li>
             <li>Sprendžiant paklausos/pasiūlos ar kitų tiesinių funkcijų sudarymo uždavinius būtina nurodyti taškus ar kitą informaciją, kuri naudojama parametrų radimui.</li>
@@ -162,23 +165,23 @@
             <span class="label">Paklausos funkcija</span>
             \[ p = -0{,}04x + 560 \]
           </div>
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Paklausos funkcijos logika: kiekis ↔ kaina</summary>
+            <div class="more-body">
+              <p>Paklausos funkcija \(p = -0{,}04x + 560\) susieja kiekį ir kainą, todėl žinodami vieną dydį randame kitą.</p>
+              <p><strong>Žinomas kiekis – randame kainą.</strong> Vietoj \(x\) įrašome kiekį ir tiesiogiai apskaičiuojame \(p\); lygties spręsti nereikia. Kai \(x = 5000\):</p>
+              \[ \begin{aligned} p &amp;= -0{,}04\cdot 5000 + 560 \\ &amp;= -200 + 560 = 360 \end{aligned} \]
+              <p>Kai paklausos kiekis yra 5000 vienetų, kaina yra 360 eurų – kaip ir sąlygoje.</p>
+              <p><strong>Žinoma kaina – randame kiekį.</strong> Vietoj \(p\) įrašome kainą ir sprendžiame lygtį nežinomojo \(x\) atžvilgiu. Kai \(p = 480\):</p>
+              \[ \begin{aligned} 480 &amp;= -0{,}04x + 560 \\ \Longrightarrow\; 0{,}04x &amp;= 80 \\ \Longrightarrow\; x &amp;= 2000 \end{aligned} \]
+              <p>Kai kaina yra 480 eurų, paklausos kiekis yra 2000 vienetų – kaip ir sąlygoje.</p>
+              <p>Laisvasis narys \(b = 560\) – kaina, kai paklausos kiekis lygus nuliui.</p>
+            </div>
+          </details>
         </section>
       </div>
     </article>
 
-    <details class="more more--why">
-      <summary><span class="ico" aria-hidden="true">?</span>Paklausos funkcijos logika: kiekis ↔ kaina</summary>
-      <div class="more-body">
-        <p>Paklausos funkcija \(p = -0{,}04x + 560\) susieja kiekį ir kainą, todėl žinodami vieną dydį randame kitą.</p>
-        <p><strong>Žinomas kiekis – randame kainą.</strong> Vietoj \(x\) įrašome kiekį ir tiesiogiai apskaičiuojame \(p\); lygties spręsti nereikia. Kai \(x = 5000\):</p>
-        \[ \begin{aligned} p &amp;= -0{,}04\cdot 5000 + 560 \\ &amp;= -200 + 560 = 360 \end{aligned} \]
-        <p>Kai paklausos kiekis yra 5000 vienetų, kaina yra 360 eurų – kaip ir sąlygoje.</p>
-        <p><strong>Žinoma kaina – randame kiekį.</strong> Vietoj \(p\) įrašome kainą ir sprendžiame lygtį nežinomojo \(x\) atžvilgiu. Kai \(p = 480\):</p>
-        \[ \begin{aligned} 480 &amp;= -0{,}04x + 560 \\ \Longrightarrow\; 0{,}04x &amp;= 80 \\ \Longrightarrow\; x &amp;= 2000 \end{aligned} \]
-        <p>Kai kaina yra 480 eurų, paklausos kiekis yra 2000 vienetų – kaip ir sąlygoje.</p>
-        <p>Laisvasis narys \(b = 560\) – kaina, kai paklausos kiekis lygus nuliui.</p>
-      </div>
-    </details>
 
     <!-- 4. Pasiūlos funkcija -->
     <article class="card example" id="pasiula">
@@ -192,41 +195,49 @@
       </div>
       <div class="steps">
         <section class="step">
-          <h4><span class="step-no">1</span><span>Du taškai</span></h4>
-          <p>Kai kaina yra 160 eurų, nesiūloma nė vieno vieneto, todėl tiesė eina per tašką \((0;\,160)\). Kainai padidėjus 60 eurų, rinkai pasiūloma 1000 vienetų daugiau, todėl gauname antrąjį tašką \((1000;\,220)\).</p>
+          <h4><span class="step-no">1</span><span>Taškas ir pokyčiai</span></h4>
+          <p>Kai kaina yra 160 eurų, nesiūloma nė vieno vieneto, todėl tiesė eina per tašką \((x_1;\,p_1) = (0;\,160)\). Kainai padidėjus 60 eurų, rinkai pasiūloma 1000 vienetų daugiau: \(\Delta p = 60\), \(\Delta x = 1000\).</p>
         </section>
         <section class="step">
-          <h4><span class="step-no">2</span><span>Nuolydis</span></h4>
-          \[ c = \frac{220 - 160}{1000 - 0} = \frac{60}{1000} = 0{,}06 \]
+          <h4><span class="step-no">2</span><span>Nuolydis iš pokyčių</span></h4>
+          \[ c = \frac{\Delta p}{\Delta x} = \frac{60}{1000} = 0{,}06 \]
           <p>Nuolydis teigiamas, kaip ir turi būti pasiūlos atveju.</p>
+          <details class="more more--alt">
+            <summary><span class="ico" aria-hidden="true">⇄</span>Kitas būdas: per antrąjį tašką</summary>
+            <div class="more-body">
+              <p>Pritaikę pokytį vieną kartą, gauname antrąjį tašką \((0 + 1000;\,160 + 60) = (1000;\,220)\) ir nuolydį skaičiuojame pagal dviejų taškų formulę:</p>
+              \[ \begin{aligned} c &amp;= \frac{p_2 - p_1}{x_2 - x_1} = \frac{220 - 160}{1000 - 0} \\ &amp;= \frac{60}{1000} = 0{,}06 \end{aligned} \]
+              <p>Gaunamas tas pats nuolydis.</p>
+            </div>
+          </details>
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Laisvasis narys</span></h4>
-          <p>Pirmasis taškas yra kainos ašyje, todėl jo kaina ir yra laisvasis narys:</p>
-          \[ d = -0{,}06\cdot 0 + 160 = 160 \]
+          <p>Taškas \((0;\,160)\) yra kainos ašyje, todėl jo kaina ir yra laisvasis narys:</p>
+          \[ \begin{aligned} d &amp;= -c x_1 + p_1 = -0{,}06\cdot 0 + 160 \\ &amp;= 160 \end{aligned} \]
         </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Pasiūlos funkcija</span>
             \[ p = 0{,}06x + 160 \]
           </div>
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Pasiūlos funkcijos logika: kiekis ↔ kaina</summary>
+            <div class="more-body">
+              <p>Pasiūlos funkcija \(p = 0{,}06x + 160\) taip pat leidžia iš vieno dydžio rasti kitą.</p>
+              <p><strong>Žinomas kiekis – randame kainą.</strong> Kai \(x = 1000\):</p>
+              \[ \begin{aligned} p &amp;= 0{,}06\cdot 1000 + 160 \\ &amp;= 60 + 160 = 220 \end{aligned} \]
+              <p>Kai pasiūlos kiekis yra 1000 vienetų, kaina yra 220 eurų – kaip ir sąlygoje.</p>
+              <p><strong>Žinoma kaina – randame kiekį.</strong> Kai \(p = 160\):</p>
+              \[ \begin{aligned} 160 &amp;= 0{,}06x + 160 \\ \Longrightarrow\; 0{,}06x &amp;= 0 \\ \Longrightarrow\; x &amp;= 0 \end{aligned} \]
+              <p>Esant 160 eurų kainai nesiūloma nė vieno paspirtuko – kaip ir sąlygoje.</p>
+              <p>Laisvasis narys \(d = 160\) – kaina, nuo kurios prasideda pasiūla.</p>
+            </div>
+          </details>
         </section>
       </div>
     </article>
 
-    <details class="more more--why">
-      <summary><span class="ico" aria-hidden="true">?</span>Pasiūlos funkcijos logika: kiekis ↔ kaina</summary>
-      <div class="more-body">
-        <p>Pasiūlos funkcija \(p = 0{,}06x + 160\) taip pat leidžia iš vieno dydžio rasti kitą.</p>
-        <p><strong>Žinomas kiekis – randame kainą.</strong> Kai \(x = 1000\):</p>
-        \[ p = 0{,}06\cdot 1000 + 160 = 60 + 160 = 220 \]
-        <p>Kai pasiūlos kiekis yra 1000 vienetų, kaina yra 220 eurų – kaip ir sąlygoje.</p>
-        <p><strong>Žinoma kaina – randame kiekį.</strong> Kai \(p = 160\):</p>
-        \[ \begin{aligned} 160 &amp;= 0{,}06x + 160 \\ \Longrightarrow\; 0{,}06x &amp;= 0 \\ \Longrightarrow\; x &amp;= 0 \end{aligned} \]
-        <p>Esant 160 eurų kainai nesiūloma nė vieno paspirtuko – kaip ir sąlygoje.</p>
-        <p>Laisvasis narys \(d = 160\) – kaina, nuo kurios prasideda pasiūla.</p>
-      </div>
-    </details>
 
     <!-- 5. Pusiausvyra -->
     <article class="card example" id="pusiausvyra">
@@ -324,17 +335,28 @@
       </div>
       <div class="steps">
         <section class="step">
-          <h4><span class="step-no">1</span><span>Du taškai</span></h4>
-          <p>Kai kaina yra 90 eurų, nieko nesiūloma – taip gaunamas pirmasis taškas; kainai padidėjus 15 eurų, rinkai pasiūloma 600 kėdžių – taip gaunamas antrasis taškas: \((x_1;\,p_1) = (0;\,90)\), \((x_2;\,p_2) = (600;\,105)\).</p>
+          <h4><span class="step-no">1</span><span>Taškas ir pokyčiai</span></h4>
+          <p>Kai kaina yra 90 eurų, nieko nesiūloma – taip gaunamas taškas \((x_1;\,p_1) = (0;\,90)\). Kainai padidėjus 15 eurų, pasiūla padidėja 600 kėdžių: \(\Delta p = 15\), \(\Delta x = 600\).</p>
         </section>
         <section class="step">
-          <h4><span class="step-no">2</span><span>Nuolydis</span></h4>
-          \[ \begin{aligned} c &amp;= \frac{p_2 - p_1}{x_2 - x_1} = \frac{105 - 90}{600 - 0} \\ &amp;= \frac{15}{600} = 0{,}025 \end{aligned} \]
+          <h4><span class="step-no">2</span><span>Nuolydis iš pokyčių</span></h4>
+          <p>Kai žinomi pokyčiai, antro taško ieškoti nebūtina – nuolydis yra kainos ir kiekio pokyčių santykis:</p>
+          \[ c = \frac{\Delta p}{\Delta x} = \frac{15}{600} = 0{,}025 \]
           <p>Nuolydis teigiamas, kaip ir turi būti pasiūlos atveju.</p>
+          <details class="more more--alt">
+            <summary><span class="ico" aria-hidden="true">⇄</span>Kitas būdas: per antrąjį tašką</summary>
+            <div class="more-body">
+              <p>Kainai padidėjus 15 eurų, rinkai pasiūloma 600 kėdžių – taip gaunamas antrasis taškas \((x_2;\,p_2) = (600;\,105)\). Nuolydis pagal dviejų taškų formulę:</p>
+              \[ \begin{aligned} c &amp;= \frac{p_2 - p_1}{x_2 - x_1} = \frac{105 - 90}{600 - 0} \\ &amp;= \frac{15}{600} = 0{,}025 \end{aligned} \]
+              <p>Gaunamas tas pats nuolydis.</p>
+            </div>
+          </details>
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Laisvasis narys</span></h4>
-          <p>Pirmasis taškas yra kainos ašyje, todėl jo kaina ir yra laisvasis narys: \(d = 90\).</p>
+          <p>Pirmasis taškas yra kainos ašyje, todėl jo kaina ir yra laisvasis narys. Tai matyti iš formulės, įstačius tašką \((0;\,90)\):</p>
+          \[ \begin{aligned} d &amp;= -c x_1 + p_1 = -0{,}025\cdot 0 + 90 \\ &amp;= 90 \end{aligned} \]
+          <p>Kadangi \(x_1 = 0\), narys \(-c x_1\) lygus nuliui ir lieka tik taško kaina. Kitaip tariant, kai \(x = 0\), iš \(p = cx + d\) gauname \(p = d\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Pasiūlos funkcija</span></h4>
@@ -403,7 +425,7 @@
     <article class="card example" id="pavyzdys-4">
       <header class="example-head">
         <span class="example-tag">4 pavyzdys</span>
-        <h3>Duomenys viename sakinyje</h3>
+        <h3>Rinkos pusiausvyra</h3>
       </header>
       <div class="problem">
         <span class="label">Sąlyga</span>
@@ -438,40 +460,7 @@
     </article>
   </section>
 
-  <!-- ============ 8. SAVARANKIŠKAS DARBAS ============ -->
-  <section class="section" id="savarankiskai" aria-labelledby="h-self">
-    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
-    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose, tada pasitikrinkite atsakymą.</p>
-
-    <div class="quiz" data-numbering="task">
-      <article class="card q" data-type="open">
-        <p class="q-text">Tam tikro prekės ženklo elektrinio virdulio paklausos kiekis yra 1200 per savaitę, kai vieneto kaina yra 48 eurai. Nuo 48 eurų vieneto kainai mažėjant 5 eurais, paklausos kiekis padidėja 250 vienetų. Žinoma, kad vieneto kainos ir paklausos kiekio priklausomybė yra tiesinė. Raskite paklausos funkciją ir apskaičiuokite vieneto kainą, kuriai esant paklausos kiekis bus 2000 virdulių per savaitę.</p>
-        <div class="q-answer">\(p = -0{,}02x + 72\); kai vieneto kaina yra 32 eurai, paklausos kiekis yra 2000 virdulių per savaitę.</div>
-      </article>
-
-      <article class="card q" data-type="open">
-        <p class="q-text">Tam tikro tipo saulės modulių tiekėjai pasiūlys rinkai 5000 modulių, jei vieneto kaina bus 120 eurų. Kai vieneto kaina yra 150 eurų, pasiūlos kiekis yra 11000 modulių. Žinoma, kad vieneto kainos ir pasiūlos kiekio priklausomybė yra tiesinė. Raskite pasiūlos funkciją ir apskaičiuokite kiekį, kurį tiekėjai pasiūlys, kai vieneto kaina bus 190 eurų.</p>
-        <div class="q-answer">\(p = 0{,}005x + 95\); kai vieneto kaina yra 190 eurų, tiekėjai pasiūlys 19000 saulės modulių.</div>
-      </article>
-
-      <article class="card q" data-type="open">
-        <p class="q-text">Naujos išmaniųjų laikrodžių serijos rinkos tyrimas rodo, kad paklausos kiekis yra 4000 vienetų, kai kaina yra 45 €, ir 2000 vienetų, kai kaina yra 65 €. Gamintojai pasirengę pasiūlyti 500 vienetų už 15 € ir 2500 vienetų už 35 €. Raskite pusiausvyros kiekį ir kainą.</p>
-        <div class="q-answer">3750 vienetų, 47,5 €.</div>
-        <div class="q-solution">
-          <p><strong>Paklausa:</strong></p>
-          \[ \begin{aligned} a &amp;= \frac{65 - 45}{2000 - 4000} = -0{,}01 \\ b &amp;= 45 - (-0{,}01)\cdot 4000 = 85 \end{aligned} \]
-          <p>todėl \(p = -0{,}01x + 85\).</p>
-          <p><strong>Pasiūla:</strong></p>
-          \[ \begin{aligned} c &amp;= \frac{35 - 15}{2500 - 500} = 0{,}01 \\ d &amp;= 15 - 0{,}01\cdot 500 = 10 \end{aligned} \]
-          <p>todėl \(p = 0{,}01x + 10\).</p>
-          \[ \begin{aligned} &amp;{-}0{,}01x + 85 = 0{,}01x + 10 \\ \Longrightarrow\;&amp; 75 = 0{,}02x \;\Longrightarrow\; x = 3750 \end{aligned} \]
-          <p>\(p = 0{,}01\cdot 3750 + 10 = 47{,}5\) €.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ============ 9. TESTAS ============ -->
+  <!-- ============ 8. TESTAS ============ -->
   <section class="section" id="testas" aria-labelledby="h-test">
     <h2 id="h-test">Pasitikrinkite</h2>
 
@@ -506,6 +495,39 @@
           <li>Sumažėja nuo 250 iki 200</li>
         </ol>
         <div class="q-explain">Prieš poslinkį iš \(0{,}04x + 2 = -0{,}02x + 20\) gauname \(x = 300\); po poslinkio iš \(0{,}04x + 5 = -0{,}02x + 20\) gauname \(x = 250\).</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 9. SAVARANKIŠKAS DARBAS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose, tada pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <p class="q-text">Tam tikro prekės ženklo elektrinio virdulio paklausos kiekis yra 1200 per savaitę, kai vieneto kaina yra 48 eurai. Nuo 48 eurų vieneto kainai mažėjant 5 eurais, paklausos kiekis padidėja 250 vienetų. Žinoma, kad vieneto kainos ir paklausos kiekio priklausomybė yra tiesinė. Raskite paklausos funkciją ir apskaičiuokite vieneto kainą, kuriai esant paklausos kiekis bus 2000 virdulių per savaitę.</p>
+        <div class="q-answer">\(p = -0{,}02x + 72\); kai vieneto kaina yra 32 eurai, paklausos kiekis yra 2000 virdulių per savaitę.</div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">Tam tikro tipo saulės modulių tiekėjai pasiūlys rinkai 5000 modulių, jei vieneto kaina bus 120 eurų. Kai vieneto kaina yra 150 eurų, pasiūlos kiekis yra 11000 modulių. Žinoma, kad vieneto kainos ir pasiūlos kiekio priklausomybė yra tiesinė. Raskite pasiūlos funkciją ir apskaičiuokite kiekį, kurį tiekėjai pasiūlys, kai vieneto kaina bus 190 eurų.</p>
+        <div class="q-answer">\(p = 0{,}005x + 95\); kai vieneto kaina yra 190 eurų, tiekėjai pasiūlys 19000 saulės modulių.</div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">Naujos išmaniųjų laikrodžių serijos rinkos tyrimas rodo, kad paklausos kiekis yra 4000 vienetų, kai kaina yra 45 €, ir 2000 vienetų, kai kaina yra 65 €. Gamintojai pasirengę pasiūlyti 500 vienetų už 15 € ir 2500 vienetų už 35 €. Raskite pusiausvyros kiekį ir kainą.</p>
+        <div class="q-answer">3750 vienetų, 47,5 €.</div>
+        <div class="q-solution">
+          <p><strong>Paklausa:</strong></p>
+          \[ \begin{aligned} a &amp;= \frac{65 - 45}{2000 - 4000} = -0{,}01 \\ b &amp;= 45 - (-0{,}01)\cdot 4000 = 85 \end{aligned} \]
+          <p>todėl \(p = -0{,}01x + 85\).</p>
+          <p><strong>Pasiūla:</strong></p>
+          \[ \begin{aligned} c &amp;= \frac{35 - 15}{2500 - 500} = 0{,}01 \\ d &amp;= 15 - 0{,}01\cdot 500 = 10 \end{aligned} \]
+          <p>todėl \(p = 0{,}01x + 10\).</p>
+          \[ \begin{aligned} &amp;{-}0{,}01x + 85 = 0{,}01x + 10 \\ \Longrightarrow\;&amp; 75 = 0{,}02x \;\Longrightarrow\; x = 3750 \end{aligned} \]
+          <p>\(p = 0{,}01\cdot 3750 + 10 = 47{,}5\) €.</p>
+        </div>
       </article>
     </div>
   </section>
