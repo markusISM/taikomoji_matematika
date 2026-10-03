@@ -968,3 +968,6 @@ svg .hp-out { font-family: KaTeX_Main, "Times New Roman", serif; font-size: 15px
 .read-list li.r-bc { border-left-color: var(--success); }
 .read-list li.r-pv { border-left-color: var(--accent-strong); }
 .read-list li.r-sp { border-left-color: var(--exam); }
+.vtable.cmp-tbl { width: 100%; table-layout: fixed; }
+.vtable.cmp-tbl th, .vtable.cmp-tbl td { text-align: left; vertical-align: top; white-space: normal; }
+.vtable.cmp-tbl tr.grp th { background: var(--surface-2); font-weight: 700; color: var(--text); }

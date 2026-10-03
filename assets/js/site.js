@@ -242,7 +242,7 @@
       { id: 'm51', status: 'active', href: { lt: 'tema-5-maksimizavimas.html' },
         title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' },
         desc: { lt: 'Gamybos planas su bet kokiu kintamųjų skaičiumi: optimalus planas, likę ištekliai ir šešėlinės kainos.' } },
-      { id: 'm52', status: 'soon',
+      { id: 'm52', status: 'active', href: { lt: 'tema-5-minimizavimas.html' },
         title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' },
         desc: { lt: 'Dualusis uždavinys: mažiausios išlaidos ir reikalavimų viršijimas.' } }
     ]
@@ -291,6 +291,8 @@
                title: { lt: '5 tema', en: 'Topic 5' } },
     m51:     { parent: 't5', topic: 't5', model: 'm51', href: { lt: 'tema-5-maksimizavimas.html', en: null },
                title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' } },
+    m52:     { parent: 't5', topic: 't5', model: 'm52', href: { lt: 'tema-5-minimizavimas.html', en: null },
+               title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
