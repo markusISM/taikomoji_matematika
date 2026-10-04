@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Equilibrium · Topic 1 · Applied Mathematics</title>
+<meta name="description" content="Market equilibrium: finding the demand and supply functions, the equilibrium price and quantity, step-by-step examples, practice problems and a test.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-1-rinkos-pusiausvyra.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=35">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=35"></script>
+</head>
+<body data-page="eq">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 1 · Applications · Section 2</span>
+    <h1>Market Equilibrium</h1>
+    <ul class="jump">
+      <li><a href="#modelis">Model</a></li>
+      <li><a href="#zingsniai">Step by step</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#testas">Check yourself</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. WHAT IS MARKET EQUILIBRIUM ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-what">
+    <h2 id="h-what">What is market equilibrium</h2>
+
+    <article class="card">
+      <p><strong>Demand (\(D\))</strong> describes the buyers: consumers buy more only if the price falls, so the demand line falls.</p>
+      <p><strong>Supply (\(S\))</strong> describes the producers: producers offer more only if the price rises, so the supply line rises.</p>
+      <p><strong>Market equilibrium</strong> is the point \(E\) where these lines intersect. At the equilibrium price \(p_e\), the quantity demanded equals the quantity supplied, \(x_e\). This is the quantity at which buyers and sellers agree.</p>
+
+      <div data-widget="market-chart" data-a="-0.04" data-b="560" data-c="0.06" data-d="160" data-xmax="7000" data-ymax="600" data-numeric="0"></div>
+      <p class="formula-note" style="text-align:center;margin-top:6px">The lines are drawn for the electric scooter example solved below.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The model</h3>
+      <p>The quantity is always \(x\) and the unit price is always \(p\), whatever order the sentence names them in. Both relations are written in the slope-intercept form:</p>
+      <p class="formula-label">Demand</p>
+      <div class="formula">\[ p = ax + b, \quad a &lt; 0 \]</div>
+      <p class="formula-label">Supply</p>
+      <div class="formula">\[ p = cx + d, \quad c &gt; 0 \]</div>
+      <p class="formula-label">Equilibrium</p>
+      <div class="formula">\[ D = S: \quad ax + b = cx + d \]</div>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>What do \(b\) and \(d\) mean?</span></summary>
+        <div class="more-body">
+          <p><button type="button" class="term" data-term="Intercept" data-def="The value of \(y\) at \(x = 0\).">The intercept</button> \(b\) is the price at which nothing is demanded, and \(d\) is the price at which supply begins.</p>
+        </div>
+      </details>
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Why do the signs of the slopes matter?</span></summary>
+        <div class="more-body">
+          <p>The signs are part of the model: consumers buy more only if the price falls (\(a &lt; 0\)), producers offer more only if it rises (\(c &gt; 0\)). The sign of the slope is therefore a check on the work: a negative slope for a supply equation means that a mistake has been made somewhere.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. HOW TO FIND THE EQUILIBRIUM ============ -->
+  <section class="section" aria-labelledby="h-how">
+    <h2 id="h-how">How to find the equilibrium</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Write the buyers’ (demand) data and the sellers’ (supply) data separately, each as two points \((x;\,p)\), or as one point and the changes \(\Delta p\), \(\Delta x\).</li>
+        <li>Find the demand function \(p = ax + b\).</li>
+        <li>Find the supply function \(p = cx + d\).</li>
+        <li>Check the signs: \(a &lt; 0\) and \(c &gt; 0\).</li>
+        <li>Equate the two right-hand sides and solve for \(x_e\).</li>
+        <li>Substitute \(x_e\) into both functions: they must return the same \(p_e\).</li>
+      </ol>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>How to read the two points out of the problem?</summary>
+        <div class="more-body">
+          <p>A straight line is determined by two points, and a problem always contains two. They are given in one of the following ways (the examples are from the electric scooter problem):</p>
+          <ul>
+            <li><strong>Two pairs stated directly.</strong> “The quantity demanded is 2000 units when the unit price is 480 euros. At a unit price of 360 euros, the quantity demanded increases to 5000 units.” The points are \((2000;\,480)\) and \((5000;\,360)\) – the quantity first, the price second.</li>
+            <li><strong>One pair and a rate of change.</strong> “For each 60 euros increase in the unit price above 160 euros, the manufacturer will market an additional 1000 units.” Applying the change once to the point \((0;\,160)\) gives the second point \((1000;\,220)\).
+              <ul>
+                <li><strong>The second point is not necessary.</strong> Knowing the changes, we get the slope \(\dfrac{\Delta p}{\Delta x}\) at once, and the coordinates of the given point are used to find the intercept. For the scooter supply \(\Delta p = 60\), \(\Delta x = 1000\), so \(c = \dfrac{60}{1000} = 0.06\), and the intercept is found from the point \((0;\,160)\).</li>
+              </ul>
+            </li>
+            <li><strong>A price at which nothing is offered.</strong> “The manufacturer will not market any scooters if the price is 160 euros or lower.” This gives the point \((0;\,160)\): at that price the quantity supplied is zero, so this point lies on the price axis and its price is at once the intercept \(d\) of the supply line.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The order of the coordinates.</strong> The quantity is the first coordinate and the price the second, whatever order the sentence names them in.</li>
+            <li><strong>Mixed data.</strong> When one sentence gives both the buyers’ and the sellers’ data, sort the numbers into two pairs of points before calculating.</li>
+            <li><strong>Signs.</strong> A negative slope for a supply equation means that a mistake has been made somewhere.</li>
+            <li><strong>Check.</strong> Substituting \(x_e\) into both functions must give the same price \(p_e\).</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When introducing new variables not specified in lectures or the problem, or when changing measurement units, this must be explicitly written in the solution.</li>
+            <li>If the problem includes several questions, answers to all of them must be clearly presented.</li>
+            <li>When solving problems involving finding demand/supply or other linear functions, it is necessary to indicate the points or other information used to determine the parameters.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3–5. STEP BY STEP (scooters) ============ -->
+  <section class="section" id="zingsniai" aria-labelledby="h-steps">
+    <h2 id="h-steps">Step by step</h2>
+    <p class="section-intro">We solve one problem in three parts: the demand function, the supply function and the equilibrium.</p>
+
+    <article class="card">
+      <div class="problem" style="margin:0">
+        <span class="label">Problem</span>
+        The quantity demanded of a certain model of electric scooter is 2000 units when the unit price is 480 euros. At a unit price of 360 euros, the quantity demanded increases to 5000 units. The manufacturer will not market any scooters if the price is 160 euros or lower. However, for each 60 euros increase in the unit price above 160 euros, the manufacturer will market an additional 1000 units. Both the demand and the supply equations are known to be linear. Find the equilibrium quantity and price.
+      </div>
+    </article>
+
+    <!-- 3. Demand function -->
+    <article class="card example" id="paklausa">
+      <header class="example-head">
+        <span class="example-tag">Part 1</span>
+        <h3>Finding the demand function</h3>
+      </header>
+      <div class="problem">
+        <span class="label">The buyers’ data</span>
+        The quantity demanded is 2000 units when the unit price is 480 euros. At a unit price of 360 euros, the quantity demanded increases to 5000 units.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Two points</span></h4>
+          <p>The quantity is the first coordinate and the price is the second: \((x_1;\,p_1) = (2000;\,480)\), \((x_2;\,p_2) = (5000;\,360)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span><button type="button" class="term" data-term="Slope" data-def="A measure of the rate of change of \(y\) with respect to \(x\).">The slope</button></span></h4>
+          \[ \begin{aligned} a &amp;= \frac{p_2 - p_1}{x_2 - x_1} = \frac{360 - 480}{5000 - 2000} \\ &amp;= \frac{-120}{3000} = -0.04 \end{aligned} \]
+          <p>The slope is negative, as it must be for demand.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The intercept</span></h4>
+          \[ \begin{aligned} b &amp;= -a x_1 + p_1 = 0.04\cdot 2000 + 480 \\ &amp;= 80 + 480 = 560 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">The demand function</span>
+            \[ p = -0.04x + 560 \]
+          </div>
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>The logic of the demand function: quantity ↔ price</summary>
+            <div class="more-body">
+              <p>The demand function \(p = -0.04x + 560\) links the quantity and the price, so knowing one of them we can find the other.</p>
+              <p><strong>A quantity is given, the price is asked for.</strong> Put the quantity in place of \(x\) and compute \(p\) directly; no equation has to be solved. For \(x = 5000\):</p>
+              \[ \begin{aligned} p &amp;= -0.04\cdot 5000 + 560 \\ &amp;= -200 + 560 = 360 \end{aligned} \]
+              <p>When the quantity demanded is 5000 units, the price is 360 euros – as in the problem.</p>
+              <p><strong>A price is given, the quantity is asked for.</strong> Put the price in place of \(p\) and solve the equation for \(x\). For \(p = 480\):</p>
+              \[ \begin{aligned} 480 &amp;= -0.04x + 560 \\ \Longrightarrow\; 0.04x &amp;= 80 \\ \Longrightarrow\; x &amp;= 2000 \end{aligned} \]
+              <p>When the price is 480 euros, the quantity demanded is 2000 units – as in the problem.</p>
+              <p>The intercept \(b = 560\) is the price at which nothing is demanded.</p>
+            </div>
+          </details>
+        </section>
+      </div>
+    </article>
+
+
+    <!-- 4. Supply function -->
+    <article class="card example" id="pasiula">
+      <header class="example-head">
+        <span class="example-tag">Part 2</span>
+        <h3>Finding the supply function</h3>
+      </header>
+      <div class="problem">
+        <span class="label">The manufacturer’s data</span>
+        The manufacturer will not market any scooters if the price is 160 euros or lower. However, for each 60 euros increase in the unit price above 160 euros, the manufacturer will market an additional 1000 units.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>A point and the changes</span></h4>
+          <p>Nothing is offered at the price of 160 euros, so the line passes through the point \((x_1;\,p_1) = (0;\,160)\). An increase of 60 euros in the price brings 1000 more units to the market: \(\Delta p = 60\), \(\Delta x = 1000\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The slope from the changes</span></h4>
+          \[ c = \frac{\Delta p}{\Delta x} = \frac{60}{1000} = 0.06 \]
+          <p>The slope is positive, as it must be for supply.</p>
+          <details class="more more--alt">
+            <summary><span class="ico" aria-hidden="true">⇄</span>Another way: through the second point</summary>
+            <div class="more-body">
+              <p>Applying the change once gives the second point \((0 + 1000;\,160 + 60) = (1000;\,220)\), and the slope is computed by the two-point formula:</p>
+              \[ \begin{aligned} c &amp;= \frac{p_2 - p_1}{x_2 - x_1} = \frac{220 - 160}{1000 - 0} \\ &amp;= \frac{60}{1000} = 0.06 \end{aligned} \]
+              <p>The slope is the same.</p>
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The intercept</span></h4>
+          <p>The point \((0;\,160)\) lies on the price axis, so its price is the intercept itself:</p>
+          \[ \begin{aligned} d &amp;= -c x_1 + p_1 = -0.06\cdot 0 + 160 \\ &amp;= 160 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">The supply function</span>
+            \[ p = 0.06x + 160 \]
+          </div>
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>The logic of the supply function: quantity ↔ price</summary>
+            <div class="more-body">
+              <p>The supply function \(p = 0.06x + 160\) also lets us find one of the two values from the other.</p>
+              <p><strong>A quantity is given, the price is asked for.</strong> For \(x = 1000\):</p>
+              \[ \begin{aligned} p &amp;= 0.06\cdot 1000 + 160 \\ &amp;= 60 + 160 = 220 \end{aligned} \]
+              <p>When the quantity supplied is 1000 units, the price is 220 euros – as in the problem.</p>
+              <p><strong>A price is given, the quantity is asked for.</strong> For \(p = 160\):</p>
+              \[ \begin{aligned} 160 &amp;= 0.06x + 160 \\ \Longrightarrow\; 0.06x &amp;= 0 \\ \Longrightarrow\; x &amp;= 0 \end{aligned} \]
+              <p>At the price of 160 euros no scooters are offered – as in the problem.</p>
+              <p>The intercept \(d = 160\) is the price at which supply begins.</p>
+            </div>
+          </details>
+        </section>
+      </div>
+    </article>
+
+
+    <!-- 5. Equilibrium -->
+    <article class="card example" id="pusiausvyra">
+      <header class="example-head">
+        <span class="example-tag">Part 3</span>
+        <h3>Finding the equilibrium</h3>
+      </header>
+      <div class="problem">
+        <span class="label">We have</span>
+        Demand \(p = -0.04x + 560\), supply \(p = 0.06x + 160\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Demand equals supply</span></h4>
+          \[ -0.04x + 560 = 0.06x + 160 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The equilibrium quantity</span></h4>
+          \[ 400 = 0.1x \;\Longrightarrow\; x_e = 4000 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The equilibrium price</span></h4>
+          \[ \begin{aligned} p_e &amp;= 0.06\cdot 4000 + 160 \\ &amp;= 240 + 160 = 400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Check</span></h4>
+          <p>Substitute \(x_e\) into the demand function – it must give the same price:</p>
+          \[ \begin{aligned} &amp;{-}0.04\cdot 4000 + 560 \\ &amp;= -160 + 560 = 400 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The equilibrium quantity is 4000 scooters and the equilibrium price is 400 euros.
+          </div>
+          <div data-widget="market-chart" data-a="-0.04" data-b="560" data-c="0.06" data-d="160" data-xmax="7000" data-ymax="600" data-numeric="1"></div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 6. EXAMPLES: DEMAND OR SUPPLY ONLY ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-one">
+    <h2 id="h-one">Examples: the demand or the supply function</h2>
+    <p class="section-intro">A problem often asks for only one of the two functions and then adds a second question: what price corresponds to a given quantity, or what quantity corresponds to a given price. Try to solve the problem yourself first.</p>
+
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1 · Demand</span>
+        <h3>Wireless earbuds</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Assume that the demand equation for a certain model of wireless earbuds has the form \(p = ax + b\), where \(x\) is the quantity demanded and \(p\) is the unit price in euros. Suppose the quantity demanded is 4000 units when the unit price is 60 euros and 9000 units when the unit price is 35 euros. Determine the demand function. What is the quantity demanded when the unit price is 50 euros?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Two points</span></h4>
+          <p>The quantity is the first coordinate and the price the second, so \((x_1;\,p_1) = (4000;\,60)\), \((x_2;\,p_2) = (9000;\,35)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The slope</span></h4>
+          \[ \begin{aligned} a &amp;= \frac{p_2 - p_1}{x_2 - x_1} = \frac{35 - 60}{9000 - 4000} \\ &amp;= \frac{-25}{5000} = -0.005 \end{aligned} \]
+          <p>The slope is negative, as it must be for demand: one extra unit can be sold only if the price falls by half a cent.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The intercept</span></h4>
+          \[ \begin{aligned} b &amp;= -a x_1 + p_1 = 0.005\cdot 4000 + 60 \\ &amp;= 20 + 60 = 80 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The demand function</span></h4>
+          \[ p = -0.005x + 80 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The quantity demanded at the price of 50 euros</span></h4>
+          <p>Here the price is given, so \(p = 50\) is substituted and the equation is solved for \(x\):</p>
+          \[ \begin{aligned} 50 &amp;= -0.005x + 80 \\ \Longrightarrow\; 0.005x &amp;= 30 \\ \Longrightarrow\; x &amp;= \frac{30}{0.005} = 6000 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The demand function is \(p = -0.005x + 80\); at the unit price of 50 euros 6000 pairs of earbuds are demanded.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2 · Supply</span>
+        <h3>Office chairs</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Suppliers of a certain model of office chair will not make any chairs available in the market if the unit price is 90 euros or lower. However, for each 15 euros increase in the unit price above 90 euros, the suppliers will make an additional 600 chairs available. Assuming that the relationship between the unit price and the quantity supplied is linear, determine the supply function and compute the unit price at which the suppliers will make 3200 chairs available.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>A point and the changes</span></h4>
+          <p>Nothing is offered at the price of 90 euros, which gives the point \((x_1;\,p_1) = (0;\,90)\). Raising the price by 15 euros brings 600 chairs to the market: \(\Delta p = 15\), \(\Delta x = 600\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The slope from the changes</span></h4>
+          <p>When the changes are known, the second point is not necessary – the slope is the ratio of the change in price to the change in quantity:</p>
+          \[ c = \frac{\Delta p}{\Delta x} = \frac{15}{600} = 0.025 \]
+          <p>The slope is positive, as it must be for supply.</p>
+          <details class="more more--alt">
+            <summary><span class="ico" aria-hidden="true">⇄</span>Another way: through the second point</summary>
+            <div class="more-body">
+              <p>Raising the price by 15 euros brings 600 chairs to the market, which gives the second point \((x_2;\,p_2) = (600;\,105)\). The slope by the two-point formula:</p>
+              \[ \begin{aligned} c &amp;= \frac{p_2 - p_1}{x_2 - x_1} = \frac{105 - 90}{600 - 0} \\ &amp;= \frac{15}{600} = 0.025 \end{aligned} \]
+              <p>The slope is the same.</p>
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The intercept</span></h4>
+          <p>The first point lies on the price axis, so its price is the intercept itself. This can be seen from the formula by substituting the point \((0;\,90)\):</p>
+          \[ \begin{aligned} d &amp;= -c x_1 + p_1 = -0.025\cdot 0 + 90 \\ &amp;= 90 \end{aligned} \]
+          <p>Since \(x_1 = 0\), the term \(-c x_1\) is zero and only the price of the point is left. In other words, at \(x = 0\) the equation \(p = cx + d\) gives \(p = d\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The supply function</span></h4>
+          \[ p = 0.025x + 90 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The price at which 3200 chairs are offered</span></h4>
+          <p>Here the quantity is given, so \(x = 3200\) is substituted and the price is computed directly:</p>
+          \[ p = 0.025\cdot 3200 + 90 = 80 + 90 = 170 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The supply function is \(p = 0.025x + 90\); the suppliers will make 3200 chairs available at the unit price of 170 euros.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 7. EXAMPLES: MARKET EQUILIBRIUM ============ -->
+  <section class="section" aria-labelledby="h-eq">
+    <h2 id="h-eq">Examples: market equilibrium</h2>
+
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Fitness trackers</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The quantity demanded of a fitness tracker is 2400 units per week at the unit price of 90 euros, and for each decrease of the price by 5 euros the quantity demanded increases by 200 units. Suppliers will not market any trackers at 30 euros or lower, but at 78 euros they make 3200 units available. Both relations are linear. Determine the demand and supply functions and find the equilibrium price and quantity.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Demand</span></h4>
+          <p>One point, \((2400;\,90)\), and a rate of change are given. The price falls while the quantity rises, so the slope is negative:</p>
+          \[ a = \frac{\Delta p}{\Delta x} = \frac{-5}{200} = -0.025 \]
+          <p>The intercept, using \((2400;\,90)\):</p>
+          \[ \begin{aligned} b &amp;= -(-0.025)\cdot 2400 + 90 \\ &amp;= 60 + 90 = 150 \\ &amp;\Longrightarrow\; p = -0.025x + 150 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Supply</span></h4>
+          <p>The boundary condition gives the point \((0;\,30)\), the second statement the point \((3200;\,78)\). The slope:</p>
+          \[ c = \frac{78 - 30}{3200 - 0} = \frac{48}{3200} = 0.015 \]
+          <p>The intercept, using \((0;\,30)\):</p>
+          \[ \begin{aligned} d &amp;= -0.015\cdot 0 + 30 = 30 \\ &amp;\Longrightarrow\; p = 0.015x + 30 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Equilibrium</span></h4>
+          \[ \begin{aligned} &amp;{-}0.025x + 150 = 0.015x + 30 \\ \Longrightarrow\;&amp; 120 = 0.04x \\ \Longrightarrow\;&amp; x_e = 3000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Check</span></h4>
+          <p>\(0.015\cdot 3000 + 30 = 75\) and \(-0.025\cdot 3000 + 150 = 75\) euros.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Demand \(p = -0.025x + 150\), supply \(p = 0.015x + 30\); the market clears at 3000 trackers per week and the price of 75 euros.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Market equilibrium</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        At a price of 12 euros the weekly supply of a product is 900 units and the quantity demanded is 1500 units. At a price of 18 euros the supply is 1500 units and the quantity demanded is 1200 units. Both relations are linear. Find the supply and demand functions and the equilibrium price and quantity.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sorting the data</span></h4>
+          <p>Sort the four numbers into two pairs of points before calculating. Supply: \((900;\,12)\) and \((1500;\,18)\). Demand: \((1500;\,12)\) and \((1200;\,18)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Supply</span></h4>
+          \[ c = \frac{18 - 12}{1500 - 900} = \frac{6}{600} = 0.01 \]
+          \[ \begin{aligned} d &amp;= -0.01\cdot 900 + 12 \\ &amp;= -9 + 12 = 3 \\ &amp;\Longrightarrow\; p = 0.01x + 3 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Demand</span></h4>
+          \[ a = \frac{18 - 12}{1200 - 1500} = \frac{6}{-300} = -0.02 \]
+          \[ \begin{aligned} b &amp;= -(-0.02)\cdot 1500 + 12 \\ &amp;= 30 + 12 = 42 \\ &amp;\Longrightarrow\; p = -0.02x + 42 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Equilibrium</span></h4>
+          \[ \begin{aligned} &amp;0.01x + 3 = -0.02x + 42 \\ \Longrightarrow\;&amp; 0.03x = 39 \\ \Longrightarrow\;&amp; x_e = 1300, \quad p_e = 16 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Supply \(p = 0.01x + 3\), demand \(p = -0.02x + 42\); equilibrium at 1300 units and 16 euros.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 8. TEST ============ -->
+  <section class="section" id="testas" aria-labelledby="h-test">
+    <h2 id="h-test">Check yourself</h2>
+
+    <div class="quiz">
+      <article class="card q" data-type="mc">
+        <p class="q-text">At market equilibrium, which condition holds?</p>
+        <ol class="q-options">
+          <li>Quantity demanded exceeds quantity supplied.</li>
+          <li>Quantity supplied exceeds quantity demanded.</li>
+          <li data-correct>Quantity demanded equals quantity supplied, at the equilibrium price.</li>
+          <li>Price is always zero.</li>
+        </ol>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">The demand for handmade soap bars is \(p = -0.03x + 50\) (\(p\) in €, \(x\) in bars) and the supply is \(p = 0.02x + 10\). What is the equilibrium quantity \(x\)?</p>
+        <ol class="q-options">
+          <li data-correct>800 bars</li>
+          <li>400 bars</li>
+          <li>1000 bars</li>
+          <li>600 bars</li>
+        </ol>
+        <div class="q-explain">Equating the two prices, \(-0.03x + 50 = 0.02x + 10\), gives \(40 = 0.05x\), so \(x = 800\).</div>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">The original supply of a seasonal fruit is \(p = 0.04x + 2\). A poor harvest shifts the supply to \(p = 0.04x + 5\) (same slope, higher intercept), while demand stays \(p = -0.02x + 20\). How does the equilibrium quantity change, from before the shift to after?</p>
+        <ol class="q-options">
+          <li>Increases from 300 to 250</li>
+          <li data-correct>Decreases from 300 to 250</li>
+          <li>Stays at 300</li>
+          <li>Decreases from 250 to 200</li>
+        </ol>
+        <div class="q-explain">Before the shift, \(0.04x + 2 = -0.02x + 20\) gives \(x = 300\); after the shift, \(0.04x + 5 = -0.02x + 20\) gives \(x = 250\).</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 9. PRACTICE PROBLEMS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out exactly as in the examples, then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <p class="q-text">The quantity demanded of a certain brand of electric kettle is 1200 per week when the unit price is 48 euros. For each decrease in the unit price of 5 euros below 48 euros, the quantity demanded increases by 250 units. Assuming that the relationship between the unit price and the quantity demanded is linear, determine the demand function and compute the unit price at which 2000 kettles a week will be demanded.</p>
+        <div class="q-answer">\(p = -0.02x + 72\); 2000 kettles a week are demanded at the unit price of 32 euros.</div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">Suppliers of a certain type of solar panel will make 5000 panels available in the market if the unit price is 120 euros. At a unit price of 150 euros, 11000 panels will be made available. Assuming that the relationship between the unit price and the quantity supplied is linear, determine the supply function and compute the quantity suppliers will make available when the unit price is 190 euros.</p>
+        <div class="q-answer">\(p = 0.005x + 95\); at the unit price of 190 euros the suppliers will make 19000 panels available.</div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">For a new line of smartwatches, market research shows that 4000 units are demanded when the price is 45 €, and 2000 units are demanded when the price is 65 €. On the supply side, producers are willing to supply 500 units at 15 € and 2500 units at 35 €. Find the equilibrium quantity and price.</p>
+        <div class="q-answer">3750 units, 47.5 €.</div>
+        <div class="q-solution">
+          <p><strong>Demand:</strong></p>
+          \[ \begin{aligned} a &amp;= \frac{65 - 45}{2000 - 4000} = -0.01 \\ b &amp;= 45 - (-0.01)\cdot 4000 = 85 \end{aligned} \]
+          <p>so \(p = -0.01x + 85\).</p>
+          <p><strong>Supply:</strong></p>
+          \[ \begin{aligned} c &amp;= \frac{35 - 15}{2500 - 500} = 0.01 \\ d &amp;= 15 - 0.01\cdot 500 = 10 \end{aligned} \]
+          <p>so \(p = 0.01x + 10\).</p>
+          \[ \begin{aligned} &amp;{-}0.01x + 85 = 0.01x + 10 \\ \Longrightarrow\;&amp; 75 = 0.02x \;\Longrightarrow\; x = 3750 \end{aligned} \]
+          <p>\(p = 0.01\cdot 3750 + 10 = 47.5\) €.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 1</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
