@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Long-Run Market Shares · Applied Mathematics</title>
+<meta name="description" content="How the long-run (steady-state) market shares of companies are found using the Markov chain model and a system of linear equations: the equation P·X = X and the condition x + y + z = 1.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-3-stabiliosios-rinkos-dalys.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=45">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=45"></script>
+</head>
+<body data-page="m33">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 3 · Applications · Section 3</span>
+    <h1>Long-Run Market Shares</h1>
+    <p class="lead">This section shows how the long-run – steady-state – market shares of companies are found using the Markov chain model and a system of linear equations.</p>
+    <ul class="jump">
+      <li><a href="#priminimas">Markov chain</a></li>
+      <li><a href="#stabilumas">Steady state</a></li>
+      <li><a href="#sistema">System of equations</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. REVIEW ============ -->
+  <section class="section" id="priminimas" aria-labelledby="h-recall">
+    <h2 id="h-recall">A short review: Markov chains</h2>
+
+    <article class="card">
+      <p>Customers move between competing companies. The <strong>transition matrix</strong> \(P\) records this movement: \(p_{ij}\) is the proportion of company \(j\)’s customers who move to company \(i\), so column \(j\) is the story of company \(j\)’s customers and each column sums to 1.</p>
+      <div class="formula">\[ \begin{gathered} P = \begin{pmatrix} \htmlClass{hc}{p_{11}} &amp; p_{12} &amp; p_{13} \\ \htmlClass{hc}{p_{21}} &amp; p_{22} &amp; p_{23} \\ \htmlClass{hc}{p_{31}} &amp; p_{32} &amp; p_{33} \end{pmatrix} \\[4pt] \htmlClass{hc}{p_{11} + p_{21} + p_{31}} = 1 \end{gathered} \]</div>
+      <p>If \(X_t\) is the column of market shares in period \(t\), then the shares of each period are obtained by multiplying the previous ones by the same transition matrix:</p>
+      <div class="formula">\[ X_t = P\cdot X_{t-1} \]</div>
+      <p class="more-link"><a href="tema-2-rinkos-dalies-prognozavimas.html#zingsnio-matrica">How the transition matrix is built – in the Topic 2 section “Market Share Prediction Using Markov Chains” →</a></p>
+    </article>
+  </section>
+
+  <!-- ============ 2. STEADY STATE ============ -->
+  <section class="section" id="stabilumas" aria-labelledby="h-stable">
+    <h2 id="h-stable">When the market shares stop changing</h2>
+
+    <article class="card">
+      <p><strong>Short run and long run.</strong> Repeating the multiplication \(X_t = P\cdot X_{t-1}\) traces the market forward period by period. What happens is always the same: the shares move in one direction, but by less and less each period, and eventually they stop moving.</p>
+
+      <figure class="fig conv">
+        <svg viewBox="0 0 320 178" role="img" aria-label="Diagram: the market shares of three companies change by less and less and settle down">
+          <path class="guide" d="M44 85.4H300M44 70.2H300M44 104.4H300"/>
+          <path class="ax" d="M40 152H306M40 152V12"/>
+          <path class="ah" d="M312 152l-9-4.5v9z"/>
+          <path class="ah" d="M40 6l-4.5 9h9z"/>
+          <path class="ln" d="M44.0 32.2 L68.4 52.4 L92.8 64.9 L117.2 72.7 L141.6 77.5 L166.0 80.5 L190.4 82.4 L214.8 83.5 L239.2 84.2 L263.6 84.7 L288.0 85.0"/>
+          <path class="ln2" d="M44.0 96.8 L68.4 86.7 L92.8 80.4 L117.2 76.5 L141.6 74.1 L166.0 72.6 L190.4 71.7 L214.8 71.1 L239.2 70.8 L263.6 70.6 L288.0 70.4"/>
+          <path class="ln3" d="M44.0 131.0 L68.4 120.9 L92.8 114.6 L117.2 110.7 L141.6 108.3 L166.0 106.8 L190.4 105.9 L214.8 105.3 L239.2 105.0 L263.6 104.8 L288.0 104.6"/>
+          <text class="muted" x="304" y="170" text-anchor="end">periods</text>
+          <text class="muted" x="48" y="14">market share</text>
+          <text class="mu" x="44" y="170" text-anchor="middle">X₀</text>
+          <text class="muted" x="300" y="62" text-anchor="end">steady-state shares</text>
+        </svg>
+        <figcaption>The market shares of three companies change by less and less and approach constant values (the dashed lines).</figcaption>
+      </figure>
+
+      <p><strong>Why the shares stabilise.</strong> Every company loses a fixed proportion of its own customers and gains fixed proportions of its competitors’ customers. A company that is large loses many customers in absolute numbers, because the percentage applies to a large base; a company that is small loses few. There is exactly one distribution of the market at which every company’s inflow exactly equals its outflow. The market drifts towards it and then stays there.</p>
+
+      <p>Market shares are called <strong>stable after time</strong> \(T\) if \(X_{t+1} = X_t\) for all \(t &gt; T\). The market is in a <strong>steady state</strong> when one more period changes nothing:</p>
+      <div class="formula">\[ P\cdot X = X \]</div>
+      <p>Here \(X\) is the <strong>vector of the steady-state market shares</strong>.</p>
+
+      <p class="tip"><strong>The point that matters for business.</strong> The equation \(P\cdot X = X\) contains \(P\) but not \(X_0\): the long-run shares depend only on how customers switch, not on who leads the market today. What decides the long run is retention and the ability to attract – the columns of \(P\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SYSTEM OF EQUATIONS ============ -->
+  <section class="section" id="sistema" aria-labelledby="h-system">
+    <h2 id="h-system">Building the system of equations</h2>
+
+    <article class="card">
+      <p>Suppose there are three companies in the market. Denote the unknown steady-state market shares by \(x\), \(y\), \(z\). The equation \(P\cdot X = X\) becomes a system of linear equations in four steps:</p>
+
+      <ol class="derive">
+        <li>
+          <span class="dl">1. The steady-state condition</span>
+          <div class="fit-wrap">\[ \begin{pmatrix} p_{11} &amp; p_{12} &amp; p_{13} \\ p_{21} &amp; p_{22} &amp; p_{23} \\ p_{31} &amp; p_{32} &amp; p_{33} \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} x \\ y \\ z \end{pmatrix} \]</div>
+        </li>
+        <li>
+          <span class="dl">2. Written row by row</span>
+          <p class="dn">Each row of \(P\) times the column \(X\) equals the corresponding share:</p>
+          \[ \begin{cases} p_{11}x + p_{12}y + p_{13}z = x \\ p_{21}x + p_{22}y + p_{23}z = y \\ p_{31}x + p_{32}y + p_{33}z = z \end{cases} \]
+        </li>
+        <li>
+          <span class="dl">3. The variables moved to the left</span>
+          <p class="dn">In each equation the variable on the right-hand side is moved to the left – 1 is subtracted from the diagonal entry, and every right-hand side becomes zero:</p>
+          \[ \begin{cases} (\htmlClass{hd}{p_{11} - 1})x + p_{12}y + p_{13}z = 0 \\ p_{21}x + (\htmlClass{hd}{p_{22} - 1})y + p_{23}z = 0 \\ p_{31}x + p_{32}y + (\htmlClass{hd}{p_{33} - 1})z = 0 \end{cases} \]
+        </li>
+        <li>
+          <span class="dl">4. One equation replaced by \(x + y + z = 1\)</span>
+          <p class="dn">The equations obtained are dependent, so the first equation is replaced by the <strong>probability constraint</strong> – together the shares make up the whole market:</p>
+          \[ \begin{cases} \htmlClass{hr}{x + y + z = 1} \\ p_{21}x + (p_{22} - 1)y + p_{23}z = 0 \\ p_{31}x + p_{32}y + (p_{33} - 1)z = 0 \end{cases} \]
+        </li>
+      </ol>
+      <p>This system has exactly one solution and is solved by <a href="tema-3.html#algoritmas">Gaussian elimination</a>. This is the direct link between the two topics: a Markov chain question is answered by solving a system of linear equations.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Why does one equation have to be replaced?</summary>
+        <div class="more-body">
+          <p>Add all three equations of step 3. The coefficient of \(x\) is</p>
+          \[ \begin{aligned} &amp;(p_{11} - 1) + p_{21} + p_{31} \\ &amp;= (p_{11} + p_{21} + p_{31}) - 1 = 0, \end{aligned} \]
+          <p>because the entries of the first column sum to 1. The same holds for \(y\) and \(z\). So adding all the equations gives \(0 = 0\): one equation repeats the information in the others.</p>
+          <p>So these equations alone cannot determine the solution – the system has infinitely many solutions, among them the useless one in which every share is zero. The missing piece of information is that the shares sum to 1. Replacing one equation by this condition gives a system with exactly one solution.</p>
+        </div>
+      </details>
+
+      <p class="tip"><strong>The equation that is easy to forget.</strong> Without \(x + y + z = 1\) the system has infinitely many solutions. If the elimination produces a row of zeros, that is not a mistake – it is the sign that the steady-state equations are dependent. That is exactly why the probability constraint has to take the place of one of them.</p>
+    </article>
+  </section>
+
+  <!-- ============ 4. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Build the transition matrix \(P\) column by column, and check that every column sums to 1.</li>
+        <li>Write the unknown long-run shares as \(X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}\) and state that the variables represent the steady-state market shares.</li>
+        <li>Write \(P\cdot X = X\) row by row: each row of \(P\) times the column \(X\) equals the corresponding share.</li>
+        <li>In each equation move the variable from the right-hand side to the left, so that every right-hand side becomes zero.</li>
+        <li>Multiply the rows by 10, 20 or 100 to clear the decimals, and divide by any common factor.</li>
+        <li>Replace the first equation by \(x + y + z = 1\).</li>
+        <li>Write the augmented matrix and solve the system by Gaussian elimination, writing the operation being carried out beside the matrix.</li>
+        <li>Check the answer: the shares must be positive, must sum to 1, and must satisfy \(P\cdot X = X\).</li>
+        <li>Interpret: compare the long-run shares with today’s, say who gains and who loses, and point to the entries of \(P\) that explain it.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The condition \(x + y + z = 1\) forgotten.</strong> Without it the system has infinitely many solutions, and Gaussian elimination produces a row of zeros.</li>
+            <li><strong>A row instead of a column.</strong> A sentence about one company’s customers fills a column of \(P\); every column must sum to 1.</li>
+            <li><strong>The 1 not subtracted.</strong> When the variable is moved to the left, 1 is subtracted from the diagonal entry: \(0.8x - x = -0.2x\).</li>
+            <li><strong>The current shares used.</strong> \(X_0\) is not needed to find the long-run shares – it is used only for the short-run prediction.</li>
+            <li><strong>No interpretation written.</strong> In the answer it is worth expressing the shares as percentages and comparing them with today’s.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving steady-state market shares problems, it is required to indicate that the variables represent the steady-state market shares. The transition matrix \(P\) must also be provided.</li>
+            <li>The solution must include the mathematical model of the problem – the system of linear equations. Presenting only the augmented matrix is not sufficient.</li>
+            <li>The system of equations must be solved using the Gaussian elimination method. The solution must show which row operations are performed to eliminate elements below the main diagonal.</li>
+            <li>At the end of the solution, the final answer must be clearly presented.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 5. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: alternative problem 3.2 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Long-run market shares of electricity suppliers</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <div class="q-text">
+          <p>In a country there are three electricity suppliers (A, B, and C). The first has 40&nbsp;% of the market share, the second has 40&nbsp;%, and the third has 20&nbsp;%. A study found that:</p>
+          <ul>
+            <li>80&nbsp;% of supplier A’s customers would choose the same supplier next time, 10&nbsp;% would choose supplier B, and 10&nbsp;% would choose supplier C;</li>
+            <li>85&nbsp;% of supplier B’s customers would remain with the same supplier, 10&nbsp;% would choose supplier A, and 5&nbsp;% would choose supplier C;</li>
+            <li>finally, 80&nbsp;% of supplier C’s customers would stay with the same supplier, 10&nbsp;% would choose supplier A, and 10&nbsp;% would choose supplier B.</li>
+          </ul>
+          <p>Assume that those habits will remain the same in the future. Determine the long-run market shares of these electricity suppliers.</p>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The transition matrix</span></h4>
+          <p>Each sentence of the study describes one supplier’s customers, so each fills one column (A, B, C):</p>
+          \[ P = \begin{pmatrix} 0.8 &amp; 0.1 &amp; 0.1 \\ 0.1 &amp; 0.85 &amp; 0.1 \\ 0.1 &amp; 0.05 &amp; 0.8 \end{pmatrix} \]
+          <p>The columns sum to 1. The current shares – 40&nbsp;%, 40&nbsp;% and 20&nbsp;% – are not needed for this question; they were used in <a href="tema-2-rinkos-dalies-prognozavimas.html#pavyzdys-1">the Topic 2 example</a>, where the shares after one period were calculated.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The steady-state condition row by row</span></h4>
+          <p>Let \(X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}\) be the vector of the steady-state market shares of suppliers A, B and C. The condition \(P\cdot X = X\) written row by row:</p>
+          \[ \begin{cases} 0.8x + 0.1y + 0.1z = x \\ 0.1x + 0.85y + 0.1z = y \\ 0.1x + 0.05y + 0.8z = z \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The variables to the left</span></h4>
+          \[ \begin{cases} -0.2x + 0.1y + 0.1z = 0 \\ 0.1x - 0.15y + 0.1z = 0 \\ 0.1x + 0.05y - 0.2z = 0 \end{cases} \]
+          <p>Adding the three equations gives \(0 = 0\), so they are dependent.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The probability constraint</span></h4>
+          <p>The first equation is replaced by the condition \(x + y + z = 1\), and the other two are multiplied by 20 to clear the decimals:</p>
+          \[ \begin{cases} x + y + z = 1 \\ 2x - 3y + 2z = 0 \\ 2x + y - 4z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Zeros in the first column</span></h4>
+          <p>The first row is multiplied by \(-2\) and added to the second, then by \(-2\) again and added to the third. The second row is divided by \(-5\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 1 \\ 2 &amp; -3 &amp; 2 &amp; 0 \\ 2 &amp; 1 &amp; -4 &amp; 0 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -5 &amp; 0 &amp; -2 \\ \htmlClass{hc}{0} &amp; -1 &amp; -6 &amp; -2 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \\ \phantom{0} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>A zero in the second column</span></h4>
+          <p>The second row now has its leading 1. Adding it to the third row turns the entry in the second column into zero; then the third row is divided by \(-6\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0 &amp; 0.4 \\ 0 &amp; -1 &amp; -6 &amp; -2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0.4 \\ 0 &amp; \htmlClass{hc}{0} &amp; -6 &amp; -1.6 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-6)} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Back substitution</span></h4>
+          <p>The last row gives \(z\), the second row gives \(y\), and the first row gives \(x\):</p>
+          \[ \begin{aligned} z &amp;= \frac{1.6}{6} = \frac{4}{15} \approx 0.2667 \\ y &amp;= 0.4 \\ x &amp;= 1 - 0.4 - \frac{4}{15} = \frac{1}{3} \approx 0.3333 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Check</span></h4>
+          <p>The three shares are positive and sum to 1. Substituting them into the first row of \(P\cdot X\) gives</p>
+          \[ 0.8\cdot\tfrac{1}{3} + 0.1\cdot 0.4 + 0.1\cdot\tfrac{4}{15} = \tfrac{1}{3}, \]
+          <p>which is \(x\) again, so the shares really do reproduce themselves.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>In the long run supplier A will hold about 33.33&nbsp;% of the market, supplier B 40&nbsp;% and supplier C about 26.67&nbsp;%.</p>
+          </div>
+          <p>Supplier A, which starts level with supplier B, ends almost 7 percentage points behind it, while supplier C grows from 20&nbsp;% to nearly 27&nbsp;%.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: guideline problem 1 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Two brands of ground coffee</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>Two brands of ground coffee, Aroma and Bravo, share a supermarket’s sales. Each month 20&nbsp;% of Aroma’s buyers switch to Bravo, and 30&nbsp;% of Bravo’s buyers switch to Aroma. What shares of the market will the two brands hold in the long run?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The transition matrix</span></h4>
+          <p>Only the losses are given, so each retention is 1 minus the loss: Aroma keeps 0.8 and Bravo keeps 0.7. The first column is Aroma’s buyers and the second is Bravo’s:</p>
+          \[ P = \begin{pmatrix} 0.8 &amp; 0.3 \\ 0.2 &amp; 0.7 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The steady-state condition</span></h4>
+          <p>Let \(X = \begin{pmatrix} x \\ y \end{pmatrix}\) be the vector of the steady-state market shares of Aroma and Bravo. The condition \(P\cdot X = X\) is</p>
+          \[ \begin{cases} 0.8x + 0.3y = x \\ 0.2x + 0.7y = y \end{cases} \]
+          <p>Moving the variables to the left gives</p>
+          \[ \begin{cases} -0.2x + 0.3y = 0 \\ 0.2x - 0.3y = 0 \end{cases} \]
+          <p>The two equations are the same equation with opposite signs – a clear illustration of why one of them has to be replaced.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The probability constraint</span></h4>
+          <p>The first equation is replaced by the probability constraint \(x + y = 1\), and the decimals in the second are cleared by multiplying by 10:</p>
+          \[ \begin{cases} x + y = 1 \\ 2x - 3y = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Gaussian elimination</span></h4>
+          <p>The first row is multiplied by \(-2\) and added to the second, and the result is divided by \(-5\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 \\ 2 &amp; -3 &amp; 0 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -5 &amp; -2 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0.4 \end{array}\right)\)</span>
+          </div>
+          \[ y = 0.4, \qquad x = 1 - 0.4 = 0.6 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Check</span></h4>
+          <p>\(0.8\cdot 0.6 + 0.3\cdot 0.4 = 0.48 + 0.12 = 0.6\), so the shares reproduce themselves.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Interpretation</span></h4>
+          <p>In the long run Aroma holds 60&nbsp;% of the market and Bravo 40&nbsp;%, whatever the shares are today. The ratio can be read straight from the switching rates: Aroma attracts 30&nbsp;% of Bravo’s buyers while losing only 20&nbsp;% of its own, and 0.3 against 0.2 is exactly the ratio 60 to 40. For the brand manager of Bravo the lesson is that a promotion which only wins customers for one month changes nothing: the 20&nbsp;% and 30&nbsp;% rates must be changed.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>In the long run Aroma will hold 60&nbsp;% and Bravo 40&nbsp;% of the market.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: guideline problem 2 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Food-delivery apps: next month and the long run</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>Three food-delivery apps compete in a city. App 1 currently has 50&nbsp;% of the orders, App 2 has 30&nbsp;% and App 3 has 20&nbsp;%. Each month App 1 keeps 60&nbsp;% of its users and loses 20&nbsp;% to App 2 and 20&nbsp;% to App 3; App 2 keeps 80&nbsp;% and loses 10&nbsp;% to App 1 and 10&nbsp;% to App 3; App 3 keeps 70&nbsp;% and loses 10&nbsp;% to App 1 and 20&nbsp;% to App 2. Find the market shares next month and in the long run, and comment on the position of App 1.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The transition matrix and the initial shares</span></h4>
+          <p>One column per app:</p>
+          <div class="mats">
+            <span>\(P = \begin{pmatrix} 0.6 &amp; 0.1 &amp; 0.1 \\ 0.2 &amp; 0.8 &amp; 0.2 \\ 0.2 &amp; 0.1 &amp; 0.7 \end{pmatrix}\)</span>
+            <span>\(X_0 = \begin{pmatrix} 0.5 \\ 0.3 \\ 0.2 \end{pmatrix}\)</span>
+          </div>
+          <p>Every column sums to 1.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Next month: sizes and structure</span></h4>
+          <p>The short run is one multiplication, \(X_1 = P\cdot X_0\):</p>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 1) = 3 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]
+          <p>\(c_{i1}\) is row \(i\) of \(P\) times the column \(X_0\):</p>
+          \[ \begin{aligned} c_{11} &amp;= 0.6\cdot 0.5 + 0.1\cdot 0.3 + 0.1\cdot 0.2 \\ &amp;= 0.3 + 0.03 + 0.02 = 0.35 \\ c_{21} &amp;= 0.2\cdot 0.5 + 0.8\cdot 0.3 + 0.2\cdot 0.2 \\ &amp;= 0.1 + 0.24 + 0.04 = 0.38 \\ c_{31} &amp;= 0.2\cdot 0.5 + 0.1\cdot 0.3 + 0.7\cdot 0.2 \\ &amp;= 0.1 + 0.03 + 0.14 = 0.27 \end{aligned} \]
+          <p>So next month the shares are 35&nbsp;%, 38&nbsp;% and 27&nbsp;%: App 1 has already lost the lead after a single month.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The long run: the steady-state condition</span></h4>
+          <p>Let \(X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}\) be the vector of the steady-state market shares of the three apps. Write \(P\cdot X = X\) and move the right side across:</p>
+          \[ \begin{cases} -0.4x + 0.1y + 0.1z = 0 \\ 0.2x - 0.2y + 0.2z = 0 \\ 0.2x + 0.1y - 0.3z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The probability constraint</span></h4>
+          <p>The first equation is replaced by the condition \(x + y + z = 1\), and the decimals in the other two are cleared (multiply by 5 and by 10 respectively):</p>
+          \[ \begin{cases} x + y + z = 1 \\ x - y + z = 0 \\ 2x + y - 3z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Zeros in the first column</span></h4>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; -1 &amp; 1 &amp; 0 \\ 2 &amp; 1 &amp; -3 &amp; 0 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-1)} &amp; \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -2 &amp; 0 &amp; -1 \\ \htmlClass{hc}{0} &amp; -1 &amp; -5 &amp; -2 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-2)} \\ \phantom{0} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>A zero in the second column</span></h4>
+          <p>The second row now has its leading 1; adding it to the third row and dividing by \(-5\) finishes the elimination:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0 &amp; 0.5 \\ 0 &amp; -1 &amp; -5 &amp; -2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0.5 \\ 0 &amp; \htmlClass{hc}{0} &amp; -5 &amp; -1.5 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Back substitution and check</span></h4>
+          \[ \begin{aligned} z &amp;= 0.3 \\ y &amp;= 0.5 \\ x &amp;= 1 - 0.5 - 0.3 = 0.2 \end{aligned} \]
+          <p>Check – the first row of \(P\cdot X\) equals \(x\) again:</p>
+          \[ \begin{aligned} &amp;0.6\cdot 0.2 + 0.1\cdot 0.5 + 0.1\cdot 0.3 \\ &amp;= 0.12 + 0.05 + 0.03 = 0.2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Interpretation</span></h4>
+          <p>App 1 falls from 50&nbsp;% today to 35&nbsp;% after one month and to 20&nbsp;% in the long run, while App 2 rises from 30&nbsp;% to 50&nbsp;% and App 3 from 20&nbsp;% to 30&nbsp;%. App 1 is not losing because it is unpopular with new users – it takes 10&nbsp;% of each competitor’s customers every month – but because it keeps only 60&nbsp;% of its own, the weakest retention of the three. Its current leadership is an inheritance from the past and is being spent month by month.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>Next month the shares will be 35&nbsp;%, 38&nbsp;% and 27&nbsp;%; in the long run they will be 20&nbsp;% for App 1, 50&nbsp;% for App 2 and 30&nbsp;% for App 3.</p>
+          </div>
+          <p>App 1 must improve retention, because at the present switching rates its position continues to fall regardless of how many new users it attracts.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: guideline problem 3 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Fitness clubs: will the leader remain the largest?</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>Three fitness clubs compete in a town. Club A now has 55&nbsp;% of the members, Club B 30&nbsp;% and Club C 15&nbsp;%. Each year Club A retains 80&nbsp;% of its members and loses 15&nbsp;% to B and 5&nbsp;% to C; Club B retains 70&nbsp;% and loses 20&nbsp;% to A and 10&nbsp;% to C; Club C retains 75&nbsp;% and loses 15&nbsp;% to A and 10&nbsp;% to B. The manager of Club A believes that it will remain the largest club. Determine the long-run market shares and check the claim.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The transition matrix</span></h4>
+          <p>One column per club:</p>
+          \[ P = \begin{pmatrix} 0.8 &amp; 0.2 &amp; 0.15 \\ 0.15 &amp; 0.7 &amp; 0.1 \\ 0.05 &amp; 0.1 &amp; 0.75 \end{pmatrix} \]
+          <p>The column sums are \(0.8 + 0.15 + 0.05 = 1\), \(0.2 + 0.7 + 0.1 = 1\) and \(0.15 + 0.1 + 0.75 = 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The steady-state condition</span></h4>
+          <p>Let \(X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}\) be the vector of the steady-state market shares of clubs A, B and C. Write \(P\cdot X = X\) and move the right side across:</p>
+          \[ \begin{cases} -0.2x + 0.2y + 0.15z = 0 \\ 0.15x - 0.3y + 0.1z = 0 \\ 0.05x + 0.1y - 0.25z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The probability constraint</span></h4>
+          <p>The first equation is replaced by the condition \(x + y + z = 1\), and the other two are multiplied by 20:</p>
+          \[ \begin{cases} x + y + z = 1 \\ 3x - 6y + 2z = 0 \\ x + 2y - 5z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Zeros in the first column</span></h4>
+          <p>Clearing the first column below the leading 1 leaves a third row that already begins with 1, so the last two rows are interchanged:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 1 \\ 3 &amp; -6 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; -5 &amp; 0 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-3)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -9 &amp; -1 &amp; -3 \\ \htmlClass{hc}{0} &amp; 1 &amp; -6 &amp; -1 \end{array}\right)\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; -6 &amp; -1 \\ 0 &amp; -9 &amp; -1 &amp; -3 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>A zero in the second column</span></h4>
+          <p>Now add 9 times the second row to the third and divide by \(-55\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; -6 &amp; -1 \\ 0 &amp; -9 &amp; -1 &amp; -3 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(9)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; -6 &amp; -1 \\ 0 &amp; \htmlClass{hc}{0} &amp; -55 &amp; -12 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-55)} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Back substitution</span></h4>
+          \[ \begin{aligned} z &amp;= \frac{12}{55} \approx 0.2182 \\ y &amp;= -1 + 6\cdot\frac{12}{55} = \frac{17}{55} \approx 0.3091 \\ x &amp;= 1 - \frac{17}{55} - \frac{12}{55} = \frac{26}{55} \approx 0.4727 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Check</span></h4>
+          <p>Substitute the shares found into the first row of \(P\cdot X\):</p>
+          \[ \begin{aligned} 0.8\cdot 0.4727 &amp;= 0.3782 \\ 0.2\cdot 0.3091 &amp;= 0.0618 \\ 0.15\cdot 0.2182 &amp;= 0.0327 \end{aligned} \]
+          <p>In total \(0.3782 + 0.0618 + 0.0327 = 0.4727 = x\), so the shares reproduce themselves.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Interpretation</span></h4>
+          <p>In the long run Club A holds about 47.3&nbsp;% of the members, Club B about 30.9&nbsp;% and Club C about 21.8&nbsp;%. The manager is right that Club A remains the largest, but the claim hides the more important fact: the club loses about 7.7 percentage points of the market on the way, almost all of them to Club C, which grows from 15&nbsp;% to nearly 22&nbsp;% on the strength of a 75&nbsp;% retention rate. Club A is the biggest, but it is also the club with the most to lose, and its position is weakening rather than consolidating.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The long-run shares are approximately 47.3&nbsp;% for Club A, 30.9&nbsp;% for Club B and 21.8&nbsp;% for Club C.</p>
+          </div>
+          <p>Club A will remain the largest, so the manager’s claim is correct, but its share falls from 55&nbsp;% to about 47&nbsp;%, and the fastest-growing competitor is Club C.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 6. PRACTICE PROBLEMS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: build the transition matrix, define the vector of the steady-state market shares, write the system of equations with the condition \(x + y + z = 1\) and solve it by Gaussian elimination. Finally, check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Three supermarket chains, A, B and C, share the market of a town. A survey of their customers found that:</p>
+          <ul>
+            <li>55&nbsp;% of the customers of chain A would shop in the same chain next month, 15&nbsp;% would move to chain B and 30&nbsp;% to chain C;</li>
+            <li>75&nbsp;% of the customers of chain B would stay with it, 15&nbsp;% would move to chain A and 10&nbsp;% to chain C;</li>
+            <li>60&nbsp;% of the customers of chain C would stay with it, 15&nbsp;% would move to chain A and 25&nbsp;% to chain B.</li>
+          </ul>
+          <p>Assume that the shopping habits do not change. Determine the long-run market shares of the three chains.</p>
+        </div>
+        <div class="q-answer">
+          <p>The steady state is</p>
+          \[ X = \begin{pmatrix} 1/4 \\ 9/20 \\ 3/10 \end{pmatrix} = \begin{pmatrix} 0.25 \\ 0.45 \\ 0.30 \end{pmatrix} \]
+          <p>In the long run chain A holds 25&nbsp;% of the market, chain B 45&nbsp;% and chain C 30&nbsp;%. Chain B, which keeps its customers best, ends up the largest, and chain A, which loses 45&nbsp;% of its customers every month, ends up the smallest.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Three music streaming services, A, B and C, share a market. A survey of their users found that:</p>
+          <ul>
+            <li>70&nbsp;% of the users of service A would keep using it next month, 20&nbsp;% would move to service B and 10&nbsp;% to service C;</li>
+            <li>60&nbsp;% of the users of service B would keep using it, 20&nbsp;% would move to service A and 20&nbsp;% to service C;</li>
+            <li>60&nbsp;% of the users of service C would keep using it, 10&nbsp;% would move to service A and 30&nbsp;% to service B.</li>
+          </ul>
+          <p>The manager of service C claims that, since C keeps 60&nbsp;% of its own users and every month takes a tenth of the users of A and a fifth of the users of B, in the long run C will become the largest of the three services. Determine the long-run market shares of the three services and decide whether the claim is confirmed.</p>
+        </div>
+        <div class="q-answer">
+          <p>The steady state is</p>
+          \[ X = \begin{pmatrix} 10/29 \\ 11/29 \\ 8/29 \end{pmatrix} \approx \begin{pmatrix} 0.345 \\ 0.379 \\ 0.276 \end{pmatrix} \]
+          <p>In the long run service A holds about 34.5&nbsp;% of the market, service B about 37.9&nbsp;% and service C about 27.6&nbsp;%. The claim is not confirmed: service C does take users from <strong>both of the others</strong>, but it gives away 40&nbsp;% of its own users every month, and that is enough to leave it the smallest of the three. The service that becomes the largest is service B – even though service A is the one that keeps its own users best.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapters 1–2</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 9.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
