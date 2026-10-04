@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rational Planning: Infinitely Many Solutions · Applied Mathematics</title>
+<meta name="description" content="Planning problems whose system of equations has infinitely many solutions: the parameter, its admissible values and all the possible plans.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-3-planavimas-daug.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=44">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=44"></script>
+</head>
+<body data-page="m32">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 3 · Applications · Section 2</span>
+    <h1>Rational Planning: Infinitely Many Solutions</h1>
+    <p class="lead">This section deals with planning problems whose system of equations has infinitely many solutions: how to write the solutions with a parameter and select the plans that make business sense.</p>
+    <ul class="jump">
+      <li><a href="#principai">Model</a></li>
+      <li><a href="#daug">Many solutions</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODEL – REMINDER ============ -->
+  <section class="section" id="principai" aria-labelledby="h-model">
+    <h2 id="h-model">Building the model: a short reminder</h2>
+
+    <article class="card">
+      <p>The system of equations is built in the same way as when the solution is unique:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Variables</strong><span>One variable for each quantity to be decided, defined in a sentence with its unit.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Equations</strong><span>One equation “used = available” for each resource or requirement.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Gaussian elimination</strong><span>The system is written as an augmented matrix and transformed into triangular form.</span></div></div>
+      </div>
+      <p class="more-link"><a href="tema-3-planavimas-vienintelis.html#modelis">Building the model in more detail – in Section 1 →</a></p>
+    </article>
+  </section>
+
+  <!-- ============ 2. WHEN THERE ARE MANY SOLUTIONS ============ -->
+  <section class="section" id="daug" aria-labelledby="h-many">
+    <h2 id="h-many">When there are infinitely many solutions and what to do</h2>
+
+    <article class="card">
+      <p>A planning problem has infinitely many solutions when <strong>there are fewer conditions than quantities to be found</strong>: for example, the quantities of three kinds of product have to be found, but there are only two requirements. This also happens when one of the equations gives no new information – Gaussian elimination turns it into a row of zeros.</p>
+      <p>In both cases <strong>fewer non-zero rows than variables remain</strong> when forward elimination is finished. Every variable that has no pivot element left is free – it can take any value (<a href="tema-3.html#trys-atvejai">see Topic 3</a>).</p>
+
+      <div class="subtype">
+        <h4>What to do</h4>
+        <ol class="steps-list">
+          <li><strong>Free variables.</strong> Their number is the number of variables minus the number of non-zero rows.</li>
+          <li><strong>Parameter.</strong> Set the variable without a leading 1 equal to a parameter: \(z = t\).</li>
+          <li><strong>The other variables through the parameter.</strong> Express the remaining variables through \(t\) by back substitution.</li>
+          <li><strong>Business sense.</strong> Mathematically every value of \(t\) gives a solution, but quantities cannot be negative, and things counted in pieces cannot be fractional. Write the inequality <span class="nw">“\(\geq 0\)”</span> for every variable and find from them which values \(t\) can take.</li>
+          <li><strong>Possible plans.</strong> Each admissible value of \(t\) gives one plan (a particular solution). Count the plans, list them in a table and answer any further questions of the problem.</li>
+        </ol>
+      </div>
+
+      <figure class="fig numline">
+        <svg viewBox="0 0 320 84" role="img" aria-label="Admissible values of the parameter t on the number line: whole numbers from a to b">
+          <rect class="nl-band" x="70" y="30" width="180" height="20" rx="4"/>
+          <path class="ax" d="M10 40H302"/>
+          <path class="ah" d="M310 40l-9-4.5v9z"/>
+          <path class="nl-br" d="M76 26h-6v28h6M244 26h6v28h-6"/>
+          <circle class="pt" cx="70" cy="40" r="5"/><circle class="pt" cx="100" cy="40" r="5"/><circle class="pt" cx="130" cy="40" r="5"/><circle class="pt" cx="160" cy="40" r="5"/><circle class="pt" cx="190" cy="40" r="5"/><circle class="pt" cx="220" cy="40" r="5"/><circle class="pt" cx="250" cy="40" r="5"/>
+          <text class="m" x="70" y="72" text-anchor="middle">a</text>
+          <text class="m" x="250" y="72" text-anchor="middle">b</text>
+          <text class="m" x="304" y="66" text-anchor="middle">t</text>
+          <text class="muted" x="70" y="18" text-anchor="middle">t ≥ a</text>
+          <text class="muted" x="250" y="18" text-anchor="middle">t ≤ b</text>
+        </svg>
+        <figcaption>Together the inequalities give the interval \([a,\, b]\); only its whole values are admissible: \(t \in [a,\, b] \cap \mathbb{Z}\).</figcaption>
+      </figure>
+
+      <p class="tip">All the plans obtained satisfy the conditions of the problem equally well, so the arithmetic alone cannot choose between them. The choice is a managerial one, made on grounds that are not in the model – for example, the purchase price or running costs. The coefficients of the parameter show the trade-off: how much the other quantities change when \(t\) increases by one.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The sign when dividing by a negative number.</strong> When an inequality is divided by a negative number, its sign is reversed.</li>
+            <li><strong>The parameter forgotten.</strong> Not only the expressed variables but also the free variable itself must be non-negative: \(t \geq 0\).</li>
+            <li><strong>A fractional bound.</strong> If, for example, \(t \leq 18\tfrac{1}{3}\) is obtained, the whole-number bound is \(t \leq 18\).</li>
+            <li><strong>The parameter for the wrong variable.</strong> The parameter stands for the variable that has no pivot element left; the others are expressed through it.</li>
+            <li><strong>Only one plan given.</strong> The answer must contain the general solution with the interval of the parameter values, and specific plans if they are asked for.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving applied systems of linear equations problems, the definitions of the introduced variables must be provided at the beginning of the solution. Each variable definition must clearly state that the variable represents the quantity of a specific object.</li>
+            <li>If convenient for the author, the data from the problem may be summarized in a table, but this is optional.</li>
+            <li>The solution must include the mathematical model of the problem – the system of linear equations. Presenting only the augmented matrix is not sufficient.</li>
+            <li>The system of equations must be solved using the Gaussian elimination method. The solution must show which row operations are performed to eliminate elements below the main diagonal.</li>
+            <li>At the end of the solution, the final answer must be clearly presented.</li>
+            <li>If the system has infinitely many solutions, they must be expressed using a parameter. In applied problems, it is necessary to indicate the interval of possible parameter values. If required by the problem, particular solutions must also be provided.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: alternative problem 3.3 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A purchase plan for freezers</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A supermarket chain wants to purchase 20 display freezers with a combined capacity of 4800 litres. Three different models are available: a compact model with a capacity of 150 litres, a standard model with a capacity of 300 litres, and a large model with a capacity of 600 litres. How many freezers of each model should the chain purchase?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of compact freezers purchased;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of standard freezers purchased;</span></li>
+            <li><span class="sym">\(z\)</span><span>– the number of large freezers purchased.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The system of equations</span></h4>
+          <p>There are two requirements, so there are only two equations for three variables: one equation counts the freezers and one counts the litres.</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">In the problem</th><th scope="col">Equation</th></tr></thead>
+              <tbody>
+                <tr><td>20 freezers altogether</td><td>\(x + y + z = 20\)</td></tr>
+                <tr><td>A combined capacity of 4800 litres</td><td>\(150x + 300y + 600z = 4800\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Together the two equations make up the mathematical model of the problem – the system of equations:</p>
+          \[ \begin{cases} x + y + z = 20 \\ 150x + 300y + 600z = 4800 \end{cases} \]
+          <p>There are fewer equations than variables, so there cannot be a unique solution.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Gaussian elimination</span></h4>
+          <p>Dividing the second equation by 150 gives \(x + 2y + 4z = 32\). Then the first row is multiplied by \(-1\) and added to the second:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 20 \\ 1 &amp; 2 &amp; 4 &amp; 32 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 20 \\ \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; 3 &amp; 12 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The parameter</span></h4>
+          <p>There are 3 variables and 2 non-zero rows, so there is one free variable: \(3 - 2 = 1\). The variable \(z\) has no pivot element left, so we take \(z = t\) and express the other variables by back substitution:</p>
+          <p>From the second row \(y + 3t = 12\), from the first \(x + y + t = 20\):</p>
+          \[ \begin{aligned} y &amp;= 12 - 3t \\ x &amp;= 20 - (12 - 3t) - t = 8 + 2t \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Values of the parameter</span></h4>
+          <p>The numbers of freezers must be whole numbers that are not negative:</p>
+          \[ \begin{aligned} x \geq 0:&amp;\quad 8 + 2t \geq 0 \;\Longrightarrow\; t \geq -4 \\ y \geq 0:&amp;\quad 12 - 3t \geq 0 \;\Longrightarrow\; t \leq 4 \\ z \geq 0:&amp;\quad t \geq 0 \end{aligned} \]
+          <p>All three conditions together: \(t \in [0,\, 4] \cap \mathbb{Z}\), i.e. \(t\) can be 0, 1, 2, 3 or 4.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The possible plans</span></h4>
+          <div class="tbl-wrap">
+            <table class="vtable compact plans">
+              <thead><tr><th scope="col">\(t\)</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Compact \(x\)</th><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td></tr>
+                <tr><th scope="row">Standard \(y\)</th><td>12</td><td>9</td><td>6</td><td>3</td><td>0</td></tr>
+                <tr><th scope="row">Large \(z\)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Every plan contains 20 freezers and 4800 litres. For instance, for \(t = 2\): \(12 + 6 + 2 = 20\) and \(150\cdot 12 + 300\cdot 6 + 600\cdot 2 = 4800\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{gathered} (x;\, y;\, z) = (8 + 2t;\; 12 - 3t;\; t), \\ t \in [0,\, 4] \cap \mathbb{Z} \end{gathered} \]
+            <p>There are five possible purchases: 8 compact and 12 standard freezers; 10 compact, 9 standard and 1 large; 12 compact, 6 standard and 2 large; 14 compact, 3 standard and 3 large; or 16 compact and 4 large freezers.</p>
+          </div>
+          <p>The coefficients of the parameter show the trade-off: every extra large freezer means two more compact freezers and three fewer standard ones. The chain decides which option to choose on price or running costs.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: guideline problem 3 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Coffee machines with an extra requirement</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A hotel chain wants to buy 30 coffee machines with a combined capacity of 1000 cups per hour. Three models are available, with capacities of 20, 40 and 60 cups per hour. How many machines of each model can be bought? The chain also insists on having at least 8 machines of the largest model; which plans satisfy this?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <p>Let \(x\), \(y\) and \(z\) be the numbers of machines of 20, 40 and 60 cups per hour.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The system of equations</span></h4>
+          <p>Two requirements – the number of machines and the total capacity – give two equations for three unknowns:</p>
+          \[ \begin{cases} x + y + z = 30 \\ 20x + 40y + 60z = 1000 \end{cases} \]
+          <p>The requirement “at least 8 machines of the largest model” is an inequality, not an equation, so it will be checked later, when all the plans are known.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Gaussian elimination</span></h4>
+          <p>Dividing the capacity equation by 20 gives \(x + 2y + 3z = 50\). Then \(-1\) times the first row is added to the second:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 30 \\ 1 &amp; 2 &amp; 3 &amp; 50 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 30 \\ \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; 2 &amp; 20 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The parameter</span></h4>
+          <p>Two non-zero rows and three variables leave one free variable. The variable without a leading 1 is \(z\), so let \(z = t\):</p>
+          <p>From the second row \(y + 2t = 20\), from the first \(x + y + t = 30\):</p>
+          \[ \begin{aligned} y &amp;= 20 - 2t \\ x &amp;= 30 - (20 - 2t) - t = 10 + t \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Values of the parameter</span></h4>
+          <p>The numbers of machines must be whole and non-negative. Since \(x = 10 + t\) is positive for every \(t \geq 0\), the only binding condition is</p>
+          \[ y \geq 0:\quad 20 - 2t \geq 0 \;\Longrightarrow\; t \leq 10 \]
+          <p>So \(t \in [0,\, 10] \cap \mathbb{Z}\) – eleven different purchase plans.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The extra requirement</span></h4>
+          <p>The requirement \(z \geq 8\) means \(t \geq 8\), so only three of the eleven plans remain:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact plans">
+              <thead><tr><th scope="col">\(t = z\)</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">\(x\)</th><td>18</td><td>19</td><td>20</td></tr>
+                <tr><th scope="row">\(y\)</th><td>4</td><td>2</td><td>0</td></tr>
+                <tr><th scope="row">\(z\)</th><td>8</td><td>9</td><td>10</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Check one of them, \((19;\, 2;\, 9)\): \(19 + 2 + 9 = 30\) machines and</p>
+          \[ 20\cdot 19 + 40\cdot 2 + 60\cdot 9 = 1000 \]
+          <p>cups per hour.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>There are eleven possible plans:</p>
+            \[ \begin{gathered} (x;\, y;\, z) = (10 + t;\; 20 - 2t;\; t), \\ t \in [0,\, 10] \cap \mathbb{Z} \end{gathered} \]
+            <p>With at least 8 machines of the largest model, three remain: \((18;\, 4;\, 8)\), \((19;\, 2;\, 9)\) and \((20;\, 0;\, 10)\).</p>
+          </div>
+          <p>All of them meet the requirements exactly, so the chain can choose on price or reliability grounds.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: guideline problem 4 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A production plan for a packaging workshop</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A packaging workshop makes four products: boxes, crates, pallets and trays. One box takes 2 labour-hours, 1 machine-hour and 3&nbsp;kg of material; one crate takes 1 labour-hour, 2 machine-hours and 1&nbsp;kg; one pallet takes 3 labour-hours, 1 machine-hour and 2&nbsp;kg; one tray takes 4 labour-hours, 5 machine-hours and 5&nbsp;kg. In a shift 100 labour-hours, 90 machine-hours and 110&nbsp;kg of material are available. Find all production plans that use every resource exactly.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <p>Let \(x_1\), \(x_2\), \(x_3\) and \(x_4\) be the numbers of boxes, crates, pallets and trays made in the shift.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The table and the system of equations</span></h4>
+          <p>The data, with one row per resource and one column per product (\(x_1\) – boxes, \(x_2\) – crates, \(x_3\) – pallets, \(x_4\) – trays):</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact tight hdr-wrap">
+              <thead><tr><th scope="col"></th><th scope="col">Boxes \(x_1\)</th><th scope="col">Crates \(x_2\)</th><th scope="col">Pallets \(x_3\)</th><th scope="col">Trays \(x_4\)</th><th scope="col">Available</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Labour, h</th><td>2</td><td>1</td><td>3</td><td>4</td><td>100</td></tr>
+                <tr><th scope="row">Machine, h</th><td>1</td><td>2</td><td>1</td><td>5</td><td>90</td></tr>
+                <tr><th scope="row">Material, kg</th><td>3</td><td>1</td><td>2</td><td>5</td><td>110</td></tr>
+              </tbody>
+            </table>
+          </div>
+          \[ \begin{cases} 2x_1 + x_2 + 3x_3 + 4x_4 = 100 \\ x_1 + 2x_2 + x_3 + 5x_4 = 90 \\ 3x_1 + x_2 + 2x_3 + 5x_4 = 110 \end{cases} \]
+          <p>Three equations and four unknowns, so the system cannot have a single solution.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Zeros in the first column</span></h4>
+          <p>Interchange the first two rows to obtain a leading 1, and clear the first column below it:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 2 &amp; 1 &amp; 3 &amp; 4 &amp; 100 \\ 3 &amp; 1 &amp; 2 &amp; 5 &amp; 110 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ \htmlClass{hc}{0} &amp; -3 &amp; 1 &amp; -6 &amp; -80 \\ \htmlClass{hc}{0} &amp; -5 &amp; -1 &amp; -10 &amp; -160 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The second leading 1</span></h4>
+          <p>The third row divides evenly by \(-5\), so rows 2 and 3 are interchanged before dividing:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; -5 &amp; -1 &amp; -10 &amp; -160 \\ 0 &amp; -3 &amp; 1 &amp; -6 &amp; -80 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \\ \phantom{0} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0.2 &amp; 2 &amp; 32 \\ 0 &amp; -3 &amp; 1 &amp; -6 &amp; -80 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>A zero in the second column</span></h4>
+          <p>Add 3 times the second row to the third, then divide the result by 1.6:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0.2 &amp; 2 &amp; 32 \\ 0 &amp; -3 &amp; 1 &amp; -6 &amp; -80 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; 1 &amp; 0.2 &amp; 2 &amp; 32 \\ 0 &amp; \htmlClass{hc}{0} &amp; 1.6 &amp; 0 &amp; 16 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,1.6} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 2 &amp; 1 &amp; 5 &amp; 90 \\ 0 &amp; 1 &amp; 0.2 &amp; 2 &amp; 32 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 0 &amp; 10 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The parameter</span></h4>
+          <p>There are three non-zero rows and four variables, so one variable is free. The last row reads \(x_3 = 10\), and \(x_4\) has no pivot element anywhere, so it is the free one. Put \(x_4 = t\) and substitute upwards:</p>
+          \[ \begin{aligned} &amp;x_2 + 0.2\cdot 10 + 2t = 32 \\ &amp;\Longrightarrow\; x_2 = 30 - 2t \\[4pt] &amp;x_1 + 2(30 - 2t) + 10 + 5t = 90 \\ &amp;\Longrightarrow\; x_1 = 20 - t \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Values of the parameter</span></h4>
+          <p>The quantities must be non-negative whole numbers:</p>
+          \[ \begin{aligned} x_1 \geq 0:&amp;\quad 20 - t \geq 0 \;\Longrightarrow\; t \leq 20 \\ x_2 \geq 0:&amp;\quad 30 - 2t \geq 0 \;\Longrightarrow\; t \leq 15 \\ x_4 \geq 0:&amp;\quad t \geq 0 \end{aligned} \]
+          <p>So \(t \in [0,\, 15] \cap \mathbb{Z}\) – sixteen plans. Three of them are:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact plans">
+              <thead><tr><th scope="col">\(t\)</th><th scope="col">0</th><th scope="col">5</th><th scope="col">15</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">\(x_1\)</th><td>20</td><td>15</td><td>5</td></tr>
+                <tr><th scope="row">\(x_2\)</th><td>30</td><td>20</td><td>0</td></tr>
+                <tr><th scope="row">\(x_3\)</th><td>10</td><td>10</td><td>10</td></tr>
+                <tr><th scope="row">\(x_4\)</th><td>0</td><td>5</td><td>15</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>What the result shows</span></h4>
+          <p>Two things are worth noticing before choosing. First, 10 pallets appear in every plan: the resources fix that quantity whatever else the workshop does. Second, the parameter shows the trade-off – every extra tray costs one box and two crates.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{gathered} (x_1;\, x_2;\, x_3;\, x_4) = {} \\ (20 - t;\; 30 - 2t;\; 10;\; t), \\ t \in [0,\, 15] \cap \mathbb{Z} \end{gathered} \]
+          </div>
+          <p>Every plan of this form uses all three resources exactly, so there are sixteen feasible production plans.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE PROBLEMS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: define the variables, build the system of equations, solve it by Gaussian elimination, express the solutions with a parameter and state the interval of its values. The answer gives the variables, the system and the final answer – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A joinery makes interior doors, front doors and door frames. One interior door takes 4 hours of machine time and 5 boards, one front door takes 5 hours and 6 boards, and one door frame takes 2 hours and 3 boards. Next month the joinery has 240 hours of machine time and 300 boards, and both are to be used exactly. Find all the production plans that are possible, and state how many of them there are.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of interior doors;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of front doors;</span></li>
+            <li><span class="sym">\(z\)</span><span>– the number of door frames.</span></li>
+          </ul>
+          <p><strong>The system.</strong> The first equation counts the hours of machine time and the second the boards:</p>
+          \[ \begin{cases} 4x + 5y + 2z = 240 \\ 5x + 6y + 3z = 300 \end{cases} \]
+          <p><strong>Answer.</strong> There are three variables and two non-zero rows, so the system has one parameter and infinitely many solutions:</p>
+          \[ x = 60 - 3t, \quad y = 2t, \quad z = t \]
+          <p>Only whole and non-negative numbers of items make sense, so \(t \in [0,\, 20] \cap \mathbb{Z}\), which leaves <strong>twenty-one production plans</strong>, from 60 interior doors and nothing else to 40 front doors and 20 door frames and no interior doors. In every plan the joinery makes twice as many front doors as door frames, and each additional door frame goes together with two additional front doors and three interior doors fewer.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A delicatessen packs four kinds of gift hamper. A classic hamper contains 1 jar of honey, 1 bottle of wine, 2 boxes of chocolate and 3 packs of coffee; a deluxe hamper contains 1 jar of honey, 2 bottles of wine, 3 boxes of chocolate and 4 packs of coffee; a wine lover’s hamper contains 1 jar of honey, 3 bottles of wine, 1 box of chocolate and 2 packs of coffee; and an alcohol-free hamper contains 1 jar of honey, 1 box of chocolate and 2 packs of coffee. The shop has 100 jars of honey, 140 bottles of wine, 150 boxes of chocolate and 250 packs of coffee, and all of them are to be packed into hampers. Find all the ways of packing the hampers, and state how many of them there are.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of classic hampers;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of deluxe hampers;</span></li>
+            <li><span class="sym">\(z\)</span><span>– the number of wine lover’s hampers;</span></li>
+            <li><span class="sym">\(w\)</span><span>– the number of alcohol-free hampers.</span></li>
+          </ul>
+          <p><strong>The system.</strong> One equation for each item in stock – the jars of honey, the bottles of wine, the boxes of chocolate and the packs of coffee:</p>
+          \[ \begin{cases} x + y + z + w = 100 \\ x + 2y + 3z = 140 \\ 2x + 3y + z + w = 150 \\ 3x + 4y + 2z + 2w = 250 \end{cases} \]
+          <p><strong>Answer.</strong> The four equations leave only three non-zero rows – the coffee equation is the sum of the honey equation and the chocolate equation – so with four variables the system has one parameter and infinitely many solutions:</p>
+          \[ \begin{gathered} x = 90 - 2t, \quad y = t - 20, \\ z = 30, \quad w = t \end{gathered} \]
+          <p>Only whole and non-negative numbers of hampers make sense, so \(t \in [20,\, 45] \cap \mathbb{Z}\), which leaves <strong>twenty-six ways of packing</strong>, from \((50;\, 0;\, 30;\, 20)\) to \((0;\, 25;\, 30;\, 45)\). The number of wine lover’s hampers is 30 in every one of them, and every additional alcohol-free hamper goes together with one additional deluxe hamper and two classic hampers fewer.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 2</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 5</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
