@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basic Matrix Operations · Topic 2 · Applied Mathematics</title>
+<meta name="description" content="Matrix addition, subtraction and scalar multiplication in economic and managerial situations: how to solve, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-2-pagrindiniai-veiksmai.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=39">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=39"></script>
+</head>
+<body data-page="m21">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 2 · Applications · Section 1</span>
+    <h1>Basic Matrix Operations</h1>
+    <p class="lead">This section shows how the basic matrix operations – addition, subtraction and scalar multiplication – can be applied in economic and managerial situations.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Model</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">The model</h2>
+
+    <article class="card">
+      <p>In business a matrix is simply a table of figures with the headings removed: the rows stand for one classification (shops, plants, consultants, months) and the columns for another (products, departments, suppliers). The headings are not written inside the matrix, so the first thing to do in every problem is to state what the rows and the columns mean – and to keep that order unchanged in every matrix of the problem.</p>
+
+      <div class="mats mats--col">
+        <table class="vtable hdr" aria-label="March sales volumes, thousand EUR">
+          <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+          <tbody>
+            <tr><th>Anna</th><td>30</td><td>20</td><td>10</td></tr>
+            <tr><th>Peter</th><td>40</td><td>60</td><td>0</td></tr>
+          </tbody>
+        </table>
+        <span class="arrow" aria-hidden="true">↓</span>
+        <span>\(R = \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix}\)</span>
+      </div>
+      <p class="formula-note" style="text-align:center">The March sales volumes in thousands of euros from Example 1: the table with its headings and the corresponding matrix.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Operations</h3>
+      <p><strong>Addition and subtraction.</strong> If \(A\) and \(B\) have the <button type="button" class="term" data-term="Matrices of the same size" data-def="Matrices of the same size have the same number of rows and the same number of columns.">same size</button>, then \(A + B\) and \(A - B\) are obtained entry by entry:</p>
+      <div class="formula">\[ c_{ij} = a_{ij} + b_{ij}, \qquad c_{ij} = a_{ij} - b_{ij} \]</div>
+      <p>Two matrices of different sizes cannot be added or subtracted. Even when the sizes agree, the operation is meaningful only if both tables are classified in the same way and in the same order. Otherwise the sum of two entries has no business meaning.</p>
+      <p><strong>Scalar multiplication.</strong> If \(A\) is a matrix and \(c\) a number, then \(cA\) is obtained by multiplying every entry by \(c\):</p>
+      <div class="formula">\[ b_{ij} = c\cdot a_{ij} \]</div>
+      <p><a href="tema-2.html#veiksmai">Definitions and examples of the operations – on the Topic 2 page →</a></p>
+
+      <h3 class="subhead" style="margin-top:22px">What question each operation answers</h3>
+      <ul class="kv">
+        <li><span class="sym">\(A + B\)</span><span><strong>sum</strong> – a combined total of two periods, two branches or two sources;</span></li>
+        <li><span class="sym">\(A - B\)</span><span><strong>difference</strong> – a change, a deviation from plan, or the amount by which one figure exceeds another; a negative entry means a fall or a shortfall;</span></li>
+        <li><span class="sym">\(cA\)</span><span><strong>scalar multiple</strong> – a uniform percentage change applied to every entry: a price increase, a commission, a tax, an indexation of a budget.</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ============ 2. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>State what the rows and the columns of each table mean, and check that all the tables are arranged in the same order.</li>
+        <li>Write the data as matrices and state the size of each.</li>
+        <li>Decide the operation from the wording of the question: total, combined – addition; change, difference, deviation, by how much more – subtraction; increases by \(p\)&nbsp;%, commission, tax – scalar multiplication.</li>
+        <li>Check that the matrices to be added or subtracted have the same size.</li>
+        <li>Carry out the operation entry by entry.</li>
+        <li>Interpret the answer: say what its rows and columns mean, read off the entries the question asks about, and explain the sign of any negative entry.</li>
+      </ol>
+
+      <div class="model-note"><strong>Percentage changes.</strong> An increase of \(p\)&nbsp;% is the scalar \(1 + \dfrac{p}{100}\) when the new level is wanted, and the scalar \(\dfrac{p}{100}\) when the increase alone is wanted. A decrease of \(p\)&nbsp;% is the scalar \(1 - \dfrac{p}{100}\).</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The order of subtraction.</strong> A change is the later period minus the earlier one; a deviation from plan is actual minus planned. If the matrices are swapped, the signs are reversed.</li>
+            <li><strong>The scalar.</strong> With an increase of 6&nbsp;%, the new level is obtained by multiplying by 1.06, and the increase alone by multiplying by 0.06.</li>
+            <li><strong>A different order.</strong> Even the sum of two matrices of the same size has no business meaning if the rows or the columns are arranged in a different order.</li>
+            <li><strong>Negative entries.</strong> A negative entry means a fall or a shortfall – its meaning must be explained in the answer.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When performing addition, subtraction, or scalar multiplication of matrices, it is sufficient to show the operation performed using the symbols given in the problem or introduced in the solution, and to present the resulting matrix. It is not necessary to rewrite the matrices in full or to show all arithmetic operations step by step.</li>
+            <li>Do not forget to provide an interpretation of the result if the problem requires it. The interpretation must explain the meaning of the entries of the resulting matrix.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: alternative problem 2.1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>The consultants’ earnings and commissions</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The consultants Anna and Peter at a garden-machinery dealership sell machines of models A, B, and C. The sales volumes for March and April, in thousands of euros, are recorded in the matrices:
+        <div class="mats">
+          <span>\(R = \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix}\)</span>
+          <span>\(S = \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix}\)</span>
+        </div>
+        <ol>
+          <li>Determine the earnings of each consultant from the sales of each machine model over the two months.</li>
+          <li>Determine the change in earnings for each consultant from the sales of each machine model over those two months.</li>
+          <li>If the consultants receive a 1&nbsp;% commission from the earnings, how much commission did each consultant earn from the sales of each machine model in April?</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>In both matrices the first row belongs to Anna and the second to Peter, and the three columns are the models A, B and C. Both matrices have size \(2 \times 3\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The earnings over the two months</span></h4>
+          <p>The earnings over the two months are the sum of the two matrices:</p>
+          \[ \begin{aligned} &amp;R + S \\ &amp;= \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix} + \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} \\ &amp;= \begin{pmatrix} 80 &amp; 50 &amp; 30 \\ 60 &amp; 100 &amp; 30 \end{pmatrix} \end{aligned} \]
+          <p>Anna earned 80 thousand euros on model A, 50 on model B and 30 on model C; Peter earned 60, 100 and 30 thousand euros.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The change in earnings</span></h4>
+          <p>The change is the difference of the two matrices, April minus March:</p>
+          \[ \begin{aligned} &amp;S - R \\ &amp;= \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} - \begin{pmatrix} 30 &amp; 20 &amp; 10 \\ 40 &amp; 60 &amp; 0 \end{pmatrix} \\ &amp;= \begin{pmatrix} 20 &amp; 10 &amp; 10 \\ -20 &amp; -20 &amp; 30 \end{pmatrix} \end{aligned} \]
+          <p>Anna’s sales grew for every model. Peter’s sales of models A and B fell by 20 thousand euros each, and only his sales of model C grew, by 30 thousand euros.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The April commissions</span></h4>
+          <p>A 1&nbsp;% commission from the April earnings is computed by multiplying the matrix by a number: \(0.01\cdot S\).</p>
+          \[ \begin{aligned} 0.01\cdot S &amp;= 0.01\cdot \begin{pmatrix} 50 &amp; 30 &amp; 20 \\ 20 &amp; 40 &amp; 30 \end{pmatrix} \\ &amp;= \begin{pmatrix} 0.5 &amp; 0.3 &amp; 0.2 \\ 0.2 &amp; 0.4 &amp; 0.3 \end{pmatrix} \end{aligned} \]
+          <p>The entries are again in thousands of euros, so in April Anna earned 500, 300 and 200 euros of commission on the three models and Peter 200, 400 and 300 euros.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The earnings over the two months, the change in earnings and the April commissions are the three matrices above:
+            <div class="mats">
+              <span>\(R + S = \begin{pmatrix} 80 &amp; 50 &amp; 30 \\ 60 &amp; 100 &amp; 30 \end{pmatrix}\)</span>
+              <span>\(S - R = \begin{pmatrix} 20 &amp; 10 &amp; 10 \\ -20 &amp; -20 &amp; 30 \end{pmatrix}\)</span>
+              <span>\(0.01\cdot S = \begin{pmatrix} 0.5 &amp; 0.3 &amp; 0.2 \\ 0.2 &amp; 0.4 &amp; 0.3 \end{pmatrix}\)</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: guideline problem 1 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Stock at the end of the month</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A clothing retailer with three stores keeps its stock records in units for three product groups: shirts, trousers and jackets. At the beginning of the month the stock was recorded in matrix \(O\). During the month the stores received the deliveries recorded in matrix \(D\) and sold the quantities recorded in matrix \(S\). Find the stock at the end of the month.
+        <div class="mats">
+          <span>\(O = \begin{pmatrix} 120 &amp; 90 &amp; 60 \\ 80 &amp; 70 &amp; 40 \\ 150 &amp; 110 &amp; 90 \end{pmatrix}\)</span>
+          <span>\(D = \begin{pmatrix} 40 &amp; 30 &amp; 25 \\ 60 &amp; 20 &amp; 15 \\ 35 &amp; 45 &amp; 30 \end{pmatrix}\)</span>
+          <span>\(S = \begin{pmatrix} 95 &amp; 70 &amp; 55 \\ 110 &amp; 60 &amp; 30 \\ 140 &amp; 90 &amp; 75 \end{pmatrix}\)</span>
+        </div>
+        <p style="margin:8px 0 0">The rows of the matrices are Store 1, Store 2 and Store 3, and the columns are shirts, trousers and jackets; the entries are quantities in units.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Rows: Store 1, Store 2, Store 3. Columns: shirts, trousers, jackets. Entries: units.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The operation</span></h4>
+          <p>Stock at the end of the month is the opening stock plus what came in minus what went out. All three matrices have size \(3 \times 3\) and the same classification, so the operations are allowed:</p>
+          \[ E = O + D - S \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The calculation</span></h4>
+          <p>Work entry by entry. For Store 1 and shirts, \(120 + 40 - 95 = 65\); the remaining eight entries are found in the same way:</p>
+          \[ E = \begin{pmatrix} 65 &amp; 50 &amp; 30 \\ 30 &amp; 30 &amp; 25 \\ 45 &amp; 65 &amp; 45 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Interpretation</span></h4>
+          <p>The rows of the answer are the stores and the columns the product groups, so the entries are the units left in each store.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The stock at the end of the month, in units:
+            \[ E = \begin{pmatrix} 65 &amp; 50 &amp; 30 \\ 30 &amp; 30 &amp; 25 \\ 45 &amp; 65 &amp; 45 \end{pmatrix} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: guideline problem 2 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Deviation from the production plan</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A manufacturer produces three products at three plants. The planned monthly output is recorded in matrix \(P\) and the actual output in matrix \(A\), both in units. Find the deviation of the actual output from the plan and interpret it. At which plant was the plan met or exceeded for every product, and which product was produced above plan at every plant?
+        <div class="mats">
+          <span>\(P = \begin{pmatrix} 1200 &amp; 800 &amp; 500 \\ 900 &amp; 1100 &amp; 600 \\ 1500 &amp; 700 &amp; 400 \end{pmatrix}\)</span>
+          <span>\(A = \begin{pmatrix} 1150 &amp; 860 &amp; 500 \\ 980 &amp; 1150 &amp; 640 \\ 1420 &amp; 760 &amp; 370 \end{pmatrix}\)</span>
+        </div>
+        <p style="margin:8px 0 0">The rows of the matrices are Plant 1, Plant 2 and Plant 3, and the columns are Product 1, Product 2 and Product 3.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Rows: Plant 1, Plant 2, Plant 3. Columns: Product 1, Product 2, Product 3. Entries: units.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Deviation from plan</span></h4>
+          <p>A deviation from plan is “actual minus planned”, so the actual output must come first:</p>
+          \[ \begin{aligned} &amp;A - P \\ &amp;= {\footnotesize\begin{pmatrix} 1150-1200 &amp; 860-800 &amp; 500-500 \\ 980-900 &amp; 1150-1100 &amp; 640-600 \\ 1420-1500 &amp; 760-700 &amp; 370-400 \end{pmatrix}} \\ &amp;= \begin{pmatrix} -50 &amp; 60 &amp; 0 \\ 80 &amp; 50 &amp; 40 \\ -80 &amp; 60 &amp; -30 \end{pmatrix} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The meaning of the signs</span></h4>
+          <p>The sign of each entry carries the meaning: a positive entry is production above plan, a negative entry is a shortfall, and a zero means the plan was met exactly. Product 3 at Plant 1 is the only position exactly on target.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Rows and columns</span></h4>
+          <p>Reading the matrix by rows and by columns answers the two managerial questions. Row 2 contains only positive entries, so Plant 2 exceeded the plan for every product. Column 2 also contains only positive entries, so Product 2 was produced above plan at every plant. The largest shortfall is 80 units of Product 1 at Plant 3.</p>
+          \[ A - P = \begin{pmatrix} -50 &amp; \htmlClass{hc}{60} &amp; 0 \\ \htmlClass{hr}{80} &amp; \htmlClass{hr}{50} &amp; \htmlClass{hr}{40} \\ \htmlClass{hd}{-80} &amp; \htmlClass{hc}{60} &amp; -30 \end{pmatrix} \]
+          <p class="formula-note" style="text-align:center">Row 2 is highlighted in blue, column 2 in green, and the largest shortfall in orange.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The deviation of the actual output from the plan, in units, is
+            \[ A - P = \begin{pmatrix} -50 &amp; 60 &amp; 0 \\ 80 &amp; 50 &amp; 40 \\ -80 &amp; 60 &amp; -30 \end{pmatrix} \]
+            Plant 2 met or exceeded the plan for every product, and Product 2 was produced above plan at every plant. The main problem is Product 1, which fell short at Plants 1 and 3, by 50 and 80 units.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: guideline problem 3 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>A percentage increase in costs</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company operates two hotels. Its annual operating costs, in thousands of euros, are recorded in matrix \(C\) by cost item: staff, energy and supplies. All costs are expected to rise by 6&nbsp;% next year. Write the matrix of next year’s costs and the matrix of the increases. By how much will the total operating cost of the company rise?
+        <div class="mats">
+          <span>\(C = \begin{pmatrix} 480 &amp; 120 &amp; 90 \\ 350 &amp; 95 &amp; 70 \end{pmatrix}\)</span>
+        </div>
+        <p style="margin:8px 0 0">The rows of the matrix are Hotel 1 and Hotel 2, and the columns are the staff, energy and supplies costs.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Rows: Hotel 1, Hotel 2. Columns: staff, energy, supplies. Entries: thousands of euros per year.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Next year’s costs</span></h4>
+          <p>Every entry changes by the same percentage, so this is scalar multiplication. Next year’s costs are 106&nbsp;% of this year’s, that is the scalar \(1 + \dfrac{6}{100} = 1.06\):</p>
+          \[ \begin{aligned} &amp;1.06\cdot C \\ &amp;= \begin{pmatrix} 1.06\cdot 480 &amp; 1.06\cdot 120 &amp; 1.06\cdot 90 \\ 1.06\cdot 350 &amp; 1.06\cdot 95 &amp; 1.06\cdot 70 \end{pmatrix} \\ &amp;= \begin{pmatrix} 508.8 &amp; 127.2 &amp; 95.4 \\ 371 &amp; 100.7 &amp; 74.2 \end{pmatrix} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The increase in costs</span></h4>
+          <p>The increase alone is 6&nbsp;% of this year’s costs, that is the scalar \(0.06\):</p>
+          \[ 0.06\cdot C = \begin{pmatrix} 28.8 &amp; 7.2 &amp; 5.4 \\ 21 &amp; 5.7 &amp; 4.2 \end{pmatrix} \]
+          <p>The two results agree with each other, because \(C + 0.06C = 1.06C\), which is the property \((k + m)A = kA + mA\) of scalar multiplication. Adding 28.8 to 480 gives 508.8, and so on for every entry.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The total increase</span></h4>
+          <p>The rise in the total cost of the company is the sum of all the entries of the increase matrix:</p>
+          \[ \begin{aligned} &amp;28.8 + 7.2 + 5.4 + 21 + 5.7 + 4.2 \\ &amp;= 72.3 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Next year Hotel 1 will spend 508.8 thousand euros on staff, 127.2 on energy and 95.4 on supplies, and Hotel 2 will spend 371, 100.7 and 74.2 thousand euros on the same items. The corresponding increases are 28.8, 7.2 and 5.4 thousand euros for Hotel 1 and 21, 5.7 and 4.2 thousand euros for Hotel 2. The total operating cost of the company will rise by 72.3 thousand euros, of which 28.8 thousand – by far the largest single item – is the staff cost of Hotel 1.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE PROBLEMS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out exactly as in the examples, then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A brewery keeps its production in two warehouses and brews three kinds of beer. The stock held at the beginning of the week (matrix \(O\)), the amount delivered from the brewhouse during the week (matrix \(D\)) and the amount dispatched to customers during the week (matrix \(S\)), all in crates, are recorded in the matrices:</p>
+          <div class="mats">
+            <span>\(O = \begin{pmatrix} 120 &amp; 80 &amp; 40 \\ 90 &amp; 140 &amp; 60 \end{pmatrix}\)</span>
+            <span>\(D = \begin{pmatrix} 60 &amp; 50 &amp; 30 \\ 40 &amp; 30 &amp; 20 \end{pmatrix}\)</span>
+            <span>\(S = \begin{pmatrix} 95 &amp; 70 &amp; 45 \\ 85 &amp; 110 &amp; 55 \end{pmatrix}\)</span>
+          </div>
+          <p>In each matrix the first row is warehouse I and the second row warehouse II; the three columns are lager, ale and stout. Determine the stock held in each warehouse at the end of the week. The brewery reorders whenever a stock falls below 50 crates – which stocks have to be reordered?</p>
+        </div>
+        <div class="q-answer">
+          <p>The closing stock is</p>
+          \[ E = O + D - S = \begin{pmatrix} 85 &amp; 60 &amp; 25 \\ 45 &amp; 60 &amp; 25 \end{pmatrix} \]
+          <p>Three stocks fall below 50 crates and have to be reordered: stout in warehouse I (25 crates), lager in warehouse II (45 crates) and stout in warehouse II (25 crates).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A group of three dental clinics draws up a quarterly budget for three kinds of cost. The budgeted (matrix \(B\)) and the actual amounts (matrix \(A\)), in thousands of euros, are recorded in the matrices:</p>
+          <div class="mats">
+            <span>\(B = \begin{pmatrix} 40 &amp; 120 &amp; 15 \\ 55 &amp; 160 &amp; 20 \\ 35 &amp; 100 &amp; 12 \end{pmatrix}\)</span>
+            <span>\(A = \begin{pmatrix} 44 &amp; 118 &amp; 17 \\ 52 &amp; 155 &amp; 22 \\ 38 &amp; 106 &amp; 14 \end{pmatrix}\)</span>
+          </div>
+          <p>The three rows are clinics A, B and C; the three columns are materials, salaries and utilities. Determine by how much each clinic exceeded or undershot its budget on each kind of cost. Which clinic exceeded its budget on every kind of cost? Which kind of cost was exceeded in every clinic? By how much was the group’s total budget exceeded?</p>
+        </div>
+        <div class="q-answer">
+          <p>The deviations from the budget are</p>
+          \[ A - B = \begin{pmatrix} 4 &amp; -2 &amp; 2 \\ -3 &amp; -5 &amp; 2 \\ 3 &amp; 6 &amp; 2 \end{pmatrix} \]
+          <p>A positive entry means that the budget was exceeded. Clinic C exceeded its budget on all three kinds of cost, and utilities were over budget in all three clinics. The group’s total budget was exceeded by 9 thousand euros.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A cinema chain operates three cinemas and sells three kinds of ticket. Last month’s revenue, in thousands of euros, is recorded in the matrix:</p>
+          <div class="mats">
+            <span>\(R = \begin{pmatrix} 42 &amp; 18 &amp; 10 \\ 36 &amp; 16 &amp; 8 \\ 28 &amp; 12 &amp; 8 \end{pmatrix}\)</span>
+          </div>
+          <p>The three rows are cinemas I, II and III; the three columns are full-price, reduced and child tickets. From next month all ticket prices rise by 5&nbsp;%. Assuming that the number of tickets sold stays the same, determine next month’s revenue and the increase in revenue, cinema by cinema and ticket by ticket.</p>
+        </div>
+        <div class="q-answer">
+          <p>Next month’s revenue and the increase are</p>
+          <div class="mats">
+            <span>\(1.05\cdot R = \begin{pmatrix} 44.1 &amp; 18.9 &amp; 10.5 \\ 37.8 &amp; 16.8 &amp; 8.4 \\ 29.4 &amp; 12.6 &amp; 8.4 \end{pmatrix}\)</span>
+            <span>\(0.05\cdot R = \begin{pmatrix} 2.1 &amp; 0.9 &amp; 0.5 \\ 1.8 &amp; 0.8 &amp; 0.4 \\ 1.4 &amp; 0.6 &amp; 0.4 \end{pmatrix}\)</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 2</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

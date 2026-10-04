@@ -207,7 +207,7 @@
     ]
     ,
     t2: [
-      { id: 'm21', status: 'active', href: { lt: 'tema-2-pagrindiniai-veiksmai.html' },
+      { id: 'm21', status: 'active', href: { lt: 'tema-2-pagrindiniai-veiksmai.html', en: 'tema-2-pagrindiniai-veiksmai.html' },
         title: { lt: 'Pagrindinių matricos veiksmų taikymai', en: 'Basic Matrix Operations' },
         desc: { lt: 'Sudėtis, atimtis ir daugyba iš skaliaro ekonominėse ir vadybinėse situacijose.', en: 'Addition, subtraction and scalar multiplication in economic and managerial situations.' } },
       { id: 'm22', status: 'active', href: { lt: 'tema-2-sudetingesni-veiksmai.html' },
@@ -267,7 +267,7 @@
                title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue, Profit, and Break-Even Point' } },
     t2:      { parent: 'home', href: { lt: 'tema-2.html', en: 'tema-2.html' },
                title: { lt: '2 tema', en: 'Topic 2' } },
-    m21:     { parent: 't2', topic: 't2', model: 'm21', href: { lt: 'tema-2-pagrindiniai-veiksmai.html', en: null },
+    m21:     { parent: 't2', topic: 't2', model: 'm21', href: { lt: 'tema-2-pagrindiniai-veiksmai.html', en: 'tema-2-pagrindiniai-veiksmai.html' },
                title: { lt: 'Pagrindinių matricos veiksmų taikymai', en: 'Basic Matrix Operations' } },
     m22:     { parent: 't2', topic: 't2', model: 'm22', href: { lt: 'tema-2-sudetingesni-veiksmai.html', en: null },
                title: { lt: 'Sudėtingesni matricų veiksmų taikymai', en: 'Advanced Matrix Applications' } },
