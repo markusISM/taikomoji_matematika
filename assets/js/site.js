@@ -171,7 +171,7 @@
       title: { lt: 'Tiesinės funkcijos ir modeliai', en: 'Linear Functions and Models' } },
     { id: 't2', num: 2, status: 'active', href: { lt: 'tema-2.html', en: 'tema-2.html' },
       title: { lt: 'Matricos', en: 'Matrices' } },
-    { id: 't3', num: 3, status: 'active', href: { lt: 'tema-3.html' },
+    { id: 't3', num: 3, status: 'active', href: { lt: 'tema-3.html', en: 'tema-3.html' },
       title: { lt: 'Tiesinių lygčių sistemos', en: 'Systems of Linear Equations' } },
     { id: 't4', num: 4, status: 'active', href: { lt: 'tema-4.html' },
       title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: 'Linear Programming: The Graphical Method' } },
@@ -220,13 +220,13 @@
     t3: [
       { id: 'm31', status: 'active', href: { lt: 'tema-3-planavimas-vienintelis.html' },
         title: { lt: 'Racionalusis planavimas (vienintelis sprendinys)', en: 'Rational Planning (Unique Solution)' },
-        desc: { lt: 'Gamybos, pirkimų ar investicijų planas, kai sistema turi vienintelį sprendinį.' } },
+        desc: { lt: 'Gamybos, pirkimų ar investicijų planas, kai sistema turi vienintelį sprendinį.', en: 'A production, purchase or investment plan when the system has exactly one solution.' } },
       { id: 'm32', status: 'active', href: { lt: 'tema-3-planavimas-daug.html' },
         title: { lt: 'Racionalusis planavimas (daug sprendinių)', en: 'Rational Planning (Infinitely Many Solutions)' },
-        desc: { lt: 'Kai sprendinių be galo daug: parametras ir galimi planai.' } },
+        desc: { lt: 'Kai sprendinių be galo daug: parametras ir galimi planai.', en: 'When there are infinitely many solutions: the parameter and the possible plans.' } },
       { id: 'm33', status: 'active', href: { lt: 'tema-3-stabiliosios-rinkos-dalys.html' },
         title: { lt: 'Stabiliosios rinkos dalys', en: 'Long-Run Market Shares' },
-        desc: { lt: 'Rinkos dalys, kurios ilguoju laikotarpiu nebekinta: \\(P\\cdot X = X\\).' } }
+        desc: { lt: 'Rinkos dalys, kurios ilguoju laikotarpiu nebekinta: \\(P\\cdot X = X\\).', en: 'Market shares that no longer change in the long run: \\(P\\cdot X = X\\).' } }
     ],
     t4: [
       { id: 'm41', status: 'active', href: { lt: 'tema-4-nelygybiu-sistemos.html' },
@@ -273,7 +273,7 @@
                title: { lt: 'Sudėtingesni matricų veiksmų taikymai', en: 'Advanced Matrix Applications' } },
     m23:     { parent: 't2', topic: 't2', model: 'm23', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html', en: 'tema-2-rinkos-dalies-prognozavimas.html' },
                title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' } },
-    t3:      { parent: 'home', href: { lt: 'tema-3.html', en: null },
+    t3:      { parent: 'home', href: { lt: 'tema-3.html', en: 'tema-3.html' },
                title: { lt: '3 tema', en: 'Topic 3' } },
     m31:     { parent: 't3', topic: 't3', model: 'm31', href: { lt: 'tema-3-planavimas-vienintelis.html', en: null },
                title: { lt: 'Racionalusis planavimas (vienintelis sprendinys)', en: 'Rational Planning (Unique Solution)' } },

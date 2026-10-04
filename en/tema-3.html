@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 3. Systems of Linear Equations · Applied Mathematics</title>
+<meta name="description" content="A system of linear equations and its augmented matrix, elementary row operations, Gaussian elimination step by step and the number of solutions: exactly one solution, no solution, infinitely many solutions.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-3.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=42">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=42"></script>
+</head>
+<body data-page="t3">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 3</span>
+    <h1>Systems of Linear Equations</h1>
+    <ul class="jump">
+      <li><a href="#savokos">Concepts</a></li>
+      <li><a href="#gauso-metodas">Gaussian elimination</a></li>
+      <li><a href="#sprendiniai">Number of solutions</a></li>
+      <li><a href="#taikymai">Applications</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ CONCEPTS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">Key Concepts</h2>
+
+    <!-- 1 -->
+    <article class="card concept" id="sistema">
+      <div class="concept-head"><span class="num">1</span><h3>What is a system of linear equations?</h3></div>
+      <p>A system of linear equations consists of several linear equations in the same variables. In a linear equation the variables appear only to the first power: they are not raised to powers and are not multiplied by one another.</p>
+      <p><strong>A solution of the system</strong> is a set of values of the variables that satisfies <strong>all</strong> the equations of the system at the same time.</p>
+      <div class="example-box">
+        <span class="label">Example</span>
+        \[ \begin{cases} 2x - 3y = -8 \\ 4x + y = -2 \end{cases} \]
+        <p>The pair \(x = -1\), \(y = 2\) is a solution of this system, because it satisfies both equations:</p>
+        \[ \begin{aligned} 2\cdot(-1) - 3\cdot 2 &amp;= -8 \\ 4\cdot(-1) + 2 &amp;= -2 \end{aligned} \]
+        <p>The solution is written in brackets in the order of the variables: \((-1;\,2)\).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>General form</h4>
+        <p>In general, a system of three equations in three variables is written as follows:</p>
+        <div class="formula">\[ \begin{cases} a_{11}x + a_{12}y + a_{13}z = b_1 \\ a_{21}x + a_{22}y + a_{23}z = b_2 \\ a_{31}x + a_{32}y + a_{33}z = b_3 \end{cases} \]</div>
+        <p>In the coefficient \(a_{ij}\) the first index \(i\) is the number of the equation, and the second index \(j\) is the number of the variable (1 – \(x\), 2 – \(y\), 3 – \(z\)). The numbers \(b_1\), \(b_2\), \(b_3\) are the right-hand sides of the equations.</p>
+        <p class="tip">The order of the indices is the same as for <a href="tema-2.html#matrica">the matrix entry \(a_{ij}\)</a>: first the row (the equation), then the column (the variable).</p>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="card concept" id="isplestine-matrica">
+      <div class="concept-head"><span class="num">2</span><h3>Augmented matrix</h3></div>
+      <p>The coefficients of the system are written as an <strong>augmented matrix</strong>: each equation becomes one row of the matrix, and the right-hand sides of the equations are written after a vertical bar. The variables disappear, so only the numbers have to be carried through the calculation.</p>
+      <div class="mats mats--col">
+        <span>\(\begin{cases} \htmlClass{hc}{a_{11}}x + a_{12}y + a_{13}z = \htmlClass{hd}{b_1} \\ \htmlClass{hc}{a_{21}}x + a_{22}y + a_{23}z = \htmlClass{hd}{b_2} \\ \htmlClass{hc}{a_{31}}x + a_{32}y + a_{33}z = \htmlClass{hd}{b_3} \end{cases}\)</span>
+        <span class="arrow" aria-hidden="true">↓</span>
+        <span>\(\left(\begin{array}{ccc|c} \htmlClass{hc}{a_{11}} &amp; a_{12} &amp; a_{13} &amp; \htmlClass{hd}{b_1} \\ \htmlClass{hc}{a_{21}} &amp; a_{22} &amp; a_{23} &amp; \htmlClass{hd}{b_2} \\ \htmlClass{hc}{a_{31}} &amp; a_{32} &amp; a_{33} &amp; \htmlClass{hd}{b_3} \end{array}\right)\)</span>
+      </div>
+      <p class="formula-note" style="text-align:center">The coefficients of the variable \(x\) are highlighted in green – they make up the first column. The right-hand sides are highlighted in orange – they are written after the bar.</p>
+
+      <div class="subtype">
+        <h4>How to transfer the coefficients</h4>
+        <ul>
+          <li>Each equation is one row, and each variable is one column.</li>
+          <li>Write the variables in the same order in every equation (for example, \(x, y, z, w\)).</li>
+          <li>If there is no number in front of a variable, its coefficient is \(1\) (or \(-1\) if there is a minus sign in front of it).</li>
+          <li>If a variable does not appear in an equation, its coefficient is \(0\) – the zero must not be left out.</li>
+          <li>The variables must be on the left-hand side of the equation and the numbers on the right-hand side. If a variable is written on the right-hand side, first move it to the left: for example, \(y = 2x\) is written as \(-2x + y = 0\).</li>
+        </ul>
+      </div>
+
+      <div class="subtype">
+        <h4>Example</h4>
+        <p>The augmented matrix of a system in four variables:</p>
+        <div class="mats mats--col">
+          <span>\(\begin{cases} x - y - 4z + 9w = 22 \\ 2x - 3y + z + 5w = -3 \\ x + 2y - 4w = -3 \\ 3x - 2y - 5z + w = 3 \end{cases}\)</span>
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; \htmlClass{hd}{-1} &amp; -4 &amp; 9 &amp; 22 \\ 2 &amp; -3 &amp; \htmlClass{hd}{1} &amp; 5 &amp; -3 \\ \htmlClass{hd}{1} &amp; 2 &amp; \htmlClass{hd}{0} &amp; -4 &amp; -3 \\ 3 &amp; -2 &amp; -5 &amp; \htmlClass{hd}{1} &amp; 3 \end{array}\right)\)</span>
+        </div>
+        <p>The coefficients highlighted in orange are not written in the equations: the ones in front of the variables and the \(0\) in the third row, because the third equation does not contain \(z\). The columns correspond in turn to the variables \(x\), \(y\), \(z\), \(w\).</p>
+      </div>
+      <p class="tip">The augmented matrix has as many rows as there are equations in the system, and one column more than there are variables.</p>
+    </article>
+
+    <!-- 3 -->
+    <article class="card concept" id="pertvarkiai">
+      <div class="concept-head"><span class="num">3</span><h3>Elementary row operations</h3></div>
+      <p>A system having the same solutions as the original system is an <strong>equivalent system</strong> (written \(\sim\)). Three operations do not change the set of solutions of a system – they are the <strong>elementary row operations</strong>:</p>
+
+      <div class="subtype">
+        <h4>1. Interchange any two rows</h4>
+        <div class="mats mats--flow">
+          <span>\(\begin{cases} 2x - 3y = -8 \\ 4x + y = -2 \end{cases}\)</span>
+          <span class="arrow" aria-hidden="true">\(\sim\)</span>
+          <span>\(\begin{cases} 4x + y = -2 \\ 2x - 3y = -8 \end{cases}\)</span>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>2. Multiply a row by a nonzero constant</h4>
+        <div class="mats mats--flow">
+          <span>\(\begin{cases} 2x - 3y = -8 &amp; \htmlClass{ha}{\vert\cdot(-2)} \\ 4x + y = -2 \end{cases}\)</span>
+          <span class="arrow" aria-hidden="true">\(\sim\)</span>
+          <span>\(\begin{cases} -4x + 6y = 16 \\ 4x + y = -2 \end{cases}\)</span>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>3. Add a multiple of one row to another row</h4>
+        <div class="mats mats--flow">
+          <span>\(\begin{cases} 2x - 3y = -8 &amp; \htmlClass{ha}{\vert\cdot(-2)} \\ 4x + y = -2 &amp; \htmlClass{ha}{\downarrow} \end{cases}\)</span>
+          <span class="arrow" aria-hidden="true">\(\sim\)</span>
+          <span>\(\begin{cases} 2x - 3y = -8 \\ 0x + 7y = 14 \end{cases}\)</span>
+        </div>
+        <p>The first equation multiplied by \(-2\) is added to the second: \((-4x + 6y) + (4x + y) = 16 + (-2)\), that is, \(7y = 14\). The first equation stays unchanged, and \(x\) has disappeared from the second.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>The same operations in the augmented matrix</h4>
+        <p>In the augmented matrix each equation is a row, so the operations are carried out on rows. The operation being carried out is written beside the matrix: <strong>a number in brackets</strong> is the factor by which the row it stands next to is multiplied, and <strong>the arrow</strong> shows the row to which the result is then added; \({:}\,k\) beside a row means that the row is divided by \(k\).</p>
+        <div class="mats mats--flow">
+          <span>\(\left(\begin{array}{cc|c} 2 &amp; -3 &amp; -8 \\ 4 &amp; 1 &amp; -2 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+          <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+          <span>\(\left(\begin{array}{cc|c} 2 &amp; -3 &amp; -8 \\ \htmlClass{hc}{0} &amp; 7 &amp; 14 \end{array}\right)\)</span>
+        </div>
+        <p>The new second row is obtained column by column – including the number after the bar:</p>
+        <table class="rowcalc">
+          <tr><th scope="row">Row 2</th><td>4</td><td>1</td><td class="rhs">−2</td></tr>
+          <tr><th scope="row">Row 1 · (−2)</th><td>−4</td><td>6</td><td class="rhs">16</td></tr>
+          <tr class="res"><th scope="row">New row 2</th><td class="z">0</td><td>7</td><td class="rhs">14</td></tr>
+        </table>
+        <p>Only the row the arrow points to changes. The row that was multiplied stays the same.</p>
+        <p>One variable is left in the second row: \(7y = 14 \;\vert\, {:}\,7\), so \(y = 2\). Substituting \(y = 2\) into the first equation gives \(2x - 3\cdot 2 = -8\), \(x = -1\) – the solution \((-1;\,2)\) we have already seen. Eliminating variables by row operations until an equation with one variable is left – this is the idea of Gaussian elimination.</p>
+      </div>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Why do the row operations not change the solutions?</summary>
+        <div class="more-body">
+          <p>If numbers satisfy both equations, they also satisfy the equation obtained by multiplying one equation by a number or by adding it to another. Moreover, every operation can be undone: divide by the same number, interchange the equations back, subtract the same equation. So no solutions appear and none are lost during the operations.</p>
+          <p>Multiplying by \(0\) is not allowed, because the equation would turn into \(0 = 0\) and its information would be lost – such an operation can no longer be undone.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ GAUSSIAN ELIMINATION ============ -->
+  <section class="section" id="gauso-metodas" aria-labelledby="h-gauss">
+    <h2 id="h-gauss">Gaussian elimination</h2>
+
+    <!-- 4 -->
+    <article class="card concept" id="ideja">
+      <div class="concept-head"><span class="num">4</span><h3>The idea of the method: triangular form</h3></div>
+      <p>The goal of Gaussian elimination is to transform the system into <strong>triangular form</strong>: using elementary row operations, all the entries of the augmented matrix below the <a href="tema-2.html#istrizaine">main diagonal</a> are turned into zero. The 2nd and 3rd operations are used for this, and if necessary also the 1st (interchanging rows).</p>
+      <div class="mats mats--flow">
+        <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{a_{11}} &amp; a_{12} &amp; a_{13} &amp; b_1 \\ a_{21} &amp; \htmlClass{hd}{a_{22}} &amp; a_{23} &amp; b_2 \\ a_{31} &amp; a_{32} &amp; \htmlClass{hd}{a_{33}} &amp; b_3 \end{array}\right)\)</span>
+        <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+        <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; a''_{23} &amp; b''_2 \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; b'''_3 \end{array}\right)\)</span>
+      </div>
+      <p class="formula-note" style="text-align:center">The main diagonal is highlighted in orange, and the zeros obtained below it in green. The primes (\(a'\), \(b''\), …) show that the values of the entries have changed after the operations.</p>
+      <p>The last matrix corresponds to the triangular system:</p>
+      <div class="formula">\[ \left\{ \begin{aligned} x + a'_{12}y + a'_{13}z &amp;= b'_1 \\ y + a''_{23}z &amp;= b''_2 \\ z &amp;= b'''_3 \end{aligned} \right. \]</div>
+      <p>Such a system is easy to solve: only one variable, \(z\), is left in the last equation. Substituting it into the second equation gives \(y\), and substituting \(y\) and \(z\) into the first gives \(x\).</p>
+      <div class="phases">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">↓</span><div><strong>I. Forward elimination</strong><span>From top to bottom: zeros are obtained below the main diagonal.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">↑</span><div><strong>II. Back substitution</strong><span>From bottom to top: starting from the last equation, the values of all the variables are calculated.</span></div></div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="card concept" id="algoritmas">
+      <div class="concept-head"><span class="num">5</span><h3>The Gaussian elimination algorithm</h3></div>
+      <h4 class="phase-title">I. Forward elimination</h4>
+      <ol class="steps-list">
+        <li><strong>Pivot element.</strong> Look at the first coefficient of the first equation. If it is 0, interchange this equation with an equation below it whose first coefficient is not 0. This non-zero coefficient will be the <strong>pivot element</strong>.</li>
+        <li><strong>A 1 on the diagonal.</strong> Divide the first equation by the pivot element – a 1 will appear in its place.</li>
+        <li><strong>Zeros below the pivot element.</strong> Multiply the first equation by a suitable number and add it to each equation below it (the 2nd and 3rd operations) – this eliminates the first variable from them.</li>
+        <li><strong>Repetition.</strong> Set the first equation aside and repeat steps 1–3 with the remaining equations: now the second variable is eliminated, then the third, and so on.</li>
+        <li><strong>End.</strong> Forward elimination is finished when there are only zeros below the main diagonal and ones on the diagonal. If an equation \(0 = 0\) has appeared on the way, it can be deleted. If an equation \(0 = a\) with \(a \neq 0\) has appeared, there is no need to continue – the system has no solution.</li>
+      </ol>
+      <h4 class="phase-title">II. Back substitution</h4>
+      <ol class="steps-list" style="counter-reset: s 5">
+        <li><strong>Values from bottom to top.</strong> Find the last variable from the last equation and substitute it into the equation above it. Moving upwards in this way, find the values of all the variables.</li>
+      </ol>
+      <p class="src-inline"><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span>The algorithm is based on: V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015, Chapter 1.</span></p>
+      <p class="tip">When the pivot element equals 1, it is also called a <strong>leading 1</strong>.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>General scheme: 3 equations in 3 variables</summary>
+        <div class="more-body">
+          <p>This is how the algorithm looks in the augmented matrix. The first row is divided by \(a_{11}\) and then used to obtain zeros in the first column; the same is repeated with the second row, and at the end the third row is divided by its pivot element:</p>
+          <div class="mats scheme mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{a_{11}} &amp; a_{12} &amp; a_{13} &amp; b_1 \\ a_{21} &amp; a_{22} &amp; a_{23} &amp; b_2 \\ a_{31} &amp; a_{32} &amp; a_{33} &amp; b_3 \end{array}\right)\begin{array}{l} \htmlClass{ha}{{:}\,a_{11}} \\ \phantom{0} \\ \phantom{0} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ a_{21} &amp; a_{22} &amp; a_{23} &amp; b_2 \\ a_{31} &amp; a_{32} &amp; a_{33} &amp; b_3 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-a_{21})} &amp; \htmlClass{ha}{(-a_{31})} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ \htmlClass{hc}{0} &amp; \htmlClass{hd}{a'_{22}} &amp; a'_{23} &amp; b'_2 \\ \htmlClass{hc}{0} &amp; a'_{32} &amp; a'_{33} &amp; b'_3 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,a'_{22}} \\ \phantom{0} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ 0 &amp; \htmlClass{hd}{1} &amp; a''_{23} &amp; b''_2 \\ 0 &amp; a'_{32} &amp; a'_{33} &amp; b'_3 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-a'_{32})} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ 0 &amp; 1 &amp; a''_{23} &amp; b''_2 \\ 0 &amp; \htmlClass{hc}{0} &amp; \htmlClass{hd}{a''_{33}} &amp; b''_3 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,a''_{33}} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; a'_{12} &amp; a'_{13} &amp; b'_1 \\ 0 &amp; 1 &amp; a''_{23} &amp; b''_2 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; b'''_3 \end{array}\right)\)</span>
+          </div>
+          <p>When the pivot element equals 1, an entry below it is turned into zero by multiplying the pivot row by the <strong>opposite</strong> number: \(a_{21}\) is eliminated by the factor \((-a_{21})\), and \(a_{31}\) by the factor \((-a_{31})\).</p>
+        </div>
+      </details>
+
+      <div class="subtype">
+        <h4>Practical tips</h4>
+        <ul>
+          <li><strong>The factor.</strong> When the pivot element equals 1, a number \(a\) below it is eliminated by the factor \((-a)\): a 2 below the 1 by the factor \((-2)\), a 4 by the factor \((-4)\).</li>
+          <li><strong>Interchange or divide?</strong> Interchanging rows is often easier than dividing: if a row below has a 1 in the required position, move it up (see Example 4).</li>
+          <li><strong>When dividing would give fractions,</strong> the pivot row need not be divided. What matters is to obtain zeros below the main diagonal: the factors are chosen so that the sum is 0 (see Examples 1 and 2).</li>
+          <li><strong>Decimals.</strong> If an equation contains decimals or percentages, multiply the whole row by 10, 100 or 1000 first. This is an elementary row operation too, so the solutions do not change.</li>
+          <li><strong>Check.</strong> Substitute the values obtained into the <em>original</em> equations – this way a calculation error is easy to spot.</li>
+        </ul>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The number after the bar forgotten.</strong> An operation applies to the whole row, including the right-hand side.</li>
+            <li><strong>The wrong row changed.</strong> Only the row the arrow points to changes; the row that was multiplied stays the same.</li>
+            <li><strong>A sign error.</strong> When a row is multiplied by a negative number, the signs of all its entries change.</li>
+            <li><strong>A missing zero.</strong> If a variable does not appear in an equation, a \(0\) is written in its place in the matrix; without it the columns shift.</li>
+            <li><strong>Back substitution from the top.</strong> It starts from the last equation, in which only one variable is left.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>The solution must include the mathematical model of the problem – the system of linear equations. Presenting only the augmented matrix is not sufficient.</li>
+            <li>The system of equations must be solved using the Gaussian elimination method. The solution must show which row operations are performed to eliminate elements below the main diagonal.</li>
+            <li>At the end of the solution, the final answer must be clearly presented.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: 3 equations -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Three equations in three variables</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Solve the system by Gaussian elimination
+        \[ \begin{cases} x + y + 2z = -1 \\ 2x - y + 2z = -4 \\ 4x + y + 4z = -2 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The augmented matrix</span></h4>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 2 &amp; -1 \\ 2 &amp; -1 &amp; 2 &amp; -4 \\ 4 &amp; 1 &amp; 4 &amp; -2 \end{array}\right) \]
+          <p>The first pivot element is \(a_{11} = 1\), so there is no need to interchange rows or divide.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Zeros in the first column</span></h4>
+          <p>The 2 below the 1 is eliminated by the factor \((-2)\), and the 4 by the factor \((-4)\). We multiply the first row by \(-2\) and add it to the second, then multiply it by \(-4\) and add it to the third:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 2 &amp; -1 \\ 2 &amp; -1 &amp; 2 &amp; -4 \\ 4 &amp; 1 &amp; 4 &amp; -2 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ \htmlClass{hc}{0} &amp; -3 &amp; -2 &amp; -2 \\ \htmlClass{hc}{0} &amp; -3 &amp; -4 &amp; 2 \end{array}\right)\)</span>
+          </div>
+          <table class="rowcalc">
+            <tr><th scope="row">Row 2</th><td>2</td><td>−1</td><td>2</td><td class="rhs">−4</td></tr>
+            <tr><th scope="row">Row 1 · (−2)</th><td>−2</td><td>−2</td><td>−4</td><td class="rhs">2</td></tr>
+            <tr class="res"><th scope="row">New row 2</th><td class="z">0</td><td>−3</td><td>−2</td><td class="rhs">−2</td></tr>
+          </table>
+          <table class="rowcalc">
+            <tr><th scope="row">Row 3</th><td>4</td><td>1</td><td>4</td><td class="rhs">−2</td></tr>
+            <tr><th scope="row">Row 1 · (−4)</th><td>−4</td><td>−4</td><td>−8</td><td class="rhs">4</td></tr>
+            <tr class="res"><th scope="row">New row 3</th><td class="z">0</td><td>−3</td><td>−4</td><td class="rhs">2</td></tr>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>A zero in the second column</span></h4>
+          <p>The second pivot element is \(a_{22} = -3\). Below it there is also \(-3\), so there is no need to divide: it is enough to multiply the second row by \(-1\) and add it to the third, because \(-3 + (-1)\cdot(-3) = 0\).</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ 0 &amp; \htmlClass{hd}{-3} &amp; -2 &amp; -2 \\ 0 &amp; -3 &amp; -4 &amp; 2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ 0 &amp; -3 &amp; -2 &amp; -2 \\ 0 &amp; \htmlClass{hc}{0} &amp; -2 &amp; 4 \end{array}\right)\)</span>
+          </div>
+          <table class="rowcalc">
+            <tr><th scope="row">Row 3</th><td>0</td><td>−3</td><td>−4</td><td class="rhs">2</td></tr>
+            <tr><th scope="row">Row 2 · (−1)</th><td>0</td><td>3</td><td>2</td><td class="rhs">2</td></tr>
+            <tr class="res"><th scope="row">New row 3</th><td>0</td><td class="z">0</td><td>−2</td><td class="rhs">4</td></tr>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The triangular system</span></h4>
+          <p>All the entries below the main diagonal are zero. We write the matrix as a system again:</p>
+          \[ \left\{ \begin{aligned} x + y + 2z &amp;= -1 \\ -3y - 2z &amp;= -2 \\ -2z &amp;= 4 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Back substitution</span></h4>
+          <p>We start from the last equation and move upwards:</p>
+          \[ \begin{aligned} -2z = 4 \;\vert\,{:}\,(-2) \quad&amp;\Longrightarrow\quad z = -2 \\ -3y - 2\cdot(-2) = -2 \quad&amp;\Longrightarrow\quad y = 2 \\ x + 2 + 2\cdot(-2) = -1 \quad&amp;\Longrightarrow\quad x = 1 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Check</span></h4>
+          <p>We substitute the values into the original equations:</p>
+          \[ \begin{aligned} 1 + 2 + 2\cdot(-2) &amp;= -1 \\ 2\cdot 1 - 2 + 2\cdot(-2) &amp;= -4 \\ 4\cdot 1 + 2 + 4\cdot(-2) &amp;= -2 \end{aligned} \]
+          <p>All three equalities are true.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ (x;\, y;\, z) = (1;\, 2;\, -2) \]
+          </div>
+          <p>The system has exactly one solution.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: 4 equations -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Four equations in four variables</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Solve the system by Gaussian elimination
+        \[ \begin{cases} x - y - 4z + 9w = 22 \\ 2x - 3y + z + 5w = -3 \\ x + 2y - 4w = -3 \\ 3x - 2y - 5z + w = 3 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The augmented matrix</span></h4>
+          <p>We have already written the augmented matrix of this system in <a href="#isplestine-matrica">concept 2</a>. The first pivot element equals 1.</p>
+          \[ \left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 2 &amp; -3 &amp; 1 &amp; 5 &amp; -3 \\ 1 &amp; 2 &amp; 0 &amp; -4 &amp; -3 \\ 3 &amp; -2 &amp; -5 &amp; 1 &amp; 3 \end{array}\right) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Zeros in the first column</span></h4>
+          <p>We multiply the first row by \(-2\), \(-1\) and \(-3\) and add it to the 2nd, 3rd and 4th rows respectively:</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 2 &amp; -3 &amp; 1 &amp; 5 &amp; -3 \\ 1 &amp; 2 &amp; 0 &amp; -4 &amp; -3 \\ 3 &amp; -2 &amp; -5 &amp; 1 &amp; 3 \end{array}\right)\begin{array}{ccc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-1)} &amp; \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ \htmlClass{hc}{0} &amp; -1 &amp; 9 &amp; -13 &amp; -47 \\ \htmlClass{hc}{0} &amp; 3 &amp; 4 &amp; -13 &amp; -25 \\ \htmlClass{hc}{0} &amp; 1 &amp; 7 &amp; -26 &amp; -63 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Zeros in the second column</span></h4>
+          <p>The second pivot element is \(-1\). To turn the 3 and the 1 below it into zeros, we multiply the second row by 3 and add it to the third, and multiply it by 1 and add it to the fourth: \(3 + 3\cdot(-1) = 0\), \(1 + 1\cdot(-1) = 0\).</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 0 &amp; \htmlClass{hd}{-1} &amp; 9 &amp; -13 &amp; -47 \\ 0 &amp; 3 &amp; 4 &amp; -13 &amp; -25 \\ 0 &amp; 1 &amp; 7 &amp; -26 &amp; -63 \end{array}\right)\begin{array}{cc} \phantom{0} &amp; \\ \htmlClass{ha}{(3)} &amp; \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 0 &amp; -1 &amp; 9 &amp; -13 &amp; -47 \\ 0 &amp; \htmlClass{hc}{0} &amp; 31 &amp; -52 &amp; -166 \\ 0 &amp; \htmlClass{hc}{0} &amp; 16 &amp; -39 &amp; -110 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>A zero in the third column</span></h4>
+          <p>The third pivot element is 31, and below it is 16. Dividing by 31 would give fractions, so we avoid them: we multiply the fourth row by 31 (the 2nd operation) and add to it the third row multiplied by \(-16\) (the 3rd operation). Then \(16\cdot 31 + (-16)\cdot 31 = 0\).</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 0 &amp; -1 &amp; 9 &amp; -13 &amp; -47 \\ 0 &amp; 0 &amp; \htmlClass{hd}{31} &amp; -52 &amp; -166 \\ 0 &amp; 0 &amp; 16 &amp; -39 &amp; -110 \end{array}\right)\begin{array}{cc} \phantom{0} &amp; \\ \phantom{0} &amp; \\ \htmlClass{ha}{(-16)} &amp; \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{(31)} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 0 &amp; -1 &amp; 9 &amp; -13 &amp; -47 \\ 0 &amp; 0 &amp; 31 &amp; -52 &amp; -166 \\ 0 &amp; 0 &amp; \htmlClass{hc}{0} &amp; -377 &amp; -754 \end{array}\right)\)</span>
+          </div>
+          <p>The new fourth row (its first two entries remain zeros):</p>
+          \[ \begin{aligned} 16\cdot 31 + 31\cdot(-16) &amp;= 0 \\ -39\cdot 31 + (-52)\cdot(-16) &amp;= -377 \\ -110\cdot 31 + (-166)\cdot(-16) &amp;= -754 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Back substitution</span></h4>
+          <p>The matrix is in triangular form. We start from the last row and move upwards:</p>
+          <ul class="back-list">
+            <li>row 4: \(-377w = -754 \;\vert\,{:}\,(-377)\), so \(w = 2\);</li>
+            <li>row 3: \(31z - 52\cdot 2 = -166\), so \(z = -2\);</li>
+            <li>row 2: \(-y + 9\cdot(-2) - 13\cdot 2 = -47\), so \(y = 3\);</li>
+            <li>row 1: \(x - 3 - 4\cdot(-2) + 9\cdot 2 = 22\), so \(x = -1\).</li>
+          </ul>
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Check</summary>
+            <div class="more-body">
+              \[ \begin{aligned} -1 - 3 - 4\cdot(-2) + 9\cdot 2 &amp;= 22 \\ 2\cdot(-1) - 3\cdot 3 + (-2) + 5\cdot 2 &amp;= -3 \\ -1 + 2\cdot 3 - 4\cdot 2 &amp;= -3 \\ 3\cdot(-1) - 2\cdot 3 - 5\cdot(-2) + 2 &amp;= 3 \end{aligned} \]
+            </div>
+          </details>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ (x;\, y;\, z;\, w) = (-1;\, 3;\, -2;\, 2) \]
+          </div>
+          <p>The system has exactly one solution.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ NUMBER OF SOLUTIONS ============ -->
+  <section class="section" id="sprendiniai" aria-labelledby="h-sol">
+    <h2 id="h-sol">Number of solutions</h2>
+
+    <!-- 6 -->
+    <article class="card concept" id="trys-atvejai">
+      <div class="concept-head"><span class="num">6</span><h3>Three possible cases</h3></div>
+      <p>A system of linear equations can have exactly one solution, no solution or infinitely many solutions. There are no other possibilities: for example, a system cannot have exactly two solutions.</p>
+      <p>This is easy to see when there are two equations in two variables: each equation represents a line in the plane, and a solution is a common point of the two lines.</p>
+      <div class="geo3">
+        <figure>
+          <svg viewBox="0 0 120 90" role="img" aria-label="Two lines intersecting at one point">
+            <path class="ax" d="M8 82H114M12 86V6"/>
+            <path class="ln" d="M14 77L110 19.4"/>
+            <path class="ln2" d="M14 21L110 69"/>
+            <circle class="pt-hi" cx="60" cy="44" r="5"/>
+          </svg>
+          <figcaption><strong>Exactly one solution</strong><span class="sub">The lines intersect at one point.</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" role="img" aria-label="Two parallel lines">
+            <path class="ax" d="M8 82H114M12 86V6"/>
+            <path class="ln" d="M14 52L110 14"/>
+            <path class="ln2" d="M14 76L110 38"/>
+          </svg>
+          <figcaption><strong>No solution</strong><span class="sub">The lines are parallel – there is no common point.</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" role="img" aria-label="Two coinciding lines">
+            <path class="ax" d="M8 82H114M12 86V6"/>
+            <path class="ln-wide" d="M14 72L110 20"/>
+            <path class="ln2-dash" d="M14 72L110 20"/>
+          </svg>
+          <figcaption><strong>Infinitely many solutions</strong><span class="sub">The lines coincide – every point is common.</span></figcaption>
+        </figure>
+      </div>
+      <p>When there are three variables, each equation represents a plane in space. The planes can intersect at one point (exactly one solution), have a common line (infinitely many solutions) or have no point common to all of them (no solution).</p>
+
+      <div class="subtype">
+        <h4>How to recognise the case from the matrix</h4>
+        <p>Which case we have becomes clear when forward elimination is finished (\(\ast\) denotes any number):</p>
+        <div class="mats cases3">
+          <div class="mat-item"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; \htmlClass{hd}{1} &amp; \ast &amp; \ast \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; \ast \end{array}\right)\)</span><span class="cap"><strong>Exactly one solution</strong></span></div>
+          <div class="mat-item"><span>\(\left(\begin{array}{ccc|c} 1 &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 1 &amp; \ast &amp; \ast \\ \htmlClass{hr}{0} &amp; \htmlClass{hr}{0} &amp; \htmlClass{hr}{0} &amp; \htmlClass{hr}{c} \end{array}\right)\)</span><span class="cap"><strong>No solution</strong> (\(c \neq 0\))</span></div>
+          <div class="mat-item"><span>\(\left(\begin{array}{ccc|c} 1 &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 1 &amp; \ast &amp; \ast \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} \end{array}\right)\)</span><span class="cap"><strong>Infinitely many solutions</strong></span></div>
+        </div>
+        <ul>
+          <li><strong>Exactly one solution</strong> – every variable has its own non-zero pivot element (if the rows were not divided, it need not equal 1), and there are no impossible rows and no rows of zeros.</li>
+          <li><strong>No solution</strong> – a row of the form \(0 \;\; 0 \;\; 0 \mid c\) with \(c \neq 0\) appears. It reads \(0 = c\), which is impossible.</li>
+          <li><strong>Infinitely many solutions</strong> – a row of zeros \(0 \;\; 0 \;\; 0 \mid 0\) appears (the equation \(0 = 0\)), which can be deleted, and fewer non-zero rows than variables remain.</li>
+        </ul>
+      </div>
+
+      <div class="subtype">
+        <h4>How to write infinitely many solutions</h4>
+        <ol>
+          <li>Delete the rows of zeros.</li>
+          <li>Count the <strong>free variables</strong>: their number is the number of variables minus the number of non-zero rows.</li>
+          <li>Set the variables that have no pivot element equal to parameters: \(w = t\), \(t \in \mathbb{R}\) (if more are needed – \(u\) and so on).</li>
+          <li>Move the parameters to the right-hand side and express the other variables through them by back substitution.</li>
+        </ol>
+        <p>The answer states which values the parameter can take, for example, \(t \in \mathbb{R}\). Such a form covers all the solutions. Substituting a specific value of the parameter gives one <strong>particular solution</strong> (see Example 4).</p>
+      </div>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>If the system has infinitely many solutions, they must be expressed using a parameter. In applied problems, it is necessary to indicate the interval of possible parameter values. If required by the problem, particular solutions must also be provided.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+
+    <!-- Example 3: no solution -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A system with no solution</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Solve the system by Gaussian elimination
+        \[ \begin{cases} x + y + z = 2 \\ 2x - 3y + z = 11 \\ 4x - y + 3z = 10 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Zeros in the first column</span></h4>
+          <p>The first pivot element equals 1. We multiply the first row by \(-2\) and add it to the second, then multiply it by \(-4\) and add it to the third:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 2 \\ 2 &amp; -3 &amp; 1 &amp; 11 \\ 4 &amp; -1 &amp; 3 &amp; 10 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 2 \\ \htmlClass{hc}{0} &amp; -5 &amp; -1 &amp; 7 \\ \htmlClass{hc}{0} &amp; -5 &amp; -1 &amp; 2 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>A zero in the second column</span></h4>
+          <p>The coefficients in the second and third rows are the same, so we multiply the second row by \(-1\) and add it to the third:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 2 \\ 0 &amp; \htmlClass{hd}{-5} &amp; -1 &amp; 7 \\ 0 &amp; -5 &amp; -1 &amp; 2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 2 \\ 0 &amp; -5 &amp; -1 &amp; 7 \\ \htmlClass{hr}{0} &amp; \htmlClass{hr}{0} &amp; \htmlClass{hr}{0} &amp; \htmlClass{hr}{-5} \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>An impossible equation</span></h4>
+          <p>The last row reads</p>
+          \[ 0x + 0y + 0z = -5, \quad \text{i.e.} \quad 0 = -5 \]
+          <p>There are no \(x\), \(y\), \(z\) for which this equality would be true. Further calculations are unnecessary.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The system has no solution: \(\varnothing\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: infinitely many solutions -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>A system with infinitely many solutions</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Solve the system by Gaussian elimination
+        \[ \begin{cases} 2x - y - z + 3w = 3 \\ x - y + w = 1 \\ 3x - 4y + 2z + w = 4 \\ x + y - 3z + 4w = 1 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Interchanging the equations</span></h4>
+          <p>The first coefficient of the first equation is 2, and that of the second is 1. Instead of dividing, we interchange the 1st and 2nd equations and write the augmented matrix:</p>
+          \[ \left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 2 &amp; -1 &amp; -1 &amp; 3 &amp; 3 \\ 3 &amp; -4 &amp; 2 &amp; 1 &amp; 4 \\ 1 &amp; 1 &amp; -3 &amp; 4 &amp; 1 \end{array}\right) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Zeros in the first column</span></h4>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 2 &amp; -1 &amp; -1 &amp; 3 &amp; 3 \\ 3 &amp; -4 &amp; 2 &amp; 1 &amp; 4 \\ 1 &amp; 1 &amp; -3 &amp; 4 &amp; 1 \end{array}\right)\begin{array}{ccc} \htmlClass{ha}{(-2)} &amp; \htmlClass{ha}{(-3)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; 1 &amp; -1 &amp; 1 &amp; 1 \\ \htmlClass{hc}{0} &amp; -1 &amp; 2 &amp; -2 &amp; 1 \\ \htmlClass{hc}{0} &amp; 2 &amp; -3 &amp; 3 &amp; 0 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Zeros in the second column</span></h4>
+          <p>The second pivot element equals 1: the \(-1\) below it is eliminated by the factor \((1)\), and the 2 by the factor \((-2)\).</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hd}{1} &amp; -1 &amp; 1 &amp; 1 \\ 0 &amp; -1 &amp; 2 &amp; -2 &amp; 1 \\ 0 &amp; 2 &amp; -3 &amp; 3 &amp; 0 \end{array}\right)\begin{array}{cc} \phantom{0} &amp; \\ \htmlClass{ha}{(1)} &amp; \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 \\ 0 &amp; \htmlClass{hc}{0} &amp; 1 &amp; -1 &amp; 2 \\ 0 &amp; \htmlClass{hc}{0} &amp; -1 &amp; 1 &amp; -2 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>A row of zeros</span></h4>
+          <p>Adding the third row to the fourth turns the fourth row into a row of zeros:</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; -1 &amp; 2 \\ 0 &amp; 0 &amp; -1 &amp; 1 &amp; -2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; -1 &amp; 2 \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} \end{array}\right)\)</span>
+          </div>
+          <p>The equation \(0 = 0\) is true for any values, so we delete it.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The parameter</span></h4>
+          <p>3 non-zero rows are left and there are 4 variables, so there is one free variable: \(4 - 3 = 1\). The variable \(w\) has no pivot element, so we put \(w = t\), \(t \in \mathbb{R}\), and move the terms with \(t\) to the right-hand side:</p>
+          \[ \left(\begin{array}{ccc|c} 1 &amp; -1 &amp; 0 &amp; 1 - t \\ 0 &amp; 1 &amp; -1 &amp; 1 - t \\ 0 &amp; 0 &amp; 1 &amp; 2 + t \end{array}\right) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Back substitution</span></h4>
+          \[ \begin{aligned} &amp;z = 2 + t \\ &amp;y - (2 + t) = 1 - t \;\Longrightarrow\; y = 3 \\ &amp;x - 3 = 1 - t \;\Longrightarrow\; x = 4 - t \end{aligned} \]
+          <p>Check with \(t = 0\), i.e. \((4;\, 3;\, 2;\, 0)\): \(8 - 3 - 2 + 0 = 3\), \(4 - 3 + 0 = 1\), \(12 - 12 + 4 + 0 = 4\), \(4 + 3 - 6 + 0 = 1\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{gathered} (x;\, y;\, z;\, w) = (4 - t;\, 3;\, 2 + t;\, t), \\ t \in \mathbb{R} \end{gathered} \]
+          </div>
+          <p>Each value of the parameter \(t\) gives a different solution, so there are infinitely many solutions. For example, particular solutions: \(t = 0\) gives \((4;\, 3;\, 2;\, 0)\), and \(t = 1\) gives \((3;\, 3;\, 3;\, 1)\). Note that \(y = 3\) in all the solutions.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="card concept" id="lygciu-skaicius">
+      <div class="concept-head"><span class="num">7</span><h3>The number of equations and variables</h3></div>
+      <p>In general, the number of equations in a system need not be equal to the number of variables.</p>
+      <div class="tbl-wrap">
+        <table class="vtable count-tbl">
+          <thead><tr><th scope="col">Number of equations</th><th scope="col">Possible cases</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Less than the number of variables</th><td>infinitely many solutions or no solution</td></tr>
+            <tr><th scope="row">Greater than the number of variables</th><td>exactly one solution, infinitely many solutions or no solution</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>When there are fewer equations than variables, there cannot be exactly one solution: there will be fewer non-zero rows than variables, so if the system has solutions, at least one free variable will remain. When there are as many equations as variables, all three cases are possible – as Examples 1, 3 and 4 show.</p>
+      <p class="tip">The number of free variables (parameters) is determined not by the original number of equations but by the number of <strong>non-zero rows</strong> left after forward elimination. If an equation has turned into a row of zeros, there will be more parameters – see Example 5.</p>
+    </article>
+
+    <!-- Example 5: 3 equations, 4 variables -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Three equations in four variables</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Solve the system by Gaussian elimination
+        \[ \begin{cases} x + y + z + w = 6 \\ 3x + 2y + z + w = 1 \\ 5x + 4y + 3z + 3w = 13 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Zeros in the first column</span></h4>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 1 &amp; 6 \\ 3 &amp; 2 &amp; 1 &amp; 1 &amp; 1 \\ 5 &amp; 4 &amp; 3 &amp; 3 &amp; 13 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-3)} &amp; \htmlClass{ha}{(-5)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 1 &amp; 1 &amp; 1 &amp; 6 \\ \htmlClass{hc}{0} &amp; -1 &amp; -2 &amp; -2 &amp; -17 \\ \htmlClass{hc}{0} &amp; -1 &amp; -2 &amp; -2 &amp; -17 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>A row of zeros</span></h4>
+          <p>The second and third rows are the same. Multiplying the second row by \(-1\) and adding it to the third gives a row of zeros, which we delete:</p>
+          <div class="mats mats--sm mats--flow">
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 1 &amp; 1 &amp; 1 &amp; 6 \\ 0 &amp; \htmlClass{hd}{-1} &amp; -2 &amp; -2 &amp; -17 \\ 0 &amp; -1 &amp; -2 &amp; -2 &amp; -17 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cccc|c} 1 &amp; 1 &amp; 1 &amp; 1 &amp; 6 \\ 0 &amp; -1 &amp; -2 &amp; -2 &amp; -17 \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Two parameters</span></h4>
+          <p>2 non-zero rows are left and there are 4 variables, so there are two free variables: \(4 - 2 = 2\). The variables \(z\) and \(w\) have no pivot elements, so we put \(w = t\), \(z = u\), \(t, u \in \mathbb{R}\), and move the terms with the parameters to the right-hand side:</p>
+          <div class="mats mats--sm">
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 6 - t - u \\ 0 &amp; -1 &amp; -17 + 2t + 2u \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-1)} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Back substitution</span></h4>
+          \[ \begin{aligned} &amp;y = 17 - 2t - 2u \\ &amp;x + 17 - 2t - 2u = 6 - t - u \\ &amp;\Longrightarrow\; x = -11 + t + u \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{gathered} (x;\, y;\, z;\, w) = {} \\ (-11 + t + u;\; 17 - 2t - 2u;\; u;\; t), \\ t, u \in \mathbb{R} \end{gathered} \]
+          </div>
+          <p>Although there were three equations, one of them gave no new information (it turned into a row of zeros), so there are two parameters, not one.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ APPLICATIONS ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Applications</h2>
+    <p class="section-intro">Systems of linear equations are applied to the rational production plan, purchase planning, the investment portfolio model and long-run market shares. Choose a section.</p>
+    <div class="model-grid" data-models="t3"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this topic can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapters 2.1–2.3, 9.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
