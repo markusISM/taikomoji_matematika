@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 4. Linear Programming: The Graphical Method · Applied Mathematics</title>
+<meta name="description" content="The essence of a linear programming problem: the objective function, technical and natural constraints, standard maximization and minimization problems, the feasible set and the optimal solution.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-4.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=46">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=46"></script>
+</head>
+<body data-page="t4">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 4</span>
+    <h1>Linear Programming: The Graphical Method</h1>
+    <ul class="jump">
+      <li><a href="#esme">Essence</a></li>
+      <li><a href="#tikslo-funkcija">Objective function</a></li>
+      <li><a href="#apribojimai">Constraints</a></li>
+      <li><a href="#standartiniai">Standard problems</a></li>
+      <li><a href="#sprendimas">Solving</a></li>
+      <li><a href="#taikymai">Applications</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ CONCEPTS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">Key Concepts</h2>
+
+    <!-- 1 -->
+    <article class="card concept" id="esme">
+      <div class="concept-head"><span class="num">1</span><h3>What is a linear programming problem?</h3></div>
+      <p>A linear programming (LP) problem looks for the best decision when the possibilities are limited. We have to find the values of the variables for which the <strong>objective function</strong> takes its <strong>largest</strong> or <strong>smallest</strong> value and, at the same time, all the <strong>constraints</strong> are satisfied.</p>
+      <p>For example, a firm wants to make as large a profit as possible, but its working time and materials are limited; or it wants to reach the required advertising audience as cheaply as possible. This is how the optimal production plan problem, the advertising problem and the investment portfolio problem are solved.</p>
+      <p>The problem is called <strong>linear</strong> because both the objective function and the constraints are linear: the variables appear in them only to the first power, as in <a href="tema-3.html#sistema">linear equations</a>.</p>
+      <div class="subtype">
+        <h4>Structure of LP problems</h4>
+        <p>Every LP problem consists of three parts:</p>
+        <div class="anat">
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Objective function</strong></div>
+            <p class="anat-d">What is to be made larger or smaller:</p>
+            <ul>
+              <li>profit \(\to \max\)</li>
+              <li>cost \(\to \min\)</li>
+              <li>revenue \(\to \max\)</li>
+              <li>return \(\to \max\)</li>
+              <li>risk \(\to \min\)</li>
+            </ul>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Technical constraints</strong></div>
+            <p class="anat-d">Limited resources and requirements:</p>
+            <ul>
+              <li>time available</li>
+              <li>materials available</li>
+              <li>demand</li>
+              <li>others</li>
+            </ul>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Natural constraints</strong></div>
+            <p class="anat-d">Arising from the meaning of the variables:</p>
+            <ul>
+              <li>non-negativity</li>
+              <li>integrality</li>
+              <li>binary</li>
+              <li>others</li>
+            </ul>
+          </div>
+        </div>
+        <p>Each part is discussed in more detail below.</p>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="card concept" id="tikslo-funkcija">
+      <div class="concept-head"><span class="num">2</span><h3>Objective function</h3></div>
+      <p>The <strong>objective function</strong> is the quantity whose value has to be as large or as small as possible. An arrow written next to it shows the goal: \(\to \max\) (maximize) or \(\to \min\) (minimize).</p>
+      <div class="tbl-wrap">
+        <table class="vtable req-tbl goal-tbl">
+          <thead><tr><th scope="col">To be made as large as possible</th><th scope="col">To be made as small as possible</th></tr></thead>
+          <tbody>
+            <tr><td>profit, revenue, return, the number of people reached by an advertisement</td><td>cost, spending, risk</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subtype">
+        <h4>How the objective function is written</h4>
+        <p>Each variable denotes the quantity of a specific object. If one product A earns \(p_1\) euros of profit, then \(x\) such products earn \(p_1 x\) euros. The profits from all the products are added up:</p>
+        <div class="formula fit">\[ P = \underbrace{p_1x}_{\text{from products A}} + \underbrace{p_2y}_{\text{from products B}} \to \max \]</div>
+        <p>In a minimization problem the cost is written in the same way: if one option A costs \(c_1\) euros and one option B costs \(c_2\) euros, then</p>
+        <div class="formula">\[ TC = c_1x + c_2y \to \min \]</div>
+        <p class="tip">The coefficients of the objective function – the profit, price or other indicator per unit – are taken from the conditions of the problem. Sometimes the objective function also contains a constant term, for example a fixed fee; such problems are studied in <a href="tema-4-nestandartiniai.html#pastovusis-narys">Section 4</a>.</p>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="card concept" id="apribojimai">
+      <div class="concept-head"><span class="num">3</span><h3>Constraints</h3></div>
+      <p><strong>Constraints</strong> are the conditions that every feasible plan has to satisfy. They are written as linear inequalities and collected in one system.</p>
+
+      <div class="subtype">
+        <h4>Technical constraints</h4>
+        <p>They arise from the resources of the firm (working time, materials, machine hours) or from the requirements that have to be met (demand, audience, the amount delivered). One inequality is written for each resource or requirement:</p>
+        <div class="formula">\[ \begin{gathered} \underbrace{a_1x + a_2y}_{\text{used}} \;\leq\; \underbrace{b}_{\text{available}} \\[6pt] \underbrace{a_1x + a_2y}_{\text{achieved}} \;\geq\; \underbrace{b}_{\text{required}} \end{gathered} \]</div>
+        <p>Here \(a_1\) is how much of the resource one unit of A uses (or how much of the requirement it meets), \(a_2\) is the same for one unit of B, and \(b\) is the amount available or required.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Natural constraints</h4>
+        <p>They arise from the meaning of the variables themselves. The most important are the <strong>non-negativity</strong> constraints: a firm cannot produce a negative number of items, so</p>
+        <div class="formula">\[ x;\, y \geq 0 \]</div>
+        <p>Natural constraints may also require the quantities to be whole numbers (integrality) or to take only the values 0 and 1 (binary).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>What the inequality sign means</h4>
+        <div class="tbl-wrap">
+          <table class="vtable req-tbl sign-tbl">
+            <thead><tr><th scope="col">In the problem</th><th scope="col">Sign</th><th scope="col">What it means in practice</th></tr></thead>
+            <tbody>
+              <tr><td>“available”, “no more than … can be allocated”, “at most … can be sold”</td><td>\(\leq\)</td><td>The resource is a limit <strong>from above</strong>: less than or exactly as much as is available may be used, but not more. Equality means that the resource is used up completely.</td></tr>
+              <tr><td>“at least”, “not less than”, “has to be reached”</td><td>\(\geq\)</td><td>The requirement is a limit <strong>from below</strong>: it may be exceeded, but it must not be left unmet. Equality means that the requirement is met exactly.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tip">Compare this with the <a href="tema-3-planavimas-vienintelis.html#modelis">planning problems of Topic 3</a>: there the resources had to be used up completely, so we wrote equations. In an LP problem part of a resource may remain unused, so inequalities are written. This is why there are very many possible plans, and the best one has to be chosen from them.</p>
+        <p>This course uses only the signs \(\leq\) and \(\geq\): the boundary value (equality) is always allowed.</p>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="card concept" id="standartiniai">
+      <div class="concept-head"><span class="num">4</span><h3>Standard problems</h3></div>
+      <p>The mathematical model of a problem is the objective function and, next to it, the system of all the constraints. When there are two variables, the model most often takes one of two standard forms:</p>
+      <div class="duo">
+        <div class="duo-card">
+          <h4>Standard maximization problem</h4>
+          \[ \begin{gathered} P = p_1x + p_2y \to \max \\[4pt] \begin{cases} a_{11}x + a_{12}y \;\htmlClass{hd}{\leq}\; b_1 \\ a_{21}x + a_{22}y \;\htmlClass{hd}{\leq}\; b_2 \\ \quad\vdots \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <ul>
+            <li>All the technical constraints have the sign \(\leq\): the resources are limited.</li>
+            <li>The feasible set is usually <strong>bounded</strong>.</li>
+            <li>Example: the largest possible profit from limited resources.</li>
+          </ul>
+        </div>
+        <div class="duo-card">
+          <h4>Standard minimization problem</h4>
+          \[ \begin{gathered} TC = c_1x + c_2y \to \min \\[4pt] \begin{cases} a_{11}x + a_{12}y \;\htmlClass{hd}{\geq}\; b_1 \\ a_{21}x + a_{22}y \;\htmlClass{hd}{\geq}\; b_2 \\ \quad\vdots \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <ul>
+            <li>All the technical constraints have the sign \(\geq\) – requirements that have to be met.</li>
+            <li>The feasible set is <strong>unbounded</strong>.</li>
+            <li>Example: the smallest possible cost when all the requirements are met.</li>
+          </ul>
+        </div>
+      </div>
+      <p>Problems that do not fit these forms – for example, when the same model contains both \(\leq\) and \(\geq\) constraints or the objective function contains a constant term – are called <strong>non-standard</strong>. They are solved by the same method.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>The general form with \(n\) variables</span></summary>
+        <div class="more-body small-math">
+          <p>Standard maximization problem:</p>
+          \[ \begin{gathered} P = p_1x_1 + p_2x_2 + \cdots + p_nx_n \to \max \\[4pt] \begin{cases} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \leq b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \leq b_2 \\ \quad\vdots \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n \leq b_m \\ x_1;\, x_2;\, \ldots;\, x_n \geq 0 \end{cases} \end{gathered} \]
+          <p>Standard minimization problem:</p>
+          \[ \begin{gathered} C = c_1x_1 + c_2x_2 + \cdots + c_nx_n \to \min \\[4pt] \begin{cases} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \geq b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \geq b_2 \\ \quad\vdots \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n \geq b_m \\ x_1;\, x_2;\, \ldots;\, x_n \geq 0 \end{cases} \end{gathered} \]
+          <p>The graphical method solves problems with two variables, where \(x_1 = x\), \(x_2 = y\). Problems with more variables are solved by the simplex method (Topic 5). The cost function may be denoted by \(C\) or \(TC\).</p>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving applied linear programming problems, the definitions of the introduced variables must be provided at the beginning of the solution. Each variable definition must clearly state that the variable represents the quantity of a specific object.</li>
+            <li>The solution must include the mathematical model of the problem – the objective function and the system of constraints. It must be clearly stated whether the objective function is to be maximized or minimized. All constraints, including the non-negativity constraints, must be clearly written together in one system, next to the objective function.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ SOLVING ============ -->
+  <section class="section" id="sprendimas" aria-labelledby="h-solve">
+    <h2 id="h-solve">How an LP problem is solved</h2>
+
+    <!-- 5 -->
+    <article class="card concept" id="leistinoji-aibe">
+      <div class="concept-head"><span class="num">5</span><h3>The feasible set and the optimal solution</h3></div>
+      <p>With the graphical method the problem is solved in two stages:</p>
+      <div class="phases">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>All possible plans</strong><span>The system of constraints – linear inequalities – is solved. Its solution set is the <em>feasible set</em>: all the plans that satisfy all the constraints.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>The best plan</strong><span>Of all the feasible solutions, the one at which the value of the objective function is the largest (max) or the smallest (min) is chosen. It is called the <em>optimal solution</em>.</span></div></div>
+      </div>
+
+      <div class="subtype">
+        <h4>Stage 1: the feasible set</h4>
+        <p>Every linear inequality in two variables defines a <strong>half-plane</strong>: the straight line \(ax + by = c\) divides the plane into two parts, and one of them is the solution set of the inequality. The solution set of the system is the <strong>intersection</strong> of all the half-planes – the points that satisfy all the inequalities at once. This is the <strong>feasible set</strong>.</p>
+        <p>Its corner points are called <strong>vertices</strong>. The feasible set may be <strong>bounded</strong> (a polygon) or <strong>unbounded</strong> (extending without limit in some direction).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Stage 2: the optimal vertex</h4>
+        <figure class="fig lp-fig">
+          <svg viewBox="0 0 320 232" role="img" aria-label="Diagram: the feasible set OABCD and parallel lines of the objective function; the largest value is reached at the vertex B">
+            <path class="lp-region" d="M40 205L40 23L118 49L196 114L235 205Z"/>
+            <path class="lp-line" d="M40 23L274 101M71.2 10L305.2 205M157 23L235 205"/>
+            <path class="lp-iso" d="M40 127L157 205M40 57.7L261 205M66 14.3L248 135.7"/>
+            <path class="ax" d="M36 205H310M40 209V8"/>
+            <path class="ah" d="M316 205l-9-4.5v9z"/>
+            <path class="ah" d="M40 2l-4.5 9h9z"/>
+            <path class="lp-arrow" d="M96 168L114 141"/>
+            <path class="lp-arrowhead" d="M118 135l-9.5 3.2 7 5z"/>
+            <circle class="pt" cx="40" cy="205" r="4"/>
+            <circle class="pt" cx="40" cy="23" r="4"/>
+            <circle class="pt-hi" cx="118" cy="49" r="6"/>
+            <circle class="pt" cx="196" cy="114" r="4"/>
+            <circle class="pt" cx="235" cy="205" r="4"/>
+            <text class="m" x="28" y="220">O</text>
+            <text class="m" x="24" y="27">A</text>
+            <text class="m b exam" x="112" y="38">B</text>
+            <text class="m" x="202" y="110">C</text>
+            <text class="m" x="236" y="222">D</text>
+            <text class="m" x="304" y="222">x</text>
+            <text class="m" x="48" y="12">y</text>
+            <text class="muted" x="122" y="170">P increases</text>
+          </svg>
+          <figcaption>The shaded feasible set \(OABCD\); the dashed lines are the points at which the objective function \(P\) takes the same value. The further a line is moved in the direction of the arrow, the larger the value of \(P\). The last point of the set that it touches is the vertex \(B\).</figcaption>
+        </figure>
+        <p>A linear objective function grows steadily in one direction across the feasible set, so it takes its largest (or smallest) value <strong>at one of the vertices of the set</strong>. The feasible set has finitely many vertices, so it is enough to:</p>
+        <ol class="steps-list">
+          <li>find all the vertices of the feasible set;</li>
+          <li>compute the value of the objective function at every vertex;</li>
+          <li>choose the largest (max) or the smallest (min) value.</li>
+        </ol>
+        <p>The answer is written together with the optimal plan, for example \(P_{\max}(x;\, y) = \ldots\) or \(TC_{\min}(x;\, y) = \ldots\)</p>
+        <p class="tip">The dashed lines of the objective function in the figure help to explain why the optimum is at a vertex. They do not have to be drawn when you solve a problem – it is enough to compute the values of the objective function at the vertices.</p>
+      </div>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Special cases</summary>
+        <div class="more-body">
+          <p>Sometimes a problem does not have a single optimal solution:</p>
+          <ul>
+            <li><strong>Multiple solutions.</strong> When the lines of the objective function are parallel to one of the sides of the feasible set, the same largest (or smallest) value is reached at two adjacent vertices and at every point of the segment between them. There are then infinitely many optimal solutions.</li>
+            <li><strong>Unbounded feasible set.</strong> When the feasible set is unbounded and the objective function is maximized, its value can grow without limit – there is no largest value.</li>
+            <li><strong>Infeasible set.</strong> When the constraints contradict one another, there is not a single point that satisfies all of them, so the problem has no solution.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ APPLICATIONS ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Applications</h2>
+    <p class="section-intro">First learn to solve systems of linear inequalities graphically, then three kinds of linear programming problems. Choose a section.</p>
+    <div class="model-grid" data-models="t4"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this topic can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 4</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 3</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

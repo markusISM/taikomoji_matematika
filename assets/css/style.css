@@ -843,6 +843,8 @@ svg .nl-br { stroke: var(--chart); stroke-width: 2.4; fill: none; }
   .vtable.goal-tbl td::before { display: block; font-size: .78rem; font-weight: 700; color: var(--muted); margin-bottom: 2px; }
   .vtable.goal-tbl td:first-child::before { content: "Siekiama kuo didesnio"; }
   .vtable.goal-tbl td:last-child::before { content: "Siekiama kuo mažesnio"; }
+  html[lang="en"] .vtable.goal-tbl td:first-child::before { content: "To be made as large as possible"; }
+  html[lang="en"] .vtable.goal-tbl td:last-child::before { content: "To be made as small as possible"; }
 }
 .duo { display: grid; gap: 12px; margin: 12px 0; }
 @media (min-width: 640px) { .duo { grid-template-columns: 1fr 1fr; } }

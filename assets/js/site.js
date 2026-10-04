@@ -173,7 +173,7 @@
       title: { lt: 'Matricos', en: 'Matrices' } },
     { id: 't3', num: 3, status: 'active', href: { lt: 'tema-3.html', en: 'tema-3.html' },
       title: { lt: 'Tiesinių lygčių sistemos', en: 'Systems of Linear Equations' } },
-    { id: 't4', num: 4, status: 'active', href: { lt: 'tema-4.html' },
+    { id: 't4', num: 4, status: 'active', href: { lt: 'tema-4.html', en: 'tema-4.html' },
       title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: 'Linear Programming: The Graphical Method' } },
     { id: 't5', num: 5, status: 'active', href: { lt: 'tema-5.html' },
       title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: 'Linear Programming: The Simplex Method' } },
@@ -231,16 +231,16 @@
     t4: [
       { id: 'm41', status: 'active', href: { lt: 'tema-4-nelygybiu-sistemos.html' },
         title: { lt: 'Tiesinių nelygybių sistemos', en: 'Systems of Linear Inequalities' },
-        desc: { lt: 'Pusplokštumės, leistinųjų sprendinių aibė ir jos viršūnės.' } },
+        desc: { lt: 'Pusplokštumės, leistinųjų sprendinių aibė ir jos viršūnės.', en: 'Half-planes, the feasible set and its vertices.' } },
       { id: 'm42', status: 'active', href: { lt: 'tema-4-maksimizavimas.html' },
         title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' },
-        desc: { lt: 'Didžiausias pelnas ar pajamos, kai ištekliai riboti: apribojimai \\(\\leq\\).' } },
+        desc: { lt: 'Didžiausias pelnas ar pajamos, kai ištekliai riboti: apribojimai \\(\\leq\\).', en: 'The largest profit or revenue when resources are limited: constraints \\(\\leq\\).' } },
       { id: 'm43', status: 'active', href: { lt: 'tema-4-minimizavimas.html' },
         title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' },
-        desc: { lt: 'Mažiausios sąnaudos, kai reikalavimai turi būti įvykdyti: apribojimai \\(\\geq\\).' } },
+        desc: { lt: 'Mažiausios sąnaudos, kai reikalavimai turi būti įvykdyti: apribojimai \\(\\geq\\).', en: 'The smallest cost when the requirements have to be met: constraints \\(\\geq\\).' } },
       { id: 'm44', status: 'active', href: { lt: 'tema-4-nestandartiniai.html' },
         title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' },
-        desc: { lt: 'Visumos dalys, mišiniai, pristatymo planai ir maišyti apribojimų ženklai.' } }
+        desc: { lt: 'Visumos dalys, mišiniai, pristatymo planai ir maišyti apribojimų ženklai.', en: 'Shares of a total, mixtures, delivery plans and mixed constraint signs.' } }
     ],
     t5: [
       { id: 'm51', status: 'active', href: { lt: 'tema-5-maksimizavimas.html' },
@@ -281,7 +281,7 @@
                title: { lt: 'Racionalusis planavimas (daug sprendinių)', en: 'Rational Planning (Infinitely Many Solutions)' } },
     m33:     { parent: 't3', topic: 't3', model: 'm33', href: { lt: 'tema-3-stabiliosios-rinkos-dalys.html', en: 'tema-3-stabiliosios-rinkos-dalys.html' },
                title: { lt: 'Stabiliosios rinkos dalys', en: 'Long-Run Market Shares' } },
-    t4:      { parent: 'home', href: { lt: 'tema-4.html', en: null },
+    t4:      { parent: 'home', href: { lt: 'tema-4.html', en: 'tema-4.html' },
                title: { lt: '4 tema', en: 'Topic 4' } },
     m41:     { parent: 't4', topic: 't4', model: 'm41', href: { lt: 'tema-4-nelygybiu-sistemos.html', en: null },
                title: { lt: 'Tiesinių nelygybių sistemos', en: 'Systems of Linear Inequalities' } },
