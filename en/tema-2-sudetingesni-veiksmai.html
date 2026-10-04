@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced Matrix Applications · Topic 2 · Applied Mathematics</title>
+<meta name="description" content="Matrix multiplication and the transpose in economic and managerial situations: the order of multiplication, sizes, the structure of the new matrix, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-2-sudetingesni-veiksmai.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=40">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=40"></script>
+</head>
+<body data-page="m22">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 2 · Applications · Section 2</span>
+    <h1>Advanced Matrix Applications</h1>
+    <p class="lead">This section shows how matrix multiplication and the transpose can be applied in economic and managerial situations.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Model</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">The model</h2>
+
+    <article class="card">
+      <p><strong>Transpose.</strong> If \(A\) is an \(m \times n\) matrix with entries \(a_{ij}\), its transpose \(A^T\) is the \(n \times m\) matrix with entries \(a_{ji}\): the rows of \(A\) become the columns of \(A^T\). Transposing changes nothing about the information in a table; it only turns the table round. In applications it is needed when two tables have to be multiplied but their headings do not line up.</p>
+      <p><strong>Multiplication.</strong> If \(A\) is a matrix of size \(m \times n\) and \(B\) is a matrix of size \(n \times k\), then the matrix product \(AB\) is a matrix \(C\) of size \(m \times k\), whose entry \(c_{ij}\) is the sum of the products of the entries of the <span class="nw">\(i\)th</span> row of \(A\) and the corresponding entries of the <span class="nw">\(j\)th</span> column of \(B\):</p>
+      <div class="formula">\[ (m \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times k) = m \times k \]</div>
+      <div class="formula">\[ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{in}b_{nj} \]</div>
+      <p><a href="tema-2.html#sandauga">Multiplication of matrices in detail – on the Topic 2 page →</a></p>
+
+      <h3 class="subhead" style="margin-top:22px">The rule that matters in applications</h3>
+      <p>The number of columns of the first matrix must equal the number of rows of the second, which means that the columns of the first table and the rows of the second must describe the same items. Those items are the ones that are summed over, and they disappear from the answer.</p>
+      <p><strong>What is left is:</strong></p>
+      <ul>
+        <li>the rows of the answer are the rows of the first matrix;</li>
+        <li>the columns of the answer are the columns of the second matrix.</li>
+      </ul>
+      <div class="dimchain" aria-label="Departments by goods, multiplied by goods by suppliers, equals departments by suppliers">
+        <span class="dc">departments × <b>goods</b></span>
+        <span class="op">·</span>
+        <span class="dc"><b>goods</b> × suppliers</span>
+        <span class="op">=</span>
+        <span class="dc res">departments × suppliers</span>
+      </div>
+      <p class="formula-note" style="text-align:center">Example 1: the goods are summed over, so they disappear from the answer.</p>
+      <p>This is what decides the order of the two matrices. Multiplication is not commutative – in general \(A\cdot B \neq B\cdot A\) – and only one of the two orders has a business meaning, so the order is never a matter of choice.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Combining several tables</summary>
+        <div class="more-body">
+          <p>Two further rules are used when several tables are combined: \(A(B + C) = AB + AC\) and \((A + B)C = AC + BC\). They allow, for example, quantities to be multiplied by a margin \((D - C)\) instead of computing revenue and cost separately.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>State what the rows and the columns of each table mean, and write down the size of each matrix.</li>
+        <li>Decide what the answer has to contain: which classification labels its rows and which labels its columns. The classification that appears in both tables is the one that will be summed over and will not appear in the answer.</li>
+        <li>Arrange the two matrices so that the shared classification is the columns of the first and the rows of the second. If one of the tables is arranged the other way round, transpose it.</li>
+        <li>Check conformability: \((m \times n)\cdot(n \times k) = m \times k\). If the two inner numbers are not equal, the product does not exist and something has been arranged wrongly.</li>
+        <li>Compute each entry as a row times a column: multiply the corresponding entries and add.</li>
+        <li>Label the rows and the columns of the answer, state in words what one entry means, and then answer the managerial question – compare the alternatives, choose the cheaper one, or check the result against a limit.</li>
+      </ol>
+
+      <div class="model-note"><strong>Checking the order.</strong> Before multiplying, say the sentence out loud: “units of a good” times “euros per unit of that good” gives “euros”. If the sentence does not make sense, the matrices are in the wrong order or one of them has to be transposed.</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The wrong order.</strong> Matrix multiplication is not commutative: only one of the two orders has a business meaning.</li>
+            <li><strong>A table that has not been transposed.</strong> If the shared classification is arranged the other way round in one of the tables, transpose that table (Example 3).</li>
+            <li><strong>Sizes that do not match.</strong> If the two inner numbers are not equal, the product does not exist and something has been arranged wrongly.</li>
+            <li><strong>An unexplained result.</strong> State what the rows and the columns of the answer mean, and explain at least one entry in words.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When performing matrix multiplication, it is required to indicate the matrices being multiplied, their dimensions, and the structure of the resulting matrix. It is not necessary to rewrite all matrices or to show every arithmetic calculation.</li>
+            <li>Do not forget to provide an interpretation of the result if the problem requires it. The interpretation must explain the meaning of the entries of the resulting matrix.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: guideline section 3 (author’s example) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Office supplies: which supplier is cheaper</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The four departments of an audit company ordered the quantities of office supplies shown in the first table.
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th>Quantities</th><th>Paper</th><th>Pens</th><th>Highlighters</th></tr></thead>
+            <tbody>
+              <tr><td>Department no. 1</td><td>8</td><td>10</td><td>6</td></tr>
+              <tr><td>Department no. 2</td><td>5</td><td>12</td><td>4</td></tr>
+              <tr><td>Department no. 3</td><td>2</td><td>6</td><td>2</td></tr>
+              <tr><td>Department no. 4</td><td>3</td><td>7</td><td>7</td></tr>
+            </tbody>
+          </table>
+        </div>
+        The prices of these goods, in euros, at two suppliers are shown in the second table.
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th>Prices</th><th>Supplier I</th><th>Supplier II</th></tr></thead>
+            <tbody>
+              <tr><td>Paper</td><td>5</td><td>6</td></tr>
+              <tr><td>Pens</td><td>1.2</td><td>1</td></tr>
+              <tr><td>Highlighters</td><td>1.5</td><td>1.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        Calculate the expenses of each department when purchasing from each supplier.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The matrices</span></h4>
+          <p>Write the two tables as matrices:</p>
+          <div class="mats">
+            <span>\(A = \begin{pmatrix} 8 &amp; 10 &amp; 6 \\ 5 &amp; 12 &amp; 4 \\ 2 &amp; 6 &amp; 2 \\ 3 &amp; 7 &amp; 7 \end{pmatrix}\)</span>
+            <span>\(B = \begin{pmatrix} 5 &amp; 6 \\ 1.2 &amp; 1 \\ 1.5 &amp; 1.8 \end{pmatrix}\)</span>
+          </div>
+          <p>\(A\) has size \(4 \times 3\) (departments by goods) and \(B\) has size \(3 \times 2\) (goods by suppliers).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The order of multiplication and the sizes</span></h4>
+          <p>The answer must show departments in the rows and suppliers in the columns; the goods are what gets summed over, because the expense of a department is the sum over all the goods it ordered. The goods are already the columns of \(A\) and the rows of \(B\), so the correct product is \(A\cdot B\), and it is conformable:</p>
+          \[ (4 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 2) = 4 \times 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The structure of the new matrix</span></h4>
+          <p>The product \(C = A\cdot B\) has four rows (the departments) and two columns (the suppliers):</p>
+          \[ C = A\cdot B = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \\ c_{31} &amp; c_{32} \\ c_{41} &amp; c_{42} \end{pmatrix} \]
+          <p>The entry \(c_{i1}\) is the expense of department no. \(i\) when purchasing from Supplier I, and \(c_{i2}\) when purchasing from Supplier II.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Computing the entries</span></h4>
+          <p>Each entry is a row of quantities times a column of prices. For Department no. 1 at Supplier I:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{8} &amp; \htmlClass{hr}{10} &amp; \htmlClass{hr}{6} \\ 5 &amp; 12 &amp; 4 \\ 2 &amp; 6 &amp; 2 \\ 3 &amp; 7 &amp; 7 \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{5} &amp; 6 \\ \htmlClass{hc}{1.2} &amp; 1 \\ \htmlClass{hc}{1.5} &amp; 1.8 \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 8\cdot 5 + 10\cdot 1.2 + 6\cdot 1.5 \\ &amp;= 40 + 12 + 9 = 61 \end{aligned} \]
+          <p>The remaining seven entries are computed in the same way:</p>
+          \[ A\cdot B = \begin{pmatrix} 61 &amp; 68.8 \\ 45.4 &amp; 49.2 \\ 20.2 &amp; 21.6 \\ 33.9 &amp; 37.6 \end{pmatrix} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Computing all the entries</summary>
+            <div class="more-body">
+              \[ \begin{aligned} c_{12} &amp;= 8\cdot 6 + 10\cdot 1 + 6\cdot 1.8 \\ &amp;= 48 + 10 + 10.8 = 68.8 \\ c_{21} &amp;= 5\cdot 5 + 12\cdot 1.2 + 4\cdot 1.5 \\ &amp;= 25 + 14.4 + 6 = 45.4 \\ c_{22} &amp;= 5\cdot 6 + 12\cdot 1 + 4\cdot 1.8 \\ &amp;= 30 + 12 + 7.2 = 49.2 \\ c_{31} &amp;= 2\cdot 5 + 6\cdot 1.2 + 2\cdot 1.5 \\ &amp;= 10 + 7.2 + 3 = 20.2 \\ c_{32} &amp;= 2\cdot 6 + 6\cdot 1 + 2\cdot 1.8 \\ &amp;= 12 + 6 + 3.6 = 21.6 \\ c_{41} &amp;= 3\cdot 5 + 7\cdot 1.2 + 7\cdot 1.5 \\ &amp;= 15 + 8.4 + 10.5 = 33.9 \\ c_{42} &amp;= 3\cdot 6 + 7\cdot 1 + 7\cdot 1.8 \\ &amp;= 18 + 7 + 12.6 = 37.6 \end{aligned} \]
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The meaning of the result</span></h4>
+          <p>The rows of the answer are the four departments and the columns are the two suppliers, so each entry is the amount in euros that one department would spend at one supplier. Department no. 1, for example, would spend 61 euros at Supplier I and 68.80 euros at Supplier II.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Comparing the suppliers</span></h4>
+          <p>Comparing the two columns row by row, Supplier I is cheaper for every department. The totals of the columns are 160.50 euros at Supplier I and 177.20 euros at Supplier II.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Buying from Supplier I, the four departments would spend 61.00, 45.40, 20.20 and 33.90 euros; buying from Supplier II they would spend 68.80, 49.20, 21.60 and 37.60 euros. Supplier I is cheaper for every department and for the company as a whole, 160.50 euros against 177.20 euros, so the company should buy from Supplier I and save 16.70 euros on this order.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: guideline problem 1 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Revenue and cost of the coffee shops</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A coffee shop chain has three shops selling three products: coffee, sandwiches and cakes. The quantities sold in a week are given in matrix \(Q\). The selling price and the unit cost of each product, in euros, are given in matrix \(B\). Find the weekly revenue and cost of each shop.
+        <div class="mats">
+          <span>\(Q = \begin{pmatrix} 900 &amp; 300 &amp; 200 \\ 500 &amp; 600 &amp; 100 \\ 1400 &amp; 150 &amp; 250 \end{pmatrix}\)</span>
+          <span>\(B = \begin{pmatrix} 3 &amp; 0.9 \\ 4.5 &amp; 2.7 \\ 2.8 &amp; 1.4 \end{pmatrix}\)</span>
+        </div>
+        <p style="margin:8px 0 0">The rows of matrix \(Q\) are Shop 1, Shop 2 and Shop 3, and its columns are coffee, sandwiches and cakes. The rows of matrix \(B\) are the same three products, and its columns are the selling price and the unit cost.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Rows of \(Q\): Shop 1, Shop 2, Shop 3. Columns of \(Q\): coffee, sandwiches, cakes. Rows of \(B\): the same three products. Columns of \(B\): selling price, unit cost. \(Q\) has size \(3 \times 3\) and \(B\) has size \(3 \times 2\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The order of multiplication and the sizes</span></h4>
+          <p>The answer must show the shops in the rows and revenue and cost in the columns; the products are summed over. They are the columns of \(Q\) and the rows of \(B\), so the product is \(Q\cdot B\), of size:</p>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 2) = 3 \times 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The structure of the new matrix</span></h4>
+          <p>The product \(C = Q\cdot B\) has three rows (the shops) and two columns (revenue and cost):</p>
+          \[ C = Q\cdot B = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \\ c_{31} &amp; c_{32} \end{pmatrix} \]
+          <p>The entry \(c_{i1}\) is the weekly revenue of Shop \(i\), and \(c_{i2}\) is its cost.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Computing the entries</span></h4>
+          <p>Each entry is a row of quantities times a column of euros per unit. For Shop 1:</p>
+          \[ \begin{aligned} c_{11} &amp;= 900\cdot 3 + 300\cdot 4.5 + 200\cdot 2.8 \\ &amp;= 2700 + 1350 + 560 = 4610 \end{aligned} \]
+          \[ \begin{aligned} c_{12} &amp;= 900\cdot 0.9 + 300\cdot 2.7 + 200\cdot 1.4 \\ &amp;= 810 + 810 + 280 = 1900 \end{aligned} \]
+          <p>Computing the remaining entries in the same way:</p>
+          \[ Q\cdot B = \begin{pmatrix} 4610 &amp; 1900 \\ 4480 &amp; 2210 \\ 5575 &amp; 2015 \end{pmatrix} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Computing all the entries</summary>
+            <div class="more-body">
+              \[ \small\begin{aligned} c_{21} &amp;= 500\cdot 3 + 600\cdot 4.5 + 100\cdot 2.8 \\ &amp;= 1500 + 2700 + 280 = 4480 \\ c_{22} &amp;= 500\cdot 0.9 + 600\cdot 2.7 + 100\cdot 1.4 \\ &amp;= 450 + 1620 + 140 = 2210 \\ c_{31} &amp;= 1400\cdot 3 + 150\cdot 4.5 + 250\cdot 2.8 \\ &amp;= 4200 + 675 + 700 = 5575 \\ c_{32} &amp;= 1400\cdot 0.9 + 150\cdot 2.7 + 250\cdot 1.4 \\ &amp;= 1260 + 405 + 350 = 2015 \end{aligned} \]
+            </div>
+          </details>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The weekly revenues of the three shops are 4610, 4480 and 5575 euros and their costs of goods are 1900, 2210 and 2015 euros.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: guideline problem 2 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Labour cost: which workshop to choose</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A furniture company makes chairs, tables and bookcases. The time in hours needed in each department to make one unit of each product is given in the first table. The company can place the order in either of its two workshops, whose hourly wage rates are given in the second table. Find the labour cost of one unit of each product in each workshop and advise where the order should be placed.
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th>Hours per unit</th><th>Chair</th><th>Table</th><th>Bookcase</th></tr></thead>
+            <tbody>
+              <tr><td>Cutting</td><td>0.5</td><td>1.2</td><td>0.8</td></tr>
+              <tr><td>Assembly</td><td>0.8</td><td>1.5</td><td>1.4</td></tr>
+              <tr><td>Finishing</td><td>0.4</td><td>0.9</td><td>0.6</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th>Wage rate, EUR/h</th><th>Workshop A</th><th>Workshop B</th></tr></thead>
+            <tbody>
+              <tr><td>Cutting</td><td>14</td><td>12</td></tr>
+              <tr><td>Assembly</td><td>16</td><td>15</td></tr>
+              <tr><td>Finishing</td><td>18</td><td>16</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The matrices</span></h4>
+          <div class="mats">
+            <span>\(H = \begin{pmatrix} 0.5 &amp; 1.2 &amp; 0.8 \\ 0.8 &amp; 1.5 &amp; 1.4 \\ 0.4 &amp; 0.9 &amp; 0.6 \end{pmatrix}\)</span>
+            <span>\(W = \begin{pmatrix} 14 &amp; 12 \\ 16 &amp; 15 \\ 18 &amp; 16 \end{pmatrix}\)</span>
+          </div>
+          <p>The rows of \(H\) are the departments (cutting, assembly, finishing) and its columns are the products; it is a \(3 \times 3\) matrix. The rows of \(W\) are the same departments and its columns are the workshops; it is a \(3 \times 2\) matrix.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Transposing</span></h4>
+          <p>The answer must show the products in the rows and the workshops in the columns; the departments are summed over, because the labour cost of a product is the sum of what is paid in each department. But in \(H\) the departments are the rows, not the columns, so \(H\) is arranged the wrong way round. Transposing it puts the products in the rows and the departments in the columns:</p>
+          \[ H^T = \begin{pmatrix} 0.5 &amp; 0.8 &amp; 0.4 \\ 1.2 &amp; 1.5 &amp; 0.9 \\ 0.8 &amp; 1.4 &amp; 0.6 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The sizes</span></h4>
+          <p>Now the departments are the columns of \(H^T\) and the rows of \(W\), so the product \(H^T\cdot W\) is conformable and of the required size:</p>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 2) = 3 \times 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The structure of the new matrix</span></h4>
+          <p>The product \(C = H^T\cdot W\) has three rows (chair, table, bookcase) and two columns (Workshops A and B):</p>
+          \[ C = H^T\cdot W = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \\ c_{31} &amp; c_{32} \end{pmatrix} \]
+          <p>The entry \(c_{i1}\) is the labour cost of one unit of product \(i\) in Workshop A, and \(c_{i2}\) in Workshop B.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Computing the entries</span></h4>
+          <p>Each entry is hours per unit times euros per hour, which gives euros per unit. For a chair in Workshop A:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{0.5} &amp; \htmlClass{hr}{0.8} &amp; \htmlClass{hr}{0.4} \\ 1.2 &amp; 1.5 &amp; 0.9 \\ 0.8 &amp; 1.4 &amp; 0.6 \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{14} &amp; 12 \\ \htmlClass{hc}{16} &amp; 15 \\ \htmlClass{hc}{18} &amp; 16 \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 0.5\cdot 14 + 0.8\cdot 16 + 0.4\cdot 18 \\ &amp;= 7 + 12.8 + 7.2 = 27 \end{aligned} \]
+          <p>Computing the remaining five entries in the same way:</p>
+          \[ H^T\cdot W = \begin{pmatrix} 27 &amp; 24.4 \\ 57 &amp; 51.3 \\ 44.4 &amp; 40.2 \end{pmatrix} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Computing all the entries</summary>
+            <div class="more-body">
+              \[ \begin{aligned} c_{12} &amp;= 0.5\cdot 12 + 0.8\cdot 15 + 0.4\cdot 16 \\ &amp;= 6 + 12 + 6.4 = 24.4 \\ c_{21} &amp;= 1.2\cdot 14 + 1.5\cdot 16 + 0.9\cdot 18 \\ &amp;= 16.8 + 24 + 16.2 = 57 \\ c_{22} &amp;= 1.2\cdot 12 + 1.5\cdot 15 + 0.9\cdot 16 \\ &amp;= 14.4 + 22.5 + 14.4 = 51.3 \\ c_{31} &amp;= 0.8\cdot 14 + 1.4\cdot 16 + 0.6\cdot 18 \\ &amp;= 11.2 + 22.4 + 10.8 = 44.4 \\ c_{32} &amp;= 0.8\cdot 12 + 1.4\cdot 15 + 0.6\cdot 16 \\ &amp;= 9.6 + 21 + 9.6 = 40.2 \end{aligned} \]
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Comparison</span></h4>
+          <p>The rows are the three products and the columns the two workshops, so each entry is the labour cost of one unit. Workshop B is cheaper for every product: by 2.60 euros on a chair, 5.70 euros on a table and 4.20 euros on a bookcase.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The labour cost of one unit is 27.00 euros for a chair, 57.00 for a table and 44.40 for a bookcase in Workshop A, against 24.40, 51.30 and 40.20 euros in Workshop B. Workshop B has the lower labour cost for every product, so the whole order should be placed there. Note that the calculation was only possible after transposing the table of hours, because it was published with the departments in the rows.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: guideline problem 3 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Is there enough capacity in the departments?</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A factory plans to produce 400 units of model M1, 250 units of model M2 and 150 units of model M3 next month. The time in hours required by one unit of each model in the machining, assembly and testing departments is given in matrix \(T\). The monthly capacities of the three departments are 2000, 1600 and 800 hours. Find the total number of hours required in each department and check whether the plan can be carried out.
+        <div class="mats">
+          <span>\(T = \begin{pmatrix} 2 &amp; 1.5 &amp; 0.5 \\ 3 &amp; 2 &amp; 1 \\ 4 &amp; 3 &amp; 1.5 \end{pmatrix}\)</span>
+        </div>
+        <p style="margin:8px 0 0">The rows of matrix \(T\) are the models M1, M2 and M3, and its columns are machining, assembly and testing; the entries are hours per unit.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Rows of \(T\): models M1, M2, M3. Columns of \(T\): machining, assembly, testing. Entries: hours per unit. The planned output is written as a row matrix \(q\), whose columns are the same three models.</p>
+          \[ q = \begin{pmatrix} 400 &amp; 250 &amp; 150 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The order of multiplication and the sizes</span></h4>
+          <p>The answer must be a single row showing one figure per department, so the departments must be the columns of the answer. They are the columns of \(T\). The models are summed over, and they are the columns of \(q\) and the rows of \(T\), so the product is \(q\cdot T\):</p>
+          \[ (1 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 3) = 1 \times 3 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The structure of the new matrix</span></h4>
+          <p>The product \(C = q\cdot T\) has one row and three columns (the departments):</p>
+          \[ C = q\cdot T = \begin{pmatrix} c_{11} &amp; c_{12} &amp; c_{13} \end{pmatrix} \]
+          <p>The entries \(c_{11}\), \(c_{12}\), \(c_{13}\) are the machining, assembly and testing hours required by the plan.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Computing the entries</span></h4>
+          <p>Each entry is units times hours per unit, which gives hours. For machining:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{400} &amp; \htmlClass{hr}{250} &amp; \htmlClass{hr}{150} \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{2} &amp; 1.5 &amp; 0.5 \\ \htmlClass{hc}{3} &amp; 2 &amp; 1 \\ \htmlClass{hc}{4} &amp; 3 &amp; 1.5 \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 400\cdot 2 + 250\cdot 3 + 150\cdot 4 \\ &amp;= 800 + 750 + 600 = 2150 \end{aligned} \]
+          <p>The other two entries are found in the same way:</p>
+          \[ \begin{aligned} c_{12} &amp;= 400\cdot 1.5 + 250\cdot 2 + 150\cdot 3 \\ &amp;= 600 + 500 + 450 = 1550 \\ c_{13} &amp;= 400\cdot 0.5 + 250\cdot 1 + 150\cdot 1.5 \\ &amp;= 200 + 250 + 225 = 675 \end{aligned} \]
+          \[ q\cdot T = \begin{pmatrix} 2150 &amp; 1550 &amp; 675 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Comparison with the capacities</span></h4>
+          <p>The entries are the hours the plan would require in machining, assembly and testing. Comparing them with the capacities of 2000, 1600 and 800 hours, assembly and testing have spare capacity of 50 and 125 hours, but machining would need 2150 hours against a capacity of 2000.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The plan requires 2150 hours of machining, 1550 hours of assembly and 675 hours of testing. The plan cannot be carried out as it stands: machining is short of 150 hours, while assembly and testing are under-used. The factory must either add 150 hours of machining capacity, for example by overtime or subcontracting, or reduce the planned output of the models that use machining most heavily.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE PROBLEMS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: state the order of multiplication, the sizes and the structure of the new matrix, then compute the entries. Finally, check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A paint manufacturer produces matt, satin and gloss paint at two plants. The monthly output (\(Q\)) of each plant, in tonnes, and the cost (\(B\)) of producing one tonne of each kind of paint, in euros, are recorded in the matrices:</p>
+          <div class="mats">
+            <span>\(Q = \begin{pmatrix} 20 &amp; 15 &amp; 10 \\ 12 &amp; 18 &amp; 25 \end{pmatrix}\)</span>
+            <span>\(B = \begin{pmatrix} 300 &amp; 80 \\ 420 &amp; 110 \\ 260 &amp; 70 \end{pmatrix}\)</span>
+          </div>
+          <p>In \(Q\) the two rows are plants I and II and the three columns are matt, satin and gloss paint. In \(B\) the three rows are the three kinds of paint and the two columns are the cost of materials and the cost of energy. Determine the monthly cost of materials and of energy at each plant, and the total monthly cost of each plant.</p>
+        </div>
+        <div class="q-answer">
+          <p>The monthly costs are</p>
+          \[ Q\cdot B = \begin{pmatrix} 14900 &amp; 3950 \\ 17660 &amp; 4690 \end{pmatrix} \]
+          <p>The first column is the cost of materials and the second the cost of energy, in euros. Plant I spends 14900 on materials and 3950 on energy, 18850 euros in all; plant II spends 17660 and 4690, 22350 euros in all. The two plants together spend 41200 euros a month.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A textile mill weaves three fabrics – poplin, denim and twill – out of three inputs. The amount of each input needed for 100 metres of each fabric, in kilograms, and the price of one kilogram of each input charged by two suppliers, in euros, are recorded in the matrices:</p>
+          <div class="mats">
+            <span>\(M = \begin{pmatrix} 40 &amp; 25 &amp; 30 \\ 3 &amp; 5 &amp; 4 \\ 2 &amp; 3 &amp; 2 \end{pmatrix}\)</span>
+            <span>\(W = \begin{pmatrix} 20 &amp; 10 \\ 120 &amp; 160 \\ 180 &amp; 220 \end{pmatrix}\)</span>
+          </div>
+          <p>In \(M\) the three rows are the inputs – yarn, dye and finishing agent – and the three columns are the three fabrics. In \(W\) the three rows are the same three inputs and the two columns are suppliers I and II. Determine the cost of the inputs for 100 metres of each fabric when everything is bought from supplier I and when everything is bought from supplier II. Which supplier is cheaper for each fabric?</p>
+        </div>
+        <div class="q-answer">
+          <p>The matrices cannot be multiplied as they stand; the input classification has to be shared, so the first matrix is transposed:</p>
+          \[ M^T\cdot W = \begin{pmatrix} 1520 &amp; 1320 \\ 1640 &amp; 1710 \\ 1440 &amp; 1380 \end{pmatrix} \]
+          <p>The three rows are poplin, denim and twill and the two columns are the two suppliers, in euros per 100 metres. Supplier II is cheaper for poplin (by 200 euros) and for twill (by 60 euros), and supplier I is cheaper for denim (by 70 euros).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A toy factory plans to make 40 batches of wooden cars, 60 batches of building blocks and 25 batches of puzzles next month. Each batch has to pass through three machines, and the time one batch needs on each machine, in hours, is recorded in the matrix \(T\):</p>
+          <div class="mats">
+            <span>\(q = \begin{pmatrix} 40 &amp; 60 &amp; 25 \end{pmatrix}\)</span>
+            <span>\(T = \begin{pmatrix} 4 &amp; 2 &amp; 3 \\ 2 &amp; 3 &amp; 1 \\ 5 &amp; 4 &amp; 6 \end{pmatrix}\)</span>
+          </div>
+          <p>The three rows of \(T\) are the three kinds of toy and the three columns are the moulding, the assembly and the painting machine. Determine how many hours the plan requires on each machine.</p>
+        </div>
+        <div class="q-answer">
+          <p>The plan requires</p>
+          \[ q\cdot T = \begin{pmatrix} 405 &amp; 360 &amp; 330 \end{pmatrix} \]
+          <p>hours on the moulding, the assembly and the painting machine respectively.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 2</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
