@@ -86,7 +86,8 @@
       meansChart: 'Gamybos būdų bendrųjų sąnaudų tiesės',
       lowestCost: 'Mažiausios sąnaudos',
       crossPoint: 'Susikirtimo taškas',
-      cheapest: 'pigiausias'
+      cheapest: 'pigiausias',
+      inOther: '(anglų k.)'
     },
     en: {
       courseShort: 'Applied Mathematics',
@@ -155,7 +156,8 @@
       meansChart: 'Total cost lines of the production methods',
       lowestCost: 'Lowest cost',
       crossPoint: 'Intersection point',
-      cheapest: 'cheapest'
+      cheapest: 'cheapest',
+      inOther: '(in Lithuanian)'
     }
   };
 
@@ -175,7 +177,7 @@
       title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: 'Linear Programming: The Graphical Method' } },
     { id: 't5', num: 5, status: 'active', href: { lt: 'tema-5.html' },
       title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: 'Linear Programming: The Simplex Method' } },
-    { id: 'midterm', type: 'exam', href: { lt: 'tarpinis-egzaminas.html' },
+    { id: 'midterm', type: 'exam', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
       title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
     { id: 't6', num: 6, status: 'soon', title: { lt: 'Pirmos eilės išvestinės', en: 'The First Order Derivative' } },
     { id: 't7', num: 7, status: 'soon', title: { lt: 'Aukštesnės eilės išvestinės', en: 'The Higher Order Derivative' } },
@@ -297,7 +299,7 @@
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
-    midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: null },
+    midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
                title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
     final:   { parent: 'home', href: { lt: 'baigiamasis-egzaminas.html', en: null },
                title: { lt: 'Baigiamasis egzaminas', en: 'Final exam' } }
@@ -1292,6 +1294,44 @@
   }
 
   /* ------------------------------------------------------------------
+     Nuorodos į puslapius, kurių šia kalba dar nėra.
+     Turinio nuoroda į to paties aplanko failą (pvz., „tema-2-...html#pavyzdys-1“),
+     kurio PAGES įraše href[LANG] dar tuščias, nukreipiama į kitos kalbos puslapį,
+     o po nuorodos tekstu pridedamas prierašas (T.inOther). Kai puslapis sukuriamas
+     ir jo vardas įrašomas į PAGES, nuoroda ima vesti į jį automatiškai.
+     ------------------------------------------------------------------ */
+  function resolveLinks() {
+    var byFile = {};
+    Object.keys(PAGES).forEach(function (k) {
+      var h = PAGES[k].href || {};
+      if (h.lt) byFile[h.lt] = h;
+      if (h.en) byFile[h.en] = h;
+    });
+    $all('main a[href]').forEach(function (a) {
+      var raw = a.getAttribute('href');
+      var m = /^([a-z0-9-]+\.html)(#.*)?$/i.exec(raw || '');
+      if (!m) return;
+      var h = byFile[m[1]];
+      if (!h || h[LANG]) return;
+      var target = h[OTHER];
+      if (!target) return;
+      a.setAttribute('href', '../' + OTHER + '/' + target + (m[2] || ''));
+      a.setAttribute('hreflang', OTHER);
+      var note = document.createElement('span');
+      note.className = 'lang-note';
+      note.textContent = ' ' + T.inOther;
+      var txt = a.lastChild;
+      if (txt && txt.nodeType === 3 && /\s*→\s*$/.test(txt.nodeValue)) {
+        txt.nodeValue = txt.nodeValue.replace(/\s*→\s*$/, '');
+        a.appendChild(note);
+        a.appendChild(document.createTextNode(' →'));
+      } else {
+        a.appendChild(note);
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------
      Paleidimas
      ------------------------------------------------------------------ */
   function init() {
@@ -1302,6 +1342,7 @@
     buildModelGrid();
     buildPager();
     fillI18n();
+    resolveLinks();
     $all('[data-widget="market-chart"]').forEach(initMarketChart);
     $all('[data-widget="breakeven-chart"]').forEach(initBreakEvenChart);
     $all('[data-widget="means-chart"]').forEach(initMeansChart);

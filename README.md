@@ -31,7 +31,7 @@ lt/                            lietuviški puslapiai
   tema-5-minimizavimas.html    2 skyrius: standartiniai minimizavimo uždaviniai (koeficientų lentelė, transponavimas, dualusis uždavinys)
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
-en/                            angliški puslapiai: index.html, tema-1.html, tema-1-nusidevejimas.html (kiti – kuriami)
+en/                            angliški puslapiai: index.html, tema-1.html, tema-1-nusidevejimas.html, tarpinis-egzaminas.html (kiti – kuriami)
 assets/
   css/style.css                visas dizainas (spalvos – :root bloke viršuje)
   js/site.js                   UI užrašai LT/EN, kurso struktūra, visi interaktyvūs elementai
@@ -143,3 +143,5 @@ Grafikų užrašai (ašys, legenda) imami iš `site.js` žodyno abiem kalbomis. 
 UI užrašai abiem kalbomis jau yra `site.js` skyriuje „1. UI UŽRAŠAI“. Kuriant EN puslapį:
 nukopijuokite LT puslapį į `en/`, pakeiskite `<html lang="en">`, išverskite turinį ir įrašykite failo vardą į `PAGES[...].href.en`.
 Kalbos perjungiklis automatiškai ves į atitinkamą puslapį (kol jo nėra – į `en/index.html`).
+
+Nuorodos turinyje rašomos į to paties aplanko failą (pvz., `tema-4-maksimizavimas.html#grafikas`). Jei to puslapio šia kalba dar nėra (`PAGES[...].href.en` tuščias), site.js funkcija `resolveLinks()` nukreipia nuorodą į kitos kalbos puslapį ir prideda prierašą (`T.inOther`, EN – „(in Lithuanian)“). Įrašius naujo puslapio vardą į `PAGES`, nuorodos ima vesti į jį savaime – puslapių taisyti nereikia.

@@ -987,6 +987,7 @@ svg text.c5 { fill: var(--tip); }
 .req-ex-h { margin: 0 0 6px; font-size: .72rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; color: var(--accent-strong); }
 .req-ex p { margin: 0 0 6px; }
 .req-ex .ex-link { margin: 8px 0 0; font-size: .88rem; }
+.lang-note { font-weight: 400; opacity: .8; }
 .req .req-ex ol, .req .req-ex ul { padding-left: 0; }
 .req .req-ex li + li { margin-top: 0; }
 .req .req-ex .dodont { margin-top: 0; }
