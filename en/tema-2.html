@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 2. Matrices · Applied Mathematics</title>
+<meta name="description" content="The concept of a matrix, its size, the main diagonal, types of matrices and the basic operations: addition, subtraction, scalar multiplication, the transpose and the product.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-2.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=38">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=38"></script>
+</head>
+<body data-page="t2">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 2</span>
+    <h1>Matrices</h1>
+    <ul class="jump">
+      <li><a href="#savokos">Concepts</a></li>
+      <li><a href="#rusys">Types</a></li>
+      <li><a href="#veiksmai">Operations</a></li>
+      <li><a href="#taikymai">Applications</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ CONCEPTS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">Key Concepts</h2>
+
+    <!-- 1 -->
+    <article class="card concept" id="matrica">
+      <div class="concept-head"><span class="num">1</span><h3>What is a matrix?</h3></div>
+      <p>A matrix is an ordered rectangular array of numbers. The numbers in a matrix are its entries.</p>
+      <p>A matrix with \(m\) rows and \(n\) columns has size \(m \times n\), and the entry in its <span class="nw">\(i\)th</span> row and <span class="nw">\(j\)th</span> column is denoted by \(a_{ij}\).</p>
+      <div class="formula">\[ A = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \end{pmatrix} \]</div>
+      <p class="tip">In the size and in the indices of an entry, the row always comes first and the column second.</p>
+    </article>
+
+    <!-- 2 -->
+    <article class="card concept" id="matmenys">
+      <div class="concept-head"><span class="num">2</span><h3>The size of a matrix</h3></div>
+      <p>The size shows how many rows and how many columns a matrix has:</p>
+      <div class="mats">
+        <div class="mat-item"><span>\(A = \begin{pmatrix} 3 &amp; 0 &amp; 1 \\ 5 &amp; 1 &amp; \htmlClass{hd}{-4} \end{pmatrix}\)</span><span class="cap">\(2 \times 3\)</span></div>
+        <div class="mat-item"><span>\(B = \begin{pmatrix} 7 &amp; -2 \\ 0 &amp; 1 \\ 1 &amp; 4 \end{pmatrix}\)</span><span class="cap">\(3 \times 2\)</span></div>
+        <div class="mat-item"><span>\(C = \begin{pmatrix} 1 \\ 5 \\ 4 \end{pmatrix}\)</span><span class="cap">\(3 \times 1\)</span></div>
+        <div class="mat-item"><span>\(D = \begin{pmatrix} 9 &amp; 0 &amp; 3 &amp; 7 \end{pmatrix}\)</span><span class="cap">\(1 \times 4\)</span></div>
+      </div>
+      <p>The highlighted entry of matrix \(A\) is \(a_{23} = -4\): it is in the 2nd row and the 3rd column. Matrix \(C\) has one column, and matrix \(D\) has one row.</p>
+    </article>
+
+    <!-- 3 -->
+    <article class="card concept" id="istrizaine">
+      <div class="concept-head"><span class="num">3</span><h3>The main diagonal</h3></div>
+      <p><strong>The main diagonal</strong> consists of the entries whose row and column numbers are equal: \(a_{11}, a_{22}, a_{33}, \ldots\) It starts in the top-left corner of the matrix and runs down to the right.</p>
+      <div class="mats">
+        <div class="mat-item"><span>\(A = \begin{pmatrix} \htmlClass{hd}{-3} &amp; 8 &amp; 6 \\ 2 &amp; \htmlClass{hd}{9} &amp; 4 \\ 1 &amp; 3 &amp; \htmlClass{hd}{2} \end{pmatrix}\)</span><span class="cap">\(3 \times 3\)</span></div>
+        <div class="mat-item"><span>\(B = \begin{pmatrix} \htmlClass{hd}{7} &amp; -2 \\ 0 &amp; \htmlClass{hd}{1} \\ 1 &amp; 4 \end{pmatrix}\)</span><span class="cap">\(3 \times 2\)</span></div>
+      </div>
+      <p>Matrix \(A\) has the same number of rows and columns, so the diagonal ends in the bottom-right corner: it consists of \(a_{11} = -3\), \(a_{22} = 9\) and \(a_{33} = 2\).</p>
+      <p>Matrix \(B\) has three rows but only two columns, so the diagonal consists of only two entries: \(b_{11} = 7\) and \(b_{22} = 1\). There is no entry \(b_{33}\) – the matrix has no third column.</p>
+      <p class="tip">The main diagonal has as many entries as the smaller of the two numbers – the number of rows or the number of columns.</p>
+    </article>
+  </section>
+
+  <!-- ============ TYPES ============ -->
+  <section class="section" id="rusys" aria-labelledby="h-types">
+    <h2 id="h-types">Types of matrices</h2>
+
+    <article class="card concept">
+      <div class="concept-head"><span class="num">4</span><h3>Square, zero and identity matrices</h3></div>
+
+      <div class="subtype">
+        <h4>Square matrix</h4>
+        <p>An \(n \times n\) matrix – that is, a matrix having the same number of rows as columns – is called a square matrix.</p>
+        <div class="formula">\[ A = \begin{pmatrix} -3 &amp; 8 &amp; 6 \\ 2 &amp; 9 &amp; 4 \\ 1 &amp; 3 &amp; 2 \end{pmatrix} \]</div>
+      </div>
+
+      <div class="subtype">
+        <h4>Zero matrix</h4>
+        <p>All the entries of the zero matrix \(O\) are equal to zero. It can be of any size:</p>
+        <div class="mats">
+          <span>\(O = \begin{pmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}\)</span>
+          <span>\(O_2 = \begin{pmatrix} 0 &amp; 0 \\ 0 &amp; 0 \end{pmatrix}\)</span>
+          <span>\(O_3 = \begin{pmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}\)</span>
+        </div>
+        <p>In addition, the zero matrix plays the role of zero: \(A + O = A\).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Identity matrix</h4>
+        <p>The identity matrix \(I_n\) (also \(E_n\)) is a square matrix whose main diagonal entries are equal to 1 and all other entries are equal to 0:</p>
+        <div class="mats">
+          <span>\(I_2 = E_2 = \begin{pmatrix} \htmlClass{hd}{1} &amp; 0 \\ 0 &amp; \htmlClass{hd}{1} \end{pmatrix}\)</span>
+          <span>\(I_3 = E_3 = \begin{pmatrix} \htmlClass{hd}{1} &amp; 0 &amp; 0 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} \end{pmatrix}\)</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ OPERATIONS ============ -->
+  <section class="section" id="veiksmai" aria-labelledby="h-ops">
+    <h2 id="h-ops">Basic matrix operations</h2>
+
+    <!-- 5 -->
+    <article class="card concept" id="sudetis">
+      <div class="concept-head"><span class="num">5</span><h3>Addition and subtraction</h3></div>
+      <p>Matrices <strong>of the same size</strong> have the same number of rows and the same number of columns. Two matrices are equal if they have the same size and their corresponding entries are equal.</p>
+      <p>If \(A\) and \(B\) are two matrices of the same size, then the sum \(A + B\) is the matrix \(C\) whose entries are the sums of the corresponding entries of \(A\) and \(B\); the difference \(A - B\) is the matrix whose entries are the differences of the corresponding entries:</p>
+      <div class="formula">\[ c_{ij} = a_{ij} + b_{ij}, \qquad c_{ij} = a_{ij} - b_{ij} \]</div>
+      <p class="formula-label">Addition</p>
+      <div class="formula">\[ \begin{aligned} &amp;\begin{pmatrix} 1 &amp; 3 &amp; 4 \\ -1 &amp; 2 &amp; 0 \end{pmatrix} + \begin{pmatrix} 1 &amp; 4 &amp; 3 \\ 6 &amp; 1 &amp; -2 \end{pmatrix} \\ ={} &amp;\begin{pmatrix} 2 &amp; 7 &amp; 7 \\ 5 &amp; 3 &amp; -2 \end{pmatrix} \end{aligned} \]</div>
+      <p class="formula-label">Subtraction</p>
+      <div class="formula">\[ \begin{pmatrix} 1 &amp; 2 \\ -1 &amp; 3 \\ 4 &amp; 0 \end{pmatrix} - \begin{pmatrix} 2 &amp; -1 \\ 3 &amp; 2 \\ 1 &amp; 0 \end{pmatrix} = \begin{pmatrix} -1 &amp; 3 \\ -4 &amp; 1 \\ 3 &amp; 0 \end{pmatrix} \]</div>
+      <p>Two matrices of different sizes cannot be added or subtracted.</p>
+    </article>
+
+    <!-- 6 -->
+    <article class="card concept" id="skaliaras">
+      <div class="concept-head"><span class="num">6</span><h3>Scalar multiplication</h3></div>
+      <p>If \(A\) is a matrix and \(k\) is a real number, then the scalar product \(kA\) is the matrix \(B\) obtained by multiplying each entry of \(A\) by \(k\):</p>
+      <div class="formula">\[ b_{ij} = k a_{ij} \]</div>
+      <div class="formula">\[ \begin{gathered} A = \begin{pmatrix} 3 &amp; 0 &amp; -1 \\ 2 &amp; 4 &amp; 4 \end{pmatrix} \\ \Longrightarrow\; kA = \begin{pmatrix} 3k &amp; 0 &amp; -k \\ 2k &amp; 4k &amp; 4k \end{pmatrix} \end{gathered} \]</div>
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Properties of addition and scalar multiplication</summary>
+        <div class="more-body">
+          <ul>
+            <li>\((A + B) + C = A + (B + C)\) (associative law);</li>
+            <li>\(A + B = B + A\) (commutative law);</li>
+            <li>\(A + O = A\);</li>
+            <li>\(A + (-A) = O\);</li>
+            <li>\((k + m)A = kA + mA\), \(k\) and \(m\) are real numbers (scalars);</li>
+            <li>\(k(A + B) = kA + kB\), \(k\) is a real number (scalar).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <!-- 7 -->
+    <article class="card concept" id="transponavimas">
+      <div class="concept-head"><span class="num">7</span><h3>Transpose of a matrix</h3></div>
+      <p>Interchanging the entries of the columns of matrix \(A\) with the corresponding entries of its rows gives the matrix \(A^T\), called the transpose of \(A\).</p>
+      <p>If \(A\) is an \(m \times n\) matrix, then \(A^T\) is the \(n \times m\) matrix with entries \(a_{ji}\): the rows of \(A\) become the columns of \(A^T\).</p>
+      <div class="formula">\[ \begin{gathered} A = \begin{pmatrix} \htmlClass{hr}{1} &amp; \htmlClass{hr}{2} &amp; \htmlClass{hr}{3} \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{pmatrix}  \\ \Longrightarrow\; A^T = \begin{pmatrix} \htmlClass{hr}{1} &amp; 4 &amp; 7 \\ \htmlClass{hr}{2} &amp; 5 &amp; 8 \\ \htmlClass{hr}{3} &amp; 6 &amp; 9 \end{pmatrix} \end{gathered} \]</div>
+      <p>The first row of \(A\) has become the first column of \(A^T\). Transposing changes nothing about the information in a table – it only interchanges the rows and the columns.</p>
+    </article>
+
+    <!-- 8 -->
+    <article class="card concept" id="sandauga">
+      <div class="concept-head"><span class="num">8</span><h3>Multiplication of matrices</h3></div>
+
+      <div class="subtype">
+        <h4>Definition</h4>
+        <p>If \(A\) is a matrix of size \(m \times n\) and \(B\) is a matrix of size \(n \times k\), then the matrix product \(AB\) is a matrix \(C\) of size \(m \times k\), whose entry \(c_{ij}\) is the sum of the products of the entries of the <span class="nw">\(i\)th</span> row of \(A\) and the corresponding entries of the <span class="nw">\(j\)th</span> column of \(B\):</p>
+        <div class="formula">\[ (m \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times k) = m \times k \]</div>
+        <div class="formula">\[ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{in}b_{nj} \]</div>
+      </div>
+
+      <div class="subtype">
+        <h4>A general example</h4>
+        <p>Let us see how this works on a general example. Multiply the \(2 \times 3\) matrix \(A\) by the \(3 \times 2\) matrix \(B\). Instead of numbers we write general entries – this shows where each entry of the result comes from:</p>
+        <div class="mats">
+          <span>\(A = \begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \end{pmatrix}\)</span>
+          <span>\(B = \begin{pmatrix} b_{11} &amp; b_{12} \\ b_{21} &amp; b_{22} \\ b_{31} &amp; b_{32} \end{pmatrix}\)</span>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>Why can these matrices be multiplied?</h4>
+        <p>Each entry of the product is obtained by multiplying a row of \(A\) by a column of \(B\): the first entry of the row is multiplied by the first entry of the column, the second by the second, the third by the third, and the products are added. For all the entries to pair up, <strong>the row must have as many entries as the column</strong>.</p>
+        <p>A row of \(A\) has as many entries as \(A\) has columns (3), and a column of \(B\) has as many entries as \(B\) has rows (3). The two numbers are equal, so the product \(AB\) is defined:</p>
+        <div class="formula">\[ (2 \times \htmlClass{hd}{3}) \cdot (\htmlClass{hd}{3} \times 2) \]</div>
+        <p>So the number of columns of the first matrix must equal the number of rows of the second. If the two inner numbers are not equal, the entries of a row and a column cannot be multiplied in pairs – the product is not defined.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>The size of the new matrix</h4>
+        <p>The product has as many rows as \(A\) and as many columns as \(B\). Its size is given by the two outer numbers:</p>
+        <div class="formula">\[ (\htmlClass{hr}{2} \times 3) \cdot (3 \times \htmlClass{hc}{2}) = \htmlClass{hr}{2} \times \htmlClass{hc}{2} \]</div>
+      </div>
+
+      <div class="subtype">
+        <h4>The structure of the new matrix</h4>
+        <p>The product \(C = AB\) is a \(2 \times 2\) matrix. Its entry in the <span class="nw">\(i\)th</span> row and <span class="nw">\(j\)th</span> column is denoted by \(c_{ij}\):</p>
+        <div class="formula">\[ C = AB = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \end{pmatrix} \]</div>
+      </div>
+
+      <div class="subtype">
+        <h4>How the entries \(c_{ij}\) are found</h4>
+        <p>The indices of the entry tell you what to multiply: <strong>\(c_{ij}\) is obtained by multiplying the <span class="nw">\(i\)th</span> row of \(A\) by the <span class="nw">\(j\)th</span> column of \(B\)</strong>. For example, \(c_{11}\) – the 1st row and the 1st column:</p>
+        <div class="formula">\[ \begin{pmatrix} \htmlClass{hr}{a_{11}} &amp; \htmlClass{hr}{a_{12}} &amp; \htmlClass{hr}{a_{13}} \\ a_{21} &amp; a_{22} &amp; a_{23} \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{b_{11}} &amp; b_{12} \\ \htmlClass{hc}{b_{21}} &amp; b_{22} \\ \htmlClass{hc}{b_{31}} &amp; b_{32} \end{pmatrix} \]</div>
+        <p>All four entries are found in this way:</p>
+        <div class="formula">\[ \begin{aligned} c_{11} &amp;= a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31} \\ c_{12} &amp;= a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32} \\ c_{21} &amp;= a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31} \\ c_{22} &amp;= a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32} \end{aligned} \]</div>
+        <p>In every sum the second index of \(a\) equals the first index of \(b\) – these are the entries of the row and the column multiplied in pairs.</p>
+      </div>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Properties of matrix multiplication</summary>
+        <div class="more-body">
+          <ul>
+            <li>\((AB)C = A(BC)\) (associative law);</li>
+            <li>\(A(B + C) = AB + AC\) (left distributive law);</li>
+            <li>\((A + B)C = AC + BC\) (right distributive law);</li>
+            <li>\(AB \neq BA\) (the commutative law does not hold);</li>
+            <li>\(AB = O\) does not imply that \(A\) or \(B\) is \(O\);</li>
+            <li>\(AB = AC\) and \(A \neq O\) does not imply \(B = C\).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <!-- Step-by-step example of a product -->
+    <article class="card example" id="sandaugos-pavyzdys">
+      <header class="example-head">
+        <span class="example-tag">Example</span>
+        <h3>A product step by step</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Compute the product
+        \[ \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; 8 \\ 7 &amp; 6 \\ 5 &amp; 4 \end{pmatrix} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sizes</span></h4>
+          \[ (2 \times \htmlClass{hd}{3}) \cdot (\htmlClass{hd}{3} \times 2) = 2 \times 2 \]
+          <p>The inner numbers are equal, so the product is defined and is of size \(2 \times 2\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The structure of the new matrix</span></h4>
+          <p>The product \(C\) has two rows and two columns, so four entries have to be found:</p>
+          \[ C = \begin{pmatrix} c_{11} &amp; c_{12} \\ c_{21} &amp; c_{22} \end{pmatrix} \]
+          <p>The entry \(c_{ij}\) is obtained by multiplying the <span class="nw">\(i\)th</span> row of the first matrix by the <span class="nw">\(j\)th</span> column of the second.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The entry \(c_{11}\)</span></h4>
+          <p>The 1st row is multiplied by the 1st column:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{1} &amp; \htmlClass{hr}{2} &amp; \htmlClass{hr}{3} \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{9} &amp; 8 \\ \htmlClass{hc}{7} &amp; 6 \\ \htmlClass{hc}{5} &amp; 4 \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 1\cdot 9 + 2\cdot 7 + 3\cdot 5 \\ &amp;= 9 + 14 + 15 = 38 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The entry \(c_{12}\)</span></h4>
+          <p>The 1st row is multiplied by the 2nd column:</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{1} &amp; \htmlClass{hr}{2} &amp; \htmlClass{hr}{3} \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; \htmlClass{hc}{8} \\ 7 &amp; \htmlClass{hc}{6} \\ 5 &amp; \htmlClass{hc}{4} \end{pmatrix} \]
+          \[ \begin{aligned} c_{12} &amp;= 1\cdot 8 + 2\cdot 6 + 3\cdot 4 \\ &amp;= 8 + 12 + 12 = 32 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The entry \(c_{21}\)</span></h4>
+          <p>The 2nd row is multiplied by the 1st column:</p>
+          \[ \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ \htmlClass{hr}{4} &amp; \htmlClass{hr}{5} &amp; \htmlClass{hr}{6} \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{9} &amp; 8 \\ \htmlClass{hc}{7} &amp; 6 \\ \htmlClass{hc}{5} &amp; 4 \end{pmatrix} \]
+          \[ \begin{aligned} c_{21} &amp;= 4\cdot 9 + 5\cdot 7 + 6\cdot 5 \\ &amp;= 36 + 35 + 30 = 101 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The entry \(c_{22}\)</span></h4>
+          <p>The 2nd row is multiplied by the 2nd column:</p>
+          \[ \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ \htmlClass{hr}{4} &amp; \htmlClass{hr}{5} &amp; \htmlClass{hr}{6} \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; \htmlClass{hc}{8} \\ 7 &amp; \htmlClass{hc}{6} \\ 5 &amp; \htmlClass{hc}{4} \end{pmatrix} \]
+          \[ \begin{aligned} c_{22} &amp;= 4\cdot 8 + 5\cdot 6 + 6\cdot 4 \\ &amp;= 32 + 30 + 24 = 86 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{aligned} &amp;\begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \end{pmatrix} \cdot \begin{pmatrix} 9 &amp; 8 \\ 7 &amp; 6 \\ 5 &amp; 4 \end{pmatrix} \\ ={} &amp;\begin{pmatrix} 38 &amp; 32 \\ 101 &amp; 86 \end{pmatrix} \end{aligned} \]
+          </div>
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span>Can the matrices be multiplied in the reverse order?</summary>
+            <div class="more-body">
+              <p>The commutative law does not hold for matrix multiplication – in general \(A\cdot B \neq B\cdot A\). In this example the product in the reverse order is defined, because \((3 \times 2)\cdot(2 \times 3) = 3 \times 3\), but it would be a matrix of a completely different size, \(3 \times 3\).</p>
+            </div>
+          </details>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ APPLICATIONS ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Applications</h2>
+    <p class="section-intro">Matrices are applied to the planning of production and sales, cost analysis and the prediction of market shares. Choose a section.</p>
+    <div class="model-grid" data-models="t2"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this topic can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 2</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapters 2.4–2.5, 9.1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Finite Mathematics for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">Chapter 8</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

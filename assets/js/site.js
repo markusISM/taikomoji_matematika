@@ -169,7 +169,7 @@
   var COURSE = [
     { id: 't1', num: 1, status: 'active', href: { lt: 'tema-1.html', en: 'tema-1.html' },
       title: { lt: 'Tiesinės funkcijos ir modeliai', en: 'Linear Functions and Models' } },
-    { id: 't2', num: 2, status: 'active', href: { lt: 'tema-2.html' },
+    { id: 't2', num: 2, status: 'active', href: { lt: 'tema-2.html', en: 'tema-2.html' },
       title: { lt: 'Matricos', en: 'Matrices' } },
     { id: 't3', num: 3, status: 'active', href: { lt: 'tema-3.html' },
       title: { lt: 'Tiesinių lygčių sistemos', en: 'Systems of Linear Equations' } },
@@ -209,13 +209,13 @@
     t2: [
       { id: 'm21', status: 'active', href: { lt: 'tema-2-pagrindiniai-veiksmai.html' },
         title: { lt: 'Pagrindinių matricos veiksmų taikymai', en: 'Basic Matrix Operations' },
-        desc: { lt: 'Sudėtis, atimtis ir daugyba iš skaliaro ekonominėse ir vadybinėse situacijose.' } },
+        desc: { lt: 'Sudėtis, atimtis ir daugyba iš skaliaro ekonominėse ir vadybinėse situacijose.', en: 'Addition, subtraction and scalar multiplication in economic and managerial situations.' } },
       { id: 'm22', status: 'active', href: { lt: 'tema-2-sudetingesni-veiksmai.html' },
         title: { lt: 'Sudėtingesni matricų veiksmų taikymai', en: 'Advanced Matrix Applications' },
-        desc: { lt: 'Matricų daugyba ir transponavimas ekonominėse ir vadybinėse situacijose.' } },
+        desc: { lt: 'Matricų daugyba ir transponavimas ekonominėse ir vadybinėse situacijose.', en: 'Matrix multiplication and the transpose in economic and managerial situations.' } },
       { id: 'm23', status: 'active', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html' },
         title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' },
-        desc: { lt: 'Markovo grandinės: rinkos dalys po vieno ar kelių periodų.' } }
+        desc: { lt: 'Markovo grandinės: rinkos dalys po vieno ar kelių periodų.', en: 'Markov chains: market shares after one or several periods.' } }
     ],
     t3: [
       { id: 'm31', status: 'active', href: { lt: 'tema-3-planavimas-vienintelis.html' },
@@ -265,7 +265,7 @@
                title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' } },
     be:      { parent: 't1', topic: 't1', model: 'be', href: { lt: 'tema-1-pajamos-sanaudos-pelnas.html', en: 'tema-1-pajamos-sanaudos-pelnas.html' },
                title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue, Profit, and Break-Even Point' } },
-    t2:      { parent: 'home', href: { lt: 'tema-2.html', en: null },
+    t2:      { parent: 'home', href: { lt: 'tema-2.html', en: 'tema-2.html' },
                title: { lt: '2 tema', en: 'Topic 2' } },
     m21:     { parent: 't2', topic: 't2', model: 'm21', href: { lt: 'tema-2-pagrindiniai-veiksmai.html', en: null },
                title: { lt: 'Pagrindinių matricos veiksmų taikymai', en: 'Basic Matrix Operations' } },
