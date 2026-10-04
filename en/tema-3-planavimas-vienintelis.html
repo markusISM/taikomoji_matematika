@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rational Planning: Unique Solution · Applied Mathematics</title>
+<meta name="description" content="How to build a system of linear equations from a managerial situation and solve it by Gaussian elimination: production, purchase and investment plans with a unique solution.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-3-planavimas-vienintelis.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=43">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=43"></script>
+</head>
+<body data-page="m31">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 3 · Applications · Section 1</span>
+    <h1>Rational Planning: Unique Solution</h1>
+    <p class="lead">This section shows how to build a mathematical model – a system of linear equations – from a managerial situation and solve it by Gaussian elimination when the problem has a unique solution.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Model</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">From the situation to a system of equations</h2>
+
+    <article class="card">
+      <p>A planning problem asks <strong>how much of each thing to make, to buy or to invest</strong>, when several resources or requirements have to be used exactly. Every such problem is built in three moves:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Variables</strong><span>Name the quantities to be decided – what the firm has to decide.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Equations</strong><span>Write one equation for each resource or requirement.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Solution</strong><span>Solve the system by Gaussian elimination and interpret the answer.</span></div></div>
+      </div>
+
+      <div class="subtype">
+        <h4>1. Decision variables</h4>
+        <p>One variable for each quantity the firm has to decide. Write out its meaning in a sentence, with the unit. The variables are the answer to the problem, so if they are named carelessly the answer cannot be interpreted.</p>
+        <ul class="dodont">
+          <li class="do"><span class="mk" aria-hidden="true">✓</span><span>“Let \(x\) be the number of type-A products made per day.”</span></li>
+          <li class="do"><span class="mk" aria-hidden="true">✓</span><span>“Let \(y\) be the amount invested in bonds, in euros.”</span></li>
+          <li class="dont"><span class="mk" aria-hidden="true">✗</span><span>“\(x\) – type A.” It is not clear what \(x\) counts: products, minutes or euros.</span></li>
+        </ul>
+      </div>
+
+      <div class="subtype">
+        <h4>2. One equation per resource</h4>
+        <p>Each resource gives one equation of the same shape: <strong>the amount of that resource used by all the products together equals the amount available</strong>.</p>
+        <div class="formula fit">\[ \underbrace{a_1x}_{\text{product A}} + \underbrace{a_2y}_{\text{product B}} + \underbrace{a_3z}_{\text{product C}} = \underbrace{b}_{\text{available}} \]</div>
+        <p>Here \(a_1\) is the amount of the resource used by one unit of the first product, and \(b\) is the total available. If one A product needs \(a_1\) units of the resource, then \(x\) such products use \(a_1 x\) units.</p>
+        <p>It is convenient to collect the data in a table: one row per resource, one column per product (A, B, C), and the amount available in the last column. Then <strong>each row of the table becomes one equation</strong>:</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact model-tbl">
+            <thead><tr><th scope="col"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">Available</th></tr></thead>
+            <tbody>
+              <tr class="hl"><th scope="row">Resource 1</th><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(a_{13}\)</td><td>\(b_1\)</td></tr>
+              <tr><th scope="row">Resource 2</th><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(a_{23}\)</td><td>\(b_2\)</td></tr>
+              <tr><th scope="row">Resource 3</th><td>\(a_{31}\)</td><td>\(a_{32}\)</td><td>\(a_{33}\)</td><td>\(b_3\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mats mats--col">
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span>\(\begin{cases} \htmlClass{hr}{a_{11}x + a_{12}y + a_{13}z = b_1} \\ a_{21}x + a_{22}y + a_{23}z = b_2 \\ a_{31}x + a_{32}y + a_{33}z = b_3 \end{cases}\)</span>
+        </div>
+        <p class="formula-note" style="text-align:center">The first row of the table has become the first equation. The numbers in the table are the entries of the augmented matrix of the system.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>3. Other requirements are equations too</h4>
+        <p>Every other requirement stated in words is also written as an equation:</p>
+        <div class="tbl-wrap">
+          <table class="vtable req-tbl">
+            <thead><tr><th scope="col">In the problem</th><th scope="col">Equation</th></tr></thead>
+            <tbody>
+              <tr><td>\(N\) products are to be made altogether</td><td>\(x + y + z = N\)</td></tr>
+              <tr><td>The whole sum of \(S\) euros is invested</td><td>\(x + y + z = S\)</td></tr>
+              <tr><td>The amount invested in bonds, \(y\), is twice the deposit \(x\)</td><td>\(y = 2x\), i.e.<br>\(-2x + y = 0\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tip">When a variable ends up on the right-hand side of an equation, move it to the left and write the variables in the same order as in the other equations – then the augmented matrix is easy to write.</p>
+      </div>
+
+      <p>Once the system is built, it is solved by <a href="tema-3.html#algoritmas">Gaussian elimination</a>. This section deals with problems whose system has a <strong>unique solution</strong>: there is exactly one plan that uses all the resources and meets all the requirements.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Name the decision variables in a full sentence, with units.</li>
+        <li>Draw a table: one row per resource or requirement, one column per variable, the entries being the amount used by one unit, and the last column the amount available. Check that all the quantities are expressed in the same units.</li>
+        <li>Write one equation per row of the table, and add an equation for every extra condition stated in words.</li>
+        <li>Write the augmented matrix.</li>
+        <li>Eliminate: obtain a leading 1 in the first row (interchanging rows is often easier than dividing), clear the rest of the first column, then repeat with the second row, and so on.</li>
+        <li>Read the last row and substitute upwards.</li>
+        <li>Check the numbers in the original equations, and check that they make business sense: quantities cannot be negative, and things counted in pieces must be whole numbers.</li>
+        <li>Interpret the answer in the words of the problem.</li>
+      </ol>
+
+      <p class="tip"><strong>Keeping the arithmetic clean.</strong> If an equation contains decimals or percentages, multiply the whole row by 10, 100 or 1000 first, and divide it by a common factor afterwards. This is the elementary operation “multiply a row by a nonzero constant”, so it changes nothing, and it removes most of the arithmetic errors.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Different units.</strong> The time needed for one product is given in minutes and the time available in hours. Before the equations are written, everything must be expressed in the same units.</li>
+            <li><strong>Numbers of the table mixed up.</strong> An equation is written for one resource: its coefficients are how much of <em>this</em> resource each product needs, not how much of the different resources one product needs.</li>
+            <li><strong>A requirement not written down.</strong> Each condition (a total quantity, “the same amount”, “twice as much”) is a separate equation. If there are fewer equations than variables, a unique solution cannot be obtained.</li>
+            <li><strong>Percentages not converted.</strong> 3&nbsp;% of \(x\) is \(0.03x\), not \(3x\).</li>
+            <li><strong>An answer without a sense check.</strong> A negative or fractional number of products points to an error in the equations or in the calculation.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving applied systems of linear equations problems, the definitions of the introduced variables must be provided at the beginning of the solution. Each variable definition must clearly state that the variable represents the quantity of a specific object.</li>
+            <li>If convenient for the author, the data from the problem may be summarized in a table, but this is optional.</li>
+            <li>The solution must include the mathematical model of the problem – the system of linear equations. Presenting only the augmented matrix is not sufficient.</li>
+            <li>The system of equations must be solved using the Gaussian elimination method. The solution must show which row operations are performed to eliminate elements below the main diagonal.</li>
+            <li>At the end of the solution, the final answer must be clearly presented.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to build the system and solve it yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: alternative problem 3.1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A production plan for phone cases</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A small factory wishes to produce three types of phone case: types A, B and C. To manufacture a type-A case requires 1 minute on machine I, 1 minute on machine II, and 2 minutes on machine III. A type-B case requires 1 minute on machine I, 2 minutes on machine II, and 1 minute on machine III. A type-C case requires 2 minutes on machine I, 2 minutes on machine II, and 1 minute on machine III. There are 4 hours available on machine I, 5 hours available on machine II, and 3 hours available on machine III per day for processing the order. How many cases of each type should the factory make in order to use all of the available time?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <p>The factory has to decide how many cases of each type to make per day:</p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of type-A cases made per day;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of type-B cases made per day;</span></li>
+            <li><span class="sym">\(z\)</span><span>– the number of type-C cases made per day.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The data table</span></h4>
+          <p>The requirements are given in minutes and the available times in hours, so the totals are converted first: 4&nbsp;h = 240&nbsp;min, 5&nbsp;h = 300&nbsp;min, 3&nbsp;h = 180&nbsp;min.</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Type-A</th><th scope="col">Type-B</th><th scope="col">Type-C</th><th scope="col">Total, min</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Machine I</th><td>1</td><td>1</td><td>2</td><td>240</td></tr>
+                <tr><th scope="row">Machine II</th><td>1</td><td>2</td><td>2</td><td>300</td></tr>
+                <tr><th scope="row">Machine III</th><td>2</td><td>1</td><td>1</td><td>180</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>Each machine must be used to the last minute, so each row of the table gives one equation. For example, on machine I \(x\) type-A cases take \(1\cdot x\) minutes, \(y\) type-B cases \(1\cdot y\) minutes and \(z\) type-C cases \(2z\) minutes, and 240 minutes are available altogether:</p>
+          <div class="formula fit">\[ \underbrace{x}_{\text{A cases}} + \underbrace{y}_{\text{B cases}} + \underbrace{2z}_{\text{C cases}} = \underbrace{240}_{\text{available}} \]</div>
+          <p>The equations for machines II and III are written in the same way:</p>
+          \[ \begin{cases} x + y + 2z = 240 \\ x + 2y + 2z = 300 \\ 2x + y + z = 180 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Zeros in the first column</span></h4>
+          <p>The first pivot element already equals 1. The first row is multiplied by \(-1\) and added to the second row, then by \(-2\) and added to the third:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 2 &amp; 240 \\ 1 &amp; 2 &amp; 2 &amp; 300 \\ 2 &amp; 1 &amp; 1 &amp; 180 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-1)} &amp; \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; 240 \\ \htmlClass{hc}{0} &amp; 1 &amp; 0 &amp; 60 \\ \htmlClass{hc}{0} &amp; -1 &amp; -3 &amp; -300 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>A zero in the second column</span></h4>
+          <p>The second pivot element equals 1, and the \(-1\) below it is eliminated by the factor \((1)\): the second row is added to the third. Then the third row is divided by \(-3\):</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; 240 \\ 0 &amp; \htmlClass{hd}{1} &amp; 0 &amp; 60 \\ 0 &amp; -1 &amp; -3 &amp; -300 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; 240 \\ 0 &amp; 1 &amp; 0 &amp; 60 \\ 0 &amp; \htmlClass{hc}{0} &amp; -3 &amp; -240 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-3)} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; 240 \\ 0 &amp; 1 &amp; 0 &amp; 60 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 80 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Back substitution</span></h4>
+          <p>The last row gives \(z = 80\), the second row gives \(y = 60\), and the first row gives</p>
+          \[ x + 60 + 2\cdot 80 = 240 \;\Longrightarrow\; x = 20 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Check</span></h4>
+          <p>The plan uses \(20 + 60 + 2\cdot 80 = 240\) minutes on machine I, \(20 + 2\cdot 60 + 2\cdot 80 = 300\) on machine II and \(2\cdot 20 + 60 + 80 = 180\) on machine III – exactly the time available. All the quantities are positive whole numbers, as they must be for phone cases.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The factory should make 20 type-A cases, 60 type-B cases and 80 type-C cases a day.</p>
+          </div>
+          <p>This is the only production plan that uses all of the available machine time.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: guideline problem 1 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Assembling bicycles</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A workshop assembles two models of bicycle. A city bike requires 3 hours of assembly and 2 hours of painting; a mountain bike requires 5 hours of assembly and 2 hours of painting. In one week 310 assembly hours and 160 painting hours are available. How many bicycles of each model should be assembled if all the available time is to be used?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of city bikes assembled in the week;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of mountain bikes assembled in the week.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The system of equations</span></h4>
+          <p>There are two resources – assembly time and painting time – so there are two equations, one per resource. The hours used for assembling all the bicycles must equal the 310 hours available, and the hours used for painting the 160 hours available:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">City</th><th scope="col">Mountain</th><th scope="col">Total, h</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Assembly</th><td>3</td><td>5</td><td>310</td></tr>
+                <tr><th scope="row">Painting</th><td>2</td><td>2</td><td>160</td></tr>
+              </tbody>
+            </table>
+          </div>
+          \[ \begin{cases} 3x + 5y = 310 \\ 2x + 2y = 160 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>A leading 1</span></h4>
+          <p>Write the augmented matrix. The first entry of the first row is 3, while the second row divides by 2, which produces a leading 1. So the second row is divided by 2, and the two rows are then interchanged:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{cc|c} 3 &amp; 5 &amp; 310 \\ 2 &amp; 2 &amp; 160 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,2} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 1 &amp; 80 \\ 3 &amp; 5 &amp; 310 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>A zero below the pivot element</span></h4>
+          <p>Now multiply the first row by \(-3\) and add it to the second, and divide the result by 2:</p>
+          <div class="mats mats--flow">
+            <span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 1 &amp; 80 \\ 3 &amp; 5 &amp; 310 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 80 \\ \htmlClass{hc}{0} &amp; 2 &amp; 70 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,2} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{cc|c} 1 &amp; 1 &amp; 80 \\ 0 &amp; \htmlClass{hd}{1} &amp; 35 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Back substitution</span></h4>
+          \[ y = 35, \qquad x + 35 = 80 \;\Longrightarrow\; x = 45 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Check</span></h4>
+          <p>\(3\cdot 45 + 5\cdot 35 = 135 + 175 = 310\) assembly hours and \(2\cdot 45 + 2\cdot 35 = 160\) painting hours.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The workshop should assemble 45 city bikes and 35 mountain bikes.</p>
+          </div>
+          <p>This is the only combination that uses all 310 assembly hours and all 160 painting hours.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: guideline problem 2 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>An investment portfolio</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>An investor has 120000 euros to divide between three instruments: a deposit paying 3&nbsp;% a year, a bond fund paying 5&nbsp;% and an equity fund paying 9&nbsp;%. She wants the portfolio to produce exactly 7000 euros of income a year, and she wants to place the same amount in the equity fund as in the deposit. How much should she invest in each instrument?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the amount placed in the deposit, in euros;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the amount invested in the bond fund, in euros;</span></li>
+            <li><span class="sym">\(z\)</span><span>– the amount invested in the equity fund, in euros.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The conditions become equations</span></h4>
+          <p>The three conditions of the problem give three equations:</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">In the problem</th><th scope="col">Equation</th></tr></thead>
+              <tbody>
+                <tr><td>The whole sum is invested</td><td>\(x + y + z = 120000\)</td></tr>
+                <tr><td>The income is exactly 7000 euros a year</td><td>\(0.03x + 0.05y + 0.09z = 7000\)</td></tr>
+                <tr><td>The same amount in the equity fund as in the deposit</td><td>\(z = x\), i.e.<br>\(x - z = 0\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>In the income equation each term is the annual income from one instrument: for example, 3&nbsp;% of \(x\) euros is \(0.03x\) euros. Together the three equations make up the mathematical model of the problem:</p>
+          \[ \begin{cases} x + y + z = 120000 \\ 0.03x + 0.05y + 0.09z = 7000 \\ x - z = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system without decimals</span></h4>
+          <p>Multiply the income equation by 100 to clear the decimals:</p>
+          \[ \begin{cases} x + y + z = 120000 \\ 3x + 5y + 9z = 700000 \\ x - z = 0 \end{cases} \]
+          <p>The third equation does not contain \(y\), so a 0 is written in its place in the augmented matrix.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Zeros in the first column</span></h4>
+          <p>The first row is multiplied by \(-3\) and added to the second, then by \(-1\) and added to the third. The new second row is divided by 2:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 1 &amp; 120000 \\ 3 &amp; 5 &amp; 9 &amp; 700000 \\ 1 &amp; 0 &amp; -1 &amp; 0 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-3)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 120000 \\ \htmlClass{hc}{0} &amp; 2 &amp; 6 &amp; 340000 \\ \htmlClass{hc}{0} &amp; -1 &amp; -2 &amp; -120000 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,2} \\ \phantom{0} \end{array}\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>A zero in the second column</span></h4>
+          <p>The second row now has its leading 1, and adding it to the third row clears the second column:</p>
+          <div class="mats mats--flow mats--sm">
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 120000 \\ 0 &amp; \htmlClass{hd}{1} &amp; 3 &amp; 170000 \\ 0 &amp; -1 &amp; -2 &amp; -120000 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
+            <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+            <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 1 &amp; 120000 \\ 0 &amp; 1 &amp; 3 &amp; 170000 \\ 0 &amp; \htmlClass{hc}{0} &amp; \htmlClass{hd}{1} &amp; 50000 \end{array}\right)\)</span>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Back substitution</span></h4>
+          <p>The last row gives \(z = 50000\). The second row reads \(y + 3z = 170000\), and the first \(x + y + z = 120000\):</p>
+          \[ \begin{aligned} y &amp;= 170000 - 3\cdot 50000 = 20000 \\ x &amp;= 120000 - 20000 - 50000 = 50000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Check</span></h4>
+          <p>The annual income from each instrument:</p>
+          \[ \begin{aligned} 0.03\cdot 50000 &amp;= 1500 \\ 0.05\cdot 20000 &amp;= 1000 \\ 0.09\cdot 50000 &amp;= 4500 \end{aligned} \]
+          <p>In total \(1500 + 1000 + 4500 = 7000\) euros.</p>
+          <p>\(50000 + 20000 + 50000 = 120000\) euros are invested, and the equity holding equals the deposit, as required.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The investor should place 50000 euros in the deposit, 20000 euros in the bond fund and 50000 euros in the equity fund.</p>
+          </div>
+          <p>Only this portfolio satisfies all three of her conditions at the same time.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE PROBLEMS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: define the variables, build the system of equations and solve it by Gaussian elimination. The answer gives the variables, the system and the final answer – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A ceramics studio makes mugs, bowls and vases. One mug takes 2&nbsp;kg of clay and 1 hour of work, one bowl takes 3&nbsp;kg of clay and 2 hours of work, and one vase takes 5&nbsp;kg of clay and 3 hours of work. Next month the studio plans to fire 450 items altogether, and it has 1350&nbsp;kg of clay and 800 hours of work, all of which are to be used exactly. How many mugs, bowls and vases will the studio make?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of mugs;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of bowls;</span></li>
+            <li><span class="sym">\(z\)</span><span>– the number of vases.</span></li>
+          </ul>
+          <p><strong>The system.</strong> The first equation counts the items, the second the clay and the third the hours of work:</p>
+          \[ \begin{cases} x + y + z = 450 \\ 2x + 3y + 5z = 1350 \\ x + 2y + 3z = 800 \end{cases} \]
+          <p><strong>Answer.</strong> The system has a unique solution \((x;\, y;\, z) = (200;\, 150;\, 100)\). The studio will make 200 mugs, 150 bowls and 100 vases.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A producer of animal feed mixes 1000&nbsp;kg of feed out of three ingredients. One kilogram of ingredient A contains 30&nbsp;% of protein and costs 0.80 euros, one kilogram of ingredient B contains 12&nbsp;% of protein and costs 0.50 euros, and one kilogram of ingredient C contains 20&nbsp;% of protein and costs 0.60 euros. The mixture must contain 19&nbsp;% of protein, and the whole quantity must cost exactly 610 euros. How many kilograms of each ingredient are needed?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the quantity of ingredient A, in kilograms;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the quantity of ingredient B, in kilograms;</span></li>
+            <li><span class="sym">\(z\)</span><span>– the quantity of ingredient C, in kilograms.</span></li>
+          </ul>
+          <p><strong>The system.</strong> The first equation counts the mass of the mixture, the second the protein it contains (19&nbsp;% of 1000&nbsp;kg, that is 190&nbsp;kg) and the third its cost:</p>
+          \[ \begin{cases} x + y + z = 1000 \\ 0.3x + 0.12y + 0.2z = 190 \\ 0.8x + 0.5y + 0.6z = 610 \end{cases} \]
+          <p><strong>Answer.</strong> The system has a unique solution \((x;\, y;\, z) = (300;\, 500;\, 200)\). The mixture consists of 300&nbsp;kg of ingredient A, 500&nbsp;kg of ingredient B and 200&nbsp;kg of ingredient C.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 2</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 5</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

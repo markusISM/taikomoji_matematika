@@ -218,9 +218,9 @@
         desc: { lt: 'Markovo grandinės: rinkos dalys po vieno ar kelių periodų.', en: 'Markov chains: market shares after one or several periods.' } }
     ],
     t3: [
-      { id: 'm31', status: 'active', href: { lt: 'tema-3-planavimas-vienintelis.html' },
+      { id: 'm31', status: 'active', href: { lt: 'tema-3-planavimas-vienintelis.html', en: 'tema-3-planavimas-vienintelis.html' },
         title: { lt: 'Racionalusis planavimas (vienintelis sprendinys)', en: 'Rational Planning (Unique Solution)' },
-        desc: { lt: 'Gamybos, pirkimų ar investicijų planas, kai sistema turi vienintelį sprendinį.', en: 'A production, purchase or investment plan when the system has exactly one solution.' } },
+        desc: { lt: 'Gamybos, pirkimų ar investicijų planas, kai sistema turi vienintelį sprendinį.', en: 'A production, purchase or investment plan when the system has a unique solution.' } },
       { id: 'm32', status: 'active', href: { lt: 'tema-3-planavimas-daug.html' },
         title: { lt: 'Racionalusis planavimas (daug sprendinių)', en: 'Rational Planning (Infinitely Many Solutions)' },
         desc: { lt: 'Kai sprendinių be galo daug: parametras ir galimi planai.', en: 'When there are infinitely many solutions: the parameter and the possible plans.' } },
@@ -275,7 +275,7 @@
                title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' } },
     t3:      { parent: 'home', href: { lt: 'tema-3.html', en: 'tema-3.html' },
                title: { lt: '3 tema', en: 'Topic 3' } },
-    m31:     { parent: 't3', topic: 't3', model: 'm31', href: { lt: 'tema-3-planavimas-vienintelis.html', en: null },
+    m31:     { parent: 't3', topic: 't3', model: 'm31', href: { lt: 'tema-3-planavimas-vienintelis.html', en: 'tema-3-planavimas-vienintelis.html' },
                title: { lt: 'Racionalusis planavimas (vienintelis sprendinys)', en: 'Rational Planning (Unique Solution)' } },
     m32:     { parent: 't3', topic: 't3', model: 'm32', href: { lt: 'tema-3-planavimas-daug.html', en: null },
                title: { lt: 'Racionalusis planavimas (daug sprendinių)', en: 'Rational Planning (Infinitely Many Solutions)' } },
