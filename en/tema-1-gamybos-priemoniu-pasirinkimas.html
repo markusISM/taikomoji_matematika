@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choice of the Means of Production · Topic 1 · Applied Mathematics</title>
+<meta name="description" content="Choice of the means of production: the cost lines of several production methods, the graph, the crossing points and the answer as intervals. Step-by-step examples, a test and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-1-gamybos-priemoniu-pasirinkimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=37">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=37"></script>
+</head>
+<body data-page="means">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 1 · Applications · Section 4</span>
+    <h1>Choice of the Means of Production</h1>
+    <ul class="jump">
+      <li><a href="#modelis">Model</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#testas">Check yourself</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">The model</h2>
+
+    <article class="card">
+      <p>The same quantity of parts can be obtained by several mutually exclusive methods, each with its own fixed cost and its own cost per unit:</p>
+      <div class="formula">\[ \begin{gathered} TC_i(x) = F_i + V_i\cdot x, \\ i = 1, 2, \ldots, n \end{gathered} \]</div>
+      <p>Every method is therefore a straight line whose intercept \(F_i\) is the cost of producing nothing and whose <button type="button" class="term" data-term="Slope" data-def="A measure of the rate of change of \(y\) with respect to \(x\).">slope</button> \(V_i\) is the cost of one additional unit. Buying from an outside supplier is the case \(F = 0\), where the unit cost is the purchase price.</p>
+      <p>The question is not which method is best in general – none is – but how the best method depends on the projected demand. The answer is found from the graph and written as a set of intervals of \(x\).</p>
+
+      <div data-widget="means-chart" data-lines="a:0:230|b:70000:90|c:250000:10" data-xmax="3000" data-ymax="700000" data-numeric="0"></div>
+      <p class="formula-note" style="text-align:center;margin-top:6px">At every quantity the lowest line shows the cheapest method. The strip below the axis shows which method is the cheapest on each interval. The lines are drawn for Example 1.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Write \(TC_i(x) = F_i + V_i x\) for every method.</li>
+        <li>Choose a quantity \(x_{\max}\) large enough to cover the range of interest, and compute two points of each line: \((0;\,F_i)\) and \((x_{\max};\,F_i + V_i x_{\max})\). Two points are enough, because every cost function here is linear.</li>
+        <li>Draw all the lines on one set of axes: the quantity \(x\) on the horizontal axis, the total cost \(TC\) on the vertical one.</li>
+        <li>Read the picture. At every quantity the lowest line shows the cheapest method, and the quantities at which the lowest line changes are exactly the points where two lines cross.</li>
+        <li>Find those crossing points exactly by solving \(TC_i(x) = TC_j(x)\) for the pairs of lines that cross at the bottom of the picture. Lines that cross higher up are irrelevant, because a third method is cheaper there.</li>
+        <li>Write the answer as intervals, the last one <button type="button" class="term" data-term="Unbounded interval" data-def="An interval with no upper bound, e.g. \([2250,\,+\infty)\).">unbounded</button>. At a crossing point both methods cost the same, so either may be chosen.</li>
+      </ol>
+
+      <div class="model-note"><strong>Profit wording.</strong> If the product is sold at the same price and in the same quantity whatever method is used, the revenue is the same for all methods, so the lowest cost line is also the most profitable method.</div>
+
+      <div class="must" id="grafikas">
+        <p class="must-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg>Graph</p>
+        <p><strong>If the problem requires a choice between more than two production methods, the graph must be drawn</strong> – only the graph shows which crossing points decide the answer.</p>
+        <p>The graph must include the following elements: axis labels, the origin of the coordinate system, the unit scale on the axes and labels of the lines – state clearly next to each line which cost function it represents.</p>
+        <div data-widget="means-chart" data-lines="a:0:230|b:70000:90|c:250000:10" data-xmax="3000" data-ymax="700000" data-xstep="500" data-ystep="100000" data-annotate="1"></div>
+        <ol class="badge-list">
+          <li><span class="bn">1</span><span>Axis labels: \(x\) – quantity (units), \(TC\) – total cost (EUR).</span></li>
+          <li><span class="bn">2</span><span>The origin of the coordinate system.</span></li>
+          <li><span class="bn">3</span><span>The unit scale on the axes: one division is 500 units and 100000 EUR.</span></li>
+          <li><span class="bn">4</span><span>Labels of the lines: \(TC_a\), \(TC_b\), \(TC_c\).</span></li>
+        </ol>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The wrong crossing point.</strong> Only the crossing points at which the lowest line changes matter. Lines that cross higher up are irrelevant.</li>
+            <li><strong>“The best method in general”.</strong> There is none: the best method depends on the projected demand, so the answer is written as intervals of \(x\).</li>
+            <li><strong>Buying from a supplier.</strong> Buying from an outside supplier is the case \(F = 0\), where the unit cost is the purchase price.</li>
+            <li><strong>The last interval.</strong> It is unbounded, e.g. \([2250,\,+\infty)\).</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>If the problem includes several questions, answers to all of them must be clearly presented.</li>
+            <li>When solving the problem of the choice of the means of production, the meaning of the introduced variable must be explained. If a choice has to be made between more than two production methods, a graph must be included in the solution.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: the lecture example (guideline section 3) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Obtaining the required parts</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A manufacturer can obtain the required parts in three ways:
+        <ol type="a">
+          <li>purchase them at 230 euros per unit;</li>
+          <li>buy a used machine-tool for 70000 euros and produce each part at 90 euros;</li>
+          <li>acquire a new automatic machine-tool for 250000 euros and produce each part at 10 euros.</li>
+        </ol>
+        Determine how the choice depends on the projected demand.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The cost functions</span></h4>
+          <p>With \(x\) the number of parts required:</p>
+          \[ \begin{aligned} TC_a &amp;= 230x \\ TC_b &amp;= 70000 + 90x \\ TC_c &amp;= 250000 + 10x \end{aligned} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span><span>Why does \(TC_a\) have no intercept?</span></summary>
+            <div class="more-body">
+              <p>Buying from an outside supplier is the case \(F = 0\), where the unit cost is the purchase price – here 230 euros.</p>
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Two points of each line</span></h4>
+          <p>Take \(x_{\max} = 3000\) and compute two points of each line:</p>
+          <table class="vtable">
+            <thead><tr><th>\(x\)</th><th>0</th><th>3000</th></tr></thead>
+            <tbody>
+              <tr><td>\(TC_a\)</td><td>0</td><td>690000</td></tr>
+              <tr><td>\(TC_b\)</td><td>70000</td><td>340000</td></tr>
+              <tr><td>\(TC_c\)</td><td>250000</td><td>280000</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The graph</span></h4>
+          <p>Draw the three lines through these pairs of points.</p>
+          <div data-widget="means-chart" data-lines="a:0:230|b:70000:90|c:250000:10" data-xmax="3000" data-ymax="700000" data-xstep="500" data-ystep="100000"></div>
+          <p class="formula-note" style="text-align:center;margin-top:6px">The cheapest method at each quantity is given by the lowest of the three lines.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The crossing points</span></h4>
+          <p>The picture shows that line a is the lowest near the origin, then line b, and finally line c. The lowest line changes where a crosses b and where b crosses c. Solving these two equations:</p>
+          \[ \begin{aligned} 230x &amp;= 70000 + 90x \\ \Longrightarrow\; 140x &amp;= 70000 \\ \Longrightarrow\; x &amp;= 500 \end{aligned} \]
+          \[ \begin{aligned} 70000 + 90x &amp;= 250000 + 10x \\ \Longrightarrow\; 80x &amp;= 180000 \\ \Longrightarrow\; x &amp;= 2250 \end{aligned} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span><span>Why is the crossing point of lines a and c not needed?</span></summary>
+            <div class="more-body">
+              <p>Lines that cross higher up are irrelevant, because a third method is cheaper there. In the graph, lines a and c cross above line b, so at that quantity method b is the cheapest.</p>
+            </div>
+          </details>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Method a is the most suitable when \(x \in [0,\,500]\), method b when \(x \in [500,\,2250]\), method c when \(x \in [2250,\,+\infty)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: guideline problem 1 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>The choice and the saving</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A manufacturer needs a component and has three possibilities: (a) buy it from a supplier at 60 euros per unit; (b) buy a semi-automatic line for 24000 euros, after which one component costs 36 euros; (c) buy an automatic line for 87000 euros, after which one component costs 15 euros. Determine the choice depending on the projected demand. Which method should be chosen for a demand of 2500 components, and how much is saved against the next best one?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The three cost functions</span></h4>
+          <p>With \(x\) the number of components required:</p>
+          \[ \begin{aligned} TC_a &amp;= 60x \\ TC_b &amp;= 24000 + 36x \\ TC_c &amp;= 87000 + 15x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Two points of each line</span></h4>
+          <p>Take \(x_{\max} = 4000\) and compute two points of each line:</p>
+          <table class="vtable">
+            <thead><tr><th>\(x\)</th><th>0</th><th>4000</th></tr></thead>
+            <tbody>
+              <tr><td>\(TC_a\)</td><td>0</td><td>240000</td></tr>
+              <tr><td>\(TC_b\)</td><td>24000</td><td>168000</td></tr>
+              <tr><td>\(TC_c\)</td><td>87000</td><td>147000</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The graph</span></h4>
+          <p>Draw the lines.</p>
+          <div data-widget="means-chart" data-lines="a:0:60|b:24000:36|c:87000:15" data-xmax="4000" data-ymax="250000" data-xstep="500" data-ystep="50000"></div>
+          <p class="formula-note" style="text-align:center;margin-top:6px">The lowest line changes at \(x = 1000\) and at \(x = 3000\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The crossing points</span></h4>
+          <p>The lowest line is a, then b, then c, so the crossings to be computed are a with b and b with c:</p>
+          \[ \begin{aligned} 60x &amp;= 24000 + 36x \\ \Longrightarrow\; 24x &amp;= 24000 \\ \Longrightarrow\; x &amp;= 1000 \end{aligned} \]
+          \[ \begin{aligned} 24000 + 36x &amp;= 87000 + 15x \\ \Longrightarrow\; 21x &amp;= 63000 \\ \Longrightarrow\; x &amp;= 3000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>A demand of 2500 components</span></h4>
+          <p>A demand of 2500 lies in \([1000,\,3000]\), where line b is the lowest:</p>
+          \[ \begin{aligned} TC_b(2500) &amp;= 24000 + 36\cdot 2500 \\ &amp;= 114000 \end{aligned} \]
+          <p>The other two methods cost \(TC_a(2500) = 150000\) euros and \(TC_c(2500) = 87000 + 37500 = 124500\) euros, so the next best is method c and the saving is \(124500 - 114000 = 10500\) euros.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Method a is the most suitable when \(x \in [0,\,1000]\), method b when \(x \in [1000,\,3000]\), method c when \(x \in [3000,\,+\infty)\). For 2500 components method b should be chosen, at a cost of 114000 euros, which saves 10500 euros.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: guideline problem 2 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Which machine gives the larger profit</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A product may be made using machine I or machine II. The monthly fixed costs are 21000 euros for machine I and 15000 euros for machine II; the variable cost of one unit is 18 euros with machine I and 28 euros with machine II. The product sells for 60 euros. Which machine maximises profit if the projected sales are 500, 600 or 700 units? At what sales level do the two machines give the same profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The cost functions</span></h4>
+          <p>Let \(x\) be the number of units produced and sold per month. The price and the quantity sold are the same for both machines, so the revenue \(R = 60x\) is the same and the machine with the lower cost line is the more profitable one:</p>
+          \[ \begin{aligned} TC_{\mathrm{I}} &amp;= 21000 + 18x \\ TC_{\mathrm{II}} &amp;= 15000 + 28x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Two points of each line</span></h4>
+          <p>Take \(x_{\max} = 1000\) and compute two points of each line:</p>
+          <table class="vtable">
+            <thead><tr><th>\(x\)</th><th>0</th><th>1000</th></tr></thead>
+            <tbody>
+              <tr><td>\(TC_{\mathrm{I}}\)</td><td>21000</td><td>39000</td></tr>
+              <tr><td>\(TC_{\mathrm{II}}\)</td><td>15000</td><td>43000</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The graph</span></h4>
+          <p>Draw the lines.</p>
+          <div data-widget="means-chart" data-lines="I:21000:18|II:15000:28" data-xmax="1000" data-ymax="50000" data-xstep="200" data-ystep="10000"></div>
+          <p class="formula-note" style="text-align:center;margin-top:6px">Machine II is cheaper to the left of the crossing point, machine I to the right.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The crossing point</span></h4>
+          <p>The lines cross once; solving for that quantity:</p>
+          \[ \begin{aligned} 21000 + 18x &amp;= 15000 + 28x \\ \Longrightarrow\; 10x &amp;= 6000 \\ \Longrightarrow\; x &amp;= 600 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Profit</span></h4>
+          <p>The graph shows that machine II is the lower line before 600 units and machine I after it. The profits confirm this:</p>
+          \[ \begin{aligned} P_{\mathrm{I}}(x) &amp;= 60x - (21000 + 18x) \\ &amp;= 42x - 21000 \\ P_{\mathrm{II}}(x) &amp;= 60x - (15000 + 28x) \\ &amp;= 32x - 15000 \end{aligned} \]
+          <table class="vtable">
+            <thead><tr><th>\(x\)</th><th>500</th><th>600</th><th>700</th></tr></thead>
+            <tbody>
+              <tr><td>\(P_{\mathrm{I}}\)</td><td>0</td><td>4200</td><td>8400</td></tr>
+              <tr><td>\(P_{\mathrm{II}}\)</td><td>1000</td><td>4200</td><td>7400</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            At projected sales of 500 units machine II should be chosen (a profit of 1000 euros against 0); at 600 units both machines give the same profit of 4200 euros, so either may be chosen; at 700 units machine I should be chosen (8400 euros against 7400). The two machines are equally profitable at 600 units per month.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. TEST ============ -->
+  <section class="section" id="testas" aria-labelledby="h-test">
+    <h2 id="h-test">Check yourself</h2>
+
+    <div class="quiz">
+      <article class="card q" data-type="mc">
+        <p class="q-text">A workshop can produce a part with method A at a total cost of \(TC = 18x\)&nbsp;€, or with method B at a total cost of \(TC = 9000 + 6x\)&nbsp;€, where \(x\) is the number of parts. Find the production volume at which the two methods cost the same.</p>
+        <ol class="q-options">
+          <li>375 parts</li>
+          <li>500 parts</li>
+          <li data-correct>750 parts</li>
+          <li>1500 parts</li>
+        </ol>
+        <div class="q-explain">\[ \begin{aligned} 18x &amp;= 9000 + 6x \\ \Longrightarrow\; 12x &amp;= 9000 \\ \Longrightarrow\; x &amp;= 750 \end{aligned} \]</div>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">A print company is choosing between buying a large-format printer outright, at a total cost of \(TC = 14000 + 4x\)&nbsp;€, or continuing to outsource each large print at a constant cost of \(V\)&nbsp;€ per print. Management wants the two options to cost exactly the same at 2800 prints. Find the outsourcing cost per print, \(V\), that achieves this.</p>
+        <ol class="q-options">
+          <li>€5/print</li>
+          <li data-correct>€9/print</li>
+          <li>€4/print</li>
+          <li>€14/print</li>
+        </ol>
+        <div class="q-explain">\[ \begin{aligned} 14000 + 4\cdot 2800 &amp;= V\cdot 2800 \\ \Longrightarrow\; 25200 &amp;= 2800V \\ \Longrightarrow\; V &amp;= 9 \end{aligned} \]</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 5. PRACTICE PROBLEMS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solution out exactly as in the examples: draw each line from two points, read the lowest line off the graph, and then compute the crossing points exactly.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <p class="q-text">A company that assembles electric scooters needs one battery pack for every scooter. There are three ways of obtaining the packs: a) to install a new automatic line, which costs 160000 euros and produces one pack for 20 euros; b) to buy the packs from an outside supplier for 180 euros each; c) to install a used line, which costs 48000 euros and produces one pack for 60 euros. Determine which of the three ways is the cheapest, depending on the number of packs needed. Which way should the company choose if it plans to assemble 2000 scooters a year, and how much does that choice save in comparison with the next cheapest way?</p>
+        <div class="q-answer">
+          <p>The crossing points are \((400;\,72000)\) and \((2800;\,216000)\). The cheapest way is b) on \([0,\,400]\), c) on \([400,\,2800]\) and a) on \([2800,\,+\infty)\). At the planned output of 2000 packs the used line is the cheapest: \(TC_c = 168000\) euros, against \(TC_a = 200000\) euros and \(TC_b = 360000\) euros, so it saves 32000 euros a year in comparison with the new automatic line.</p>
+          <div data-widget="means-chart" data-lines="a:160000:20|b:0:180|c:48000:60" data-xmax="4000" data-ymax="300000" data-xstep="500" data-ystep="50000"></div>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">A sports equipment manufacturer needs one moulded shell for every bicycle helmet it makes. There are three ways of obtaining the shells: a) to buy a press, which costs 36000 euros and moulds one shell for 45 euros; b) to buy an automatic moulding line, which costs 108000 euros and moulds one shell for 15 euros; c) to order the shells from a workshop for 95 euros each. Determine which of the three ways is the cheapest, depending on the number of shells needed. Which way should the manufacturer choose if it plans to make 3000 helmets a year, and how much does that choice save in comparison with the next cheapest way?</p>
+        <div class="q-answer">
+          <p>The crossing points are \((720;\,68400)\) and \((2400;\,144000)\). The cheapest way is c) on \([0,\,720]\), a) on \([720,\,2400]\) and b) on \([2400,\,+\infty)\). At the planned output of 3000 shells the automatic moulding line is the cheapest: \(TC_b = 153000\) euros, against \(TC_a = 171000\) euros and \(TC_c = 285000\) euros, so it saves 18000 euros a year in comparison with the press.</p>
+          <div data-widget="means-chart" data-lines="a:36000:45|b:108000:15|c:0:95" data-xmax="3000" data-ymax="300000" data-xstep="500" data-ystep="50000"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 1</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

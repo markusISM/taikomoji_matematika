@@ -201,7 +201,7 @@
       { id: 'be', status: 'active', href: { lt: 'tema-1-pajamos-sanaudos-pelnas.html', en: 'tema-1-pajamos-sanaudos-pelnas.html' },
         title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue, Profit, and Break-Even Point' },
         desc: { lt: 'Lūžio taškas – gamybos kiekis, su kuriuo pajamos prilygsta sąnaudoms.', en: 'The break-even point: the level of production at which the firm neither makes a profit nor sustains a loss.' } },
-      { id: 'means', status: 'active', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
+      { id: 'means', status: 'active', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
         title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' },
         desc: { lt: 'Kaip gamybos būdo pasirinkimas priklauso nuo planuojamos paklausos.', en: 'How the choice of production method depends on the projected demand.' } }
     ]
@@ -297,7 +297,7 @@
                title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' } },
     m52:     { parent: 't5', topic: 't5', model: 'm52', href: { lt: 'tema-5-minimizavimas.html', en: null },
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
-    means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: null },
+    means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
                title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
