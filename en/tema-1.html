@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="lt">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>1 tema. Tiesinės funkcijos ir modeliai · Taikomoji matematika</title>
-<meta name="description" content="Tiesės nuolydis, laisvasis narys, kryptinė tiesės lygtis ir taikomieji tiesiniai modeliai.">
+<title>Topic 1. Linear Functions and Models · Applied Mathematics</title>
+<meta name="description" content="The slope of a line, the intercept, the slope-intercept form and applied linear models.">
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="alternate" hreflang="en" href="../en/tema-1.html">
+<link rel="alternate" hreflang="lt" href="../lt/tema-1.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <link rel="stylesheet" href="../assets/css/style.css?v=32">
 <script defer src="../assets/katex/katex.min.js"></script>
@@ -15,70 +15,70 @@
 <script defer src="../assets/js/site.js?v=32"></script>
 </head>
 <body data-page="t1">
-<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
 <header id="site-header" class="site-header"></header>
 
 <main id="main" class="wrap">
   <nav id="crumbs" class="crumbs"></nav>
 
   <header class="page-head">
-    <span class="eyebrow">1 tema</span>
-    <h1>Tiesinės funkcijos ir modeliai</h1>
+    <span class="eyebrow">Topic 1</span>
+    <h1>Linear Functions and Models</h1>
     <ul class="jump">
-      <li><a href="#savokos">Sąvokos</a></li>
-      <li><a href="#taikymai">Taikymai</a></li>
+      <li><a href="#savokos">Concepts</a></li>
+      <li><a href="#taikymai">Applications</a></li>
     </ul>
   </header>
 
-  <!-- ============ SĄVOKOS ============ -->
+  <!-- ============ CONCEPTS ============ -->
   <section class="section" id="savokos" aria-labelledby="h-concepts">
-    <h2 id="h-concepts">Pagrindinės sąvokos</h2>
+    <h2 id="h-concepts">Key Concepts</h2>
 
     <!-- 1 -->
     <article class="card concept" id="nuolydis">
-      <div class="concept-head"><span class="num">1</span><h3>Kas yra tiesės nuolydis?</h3></div>
-      <p>Nuolydis \(m\) matuoja tiesės statumą. Jis parodo, <strong>kaip pasikeis \(y\) reikšmė, jei \(x\) reikšmė padidės 1 vienetu.</strong></p>
+      <div class="concept-head"><span class="num">1</span><h3>What is the slope of a line?</h3></div>
+      <p>The slope \(m\) measures the steepness of the line. <strong>The slope is a measure of the rate of change of \(y\) with respect to \(x\).</strong></p>
 
-      <div class="fig-grid" role="group" aria-label="Nuolydžio atvejai">
+      <div class="fig-grid" role="group" aria-label="Cases of the slope">
         <figure>
           <svg viewBox="0 0 120 90" aria-hidden="true">
             <line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/>
             <line class="ln" x1="30" y1="70" x2="106" y2="18"/>
           </svg>
-          <figcaption>\(m &gt; 0\)<span class="sub">tiesė kyla</span></figcaption>
+          <figcaption>\(m &gt; 0\)<span class="sub">the line rises</span></figcaption>
         </figure>
         <figure>
           <svg viewBox="0 0 120 90" aria-hidden="true">
             <line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/>
             <line class="ln" x1="30" y1="18" x2="106" y2="70"/>
           </svg>
-          <figcaption>\(m &lt; 0\)<span class="sub">tiesė leidžiasi</span></figcaption>
+          <figcaption>\(m &lt; 0\)<span class="sub">the line falls</span></figcaption>
         </figure>
         <figure>
           <svg viewBox="0 0 120 90" aria-hidden="true">
             <line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/>
             <line class="ln" x1="28" y1="40" x2="108" y2="40"/>
           </svg>
-          <figcaption>\(m = 0\)<span class="sub">horizontali tiesė</span></figcaption>
+          <figcaption>\(m = 0\)<span class="sub">horizontal line</span></figcaption>
         </figure>
         <figure>
           <svg viewBox="0 0 120 90" aria-hidden="true">
             <line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/>
             <line class="ln" x1="70" y1="12" x2="70" y2="70"/>
           </svg>
-          <figcaption>\(m\) – neapibrėžtas<span class="sub">vertikali tiesė</span></figcaption>
+          <figcaption>\(m\) – undefined<span class="sub">vertical line</span></figcaption>
         </figure>
       </div>
     </article>
 
     <!-- 2 -->
     <article class="card concept" id="nuolydis-skaiciavimas">
-      <div class="concept-head"><span class="num">2</span><h3>Kaip apskaičiuoti nuolydį, žinant du taškus?</h3></div>
-      <p>Paimkite du tiesės taškus \(A(x_1;\,y_1)\) ir \(B(x_2;\,y_2)\):</p>
-      <div class="formula">\[ m = \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1} = \operatorname{tg}\alpha \]</div>
+      <div class="concept-head"><span class="num">2</span><h3>How to compute the slope from two points?</h3></div>
+      <p>Take two points of the line, \(A(x_1;\,y_1)\) and \(B(x_2;\,y_2)\):</p>
+      <div class="formula">\[ m = \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1} = \tan\alpha \]</div>
 
       <figure class="fig">
-        <svg viewBox="0 0 340 222" role="img" aria-label="Du tiesės taškai A ir B, pokyčiai Δx ir Δy bei kampas α">
+        <svg viewBox="0 0 340 222" role="img" aria-label="Two points A and B of the line, the changes Δx and Δy and the angle α">
           <line class="guide" x1="110" y1="150" x2="110" y2="200"/>
           <line class="guide" x1="250" y1="60" x2="250" y2="150"/>
           <line class="guide" x1="30" y1="150" x2="110" y2="150"/>
@@ -108,29 +108,29 @@
       </figure>
 
       <div class="example-box">
-        <span class="label">Pavyzdys</span>
-        Taškai \(A(3;\,46000)\) ir \(B(7;\,26000)\):
+        <span class="label">Example</span>
+        Points \(A(3;\,46000)\) and \(B(7;\,26000)\):
         \[ \begin{aligned} m &amp;= \frac{26000 - 46000}{7 - 3} \\ &amp;= \frac{-20000}{4} = -5000 \end{aligned} \]
       </div>
 
       <details class="more more--why">
-        <summary><span class="ico" aria-hidden="true">?</span>Kodėl taip?</summary>
+        <summary><span class="ico" aria-hidden="true">?</span>Why?</summary>
         <div class="more-body">
-          <p>\(\Delta y = y_2 - y_1\) – kiek pasikeitė \(y\), o \(\Delta x = x_2 - x_1\) – kiek pasikeitė \(x\), einant nuo taško \(A\) iki taško \(B\). Padalijus \(\Delta y\) iš \(\Delta x\), gaunama, kiek \(y\) pasikeičia, kai \(x\) padidėja 1 vienetu. Tai ir yra nuolydis.</p>
-          <p>Abu skirtumai skaičiuojami ta pačia tvarka: iš taško \(B\) koordinatės atimama taško \(A\) koordinatė.</p>
-          <p>\(\alpha\) – brėžinyje pažymėtas kampas, todėl nuolydį galima užrašyti ir kaip \(\operatorname{tg}\alpha\).</p>
+          <p>\(\Delta y = y_2 - y_1\) is how much \(y\) has changed, and \(\Delta x = x_2 - x_1\) is how much \(x\) has changed, when going from point \(A\) to point \(B\). Dividing \(\Delta y\) by \(\Delta x\) gives how much \(y\) changes when \(x\) increases by 1 unit. This is the slope.</p>
+          <p>Both differences are computed in the same order: the coordinate of point \(A\) is subtracted from the coordinate of point \(B\).</p>
+          <p>\(\alpha\) is the angle marked in the figure, so the slope can also be written as \(\tan\alpha\).</p>
         </div>
       </details>
     </article>
 
     <!-- 3 -->
     <article class="card concept" id="laisvasis-narys">
-      <div class="concept-head"><span class="num">3</span><h3>Kas yra laisvasis narys?</h3></div>
-      <p>Laisvasis narys \(b\) nurodo tiesės poziciją vertikalios ašies atžvilgiu. <strong>Jis lygus \(y\) reikšmei, kai \(x = 0\).</strong></p>
-      <p>Taške \((0;\,b)\) tiesė kerta vertikalią ašį.</p>
+      <div class="concept-head"><span class="num">3</span><h3>What is the intercept?</h3></div>
+      <p>The intercept \(b\) determines the line's position on the vertical axis. <strong>It equals the value of \(y\) at \(x = 0\).</strong></p>
+      <p>The line crosses the vertical axis at the point \((0;\,b)\).</p>
 
       <figure class="fig">
-        <svg viewBox="0 0 320 196" role="img" aria-label="Tiesė kerta vertikalią ašį taške (0; b)">
+        <svg viewBox="0 0 320 196" role="img" aria-label="The line crosses the vertical axis at the point (0; b)">
           <line class="ax" x1="10" y1="160" x2="309" y2="160"/>
           <line class="ax" x1="110" y1="190" x2="110" y2="11"/>
           <path class="ah" d="M317 160L308 155.5L308 164.5Z"/><path class="ah" d="M110 3L105.5 12L114.5 12Z"/>
@@ -148,39 +148,39 @@
 
     <!-- 4 -->
     <article class="card concept" id="laisvojo-nario-skaiciavimas">
-      <div class="concept-head"><span class="num">4</span><h3>Kaip apskaičiuoti laisvąjį narį?</h3></div>
-      <p>Kai nuolydis \(m\) jau žinomas, paimkite bet kurį tiesės tašką \(A(x_1;\,y_1)\):</p>
+      <div class="concept-head"><span class="num">4</span><h3>How to compute the intercept?</h3></div>
+      <p>Once the slope \(m\) is known, take any point of the line, \(A(x_1;\,y_1)\):</p>
       <div class="formula">\[ b = -m x_1 + y_1 \]</div>
 
       <div class="example-box">
-        <span class="label">Pavyzdys</span>
-        Tęsiame: \(m = -5000\), \(A(3;\,46000)\).
+        <span class="label">Example</span>
+        Continuing: \(m = -5000\), \(A(3;\,46000)\).
         \[ \begin{aligned} b &amp;= -(-5000)\cdot 3 + 46000 \\ &amp;= 15000 + 46000 = 61000 \end{aligned} \]
       </div>
 
-      <p class="tip">Jei žinomas tiesės taškas, kurio \(x = 0\), skaičiuoti nereikia: \(b\) lygus to taško \(y\) reikšmei.</p>
+      <p class="tip">If a point of the line with \(x = 0\) is known, no calculation is needed: \(b\) equals the \(y\) value of that point.</p>
 
       <details class="more more--why">
-        <summary><span class="ico" aria-hidden="true">?</span>Kodėl taip?</summary>
+        <summary><span class="ico" aria-hidden="true">?</span>Why?</summary>
         <div class="more-body">
-          <p>Taškas \(A\) yra tiesėje, todėl jo koordinatės tenkina lygtį \(y = mx + b\):</p>
+          <p>Point \(A\) lies on the line, so its coordinates satisfy the equation \(y = mx + b\):</p>
           \[ y_1 = m x_1 + b \]
-          <p>Perkėlę \(m x_1\) į kitą lygybės pusę, gauname \(b = -m x_1 + y_1\).</p>
+          <p>Moving \(m x_1\) to the other side of the equation gives \(b = -m x_1 + y_1\).</p>
         </div>
       </details>
     </article>
 
     <!-- 5 -->
     <article class="card concept" id="kryptine-lygtis">
-      <div class="concept-head"><span class="num">5</span><h3>Kaip sudaryti kryptinę tiesės lygtį?</h3></div>
+      <div class="concept-head"><span class="num">5</span><h3>How to write the slope-intercept form?</h3></div>
       <div class="formula">\[ y = mx + b \]</div>
       <ol class="steps-list">
-        <li>Apskaičiuokite nuolydį \(m\) iš dviejų taškų.</li>
-        <li>Apskaičiuokite laisvąjį narį \(b\).</li>
-        <li>Įrašykite \(m\) ir \(b\) į lygtį \(y = mx + b\).</li>
+        <li>Compute the slope \(m\) from two points.</li>
+        <li>Compute the intercept \(b\).</li>
+        <li>Substitute \(m\) and \(b\) into the equation \(y = mx + b\).</li>
       </ol>
       <div class="example-box">
-        <span class="label">Pavyzdys</span>
+        <span class="label">Example</span>
         \(m = -5000\), \(b = 61000\):
         \[ y = -5000x + 61000 \]
       </div>
@@ -188,40 +188,40 @@
 
     <!-- 6 -->
     <article class="card concept" id="ka-rodo-lygtis">
-      <div class="concept-head"><span class="num">6</span><h3>Ką ši lygtis rodo?</h3></div>
+      <div class="concept-head"><span class="num">6</span><h3>What does the equation show?</h3></div>
       <ul class="kv">
-        <li><span class="sym">\(m\)</span><span>tiesės statumas: kiek pasikeičia \(y\), kai \(x\) padidėja 1 vienetu;</span></li>
-        <li><span class="sym">\(b\)</span><span>tiesės pozicija vertikalios ašies atžvilgiu: \(y\) reikšmė, kai \(x = 0\).</span></li>
+        <li><span class="sym">\(m\)</span><span>the steepness of the line: how much \(y\) changes when \(x\) increases by 1 unit;</span></li>
+        <li><span class="sym">\(b\)</span><span>the line's position on the vertical axis: the value of \(y\) at \(x = 0\).</span></li>
       </ul>
 
       <div class="example-box">
-        <span class="label">Taikymo pavyzdys</span>
-        Tiesinio nusidėvėjimo uždavinyje gauta įrenginio vertės lygtis \(V(t) = -5000t + 61000\): kasmet vertė sumažėja 5000 Eur \((m = -5000)\), o pradinė vertė – 61000 Eur \((b = 61000)\).
+        <span class="label">Application example</span>
+        In a linear depreciation problem, the value equation of a machine is \(V(t) = -5000t + 61000\): its value falls by 5000&nbsp;EUR every year \((m = -5000)\), and its original value is 61000&nbsp;EUR \((b = 61000)\).
       </div>
 
       <div data-widget="line-explorer"></div>
     </article>
   </section>
 
-  <!-- ============ TAIKYMAI ============ -->
+  <!-- ============ APPLICATIONS ============ -->
   <section class="section" id="taikymai" aria-labelledby="h-apps">
-    <h2 id="h-apps">Taikymai</h2>
-    <p class="section-intro">Pasirinkite skyrių.</p>
+    <h2 id="h-apps">Applications</h2>
+    <p class="section-intro">Choose a section.</p>
     <div class="model-grid" data-models="t1"></div>
   </section>
 
   <section class="section sources" aria-labelledby="h-src">
-    <h2 id="h-src">Šaltiniai</h2>
-    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this topic can be found in:</p>
     <ul class="src-list">
-      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">1 skyrius</span></span></li>
-      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">1 skyrius</span></span></li>
-      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">2 skyrius</span></span></li>
-      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">Lial, Hungerford, Holcomb, Mullins. <cite>Mathematics with Applications</cite>. 12th ed.<span class="src-ch">2 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 2</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">Lial, Hungerford, Holcomb, Mullins. <cite>Mathematics with Applications</cite>. 12th ed.<span class="src-ch">Chapter 2</span></span></li>
     </ul>
   </section>
 
-  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
 </main>
 
 <footer id="site-footer" class="site-footer"></footer>

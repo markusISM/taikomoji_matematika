@@ -165,24 +165,24 @@
      Angliški pavadinimai (en) bus papildyti kuriant anglišką versiją.
      ------------------------------------------------------------------ */
   var COURSE = [
-    { id: 't1', num: 1, status: 'active', href: { lt: 'tema-1.html' },
+    { id: 't1', num: 1, status: 'active', href: { lt: 'tema-1.html', en: 'tema-1.html' },
       title: { lt: 'Tiesinės funkcijos ir modeliai', en: 'Linear Functions and Models' } },
     { id: 't2', num: 2, status: 'active', href: { lt: 'tema-2.html' },
       title: { lt: 'Matricos', en: 'Matrices' } },
     { id: 't3', num: 3, status: 'active', href: { lt: 'tema-3.html' },
       title: { lt: 'Tiesinių lygčių sistemos', en: 'Systems of Linear Equations' } },
     { id: 't4', num: 4, status: 'active', href: { lt: 'tema-4.html' },
-      title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: 'Linear Programming: Geometric Methods' } },
+      title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: 'Linear Programming: The Graphical Method' } },
     { id: 't5', num: 5, status: 'active', href: { lt: 'tema-5.html' },
       title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: 'Linear Programming: The Simplex Method' } },
     { id: 'midterm', type: 'exam', href: { lt: 'tarpinis-egzaminas.html' },
       title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
-    { id: 't6', num: 6, status: 'soon', title: { lt: 'Pirmos eilės išvestinės', en: null } },
-    { id: 't7', num: 7, status: 'soon', title: { lt: 'Aukštesnės eilės išvestinės', en: null } },
-    { id: 't8', num: 8, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų išvestinės', en: null } },
-    { id: 't9', num: 9, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų ekstremumai', en: null } },
-    { id: 't10', num: 10, status: 'soon', title: { lt: 'Neapibrėžtinis integralas', en: null } },
-    { id: 't11', num: 11, status: 'soon', title: { lt: 'Apibrėžtinis integralas', en: null } },
+    { id: 't6', num: 6, status: 'soon', title: { lt: 'Pirmos eilės išvestinės', en: 'The First Order Derivative' } },
+    { id: 't7', num: 7, status: 'soon', title: { lt: 'Aukštesnės eilės išvestinės', en: 'The Higher Order Derivative' } },
+    { id: 't8', num: 8, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų išvestinės', en: 'Functions of Several Variables. Partial Derivatives' } },
+    { id: 't9', num: 9, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų ekstremumai', en: 'Extrema of Functions of Several Variables, the Lagrange Problem' } },
+    { id: 't10', num: 10, status: 'soon', title: { lt: 'Neapibrėžtinis integralas', en: 'Indefinite Integral' } },
+    { id: 't11', num: 11, status: 'soon', title: { lt: 'Apibrėžtinis integralas', en: 'Definite Integral' } },
     { id: 'final', type: 'exam', href: { lt: 'baigiamasis-egzaminas.html' },
       title: { lt: 'Baigiamasis egzaminas', en: 'Final exam' } }
   ];
@@ -192,16 +192,16 @@
     t1: [
       { id: 'dep', status: 'active', href: { lt: 'tema-1-nusidevejimas.html' },
         title: { lt: 'Tiesinis nusidėvėjimas', en: 'Linear Depreciation' },
-        desc: { lt: 'Per kiekvieną laikotarpį turto vertė sumažėja tokia pačia suma.' } },
+        desc: { lt: 'Per kiekvieną laikotarpį turto vertė sumažėja tokia pačia suma.', en: 'The asset loses the same amount of value in every period.' } },
       { id: 'eq', status: 'active', href: { lt: 'tema-1-rinkos-pusiausvyra.html' },
         title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' },
-        desc: { lt: 'Paklausa ir pasiūla: pusiausvyros kaina ir kiekis, kai \\(D = S\\).' } },
+        desc: { lt: 'Paklausa ir pasiūla: pusiausvyros kaina ir kiekis, kai \\(D = S\\).', en: 'Demand and supply: the equilibrium price and quantity, where \\(D = S\\).' } },
       { id: 'be', status: 'active', href: { lt: 'tema-1-pajamos-sanaudos-pelnas.html' },
-        title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue and Profit' },
-        desc: { lt: 'Lūžio taškas – gamybos kiekis, su kuriuo pajamos prilygsta sąnaudoms.' } },
+        title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue, Profit, and Break-Even Point' },
+        desc: { lt: 'Lūžio taškas – gamybos kiekis, su kuriuo pajamos prilygsta sąnaudoms.', en: 'The break-even point: the level of production at which the firm neither makes a profit nor sustains a loss.' } },
       { id: 'means', status: 'active', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
         title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' },
-        desc: { lt: 'Kaip gamybos būdo pasirinkimas priklauso nuo planuojamos paklausos.' } }
+        desc: { lt: 'Kaip gamybos būdo pasirinkimas priklauso nuo planuojamos paklausos.', en: 'How the choice of production method depends on the projected demand.' } }
     ]
     ,
     t2: [
@@ -255,14 +255,14 @@
      Kai sukursite anglišką puslapį, įrašykite jo failo vardą į href.en. */
   var PAGES = {
     home:    { href: { lt: 'index.html', en: 'index.html' } },
-    t1:      { parent: 'home', href: { lt: 'tema-1.html', en: null },
+    t1:      { parent: 'home', href: { lt: 'tema-1.html', en: 'tema-1.html' },
                title: { lt: '1 tema', en: 'Topic 1' } },
     dep:     { parent: 't1', topic: 't1', model: 'dep', href: { lt: 'tema-1-nusidevejimas.html', en: null },
                title: { lt: 'Tiesinis nusidėvėjimas', en: 'Linear Depreciation' } },
     eq:      { parent: 't1', topic: 't1', model: 'eq', href: { lt: 'tema-1-rinkos-pusiausvyra.html', en: null },
                title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' } },
     be:      { parent: 't1', topic: 't1', model: 'be', href: { lt: 'tema-1-pajamos-sanaudos-pelnas.html', en: null },
-               title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue and Profit' } },
+               title: { lt: 'Pajamos, sąnaudos, pelnas ir lūžio taškas', en: 'Cost, Revenue, Profit, and Break-Even Point' } },
     t2:      { parent: 'home', href: { lt: 'tema-2.html', en: null },
                title: { lt: '2 tema', en: 'Topic 2' } },
     m21:     { parent: 't2', topic: 't2', model: 'm21', href: { lt: 'tema-2-pagrindiniai-veiksmai.html', en: null },
@@ -406,7 +406,11 @@
     var html = '';
     COURSE.forEach(function (item) {
       var title = esc(tr(item.title));
-      if (item.type === 'exam') {
+      if (item.type === 'exam' && !(item.href && item.href[LANG])) {
+        html += '<li class="is-exam is-soon"><span class="node">' + ICON.flag + '</span>' +
+          '<div class="path-card" aria-disabled="true"><span class="body"><span class="kicker-row"><span class="kicker">' + esc(T.exam) + '</span>' +
+          '<span class="badge">' + esc(T.soon) + '</span></span><span class="title">' + title + '</span></span></div></li>';
+      } else if (item.type === 'exam') {
         html += '<li class="is-exam"><span class="node">' + ICON.flag + '</span>' +
           '<a class="path-card" href="' + item.href[LANG] + '"><span><span class="kicker">' + esc(T.exam) + '</span>' +
           '<span class="title">' + title + '</span></span>' + ICON.chevR + '</a></li>';

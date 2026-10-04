@@ -31,7 +31,7 @@ lt/                            lietuviški puslapiai
   tema-5-minimizavimas.html    2 skyrius: standartiniai minimizavimo uždaviniai (koeficientų lentelė, transponavimas, dualusis uždavinys)
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
-en/                            angliški puslapiai (kol kas tik index.html)
+en/                            angliški puslapiai: index.html, tema-1.html (kiti – kuriami)
 assets/
   css/style.css                visas dizainas (spalvos – :root bloke viršuje)
   js/site.js                   UI užrašai LT/EN, kurso struktūra, visi interaktyvūs elementai
@@ -51,7 +51,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=31` ir `site.js?v=31`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=32` ir `site.js?v=32`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
