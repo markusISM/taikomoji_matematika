@@ -51,7 +51,7 @@ Visos nuorodos santykinės, todėl tinklapis veikia ir GitHub Pages, ir atidariu
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai mėlyna #001a52).
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=30` ir `site.js?v=30`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=31` ir `site.js?v=31`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją, o ne seną iš atmintinės.
 
 **Šaltiniai.** Kiekvieno puslapio pabaigoje yra blokas `<section class="section sources">` su knygų sąrašu.
 
@@ -122,6 +122,8 @@ Grafikų užrašai (ašys, legenda) imami iš `site.js` žodyno abiem kalbomis. 
 **Lentelės sąlygoje.** Platesnę lentelę dėkite į `<div class="tbl-wrap">` ir naudokite `class="vtable compact"` – siaurame ekrane ji neišeis už ribų. **Matmenų grandinė:** `<div class="dimchain"><span class="dc">padaliniai × <b>prekės</b></span><span class="op">·</span>…<span class="dc res">…</span></div>` – telefone išsidėsto stulpeliu.
 
 **Taikymai ir skyriai.** Visose temose temos puslapio skiltis su kortelėmis vadinama „Taikymai“ (`id="taikymai"`), o kiekvienas taikymų puslapis – skyriumi: kortelėse rodoma „1 skyrius, 2 skyrius…“ (pagal eilę `MODELS` sąraše), apatinė nuoroda – „Kitas skyrius“. Skyriaus puslapio viršuje rašoma `<span class="eyebrow">N tema · Taikymai · M skyrius</span>`, įžangoje – „Šiame skyriuje…“, šaltinių bloke – „Daugiau informacijos apie šį skyrių rasite:“.
+
+**Reikalavimas su pavyzdžiu (tarpinis egzaminas).** Reikalavimo `li` viduje: `<p class="req-text">` (oficialus tekstas) ir `<div class="req-ex"><p class="req-ex-h">Pavyzdys</p> … <p class="ex-link"><a href="…">Visas pavyzdys →</a></p></div>`. Bloke veikia visi komponentai (formulės, `.dodont`, lentelės, brėžiniai, `.answer-box`).
 
 **Simpleksų lentelė (5 tema).** `<table class="vtable sx-tbl">`: grupės pradžios langeliams klasė `g` (vertikali linija), tikslo funkcijos eilutei `tr.tf` (linija viršuje), tariamų kintamųjų vienetinei matricai `td.idb`, pagrindiniam stulpeliui `pc`, pagrindinei eilutei `tr.pr`, pagrindiniam elementui `pc pe`, dalmenims ir pertvarkiams – `td.ann`; legendai `ul.sx-legend`. Pertvarkių rodyklių schema – `vtable arr-tbl`; iteracijos eiga – `ol.flow` su paskutiniu `li.flow-q`. Galutinės lentelės skaitymui: vienetiniai stulpeliai `bc`, jų kintamųjų reikšmės `td.nv`, didžiausia tikslo funkcijos reikšmė `td.pv`, šešėlinės kainos `td.sp` (legendoje `sw-bc`, `sw-nv`, `sw-pv`, `sw-sp`), o paaiškinimų sąrašas – `ul.read-list` su `li.r-bc`, `li.r-pv`, `li.r-sp`. Lentelės su dalmenimis ar daugikliais dešinėje gali būti platesnės už telefono ekraną, todėl jų apvalkalas yra `<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="…">` – lentelė slenkama į šoną, o ne spaudžiama. Minimizavimo (dualiojo uždavinio) galutinėje lentelėje atsakymas yra tikslo funkcijos eilutėje: po \(x, y\) – `td.nv`, \(n\) stulpelyje – `td.pv`, po \(s\) stulpeliais (reikalavimų viršijimas) – `td.sp`; vienetiniai stulpeliai nežymimi. Koeficientų lentelės transponavimas rodomas `div.mats.mats--flow` su dviem `sx-tbl` lentelėmis (eilutė \(s_1\) – `tr.pr`, stulpelis \(s_1\) – `.tc`). Dviejų stulpelių palyginimo lentelė – `vtable cmp-tbl` su grupių eilutėmis `tr.grp`.
 
