@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cost, Revenue, Profit, and Break-Even Point · Topic 1 · Applied Mathematics</title>
+<meta name="description" content="Cost, revenue, profit and the break-even point: the variables and formulas of the model, how to solve, step-by-step examples, a test and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-1-pajamos-sanaudos-pelnas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=36">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=36"></script>
+</head>
+<body data-page="be">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 1 · Applications · Section 3</span>
+    <h1>Cost, Revenue, Profit, and Break-Even Point</h1>
+    <ul class="jump">
+      <li><a href="#modelis">Model</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#testas">Check yourself</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">The model</h2>
+
+    <article class="card">
+      <h3 class="subhead">Variables</h3>
+      <ul class="kv">
+        <li><span class="sym">\(x\) or \(q\)</span><span>quantity;</span></li>
+        <li><span class="sym">\(p\)</span><span>price;</span></li>
+        <li><span class="sym">\(F\) or \(FC\)</span><span><button type="button" class="term" data-term="Fixed costs" data-def="Costs that do not depend on the number of units produced.">fixed costs</button>;</span></li>
+        <li><span class="sym">\(V\) or \(AVC\)</span><span>average variable cost / variable cost per unit;</span></li>
+        <li><span class="sym">\(TC\) or \(C\)</span><span>total cost;</span></li>
+        <li><span class="sym">\(R\) or \(TR\)</span><span>total revenue;</span></li>
+        <li><span class="sym">\(P\) or \(\Pi\)</span><span>profit.</span></li>
+      </ul>
+
+      <h3 class="subhead" style="margin-top:22px">How cost, revenue and profit are calculated</h3>
+      <p class="formula-label">Total cost</p>
+      <div class="formula">\[ TC(x) = F + V\cdot x \]</div>
+      <p class="formula-label">Revenue</p>
+      <div class="formula">\[ R(x) = p\cdot x \]</div>
+      <p class="formula-label">Profit</p>
+      <div class="formula">\[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= (p - V)x - F \end{aligned} \]</div>
+      <p>All three are straight lines.</p>
+
+      <div data-widget="breakeven-chart" data-p="19" data-v="7" data-f="21600" data-xmax="3000" data-ymax="60000" data-numeric="0"></div>
+      <p class="formula-note" style="text-align:center;margin-top:6px">The lines are drawn for Example 1 (Norvida), solved below.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Break-even point</h3>
+      <p><strong>The break-even point</strong> is the level of production at which the firm neither makes a profit nor sustains a loss:</p>
+      <div class="formula">\[ R = TC, \quad P = 0 \]</div>
+      <div class="formula">\[ x_B = \frac{F}{p - V} \]</div>
+      <p>Below \(x_B\) the firm makes a loss, above it a profit.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>How is the break-even formula derived?</span></summary>
+        <div class="more-body">
+          <p>At the break-even point the profit is zero. Substitute \(x = x_B\) and \(P = 0\) into the profit formula \(P = px - Vx - F\):</p>
+          \[ \begin{aligned} p x_B - V x_B - F &amp;= 0 \\ \Longrightarrow\; x_B(p - V) &amp;= F \\ \Longrightarrow\; x_B &amp;= \frac{F}{p - V} \end{aligned} \]
+        </div>
+      </details>
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>What does the profit function \(P(x) = (p - V)x - F\) show?</span></summary>
+        <div class="more-body">
+          <p>It is a straight line with the slope \(p - V\) (the unit contribution) and the intercept \(-F\).</p>
+          <ul>
+            <li>Each additional unit sold raises the profit by \(p - V\) euros.</li>
+            <li>At \(x = 0\) there is no revenue, but the fixed costs still have to be covered: \(P(0) = -F\).</li>
+            <li>As long as \((p - V)x\) is smaller than \(F\), the profit is negative – the firm makes a loss. At the break-even point \((p - V)x_B = F\).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Identify \(F\), \(V\) and \(p\). The variable cost is sometimes given as a percentage of the price (“20 % of the selling price” means \(V = 0.2p\)).</li>
+        <li>If instead two cost observations are given, \((x_1;\,TC_1)\) and \((x_2;\,TC_2)\), build the cost line in the usual way: \(V = \dfrac{TC_2 - TC_1}{x_2 - x_1}\), then \(F = -Vx_1 + TC_1\).</li>
+        <li>Write the three functions. Subtract the whole cost function from the revenue function to find profit: \(P(x) = R(x) - (F + V\cdot x)\).</li>
+        <li>Compute \(x_B = \dfrac{F}{p - V}\) and, if asked, the break-even revenue.</li>
+        <li>Profit or loss at a given output – substitute it into \(P(x)\); report a negative value as a loss. Output for a target profit – solve \(P(x) = A\).</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Brackets in the profit function.</strong> The whole cost function is subtracted from the revenue: \(P(x) = R(x) - (F + V\cdot x)\). Without the brackets the term \(V\cdot x\) would be added instead of subtracted.</li>
+            <li><strong>Costs as a percentage of the price.</strong> “20 % of the selling price” means \(V = 0.2p\), not \(V = 20\).</li>
+            <li><strong>Negative profit.</strong> Report a negative value of profit as a loss: \(P = -3600\) means a loss of 3600 euros.</li>
+            <li><strong>The break-even point is a quantity.</strong> \(x_B\) is an output level in units. Compute the corresponding revenue only when it is asked for.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When constructing a cost, revenue or profit function, or finding the break-even point, it is required to state what data are given in the problem.</li>
+            <li>When introducing new variables not specified in lectures or the problem, or when changing measurement units, this must be explicitly written in the solution.</li>
+            <li>If the problem includes several questions, answers to all of them must be clearly presented.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: alternative problem 1.3 (Norvida) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>The firm’s break-even point</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Norvida manufactures its products at a cost of 7&nbsp;EUR per unit and sells them for 19&nbsp;EUR per unit. If the firm’s fixed cost is 21600&nbsp;EUR per month, determine the firm’s break-even point.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(V = 7\)</span><span>the variable cost per unit;</span></li>
+            <li><span class="sym">\(p = 19\)</span><span>the unit price;</span></li>
+            <li><span class="sym">\(F = 21600\)</span><span>the monthly fixed cost.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The break-even quantity</span></h4>
+          \[ \begin{aligned} x_B &amp;= \frac{F}{p - V} = \frac{21600}{19 - 7} \\ &amp;= \frac{21600}{12} = 1800 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The break-even point is 1800 units: the firm neither makes a profit nor sustains a loss when it produces and sells 1800 units a month.
+          </div>
+          <div data-widget="breakeven-chart" data-p="19" data-v="7" data-f="21600" data-xmax="3000" data-ymax="60000" data-numeric="1"></div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: guideline problem 1 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>The workshop’s cost, revenue and profit</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A workshop has monthly fixed costs of 25200 euros and a variable cost of 14 euros per unit; the product sells for 26 euros. Find the total cost, revenue and profit functions, the break-even quantity and the corresponding revenue. Compute the profit (loss) at 1800 and 2500 units. How many units must be sold for a monthly profit of 18000 euros?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>\(F = 25200\), \(V = 14\), \(p = 26\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The three functions</span></h4>
+          \[ \begin{aligned} TC(x) &amp;= 25200 + 14x \\ R(x) &amp;= 26x \\ P(x) &amp;= 26x - (25200 + 14x) \\ &amp;= 12x - 25200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The break-even point and revenue</span></h4>
+          <p>With \(p - V = 26 - 14 = 12\):</p>
+          \[ x_B = \frac{25200}{12} = 2100 \]
+          \[ R(2100) = 26\cdot 2100 = 54600 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Profit or loss</span></h4>
+          <p>Substitute the two output levels into the profit function:</p>
+          \[ \begin{aligned} P(1800) &amp;= 12\cdot 1800 - 25200 \\ &amp;= -3600 \\ P(2500) &amp;= 12\cdot 2500 - 25200 \\ &amp;= 4800 \end{aligned} \]
+          <p>The first result is negative and is reported as a loss of 3600 euros.</p>
+          <p class="tip">This agrees with the meaning of the break-even point: \(1800 &lt; 2100\), so the workshop makes a loss, while \(2500 &gt; 2100\), so it earns a profit.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Output for the target profit</span></h4>
+          <p>For a profit of 18000 euros:</p>
+          \[ \begin{aligned} 12x - 25200 &amp;= 18000 \\ \Longrightarrow\; 12x &amp;= 43200 \\ \Longrightarrow\; x &amp;= 3600 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \(TC(x) = 25200 + 14x\), \(R(x) = 26x\), \(P(x) = 12x - 25200\); the break-even quantity is 2100 units (a revenue of 54600 euros); at 1800 units the workshop loses 3600 euros and at 2500 units it earns 4800 euros; a profit of 18000 euros requires 3600 units.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: guideline problem 2 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>The cost function from two points</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        It costs 4300 euros to produce 150 units and 6100 euros to produce 240 units. Assuming a linear relationship, find the cost function and state the fixed costs and the variable cost per unit. Predict the cost of 300 units. If each unit sells for 45 euros, find the break-even quantity and the profit at 200 units.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Two points</span></h4>
+          <p>The two observations are the points \((150;\,4300)\) and \((240;\,6100)\) of the cost line.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The variable cost per unit</span></h4>
+          <p>The slope of the cost line is the variable cost per unit:</p>
+          \[ \begin{aligned} V &amp;= \frac{6100 - 4300}{240 - 150} \\ &amp;= \frac{1800}{90} = 20 \end{aligned} \]
+          <details class="more more--why">
+            <summary><span class="ico" aria-hidden="true">?</span><span>Why is the slope \(V\) and the intercept \(F\)?</span></summary>
+            <div class="more-body">
+              <p>The cost function \(TC(x) = V\cdot x + F\) is the slope-intercept form \(y = mx + b\) with \(m = V\) and \(b = F\). Therefore \(V\) is found as the slope of the line and \(F\) as its intercept, exactly like the parameters of a demand or supply function.</p>
+            </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The fixed costs</span></h4>
+          <p>The intercept is the fixed cost; using the point \((150;\,4300)\):</p>
+          \[ \begin{aligned} F &amp;= -Vx_1 + TC_1 \\ &amp;= -20\cdot 150 + 4300 \\ &amp;= -3000 + 4300 = 1300 \end{aligned} \]
+          \[ TC(x) = 20x + 1300 \]
+          <div class="tip">
+            <p style="margin:0 0 8px"><strong>Why is \(V = 20\) euros?</strong> Producing 90 more units (from 150 to 240) raised the cost by 1800 euros (from 4300 to 6100), i.e. by 20 euros for each additional unit. This is what it costs to produce one unit – the variable cost per unit.</p>
+            <p style="margin:0"><strong>Why is \(F = 1300\) euros?</strong> Of the 4300 euros spent on producing 150 units, \(20\cdot 150 = 3000\) euros go to the units themselves (20 euros each). The remaining 1300 euros do not depend on the number of units produced – these are the fixed costs. They would have to be paid even if no units were produced: \(TC(0) = 1300\).</p>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The cost of 300 units</span></h4>
+          <p>\(TC(300) = 20\cdot 300 + 1300 = 7300\) euros.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The break-even point and profit</span></h4>
+          <p>With \(p = 45\) and \(p - V = 45 - 20 = 25\):</p>
+          \[ x_B = \frac{1300}{25} = 52 \]
+          \[ \begin{aligned} P(x) &amp;= 45x - (20x + 1300) \\ &amp;= 25x - 1300 \\ P(200) &amp;= 25\cdot 200 - 1300 = 3700 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \(TC(x) = 20x + 1300\) euros: the fixed costs are 1300 euros and the variable cost is 20 euros per unit; 300 units cost 7300 euros; the break-even quantity is 52 units and the profit at 200 units is 3700 euros.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. TEST ============ -->
+  <section class="section" id="testas" aria-labelledby="h-test">
+    <h2 id="h-test">Check yourself</h2>
+
+    <div class="quiz">
+      <article class="card q" data-type="mc">
+        <p class="q-text">In the total cost function \(TC = F + V\cdot x\), what does \(F\) represent?</p>
+        <ol class="q-options">
+          <li>Revenue per unit.</li>
+          <li data-correct>A cost that does not depend on the number of units produced.</li>
+          <li>The break-even quantity.</li>
+          <li>The selling price per unit.</li>
+        </ol>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">A leather workshop has fixed costs of 3000&nbsp;€ per month, a variable cost of 8&nbsp;€ per wallet, and sells each wallet for 20&nbsp;€. What is the break-even quantity?</p>
+        <ol class="q-options">
+          <li data-correct>250</li>
+          <li>375</li>
+          <li>150</li>
+          <li>300</li>
+        </ol>
+        <div class="q-explain">\(x_B = \dfrac{3000}{20 - 8} = 250\)</div>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">A firm’s break-even quantity is \(x_B = \dfrac{F}{p - V}\). If fixed costs \(F\) increase while the unit contribution \(p - V\) stays exactly the same, what happens to the break-even quantity?</p>
+        <ol class="q-options">
+          <li>It decreases.</li>
+          <li data-correct>It increases.</li>
+          <li>It stays the same.</li>
+          <li>It cannot be determined without knowing \(F\) and \(V\) exactly.</li>
+        </ol>
+        <div class="q-explain">\(x_B\) is directly proportional to \(F\), so a larger \(F\) with the same denominator makes \(x_B\) larger.</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 5. PRACTICE PROBLEMS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out exactly as in the examples, then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <p class="q-text">A print shop has fixed costs of 9600&nbsp;€ per month and a variable cost of 8&nbsp;€ per job. Each job is sold for 20&nbsp;€. Find the break-even number of jobs per month.</p>
+        <div class="q-answer">800 jobs.</div>
+        <div class="q-solution">
+          \[ \begin{aligned} x_B &amp;= \frac{F}{p - V} = \frac{9600}{20 - 8} \\ &amp;= \frac{9600}{12} = 800 \end{aligned} \]
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">A furniture workshop has fixed costs of 19500&nbsp;€ and a variable cost of 45&nbsp;€ per chair. At a production and sales level of 1500 chairs, management wants a profit of exactly 27000&nbsp;€. Find the price per chair that achieves this.</p>
+        <div class="q-answer">76&nbsp;€.</div>
+        <div class="q-solution">
+          \[ P(x) = (p - V)x - F \]
+          \[ \begin{aligned} (p - 45)\cdot 1500 &amp;= 27000 + 19500 \\ &amp;= 46500 \end{aligned} \]
+          \[ \begin{aligned} p - 45 &amp;= \frac{46500}{1500} = 31 \\ \Longrightarrow\; p &amp;= 76 \end{aligned} \]
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">A small manufacturer’s total cost was 9800&nbsp;€ when producing 300 units, and 14200&nbsp;€ when producing 700 units. The manufacturer sells each unit for 24&nbsp;€. Find the break-even quantity.</p>
+        <div class="q-answer">500 units.</div>
+        <div class="q-solution">
+          <p>Variable cost per unit (€/unit):</p>
+          \[ \begin{aligned} V &amp;= \frac{14200 - 9800}{700 - 300} \\ &amp;= \frac{4400}{400} = 11 \end{aligned} \]
+          <p>Fixed costs (€):</p>
+          \[ F = 9800 - 11\cdot 300 = 6500 \]
+          <p>Break-even quantity:</p>
+          \[ \begin{aligned} x_B &amp;= \frac{6500}{24 - 11} \\ &amp;= \frac{6500}{13} = 500 \end{aligned} \]
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
