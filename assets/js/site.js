@@ -190,7 +190,7 @@
   /* Kiekvienos temos taikymų skyriai (kortelės temos puslapio skiltyje „Taikymai“). */
   var MODELS = {
     t1: [
-      { id: 'dep', status: 'active', href: { lt: 'tema-1-nusidevejimas.html' },
+      { id: 'dep', status: 'active', href: { lt: 'tema-1-nusidevejimas.html', en: 'tema-1-nusidevejimas.html' },
         title: { lt: 'Tiesinis nusidėvėjimas', en: 'Linear Depreciation' },
         desc: { lt: 'Per kiekvieną laikotarpį turto vertė sumažėja tokia pačia suma.', en: 'The asset loses the same amount of value in every period.' } },
       { id: 'eq', status: 'active', href: { lt: 'tema-1-rinkos-pusiausvyra.html' },
@@ -257,7 +257,7 @@
     home:    { href: { lt: 'index.html', en: 'index.html' } },
     t1:      { parent: 'home', href: { lt: 'tema-1.html', en: 'tema-1.html' },
                title: { lt: '1 tema', en: 'Topic 1' } },
-    dep:     { parent: 't1', topic: 't1', model: 'dep', href: { lt: 'tema-1-nusidevejimas.html', en: null },
+    dep:     { parent: 't1', topic: 't1', model: 'dep', href: { lt: 'tema-1-nusidevejimas.html', en: 'tema-1-nusidevejimas.html' },
                title: { lt: 'Tiesinis nusidėvėjimas', en: 'Linear Depreciation' } },
     eq:      { parent: 't1', topic: 't1', model: 'eq', href: { lt: 'tema-1-rinkos-pusiausvyra.html', en: null },
                title: { lt: 'Rinkos pusiausvyra', en: 'Market Equilibrium' } },

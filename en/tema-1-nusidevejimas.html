@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear Depreciation · Topic 1 · Applied Mathematics</title>
+<meta name="description" content="Linear depreciation: the model, how to solve, step-by-step worked examples and self-check questions.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-1-nusidevejimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=33">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=33"></script>
+</head>
+<body data-page="dep">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 1 · Applications · Section 1</span>
+    <h1>Linear Depreciation</h1>
+    <p class="lead">Straight-line depreciation assumes that the asset loses the same amount of value in every period, so its <button type="button" class="term" data-term="Book value of the asset" data-def="The value of the asset at the moment \(t\), i.e. at the end of year \(t\). Denoted \(V(t)\).">book value</button> is a falling straight line.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Model</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#testas">Check yourself</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">The model</h2>
+
+    <article class="card">
+      <h3 class="subhead">What data are used</h3>
+      <ul class="kv">
+        <li><span class="sym">\(V(0)\)</span><span>the original value of the asset;</span></li>
+        <li><span class="sym">\(V(T)\)</span><span>the residual / scrap value of the asset;</span></li>
+        <li><span class="sym">\(T\)</span><span>the useful life of the asset;</span></li>
+        <li><span class="sym">\(V(t)\)</span><span>the book value of the asset at the end of year \(t\).</span></li>
+      </ul>
+      <p class="tip">In the reverse variant the original value is not known. Instead, two book values at two moments are given – two points \((t_1;\,V_1)\) and \((t_2;\,V_2)\).</p>
+
+      <h3 class="subhead" style="margin-top:22px">What is computed</h3>
+      <p class="formula-label">Depreciation rate (a positive number, in euros per period)</p>
+      <div class="formula">\[ D = \frac{V(0) - V(T)}{T} \]</div>
+      <p class="formula-label">Value function – the <button type="button" class="term" data-term="Slope-intercept form" data-def="\(y = mx + b\), where \(m\) is the slope and \(b\) is the intercept.">slope-intercept form</button> with \(m = -D\) and \(b = V(0)\)</p>
+      <div class="formula">\[ \begin{gathered} V(t) = V(0) - \frac{V(0) - V(T)}{T}\cdot t, \\ 0 \le t \le T \end{gathered} \]</div>
+
+      <figure class="fig">
+        <svg viewBox="0 0 340 244" role="img" aria-label="Graph of the mixer’s value: V(0) = 24000, V(3) = 16500, V(8) = 4000">
+          <line class="guide" x1="160" y1="87.1" x2="160" y2="204"/>
+          <line class="guide" x1="64" y1="87.1" x2="160" y2="87.1"/>
+          <line class="guide" x1="320" y1="175.7" x2="320" y2="204"/>
+          <line class="guide" x1="64" y1="175.7" x2="320" y2="175.7"/>
+          <line class="ax" x1="56" y1="204" x2="329" y2="204"/>
+          <line class="ax" x1="64" y1="212" x2="64" y2="12"/>
+          <path class="ah" d="M337 204L328 199.5L328 208.5Z"/><path class="ah" d="M64 4L59.5 13L68.5 13Z"/>
+          <text x="2" y="12" style="font-size:12px"><tspan class="i">V</tspan>(<tspan class="i">t</tspan>), <tspan data-i18n="unitEur">EUR</tspan></text>
+          <text x="334" y="240" text-anchor="end"><tspan class="i">t</tspan>, <tspan data-i18n="unitYears">years</tspan></text>
+          <text class="muted" x="52" y="38" text-anchor="end">24000</text>
+          <text class="muted" x="52" y="91" text-anchor="end">16500</text>
+          <text class="muted" x="52" y="180" text-anchor="end">4000</text>
+          <text class="muted" x="64" y="222" text-anchor="middle">0</text>
+          <text class="muted" x="96" y="222" text-anchor="middle">1</text>
+          <text class="muted" x="128" y="222" text-anchor="middle">2</text>
+          <text class="muted" x="160" y="222" text-anchor="middle">3</text>
+          <text class="muted" x="192" y="222" text-anchor="middle">4</text>
+          <text class="muted" x="224" y="222" text-anchor="middle">5</text>
+          <text class="muted" x="256" y="222" text-anchor="middle">6</text>
+          <text class="muted" x="288" y="222" text-anchor="middle">7</text>
+          <text class="muted" x="320" y="222" text-anchor="middle">8</text>
+          <line class="ln" x1="64" y1="34" x2="320" y2="175.7"/>
+          <circle class="pt" cx="64" cy="34" r="6"/>
+          <circle class="pt-hi" cx="160" cy="87.1" r="6"/>
+          <circle class="pt" cx="320" cy="175.7" r="6"/>
+          <text x="76" y="30"><tspan class="i">V</tspan>(0) = 24000</text>
+          <text class="exam" x="170" y="78"><tspan class="i">V</tspan>(3) = 16500</text>
+          <text x="314" y="196" text-anchor="end"><tspan class="i">V</tspan>(8) = 4000</text>
+        </svg>
+        <figcaption>Example 1 (see below): \(V(t) = 24000 - 2500t,\ 0 \le t \le 8\)</figcaption>
+      </figure>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Why \(m = -D\)?</span></summary>
+        <div class="more-body">
+          <p>The value of the asset decreases, so the line falls and its <button type="button" class="term" data-term="Slope" data-def="A measure of the rate of change of \(y\) with respect to \(x\).">slope</button> is negative. The depreciation rate \(D\), however, is written as a positive number – the amount by which the value falls in one period. Therefore \(m = -D\).</p>
+        </div>
+      </details>
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Why \(b = V(0)\)?</span></summary>
+        <div class="more-body">
+          <p>The <button type="button" class="term" data-term="Intercept" data-def="The value of \(y\) at \(x = 0\).">intercept</button> equals the value of the function at \(t = 0\). At the start the asset has its original value, i.e. the point \((0;\,V(0))\) lies on the line, so immediately \(b = V(0)\).</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card">
+      <h3>How to solve</h3>
+      <ol class="steps-list">
+        <li><strong>Write down what is given:</strong> \(V(0)\), \(V(T)\), \(T\).
+          <span class="alt">In the reverse variant – two book values at two moments, as two points \((t_1;\,V_1)\) and \((t_2;\,V_2)\).</span></li>
+        <li><strong>Find the slope:</strong> \(m = -D = -\dfrac{V(0) - V(T)}{T}\).
+          <span class="alt">In the reverse variant: \(m = \dfrac{V_2 - V_1}{t_2 - t_1}\), and \(D = -m\).</span></li>
+        <li><strong>Find the intercept.</strong> When the original value is given, the point \((0;\,V(0))\) gives \(b = V(0)\) immediately.
+          <span class="alt">In the reverse variant: \(b = -m t_1 + V_1\).</span></li>
+        <li><strong>Write</strong> \(V(t) = V(0) - D\cdot t\) and state the <button type="button" class="term" data-term="Domain" data-def="The values of \(t\) that can be substituted into the value function: \(0 \le t \le T\).">domain</button> \(0 \le t \le T\).</li>
+        <li><strong>Answer the question.</strong> A book value – substitute \(t\). A moment in time – solve \(V(t) = A\) or the inequality \(V(t) &lt; A\).</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The inequality sign.</strong> When dividing an inequality by a negative number, reverse the inequality sign.</li>
+            <li><strong>The end of the year.</strong> The book value of an asset is recorded at the end of the year. If you get \(t &gt; 5.43\), the value first falls below the given amount at the end of the <em>sixth</em> year, not the fifth.</li>
+            <li><strong>Signs.</strong> The depreciation rate \(D\) is a positive number, while the slope of the line \(m = -D\) is negative.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When constructing a linear model (for example, linear depreciation, building a profit function, finding the break-even point), it is necessary to write down which data are given in the problem.</li>
+            <li>When introducing new variables that are not named in the lectures or in the problem, or when changing the units of measurement, this must be stated in the solution.</li>
+            <li>If a problem asks several questions, answers to all of them must be given clearly.</li>
+          </ol>
+          <p><a href="../lt/tarpinis-egzaminas.html" hreflang="lt">All requirements for presenting solutions (in Lithuanian) →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-examples">
+    <h2 id="h-examples">Worked examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Dough mixer</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A commercial dough mixer has an original value of 24000 EUR and is to be depreciated linearly over 8 years with a 4000 EUR scrap value. What is the rate of depreciation of the mixer? Find an expression giving the book value at the end of year \(t\). What will be the book value of the mixer at the end of the third year?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Initial value: \(V(0) = 24000\).<br>
+          <button type="button" class="term" data-term="Expected usage time" data-def="The period \(T\) at the end of which the value of the asset equals its residual value \(V(T)\).">Expected usage time</button>: \(T = 8\).<br>
+          <button type="button" class="term" data-term="Residual (scrap) value of the asset" data-def="The value of the asset at the end of its useful life. Denoted \(V(T)\).">Scrap value</button>: \(V(8) = 4000\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The depreciation rate</span></h4>
+          \[ \begin{aligned} D &amp;= \frac{V(0) - V(T)}{T} = \frac{24000 - 4000}{8} \\ &amp;= \frac{20000}{8} = 2500 \end{aligned} \]
+          <p>The mixer loses 2500 euros of its value every year.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The book value at the end of year \(t\)</span></h4>
+          \[ \begin{aligned} V(t) &amp;= V(0) - \frac{V(0) - V(T)}{T}\cdot t \\ &amp;= 24000 - 2500t, \quad 0 \le t \le 8 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The book value at the end of the third year</span></h4>
+          \[ \begin{aligned} V(3) &amp;= 24000 - 2500\cdot 3 \\ &amp;= 24000 - 7500 = 16500 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The rate of depreciation is 2500 euros per year; the book value at the end of year \(t\) is \(V(t) = 24000 - 2500t\); at the end of the third year the mixer is worth 16500 euros.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Delivery van</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A delivery van purchased at a cost of 34000 euros is depreciated linearly over 8 years, with a scrap value of 6000 euros. Find the rate of linear depreciation and the book value at the end of year \(t\). Find the book value at the end of the fifth year. At the end of which year does the book value first fall below 15000 euros?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Initial value: \(V(0) = 34000\).<br>
+          Expected usage time: \(T = 8\).<br>
+          Residual value: \(V(8) = 6000\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The depreciation rate</span></h4>
+          \[ D = \frac{34000 - 6000}{8} = \frac{28000}{8} = 3500 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The intercept is the original value</span></h4>
+          \[ b = V(0) = 34000 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The value function</span></h4>
+          \[ V(t) = -3500t + 34000, \quad 0 \le t \le 8 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The value at the end of the fifth year</span></h4>
+          \[ \begin{aligned} V(5) &= -3500\cdot 5 + 34000 \\ &= 16500 \text{ EUR} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>When does the value fall below 15000 EUR?</span></h4>
+          <p>Solve the inequality; <strong>dividing by \(-3500\) reverses the sign</strong>:</p>
+          \[ \begin{aligned} &amp;{-}3500t + 34000 &lt; 15000 \\ \Longrightarrow\;&amp; 3500t &gt; 19000 \\ \Longrightarrow\;&amp; t &gt; \frac{19000}{3500} \approx 5.43 \end{aligned} \]
+          <p>Book values are recorded at year ends, so the first one below 15000 EUR is \(V(6) = -21000 + 34000 = 13000\) EUR, while \(V(5) = 16500\) EUR is still above.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            3500 EUR per year; \(V(t) = -3500t + 34000\) EUR, \(0 \le t \le 8\); 16500 EUR at the end of the fifth year; the book value first falls below 15000 EUR at the end of the sixth year.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3 · Reverse problem</span>
+        <h3>Machine</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A machine is depreciated by the straight-line method. Its book value at the end of the third year is 46000 euros and at the end of the seventh year 26000 euros. Find the annual rate of depreciation, the original value of the machine and the depreciation equation. If the useful life is 10 years, what is the scrap value?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Two points of the line</span></h4>
+          <p>The original value is not given, so the line is built from the two points \((3;\,46000)\) and \((7;\,26000)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The slope and the rate</span></h4>
+          \[ \begin{aligned} m &amp;= \frac{26000 - 46000}{7 - 3} \\ &amp;= \frac{-20000}{4} = -5000 \\ D &amp;= 5000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The intercept, using the point \((3;\,46000)\)</span></h4>
+          \[ \begin{aligned} b &amp;= -m t_1 + V_1 = -(-5000)\cdot 3 + 46000 \\ &amp;= 15000 + 46000 = 61000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The value function</span></h4>
+          \[ V(t) = -5000t + 61000 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The scrap value with \(T = 10\)</span></h4>
+          <p>Domain: \(0 \le t \le 10\).</p>
+          \[ V(10) = -5000\cdot 10 + 61000 = 11000 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The rate is 5000 EUR per year, the original value is 61000 EUR, \(V(t) = -5000t + 61000\) EUR, \(0 \le t \le 10\), and the scrap value after 10 years is 11000 EUR.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ TEST ============ -->
+  <section class="section" id="testas" aria-labelledby="h-test">
+    <h2 id="h-test">Check yourself</h2>
+
+    <div class="quiz">
+      <article class="card q" data-type="mc">
+        <p class="q-text">In the linear depreciation model \(V(t) = V(0) - D\cdot t\), what does the coefficient \(D\) represent?</p>
+        <ol class="q-options">
+          <li>The book value after one year.</li>
+          <li data-correct>The annual depreciation rate – the amount the asset loses in value each year.</li>
+          <li>The residual value.</li>
+          <li>The number of years of use.</li>
+        </ol>
+      </article>
+
+      <article class="card q" data-type="mc">
+        <p class="q-text">A print shop buys a laminator for 6000 €. It is expected to last 4 years, with a residual value of 800 €. What is the annual depreciation rate \(D\)?</p>
+        <ol class="q-options">
+          <li data-correct>1300 €</li>
+          <li>1450 €</li>
+          <li>800 €</li>
+          <li>1500 €</li>
+        </ol>
+        <div class="q-explain">\[ D = \frac{6000 - 800}{4} = 1300 \]</div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">An office equipment item is purchased for 52000 EUR and depreciated linearly over 8 years to a residual value of 4000 EUR. Determine the book value at the end of year 3. Enter the value in EUR, as a whole number.</p>
+        <div class="q-answer"><span class="value">34000</span></div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <p class="q-text">The book value of a CNC machine was 52000 € after 3 years and 28000 € after 9 years. Depreciation is calculated by the straight-line method. Find the original value of the machine.</p>
+        <div class="q-answer"><span class="value">64000 EUR</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 1</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
