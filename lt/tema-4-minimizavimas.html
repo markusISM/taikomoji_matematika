@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=29">
+<link rel="stylesheet" href="../assets/css/style.css?v=30">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=29"></script>
+<script defer src="../assets/js/site.js?v=30"></script>
 </head>
 <body data-page="m43">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -28,6 +28,7 @@
       <li><a href="#modelis">Modelis</a></li>
       <li><a href="#optimalus">Optimalus planas</a></li>
       <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#grafikas">Grafikas</a></li>
       <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
       <li><a href="#savarankiskai">Savarankiškai</a></li>
     </ul>
@@ -207,6 +208,28 @@
           <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
         </div>
       </details>
+    </article>
+  </section>
+
+  <!-- ============ GRAFIKAS ============ -->
+  <section class="section" id="grafikas" aria-labelledby="h-graph">
+    <h2 id="h-graph">Ką privalo turėti grafikas</h2>
+    <article class="card">
+      <div class="must">
+        <p class="must-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg>Privalomi grafiko elementai</p>
+        <p>Grafike privalo būti pažymėti šie elementai: <strong>ašių pavadinimai, koordinačių pradžios taškas, vienetinės atkarpos dydis, tiesių pavadinimai ir leistina sprendinių aibė</strong>. Pavyzdžio brėžinyje jie pažymėti numeriais:</p>
+        <figure class="fig lp-chart-fig">
+          <div data-widget="lp-chart" data-spec='{"x":[-1,10,1,2],"y":[-1,10,1,2],"nn":"xy","ann":{"lab":[8.7,2.0]},"c":[{"a":1,"b":2,"s":"ge","r":8,"lab":"x + 2y = 8","col":1,"lt":0.55,"lo":-14,"arr":[0.35,0.7]},{"a":3,"b":1,"s":"ge","r":9,"lab":"3x + y = 9","col":2,"lt":0.35,"lo":-14,"arr":[0.18,0.55]}],"pts":[{"x":0,"y":9,"lab":"A","p":"e"},{"x":2,"y":3,"lab":"B","p":"ne"},{"x":8,"y":0,"lab":"C","p":"ne"}],"aria":"Grafiko pavyzdys su pažymėtais privalomais elementais: ašių pavadinimais, koordinačių pradžia, vienetine atkarpa, tiesių pavadinimais ir neaprėžta leistina sprendinių aibe"}'></div>
+        </figure>
+        <ol class="badge-list">
+          <li><span class="bn">1</span><span>Ašių pavadinimai: \(x\) ir \(y\).</span></li>
+          <li><span class="bn">2</span><span>Koordinačių pradžios taškas \(O\).</span></li>
+          <li><span class="bn">3</span><span>Vienetinės atkarpos dydis: abiejose ašyse viena padala lygi 1; skaičiai užrašyti prie kas antros padalos.</span></li>
+          <li><span class="bn">4</span><span>Tiesių pavadinimai: prie kiekvienos tiesės užrašyta jos lygtis, pavyzdžiui, \(x + 2y = 8\).</span></li>
+          <li><span class="bn">5</span><span>Leistina sprendinių aibė: nuspalvinta sritis – čia neaprėžta, į viršų ir į dešinę nuo tiesių besitęsianti sritis su viršūnėmis \(A\), \(B\), \(C\).</span></li>
+        </ol>
+        <p class="formula-note">Brėžinyje pavaizduota sistema \(x + 2y \geq 8\), \(3x + y \geq 9\), \(x;\, y \geq 0\) – <a href="tema-4-nelygybiu-sistemos.html#pavyzdys-4">1 skyriaus 4 pavyzdys</a>.</p>
+      </div>
     </article>
   </section>
 

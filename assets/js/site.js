@@ -22,6 +22,7 @@
     lt: {
       courseShort: 'Taikomoji matematika',
       courseFull: 'Taikomoji matematika socialiniuose moksluose',
+      credit: 'Parengta su Claude AI pagalba, remiantis dalyko „Taikomoji matematika socialiniuose moksluose“ medžiaga',
       home: 'Pradžia',
       skip: 'Pereiti prie turinio',
       langLabel: 'Kalba',
@@ -90,6 +91,7 @@
     en: {
       courseShort: 'Applied Mathematics',
       courseFull: 'Applied Mathematics for Social Sciences',
+      credit: 'Prepared with the help of Claude AI, based on the materials of the course “Applied Mathematics for Social Sciences”',
       home: 'Home',
       skip: 'Skip to content',
       langLabel: 'Language',
@@ -391,7 +393,8 @@
   function buildFooter() {
     var f = $('#site-footer');
     if (!f) return;
-    f.innerHTML = '<div class="wrap"><p><strong>' + esc(T.courseFull) + '</strong></p></div>';
+    f.innerHTML = '<div class="wrap"><p><strong>' + esc(T.courseFull) + '</strong></p>' +
+      '<p class="credit">' + esc(T.credit) + '</p></div>';
   }
 
   /* ------------------------------------------------------------------
@@ -1117,7 +1120,10 @@
            maxh – didžiausias brėžinio aukštis (numatytasis 330);
            free: true – ašių masteliai skirtingi (brėžinys užpildo visą plotą);
            rot: true – tiesės užrašas pasukamas lygiagrečiai tiesei (lt – vieta, lo – atstumas);
-           test: [x, y] – tikrinimo taškas; aria: aprašas.
+           test: [x, y] – tikrinimo taškas; aria: aprašas;
+           ann: true – privalomų grafiko elementų žymos 1–5 (ašių pavadinimai, koordinačių pradžia,
+              vienetinė atkarpa, tiesės pavadinimas, leistina aibė); vietas galima nurodyti
+              duomenų koordinatėmis: ann: {ax: [[x, y], [x, y]], o: [x, y], u: [x, y], lab: [x, y], set: [x, y]}.
      ------------------------------------------------------------------ */
   function initLpChart(box) {
     var sp;
@@ -1169,12 +1175,14 @@
     for (var j = j0; j <= j1; j++) g += '<line class="grid" x1="' + X(xr[0]) + '" y1="' + Y(j * ty) + '" x2="' + X(xr[1]) + '" y2="' + Y(j * ty) + '"/>';
 
     // leistinųjų sprendinių aibė
+    var regionPoly = null, labPos = [];
     if (sp.shade !== false) {
       var poly = rect.slice();
       var all = cons.map(hp);
       if ((sp.nn || '').indexOf('x') >= 0) all.push({ a: -1, b: 0, r: 0 });
       if ((sp.nn || '').indexOf('y') >= 0) all.push({ a: 0, b: -1, r: 0 });
       all.forEach(function (h) { if (poly.length) poly = clip(poly, h); });
+      regionPoly = poly;
       if (poly.length > 2) g += '<path class="lp-region" d="M' + poly.map(function (p) { return X(p[0]) + ' ' + Y(p[1]); }).join('L') + 'Z"/>';
     }
 
@@ -1226,6 +1234,7 @@
           var ang = Math.atan2(Y(sg[1][1]) - Y(sg[0][1]), X(sg[1][0]) - X(sg[0][0])) * 180 / Math.PI;
           if (ang > 90) ang -= 180;
           if (ang <= -90) ang += 180;
+          labPos.push({ x: lxp - 16 * (off >= 0 ? ux : -ux), y: lyp - 16 * (off >= 0 ? uy : -uy) });
           g += '<text class="lp-lab c' + k + ' halo" x="' + lxp.toFixed(1) + '" y="' + lyp.toFixed(1) + '" dy="0.35em" text-anchor="middle" transform="rotate(' + ang.toFixed(1) + ' ' + lxp.toFixed(1) + ' ' + lyp.toFixed(1) + ')">' + eq(c.lab) + '</text>';
           return;
         }
@@ -1235,6 +1244,7 @@
         if (anc === 'start' && lxp + wEst > W - 2) { anc = 'end'; lxp = Math.min(lxp, W - 3); }
         if (anc === 'end' && lxp - wEst < 2) { anc = 'start'; lxp = Math.max(lxp, 3); }
         if (anc === 'middle') lxp = Math.min(Math.max(lxp, wEst / 2 + 2), W - wEst / 2 - 2);
+        labPos.push({ x: anc === 'start' ? lxp - 11 : (anc === 'end' ? lxp + 11 : lxp), y: anc === 'middle' ? lyp - 12 : lyp });
         g += '<text class="lp-lab c' + k + ' halo" x="' + lxp.toFixed(1) + '" y="' + (lyp + 4).toFixed(1) + '" text-anchor="' + anc + '">' + eq(c.lab) + '</text>';
       }
     });
@@ -1249,6 +1259,30 @@
       g += '<circle class="' + (p.hi ? 'pt-hi' : 'pt') + '" cx="' + X(p.x) + '" cy="' + Y(p.y) + '" r="' + (p.hi ? 5 : 4) + '"/>';
       if (p.lab) g += '<text class="lp-pt halo" x="' + (X(p.x) + o[0]) + '" y="' + (Y(p.y) + o[1]) + '" text-anchor="' + o[2] + '">' + esc(p.lab) + '</text>';
     });
+
+    // privalomų grafiko elementų žymos
+    if (sp.ann) {
+      var an = sp.ann === true ? {} : sp.ann;
+      var bdg = function (n, x, y) {
+        return '<g class="badge"><circle cx="' + (+x).toFixed(1) + '" cy="' + (+y).toFixed(1) + '" r="7.5"/><text x="' + (+x).toFixed(1) + '" y="' + (+y + 3.6).toFixed(1) + '" text-anchor="middle">' + n + '</text></g>';
+      };
+      var at = function (d) { return [X(d[0]), Y(d[1])]; };
+      g += '<line class="leg" style="stroke-width:3.5" x1="' + X(ax0) + '" y1="' + Y(ay0) + '" x2="' + X(ax0 + tx) + '" y2="' + Y(ay0) + '"/>' +
+           '<line class="leg" style="stroke-width:3.5" x1="' + X(ax0) + '" y1="' + Y(ay0) + '" x2="' + X(ax0) + '" y2="' + Y(ay0 + ty) + '"/>';
+      var axp = an.ax ? an.ax.map(at) : [[xe - 3, Y(ay0) - 13], [X(ax0) - 26, yt - 3]];
+      var op = an.o ? at(an.o) : [X(ax0) - 27, Y(ay0) + 11];
+      var upx = an.u ? at(an.u) : [(X(ax0) + X(ax0 + tx)) / 2, Y(ay0) + 11];
+      var lp = an.lab ? at(an.lab) : (labPos[0] ? [labPos[0].x, labPos[0].y] : null);
+      var stp = null;
+      if (an.set) stp = at(an.set);
+      else if (regionPoly && regionPoly.length > 2) {
+        var cx = 0, cy = 0;
+        regionPoly.forEach(function (q) { cx += q[0]; cy += q[1]; });
+        stp = at([cx / regionPoly.length, cy / regionPoly.length]);
+      }
+      g += bdg(1, axp[0][0], axp[0][1]) + bdg(1, axp[1][0], axp[1][1]) + bdg(2, op[0], op[1]) + bdg(3, upx[0], upx[1]) +
+           (lp ? bdg(4, lp[0], lp[1]) : '') + (stp ? bdg(5, stp[0], stp[1]) : '');
+    }
 
     box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(sp.aria || '') + '">' + g + '</svg>';
   }

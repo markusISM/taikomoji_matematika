@@ -979,3 +979,4 @@ svg .lp-l5 { stroke: var(--tip); stroke-width: 2.4; }
 svg .lp-a5 { stroke: var(--tip); stroke-width: 2; }
 svg .lp-h5 { fill: var(--tip); }
 svg text.c5 { fill: var(--tip); }
+.site-footer .credit { font-size: .82rem; }
