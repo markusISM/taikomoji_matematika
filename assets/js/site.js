@@ -213,7 +213,7 @@
       { id: 'm22', status: 'active', href: { lt: 'tema-2-sudetingesni-veiksmai.html', en: 'tema-2-sudetingesni-veiksmai.html' },
         title: { lt: 'Sudėtingesni matricų veiksmų taikymai', en: 'Advanced Matrix Applications' },
         desc: { lt: 'Matricų daugyba ir transponavimas ekonominėse ir vadybinėse situacijose.', en: 'Matrix multiplication and the transpose in economic and managerial situations.' } },
-      { id: 'm23', status: 'active', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html' },
+      { id: 'm23', status: 'active', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html', en: 'tema-2-rinkos-dalies-prognozavimas.html' },
         title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' },
         desc: { lt: 'Markovo grandinės: rinkos dalys po vieno ar kelių periodų.', en: 'Markov chains: market shares after one or several periods.' } }
     ],
@@ -271,7 +271,7 @@
                title: { lt: 'Pagrindinių matricos veiksmų taikymai', en: 'Basic Matrix Operations' } },
     m22:     { parent: 't2', topic: 't2', model: 'm22', href: { lt: 'tema-2-sudetingesni-veiksmai.html', en: 'tema-2-sudetingesni-veiksmai.html' },
                title: { lt: 'Sudėtingesni matricų veiksmų taikymai', en: 'Advanced Matrix Applications' } },
-    m23:     { parent: 't2', topic: 't2', model: 'm23', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html', en: null },
+    m23:     { parent: 't2', topic: 't2', model: 'm23', href: { lt: 'tema-2-rinkos-dalies-prognozavimas.html', en: 'tema-2-rinkos-dalies-prognozavimas.html' },
                title: { lt: 'Rinkos dalies prognozavimas', en: 'Market Share Prediction Using Markov Chains' } },
     t3:      { parent: 'home', href: { lt: 'tema-3.html', en: null },
                title: { lt: '3 tema', en: 'Topic 3' } },

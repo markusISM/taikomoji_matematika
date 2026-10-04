@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Share Prediction Using Markov Chains · Topic 2 · Applied Mathematics</title>
+<meta name="description" content="Market share prediction using Markov chains: the initial state vector, the transition matrix, next period’s market shares, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-2-rinkos-dalies-prognozavimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=41">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=41"></script>
+</head>
+<body data-page="m23">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 2 · Applications · Section 3</span>
+    <h1>Market Share Prediction Using Markov Chains</h1>
+    <p class="lead">This section shows how the market shares of companies are predicted using Markov chains and matrix multiplication.</p>
+    <ul class="jump">
+      <li><a href="#logika">Markov chain</a></li>
+      <li><a href="#duomenys">What is needed</a></li>
+      <li><a href="#zingsnio-matrica">Transition matrix</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. THE LOGIC OF MARKOV CHAINS ============ -->
+  <section class="section" id="logika" aria-labelledby="h-logic">
+    <h2 id="h-logic">The logic of Markov chains</h2>
+
+    <article class="card">
+      <p>In most markets customers do not stay with one supplier for ever. In every period some of them leave for a competitor and some arrive from a competitor, so the market shares change even when nothing else does. If a market study establishes what proportion of each company’s customers moves to each of the others, and if those proportions can be assumed to stay the same from period to period, then next period’s market shares can be computed from this period’s by a single matrix multiplication. A sequence of periods described in this way is called a <strong>Markov chain</strong>.</p>
+
+      <ol class="mchain" aria-label="Sequence of periods">
+        <li class="st"><span class="vec">\(X_0\)</span><span>current market shares</span></li>
+        <li class="tr"><span class="arr" aria-hidden="true">↓</span><span>\(X_1 = P\cdot X_0\)</span></li>
+        <li class="st"><span class="vec">\(X_1\)</span><span>market shares after 1 period</span></li>
+        <li class="tr"><span class="arr" aria-hidden="true">↓</span><span>\(X_2 = P\cdot X_1\)</span></li>
+        <li class="st"><span class="vec">\(X_2\)</span><span>market shares after 2 periods</span></li>
+        <li class="tr"><span class="arr" aria-hidden="true">↓</span><span>…</span></li>
+      </ol>
+      <p class="formula-note" style="text-align:center">The market shares of each period are obtained by multiplying the shares of the previous period by the same transition matrix \(P\).</p>
+
+      <p>The model assumes that the switching proportions stay constant and that the total number of customers in the market does not change.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span>Definition of a Markov chain and other applications</summary>
+        <div class="more-body">
+          <p>A Markov chain is a sequence of experiments, trials, or observations such that the transition probability matrix from one state to the next is constant, and the next state depends only on the current state. Besides the prediction of market shares, Markov chains are applied to the prediction of stock prices, insurance occurrences and elections.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. WHAT IS NEEDED FOR A PREDICTION ============ -->
+  <section class="section" id="duomenys" aria-labelledby="h-data">
+    <h2 id="h-data">What we need to know to predict market shares</h2>
+
+    <article class="card">
+      <ul class="kv">
+        <li><span class="sym">\(X_0\)</span><span><strong>initial market distribution</strong> – the current market shares of the companies (the initial state probability vector);</span></li>
+        <li><span class="sym">\(P\)</span><span><strong>transition matrix</strong> – what proportion of each company’s customers stays during one period and what proportion moves to each of the other companies.</span></li>
+      </ul>
+      <p>The market shares of the next period are then</p>
+      <div class="formula">\[ X_t = P\cdot X_{t-1} \]</div>
+      <p>So one multiplication moves the market one period forward, and repeating it moves it further:</p>
+      <div class="formula">\[ \begin{gathered} X_1 = P\cdot X_0, \quad X_2 = P\cdot X_1, \\ X_3 = P\cdot X_2, \quad \ldots \end{gathered} \]</div>
+
+      <h3 class="subhead" style="margin-top:22px">How the vector of initial market shares \(X_0\) is formed</h3>
+      <p><strong>The initial state probability vector</strong> \(X_0\) is a column matrix holding the current market shares, written as decimals. Its entries always sum to 1, because together the companies hold the whole market:</p>
+      <div class="formula">\[ \begin{gathered} X_0 = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \\ x_1 + x_2 + \ldots + x_n = 1 \end{gathered} \]</div>
+      <div class="stmt">
+        <q>The first has 40&nbsp;% of the market share, the second has 40&nbsp;%, and the third has 20&nbsp;%.</q>
+        <div class="mats">
+          <span>\(X_0 = \begin{pmatrix} 0.4 \\ 0.4 \\ 0.2 \end{pmatrix}\)</span>
+          <span>\(0.4 + 0.4 + 0.2 = 1\)</span>
+        </div>
+        <p class="formula-note" style="margin:6px 0 0;text-align:center">The initial market shares of Example 1: the percentages are converted into decimals.</p>
+      </div>
+      <p class="tip">The companies are listed in the vector \(X_0\) in the same order as in the transition matrix \(P\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. TRANSITION MATRIX ============ -->
+  <section class="section" id="zingsnio-matrica" aria-labelledby="h-step">
+    <h2 id="h-step">How the transition matrix is built</h2>
+
+    <article class="card">
+      <h3 class="subhead">What the entry \(p_{ij}\) means</h3>
+      <p><strong>The transition matrix \(P\)</strong> holds the switching probabilities: <strong>\(p_{ij}\) is the probability that a customer switches from company \(j\) to company \(i\).</strong> This order of the indices must be memorised: the second index shows <em>where the customer leaves from</em> (the column), and the first shows <em>where the customer moves to</em> (the row).</p>
+      <div class="tbl-wrap">
+        <table class="vtable pij" aria-label="Meaning of the entries of the transition matrix">
+          <thead><tr><th></th><th>from 1</th><th>from 2</th><th>from 3</th></tr></thead>
+          <tbody>
+            <tr><th class="to">to 1</th><td class="dg">\(p_{11}\)</td><td>\(p_{12}\)</td><td>\(p_{13}\)</td></tr>
+            <tr><th class="to">to 2</th><td>\(p_{21}\)</td><td class="dg">\(p_{22}\)</td><td>\(p_{23}\)</td></tr>
+            <tr><th class="to">to 3</th><td>\(p_{31}\)</td><td>\(p_{32}\)</td><td class="dg">\(p_{33}\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>It means that:</p>
+      <ul>
+        <li>column \(j\) describes what happens to the customers of company \(j\) – where they go;</li>
+        <li>the main diagonal entry \(p_{jj}\) is the proportion of company \(j\)’s customers that stays with it, its retention (marked in orange in the table);</li>
+        <li>every column sums to 1, because each customer of company \(j\) must end up somewhere.</li>
+      </ul>
+
+      <h3 class="subhead" style="margin-top:22px">When there are two companies in the market</h3>
+      <figure class="fig">
+        <svg viewBox="0 0 320 178" role="img" aria-label="Transition diagram for two companies: p11 and p21 from company 1, p12 and p22 from company 2">
+          <defs>
+            <marker id="mk1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" style="fill:var(--chart)"/></marker>
+            <marker id="mk2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" style="fill:var(--chart-2)"/></marker>
+          </defs>
+          <!-- loops -->
+          <path class="tr1" d="M76 70 C 52 18, 118 18, 94 70" marker-end="url(#mk1)"/>
+          <path class="tr2" d="M226 70 C 202 18, 268 18, 244 70" marker-end="url(#mk2)"/>
+          <!-- transitions -->
+          <path class="tr1" d="M112 86 Q 160 58 206 86" marker-end="url(#mk1)"/>
+          <path class="tr2" d="M208 112 Q 160 140 114 112" marker-end="url(#mk2)"/>
+          <!-- nodes -->
+          <circle class="node" cx="85" cy="98" r="26"/>
+          <circle class="node" cx="235" cy="98" r="26"/>
+          <text class="b" x="85" y="103" text-anchor="middle">1</text>
+          <text class="b" x="235" y="103" text-anchor="middle">2</text>
+          <!-- labels -->
+          <text class="m" x="85" y="20" text-anchor="middle" style="fill:var(--chart)">p<tspan font-size="10" dy="4">11</tspan></text>
+          <text class="m" x="235" y="20" text-anchor="middle" style="fill:var(--chart-2)">p<tspan font-size="10" dy="4">22</tspan></text>
+          <text class="m" x="160" y="58" text-anchor="middle" style="fill:var(--chart)">p<tspan font-size="10" dy="4">21</tspan></text>
+          <text class="m" x="160" y="156" text-anchor="middle" style="fill:var(--chart-2)">p<tspan font-size="10" dy="4">12</tspan></text>
+          <text class="muted" x="85" y="146" text-anchor="middle" style="font-size:11px">Company 1</text>
+          <text class="muted" x="235" y="146" text-anchor="middle" style="font-size:11px">Company 2</text>
+        </svg>
+      </figure>
+      <div class="formula">\[ P = \begin{pmatrix} \htmlClass{hr}{p_{11}} &amp; \htmlClass{hc}{p_{12}} \\ \htmlClass{hr}{p_{21}} &amp; \htmlClass{hc}{p_{22}} \end{pmatrix} \]</div>
+      <p>The blue arrows are the customers of company 1: the proportion \(p_{11}\) stays and the proportion \(p_{21}\) moves to company 2. They make up the <strong>first column</strong>. The green arrows are the customers of company 2; they make up the <strong>second column</strong>. The arrow from company 1 to company 2 is labelled \(p_{21}\): the first index is where the customers move to, the second is where they come from.</p>
+
+      <h3 class="subhead" style="margin-top:22px">How to build the matrix from the problem</h3>
+      <ol class="steps-list">
+        <li>List the companies in a fixed order and keep exactly that order in every matrix.</li>
+        <li>Build \(P\) one column at a time. Column \(j\) is the story of company \(j\)’s customers: the retained proportion goes on the diagonal, and the proportions that leave go in the rows of the companies they move to.</li>
+        <li>When the text gives only the losses, the retention is 1 minus the sum of the losses.</li>
+        <li>Check that every column sums to 1. A column that does not is the sign that a percentage has been entered in the wrong place.</li>
+      </ol>
+      <div class="stmt">
+        <q>80&nbsp;% of supplier A’s customers would choose the same supplier next time, 10&nbsp;% would choose supplier B, and 10&nbsp;% would choose supplier C.</q>
+        <p style="margin:0 0 6px">This sentence is about the customers of supplier A (company 1), so it fills the <strong>first column</strong>:</p>
+        <ul class="kv">
+          <li><span class="sym">\(p_{11} = 0.8\)</span><span>stay with A (diagonal);</span></li>
+          <li><span class="sym">\(p_{21} = 0.1\)</span><span>move to B (row 2);</span></li>
+          <li><span class="sym">\(p_{31} = 0.1\)</span><span>move to C (row 3).</span></li>
+        </ul>
+        <div class="formula">\[ \begin{gathered} \begin{pmatrix} \htmlClass{hr}{0.8} &amp; \cdot &amp; \cdot \\ \htmlClass{hr}{0.1} &amp; \cdot &amp; \cdot \\ \htmlClass{hr}{0.1} &amp; \cdot &amp; \cdot \end{pmatrix} \\ 0.8 + 0.1 + 0.1 = 1 \end{gathered} \]</div>
+        <p class="formula-note" style="margin:6px 0 0;text-align:center">The first sentence of Example 1. The other two sentences fill the second and the third columns in the same way.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PREDICTION ============ -->
+  <section class="section" id="prognoze" aria-labelledby="h-forecast">
+    <h2 id="h-forecast">How next period’s market shares are computed</h2>
+
+    <article class="card">
+      <p>When there are \(n\) companies in the market, \(P\) is an \(n \times n\) matrix and \(X_0\) an \(n \times 1\) matrix, so the product is defined and the result is again a column matrix:</p>
+      <div class="formula">\[ (n \times \htmlClass{hd}{n}) \cdot (\htmlClass{hd}{n} \times 1) = n \times 1 \]</div>
+      <p>The structure of the new matrix, for example, with three companies:</p>
+      <div class="formula">\[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]</div>
+      <p>The entry \(c_{i1}\) is the market share of company \(i\) after one period. It is row \(i\) of \(P\) times the column \(X_0\):</p>
+      <div class="formula">\[ c_{i1} = p_{i1}x_1 + p_{i2}x_2 + \ldots + p_{in}x_n \]</div>
+      <p>Check that the entries of \(X_1\) sum to 1, then convert them into percentages. For a further period repeat the multiplication with \(X_1\) in place of \(X_0\).</p>
+      <p><a href="tema-2.html#sandauga">Multiplication of matrices in detail – on the Topic 2 page →</a></p>
+    </article>
+  </section>
+
+  <!-- ============ 5. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>List the companies in a fixed order and keep exactly that order in every matrix.</li>
+        <li>Write \(X_0\) as a column of decimals and check that the entries sum to 1.</li>
+        <li>Build \(P\) one column at a time. Column \(j\) is the story of company \(j\)’s customers: the retained proportion goes on the diagonal, and the proportions that leave go in the rows of the companies they move to. When the text gives only the losses, the retention is 1 minus the sum of the losses.</li>
+        <li>Check that every column sums to 1. A column that does not is the sign that a percentage has been entered in the wrong place.</li>
+        <li>Multiply \(X_1 = P\cdot X_0\): entry \(i\) of the answer is row \(i\) of \(P\) times the column \(X_0\).</li>
+        <li>Check that the entries of \(X_1\) sum to 1, then convert them into percentages.</li>
+        <li>For a further period repeat the multiplication with \(X_1\) in place of \(X_0\).</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>A row instead of a column.</strong> A sentence about one company’s customers fills a column, not a row: \(p_{ij}\) is the switch from company \(j\) to company \(i\).</li>
+            <li><strong>A column that does not sum to 1.</strong> It is the sign that a percentage has been entered in the wrong place.</li>
+            <li><strong>Retention not computed.</strong> When only the losses are given, the diagonal entry is 1 minus the sum of the losses.</li>
+            <li><strong>The second period from \(X_0\).</strong> \(X_2\) is computed from \(X_1\): \(X_2 = P\cdot X_1\).</li>
+            <li><strong>A different order of the companies.</strong> The companies must be listed in the same order in the vector \(X_0\) and in the matrix \(P\).</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving market share prediction problems, the transition matrix \(P\) and the initial state probability vector \(X_0\) must be presented. When calculating the predicted market distribution for subsequent periods, the matrix operation performed must be clearly written.</li>
+            <li>When performing matrix multiplication, it is required to indicate the matrices being multiplied, their dimensions, and the structure of the resulting matrix. It is not necessary to rewrite all matrices or to show every arithmetic calculation.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 6. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: alternative problem 2.2 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Market shares of electricity suppliers</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        In a country there are three electricity suppliers (A, B, and C). The first has 40&nbsp;% of the market share, the second has 40&nbsp;%, and the third has 20&nbsp;%. A study found that:
+        <ul>
+          <li>80&nbsp;% of supplier A’s customers would choose the same supplier next time, 10&nbsp;% would choose supplier B, and 10&nbsp;% would choose supplier C.</li>
+          <li>85&nbsp;% of supplier B’s customers would remain with the same supplier, 10&nbsp;% would choose supplier A, and 5&nbsp;% would choose supplier C.</li>
+          <li>Finally, 80&nbsp;% of supplier C’s customers would stay with the same supplier, 10&nbsp;% would choose supplier A, and 10&nbsp;% would choose supplier B.</li>
+        </ul>
+        Assume that the aforementioned choice habits will remain the same in the future. Determine the market shares of these electricity suppliers after one period.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The initial market shares</span></h4>
+          <p>Order of the companies: A, B, C. The initial-state matrix holds the current market shares:</p>
+          \[ X_0 = \begin{pmatrix} 0.4 \\ 0.4 \\ 0.2 \end{pmatrix}, \qquad 0.4 + 0.4 + 0.2 = 1 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The transition matrix</span></h4>
+          <p>The entry \(p_{ij}\) is the probability that a customer moves from supplier \(j\) to supplier \(i\), so each column describes where the customers of one supplier go. The first sentence fills the first column (A’s customers: 0.8; 0.1; 0.1), the second sentence the second column (B’s customers: 0.1; 0.85; 0.05) and the third sentence the third column (C’s customers: 0.1; 0.1; 0.8):</p>
+          \[ P = \begin{pmatrix} 0.8 &amp; 0.1 &amp; 0.1 \\ 0.1 &amp; 0.85 &amp; 0.1 \\ 0.1 &amp; 0.05 &amp; 0.8 \end{pmatrix} \]
+          <p>Each column sums to 1: \(0.8 + 0.1 + 0.1 = 1\), \(0.1 + 0.85 + 0.05 = 1\), \(0.1 + 0.1 + 0.8 = 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The sizes and the structure of the new matrix</span></h4>
+          <p>The shares after one period are \(X_1 = P\cdot X_0\):</p>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 1) = 3 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]
+          <p>\(c_{11}\), \(c_{21}\) and \(c_{31}\) are the market shares of suppliers A, B and C after one period.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Computing the entries</span></h4>
+          <p>\(c_{11}\) is row 1 of \(P\) times the column \(X_0\):</p>
+          \[ \begin{pmatrix} \htmlClass{hr}{0.8} &amp; \htmlClass{hr}{0.1} &amp; \htmlClass{hr}{0.1} \\ 0.1 &amp; 0.85 &amp; 0.1 \\ 0.1 &amp; 0.05 &amp; 0.8 \end{pmatrix} \cdot \begin{pmatrix} \htmlClass{hc}{0.4} \\ \htmlClass{hc}{0.4} \\ \htmlClass{hc}{0.2} \end{pmatrix} \]
+          \[ \begin{aligned} c_{11} &amp;= 0.8\cdot 0.4 + 0.1\cdot 0.4 + 0.1\cdot 0.2 \\ &amp;= 0.32 + 0.04 + 0.02 = 0.38 \\ c_{21} &amp;= 0.1\cdot 0.4 + 0.85\cdot 0.4 + 0.1\cdot 0.2 \\ &amp;= 0.04 + 0.34 + 0.02 = 0.4 \\ c_{31} &amp;= 0.1\cdot 0.4 + 0.05\cdot 0.4 + 0.8\cdot 0.2 \\ &amp;= 0.04 + 0.02 + 0.16 = 0.22 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0.38 \\ 0.4 \\ 0.22 \end{pmatrix} \]
+          <p>The three shares add up to 1, as they must.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            After one period supplier A will hold 38&nbsp;% of the market, supplier B 40&nbsp;% and supplier C 22&nbsp;%. Supplier A loses 2 percentage points and supplier C gains 2; supplier B, which keeps its customers best, becomes the largest supplier.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: guideline problem 1 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Two supermarket chains</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Two supermarket chains, Alpha and Beta, share a local market. Alpha currently has 55&nbsp;% of the customers and Beta 45&nbsp;%. Each month 12&nbsp;% of Alpha’s customers switch to Beta, and 20&nbsp;% of Beta’s customers switch to Alpha. Find the market shares next month and the month after next.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Order of the companies: Alpha, Beta. Current shares: Alpha 55&nbsp;%, Beta 45&nbsp;%.</p>
+          \[ X_0 = \begin{pmatrix} 0.55 \\ 0.45 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The transition matrix</span></h4>
+          <p>Only the losses are given, so each retention is 1 minus the loss. Alpha keeps \(1 - 0.12 = 0.88\) and Beta keeps \(1 - 0.2 = 0.8\). The first column is Alpha’s customers (0.88 stay, 0.12 move to Beta) and the second column is Beta’s (0.20 move to Alpha, 0.80 stay):</p>
+          \[ P = \begin{pmatrix} 0.88 &amp; 0.2 \\ 0.12 &amp; 0.8 \end{pmatrix} \]
+          <p>Both columns sum to 1.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The sizes and the structure of the new matrix</span></h4>
+          \[ (2 \times \htmlClass{hd}{2})\cdot(\htmlClass{hd}{2} \times 1) = 2 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \end{pmatrix} \]
+          <p>\(c_{11}\) and \(c_{21}\) are the market shares of Alpha and Beta next month.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Next month</span></h4>
+          \[ \begin{aligned} c_{11} &amp;= 0.88\cdot 0.55 + 0.2\cdot 0.45 \\ &amp;= 0.484 + 0.09 = 0.574 \\ c_{21} &amp;= 0.12\cdot 0.55 + 0.8\cdot 0.45 \\ &amp;= 0.066 + 0.36 = 0.426 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0.574 \\ 0.426 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The month after next</span></h4>
+          <p>The month after next, starting from \(X_1\): \(X_2 = P\cdot X_1\). The sizes and the structure are the same: \(X_2 = \begin{pmatrix} c_{11} \\ c_{21} \end{pmatrix}\).</p>
+          \[ \begin{aligned} c_{11} &amp;= 0.88\cdot 0.574 + 0.2\cdot 0.426 \\ &amp;= 0.50512 + 0.0852 = 0.59032 \\ c_{21} &amp;= 0.12\cdot 0.574 + 0.8\cdot 0.426 \\ &amp;= 0.06888 + 0.3408 = 0.40968 \end{aligned} \]
+          \[ X_2 = \begin{pmatrix} 0.5903 \\ 0.4097 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Interpretation</span></h4>
+          <p>Alpha gains 2.4 percentage points in the first month but only 1.6 in the second. The gain slows down because the bigger Alpha becomes, the more customers it has to lose at its 12&nbsp;% rate, while Beta, shrinking, sends away fewer and fewer at its 20&nbsp;% rate. Alpha wins customers not because it attracts more of them in absolute numbers but because it loses a smaller share of its own base.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Next month Alpha will hold 57.4&nbsp;% and Beta 42.6&nbsp;% of the market; the month after next Alpha will hold 59.03&nbsp;% and Beta 40.97&nbsp;%.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: guideline problem 2 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Streaming services</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Three streaming services, S1, S2 and S3, hold 40&nbsp;%, 35&nbsp;% and 25&nbsp;% of a national market. Each quarter S1 retains 80&nbsp;% of its subscribers and loses 15&nbsp;% to S2 and 5&nbsp;% to S3; S2 retains 85&nbsp;% and loses 10&nbsp;% to S1 and 5&nbsp;% to S3; S3 retains 70&nbsp;% and loses 20&nbsp;% to S1 and 10&nbsp;% to S2. Find the market shares after one quarter and explain what drives the result.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Order of the companies: S1, S2, S3. Current shares: 40&nbsp;%, 35&nbsp;%, 25&nbsp;%.</p>
+          \[ X_0 = \begin{pmatrix} 0.4 \\ 0.35 \\ 0.25 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The transition matrix</span></h4>
+          <p>Each sentence of the problem describes one company’s customers, so each sentence fills one column. S1’s customers give the first column (0.80 stay, 0.15 to S2, 0.05 to S3), S2’s the second (0.10 to S1, 0.85 stay, 0.05 to S3) and S3’s the third (0.20 to S1, 0.10 to S2, 0.70 stay):</p>
+          \[ P = \begin{pmatrix} 0.8 &amp; 0.1 &amp; 0.2 \\ 0.15 &amp; 0.85 &amp; 0.1 \\ 0.05 &amp; 0.05 &amp; 0.7 \end{pmatrix} \]
+          <p>The column sums are \(0.8 + 0.15 + 0.05 = 1\), \(0.1 + 0.85 + 0.05 = 1\) and \(0.2 + 0.1 + 0.7 = 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The sizes and the structure of the new matrix</span></h4>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 1) = 3 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]
+          <p>\(c_{11}\), \(c_{21}\), \(c_{31}\) are the market shares of S1, S2 and S3 after one quarter.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Computing the entries</span></h4>
+          \[ \begin{aligned} c_{11} &amp;= 0.8\cdot 0.4 + 0.1\cdot 0.35 + 0.2\cdot 0.25 \\ &amp;= 0.32 + 0.035 + 0.05 = 0.405 \\ c_{21} &amp;= 0.15\cdot 0.4 + 0.85\cdot 0.35 + 0.1\cdot 0.25 \\ &amp;= 0.06 + 0.2975 + 0.025 = 0.3825 \\ c_{31} &amp;= 0.05\cdot 0.4 + 0.05\cdot 0.35 + 0.7\cdot 0.25 \\ &amp;= 0.02 + 0.0175 + 0.175 = 0.2125 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0.405 \\ 0.3825 \\ 0.2125 \end{pmatrix} \]
+          <p>The entries sum to 1.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Interpretation</span></h4>
+          <p>S1 gains half a percentage point and S2 gains 3.25, while S3 loses 3.75. The diagonal explains it: S3 keeps only 70&nbsp;% of its subscribers each quarter, against 80&nbsp;% and 85&nbsp;% for its competitors, and it is the small company, so the customers it attracts from the others are too few to replace its own losses. If S3 continues on these terms it will keep shrinking.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            After one quarter the market shares are 40.5&nbsp;% for S1, 38.25&nbsp;% for S2 and 21.25&nbsp;% for S3. S2 is the main gainer and S3 the loser, because S3 has by far the weakest customer retention.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: guideline problem 3 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Will the loyalty programme make the bank the leader?</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        In a regional banking market Bank A holds 45&nbsp;% of the accounts, Bank B holds 35&nbsp;% and other banks together hold 20&nbsp;%. Each year Bank A retains 85&nbsp;% of its clients and loses 10&nbsp;% to B and 5&nbsp;% to the others; Bank B retains 80&nbsp;% and loses 15&nbsp;% to A and 5&nbsp;% to the others; the other banks retain 75&nbsp;% and lose 15&nbsp;% to A and 10&nbsp;% to B. The marketing director of Bank B claims that a loyalty programme raising B’s retention from 80&nbsp;% to 90&nbsp;%, with the remaining clients splitting equally between A and the others, would make B the market leader within two years. Check the claim.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The given data</span></h4>
+          <p>Order: Bank A, Bank B, Other banks. Current shares: 45&nbsp;%, 35&nbsp;%, 20&nbsp;%.</p>
+          <div class="mats">
+            <span>\(X_0 = \begin{pmatrix} 0.45 \\ 0.35 \\ 0.2 \end{pmatrix}\)</span>
+            <span>\(P = \begin{pmatrix} 0.85 &amp; 0.15 &amp; 0.15 \\ 0.1 &amp; 0.8 &amp; 0.1 \\ 0.05 &amp; 0.05 &amp; 0.75 \end{pmatrix}\)</span>
+          </div>
+          <p>Every column sums to 1.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The sizes and the structure of the new matrix</span></h4>
+          \[ (3 \times \htmlClass{hd}{3})\cdot(\htmlClass{hd}{3} \times 1) = 3 \times 1 \]
+          \[ X_1 = P\cdot X_0 = \begin{pmatrix} c_{11} \\ c_{21} \\ c_{31} \end{pmatrix} \]
+          <p>\(c_{11}\), \(c_{21}\), \(c_{31}\) are the market shares of Bank A, Bank B and the other banks after one year. All the other products have the same sizes and structure.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>After one year (present terms)</span></h4>
+          \[ \small\begin{aligned} c_{11} &amp;= 0.85\cdot 0.45 + 0.15\cdot 0.35 + 0.15\cdot 0.2 \\ &amp;= 0.3825 + 0.0525 + 0.03 = 0.465 \\ c_{21} &amp;= 0.1\cdot 0.45 + 0.8\cdot 0.35 + 0.1\cdot 0.2 \\ &amp;= 0.045 + 0.28 + 0.02 = 0.345 \\ c_{31} &amp;= 0.05\cdot 0.45 + 0.05\cdot 0.35 + 0.75\cdot 0.2 \\ &amp;= 0.0225 + 0.0175 + 0.15 = 0.19 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0.465 \\ 0.345 \\ 0.19 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>After the second year (present terms)</span></h4>
+          <p>Starting from \(X_1\): \(X_2 = P\cdot X_1\).</p>
+          \[ \small\begin{aligned} c_{11} &amp;= 0.85\cdot 0.465 + 0.15\cdot 0.345 + 0.15\cdot 0.19 \\ &amp;= 0.39525 + 0.05175 + 0.0285 = 0.4755 \\ c_{21} &amp;= 0.1\cdot 0.465 + 0.8\cdot 0.345 + 0.1\cdot 0.19 \\ &amp;= 0.0465 + 0.276 + 0.019 = 0.3415 \\ c_{31} &amp;= 0.05\cdot 0.465 + 0.05\cdot 0.345 + 0.75\cdot 0.19 \\ &amp;= 0.02325 + 0.01725 + 0.1425 = 0.183 \end{aligned} \]
+          \[ X_2 = \begin{pmatrix} 0.4755 \\ 0.3415 \\ 0.183 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The new transition matrix</span></h4>
+          <p>Now change only the second column, which is the story of B’s clients. B retains 0.90 and the remaining 0.10 splits equally, so 0.05 goes to A and 0.05 to the others. The other two columns are unchanged. Call the new transition matrix \(Q\):</p>
+          \[ Q = \begin{pmatrix} 0.85 &amp; \htmlClass{hc}{0.05} &amp; 0.15 \\ 0.1 &amp; \htmlClass{hc}{0.9} &amp; 0.1 \\ 0.05 &amp; \htmlClass{hc}{0.05} &amp; 0.75 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Market shares with the loyalty programme</span></h4>
+          <p>Repeat the two multiplications with the new matrix. After one year (\(X_1 = Q\cdot X_0\)):</p>
+          \[ \small\begin{aligned} c_{11} &amp;= 0.85\cdot 0.45 + 0.05\cdot 0.35 + 0.15\cdot 0.2 \\ &amp;= 0.3825 + 0.0175 + 0.03 = 0.43 \\ c_{21} &amp;= 0.1\cdot 0.45 + 0.9\cdot 0.35 + 0.1\cdot 0.2 \\ &amp;= 0.045 + 0.315 + 0.02 = 0.38 \\ c_{31} &amp;= 0.05\cdot 0.45 + 0.05\cdot 0.35 + 0.75\cdot 0.2 \\ &amp;= 0.0225 + 0.0175 + 0.15 = 0.19 \end{aligned} \]
+          \[ X_1 = \begin{pmatrix} 0.43 \\ 0.38 \\ 0.19 \end{pmatrix} \]
+          <p>After the second year (\(X_2 = Q\cdot X_1\)):</p>
+          \[ \small\begin{aligned} c_{11} &amp;= 0.85\cdot 0.43 + 0.05\cdot 0.38 + 0.15\cdot 0.19 \\ &amp;= 0.3655 + 0.019 + 0.0285 = 0.413 \\ c_{21} &amp;= 0.1\cdot 0.43 + 0.9\cdot 0.38 + 0.1\cdot 0.19 \\ &amp;= 0.043 + 0.342 + 0.019 = 0.404 \\ c_{31} &amp;= 0.05\cdot 0.43 + 0.05\cdot 0.38 + 0.75\cdot 0.19 \\ &amp;= 0.0215 + 0.019 + 0.1425 = 0.183 \end{aligned} \]
+          \[ X_2 = \begin{pmatrix} 0.413 \\ 0.404 \\ 0.183 \end{pmatrix} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Interpretation</span></h4>
+          <p>The loyalty programme changes the direction of the market completely: instead of falling to 34.15&nbsp;%, Bank B rises to 40.4&nbsp;%, and instead of climbing to 47.55&nbsp;%, Bank A is held to 41.3&nbsp;%. But after two years A still leads by 0.9 percentage points, so the claim as stated is not confirmed. The comparison of the two scenarios is nevertheless a strong argument for the programme: it is worth 6.25 percentage points of market share to Bank B in two years, and it turns a widening gap into an almost closed one.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            On the present terms the shares after two years would be 47.55&nbsp;% for A, 34.15&nbsp;% for B and 18.3&nbsp;% for the others. With retention raised to 90&nbsp;% they would be 41.3&nbsp;%, 40.4&nbsp;% and 18.3&nbsp;%. Bank B would come within 0.9 percentage points of the lead but would not become the market leader within two years, so the marketing director’s claim is not confirmed – although the programme would still improve B’s position substantially.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 7. PRACTICE PROBLEMS ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: give \(X_0\) and \(P\), the sizes of the product and the structure of the new matrix, then compute the entries. Finally, check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Two brands of pet food, A and B, share a market. Brand A holds 60&nbsp;% of it and brand B 40&nbsp;%. A survey found that 85&nbsp;% of brand A’s customers buy the same brand next time and 15&nbsp;% switch to brand B, while 75&nbsp;% of brand B’s customers stay with brand B and 25&nbsp;% switch to brand A. Assume that these habits do not change. Determine the market shares of the two brands after one period and after two periods.</p>
+        </div>
+        <div class="q-answer">
+          <p>The shares after one and after two periods are</p>
+          <div class="mats">
+            <span>\(X_1 = \begin{pmatrix} 0.61 \\ 0.39 \end{pmatrix}\)</span>
+            <span>\(X_2 = \begin{pmatrix} 0.616 \\ 0.384 \end{pmatrix}\)</span>
+          </div>
+          <p>Brand A holds 61&nbsp;% of the market after one period and 61.6&nbsp;% after two: it gains 1 percentage point in the first period and a further 0.6 points in the second, so its growth is slowing.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Three fitness apps, A, B and C, share a market. App A holds 50&nbsp;% of it, app B 30&nbsp;% and app C 20&nbsp;%. A survey of their users found that:</p>
+          <ul>
+            <li>80&nbsp;% of app A’s users would keep using it next month, 12&nbsp;% would move to app B and 8&nbsp;% to app C;</li>
+            <li>75&nbsp;% of app B’s users would keep using it, 15&nbsp;% would move to app A and 10&nbsp;% to app C;</li>
+            <li>70&nbsp;% of app C’s users would keep using it, 20&nbsp;% would move to app A and 10&nbsp;% to app B.</li>
+          </ul>
+          <p>Assume that these habits do not change. Determine the market shares of the three apps after one month.</p>
+        </div>
+        <div class="q-answer">
+          <p>The shares after one month are</p>
+          \[ X_1 = \begin{pmatrix} 0.485 \\ 0.305 \\ 0.21 \end{pmatrix} \]
+          <p>App A holds 48.5&nbsp;% of the market, app B 30.5&nbsp;% and app C 21&nbsp;%. App C, which keeps its users least well, nevertheless gains a percentage point, because it attracts more users from the two larger apps than it loses to them.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Three news websites, A, B and C, share a market. Website A holds 40&nbsp;% of it, website B 35&nbsp;% and website C 25&nbsp;%. The transition matrix of the market is</p>
+          <div class="mats">
+            <span>\(P = \begin{pmatrix} 0.75 &amp; 0.1 &amp; 0.2 \\ 0.15 &amp; 0.8 &amp; 0.1 \\ 0.1 &amp; 0.1 &amp; 0.7 \end{pmatrix}\)</span>
+          </div>
+          <p>Its columns are websites A, B and C in that order. The editor of website C claims that if C raised the share of its readers who stay with it from 70&nbsp;% to 80&nbsp;%, the readers it kept being won back from those who used to move to website A, so that only 10&nbsp;% would move to A and 10&nbsp;% would still move to B, then C would become the largest of the three websites within two periods. Determine the market shares after two periods as the market stands, and determine them again under the editor’s proposal. Is the editor’s claim confirmed?</p>
+        </div>
+        <div class="q-answer">
+          <p>As the market stands, the shares after two periods are</p>
+          \[ X_2 = \begin{pmatrix} 0.37525 \\ 0.37475 \\ 0.25 \end{pmatrix} \]
+          <p>and under the editor’s proposal they are</p>
+          \[ X_2 = \begin{pmatrix} 0.334 \\ 0.3735 \\ 0.2925 \end{pmatrix} \]
+          <p>The editor’s claim is not confirmed. Website C does grow – from 25&nbsp;% to 29.25&nbsp;% instead of staying at 25&nbsp;% – but it remains the smallest of the three. The main effect of the proposal falls elsewhere: website B overtakes website A and becomes the largest, with 37.35&nbsp;% against 33.4&nbsp;%, whereas without the change the two would still be level at about 37.5&nbsp;% each.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapters 1–2</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 9</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Finite Mathematics for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">Chapter 8</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

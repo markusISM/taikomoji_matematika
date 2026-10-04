@@ -31,7 +31,7 @@ lt/                            lietuviški puslapiai
   tema-5-minimizavimas.html    2 skyrius: standartiniai minimizavimo uždaviniai (koeficientų lentelė, transponavimas, dualusis uždavinys)
   tarpinis-egzaminas.html
   baigiamasis-egzaminas.html
-en/                            angliški puslapiai: index.html, tema-1.html, tema-2.html, tema-2-pagrindiniai-veiksmai.html, tema-2-sudetingesni-veiksmai.html, tema-1-nusidevejimas.html, tema-1-rinkos-pusiausvyra.html, tema-1-pajamos-sanaudos-pelnas.html, tema-1-gamybos-priemoniu-pasirinkimas.html, tarpinis-egzaminas.html (kiti – kuriami)
+en/                            angliški puslapiai: index.html, tema-1.html, tema-2.html, tema-2-pagrindiniai-veiksmai.html, tema-2-sudetingesni-veiksmai.html, tema-2-rinkos-dalies-prognozavimas.html, tema-1-nusidevejimas.html, tema-1-rinkos-pusiausvyra.html, tema-1-pajamos-sanaudos-pelnas.html, tema-1-gamybos-priemoniu-pasirinkimas.html, tarpinis-egzaminas.html (kiti – kuriami)
 assets/
   css/style.css                visas dizainas (spalvos – :root bloke viršuje)
   js/site.js                   UI užrašai LT/EN, kurso struktūra, visi interaktyvūs elementai

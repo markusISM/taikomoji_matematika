@@ -233,6 +233,7 @@ img, svg { max-width: 100%; }
 
 .subhead { font-size: .8rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin: 18px 0 8px; }
 .subhead:first-child { margin-top: 0; }
+.subhead .katex { text-transform: none; letter-spacing: 0; }
 
 /* ---------- Kurso struktūra (pagrindinis puslapis) ---------- */
 .path { list-style: none; padding: 0; margin: 8px 0 0; position: relative; }
