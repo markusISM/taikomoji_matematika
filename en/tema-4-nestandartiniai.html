@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Non-standard Problems · Applied Mathematics</title>
+<meta name="description" content="Non-standard linear programming problems: shares of a total, a third quantity, a delivery table and an objective function with a constant term. Building the mathematical model and examples step by step.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-4-nestandartiniai.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=50">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=50"></script>
+</head>
+<body data-page="m44">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 4 · Applications · Section 4</span>
+    <h1>Non-standard Problems</h1>
+    <p class="lead">This section shows how to build the mathematical model of more complex linear programming problems – when the conditions are given as shares of a total, properties of a mixture or a delivery plan, and the objective function contains a constant term.</p>
+    <ul class="jump">
+      <li><a href="#ivadas">Introduction</a></li>
+      <li><a href="#budai">Modelling devices</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. INTRODUCTION ============ -->
+  <section class="section" id="ivadas" aria-labelledby="h-intro">
+    <h2 id="h-intro">What makes a problem non-standard</h2>
+
+    <article class="card">
+      <p>In <a href="tema-4-maksimizavimas.html">Sections 2</a> and <a href="tema-4-minimizavimas.html">3</a> the model almost wrote itself: every row of the data table became one constraint and the price row became the objective function. In a non-standard problem that direct reading is not possible:</p>
+      <ul>
+        <li>the conditions are given as shares of a total, as comparisons between the two quantities, or as properties of a mixture;</li>
+        <li>more than two quantities are asked for;</li>
+        <li>the objective function contains a fixed fee;</li>
+        <li>the signs \(\leq\) and \(\geq\) appear side by side in the same model.</li>
+      </ul>
+      <p><strong>The method of solving does not change at all.</strong> The feasible set is still drawn in the same way, the vertices are still found in the same way, and the objective function is still computed at every vertex and the values compared. The whole difficulty sits in one step – writing the model – so this section concentrates on that step.</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>The mathematical model</strong><span>This is where all the difficulty lies – this section is devoted to it.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>The set and the vertices</strong><span>As in <a href="tema-4-nelygybiu-sistemos.html#eiga">Section 1</a>.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>The optimal value</strong><span>As in <a href="tema-4-maksimizavimas.html#eiga">Sections 2</a> and <a href="tema-4-minimizavimas.html#eiga">3</a>.</span></div></div>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes in building the model</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>A share of a total compared with the other quantity.</strong> “At least two thirds of all the tests with adults” is \(x \geq \tfrac{2}{3}(x + y)\), not \(x \geq \tfrac{2}{3}y\).</li>
+            <li><strong>The third quantity introduced as a new variable.</strong> When the total is known, the third quantity is written as an expression in \(x\) and \(y\), for example \(100 - x - y\).</li>
+            <li><strong>The non-negativity condition of the third quantity forgotten.</strong> \(100 - x - y \geq 0\) gives the constraint \(x + y \leq 100\).</li>
+            <li><strong>The inequality sign not reversed after multiplying by a negative number.</strong> \(-2x - y \leq -100\) gives \(2x + y \geq 100\).</li>
+            <li><strong>The constant term dropped.</strong> It does not change which vertex is the best one, but it is part of the value of the objective function.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving applied linear programming problems, the definitions of the introduced variables must be provided at the beginning of the solution. Each variable definition must clearly state that the variable represents the quantity of a specific object.</li>
+            <li>If convenient for the author, the data from the problem may be summarized in a table, but this is optional.</li>
+            <li>The solution must include the mathematical model of the problem – the objective function and the system of constraints. It must be clearly stated whether the objective function is to be maximized or minimized. All constraints, including the non-negativity constraints, must be clearly written together in one system, next to the objective function.</li>
+            <li>When solving the problem graphically, value tables for the constraint lines must be provided.</li>
+            <li>The graph must include the following elements: axis labels; the origin of the coordinate system; the unit scale on the axes; labels of the lines; the feasible set.</li>
+            <li>The coordinates of the intersection points of the constraint lines must be determined algebraically. When finding intersection points, it is acceptable to use a calculator, but the equations used must be shown explicitly.</li>
+            <li>The objective function value must be calculated at all vertices of the feasible set, except for the origin. This step must be clearly shown in the mathematically correct manner.</li>
+            <li>At the end of the solution, the final answer must be clearly formulated.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. MODELLING DEVICES ============ -->
+  <section class="section" id="budai" aria-labelledby="h-ways">
+    <h2 id="h-ways">Four modelling devices</h2>
+
+    <article class="card concept" id="visumos-dalis">
+      <div class="concept-head"><span class="num">1</span><h3>A share of a total</h3></div>
+      <p>A condition such as “at least two thirds of all the tests must be made with adults” compares one quantity <strong>with the total</strong>, not with the other quantity. Write it exactly as it is said, then clear the fraction and bring every term to the left-hand side:</p>
+      <div class="formula">\[ \begin{gathered} x \geq \tfrac{2}{3}(x + y) \;\Longrightarrow\; 3x \geq 2(x + y) \\ \Longrightarrow\; 3x \geq 2x + 2y \;\Longrightarrow\; x - 2y \geq 0 \end{gathered} \]</div>
+      <ul class="dodont">
+        <li class="do"><span class="mk" aria-hidden="true">✓</span><span>\(x \geq \tfrac{2}{3}(x + y)\) – the tests with adults are compared with all the tests.</span></li>
+        <li class="dont"><span class="mk" aria-hidden="true">✗</span><span>\(x \geq \tfrac{2}{3}y\) – the tests with adults are compared only with the tests with teenagers.</span></li>
+      </ul>
+      <p style="margin-top:12px">A condition given as a percentage is treated in the same way: “at least 40&nbsp;% of the output” means \(x \geq 0.4(x + y)\).</p>
+    </article>
+
+    <article class="card concept" id="treciasis-kiekis">
+      <div class="concept-head"><span class="num">2</span><h3>A third quantity determined by the other two</h3></div>
+      <p>When three amounts have to add up to a fixed total, only two of them can be chosen freely. If the total is 100 and the first two amounts are \(x\) and \(y\), the third one is \(100 - x - y\) – not a new variable, but an expression in the two variables already introduced:</p>
+      <div class="tbl-wrap">
+        <table class="vtable model-tbl">
+          <thead><tr><th scope="col">Part</th><th scope="col">Amount</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">First</th><td>\(\htmlClass{hd}{x}\)</td></tr>
+            <tr><th scope="row">Second</th><td>\(\htmlClass{hd}{y}\)</td></tr>
+            <tr><th scope="row">Third</th><td>\(100 - x - y\)</td></tr>
+            <tr><th scope="row">Total</th><td>100</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Every condition about the mixture is then written in \(x\) and \(y\) alone, and one new natural constraint appears, because the third amount cannot be negative either:</p>
+      <div class="formula">\[ 100 - x - y \geq 0 \;\Longrightarrow\; x + y \leq 100 \]</div>
+    </article>
+
+    <article class="card concept" id="transporto">
+      <div class="concept-head"><span class="num">3</span><h3>A delivery table</h3></div>
+      <p>Two warehouses supplying two shops means four unknown shipments, but only two of them can be chosen. If the first warehouse sends \(x\) units to the first shop, the second warehouse has to send the rest of that shop’s order: if 15 units were ordered, that rest is \(15 - x\). The same holds for the second shop, so two variables describe the whole delivery plan:</p>
+      <div class="tbl-wrap">
+        <table class="vtable model-tbl">
+          <thead><tr><th scope="col">Sent</th><th scope="col">To shop 1</th><th scope="col">To shop 2</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">From warehouse 1</th><td>\(\htmlClass{hd}{x}\)</td><td>\(\htmlClass{hd}{y}\)</td></tr>
+            <tr><th scope="row">From warehouse 2</th><td>\(15 - x\)</td><td>\(20 - y\)</td></tr>
+            <tr><th scope="row">Ordered</th><td>15</td><td>20</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="formula-note" style="text-align:center">The sum of each column equals the order, so the shipments of the second warehouse are expressed in \(x\) and \(y\).</p>
+    </article>
+
+    <article class="card concept" id="pastovusis-narys">
+      <div class="concept-head"><span class="num">4</span><h3>An objective function with a constant term</h3></div>
+      <p>A fixed fee, or a profit written as revenue minus cost, gives an objective function such as</p>
+      <div class="formula">\[ P = \underbrace{2000}_{\text{constant term}} + 3x + 2y \]</div>
+      <p>The constant is the same at every point of the feasible set, so it does not change which vertex is the best one – but it is part of the value of the objective function and must not be dropped.</p>
+    </article>
+
+    <p class="tip">One more thing is worth remembering: not every condition written down becomes a side of the feasible set. A condition that is already guaranteed by the others is called <strong>redundant</strong>. It is not a mistake to write it; it simply leaves no trace on the graph. <a href="#pavyzdys-3">Example 3</a> below contains two such conditions.</p>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to build the model and solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM 4.4, Example 1 (shares of a total and a fixed fee) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A taste-test plan</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A market-research company carries out taste tests in shops. For a campaign the client pays it a fixed fee of 2000 euros plus 6 euros for every completed test. A test with an adult costs the company 3 euros and a test with a teenager 4 euros. The client requires at most 900 tests in total, at least 200 tests with teenagers, and at least two thirds of all the tests to be made with adults. How many tests of each kind should the company make to maximize its profit? What is the maximum profit?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of tests made with adults;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of tests made with teenagers.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The conditions and the objective function</span></h4>
+          <p>Each sentence of the problem is turned into an inequality separately:</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">In the problem</th><th scope="col">Inequality</th></tr></thead>
+              <tbody>
+                <tr><td>At most 900 tests in total</td><td>\(x + y \leq 900\)</td></tr>
+                <tr><td>At least 200 tests with teenagers</td><td>\(y \geq 200\)</td></tr>
+                <tr><td>At least two thirds of all the tests with adults</td><td>\(x \geq \tfrac{2}{3}(x + y)\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The last condition compares \(x\) with the total number of tests, as in <a href="#visumos-dalis">modelling device 1</a>:</p>
+          \[ \begin{gathered} x \geq \tfrac{2}{3}(x + y) \;\Longrightarrow\; 3x \geq 2x + 2y \\ \Longrightarrow\; x - 2y \geq 0 \end{gathered} \]
+          <p>The profit is what the client pays minus what the tests cost, as in <a href="#pastovusis-narys">modelling device 4</a>:</p>
+          \[ \begin{aligned} P &amp;= \underbrace{2000 + 6(x + y)}_{\text{paid by the client}} - \underbrace{(3x + 4y)}_{\text{cost of the tests}} \\ &amp;= 2000 + 3x + 2y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          \[ \begin{gathered} P = 2000 + 3x + 2y \to \max \\[4pt] \begin{cases} x + y \leq 900 \\ y \geq 200 \\ x - 2y \geq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>The model contains both the signs \(\leq\) and \(\geq\), and the objective function contains a constant term, so the problem is non-standard.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <p>The line \(y = 200\) needs no value table: it is the horizontal line through the point 200 of the \(Oy\)-axis. The line \(x - 2y = 0\) passes through the origin, so a second convenient point has to be chosen; taking \(x = 600\) gives \(y = 300\):</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 900\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 900\)<br>\(y = 0:\; x = 900\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>900</td></tr><tr><th scope="row">\(y\)</th><td>900</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x - 2y = 0\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 0\)<br>\(x = 600:\; 2y = 600 \Rightarrow y = 300\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>600</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>300</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test points</span></h4>
+          <p>The origin is the test point for the first two inequalities:</p>
+          \[ \begin{alignedat}{2} 0 + 0 \leq 900 \;&amp;\Rightarrow\; 0 \leq 900 \; &amp;&amp; \text{(true)} \\ 0 \geq 200 \;&amp; &amp;&amp; \text{(false)} \end{alignedat} \]
+          <p>The origin lies on the boundary line of the third inequality, so another test point is needed; \((100;\, 0)\) is the simplest:</p>
+          \[ \begin{aligned} &amp;100 - 2\cdot 0 \geq 0 \\ &amp;\Longrightarrow\; 100 \geq 0 \quad \text{(true)} \end{aligned} \]
+          <p>So the solution set lies below the line \(x + y = 900\), above the line \(y = 200\) and below the line \(x - 2y = 0\) (in the half-plane containing \((100;\, 0)\)).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <p>The intersection of all three half-planes is the triangle \(ABC\). To make it clearly visible, the scale of the \(Oy\)-axis in the figure is larger than that of the \(Ox\)-axis:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-50,950,50,4],"y":[-50,450,50,2],"free":true,"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":900,"lab":"x + y = 900","col":1,"lt":0.78,"arr":[0.45,0.62],"rot":true,"lo":11},{"a":0,"b":1,"s":"ge","r":200,"lab":"y = 200","col":2,"lt":0.2,"arr":[0.35,0.55],"lo":-12},{"a":1,"b":-2,"s":"ge","r":0,"lab":"x − 2y = 0","col":3,"rot":true,"lt":0.22,"lo":11,"arr":[0.35,0.85]}],"pts":[{"x":400,"y":200,"lab":"A","p":"sw"},{"x":700,"y":200,"lab":"B","p":"s"},{"x":600,"y":300,"lab":"C","p":"n"}],"aria":"The feasible set of the taste-test problem – the triangle ABC"}'></div>
+            <figcaption>Figure 1. The feasible set of the taste-test problem.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <p>No vertex of this triangle lies on an axis, so all three are found from systems:</p>
+          <ul class="vert-list">
+            <li>\(A\) is the crossing point of \(y = 200\) and \(x - 2y = 0\):
+              \[ \begin{gathered} \begin{cases} y = 200 \\ x - 2y = 0 \end{cases} \\ \Longrightarrow\; x = 400,\; y = 200 \\ \Longrightarrow\; A(400;\, 200) \end{gathered} \]</li>
+            <li>\(B\) is the crossing point of \(y = 200\) and \(x + y = 900\):
+              \[ \begin{gathered} \begin{cases} y = 200 \\ x + y = 900 \end{cases} \\ \Longrightarrow\; x = 700,\; y = 200 \\ \Longrightarrow\; B(700;\, 200) \end{gathered} \]</li>
+            <li>\(C\) is the crossing point of \(x + y = 900\) and \(x - 2y = 0\):
+              \[ \begin{gathered} \begin{cases} x + y = 900 \\ x - 2y = 0 \end{cases} \\ \Longrightarrow\; x = 600,\; y = 300 \\ \Longrightarrow\; C(600;\, 300) \end{gathered} \]
+              <p class="formula-note">Subtracting the second equation from the first gives \(3y = 900\), \(y = 300\); then \(x = 2y = 600\).</p></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Profit at the vertices</span></h4>
+          <p>The origin does not belong to the feasible set, so the profit is computed at every vertex. The constant term 2000 enters every value:</p>
+          \[ \begin{aligned} P_A &amp;= 2000 + 3\cdot 400 + 2\cdot 200 \\ &amp;= 2000 + 1200 + 400 = 3600 \\ P_B &amp;= 2000 + 3\cdot 700 + 2\cdot 200 \\ &amp;= 2000 + 2100 + 400 = 4500 \\ P_C &amp;= 2000 + 3\cdot 600 + 2\cdot 300 \\ &amp;= 2000 + 1800 + 600 = 4400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The largest value</span></h4>
+          <p>The largest value is \(\htmlClass{hd}{4500}\), reached at the vertex \(B(700;\, 200)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The company should make 700 tests with adults and 200 tests with teenagers. The maximum profit is \(P_{\max}(700;\, 200) = 4500\) euros.</p>
+          </div>
+          <p>The whole allowance of 900 tests is used and the teenager quota is met at its lowest admissible level, 200 tests. The share of adults is then \(\tfrac{700}{900} \approx 0.778\), well above the required two thirds, so that condition is not binding at the optimal plan.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 4.4, Example 2 (three sorts, two variables) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>The composition of a coffee blend</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A roastery has to prepare 100&nbsp;kg of a coffee blend from three sorts of bean. The caffeine content, the share of Arabica beans and the price of each sort are given in the table. The blend must contain at most 2&nbsp;% of caffeine and at least 75&nbsp;% of Arabica beans. How many kilograms of each sort should be taken so that the blend is as cheap as possible? What is the minimum cost?</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th scope="col"></th><th scope="col">Sort A</th><th scope="col">Sort B</th><th scope="col">Sort C</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Caffeine, %</th><td>1</td><td>2</td><td>3</td></tr>
+              <tr><th scope="row">Arabica beans, %</th><td>60</td><td>90</td><td>80</td></tr>
+              <tr><th scope="row">Price, EUR per kg</th><td>8</td><td>12</td><td>10</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of kilograms of sort A in the blend;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of kilograms of sort B in the blend.</span></li>
+          </ul>
+          <p>The third amount is not a third variable. The blend weighs 100&nbsp;kg, so the amount of sort C is \(100 - x - y\) kilograms, as in <a href="#treciasis-kiekis">modelling device 2</a>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The conditions and the objective function</span></h4>
+          <p>The amount of sort C cannot be negative, which gives the first condition:</p>
+          \[ 100 - x - y \geq 0 \;\Longrightarrow\; x + y \leq 100 \]
+          <p>The blend contains at most 2&nbsp;% of caffeine, that is at most 2&nbsp;kg of caffeine in 100&nbsp;kg of the blend. The blend contains \(0.01x + 0.02y + 0.03(100 - x - y)\) kg of caffeine; multiplying both sides of the inequality by 100 gives:</p>
+          \[ \begin{aligned} &amp;x + 2y + 3(100 - x - y) \leq 2\cdot 100 \\ &amp;\Longrightarrow\; x + 2y + 300 - 3x - 3y \leq 200 \\ &amp;\Longrightarrow\; -2x - y \leq -100 \end{aligned} \]
+          <p>Both sides are now multiplied by \(-1\), and the inequality sign turns round:</p>
+          \[ 2x + y \geq 100 \]
+          <p>The blend contains at least 75&nbsp;% of Arabica beans, that is at least 75&nbsp;kg in 100&nbsp;kg of the blend. It contains \(0.6x + 0.9y + 0.8(100 - x - y)\) kg of Arabica beans; multiplying by 100 again gives:</p>
+          \[ \begin{aligned} &amp;60x + 90y + 80(100 - x - y) \geq 75\cdot 100 \\ &amp;\Longrightarrow\; -20x + 10y \geq -500 \\ &amp;\Longrightarrow\; 2x - y \leq 50 \end{aligned} \]
+          <p class="formula-note">In the last step both sides were divided by \(-10\), so the sign \(\geq\) changed to \(\leq\).</p>
+          <p>The cost of the blend is the cost of the three sorts together:</p>
+          \[ \begin{aligned} TC &amp;= 8x + 12y + 10(100 - x - y) \\ &amp;= 1000 - 2x + 2y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          \[ \begin{gathered} TC = 1000 - 2x + 2y \to \min \\[4pt] \begin{cases} 2x + y \geq 100 \\ 2x - y \leq 50 \\ x + y \leq 100 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <p>The line \(2x - y = 50\) has a negative intercept on the \(Oy\)-axis, which is of no use here, so instead of it a convenient point is taken: \(x = 50\) gives \(y = 50\).</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 100\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 100\)<br>\(y = 0:\; 2x = 100 \Rightarrow x = 50\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>50</td></tr><tr><th scope="row">\(y\)</th><td>100</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(2x - y = 50\)</p>
+              <p class="xy-calc">\(y = 0:\; 2x = 50 \Rightarrow x = 25\)<br>\(x = 50:\; y = 50\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>25</td><td>50</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>50</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 100\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 100\)<br>\(y = 0:\; x = 100\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>100</td></tr><tr><th scope="row">\(y\)</th><td>100</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test point</span></h4>
+          <p>The origin is the test point for all three inequalities:</p>
+          <div class="formula fit">\[ \begin{alignedat}{2} 2\cdot 0 + 0 \geq 100 \;&amp;\Rightarrow\; 0 \geq 100 \; &amp;&amp; \text{(false)} \\ 2\cdot 0 - 0 \leq 50 \;&amp;\Rightarrow\; 0 \leq 50 \; &amp;&amp; \text{(true)} \\ 0 + 0 \leq 100 \;&amp;\Rightarrow\; 0 \leq 100 \; &amp;&amp; \text{(true)} \end{alignedat} \]</div>
+          <p>The arrows of the first inequality point away from the origin, and those of the other two towards it.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <p>The intersection of all the half-planes is the triangle \(ABC\):</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-5,105,5,4],"y":[-5,105,5,4],"maxh":360,"nn":"xy","c":[{"a":2,"b":1,"s":"ge","r":100,"lab":"2x + y = 100","col":1,"rot":true,"lt":0.3,"lo":11,"arr":[0.15,0.85]},{"a":2,"b":-1,"s":"le","r":50,"lab":"2x − y = 50","col":2,"lt":0.7,"arr":[0.35,0.8]},{"a":1,"b":1,"s":"le","r":100,"lab":"x + y = 100","col":3,"lt":0.25,"arr":[0.2,0.75]}],"pts":[{"x":0,"y":100,"lab":"A","p":"ne"},{"x":37.5,"y":25,"lab":"B","p":"w"},{"x":50,"y":50,"lab":"C","p":"e"}],"aria":"The feasible set of the coffee-blend problem – the triangle ABC"}'></div>
+            <figcaption>Figure 2. The feasible set of the coffee-blend problem.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <ul class="vert-list">
+            <li>\(A\) lies on the \(Oy\)-axis. It is the \(Oy\)-intercept of the line \(2x + y = 100\); its coordinates are already in the value table of this line: \(A(0;\, 100)\). The line \(x + y = 100\) passes through the same point.</li>
+            <li>\(B\) is the crossing point of \(2x + y = 100\) and \(2x - y = 50\):
+              \[ \begin{gathered} \begin{cases} 2x + y = 100 \\ 2x - y = 50 \end{cases} \\ \Longrightarrow\; x = 37.5,\; y = 25 \\ \Longrightarrow\; B(37.5;\, 25) \end{gathered} \]
+              <p class="formula-note">Adding the equations gives \(4x = 150\), \(x = 37.5\); then \(y = 100 - 75 = 25\).</p></li>
+            <li>\(C\) is the crossing point of \(2x - y = 50\) and \(x + y = 100\):
+              \[ \begin{gathered} \begin{cases} 2x - y = 50 \\ x + y = 100 \end{cases} \\ \Longrightarrow\; x = 50,\; y = 50 \\ \Longrightarrow\; C(50;\, 50) \end{gathered} \]
+              <p class="formula-note">Adding the equations gives \(3x = 150\), \(x = 50\); then \(y = 100 - 50 = 50\).</p></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Cost at the vertices</span></h4>
+          \[ \begin{aligned} TC_A &amp;= 1000 - 2\cdot 0 + 2\cdot 100 = 1200 \\ TC_B &amp;= 1000 - 2\cdot 37.5 + 2\cdot 25 \\ &amp;= 1000 - 75 + 50 = 975 \\ TC_C &amp;= 1000 - 2\cdot 50 + 2\cdot 50 = 1000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The smallest value</span></h4>
+          <p>The smallest value is \(\htmlClass{hd}{975}\), reached at the vertex \(B(37.5;\, 25)\). The amount of the third sort follows from the two variables:</p>
+          \[ 100 - 37.5 - 25 = 37.5 \text{ kg} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The roastery should take 37.5&nbsp;kg of sort A, 25&nbsp;kg of sort B and 37.5&nbsp;kg of sort C. The minimum cost is \(TC_{\min}(37.5;\, 25) = 975\) euros per 100&nbsp;kg of the blend.</p>
+          </div>
+          <p>This blend sits exactly on both quality limits. Its caffeine content is</p>
+          \[ \frac{37.5 + 2\cdot 25 + 3\cdot 37.5}{100} = 2\,\%, \]
+          <p>and its share of Arabica beans is</p>
+          \[ \frac{60\cdot 37.5 + 90\cdot 25 + 80\cdot 37.5}{100} = 75\,\%. \]
+          <p>That is what one expects of the cheapest blend that is still allowed.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 4.4, Example 3 (a delivery plan; x ≤ 15, y ≤ 20 kept in the system as on the LT page) -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A plan for delivering water from two depots</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A company keeps bottled water in two depots and supplies two supermarkets from them. The first depot holds 12 pallets and the second 30 pallets; the first supermarket has ordered 15 pallets and the second 20 pallets. The cost of sending one pallet along each route is given in the table. How should the pallets be sent so that the transport cost is as small as possible? What is the minimum cost?</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact">
+            <thead><tr><th scope="col">Cost, EUR per pallet</th><th scope="col">To \(M_1\)</th><th scope="col">To \(M_2\)</th><th scope="col">In stock</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">From depot \(D_1\)</th><td>6</td><td>9</td><td>12</td></tr>
+              <tr><th scope="row">From depot \(D_2\)</th><td>8</td><td>5</td><td>30</td></tr>
+              <tr><th scope="row">Ordered</th><td>15</td><td>20</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of pallets sent from depot \(D_1\) to supermarket \(M_1\);</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of pallets sent from depot \(D_1\) to supermarket \(M_2\).</span></li>
+          </ul>
+          <p>The other two shipments follow from these, as in <a href="#transporto">modelling device 3</a>: the orders have to be filled, so \(M_1\) receives \(15 - x\) pallets from \(D_2\) and \(M_2\) receives \(20 - y\) pallets from \(D_2\).</p>
+          <div class="tbl-wrap">
+            <table class="vtable model-tbl">
+              <thead><tr><th scope="col">Sent</th><th scope="col">To \(M_1\)</th><th scope="col">To \(M_2\)</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">From \(D_1\)</th><td>\(\htmlClass{hd}{x}\)</td><td>\(\htmlClass{hd}{y}\)</td></tr>
+                <tr><th scope="row">From \(D_2\)</th><td>\(15 - x\)</td><td>\(20 - y\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The conditions and the objective function</span></h4>
+          <p>A depot cannot send more than it holds:</p>
+          \[ \begin{aligned} D_1:&amp;\quad x + y \leq 12 \\ D_2:&amp;\quad (15 - x) + (20 - y) \leq 30 \\ &amp;\quad \Longrightarrow\; x + y \geq 5 \end{aligned} \]
+          <p>No shipment can be negative. Besides \(x \geq 0\) and \(y \geq 0\) this also demands \(15 - x \geq 0\) and \(20 - y \geq 0\), that is \(x \leq 15\) and \(y \leq 20\). These non-negativity conditions are also written into the system.</p>
+          <p>The transport cost adds up the four routes:</p>
+          \[ \begin{aligned} TC &amp;= 6x + 9y + 8(15 - x) + 5(20 - y) \\ &amp;= 220 - 2x + 4y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          \[ \begin{gathered} TC = 220 - 2x + 4y \to \min \\[4pt] \begin{cases} x + y \leq 12 \\ x + y \geq 5 \\ x \leq 15 \\ y \leq 20 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 12\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 12\)<br>\(y = 0:\; x = 12\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>12</td></tr><tr><th scope="row">\(y\)</th><td>12</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 5\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 5\)<br>\(y = 0:\; x = 5\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>5</td></tr><tr><th scope="row">\(y\)</th><td>5</td><td>0</td></tr></table>
+            </div>
+          </div>
+          <p>The lines \(x = 15\) and \(y = 20\) need no value tables: \(x = 15\) is the vertical line through the point 15 of the \(Ox\)-axis, and \(y = 20\) the horizontal line through the point 20 of the \(Oy\)-axis.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test point</span></h4>
+          <p>The origin is the test point for all four inequalities:</p>
+          \[ \begin{alignedat}{2} 0 + 0 \leq 12 \;&amp;\Rightarrow\; 0 \leq 12 \; &amp;&amp; \text{(true)} \\ 0 + 0 \geq 5 \;&amp;\Rightarrow\; 0 \geq 5 \; &amp;&amp; \text{(false)} \\ 0 \leq 15 \;&amp; &amp;&amp; \text{(true)} \\ 0 \leq 20 \;&amp; &amp;&amp; \text{(true)} \end{alignedat} \]
+          <p>The lines \(x + y = 12\) and \(x + y = 5\) are parallel, so the feasible set is the part of the strip between them cut off by the axes.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,17,1,2],"y":[-1,22,1,2],"maxh":400,"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":12,"lab":"x + y = 12","col":1,"lt":0.3,"arr":[0.2,0.7]},{"a":1,"b":1,"s":"ge","r":5,"lab":"x + y = 5","col":2,"lt":0.75,"lo":-14,"arr":[0.3,0.5]},{"a":1,"b":0,"s":"le","r":15,"lab":"x = 15","col":3,"lt":0.75,"la":"end","lo":-8,"arr":[0.3,0.6]},{"a":0,"b":1,"s":"le","r":20,"lab":"y = 20","col":3,"lt":0.5,"arr":[0.2,0.8]}],"pts":[{"x":0,"y":5,"lab":"A","p":"w"},{"x":5,"y":0,"lab":"B","p":"s"},{"x":12,"y":0,"lab":"C","p":"ne"},{"x":0,"y":12,"lab":"D","p":"ne"}],"aria":"The feasible set ABCD of the water delivery problem between two parallel lines"}'></div>
+            <figcaption>Figure 3. The feasible set of the water delivery problem.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <p>The lines \(x = 15\) and \(y = 20\) lie far from the strip between the lines \(x + y = 5\) and \(x + y = 12\), so this time they create no additional vertices of the feasible set.</p>
+          <p>Every vertex here lies on an axis, so no system has to be solved: the coordinates of all four vertices are already in the two value tables – \(A(0;\, 5)\) and \(B(5;\, 0)\) on the line \(x + y = 5\), and \(C(12;\, 0)\) and \(D(0;\, 12)\) on the line \(x + y = 12\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Cost at the vertices</span></h4>
+          \[ \begin{aligned} TC_A &amp;= 220 - 2\cdot 0 + 4\cdot 5 = 240 \\ TC_B &amp;= 220 - 2\cdot 5 + 4\cdot 0 = 210 \\ TC_C &amp;= 220 - 2\cdot 12 + 4\cdot 0 = 196 \\ TC_D &amp;= 220 - 2\cdot 0 + 4\cdot 12 = 268 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The smallest value</span></h4>
+          <p>The smallest value is \(\htmlClass{hd}{196}\), reached at the vertex \(C(12;\, 0)\). The two variables give the whole delivery plan: \(D_1\) sends \(x = 12\) pallets to \(M_1\) and \(y = 0\) pallets to \(M_2\), so \(D_2\) sends \(15 - 12 = 3\) pallets to \(M_1\) and \(20 - 0 = 20\) pallets to \(M_2\).</p>
+          <div class="tbl-wrap">
+            <table class="vtable model-tbl">
+              <thead><tr><th scope="col">Pallets sent</th><th scope="col">To \(M_1\)</th><th scope="col">To \(M_2\)</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">From \(D_1\)</th><td>12</td><td>0</td></tr>
+                <tr><th scope="row">From \(D_2\)</th><td>3</td><td>20</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The first depot should send all 12 of its pallets to the first supermarket, and the second depot 3 pallets to the first supermarket and 20 to the second. The minimum cost is \(TC_{\min}(12;\, 0) = 196\) euros.</p>
+          </div>
+          <p>The plan is easy to read: each supermarket is served as far as possible from the depot that is cheaper for it – \(D_1\) for \(M_1\) (6 against 8) and \(D_2\) for \(M_2\) (5 against 9). The first depot is emptied completely; the second sends 23 of its 30 pallets.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: define the variables, turn each sentence of the problem into an inequality, build the mathematical model, draw the feasible set, find the vertices algebraically and compute the objective function at each of them. The answer gives the variables, the mathematical model and the final result – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A producer makes muesli in batches of 200&nbsp;kg out of oats, nuts and raisins. Oats cost 3 euros a kilogram, nuts 9 euros and raisins 2 euros. Oats contain 10&nbsp;% of protein, nuts 25&nbsp;% and raisins 5&nbsp;%, and the muesli must contain at least 11&nbsp;% of protein. Nuts must make up at least 10&nbsp;% of a batch, and raisins at most 25&nbsp;% of it. How much of each ingredient should one batch contain for its cost to be the smallest, and what is that cost?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the quantity of oats in one batch, in kilograms;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the quantity of nuts in one batch, in kilograms;</span></li>
+          </ul>
+          <p>the quantity of raisins is then \(200 - x - y\) kilograms.</p>
+          <p><strong>The mathematical model.</strong> The protein condition is</p>
+          \[ 0.1x + 0.25y + 0.05(200 - x - y) \geq 22, \]
+          <p>that is \(x + 4y \geq 240\); the raisin condition is \(200 - x - y \leq 50\), that is \(x + y \geq 150\); and the quantity of raisins cannot be negative, which gives \(x + y \leq 200\):</p>
+          \[ \begin{aligned} TC &amp;= 3x + 9y + 2(200 - x - y) \\ &amp;= 400 + x + 7y \to \min \end{aligned} \]
+          \[ \begin{cases} x + 4y \geq 240 \\ x + y \geq 150 \\ y \geq 20 \\ x + y \leq 200 \\ x;\, y \geq 0 \end{cases} \]
+          <p><strong>Answer.</strong> The smallest value of the objective function is</p>
+          \[ TC_{\min}(160;\, 20) = 700 \]
+          <p>One batch should contain 160&nbsp;kg of oats, 20&nbsp;kg of nuts and 20&nbsp;kg of raisins; its cost is then 700 euros. The protein content is exactly 11&nbsp;% and the nuts exactly 10&nbsp;%. The raisins make up only 10&nbsp;% of the batch, well below the limit of 25&nbsp;%.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A wholesaler keeps 40 pallets of goods in warehouse I and 70 pallets in warehouse II. Shop A has ordered 50 pallets and shop B 45 pallets. Delivering one pallet from warehouse I costs 5 euros to shop A and 3 euros to shop B; from warehouse II it costs 6 euros to shop A and 9 euros to shop B. Shop A requires that at least 20 of its pallets come from warehouse I. How should the goods be delivered for the cost to be the smallest, and what is that cost?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of pallets delivered from warehouse I to shop A;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of pallets delivered from warehouse I to shop B;</span></li>
+          </ul>
+          <p>warehouse II then delivers \(50 - x\) pallets to shop A and \(45 - y\) pallets to shop B.</p>
+          <p><strong>The mathematical model.</strong> Warehouse I holds 40 pallets, which gives \(x + y \leq 40\); warehouse II holds 70, which gives \((50 - x) + (45 - y) \leq 70\), that is \(x + y \geq 25\). Every one of the four deliveries has to be non-negative. The two deliveries made by warehouse II give \(50 - x \geq 0\) and \(45 - y \geq 0\), that is \(x \leq 50\) and \(y \leq 45\). These two conditions follow from \(x + y \leq 40\) and are therefore redundant, but they belong to the model and are written out with the others:</p>
+          \[ \begin{aligned} TC &amp;= 5x + 3y + 6(50 - x) + 9(45 - y) \\ &amp;= 705 - x - 6y \to \min \end{aligned} \]
+          \[ \begin{cases} x + y \leq 40 \\ x + y \geq 25 \\ x \geq 20 \\ x \leq 50 \\ y \leq 45 \\ x;\, y \geq 0 \end{cases} \]
+          <p><strong>Answer.</strong> The smallest value of the objective function is</p>
+          \[ TC_{\min}(20;\, 20) = 565 \]
+          <p>Warehouse I should deliver 20 pallets to shop A and 20 pallets to shop B, and warehouse II 30 pallets to shop A and 25 pallets to shop B; the cost of the delivery is then 565 euros. Warehouse I is emptied and shop A receives exactly the 20 pallets from it that it requires. 15 pallets are left in warehouse II.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 4</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 3</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

@@ -238,7 +238,7 @@
       { id: 'm43', status: 'active', href: { lt: 'tema-4-minimizavimas.html', en: 'tema-4-minimizavimas.html' },
         title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' },
         desc: { lt: 'Mažiausios sąnaudos, kai reikalavimai turi būti įvykdyti: apribojimai \\(\\geq\\).', en: 'The smallest cost when the requirements have to be met: constraints \\(\\geq\\).' } },
-      { id: 'm44', status: 'active', href: { lt: 'tema-4-nestandartiniai.html' },
+      { id: 'm44', status: 'active', href: { lt: 'tema-4-nestandartiniai.html', en: 'tema-4-nestandartiniai.html' },
         title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' },
         desc: { lt: 'Visumos dalys, mišiniai, pristatymo planai ir maišyti apribojimų ženklai.', en: 'Shares of a total, mixtures, delivery plans and mixed constraint signs.' } }
     ],
@@ -289,7 +289,7 @@
                title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' } },
     m43:     { parent: 't4', topic: 't4', model: 'm43', href: { lt: 'tema-4-minimizavimas.html', en: 'tema-4-minimizavimas.html' },
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
-    m44:     { parent: 't4', topic: 't4', model: 'm44', href: { lt: 'tema-4-nestandartiniai.html', en: null },
+    m44:     { parent: 't4', topic: 't4', model: 'm44', href: { lt: 'tema-4-nestandartiniai.html', en: 'tema-4-nestandartiniai.html' },
                title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' } },
     t5:      { parent: 'home', href: { lt: 'tema-5.html', en: null },
                title: { lt: '5 tema', en: 'Topic 5' } },
