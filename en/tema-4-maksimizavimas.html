@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standard Maximization Problems · Applied Mathematics</title>
+<meta name="description" content="The standard maximization problem in two variables: building the mathematical model, the feasible set, the vertices and the largest value of the objective function. Examples step by step.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-4-maksimizavimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=48">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=48"></script>
+</head>
+<body data-page="m42">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 4 · Applications · Section 2</span>
+    <h1>Standard Maximization Problems</h1>
+    <p class="lead">This section shows how to build the mathematical model of a standard maximization problem and solve it graphically: how to draw the feasible set, find its vertices and choose the one at which the profit is the largest.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Model</a></li>
+      <li><a href="#optimalus">Optimal plan</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#grafikas">Graph</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">The standard maximization problem</h2>
+
+    <article class="card">
+      <p>A <strong>standard maximization problem</strong> asks for the largest value of a linear objective function when every technical constraint has the sign \(\leq\) and the quantities cannot be negative. In two variables it always looks like this:</p>
+      <div class="formula">\[ \begin{gathered} P = p_1x + p_2y \to \max \\[4pt] \begin{cases} a_{11}x + a_{12}y \leq b_1 \\ a_{21}x + a_{22}y \leq b_2 \\ \quad\vdots \\ x;\, y \geq 0 \end{cases} \end{gathered} \]</div>
+      <p>Three kinds of element make up such a model:</p>
+      <div class="anat">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Objective function</strong></div>
+          <p class="anat-d">The quantity to be made as large as possible:</p>
+          <ul>
+            <li>profit;</li>
+            <li>revenue;</li>
+            <li>return;</li>
+            <li>the number of people reached by an advertisement.</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Technical constraints</strong></div>
+          <p class="anat-d">What the firm has at its disposal or what the market will take. They are limits from above, so their sign is \(\leq\):</p>
+          <ul>
+            <li>the hours available on a machine;</li>
+            <li>the materials in store;</li>
+            <li>an upper limit on demand.</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Natural constraints</strong></div>
+          <p class="anat-d">The non-negativity conditions \(x;\, y \geq 0\):</p>
+          <ul>
+            <li>a firm cannot produce a negative number of items.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>How the model is built</h4>
+        <p>The model is built in a similar way to the <a href="tema-3-planavimas-vienintelis.html#modelis">planning problems of Topic 3</a>, only inequalities are written instead of equations: a resource need not be used up completely, but no more of it can be used than is available.</p>
+
+        <p><strong>1. Decision variables.</strong> Each variable is the quantity of a specific object over a specific period:</p>
+        <ul class="dodont">
+          <li class="do"><span class="mk" aria-hidden="true">✓</span><span>“\(x\) – the number of tables produced per week.”</span></li>
+          <li class="dont"><span class="mk" aria-hidden="true">✗</span><span>“\(x\) – tables.” It is not clear what \(x\) counts or over what period.</span></li>
+        </ul>
+
+        <p style="margin-top:16px"><strong>2. One inequality per resource.</strong> The amount of the resource used by the two products together cannot exceed the amount available:</p>
+        <div class="formula fit">\[ \underbrace{a_1x}_{\text{for product A}} + \underbrace{a_2y}_{\text{for product B}} \leq \underbrace{b}_{\text{available}} \]</div>
+        <p>It is convenient to put the data in a table: one row per resource, one column per product, and the amount available in the last column. Each resource row becomes one constraint, and the profit row becomes the objective function:</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact model-tbl">
+            <thead><tr><th scope="col"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">Available</th></tr></thead>
+            <tbody>
+              <tr class="hl"><th scope="row">Resource 1</th><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(b_1\)</td></tr>
+              <tr><th scope="row">Resource 2</th><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(b_2\)</td></tr>
+              <tr><th scope="row">Profit</th><td>\(p_1\)</td><td>\(p_2\)</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mats mats--col">
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span>\(\begin{gathered} P = p_1x + p_2y \to \max \\[4pt] \begin{cases} \htmlClass{hr}{a_{11}x + a_{12}y \leq b_1} \\ a_{21}x + a_{22}y \leq b_2 \\ x;\, y \geq 0 \end{cases} \end{gathered}\)</span>
+        </div>
+        <p class="formula-note" style="text-align:center">The first resource row has become the first constraint, and the profit row the objective function.</p>
+
+        <p style="margin-top:16px"><strong>3. Other conditions are inequalities too.</strong> Every other condition stated in words is also written as an inequality with the sign \(\leq\):</p>
+        <div class="tbl-wrap">
+          <table class="vtable req-tbl">
+            <thead><tr><th scope="col">In the problem</th><th scope="col">Inequality</th></tr></thead>
+            <tbody>
+              <tr><td>At most \(N\) products B can be sold per week</td><td>\(y \leq N\)</td></tr>
+              <tr><td>The line can handle at most \(M\) products A per day</td><td>\(x \leq M\)</td></tr>
+              <tr><td>There must be at least twice as many products A as products B</td><td>\(x \geq 2y\), i.e.<br>\(-x + 2y \leq 0\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tip">Both variables are brought to the left-hand side of the inequality. The right-hand side may be zero – the problem remains standard, because all the technical constraints have the sign \(\leq\).</p>
+
+        <p style="margin-top:16px"><strong>4. Non-negativity conditions.</strong> \(x;\, y \geq 0\) is always added to the system of constraints.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. OPTIMAL PLAN ============ -->
+  <section class="section" id="optimalus" aria-labelledby="h-opt">
+    <h2 id="h-opt">How the optimal plan is found</h2>
+
+    <article class="card">
+      <p>A standard maximization problem is solved in the same way as every <a href="tema-4.html#leistinoji-aibe">LP problem</a>: first the <strong>feasible set</strong> is determined – all the plans that satisfy all the constraints – and then the point at which the objective function takes its <strong>largest value</strong> is chosen from it. This point is found not by guessing but step by step:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>The feasible set</strong><span>It is drawn by the method described in <a href="tema-4-nelygybiu-sistemos.html#eiga">Section 1</a>.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>The vertices</strong><span>The coordinates of all the vertices of the set are determined.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>The largest value</strong><span>The coordinates of the vertices are substituted into the objective function and the largest value is chosen.</span></div></div>
+      </div>
+      <p>For example, if the vertices of the set are \(O, A, B, C, D\), the objective function is computed at every vertex except the origin:</p>
+      <div class="formula">\[ \begin{aligned} P_A &amp;= p_1x_A + p_2y_A \\ P_B &amp;= p_1x_B + p_2y_B \\ &amp;\;\;\vdots \\ P_D &amp;= p_1x_D + p_2y_D \end{aligned} \]</div>
+      <p>The largest of the values is the maximum, and the vertex at which it occurs is the <strong>optimal plan</strong>. The answer is written together with this plan: \(P_{\max}(x;\, y) = \ldots\)</p>
+
+      <div class="subtype">
+        <h4>Why only the vertices matter</h4>
+        <p>A linear objective function grows steadily in one direction across the feasible set, so on a bounded feasible set it takes its largest value at a corner of that set. The feasible set has finitely many vertices, and this is what makes the graphical method work: <strong>compute the objective function at every vertex and take the largest value</strong>. Nothing else has to be tested, and no further line has to be drawn on the graph.</p>
+        <p class="more-link"><a href="tema-4.html#leistinoji-aibe">A diagram showing why the optimum is at a vertex – on the Topic 4 page →</a></p>
+      </div>
+
+      <div class="subtype">
+        <h4>Why the origin is left out</h4>
+        <p>At \(O(0;\, 0)\) nothing is produced, so \(P_O = 0\). As long as the unit profits are positive, every other vertex of the feasible set gives more, so the origin can never be the answer and there is no reason to evaluate it.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li><strong>Define the decision variables.</strong> Each one is the quantity of a specific object over a specific period.</li>
+        <li><strong>Summarise the data.</strong> If the data are tabular, give each resource a row and each product a column, and put the amount available in the last column. This step is optional.</li>
+        <li><strong>Write the mathematical model:</strong> the objective function with \(\to \max\), and next to it all the constraints – technical and non-negativity – collected in one system.</li>
+        <li><strong>Draw the feasible set.</strong>
+          <ul>
+            <li>Make a value table for each boundary line.</li>
+            <li>Choose a test point for each inequality.</li>
+            <li>Put arrows on the lines and shade only the feasible set.</li>
+          </ul>
+        </li>
+        <li><strong>Find all the vertices.</strong>
+          <ul>
+            <li>A vertex on an axis is the intercept of the line that bounds the set there, and it is already in that line’s value table.</li>
+            <li>A crossing point of two lines is found from the system of their equations, solved as in <a href="tema-3.html">Topic 3</a>.</li>
+          </ul>
+        </li>
+        <li><strong>Compute the objective function at every vertex</strong> except the origin, and write the whole calculation out: the substituted coordinates and the value obtained.</li>
+        <li><strong>Compare the values.</strong> The largest one is the maximum, and the vertex at which it occurs corresponds to the optimal plan.</li>
+        <li><strong>Write the final answer</strong> in the words of the problem, with units.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Non-negativity conditions missing from the system.</strong> The conditions \(x;\, y \geq 0\) are part of the model, so they are written together with the technical constraints.</li>
+            <li><strong>A proportion condition written incorrectly.</strong> “\(x\) at least twice as large as \(y\)” is \(x \geq 2y\), not \(2x \geq y\). Before drawing, both variables are brought to the left-hand side: \(-x + 2y \leq 0\).</li>
+            <li><strong>Vertex coordinates “read off” the graph.</strong> The crossing point of two lines is found algebraically – by solving the system of equations.</li>
+            <li><strong>A vertex left out.</strong> The objective function is computed at every vertex except the origin. Leaving out one vertex may mean leaving out the maximum.</li>
+            <li><strong>The optimal vertex chosen “by eye”.</strong> The vertex with the largest \(x\) or \(y\) coordinate does not necessarily give the largest value – only the computed values of \(P\) decide.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving applied linear programming problems, the definitions of the introduced variables must be provided at the beginning of the solution. Each variable definition must clearly state that the variable represents the quantity of a specific object.</li>
+            <li>If convenient for the author, the data from the problem may be summarized in a table, but this is optional.</li>
+            <li>The solution must include the mathematical model of the problem – the objective function and the system of constraints. It must be clearly stated whether the objective function is to be maximized or minimized. All constraints, including the non-negativity constraints, must be clearly written together in one system, next to the objective function.</li>
+            <li>When solving the problem graphically, value tables for the constraint lines must be provided.</li>
+            <li>The graph must include the following elements: axis labels; the origin of the coordinate system; the unit scale on the axes; labels of the lines; the feasible set.</li>
+            <li>The coordinates of the intersection points of the constraint lines must be determined algebraically. When finding intersection points, it is acceptable to use a calculator, but the equations used must be shown explicitly.</li>
+            <li>The objective function value must be calculated at all vertices of the feasible set, except for the origin. This step must be clearly shown in the mathematically correct manner.</li>
+            <li>At the end of the solution, the final answer must be clearly formulated.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ GRAPH ============ -->
+  <section class="section" id="grafikas" aria-labelledby="h-graph">
+    <h2 id="h-graph">What the graph must show</h2>
+    <article class="card">
+      <div class="must">
+        <p class="must-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg>Required elements of the graph</p>
+        <p>The graph must include the following elements: <strong>axis labels, the origin of the coordinate system, the unit scale on the axes, labels of the lines and the feasible set</strong>. In the example graph they are marked with numbers:</p>
+        <figure class="fig lp-chart-fig">
+          <div data-widget="lp-chart" data-spec='{"x":[-1,15,1,2],"y":[-1,13,1,2],"nn":"xy","ann":{"lab":[6.0,12.1]},"c":[{"a":2,"b":1,"s":"le","r":12,"lab":"2x + y = 12","col":1,"lt":0.1,"arr":[0.3,0.62]},{"a":1,"b":1,"s":"le","r":8,"lab":"x + y = 8","col":2,"lt":0.78,"lo":8,"arr":[0.35,0.62]},{"a":1,"b":2,"s":"le","r":14,"lab":"x + 2y = 14","col":3,"lt":0.6,"arr":[0.3,0.82]}],"pts":[{"x":0,"y":7,"lab":"A","p":"ne"},{"x":2,"y":6,"lab":"B","p":"ne"},{"x":4,"y":4,"lab":"C","p":"ne"},{"x":6,"y":0,"lab":"D","p":"ne"},{"x":0,"y":0}],"aria":"An example of a graph with the required elements marked: axis labels, the origin of the coordinate system, the unit scale on the axes, labels of the lines and the feasible set OABCD"}'></div>
+        </figure>
+        <ol class="badge-list">
+          <li><span class="bn">1</span><span>Axis labels: \(x\) and \(y\).</span></li>
+          <li><span class="bn">2</span><span>The origin of the coordinate system, \(O\).</span></li>
+          <li><span class="bn">3</span><span>The unit scale on the axes: the length of one division is marked on both axes.</span></li>
+          <li><span class="bn">4</span><span>Labels of the lines: the equation of each line is written next to it, for example \(2x + y = 12\), or the line is otherwise clearly linked to its equation.</span></li>
+          <li><span class="bn">5</span><span>The feasible set: the region is clearly marked. In this figure it is shaded – the polygon \(OABCD\) bounded by the lines and the coordinate axes.</span></li>
+        </ol>
+        <p class="formula-note">The graph shows the system \(2x + y \leq 12\), \(x + y \leq 8\), \(x + 2y \leq 14\), \(x;\, y \geq 0\) – <a href="tema-4-nelygybiu-sistemos.html#pavyzdys-3">Example 3 of Section 1</a>.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to build the model and solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM Alternative 4.1 (replaces the lecture tyre example) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>The production plan of a cosmetics workshop</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A cosmetics workshop produces shower gel and shampoo in batches using three processes: mixing, filling and packing. The production of one batch of shower gel requires 1 hour of mixing, 3 hours of filling and 1 hour of packing. The production of one batch of shampoo requires 1 hour of mixing, 1 hour of filling and 2 hours of packing. The workshop can allocate a maximum of 9 hours for mixing, 21 hours for filling and 14 hours for packing. The profit for each batch of shower gel is 50 euros and for each batch of shampoo 40 euros. How many batches of each should the workshop produce to maximize its profit? What is the maximum profit?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <p>The workshop has to decide how many batches of each product to make:</p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of batches of shower gel produced;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of batches of shampoo produced.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The data table</span></h4>
+          <p>Each process gets a row, each product a column, and the time available goes in the last column:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Shower gel</th><th scope="col">Shampoo</th><th scope="col">Available</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Mixing, h</th><td>1</td><td>1</td><td>9</td></tr>
+                <tr><th scope="row">Filling, h</th><td>3</td><td>1</td><td>21</td></tr>
+                <tr><th scope="row">Packing, h</th><td>1</td><td>2</td><td>14</td></tr>
+                <tr><th scope="row">Profit, EUR</th><td>50</td><td>40</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          <p>Each process row gives one constraint: the time allocated to the two products together cannot exceed the time available. For example, mixing \(x\) batches of shower gel takes \(1\cdot x\) hours and mixing \(y\) batches of shampoo \(1\cdot y\) hours, while 9 hours in total can be allocated to mixing:</p>
+          <div class="formula fit">\[ \underbrace{x}_{\text{for shower gel}} + \underbrace{y}_{\text{for shampoo}} \leq \underbrace{9}_{\text{available}} \]</div>
+          <p>The filling and packing constraints are formed in the same way. The profit row gives the objective function: \(x\) batches of shower gel earn \(50x\) euros and \(y\) batches of shampoo \(40y\) euros of profit. The mathematical model:</p>
+          \[ \begin{gathered} P = 50x + 40y \to \max \\[4pt] \begin{cases} x + y \leq 9 \\ 3x + y \leq 21 \\ x + 2y \leq 14 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>All the technical constraints have the sign \(\leq\), so this is a standard maximization problem.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <p>The line of each inequality is drawn through its intercepts, so three value tables are needed:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 9\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 9\)<br>\(y = 0:\; x = 9\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>9</td></tr><tr><th scope="row">\(y\)</th><td>9</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(3x + y = 21\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 21\)<br>\(y = 0:\; 3x = 21 \Rightarrow x = 7\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>7</td></tr><tr><th scope="row">\(y\)</th><td>21</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 14\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 14 \Rightarrow y = 7\)<br>\(y = 0:\; x = 14\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>14</td></tr><tr><th scope="row">\(y\)</th><td>7</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test point</span></h4>
+          <p>The origin lies on none of the lines, so it is the test point for all three inequalities:</p>
+          \[ \begin{alignedat}{2} 0 + 0 \leq 9 \;&amp;\Rightarrow\; 0 \leq 9 \;\; &amp;&amp; \text{(true)} \\ 3\cdot 0 + 0 \leq 21 \;&amp;\Rightarrow\; 0 \leq 21 \;\; &amp;&amp; \text{(true)} \\ 0 + 2\cdot 0 \leq 14 \;&amp;\Rightarrow\; 0 \leq 14 \;\; &amp;&amp; \text{(true)} \end{alignedat} \]
+          <p>All three half-planes contain the origin, so all the arrows point towards it. The conditions \(x;\, y \geq 0\) keep the picture in the first quadrant.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <p>The feasible set is the intersection of all the half-planes. It is bounded – the pentagon \(OABCD\):</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,15,1,2],"y":[-1,22,1,2],"maxh":420,"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":9,"lab":"x + y = 9","col":1,"rot":true,"lt":0.27,"lo":11,"arr":[0.3,0.82]},{"a":3,"b":1,"s":"le","r":21,"lab":"3x + y = 21","col":2,"lt":0.14,"arr":[0.3,0.62]},{"a":1,"b":2,"s":"le","r":14,"lab":"x + 2y = 14","col":3,"lt":0.72,"arr":[0.15,0.88]}],"pts":[{"x":0,"y":7,"lab":"A","p":"w"},{"x":4,"y":5,"lab":"B","p":"sw"},{"x":6,"y":3,"lab":"C","p":"sw"},{"x":7,"y":0,"lab":"D","p":"nw"},{"x":0,"y":0,"p":null}],"aria":"The feasible set OABCD of the cosmetics problem"}'></div>
+            <figcaption>Figure 1. The feasible set of the cosmetics problem with its five vertices.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <p>The vertices are taken in order round the boundary.</p>
+          <ul class="vert-list">
+            <li>\(O(0;\, 0)\) is the origin.</li>
+            <li>\(A\) lies on the \(Oy\)-axis. It is the \(Oy\)-intercept of the line \(x + 2y = 14\); its coordinates are already in the value table of this line: \(A(0;\, 7)\).</li>
+            <li>\(B\) is the crossing point of \(x + y = 9\) and \(x + 2y = 14\):
+              \[ \begin{gathered} \begin{cases} x + y = 9 \\ x + 2y = 14 \end{cases} \\ \Longrightarrow\; x = 4,\; y = 5 \;\Longrightarrow\; B(4;\, 5) \end{gathered} \]
+              <p class="formula-note">Subtracting the first equation from the second gives \(y = 5\); then \(x = 9 - 5 = 4\).</p></li>
+            <li>\(C\) is the crossing point of \(x + y = 9\) and \(3x + y = 21\):
+              \[ \begin{gathered} \begin{cases} x + y = 9 \\ 3x + y = 21 \end{cases} \\ \Longrightarrow\; x = 6,\; y = 3 \;\Longrightarrow\; C(6;\, 3) \end{gathered} \]
+              <p class="formula-note">Subtracting the first equation from the second gives \(2x = 12\), \(x = 6\); then \(y = 9 - 6 = 3\).</p></li>
+            <li>\(D\) lies on the \(Ox\)-axis. It is the \(Ox\)-intercept of the line \(3x + y = 21\); its coordinates are already in the value table of this line: \(D(7;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Profit at the vertices</span></h4>
+          <p>The coordinates of every vertex except the origin are substituted into the objective function \(P = 50x + 40y\):</p>
+          \[ \begin{aligned} P_A &amp;= 50\cdot 0 + 40\cdot 7 = 280 \\ P_B &amp;= 50\cdot 4 + 40\cdot 5 = 200 + 200 = 400 \\ P_C &amp;= 50\cdot 6 + 40\cdot 3 = 300 + 120 = 420 \\ P_D &amp;= 50\cdot 7 + 40\cdot 0 = 350 \end{aligned} \]
+          <p>At the origin nothing is produced, so \(P_O = 0\) – this value need not be calculated.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The largest value</span></h4>
+          <p>We compare the four values \(280\), \(400\), \(420\) and \(350\). The largest of them is \(\htmlClass{hd}{420}\), reached at the vertex \(C(6;\, 3)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The workshop should produce 6 batches of shower gel and 3 batches of shampoo. The maximum profit is \(P_{\max}(6;\, 3) = 420\) euros.</p>
+          </div>
+          <p>This plan uses \(6 + 3 = 9\) hours of mixing and \(3\cdot 6 + 3 = 21\) hours of filling – both completely – while packing is used only in the amount \(6 + 2\cdot 3 = 12\) of the 14 hours available. Mixing and filling are the scarce processes here; two hours of packing time remain idle.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 4.2, Example 2 (a limit on demand) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>The production plan of a printing house</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A printing house produces wall calendars and notebooks. Printing one calendar takes 3 hours of press time and one notebook 2 hours; 72 hours of press time are available each week. Binding one calendar takes 1 hour and one notebook 2 hours; 40 hours of binding time are available each week. The market will take at most 15 notebooks a week. The profit is 30 cents on a calendar and 50 cents on a notebook. How many of each should be produced weekly to maximize the profit?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of wall calendars produced per week;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of notebooks produced per week.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The data table</span></h4>
+          <p>The two time resources in a table:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact tight">
+              <thead><tr><th scope="col"></th><th scope="col">Calendars</th><th scope="col">Notebooks</th><th scope="col">Available</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Press time, h</th><td>3</td><td>2</td><td>72</td></tr>
+                <tr><th scope="row">Binding time, h</th><td>1</td><td>2</td><td>40</td></tr>
+                <tr><th scope="row">Profit, ct</th><td>30</td><td>50</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          <p>Both time rows become constraints, for example for printing:</p>
+          <div class="formula fit">\[ \underbrace{3x}_{\text{for calendars}} + \underbrace{2y}_{\text{for notebooks}} \leq \underbrace{72}_{\text{available}} \]</div>
+          <p>Besides the two rows of the table there is a third condition, the <strong>sales limit</strong>: at most 15 notebooks can be sold, which is \(y \leq 15\). The model is therefore</p>
+          \[ \begin{gathered} P = 30x + 50y \to \max \\[4pt] \begin{cases} 3x + 2y \leq 72 \\ x + 2y \leq 40 \\ y \leq 15 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <p>The value tables of the first two lines:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(3x + 2y = 72\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 72 \Rightarrow y = 36\)<br>\(y = 0:\; 3x = 72 \Rightarrow x = 24\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>24</td></tr><tr><th scope="row">\(y\)</th><td>36</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 40\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 40 \Rightarrow y = 20\)<br>\(y = 0:\; x = 40\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>40</td></tr><tr><th scope="row">\(y\)</th><td>20</td><td>0</td></tr></table>
+            </div>
+          </div>
+          <p>The third line needs no value table: \(y = 15\) is the horizontal line through the point 15 of the \(Oy\)-axis.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test point</span></h4>
+          <p>None of the lines passes through the origin, so it is the test point for all three inequalities:</p>
+          \[ \begin{alignedat}{2} 3\cdot 0 + 2\cdot 0 \leq 72 \;&amp;\Rightarrow\; 0 \leq 72 \;\; &amp;&amp; \text{(true)} \\ 0 + 2\cdot 0 \leq 40 \;&amp;\Rightarrow\; 0 \leq 40 \;\; &amp;&amp; \text{(true)} \\ 0 \leq 15 \;&amp; &amp;&amp; \text{(true)} \end{alignedat} \]
+          <p>All three solution half-planes lie on the side of the origin.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <p>Together with the conditions \(x;\, y \geq 0\) we obtain the bounded pentagon \(OABCD\). The horizontal line \(y = 15\) “cuts off” the top of the set:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,42,2,4],"y":[-2,38,2,4],"nn":"xy","c":[{"a":3,"b":2,"s":"le","r":72,"lab":"3x + 2y = 72","col":1,"lt":0.12,"arr":[0.3,0.5]},{"a":1,"b":2,"s":"le","r":40,"lab":"x + 2y = 40","col":2,"lt":0.62,"arr":[0.2,0.88]},{"a":0,"b":1,"s":"le","r":15,"lab":"y = 15","col":3,"lt":0.9,"arr":[0.12,0.82]}],"pts":[{"x":0,"y":15,"lab":"A","p":"ne"},{"x":10,"y":15,"lab":"B","p":"n"},{"x":16,"y":12,"lab":"C","p":"e"},{"x":24,"y":0,"lab":"D","p":"ne"},{"x":0,"y":0,"p":null}],"aria":"The feasible set OABCD of the printing problem"}'></div>
+            <figcaption>Figure 2. The feasible set of the printing problem.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <ul class="vert-list">
+            <li>\(O(0;\, 0)\) is the origin.</li>
+            <li>\(A\) lies on the \(Oy\)-axis, at the point where the line \(y = 15\) meets it: \(A(0;\, 15)\).</li>
+            <li>\(B\) is the crossing point of \(y = 15\) and \(x + 2y = 40\):
+              \[ \begin{gathered} \begin{cases} y = 15 \\ x + 2y = 40 \end{cases} \\ \Longrightarrow\; x = 10,\; y = 15 \;\Longrightarrow\; B(10;\, 15) \end{gathered} \]
+              <p class="formula-note">Substituting \(y = 15\) into the second equation gives \(x + 30 = 40\), \(x = 10\).</p></li>
+            <li>\(C\) is the crossing point of \(x + 2y = 40\) and \(3x + 2y = 72\):
+              \[ \begin{gathered} \begin{cases} x + 2y = 40 \\ 3x + 2y = 72 \end{cases} \\ \Longrightarrow\; x = 16,\; y = 12 \;\Longrightarrow\; C(16;\, 12) \end{gathered} \]
+              <p class="formula-note">Subtracting the first equation from the second gives \(2x = 32\), \(x = 16\); then \(2y = 40 - 16 = 24\), \(y = 12\).</p></li>
+            <li>\(D\) lies on the \(Ox\)-axis. It is the \(Ox\)-intercept of the line \(3x + 2y = 72\); its coordinates are already in the value table of this line: \(D(24;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Profit at the vertices</span></h4>
+          <p>The profit at every vertex except the origin:</p>
+          \[ \begin{aligned} P_A &amp;= 30\cdot 0 + 50\cdot 15 = 750 \\ P_B &amp;= 30\cdot 10 + 50\cdot 15 \\ &amp;= 300 + 750 = 1050 \\ P_C &amp;= 30\cdot 16 + 50\cdot 12 \\ &amp;= 480 + 600 = 1080 \\ P_D &amp;= 30\cdot 24 + 50\cdot 0 = 720 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The largest value</span></h4>
+          <p>The largest value is \(\htmlClass{hd}{1080}\), reached at the vertex \(C(16;\, 12)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The printing house should produce 16 wall calendars and 12 notebooks a week. The maximum weekly profit is \(P_{\max}(16;\, 12) = 1080\) cents.</p>
+          </div>
+          <p>Both time resources are used to the last hour: press time \(3\cdot 16 + 2\cdot 12 = 72\) and binding time \(16 + 2\cdot 12 = 40\). Yet only 12 of the 15 notebooks the market would take are made. What limits this printing house is its time, not its market.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 4.2, Example 3 (a condition comparing the two quantities) -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>The yoghurt production plan of a dairy</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A dairy produces plain yoghurt and fruit yoghurt in batches. One batch of plain yoghurt needs 1 tonne of milk and one batch of fruit yoghurt 2 tonnes; 40 tonnes of milk are available per day. The filling line can handle at most 30 batches of plain yoghurt a day. For marketing reasons the dairy must produce at least twice as many batches of plain yoghurt as of fruit yoghurt. The profit is 40 euros on a batch of plain yoghurt and 90 euros on a batch of fruit yoghurt. How many batches of each should be produced daily to maximize the profit?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of batches of plain yoghurt produced per day;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of batches of fruit yoghurt produced per day.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Conditions without a table</span></h4>
+          <p>The three conditions are of different kinds – a material, a capacity and a proportion – so a data table would not help here; each is written directly as an inequality:</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">In the problem</th><th scope="col">Inequality</th></tr></thead>
+              <tbody>
+                <tr><td>40 tonnes of milk are available per day</td><td>\(x + 2y \leq 40\)</td></tr>
+                <tr><td>The line can handle at most 30 batches of plain yoghurt</td><td>\(x \leq 30\)</td></tr>
+                <tr><td>At least twice as many batches of plain yoghurt as of fruit yoghurt</td><td>\(x \geq 2y\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Both variables have to stand on the left-hand side, so the last inequality is rearranged:</p>
+          \[ x \geq 2y \;\Longrightarrow\; -x + 2y \leq 0 \]
+          <p>All three technical constraints now have the sign \(\leq\), so this is a standard maximization problem – the right-hand side of a constraint may be zero.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          \[ \begin{gathered} P = 40x + 90y \to \max \\[4pt] \begin{cases} x + 2y \leq 40 \\ x \leq 30 \\ -x + 2y \leq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <p>The first line is drawn through its intercepts. The line \(-x + 2y = 0\) passes through the origin, so its intercepts coincide and a second convenient point has to be chosen; taking \(x = 30\) gives \(y = 15\):</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 40\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 40 \Rightarrow y = 20\)<br>\(y = 0:\; x = 40\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>40</td></tr><tr><th scope="row">\(y\)</th><td>20</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(-x + 2y = 0\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 0\)<br>\(x = 30:\; 2y = 30 \Rightarrow y = 15\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>30</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>15</td></tr></table>
+            </div>
+          </div>
+          <p>The line \(x = 30\) needs no value table: it is the vertical line through the point 30 of the \(Ox\)-axis.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test points</span></h4>
+          <p>The origin is the test point for the first two inequalities:</p>
+          \[ \begin{alignedat}{2} 0 + 2\cdot 0 \leq 40 \;&amp;\Rightarrow\; 0 \leq 40 \;\; &amp;&amp; \text{(true)} \\ 0 \leq 30 \;&amp; &amp;&amp; \text{(true)} \end{alignedat} \]
+          <p>The origin lies on the boundary line of the third inequality, so another test point is needed; \((10;\, 0)\) is the simplest:</p>
+          \[ \begin{aligned} &amp;-10 + 2\cdot 0 \leq 0 \\ &amp;\Longrightarrow\; -10 \leq 0 \quad \text{(true)} \end{aligned} \]
+          <p>The solution is the half-plane containing \((10;\, 0)\) – the one below the line \(-x + 2y = 0\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <p>The intersection of all the half-planes with the first quadrant is the bounded quadrilateral \(OABC\). It is bounded from above by the line \(-x + 2y = 0\), so apart from the origin there are no vertices on the \(Oy\)-axis:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,42,2,5],"y":[-2,22,2,5],"nn":"xy","c":[{"a":1,"b":2,"s":"le","r":40,"lab":"x + 2y = 40","col":1,"lt":0.2,"arr":[0.3,0.85]},{"a":1,"b":0,"s":"le","r":30,"lab":"x = 30","col":2,"lt":0.93,"la":"start","lo":-8,"arr":[0.15,0.62]},{"a":-1,"b":2,"s":"le","r":0,"lab":"−x + 2y = 0","col":3,"lt":0.3,"arr":[0.4,0.6],"rot":true,"lo":11}],"pts":[{"x":0,"y":0,"p":null},{"x":30,"y":0,"lab":"A","p":"ne"},{"x":30,"y":5,"lab":"B","p":"e"},{"x":20,"y":10,"lab":"C","p":"n"}],"aria":"The feasible set OABC of the dairy problem"}'></div>
+            <figcaption>Figure 3. The feasible set of the dairy problem.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <ul class="vert-list">
+            <li>\(O(0;\, 0)\) is the origin; the line \(-x + 2y = 0\) also passes through it.</li>
+            <li>\(A\) lies on the \(Ox\)-axis, at the point where the line \(x = 30\) meets it: \(A(30;\, 0)\).</li>
+            <li>\(B\) is the crossing point of \(x = 30\) and \(x + 2y = 40\):
+              \[ \begin{gathered} \begin{cases} x = 30 \\ x + 2y = 40 \end{cases} \\ \Longrightarrow\; x = 30,\; y = 5 \;\Longrightarrow\; B(30;\, 5) \end{gathered} \]
+              <p class="formula-note">Substituting \(x = 30\) into the second equation gives \(2y = 10\), \(y = 5\).</p></li>
+            <li>\(C\) is the crossing point of \(x + 2y = 40\) and \(-x + 2y = 0\):
+              \[ \begin{gathered} \begin{cases} x + 2y = 40 \\ -x + 2y = 0 \end{cases} \\ \Longrightarrow\; x = 20,\; y = 10 \;\Longrightarrow\; C(20;\, 10) \end{gathered} \]
+              <p class="formula-note">Adding the two equations gives \(4y = 40\), \(y = 10\); then the second equation gives \(x = 2y = 20\).</p></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Profit at the vertices</span></h4>
+          <p>The profit at every vertex except the origin:</p>
+          \[ \begin{aligned} P_A &amp;= 40\cdot 30 + 90\cdot 0 = 1200 \\ P_B &amp;= 40\cdot 30 + 90\cdot 5 \\ &amp;= 1200 + 450 = 1650 \\ P_C &amp;= 40\cdot 20 + 90\cdot 10 \\ &amp;= 800 + 900 = 1700 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The largest value</span></h4>
+          <p>The largest value is \(\htmlClass{hd}{1700}\), reached at the vertex \(C(20;\, 10)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The dairy should produce 20 batches of plain yoghurt and 10 batches of fruit yoghurt a day. The maximum daily profit is \(P_{\max}(20;\, 10) = 1700\) euros.</p>
+          </div>
+          <p>There the milk is used up completely, \(20 + 2\cdot 10 = 40\) tonnes, and the marketing rule holds with equality, \(20 = 2\cdot 10\). The filling line is not the binding condition – only 20 of the 30 possible batches of plain yoghurt are made. A batch of fruit yoghurt earns more than a batch of plain yoghurt, so the best plan pushes the output of fruit yoghurt as high as the marketing rule allows.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: investment portfolio (translated from the LT page; constraints ≤ and ≥) -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Building an investment portfolio</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A fund manager invests 600 thousand euros of a client’s money. Two investment instruments can be chosen: an equity fund with an expected annual return of 12&nbsp;% and a government bond fund with an expected annual return of 6&nbsp;%. The client has set four conditions:</p>
+        <ul>
+          <li>at least 300 thousand euros must be invested; the rest may stay in a current account;</li>
+          <li>at least 50 thousand euros must be invested in the equity fund;</li>
+          <li>at most 450 thousand euros may be invested in the bond fund;</li>
+          <li>at least a third of the amount invested must go into the bond fund.</li>
+        </ul>
+        <p>How should the money be divided between the two funds for the expected annual return to be the largest? What is the largest return?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the amount invested in the equity fund, in thousands of euros;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the amount invested in the bond fund, in thousands of euros.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The objective function and the conditions</span></h4>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Equity fund</th><th scope="col">Bond fund</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Expected annual return</th><td>12&nbsp;%</td><td>6&nbsp;%</td></tr>
+                <tr><th scope="row">Amount invested, thousand €</th><td>\(x\)</td><td>\(y\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The expected annual return of the portfolio in thousands of euros (12&nbsp;% = 0.12, 6&nbsp;% = 0.06):</p>
+          \[ P = 0.12x + 0.06y \to \max \]
+          <p>Each condition is written as an inequality:</p>
+          <div class="tbl-wrap">
+            <table class="vtable req-tbl">
+              <thead><tr><th scope="col">In the problem</th><th scope="col">Inequality</th></tr></thead>
+              <tbody>
+                <tr><td>The manager has 600 thousand euros and does not have to invest the whole amount</td><td>\(x + y \leq 600\)</td></tr>
+                <tr><td>At least 300 thousand euros must be invested</td><td>\(x + y \geq 300\)</td></tr>
+                <tr><td>In the equity fund – at least 50 thousand euros</td><td>\(x \geq 50\)</td></tr>
+                <tr><td>In the bond fund – at most 450 thousand euros</td><td>\(y \leq 450\)</td></tr>
+                <tr><td>At least a third of the amount invested – in the bond fund</td><td>\(y \geq \tfrac{1}{3}(x + y)\)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The amount invested is \(x + y\), and a third of it has to go to the bond fund. The last inequality is rearranged so that both variables stand on the left-hand side:</p>
+          \[ \begin{gathered} y \geq \tfrac{1}{3}(x + y) \;\Longrightarrow\; 3y \geq x + y \\ \Longrightarrow\; 2y \geq x \;\Longrightarrow\; x - 2y \leq 0 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          \[ \begin{gathered} P = 0.12x + 0.06y \to \max \\[4pt] \begin{cases} x + y \leq 600 \\ x + y \geq 300 \\ x \geq 50 \\ y \leq 450 \\ x - 2y \leq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p class="tip">This problem differs from the previous ones: it also contains constraints with the sign \(\geq\) (\(x + y \geq 300\) and \(x \geq 50\)), so strictly speaking it is not a standard maximization problem (more in <a href="tema-4-nestandartiniai.html">Section 4</a>). Still, it is solved in exactly the same way. The only difference is that the origin does not belong to the feasible set, so the objective function is computed at all the vertices of the set.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <p>The lines \(x + y = 600\) and \(x + y = 300\) are drawn through their intercepts. The line \(x - 2y = 0\) passes through the origin, so its second point is chosen freely: for \(x = 200\) we get \(y = 100\):</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 600\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 600\)<br>\(y = 0:\; x = 600\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>600</td></tr><tr><th scope="row">\(y\)</th><td>600</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 300\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 300\)<br>\(y = 0:\; x = 300\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>300</td></tr><tr><th scope="row">\(y\)</th><td>300</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x - 2y = 0\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 0\)<br>\(x = 200:\; 2y = 200 \Rightarrow y = 100\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>200</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>100</td></tr></table>
+            </div>
+          </div>
+          <p>The lines \(x = 50\) and \(y = 450\) need no value tables: they are parallel to the axes. The line \(x = 50\) is the vertical line through the point 50 of the \(Ox\)-axis, and \(y = 450\) the horizontal line through the point 450 of the \(Oy\)-axis.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test points</span></h4>
+          <p>The origin lies on none of the first four lines, so it is their test point:</p>
+          \[ \begin{alignedat}{2} 0 + 0 \leq 600 \;&amp;\Rightarrow\; 0 \leq 600 \;\; &amp;&amp; \text{(true)} \\ 0 + 0 \geq 300 \;&amp;\Rightarrow\; 0 \geq 300 \;\; &amp;&amp; \text{(false)} \\ 0 \geq 50 \;&amp; &amp;&amp; \text{(false)} \\ 0 \leq 450 \;&amp; &amp;&amp; \text{(true)} \end{alignedat} \]
+          <p>When an inequality is true, the solution half-plane lies on the side of the origin: below the line \(x + y = 600\) and below the line \(y = 450\). When it is false, the half-plane lies on the other side of the line: above the line \(x + y = 300\) and to the right of the line \(x = 50\).</p>
+          <p>The origin lies on the line \(x - 2y = 0\), so another test point is chosen, for example \((0;\, 100)\):</p>
+          \[ \begin{aligned} &amp;0 - 2\cdot 100 \leq 0 \\ &amp;\Longrightarrow\; -200 \leq 0 \quad \text{(true)} \end{aligned} \]
+          <p>The solution is the half-plane containing \((0;\, 100)\) – the one above the line \(x - 2y = 0\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <p>The intersection of the five half-planes with the first quadrant is the pentagon \(ABCDE\). The origin does not belong to it, because at least 300 thousand euros have to be invested:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-30,660,50,2],"y":[-30,660,50,2],"maxh":420,"nn":"xy","c":[{"a":1,"b":1,"s":"le","r":600,"lab":"x + y = 600","col":1,"rot":true,"lt":0.84,"lo":12,"arr":[0.35,0.6]},{"a":1,"b":1,"s":"ge","r":300,"lab":"x + y = 300","col":4,"lt":0.83,"lo":-24,"arr":[0.36,0.56]},{"a":1,"b":0,"s":"ge","r":50,"lab":"x = 50","col":3,"lt":0.93,"la":"start","lo":-8,"arr":[0.2,0.5]},{"a":0,"b":1,"s":"le","r":450,"lab":"y = 450","col":5,"lt":0.85,"lo":10,"arr":[0.45,0.8]},{"a":1,"b":-2,"s":"le","r":0,"lab":"x − 2y = 0","col":2,"rot":true,"lt":0.85,"lo":11,"arr":[0.45,0.75]}],"pts":[{"x":50,"y":250,"lab":"A","p":"e"},{"x":200,"y":100,"lab":"B","p":"e"},{"x":400,"y":200,"lab":"C","p":"e"},{"x":150,"y":450,"lab":"D","p":"ne"},{"x":50,"y":450,"lab":"E","p":"nw"}],"aria":"The feasible set of the investment portfolio problem – the pentagon ABCDE"}'></div>
+            <figcaption>Figure 4. The feasible set of the investment portfolio problem; the axes show amounts in thousands of euros.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <p>None of the vertices lies on an axis, so each of them is the crossing point of two lines:</p>
+          <ul class="vert-list">
+            <li>\(A\) is the crossing point of \(x = 50\) and \(x + y = 300\):
+              \[ \begin{gathered} \begin{cases} x = 50 \\ x + y = 300 \end{cases} \\ \Longrightarrow\; x = 50,\; y = 250 \\ \Longrightarrow\; A(50;\, 250) \end{gathered} \]
+              <p class="formula-note">Substituting \(x = 50\) into the second equation gives \(y = 250\).</p></li>
+            <li>\(B\) is the crossing point of \(x + y = 300\) and \(x - 2y = 0\):
+              \[ \begin{gathered} \begin{cases} x + y = 300 \\ x - 2y = 0 \end{cases} \\ \Longrightarrow\; x = 200,\; y = 100 \\ \Longrightarrow\; B(200;\, 100) \end{gathered} \]
+              <p class="formula-note">Subtracting the second equation from the first gives \(3y = 300\), \(y = 100\); then \(x = 2y = 200\).</p></li>
+            <li>\(C\) is the crossing point of \(x - 2y = 0\) and \(x + y = 600\):
+              \[ \begin{gathered} \begin{cases} x - 2y = 0 \\ x + y = 600 \end{cases} \\ \Longrightarrow\; x = 400,\; y = 200 \\ \Longrightarrow\; C(400;\, 200) \end{gathered} \]
+              <p class="formula-note">Subtracting the first equation from the second gives \(3y = 600\), \(y = 200\); then \(x = 2y = 400\).</p></li>
+            <li>\(D\) is the crossing point of \(x + y = 600\) and \(y = 450\):
+              \[ \begin{gathered} \begin{cases} x + y = 600 \\ y = 450 \end{cases} \\ \Longrightarrow\; x = 150,\; y = 450 \\ \Longrightarrow\; D(150;\, 450) \end{gathered} \]
+              <p class="formula-note">Substituting \(y = 450\) into the first equation gives \(x = 150\).</p></li>
+            <li>\(E\) is the crossing point of the two lines parallel to the axes, \(x = 50\) and \(y = 450\): \(E(50;\, 450)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Return at the vertices</span></h4>
+          <p>The origin is not a vertex of this set, so the return is computed at all five vertices:</p>
+          \[ \begin{aligned} P_A &amp;= 0.12\cdot 50 + 0.06\cdot 250 \\ &amp;= 6 + 15 = 21 \\ P_B &amp;= 0.12\cdot 200 + 0.06\cdot 100 \\ &amp;= 24 + 6 = 30 \\ P_C &amp;= 0.12\cdot 400 + 0.06\cdot 200 \\ &amp;= 48 + 12 = 60 \\ P_D &amp;= 0.12\cdot 150 + 0.06\cdot 450 \\ &amp;= 18 + 27 = 45 \\ P_E &amp;= 0.12\cdot 50 + 0.06\cdot 450 \\ &amp;= 6 + 27 = 33 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The largest value</span></h4>
+          <p>The largest value is \(\htmlClass{hd}{60}\), reached at the vertex \(C(400;\, 200)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The manager should invest 400 thousand euros in the equity fund and 200 thousand euros in the bond fund. The expected annual return is then the largest: \(P_{\max}(400;\, 200) = 60\) thousand euros, i.e. 10&nbsp;% of the capital.</p>
+          </div>
+          <p>Two of the client’s conditions are met exactly: the whole capital is invested, \(400 + 200 = 600\), and the bond fund receives exactly a third of the amount invested, \(200 : 600 = \tfrac{1}{3}\). The other three conditions are met with room to spare: 400 thousand euros are invested in the equity fund instead of the required 50, 200 thousand in the bond fund instead of the permitted 450, and the amount invested is 600 thousand instead of the required 300. So the plan is decided by the one-third rule: the expected annual return of the equity fund is 6 percentage points higher, so without this rule the manager would invest the whole capital in it.</p>
+        </section>
+      </div>
+    </article> <!-- /Example 4 -->
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: define the variables, build the mathematical model, draw the feasible set, find the vertices algebraically and compute the profit at each of them. The answer gives the variables, the mathematical model and the final result – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A bakery makes cheesecakes and fruit tarts. One cheesecake takes 1&nbsp;kg of fruit and one fruit tart 2&nbsp;kg of fruit; the bakery receives 100&nbsp;kg of fruit a day, and its oven bakes at most 60 cakes a day. The shop sells at most 25 cheesecakes a day. The profit is 12 euros on a cheesecake and 10 euros on a fruit tart. How many cakes of each kind should the bakery make a day for the profit to be the largest, and what is that profit?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of cheesecakes baked in a day;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of fruit tarts baked in a day.</span></li>
+          </ul>
+          <p><strong>The mathematical model.</strong> The limit on the sales of cheesecakes gives the constraint \(x \leq 25\), whose boundary line is parallel to the \(Oy\)-axis:</p>
+          \[ \begin{gathered} P = 12x + 10y \to \max \\[4pt] \begin{cases} x + 2y \leq 100 \\ x + y \leq 60 \\ x \leq 25 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Answer.</strong> The largest value of the objective function is</p>
+          \[ P_{\max}(25;\, 35) = 650 \]
+          <p>The bakery should make 25 cheesecakes and 35 fruit tarts a day; the profit is then 650 euros. The oven is filled exactly and the cheesecakes are made up to the limit of the demand. 5&nbsp;kg of fruit are left over.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A company assembles photo drones and racing drones. One photo drone takes 2 electronic modules and one racing drone 3; the company receives 240 modules a month, and its assembly line can put together at most 90 drones a month. A contract with the dealer requires that racing drones make up at least a third of all the drones assembled. The profit is 300 euros on a photo drone and 200 euros on a racing drone. How many drones of each kind should the company assemble a month for the profit to be the largest, and what is that profit?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of photo drones assembled in a month;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of racing drones assembled in a month.</span></li>
+          </ul>
+          <p><strong>The mathematical model.</strong> The condition of the contract is \(y \geq \tfrac{1}{3}(x + y)\), that is \(3y \geq x + y\), that is \(x - 2y \leq 0\):</p>
+          \[ \begin{gathered} P = 300x + 200y \to \max \\[4pt] \begin{cases} x + y \leq 90 \\ 2x + 3y \leq 240 \\ x - 2y \leq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Answer.</strong> The largest value of the objective function is</p>
+          \[ P_{\max}(60;\, 30) = 24000 \]
+          <p>The company should assemble 60 photo drones and 30 racing drones a month; the profit is then 24000 euros. The assembly line is fully used and the racing drones make up exactly a third of the output. 30 electronic modules are left over.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 4</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 3</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
