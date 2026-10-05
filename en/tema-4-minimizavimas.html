@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standard Minimization Problems · Applied Mathematics</title>
+<meta name="description" content="The standard minimization problem in two variables: building the mathematical model, the unbounded feasible set, the vertices and the smallest value of the objective function. Examples step by step.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-4-minimizavimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=49">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=49"></script>
+</head>
+<body data-page="m43">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 4 · Applications · Section 3</span>
+    <h1>Standard Minimization Problems</h1>
+    <p class="lead">This section shows how to build the mathematical model of a standard minimization problem and solve it graphically: how to draw the unbounded feasible set, find its vertices and choose the one at which the cost is the smallest.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Model</a></li>
+      <li><a href="#optimalus">Optimal plan</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#grafikas">Graph</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">The standard minimization problem</h2>
+
+    <article class="card">
+      <p>A <strong>standard minimization problem</strong> asks for the smallest value of a linear objective function when every technical constraint has the sign \(\geq\) and the quantities cannot be negative. In two variables it always looks like this:</p>
+      <div class="formula">\[ \begin{gathered} TC = c_1x + c_2y \to \min \\[4pt] \begin{cases} a_{11}x + a_{12}y \geq b_1 \\ a_{21}x + a_{22}y \geq b_2 \\ \quad\vdots \\ x;\, y \geq 0 \end{cases} \end{gathered} \]</div>
+      <p>The same three kinds of element make up the model as in the <a href="tema-4-maksimizavimas.html#modelis">maximization problem</a>:</p>
+      <div class="anat">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Objective function</strong></div>
+          <p class="anat-d">The quantity to be made as small as possible:</p>
+          <ul>
+            <li>total cost;</li>
+            <li>total spending;</li>
+            <li>risk.</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Technical constraints</strong></div>
+          <p class="anat-d">The requirements that have to be met. They are demands from below, so their sign is \(\geq\):</p>
+          <ul>
+            <li>the nutrients a meal must contain;</li>
+            <li>the audience an advertisement must reach;</li>
+            <li>the amount of goods that has to be delivered.</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Natural constraints</strong></div>
+          <p class="anat-d">The non-negativity conditions \(x;\, y \geq 0\):</p>
+          <ul>
+            <li>a negative quantity cannot be bought, hired or ordered.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>How the model is built</h4>
+        <p>The model is built by the same steps as in the <a href="tema-4-maksimizavimas.html#modelis">maximization problem</a>. What differs is the meaning of the constraints: they describe not the resources available but <strong>requirements</strong> – what is reached, produced or delivered must be no less than what is required.</p>
+
+        <p><strong>1. Decision variables.</strong> Each variable is the quantity of a specific object over a specific period:</p>
+        <ul class="dodont">
+          <li class="do"><span class="mk" aria-hidden="true">✓</span><span>“\(x\) – the number of minutes bought on the first radio station per day.”</span></li>
+          <li class="dont"><span class="mk" aria-hidden="true">✗</span><span>“\(x\) – the first radio station.” It is not clear what \(x\) counts: minutes, advertisements or euros.</span></li>
+        </ul>
+
+        <p style="margin-top:16px"><strong>2. One inequality per requirement.</strong> The amount reached by the two options together must be no less than the amount required:</p>
+        <div class="formula fit">\[ \underbrace{a_1x}_{\text{by option A}} + \underbrace{a_2y}_{\text{by option B}} \geq \underbrace{b}_{\text{required}} \]</div>
+        <p>It is convenient to put the data in a table: one row per requirement, one column per option, and the amount required in the last column. Each requirement row becomes one constraint, and the cost row becomes the objective function:</p>
+        <div class="tbl-wrap">
+          <table class="vtable compact model-tbl">
+            <thead><tr><th scope="col"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">Required</th></tr></thead>
+            <tbody>
+              <tr class="hl"><th scope="row">Requirement 1</th><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(b_1\)</td></tr>
+              <tr><th scope="row">Requirement 2</th><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(b_2\)</td></tr>
+              <tr><th scope="row">Cost</th><td>\(c_1\)</td><td>\(c_2\)</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mats mats--col">
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span>\(\begin{gathered} TC = c_1x + c_2y \to \min \\[4pt] \begin{cases} \htmlClass{hr}{a_{11}x + a_{12}y \geq b_1} \\ a_{21}x + a_{22}y \geq b_2 \\ x;\, y \geq 0 \end{cases} \end{gathered}\)</span>
+        </div>
+        <p class="formula-note" style="text-align:center">The first requirement row has become the first constraint, and the cost row the objective function.</p>
+
+        <p style="margin-top:16px"><strong>3. Other conditions are inequalities too.</strong> Every other condition stated in words is also written as an inequality:</p>
+        <div class="tbl-wrap">
+          <table class="vtable req-tbl">
+            <thead><tr><th scope="col">In the problem</th><th scope="col">Inequality</th></tr></thead>
+            <tbody>
+              <tr><td>By agreement, at least \(M\) trips of A must be made</td><td>\(x \geq M\)</td></tr>
+              <tr><td>At least \(N\) units are needed in total</td><td>\(x + y \geq N\)</td></tr>
+              <tr><td>There must be at least twice as many options B as options A</td><td>\(y \geq 2x\), i.e.<br>\(-2x + y \geq 0\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tip">Both variables are brought to the left-hand side of the inequality. If this gives the sign \(\leq\), both sides of the inequality may be multiplied by \(-1\): the sign changes to \(\geq\), for example \(2x - y \leq 0 \iff -2x + y \geq 0\).</p>
+
+        <p style="margin-top:16px"><strong>4. Non-negativity conditions.</strong> \(x;\, y \geq 0\) is always added to the system of constraints.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. OPTIMAL PLAN ============ -->
+  <section class="section" id="optimalus" aria-labelledby="h-opt">
+    <h2 id="h-opt">How the optimal plan is found</h2>
+
+    <article class="card">
+      <p>A standard minimization problem is solved in the same way as a <a href="tema-4-maksimizavimas.html#optimalus">maximization problem</a>: first the <strong>feasible set</strong> is determined – all the plans that satisfy all the requirements – and then the point at which the objective function takes its <strong>smallest value</strong> is chosen from it:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>The feasible set</strong><span>It is drawn by the method described in <a href="tema-4-nelygybiu-sistemos.html#eiga">Section 1</a>.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>The vertices</strong><span>The coordinates of all the vertices of the set are determined.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>The smallest value</strong><span>The coordinates of the vertices are substituted into the objective function and the smallest value is chosen.</span></div></div>
+      </div>
+      <p>For example, if the vertices of the set are \(A, B, C, D\), the objective function is computed at <strong>all</strong> the vertices:</p>
+      <div class="formula">\[ \begin{aligned} TC_A &amp;= c_1x_A + c_2y_A \\ TC_B &amp;= c_1x_B + c_2y_B \\ &amp;\;\;\vdots \\ TC_D &amp;= c_1x_D + c_2y_D \end{aligned} \]</div>
+      <p>The smallest of the values is the minimum, and the vertex at which it occurs is the <strong>optimal plan</strong>. The answer is written together with this plan: \(TC_{\min}(x;\, y) = \ldots\)</p>
+
+      <div class="subtype">
+        <h4>Three differences from a maximization problem</h4>
+        <div class="anat">
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>The arrows point away from the origin</strong></div>
+            <p style="margin:8px 0 0">The origin satisfies no requirement of the form \(ax + by \geq c\) with \(c &gt; 0\), so the test at the origin comes out false and the solution is the half-plane on the far side of each line.</p>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>The feasible set is unbounded</strong></div>
+            <p style="margin:8px 0 0">It stretches away from the origin without end, so the objective function has no largest value there – but it does have a smallest one, and that smallest value is again reached at a vertex.</p>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Every vertex is evaluated</strong></div>
+            <p style="margin:8px 0 0">The origin does not belong to the feasible set at all, so there is nothing to leave out: the objective function is computed at all the vertices.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li><strong>Define the decision variables.</strong> Each one is the quantity of a specific object over a specific period.</li>
+        <li><strong>Summarise the data.</strong> If the data are tabular, give each requirement a row and each option a column, and put the amount required in the last column. This step is optional.</li>
+        <li><strong>Write the mathematical model:</strong> the objective function with \(\to \min\), and next to it all the constraints – technical and non-negativity – collected in one system.</li>
+        <li><strong>Draw the feasible set.</strong>
+          <ul>
+            <li>Make a value table for each boundary line.</li>
+            <li>Choose a test point for each inequality.</li>
+            <li>Put arrows on the lines and shade only the feasible set.</li>
+          </ul>
+        </li>
+        <li><strong>Find all the vertices.</strong>
+          <ul>
+            <li>A vertex on an axis is the intercept of the line that bounds the set there, and it is already in that line’s value table.</li>
+            <li>A crossing point of two lines is found from the system of their equations, solved as in <a href="tema-3.html">Topic 3</a>.</li>
+          </ul>
+        </li>
+        <li><strong>Compute the objective function at every vertex</strong> and write the whole calculation out: the substituted coordinates and the value obtained.</li>
+        <li><strong>Compare the values.</strong> The smallest one is the minimum, and the vertex at which it occurs corresponds to the optimal plan.</li>
+        <li><strong>Write the final answer</strong> in the words of the problem, with units.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Arrows pointing towards the origin.</strong> When the sign is \(\geq\) and the right-hand side is positive, the test at \(O(0;\, 0)\) gives a false inequality, so the solution half-plane is on the other side of the line.</li>
+            <li><strong>The origin included in the comparison.</strong> \(TC_O = 0\), but the point \(O\) does not belong to the feasible set – none of the requirements is met there.</li>
+            <li><strong>A vertex left out.</strong> An unbounded set also has vertices on the axes, so the objective function is computed at every vertex, including those on the \(Ox\)- and \(Oy\)-axes.</li>
+            <li><strong>Vertex coordinates “read off” the graph.</strong> The crossing point of two lines is found algebraically – by solving the system of equations.</li>
+            <li><strong>Non-negativity conditions missing from the system.</strong> The conditions \(x;\, y \geq 0\) are part of the model, so they are written together with the technical constraints.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving applied linear programming problems, the definitions of the introduced variables must be provided at the beginning of the solution. Each variable definition must clearly state that the variable represents the quantity of a specific object.</li>
+            <li>If convenient for the author, the data from the problem may be summarized in a table, but this is optional.</li>
+            <li>The solution must include the mathematical model of the problem – the objective function and the system of constraints. It must be clearly stated whether the objective function is to be maximized or minimized. All constraints, including the non-negativity constraints, must be clearly written together in one system, next to the objective function.</li>
+            <li>When solving the problem graphically, value tables for the constraint lines must be provided.</li>
+            <li>The graph must include the following elements: axis labels; the origin of the coordinate system; the unit scale on the axes; labels of the lines; the feasible set.</li>
+            <li>The coordinates of the intersection points of the constraint lines must be determined algebraically. When finding intersection points, it is acceptable to use a calculator, but the equations used must be shown explicitly.</li>
+            <li>The objective function value must be calculated at all vertices of the feasible set, except for the origin. This step must be clearly shown in the mathematically correct manner.</li>
+            <li>At the end of the solution, the final answer must be clearly formulated.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ GRAPH ============ -->
+  <section class="section" id="grafikas" aria-labelledby="h-graph">
+    <h2 id="h-graph">What the graph must show</h2>
+    <article class="card">
+      <div class="must">
+        <p class="must-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg>Required elements of the graph</p>
+        <p>The graph must include the following elements: <strong>axis labels, the origin of the coordinate system, the unit scale on the axes, labels of the lines and the feasible set</strong>. In the example graph they are marked with numbers:</p>
+        <figure class="fig lp-chart-fig">
+          <div data-widget="lp-chart" data-spec='{"x":[-1,10,1,2],"y":[-1,10,1,2],"nn":"xy","ann":{"lab":[8.7,2.0]},"c":[{"a":1,"b":2,"s":"ge","r":8,"lab":"x + 2y = 8","col":1,"lt":0.55,"lo":-14,"arr":[0.35,0.7]},{"a":3,"b":1,"s":"ge","r":9,"lab":"3x + y = 9","col":2,"lt":0.35,"lo":-14,"arr":[0.18,0.55]}],"pts":[{"x":0,"y":9,"lab":"A","p":"e"},{"x":2,"y":3,"lab":"B","p":"ne"},{"x":8,"y":0,"lab":"C","p":"ne"}],"aria":"An example of a graph with the required elements marked: axis labels, the origin of the coordinate system, the unit scale on the axes, labels of the lines and the unbounded feasible set"}'></div>
+        </figure>
+        <ol class="badge-list">
+          <li><span class="bn">1</span><span>Axis labels: \(x\) and \(y\).</span></li>
+          <li><span class="bn">2</span><span>The origin of the coordinate system, \(O\).</span></li>
+          <li><span class="bn">3</span><span>The unit scale on the axes: the length of one division is marked on both axes.</span></li>
+          <li><span class="bn">4</span><span>Labels of the lines: the equation of each line is written next to it, for example \(x + 2y = 8\), or the line is otherwise clearly linked to its equation.</span></li>
+          <li><span class="bn">5</span><span>The feasible set: the region is clearly marked. In this figure it is shaded – the unbounded region extending upwards and to the right of the lines, with the vertices \(A\), \(B\), \(C\).</span></li>
+        </ol>
+        <p class="formula-note">The graph shows the system \(x + 2y \geq 8\), \(3x + y \geq 9\), \(x;\, y \geq 0\) – <a href="tema-4-nelygybiu-sistemos.html#pavyzdys-4">Example 4 of Section 1</a>.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to build the model and solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM Alternative 4.2 (replaces the lecture radio advertising example) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A plan for buying management training</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A company buys management training for its staff from two providers. One session with provider I contains 2 hours of leadership training, 1 hour of finance and 1 hour of negotiation; one session with provider II contains 1 hour of leadership training, 1 hour of finance and 3 hours of negotiation. The programme must give every participant at least 16 hours of leadership training, at least 12 hours of finance and at least 18 hours of negotiation. One session with provider I costs 40 euros per participant and one session with provider II costs 30 euros. How many sessions should be bought from each provider so that the cost per participant is as small as possible? What is the minimum cost?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <p>The company has to decide how many sessions to buy from each provider:</p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of sessions bought from provider I;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of sessions bought from provider II.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The data table</span></h4>
+          <p>Each training area gets a row, each provider a column, and the number of hours required goes in the last column:</p>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Provider I</th><th scope="col">Provider II</th><th scope="col">Required</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Leadership, h</th><td>2</td><td>1</td><td>16</td></tr>
+                <tr><th scope="row">Finance, h</th><td>1</td><td>1</td><td>12</td></tr>
+                <tr><th scope="row">Negotiation, h</th><td>1</td><td>3</td><td>18</td></tr>
+                <tr><th scope="row">Cost, EUR</th><td>40</td><td>30</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          <p>Each training area gives one requirement: the sessions of the two providers together must give no fewer hours than required. For example, \(x\) sessions with provider I give \(2x\) hours of leadership training and \(y\) sessions with provider II \(1\cdot y\) hours, while at least 16 hours are needed in total:</p>
+          <div class="formula fit">\[ \underbrace{2x}_{\text{provider I}} + \underbrace{y}_{\text{provider II}} \geq \underbrace{16}_{\text{required}} \]</div>
+          <p>The finance and negotiation constraints are formed in the same way. The cost row gives the objective function: \(x\) sessions with provider I cost \(40x\) euros and \(y\) sessions with provider II \(30y\) euros. The mathematical model:</p>
+          \[ \begin{gathered} TC = 40x + 30y \to \min \\[4pt] \begin{cases} 2x + y \geq 16 \\ x + y \geq 12 \\ x + 3y \geq 18 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>All the technical constraints have the sign \(\geq\), so this is a standard minimization problem.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <p>The line of each inequality is drawn through its intercepts:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 16\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 16\)<br>\(y = 0:\; 2x = 16 \Rightarrow x = 8\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>8</td></tr><tr><th scope="row">\(y\)</th><td>16</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 12\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 12\)<br>\(y = 0:\; x = 12\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>12</td></tr><tr><th scope="row">\(y\)</th><td>12</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 3y = 18\)</p>
+              <p class="xy-calc">\(x = 0:\; 3y = 18 \Rightarrow y = 6\)<br>\(y = 0:\; x = 18\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>18</td></tr><tr><th scope="row">\(y\)</th><td>6</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test point</span></h4>
+          <p>The origin lies on none of the lines, so it is the test point for all three inequalities:</p>
+          \[ \begin{alignedat}{2} 2\cdot 0 + 0 \geq 16 \;&amp;\Rightarrow\; 0 \geq 16 \; &amp;&amp; \text{(false)} \\ 0 + 0 \geq 12 \;&amp;\Rightarrow\; 0 \geq 12 \; &amp;&amp; \text{(false)} \\ 0 + 3\cdot 0 \geq 18 \;&amp;\Rightarrow\; 0 \geq 18 \; &amp;&amp; \text{(false)} \end{alignedat} \]
+          <p>Every test is false, so each solution half-plane is the one that does not contain the origin, and all three arrows point away from it.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <p>The feasible set is the intersection of all the half-planes with the first quadrant. It is unbounded – it extends without limit upwards and to the right – and it has four vertices:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,20,1,2],"y":[-1,18,1,2],"nn":"xy","c":[{"a":2,"b":1,"s":"ge","r":16,"lab":"2x + y = 16","col":1,"lt":0.2,"lo":-14,"arr":[0.3,0.75]},{"a":1,"b":1,"s":"ge","r":12,"lab":"x + y = 12","col":2,"lt":0.43,"lo":-14,"arr":[0.2,0.8]},{"a":1,"b":3,"s":"ge","r":18,"lab":"x + 3y = 18","col":3,"lt":0.65,"lo":-14,"arr":[0.25,0.85]}],"pts":[{"x":0,"y":16,"lab":"A","p":"ne"},{"x":4,"y":8,"lab":"B","p":"sw"},{"x":9,"y":3,"lab":"C","p":"sw"},{"x":18,"y":0,"lab":"D","p":"n"}],"aria":"The unbounded feasible set of the training problem with the vertices A, B, C, D"}'></div>
+            <figcaption>Figure 1. The feasible set of the training problem with its four vertices.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <p>The vertices are taken in order round the boundary.</p>
+          <ul class="vert-list">
+            <li>\(A\) lies on the \(Oy\)-axis. It is the \(Oy\)-intercept of the line \(2x + y = 16\); its coordinates are already in the value table of this line: \(A(0;\, 16)\).</li>
+            <li>\(B\) is the crossing point of \(2x + y = 16\) and \(x + y = 12\):
+              \[ \begin{gathered} \begin{cases} 2x + y = 16 \\ x + y = 12 \end{cases} \\ \Longrightarrow\; x = 4,\; y = 8 \;\Longrightarrow\; B(4;\, 8) \end{gathered} \]
+              <p class="formula-note">Subtracting the second equation from the first gives \(x = 4\); then \(y = 12 - 4 = 8\).</p></li>
+            <li>\(C\) is the crossing point of \(x + y = 12\) and \(x + 3y = 18\):
+              \[ \begin{gathered} \begin{cases} x + y = 12 \\ x + 3y = 18 \end{cases} \\ \Longrightarrow\; x = 9,\; y = 3 \;\Longrightarrow\; C(9;\, 3) \end{gathered} \]
+              <p class="formula-note">Subtracting the first equation from the second gives \(2y = 6\), \(y = 3\); then \(x = 12 - 3 = 9\).</p></li>
+            <li>\(D\) lies on the \(Ox\)-axis. It is the \(Ox\)-intercept of the line \(x + 3y = 18\); its coordinates are already in the value table of this line: \(D(18;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Cost at the vertices</span></h4>
+          <p>The coordinates of every vertex are substituted into the objective function \(TC = 40x + 30y\):</p>
+          \[ \begin{aligned} TC_A &amp;= 40\cdot 0 + 30\cdot 16 = 480 \\ TC_B &amp;= 40\cdot 4 + 30\cdot 8 \\ &amp;= 160 + 240 = 400 \\ TC_C &amp;= 40\cdot 9 + 30\cdot 3 \\ &amp;= 360 + 90 = 450 \\ TC_D &amp;= 40\cdot 18 + 30\cdot 0 = 720 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The smallest value</span></h4>
+          <p>We compare the four values \(480\), \(400\), \(450\) and \(720\). The smallest of them is \(\htmlClass{hd}{400}\), reached at the vertex \(B(4;\, 8)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The company should buy 4 sessions from provider I and 8 sessions from provider II. The minimum cost is \(TC_{\min}(4;\, 8) = 400\) euros per participant.</p>
+          </div>
+          <p>This programme gives exactly \(2\cdot 4 + 8 = 16\) hours of leadership training and exactly \(4 + 8 = 12\) hours of finance, while negotiation is covered to \(4 + 3\cdot 8 = 28\) hours – ten more than the required 18. Leadership and finance are the binding requirements; the negotiation hours come with the sessions anyway.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 4.3, Example 2 (hiring two kinds of machine) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Hiring snow-clearing machines</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A municipality has to clear the snow from at least 24&nbsp;km of roads and at least 18&nbsp;km of pavements every night. Two kinds of machine can be hired for a night shift. In one shift a small machine clears 1&nbsp;km of roads and 2&nbsp;km of pavements, and a large machine clears 3&nbsp;km of roads and 1&nbsp;km of pavements. A night shift of a small machine costs 30 euros and a night shift of a large machine 50 euros. How many shifts of each machine should be hired so that the cost of one night’s work is as small as possible?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of night shifts of a small machine;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of night shifts of a large machine.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The data table</span></h4>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Small machine</th><th scope="col">Large machine</th><th scope="col">Required</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Roads, km</th><td>1</td><td>3</td><td>24</td></tr>
+                <tr><th scope="row">Pavements, km</th><td>2</td><td>1</td><td>18</td></tr>
+                <tr><th scope="row">Cost, EUR</th><td>30</td><td>50</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          <p>Each row of the table gives one requirement: what the two kinds of machine clear together must be at least the length demanded. For example, for roads:</p>
+          <div class="formula fit">\[ \underbrace{x}_{\text{small}} + \underbrace{3y}_{\text{large}} \geq \underbrace{24}_{\text{required}} \]</div>
+          <p>The cost row gives the objective function:</p>
+          \[ \begin{gathered} TC = 30x + 50y \to \min \\[4pt] \begin{cases} x + 3y \geq 24 \\ 2x + y \geq 18 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 3y = 24\)</p>
+              <p class="xy-calc">\(x = 0:\; 3y = 24 \Rightarrow y = 8\)<br>\(y = 0:\; x = 24\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>24</td></tr><tr><th scope="row">\(y\)</th><td>8</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 18\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 18\)<br>\(y = 0:\; 2x = 18 \Rightarrow x = 9\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>9</td></tr><tr><th scope="row">\(y\)</th><td>18</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test point</span></h4>
+          <p>The origin is the test point for both inequalities:</p>
+          \[ \begin{alignedat}{2} 0 + 3\cdot 0 \geq 24 \;&amp;\Rightarrow\; 0 \geq 24 \; &amp;&amp; \text{(false)} \\ 2\cdot 0 + 0 \geq 18 \;&amp;\Rightarrow\; 0 \geq 18 \; &amp;&amp; \text{(false)} \end{alignedat} \]
+          <p>Both tests are false, so both arrows point away from the origin and the feasible set lies above and to the right of the two lines.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <p>The feasible set is unbounded and has three vertices:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,26,2,3],"y":[-1,20,2,3],"nn":"xy","c":[{"a":1,"b":3,"s":"ge","r":24,"lab":"x + 3y = 24","col":1,"lt":0.62,"lo":-14,"arr":[0.4,0.8]},{"a":2,"b":1,"s":"ge","r":18,"lab":"2x + y = 18","col":2,"lt":0.2,"lo":-14,"arr":[0.25,0.8]}],"pts":[{"x":0,"y":18,"lab":"A","p":"ne"},{"x":6,"y":6,"lab":"B","p":"sw"},{"x":24,"y":0,"lab":"C","p":"n"}],"aria":"The unbounded feasible set of the snow-clearing problem with the vertices A, B, C"}'></div>
+            <figcaption>Figure 2. The feasible set of the snow-clearing problem.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <ul class="vert-list">
+            <li>\(A\) lies on the \(Oy\)-axis. It is the \(Oy\)-intercept of the line \(2x + y = 18\); its coordinates are already in the value table of this line: \(A(0;\, 18)\).</li>
+            <li>\(B\) is the crossing point of \(2x + y = 18\) and \(x + 3y = 24\):
+              \[ \begin{gathered} \begin{cases} 2x + y = 18 \\ x + 3y = 24 \end{cases} \\ \Longrightarrow\; x = 6,\; y = 6 \;\Longrightarrow\; B(6;\, 6) \end{gathered} \]
+              <p class="formula-note">From the first equation \(y = 18 - 2x\); substituting into the second gives \(x + 54 - 6x = 24\), \(x = 6\); then \(y = 18 - 12 = 6\).</p></li>
+            <li>\(C\) lies on the \(Ox\)-axis. It is the \(Ox\)-intercept of the line \(x + 3y = 24\); its coordinates are already in the value table of this line: \(C(24;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Cost at the vertices</span></h4>
+          \[ \begin{aligned} TC_A &amp;= 30\cdot 0 + 50\cdot 18 = 900 \\ TC_B &amp;= 30\cdot 6 + 50\cdot 6 \\ &amp;= 180 + 300 = 480 \\ TC_C &amp;= 30\cdot 24 + 50\cdot 0 = 720 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The smallest value</span></h4>
+          <p>The smallest value is \(\htmlClass{hd}{480}\), reached at the vertex \(B(6;\, 6)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The municipality should hire 6 night shifts of a small machine and 6 night shifts of a large machine. The minimum cost is \(TC_{\min}(6;\, 6) = 480\) euros per night.</p>
+          </div>
+          <p>There both requirements are met exactly: \(6 + 3\cdot 6 = 24\)&nbsp;km of roads and \(2\cdot 6 + 6 = 18\)&nbsp;km of pavements are cleared, so nothing is cleared beyond what the municipality demands.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 4.3, Example 3 (a requirement fixed in advance) -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A plan for delivering goods</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A wholesaler delivers goods to shops with two kinds of lorry. One trip of a small lorry carries 2 tonnes of goods and serves 2 shops; one trip of a large lorry carries 5 tonnes and serves 1 shop. At least 40 tonnes of goods have to be carried and at least 24 shop deliveries have to be made each week, and the agreement with the haulier requires at least 5 trips of the small lorry a week. One trip of the small lorry costs 60 euros and one trip of the large lorry 100 euros. How many trips of each lorry should be made weekly so that the transport cost is as small as possible?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Decision variables</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of trips of the small lorry per week;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of trips of the large lorry per week.</span></li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The data table</span></h4>
+          <div class="tbl-wrap">
+            <table class="vtable compact tight">
+              <thead><tr><th scope="col"></th><th scope="col">Small lorry</th><th scope="col">Large lorry</th><th scope="col">Required</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Goods, tonnes per trip</th><td>2</td><td>5</td><td>40</td></tr>
+                <tr><th scope="row">Shops served per trip</th><td>2</td><td>1</td><td>24</td></tr>
+                <tr><th scope="row">Cost, EUR per trip</th><td>60</td><td>100</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The mathematical model</span></h4>
+          <p>Both rows of the table become requirements, for example for the weight of the goods:</p>
+          <div class="formula fit">\[ \underbrace{2x}_{\text{small}} + \underbrace{5y}_{\text{large}} \geq \underbrace{40}_{\text{required}} \]</div>
+          <p>Besides the two rows of the table there is a third condition, the <strong>agreement with the haulier</strong>: at least 5 trips of the small lorry, which is \(x \geq 5\). The model is therefore</p>
+          \[ \begin{gathered} TC = 60x + 100y \to \min \\[4pt] \begin{cases} 2x + 5y \geq 40 \\ 2x + y \geq 24 \\ x \geq 5 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The boundary lines</span></h4>
+          <p>The value tables of the first two lines:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + 5y = 40\)</p>
+              <p class="xy-calc">\(x = 0:\; 5y = 40 \Rightarrow y = 8\)<br>\(y = 0:\; 2x = 40 \Rightarrow x = 20\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>20</td></tr><tr><th scope="row">\(y\)</th><td>8</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 24\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 24\)<br>\(y = 0:\; 2x = 24 \Rightarrow x = 12\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>12</td></tr><tr><th scope="row">\(y\)</th><td>24</td><td>0</td></tr></table>
+            </div>
+          </div>
+          <p>The third line needs no value table: \(x = 5\) is the vertical line through the point 5 of the \(Ox\)-axis.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test point</span></h4>
+          <p>None of the lines passes through the origin, so it is the test point for all three inequalities:</p>
+          <div class="formula fit">\[ \begin{alignedat}{2} 2\cdot 0 + 5\cdot 0 \geq 40 \,&amp;\Rightarrow\, 0 \geq 40 \, &amp;&amp; \text{(false)} \\ 2\cdot 0 + 0 \geq 24 \,&amp;\Rightarrow\, 0 \geq 24 \, &amp;&amp; \text{(false)} \\ 0 \geq 5 \,&amp; &amp;&amp; \text{(false)} \end{alignedat} \]</div>
+          <p>All three tests are false, so the feasible set lies away from the origin – above the first two lines and to the right of the line \(x = 5\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The feasible set</span></h4>
+          <p>The vertical line \(x = 5\) “cuts off” the left side of the set, so there is no vertex on the \(Oy\)-axis:</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,22,1,5],"y":[-1,26,1,5],"maxh":400,"nn":"xy","c":[{"a":2,"b":5,"s":"ge","r":40,"lab":"2x + 5y = 40","col":1,"lt":0.65,"lo":-14,"arr":[0.25,0.85]},{"a":2,"b":1,"s":"ge","r":24,"lab":"2x + y = 24","col":2,"lt":0.55,"lo":-14,"arr":[0.3,0.75]},{"a":1,"b":0,"s":"ge","r":5,"lab":"x = 5","col":3,"lt":0.93,"la":"start","lo":-8,"arr":[0.45,0.75]}],"pts":[{"x":5,"y":14,"lab":"A","p":"w"},{"x":10,"y":4,"lab":"B","p":"sw"},{"x":20,"y":0,"lab":"C","p":"n"}],"aria":"The unbounded feasible set of the delivery problem with the vertices A, B, C"}'></div>
+            <figcaption>Figure 3. The feasible set of the delivery problem.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The vertices</span></h4>
+          <ul class="vert-list">
+            <li>\(A\) is the crossing point of \(x = 5\) and \(2x + y = 24\):
+              \[ \begin{gathered} \begin{cases} x = 5 \\ 2x + y = 24 \end{cases} \\ \Longrightarrow\; x = 5,\; y = 14 \;\Longrightarrow\; A(5;\, 14) \end{gathered} \]
+              <p class="formula-note">Substituting \(x = 5\) into the second equation gives \(10 + y = 24\), \(y = 14\).</p></li>
+            <li>\(B\) is the crossing point of \(2x + y = 24\) and \(2x + 5y = 40\):
+              \[ \begin{gathered} \begin{cases} 2x + y = 24 \\ 2x + 5y = 40 \end{cases} \\ \Longrightarrow\; x = 10,\; y = 4 \;\Longrightarrow\; B(10;\, 4) \end{gathered} \]
+              <p class="formula-note">Subtracting the first equation from the second gives \(4y = 16\), \(y = 4\); then \(2x = 24 - 4 = 20\), \(x = 10\).</p></li>
+            <li>\(C\) lies on the \(Ox\)-axis. It is the \(Ox\)-intercept of the line \(2x + 5y = 40\); its coordinates are already in the value table of this line: \(C(20;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Cost at the vertices</span></h4>
+          \[ \begin{aligned} TC_A &amp;= 60\cdot 5 + 100\cdot 14 \\ &amp;= 300 + 1400 = 1700 \\ TC_B &amp;= 60\cdot 10 + 100\cdot 4 \\ &amp;= 600 + 400 = 1000 \\ TC_C &amp;= 60\cdot 20 + 100\cdot 0 = 1200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>The smallest value</span></h4>
+          <p>The smallest value is \(\htmlClass{hd}{1000}\), reached at the vertex \(B(10;\, 4)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The wholesaler should make 10 trips of the small lorry and 4 trips of the large lorry a week. The minimum cost is \(TC_{\min}(10;\, 4) = 1000\) euros per week.</p>
+          </div>
+          <p>There the tonnage and the number of shop deliveries are both met exactly: \(2\cdot 10 + 5\cdot 4 = 40\) tonnes and \(2\cdot 10 + 4 = 24\) deliveries. The agreement with the haulier is not binding: 10 trips of the small lorry are made, and only 5 were required.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: define the variables, build the mathematical model, draw the feasible set, find the vertices algebraically and compute the cost at each of them. The answer gives the variables, the mathematical model and the final result – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A riding stable buys two kinds of feed for the winter. One sack of feed A contains 3&nbsp;kg of protein and 1&nbsp;kg of fibre; one sack of feed B contains 1&nbsp;kg of protein and 2&nbsp;kg of fibre. The horses need at least 60&nbsp;kg of protein and at least 60&nbsp;kg of fibre. A sack of feed A costs 60 euros and a sack of feed B costs 40 euros. How many sacks of each kind should the stable buy for the cost to be the smallest, and what is that cost?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of sacks of feed A;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of sacks of feed B.</span></li>
+          </ul>
+          <p><strong>The mathematical model:</strong></p>
+          \[ \begin{gathered} TC = 60x + 40y \to \min \\[4pt] \begin{cases} 3x + y \geq 60 \\ x + 2y \geq 60 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Answer.</strong> The smallest value of the objective function is</p>
+          \[ TC_{\min}(12;\, 24) = 1680 \]
+          <p>The stable should buy 12 sacks of feed A and 24 sacks of feed B; the cost is then 1680 euros. Both requirements are met exactly – the feed contains 60&nbsp;kg of protein and 60&nbsp;kg of fibre.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A company is planning an advertising campaign in two media. One online advertisement reaches 3 thousand people under 35 and 1 thousand people over 35; one newspaper advertisement reaches 1 thousand people under 35 and 2 thousand people over 35. The campaign must reach at least 180 thousand people under 35 and at least 140 thousand people over 35. The marketing department requires that at least 40&nbsp;% of all the advertisements be placed in the newspaper. One online advertisement costs 400 euros and one newspaper advertisement 900 euros. How many advertisements of each kind should be placed for the cost to be the smallest, and what is that cost?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of online advertisements;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of newspaper advertisements.</span></li>
+          </ul>
+          <p><strong>The mathematical model.</strong> The requirement of the marketing department is \(y \geq 0.4(x + y)\), that is \(0.6y \geq 0.4x\), that is \(2x - 3y \leq 0\):</p>
+          \[ \begin{gathered} TC = 400x + 900y \to \min \\[4pt] \begin{cases} 3x + y \geq 180 \\ x + 2y \geq 140 \\ 2x - 3y \leq 0 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Answer.</strong> The smallest value of the objective function is</p>
+          \[ TC_{\min}(60;\, 40) = 60000 \]
+          <p>The company should place 60 online and 40 newspaper advertisements; the cost is then 60000 euros. The newspaper advertisements make up exactly 40&nbsp;% of the hundred advertisements and the people over 35 are reached exactly 140 thousand times. The people under 35 are reached 220 thousand times instead of the required 180 thousand.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 4</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 3</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
