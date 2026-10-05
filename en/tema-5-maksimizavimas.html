@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standard Maximization Problems (Simplex Method) · Applied Mathematics</title>
+<meta name="description" content="Solving standard maximization problems by the simplex method: the initial tableau, iterations, reading the final tableau – the optimal plan, the maximum profit, the unused resources and the shadow prices. Examples step by step.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-5-maksimizavimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=52">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=52"></script>
+</head>
+<body data-page="m51">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 5 · Applications · Section 1</span>
+    <h1>Standard Maximization Problems</h1>
+    <p class="lead">This section solves production planning problems by the simplex method: the initial tableau is built, the iterations are carried out, and the optimal plan, the maximum profit, the unused resources and the shadow prices are read from the final tableau.</p>
+    <ul class="jump">
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#galutine">Final tableau</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <p>The essence of the method and the notation of the operations are discussed on the <a href="tema-5.html#iteracija">Topic 5 page</a>. The problem is solved in this order:</p>
+      <ol class="steps-list">
+        <li><strong>Define the variables and write the mathematical model:</strong> the objective function with \(\to \max\) and, next to it, the system of all the constraints.</li>
+        <li><strong>Introduce the slack variables</strong> \(s_1, s_2, \ldots\) – one for each constraint – and write the objective function as an equation with all its terms on the left-hand side.</li>
+        <li><strong>Build the initial tableau:</strong> one column for every variable in the order \(x \ldots \mid s \ldots \mid P \mid n\), one row for every equation; write the objective equation last.</li>
+        <li><strong>The pivot column</strong> is the one containing the most negative entry of the objective row. If there is no negative entry, the tableau is optimal.</li>
+        <li><strong>The pivot row</strong> is the one with the smallest of the ratios of the right-hand sides to the positive entries of the pivot column.</li>
+        <li><strong>Transform the tableau:</strong> divide the pivot row by the pivot element, then turn the other entries of the pivot column into zeros by row operations.</li>
+        <li><strong>Return to step 4.</strong></li>
+        <li><strong>Read the answers from the final tableau</strong> to all the questions of the problem (<a href="#galutine">see below</a>).</li>
+      </ol>
+
+      <div class="tip">
+        <p><strong>The constraints must not be simplified.</strong> Before building the tableau it is tempting to tidy a constraint such as \(2x + 2y \leq 100\) into \(x + y \leq 50\). Do not do it. The two inequalities describe the same feasible set, so the optimal plan and the maximum profit would be the same – but the slack variable and the shadow price of that row would no longer mean what they should: in <a href="#pavyzdys-3">Example 3</a> the shadow price would come out as 10 euros per two square metres instead of 5 euros per one.</p>
+        <p style="margin:8px 0 0">The one exception is a division by 10, 100, 1000 and so on, made together with a change of the unit of that resource – hours into tens of hours, kilograms into tonnes. The change must then be carried into the interpretation, so that the shadow price of that row is read as the profit per ten extra hours and its slack variable as a number of tens of hours.</p>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>An empty cell instead of a zero.</strong> Every coefficient is written in the tableau, including the zeros; a missing zero is the commonest source of later mistakes.</li>
+            <li><strong>The signs of the objective coefficients not changed.</strong> The objective function is written as an equation with \(P\) on the left-hand side, so the profit coefficients enter the tableau with a minus sign.</li>
+            <li><strong>The ratios calculated incorrectly.</strong> Only the positive entries of the pivot column are divided by; the objective row does not take part in this test.</li>
+            <li><strong>A simplified constraint.</strong> If a constraint is divided, for example by 2, the shadow price and the amount of the resource left over come out wrong.</li>
+            <li><strong>A value read from a column that is not a unit column.</strong> A value is read only from a unit column – in the row where its 1 stands; the other variables are equal to zero.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving applied linear programming problems, the definitions of the introduced variables must be provided at the beginning of the solution. Each variable definition must clearly state that the variable represents the quantity of a specific object.</li>
+            <li>If convenient for the author, the data from the problem may be summarized in a table, but this is optional.</li>
+            <li>The solution must include the mathematical model of the problem – the objective function and the system of constraints. It is not sufficient to present only the simplex tableau. It must be clearly stated whether the objective function is to be maximized or minimized. All constraints, including non-negativity constraints, must be written clearly together in one system, next to the objective function.</li>
+            <li>It is not required to explain the meaning of slack variables or the conversion of inequalities into equations.</li>
+            <li>After formulating the initial simplex tableau, it is necessary to indicate the pivot column and pivot row. The ratio calculations used to select the pivot row must be shown.</li>
+            <li>During the simplex method process, row operations to eliminate elements above and below the pivot element must be shown.</li>
+            <li>At the end of the solution, answers to all problem questions must be clearly formulated.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. FINAL TABLEAU ============ -->
+  <section class="section" id="galutine" aria-labelledby="h-final">
+    <h2 id="h-final">Reading the final tableau</h2>
+
+    <article class="card">
+      <p>When no negative entry is left in the objective row, the tableau is optimal. Everything the problem asks for is in it; it only has to be read in the right places. For example, the final tableau of a problem with three variables and three constraints could look like this:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr><th scope="col">\(x\)</th><th scope="col" class="bc">\(y\)</th><th scope="col" class="bc">\(z\)</th><th scope="col" class="g bc">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr><td class="dot">·</td><td class="bc">0</td><td class="bc">0</td><td class="g bc">1</td><td class="dot">·</td><td class="dot">·</td><td class="g">0</td><td class="g nv">\(q_1\)</td></tr>
+<tr><td class="dot">·</td><td class="bc">1</td><td class="bc">0</td><td class="g bc">0</td><td class="dot">·</td><td class="dot">·</td><td class="g">0</td><td class="g nv">\(q_2\)</td></tr>
+<tr><td class="dot">·</td><td class="bc">0</td><td class="bc">1</td><td class="g bc">0</td><td class="dot">·</td><td class="dot">·</td><td class="g">0</td><td class="g nv">\(q_3\)</td></tr>
+<tr class="tf"><td class="dot">·</td><td class="bc">0</td><td class="bc">0</td><td class="g bc sp">0</td><td class="sp">\(k_2\)</td><td class="sp">\(k_3\)</td><td class="g">1</td><td class="g pv">\(P_{\max}\)</td></tr>
+</tbody></table></div>
+      <ul class="sx-legend">
+        <li><span class="sw sw-bc" aria-hidden="true"></span>unit columns</li>
+        <li><span class="sw sw-nv" aria-hidden="true"></span>the values of their variables</li>
+        <li><span class="sw sw-pv" aria-hidden="true"></span>maximum profit</li>
+        <li><span class="sw sw-sp" aria-hidden="true"></span>shadow prices</li>
+      </ul>
+
+      <div class="subtype">
+        <h4>1. The quantities</h4>
+        <p>Look for the <strong>unit columns</strong> – the columns that contain one 1 and zeros everywhere else. The variable of such a column takes the value standing in the right-hand side column of the row in which its 1 is. In this tableau the unit columns are those of \(s_1\), \(y\) and \(z\), so</p>
+        <div class="formula">\[ s_1 = q_1,\qquad y = q_2,\qquad z = q_3 \]</div>
+        <p>The variables whose columns are not unit columns – here \(x\), \(s_2\) and \(s_3\) – are equal to zero.</p>
+        <details class="more more--why">
+          <summary><span class="ico" aria-hidden="true">?</span>Why the remaining variables are zero</summary>
+          <div class="more-body">
+            <p>The tableau is still the same system of equations, only rewritten; it has more variables than equations, so it does not have a single solution but a whole family of them. The tableau selects one member of that family by setting every variable whose column is not a unit column to zero. What is left is one equation per row, each containing exactly one variable with the coefficient 1, so that variable equals the number in the \(n\) column of its row and can be read off directly.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="subtype">
+        <h4>2. The maximum profit</h4>
+        <p>The maximum profit is the last entry of the objective row, in the \(n\) column: \(P = P_{\max}\). It is always worth checking it by substituting the plan found into the objective function.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>3. The shadow prices</h4>
+        <p>The shadow prices stand in the objective row, <strong>under the slack columns</strong> – one for each resource, in the order in which the constraints were written. In this tableau they are \(0\), \(k_2\) and \(k_3\).</p>
+        <p>The <strong>shadow price</strong> of a resource is the amount by which the maximum profit would grow if one more unit of that resource were available, everything else unchanged. It shows the most that it is worth paying for an extra unit of the resource.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>4. The unused resources</h4>
+        <p>Each slack variable was introduced as the unused part of one resource, so its value shows directly how much of that resource is left. In this tableau \(s_1 = q_1\) – that much of the first resource is left – and \(s_2 = s_3 = 0\) – the second and the third resources are used up completely.</p>
+        <p class="tip">The two readings confirm each other: a resource that is left over always has a shadow price of zero, and a resource with a positive shadow price is always used to the last unit.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time. On a phone the wide tables can be scrolled sideways.</p>
+
+    <!-- Example 1: AM Alternative 5.1 (replaces the lecture furniture example) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>The production plan of a glassworks</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A glassworks produces jars, vases, and bowls utilizing three processes: melting, forming, and annealing. The company can allocate a maximum of 400 hours for the melting process, 600 hours for the forming process, and 300 hours for the annealing process. The production of one jar requires 2 hours of melting, 1 hour of forming, and 3 hours of annealing. The production of one vase demands 2 hours of melting, 1 hour of forming, and 1 hour of annealing. The production of one bowl needs 1 hour of melting, 2 hours of forming, and 1 hour of annealing. The profit for each jar is €10, for each vase €30, and for each bowl €20.</p>
+        <ol type="a">
+          <li>How many of each item should the glassworks produce to maximize its profit? What is the maximum profit?</li>
+          <li>How much of each resource remains unused at the optimal solution?</li>
+          <li>Find the shadow prices. Explain their meaning.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The variables and the data</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of jars produced;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of vases produced;</span></li>
+            <li><span class="sym">\(z\)</span><span>– the number of bowls produced.</span></li>
+          </ul>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Jar</th><th scope="col">Vase</th><th scope="col">Bowl</th><th scope="col">Available</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Melting, h</th><td>2</td><td>2</td><td>1</td><td>400</td></tr>
+                <tr><th scope="row">Forming, h</th><td>1</td><td>1</td><td>2</td><td>600</td></tr>
+                <tr><th scope="row">Annealing, h</th><td>3</td><td>1</td><td>1</td><td>300</td></tr>
+                <tr><th scope="row">Profit, EUR</th><td>10</td><td>30</td><td>20</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The mathematical model and the system of equations</span></h4>
+          <p>Each row of the table gives one constraint, and the profit row gives the objective function:</p>
+          \[ \begin{gathered} P = 10x + 30y + 20z \to \max \\[4pt] \begin{cases} 2x + 2y + z \leq 400 \\ x + y + 2z \leq 600 \\ 3x + y + z \leq 300 \\ x;\, y;\, z \geq 0 \end{cases} \end{gathered} \]
+          <p>Every inequality is turned into an equation by a slack variable: \(s_1\), \(s_2\), \(s_3\) – the unused hours of melting, forming and annealing. The objective function is written as an equation with all its terms on the left-hand side:</p>
+          \[ \begin{cases} 2x + 2y + z + s_1 = 400 \\ x + y + 2z + s_2 = 600 \\ 3x + y + z + s_3 = 300 \\ -10x - 30y - 20z + P = 0 \end{cases} \]
+          <p class="formula-note">In the exam this system need not be written, but it helps to see where the numbers of the tableau come from.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The initial simplex tableau</span></h4>
+          <p>The four equations are written into the tableau: the columns \(x, y, z \mid s_1, s_2, s_3 \mid P \mid n\), one row for each equation, the objective equation last. Every coefficient is written, including the zeros:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td class="g idb">1</td>
+<td class="idb">0</td>
+<td class="idb">0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td class="g idb">0</td>
+<td class="idb">1</td>
+<td class="idb">0</td>
+<td class="g">0</td>
+<td class="g">600</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td class="g idb">0</td>
+<td class="idb">0</td>
+<td class="idb">1</td>
+<td class="g">0</td>
+<td class="g">300</td>
+</tr>
+<tr class="tf">
+<td>−10</td>
+<td>−30</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+</tr>
+</tbody></table></div>
+          <p>The slack columns form a unit matrix, so this tableau describes the plan in which nothing is produced: \(x = y = z = 0\), all the hours are unused – \(s_1 = 400\), \(s_2 = 600\), \(s_3 = 300\) – and \(P = 0\).</p>
+          <p>In the objective row the profit coefficients are written with the opposite sign. A negative entry means that the variable of that column still raises the profit: \(-30\) says that every vase would add 30 euros to the profit.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Iteration 1: the pivot column, row and element</span></h4>
+          <p><strong>The pivot column.</strong> In the variable columns the objective row reads \(-10,\; -30,\; -20,\; 0,\; 0,\; 0\). The most negative entry is \(-30\), in the column of \(y\), so the \(y\) column is the pivot column: vases enter the production plan. This choice is made because a vase promises the largest growth of the profit per unit produced.</p>
+          <p><strong>The pivot row.</strong> Each right-hand side is divided by the entry that its row has in the pivot column (the objective row does not take part):</p>
+          \[ \begin{gathered} 400 : 2 = 200 \\ 600 : 1 = 600 \\ 300 : 1 = 300 \end{gathered} \]
+          <p>The smallest ratio is 200, so the first row is the pivot row and the pivot element is 2.</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td>2</td>
+<td class="pc pe">2</td>
+<td>1</td>
+<td class="g">1</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+<td class="ann">: 2</td>
+<td class="ann">400 : 2 = 200</td>
+</tr>
+<tr>
+<td>1</td>
+<td class="pc">1</td>
+<td>2</td>
+<td class="g">0</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">600</td>
+<td class="ann"></td>
+<td class="ann">600 : 1 = 600</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="pc">1</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">300</td>
+<td class="ann"></td>
+<td class="ann">300 : 1 = 300</td>
+</tr>
+<tr class="tf">
+<td>−10</td>
+<td class="pc">−30</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+          <p class="formula-note">A ratio answers the question: if vases alone were produced, how many could this row’s resource pay for? Melting time would be enough for 200 vases, forming for 600, annealing for 300. Melting time runs out first, so it sets the limit.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Iteration 1: transforming the tableau</span></h4>
+          <p>The first row is divided by 2 – the pivot element becomes 1. Then the entries of the other rows in the \(y\) column are turned into zeros: the multiplier is always the entry that the row has in the pivot column, with the opposite sign. The second and the third rows have 1 in the \(y\) column, so both have the multiplier \((-1)\); the objective row has \(-30\), so its multiplier is \((30)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td>1</td>
+<td class="pc pe">1</td>
+<td>0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann">(−1)</td>
+<td class="ann">(30)</td>
+</tr>
+<tr>
+<td>1</td>
+<td class="pc">1</td>
+<td>2</td>
+<td class="g">0</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">600</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="pc">1</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">300</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td>−10</td>
+<td class="pc">−30</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+          <p>Carrying out the row operations gives:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">200</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1.5</td>
+<td class="g">−0.5</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>0.5</td>
+<td class="g">−0.5</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr class="tf">
+<td>20</td>
+<td>0</td>
+<td>−5</td>
+<td class="g">15</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">6000</td>
+</tr>
+</tbody></table></div>
+          <p><strong>What has changed.</strong> The \(y\) column is now a unit column, and the \(s_1\) column no longer is: \(y\) has entered the plan and \(s_1\) has left it. The unit columns are those of \(y\) (its 1 in the first row), \(s_2\) (second row) and \(s_3\) (third row), so</p>
+          \[ \begin{gathered} y = 200,\quad s_2 = 400,\quad s_3 = 100 \\ x = z = s_1 = 0,\quad P = 6000 \end{gathered} \]
+          <p>The glassworks would make 200 vases: all 400 hours of melting would be used, 400 hours of forming and 100 hours of annealing would remain, and the profit would be 6000 euros. This plan is better than the initial one, but not yet the best.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Iteration 2: the pivot column, row and element</span></h4>
+          <p>The objective row still contains the negative entry \(-5\), in the column of \(z\), so the profit can still be raised: now bowls enter the plan. The ratios:</p>
+          \[ \begin{gathered} 200 : 0.5 = 400 \\ 400 : 1.5 \approx 266.7 \\ 100 : 0.5 = 200 \end{gathered} \]
+          <p>The smallest ratio is 200, so the third row is the pivot row and the pivot element is \(0.5\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="pc">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td class="pc">0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann"></td>
+<td class="ann">200 : 0.5 = 400</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td class="pc">1.5</td>
+<td class="g">−0.5</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+<td class="ann"></td>
+<td class="ann">400 : 1.5 ≈ 266.7</td>
+</tr>
+<tr class="pr">
+<td>2</td>
+<td>0</td>
+<td class="pc pe">0.5</td>
+<td class="g">−0.5</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">100</td>
+<td class="ann">: 0.5</td>
+<td class="ann">100 : 0.5 = 200</td>
+</tr>
+<tr class="tf">
+<td>20</td>
+<td>0</td>
+<td class="pc">−5</td>
+<td class="g">15</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">6000</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Iteration 2: transforming the tableau</span></h4>
+          <p>The third row is divided by \(0.5\). The multipliers of the other rows are again their entries in the \(z\) column with the opposite sign: \((-0.5)\) for the first row, \((-1.5)\) for the second and \((5)\) for the objective row:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="pc">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td class="pc">0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td class="pc">1.5</td>
+<td class="g">−0.5</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">400</td>
+<td class="ann">│</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+</tr>
+<tr class="pr">
+<td>4</td>
+<td>0</td>
+<td class="pc pe">1</td>
+<td class="g">−1</td>
+<td>0</td>
+<td>2</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann">(−0.5)</td>
+<td class="ann">(−1.5)</td>
+<td class="ann">(5)</td>
+</tr>
+<tr class="tf">
+<td>20</td>
+<td>0</td>
+<td class="pc">−5</td>
+<td class="g">15</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">6000</td>
+<td class="ann"></td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+          <p>Carrying out the row operations gives:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>−1</td>
+<td>1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>0</td>
+<td>−1</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr>
+<td>−6</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td>1</td>
+<td>−3</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td class="g">−1</td>
+<td>0</td>
+<td>2</td>
+<td class="g">0</td>
+<td class="g">200</td>
+</tr>
+<tr class="tf">
+<td>40</td>
+<td>0</td>
+<td>0</td>
+<td class="g">10</td>
+<td>0</td>
+<td>10</td>
+<td class="g">1</td>
+<td class="g">7000</td>
+</tr>
+</tbody></table></div>
+          <p>Now \(z\) has entered the plan and \(s_3\) has left it.</p>
+          <p><strong>The stopping rule.</strong> The objective row is \(40,\; 0,\; 0,\; 10,\; 0,\; 10\) – no negative entry is left, so this tableau is optimal. A positive entry shows that bringing in the variable of that column would lower the profit: the 40 under \(x\) means that every jar produced would lower the profit by 40 euros, because the hours it takes would be taken away from more profitable products.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Reading the final tableau</span></h4>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="bc">\(y\)</th>
+<th scope="col" class="bc">\(z\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col" class="bc">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>−1</td>
+<td class="bc">1</td>
+<td class="bc">0</td>
+<td class="g">1</td>
+<td class="bc">0</td>
+<td>−1</td>
+<td class="g">0</td>
+<td class="g nv">100</td>
+</tr>
+<tr>
+<td>−6</td>
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g">1</td>
+<td class="bc">1</td>
+<td>−3</td>
+<td class="g">0</td>
+<td class="g nv">100</td>
+</tr>
+<tr>
+<td>4</td>
+<td class="bc">0</td>
+<td class="bc">1</td>
+<td class="g">−1</td>
+<td class="bc">0</td>
+<td>2</td>
+<td class="g">0</td>
+<td class="g nv">200</td>
+</tr>
+<tr class="tf">
+<td>40</td>
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g sp">10</td>
+<td class="bc sp">0</td>
+<td class="sp">10</td>
+<td class="g">1</td>
+<td class="g pv">7000</td>
+</tr>
+</tbody></table></div>
+          <ul class="read-list">
+            <li class="r-bc"><strong>The quantities.</strong> The unit columns are those of \(y\) (its 1 in the first row), \(s_2\) (second row) and \(z\) (third row), so \(y = 100\), \(s_2 = 100\), \(z = 200\). The columns of \(x\), \(s_1\), \(s_3\) are not unit columns, so \(x = s_1 = s_3 = 0\).</li>
+            <li class="r-pv"><strong>The maximum profit</strong> is the last entry of the objective row: \(P = 7000\). Check: \(10\cdot 0 + 30\cdot 100 + 20\cdot 200 = 7000\).</li>
+            <li class="r-sp"><strong>The shadow prices</strong> stand in the objective row under \(s_1, s_2, s_3\): melting \(10\), forming \(0\), annealing \(10\).</li>
+            <li><strong>The unused resources</strong> are the values of the slack variables: \(s_1 = 0\), \(s_2 = 100\), \(s_3 = 0\). Check against the constraints: melting uses \(2\cdot 0 + 2\cdot 100 + 200 = 400\) of 400 hours, forming \(0 + 100 + 2\cdot 200 = 500\) of 600, annealing \(3\cdot 0 + 100 + 200 = 300\) of 300.</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The glassworks should produce no jars, 100 vases and 200 bowls; the maximum profit is \(P_{\max}(0;\, 100;\, 200) = 7000\) euros.</p>
+            <p>b) 100 hours of the forming process remain unused; the melting and the annealing hours are used up completely.</p>
+            <p>c) The shadow prices are 10 euros per hour for melting, 0 for forming and 10 euros per hour for annealing: one extra hour of melting or of annealing would add 10 euros to the profit, whereas extra forming time would add nothing, because forming time is already in surplus.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 5.1, Example 2 (a ceramics studio) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>The production plan of a ceramics studio</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A ceramics studio makes mugs and bowls. One mug takes 2 hours of shaping and 2&nbsp;kg of clay; one bowl takes 1 hour of shaping and 3&nbsp;kg of clay. In a month the studio has 100 hours of shaping time and 180&nbsp;kg of clay. The profit is 24 euros on a mug and 20 euros on a bowl. How many mugs and bowls should be made to maximize the profit? Are any resources left over? Find the shadow prices.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The variables and the data</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of mugs made per month;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of bowls made per month.</span></li>
+          </ul>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Mug</th><th scope="col">Bowl</th><th scope="col">Available</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Shaping, h</th><td>2</td><td>1</td><td>100</td></tr>
+                <tr><th scope="row">Clay, kg</th><td>2</td><td>3</td><td>180</td></tr>
+                <tr><th scope="row">Profit, EUR</th><td>24</td><td>20</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The mathematical model and the system of equations</span></h4>
+          \[ \begin{gathered} P = 24x + 20y \to \max \\[4pt] \begin{cases} 2x + y \leq 100 \\ 2x + 3y \leq 180 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>Introducing the slack variables \(s_1\) (unused hours of shaping) and \(s_2\) (unused clay, kg) gives:</p>
+          \[ \begin{cases} 2x + y + s_1 = 100 \\ 2x + 3y + s_2 = 180 \\ -24x - 20y + P = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The initial tableau and the choices of iteration 1</span></h4>
+          <p>There are two variables and two constraints, so the tableau has the columns \(x, y \mid s_1, s_2 \mid P \mid n\) and three rows. The most negative entry of the objective row is \(-24\), so the pivot column is that of \(x\). Of the ratios \(100 : 2 = 50\) and \(180 : 2 = 90\) the smaller belongs to the first row, so the pivot element is 2:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">2</td>
+<td>1</td>
+<td class="g">1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">100</td>
+<td class="ann">: 2</td>
+<td class="ann">100 : 2 = 50</td>
+</tr>
+<tr>
+<td class="pc">2</td>
+<td>3</td>
+<td class="g">0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">180</td>
+<td class="ann"></td>
+<td class="ann">180 : 2 = 90</td>
+</tr>
+<tr class="tf">
+<td class="pc">−24</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Iteration 1: transforming the tableau</span></h4>
+          <p>The first row is divided by 2, and the other entries of the \(x\) column are turned into zeros: the multiplier for the second row is \((-2)\), for the objective row \((24)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">1</td>
+<td>0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">50</td>
+<td class="ann">(−2)</td>
+<td class="ann">(24)</td>
+</tr>
+<tr>
+<td class="pc">2</td>
+<td>3</td>
+<td class="g">0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">180</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td class="pc">−24</td>
+<td>−20</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">50</td>
+</tr>
+<tr>
+<td>0</td>
+<td>2</td>
+<td class="g">−1</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">80</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>−8</td>
+<td class="g">12</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1200</td>
+</tr>
+</tbody></table></div>
+          <p>Now \(x\) has entered the plan and \(s_1\) has left it: \(x = 50\), \(s_2 = 80\), \(P = 1200\). The objective row still contains the negative entry \(-8\), so the plan can be improved.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Iteration 2: the choices</span></h4>
+          <p>The negative entry \(-8\) is in the column of \(y\), so that column is the pivot column. The ratios are \(50 : 0.5 = 100\) and \(80 : 2 = 40\); the smaller belongs to the second row, so the pivot element is 2:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td class="pc">0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">50</td>
+<td class="ann"></td>
+<td class="ann">50 : 0.5 = 100</td>
+</tr>
+<tr class="pr">
+<td>0</td>
+<td class="pc pe">2</td>
+<td class="g">−1</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">80</td>
+<td class="ann">: 2</td>
+<td class="ann">80 : 2 = 40</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td class="pc">−8</td>
+<td class="g">12</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1200</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Iteration 2: transforming the tableau</span></h4>
+          <p>The second row is divided by 2, and the entries of the other rows in the \(y\) column are turned into zeros with the multipliers \((-0.5)\) and \((8)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td class="pc">0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">50</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+</tr>
+<tr class="pr">
+<td>0</td>
+<td class="pc pe">1</td>
+<td class="g">−0.5</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g">40</td>
+<td class="ann">(−0.5)</td>
+<td class="ann">(8)</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td class="pc">−8</td>
+<td class="g">12</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1200</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td class="g">0.75</td>
+<td>−0.25</td>
+<td class="g">0</td>
+<td class="g">30</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td class="g">−0.5</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g">40</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>0</td>
+<td class="g">8</td>
+<td>4</td>
+<td class="g">1</td>
+<td class="g">1520</td>
+</tr>
+</tbody></table></div>
+          <p>No negative entry is left, so this tableau is optimal.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Reading the final tableau</span></h4>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="bc">\(x\)</th>
+<th scope="col" class="bc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td class="bc">1</td>
+<td class="bc">0</td>
+<td class="g">0.75</td>
+<td>−0.25</td>
+<td class="g">0</td>
+<td class="g nv">30</td>
+</tr>
+<tr>
+<td class="bc">0</td>
+<td class="bc">1</td>
+<td class="g">−0.5</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g nv">40</td>
+</tr>
+<tr class="tf">
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g sp">8</td>
+<td class="sp">4</td>
+<td class="g">1</td>
+<td class="g pv">1520</td>
+</tr>
+</tbody></table></div>
+          <ul class="read-list">
+            <li class="r-bc"><strong>The quantities.</strong> The unit columns are those of \(x\) and \(y\), so \(x = 30\) and \(y = 40\); the columns of \(s_1\) and \(s_2\) are not unit columns, so \(s_1 = s_2 = 0\).</li>
+            <li class="r-pv"><strong>The maximum profit:</strong> \(P = 1520\). Check: \(24\cdot 30 + 20\cdot 40 = 720 + 800 = 1520\).</li>
+            <li class="r-sp"><strong>The shadow prices:</strong> the entries under \(s_1\) and \(s_2\), 8 and 4.</li>
+            <li><strong>The unused resources:</strong> \(s_1 = s_2 = 0\) – both resources are used to the last unit: \(2\cdot 30 + 40 = 100\) hours of shaping and \(2\cdot 30 + 3\cdot 40 = 180\)&nbsp;kg of clay.</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The studio should make 30 mugs and 40 bowls; \(P_{\max}(30;\, 40) = 1520\) euros per month. Neither resource is left over: all 100 hours of shaping and all 180&nbsp;kg of clay are used. The shadow prices are 8 euros per hour of shaping and 4 euros per kilogram of clay – one extra hour of shaping would add 8 euros to the profit and one extra kilogram of clay 4 euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 5.1, Example 3 (a workshop making bags) -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>The plan of a workshop making bags</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A workshop makes rucksacks and shoulder bags. Each rucksack and each shoulder bag takes 2&nbsp;m² of canvas. A rucksack takes 1 hour of sewing and 3 hours of finishing, a shoulder bag 2 hours of sewing and 1 hour of finishing. Each week the workshop has 100&nbsp;m² of canvas, 90 hours of sewing time and 105 hours of finishing time. The profit is 20 euros on a rucksack and 30 euros on a shoulder bag. How many bags of each kind should be made weekly to maximize the profit? Are any resources left over? Find the shadow prices.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The variables and the data</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of rucksacks made per week;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of shoulder bags made per week.</span></li>
+          </ul>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Rucksack</th><th scope="col">Shoulder bag</th><th scope="col">Available</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Canvas, m²</th><td>2</td><td>2</td><td>100</td></tr>
+                <tr><th scope="row">Sewing, h</th><td>1</td><td>2</td><td>90</td></tr>
+                <tr><th scope="row">Finishing, h</th><td>3</td><td>1</td><td>105</td></tr>
+                <tr><th scope="row">Profit, EUR</th><td>20</td><td>30</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The mathematical model and the system of equations</span></h4>
+          \[ \begin{gathered} P = 20x + 30y \to \max \\[4pt] \begin{cases} 2x + 2y \leq 100 \\ x + 2y \leq 90 \\ 3x + y \leq 105 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>Both articles take the same 2&nbsp;m² of canvas, so it is tempting to divide the first constraint by 2. It is written into the tableau <strong>as it stands</strong>, so that the slack variable counts square metres and the shadow price is the profit per extra square metre (<a href="#eiga">see How to solve</a>).</p>
+          \[ \begin{cases} 2x + 2y + s_1 = 100 \\ x + 2y + s_2 = 90 \\ 3x + y + s_3 = 105 \\ -20x - 30y + P = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The initial tableau and the choices of iteration 1</span></h4>
+          <p>The pivot column is that of \(y\) (\(-30\) is the most negative entry), and of the ratios 50, 45 and 105 the smallest belongs to the second row:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td class="pc">2</td>
+<td class="g">1</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">100</td>
+<td class="ann"></td>
+<td class="ann">100 : 2 = 50</td>
+</tr>
+<tr class="pr">
+<td>1</td>
+<td class="pc pe">2</td>
+<td class="g">0</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">90</td>
+<td class="ann">: 2</td>
+<td class="ann">90 : 2 = 45</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="pc">1</td>
+<td class="g">0</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">105</td>
+<td class="ann"></td>
+<td class="ann">105 : 1 = 105</td>
+</tr>
+<tr class="tf">
+<td>−20</td>
+<td class="pc">−30</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Iteration 1: transforming the tableau</span></h4>
+          <p>The second row is divided by 2. The first row is cleared with the multiplier \((-2)\), because it has 2 in the pivot column, the third row with \((-1)\), and the objective row with \((30)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col" class="pc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td class="pc">2</td>
+<td class="g">1</td>
+<td>0</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">100</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+<tr class="pr">
+<td>0.5</td>
+<td class="pc pe">1</td>
+<td class="g">0</td>
+<td>0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">45</td>
+<td class="ann">(−2)</td>
+<td class="ann">(−1)</td>
+<td class="ann">(30)</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="pc">1</td>
+<td class="g">0</td>
+<td>0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">105</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td>−20</td>
+<td class="pc">−30</td>
+<td class="g">0</td>
+<td>0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">10</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">45</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>−0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">60</td>
+</tr>
+<tr class="tf">
+<td>−5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>15</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1350</td>
+</tr>
+</tbody></table></div>
+          <p>Now \(y = 45\), \(s_1 = 10\), \(s_3 = 60\), \(P = 1350\). The objective row still has \(-5\) under \(x\), so a second iteration follows.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Iteration 2: the choices</span></h4>
+          <p>The pivot column is that of \(x\). The ratios are \(10 : 1 = 10\), \(45 : 0.5 = 90\) and \(60 : 2.5 = 24\); the smallest is in the first row, and the pivot element is 1:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">10</td>
+<td class="ann">: 1</td>
+<td class="ann">10 : 1 = 10</td>
+</tr>
+<tr>
+<td class="pc">0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">45</td>
+<td class="ann"></td>
+<td class="ann">45 : 0.5 = 90</td>
+</tr>
+<tr>
+<td class="pc">2.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>−0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">60</td>
+<td class="ann"></td>
+<td class="ann">60 : 2.5 = 24</td>
+</tr>
+<tr class="tf">
+<td class="pc">−5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>15</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1350</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Iteration 2: transforming the tableau</span></h4>
+          <p>The pivot element is already 1, so no division is needed – the row operations with the multipliers \((-0.5)\), \((-2.5)\) and \((5)\) are carried out straight away:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">10</td>
+<td class="ann">(−0.5)</td>
+<td class="ann">(−2.5)</td>
+<td class="ann">(5)</td>
+</tr>
+<tr>
+<td class="pc">0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">45</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+<td class="ann">│</td>
+</tr>
+<tr>
+<td class="pc">2.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>−0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">60</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td class="pc">−5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>15</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1350</td>
+<td class="ann"></td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">10</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td class="g">−0.5</td>
+<td>1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">40</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td class="g">−2.5</td>
+<td>2</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">35</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>0</td>
+<td class="g">5</td>
+<td>10</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1400</td>
+</tr>
+</tbody></table></div>
+          <p>The objective row has no negative entry, so the tableau is optimal.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Reading the final tableau</span></h4>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="bc">\(x\)</th>
+<th scope="col" class="bc">\(y\)</th>
+<th scope="col" class="g">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="bc">\(s_3\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td class="bc">1</td>
+<td class="bc">0</td>
+<td class="g">1</td>
+<td>−1</td>
+<td class="bc">0</td>
+<td class="g">0</td>
+<td class="g nv">10</td>
+</tr>
+<tr>
+<td class="bc">0</td>
+<td class="bc">1</td>
+<td class="g">−0.5</td>
+<td>1</td>
+<td class="bc">0</td>
+<td class="g">0</td>
+<td class="g nv">40</td>
+</tr>
+<tr>
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g">−2.5</td>
+<td>2</td>
+<td class="bc">1</td>
+<td class="g">0</td>
+<td class="g nv">35</td>
+</tr>
+<tr class="tf">
+<td class="bc">0</td>
+<td class="bc">0</td>
+<td class="g sp">5</td>
+<td class="sp">10</td>
+<td class="bc sp">0</td>
+<td class="g">1</td>
+<td class="g pv">1400</td>
+</tr>
+</tbody></table></div>
+          <ul class="read-list">
+            <li class="r-bc"><strong>The quantities.</strong> The unit columns of \(x\), \(y\) and \(s_3\) give \(x = 10\), \(y = 40\) and \(s_3 = 35\), while \(s_1 = s_2 = 0\).</li>
+            <li class="r-pv"><strong>The maximum profit:</strong> \(P = 1400\). Check: \(20\cdot 10 + 30\cdot 40 = 200 + 1200 = 1400\).</li>
+            <li class="r-sp"><strong>The shadow prices:</strong> canvas 5, sewing 10, finishing 0.</li>
+            <li><strong>The unused resources:</strong> the canvas and the sewing time are used up, and 35 hours of finishing time are left. As always, the resource that is left over is exactly the one whose shadow price is 0.</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The workshop should make 10 rucksacks and 40 shoulder bags; \(P_{\max}(10;\, 40) = 1400\) euros per week. All 100&nbsp;m² of canvas and all 90 hours of sewing are used, and 35 hours of finishing time remain unused. The shadow prices are 5 euros per square metre of canvas, 10 euros per hour of sewing and 0 for finishing. One extra square metre of canvas would add 5 euros to the profit and one extra hour of sewing 10 euros, while extra finishing time would add nothing, since it is already in surplus.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: define the variables, build the mathematical model and the initial simplex tableau, show the pivot column, the ratios and the row operations, and read the answers from the final tableau. The answer gives the variables, the mathematical model and the final answers – use them to check your work. Each problem is solved in two iterations.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A metal workshop makes garden gates and railing sections. One gate takes 2 hours of cutting, 2 hours of welding and 1 hour of painting; one railing section takes 1 hour of cutting, 3 hours of welding and 3 hours of painting. In a week the workshop has 100 hours of cutting, 180 hours of welding and 160 hours of painting. The profit is 30 euros on a gate and 25 euros on a railing section.</p>
+          <ol type="a">
+            <li>How many gates and railing sections should the workshop make in a week for the profit to be the largest, and what is that profit?</li>
+            <li>Which resources are not used up, and how much of them is left?</li>
+            <li>What are the shadow prices of the three resources, and what do they tell the workshop?</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of gates made in a week;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of railing sections made in a week.</span></li>
+          </ul>
+          <p><strong>The mathematical model:</strong></p>
+          \[ \begin{gathered} P = 30x + 25y \to \max \\[4pt] \begin{cases} 2x + y \leq 100 \\ 2x + 3y \leq 180 \\ x + 3y \leq 160 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Answer.</strong> a) The largest value of the objective function is</p>
+          \[ P_{\max}(30;\, 40) = 1900 \]
+          <p>The workshop should make 30 gates and 40 railing sections a week; the profit is then 1900 euros.</p>
+          <p>b) In the final tableau \(s_1 = s_2 = 0\) and \(s_3 = 10\). The cutting hours and the welding hours are used up exactly, and 10 hours of painting are left unused.</p>
+          <p>c) The objective row of the final tableau gives, under the slack columns, the shadow prices 10, 5 and 0 euros. One extra hour of cutting would raise the profit by 10 euros and one extra hour of welding by 5 euros. An extra hour of painting would add nothing, because 10 painting hours are idle already. If the workshop can buy more of only one resource, it should be cutting time.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A cosmetics producer makes shower gel, shampoo and hand cream in batches. One batch of shower gel takes 2 hours of mixing, 1 hour of filling and 2 hours of packing; one batch of shampoo takes 1 hour of mixing, 1 hour of filling and 2 hours of packing; one batch of hand cream takes 1 hour of mixing, 2 hours of filling and 3 hours of packing. In a month the producer has 130 hours of mixing, 160 hours of filling and 270 hours of packing. The profit is 20 euros on a batch of shower gel, 25 euros on a batch of shampoo and 40 euros on a batch of hand cream.</p>
+          <ol type="a">
+            <li>How many batches of each product should be made in a month for the profit to be the largest, and what is that profit?</li>
+            <li>Which resources are not used up, and how much of them is left?</li>
+            <li>What are the shadow prices of the three resources, and what do they tell the producer?</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of batches of shower gel made in a month;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of batches of shampoo;</span></li>
+            <li><span class="sym">\(z\)</span><span>– the number of batches of hand cream.</span></li>
+          </ul>
+          <p><strong>The mathematical model:</strong></p>
+          \[ \begin{gathered} P = 20x + 25y + 40z \to \max \\[4pt] \begin{cases} 2x + y + z \leq 130 \\ x + y + 2z \leq 160 \\ 2x + 2y + 3z \leq 270 \\ x;\, y;\, z \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Answer.</strong> a) The largest value of the objective function is</p>
+          \[ P_{\max}(0;\, 60;\, 50) = 3500 \]
+          <p>The producer should make no shower gel at all, 60 batches of shampoo and 50 batches of hand cream a month; the profit is then 3500 euros. Shower gel does not enter the plan: the hours it would take are worth more in the other two products.</p>
+          <p>b) In the final tableau \(s_1 = 20\) and \(s_2 = s_3 = 0\). The filling hours and the packing hours are used up exactly, and 20 hours of mixing are left unused.</p>
+          <p>c) The shadow prices in the objective row are 0, 5 and 10 euros. An extra hour of mixing is worth nothing, since 20 mixing hours are idle. An extra hour of filling would raise the profit by 5 euros and an extra hour of packing by 10 euros. Packing time is the resource that limits this plan the most.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 5</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

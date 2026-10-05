@@ -243,7 +243,7 @@
         desc: { lt: 'Visumos dalys, mišiniai, pristatymo planai ir maišyti apribojimų ženklai.', en: 'Shares of a total, mixtures, delivery plans and mixed constraint signs.' } }
     ],
     t5: [
-      { id: 'm51', status: 'active', href: { lt: 'tema-5-maksimizavimas.html' },
+      { id: 'm51', status: 'active', href: { lt: 'tema-5-maksimizavimas.html', en: 'tema-5-maksimizavimas.html' },
         title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' },
         desc: { lt: 'Gamybos planas su bet kokiu kintamųjų skaičiumi: optimalus planas, likę ištekliai ir šešėlinės kainos.', en: 'A production plan with any number of variables: the optimal plan, the unused resources and the shadow prices.' } },
       { id: 'm52', status: 'active', href: { lt: 'tema-5-minimizavimas.html' },
@@ -293,7 +293,7 @@
                title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' } },
     t5:      { parent: 'home', href: { lt: 'tema-5.html', en: 'tema-5.html' },
                title: { lt: '5 tema', en: 'Topic 5' } },
-    m51:     { parent: 't5', topic: 't5', model: 'm51', href: { lt: 'tema-5-maksimizavimas.html', en: null },
+    m51:     { parent: 't5', topic: 't5', model: 'm51', href: { lt: 'tema-5-maksimizavimas.html', en: 'tema-5-maksimizavimas.html' },
                title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' } },
     m52:     { parent: 't5', topic: 't5', model: 'm52', href: { lt: 'tema-5-minimizavimas.html', en: null },
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
