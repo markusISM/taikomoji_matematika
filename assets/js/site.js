@@ -175,7 +175,7 @@
       title: { lt: 'Tiesinių lygčių sistemos', en: 'Systems of Linear Equations' } },
     { id: 't4', num: 4, status: 'active', href: { lt: 'tema-4.html', en: 'tema-4.html' },
       title: { lt: 'Tiesinis programavimas: geometriniai metodai', en: 'Linear Programming: The Graphical Method' } },
-    { id: 't5', num: 5, status: 'active', href: { lt: 'tema-5.html' },
+    { id: 't5', num: 5, status: 'active', href: { lt: 'tema-5.html', en: 'tema-5.html' },
       title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: 'Linear Programming: The Simplex Method' } },
     { id: 'midterm', type: 'exam', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
       title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
@@ -245,10 +245,10 @@
     t5: [
       { id: 'm51', status: 'active', href: { lt: 'tema-5-maksimizavimas.html' },
         title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' },
-        desc: { lt: 'Gamybos planas su bet kokiu kintamųjų skaičiumi: optimalus planas, likę ištekliai ir šešėlinės kainos.' } },
+        desc: { lt: 'Gamybos planas su bet kokiu kintamųjų skaičiumi: optimalus planas, likę ištekliai ir šešėlinės kainos.', en: 'A production plan with any number of variables: the optimal plan, the unused resources and the shadow prices.' } },
       { id: 'm52', status: 'active', href: { lt: 'tema-5-minimizavimas.html' },
         title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' },
-        desc: { lt: 'Dualusis uždavinys: mažiausios išlaidos ir reikalavimų viršijimas.' } }
+        desc: { lt: 'Dualusis uždavinys: mažiausios išlaidos ir reikalavimų viršijimas.', en: 'The dual problem: the minimum cost and the requirements that are exceeded.' } }
     ]
   };
 
@@ -291,7 +291,7 @@
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
     m44:     { parent: 't4', topic: 't4', model: 'm44', href: { lt: 'tema-4-nestandartiniai.html', en: 'tema-4-nestandartiniai.html' },
                title: { lt: 'Nestandartiniai uždaviniai', en: 'Non-standard Problems' } },
-    t5:      { parent: 'home', href: { lt: 'tema-5.html', en: null },
+    t5:      { parent: 'home', href: { lt: 'tema-5.html', en: 'tema-5.html' },
                title: { lt: '5 tema', en: 'Topic 5' } },
     m51:     { parent: 't5', topic: 't5', model: 'm51', href: { lt: 'tema-5-maksimizavimas.html', en: null },
                title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' } },

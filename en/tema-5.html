@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 5. Linear Programming: The Simplex Method · Applied Mathematics</title>
+<meta name="description" content="The essence of the simplex method: slack variables, the initial simplex tableau, the pivot column, the pivot row and the pivot element, iterations; the minimization problem and the dual problem.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-5.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=51">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=51"></script>
+</head>
+<body data-page="t5">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 5</span>
+    <h1>Linear Programming: The Simplex Method</h1>
+    <ul class="jump">
+      <li><a href="#esme">Essence</a></li>
+      <li><a href="#maksimizavimas">Maximization</a></li>
+      <li><a href="#minimizavimas">Minimization</a></li>
+      <li><a href="#taikymai">Applications</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ ESSENCE ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">The essence of the method</h2>
+
+    <article class="card concept" id="esme">
+      <div class="concept-head"><span class="num">1</span><h3>What is the simplex method?</h3></div>
+      <p>In <a href="tema-4.html">Topic 4</a> we solved linear programming problems graphically. This method works only with two variables: a third one cannot be drawn in the plane, and in practice there are often more products, resources or options.</p>
+      <p>The <strong>simplex method</strong> is an algebraic method of solving linear programming problems that works with any number of variables. No graph is needed: the whole calculation is carried out in a table, using the same elementary row operations as in <a href="tema-3.html#algoritmas">Gaussian elimination</a>. The method was developed in 1947 by the American mathematician George B. Dantzig.</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>The system of equations</strong><span>The constraints and the objective function are written as equations.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>The initial tableau</strong><span>It describes the plan in which nothing is produced yet.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Iterations</strong><span>Each new tableau describes a better plan, until no further improvement is possible.</span></div></div>
+      </div>
+      <p class="tip"><strong>The link with the graphical method.</strong> Every simplex tableau corresponds to one vertex of the feasible set, and every iteration to a move to an adjacent vertex at which the value of the objective function is larger. Here too the optimum is sought at the vertices, only by calculation instead of on a graph.</p>
+    </article>
+  </section>
+
+  <!-- ============ MAXIMIZATION ============ -->
+  <section class="section" id="maksimizavimas" aria-labelledby="h-max">
+    <h2 id="h-max">Solving a maximization problem</h2>
+
+    <article class="card concept" id="lygtys">
+      <div class="concept-head"><span class="num">2</span><h3>From the model to a system of equations</h3></div>
+      <p>The simplex method solves a standard maximization problem – the same as in <a href="tema-4-maksimizavimas.html#modelis">Topic 4</a>, only there may be more variables. For example, with three variables and three constraints:</p>
+      <div class="formula">\[ \begin{gathered} P = p_1x + p_2y + p_3z \to \max \\[4pt] \begin{cases} a_{11}x + a_{12}y + a_{13}z \leq b_1 \\ a_{21}x + a_{22}y + a_{23}z \leq b_2 \\ a_{31}x + a_{32}y + a_{33}z \leq b_3 \\ x;\, y;\, z \geq 0 \end{cases} \end{gathered} \]</div>
+
+      <div class="subtype">
+        <h4>Slack variables</h4>
+        <p>Row operations are applied to equations, so every inequality is first turned into an equation. A new non-negative variable – a <strong>slack variable</strong> \(s_1\), \(s_2\) or \(s_3\) – is added to the left-hand side of each constraint. It shows how much of that resource remains unused:</p>
+        <div class="formula fit">\[ \underbrace{a_{11}x + a_{12}y + a_{13}z}_{\text{used}} + \underbrace{s_1}_{\text{unused}} = \underbrace{b_1}_{\text{available}} \]</div>
+      </div>
+
+      <div class="subtype">
+        <h4>The objective function is an equation too</h4>
+        <p>The objective function is written as an equation with all its terms on the left-hand side. The profit coefficients then change sign:</p>
+        <div class="formula">\[ \begin{gathered} P = p_1x + p_2y + p_3z \\ \Longrightarrow\; -p_1x - p_2y - p_3z + P = 0 \end{gathered} \]</div>
+        <p>This gives a system of four equations:</p>
+        <div class="formula">\[ \begin{cases} a_{11}x + a_{12}y + a_{13}z + s_1 = b_1 \\ a_{21}x + a_{22}y + a_{23}z + s_2 = b_2 \\ a_{31}x + a_{32}y + a_{33}z + s_3 = b_3 \\ -p_1x - p_2y - p_3z + P = 0 \end{cases} \]</div>
+        <p>We need to find non-negative values of all the variables for which \(P\) is the largest.</p>
+      </div>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>The solution must include the mathematical model of the problem – the objective function and the system of constraints. It is not sufficient to present only the simplex tableau. It must be clearly stated whether the objective function is to be maximized or minimized. All constraints, including non-negativity constraints, must be written clearly together in one system, next to the objective function.</li>
+            <li>It is not required to explain the meaning of slack variables or the conversion of inequalities into equations.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card concept" id="pradine-lentele">
+      <div class="concept-head"><span class="num">3</span><h3>The initial simplex tableau</h3></div>
+      <p>The <strong>simplex tableau</strong> is the same system of equations written without the variable names – only the coefficients are kept. The place of each number is therefore fixed by the order of the columns and the order of the rows:</p>
+      <ul>
+        <li><strong>one column for every variable</strong>, always in the same order: the decision variables \(x, y, z\), the slack variables \(s_1, s_2, s_3\), then \(P\) and the column \(n\) of the right-hand sides; the vertical lines only separate these groups;</li>
+        <li><strong>one row for every equation</strong>; the objective row is written last, below the line;</li>
+        <li><strong>every coefficient is written</strong>, including the zeros.</li>
+      </ul>
+      <div class="tbl-wrap">
+        <table class="vtable sx-tbl">
+          <thead><tr><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col">\(z\)</th><th scope="col" class="g">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+          <tbody>
+            <tr><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(a_{13}\)</td><td class="g idb">1</td><td class="idb">0</td><td class="idb">0</td><td class="g">0</td><td class="g">\(b_1\)</td></tr>
+            <tr><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(a_{23}\)</td><td class="g idb">0</td><td class="idb">1</td><td class="idb">0</td><td class="g">0</td><td class="g">\(b_2\)</td></tr>
+            <tr><td>\(a_{31}\)</td><td>\(a_{32}\)</td><td>\(a_{33}\)</td><td class="g idb">0</td><td class="idb">0</td><td class="idb">1</td><td class="g">0</td><td class="g">\(b_3\)</td></tr>
+            <tr class="tf"><td>\(-p_1\)</td><td>\(-p_2\)</td><td>\(-p_3\)</td><td class="g">0</td><td>0</td><td>0</td><td class="g">1</td><td class="g">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="formula-note" style="text-align:center">The slack columns (highlighted) together form a unit matrix.</p>
+
+      <div class="subtype">
+        <h4>How many columns and rows the tableau has</h4>
+        <p>The size of the tableau depends on the problem. There are as many leading columns as there are decision variables, and as many slack columns as there are constraints, because each constraint gets its own slack variable. There is one row more than there are constraints: the last one is for the objective function.</p>
+        <p>For example, if there are four variables – \(x, y, z, w\) – and only two constraints, the tableau first has the four columns \(x, y, z, w\), then the two columns \(s_1\) and \(s_2\), then \(P\) and \(n\) – 8 columns and 3 rows in all:</p>
+        <div class="tbl-wrap">
+          <table class="vtable sx-tbl">
+            <thead><tr><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col">\(z\)</th><th scope="col">\(w\)</th><th scope="col" class="g">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+            <tbody>
+              <tr><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td>\(a_{13}\)</td><td>\(a_{14}\)</td><td class="g idb">1</td><td class="idb">0</td><td class="g">0</td><td class="g">\(b_1\)</td></tr>
+              <tr><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td>\(a_{23}\)</td><td>\(a_{24}\)</td><td class="g idb">0</td><td class="idb">1</td><td class="g">0</td><td class="g">\(b_2\)</td></tr>
+              <tr class="tf"><td>\(-p_1\)</td><td>\(-p_2\)</td><td>\(-p_3\)</td><td>\(-p_4\)</td><td class="g">0</td><td>0</td><td class="g">1</td><td class="g">0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subtype">
+        <h4>What the initial tableau shows</h4>
+        <p>The initial tableau describes the plan in which <strong>nothing is produced yet</strong>: \(x = y = z = 0\), the whole stock of every resource is unused – \(s_1 = b_1\), \(s_2 = b_2\), \(s_3 = b_3\) – and \(P = 0\).</p>
+        <p>The negative entries of the objective row show that this plan can be improved: the entry \(-p_2\) means that every unit of the second product would raise the profit by \(p_2\) euros.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="iteracija">
+      <div class="concept-head"><span class="num">4</span><h3>Iteration: how a better tableau is obtained</h3></div>
+      <p>In each step – <strong>iteration</strong> – one new variable is brought into the plan. Four actions are carried out:</p>
+      <ol class="flow">
+        <li><span class="ph-ico" aria-hidden="true">1</span><div><strong>The pivot column</strong><span class="d">In the objective row (in the variable columns only) the most negative entry is found. Its column is the pivot column.</span></div></li>
+        <li><span class="ph-ico" aria-hidden="true">2</span><div><strong>The pivot row</strong><span class="d">The right-hand side of each constraint is divided by the positive entry that its row has in the pivot column. The row with the smallest ratio is the pivot row. The pivot element stands at the intersection of this row and the pivot column.</span></div></li>
+        <li><span class="ph-ico" aria-hidden="true">3</span><div><strong>The pivot element becomes 1</strong><span class="d">The whole pivot row, the right-hand side included, is divided by the pivot element.</span></div></li>
+        <li><span class="ph-ico" aria-hidden="true">4</span><div><strong>The rest of the pivot column becomes 0</strong><span class="d">The pivot row is multiplied by the entry that each other row has in the pivot column, with the opposite sign, and added to that row.</span></div></li>
+        <li class="flow-q"><span class="fq">Does the objective row still contain negative entries?</span><span class="flow-out"><span class="yes">Yes – return to step 1</span><span class="no">No – the tableau is optimal</span></span></li>
+      </ol>
+
+      <div class="subtype">
+        <h4>The pivot column, row and element in the tableau</h4>
+        <p>Suppose the most negative entry is \(-p_2\) and the smallest ratio is in the second row. The ratios are written beside the rows, and the objective row does not take part in the ratio test:</p>
+        <div class="tbl-wrap">
+          <table class="vtable sx-tbl">
+            <thead><tr><th scope="col">\(x\)</th><th scope="col" class="pc">\(y\)</th><th scope="col">\(z\)</th><th scope="col" class="g">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th><th scope="col" class="ann"></th></tr></thead>
+            <tbody>
+              <tr><td class="dot">·</td><td class="pc">\(a_{12}\)</td><td class="dot">·</td><td class="g dot">·</td><td class="dot">·</td><td class="dot">·</td><td class="g dot">·</td><td class="g">\(b_1\)</td><td class="ann">\(b_1 : a_{12}\)</td></tr>
+              <tr class="pr"><td class="dot">·</td><td class="pc pe">\(a_{22}\)</td><td class="dot">·</td><td class="g dot">·</td><td class="dot">·</td><td class="dot">·</td><td class="g dot">·</td><td class="g">\(b_2\)</td><td class="ann">\(b_2 : a_{22}\)</td></tr>
+              <tr><td class="dot">·</td><td class="pc">\(a_{32}\)</td><td class="dot">·</td><td class="g dot">·</td><td class="dot">·</td><td class="dot">·</td><td class="g dot">·</td><td class="g">\(b_3\)</td><td class="ann">\(b_3 : a_{32}\)</td></tr>
+              <tr class="tf"><td>\(-p_1\)</td><td class="pc"><strong>\(-p_2\)</strong></td><td>\(-p_3\)</td><td class="g">0</td><td>0</td><td>0</td><td class="g">1</td><td class="g">0</td><td class="ann"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="sx-legend">
+          <li><span class="sw sw-pc" aria-hidden="true"></span>pivot column</li>
+          <li><span class="sw sw-pr" aria-hidden="true"></span>pivot row</li>
+          <li><span class="sw sw-pe" aria-hidden="true"></span>pivot element</li>
+        </ul>
+        <p>A ratio answers the question of how much of the new product this row’s resource would allow. The smallest ratio shows the resource that runs out first, so it sets the limit for all the others. Rows whose entry in the pivot column is zero or negative do not take part in the ratio test.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>How the row operations are marked</h4>
+        <p>The row operations are marked as in <a href="tema-3.html#algoritmas">Gaussian elimination</a>. The division by the pivot element is written beside the pivot row: \({:}\,a_{22}\). The multipliers are written in brackets beside the pivot row – one for each row whose entry has to be turned into zero – and an arrow leads to that row:</p>
+        <div class="tbl-wrap">
+          <table class="vtable arr-tbl">
+            <tbody>
+              <tr><th scope="row">Row 1</th><td>\(\uparrow\)</td><td></td><td></td></tr>
+              <tr><th scope="row">Pivot row</th><td class="pv">\((-a_{12})\)</td><td class="pv">\((-a_{32})\)</td><td class="pv">\((p_2)\)</td></tr>
+              <tr><th scope="row">Row 3</th><td></td><td>\(\downarrow\)</td><td>\(\vert\)</td></tr>
+              <tr><th scope="row">Objective row</th><td></td><td></td><td>\(\downarrow\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="formula-note" style="text-align:center">Here \(a_{12}\), \(a_{32}\) and \(-p_2\) are the entries of the other rows in the pivot column; the multiplier is always such an entry with the opposite sign.</p>
+        <p>After the row operations the pivot column becomes a unit column: 1 in the pivot row and 0 everywhere else. This is how the variable of the pivot column enters the plan.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>When the calculation stops</h4>
+        <p>As long as the objective row contains a negative entry, there is a variable that would still raise the profit, so the iteration is repeated. When no negative entry is left, the plan can no longer be improved – the tableau is <strong>optimal</strong>. How to read the optimal plan, the maximum profit, the unused resources and the shadow prices from it is discussed in <a href="tema-5-maksimizavimas.html#galutine">Section 1</a>.</p>
+      </div>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>After formulating the initial simplex tableau, it is necessary to indicate the pivot column and pivot row. The ratio calculations used to select the pivot row must be shown.</li>
+            <li>During the simplex method process, row operations to eliminate elements above and below the pivot element must be shown.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ MINIMIZATION ============ -->
+  <section class="section" id="minimizavimas" aria-labelledby="h-min">
+    <h2 id="h-min">Solving a minimization problem</h2>
+
+    <article class="card concept" id="dualusis">
+      <div class="concept-head"><span class="num">5</span><h3>Why the dual problem is needed</h3></div>
+      <p>The initial tableau of a maximization problem describes the plan “produce nothing”. Such a plan works when all the constraints have the sign \(\leq\). In a standard minimization problem the constraints have the sign \(\geq\): the plan “do nothing” satisfies none of the requirements, so the initial tableau cannot be built directly.</p>
+      <p>Therefore another problem – the <strong>dual problem</strong> – is built from the numbers of the minimization problem. It is a standard maximization problem and is solved by the method already described, and the answer to the original problem is read out of the final tableau of the dual problem.</p>
+      <p>For example, consider a standard minimization problem with two variables and three constraints:</p>
+      <div class="formula">\[ \begin{gathered} TC = c_1x + c_2y \to \min \\[4pt] \begin{cases} a_{11}x + a_{12}y \geq b_1 \\ a_{21}x + a_{22}y \geq b_2 \\ a_{31}x + a_{32}y \geq b_3 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]</div>
+    </article>
+
+    <article class="card concept" id="dualiojo-sudarymas">
+      <div class="concept-head"><span class="num">6</span><h3>How the dual problem is built</h3></div>
+
+      <div class="subtype">
+        <h4>1. The coefficient table</h4>
+        <p>Every number of the model is written into one table – without the inequality signs and without the variable names:</p>
+        <ul>
+          <li>one row for every constraint, labelled \(s_1, s_2, s_3\): these labels will be the names of the variables of the dual problem;</li>
+          <li>one column for every variable, \(x\) and \(y\), and the amounts required in the column \(n\) of the right-hand sides;</li>
+          <li>the last row \(TC\) – the coefficients of the objective function; its cell in the \(n\) column stays empty.</li>
+        </ul>
+      </div>
+
+      <div class="subtype">
+        <h4>2. Transposing the table</h4>
+        <p>The table is <strong>transposed</strong>: every row becomes a column and every column becomes a row, labels and all. The column \(n\) stays last, and the label \(TC\) is changed to \(P\), because this row becomes the objective function of a maximization problem:</p>
+        <div class="mats mats--flow">
+          <span><table class="vtable sx-tbl">
+            <thead><tr><th scope="col"></th><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+            <tbody>
+              <tr class="pr"><th scope="row">\(s_1\)</th><td>\(a_{11}\)</td><td>\(a_{12}\)</td><td class="g">\(b_1\)</td></tr>
+              <tr><th scope="row">\(s_2\)</th><td>\(a_{21}\)</td><td>\(a_{22}\)</td><td class="g">\(b_2\)</td></tr>
+              <tr><th scope="row">\(s_3\)</th><td>\(a_{31}\)</td><td>\(a_{32}\)</td><td class="g">\(b_3\)</td></tr>
+              <tr class="tf"><th scope="row">\(TC\)</th><td>\(c_1\)</td><td>\(c_2\)</td><td class="g"></td></tr>
+            </tbody>
+          </table></span>
+          <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+          <span><table class="vtable sx-tbl">
+            <thead><tr><th scope="col"></th><th scope="col" class="tc">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">\(x\)</th><td class="tc">\(a_{11}\)</td><td>\(a_{21}\)</td><td>\(a_{31}\)</td><td class="g">\(c_1\)</td></tr>
+              <tr><th scope="row">\(y\)</th><td class="tc">\(a_{12}\)</td><td>\(a_{22}\)</td><td>\(a_{32}\)</td><td class="g">\(c_2\)</td></tr>
+              <tr class="tf"><th scope="row">\(P\)</th><td class="tc">\(b_1\)</td><td>\(b_2\)</td><td>\(b_3\)</td><td class="g"></td></tr>
+            </tbody>
+          </table></span>
+        </div>
+        <p class="formula-note" style="text-align:center">The first row \(s_1\) has become the first column \(s_1\).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>3. The dual problem</h4>
+        <p>The transposed table is read in the same way as the first one was written: the rows \(x\) and \(y\) are two constraints with the sign \(\leq\), the row \(P\) is the objective function to be maximized, and the variables are \(s_1, s_2, s_3\):</p>
+        <div class="formula">\[ \begin{gathered} P = b_1s_1 + b_2s_2 + b_3s_3 \to \max \\[4pt] \begin{cases} a_{11}s_1 + a_{21}s_2 + a_{31}s_3 \leq c_1 \\ a_{12}s_1 + a_{22}s_2 + a_{32}s_3 \leq c_2 \\ s_1;\, s_2;\, s_3 \geq 0 \end{cases} \end{gathered} \]</div>
+        <p>Note what has changed places: the required amounts \(b_1, b_2, b_3\) have become the coefficients of the objective function, the costs \(c_1, c_2\) have become the right-hand sides, and instead of two variables and three constraints there are now three variables and two constraints.</p>
+      </div>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving a minimization problem, the transposition of the model data table must be shown.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card concept" id="dualiojo-lentele">
+      <div class="concept-head"><span class="num">7</span><h3>The initial tableau of the dual problem</h3></div>
+      <p>The dual problem is solved like any maximization problem. One detail matters: its slack variables are called not \(s\) but by <strong>the letters of the original problem’s variables</strong>, \(x\) and \(y\) – one for each constraint of the dual problem. It is this naming that makes the answer to the original problem readable at the end, so it must be kept.</p>
+      <div class="formula">\[ \begin{cases} a_{11}s_1 + a_{21}s_2 + a_{31}s_3 + \htmlClass{hd}{x} = c_1 \\ a_{12}s_1 + a_{22}s_2 + a_{32}s_3 + \htmlClass{hd}{y} = c_2 \\ -b_1s_1 - b_2s_2 - b_3s_3 + P = 0 \end{cases} \]</div>
+      <p>The tableau is built by the same rules; the order of the columns is \(s_1, s_2, s_3 \mid x, y \mid P \mid n\):</p>
+      <div class="tbl-wrap">
+        <table class="vtable sx-tbl">
+          <thead><tr><th scope="col">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+          <tbody>
+            <tr><td>\(a_{11}\)</td><td>\(a_{21}\)</td><td>\(a_{31}\)</td><td class="g idb">1</td><td class="idb">0</td><td class="g">0</td><td class="g">\(c_1\)</td></tr>
+            <tr><td>\(a_{12}\)</td><td>\(a_{22}\)</td><td>\(a_{32}\)</td><td class="g idb">0</td><td class="idb">1</td><td class="g">0</td><td class="g">\(c_2\)</td></tr>
+            <tr class="tf"><td>\(-b_1\)</td><td>\(-b_2\)</td><td>\(-b_3\)</td><td class="g">0</td><td>0</td><td class="g">1</td><td class="g">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Then the same <a href="#iteracija">iterations</a> are carried out until no negative entry is left in the objective row. Where to find the solution of the original problem and the minimum cost in the final tableau is discussed in <a href="tema-5-minimizavimas.html#galutine">Section 2</a>.</p>
+
+      <div class="subtype">
+        <h4>How to solve a minimization problem</h4>
+        <ol class="steps-list">
+          <li>Write the mathematical model of the minimization problem.</li>
+          <li>Put all the coefficients into a table with the rows \(s_1, s_2, \ldots, TC\) and the columns \(x, y, n\).</li>
+          <li>Transpose the table and change the label \(TC\) to \(P\).</li>
+          <li>Write the dual maximization problem from the transposed table.</li>
+          <li>Build the initial tableau, calling the slack variables \(x\) and \(y\).</li>
+          <li>Repeat the iterations until no negative entry is left in the objective row.</li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ APPLICATIONS ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Applications</h2>
+    <p class="section-intro">The simplex method solves the same production planning and cost minimization problems as Topic 4, only with more variables. Choose a section.</p>
+    <div class="model-grid" data-models="t5"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this topic can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 5</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
