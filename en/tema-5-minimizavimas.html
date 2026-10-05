@@ -1,0 +1,1464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standard Minimization Problems (Simplex Method) · Applied Mathematics</title>
+<meta name="description" content="Solving standard minimization problems by the simplex method: the coefficient table, its transpose, the dual problem, the iterations and reading the final tableau – the optimal plan, the minimum cost and the over-satisfied requirements. Examples step by step.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-5-minimizavimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=53">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=53"></script>
+</head>
+<body data-page="m52">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 5 · Applications · Section 2</span>
+    <h1>Standard Minimization Problems</h1>
+    <p class="lead">This section solves cost minimization problems by the simplex method: the dual maximization problem is built from the minimization problem and solved, and the optimal plan, the minimum cost and the over-satisfied requirements are read from the final tableau.</p>
+    <ul class="jump">
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#galutine">Final tableau</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <p>The constraints of a standard minimization problem have the sign \(\geq\). The plan “do nothing” satisfies none of the requirements, so the simplex method has nothing to start from. The way round this is as follows: from the numbers of the minimization problem another problem is built – the <strong>dual problem</strong>. It is a standard maximization problem and is solved exactly as in <a href="tema-5-maksimizavimas.html">Section 1</a>.</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>The dual problem</strong><span>The coefficient table of the model is transposed, and a maximization problem is written from it.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>The simplex method</strong><span>The dual problem is solved in the usual way until no negative entry is left in the objective row.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>The answer</strong><span>The answer to the original problem is read from the objective row of the final tableau.</span></div></div>
+      </div>
+      <p>The simplex method itself does not change. Only two things are new: how the dual problem is written down and where the answer is found in the final tableau. How the dual problem is built in the general case is shown on the <a href="tema-5.html#dualiojo-sudarymas">Topic 5 page</a>. The problem is solved in this order:</p>
+      <ol class="steps-list">
+        <li><strong>Define the variables and write the mathematical model:</strong> the objective function with \(\to \min\) and, next to it, the system of all the constraints.</li>
+        <li><strong>Build the coefficient table:</strong> a row \(s_1, s_2, \ldots\) for every constraint and a row \(TC\) for the objective function; a column \(x, y\) for every variable and the column \(n\) for the required amounts.</li>
+        <li><strong>Transpose the table:</strong> rows become columns and columns become rows; change the label \(TC\) to \(P\).</li>
+        <li><strong>Write the dual problem:</strong> its variables are \(s_1, s_2, \ldots\), its constraints have the sign \(\leq\), and its objective function is maximized.</li>
+        <li><strong>Build the initial tableau:</strong> call the slack variables by the letters of the original problem, \(x\) and \(y\); the order of the columns is \(s \ldots \mid x, y \mid P \mid n\).</li>
+        <li><strong>Carry out the iterations</strong> as in a maximization problem: the pivot column, the pivot row, the row operations – until no negative entry is left in the objective row.</li>
+        <li><strong>Read the answers from the objective row of the final tableau:</strong> under \(x\) and \(y\) the values of the variables, in the \(n\) column the minimum cost, under the \(s\) columns the amount by which each requirement is exceeded (<a href="#galutine">see below</a>).</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The numbers not swapped.</strong> The coefficients of the objective function of the dual problem are the required amounts, and its right-hand sides are the costs. Not the other way round.</li>
+            <li><strong>The table only partly transposed.</strong> The number of variables and the number of constraints exchange places: if the original problem has two variables and three constraints, the dual problem has three variables and two constraints.</li>
+            <li><strong>The sign \(\geq\) left in place.</strong> All the constraints of the dual problem have the sign \(\leq\), and its objective function is maximized.</li>
+            <li><strong>The slack variables labelled \(s\).</strong> The slack variables of the dual problem are called \(x\) and \(y\); otherwise it will not be clear at the end where to read the answer.</li>
+            <li><strong>The answer read from the unit columns.</strong> The answer to a minimization problem is only in the objective row of the final tableau.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving applied linear programming problems, the definitions of the introduced variables must be provided at the beginning of the solution. Each variable definition must clearly state that the variable represents the quantity of a specific object.</li>
+            <li>If convenient for the author, the data from the problem may be summarized in a table, but this is optional.</li>
+            <li>The solution must include the mathematical model of the problem – the objective function and the system of constraints. It is not sufficient to present only the simplex tableau. It must be clearly stated whether the objective function is to be maximized or minimized. All constraints, including non-negativity constraints, must be written clearly together in one system, next to the objective function.</li>
+            <li>It is not required to explain the meaning of slack variables or the conversion of inequalities into equations.</li>
+            <li>After formulating the initial simplex tableau, it is necessary to indicate the pivot column and pivot row. The ratio calculations used to select the pivot row must be shown.</li>
+            <li>When solving a minimization problem, the transposition of the model data table must be shown.</li>
+            <li>During the simplex method process, row operations to eliminate elements above and below the pivot element must be shown.</li>
+            <li>At the end of the solution, answers to all problem questions must be clearly formulated.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. FINAL TABLEAU ============ -->
+  <section class="section" id="galutine" aria-labelledby="h-final">
+    <h2 id="h-final">Reading the final tableau</h2>
+
+    <article class="card">
+      <p>The dual problem is solved until no negative entry is left in the objective row. The answers to the questions of the original problem are then read from the <strong>objective row</strong>. For example, when the original problem has two variables and three constraints, the final tableau of the dual problem could look like this:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr><th scope="col">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(P\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr><td class="dot">·</td><td class="dot">·</td><td class="dot">·</td><td class="dot g">·</td><td class="dot">·</td><td class="g">0</td><td class="dot g">·</td></tr>
+<tr><td class="dot">·</td><td class="dot">·</td><td class="dot">·</td><td class="dot g">·</td><td class="dot">·</td><td class="g">0</td><td class="dot g">·</td></tr>
+<tr class="tf"><td class="sp">\(p_1\)</td><td class="sp">\(p_2\)</td><td class="sp">\(p_3\)</td><td class="g nv">\(q_1\)</td><td class="nv">\(q_2\)</td><td class="g">1</td><td class="g pv">\(TC_{\min}\)</td></tr>
+</tbody></table></div>
+      <ul class="sx-legend">
+        <li><span class="sw sw-nv" aria-hidden="true"></span>the values of the original problem’s variables</li>
+        <li><span class="sw sw-pv" aria-hidden="true"></span>minimum cost</li>
+        <li><span class="sw sw-sp" aria-hidden="true"></span>the excess of each requirement</li>
+      </ul>
+
+      <div class="subtype">
+        <h4>1. The quantities</h4>
+        <p>The values of the original problem’s variables stand in the objective row, <strong>under the columns of \(x\) and \(y\)</strong>:</p>
+        <div class="formula">\[ x = q_1,\qquad y = q_2 \]</div>
+        <p>That is exactly why the slack variables of the dual problem were labelled \(x\) and \(y\): the number that stands in the objective row under the column \(x\) is the value of the variable \(x\).</p>
+        <p class="tip"><strong>The unit columns are not read here.</strong> In a maximization problem the answer was found from the unit columns, but now they give the solution of the dual problem, which is of no interest in this course. The original problem’s answer is in the objective row, and only there.</p>
+        <details class="more more--why">
+          <summary><span class="ico" aria-hidden="true">?</span>Why the answer is in the objective row</summary>
+          <div class="more-body">
+            <p>The two problems were built from one and the same coefficient table, only read in two directions, so they describe the same thing. They reach the same optimal value, and the solution of either problem appears in the objective row of the other problem’s final tableau – under the slack columns. Once the slack variables of the dual problem are given the names of the original problem’s variables, the answer only has to be read off.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="subtype">
+        <h4>2. The minimum cost</h4>
+        <p>The minimum cost is the last entry of the objective row, in the \(n\) column: \(TC_{\min}\). It is the same number as the maximum of the dual problem – the two problems always reach the same optimal value. It is worth checking the result by substituting the plan found into the objective function of the original problem.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>3. The over-satisfied requirements</h4>
+        <p>The entries of the objective row <strong>under the columns \(s_1, s_2, s_3\)</strong> show by how much the first, the second and the third requirement, respectively, is exceeded. In this tableau they are \(p_1\), \(p_2\) and \(p_3\). A zero means that the requirement is met exactly, and a positive number that this many units more than required are obtained. This is checked by substituting the plan into the constraints.</p>
+        <p class="tip">The excess is not waste that could be avoided: a requirement that is exceeded is simply one that does not limit the plan. The plan is set by the requirements that are met exactly, and the exceeded one is met by itself – together with them.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Where to find the answers: maximization and minimization</h4>
+        <div class="tbl-wrap">
+          <table class="vtable cmp-tbl">
+            <thead><tr><th scope="col">Maximization</th><th scope="col">Minimization</th></tr></thead>
+            <tbody>
+              <tr class="grp"><th scope="colgroup" colspan="2">The values of the variables</th></tr>
+              <tr><td>the unit columns and the \(n\) column</td><td>the objective row, under the columns of \(x\) and \(y\)</td></tr>
+              <tr class="grp"><th scope="colgroup" colspan="2">The optimal value</th></tr>
+              <tr><td>the last entry of the objective row, \(P_{\max}\)</td><td>the last entry of the objective row, \(TC_{\min}\)</td></tr>
+              <tr class="grp"><th scope="colgroup" colspan="2">The objective row under the \(s\) columns</th></tr>
+              <tr><td>the shadow prices</td><td>the excess of each requirement</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time. On a phone the wide tables can be scrolled sideways.</p>
+
+    <!-- Example 1: AM Alternative 5.2 (replaces the lecture oil refineries example) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>The work plan of the recycling plants</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A waste-management company operates two recycling plants. Plant I costs €2000/day to operate, and it can recover 3 tonnes of paper, 1 tonne of glass, and 1 tonne of plastic each day. Plant II is newer and more modern. It costs €3000/day to operate, and it can recover 1 tonne of paper, 1 tonne of glass, and 2 tonnes of plastic each day. The company has to recover at least 40, 20, and 50 tonnes of paper, glass, and plastic, respectively.</p>
+        <ol type="a">
+          <li>Determine how many days each plant should be operated to meet the recovery requirements at minimum cost to the company. What is the minimum cost?</li>
+          <li>Given the optimal solution, determine if there is any excess in the recovery of the different materials.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The variables and the data</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of days plant I operates;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of days plant II operates.</span></li>
+          </ul>
+          <div class="tbl-wrap">
+            <table class="vtable compact">
+              <thead><tr><th scope="col"></th><th scope="col">Plant I</th><th scope="col">Plant II</th><th scope="col">Required</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Paper, t</th><td>3</td><td>1</td><td>40</td></tr>
+                <tr><th scope="row">Glass, t</th><td>1</td><td>1</td><td>20</td></tr>
+                <tr><th scope="row">Plastic, t</th><td>1</td><td>2</td><td>50</td></tr>
+                <tr><th scope="row">Cost, EUR</th><td>2000</td><td>3000</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The mathematical model</span></h4>
+          <p>Each row of the data table gives one requirement, and the cost row gives the objective function:</p>
+          \[ \begin{gathered} TC = 2000x + 3000y \to \min \\[4pt] \begin{cases} 3x + y \geq 40 \\ x + y \geq 20 \\ x + 2y \geq 50 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p>All the constraints have the sign \(\geq\) and the cost is minimized – this is a standard minimization problem. The plan “the plants do not operate” (\(x = y = 0\)) satisfies none of the requirements, so the dual problem is solved.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The coefficient table</span></h4>
+          <p>Every number of the model is written into one table. It is the same data table, only without the words, the inequality signs and the variables:</p>
+          <ul>
+            <li>one row for every constraint, labelled \(s_1\), \(s_2\), \(s_3\); these labels will be the names of the variables of the dual problem;</li>
+            <li>one column for every variable, \(x\) and \(y\), and the required amounts in the column \(n\);</li>
+            <li>the last row \(TC\) – the costs; its cell in the \(n\) column stays empty, because the objective function has no right-hand side.</li>
+          </ul>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr><th scope="col"></th><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr><th scope="row">\(s_1\)</th><td>3</td><td>1</td><td class="g">40</td></tr>
+<tr><th scope="row">\(s_2\)</th><td>1</td><td>1</td><td class="g">20</td></tr>
+<tr><th scope="row">\(s_3\)</th><td>1</td><td>2</td><td class="g">50</td></tr>
+<tr class="tf"><th scope="row">\(TC\)</th><td>2000</td><td>3000</td><td class="g"></td></tr>
+</tbody></table>
+</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Transposing the table</span></h4>
+          <p>The table is transposed: every row becomes a column and every column becomes a row, labels and all. The first row \(s_1\) (3, 1, 40) becomes the first column \(s_1\), and the column \(x\) (3, 1, 1, 2000) becomes the row \(x\). The column \(n\) stays last, and the label \(TC\) is changed to \(P\), because this row becomes the objective function of a maximization problem:</p>
+<div class="mats mats--flow">
+<span><table class="vtable sx-tbl">
+<thead><tr><th scope="col"></th><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr class="pr"><th scope="row">\(s_1\)</th><td>3</td><td>1</td><td class="g">40</td></tr>
+<tr><th scope="row">\(s_2\)</th><td>1</td><td>1</td><td class="g">20</td></tr>
+<tr><th scope="row">\(s_3\)</th><td>1</td><td>2</td><td class="g">50</td></tr>
+<tr class="tf"><th scope="row">\(TC\)</th><td>2000</td><td>3000</td><td class="g"></td></tr>
+</tbody></table></span>
+<span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+<span><table class="vtable sx-tbl">
+<thead><tr><th scope="col"></th><th scope="col" class="tc">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr><th scope="row">\(x\)</th><td class="tc">3</td><td>1</td><td>1</td><td class="g">2000</td></tr>
+<tr><th scope="row">\(y\)</th><td class="tc">1</td><td>1</td><td>2</td><td class="g">3000</td></tr>
+<tr class="tf"><th scope="row">\(P\)</th><td class="tc">40</td><td>20</td><td>50</td><td class="g"></td></tr>
+</tbody></table></span>
+</div>
+<p class="formula-note" style="text-align:center">The first row \(s_1\) has become the first column \(s_1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The dual problem</span></h4>
+          <p>The transposed table is read in the same way as the first one was written: the rows \(x\) and \(y\) are two constraints with the sign \(\leq\), the row \(P\) is the objective function to be maximized, and the variables are \(s_1\), \(s_2\), \(s_3\):</p>
+          \[ \begin{gathered} P = 40s_1 + 20s_2 + 50s_3 \to \max \\[4pt] \begin{cases} 3s_1 + s_2 + s_3 \leq 2000 \\ s_1 + s_2 + 2s_3 \leq 3000 \\ s_1;\, s_2;\, s_3 \geq 0 \end{cases} \end{gathered} \]
+          <p>Note what has changed places. The required tonnes 40, 20 and 50 have become the coefficients of the objective function, and the daily costs 2000 and 3000 have become the right-hand sides. Instead of two variables and three constraints there are now three variables and two constraints. This is a standard maximization problem, so from here on it is solved exactly as in Section 1.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The initial simplex tableau</span></h4>
+          <p>Each inequality is turned into an equation by adding a slack variable. The slack variables of the dual problem are called not \(s\) but by <strong>the letters of the original problem</strong>, \(x\) and \(y\) – one for each constraint. The objective function is written as an equation with all its terms on the left-hand side:</p>
+          \[ \begin{cases} 3s_1 + s_2 + s_3 + \htmlClass{hd}{x} = 2000 \\ s_1 + s_2 + 2s_3 + \htmlClass{hd}{y} = 3000 \\ -40s_1 - 20s_2 - 50s_3 + P = 0 \end{cases} \]
+          <p>The equations are written into the tableau. There are three variables and two constraints, so the columns are \(s_1, s_2, s_3 \mid x, y \mid P \mid n\), and there are three rows:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td class="g idb">1</td>
+<td class="idb">0</td>
+<td class="g">0</td>
+<td class="g">2000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td class="g idb">0</td>
+<td class="idb">1</td>
+<td class="g">0</td>
+<td class="g">3000</td>
+</tr>
+<tr class="tf">
+<td>−40</td>
+<td>−20</td>
+<td>−50</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+</tr>
+</tbody></table></div>
+          <p>The columns of the slack variables \(x\) and \(y\) form a unit matrix, as they always do in the initial tableau.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Iteration 1: the pivot column, row and element</span></h4>
+          <p><strong>The pivot column.</strong> In the variable columns the objective row reads \(-40,\; -20,\; -50,\; 0,\; 0\). The most negative entry is \(-50\), in the column of \(s_3\), so the \(s_3\) column is the pivot column.</p>
+          <p><strong>The pivot row.</strong> The right-hand sides are divided by the entries of the pivot column:</p>
+          \[ \begin{gathered} 2000 : 1 = 2000 \\ 3000 : 2 = 1500 \end{gathered} \]
+          <p>The smaller ratio is 1500, so the second row is the pivot row and the pivot element is 2:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="pc">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>3</td>
+<td>1</td>
+<td class="pc">1</td>
+<td class="g">1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">2000</td>
+<td class="ann"></td>
+<td class="ann">2000 : 1 = 2000</td>
+</tr>
+<tr class="pr">
+<td>1</td>
+<td>1</td>
+<td class="pc pe">2</td>
+<td class="g">0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">3000</td>
+<td class="ann">: 2</td>
+<td class="ann">3000 : 2 = 1500</td>
+</tr>
+<tr class="tf">
+<td>−40</td>
+<td>−20</td>
+<td class="pc">−50</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Iteration 1: transforming the tableau</span></h4>
+          <p>The second row is divided by 2 – the pivot element becomes 1. The entries of the other rows in the \(s_3\) column are turned into zeros; the multiplier is the entry that the row has in the pivot column, with the opposite sign. The first row has 1, so its multiplier is \((-1)\); the objective row has \(-50\), so its multiplier is \((50)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="pc">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>3</td>
+<td>1</td>
+<td class="pc">1</td>
+<td class="g">1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">2000</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+</tr>
+<tr class="pr">
+<td>0.5</td>
+<td>0.5</td>
+<td class="pc pe">1</td>
+<td class="g">0</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g">1500</td>
+<td class="ann">(−1)</td>
+<td class="ann">(50)</td>
+</tr>
+<tr class="tf">
+<td>−40</td>
+<td>−20</td>
+<td class="pc">−50</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+          <p>Carrying out the row operations gives:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>2.5</td>
+<td>0.5</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−0.5</td>
+<td class="g">0</td>
+<td class="g">500</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g">1500</td>
+</tr>
+<tr class="tf">
+<td>−15</td>
+<td>5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>25</td>
+<td class="g">1</td>
+<td class="g">75000</td>
+</tr>
+</tbody></table></div>
+          <p>The objective row still contains the negative entry \(-15\), so the tableau is not optimal yet. The intermediate tableaux are not interpreted: the answer to the original problem will be read only from the final tableau.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">9</span><span>Iteration 2: the pivot column, row and element</span></h4>
+          <p>The only negative entry, \(-15\), is in the column of \(s_1\), so that column is the pivot column. The ratios:</p>
+          \[ \begin{gathered} 500 : 2.5 = 200 \\ 1500 : 0.5 = 3000 \end{gathered} \]
+          <p>The smaller ratio is 200, so the first row is the pivot row and the pivot element is \(2.5\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">2.5</td>
+<td>0.5</td>
+<td>0</td>
+<td class="g">1</td>
+<td>−0.5</td>
+<td class="g">0</td>
+<td class="g">500</td>
+<td class="ann">: 2.5</td>
+<td class="ann">500 : 2.5 = 200</td>
+</tr>
+<tr>
+<td class="pc">0.5</td>
+<td>0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g">1500</td>
+<td class="ann"></td>
+<td class="ann">1500 : 0.5 = 3000</td>
+</tr>
+<tr class="tf">
+<td class="pc">−15</td>
+<td>5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>25</td>
+<td class="g">1</td>
+<td class="g">75000</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">10</span><span>Iteration 2: transforming the tableau</span></h4>
+          <p>The first row is divided by \(2.5\). The multipliers of the other rows are again their entries in the \(s_1\) column with the opposite sign: \((-0.5)\) for the second row and \((15)\) for the objective row:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">1</td>
+<td>0.2</td>
+<td>0</td>
+<td class="g">0.4</td>
+<td>−0.2</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann">(−0.5)</td>
+<td class="ann">(15)</td>
+</tr>
+<tr>
+<td class="pc">0.5</td>
+<td>0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g">1500</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td class="pc">−15</td>
+<td>5</td>
+<td>0</td>
+<td class="g">0</td>
+<td>25</td>
+<td class="g">1</td>
+<td class="g">75000</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+          <p>Carrying out the row operations gives:</p>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.2</td>
+<td>0</td>
+<td class="g">0.4</td>
+<td>−0.2</td>
+<td class="g">0</td>
+<td class="g">200</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0.4</td>
+<td>1</td>
+<td class="g">−0.2</td>
+<td>0.6</td>
+<td class="g">0</td>
+<td class="g">1400</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td class="g">6</td>
+<td>22</td>
+<td class="g">1</td>
+<td class="g">78000</td>
+</tr>
+</tbody></table></div>
+          <p>The objective row is \(0,\; 8,\; 0,\; 6,\; 22\) – no negative entry is left, so this tableau is optimal.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">11</span><span>Reading the final tableau</span></h4>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.2</td>
+<td>0</td>
+<td class="g">0.4</td>
+<td>−0.2</td>
+<td class="g">0</td>
+<td class="g">200</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0.4</td>
+<td>1</td>
+<td class="g">−0.2</td>
+<td>0.6</td>
+<td class="g">0</td>
+<td class="g">1400</td>
+</tr>
+<tr class="tf">
+<td class="sp">0</td>
+<td class="sp">8</td>
+<td class="sp">0</td>
+<td class="g nv">6</td>
+<td class="nv">22</td>
+<td class="g">1</td>
+<td class="g pv">78000</td>
+</tr>
+</tbody></table></div>
+          <ul class="read-list">
+            <li class="r-bc"><strong>The quantities</strong> – in the objective row under the columns of \(x\) and \(y\): \(x = 6\), \(y = 22\). The unit columns of \(s_1\) and \(s_3\) are not read – they give the solution of the dual problem.</li>
+            <li class="r-pv"><strong>The minimum cost</strong> – the last entry of the objective row: \(TC = 78000\). Check: \(2000\cdot 6 + 3000\cdot 22 = 78000\).</li>
+            <li class="r-sp"><strong>The over-satisfied requirements</strong> – in the objective row under \(s_1, s_2, s_3\): paper \(0\), glass \(8\), plastic \(0\).</li>
+            <li><strong>Check against the constraints:</strong> the plants recover \(3\cdot 6 + 22 = 40\) t of paper (40 required), \(6 + 22 = 28\) t of glass (20 required, i.e. 8 t more) and \(6 + 2\cdot 22 = 50\) t of plastic (50 required). The excess glass comes about by itself: the days that have to be paid for in order to reach the paper and plastic targets bring that glass with them.</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) Plant I should be operated for 6 days and plant II for 22 days; the minimum cost is \(TC_{\min}(6;\, 22) = 78000\) euros.</p>
+            <p>b) The recovery of paper and of plastic is exactly what is required, 40 and 50 tonnes; the recovery of glass exceeds the requirement by 8 tonnes, 28 t instead of 20 t.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 5.2, Example 2 (two cleaning teams) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>The work plan of the cleaning teams</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A company cleans office buildings with two teams. In one day team A cleans 4 offices and 2 stairwells, and team B cleans 2 offices and 3 stairwells. A contract requires at least 16 offices and at least 12 stairwells to be cleaned. A day of team A costs 300 euros and a day of team B 200 euros. How many days should each team work so that the cost of fulfilling the contract is as small as possible? What is the minimum cost? Is any part of the contract over-fulfilled?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The variables and the mathematical model</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of days team A works;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of days team B works.</span></li>
+          </ul>
+          \[ \begin{gathered} TC = 300x + 200y \to \min \\[4pt] \begin{cases} 4x + 2y \geq 16 \\ 2x + 3y \geq 12 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The coefficient table and its transpose</span></h4>
+          <p>There are two constraints, so the coefficient table has the rows \(s_1\), \(s_2\) and \(TC\). It is transposed: the row \(s_1\) becomes the column \(s_1\), the columns \(x\) and \(y\) become rows, and \(TC\) is changed to \(P\):</p>
+<div class="mats mats--flow">
+<span><table class="vtable sx-tbl">
+<thead><tr><th scope="col"></th><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr class="pr"><th scope="row">\(s_1\)</th><td>4</td><td>2</td><td class="g">16</td></tr>
+<tr><th scope="row">\(s_2\)</th><td>2</td><td>3</td><td class="g">12</td></tr>
+<tr class="tf"><th scope="row">\(TC\)</th><td>300</td><td>200</td><td class="g"></td></tr>
+</tbody></table></span>
+<span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+<span><table class="vtable sx-tbl">
+<thead><tr><th scope="col"></th><th scope="col" class="tc">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr><th scope="row">\(x\)</th><td class="tc">4</td><td>2</td><td class="g">300</td></tr>
+<tr><th scope="row">\(y\)</th><td class="tc">2</td><td>3</td><td class="g">200</td></tr>
+<tr class="tf"><th scope="row">\(P\)</th><td class="tc">16</td><td>12</td><td class="g"></td></tr>
+</tbody></table></span>
+</div>
+<p class="formula-note" style="text-align:center">The first row \(s_1\) has become the first column \(s_1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The dual problem and the system of equations</span></h4>
+          <p>The dual problem is written from the transposed table. The required amounts 16 and 12 have become the coefficients of the objective function, and the daily costs 300 and 200 the right-hand sides:</p>
+          \[ \begin{gathered} P = 16s_1 + 12s_2 \to \max \\[4pt] \begin{cases} 4s_1 + 2s_2 \leq 300 \\ 2s_1 + 3s_2 \leq 200 \\ s_1;\, s_2 \geq 0 \end{cases} \end{gathered} \]
+          <p>Introducing the slack variables \(x\) and \(y\) gives:</p>
+          \[ \begin{cases} 4s_1 + 2s_2 + \htmlClass{hd}{x} = 300 \\ 2s_1 + 3s_2 + \htmlClass{hd}{y} = 200 \\ -16s_1 - 12s_2 + P = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The initial tableau and the choices of iteration 1</span></h4>
+          <p>This time the dual problem has two variables and two constraints, so the columns are \(s_1, s_2 \mid x, y \mid P \mid n\). The most negative entry of the objective row is \(-16\), so the pivot column is that of \(s_1\). Of the ratios \(300 : 4 = 75\) and \(200 : 2 = 100\) the smaller belongs to the first row, so the pivot element is 4:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">4</td>
+<td>2</td>
+<td class="g">1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">300</td>
+<td class="ann">: 4</td>
+<td class="ann">300 : 4 = 75</td>
+</tr>
+<tr>
+<td class="pc">2</td>
+<td>3</td>
+<td class="g">0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann"></td>
+<td class="ann">200 : 2 = 100</td>
+</tr>
+<tr class="tf">
+<td class="pc">−16</td>
+<td>−12</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Iteration 1: transforming the tableau</span></h4>
+          <p>The first row is divided by 4, and the other entries of the \(s_1\) column are turned into zeros: the multiplier for the second row is \((-2)\), for the objective row \((16)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">1</td>
+<td>0.5</td>
+<td class="g">0.25</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">75</td>
+<td class="ann">(−2)</td>
+<td class="ann">(16)</td>
+</tr>
+<tr>
+<td class="pc">2</td>
+<td>3</td>
+<td class="g">0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td class="pc">−16</td>
+<td>−12</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.5</td>
+<td class="g">0.25</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">75</td>
+</tr>
+<tr>
+<td>0</td>
+<td>2</td>
+<td class="g">−0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">50</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>−4</td>
+<td class="g">4</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1200</td>
+</tr>
+</tbody></table></div>
+          <p>The objective row still contains the negative entry \(-4\), so a second iteration is carried out.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Iteration 2: the choices</span></h4>
+          <p>The negative entry \(-4\) is in the column of \(s_2\), so that column is the pivot column. The ratios are \(75 : 0.5 = 150\) and \(50 : 2 = 25\); the smaller belongs to the second row, so the pivot element is 2:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col" class="pc">\(s_2\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td class="pc">0.5</td>
+<td class="g">0.25</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">75</td>
+<td class="ann"></td>
+<td class="ann">75 : 0.5 = 150</td>
+</tr>
+<tr class="pr">
+<td>0</td>
+<td class="pc pe">2</td>
+<td class="g">−0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">50</td>
+<td class="ann">: 2</td>
+<td class="ann">50 : 2 = 25</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td class="pc">−4</td>
+<td class="g">4</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1200</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Iteration 2: transforming the tableau</span></h4>
+          <p>The second row is divided by 2, and the entries of the other rows in the \(s_2\) column are turned into zeros with the multipliers \((-0.5)\) and \((4)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col" class="pc">\(s_2\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td class="pc">0.5</td>
+<td class="g">0.25</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">75</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+</tr>
+<tr class="pr">
+<td>0</td>
+<td class="pc pe">1</td>
+<td class="g">−0.25</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g">25</td>
+<td class="ann">(−0.5)</td>
+<td class="ann">(4)</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td class="pc">−4</td>
+<td class="g">4</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">1200</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td class="g">0.375</td>
+<td>−0.25</td>
+<td class="g">0</td>
+<td class="g">62.5</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td class="g">−0.25</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g">25</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>0</td>
+<td class="g">3</td>
+<td>2</td>
+<td class="g">1</td>
+<td class="g">1300</td>
+</tr>
+</tbody></table></div>
+          <p>No negative entry is left, so this tableau is optimal.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Reading the final tableau</span></h4>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td class="g">0.375</td>
+<td>−0.25</td>
+<td class="g">0</td>
+<td class="g">62.5</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td class="g">−0.25</td>
+<td>0.5</td>
+<td class="g">0</td>
+<td class="g">25</td>
+</tr>
+<tr class="tf">
+<td class="sp">0</td>
+<td class="sp">0</td>
+<td class="g nv">3</td>
+<td class="nv">2</td>
+<td class="g">1</td>
+<td class="g pv">1300</td>
+</tr>
+</tbody></table></div>
+          <ul class="read-list">
+            <li class="r-bc"><strong>The quantities.</strong> In the objective row under the columns of \(x\) and \(y\): \(x = 3\), \(y = 2\).</li>
+            <li class="r-pv"><strong>The minimum cost:</strong> \(TC = 1300\). Check: \(300\cdot 3 + 200\cdot 2 = 900 + 400 = 1300\).</li>
+            <li class="r-sp"><strong>The over-satisfied requirements:</strong> under \(s_1\) and \(s_2\) there are 0 and 0 – neither part of the contract is over-fulfilled.</li>
+            <li><strong>Check against the constraints:</strong> \(4\cdot 3 + 2\cdot 2 = 16\) offices and \(2\cdot 3 + 3\cdot 2 = 12\) stairwells are cleaned – exactly as required.</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>Team A should work 3 days and team B 2 days; the minimum cost is \(TC_{\min}(3;\, 2) = 1300\) euros. Both parts of the contract are met exactly, with no over-fulfilment: 16 offices and 12 stairwells are cleaned.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 5.2, Example 3 (two road-repair crews) -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>The work plan of the road-repair crews</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>A city hires two road-repair crews. In one day crew A repairs 2&nbsp;km of road surface, 1&nbsp;km of kerbs and 1&nbsp;km of road markings; crew B repairs 1&nbsp;km of road surface, 1&nbsp;km of kerbs and 2&nbsp;km of road markings. This year’s programme requires at least 60&nbsp;km of road surface, at least 40&nbsp;km of kerbs and at least 30&nbsp;km of road markings to be repaired. A day of crew A costs 300 euros and a day of crew B 200 euros. How many days should each crew work so that the programme is carried out at the smallest cost? What is the minimum cost? Is any part of the programme exceeded?</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The variables and the mathematical model</span></h4>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of days crew A works;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of days crew B works.</span></li>
+          </ul>
+          \[ \begin{gathered} TC = 300x + 200y \to \min \\[4pt] \begin{cases} 2x + y \geq 60 \\ x + y \geq 40 \\ x + 2y \geq 30 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The coefficient table and its transpose</span></h4>
+          <p>Three constraints – three rows \(s_1\), \(s_2\), \(s_3\) and the row \(TC\). After transposing they become columns, and the two columns \(x\) and \(y\) become two rows:</p>
+<div class="mats mats--flow">
+<span><table class="vtable sx-tbl">
+<thead><tr><th scope="col"></th><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr class="pr"><th scope="row">\(s_1\)</th><td>2</td><td>1</td><td class="g">60</td></tr>
+<tr><th scope="row">\(s_2\)</th><td>1</td><td>1</td><td class="g">40</td></tr>
+<tr><th scope="row">\(s_3\)</th><td>1</td><td>2</td><td class="g">30</td></tr>
+<tr class="tf"><th scope="row">\(TC\)</th><td>300</td><td>200</td><td class="g"></td></tr>
+</tbody></table></span>
+<span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
+<span><table class="vtable sx-tbl">
+<thead><tr><th scope="col"></th><th scope="col" class="tc">\(s_1\)</th><th scope="col">\(s_2\)</th><th scope="col">\(s_3\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
+<tbody>
+<tr><th scope="row">\(x\)</th><td class="tc">2</td><td>1</td><td>1</td><td class="g">300</td></tr>
+<tr><th scope="row">\(y\)</th><td class="tc">1</td><td>1</td><td>2</td><td class="g">200</td></tr>
+<tr class="tf"><th scope="row">\(P\)</th><td class="tc">60</td><td>40</td><td>30</td><td class="g"></td></tr>
+</tbody></table></span>
+</div>
+<p class="formula-note" style="text-align:center">The first row \(s_1\) has become the first column \(s_1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The dual problem and the system of equations</span></h4>
+          \[ \begin{gathered} P = 60s_1 + 40s_2 + 30s_3 \to \max \\[4pt] \begin{cases} 2s_1 + s_2 + s_3 \leq 300 \\ s_1 + s_2 + 2s_3 \leq 200 \\ s_1;\, s_2;\, s_3 \geq 0 \end{cases} \end{gathered} \]
+          <p>Introducing the slack variables \(x\) and \(y\) gives:</p>
+          \[ \begin{cases} 2s_1 + s_2 + s_3 + \htmlClass{hd}{x} = 300 \\ s_1 + s_2 + 2s_3 + \htmlClass{hd}{y} = 200 \\ -60s_1 - 40s_2 - 30s_3 + P = 0 \end{cases} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The initial tableau and the choices of iteration 1</span></h4>
+          <p>The pivot column is that of \(s_1\) (\(-60\) is the most negative entry), and the ratios are \(300 : 2 = 150\) and \(200 : 1 = 200\), so the first row is the pivot row and the pivot element is 2:</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">2</td>
+<td>1</td>
+<td>1</td>
+<td class="g">1</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">300</td>
+<td class="ann">: 2</td>
+<td class="ann">300 : 2 = 150</td>
+</tr>
+<tr>
+<td class="pc">1</td>
+<td>1</td>
+<td>2</td>
+<td class="g">0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann"></td>
+<td class="ann">200 : 1 = 200</td>
+</tr>
+<tr class="tf">
+<td class="pc">−60</td>
+<td>−40</td>
+<td>−30</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Iteration 1: transforming the tableau</span></h4>
+          <p>The first row is divided by 2. The entry of the second row in the \(s_1\) column is turned into zero with the multiplier \((-1)\), that of the objective row with the multiplier \((60)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col" class="pc">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr class="pr">
+<td class="pc pe">1</td>
+<td>0.5</td>
+<td>0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">150</td>
+<td class="ann">(−1)</td>
+<td class="ann">(60)</td>
+</tr>
+<tr>
+<td class="pc">1</td>
+<td>1</td>
+<td>2</td>
+<td class="g">0</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">200</td>
+<td class="ann">↓</td>
+<td class="ann">│</td>
+</tr>
+<tr class="tf">
+<td class="pc">−60</td>
+<td>−40</td>
+<td>−30</td>
+<td class="g">0</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">0</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0.5</td>
+<td>0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">150</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0.5</td>
+<td>1.5</td>
+<td class="g">−0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">50</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>−10</td>
+<td>0</td>
+<td class="g">30</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">9000</td>
+</tr>
+</tbody></table></div>
+          <p>The objective row reads \(0,\; -10,\; 0,\; 30,\; 0\): the negative entry \(-10\) shows that a second iteration is needed.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Iteration 2: the choices</span></h4>
+          <p>The pivot column is that of \(s_2\). The ratios are \(150 : 0.5 = 300\) and \(50 : 0.5 = 100\), so this time the second row is the pivot row and the pivot element is \(0.5\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col" class="pc">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td class="pc">0.5</td>
+<td>0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">150</td>
+<td class="ann"></td>
+<td class="ann">150 : 0.5 = 300</td>
+</tr>
+<tr class="pr">
+<td>0</td>
+<td class="pc pe">0.5</td>
+<td>1.5</td>
+<td class="g">−0.5</td>
+<td>1</td>
+<td class="g">0</td>
+<td class="g">50</td>
+<td class="ann">: 0.5</td>
+<td class="ann">50 : 0.5 = 100</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td class="pc">−10</td>
+<td>0</td>
+<td class="g">30</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">9000</td>
+<td class="ann"></td>
+<td class="ann"></td>
+</tr>
+</tbody></table></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Iteration 2: transforming the tableau</span></h4>
+          <p>The second row is divided by \(0.5\) (that is, multiplied by 2), and the entries of the other rows in the \(s_2\) column are turned into zeros with the multipliers \((-0.5)\) and \((10)\):</p>
+<div class="tbl-wrap sx-scroll" tabindex="0" role="region" aria-label="Simplex tableau with annotations">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col" class="pc">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+<th class="ann"></th>
+<th class="ann"></th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td class="pc">0.5</td>
+<td>0.5</td>
+<td class="g">0.5</td>
+<td>0</td>
+<td class="g">0</td>
+<td class="g">150</td>
+<td class="ann">↑</td>
+<td class="ann"></td>
+</tr>
+<tr class="pr">
+<td>0</td>
+<td class="pc pe">1</td>
+<td>3</td>
+<td class="g">−1</td>
+<td>2</td>
+<td class="g">0</td>
+<td class="g">100</td>
+<td class="ann">(−0.5)</td>
+<td class="ann">(10)</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td class="pc">−10</td>
+<td>0</td>
+<td class="g">30</td>
+<td>0</td>
+<td class="g">1</td>
+<td class="g">9000</td>
+<td class="ann"></td>
+<td class="ann">↓</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>−1</td>
+<td class="g">1</td>
+<td>−1</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td class="g">−1</td>
+<td>2</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr class="tf">
+<td>0</td>
+<td>0</td>
+<td>30</td>
+<td class="g">20</td>
+<td>20</td>
+<td class="g">1</td>
+<td class="g">10000</td>
+</tr>
+</tbody></table></div>
+          <p>The objective row has no negative entry, so the tableau is optimal.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">8</span><span>Reading the final tableau</span></h4>
+<div class="tbl-wrap">
+<table class="vtable sx-tbl">
+<thead><tr>
+<th scope="col">\(s_1\)</th>
+<th scope="col">\(s_2\)</th>
+<th scope="col">\(s_3\)</th>
+<th scope="col" class="g">\(x\)</th>
+<th scope="col">\(y\)</th>
+<th scope="col" class="g">\(P\)</th>
+<th scope="col" class="g">\(n\)</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>−1</td>
+<td class="g">1</td>
+<td>−1</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td class="g">−1</td>
+<td>2</td>
+<td class="g">0</td>
+<td class="g">100</td>
+</tr>
+<tr class="tf">
+<td class="sp">0</td>
+<td class="sp">0</td>
+<td class="sp">30</td>
+<td class="g nv">20</td>
+<td class="nv">20</td>
+<td class="g">1</td>
+<td class="g pv">10000</td>
+</tr>
+</tbody></table></div>
+          <ul class="read-list">
+            <li class="r-bc"><strong>The quantities.</strong> Under the columns of \(x\) and \(y\): \(x = 20\), \(y = 20\).</li>
+            <li class="r-pv"><strong>The minimum cost:</strong> \(TC = 10000\). Check: \(300\cdot 20 + 200\cdot 20 = 10000\).</li>
+            <li class="r-sp"><strong>The over-satisfied requirements:</strong> under \(s_1, s_2, s_3\) there are 0, 0 and 30 – the road surface and the kerbs are repaired exactly, and the road-marking requirement is exceeded by 30&nbsp;km.</li>
+            <li><strong>Check against the constraints:</strong> road surface \(2\cdot 20 + 20 = 60\)&nbsp;km, kerbs \(20 + 20 = 40\)&nbsp;km, road markings \(20 + 2\cdot 20 = 60\)&nbsp;km instead of 30&nbsp;km. The markings are not what makes the work expensive: the days that have to be paid for in order to repair the surface and the kerbs bring twice the required length of markings with them.</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>Each crew should work 20 days; the minimum cost is \(TC_{\min}(20;\, 20) = 10000\) euros. The road surface and the kerbs are repaired exactly to the required length, 60&nbsp;km and 40&nbsp;km, and the road markings are done to 60&nbsp;km, that is, the requirement is exceeded by 30&nbsp;km.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: define the variables, write the mathematical model, show the coefficient table and its transpose, write the dual problem, build the initial tableau, show the pivot column, the ratios and the row operations, and read the answers from the objective row of the final tableau. The answer gives the variables, the mathematical model, the dual problem and the final answers – use them to check your work. Each problem is solved in two iterations. The second problem has four requirements, so the dual problem has four variables \(s_1, s_2, s_3, s_4\).</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A transport company has its buses overhauled in two workshops. In one day workshop A overhauls 1 engine, 1 gearbox and 2 brake systems; in one day workshop B overhauls 1 engine, 2 gearboxes and 1 brake system. Before the season at least 50 engines, 80 gearboxes and 50 brake systems have to be overhauled. A day in workshop A costs 300 euros and a day in workshop B 500 euros.</p>
+          <ol type="a">
+            <li>How many days should the company book in each workshop for the cost to be the smallest, and what is that cost?</li>
+            <li>Which requirements are exceeded, and by how much?</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of days booked in workshop A;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of days booked in workshop B.</span></li>
+          </ul>
+          <p><strong>The mathematical model:</strong></p>
+          \[ \begin{gathered} TC = 300x + 500y \to \min \\[4pt] \begin{cases} x + y \geq 50 \\ x + 2y \geq 80 \\ 2x + y \geq 50 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>The dual problem</strong> that is built from the transposed table and actually solved:</p>
+          \[ \begin{gathered} P = 50s_1 + 80s_2 + 50s_3 \to \max \\[4pt] \begin{cases} s_1 + s_2 + 2s_3 \leq 300 \\ s_1 + 2s_2 + s_3 \leq 500 \\ s_1;\, s_2;\, s_3 \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Answer.</strong> a) The smallest value of the objective function is</p>
+          \[ TC_{\min}(20;\, 30) = 21000 \]
+          <p>The company should book 20 days in workshop A and 30 days in workshop B; the cost is then 21000 euros. The two numbers are read from the objective row of the final tableau, under the columns of the dual problem’s slack variables \(x\) and \(y\).</p>
+          <p>b) The objective row gives 0, 0 and 20 under \(s_1\), \(s_2\) and \(s_3\). The engines and the gearboxes are overhauled exactly as required – 50 and 80 respectively – while 70 brake systems are overhauled instead of the 50 required, so that requirement is exceeded by 20 units.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A humanitarian organisation prepares two kinds of relief parcel. Parcel A contains 2 packs of food, 3 blankets, 1 first-aid kit and 1 water filter; parcel B contains 1 pack of food, 2 blankets, 1 first-aid kit and 2 water filters. The programme has to deliver at least 55 packs of food, 95 blankets, 30 first-aid kits and 50 water filters. Parcel A costs 80 euros and parcel B 50 euros.</p>
+          <ol type="a">
+            <li>How many parcels of each kind should be prepared for the cost to be the smallest, and what is that cost?</li>
+            <li>Which requirements are exceeded, and by how much?</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The variables:</strong></p>
+          <ul class="kv">
+            <li><span class="sym">\(x\)</span><span>– the number of parcels of kind A;</span></li>
+            <li><span class="sym">\(y\)</span><span>– the number of parcels of kind B.</span></li>
+          </ul>
+          <p><strong>The mathematical model:</strong></p>
+          \[ \begin{gathered} TC = 80x + 50y \to \min \\[4pt] \begin{cases} 2x + y \geq 55 \\ 3x + 2y \geq 95 \\ x + y \geq 30 \\ x + 2y \geq 50 \\ x;\, y \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>The dual problem</strong> that is built from the transposed table and actually solved:</p>
+          \[ \begin{gathered} P = 55s_1 + 95s_2 + 30s_3 + 50s_4 \to \max \\[4pt] \begin{cases} 2s_1 + 3s_2 + s_3 + s_4 \leq 80 \\ s_1 + 2s_2 + s_3 + 2s_4 \leq 50 \\ s_1;\, s_2;\, s_3;\, s_4 \geq 0 \end{cases} \end{gathered} \]
+          <p><strong>Answer.</strong> a) The smallest value of the objective function is</p>
+          \[ TC_{\min}(15;\, 25) = 2450 \]
+          <p>The organisation should prepare 15 parcels of kind A and 25 parcels of kind B; the cost is then 2450 euros.</p>
+          <p>b) The objective row gives 0, 0, 10 and 15 under \(s_1\), \(s_2\), \(s_3\) and \(s_4\). The food and the blankets come out exactly at the required 55 and 95 respectively. The parcels contain 40 first-aid kits instead of 30 and 65 water filters instead of 50, so those two requirements are exceeded by 10 and 15 units respectively.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 5</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
