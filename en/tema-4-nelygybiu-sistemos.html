@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Systems of Linear Inequalities · Applied Mathematics</title>
+<meta name="description" content="How to solve a linear inequality and a system of linear inequalities in two variables graphically: the boundary line, the test point, the half-plane, the feasible set and its vertices.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-4-nelygybiu-sistemos.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=47">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=47"></script>
+</head>
+<body data-page="m41">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 4 · Applications · Section 1</span>
+    <h1>Systems of Linear Inequalities</h1>
+    <p class="lead">This section shows how to solve linear inequalities in two variables and systems of them graphically: how to find the feasible set and all its vertices.</p>
+    <ul class="jump">
+      <li><a href="#esme">Essence</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#specialieji">Special cases</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. ESSENCE ============ -->
+  <section class="section" id="esme" aria-labelledby="h-model">
+    <h2 id="h-model">The solution of an inequality is a part of the plane</h2>
+
+    <article class="card">
+      <p>A <strong>linear inequality in two variables</strong> is a condition of the form</p>
+      <div class="formula">\[ ax + by \leq c \quad \text{or} \quad ax + by \geq c \]</div>
+      <p>A pair of numbers \((x;\, y)\) is a solution of the inequality if substituting it makes the condition true. Every pair of numbers is a point of the coordinate plane, so the solutions of an inequality can be shown in a two-dimensional coordinate system.</p>
+      <p>The set of <strong>all</strong> solutions is a <strong>half-plane</strong>: the straight line \(ax + by = c\) divides the plane into two parts. All the points of one part satisfy the inequality – this part of the plane is the solution of the inequality. The points of the other part do not satisfy it.</p>
+
+      <figure class="fig hp-fig">
+        <svg viewBox="0 0 320 222" role="img" aria-label="The coordinate plane divided by the line ax + by = c into two half-planes; the shaded half-plane containing the origin O satisfies the inequality ax + by ≤ c">
+          <path class="lp-region" d="M40.0 37.9L300.0 205.0L300 212L40 212Z"/>
+          <line class="ax" x1="40" y1="160" x2="296" y2="160"/><path class="ah" d="M303 160l-9 -4.5v9z"/>
+          <line class="ax" x1="90" y1="212" x2="90" y2="26"/><path class="ah" d="M90 19l-4.5 9h9z"/>
+          <text class="m" x="298" y="178" text-anchor="middle">x</text>
+          <text class="m" x="78" y="28" text-anchor="middle">y</text>
+          <line class="lp-l1" x1="40.0" y1="37.9" x2="300.0" y2="205.0"/>
+          <line class="lp-a1" x1="128.0" y1="94.4" x2="119.9" y2="107.0"/><path class="lp-h1" d="M117.2 111.3L116.5 104.9L123.3 109.2Z"/><line class="lp-a1" x1="262.0" y1="180.6" x2="253.9" y2="193.2"/><path class="lp-h1" d="M251.2 197.4L250.5 191.0L257.3 195.4Z"/>
+          <text class="lp-lab c1 halo" x="200" y="128"><tspan class="i">a</tspan><tspan class="i">x</tspan> + <tspan class="i">b</tspan><tspan class="i">y</tspan> = <tspan class="i">c</tspan></text>
+          <text class="hp-out halo" x="232" y="66" text-anchor="middle"><tspan class="i">ax</tspan> + <tspan class="i">by</tspan> ≥ <tspan class="i">c</tspan></text>
+          <text class="hp-in halo" x="172" y="198" text-anchor="middle"><tspan class="i">ax</tspan> + <tspan class="i">by</tspan> ≤ <tspan class="i">c</tspan></text>
+          <circle class="lp-test" cx="90" cy="160" r="4.5"/>
+          <text class="m halo" x="82" y="177" text-anchor="end">O</text>
+        </svg>
+        <figcaption>The line \(ax + by = c\) divides the plane into two half-planes. The points of the shaded half-plane satisfy the inequality \(ax + by \leq c\), and the points of the unshaded one satisfy \(ax + by \geq c\). In the figure \(c &gt; 0\), so the origin \(O(0;\, 0)\) (the orange circle) belongs to the shaded half-plane: \(a \cdot 0 + b \cdot 0 = 0 \leq c\).</figcaption>
+      </figure>
+
+      <p>Because this course uses only the signs \(\leq\) and \(\geq\), the boundary line itself always belongs to the solution – the points on the line satisfy the condition with equality.</p>
+
+      <div class="subtype">
+        <h4>A system of inequalities</h4>
+        <p>A <strong>system of linear inequalities</strong> is several conditions that must hold at the same time. They are always written together in one system, with a brace, to show that they are simultaneous:</p>
+        <div class="formula">\[ \begin{cases} a_1x + b_1y \leq c_1 \\ a_2x + b_2y \leq c_2 \\ \quad\vdots \end{cases} \]</div>
+        <p>The solution of the system is the <strong>intersection</strong> of the separate half-planes – the set of points lying in all of them at once. This set is called the <strong>feasible set</strong>.</p>
+        <p>The feasible set may be <strong>bounded</strong> – a polygon that can be enclosed in a circle – or <strong>unbounded</strong>, extending without limit in some direction. Its corner points are called <strong>vertices</strong>.</p>
+        <p class="tip">Finding the vertices is the real purpose of the drawing. In the following sections the feasible set will be the set of all production or purchase plans that the available resources allow, and the best plan is always found at <a href="tema-4.html#leistinoji-aibe">one of its vertices</a>.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li><strong>Draw the boundary line of each inequality.</strong>
+          <ul>
+            <li>Replace the inequality sign by \(=\) to obtain the equation of the boundary line.</li>
+            <li>Find two points of the line. Whenever possible use the intercepts with the axes: set \(x = 0\) to find the \(Oy\)-intercept, and \(y = 0\) to find the \(Ox\)-intercept.</li>
+            <li>Write the two points in a value table, the \(x\)-values in the first row and the \(y\)-values in the second:
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>6</td></tr><tr><th scope="row">\(y\)</th><td>4</td><td>0</td></tr></table>
+            </li>
+            <li>If the line passes through the origin, both intercepts collapse into the same point, so one further convenient point has to be chosen instead (<a href="#per-pradzia">see the special cases</a>).</li>
+            <li>If the line is parallel to an axis, no value table is needed at all: \(x = 4\) is the vertical line through the point 4 of the \(Ox\)-axis, and \(y = 2\) the horizontal line through the point 2 of the \(Oy\)-axis (<a href="#lygiagrecios">see the special cases</a>).</li>
+            <li>Draw the straight line through the two points and label it with its equation.</li>
+          </ul>
+        </li>
+        <li><strong>Determine the solution half-plane.</strong>
+          <ul>
+            <li>Choose a <strong>test point</strong> that does not lie on the line. Use the origin \(O(0;\, 0)\) whenever the line does not pass through it, because substituting zeros is the easiest calculation there is.</li>
+            <li>Substitute the test point into the inequality and write the substitution out, for example:
+              \[ \begin{aligned} &amp;2\cdot 0 + 3\cdot 0 \leq 12 \\ &amp;\Longrightarrow\; 0 \leq 12 \quad \text{(true)} \end{aligned} \]</li>
+            <li>If the result is true, the half-plane containing the test point is the solution. If it is false, the solution is the opposite half-plane.</li>
+            <li>Mark the solution half-plane with arrows drawn on the boundary line and pointing towards it.</li>
+          </ul>
+        </li>
+        <li><strong>Find the feasible set of the system.</strong>
+          <ul>
+            <li>The feasible set is the intersection of the solution half-planes of all the inequalities.</li>
+            <li>On the final graph put arrows on every line and shade only the feasible set. Shading each half-plane separately on the same picture produces overlapping colours that hide the answer.</li>
+          </ul>
+        </li>
+        <li><strong>Find all the vertices of the feasible set.</strong>
+          <ul>
+            <li>If a vertex lies on an axis, its coordinates are already known: take them from the value table made in Step 1, and do not calculate them a second time.</li>
+            <li>If a vertex is the crossing point of two constraint lines, write the system of the two line equations and solve it by the methods of <a href="tema-3.html">Topic 3</a>.</li>
+            <li>List all the vertices with their coordinates, naming them \(O, A, B, C, \ldots\) as they follow round the boundary.</li>
+          </ul>
+        </li>
+      </ol>
+
+      <div class="must">
+        <p class="must-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg>What every graph must show</p>
+        <ul class="badge-list">
+          <li><span class="bn">1</span><span>axis labels (\(x\) and \(y\));</span></li>
+          <li><span class="bn">2</span><span>the origin \(O\);</span></li>
+          <li><span class="bn">3</span><span>the unit scale on both axes;</span></li>
+          <li><span class="bn">4</span><span>the equation of every line;</span></li>
+          <li><span class="bn">5</span><span>the feasible set.</span></li>
+        </ul>
+        <p style="margin:10px 0 0">Within one example keep the same scale, the same colour for each line and the same labels on every graph, so that each picture visibly continues the previous one.</p>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>A test point on the line.</strong> If the line passes through the origin, \(O(0;\, 0)\) cannot be chosen as the test point.</li>
+            <li><strong>The sign \(\geq\).</strong> When a constraint has the sign \(\geq\) and a positive right-hand side, the origin does not satisfy the inequality – the arrows point away from it.</li>
+            <li><strong>All the half-planes shaded.</strong> On the final graph only the intersection is shaded.</li>
+            <li><strong>Vertex coordinates “read off” the graph.</strong> The crossing point of two lines is found by solving the system of equations, not by measuring on the graph.</li>
+            <li><strong>Required elements of the graph missing.</strong> Without the unit scale or the equations of the lines the graph is not considered complete.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="more more--exam">
+        <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg></span>What you must write in the exam</summary>
+        <div class="more-body">
+          <ol>
+            <li>When solving the problem graphically, value tables for the constraint lines must be provided.</li>
+            <li>The graph must include the following elements: axis labels; the origin of the coordinate system; the unit scale on the axes; labels of the lines; the feasible set.</li>
+            <li>The coordinates of the intersection points of the constraint lines must be determined algebraically. When finding intersection points, it is acceptable to use a calculator, but the equations used must be shown explicitly.</li>
+          </ol>
+          <p><a href="tarpinis-egzaminas.html">All guidelines for presenting solutions to applied mathematics problems →</a></p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to draw the graph yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A single inequality</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>Solve the inequality \(2x + 3y \leq 12\) graphically.</p>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The boundary line</span></h4>
+          <p>The inequality sign is replaced by the equals sign:</p>
+          \[ 2x + 3y = 12 \]
+          <p>Its intercepts with the axes are found by setting each variable to zero in turn:</p>
+          \[ \begin{aligned} x = 0:&amp;\quad 3y = 12 \;\Longrightarrow\; y = 4 \\ y = 0:&amp;\quad 2x = 12 \;\Longrightarrow\; x = 6 \end{aligned} \]
+          <p>The value table of the line:</p>
+          <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>6</td></tr><tr><th scope="row">\(y\)</th><td>4</td><td>0</td></tr></table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The test point</span></h4>
+          <p>The line does not pass through the origin, so \(O(0;\, 0)\) may be used as the test point:</p>
+          \[ \begin{aligned} &amp;2\cdot 0 + 3\cdot 0 \leq 12 \\ &amp;\Longrightarrow\; 0 \leq 12 \quad \text{(true)} \end{aligned} \]
+          <p>The result is true, so the solution is the half-plane that contains the origin – the one below the line. The arrows on the line point into it.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,8,1,2],"y":[-2,6,1,2],"c":[{"a":2,"b":3,"s":"le","r":12,"lab":"2x + 3y = 12","col":1,"lt":0.55}],"test":[0,0],"pts":[{"x":0,"y":4},{"x":6,"y":0}],"aria":"The solution of the inequality 2x + 3y ≤ 12"}'></div>
+            <figcaption>Figure 1. The solution of \(2x + 3y \leq 12\): the shaded half-plane together with its boundary line.</figcaption>
+          </figure>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The solution is the closed half-plane bounded by the line \(2x + 3y = 12\) and containing the origin.</p>
+          </div>
+          <p>The boundary line belongs to the solution, because the inequality sign is \(\leq\) and not \(&lt;\).</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>A system of two inequalities</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>Find the feasible set of the system and determine its vertices:</p>
+        \[ \begin{cases} x + y \leq 6 \\ 2x + y \leq 8 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first boundary line</span></h4>
+          \[ x + y = 6 \]
+          \[ \begin{aligned} x = 0:&amp;\quad y = 6 \\ y = 0:&amp;\quad x = 6 \end{aligned} \]
+          <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>6</td></tr><tr><th scope="row">\(y\)</th><td>6</td><td>0</td></tr></table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The half-plane of the first inequality</span></h4>
+          <p>Test point \(O(0;\, 0)\):</p>
+          \[ 0 + 0 \leq 6 \;\Longrightarrow\; 0 \leq 6 \quad \text{(true)} \]
+          <p>The solution is the half-plane containing the origin.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,8,1,2],"y":[-2,9,1,2],"c":[{"a":1,"b":1,"s":"le","r":6,"lab":"x + y = 6","col":1,"lt":0.62}],"pts":[{"x":0,"y":6},{"x":6,"y":0}],"aria":"The solution half-plane of the inequality x + y ≤ 6"}'></div>
+            <figcaption>Figure 2. The solution half-plane of \(x + y \leq 6\).</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The second boundary line</span></h4>
+          \[ 2x + y = 8 \]
+          \[ \begin{aligned} x = 0:&amp;\quad y = 8 \\ y = 0:&amp;\quad 2x = 8 \;\Longrightarrow\; x = 4 \end{aligned} \]
+          <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>4</td></tr><tr><th scope="row">\(y\)</th><td>8</td><td>0</td></tr></table>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The half-plane of the second inequality</span></h4>
+          <p>Test point \(O(0;\, 0)\) again:</p>
+          \[ 2\cdot 0 + 0 \leq 8 \;\Longrightarrow\; 0 \leq 8 \quad \text{(true)} \]
+          <p>This solution is also the half-plane containing the origin.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,8,1,2],"y":[-2,9,1,2],"c":[{"a":2,"b":1,"s":"le","r":8,"lab":"2x + y = 8","col":2,"lt":0.35}],"pts":[{"x":0,"y":8},{"x":4,"y":0}],"aria":"The solution half-plane of the inequality 2x + y ≤ 8"}'></div>
+            <figcaption>Figure 3. The solution half-plane of \(2x + y \leq 8\).</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The feasible set</span></h4>
+          <p>The feasible set of the system is the intersection of the two half-planes: the points lying on or below both lines at the same time. It is drawn on one picture, with arrows on both lines and only the intersection shaded.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-2,8,1,2],"y":[-2,9,1,2],"c":[{"a":1,"b":1,"s":"le","r":6,"lab":"x + y = 6","col":1,"lt":0.72},{"a":2,"b":1,"s":"le","r":8,"lab":"2x + y = 8","col":2,"lt":0.22}],"pts":[{"x":2,"y":4,"lab":"A(2; 4)","p":"e","hi":true}],"aria":"The feasible set of the system and its vertex A(2; 4)"}'></div>
+            <figcaption>Figure 4. The feasible set of the system and its only vertex \(A(2;\, 4)\).</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The vertex</span></h4>
+          <p>The feasible set is unbounded – it stretches without limit downwards and to the left – and it has exactly one vertex, the point where the two lines cross. It is not on an axis, so it is found from the system of the two line equations:</p>
+          \[ \begin{gathered} \begin{cases} x + y = 6 \\ 2x + y = 8 \end{cases} \\ \Longrightarrow\; x = 2,\; y = 4 \;\Longrightarrow\; A(2;\, 4) \end{gathered} \]
+          <p class="formula-note">Subtracting the first equation from the second gives \(x = 2\); then \(y = 6 - 2 = 4\).</p>
+          <p>A check in both equations: \(2 + 4 = 6\) and \(2\cdot 2 + 4 = 8\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The feasible set is the unbounded region lying on or below both lines; its only vertex is \(A(2;\, 4)\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A bounded feasible set</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>Find the feasible set of the system and determine all its vertices:</p>
+        \[ \begin{cases} 2x + y \leq 12 \\ x + y \leq 8 \\ x + 2y \leq 14 \\ x;\, y \geq 0 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Three boundary lines</span></h4>
+          <p>Each line is drawn through its two intercepts, so three value tables are needed:</p>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(2x + y = 12\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 12\)<br>\(y = 0:\; x = 6\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>6</td></tr><tr><th scope="row">\(y\)</th><td>12</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + y = 8\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 8\)<br>\(y = 0:\; x = 8\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>8</td></tr><tr><th scope="row">\(y\)</th><td>8</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 14\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 7\)<br>\(y = 0:\; x = 14\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>14</td></tr><tr><th scope="row">\(y\)</th><td>7</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The test point</span></h4>
+          <p>The origin lies on none of the three lines, so it is the test point for all three inequalities:</p>
+          \[ \begin{aligned} 2\cdot 0 + 0 \leq 12 \;&amp;\Longrightarrow\; 0 \leq 12 \quad \text{(true)} \\ 0 + 0 \leq 8 \;&amp;\Longrightarrow\; 0 \leq 8 \quad \text{(true)} \\ 0 + 2\cdot 0 \leq 14 \;&amp;\Longrightarrow\; 0 \leq 14 \quad \text{(true)} \end{aligned} \]
+          <p>All three solution half-planes contain the origin. The two remaining conditions \(x \geq 0\) and \(y \geq 0\) need no test point: their boundary lines are the axes themselves, and together they restrict the picture to the first quadrant.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The feasible set</span></h4>
+          <p>The feasible set is the intersection of all five half-planes. It is a bounded region – a pentagon – and only it is shaded.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,15,1,2],"y":[-1,13,1,2],"nn":"xy","c":[{"a":2,"b":1,"s":"le","r":12,"lab":"2x + y = 12","col":1,"lt":0.1,"arr":[0.3,0.62]},{"a":1,"b":1,"s":"le","r":8,"lab":"x + y = 8","col":2,"lt":0.78,"lo":8,"arr":[0.35,0.62]},{"a":1,"b":2,"s":"le","r":14,"lab":"x + 2y = 14","col":3,"lt":0.6,"arr":[0.3,0.82]}],"pts":[{"x":0,"y":7,"lab":"A(0; 7)","p":"ne"},{"x":2,"y":6,"lab":"B(2; 6)","p":"e"},{"x":4,"y":4,"lab":"C(4; 4)","p":"e"},{"x":6,"y":0,"lab":"D(6; 0)","p":"ne"},{"x":0,"y":0}],"aria":"The bounded feasible set OABCD"}'></div>
+            <figcaption>Figure 5. The bounded feasible set \(OABCD\) with all five vertices.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The vertices</span></h4>
+          <p>The vertices are taken in order round the boundary.</p>
+          <ul class="vert-list">
+            <li>\(O(0;\, 0)\) is the origin, where the two axes meet.</li>
+            <li>\(A\) lies on the \(Oy\)-axis. It is the \(Oy\)-intercept of the line \(x + 2y = 14\), already in its value table: \(A(0;\, 7)\).</li>
+            <li>\(B\) is the crossing point of \(x + 2y = 14\) and \(x + y = 8\):
+              \[ \begin{gathered} \begin{cases} x + 2y = 14 \\ x + y = 8 \end{cases} \\ \Longrightarrow\; x = 2,\; y = 6 \;\Longrightarrow\; B(2;\, 6) \end{gathered} \]</li>
+            <li>\(C\) is the crossing point of \(x + y = 8\) and \(2x + y = 12\):
+              \[ \begin{gathered} \begin{cases} x + y = 8 \\ 2x + y = 12 \end{cases} \\ \Longrightarrow\; x = 4,\; y = 4 \;\Longrightarrow\; C(4;\, 4) \end{gathered} \]</li>
+            <li>\(D\) lies on the \(Ox\)-axis. It is the \(Ox\)-intercept of the line \(2x + y = 12\), taken from its value table: \(D(6;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The feasible set is the bounded pentagon \(OABCD\) with the vertices \(O(0;\, 0)\), \(A(0;\, 7)\), \(B(2;\, 6)\), \(C(4;\, 4)\) and \(D(6;\, 0)\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>An unbounded feasible set</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        <p>Find the feasible set of the system and determine all its vertices:</p>
+        \[ \begin{cases} x + 2y \geq 8 \\ 3x + y \geq 9 \\ x;\, y \geq 0 \end{cases} \]
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Two boundary lines</span></h4>
+          <div class="xy-row">
+            <div class="xy-item">
+              <p class="xy-cap">\(x + 2y = 8\)</p>
+              <p class="xy-calc">\(x = 0:\; 2y = 8 \Rightarrow y = 4\)<br>\(y = 0:\; x = 8\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>8</td></tr><tr><th scope="row">\(y\)</th><td>4</td><td>0</td></tr></table>
+            </div>
+            <div class="xy-item">
+              <p class="xy-cap">\(3x + y = 9\)</p>
+              <p class="xy-calc">\(x = 0:\; y = 9\)<br>\(y = 0:\; 3x = 9 \Rightarrow x = 3\)</p>
+              <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>3</td></tr><tr><th scope="row">\(y\)</th><td>9</td><td>0</td></tr></table>
+            </div>
+          </div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The test point</span></h4>
+          <p>Test point \(O(0;\, 0)\) in each inequality:</p>
+          \[ \begin{aligned} 0 + 2\cdot 0 \geq 8 \;&amp;\Longrightarrow\; 0 \geq 8 \quad \text{(false)} \\ 3\cdot 0 + 0 \geq 9 \;&amp;\Longrightarrow\; 0 \geq 9 \quad \text{(false)} \end{aligned} \]
+          <p>Both results are false, so in both cases the solution is the half-plane that does <em>not</em> contain the origin – the one above the line.</p>
+          <p class="tip">This is what the sign \(\geq\) normally produces: with \(\geq\) constraints the arrows point away from the origin.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The feasible set</span></h4>
+          <p>The feasible set is the intersection of the two half-planes with the first quadrant. It is unbounded: it extends without limit upwards and to the right.</p>
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,10,1,2],"y":[-1,10,1,2],"nn":"xy","c":[{"a":1,"b":2,"s":"ge","r":8,"lab":"x + 2y = 8","col":1,"lt":0.55,"lo":-14,"arr":[0.35,0.7]},{"a":3,"b":1,"s":"ge","r":9,"lab":"3x + y = 9","col":2,"lt":0.35,"lo":-14,"arr":[0.18,0.55]}],"pts":[{"x":0,"y":9,"lab":"A(0; 9)","p":"e"},{"x":2,"y":3,"lab":"B(2; 3)","p":"ne"},{"x":8,"y":0,"lab":"C(8; 0)","p":"ne"}],"aria":"The unbounded feasible set with the vertices A, B, C"}'></div>
+            <figcaption>Figure 6. The unbounded feasible set with the vertices \(A(0;\, 9)\), \(B(2;\, 3)\) and \(C(8;\, 0)\).</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The vertices</span></h4>
+          <ul class="vert-list">
+            <li>\(A\) lies on the \(Oy\)-axis. It is the \(Oy\)-intercept of the line \(3x + y = 9\), taken from its value table: \(A(0;\, 9)\).</li>
+            <li>\(B\) is the crossing point of the two lines:
+              \[ \begin{gathered} \begin{cases} 3x + y = 9 \\ x + 2y = 8 \end{cases} \\ \Longrightarrow\; x = 2,\; y = 3 \;\Longrightarrow\; B(2;\, 3) \end{gathered} \]</li>
+            <li>\(C\) lies on the \(Ox\)-axis. It is the \(Ox\)-intercept; for the line \(x + 2y = 8\) we get \(C(8;\, 0)\).</li>
+          </ul>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The feasible set is unbounded, with the vertices \(A(0;\, 9)\), \(B(2;\, 3)\) and \(C(8;\, 0)\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SPECIAL CASES ============ -->
+  <section class="section" id="specialieji" aria-labelledby="h-special">
+    <h2 id="h-special">Special cases</h2>
+
+    <article class="card" id="per-pradzia">
+      <h3 class="card-title">A boundary line through the origin</h3>
+      <p>Consider the inequality \(y \leq 2x\). Two things that worked in every earlier example now fail at once, and both have a simple remedy.</p>
+      <p><strong>The intercepts cannot be used.</strong> Setting \(x = 0\) gives \(y = 0\), and setting \(y = 0\) gives \(x = 0\): both attempts return the same point, the origin, and one point is not enough to draw a line. Keep the origin as the first point and choose another convenient value of \(x\), for example \(x = 3\), which gives \(y = 2\cdot 3 = 6\).</p>
+      <table class="vtable xy-tbl"><tr><th scope="row">\(x\)</th><td>0</td><td>3</td></tr><tr><th scope="row">\(y\)</th><td>0</td><td>6</td></tr></table>
+      <p><strong>The origin cannot be the test point.</strong> It lies on the line, and a test point must lie outside it. Any point off the line will do; \((1;\, 0)\) is the simplest:</p>
+      <div class="formula">\[ 0 \leq 2\cdot 1 \;\Longrightarrow\; 0 \leq 2 \quad \text{(true)} \]</div>
+      <p>So the solution is the half-plane containing \((1;\, 0)\) – below and to the right of the line.</p>
+      <figure class="fig lp-chart-fig">
+        <div data-widget="lp-chart" data-spec='{"x":[-2,5,1,1],"y":[-3,8,1,2],"c":[{"a":-2,"b":1,"s":"le","r":0,"lab":"y = 2x","col":1,"lt":0.92,"arr":[0.62,0.8]}],"test":[1,0],"pts":[{"x":3,"y":6}],"aria":"The solution of the inequality y ≤ 2x"}'></div>
+        <figcaption>Figure 7. The solution of \(y \leq 2x\). The boundary line passes through the origin, so the test point is \((1;\, 0)\).</figcaption>
+      </figure>
+    </article>
+
+    <article class="card" id="lygiagrecios">
+      <h3 class="card-title">Lines parallel to an axis</h3>
+      <p>Consider the system</p>
+      <div class="formula">\[ \begin{cases} x \leq 4 \\ y \geq 2 \\ x \geq 0 \end{cases} \]</div>
+      <p>An inequality in which one of the variables is missing still describes a half-plane, and its boundary line needs no value table at all – the equation names the line directly.</p>
+      <ul>
+        <li><strong>The line \(x = 4\) is vertical</strong>, parallel to the \(Oy\)-axis: every point on it has \(x = 4\), whatever \(y\) may be. It is drawn through the point 4 of the \(Ox\)-axis.</li>
+        <li><strong>The line \(y = 2\) is horizontal</strong>, parallel to the \(Ox\)-axis, and is drawn through the point 2 of the \(Oy\)-axis.</li>
+      </ul>
+      <p><strong>The test point</strong> is the origin for both, since neither line passes through it:</p>
+      <div class="formula">\[ \begin{aligned} x \leq 4:&amp;\quad 0 \leq 4 \quad \text{(true)} \\ y \geq 2:&amp;\quad 0 \geq 2 \quad \text{(false)} \end{aligned} \]</div>
+      <p>So the first solution is the half-plane to the left of \(x = 4\) and the second is the half-plane above \(y = 2\). Together with the condition \(x \geq 0\) they leave a vertical strip that is unbounded upwards.</p>
+      <figure class="fig lp-chart-fig">
+        <div data-widget="lp-chart" data-spec='{"x":[-1,7,1,1],"y":[-1,7,1,1],"nn":"x","c":[{"a":1,"b":0,"s":"le","r":4,"lab":"x = 4","col":1,"lt":0.93,"la":"start","lo":-8,"arr":[0.55,0.8]},{"a":0,"b":1,"s":"ge","r":2,"lab":"y = 2","col":2,"lt":0.95,"arr":[0.3,0.82]}],"pts":[{"x":0,"y":2,"lab":"A(0; 2)","p":"nw"},{"x":4,"y":2,"lab":"B(4; 2)","p":"se"}],"aria":"The feasible set of the system – a vertical strip above y = 2"}'></div>
+        <figcaption>Figure 8. The feasible set of the system with the vertices \(A(0;\, 2)\) and \(B(4;\, 2)\).</figcaption>
+      </figure>
+      <p><strong>The vertices need no algebra.</strong> \(A(0;\, 2)\) is the point where the line \(y = 2\) meets the \(Oy\)-axis. At \(B\) a vertical line meets a horizontal one, so one coordinate comes directly from the equation of each line: \(x = 4\) and \(y = 2\), that is \(B(4;\, 2)\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: make the value tables, write out the test-point calculations, draw a graph with all the required elements and find the vertices algebraically. The answer gives the graph and the vertices – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Graph the solution set of the system of linear inequalities and find the vertices of the feasible set:</p>
+          \[ \begin{cases} 2x + y \leq 10 \\ x + 2y \leq 10 \\ x + y \leq 6 \\ x;\, y \geq 0 \end{cases} \]
+        </div>
+        <div class="q-answer">
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,11,1,2],"y":[-1,11,1,2],"nn":"xy","c":[{"a":2,"b":1,"s":"le","r":10,"lab":"2x + y = 10","col":1,"lt":0.12,"arr":[0.3,0.6]},{"a":1,"b":2,"s":"le","r":10,"lab":"x + 2y = 10","col":2,"lt":0.62,"arr":[0.35,0.82]},{"a":1,"b":1,"s":"le","r":6,"lab":"x + y = 6","col":3,"lt":0.2,"arr":[0.3,0.7]}],"pts":[{"x":0,"y":5,"lab":"A(0; 5)","p":"w"},{"x":2,"y":4,"lab":"B(2; 4)","p":"ne"},{"x":4,"y":2,"lab":"C(4; 2)","p":"e"},{"x":5,"y":0,"lab":"D(5; 0)","p":"ne"},{"x":0,"y":0}],"aria":"The feasible set of the system in problem 1"}'></div>
+            <figcaption>The feasible set of the system in problem 1.</figcaption>
+          </figure>
+          <p><strong>Answer.</strong> The feasible set is bounded. It is the pentagon with the vertices</p>
+          \[ \begin{gathered} O(0;\, 0),\; A(0;\, 5),\; B(2;\, 4), \\ C(4;\, 2),\; D(5;\, 0) \end{gathered} \]
+          <p>The line \(x + 2y = 10\) passes through the vertex \(A(0;\, 5)\) and the line \(2x + y = 10\) through the vertex \(D(5;\, 0)\), so all three inequalities take part in bounding the set.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Graph the solution set of the system of linear inequalities and find the vertices of the feasible set:</p>
+          \[ \begin{cases} x + 2y \geq 10 \\ 2x + y \geq 11 \\ x;\, y \geq 0 \end{cases} \]
+        </div>
+        <div class="q-answer">
+          <figure class="fig lp-chart-fig">
+            <div data-widget="lp-chart" data-spec='{"x":[-1,11,1,2],"y":[-1,12,1,2],"nn":"xy","c":[{"a":1,"b":2,"s":"ge","r":10,"lab":"x + 2y = 10","col":1,"lt":0.7,"lo":-14,"arr":[0.3,0.53]},{"a":2,"b":1,"s":"ge","r":11,"lab":"2x + y = 11","col":2,"lt":0.35,"lo":-14,"arr":[0.18,0.55]}],"pts":[{"x":0,"y":11,"lab":"A(0; 11)","p":"e"},{"x":4,"y":3,"lab":"B(4; 3)","p":"ne"},{"x":10,"y":0,"lab":"C(10; 0)","p":"n"}],"aria":"The feasible set of the system in problem 2"}'></div>
+            <figcaption>The feasible set of the system in problem 2.</figcaption>
+          </figure>
+          <p><strong>Answer.</strong> The feasible set is unbounded – it extends upwards and to the right without limit. Its vertices are</p>
+          \[ A(0;\, 11),\; B(4;\, 3),\; C(10;\, 0) \]
+          <p>The origin does not belong to the feasible set: substituting its coordinates makes both inequalities false, so both arrows point away from the origin.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda, J. Granskas. <cite>Diskretieji matematiniai modeliai: ekonomika ir vadyba</cite>. Vilnius, TEV, 2015.<span class="src-ch">Chapter 4</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Finite Mathematics for the Managerial, Life, and Social Sciences</cite>. 9th ed. Cengage Learning, 2009.<span class="src-ch">Chapter 3</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

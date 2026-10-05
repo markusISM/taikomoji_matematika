@@ -229,7 +229,7 @@
         desc: { lt: 'Rinkos dalys, kurios ilguoju laikotarpiu nebekinta: \\(P\\cdot X = X\\).', en: 'Market shares that no longer change in the long run: \\(P\\cdot X = X\\).' } }
     ],
     t4: [
-      { id: 'm41', status: 'active', href: { lt: 'tema-4-nelygybiu-sistemos.html' },
+      { id: 'm41', status: 'active', href: { lt: 'tema-4-nelygybiu-sistemos.html', en: 'tema-4-nelygybiu-sistemos.html' },
         title: { lt: 'Tiesinių nelygybių sistemos', en: 'Systems of Linear Inequalities' },
         desc: { lt: 'Pusplokštumės, leistinųjų sprendinių aibė ir jos viršūnės.', en: 'Half-planes, the feasible set and its vertices.' } },
       { id: 'm42', status: 'active', href: { lt: 'tema-4-maksimizavimas.html' },
@@ -283,7 +283,7 @@
                title: { lt: 'Stabiliosios rinkos dalys', en: 'Long-Run Market Shares' } },
     t4:      { parent: 'home', href: { lt: 'tema-4.html', en: 'tema-4.html' },
                title: { lt: '4 tema', en: 'Topic 4' } },
-    m41:     { parent: 't4', topic: 't4', model: 'm41', href: { lt: 'tema-4-nelygybiu-sistemos.html', en: null },
+    m41:     { parent: 't4', topic: 't4', model: 'm41', href: { lt: 'tema-4-nelygybiu-sistemos.html', en: 'tema-4-nelygybiu-sistemos.html' },
                title: { lt: 'Tiesinių nelygybių sistemos', en: 'Systems of Linear Inequalities' } },
     m42:     { parent: 't4', topic: 't4', model: 'm42', href: { lt: 'tema-4-maksimizavimas.html', en: null },
                title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' } },
