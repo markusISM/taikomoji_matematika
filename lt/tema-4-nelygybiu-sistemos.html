@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="en" href="../en/tema-4-nelygybiu-sistemos.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=53">
+<link rel="stylesheet" href="../assets/css/style.css?v=54">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=53"></script>
+<script defer src="../assets/js/site.js?v=54"></script>
 </head>
 <body data-page="m41">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -70,7 +70,7 @@
         <div class="formula">\[ \begin{cases} a_1x + b_1y \leq c_1 \\ a_2x + b_2y \leq c_2 \\ \quad\vdots \end{cases} \]</div>
         <p>Sistemos sprendinių aibė yra atskirų pusplokštumių <strong>sankirta</strong> – taškų, priklausančių visoms šioms pusplokštumėms kartu, aibė. Ji vadinama <strong>leistinųjų sprendinių aibe</strong>.</p>
         <p>Leistinųjų sprendinių aibė gali būti <strong>aprėžta</strong> – daugiakampis, kurį galima sutalpinti į skritulį, – arba <strong>neaprėžta</strong>, be galo besitęsianti kuria nors kryptimi. Jos kampiniai taškai vadinami <strong>viršūnėmis</strong>.</p>
-        <p class="tip">Pagrindinis brėžinio tikslas – rasti viršūnes. Tolesniuose skyriuose leistinųjų sprendinių aibę sudarys visi gamybos ar pirkimo planai, kuriuos leidžia turimi ištekliai, o geriausias planas visada randamas <a href="tema-4.html#leistinoji-aibe">vienoje iš jos viršūnių</a>.</p>
+        <p class="tip">Pagrindinis brėžinio tikslas – rasti viršūnes. Tolesniuose skyriuose leistinųjų sprendinių aibę sudarys visi gamybos ar pirkimo planai, kuriuos leidžia apribojimai, o geriausias planas, jei jis egzistuoja, randamas <a href="tema-4.html#leistinoji-aibe">vienoje iš jos viršūnių</a>.</p>
       </div>
     </article>
   </section>
@@ -120,7 +120,7 @@
       <div class="must">
         <p class="must-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4.5L17 13H5"/></svg>Kas turi būti kiekviename brėžinyje</p>
         <ul class="badge-list">
-          <li><span class="bn">1</span><span>ašių žymėjimai (\(x\) ir \(y\));</span></li>
+          <li><span class="bn">1</span><span>ašių pavadinimai (\(x\) ir \(y\));</span></li>
           <li><span class="bn">2</span><span>koordinačių pradžios taškas \(O\);</span></li>
           <li><span class="bn">3</span><span>vienetinės atkarpos dydis abiejose ašyse;</span></li>
           <li><span class="bn">4</span><span>kiekvienos tiesės lygtis;</span></li>
@@ -148,7 +148,7 @@
           <ol>
             <li>Sprendžiant uždavinį grafiškai, turi būti pateiktos apribojimų tiesių reikšmių lentelės.</li>
             <li>Grafike privalo būti pažymėti šie elementai: ašių pavadinimai, koordinačių pradžios taškas, vienetinės atkarpos dydis, tiesių pavadinimai, leistina sprendinių aibė.</li>
-            <li>Tiesių susikirtimo taškų koordinatės turi būti nustatytos algebriškai. Nustatant taškų koordinates, lygčių sistemą galima spręsti naudojant skaičiuotuvą, tačiau būtina nurodyti, kokios lygtis naudotos susikirtimo taško radimui.</li>
+            <li>Tiesių susikirtimo taškų koordinatės turi būti nustatytos algebriškai. Nustatant taškų koordinates, lygčių sistemą galima spręsti naudojant skaičiuotuvą, tačiau būtina nurodyti, kokios lygtys naudotos susikirtimo taško radimui.</li>
           </ol>
           <p><a href="tarpinis-egzaminas.html">Visi reikalavimai uždavinių sprendimų pateikimui →</a></p>
         </div>
@@ -370,7 +370,7 @@
           <p>Kiekvieną nelygybę tikriname taške \(O(0;\, 0)\):</p>
           \[ \begin{aligned} 0 + 2\cdot 0 \geq 8 \;&amp;\Longrightarrow\; 0 \geq 8 \quad \text{(neteisinga)} \\ 3\cdot 0 + 0 \geq 9 \;&amp;\Longrightarrow\; 0 \geq 9 \quad \text{(neteisinga)} \end{aligned} \]
           <p>Abi gautos nelygybės neteisingos, todėl abiem atvejais sprendinių aibė yra pusplokštumė, kuriai koordinačių pradžia <em>nepriklauso</em>, – virš tiesės esanti pusplokštumė.</p>
-          <p class="tip">Taip paprastai būna, kai naudojamas ženklas \(\geq\): kai apribojimuose yra ženklas \(\geq\), rodyklės nukreiptos nuo koordinačių pradžios.</p>
+          <p class="tip">Taip paprastai būna, kai apribojimų ženklas yra \(\geq\), o dešinioji pusė teigiama: tada rodyklės nukreiptos nuo koordinačių pradžios.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Leistinųjų sprendinių aibė</span></h4>

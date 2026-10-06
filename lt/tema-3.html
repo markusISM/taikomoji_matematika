@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="en" href="../en/tema-3.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=53">
+<link rel="stylesheet" href="../assets/css/style.css?v=54">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=53"></script>
+<script defer src="../assets/js/site.js?v=54"></script>
 </head>
 <body data-page="t3">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -221,7 +221,7 @@
         <ul>
           <li><strong>Daugiklis.</strong> Kai pagrindinis elementas lygus 1, po juo esantį skaičių \(a\) panaikina daugiklis \((-a)\): po vieneto esantį 2 – daugiklis \((-2)\), 4 – daugiklis \((-4)\).</li>
           <li><strong>Keisti vietomis ar dalyti?</strong> Dažnai lengviau sukeisti eilutes vietomis negu dalyti: jei žemiau esanti eilutė reikiamoje vietoje turi 1, perkelkite ją aukštyn (žr. 4 pavyzdį).</li>
-          <li><strong>Kai dalijant gautųsi trupmenos,</strong> pagrindinės eilutės galima ir nedalyti. Svarbiausia gauti nulius po pagrindine įstrižaine: daugikliai parenkami taip, kad sudėjus gautume 0 (žr. 1 ir 2 pavyzdžius).</li>
+          <li><strong>Kai dalijant susidarytų trupmenos,</strong> pagrindinės eilutės galima ir nedalyti. Svarbiausia gauti nulius po pagrindine įstrižaine: daugikliai parenkami taip, kad sudėjus gautume 0 (žr. 1 ir 2 pavyzdžius).</li>
           <li><strong>Dešimtainės trupmenos.</strong> Jei lygtyje yra dešimtainių trupmenų ar procentų, pirmiausia visą eilutę padauginkite iš 10, 100 ar 1000. Tai irgi elementarusis pertvarkis, todėl sprendiniai nepasikeičia.</li>
           <li><strong>Patikrinimas.</strong> Gautas reikšmes įstatykite į <em>pradines</em> lygtis – taip lengvai pastebėsite skaičiavimo klaidą.</li>
         </ul>
@@ -293,7 +293,7 @@
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Nulis antrajame stulpelyje</span></h4>
-          <p>Antrasis pagrindinis elementas yra \(a_{22} = -3\). Po juo taip pat yra \(-3\), todėl dalyti nereikia: pakanka antrąją eilutę padauginti iš \(-1\) ir pridėti prie trečiosios, nes \(-3 + (-1)\cdot(-3) = 0\).</p>
+          <p>Antrasis pagrindinis elementas yra \(a'_{22} = -3\). Po juo taip pat yra \(-3\), todėl dalyti nereikia: pakanka antrąją eilutę padauginti iš \(-1\) ir pridėti prie trečiosios, nes \(-3 + (-1)\cdot(-3) = 0\).</p>
           <div class="mats mats--flow">
             <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ 0 &amp; \htmlClass{hd}{-3} &amp; -2 &amp; -2 \\ 0 &amp; -3 &amp; -4 &amp; 2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
             <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
@@ -368,7 +368,7 @@
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Nulis trečiajame stulpelyje</span></h4>
-          <p>Trečiasis pagrindinis elementas yra 31, o po juo – 16. Dalijant iš 31 gautųsi trupmenos, todėl jų išvengiame: ketvirtąją eilutę dauginame iš 31 (1-asis pertvarkis), o trečiąją, padaugintą iš \(-16\), pridedame prie jos (3-iasis pertvarkis). Tada \(16\cdot 31 + (-16)\cdot 31 = 0\).</p>
+          <p>Trečiasis pagrindinis elementas yra 31, o po juo – 16. Dalijant iš 31 susidarytų trupmenos, todėl jų išvengiame: ketvirtąją eilutę dauginame iš 31 (1-asis pertvarkis), o trečiąją, padaugintą iš \(-16\), pridedame prie jos (3-iasis pertvarkis). Tada \(16\cdot 31 + (-16)\cdot 31 = 0\).</p>
           <div class="mats mats--sm mats--flow">
             <span>\(\left(\begin{array}{cccc|c} 1 &amp; -1 &amp; -4 &amp; 9 &amp; 22 \\ 0 &amp; -1 &amp; 9 &amp; -13 &amp; -47 \\ 0 &amp; 0 &amp; \htmlClass{hd}{31} &amp; -52 &amp; -166 \\ 0 &amp; 0 &amp; 16 &amp; -39 &amp; -110 \end{array}\right)\begin{array}{cc} \phantom{0} &amp; \\ \phantom{0} &amp; \\ \htmlClass{ha}{(-16)} &amp; \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{(31)} \end{array}\)</span>
             <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
@@ -419,7 +419,7 @@
             <path class="ax" d="M8 82H114M12 86V6"/>
             <path class="ln" d="M14 77L110 19.4"/>
             <path class="ln2" d="M14 21L110 69"/>
-            <circle class="pt-hi" cx="60" cy="44" r="5"/>
+            <circle class="pt-hi" cx="64.9" cy="46.5" r="5"/>
           </svg>
           <figcaption><strong>Vienintelis sprendinys</strong><span class="sub">Tiesės susikerta viename taške.</span></figcaption>
         </figure>
@@ -440,7 +440,7 @@
           <figcaption><strong>Be galo daug sprendinių</strong><span class="sub">Tiesės sutampa – bendras kiekvienas taškas.</span></figcaption>
         </figure>
       </div>
-      <p>Kai nežinomieji trys, kiekviena lygtis vaizduoja plokštumą erdvėje. Plokštumos gali kirstis viename taške (vienintelis sprendinys), turėti bendrą tiesę (be galo daug sprendinių) arba neturėti visoms bendro taško (sprendinių nėra).</p>
+      <p>Kai nežinomieji trys, kiekviena lygtis vaizduoja plokštumą erdvėje. Plokštumos gali kirstis viename taške (vienintelis sprendinys), turėti bendrą tiesę arba sutapti (be galo daug sprendinių) arba neturėti visoms bendro taško (sprendinių nėra).</p>
 
       <div class="subtype">
         <h4>Kaip atpažinti atvejį iš matricos</h4>
@@ -451,9 +451,9 @@
           <div class="mat-item"><span>\(\left(\begin{array}{ccc|c} 1 &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 1 &amp; \ast &amp; \ast \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} \end{array}\right)\)</span><span class="cap"><strong>Be galo daug sprendinių</strong></span></div>
         </div>
         <ul>
-          <li><strong>Vienintelis sprendinys</strong> – kiekvienam nežinomajam yra nelygus nuliui pagrindinis elementas (jei eilučių nedalijome, jis nebūtinai lygus 1), o beprasmių ir nulinių eilučių nėra.</li>
+          <li><strong>Vienintelis sprendinys</strong> – kiekvienam nežinomajam yra nelygus nuliui pagrindinis elementas (jei eilučių nedalijome, jis nebūtinai lygus 1), o beprasmių eilučių nėra (nulinės eilutės, jei jų yra, atmetamos).</li>
           <li><strong>Sprendinių nėra</strong> – gaunama eilutė \(0 \;\; 0 \;\; 0 \mid c\), kurioje \(c \neq 0\). Ji reiškia neįmanomą lygybę \(0 = c\).</li>
-          <li><strong>Be galo daug sprendinių</strong> – gaunama nulinė eilutė \(0 \;\; 0 \;\; 0 \mid 0\) (lygtis \(0 = 0\)), kurią galima atmesti, ir nenulinių eilučių lieka mažiau nei nežinomųjų.</li>
+          <li><strong>Be galo daug sprendinių</strong> – beprasmių eilučių nėra, o atmetus nulines eilutes \(0 \;\; 0 \;\; 0 \mid 0\) (lygtis \(0 = 0\)), jei jų yra, nenulinių eilučių lieka mažiau nei nežinomųjų.</li>
         </ul>
       </div>
 

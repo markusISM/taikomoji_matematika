@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="lt" href="../lt/tema-5.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=53">
+<link rel="stylesheet" href="../assets/css/style.css?v=54">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=53"></script>
+<script defer src="../assets/js/site.js?v=54"></script>
 </head>
 <body data-page="t5">
 <noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
@@ -224,7 +224,7 @@
 
       <div class="subtype">
         <h4>2. Transposing the table</h4>
-        <p>The table is <strong>transposed</strong>: every row becomes a column and every column becomes a row, labels and all. The column \(n\) stays last, and the label \(TC\) is changed to \(P\), because this row becomes the objective function of a maximization problem:</p>
+        <p>The table is <strong>transposed</strong>: every row becomes a column and every column becomes a row, labels and all. The last column keeps the label \(n\), and the label of the last row is changed from \(TC\) to \(P\), because that row becomes the objective function of a maximization problem:</p>
         <div class="mats mats--flow">
           <span><table class="vtable sx-tbl">
             <thead><tr><th scope="col"></th><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
@@ -268,7 +268,7 @@
 
     <article class="card concept" id="dualiojo-lentele">
       <div class="concept-head"><span class="num">7</span><h3>The initial tableau of the dual problem</h3></div>
-      <p>The dual problem is solved like any maximization problem. One detail matters: its slack variables are called not \(s\) but by <strong>the letters of the original problem’s variables</strong>, \(x\) and \(y\) – one for each constraint of the dual problem. It is this naming that makes the answer to the original problem readable at the end, so it must be kept.</p>
+      <p>The dual problem is solved like any maximization problem. One detail matters: its slack variables are labelled not \(s\) but with <strong>the letters of the original problem’s variables</strong>, \(x\) and \(y\) – one for each constraint of the dual problem. It is this naming that makes the answer to the original problem readable at the end, so it must be kept.</p>
       <div class="formula">\[ \begin{cases} a_{11}s_1 + a_{21}s_2 + a_{31}s_3 + \htmlClass{hd}{x} = c_1 \\ a_{12}s_1 + a_{22}s_2 + a_{32}s_3 + \htmlClass{hd}{y} = c_2 \\ -b_1s_1 - b_2s_2 - b_3s_3 + P = 0 \end{cases} \]</div>
       <p>The tableau is built by the same rules; the order of the columns is \(s_1, s_2, s_3 \mid x, y \mid P \mid n\):</p>
       <div class="tbl-wrap">

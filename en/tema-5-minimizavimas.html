@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="lt" href="../lt/tema-5-minimizavimas.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=53">
+<link rel="stylesheet" href="../assets/css/style.css?v=54">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=53"></script>
+<script defer src="../assets/js/site.js?v=54"></script>
 </head>
 <body data-page="m52">
 <noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
@@ -216,7 +216,7 @@
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Transposing the table</span></h4>
-          <p>The table is transposed: every row becomes a column and every column becomes a row, labels and all. The first row \(s_1\) (3, 1, 40) becomes the first column \(s_1\), and the column \(x\) (3, 1, 1, 2000) becomes the row \(x\). The column \(n\) stays last, and the label \(TC\) is changed to \(P\), because this row becomes the objective function of a maximization problem:</p>
+          <p>The table is transposed: every row becomes a column and every column becomes a row, labels and all. The first row \(s_1\) (3, 1, 40) becomes the first column \(s_1\), and the column \(x\) (3, 1, 1, 2000) becomes the row \(x\). The last column keeps the label \(n\), and the label of the last row is changed from \(TC\) to \(P\), because that row becomes the objective function of a maximization problem:</p>
 <div class="mats mats--flow">
 <span><table class="vtable sx-tbl">
 <thead><tr><th scope="col"></th><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col" class="g">\(n\)</th></tr></thead>
@@ -245,7 +245,7 @@
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>The initial simplex tableau</span></h4>
-          <p>Each inequality is turned into an equation by adding a slack variable. The slack variables of the dual problem are called not \(s\) but by <strong>the letters of the original problem</strong>, \(x\) and \(y\) – one for each constraint. The objective function is written as an equation with all its terms on the left-hand side:</p>
+          <p>Each inequality is turned into an equation by adding a slack variable. The slack variables of the dual problem are labelled not \(s\) but with <strong>the letters of the original problem</strong>, \(x\) and \(y\) – one for each constraint. The objective function is written as an equation with all its terms on the left-hand side:</p>
           \[ \begin{cases} 3s_1 + s_2 + s_3 + \htmlClass{hd}{x} = 2000 \\ s_1 + s_2 + 2s_3 + \htmlClass{hd}{y} = 3000 \\ -40s_1 - 20s_2 - 50s_3 + P = 0 \end{cases} \]
           <p>The equations are written into the tableau. There are three variables and two constraints, so the columns are \(s_1, s_2, s_3 \mid x, y \mid P \mid n\), and there are three rows:</p>
 <div class="tbl-wrap">

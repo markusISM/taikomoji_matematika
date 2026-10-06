@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="lt" href="../lt/tema-2-sudetingesni-veiksmai.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=53">
+<link rel="stylesheet" href="../assets/css/style.css?v=54">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=53"></script>
+<script defer src="../assets/js/site.js?v=54"></script>
 </head>
 <body data-page="m22">
 <noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
@@ -331,7 +331,7 @@
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Answer</span>
-            The labour cost of one unit is 27.00 euros for a chair, 57.00 for a table and 44.40 for a bookcase in Workshop A, against 24.40, 51.30 and 40.20 euros in Workshop B. Workshop B has the lower labour cost for every product, so the whole order should be placed there. Note that the calculation was only possible after transposing the table of hours, because it was published with the departments in the rows.
+            The labour cost of one unit is 27.00 euros for a chair, 57.00 for a table and 44.40 for a bookcase in Workshop A, against 24.40, 51.30 and 40.20 euros in Workshop B. Workshop B has the lower labour cost for every product, so the whole order should be placed there. Note that a meaningful calculation was only possible after transposing the table of hours, because it was published with the departments in the rows.
           </div>
         </section>
       </div>
@@ -423,7 +423,7 @@
           <p>In \(M\) the three rows are the inputs – yarn, dye and finishing agent – and the three columns are the three fabrics. In \(W\) the three rows are the same three inputs and the two columns are suppliers I and II. Determine the cost of the inputs for 100 metres of each fabric when everything is bought from supplier I and when everything is bought from supplier II. Which supplier is cheaper for each fabric?</p>
         </div>
         <div class="q-answer">
-          <p>The matrices cannot be multiplied as they stand; the input classification has to be shared, so the first matrix is transposed:</p>
+          <p>The product \(M\cdot W\) is defined (\(3 \times 3\) and \(3 \times 2\)), but it has no meaning: the columns of \(M\) are fabrics, while the rows of \(W\) are inputs. The inputs have to be the columns of the first matrix, so \(M\) is transposed:</p>
           \[ M^T\cdot W = \begin{pmatrix} 1520 &amp; 1320 \\ 1640 &amp; 1710 \\ 1440 &amp; 1380 \end{pmatrix} \]
           <p>The three rows are poplin, denim and twill and the two columns are the two suppliers, in euros per 100 metres. Supplier II is cheaper for poplin (by 200 euros) and for twill (by 60 euros), and supplier I is cheaper for denim (by 70 euros).</p>
         </div>

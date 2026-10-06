@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="lt" href="../lt/tema-3.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=53">
+<link rel="stylesheet" href="../assets/css/style.css?v=54">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=53"></script>
+<script defer src="../assets/js/site.js?v=54"></script>
 </head>
 <body data-page="t3">
 <noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
@@ -293,7 +293,7 @@
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>A zero in the second column</span></h4>
-          <p>The second pivot element is \(a_{22} = -3\). Below it there is also \(-3\), so there is no need to divide: it is enough to multiply the second row by \(-1\) and add it to the third, because \(-3 + (-1)\cdot(-3) = 0\).</p>
+          <p>The second pivot element is \(a'_{22} = -3\). Below it there is also \(-3\), so there is no need to divide: it is enough to multiply the second row by \(-1\) and add it to the third, because \(-3 + (-1)\cdot(-3) = 0\).</p>
           <div class="mats mats--flow">
             <span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 2 &amp; -1 \\ 0 &amp; \htmlClass{hd}{-3} &amp; -2 &amp; -2 \\ 0 &amp; -3 &amp; -4 &amp; 2 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span>
             <span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span>
@@ -419,7 +419,7 @@
             <path class="ax" d="M8 82H114M12 86V6"/>
             <path class="ln" d="M14 77L110 19.4"/>
             <path class="ln2" d="M14 21L110 69"/>
-            <circle class="pt-hi" cx="60" cy="44" r="5"/>
+            <circle class="pt-hi" cx="64.9" cy="46.5" r="5"/>
           </svg>
           <figcaption><strong>Exactly one solution</strong><span class="sub">The lines intersect at one point.</span></figcaption>
         </figure>
@@ -440,7 +440,7 @@
           <figcaption><strong>Infinitely many solutions</strong><span class="sub">The lines coincide – every point is common.</span></figcaption>
         </figure>
       </div>
-      <p>When there are three variables, each equation represents a plane in space. The planes can intersect at one point (exactly one solution), have a common line (infinitely many solutions) or have no point common to all of them (no solution).</p>
+      <p>When there are three variables, each equation represents a plane in space. The planes can intersect at one point (exactly one solution), have a common line or coincide (infinitely many solutions) or have no point common to all of them (no solution).</p>
 
       <div class="subtype">
         <h4>How to recognise the case from the matrix</h4>
@@ -451,9 +451,9 @@
           <div class="mat-item"><span>\(\left(\begin{array}{ccc|c} 1 &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 1 &amp; \ast &amp; \ast \\ \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} &amp; \htmlClass{hc}{0} \end{array}\right)\)</span><span class="cap"><strong>Infinitely many solutions</strong></span></div>
         </div>
         <ul>
-          <li><strong>Exactly one solution</strong> – every variable has its own non-zero pivot element (if the rows were not divided, it need not equal 1), and there are no impossible rows and no rows of zeros.</li>
+          <li><strong>Exactly one solution</strong> – every variable has its own non-zero pivot element (if the rows were not divided, it need not equal 1), and there are no impossible rows (rows of zeros, if any, are deleted).</li>
           <li><strong>No solution</strong> – a row of the form \(0 \;\; 0 \;\; 0 \mid c\) with \(c \neq 0\) appears. It reads \(0 = c\), which is impossible.</li>
-          <li><strong>Infinitely many solutions</strong> – a row of zeros \(0 \;\; 0 \;\; 0 \mid 0\) appears (the equation \(0 = 0\)), which can be deleted, and fewer non-zero rows than variables remain.</li>
+          <li><strong>Infinitely many solutions</strong> – there are no impossible rows, and once any rows of zeros \(0 \;\; 0 \;\; 0 \mid 0\) (the equation \(0 = 0\)) are deleted, fewer non-zero rows than variables remain.</li>
         </ul>
       </div>
 

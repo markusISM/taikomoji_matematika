@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="en" href="../en/tema-1-rinkos-pusiausvyra.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=53">
+<link rel="stylesheet" href="../assets/css/style.css?v=54">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=53"></script>
+<script defer src="../assets/js/site.js?v=54"></script>
 </head>
 <body data-page="eq">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -86,7 +86,7 @@
       <details class="more more--why">
         <summary><span class="ico" aria-hidden="true">?</span>Kaip iš sąlygos rasti du taškus?</summary>
         <div class="more-body">
-          <p>Tiesę apibrėžia du taškai, ir uždavinio sąlygoje jie visada yra. Jie pateikiami vienu iš šių būdų (pavyzdžiai – iš paspirtukų uždavinio):</p>
+          <p>Tiesę apibrėžia du taškai ir uždavinio sąlygoje jie visada yra. Jie pateikiami vienu iš šių būdų (pavyzdžiai – iš paspirtukų uždavinio):</p>
           <ul>
             <li><strong>Tiesiogiai pateiktos dvi poros.</strong> „Paklausos kiekis yra 2000 vienetų, kai vieneto kaina – 480 eurų. Kai vieneto kaina yra 360 eurų, paklausos kiekis padidėja iki 5000 vienetų.“ Taškai \((2000;\,480)\) ir \((5000;\,360)\) – pirmiausia kiekis, paskui kaina.</li>
             <li><strong>Viena pora ir kitimo greitis.</strong> „Kiekvieną kartą vieneto kainai padidėjus 60 eurų virš 160 eurų, gamintojas rinkai pasiūlys dar 1000 vienetų.“ Nuo taško \((0;\,160)\) vieną kartą pritaikius nurodytą pokytį, gaunamas antrasis taškas \((1000;\,220)\).
@@ -106,7 +106,7 @@
             <li><strong>Koordinačių tvarka.</strong> Kiekis yra pirmoji koordinatė, o kaina – antroji, nesvarbu, kokia tvarka jie nurodyti sakinyje.</li>
             <li><strong>Sumaišyti duomenys.</strong> Kai viename sakinyje pateikti ir pirkėjų, ir pardavėjų duomenys, prieš skaičiuodami sugrupuokite juos į dvi taškų poras.</li>
             <li><strong>Ženklai.</strong> Neigiamas pasiūlos lygties nuolydis reiškia, kad kažkur padaryta klaida.</li>
-            <li><strong>Patikrinimas.</strong> Įstatę \(x_e\) į abi funkcijas turite gauti tą pačią kainą \(p_e\).</li>
+            <li><strong>Patikrinimas.</strong> Įstatę \(x_e\) į abi funkcijas, turite gauti tą pačią kainą \(p_e\).</li>
           </ul>
         </div>
       </details>
@@ -169,7 +169,7 @@
           <details class="more more--why">
             <summary><span class="ico" aria-hidden="true">?</span>Paklausos funkcijos logika: kiekis ↔ kaina</summary>
             <div class="more-body">
-              <p>Paklausos funkcija \(p = -0{,}04x + 560\) susieja kiekį ir kainą, todėl žinodami vieną dydį randame kitą.</p>
+              <p>Paklausos funkcija \(p = -0{,}04x + 560\) susieja kiekį ir kainą, todėl, žinodami vieną dydį, randame kitą.</p>
               <p><strong>Žinomas kiekis – randame kainą.</strong> Vietoj \(x\) įrašome kiekį ir tiesiogiai apskaičiuojame \(p\); lygties spręsti nereikia. Kai \(x = 5000\):</p>
               \[ \begin{aligned} p &amp;= -0{,}04\cdot 5000 + 560 \\ &amp;= -200 + 560 = 360 \end{aligned} \]
               <p>Kai paklausos kiekis yra 5000 vienetų, kaina yra 360 eurų – kaip ir sąlygoje.</p>
@@ -389,7 +389,7 @@
       </header>
       <div class="problem">
         <span class="label">Sąlyga</span>
-        Aktyvumo apyrankių paklausos kiekis yra 2400 vienetų per savaitę, kai vieneto kaina yra 90 eurų. Kainai sumažėjus 5 eurais, paklausos kiekis padidėja 200 vienetų. Tiekėjai netieks aktyvumo apyrankių, jei kaina bus 30 eurų ar mažesnė, tačiau kainai esant 78 eurų, jie tieks 3200 vienetų. Žinoma, kad paklausos ir pasiūlos funkcijos yra tiesinės. Sudarykite paklausos ir pasiūlos funkcijas ir raskite pusiausvyros kainą bei kiekį.
+        Aktyvumo apyrankių paklausos kiekis yra 2400 vienetų per savaitę, kai vieneto kaina yra 90 eurų. Kainai sumažėjus 5 eurais, paklausos kiekis padidėja 200 vienetų. Tiekėjai netieks aktyvumo apyrankių, jei kaina bus 30 eurų ar mažesnė, tačiau kai kaina yra 78 eurai, jie tieks 3200 vienetų. Žinoma, kad paklausos ir pasiūlos funkcijos yra tiesinės. Sudarykite paklausos ir pasiūlos funkcijas ir raskite pusiausvyros kainą bei kiekį.
       </div>
       <div class="steps">
         <section class="step">
@@ -490,7 +490,7 @@
       <article class="card q" data-type="mc">
         <p class="q-text">Pradinė sezoninių vaisių pasiūlos lygtis yra \(p = 0{,}04x + 2\). Dėl prasto derliaus pasiūla pasikeičia į \(p = 0{,}04x + 5\) (tiesės nuolydis toks pats, laisvasis narys didesnis), o paklausa lieka \(p = -0{,}02x + 20\). Kaip po šio poslinkio pasikeičia pusiausvyros kiekis?</p>
         <ol class="q-options">
-          <li>Padidėja nuo 300 iki 250</li>
+          <li>Padidėja nuo 300 iki 350</li>
           <li data-correct>Sumažėja nuo 300 iki 250</li>
           <li>Lieka 300</li>
           <li>Sumažėja nuo 250 iki 200</li>
@@ -507,7 +507,7 @@
 
     <div class="quiz" data-numbering="task">
       <article class="card q" data-type="open">
-        <p class="q-text">Tam tikro prekės ženklo elektrinio virdulio paklausos kiekis yra 1200 per savaitę, kai vieneto kaina yra 48 eurai. Nuo 48 eurų vieneto kainai mažėjant 5 eurais, paklausos kiekis padidėja 250 vienetų. Žinoma, kad vieneto kainos ir paklausos kiekio priklausomybė yra tiesinė. Raskite paklausos funkciją ir apskaičiuokite vieneto kainą, kuriai esant paklausos kiekis bus 2000 virdulių per savaitę.</p>
+        <p class="q-text">Tam tikro prekės ženklo elektrinio virdulio paklausos kiekis yra 1200 virdulių per savaitę, kai vieneto kaina yra 48 eurai. Nuo 48 eurų vieneto kainai mažėjant 5 eurais, paklausos kiekis padidėja 250 vienetų. Žinoma, kad vieneto kainos ir paklausos kiekio priklausomybė yra tiesinė. Raskite paklausos funkciją ir apskaičiuokite vieneto kainą, kuriai esant paklausos kiekis bus 2000 virdulių per savaitę.</p>
         <div class="q-answer">\(p = -0{,}02x + 72\); kai vieneto kaina yra 32 eurai, paklausos kiekis yra 2000 virdulių per savaitę.</div>
       </article>
 

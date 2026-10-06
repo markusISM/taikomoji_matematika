@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="en" href="../en/tema-3-stabiliosios-rinkos-dalys.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=53">
+<link rel="stylesheet" href="../assets/css/style.css?v=54">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=53"></script>
+<script defer src="../assets/js/site.js?v=54"></script>
 </head>
 <body data-page="m33">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -42,7 +42,7 @@
     <article class="card">
       <p>Klientai pereina iš vienos konkuruojančios įmonės į kitą. <strong>Žingsnio matrica</strong> \(P\) aprašo šį judėjimą: \(p_{ij}\) yra \(j\)-osios įmonės klientų dalis, pereinanti į \(i\)-ąją įmonę. Taigi \(j\)-asis stulpelis aprašo \(j\)-osios įmonės klientus, o kiekvieno stulpelio elementų suma lygi 1.</p>
       <div class="formula">\[ \begin{gathered} P = \begin{pmatrix} \htmlClass{hc}{p_{11}} &amp; p_{12} &amp; p_{13} \\ \htmlClass{hc}{p_{21}} &amp; p_{22} &amp; p_{23} \\ \htmlClass{hc}{p_{31}} &amp; p_{32} &amp; p_{33} \end{pmatrix} \\[4pt] \htmlClass{hc}{p_{11} + p_{21} + p_{31}} = 1 \end{gathered} \]</div>
-      <p>Jei \(X_t\) yra rinkos dalių stulpelis \(t\)-uoju laikotarpiu, tai kito laikotarpio rinkos dalys gaunamos padauginus iš tos pačios žingsnio matricos:</p>
+      <p>Jei \(X_t\) yra rinkos dalių stulpelis \(t\)-uoju laikotarpiu, tai kiekvieno laikotarpio rinkos dalys gaunamos ankstesnio laikotarpio rinkos dalis padauginus iš tos pačios žingsnio matricos:</p>
       <div class="formula">\[ X_t = P\cdot X_{t-1} \]</div>
       <p class="more-link"><a href="tema-2-rinkos-dalies-prognozavimas.html#zingsnio-matrica">Kaip sudaroma žingsnio matrica – 2 temos skyriuje „Rinkos dalies prognozavimas“ →</a></p>
     </article>
@@ -53,7 +53,7 @@
     <h2 id="h-stable">Kai rinkos dalys nustoja kisti</h2>
 
     <article class="card">
-      <p><strong>Trumpasis ir ilgasis laikotarpiai.</strong> Kartojant daugybą \(X_t = P\cdot X_{t-1}\), sekama rinkos raida laikotarpis po laikotarpio. Kaskart vyksta tas pats: rinkos dalys kinta viena kryptimi, tačiau kiekvieną laikotarpį vis mažiau, kol galiausiai nustoja kisti.</p>
+      <p><strong>Trumpasis ir ilgasis laikotarpiai.</strong> Kartojant daugybą \(X_t = P\cdot X_{t-1}\), sekama rinkos raida laikotarpis po laikotarpio. Dažniausiai rinkos dalys kas laikotarpį keičiasi vis mažiau ir artėja prie pastovių reikšmių (kartais trumpam jas peršoka).</p>
 
       <figure class="fig conv">
         <svg viewBox="0 0 320 178" role="img" aria-label="Schema: trijų įmonių rinkos dalys keičiasi vis mažiau ir nusistovi">
@@ -132,7 +132,7 @@
 
     <article class="card">
       <ol class="steps-list">
-        <li>Sudarykite žingsnio matricą \(P\) po vieną stulpelį ir patikrinkite, ar kiekvieno stulpelio elementų suma lygi 1.</li>
+        <li>Sudarykite žingsnio matricą \(P\) stulpelis po stulpelio ir patikrinkite, ar kiekvieno stulpelio elementų suma lygi 1.</li>
         <li>Nežinomas ilgalaikes rinkos dalis užrašykite vektoriumi \(X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}\) ir nurodykite, kad kintamieji žymi stabiliąsias rinkos dalis.</li>
         <li>Lygtį \(P\cdot X = X\) užrašykite eilutėmis: kiekvienos matricos \(P\) eilutės ir stulpelio \(X\) sandauga lygi atitinkamai rinkos daliai.</li>
         <li>Kiekvienoje lygtyje kintamąjį iš dešiniosios pusės perkelkite į kairiąją, kad visos dešiniosios pusės taptų lygios nuliui.</li>
@@ -384,7 +384,7 @@
             <span class="label">Atsakymas</span>
             <p>Kitą mėnesį rinkos dalys bus 35&nbsp;%, 38&nbsp;% ir 27&nbsp;%; ilguoju laikotarpiu 1-oji programėlė turės 20&nbsp;%, 2-oji – 50&nbsp;%, o 3-ioji – 30&nbsp;% rinkos.</p>
           </div>
-          <p>1-oji programėlė turi geriau išlaikyti klientus, nes esant dabartinėms perėjimo dalims jos pozicija toliau silpnėja, kad ir kiek naujų vartotojų ji pritrauktų.</p>
+          <p>1-oji programėlė turi geriau išlaikyti klientus, nes esant dabartinėms perėjimo dalims jos pozicija toliau silpnės, jei ji nepagerins klientų išlaikymo arba nepritrauks daugiau konkurentų klientų.</p>
         </section>
       </div>
     </article>
