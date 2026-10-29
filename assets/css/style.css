@@ -1022,3 +1022,6 @@ ul.ans-list { list-style: none; padding-left: 0; margin: 6px 0 0; }
 ul.ans-list li { margin: 0 0 8px; overflow-x: auto; overflow-y: hidden; }
 ul.ans-list li:last-child { margin-bottom: 0; }
 @media (max-width: 440px) { .fit-sm .katex-display > .katex { font-size: .86em; } }
+
+/* Ribinių dydžių kortelės (6 tema) */
+.fl-lab { display: block; font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }

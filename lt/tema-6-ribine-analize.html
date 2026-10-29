@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ribinė analizė · Taikomoji matematika</title>
+<meta name="description" content="Ribinė analizė: bendrųjų sąnaudų, pajamų, pelno ir vidutinių bendrųjų sąnaudų funkcijos, ribinės sąnaudos, ribinės pajamos, ribinis pelnas ir jų interpretacija. Sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=59">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=59"></script>
+</head>
+<body data-page="m61">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">6 tema · Taikymai · 2 skyrius</span>
+    <h1>Ribinė analizė</h1>
+    <p class="lead">Šiame skyriuje nagrinėjama, kaip keičiantis gamybos apimčiai kinta sąnaudos, pajamos ir pelnas. Išvestinėmis apytiksliai įvertinamas nedidelio gamybos ir pardavimo kiekio padidėjimo poveikis: ar, esant dabartinei apimčiai, papildoma produkcija padidintų pelną.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Funkcijos</a></li>
+      <li><a href="#ribiniai">Ribiniai dydžiai</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. FUNKCIJOS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Įmonės veiklą aprašančios funkcijos</h2>
+
+    <article class="card">
+      <p>Čia \(x\) žymi per nurodytą laikotarpį pagamintą ir parduotą kiekį. Jį laikome tolydžiuoju kintamuoju, net jei gaminiai skaičiuojami sveikais vienetais.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Bendrosios sąnaudos</h3>
+      <p>Bendrąsias \(x\) vienetų gamybos sąnaudas sudaro kintamosios sąnaudos, priklausančios nuo kiekio, ir pastoviosios sąnaudos, kurios nagrinėjamame kiekių intervale nesikeičia. Jei vieneto kintamosios sąnaudos pastovios ir lygios \(V\), o pastoviosios sąnaudos lygios \(F\), tai</p>
+      <div class="formula">\[ TC(x) = Vx + F \]</div>
+      <p>Šiame tiesiniame modelyje daroma prielaida, kad vieneto kintamosios sąnaudos yra pastovios. Kiti sąnaudų modeliai gali būti netiesiniai; jei bendrųjų sąnaudų funkcija pateikta uždavinio sąlygoje, naudokite ją tiesiogiai.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Pajamos</h3>
+      <p>Pajamos lygios parduoto kiekio ir vieneto kainos sandaugai. Jei kaina pastovi ir lygi \(p\) eurų, tai \(R(x) = px\). Paklausos modelyje kaina priklauso nuo kiekio: \(p = p(x)\) nusako kainą, už kurią galima parduoti \(x\) vienetų. Toliau daroma prielaida, kad visi vienetai parduodami už tą pačią kainą:</p>
+      <div class="formula">\[ R(x) = x\cdot p(x) \]</div>
+      <p class="tip"><strong>Nesupainiokite žymėjimų.</strong> Mažoji raidė \(p\) žymi vieneto kainą, o didžioji raidė \(P\) – bendrąjį pelną.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Pelnas</h3>
+      <p>Pelnas yra pajamų ir bendrųjų sąnaudų skirtumas:</p>
+      <div class="formula">\[ P(x) = R(x) - TC(x) \]</div>
+
+      <h3 class="subhead" style="margin-top:22px">Vidutinės bendrosios sąnaudos</h3>
+      <p>Vidutinės bendrosios sąnaudos yra vienam gaminiui tenkančios bendrosios sąnaudos, kai pagaminama \(x\) vienetų. Bendrąsias sąnaudas padalykite iš gamybos kiekio:</p>
+      <div class="formula">\[ ATC(x) = \frac{TC(x)}{x} \]</div>
+      <p>Vidutinės bendrosios sąnaudos apibrėžtos tik teigiamam kiekiui. Pastoviąsias sąnaudas dalydami iš \(x\), jas paskirstome pagamintiems vienetams. Didėjant kiekiui, vieneto pastoviųjų sąnaudų dalis mažėja, tačiau vidutinės bendrosios sąnaudos nebūtinai mažėja: šį poveikį gali atsverti didėjančios vieneto kintamosios sąnaudos.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. RIBINIAI DYDŽIAI ============ -->
+  <section class="section" id="ribiniai" aria-labelledby="h-marg">
+    <h2 id="h-marg">Ribinių dydžių funkcijos</h2>
+
+    <article class="card">
+      <p><strong>Ribinio dydžio funkcija</strong> yra atitinkamos funkcijos išvestinė gamybos kiekio atžvilgiu. Lentelėje apibendrinti šiame skyriuje vartojami žymėjimai:</p>
+      <div class="anat dtbl dtbl-rows">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Bendrosios sąnaudos</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Funkcija</span>\(TC(x)\)</li>
+            <li><span class="fl-lab">Ribinio dydžio funkcija</span>\(MC(x) = TC'(x)\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Pajamos</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Funkcija</span>\(R(x) = x\cdot p(x)\)</li>
+            <li><span class="fl-lab">Ribinio dydžio funkcija</span>\(MR(x) = R'(x)\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Pelnas</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Funkcija</span>\(P(x) = R(x) - TC(x)\)</li>
+            <li><span class="fl-lab">Ribinio dydžio funkcija</span>\(MP(x) = P'(x) = MR(x) - MC(x)\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">4</span><strong>Vidutinės bendrosios sąnaudos</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Funkcija</span>\(ATC(x) = \dfrac{TC(x)}{x}\)</li>
+            <li><span class="fl-lab">Ribinio dydžio funkcija</span>\(MATC(x) = ATC'(x)\)</li>
+          </ul>
+        </div>
+      </div>
+      <p>Tapatybė \(MP(x) = MR(x) - MC(x)\) gaunama diferencijuojant pajamų ir bendrųjų sąnaudų skirtumą. Ji leidžia ribinį pelną apskaičiuoti dviem būdais: tiesiogiai diferencijuoti pelno funkciją arba iš ribinių pajamų atimti ribines sąnaudas. Palyginus abu rezultatus galima patikrinti skaičiavimus.</p>
+    </article>
+
+    <article class="card" id="interpretacija">
+      <h3 class="subhead">Ribinio dydžio interpretacija</h3>
+      <p>Kai gamybos kiekis lygus \(x_0\) vienetų, ribinės sąnaudos, pajamos ir pelnas nusako atitinkamų dydžių momentinį kitimo greitį. Jie taip pat leidžia apytiksliai įvertinti, kas pasikeistų pagaminus ir pardavus vieną papildomą vienetą:</p>
+      <ul>
+        <li>gamybos kiekiui padidėjus vienu vienetu nuo \(x_0\), <strong>bendrosios sąnaudos</strong> pasikeičia apytiksliai dydžiu \(MC(x_0)\);</li>
+        <li>gamybos kiekiui padidėjus vienu vienetu nuo \(x_0\), <strong>pajamos</strong> pasikeičia apytiksliai dydžiu \(MR(x_0)\);</li>
+        <li>gamybos kiekiui padidėjus vienu vienetu nuo \(x_0\), <strong>pelnas</strong> pasikeičia apytiksliai dydžiu \(MP(x_0)\).</li>
+      </ul>
+      <p>Teigiama ribinio dydžio reikšmė rodo, kad, gamybos kiekiui padidėjus pakankamai mažai, atitinkamas dydis didėja; neigiama reikšmė rodo mažėjimą. Neigiamas ribinis pelnas reiškia, kad, esant šiai gamybos apimčiai, ribinės sąnaudos viršija ribines pajamas.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Kodėl apytiksliai?</span></summary>
+        <div class="more-body">
+          <p>Išvestinė nusako momentinį kitimo greitį, o vieno vieneto padidėjimas yra baigtinis pokytis. Įvertis tikslus tada, kai ribinio dydžio funkcija šiame intervale mažai keičiasi; jis nebūtinai vienodai tikslus esant bet kokiai gamybos apimčiai. Norėdami rasti tikslų pokytį padidinus kiekį vienetu, apskaičiuokite pradinės funkcijos reikšmę esant naujam kiekiui ir atimkite jos reikšmę esant pradiniam kiekiui. Jei kiekis padidėja kitu mažu dydžiu, ribinę reikšmę padauginkite iš to padidėjimo.</p>
+        </div>
+      </details>
+
+      <h3 class="subhead" style="margin-top:22px">Matavimo vienetai</h3>
+      <p>Ribinės sąnaudos, pajamos ir pelnas matuojami pinigais vienam produkcijos vienetui, pavyzdžiui, eurais už kilogramą ar egzempliorių. Skaičiuojant \(MATC\), diferencijuojamas dydis jau yra sąnaudos vienam vienetui. Todėl šios išvestinės matavimo vienetai yra eurai vienam gaminiui, tenkantys vienam papildomam gamybos vienetui. Esant kiekiui \(x_0\), reikšmė \(MATC(x_0)\) apytiksliai nusako, kiek pasikeičia vidutinės bendrosios sąnaudos, gamybos kiekiui padidėjus vienetu. Neigiama reikšmė reiškia, kad vidutinės sąnaudos ties šiuo kiekiu mažėja, bet ne tai, kad mažėja bendrosios sąnaudos.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Apibrėžkite kintamąjį: \(x\) yra per nurodytą laikotarpį pagamintas ir parduotas kiekis. Nurodykite produkcijos ir pinigų matavimo vienetus.</li>
+        <li>Sudarykite reikiamą funkciją. Pajamoms naudokite \(R(x) = x\cdot p(x)\). Kai vieneto kintamosios sąnaudos pastovios, bendrosioms sąnaudoms naudokite \(TC(x) = Vx + F\). Tada pelną raskite pagal \(P(x) = R(x) - TC(x)\), o vidutines bendrąsias sąnaudas – pagal \(ATC(x) = \dfrac{TC(x)}{x}\). Jei reikiama funkcija jau pateikta, pradėkite nuo jos.</li>
+        <li>Supaprastinkite funkcijos išraišką, jei taip lengviau ją diferencijuoti. Nustatykite <a href="tema-6.html#taisykles">diferencijavimo taisykles</a> ir parodykite pagrindinius veiksmus. Pirmiausia diferencijuokite, tik tada įstatykite skaitinę gamybos kiekio reikšmę.</li>
+        <li>Į ribinio dydžio funkciją įstatykite nurodytą gamybos kiekį. Tarpiniuose skaičiavimuose išlaikykite pakankamą tikslumą, o galutinį piniginį įvertį tinkamai suapvalinkite.</li>
+        <li>Nurodykite matavimo vienetus ir paaiškinkite reikšmės ženklą. Nusakykite apytikslį vieno papildomo vieneto poveikį esant nurodytam kiekiui. Atskirkite bendrojo dydžio pokytį nuo vidurkio pokyčio.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Įstatymas į pradinę funkciją.</strong> Gamybos kiekį reikia įstatyti į ribinio dydžio funkciją, o ne į bendrųjų sąnaudų, pajamų ar pelno funkciją.</li>
+            <li><strong>Įstatymas prieš diferencijuojant.</strong> Pirmiausia raskite išvestinės funkciją, tik tada įstatykite skaitinę kiekio reikšmę.</li>
+            <li><strong>Kaina ir pelnas.</strong> Mažoji raidė \(p\) žymi vieneto kainą, o didžioji raidė \(P\) – bendrąjį pelną.</li>
+            <li><strong>Bendrasis ir ribinis pelnas.</strong> Tai skirtingi dydžiai: bendrasis pelnas gali būti teigiamas, nors ribinis pelnas yra neigiamas.</li>
+            <li><strong>Vidurkio pokytis.</strong> Neigiama \(MATC\) reikšmė reiškia, kad mažėja vidutinės bendrosios sąnaudos, bet ne tai, kad mažėja bendrosios sąnaudos.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 6.2, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Kavos skrudinimo cecho ribinės sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kavos skrudinimo cechas per dieną paskrudina \(x\) kilogramų kavos. Jos dienos bendrosios sąnaudos eurais yra
+        <div class="fit-sm">\[ TC(x) = 0{,}0003x^3 - 0{,}09x^2 + 80x + 6000 \]</div>
+        Raskite ribinių sąnaudų funkciją ir ribines sąnaudas, kai per dieną paskrudinama 200 kilogramų kavos. Interpretuokite rezultatą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribinių sąnaudų funkcija</span></h4>
+          <p>Bendrųjų sąnaudų funkcija jau pateikta. Diferencijuokite kiekvieną narį pagal <a href="tema-6.html#daugiklio">pastovaus daugiklio taisyklę</a> ir laipsninės funkcijos išvestinės formulę: koeficientą padauginkite iš laipsnio rodiklio, tada rodiklį sumažinkite vienetu. Tiesinio nario išvestinė lygi jo koeficientui, o pastoviųjų sąnaudų išvestinė lygi nuliui, nes jos nepriklauso nuo gamybos kiekio.</p>
+          \[ \begin{aligned} MC(x) &amp;= TC'(x) \\ &amp;= 0{,}0003\cdot 3x^2 - 0{,}09\cdot 2x + 80 \\ &amp;= 0{,}0009x^2 - 0{,}18x + 80 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinės sąnaudos, kai \(x = 200\)</span></h4>
+          <p>Dienos gamybos kiekį įstatykite į ribinių sąnaudų funkciją, o ne į pradinę bendrųjų sąnaudų funkciją:</p>
+          <div class="fit-sm">\[ \begin{aligned} MC(200) &amp;= 0{,}0009\cdot 200^2 - 0{,}18\cdot 200 + 80 \\ &amp;= 36 - 36 + 80 = 80 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(MC(x) = 0{,}0009x^2 - 0{,}18x + 80\); \(MC(200) = 80\)&nbsp;eurų už kilogramą. Dienos gamybos kiekiui padidėjus nuo 200 iki 201 kilogramo, dienos bendrosios sąnaudos padidėja apytiksliai 80&nbsp;eurų. Tai papildomų sąnaudų įvertis, o ne bendrosios sąnaudos ar vidutinės sąnaudos vienam kilogramui.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 6.2, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Debesijos paslaugų ribinės sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Debesijos paslaugų teikėjas aptarnauja \(x\) naudotojų. Jo mėnesio bendrosios sąnaudos eurais yra
+        \[ TC(x) = 800 + 150\ln(x + 1) \]
+        Raskite ribinių sąnaudų funkciją ir ribines sąnaudas, kai aptarnaujami 99 naudotojai. Interpretuokite rezultatą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribinių sąnaudų funkcija</span></h4>
+          <p>Pastoviųjų sąnaudų išvestinė lygi nuliui. Logaritmo koeficientą palikite nepakeistą ir taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Išorinė funkcija yra natūralusis logaritmas; jo išvestinė lygi argumento atvirkštiniam dydžiui. Vidinė funkcija yra \(u(x) = x + 1\), jos išvestinė lygi vienetui. Padauginkite iš šios vidinės išvestinės; vardiklyje lieka pradinis logaritmo argumentas:</p>
+          \[ \begin{aligned} MC(x) &amp;= TC'(x) = 0 + 150\cdot\frac{1}{x + 1} \\ &amp;= \frac{150}{x + 1} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinės sąnaudos, kai \(x = 99\)</span></h4>
+          \[ MC(99) = \frac{150}{99 + 1} = \frac{150}{100} = 1{,}5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(MC(x) = \dfrac{150}{x + 1}\); \(MC(99) = 1{,}5\)&nbsp;euro vienam naudotojui. Naudotojų skaičiui padidėjus nuo 99 iki 100, mėnesio bendrosios sąnaudos padidėja apytiksliai 1,50&nbsp;euro. Šiame modelyje, naudotojų skaičiui augant, ribinės sąnaudos mažėja: kiekvienas papildomas naudotojas sąnaudas padidina mažiau nei ankstesnis. Tačiau bendrosios sąnaudos ir toliau didėja, nes jų išvestinė išlieka teigiama.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.2, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Stalo žaidimo ribinės pajamos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Stalo žaidimų leidėjas per mėnesį gali parduoti \(x\) žaidimo egzempliorių, kai vieno egzemplioriaus kaina yra
+        \[ p = -0{,}02x + 60,\quad 0 \leq x \leq 3000 \]
+        čia \(p\) matuojama eurais. Raskite pajamų ir ribinių pajamų funkcijas bei apskaičiuokite ribines pajamas, kai per mėnesį parduodama 1000 egzempliorių. Interpretuokite rezultatą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pajamų funkcija</span></h4>
+          <p>Pateiktas ryšys nusako vieno egzemplioriaus kainą. Norėdami gauti bendrąsias pajamas, kainą padauginkite iš parduoto kiekio. Kiekio kintamąjį padauginkite iš abiejų kainos išraiškos narių. Gautą daugianarį galima diferencijuoti po vieną narį:</p>
+          \[ \begin{aligned} R(x) &amp;= x\cdot p(x) = x(-0{,}02x + 60) \\ &amp;= -0{,}02x^2 + 60x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinės pajamos</span></h4>
+          <p>Kvadratinį ir tiesinį narius diferencijuokite pagal laipsninės funkcijos išvestinės formulę, tada įstatykite nurodytą mėnesio pardavimo kiekį:</p>
+          \[ \begin{aligned} MR(x) &amp;= R'(x) = -0{,}02\cdot 2x + 60 \\ &amp;= -0{,}04x + 60 \end{aligned} \]
+          \[ \begin{aligned} MR(1000) &amp;= -0{,}04\cdot 1000 + 60 \\ &amp;= -40 + 60 = 20 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(R(x) = -0{,}02x^2 + 60x\), \(MR(x) = -0{,}04x + 60\); \(MR(1000) = 20\)&nbsp;eurų už egzempliorių. Mėnesio pardavimo kiekiui padidėjus nuo 1000 iki 1001 egzemplioriaus, pajamos padidėja apytiksliai 20&nbsp;eurų. Parduodant 1000 egzempliorių, vieneto kaina yra \(p(1000) = 40\)&nbsp;eurų. Ribinės pajamos mažesnės už kainą, nes pagal šį modelį papildomam egzemplioriui parduoti reikia sumažinti visų parduodamų egzempliorių kainą. Kainos sumažinimas iš dalies atsveria pajamas, gaunamas dėl padidėjusio pardavimo kiekio.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.2, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Dulkių siurblio roboto ribinės pajamos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dulkių siurblio roboto savaitės paklausa aprašoma lygtimi
+        \[ p = 120e^{-0{,}002x} \]
+        čia \(p\) yra vieneto kaina eurais, o \(x\) – parduodamas kiekis. Raskite ribinių pajamų funkciją ir apskaičiuokite ribines pajamas, kai per savaitę parduodama 200 vienetų. Interpretuokite rezultatą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pajamų funkcija</span></h4>
+          <p>Parduotą kiekį padauginkite iš kainos, išreikštos paklausos funkcija, ir gaukite savaitės pajamas:</p>
+          \[ R(x) = x\cdot p(x) = 120xe^{-0{,}002x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinės pajamos</span></h4>
+          <p>Pajamos yra daugiklių \(120x\) ir \(e^{-0{,}002x}\) sandauga. Taikykite <a href="tema-6.html#sandaugos">sandaugos taisyklę</a>: pirmojo daugiklio išvestinę padauginkite iš nepakeisto antrojo daugiklio, tada pridėkite nepakeisto pirmojo daugiklio ir antrojo daugiklio išvestinės sandaugą. Rodikliniam daugikliui taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Jo išvestinė lygi pradinei rodiklinei funkcijai, padaugintai iš laipsnio rodiklio išvestinės \(-0{,}002\). Todėl antrasis narys yra neigiamas:</p>
+          \[ \begin{aligned} MR(x) &amp;= 120\cdot e^{-0{,}002x} \\ &amp;\phantom{=}\; + 120x\cdot e^{-0{,}002x}\cdot(-0{,}002) \\ &amp;= 120e^{-0{,}002x}(1 - 0{,}002x) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ribinės pajamos, kai \(x = 200\)</span></h4>
+          <p>Supaprastintoje išvestinėje rodiklinis daugiklis su koeficientu atitinka vieneto kainą, o skliaustuose esantis reiškinys įvertina kainos mažėjimo poveikį augant pardavimo kiekiui. Kiekį įstatykite į abu daugiklius. Skaičiuodami naudokite nesuapvalintą rodiklinės funkcijos reikšmę, o apvalinkite galutinį rezultatą:</p>
+          \[ \begin{aligned} MR(200) &amp;= 120e^{-0{,}4}(1 - 0{,}4) \\ &amp;\approx 120\cdot 0{,}6703\cdot 0{,}6 \approx 48{,}26 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(MR(x) = 120e^{-0{,}002x}(1 - 0{,}002x)\); \(MR(200) \approx 48{,}26\)&nbsp;euro už vienetą. Savaitės pardavimo kiekiui padidėjus nuo 200 iki 201 dulkių siurblio, savaitės pajamos padidėja apytiksliai 48,26&nbsp;euro. Teigiama reikšmė rodo, kad ties šiuo pardavimo kiekiu pajamos didėja. Vien šis rezultatas neparodo, ar didėja pelnas; tai priklauso ir nuo ribinių sąnaudų.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.2, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Sodo suolų gamybos ribinis pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvės gamina medinius sodo suolus. Mėnesio paklausos lygtis nusako vieno suolo kainą eurais, o sąnaudų funkcija – mėnesio bendrąsias sąnaudas eurais:
+        \[ \begin{gathered} p = -0{,}05x + 90 \\ TC(x) = 0{,}01x^2 + 20x + 15000 \end{gathered} \]
+        Apskaičiuokite ribinį pelną, kai per mėnesį pagaminama 300, 500 ir 700 suolų, ir interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pajamų ir pelno funkcijos</span></h4>
+          <p>Kiekį padauginkite iš vieneto kainos ir gaukite pajamas. Pelnui rasti atimkite visą bendrųjų sąnaudų funkciją, pakeisdami kiekvieno sąnaudų nario ženklą. Sutraukite kvadratinius, tada tiesinius narius:</p>
+          <div class="fit-sm">\[ R(x) = x(-0{,}05x + 90) = -0{,}05x^2 + 90x \]</div>
+          \[ \begin{aligned} P(x) &amp;= -0{,}05x^2 + 90x \\ &amp;\phantom{=}\; - 0{,}01x^2 - 20x - 15000 \\ &amp;= -0{,}06x^2 + 70x - 15000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinis pelnas</span></h4>
+          <p>Supaprastintą pelno funkciją diferencijuokite pagal laipsninės funkcijos išvestinės formulę. Pastoviųjų sąnaudų išvestinė lygi nuliui. Gauta funkcija nusako, kaip pelno kitimo greitis priklauso nuo mėnesio gamybos kiekio:</p>
+          \[ \begin{aligned} MP(x) &amp;= P'(x) = -0{,}06\cdot 2x + 70 \\ &amp;= -0{,}12x + 70 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ribinis pelnas esant trims kiekiams</span></h4>
+          <p>Tos pačios ribinio pelno funkcijos reikšmes apskaičiuokite su kiekvienu nurodytu kiekiu. Išlaikykite kiekvieno rezultato ženklą:</p>
+          \[ \begin{aligned} MP(300) &amp;= -0{,}12\cdot 300 + 70 \\ &amp;= -36 + 70 = 34 \\[6pt] MP(500) &amp;= -0{,}12\cdot 500 + 70 \\ &amp;= -60 + 70 = 10 \\[6pt] MP(700) &amp;= -0{,}12\cdot 700 + 70 \\ &amp;= -84 + 70 = -14 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>\(MP(300) = 34\)&nbsp;eurai už suolą, \(MP(500) = 10\)&nbsp;eurų už suolą ir \(MP(700) = -14\)&nbsp;eurų už suolą. Kai pradinis kiekis yra 300 suolų, vienas papildomas suolas mėnesio pelną padidina apytiksliai 34&nbsp;eurais; kai pradinis kiekis yra 500 – apytiksliai 10&nbsp;eurų. Kai pradinis kiekis yra 700, apytikslis pokytis yra \(-14\)&nbsp;eurų, taigi pelnas sumažėja maždaug 14&nbsp;eurų.</p>
+            <p>Ribinis pelnas iš teigiamo tampa neigiamas tarp 500 ir 700 suolų. Palyginimui: bendrasis pelnas yra \(P(500) = 5000\)&nbsp;eurų ir \(P(700) = 4600\)&nbsp;eurų. Šios pelno reikšmės ir ribinio pelno reikšmės yra skirtingi dydžiai: bendrasis pelnas gali būti teigiamas, nors ribinis pelnas yra neigiamas.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 6.2, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Vazų gamybos vidutinės sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Stiklo dirbtuvės per mėnesį pagamina \(x\) dekoratyvinių vazų. Bendrosios sąnaudos eurais yra
+        \[ TC(x) = 0{,}05x^2 + 30x + 12000 \]
+        Raskite vidutinių bendrųjų sąnaudų ir ribinių vidutinių bendrųjų sąnaudų funkcijas. Apskaičiuokite abiejų funkcijų reikšmes, kai per mėnesį pagaminama 200 vazų, ir interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Vidutinių bendrųjų sąnaudų funkcija</span></h4>
+          <p>Bendrąsias sąnaudas padalykite iš gamybos kiekio. Kiekvieną narį dalykite atskirai: kvadratinis narys tampa tiesiniu, tiesinis – konstanta, o pastoviųjų sąnaudų narys – konstantos ir argumento atvirkštinio dydžio sandauga. Atvirkštinį dydį užrašykite laipsniu su neigiamuoju rodikliu, kad galėtumėte taikyti laipsninės funkcijos išvestinės formulę. Vidutinės bendrosios sąnaudos apibrėžtos tik teigiamam gamybos kiekiui:</p>
+          \[ \begin{aligned} ATC(x) &amp;= \frac{TC(x)}{x} \\ &amp;= \frac{0{,}05x^2}{x} + \frac{30x}{x} + \frac{12000}{x} \\ &amp;= 0{,}05x + 30 + 12000x^{-1} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinės vidutinės bendrosios sąnaudos</span></h4>
+          <p>Tris narius diferencijuokite atskirai. Tiesinio nario išvestinė lygi jo koeficientui, konstantos – nuliui, o diferencijuojant laipsnį su neigiamuoju rodikliu atsiranda minuso ženklas ir rodiklis sumažėja vienetu. Pabaigoje laipsnį su neigiamuoju rodikliu perrašykite trupmena. Pradinei trupmenai galima taikyti ir <a href="tema-6.html#dalmens">dalmens taisyklę</a>, tačiau prieš diferencijuojant supaprastinus išraišką reikia mažiau veiksmų.</p>
+          \[ \begin{aligned} MATC(x) &amp;= ATC'(x) \\ &amp;= 0{,}05 - 12000x^{-2} \\ &amp;= 0{,}05 - \frac{12000}{x^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės, kai \(x = 200\)</span></h4>
+          <p>Apskaičiuokite abiejų funkcijų reikšmes: vidutinės bendrosios sąnaudos nusako vienai vazai tenkančias sąnaudas, o jų išvestinė – šio vidurkio kitimo greitį didėjant gamybos kiekiui:</p>
+          \[ \begin{aligned} ATC(200) &amp;= 0{,}05\cdot 200 + 30 + \frac{12000}{200} \\ &amp;= 10 + 30 + 60 = 100 \end{aligned} \]
+          \[ \begin{aligned} MATC(200) &amp;= 0{,}05 - \frac{12000}{200^2} \\ &amp;= 0{,}05 - 0{,}3 = -0{,}25 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>\(ATC(x) = 0{,}05x + 30 + \dfrac{12000}{x}\), \(MATC(x) = 0{,}05 - \dfrac{12000}{x^2}\); \(ATC(200) = 100\)&nbsp;eurų vienai vazai, o \(MATC(200) = -0{,}25\)&nbsp;euro vienai vazai, gamybos kiekiui padidėjus viena vaza.</p>
+            <p>Kai per mėnesį pagaminama 200 vazų, vidutinės bendrosios sąnaudos yra 100&nbsp;eurų vienai vazai. Padidinus kiekį nuo 200 iki 201 vazos, šis vidurkis pasikeičia apytiksliai \(-0{,}25\)&nbsp;euro vienai vazai, t.&nbsp;y. sumažėja maždaug 25&nbsp;centais vienai vazai. Esant šiai gamybos apimčiai, vienai vazai tenkančių pastoviųjų sąnaudų sumažėjimas viršija vieneto kintamųjų sąnaudų padidėjimą. Tai nusako vidutinių, o ne bendrųjų sąnaudų mažėjimą.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: sudarykite nagrinėjamo dydžio funkciją, raskite jos išvestinę, įstatykite nurodytą kiekį ir paaiškinkite rezultatą. Atsakyme pateiktos funkcijos, išvestinės ir galutiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Pieninės dienos bendrosios sąnaudos, pagaminant \(x\) litrų jogurto, yra</p>
+          \[ TC(x) = 0{,}0002x^3 - 0{,}06x^2 + 30x + 900 \]
+          <p>eurų. Raskite ribines sąnaudas, kai per dieną pagaminama 150 litrų, ir paaiškinkite jų reikšmę.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė:</strong></p>
+          \[ \begin{aligned} MC(x) &amp;= TC'(x) \\ &amp;= 0{,}0006x^2 - 0{,}12x + 30 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> \(MC(150) = 25{,}5\)&nbsp;euro vienam litrui. Dienos gamybos kiekiui padidėjus vienu litru nuo 150 litrų, bendrosios sąnaudos padidės maždaug 25,50&nbsp;euro.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Išmaniojo durų skambučio mėnesio paklausą aprašo lygtis</p>
+          \[ p = \frac{1800}{x + 20} \]
+          <p>eurų, čia \(x\) – parduotų durų skambučių skaičius. Raskite pajamų funkciją, ribinių pajamų funkciją ir ribines pajamas, kai per mėnesį parduodama 40 skambučių. Paaiškinkite rezultatą.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Nagrinėjamo dydžio funkcija:</strong></p>
+          \[ R(x) = p\cdot x = \frac{1800x}{x + 20} \]
+          <p><strong>Išvestinė (dalmens taisyklė):</strong></p>
+          \[ \begin{aligned} MR(x) &amp;= R'(x) \\ &amp;= \frac{1800(x + 20) - 1800x}{(x + 20)^2} \\ &amp;= \frac{36000}{(x + 20)^2} \end{aligned} \]
+          <p><strong>Atsakymas.</strong> \(MR(40) = 10\)&nbsp;eurų vienam skambučiui. Mėnesio pardavimo kiekiui padidėjus vienu skambučiu nuo 40 skambučių, pajamos padidės maždaug 10&nbsp;eurų.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įrankių gamintojas per mėnesį parduoda \(x\) gaminių, kai vieneto kaina yra</p>
+          \[ p = 200 - 4\sqrt{x} \]
+          <p>eurų, o jo mėnesio bendrosios sąnaudos yra</p>
+          \[ TC(x) = 0{,}05x^2 + 50x + 3000 \]
+          <p>eurų. Raskite ribines pajamas, ribines sąnaudas ir ribinį pelną, kai per mėnesį pagaminama 100 gaminių. Paaiškinkite ribinio pelno reikšmę.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Nagrinėjamų dydžių funkcijos:</strong></p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = 200x - 4x\sqrt{x} \\ &amp;= 200x - 4x^{\frac{3}{2}} \end{aligned} \]
+          <div class="fit-sm">\[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= 150x - 4x^{\frac{3}{2}} - 0{,}05x^2 - 3000 \end{aligned} \]</div>
+          <p><strong>Išvestinės:</strong></p>
+          \[ \begin{gathered} MR(x) = 200 - 6\sqrt{x} \\ MC(x) = 0{,}1x + 50 \\ MP(x) = 150 - 6\sqrt{x} - 0{,}1x \end{gathered} \]
+          <p><strong>Atsakymas.</strong> \(MR(100) = 140\)&nbsp;eurų, \(MC(100) = 60\)&nbsp;eurų ir \(MP(100) = 80\)&nbsp;eurų vienam gaminiui. Mėnesio gamybos kiekiui padidėjus vienu gaminiu nuo 100 gaminių, pelnas padidės maždaug 80&nbsp;eurų.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gamyklos dienos bendrosios sąnaudos gaminant \(x\) gaminių yra</p>
+          \[ TC(x) = 0{,}01x^3 - 2x^2 + 200x + 6000 \]
+          <p>eurų. Raskite vidutines bendrąsias sąnaudas ir ribines vidutines bendrąsias sąnaudas, kai per dieną pagaminama 100 gaminių, bei paaiškinkite abi reikšmes.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Nagrinėjamo dydžio funkcija:</strong></p>
+          <div class="fit-sm">\[ \begin{aligned} ATC(x) &amp;= \frac{TC(x)}{x} \\ &amp;= 0{,}01x^2 - 2x + 200 + 6000x^{-1} \end{aligned} \]</div>
+          <p><strong>Išvestinė:</strong></p>
+          \[ \begin{aligned} MATC(x) &amp;= ATC'(x) \\ &amp;= 0{,}02x - 2 - \frac{6000}{x^2} \end{aligned} \]
+          <p><strong>Atsakymas.</strong> \(ATC(100) = 160\)&nbsp;eurų vienam gaminiui ir \(MATC(100) = -0{,}6\)&nbsp;euro vienam gaminiui. Vieno gaminio vidutinės sąnaudos yra 160&nbsp;eurų. Dienos gamybos kiekiui padidėjus vienu gaminiu nuo 100 gaminių, vieno gaminio vidutinės sąnaudos sumažės maždaug 60&nbsp;centų.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">5, 6.1–6.3, 6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">9 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
