@@ -1045,3 +1045,11 @@ ul.ans-list li:last-child { margin-bottom: 0; }
 .sc-arr svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .sc-arr.up { color: var(--success); }
 .sc-arr.down { color: var(--danger); }
+.sc-type { position: absolute; top: 114px; transform: translate(-50%, -50%); font-style: italic; font-size: .92rem; line-height: 1.2; background: var(--surface); padding: 0 3px; }
+@media (max-width: 440px) {
+  .signchart { column-gap: 8px; }
+  .sc-lab { font-size: .92rem; }
+  .sc-arr svg { width: 18px; height: 18px; }
+  .sc-type { font-size: .76rem; padding: 0 1px; }
+  .sc-zero, .sc-sign { font-size: 1.05rem; }
+}

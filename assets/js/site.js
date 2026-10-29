@@ -282,7 +282,7 @@
       { id: 'm63', status: 'active', href: { lt: 'tema-6-didejimas-ir-mazejimas.html', en: null },
         title: { lt: 'Didėjančios ir mažėjančios funkcijos', en: 'Increasing and Decreasing Functions' },
         desc: { lt: 'Išvestinės ženklas parodo, kuriuose intervaluose funkcija didėja, o kuriuose mažėja.', en: 'The sign of the derivative shows on which intervals a function increases and on which it decreases.' } },
-      { id: 'm64', status: 'soon',
+      { id: 'm64', status: 'active', href: { lt: 'tema-6-vietiniai-ekstremumai.html', en: null },
         title: { lt: 'Vietiniai ekstremumai', en: 'Relative Extrema' },
         desc: { lt: 'Kritiniai taškai, vietiniai maksimumai ir minimumai.', en: 'Critical points, relative maxima and minima.' } },
       { id: 'm65', status: 'soon',
@@ -346,6 +346,8 @@
                title: { lt: 'Pokyčių analizė', en: 'Rates of Change' } },
     m63:     { parent: 't6', topic: 't6', model: 'm63', href: { lt: 'tema-6-didejimas-ir-mazejimas.html', en: null },
                title: { lt: 'Didėjančios ir mažėjančios funkcijos', en: 'Increasing and Decreasing Functions' } },
+    m64:     { parent: 't6', topic: 't6', model: 'm64', href: { lt: 'tema-6-vietiniai-ekstremumai.html', en: null },
+               title: { lt: 'Vietiniai ekstremumai', en: 'Relative Extrema' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -1257,6 +1259,7 @@
      spec: fp, f – eilučių užrašai (TeX), v – kintamasis (TeX);
            pts: [{x: "4", z: true – išvestinė lygi 0, o: true – neleistina reikšmė (tuščias taškas)}];
            s: išvestinės ženklai kiekviename intervale ("+" arba "-");
+           pts[i].t – taško tipas po tašku funkcijos eilutėje (pvz., "max", "min");
            outL / outR: true (numatyta) – kairėje / dešinėje nuo kraštinio taško
            reikšmės nepriklauso apibrėžimo sričiai (pilka sritis); false – sritis tęsiasi iki ∓∞.
      Taškai išdėstomi schemiškai (vienodais tarpais), kaip ženklų schemose.
@@ -1280,7 +1283,8 @@
       html += '<span class="sc-guide" style="left:' + x + '%"></span>' +
         '<span class="sc-dot' + (p.o ? ' open' : '') + '" style="left:' + x + '%"></span>' +
         '<span class="sc-tick" style="left:' + x + '%">\\(' + p.x + '\\)</span>' +
-        (p.z ? '<span class="sc-zero" style="left:' + x + '%">\\(0\\)</span>' : '');
+        (p.z ? '<span class="sc-zero" style="left:' + x + '%">\\(0\\)</span>' : '') +
+        (p.t ? '<span class="sc-type" style="left:' + x + '%">' + esc(p.t) + '</span>' : '');
     });
     var signs = spec.s || [], words = [];
     for (var k = 0; k < nb - 1; k++) {

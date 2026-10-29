@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vietiniai ekstremumai · Taikomoji matematika</title>
+<meta name="description" content="Vietiniai ekstremumai: vietinis maksimumas ir minimumas, kritiniai taškai, pirmasis pakankamasis ekstremumų požymis ir ženklų schema. Pajamų ir pelno maksimizavimas, sąnaudų minimizavimas. Pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=62">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=62"></script>
+</head>
+<body data-page="m64">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">6 tema · Taikymai · 5 skyrius</span>
+    <h1>Vietiniai ekstremumai</h1>
+    <p class="lead">Šiame skyriuje išvestinės padeda rasti, kada dydis įgyja didelę ar mažą reikšmę: koks gamybos kiekis duoda didžiausią pelną, kokia kaina užtikrina didžiausias pajamas ar kokia naudojimo trukmė lemia mažiausias vidutines sąnaudas.</p>
+    <ul class="jump">
+      <li><a href="#ekstremumai">Vietiniai ekstremumai</a></li>
+      <li><a href="#pozymis">Pirmasis požymis</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. VIETINIAI EKSTREMUMAI ============ -->
+  <section class="section" id="ekstremumai" aria-labelledby="h-ext">
+    <h2 id="h-ext">Vietiniai ekstremumai</h2>
+
+    <article class="card">
+      <p>Daugelyje vadybos uždavinių klausiama, kada dydis įgyja didelę ar mažą reikšmę: koks gamybos kiekis duoda didžiausią pelną, kokia kaina užtikrina didžiausias pajamas ar kokia naudojimo trukmė lemia mažiausias vidutines sąnaudas. Vietiniai ekstremumai nusako reikšmes, kurios yra didžiausios arba mažiausios, palyginti su artimomis reikšmėmis. Išvestinės padeda rasti galimus ekstremumo taškus ir nustatyti jų tipą.</p>
+      <p>Funkcija \(f(x)\) taške \(x_0\) turi <strong>vietinį (lokalųjį) maksimumą</strong>, jei jos reikšmė jame ne mažesnė už reikšmes gretimuose taškuose. Ji turi <strong>vietinį (lokalųjį) minimumą</strong>, jei reikšmė jame ne didesnė už reikšmes gretimuose taškuose. Abu kartu vadinami <strong>vietiniais ekstremumais</strong>.</p>
+      <p>Žodis <em>vietinis</em> reiškia, kad lyginame tik artimas funkcijos reikšmes. Vietinis maksimumas nebūtinai yra didžiausia reikšmė visoje apibrėžimo srityje, o vietinis minimumas – mažiausia. Funkcija gali turėti kelis vietinius maksimumus ir minimumus. Absoliučiam maksimumui ar minimumui rasti reikia palyginti reikšmes visoje nagrinėjamoje srityje.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Ekstremumo taškas ir funkcijos reikšmė</h3>
+      <p>Atskirkite <strong>ekstremumo tašką</strong> nuo <strong>funkcijos reikšmės</strong>. Argumento reikšmė \(x_0\) nusako, esant kokiam kiekiui, kainai ar laikui pasiekiamas ekstremumas. Reikšmė \(f(x_0)\) nusako atitinkamą pelną, pajamas ar sąnaudas. Jei uždavinyje prašoma, nurodykite abi reikšmes. Šiame skyriuje vietiniai ekstremumai nagrinėjami vidiniuose srities taškuose; ieškant absoliučių ekstremumų, kraštinius taškus reikia tikrinti atskirai.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. PIRMASIS POŽYMIS ============ -->
+  <section class="section" id="pozymis" aria-labelledby="h-test">
+    <h2 id="h-test">Kritiniai taškai ir pirmasis pakankamasis ekstremumų požymis</h2>
+
+    <article class="card">
+      <p>Norėdami rasti galimus vietinius ekstremumus, pirmiausia raskite <a href="tema-6-didejimas-ir-mazejimas.html#kritiniai">kritinius taškus</a>. Argumento reikšmė \(x_0\), priklausanti apibrėžimo sričiai, yra kritinis taškas, jei</p>
+      <div class="formula">\[ \begin{gathered} f'(x_0) = 0 \quad \text{arba} \\ f'(x_0) \text{ neegzistuoja.} \end{gathered} \]</div>
+      <p>Kad vidiniame taške būtų vietinis ekstremumas, jis turi būti kritinis, tačiau vien to nepakanka. Išvestinė gali būti lygi nuliui ir tada, kai funkcija abipus taško toliau didėja arba mažėja. Todėl kiekvieną kritinį tašką reikia patikrinti ir nustatyti jo tipą.</p>
+      <p><strong>Pirmasis pakankamasis vietinių ekstremumų požymis</strong> remiasi išvestinės ženklais iš karto kairėje ir dešinėje nuo kritinio taško. Jei funkcija tame taške tolydi, tai:</p>
+      <ul>
+        <li>jei \(f'(x)\) taške \(x_0\) keičia ženklą iš teigiamo į neigiamą, tai \(f(x_0)\) yra <strong>vietinis maksimumas</strong>;</li>
+        <li>jei \(f'(x)\) taške \(x_0\) keičia ženklą iš neigiamo į teigiamą, tai \(f(x_0)\) yra <strong>vietinis minimumas</strong>;</li>
+        <li>jei \(f'(x)\) abipus taško išlaiko tą patį ženklą, taške \(x_0\) <strong>ekstremumo nėra</strong>.</li>
+      </ul>
+      <p>Ženklų schema apibendrina požymį. Rodyklė aukštyn, po kurios eina rodyklė žemyn, rodo vietinį maksimumą; rodyklė žemyn, po kurios eina rodyklė aukštyn, – vietinį minimumą. Jei abi rodyklės nukreiptos ta pačia kryptimi, kritiniame taške vietinio ekstremumo nėra.</p>
+      <div data-widget="sign-chart" data-spec='{"fp":"f&#39;(x)","f":"f(x)","v":"x","pts":[{"x":"x_1","z":true,"t":"max"},{"x":"x_2","z":true,"t":"min"},{"x":"x_3","z":true}],"s":["+","-","+","+"],"outL":false,"outR":false}'></div>
+      <p class="formula-note" style="text-align:center">Taške \(x_1\) – vietinis maksimumas, taške \(x_2\) – vietinis minimumas, o taške \(x_3\) ekstremumo nėra: išvestinė abipus jo teigiama.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Apibrėžkite kintamąjį, nagrinėjamą dydį ir jų matavimo vienetus. Pagal formulę ir kontekstą nustatykite apibrėžimo sritį. Jei reikia, sudarykite funkciją: pajamos yra kainos ir kiekio sandauga, \(R(x) = p\cdot x\); pelnas yra \(P(x) = R(x) - TC(x)\); vidutinės sąnaudos – bendrosios sąnaudos, padalytos iš atitinkamo kiekio. Taikydami išvestines, kintamąjį laikykite tolydžiuoju.</li>
+        <li>Diferencijuokite funkciją. Jei išvestinė yra daugianaris, sutraukite panašiuosius narius ir palikite standartinę daugianario formą. Kitus reiškinius prireikus supaprastinkite, išlaikydami pradinės apibrėžimo srities apribojimus.</li>
+        <li>Raskite kritinius taškus: išspręskite \(f'(x) = 0\) ir patikrinkite, kur išvestinė neegzistuoja, nors funkcija apibrėžta. Gautas kvadratines lygtis spręskite naudodami diskriminantą. Atmeskite nagrinėjamai sričiai nepriklausančius sprendinius.</li>
+        <li>Skaičių tiesėje pažymėkite kritinius taškus ir apibrėžimo srities ribas. Iš kiekvieno intervalo vidaus pasirinkite reikšmę ir įstatykite ją į išvestinę. Pagal ženklus abipus kritinio taško nustatykite, ar jame yra vietinis maksimumas, vietinis minimumas, ar ekstremumo nėra.</li>
+        <li>Apskaičiuokite pradinės funkcijos reikšmę kiekviename patvirtintame ekstremumo taške. Nurodykite tašką ir funkcijos reikšmę su matavimo vienetais. Jei prašoma didžiausios ar mažiausios reikšmės visoje srityje, pagrįskite, kodėl vietinis ekstremumas yra ir absoliutus.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:22px">Ženklų schema</h3>
+      <p>Virš kiekvieno intervalo užrašykite išvestinės ženklą, o po juo pažymėkite rodyklę, rodančią, ar pradinė funkcija didėja, ar mažėja. Po kritiniu tašku nurodykite jo tipą. Nulis virš taško reiškia, kad išvestinė jame lygi nuliui; ten, kur ji neegzistuoja, išvestinės reikšmė nerašoma. Tušti taškai žymi neleistinas reikšmes, o pilka sritis – apibrėžimo sričiai nepriklausančias reikšmes. Kritinio taško tipą nustatykite pagal ženklus abiejose jo pusėse.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Kritinis taškas – dar ne ekstremumas.</strong> Išvestinė gali būti lygi nuliui ir tada, kai funkcija abipus taško toliau didėja arba mažėja. Tipą nustatykite pagal ženklus abiejose taško pusėse.</li>
+            <li><strong>Taškas ir reikšmė.</strong> \(x_0\) nusako, esant kokiam kiekiui, kainai ar laikui pasiekiamas ekstremumas, o \(f(x_0)\) – patį pelną, pajamas ar sąnaudas. Jei prašoma, nurodykite abi reikšmes.</li>
+            <li><strong>Vietinis ir absoliutus.</strong> Vietinis maksimumas nebūtinai yra didžiausia reikšmė visoje srityje. Jei prašoma didžiausios ar mažiausios reikšmės, tai pagrįskite.</li>
+            <li><strong>Sričiai nepriklausantys sprendiniai.</strong> Neigiamą kiekį ar laiką duodančių sprendinių atsisakykite.</li>
+            <li><strong>Pajamų funkcija.</strong> Kai kaina priklauso nuo kiekio, prieš dauginant iš \(x\) įrašykite visą kainos išraišką.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 6.5, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Kelto pajamos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Keltu per mėnesį pervežamų keleivių skaičių \(x\) ir bilieto kainą sieja lygtis
+        \[ p = 120 - 0{,}1x \]
+        eurų. Kiek keleivių per mėnesį reikia pervežti, kad pajamos būtų didžiausios? Raskite atitinkamą bilieto kainą ir mėnesio pajamas.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Nagrinėjamas dydis</span></h4>
+          <p>Mėnesio pajamos yra bilieto kainos ir keleivių skaičiaus sandauga. Kaina priklauso nuo \(x\), todėl prieš dauginant reikia įrašyti kainos išraišką. Kadangi kiekis ir bilieto kaina turi būti neneigiami, galimas kiekis yra nuo nulio iki 1200 keleivių per mėnesį:</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (120 - 0{,}1x)x \\ &amp;= 120x - 0{,}1x^2 \end{aligned} \]
+          <p>Pajamos matuojamos eurais per mėnesį.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Diferencijuokite tiesinį ir kvadratinį narius:</p>
+          \[ R'(x) = 120 - 0{,}2x \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Daugianario išvestinė egzistuoja visoje apibrėžimo srityje. Prilyginkite ją nuliui:</p>
+          \[ \begin{aligned} &amp;120 - 0{,}2x = 0 \\ \Longrightarrow\;&amp; 0{,}2x = 120 \\ \Longrightarrow\;&amp; x = 600 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklai</span></h4>
+          <p>Pasirinkite po vieną leistiną kiekį iš intervalų abipus kritinio taško ir įstatykite į išvestinę:</p>
+          \[ \begin{gathered} R'(200) = 120 - 40 = 80 &gt; 0 \\ R'(1000) = 120 - 200 = -80 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(x)","f":"R(x)","v":"x","pts":[{"x":"0"},{"x":"600","z":true,"t":"max"},{"x":"1200"}],"s":["+","-"]}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Požymis ir reikšmės</span></h4>
+          <p>Taške \(x = 600\) išvestinės ženklas keičiasi iš teigiamo į neigiamą, todėl \(R(600)\) yra vietinis maksimumas. Visoje leistinoje srityje iki šio kiekio pajamos didėja, o po jo mažėja, todėl tai ir didžiausios pajamos šioje srityje.</p>
+          \[ \begin{aligned} R(600) &amp;= 120\cdot 600 - 0{,}1\cdot 600^2 \\ &amp;= 72000 - 36000 = 36000 \end{aligned} \]
+          \[ p = 120 - 0{,}1\cdot 600 = 60 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Didžiausios mėnesio pajamos – 36&nbsp;000&nbsp;eurų, pervežant 600 keleivių per mėnesį, kai bilieto kaina yra 60&nbsp;eurų.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 6.5, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Kuprinių pardavimo pajamos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kaina, už kurią per mėnesį galima parduoti \(x\) kuprinių, yra
+        \[ p = 90 - 2\sqrt{x} \]
+        eurų. Raskite mėnesio pardavimo kiekį ir vieneto kainą, kurie duoda didžiausias pajamas, bei apskaičiuokite šias pajamas.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Nagrinėjamas dydis</span></h4>
+          <p>Vieneto kainą padauginkite iš mėnesio pardavimo kiekio. Narį su kvadratine šaknimi perrašykite laipsniu, kad galėtumėte taikyti laipsninės funkcijos išvestinės formulę. Neneigiami kiekis ir kaina duoda leistiną sritį nuo nulio iki 2025 kuprinių per mėnesį:</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (90 - 2\sqrt{x})x \\ &amp;= 90x - 2x\sqrt{x} = 90x - 2x^{\frac{3}{2}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Kiekvienam nariui taikykite <a href="tema-6.html#daugiklio">pastovaus daugiklio taisyklę</a> ir laipsninės funkcijos išvestinės formulę:</p>
+          \[ R'(x) = 90 - 2\cdot\frac{3}{2}x^{\frac{1}{2}} = 90 - 3\sqrt{x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Prilyginkite išvestinę nuliui. Atskirkite kvadratinę šaknį, tada abi lygties puses pakelkite kvadratu:</p>
+          \[ \begin{aligned} &amp;90 - 3\sqrt{x} = 0 \\ \Longrightarrow\;&amp; \sqrt{x} = 30 \\ \Longrightarrow\;&amp; x = 900 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklai</span></h4>
+          <p>Pasirinkite po vieną vidinę reikšmę iš intervalų abipus kritinio taško:</p>
+          \[ \begin{gathered} R'(400) = 90 - 3\cdot 20 = 30 &gt; 0 \\ R'(1600) = 90 - 3\cdot 40 = -30 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(x)","f":"R(x)","v":"x","pts":[{"x":"0"},{"x":"900","z":true,"t":"max"},{"x":"2025"}],"s":["+","-"]}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Požymis ir reikšmės</span></h4>
+          <p>Taške \(x = 900\) išvestinės ženklas keičiasi iš teigiamo į neigiamą, todėl \(R(900)\) yra vietinis maksimumas. Visoje leistinoje srityje pajamos iki šio kiekio didėja, o po jo mažėja, todėl tai ir didžiausios pajamos šioje srityje.</p>
+          \[ \begin{aligned} R(900) &amp;= 90\cdot 900 - 2\cdot 900\cdot 30 \\ &amp;= 81000 - 54000 = 27000 \end{aligned} \]
+          \[ p = 90 - 2\cdot 30 = 30 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Didžiausios mėnesio pajamos – 27&nbsp;000&nbsp;eurų, parduodant 900 kuprinių per mėnesį po 30&nbsp;eurų.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.5, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Spaustuvės pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Spaustuvė per mėnesį parduoda \(x\) knygos egzempliorių, kai vieno egzemplioriaus kaina yra
+        \[ p = -0{,}002x + 30 \]
+        eurų, o mėnesio bendrosios sąnaudos yra
+        \[ TC(x) = 0{,}001x^2 + 6x + 4000 \]
+        eurų. Raskite mėnesio pardavimo kiekį ir vieneto kainą, kurie duoda didžiausią pelną, bei apskaičiuokite šį pelną.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Nagrinėjamas dydis</span></h4>
+          <p>Pirmiausia kiekį padauginkite iš vieneto kainos ir gaukite pajamas. Tada atimkite visą bendrųjų sąnaudų funkciją, pakeisdami kiekvieno sąnaudų nario ženklą, ir sutraukite panašiuosius narius. Neneigiami kiekis ir kaina riboja leistiną kiekį nuo nulio iki 15&nbsp;000 egzempliorių per mėnesį:</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0{,}002x + 30)x \\ &amp;= -0{,}002x^2 + 30x \end{aligned} \]
+          \[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= -0{,}002x^2 + 30x \\ &amp;\phantom{=}\; - 0{,}001x^2 - 6x - 4000 \\ &amp;= -0{,}003x^2 + 24x - 4000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Supaprastintą pelno funkciją diferencijuokite po vieną narį:</p>
+          \[ P'(x) = -0{,}006x + 24 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Prilyginkite išvestinę nuliui ir išspręskite tiesinę lygtį:</p>
+          \[ \begin{aligned} &amp;-0{,}006x + 24 = 0 \\ \Longrightarrow\;&amp; 0{,}006x = 24 \\ \Longrightarrow\;&amp; x = \frac{24}{0{,}006} = 4000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklai</span></h4>
+          <p>Įstatykite po vieną leistiną kiekį iš intervalų kairėje ir dešinėje nuo kritinio taško:</p>
+          \[ \begin{gathered} P'(2000) = -12 + 24 = 12 &gt; 0 \\ P'(6000) = -36 + 24 = -12 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(x)","f":"P(x)","v":"x","pts":[{"x":"0"},{"x":"4000","z":true,"t":"max"},{"x":"15000"}],"s":["+","-"]}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Požymis ir reikšmės</span></h4>
+          <p>Taške \(x = 4000\) išvestinės ženklas keičiasi iš teigiamo į neigiamą, todėl jame yra vietinis maksimumas. Visoje leistinoje srityje iki šio kiekio pelnas didėja, o po jo mažėja, todėl tai ir didžiausias pelnas šioje srityje.</p>
+          \[ \begin{aligned} P(4000) &amp;= -0{,}003\cdot 4000^2 \\ &amp;\phantom{=}\; + 24\cdot 4000 - 4000 \\ &amp;= -48000 + 96000 - 4000 \\ &amp;= 44000 \end{aligned} \]
+          \[ p = -0{,}002\cdot 4000 + 30 = 22 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Didžiausias mėnesio pelnas – 44&nbsp;000&nbsp;eurų, parduodant 4000 egzempliorių per mėnesį po 22&nbsp;eurus.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.5, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Naujo gaminio mėnesio pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonės mėnesio pelnas iš gaminio tūkstančiais eurų, praėjus \(t\) mėnesių nuo gaminio pateikimo rinkai, yra
+        <div class="fit-sm">\[ P(t) = t^3 - 18t^2 + 96t + 40,\quad 0 \leq t \leq 12 \]</div>
+        Raskite pelno vietinių ekstremumų taškus ir reikšmes pirmaisiais metais.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išvestinė</span></h4>
+          <p>Diferencijuokite kiekvieną narį ir išvestinę palikite standartine daugianario forma:</p>
+          \[ P'(t) = 3t^2 - 36t + 96 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Kritiniai taškai</span></h4>
+          <p>Išvestinė egzistuoja visur. Prilyginkite ją nuliui ir padalykite iš trijų. Gautą kvadratinę lygtį išspręskite naudodami diskriminantą:</p>
+          \[ t^2 - 12t + 32 = 0 \]
+          \[ \begin{aligned} D &amp;= (-12)^2 - 4\cdot 1\cdot 32 \\ &amp;= 144 - 128 = 16 &gt; 0 \end{aligned} \]
+          \[ \begin{gathered} t_{1,2} = \frac{12 \pm \sqrt{16}}{2} = \frac{12 \pm 4}{2} \\ \Longrightarrow\; t_1 = 4;\quad t_2 = 8 \end{gathered} \]
+          <p>Abu sprendiniai yra nurodyto laikotarpio viduje, todėl reikia nustatyti abiejų taškų tipą.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ženklai</span></h4>
+          <p>Iš kiekvieno iš trijų intervalų vidaus pasirinkite reikšmę ir įstatykite ją į daugianario formos išvestinę:</p>
+          <div class="fit-sm">\[ \begin{aligned} P'(2) &amp;= 3\cdot 2^2 - 36\cdot 2 + 96 = 36 &gt; 0 \\ P'(6) &amp;= 3\cdot 6^2 - 36\cdot 6 + 96 = -12 &lt; 0 \\ P'(10) &amp;= 3\cdot 10^2 - 36\cdot 10 + 96 = 36 &gt; 0 \end{aligned} \]</div>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(t)","f":"P(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true,"t":"max"},{"x":"8","z":true,"t":"min"},{"x":"12"}],"s":["+","-","+"]}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Požymis ir reikšmės</span></h4>
+          <p>Taške \(t = 4\) išvestinės ženklas keičiasi iš teigiamo į neigiamą, todėl jame yra vietinis maksimumas. Taške \(t = 8\) ženklas keičiasi iš neigiamo į teigiamą, todėl jame yra vietinis minimumas. Abi laiko reikšmes įstatykite į pradinę pelno funkciją:</p>
+          \[ \begin{gathered} P(4) = 64 - 288 + 384 + 40 = 200 \\ P(8) = 512 - 1152 + 768 + 40 = 168 \end{gathered} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Vietinis maksimumas – 200 tūkstančių eurų ketvirtą mėnesį. Vietinis minimumas – 168 tūkstančiai eurų aštuntą mėnesį.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.5, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Furgono vidutinės metinės sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Pristatymo furgonas kainuoja 21&nbsp;600 eurų, o per pirmuosius \(t\) jo naudojimo metų remontui ir techninei priežiūrai iš viso išleidžiama \(600t^2\) eurų. Todėl vidutinės metinės furgono naudojimo sąnaudos yra
+        \[ A(t) = \frac{21600 + 600t^2}{t} \]
+        eurų per metus. Raskite naudojimo trukmę, kuriai esant vidutinės metinės sąnaudos mažiausios, ir apskaičiuokite šias sąnaudas.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išvestinė</span></h4>
+          <p>Apibrėžimo sritis – teigiamos laiko reikšmės. Kiekvieną skaitiklio narį padalykite iš laiko, tada narį su atvirkštiniu dydžiu perrašykite laipsniu su neigiamuoju rodikliu. Taip galima tiesiogiai taikyti laipsninės funkcijos išvestinės formulę:</p>
+          \[ A(t) = \frac{21600}{t} + 600t = 21600t^{-1} + 600t \]
+          \[ \begin{aligned} A'(t) &amp;= -21600t^{-2} + 600 \\ &amp;= 600 - \frac{21600}{t^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Kritinis taškas</span></h4>
+          <p>Kai \(t &gt; 0\), išvestinė egzistuoja visur. Prilyginkite ją nuliui, panaikinkite nenulinį vardiklį ir gautą kvadratinę lygtį išspręskite naudodami diskriminantą:</p>
+          \[ 600 - \frac{21600}{t^2} = 0 \;\Longrightarrow\; t^2 - 36 = 0 \]
+          \[ D = 0^2 - 4\cdot 1\cdot(-36) = 144 &gt; 0 \]
+          \[ \begin{gathered} t_{1,2} = \frac{-0 \pm \sqrt{144}}{2} = \pm 6 \\ \Longrightarrow\; t_1 = -6;\quad t_2 = 6 \end{gathered} \]
+          <p>Šaknies \(t = -6\) atsisakome, nes ji nepriklauso apibrėžimo sričiai. Tik teigiama šaknis yra kritinis taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ženklai</span></h4>
+          <p>Įstatykite po vieną teigiamą laiko reikšmę iš intervalų abipus kritinio taško:</p>
+          \[ \begin{gathered} A'(3) = 600 - 2400 = -1800 &lt; 0 \\ A'(12) = 600 - 150 = 450 &gt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;(t)","f":"A(t)","v":"t","pts":[{"x":"0","o":true},{"x":"6","z":true,"t":"min"}],"s":["-","+"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Požymis ir reikšmė</span></h4>
+          <p>Taške \(t = 6\) išvestinės ženklas keičiasi iš neigiamo į teigiamą, todėl jame yra vietinis minimumas. Toks ženklų pasiskirstymas galioja visoje teigiamoje srityje, todėl tai ir mažiausios vidutinės metinės sąnaudos šiame modelyje.</p>
+          \[ \begin{aligned} A(6) &amp;= \frac{21600}{6} + 600\cdot 6 \\ &amp;= 3600 + 3600 = 7200 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Mažiausios vidutinės metinės sąnaudos – 7200&nbsp;eurų per metus, kai furgonas naudojamas šešerius metus.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 6.5, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Rinkos dalis po prekės ženklo atnaujinimo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Praėjus \(t\) mėnesių nuo prekės ženklo atnaujinimo, įmonė užima
+        \[ S(t) = \frac{400t}{t^2 + 64},\quad t \geq 0 \]
+        procentų savo rinkos. Raskite, kada rinkos dalis didžiausia, ir apskaičiuokite šią dalį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išvestinė</span></h4>
+          <p>Taikykite <a href="tema-6.html#dalmens">dalmens taisyklę</a>. Atskirai diferencijuokite skaitiklį ir vardiklį, išlaikykite atimties ženklą, o pradinį vardiklį pakelkite kvadratu. Skaitiklyje išskleiskite sandaugas ir sutraukite panašiuosius narius:</p>
+          \[ \begin{aligned} S'(t) &amp;= \frac{400(t^2 + 64) - 400t\cdot 2t}{(t^2 + 64)^2} \\ &amp;= \frac{400t^2 + 25600 - 800t^2}{(t^2 + 64)^2} \\ &amp;= \frac{-400t^2 + 25600}{(t^2 + 64)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Kritinis taškas</span></h4>
+          <p>Vardiklis visada teigiamas, todėl išvestinė egzistuoja visoje apibrėžimo srityje. Prilyginkite skaitiklį nuliui, padalykite iš jo nenulinio koeficiento ir kvadratinę lygtį išspręskite naudodami diskriminantą:</p>
+          \[ t^2 - 64 = 0 \]
+          \[ D = 0^2 - 4\cdot 1\cdot(-64) = 256 &gt; 0 \]
+          \[ \begin{gathered} t_{1,2} = \frac{-0 \pm \sqrt{256}}{2} = \pm 8 \\ \Longrightarrow\; t_1 = -8;\quad t_2 = 8 \end{gathered} \]
+          <p>Šaknies \(t = -8\) atsisakome, nes laikas skaičiuojamas nuo prekės ženklo atnaujinimo.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ženklai</span></h4>
+          <p>Pasirinkite po vieną neneigiamą laiko reikšmę iš intervalų abipus kritinio taško ir įstatykite į išvestinę:</p>
+          \[ S'(4) = \frac{-400\cdot 4^2 + 25600}{(4^2 + 64)^2} = 3 &gt; 0 \]
+          <div class="fit-sm">\[ S'(12) = \frac{-400\cdot 12^2 + 25600}{(12^2 + 64)^2} \approx -0{,}74 &lt; 0 \]</div>
+          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"0"},{"x":"8","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Požymis ir reikšmė</span></h4>
+          <p>Taške \(t = 8\) išvestinės ženklas keičiasi iš teigiamo į neigiamą, todėl \(S(8)\) yra vietinis maksimumas. Visoje apibrėžimo srityje iki šio momento rinkos dalis didėja, o po jo mažėja, todėl tai ir didžiausia jos reikšmė.</p>
+          \[ S(8) = \frac{400\cdot 8}{64 + 64} = \frac{3200}{128} = 25 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Didžiausia rinkos dalis – 25&nbsp;procentai, praėjus aštuoniems mėnesiams nuo prekės ženklo atnaujinimo.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 6.5, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Mokymų trukmė ir darbuotojo našumas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė kiekvienam darbuotojui per mėnesį skiria \(x\) valandų mokymams. Po mokymų darbuotojas surenka
+        \[ Q(x) = 400 + 300\ln(x + 1) - 50x \]
+        gaminių per mėnesį. Raskite mėnesio mokymų trukmę, kuriai esant vieno darbuotojo našumas didžiausias, ir apskaičiuokite šį našumą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išvestinė</span></h4>
+          <p>Mokymų trukmė neneigiama. Logaritmui taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>: vidinė funkcija yra \(u(x) = x + 1\), jos išvestinė lygi vienetui. Suvienodinkite vardiklius ir sutraukite skaitiklio narius:</p>
+          \[ \begin{aligned} Q'(x) &amp;= \frac{300}{x + 1} - 50 = \frac{300 - 50(x + 1)}{x + 1} \\ &amp;= \frac{-50x + 250}{x + 1} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Kritinis taškas</span></h4>
+          <p>Kai \(x \geq 0\), vardiklis nelygus nuliui, todėl išvestinė egzistuoja visoje apibrėžimo srityje. Prilyginkite skaitiklį nuliui:</p>
+          \[ -50x + 250 = 0 \;\Longrightarrow\; x = 5 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ženklai</span></h4>
+          <p>Įstatykite po vieną leistiną mokymų trukmę iš intervalų abipus kritinio taško:</p>
+          \[ \begin{gathered} Q'(1) = \frac{200}{2} = 100 &gt; 0 \\ Q'(9) = \frac{-200}{10} = -20 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"0"},{"x":"5","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Požymis ir reikšmė</span></h4>
+          <p>Taške \(x = 5\) išvestinės ženklas keičiasi iš teigiamo į neigiamą, todėl \(Q(5)\) yra vietinis maksimumas. Visoje modelio apibrėžimo srityje iki šios mokymų trukmės našumas didėja, o po jos mažėja, todėl tai ir didžiausias našumas.</p>
+          \[ Q(5) = 400 + 300\ln 6 - 50\cdot 5 \approx 687{,}5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Didžiausias našumas – maždaug 687,5 gaminio vienam darbuotojui per mėnesį, kai mokymams skiriamos penkios valandos per mėnesį.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 6.5, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Sukauptos pajamos be ekstremumo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Bendrosios pajamos, kurias programinės įrangos įmonė iki šiol gavo iš gaminio, tūkstančiais eurų, praėjus \(t\) metų nuo jo pateikimo rinkai, yra
+        <div class="fit-sm">\[ R(t) = t^3 - 12t^2 + 48t + 100,\quad 0 \leq t \leq 8 \]</div>
+        Raskite galimus sukauptų pajamų vietinius ekstremumus per pirmuosius aštuonerius metus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išvestinė</span></h4>
+          <p>Diferencijuokite po vieną narį ir išlaikykite standartinę daugianario formą:</p>
+          \[ R'(t) = 3t^2 - 24t + 48 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Kritinis taškas</span></h4>
+          <p>Išvestinė egzistuoja visur. Prilyginkite ją nuliui ir padalykite iš trijų. Kvadratinę lygtį išspręskite naudodami diskriminantą:</p>
+          \[ t^2 - 8t + 16 = 0 \]
+          \[ D = (-8)^2 - 4\cdot 1\cdot 16 = 64 - 64 = 0 \]
+          \[ t_{1,2} = \frac{8 \pm \sqrt{0}}{2} = 4 \]
+          <p>Kai diskriminantas lygus nuliui, gaunama viena dviguboji šaknis. Taško tipą vis tiek reikia nustatyti pagal išvestinės ženklus abiejose jo pusėse.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ženklai</span></h4>
+          <p>Pasirinkite po vieną vidinę reikšmę iš intervalų abipus kritinio taško ir įstatykite į daugianario formos išvestinę:</p>
+          \[ \begin{aligned} R'(2) &amp;= 3\cdot 2^2 - 24\cdot 2 + 48 = 12 &gt; 0 \\ R'(6) &amp;= 3\cdot 6^2 - 24\cdot 6 + 48 = 12 &gt; 0 \end{aligned} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(t)","f":"R(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true},{"x":"8"}],"s":["+","+"]}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Požymis</span></h4>
+          <p>Išvestinė teigiama abipus \(t = 4\), todėl šiame kritiniame taške nėra nei vietinio maksimumo, nei vietinio minimumo.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Sukauptos pajamos neturi vietinių ekstremumų pirmųjų aštuonerių metų laikotarpio viduje.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: nagrinėjamas dydis, išvestinė, kritiniai taškai, ženklai ir ženklų schema, požymis ir reikšmės, atsakymas. Atsakyme pateiktos funkcijos, išvestinės ir galutiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Prietaiso savaitės paklausą aprašo lygtis</p>
+          \[ p = 200e^{-0{,}002x} \]
+          <p>eurų, čia \(x\) – parduotų prietaisų skaičius. Kiek prietaisų per savaitę reikia parduoti, kad pajamos būtų didžiausios? Raskite atitinkamą vieneto kainą ir pajamų dydį.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Nagrinėjamo dydžio funkcija:</strong></p>
+          \[ R(x) = p\cdot x = 200xe^{-0{,}002x} \]
+          <p><strong>Išvestinė</strong> (sandaugos taisyklė, rodikliniam daugikliui taikant sudėtinės funkcijos išvestinės taisyklę):</p>
+          \[ \begin{aligned} R'(x) &amp;= 200e^{-0{,}002x} \\ &amp;\phantom{=}\; + 200x\cdot e^{-0{,}002x}\cdot(-0{,}002) \\ &amp;= 200e^{-0{,}002x}(1 - 0{,}002x) \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Rodiklinė funkcija niekada nelygi nuliui, todėl kritinis taškas gaunamas iš \(1 - 0{,}002x = 0\), t.&nbsp;y. \(x = 500\). Šiame taške išvestinės ženklas keičiasi iš teigiamo į neigiamą, todėl pajamos turi maksimumą. Parduodant 500 prietaisų per savaitę po \(p = 200e^{-1} \approx 73{,}58\)&nbsp;euro, gaunamos didžiausios pajamos – \(R(500) \approx 36787{,}94\)&nbsp;euro per savaitę.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Dirbtuvės per mėnesį parduoda \(x\) gaminių, kai vieneto kaina yra</p>
+          \[ p = 150 - 2\sqrt{x} \]
+          <p>eurų. Kintamosios sąnaudos yra 30&nbsp;eurų vienam gaminiui, o pastoviosios – 4000&nbsp;eurų per mėnesį. Kiek gaminių reikia pagaminti ir parduoti, kad pelnas būtų didžiausias? Raskite atitinkamą vieneto kainą ir pelno dydį.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Nagrinėjamo dydžio funkcija:</strong></p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = 150x - 2x\sqrt{x} \\ &amp;= 150x - 2x^{\frac{3}{2}} \end{aligned} \]
+          <div class="fit-sm">\[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= 150x - 2x^{\frac{3}{2}} - 30x - 4000 \\ &amp;= 120x - 2x^{\frac{3}{2}} - 4000 \end{aligned} \]</div>
+          <p><strong>Išvestinė:</strong></p>
+          \[ P'(x) = 120 - 3\sqrt{x} \]
+          <p><strong>Atsakymas.</strong> Kritinis taškas gaunamas taip:</p>
+          \[ \begin{aligned} &amp;120 - 3\sqrt{x} = 0 \\ \Longrightarrow\;&amp; \sqrt{x} = 40 \\ \Longrightarrow\;&amp; x = 1600 \end{aligned} \]
+          <p>Šiame taške išvestinės ženklas keičiasi iš teigiamo į neigiamą, todėl pelnas turi maksimumą. Pagaminant ir parduodant 1600 gaminių per mėnesį po \(p = 70\)&nbsp;eurų, gaunamas didžiausias pelnas – \(P(1600) = 60\,000\)&nbsp;eurų per mėnesį.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonės ketvirčio pelnas tūkstančiais eurų, praėjus \(t\) ketvirčių nuo reorganizavimo, yra</p>
+          \[ P(t) = 2t^3 - 39t^2 + 180t + 300 \]
+          <p>Raskite pelno vietinius ekstremumus ir paaiškinkite jų reikšmę.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė:</strong></p>
+          \[ P'(t) = 6t^2 - 78t + 180 \]
+          <p><strong>Kritiniai taškai:</strong></p>
+          \[ \begin{aligned} D &amp;= (-78)^2 - 4\cdot 6\cdot 180 \\ &amp;= 6084 - 4320 = 1764 \\ \sqrt{D} &amp;= 42 \end{aligned} \]
+          \[ \begin{gathered} t_1 = \frac{78 - 42}{2\cdot 6} = 3 \\ t_2 = \frac{78 + 42}{2\cdot 6} = 10 \end{gathered} \]
+          <p><strong>Atsakymas.</strong> Taške \(t = 3\) išvestinės ženklas keičiasi iš teigiamo į neigiamą, todėl \(P(3) = 543\) tūkstančiai eurų yra vietinis maksimumas. Taške \(t = 10\) ženklas keičiasi iš neigiamo į teigiamą, todėl \(P(10) = 200\) tūkstančių eurų yra vietinis minimumas. Po reorganizavimo pelnas pirmus tris ketvirčius didėja, po to septynis ketvirčius mažėja, o nuo dešimto ketvirčio vėl didėja.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Dirbtuvių vieno gaminio vidutinės sąnaudos eurais, kai per dieną pagaminama \(x\) gaminių, yra</p>
+          \[ ATC(x) = \frac{x^2 + 40x + 4000}{x + 20} \]
+          <p>Kokiam gamybos kiekiui esant vidutinės sąnaudos mažiausios ir koks jų dydis?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė</strong> (dalmens taisyklė):</p>
+          <div class="fit-sm">\[ \begin{gathered} ATC'(x) = \\ \frac{(2x + 40)(x + 20) - (x^2 + 40x + 4000)}{(x + 20)^2} \\ = \frac{x^2 + 40x - 3200}{(x + 20)^2} \end{gathered} \]</div>
+          <p><strong>Kritiniai taškai:</strong></p>
+          \[ \begin{aligned} D &amp;= 40^2 - 4\cdot 1\cdot(-3200) \\ &amp;= 1600 + 12800 = 14400 \\ \sqrt{D} &amp;= 120 \end{aligned} \]
+          \[ \begin{gathered} x_1 = \frac{-40 + 120}{2} = 40 \\ x_2 = \frac{-40 - 120}{2} = -80 \end{gathered} \]
+          <p><strong>Atsakymas.</strong> Sprendinys \(x_2 = -80\) reiškia neigiamą gamybos kiekį, todėl atmetamas. Taške \(x = 40\) išvestinės ženklas keičiasi iš neigiamo į teigiamą, todėl vidutinės sąnaudos turi minimumą. Pagaminant 40 gaminių per dieną, vieno gaminio vidutinės sąnaudos yra mažiausios: \(ATC(40) = 120\)&nbsp;eurų.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">5, 6.1–6.3, 6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Calculus for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">4 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
