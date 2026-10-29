@@ -74,6 +74,8 @@
       tanSlope: 'Liestinės nuolydis',
       derivZero: 'Kai Δx = 0, taškas B sutampa su A ir kirstinės nėra. Kuo mažesnis Δx, tuo kirstinė arčiau liestinės.',
       derivAria: 'Funkcijos grafikas, kirstinė per taškus A ir B ir liestinė taške A',
+      signAria: 'Išvestinės ženklų schema',
+      incr: 'didėja', decr: 'mažėja',
       decimal: ',',
       // Grafikų užrašai
       unitEur: 'Eur',
@@ -151,6 +153,8 @@
       tanSlope: 'Slope of the tangent line',
       derivZero: 'When Δx = 0, point B coincides with A and there is no secant line. The smaller Δx is, the closer the secant line is to the tangent line.',
       derivAria: 'Graph of the function, the secant line through points A and B and the tangent line at A',
+      signAria: 'Sign chart of the derivative',
+      incr: 'increasing', decr: 'decreasing',
       decimal: '.',
       // Chart labels
       unitEur: 'EUR',
@@ -275,7 +279,7 @@
       { id: 'm62', status: 'active', href: { lt: 'tema-6-pokyciu-analize.html', en: null },
         title: { lt: 'Pokyčių analizė', en: 'Rates of Change' },
         desc: { lt: 'Išvestinė kaip kitimo greitis: kaip greitai kinta dydis ir kiek jis pasikeis, kai argumentas pakinta nedaug.', en: 'The derivative as a rate of change: how fast a quantity changes and by how much it changes after a small change in the argument.' } },
-      { id: 'm63', status: 'soon',
+      { id: 'm63', status: 'active', href: { lt: 'tema-6-didejimas-ir-mazejimas.html', en: null },
         title: { lt: 'Didėjančios ir mažėjančios funkcijos', en: 'Increasing and Decreasing Functions' },
         desc: { lt: 'Išvestinės ženklas parodo, kuriuose intervaluose funkcija didėja, o kuriuose mažėja.', en: 'The sign of the derivative shows on which intervals a function increases and on which it decreases.' } },
       { id: 'm64', status: 'soon',
@@ -340,6 +344,8 @@
                title: { lt: 'Ribinė analizė', en: 'Marginal Analysis' } },
     m62:     { parent: 't6', topic: 't6', model: 'm62', href: { lt: 'tema-6-pokyciu-analize.html', en: null },
                title: { lt: 'Pokyčių analizė', en: 'Rates of Change' } },
+    m63:     { parent: 't6', topic: 't6', model: 'm63', href: { lt: 'tema-6-didejimas-ir-mazejimas.html', en: null },
+               title: { lt: 'Didėjančios ir mažėjančios funkcijos', en: 'Increasing and Decreasing Functions' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -1246,6 +1252,51 @@
   }
 
   /* ------------------------------------------------------------------
+     8c. IŠVESTINĖS ŽENKLŲ SCHEMA (sign-chart)
+     <div data-widget="sign-chart" data-spec='{...}'></div>
+     spec: fp, f – eilučių užrašai (TeX), v – kintamasis (TeX);
+           pts: [{x: "4", z: true – išvestinė lygi 0, o: true – neleistina reikšmė (tuščias taškas)}];
+           s: išvestinės ženklai kiekviename intervale ("+" arba "-");
+           outL / outR: true (numatyta) – kairėje / dešinėje nuo kraštinio taško
+           reikšmės nepriklauso apibrėžimo sričiai (pilka sritis); false – sritis tęsiasi iki ∓∞.
+     Taškai išdėstomi schemiškai (vienodais tarpais), kaip ženklų schemose.
+     ------------------------------------------------------------------ */
+  function initSignChart(box) {
+    var spec;
+    try { spec = JSON.parse(box.getAttribute('data-spec')); } catch (e) { return; }
+    var pts = spec.pts || [];
+    var outL = spec.outL !== false, outR = spec.outR !== false;
+    var nb = pts.length + (outL ? 0 : 1) + (outR ? 0 : 1);
+    var a = outL ? 14 : 0, b = outR ? 84 : 96;
+    var pos = [];
+    for (var i = 0; i < nb; i++) pos.push(nb > 1 ? a + (b - a) * i / (nb - 1) : (a + b) / 2);
+    var off = outL ? 0 : 1;
+    var html = '';
+    if (outL) html += '<span class="sc-out" style="left:0;width:' + pos[0] + '%"></span>';
+    if (outR) html += '<span class="sc-out" style="left:' + pos[nb - 1] + '%;right:-20px"></span>';
+    html += '<span class="sc-axis"></span><span class="sc-var">\\(' + spec.v + '\\)</span>';
+    pts.forEach(function (p, k) {
+      var x = pos[k + off];
+      html += '<span class="sc-guide" style="left:' + x + '%"></span>' +
+        '<span class="sc-dot' + (p.o ? ' open' : '') + '" style="left:' + x + '%"></span>' +
+        '<span class="sc-tick" style="left:' + x + '%">\\(' + p.x + '\\)</span>' +
+        (p.z ? '<span class="sc-zero" style="left:' + x + '%">\\(0\\)</span>' : '');
+    });
+    var signs = spec.s || [], words = [];
+    for (var k = 0; k < nb - 1; k++) {
+      var c = (pos[k] + pos[k + 1]) / 2, up = signs[k] === '+';
+      html += '<span class="sc-sign" style="left:' + c + '%">\\(' + (up ? '+' : '-') + '\\)</span>' +
+        '<span class="sc-arr ' + (up ? 'up' : 'down') + '" style="left:' + c + '%"><svg viewBox="0 0 24 24" aria-hidden="true">' +
+        (up ? '<path d="M5 19L19 5M10 5h9v9"/>' : '<path d="M5 5l14 14M19 10v9h-9"/>') + '</svg></span>';
+      words.push(up ? T.incr : T.decr);
+    }
+    box.innerHTML = '<div class="signchart" role="img" aria-label="' + esc(spec.aria || (T.signAria + ': ' + words.join(', '))) + '">' +
+      '<div class="sc-lab sc-top">\\(' + spec.fp + '\\)</div>' +
+      '<div class="sc-lab sc-bot">\\(' + spec.f + '\\)</div>' +
+      '<div class="sc-track">' + html + '</div></div>';
+  }
+
+  /* ------------------------------------------------------------------
      9. FORMULĖS (KaTeX)
      Eilutėje: \( ... \)    Atskiroje eilutėje: \[ ... \]
      ------------------------------------------------------------------ */
@@ -1501,6 +1552,7 @@
     $all('[data-widget="breakeven-chart"]').forEach(initBreakEvenChart);
     $all('[data-widget="means-chart"]').forEach(initMeansChart);
     $all('[data-widget="lp-chart"]').forEach(initLpChart);
+    $all('[data-widget="sign-chart"]').forEach(initSignChart);
     renderMath(document.body);
     $all('.example').forEach(initExample);
     $all('.quiz').forEach(function (qz) {

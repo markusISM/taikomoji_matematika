@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Didėjančios ir mažėjančios funkcijos · Taikomoji matematika</title>
+<meta name="description" content="Didėjančios ir mažėjančios funkcijos: išvestinės ženklas ir monotoniškumo intervalai, kritiniai taškai, ženklų schema. Sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=61">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=61"></script>
+</head>
+<body data-page="m63">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">6 tema · Taikymai · 4 skyrius</span>
+    <h1>Didėjančios ir mažėjančios funkcijos</h1>
+    <p class="lead">Šiame skyriuje pagal išvestinės ženklą nustatoma, kuriuose intervaluose funkcija didėja, o kuriuose mažėja. Taikomuosiuose uždaviniuose šie intervalai parodo, kada pelnas, pardavimo kiekis ar vidutinės sąnaudos didėja arba mažėja.</p>
+    <ul class="jump">
+      <li><a href="#monotoniskumas">Išvestinės ženklas</a></li>
+      <li><a href="#kritiniai">Kritiniai taškai</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#pagrindimas">Visame intervale</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MONOTONIŠKUMAS ============ -->
+  <section class="section" id="monotoniskumas" aria-labelledby="h-mono">
+    <h2 id="h-mono">Didėjančios ir mažėjančios funkcijos</h2>
+
+    <article class="card">
+      <p>Funkcija intervale yra <strong>didėjanti</strong>, jei didėjant argumentui jos reikšmės didėja, ir <strong>mažėjanti</strong>, jei jos reikšmės mažėja. Šie intervalai vadinami didėjimo ir mažėjimo, arba <strong>monotoniškumo</strong>, intervalais. Taikomuosiuose uždaviniuose jie parodo, kuriame intervale pelnas, pardavimo kiekis ar vidutinės sąnaudos didėja arba mažėja. Tikslas – rasti šiuos intervalus ir juos interpretuoti uždavinio kontekste.</p>
+      <p>Išvestinė nusako funkcijos kitimo greitį ir grafiko liestinės nuolydį. Pagal jos ženklą galima nustatyti, ar funkcija didėja, ar mažėja:</p>
+      <ul>
+        <li>jei \(f'(x) &gt; 0\) kiekviename intervalo taške, funkcija \(f(x)\) tame intervale <strong>didėja</strong>;</li>
+        <li>jei \(f'(x) &lt; 0\) kiekviename intervalo taške, funkcija \(f(x)\) tame intervale <strong>mažėja</strong>.</li>
+      </ul>
+      <p class="tip"><strong>Svarbus ženklas, o ne dydis.</strong> Šiai užduočiai svarbus išvestinės ženklas, o ne jos skaitinis dydis. Teigiama funkcijos reikšmė nereiškia, kad funkcija didėja: kitimo kryptį lemia išvestinė. Vien tai, kad atskirame taške išvestinė lygi nuliui, dar nerodo kitimo krypties pasikeitimo.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. KRITINIAI TAŠKAI ============ -->
+  <section class="section" id="kritiniai" aria-labelledby="h-crit">
+    <h2 id="h-crit">Kritiniai taškai</h2>
+
+    <article class="card">
+      <p>Kritiniai taškai nurodo, kur gali pasikeisti funkcijos kitimo kryptis. Argumento reikšmė \(x_0\), priklausanti funkcijos \(f(x)\) apibrėžimo sričiai, vadinama <strong>kritiniu tašku</strong>, jei</p>
+      <div class="formula">\[ \begin{gathered} f'(x_0) = 0 \quad \text{arba} \\ f'(x_0) \text{ neegzistuoja.} \end{gathered} \]</div>
+      <p>Pirmiausia raskite visus kritinius taškus, apibrėžimo srities kraštinius taškus ir jos trūkius. Kiekviename likusiame atvirajame intervale išvestinė egzistuoja ir nelygi nuliui, todėl jos ženklas negali pasikeisti. Pakanka į \(f'(x)\) įstatyti vieną patogią argumento reikšmę iš kiekvieno intervalo ir nustatyti ženklą visame tame intervale. Tikrinkite abi kritinio taško puses: ženklai gali skirtis arba sutapti.</p>
+      <p>Apibrėžimo sričiai nepriklausanti reikšmė nėra kritinis taškas, tačiau ją vis tiek reikia pažymėti, nes ji atskiria apibrėžimo srities dalis. Kritinį tašką nusakome argumento reikšme; atitinkamam grafiko taškui nurodyti reikia ir funkcijos reikšmės. Ją skaičiuokite tik tada, kai to prašoma uždavinyje.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Raskite apibrėžimo sritį. Patikrinkite formulės apribojimus, susijusius su vardikliu, logaritmu ar šaknimi, ir konteksto apribojimus, pavyzdžiui, gamybos pajėgumą ar nurodytą laikotarpį. Šių apribojimų laikykitės visame sprendime.</li>
+        <li>Diferencijuokite funkciją. Jei išvestinė yra daugianaris, sutraukite panašiuosius narius ir palikite standartinę daugianario formą. Kitus reiškinius prireikus supaprastinkite, išlaikydami pradinės apibrėžimo srities apribojimus.</li>
+        <li>Raskite kritinius taškus: išspręskite \(f'(x) = 0\) ir patikrinkite, kur išvestinė neegzistuoja, nors pati funkcija apibrėžta. Gautas kvadratines lygtis spręskite naudodami diskriminantą. Taip pat nustatykite neleistinas reikšmes ir apibrėžimo srities kraštinius taškus.</li>
+        <li>Skaičių tiesėje pažymėkite kritinius taškus, apibrėžimo srities kraštinius taškus ir neleistinas reikšmes. Kiekvieno apibrėžimo sričiai priklausančio atvirojo intervalo viduje pasirinkite reikšmę ir įstatykite ją į išvestinę. Daugianario išvestinę naudokite standartine forma. Ženklui tikrinti nesirinkite kritinio taško.</li>
+        <li>Nurodykite funkcijos didėjimo ir mažėjimo intervalus bei jų prasmę uždavinio kontekste. Toliau vartojami atvirieji intervalai žymi, kur išvestinė yra griežtai teigiama arba neigiama. Jei funkcija tolydi į apibrėžimo sritį įtrauktame kraštiniame taške, atitinkamas monotoniškumo intervalas gali apimti ir šį tašką.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:22px">Ženklų schema</h3>
+      <p>Virš kiekvieno intervalo užrašykite išvestinės ženklą, o po juo pažymėkite rodyklę aukštyn arba žemyn, rodančią pradinės funkcijos kitimo kryptį. Tiesėje pažymėkite kritinius taškus ir apibrėžimo srities ribas. Nulis virš taško reiškia, kad jame išvestinė lygi nuliui; ten, kur ji neegzistuoja, išvestinės reikšmė nerašoma. Tuščias taškas žymi neleistiną reikšmę, o pilka sritis – apibrėžimo sričiai nepriklausančias reikšmes. Kritinis taškas gali žymėti kitimo krypties pasikeitimą, tačiau jis nebūtinai įvyksta.</p>
+      <div data-widget="sign-chart" data-spec='{"fp":"f&#39;(x)","f":"f(x)","v":"x","pts":[{"x":"a","o":true},{"x":"x_1","z":true},{"x":"x_2"}],"s":["+","-","+"],"outR":false}'></div>
+      <p class="formula-note" style="text-align:center">Schemos žymėjimai: reikšmė \(a\) nepriklauso apibrėžimo sričiai, taške \(x_1\) išvestinė lygi nuliui, o taške \(x_2\) ji neegzistuoja.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Funkcijos reikšmė vietoj išvestinės.</strong> Teigiama funkcijos reikšmė nereiškia, kad funkcija didėja: kitimo kryptį lemia išvestinės ženklas.</li>
+            <li><strong>Nulinė išvestinė – dar ne krypties pokytis.</strong> Tikrinkite abi kritinio taško puses: ženklai gali skirtis arba sutapti.</li>
+            <li><strong>Kritinis taškas ženklui tikrinti.</strong> Ženklą tikrinkite intervalo viduje, o ne kritiniame taške, kuriame išvestinė lygi nuliui arba neegzistuoja.</li>
+            <li><strong>Pamiršti apribojimai.</strong> Vardiklis, logaritmas, šaknis ir uždavinio kontekstas (pajėgumas, laikotarpis) riboja apibrėžimo sritį; šaknų, nepriklausančių apibrėžimo sričiai, atsisakykite.</li>
+            <li><strong>Taškai, kuriuose išvestinė neegzistuoja.</strong> Jie taip pat yra kritiniai taškai, jei pati funkcija juose apibrėžta.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai: didėjimo ir mažėjimo intervalai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 6.4, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Dirbtuvių mėnesio pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvės per mėnesį gali pagaminti ne daugiau kaip 800 gaminio vienetų. Mėnesio pelnas eurais yra
+        \[ P(x) = -0{,}02x^2 + 24x - 3000 \]
+        čia \(x\) – pagamintas ir parduotas vienetų skaičius. Esant kokiam gamybos kiekiui pelnas didėja, o kokiam – mažėja?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Apibrėžimo sritis</span></h4>
+          <p>Formulė apibrėžta visoms realiosioms argumento reikšmėms, tačiau kiekį riboja uždavinio kontekstas: jis negali būti neigiamas ar viršyti gamybos pajėgumo. Taigi \(0 \leq x \leq 800\). Taikydami išvestinę, gamybos kiekį laikome tolydžiuoju kintamuoju.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Pelno funkciją diferencijuokite po vieną narį pagal laipsninės funkcijos išvestinės formulę. Pastoviųjų sąnaudų išvestinė lygi nuliui. Gautoji išvestinė yra <a href="tema-6-ribine-analize.html">ribinis pelnas</a>:</p>
+          \[ \begin{aligned} P'(x) &amp;= -0{,}02\cdot 2x + 24 \\ &amp;= -0{,}04x + 24 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Išvestinė yra daugianaris, todėl egzistuoja visoje apibrėžimo srityje. Prilyginkite ją nuliui ir išspręskite lygtį:</p>
+          \[ \begin{aligned} &amp;-0{,}04x + 24 = 0 \\ \Longrightarrow\;&amp; 0{,}04x = 24 \\ \Longrightarrow\;&amp; x = \frac{24}{0{,}04} = 600 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklai</span></h4>
+          <p>Kritinis taškas apibrėžimo sritį padalija į du intervalus. Pasirinkite po vieną reikšmę iš kiekvieno intervalo:</p>
+          \[ \begin{gathered} P'(100) = -4 + 24 = 20 &gt; 0 \\ P'(700) = -28 + 24 = -4 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(x)","f":"P(x)","v":"x","pts":[{"x":"0"},{"x":"600","z":true},{"x":"800"}],"s":["+","-"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pelnas didėja intervale \((0;\, 600)\), mažėja intervale \((600;\, 800)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 6.4, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Naujo gaminio pardavimai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gaminio mėnesio pardavimo kiekis, praėjus \(t\) mėnesių nuo jo pateikimo rinkai, yra
+        \[ \begin{gathered} S(t) = 2t^3 - 48t^2 + 288t + 2000, \\ 0 \leq t \leq 16 \end{gathered} \]
+        vienetų. Kuriomis šio laikotarpio dalimis mėnesio pardavimo kiekis didėja, o kuriomis – mažėja?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Apibrėžimo sritis</span></h4>
+          <p>Naudokite uždavinyje nurodytą laikotarpį: \(0 \leq t \leq 16\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Diferencijuokite po vieną narį ir sutraukite panašiuosius narius. Išvestinę palikite standartine daugianario forma:</p>
+          \[ S'(t) = 6t^2 - 96t + 288 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritiniai taškai</span></h4>
+          <p>Išvestinė egzistuoja visur. Prilyginkite ją nuliui ir padalykite iš šešių. Gautai kvadratinei lygčiai apskaičiuokite diskriminantą ir taikykite šaknų formulę:</p>
+          \[ t^2 - 16t + 48 = 0 \]
+          \[ \begin{aligned} D &amp;= (-16)^2 - 4\cdot 1\cdot 48 \\ &amp;= 256 - 192 = 64 &gt; 0 \end{aligned} \]
+          \[ \begin{gathered} t_{1,2} = \frac{16 \pm \sqrt{64}}{2} = \frac{16 \pm 8}{2} \\ \Longrightarrow\; t_1 = 4;\quad t_2 = 12 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklai</span></h4>
+          <p>Abu kritiniai taškai priklauso apibrėžimo sričiai, todėl gaunami trys intervalai. Iš kiekvieno intervalo vidaus pasirinkite reikšmę ir įstatykite ją į daugianario formos išvestinę:</p>
+          <div class="fit-sm">\[ \begin{aligned} S'(1) &amp;= 6\cdot 1^2 - 96\cdot 1 + 288 = 198 &gt; 0 \\ S'(8) &amp;= 6\cdot 8^2 - 96\cdot 8 + 288 = -96 &lt; 0 \\ S'(14) &amp;= 6\cdot 14^2 - 96\cdot 14 + 288 = 120 &gt; 0 \end{aligned} \]</div>
+          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true},{"x":"12","z":true},{"x":"16"}],"s":["+","-","+"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Mėnesio pardavimo kiekis didėja intervaluose \((0;\, 4)\) ir \((12;\, 16)\), mažėja intervale \((4;\, 12)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.4, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Sodo šviestuvų vidutinės sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Vieno sodo šviestuvo vidutinės bendrosios sąnaudos eurais yra
+        \[ ATC(x) = 0{,}5x + 20 + \frac{200}{x} \]
+        čia \(x\) – per dieną pagamintų šviestuvų skaičius. Esant kokiam gamybos kiekiui vidutinės sąnaudos mažėja, o kokiam – didėja?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Apibrėžimo sritis</span></h4>
+          <p>Vidutinėms sąnaudoms skaičiuoti gamybos kiekis turi būti teigiamas. Formulė taip pat neapibrėžta, kai \(x = 0\), todėl nagrinėjama apibrėžimo sritis yra \((0;\, +\infty)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Narį su argumento atvirkštiniu dydžiu perrašykite laipsniu su neigiamuoju rodikliu, tada kiekvienam nariui taikykite laipsninės funkcijos išvestinės formulę. Konstantos išvestinė lygi nuliui:</p>
+          \[ ATC(x) = 0{,}5x + 20 + 200x^{-1} \]
+          \[ \begin{aligned} ATC'(x) &amp;= 0{,}5 - 200x^{-2} \\ &amp;= 0{,}5 - \frac{200}{x^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Išvestinė egzistuoja esant bet kokiam teigiamam gamybos kiekiui. Prilyginkite ją nuliui, panaikinkite nenulinį vardiklį ir gautą kvadratinę lygtį išspręskite naudodami diskriminantą:</p>
+          \[ 0{,}5 - \frac{200}{x^2} = 0 \;\Longrightarrow\; x^2 - 400 = 0 \]
+          \[ D = 0^2 - 4\cdot 1\cdot(-400) = 1600 &gt; 0 \]
+          \[ \begin{gathered} x_{1,2} = \frac{-0 \pm \sqrt{1600}}{2\cdot 1} = \pm 20 \\ \Longrightarrow\; x_1 = -20;\quad x_2 = 20 \end{gathered} \]
+          <p>Šaknis \(x = -20\) nepriklauso apibrėžimo sričiai, todėl jos atsisakome. Tik teigiama šaknis yra kritinis taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklai</span></h4>
+          <p>Pasirinkite po vieną teigiamą kiekį iš intervalų kairėje ir dešinėje nuo kritinio taško:</p>
+          \[ \begin{gathered} ATC'(10) = 0{,}5 - 2 = -1{,}5 &lt; 0 \\ ATC'(40) = 0{,}5 - 0{,}125 = 0{,}375 &gt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"ATC&#39;(x)","f":"ATC(x)","v":"x","pts":[{"x":"0","o":true},{"x":"20","z":true}],"s":["-","+"],"outR":false}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Vidutinės bendrosios sąnaudos mažėja intervale \((0;\, 20)\), didėja intervale \((20;\, +\infty)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.4, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Darbuotojo valandinis našumas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Praėjus \(x\) valandų nuo dvylikos valandų pamainos pradžios, darbuotojas surenka
+        \[ Q(x) = 30 + 40\ln x - 4x \]
+        gaminių per valandą. Kurią pamainos dalį šis valandinis našumas didėja, o kurią – mažėja?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Apibrėžimo sritis</span></h4>
+          <p>Logaritmui būtina sąlyga \(x &gt; 0\), o pamaina baigiasi po dvylikos valandų, todėl \(0 &lt; x \leq 12\). Prie pat pamainos pradžios formulė duoda neigiamą našumą, tad praktinė jos interpretacija prasminga tik tada, kai apskaičiuotas našumas neneigiamas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Diferencijuokite logaritminį ir tiesinį narius; konstantos išvestinė lygi nuliui. Sujunkite rezultatą į vieną trupmeną ir iš skaitiklio iškelkite bendrąjį daugiklį, kad būtų aiškiau nustatyti ženklą:</p>
+          \[ Q'(x) = \frac{40}{x} - 4 = \frac{40 - 4x}{x} = \frac{4(10 - x)}{x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Kai \(x &gt; 0\), vardiklis nelygus nuliui, todėl išvestinė egzistuoja visoje apibrėžimo srityje. Trupmena lygi nuliui tik tada, kai jos skaitiklis lygus nuliui:</p>
+          \[ 4(10 - x) = 0 \;\Longrightarrow\; x = 10 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklai</span></h4>
+          <p>Vardiklis teigiamas visoje apibrėžimo srityje, todėl ženklą lemia skaitiklis. Pasirinkite po vieną reikšmę iš abiejų intervalų, atskirtų kritiniu tašku:</p>
+          \[ \begin{gathered} Q'(1) = \frac{36}{1} = 36 &gt; 0 \\ Q'(11) = \frac{-4}{11} &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"0","o":true},{"x":"10","z":true},{"x":"12"}],"s":["+","-"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Valandinis našumas didėja intervale \((0;\, 10)\), mažėja intervale \((10;\, 12)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.4, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Paraiškos į laisvą darbo vietą</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė paskelbia apie laisvą darbo vietą. Praėjus \(t\) dienų nuo skelbimo paskelbimo, per dieną gaunama
+        \[ A(t) = 120te^{-0{,}25t} \]
+        kandidatų paraiškų. Kuriomis dienomis per dieną gaunamų paraiškų skaičius didėja, o kuriomis – mažėja?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Apibrėžimo sritis</span></h4>
+          <p>Laikas skaičiuojamas nuo skelbimo paskelbimo, todėl \(t \geq 0\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Funkcija yra daugiklių \(120t\) ir \(e^{-0{,}25t}\) sandauga. Taikykite <a href="tema-6.html#sandaugos">sandaugos taisyklę</a>: pirmojo daugiklio išvestinę padauginkite iš nepakeisto antrojo, tada pridėkite pirmojo daugiklio ir antrojo išvestinės sandaugą. Rodikliniam daugikliui taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>: pradinę rodiklinę funkciją padauginkite iš vidinės funkcijos išvestinės \(-0{,}25\). Pabaigoje iškelkite bendrąjį rodiklinį daugiklį:</p>
+          \[ \begin{aligned} A'(t) &amp;= 120e^{-0{,}25t} \\ &amp;\phantom{=}\; + 120t\cdot e^{-0{,}25t}\cdot(-0{,}25) \\ &amp;= 120e^{-0{,}25t}(1 - 0{,}25t) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Išvestinė egzistuoja visoje apibrėžimo srityje. Jos rodiklinis daugiklis visada teigiamas, todėl sandauga gali būti lygi nuliui tik tada, kai tiesinis daugiklis lygus nuliui:</p>
+          \[ \begin{aligned} &amp;1 - 0{,}25t = 0 \\ \Longrightarrow\;&amp; 0{,}25t = 1 \\ \Longrightarrow\;&amp; t = 4 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklai</span></h4>
+          <p>Daugiklis \(120e^{-0{,}25t}\) teigiamas su visomis \(t\) reikšmėmis, todėl išvestinės ženklą lemia tik \(1 - 0{,}25t\). Pasirinkite po vieną reikšmę iš intervalų abipus kritinio taško:</p>
+          \[ \begin{gathered} 1 - 0{,}25\cdot 1 = 0{,}75 &gt; 0 \\ 1 - 0{,}25\cdot 8 = -1 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;(t)","f":"A(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true}],"s":["+","-"],"outR":false}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Per dieną gaunamų paraiškų skaičius didėja intervale \((0;\, 4)\), mažėja intervale \((4;\, +\infty)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 6.4, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Pajamos skatinimo kampanijos metu</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Šešiolika savaičių trunkančios pardavimo skatinimo kampanijos metu parduotuvės savaitės pajamos aprašomos funkcija
+        \[ T(t) = 50 - 9\sqrt[3]{(t - 8)^2} \]
+        tūkstančių eurų, čia \(t\) – nuo kampanijos pradžios praėjusių savaičių skaičius. Kuriomis kampanijos dalimis savaitės pajamos didėja, o kuriomis – mažėja?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Apibrėžimo sritis</span></h4>
+          <p>Kubinė šaknis apibrėžta su kiekviena realiąja argumento reikšme, todėl formulė papildomų apribojimų nesukuria. Kampanijos trukmė duoda \(0 \leq t \leq 16\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Kubinę šaknį perrašykite laipsniu su trupmeniniu rodikliu. Taikykite laipsninės funkcijos išvestinės formulę ir <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>: vidinė funkcija yra \(u(t) = t - 8\), jos išvestinė lygi vienetui. Dėl gauto neigiamojo laipsnio rodiklio kubinė šaknis atsiduria vardiklyje:</p>
+          \[ T(t) = 50 - 9(t - 8)^{\frac{2}{3}} \]
+          \[ \begin{aligned} T'(t) &amp;= -9\cdot\frac{2}{3}(t - 8)^{-\frac{1}{3}} \\ &amp;= -6(t - 8)^{-\frac{1}{3}} = -\frac{6}{\sqrt[3]{t - 8}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Lygtis \(T'(t) = 0\) sprendinių neturi: skaitiklis yra nelygi nuliui konstanta \(-6\). Tačiau kai \(t = 8\), vardiklis \(\sqrt[3]{t - 8}\) lygus nuliui, todėl \(T'(8)\) neegzistuoja. Pati funkcija šiame taške apibrėžta: \(T(8) = 50\). Tai kritinis taškas, nustatytas pagal išvestinės neegzistavimą, o ne pagal jos lygybę nuliui.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklai</span></h4>
+          <p>Kubinės šaknies ženklas sutampa su pošaknio ženklu. Iki aštuntos savaitės vardiklis neigiamas, todėl išvestinė teigiama; vėliau vardiklis teigiamas, todėl išvestinė neigiama. Tai patvirtina pasirinktos reikšmės:</p>
+          <div class="fit-sm">\[ \begin{aligned} T'(4) &amp;= -\frac{6}{\sqrt[3]{-4}} \approx -\frac{6}{-1{,}587} \approx 3{,}78 &gt; 0 \\ T'(12) &amp;= -\frac{6}{\sqrt[3]{4}} \approx -\frac{6}{1{,}587} \approx -3{,}78 &lt; 0 \end{aligned} \]</div>
+          <div data-widget="sign-chart" data-spec='{"fp":"T&#39;(t)","f":"T(t)","v":"t","pts":[{"x":"0"},{"x":"8"},{"x":"16"}],"s":["+","-"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Savaitės pajamos didėja intervale \((0;\, 8)\), mažėja intervale \((8;\, 16)\).
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PAGRINDIMAS VISAME INTERVALE ============ -->
+  <section class="section" id="pagrindimas" aria-labelledby="h-whole">
+    <h2 id="h-whole">Pavyzdžiai: didėjimo arba mažėjimo visame intervale pagrindimas</h2>
+    <p class="section-intro">Kai kuriuose uždaviniuose prašoma parodyti, kad funkcija didėja arba mažėja visame nurodytame intervale. Taikykite tą patį metodą, tačiau nustatykite vienodą \(f'(x)\) ženklą visame intervale. Griežtai teigiama išvestinė užtikrina didėjimą, griežtai neigiama – mažėjimą. Ženklų schemoje tuomet yra vienas ženklas ir viena rodyklė. Griežtai monotoniška funkcija atskiruose taškuose gali turėti nulinę išvestinę, todėl šis požymis yra pakankamas, bet nebūtinas.</p>
+    <p class="section-intro">Jei išvestinė yra daugianaris, jos nulius raskite naudodami diskriminantą ir apibrėžimo sritį padalykite kritiniais taškais. Kiekviename intervale be kritinių taškų išvestinės ženklas pastovus. Iš kiekvieno tokio intervalo vidaus pasirinkite vieną reikšmę ir įstatykite ją į daugianarį. Jei apibrėžimo srityje kritinių taškų nėra, pakanka vienos jos vidinės reikšmės.</p>
+
+    <!-- 7 pavyzdys: TM 6.4, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Įrenginio perpardavimo vertė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įrenginys įsigytas už 450 tūkstančių eurų. Jo perpardavimo vertė tūkstančiais eurų, praėjus \(t\) metų nuo įsigijimo, yra
+        \[ V(t) = 400e^{-0{,}2t} + 50 \]
+        Parodykite, kad perpardavimo vertė mažėja visą modelyje nagrinėjamą laikotarpį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Apibrėžimo sritis</span></h4>
+          <p>Laikas skaičiuojamas nuo įsigijimo, todėl \(t \geq 0\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Pastovų koeficientą palikite nepakeistą, rodiklinę funkciją diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a> ir padauginkite iš vidinės funkcijos išvestinės \(-0{,}2\). Konstantos išvestinė lygi nuliui:</p>
+          \[ \begin{aligned} V'(t) &amp;= 400e^{-0{,}2t}\cdot(-0{,}2) + 0 \\ &amp;= -80e^{-0{,}2t} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritiniai taškai</span></h4>
+          <p>Jų nėra. Išvestinė egzistuoja su visomis \(t\) reikšmėmis, o \(e^{-0{,}2t} &gt; 0\). Padauginus iš neigiamos konstantos, gaunama neigiama išvestinė visoje apibrėžimo srityje:</p>
+          \[ -80e^{-0{,}2t} &lt; 0 \quad \text{visiems } t \geq 0 \]
+          <div data-widget="sign-chart" data-spec='{"fp":"V&#39;(t)","f":"V(t)","v":"t","pts":[{"x":"0"}],"s":["-"],"outR":false}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(V(t)\) mažėja intervale \([0;\, +\infty)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 6.4, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Miesto išlaidos viešajam transportui</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Miesto išlaidos viešajam transportui milijonais eurų, praėjus \(t\) metų nuo 2020 metų, yra
+        \[ \begin{gathered} S(t) = 0{,}02t^3 - 0{,}9t^2 + 7{,}5t + 20, \\ 0 \leq t \leq 4 \end{gathered} \]
+        Parodykite, kad išlaidos didėja visą nurodytą laikotarpį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Apibrėžimo sritis</span></h4>
+          <p>Nurodytas intervalas yra \(0 \leq t \leq 4\), atitinkantis 2020–2024 metus.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Diferencijuokite kiekvieną narį ir išvestinę palikite standartine daugianario forma:</p>
+          \[ S'(t) = 0{,}06t^2 - 1{,}8t + 7{,}5 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritiniai taškai</span></h4>
+          <p>Išvestinė egzistuoja visur. Prilyginkite ją nuliui ir padalykite iš nenulinio bendrojo koeficiento. Kvadratinę lygtį išspręskite naudodami diskriminantą:</p>
+          \[ t^2 - 30t + 125 = 0 \]
+          \[ \begin{aligned} D &amp;= (-30)^2 - 4\cdot 1\cdot 125 \\ &amp;= 900 - 500 = 400 &gt; 0 \end{aligned} \]
+          \[ \begin{gathered} t_{1,2} = \frac{30 \pm \sqrt{400}}{2} = \frac{30 \pm 20}{2} \\ \Longrightarrow\; t_1 = 5;\quad t_2 = 25 \end{gathered} \]
+          <p>Nė vienas sprendinys nepriklauso \([0;\, 4]\). Šiame intervale išvestinė neturi nulių ar taškų, kuriuose neegzistuotų, todėl jos ženklas pastovus.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklas</span></h4>
+          <p>Pasirinkite vidinę intervalo reikšmę ir įstatykite ją į daugianario formos išvestinę:</p>
+          \[ \begin{aligned} S'(2) &amp;= 0{,}06\cdot 2^2 - 1{,}8\cdot 2 + 7{,}5 \\ &amp;= 4{,}14 &gt; 0 \end{aligned} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"0"},{"x":"4"}],"s":["+"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(S(t)\) didėja visame intervale \([0;\, 4]\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 9 pavyzdys: TM 6.4, 9 pavyzdys -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">9 pavyzdys</span>
+        <h3>Programėlės naudotojai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Programėlės registruotų naudotojų skaičius tūkstančiais, praėjus \(t\) mėnesių nuo jos pateikimo, yra
+        <div class="fit-sm">\[ N(t) = t^3 - 9t^2 + 30t + 20,\quad 0 \leq t \leq 12 \]</div>
+        Parodykite, kad registruotų naudotojų skaičius didėja visus pirmuosius metus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Apibrėžimo sritis</span></h4>
+          <p>Pirmuosius metus atitinka \(0 \leq t \leq 12\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė</span></h4>
+          <p>Daugianarį diferencijuokite po vieną narį:</p>
+          \[ N'(t) = 3t^2 - 18t + 30 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritiniai taškai</span></h4>
+          <p>Išvestinė egzistuoja visur. Lygtį \(N'(t) = 0\) padaliję iš nenulinio bendrojo koeficiento, gauname \(t^2 - 6t + 10 = 0\). Apskaičiuokite diskriminantą:</p>
+          \[ \begin{aligned} D &amp;= (-6)^2 - 4\cdot 1\cdot 10 \\ &amp;= 36 - 40 = -4 &lt; 0 \end{aligned} \]
+          <p>Diskriminantas neigiamas, todėl išvestinė realiųjų nulių neturi ir kritinių taškų nėra. Ji egzistuoja visoje apibrėžimo srityje, todėl jos ženklas čia negali pasikeisti.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ženklas</span></h4>
+          <p>Pasirinkite vidinę intervalo reikšmę ir įstatykite ją į daugianario formos išvestinę. Kadangi intervale nėra kritinių taškų, gautas ženklas galioja visame intervale:</p>
+          \[ N'(6) = 3\cdot 6^2 - 18\cdot 6 + 30 = 30 &gt; 0 \]
+          <div data-widget="sign-chart" data-spec='{"fp":"N&#39;(t)","f":"N(t)","v":"t","pts":[{"x":"0"},{"x":"12"}],"s":["+"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(N(t)\) didėja visame intervale \([0;\, 12]\).
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 6. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: apibrėžimo sritis, išvestinė, kritiniai taškai, ženklai ir ženklų schema, atsakymas. Atsakyme pateiktos išvestinės, kritiniai taškai ir galutiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Svetainės dienos lankytojų skaičius šimtais, praėjus \(t\) savaičių nuo svetainės dizaino atnaujinimo, yra</p>
+          \[ V(t) = t^3 - 15t^2 + 63t + 50,\quad 0 \leq t \leq 12 \]
+          <p>Kuriais laikotarpiais lankytojų skaičius didėja, o kuriais mažėja?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė:</strong></p>
+          \[ V'(t) = 3t^2 - 30t + 63 \]
+          <p><strong>Kritiniai taškai:</strong></p>
+          \[ \begin{aligned} D &amp;= (-30)^2 - 4\cdot 3\cdot 63 \\ &amp;= 900 - 756 = 144 \\ \sqrt{D} &amp;= 12 \end{aligned} \]
+          \[ \begin{gathered} t_1 = \frac{30 - 12}{2\cdot 3} = 3 \\ t_2 = \frac{30 + 12}{2\cdot 3} = 7 \end{gathered} \]
+          <p><strong>Atsakymas.</strong> Lankytojų skaičius didėja intervale \((0;\, 3)\), mažėja intervale \((3;\, 7)\) ir vėl didėja intervale \((7;\, 12)\).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gaminio mėnesio pardavimo kiekis tūkstančiais vienetų, praėjus \(t\) mėnesių nuo jo pateikimo rinkai, yra</p>
+          \[ S(t) = 40t^2e^{-0{,}5t},\quad t \geq 0 \]
+          <p>Kuriais laikotarpiais pardavimo kiekis didėja, o kuriais mažėja?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė</strong> (sandaugos taisyklė, rodikliniam daugikliui taikant sudėtinės funkcijos išvestinės taisyklę):</p>
+          \[ \begin{aligned} S'(t) &amp;= 80te^{-0{,}5t} \\ &amp;\phantom{=}\; + 40t^2\cdot e^{-0{,}5t}\cdot(-0{,}5) \\ &amp;= 20te^{-0{,}5t}(4 - t) \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Kritiniai taškai yra \(t = 0\) ir \(t = 4\). Kai \(t &gt; 0\), daugiklis \(20te^{-0{,}5t}\) teigiamas, todėl išvestinės ženklą lemia \(4 - t\) ženklas. Pardavimo kiekis didėja intervale \((0;\, 4)\) ir mažėja intervale \((4;\, +\infty)\).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Naujienų straipsnio peržiūrų skaičius per valandą tūkstančiais, praėjus \(t\) valandų nuo jo paskelbimo, yra</p>
+          \[ V(t) = \frac{90t}{t^2 + 36},\quad t \geq 0 \]
+          <p>Kuriais laikotarpiais peržiūrų skaičius didėja, o kuriais mažėja?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė</strong> (dalmens taisyklė):</p>
+          \[ \begin{aligned} V'(t) &amp;= \frac{90(t^2 + 36) - 90t\cdot 2t}{(t^2 + 36)^2} \\ &amp;= \frac{90(36 - t^2)}{(t^2 + 36)^2} \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Kritinis taškas yra \(t = 6\) (sprendinys \(t = -6\) atmetamas). Peržiūrų skaičius didėja intervale \((0;\, 6)\) ir mažėja intervale \((6;\, +\infty)\).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Sukauptas gamybos linijos produkcijos kiekis tūkstančiais vienetų, praėjus \(t\) mėnesių nuo jos įrengimo, yra</p>
+          \[ Q(t) = t^3 - 6t^2 + 15t + 40,\quad 0 \leq t \leq 12 \]
+          <p>Parodykite, kad sukauptas produkcijos kiekis tik didėja.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė:</strong></p>
+          \[ Q'(t) = 3t^2 - 12t + 15 \]
+          <p><strong>Kritiniai taškai:</strong></p>
+          \[ \begin{aligned} D &amp;= (-12)^2 - 4\cdot 3\cdot 15 \\ &amp;= 144 - 180 = -36 &lt; 0 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Diskriminantas neigiamas, todėl lygtis \(Q'(t) = 0\) sprendinių neturi, o funkcija neturi kritinių taškų. Vadinasi, išvestinės ženklas nekinta. Reikšmė \(Q'(0) = 15 &gt; 0\) rodo, kad \(Q'(t) &gt; 0\) visoms \(t\) reikšmėms, todėl sukauptas produkcijos kiekis didėja visą laikotarpį.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">5, 6.1–6.3, 6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Calculus for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">4 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
