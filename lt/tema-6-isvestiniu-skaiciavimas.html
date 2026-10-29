@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Išvestinių skaičiavimo pavyzdžiai · Taikomoji matematika</title>
+<meta name="description" content="Išvestinių skaičiavimo pavyzdžiai žingsnis po žingsnio: pastovaus daugiklio, sumos, sandaugos, dalmens ir sudėtinės funkcijos išvestinės taisyklės, jų derinimas ir reiškinio supaprastinimas prieš diferencijuojant. Uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=58">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=58"></script>
+</head>
+<body data-page="m60">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">6 tema · 1 skyrius</span>
+    <h1>Išvestinių skaičiavimo pavyzdžiai</h1>
+    <p class="lead">Šiame skyriuje rasite 14 išvestinių skaičiavimo pavyzdžių, suskirstytų pagal taikomas taisykles, ir uždavinių savarankiškam darbui. Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio. <a href="tema-6.html#lentele">Išvestinių lentelė</a> ir <a href="tema-6.html#taisykles">diferencijavimo taisyklės</a> pateiktos 6 temos puslapyje.</p>
+    <ul class="jump">
+      <li><a href="#g-suma">Suma ir skirtumas</a></li>
+      <li><a href="#g-sandauga">Sandauga ir dalmuo</a></li>
+      <li><a href="#g-sudetine">Sudėtinė funkcija</a></li>
+      <li><a href="#g-derinys">Taisyklių derinimas</a></li>
+      <li><a href="#g-supaprastinimas">Supaprastinimas</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <section class="section" id="g-suma" aria-labelledby="h-g-suma">
+    <h2 id="h-g-suma">Pastovaus daugiklio, sumos ir skirtumo taisyklės</h2>
+
+    <!-- 1 pavyzdys: TM 6.1, 4.1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Daugianaris</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = 5x^4 - 3x^2 + 7x - 2\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Funkcija sudaryta iš keturių narių, todėl kiekvieną narį diferencijuokite atskirai (<a href="tema-6.html#sumos">sumos ir skirtumo taisyklė</a>). Pirmųjų trijų narių koeficientus palikite nepakeistus (<a href="tema-6.html#daugiklio">pastovaus daugiklio taisyklė</a>) ir taikykite laipsninės funkcijos išvestinės formulę. Paskutinis narys yra konstanta, todėl jo išvestinė lygi nuliui.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= (5x^4)' - (3x^2)' + (7x)' - (2)' \\ &amp;= 5\cdot 4x^3 - 3\cdot 2x + 7\cdot 1 - 0 \\ &amp;= 20x^3 - 6x + 7 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = 20x^3 - 6x + 7 \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Šaknis, logaritmas ir rodiklinė funkcija</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = 2\sqrt{x} + 5\ln x - 3e^x\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Kiekvieną narį diferencijuokite atskirai (<a href="tema-6.html#sumos">sumos ir skirtumo taisyklė</a>), išlaikydami jo pastovų koeficientą (<a href="tema-6.html#daugiklio">pastovaus daugiklio taisyklė</a>). Kvadratinės šaknies, natūraliojo logaritmo ir rodiklinės funkcijos išvestines raskite <a href="tema-6.html#lentele">išvestinių lentelėje</a>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= 2\cdot\frac{1}{2\sqrt{x}} + 5\cdot\frac{1}{x} - 3e^x \\ &amp;= \frac{1}{\sqrt{x}} + \frac{5}{x} - 3e^x \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{1}{\sqrt{x}} + \frac{5}{x} - 3e^x \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Laipsnis su neigiamuoju rodikliu ir trigonometrinės funkcijos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \dfrac{4}{x^3} + 3\sin x - 2\cos x\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Pirmojo nario skaitiklis yra konstanta, o vardiklis – argumento \(x\) laipsnis. Šį narį perrašykite laipsniu su neigiamuoju rodikliu ir taikykite laipsninės funkcijos išvestinės formulę. Kitiems nariams naudokite <a href="tema-6.html#lentele">lentelėje</a> pateiktas sinuso ir kosinuso išvestines.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pertvarkymas</span></h4>
+          \[ \frac{4}{x^3} = 4x^{-3} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Diferencijavimas</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= 4\cdot(-3)x^{-4} + 3\cos x \\ &amp;\phantom{=}\; - 2\cdot(-\sin x) \\ &amp;= -12x^{-4} + 3\cos x + 2\sin x \\ &amp;= -\frac{12}{x^4} + 3\cos x + 2\sin x \end{aligned} \]
+          <p>Pabaigoje laipsnį su neigiamuoju rodikliu vėl užrašykite trupmena. Abi išvestinės išraiškos yra lygiavertės.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = -\frac{12}{x^4} + 3\cos x + 2\sin x \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="g-sandauga" aria-labelledby="h-g-sandauga">
+    <h2 id="h-g-sandauga">Sandaugos ir dalmens taisyklės</h2>
+
+    <!-- 4 pavyzdys: TM 6.1, 4.2 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Laipsninės funkcijos ir logaritmo sandauga</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = x^2\ln x\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Abu daugikliai priklauso nuo \(x\), todėl taikykite <a href="tema-6.html#sandaugos">sandaugos taisyklę</a>. Taisyklėje daugiklius žymėkite \(u(x) = x^2\) ir \(v(x) = \ln x\). Pirmiausia laipsninės funkcijos išvestinę padauginkite iš nepakeisto logaritmo. Tada pridėkite nepakeistos laipsninės funkcijos ir logaritmo išvestinės sandaugą.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= (x^2)'\cdot\ln x + x^2\cdot(\ln x)' \\ &amp;= 2x\ln x + x^2\cdot\frac{1}{x} \end{aligned} \]
+          <p>Prieš prastindami užrašykite abu narius. Vien padauginę abiejų daugiklių išvestines, gautumėte neteisingą rezultatą.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Prastinimas</span></h4>
+          <p>Antrajame naryje skaitiklis ir vardiklis suprastinami iš \(x\). Abu likę nariai turi bendrąjį daugiklį \(x\), todėl iškelkite jį prieš skliaustus:</p>
+          \[ f'(x) = 2x\ln x + x = x(2\ln x + 1) \]
+          <p>Išskleista forma ir sandauga yra lygiavertės.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = x(2\ln x + 1) \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Dviejų daugianarių dalmuo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \dfrac{2x + 1}{x^2 + 3}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Vardiklis priklauso nuo \(x\), todėl taikykite <a href="tema-6.html#dalmens">dalmens taisyklę</a>. Skaitiklį žymėkite \(u(x) = 2x + 1\), o vardiklį – \(v(x) = x^2 + 3\). Jų išvestinės yra \(u'(x) = 2\) ir \(v'(x) = 2x\). Skaitiklio išvestinę padauginkite iš nepakeisto vardiklio, tada atimkite nepakeisto skaitiklio ir vardiklio išvestinės sandaugą. Visą skirtumą padalykite iš pradinio vardiklio kvadrato.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} f'(x) &amp;= \frac{(2x + 1)'(x^2 + 3) - (2x + 1)(x^2 + 3)'}{(x^2 + 3)^2} \\ &amp;= \frac{2(x^2 + 3) - (2x + 1)\cdot 2x}{(x^2 + 3)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Prastinimas</span></h4>
+          <p>Išskleiskite abi skaitiklio sandaugas. Atimties ženklas taikomas visai antrajai sandaugai, todėl pasikeičia kiekvieno jos nario ženklas. Sutraukite panašiuosius narius; jei norite, prieš skliaustus iškelkite \(-2\):</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{2x^2 + 6 - 4x^2 - 2x}{(x^2 + 3)^2} \\ &amp;= \frac{-2x^2 - 2x + 6}{(x^2 + 3)^2} \\ &amp;= \frac{-2(x^2 + x - 3)}{(x^2 + 3)^2} \end{aligned} \]
+          <p>Vardiklį palikite pakeltą kvadratu: šiame pavyzdyje bendrųjų daugiklių suprastinti negalima.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{-2(x^2 + x - 3)}{(x^2 + 3)^2} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Šaknies ir dvinario dalmuo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \dfrac{\sqrt{x}}{x + 1}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Taikykite <a href="tema-6.html#dalmens">dalmens taisyklę</a>: skaitiklį žymėkite \(u(x) = \sqrt{x}\), o vardiklį – \(v(x) = x + 1\). Kvadratinės šaknies išvestinę raskite <a href="tema-6.html#lentele">lentelėje</a>; vardiklio išvestinė lygi vienetui. Pirmiausia įrašykite šias išvestines į taisyklę, tada prastinkite.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ f'(x) = \frac{\dfrac{1}{2\sqrt{x}}\cdot(x + 1) - \sqrt{x}\cdot 1}{(x + 1)^2} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Prastinimas</span></h4>
+          <p>Kad skaitiklyje neliktų trupmenos, visos trupmenos skaitiklį ir vardiklį padauginkite iš \(2\sqrt{x}\). Trupmenos reikšmė nepasikeičia, o \(\sqrt{x}\cdot\sqrt{x} = x\):</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{(x + 1) - 2\sqrt{x}\cdot\sqrt{x}}{2\sqrt{x}(x + 1)^2} \\ &amp;= \frac{x + 1 - 2x}{2\sqrt{x}(x + 1)^2} \\ &amp;= \frac{1 - x}{2\sqrt{x}(x + 1)^2} \end{aligned} \]
+          <p>Išvestinė apibrėžta, kai \(x &gt; 0\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{1 - x}{2\sqrt{x}(x + 1)^2} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="g-sudetine" aria-labelledby="h-g-sudetine">
+    <h2 id="h-g-sudetine">Sudėtinės funkcijos išvestinės taisyklė</h2>
+
+    <!-- 7 pavyzdys: TM 6.1, 4.3 -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Penkios sudėtinės funkcijos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai
+        <ol type="a">
+          <li>\(f(x) = (3x^2 - 5)^4\);</li>
+          <li>\(f(x) = e^{2x^3 - x}\);</li>
+          <li>\(f(x) = \ln(x^2 + 4)\);</li>
+          <li>\(f(x) = \sqrt{4x + 7}\);</li>
+          <li>\(f(x) = \cos(3x^2)\).</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Visos funkcijos yra sudėtinės, todėl taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Kiekvienu atveju nustatykite vidinę funkciją \(u(x)\) ir jai taikomą veiksmą. Diferencijuokite išorinę funkciją, vidinio reiškinio nekeisdami, tada padauginkite iš vidinės funkcijos išvestinės. Logaritmo ir kvadratinės šaknies atvejais ši išvestinė atsiduria trupmenos skaitiklyje.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Laipsnis</span></h4>
+          <p>Išorinė funkcija – kėlimas ketvirtuoju laipsniu, vidinė – \(u(x) = 3x^2 - 5\), jos išvestinė \(u'(x) = 6x\). Laipsninės funkcijos išvestinės formulę taikykite visam reiškiniui skliaustuose: padauginkite iš laipsnio rodiklio ir rodiklį sumažinkite vienetu. Reiškinį skliaustuose palikite nepakeistą ir padauginkite iš jo išvestinės:</p>
+          \[ \begin{aligned} f'(x) &amp;= 4(3x^2 - 5)^3\cdot 6x \\ &amp;= 24x(3x^2 - 5)^3 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Rodiklinė funkcija</span></h4>
+          <p>Išorinė funkcija – \(e^u\), vidinė – \(u(x) = 2x^3 - x\), jos išvestinė \(u'(x) = 6x^2 - 1\). Diferencijuojant rodiklinę funkciją su pagrindu \(e\), ji pati nesikeičia. Padauginkite ją iš rodiklio išvestinės, pastarąją užrašydami skliaustuose:</p>
+          \[ f'(x) = e^{2x^3 - x}\cdot(6x^2 - 1) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>c) Logaritmas</span></h4>
+          <p>Išorinė funkcija – \(\ln u\), vidinė – \(u(x) = x^2 + 4\), jos išvestinė \(u'(x) = 2x\). Natūraliojo logaritmo išvestinė yra jo argumento atvirkštinis dydis. Padauginus iš vidinės funkcijos išvestinės, ši atsiduria skaitiklyje, o vidinė funkcija – vardiklyje:</p>
+          \[ f'(x) = \frac{1}{x^2 + 4}\cdot 2x = \frac{2x}{x^2 + 4} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>d) Kvadratinė šaknis</span></h4>
+          <p>Išorinė funkcija – kvadratinė šaknis, vidinė – \(u(x) = 4x + 7\), jos išvestinė \(u'(x) = 4\). Taikykite kvadratinės šaknies išvestinės formulę, visą vidinį reiškinį palikdami po šaknies ženklu, ir padauginkite iš 4. Skaitinį koeficientą suprastinkite tik pritaikę taisyklę:</p>
+          \[ f'(x) = \frac{4}{2\sqrt{4x + 7}} = \frac{2}{\sqrt{4x + 7}} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>e) Kosinusas</span></h4>
+          <p>Išorinė funkcija – \(\cos u\), vidinė – \(u(x) = 3x^2\), jos išvestinė \(u'(x) = 6x\). Kosinuso išvestinė yra sinusas su minuso ženklu. Vidinį reiškinį palikite sinuso argumentu ir padauginkite iš vidinės funkcijos išvestinės. Nepamirškite minuso ženklo:</p>
+          \[ \begin{aligned} f'(x) &amp;= -\sin(3x^2)\cdot 6x \\ &amp;= -6x\sin(3x^2) \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <ul class="ans-list">
+              <li>a)&nbsp;\(f'(x) = 24x(3x^2 - 5)^3\)</li>
+              <li>b)&nbsp;\(f'(x) = (6x^2 - 1)\,e^{2x^3 - x}\)</li>
+              <li>c)&nbsp;\(f'(x) = \dfrac{2x}{x^2 + 4}\)</li>
+              <li>d)&nbsp;\(f'(x) = \dfrac{2}{\sqrt{4x + 7}}\)</li>
+              <li>e)&nbsp;\(f'(x) = -6x\sin(3x^2)\)</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Šaknis rodiklyje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = e^{\sqrt{x}}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Išorinė funkcija yra \(e^u\), vidinė – \(u(x) = \sqrt{x}\), o jos išvestinė \(u'(x) = \dfrac{1}{2\sqrt{x}}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Išorinė rodiklinė funkcija diferencijuojant nesikeičia. Padauginkite ją iš kvadratinės šaknies išvestinės ir sandaugą užrašykite viena trupmena:</p>
+          \[ f'(x) = e^{\sqrt{x}}\cdot\frac{1}{2\sqrt{x}} = \frac{e^{\sqrt{x}}}{2\sqrt{x}} \]
+          <p>Išvestinė apibrėžta, kai \(x &gt; 0\); taške \(x = 0\) baigtinės išvestinės nėra.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{e^{\sqrt{x}}}{2\sqrt{x}} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="g-derinys" aria-labelledby="h-g-derinys">
+    <h2 id="h-g-derinys">Sudėtinė funkcija sandaugoje ar dalmenyje</h2>
+    <p class="section-intro">Šiuose pavyzdžiuose sudėtinės funkcijos išvestinės taisyklė derinama su sandaugos arba dalmens taisykle. Pirmiausia nustatykite visos funkcijos struktūrą ir užrašykite atitinkamą taisyklę. Tada sudėtinės funkcijos išvestinės taisyklę taikykite tiems daugikliams, skaitikliui ar vardikliui, kurie patys yra sudėtinės funkcijos.</p>
+
+    <!-- 9 pavyzdys: TM 6.1, 4.4 -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">9 pavyzdys</span>
+        <h3>Laipsninės ir rodiklinės funkcijų sandauga</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = x^2e^{-3x}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Daugikliai yra \(x^2\) ir \(e^{-3x}\), todėl pirmiausia taikykite <a href="tema-6.html#sandaugos">sandaugos taisyklę</a>. Pirmajame naryje diferencijuokite laipsninę funkciją, o rodiklinę palikite nepakeistą. Antrajame naryje laipsninę funkciją palikite nepakeistą, o rodiklinę diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>: vidinė funkcija yra \(-3x\), jos išvestinė lygi \(-3\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ f'(x) = 2x\cdot e^{-3x} + x^2\cdot e^{-3x}\cdot(-3) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Prastinimas</span></h4>
+          <p>Prieš skliaustus iškelkite bendrąjį daugiklį \(xe^{-3x}\):</p>
+          \[ \begin{aligned} f'(x) &amp;= 2xe^{-3x} - 3x^2e^{-3x} \\ &amp;= xe^{-3x}(2 - 3x) \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = xe^{-3x}(2 - 3x) \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 10 pavyzdys -->
+    <article class="card example" id="pavyzdys-10">
+      <header class="example-head">
+        <span class="example-tag">10 pavyzdys</span>
+        <h3>Argumento ir šaknies sandauga</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = x\sqrt{x^2 + 1}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Daugikliams \(x\) ir \(\sqrt{x^2 + 1}\) taikykite <a href="tema-6.html#sandaugos">sandaugos taisyklę</a>. Pirmojo daugiklio išvestinė lygi vienetui, todėl pirmasis narys yra nepakeista šaknis. Antrajame naryje \(x\) palikite nepakeistą, o šaknį diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>: vidinė funkcija yra \(x^2 + 1\), jos išvestinė lygi \(2x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= 1\cdot\sqrt{x^2 + 1} + x\cdot\frac{2x}{2\sqrt{x^2 + 1}} \\ &amp;= \sqrt{x^2 + 1} + \frac{x^2}{\sqrt{x^2 + 1}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Prastinimas</span></h4>
+          <p>Kad galėtumėte sudėti narius, suvienodinkite jų vardiklius: pirmąjį narį padauginkite ir padalykite iš \(\sqrt{x^2 + 1}\). Dviejų vienodų kvadratinių šaknų sandauga lygi pošakniui. Tada sudėkite skaitiklius:</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{x^2 + 1 + x^2}{\sqrt{x^2 + 1}} \\ &amp;= \frac{2x^2 + 1}{\sqrt{x^2 + 1}} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{2x^2 + 1}{\sqrt{x^2 + 1}} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 11 pavyzdys -->
+    <article class="card example" id="pavyzdys-11">
+      <header class="example-head">
+        <span class="example-tag">11 pavyzdys</span>
+        <h3>Rodiklinės funkcijos ir dvinario dalmuo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \dfrac{e^{2x}}{x + 1}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Vardiklis priklauso nuo \(x\), todėl taikykite <a href="tema-6.html#dalmens">dalmens taisyklę</a>. Skaitiklį diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>: \((e^{2x})' = 2e^{2x}\), nes daugiklis 2 gaunamas diferencijuojant rodiklį. Vardiklio išvestinė lygi vienetui. Funkcija ir jos išvestinė neapibrėžtos, kai \(x = -1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ f'(x) = \frac{2e^{2x}(x + 1) - e^{2x}\cdot 1}{(x + 1)^2} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Prastinimas</span></h4>
+          <p>Iš abiejų skaitiklio narių prieš skliaustus iškelkite \(e^{2x}\). Skliaustuose išskleiskite sandaugą ir sutraukite pastoviuosius narius:</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{e^{2x}(2x + 2 - 1)}{(x + 1)^2} \\ &amp;= \frac{e^{2x}(2x + 1)}{(x + 1)^2} \end{aligned} \]
+          <p>Rodiklinis daugiklis atsakyme lieka, nes jis nėra bendras skaitiklio ir vardiklio daugiklis.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{e^{2x}(2x + 1)}{(x + 1)^2} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="g-supaprastinimas" aria-labelledby="h-g-supaprastinimas">
+    <h2 id="h-g-supaprastinimas">Reiškinio supaprastinimas prieš diferencijuojant</h2>
+    <p class="section-intro">Prieš pasirinkdami taisyklę, patikrinkite, ar funkcijos išraišką galima supaprastinti algebriškai. Suprastinus bendruosius daugiklius arba pritaikius logaritmų ir laipsnių savybes, gali prireikti mažiau veiksmų. Išlaikykite pradinės funkcijos apibrėžimo srities apribojimus. Aukšto laipsnio reiškinį išskleisti paprastai ne taip patogu, kaip iš karto taikyti sudėtinės funkcijos išvestinės taisyklę.</p>
+
+    <!-- 12 pavyzdys: TM 6.1, 4.5 -->
+    <article class="card example" id="pavyzdys-12">
+      <header class="example-head">
+        <span class="example-tag">12 pavyzdys</span>
+        <h3>Trupmena, kurią galima suprastinti</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \dfrac{x^3 + 4x^2 - x}{x}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Supaprastinimas</span></h4>
+          <p>Kiekvienas skaitiklio narys turi daugiklį \(x\). Kiekvieną narį padalykite iš vardiklio ir gausite daugianarį:</p>
+          \[ \begin{aligned} f(x) &amp;= \frac{x^3}{x} + \frac{4x^2}{x} - \frac{x}{x} \\ &amp;= x^2 + 4x - 1,\quad x \neq 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Taikykite <a href="tema-6.html#sumos">sumos taisyklę</a> ir laipsninės funkcijos išvestinės formulę:</p>
+          \[ f'(x) = 2x + 4 \]
+          <p>Dalmens taisyklė duotų tą patį rezultatą, tačiau reikėtų daugiau algebrinių veiksmų. Išvestinė galioja tik pradinės funkcijos apibrėžimo srityje, kuriai nulis nepriklauso.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = 2x + 4,\quad x \neq 0 \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 13 pavyzdys -->
+    <article class="card example" id="pavyzdys-13">
+      <header class="example-head">
+        <span class="example-tag">13 pavyzdys</span>
+        <h3>Laipsnio logaritmas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \ln(x^3)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Supaprastinimas</span></h4>
+          <p>Galima taikyti sudėtinės funkcijos išvestinės taisyklę, tačiau logaritmo laipsnio savybė leidžia skaičiuoti trumpiau. Laipsnio logaritmą perrašykite kaip konstantos ir logaritmo sandaugą. Pradinė funkcija apibrėžta, kai \(x &gt; 0\).</p>
+          \[ f(x) = \ln(x^3) = 3\ln x \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Taikykite <a href="tema-6.html#daugiklio">pastovaus daugiklio taisyklę</a>:</p>
+          \[ f'(x) = 3\cdot\frac{1}{x} = \frac{3}{x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <p>Sudėtinės funkcijos išvestinės taisyklė duoda tą patį rezultatą:</p>
+          \[ f'(x) = \frac{1}{x^3}\cdot 3x^2 = \frac{3x^2}{x^3} = \frac{3}{x} \]
+          <p>Panašiai, pritaikius laipsnių savybę, sandauga \(e^x\cdot e^{3x}\) perrašoma kaip \(e^{4x}\), o jos išvestinė yra \(4e^{4x}\). Supaprastinus reiškinį prieš diferencijuojant, sandaugos taisyklės nereikia.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{3}{x} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 14 pavyzdys -->
+    <article class="card example" id="pavyzdys-14">
+      <header class="example-head">
+        <span class="example-tag">14 pavyzdys</span>
+        <h3>Dvinario kvadratas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = (2x + 1)^2\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmasis būdas – sudėtinės funkcijos taisyklė</span></h4>
+          <p>Taikant <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>, vidinė funkcija yra \(u(x) = 2x + 1\), o jos išvestinė \(u'(x) = 2\):</p>
+          \[ \begin{aligned} f'(x) &amp;= 2(2x + 1)\cdot 2 \\ &amp;= 4(2x + 1) = 8x + 4 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Antrasis būdas – skliaustų išskleidimas</span></h4>
+          <p>Prieš diferencijuodami išskleiskite kvadratą:</p>
+          \[ \begin{gathered} f(x) = 4x^2 + 4x + 1 \\ \Longrightarrow\; f'(x) = 8x + 4 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kurį būdą rinktis</span></h4>
+          <p>Kai reiškinys pakeltas kvadratu, abu būdai trumpi. Tačiau penktajam laipsniui \((x^2 + 1)^5\) išskleisti reikia gerokai daugiau algebrinių veiksmų, o sudėtinės funkcijos išvestinės taisyklė iš karto duoda</p>
+          \[ \begin{aligned} \big((x^2 + 1)^5\big)' &amp;= 5(x^2 + 1)^4\cdot 2x \\ &amp;= 10x(x^2 + 1)^4 \end{aligned} \]
+          <p>Tokiais atvejais skliaustų neskleiskite ir taikykite sudėtinės funkcijos išvestinės taisyklę.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = 8x + 4 \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: nustatykite funkcijos struktūrą, pasirinkite taisyklę, diferencijuokite ir supaprastinkite rezultatą. Tada pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite \(f'(x)\), kai</p>
+          <ol type="a">
+            <li>\(f(x) = 4x^5 - 6x^3 + 2x - 9\);</li>
+            <li>\(f(x) = 3\sqrt{x} - \dfrac{7}{x} + 2\cdot 3^x\);</li>
+            <li>\(f(x) = 5\ln x + 4\cos x - \dfrac{x^4}{2}\).</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <ul class="ans-list">
+            <li>a)&nbsp;\(f'(x) = 20x^4 - 18x^2 + 2\)</li>
+            <li>b)&nbsp;\(f'(x) = \dfrac{3}{2\sqrt{x}} + \dfrac{7}{x^2} + 2\cdot 3^x\ln 3\)</li>
+            <li>c)&nbsp;\(f'(x) = \dfrac{5}{x} - 4\sin x - 2x^3\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite \(f'(x)\), kai</p>
+          <ol type="a">
+            <li>\(f(x) = x^3e^x\);</li>
+            <li>\(f(x) = (x^2 - 1)\ln x\);</li>
+            <li>\(f(x) = \dfrac{3x - 2}{x^2 + 1}\).</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <ul class="ans-list">
+            <li>a)&nbsp;\(f'(x) = 3x^2e^x + x^3e^x\) \(= x^2e^x(3 + x)\)</li>
+            <li>b)&nbsp;\(f'(x) = 2x\ln x + \dfrac{x^2 - 1}{x}\)</li>
+            <li>c)&nbsp;\(f'(x) = \dfrac{-3x^2 + 4x + 3}{(x^2 + 1)^2}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite \(f'(x)\), kai</p>
+          <ol type="a">
+            <li>\(f(x) = (2x^2 + 5)^6\);</li>
+            <li>\(f(x) = e^{3x^2 - 4x}\);</li>
+            <li>\(f(x) = \sqrt{6x - 1}\).</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <ul class="ans-list">
+            <li>a)&nbsp;\(f'(x) = 24x(2x^2 + 5)^5\)</li>
+            <li>b)&nbsp;\(f'(x) = (6x - 4)\,e^{3x^2 - 4x}\)</li>
+            <li>c)&nbsp;\(f'(x) = \dfrac{3}{\sqrt{6x - 1}}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite \(f'(x)\), kai</p>
+          <ol type="a">
+            <li>\(f(x) = e^{2x}\ln x\);</li>
+            <li>\(f(x) = x\sqrt{3x + 1}\);</li>
+            <li>\(f(x) = \dfrac{8x^4 + 6x^3 - 2x}{2x}\).</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <ul class="ans-list">
+            <li>a)&nbsp;\(f'(x) = e^{2x}\left(2\ln x + \dfrac{1}{x}\right)\)</li>
+            <li>b)&nbsp;\(f'(x) = \dfrac{9x + 2}{2\sqrt{3x + 1}}\)</li>
+            <li>c)&nbsp;Suprastinus \(f(x) = 4x^3 + 3x^2 - 1\), \(x \neq 0\); \(f'(x) = 12x^2 + 6x\)</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">5, 6.1–6.3, 6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">9, 10.1, 10.4 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

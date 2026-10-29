@@ -266,6 +266,9 @@
         desc: { lt: 'Dualusis uždavinys: mažiausios išlaidos ir reikalavimų viršijimas.', en: 'The dual problem: the minimum cost and the requirements that are exceeded.' } }
     ],
     t6: [
+      { id: 'm60', status: 'active', href: { lt: 'tema-6-isvestiniu-skaiciavimas.html', en: null },
+        title: { lt: 'Išvestinių skaičiavimo pavyzdžiai', en: 'Differentiation Examples' },
+        desc: { lt: 'Keturiolika pavyzdžių žingsnis po žingsnio pagal taikomas taisykles ir uždaviniai savarankiškam darbui.', en: 'Fourteen step-by-step examples grouped by the rules they use, and problems for independent practice.' } },
       { id: 'm61', status: 'soon',
         title: { lt: 'Ribinė analizė', en: 'Marginal Analysis' },
         desc: { lt: 'Ribinės sąnaudos, pajamos ir pelnas: kaip papildomas pagamintas ir parduotas vienetas keičia įmonės rodiklius.', en: 'Marginal cost, revenue and profit: how one more unit produced and sold changes the company’s figures.' } },
@@ -331,6 +334,8 @@
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
     t6:      { parent: 'home', href: { lt: 'tema-6.html', en: null },
                title: { lt: '6 tema', en: 'Topic 6' } },
+    m60:     { parent: 't6', topic: 't6', model: 'm60', href: { lt: 'tema-6-isvestiniu-skaiciavimas.html', en: null },
+               title: { lt: 'Išvestinių skaičiavimo pavyzdžiai', en: 'Differentiation Examples' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -466,8 +471,13 @@
   function buildModelGrid() {
     $all('[data-models]').forEach(function (box) {
       var list = MODELS[box.getAttribute('data-models')] || [];
+      /* data-only / data-skip: rodyti tik nurodytus arba praleisti nurodytus skyrius (numeracija – visos temos sąraše) */
+      var only = (box.getAttribute('data-only') || '').split(' ').filter(Boolean);
+      var skip = (box.getAttribute('data-skip') || '').split(' ').filter(Boolean);
       var html = '';
       list.forEach(function (m, i) {
+        if (only.length && only.indexOf(m.id) < 0) return;
+        if (skip.indexOf(m.id) >= 0) return;
         var head = '<span class="m-no">' + esc(T.chapterN(i + 1)) + '</span><h3>' + esc(tr(m.title)) + '</h3>' +
           '<p>' + tr(m.desc) + '</p>';
         if (m.status === 'active' && m.href && m.href[LANG]) {
