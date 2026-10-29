@@ -285,7 +285,7 @@
       { id: 'm64', status: 'active', href: { lt: 'tema-6-vietiniai-ekstremumai.html', en: null },
         title: { lt: 'Vietiniai ekstremumai', en: 'Relative Extrema' },
         desc: { lt: 'Kritiniai taškai, vietiniai maksimumai ir minimumai.', en: 'Critical points, relative maxima and minima.' } },
-      { id: 'm65', status: 'soon',
+      { id: 'm65', status: 'active', href: { lt: 'tema-6-absoliutieji-ekstremumai.html', en: null },
         title: { lt: 'Absoliutieji ekstremumai', en: 'Absolute Extrema' },
         desc: { lt: 'Didžiausia ir mažiausia funkcijos reikšmė intervale.', en: 'The largest and the smallest value of a function on an interval.' } }
     ]
@@ -348,6 +348,8 @@
                title: { lt: 'Didėjančios ir mažėjančios funkcijos', en: 'Increasing and Decreasing Functions' } },
     m64:     { parent: 't6', topic: 't6', model: 'm64', href: { lt: 'tema-6-vietiniai-ekstremumai.html', en: null },
                title: { lt: 'Vietiniai ekstremumai', en: 'Relative Extrema' } },
+    m65:     { parent: 't6', topic: 't6', model: 'm65', href: { lt: 'tema-6-absoliutieji-ekstremumai.html', en: null },
+               title: { lt: 'Absoliutieji ekstremumai', en: 'Absolute Extrema' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
