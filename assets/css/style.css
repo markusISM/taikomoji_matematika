@@ -1016,3 +1016,13 @@ svg text.c5 { fill: var(--tip); }
 .anat.dtbl.dtbl-rows { grid-template-columns: 1fr; }
 .dtbl-rows ul.flist { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); align-items: center; gap: 2px 24px; }
 .dtbl-rows ul.flist li { margin: 0; padding: 3px 0; }
+
+/* Pavyzdžių grupės ir atsakymų sąrašai (6 tema) */
+.ex-group { display: flex; align-items: center; gap: 12px; margin: 30px 0 12px; font-size: 1.12rem; }
+.ex-group::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.section-intro + .ex-group { margin-top: 18px; }
+.ex-group-intro { margin: 0 0 14px; }
+ul.ans-list { list-style: none; padding-left: 0; margin: 6px 0 0; }
+ul.ans-list li { margin: 0 0 8px; overflow-x: auto; overflow-y: hidden; }
+ul.ans-list li:last-child { margin-bottom: 0; }
+@media (max-width: 440px) { .fit-sm .katex-display > .katex { font-size: .86em; } }
