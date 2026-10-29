@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pokyčių analizė · Taikomoji matematika</title>
+<meta name="description" content="Pokyčių analizė: išvestinė kaip kitimo greitis, kas kinta, kokio dydžio atžvilgiu ir kokiais vienetais, apytikslis pokyčio įvertinimas Δy ≈ f'(x₀)·Δx. Sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=60">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=60"></script>
+</head>
+<body data-page="m62">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">6 tema · Taikymai · 3 skyrius</span>
+    <h1>Pokyčių analizė</h1>
+    <p class="lead">Šiame skyriuje išvestinė taikoma ne tik sąnaudoms, pajamoms ir pelnui, bet ir kitiems dydžiams: ji parodo, kaip greitai dydis kinta ir kiek jis pasikeis, kai argumentas pasikeičia nedaug.</p>
+    <ul class="jump">
+      <li><a href="#greitis">Kitimo greitis</a></li>
+      <li><a href="#ivertis">Pokyčio įvertis</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. KITIMO GREITIS ============ -->
+  <section class="section" id="greitis" aria-labelledby="h-rate">
+    <h2 id="h-rate">Išvestinė kaip kitimo greitis</h2>
+
+    <article class="card">
+      <p>Stebėti galima ne tik sąnaudas, pajamas ir pelną. Narių skaičius, rinkos dalis, įrenginio vertė, operacijos trukmė ar kiekis, kurį pirkėjai nori įsigyti, taip pat priklauso nuo kitų dydžių. Kiekvienu atveju kyla tie patys praktiniai klausimai: kaip greitai dydis kinta ir kiek jis pasikeis, jei argumentas, nuo kurio jis priklauso, pasikeis nedaug? Išvestinė leidžia atsakyti į abu klausimus. Skirtingose taikymo srityse keičiasi tik nagrinėjami dydžiai ir jų matavimo vienetai.</p>
+      <p>Tarkime, dydis \(y\) priklauso nuo dydžio \(x\), taigi \(y = f(x)\). Tuomet \(f'(x_0)\) nusako dydžio \(y\) kitimo greitį vienam argumento \(x\) pokyčio vienetui taške \(x_0\). Kiekvieną kartą būtina įvardyti tris dalykus; jei bent vienas nenurodytas, atsakymas neišsamus:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>Kas kinta</strong><span>Dydis \(y\).</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>Kokio dydžio atžvilgiu</strong><span>Argumento \(x\) atžvilgiu.</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>Kokiais vienetais</strong><span>Dydžio \(y\) matavimo vienetas dalijamas iš argumento \(x\) matavimo vieneto.</span></div></div>
+      </div>
+
+      <h3 class="subhead" style="margin-top:22px">Matavimo vienetai</h3>
+      <p>Jei \(y\) matuojamas eurais, o \(x\) – metais, išvestinė matuojama eurais per metus. Jei \(y\) matuojamas minutėmis, o \(x\) žymi pagamintų vienetų skaičių, išvestinė matuojama minutėmis vienam gaminiui. Matavimo vienetai leidžia teisingai interpretuoti skaitinę reikšmę.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Ženklas</h3>
+      <p>Ženklas nusako kitimo kryptį. Jei \(f'(x_0) &gt; 0\), ties šiuo tašku dydis didėja, o jei \(f'(x_0) &lt; 0\) – mažėja. Kuo didesnė išvestinės absoliučioji reikšmė, tuo spartesnis kitimas.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. POKYČIO ĮVERTIS ============ -->
+  <section class="section" id="ivertis" aria-labelledby="h-est">
+    <h2 id="h-est">Apytikslis pokyčio įvertinimas</h2>
+
+    <article class="card">
+      <p>Išvestinė yra dviejų pokyčių santykio riba, kai argumento pokytis artėja prie nulio. Todėl, kai pokytis \(\Delta x\) mažas,</p>
+      <div class="formula">\[ \begin{gathered} \frac{\Delta y}{\Delta x} \approx f'(x_0) \\ \Longrightarrow\; \Delta y \approx f'(x_0)\cdot\Delta x \end{gathered} \]</div>
+      <p>Tai pagrindinė šio skyriaus skaičiavimo formulė. Argumento pokytis nebūtinai turi būti vienas vienetas: kitimo greitį reikia padauginti iš tikrojo pokyčio dydžio. Kai pokytis lygus vienam vienetui, gauname \(\Delta y \approx f'(x_0)\), o rezultatą interpretuojame taip:</p>
+      <div class="model-note"><strong>Jei \(x\) padidėja vienu vienetu nuo \(x_0\), dydis \(y\) pasikeičia apytiksliai dydžiu \(f'(x_0)\).</strong></div>
+      <p style="margin-top:12px">Šis įvertis tinka mažiems pokyčiams ir paprastai tikslėja mažinant pokytį, nes argumentui \(x\) kintant keičiasi ir pats kitimo greitis. Kaip kirstinė artėja prie liestinės mažinant \(\Delta x\), galite pamatyti <a href="tema-6.html#isvestine">6 temos puslapio interaktyviame grafike</a>.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Įvardykite abu dydžius: kas kinta ir kokio dydžio atžvilgiu. Užrašykite juos siejančią funkciją.</li>
+        <li>Diferencijuokite funkciją, parodydami skaičiavimo veiksmus.</li>
+        <li>Įstatykite nurodytą argumento reikšmę ir apskaičiuokite \(f'(x_0)\). Jei prašoma rasti ir paties dydžio reikšmę, atskirai apskaičiuokite \(f(x_0)\): šios dvi reikšmės atsako į skirtingus klausimus.</li>
+        <li>Jei nagrinėjamas ne vieno vieneto pokytis, padauginkite: \(\Delta y \approx f'(x_0)\cdot\Delta x\).</li>
+        <li>Nurodykite atsakymo matavimo vienetus ir jį interpretuokite: kiek apytiksliai pasikeis \(y\), jei \(x\) padidės vienu vienetu nuo nurodytos reikšmės.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Neišsamus atsakymas.</strong> Nenurodyta, kas kinta, kokio dydžio atžvilgiu arba kokiais vienetais matuojamas kitimo greitis.</li>
+            <li><strong>Pokytis – ne vienas vienetas.</strong> Kitimo greitį reikia padauginti iš tikrojo argumento pokyčio, pavyzdžiui, pusmečiui – iš \(\Delta t = 0{,}5\) metų.</li>
+            <li><strong>Dydis ir jo kitimo greitis.</strong> \(f(x_0)\) ir \(f'(x_0)\) atsako į skirtingus klausimus: kokia dydžio reikšmė ir kaip greitai jis kinta.</li>
+            <li><strong>Ženklas.</strong> Neigiama išvestinė reiškia, kad dydis ties šiuo tašku mažėja; atsakyme tai reikia pasakyti žodžiais.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 6.3, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Degalų sąnaudos ir sunkvežimio greitis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Logistikos įmonė nustatė, kad vienam kilometrui tenkančios degalų sąnaudos eurais priklauso nuo sunkvežimio vidutinio greičio: \(C = f(v)\) eurų už kilometrą. Čia \(v\) – vidutinis greitis kilometrais per valandą. Paaiškinkite, ką reiškia \(f'(v)\), ir nurodykite matavimo vienetus. Žinodami, kad \(f'(80) = 0{,}004\), apytiksliai įvertinkite, kiek pasikeis vieno kilometro degalų sąnaudos, vidutinį greitį padidinus nuo 80 iki 82 kilometrų per valandą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kas kinta ir kokio dydžio atžvilgiu</span></h4>
+          <p>Vieno kilometro degalų sąnaudos kinta vidutinio greičio atžvilgiu, todėl \(f'(v)\) nusako šių sąnaudų kitimo greitį vienam greičio pokyčio vienetui. Matavimo vienetas gaunamas sąnaudų vienetą padalijus iš greičio vieneto: eurai už kilometrą, tenkantys vienam kilometrui per valandą.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Argumento pokytis</span></h4>
+          <p>Greitis padidinamas nuo 80 iki 82, taigi \(\Delta v = 82 - 80 = 2\) kilometrai per valandą. Sąnaudų pokytį įvertiname pagal jų kitimo greitį:</p>
+          \[ \Delta C \approx f'(80)\cdot\Delta v = 0{,}004\cdot 2 = 0{,}008 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \(f'(80) = 0{,}004\)&nbsp;euro už kilometrą, tenkančio vienam kilometrui per valandą. Vidutinį greitį padidinus 2&nbsp;kilometrais per valandą nuo 80, vieno kilometro degalų sąnaudos padidėja apytiksliai 0,008&nbsp;euro, t.&nbsp;y. maždaug 0,8&nbsp;cento. Išvestinė teigiama, todėl ties šiuo greičiu važiuojant greičiau vieno kilometro sąnaudos didėja.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 6.3, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Internetinio žurnalo prenumeratoriai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Internetinio žurnalo prenumeratorių skaičius, praėjus \(t\) mėnesių nuo jo pasirodymo, yra
+        <div class="fit-sm">\[ N(t) = 50t^2 + 300t + 1200,\quad 0 \leq t \leq 24 \]</div>
+        Raskite prenumeratorių skaičių praėjus šešiems mėnesiams ir jo didėjimo greitį tuo metu. Interpretuokite kitimo greitį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kas kinta ir kokio dydžio atžvilgiu</span></h4>
+          <p>Prenumeratorių skaičius kinta laiko, matuojamo mėnesiais, atžvilgiu, todėl kitimo greitis matuojamas prenumeratoriais per mėnesį.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Paties dydžio reikšmė</span></h4>
+          \[ \begin{aligned} N(6) &amp;= 50\cdot 6^2 + 300\cdot 6 + 1200 \\ &amp;= 1800 + 1800 + 1200 = 4800 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kitimo greitis</span></h4>
+          <p>Funkcija yra trijų narių suma. Taikome <a href="tema-6.html#daugiklio">pastovaus daugiklio taisyklę</a> ir laipsninės funkcijos išvestinės formulę; konstantos išvestinė lygi nuliui:</p>
+          \[ N'(t) = 50\cdot 2t + 300 = 100t + 300 \]
+          \[ N'(6) = 100\cdot 6 + 300 = 900 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Praėjus šešiems mėnesiams nuo pasirodymo, žurnalas turi 4800 prenumeratorių, o jų skaičius didėja 900 prenumeratorių per mėnesį greičiu. Per vieną mėnesį nuo šio momento prenumeratorių skaičius padidės apytiksliai 900.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.3, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Naujo prekės ženklo rinkos dalis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Naujo prekės ženklo užimama rinkos dalis, praėjus \(t\) metų nuo jo pasirodymo, yra
+        \[ S(t) = 6\sqrt{t},\quad 0 \leq t \leq 9 \]
+        procentų. Raskite rinkos dalį po ketverių metų ir jos didėjimo greitį tuo metu. Interpretuokite kitimo greitį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kas kinta ir kokio dydžio atžvilgiu</span></h4>
+          <p>Procentais matuojama rinkos dalis kinta laiko, matuojamo metais, atžvilgiu. Todėl jos kitimo greitis matuojamas procentiniais punktais per metus.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Paties dydžio reikšmė</span></h4>
+          \[ S(4) = 6\sqrt{4} = 6\cdot 2 = 12 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kitimo greitis</span></h4>
+          <p>Kvadratinės šaknies išvestinė pateikta <a href="tema-6.html#lentele">elementariųjų funkcijų išvestinių lentelėje</a>:</p>
+          \[ S'(t) = 6\cdot\frac{1}{2\sqrt{t}} = \frac{3}{\sqrt{t}} \]
+          \[ S'(4) = \frac{3}{\sqrt{4}} = \frac{3}{2} = 1{,}5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Po ketverių metų prekės ženklas užima 12&nbsp;procentų rinkos, o jo rinkos dalis didėja 1,5 procentinio punkto per metus greičiu. Per vienus metus nuo šio momento rinkos dalis padidės apytiksliai 1,5 procentinio punkto. Kitimo greitis \(\dfrac{3}{\sqrt{t}}\) laikui bėgant mažėja, todėl rinkos dalis toliau didėja, tačiau vis lėčiau.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.3, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Įrenginio vertės mažėjimas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Už 24&nbsp;000 eurų įsigyto įrenginio vertė mažėja pagal funkciją
+        \[ V(t) = 24000e^{-0{,}15t} \]
+        eurų, čia \(t\) – įrenginio amžius metais.
+        <ol type="a">
+          <li>Kaip greitai mažėja ketverių metų įrenginio vertė?</li>
+          <li>Apytiksliai įvertinkite, kiek jo vertė pasikeis per kitą pusmetį.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kas kinta ir kokio dydžio atžvilgiu</span></h4>
+          <p>Įrenginio vertė kinta jo amžiaus, matuojamo metais, atžvilgiu, todėl kitimo greitis matuojamas eurais per metus.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Kitimo greitis</span></h4>
+          <p>Funkcija yra konstantos ir rodiklinės funkcijos sandauga. Taikome <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>; vidinės funkcijos išvestinė yra \(-0{,}15\):</p>
+          \[ \begin{aligned} V'(t) &amp;= 24000\cdot e^{-0{,}15t}\cdot(-0{,}15) \\ &amp;= -3600e^{-0{,}15t} \end{aligned} \]
+          \[ \begin{aligned} V'(4) &amp;= -3600e^{-0{,}6} \\ &amp;\approx -3600\cdot 0{,}5488 \approx -1975{,}72 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Pokytis per pusmetį</span></h4>
+          <p>Laiko pokytis yra \(\Delta t = 0{,}5\) metų:</p>
+          \[ \begin{aligned} \Delta V &amp;\approx V'(4)\cdot\Delta t \\ &amp;\approx -1975{,}72\cdot 0{,}5 \approx -987{,}86 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(V'(4) \approx -1975{,}72\)&nbsp;euro per metus. Per vienus metus nuo ketverių metų amžiaus įrenginio vertė pasikeis apytiksliai \(-1976\)&nbsp;eurais, t.&nbsp;y. sumažės maždaug 1976&nbsp;eurais.</p>
+            <p>b) Per kitą pusmetį vertė pasikeis apytiksliai \(-988\)&nbsp;eurais.</p>
+            <p>Išvestinė neigiama bet kuriame nagrinėjamame amžiuje, todėl pagal šį modelį įrenginio vertė nedidėja. Kadangi \(e^{-0{,}15t}\) mažėja didėjant \(t\), senstant įrenginiui mažėja ir jo vertės mažėjimo sparta.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.3, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Pakavimo linijos našumas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Pakavimo linija, kurioje dirba \(x\) žmonių, supakuoja
+        \[ Q(x) = \frac{50x}{x + 4} \]
+        siuntinių per valandą. Raskite linijos našumą ir jo kitimo greitį darbuotojų skaičiaus atžvilgiu, kai linijoje dirba šeši žmonės. Interpretuokite kitimo greitį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kas kinta ir kokio dydžio atžvilgiu</span></h4>
+          <p>Linijos našumas kinta darbuotojų skaičiaus atžvilgiu, todėl kitimo greitis matuojamas siuntiniais per valandą vienam darbuotojui.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Paties dydžio reikšmė</span></h4>
+          \[ Q(6) = \frac{50\cdot 6}{6 + 4} = \frac{300}{10} = 30 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kitimo greitis</span></h4>
+          <p>Funkcija yra trupmena, kurios vardiklis priklauso nuo \(x\), todėl taikome <a href="tema-6.html#dalmens">dalmens taisyklę</a>:</p>
+          \[ \begin{aligned} Q'(x) &amp;= \frac{50(x + 4) - 50x\cdot 1}{(x + 4)^2} \\ &amp;= \frac{50x + 200 - 50x}{(x + 4)^2} = \frac{200}{(x + 4)^2} \end{aligned} \]
+          \[ Q'(6) = \frac{200}{(6 + 4)^2} = \frac{200}{100} = 2 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Dirbant šešiems žmonėms, linija supakuoja 30 siuntinių per valandą, o našumas didėja 2&nbsp;siuntiniais per valandą vienam papildomam darbuotojui. Darbuotojų skaičių padidinus nuo šešių iki septynių, našumas padidės apytiksliai 2&nbsp;siuntiniais per valandą. Kitimo greitis \(\dfrac{200}{(x + 4)^2}\) didėjant darbuotojų skaičiui mažėja, todėl kiekvienas papildomas darbuotojas našumą padidina mažiau nei ankstesnis.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 6.3, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Gaminio surinkimo trukmė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Darbuotojams įgyjant patirties, vienam naujo gaminio vienetui surinkti reikalingas laikas mažėja:
+        \[ T(x) = 120 - 18\ln x \]
+        minučių, čia \(x\) – surenkamo gaminio eilės numeris. Raskite trisdešimtojo gaminio surinkimo trukmę ir jos kitimo greitį ties šiuo gaminiu. Interpretuokite kitimo greitį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kas kinta ir kokio dydžio atžvilgiu</span></h4>
+          <p>Surinkimo trukmė kinta surenkamo gaminio eilės numerio atžvilgiu, todėl kitimo greitis matuojamas minutėmis vienam papildomam gaminiui.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Paties dydžio reikšmė</span></h4>
+          \[ \begin{aligned} T(30) &amp;= 120 - 18\ln 30 \\ &amp;\approx 120 - 61{,}22 \approx 58{,}78 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kitimo greitis</span></h4>
+          <p>Pirmasis narys yra konstanta, o antrasis – konstantos ir logaritmo sandauga:</p>
+          \[ T'(x) = 0 - 18\cdot\frac{1}{x} = -\frac{18}{x} \]
+          \[ T'(30) = -\frac{18}{30} = -0{,}6 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Trisdešimtąjį gaminį surinkti trunka apie 58,78&nbsp;minutės, o surinkimo trukmė mažėja 0,6&nbsp;minutės vienam papildomam gaminiui greičiu. Pereinant nuo trisdešimtojo prie trisdešimt pirmojo gaminio, surinkimo trukmė pasikeis apytiksliai \(-0{,}6\)&nbsp;minutės, t.&nbsp;y. sumažės maždaug 36&nbsp;sekundėmis. Kiekvienam kitam gaminiui sutaupoma vis mažiau laiko, nes kitimo greitis yra \(-\dfrac{18}{x}\), o \(x\) didėja.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 6.3, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Paklausos kiekio priklausomybė nuo kainos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kai prekės vieneto kaina yra \(p\) eurų, savaitės paklausos kiekis yra
+        \[ x(p) = 9000 - 25p^2,\quad 0 \leq p \leq 18 \]
+        vienetų. Raskite paklausos kiekį ir jo kitimo greitį kainos atžvilgiu, kai kaina lygi 12 eurų. Interpretuokite kitimo greitį.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kas kinta ir kokio dydžio atžvilgiu</span></h4>
+          <p>Šiame pavyzdyje nepriklausomasis kintamasis yra kaina, o ne gamybos kiekis. Paklausos kiekis kinta kainos atžvilgiu, todėl kitimo greitis matuojamas prekės vienetais vienam eurui.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Paties dydžio reikšmė</span></h4>
+          \[ \begin{aligned} x(12) &amp;= 9000 - 25\cdot 12^2 \\ &amp;= 9000 - 3600 = 5400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kitimo greitis</span></h4>
+          \[ x'(p) = 0 - 25\cdot 2p = -50p \]
+          \[ x'(12) = -50\cdot 12 = -600 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Kai kaina lygi 12&nbsp;eurų, pirkėjai per savaitę įsigyja 5400 vienetų, o paklausos kiekis mažėja 600 vienetų vienam eurui greičiu. Kainai padidėjus nuo 12 iki 13&nbsp;eurų, paklausos kiekis pasikeis apytiksliai \(-600\) vienetų, t.&nbsp;y. sumažės maždaug 600 vienetų. Šiame modelyje išvestinė neigiama esant teigiamai kainai: kuo prekė brangesnė, tuo mažiau jos perkama.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 6.3, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Prekybos centro lankytojai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Prekybos centro mėnesio lankytojų skaičius, praėjus \(t\) mėnesių nuo atidarymo, yra
+        \[ N(t) = 40te^{-0{,}1t} \]
+        tūkstančių per mėnesį. Raskite lankytojų skaičiaus kitimo greitį praėjus penkiems ir penkiolikai mėnesių nuo atidarymo ir interpretuokite abu rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kas kinta ir kokio dydžio atžvilgiu</span></h4>
+          <p>Mėnesio lankytojų skaičius kinta laiko, matuojamo mėnesiais, atžvilgiu. Išvestinė nusako, kiek tūkstančių pasikeičia šis mėnesio rodiklis per vieną praėjusį mėnesį.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Kitimo greitis</span></h4>
+          <p>Funkcija yra daugiklių \(40t\) ir \(e^{-0{,}1t}\) sandauga, todėl taikome <a href="tema-6.html#sandaugos">sandaugos taisyklę</a>. Antrajam daugikliui papildomai taikome <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>; vidinės funkcijos išvestinė yra \(-0{,}1\):</p>
+          \[ \begin{aligned} N'(t) &amp;= 40\cdot e^{-0{,}1t} \\ &amp;\phantom{=}\; + 40t\cdot e^{-0{,}1t}\cdot(-0{,}1) \\ &amp;= 40e^{-0{,}1t}(1 - 0{,}1t) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Dviem nurodytais momentais</span></h4>
+          \[ \begin{aligned} N'(5) &amp;= 40e^{-0{,}5}(1 - 0{,}5) \\ &amp;\approx 40\cdot 0{,}6065\cdot 0{,}5 \approx 12{,}13 \end{aligned} \]
+          \[ \begin{aligned} N'(15) &amp;= 40e^{-1{,}5}(1 - 1{,}5) \\ &amp;\approx 40\cdot 0{,}2231\cdot(-0{,}5) \approx -4{,}46 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Praėjus penkiems mėnesiams, \(N'(5) \approx 12{,}13\)&nbsp;tūkstančio: per kitą mėnesį mėnesio lankytojų skaičius padidės apytiksliai 12,13&nbsp;tūkstančio. Praėjus penkiolikai mėnesių, \(N'(15) \approx -4{,}46\)&nbsp;tūkstančio: per kitą mėnesį mėnesio lankytojų skaičius pasikeis apytiksliai \(-4{,}46\)&nbsp;tūkstančio, t.&nbsp;y. sumažės. Abi išvestinės nusako mėnesio lankytojų skaičiaus pokytį tūkstančiais per vieną praėjusį mėnesį.</p>
+            <p>Ženklą lemia daugiklis \(1 - 0{,}1t\), nes \(40e^{-0{,}1t}\) yra teigiamas su kiekviena \(t\) reikšme. Pirmasis daugiklis teigiamas, kai \(t &lt; 10\), o vėliau – neigiamas. Taigi pirmuosius dešimt mėnesių centro mėnesio lankytojų skaičius didėja, o po to mažėja.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: įvardykite, kas kinta ir kokio dydžio atžvilgiu, raskite išvestinę, nurodykite matavimo vienetus ir paaiškinkite rezultatą. Atsakyme pateiktos išvestinės ir galutiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Sukauptas programėlės atsisiuntimų skaičius tūkstančiais, praėjus \(t\) dienų nuo jos išleidimo, yra</p>
+          \[ D(t) = 120\sqrt{t} + 8t \]
+          <p>Raskite \(D(9)\) ir \(D'(9)\), nurodykite abiejų matavimo vienetus ir paaiškinkite, ką šios reikšmės reiškia.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė:</strong></p>
+          \[ D'(t) = \frac{60}{\sqrt{t}} + 8 \]
+          <p><strong>Atsakymas.</strong> \(D(9) = 432\) tūkstančiai atsisiuntimų ir \(D'(9) = 28\) tūkstančiai atsisiuntimų per dieną. Praėjus devynioms dienoms nuo išleidimo, programėlė atsisiųsta 432 tūkstančius kartų, o atsisiuntimų skaičiaus kitimo greitis tuo momentu yra 28 tūkstančiai atsisiuntimų per dieną.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įrenginio vertė eurais, praėjus \(t\) metų nuo jo įsigijimo, yra</p>
+          \[ V(t) = 32000e^{-0{,}2t} \]
+          <p>Raskite \(V'(3)\), nurodykite matavimo vienetus ir apytiksliai įvertinkite vertės pokytį per tolesnį pusmetį.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė:</strong></p>
+          \[ V'(t) = -6400e^{-0{,}2t} \]
+          <p><strong>Atsakymas.</strong> \(V'(3) \approx -3512{,}39\)&nbsp;euro per metus. Per pusę metų gauname:</p>
+          <div class="fit-sm">\[ \begin{aligned} \Delta V &amp;\approx V'(3)\cdot\Delta t \\ &amp;\approx -3512{,}39\cdot 0{,}5 \approx -1756{,}20\ \text{euro} \end{aligned} \]</div>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Vidutinis laukimo laikas klientų aptarnavimo punkte minutėmis, kai dirba \(x\) darbuotojų, yra</p>
+          \[ W(x) = \frac{180 + 20x}{x + 1} \]
+          <p>Raskite \(W'(3)\), nurodykite matavimo vienetus ir paaiškinkite rezultatą.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinė (dalmens taisyklė):</strong></p>
+          \[ \begin{aligned} W'(x) &amp;= \frac{20(x + 1) - (180 + 20x)}{(x + 1)^2} \\ &amp;= -\frac{160}{(x + 1)^2} \end{aligned} \]
+          <p><strong>Atsakymas.</strong> \(W'(3) = -10\) minučių vienam papildomam darbuotojui. Jei vietoj trijų darbuotojų dirbtų keturi, vidutinis laukimo laikas sumažėtų maždaug 10&nbsp;minučių.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Sunkvežimio degalų sąnaudos litrais 100 kilometrų priklauso nuo vežamo krovinio: \(F = f(m)\), čia \(m\) – krovinio masė tonomis. Žinoma, kad \(f'(12) = 0{,}8\).</p>
+          <ol type="a">
+            <li>Kokie yra \(f'(m)\) matavimo vienetai ir ką reiškia pateikta reikšmė?</li>
+            <li>Apytiksliai įvertinkite degalų sąnaudų pokytį, kai krovinio masė padidėja nuo 12 iki 14 tonų.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Atsakymas.</strong> a) Litrai 100 kilometrų, tenkantys kiekvienai papildomai krovinio tonai. Kai krovinio masė 12 tonų, papildoma tona padidina degalų sąnaudas maždaug 0,8 litro 100 kilometrų.</p>
+          <p>b) \(\Delta F \approx f'(12)\cdot\Delta m = 0{,}8\cdot 2 = 1{,}6\) litro 100 kilometrų.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">5, 6.1–6.3, 6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">9 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
