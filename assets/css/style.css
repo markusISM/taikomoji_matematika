@@ -1004,3 +1004,9 @@ svg text.c5 { fill: var(--tip); }
 @media (max-width: 440px) { .req ol { padding-left: 1.2em; } .req-ex { margin-left: -1.2em; } }
 .req-ex .dodont + p { margin-top: 10px; }
 @media (max-width: 440px) { .req-ex { padding: 10px 8px 12px 10px; } }
+
+/* 6 tema: išvestinių formulių sąrašai ir valdiklio užrašai */
+.anat-card ul.flist { list-style: none; padding-left: 0; margin: 8px 0 2px; }
+.anat-card ul.flist li { margin: 0 0 8px; overflow-x: auto; overflow-y: hidden; }
+.tryit-lab { font-size: .95rem; color: var(--muted); margin-right: 4px; }
+.chart-legend .sw-dash { background: repeating-linear-gradient(90deg, var(--chart-2) 0 6px, transparent 6px 10px); }

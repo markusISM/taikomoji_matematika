@@ -67,6 +67,13 @@
       slopeDown: 'm < 0 – tiesė leidžiasi',
       slopeZero: 'm = 0 – tiesė horizontali',
       intercept: function (b) { return 'Tiesė kerta vertikalią ašį taške (0; ' + b + ')'; },
+      derivHint: 'Mažinkite Δx ir stebėkite, kaip kirstinė artėja prie liestinės.',
+      secant: 'kirstinė',
+      tangent: 'liestinė',
+      secSlope: 'Kirstinės nuolydis',
+      tanSlope: 'Liestinės nuolydis',
+      derivZero: 'Kai Δx = 0, taškas B sutampa su A ir kirstinės nėra. Kuo mažesnis Δx, tuo kirstinė arčiau liestinės.',
+      derivAria: 'Funkcijos grafikas, kirstinė per taškus A ir B ir liestinė taške A',
       decimal: ',',
       // Grafikų užrašai
       unitEur: 'Eur',
@@ -137,6 +144,13 @@
       slopeDown: 'm < 0 – the line falls',
       slopeZero: 'm = 0 – the line is horizontal',
       intercept: function (b) { return 'The line crosses the vertical axis at (0; ' + b + ')'; },
+      derivHint: 'Make Δx smaller and watch the secant line approach the tangent line.',
+      secant: 'secant line',
+      tangent: 'tangent line',
+      secSlope: 'Slope of the secant line',
+      tanSlope: 'Slope of the tangent line',
+      derivZero: 'When Δx = 0, point B coincides with A and there is no secant line. The smaller Δx is, the closer the secant line is to the tangent line.',
+      derivAria: 'Graph of the function, the secant line through points A and B and the tangent line at A',
       decimal: '.',
       // Chart labels
       unitEur: 'EUR',
@@ -179,7 +193,8 @@
       title: { lt: 'Tiesinis programavimas: simpleksų metodas', en: 'Linear Programming: The Simplex Method' } },
     { id: 'midterm', type: 'exam', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
       title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
-    { id: 't6', num: 6, status: 'soon', title: { lt: 'Pirmos eilės išvestinės', en: 'The First Order Derivative' } },
+    { id: 't6', num: 6, status: 'active', href: { lt: 'tema-6.html' },
+      title: { lt: 'Pirmos eilės išvestinės', en: 'The First Order Derivative' } },
     { id: 't7', num: 7, status: 'soon', title: { lt: 'Aukštesnės eilės išvestinės', en: 'The Higher Order Derivative' } },
     { id: 't8', num: 8, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų išvestinės', en: 'Functions of Several Variables. Partial Derivatives' } },
     { id: 't9', num: 9, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų ekstremumai', en: 'Extrema of Functions of Several Variables, the Lagrange Problem' } },
@@ -249,6 +264,23 @@
       { id: 'm52', status: 'active', href: { lt: 'tema-5-minimizavimas.html', en: 'tema-5-minimizavimas.html' },
         title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' },
         desc: { lt: 'Dualusis uždavinys: mažiausios išlaidos ir reikalavimų viršijimas.', en: 'The dual problem: the minimum cost and the requirements that are exceeded.' } }
+    ],
+    t6: [
+      { id: 'm61', status: 'soon',
+        title: { lt: 'Ribinė analizė', en: 'Marginal Analysis' },
+        desc: { lt: 'Ribinės sąnaudos, pajamos ir pelnas: kaip papildomas pagamintas ir parduotas vienetas keičia įmonės rodiklius.', en: 'Marginal cost, revenue and profit: how one more unit produced and sold changes the company’s figures.' } },
+      { id: 'm62', status: 'soon',
+        title: { lt: 'Pokyčių analizė', en: 'Rates of Change' },
+        desc: { lt: 'Išvestinė kaip kitimo greitis: kaip greitai kinta dydis ir kiek jis pasikeis, kai argumentas pakinta nedaug.', en: 'The derivative as a rate of change: how fast a quantity changes and by how much it changes after a small change in the argument.' } },
+      { id: 'm63', status: 'soon',
+        title: { lt: 'Didėjančios ir mažėjančios funkcijos', en: 'Increasing and Decreasing Functions' },
+        desc: { lt: 'Išvestinės ženklas parodo, kuriuose intervaluose funkcija didėja, o kuriuose mažėja.', en: 'The sign of the derivative shows on which intervals a function increases and on which it decreases.' } },
+      { id: 'm64', status: 'soon',
+        title: { lt: 'Vietiniai ekstremumai', en: 'Relative Extrema' },
+        desc: { lt: 'Kritiniai taškai, vietiniai maksimumai ir minimumai.', en: 'Critical points, relative maxima and minima.' } },
+      { id: 'm65', status: 'soon',
+        title: { lt: 'Absoliutieji ekstremumai', en: 'Absolute Extrema' },
+        desc: { lt: 'Didžiausia ir mažiausia funkcijos reikšmė intervale.', en: 'The largest and the smallest value of a function on an interval.' } }
     ]
   };
 
@@ -297,6 +329,8 @@
                title: { lt: 'Standartiniai maksimizavimo uždaviniai', en: 'Standard Maximization Problems' } },
     m52:     { parent: 't5', topic: 't5', model: 'm52', href: { lt: 'tema-5-minimizavimas.html', en: 'tema-5-minimizavimas.html' },
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
+    t6:      { parent: 'home', href: { lt: 'tema-6.html', en: null },
+               title: { lt: '6 tema', en: 'Topic 6' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -1092,6 +1126,112 @@
   }
 
   /* ------------------------------------------------------------------
+     8b. IŠVESTINĖS IŠVEDIMO BRĖŽINYS  (<div data-widget="deriv-explorer">)
+     f(x) = 0,1x³ − 0,4x² + 0,7x − 0,2; taškas A(3; 1), f'(3) = 1.
+     Slankikliu keičiamas Δx: kirstinė per A ir B(3 + Δx; f(3 + Δx)) artėja prie liestinės.
+     ------------------------------------------------------------------ */
+  function initDerivExplorer(box) {
+    var f = function (x) { return 0.1 * x * x * x - 0.4 * x * x + 0.7 * x - 0.2; };
+    var X0 = 3, Y0 = f(X0), D0 = 1;                 // A(3; 1), f'(3) = 1
+    var S = 44, OX = 34, OY = 306, XMAX = 6.3, YMAX = 6.8, XMIN = -0.6, YMIN = -0.6;
+    var X = function (x) { return OX + x * S; }, Y = function (y) { return OY - y * S; };
+    var r1 = function (v) { return Math.round(v * 10) / 10; };
+    var grid = '', ticks = '';
+    for (var i = 1; i <= 6; i++) {
+      grid += '<line class="grid" x1="' + X(i) + '" y1="' + Y(YMAX) + '" x2="' + X(i) + '" y2="' + Y(YMIN) + '"/>';
+      grid += '<line class="grid" x1="' + X(XMIN) + '" y1="' + Y(i) + '" x2="' + X(XMAX) + '" y2="' + Y(i) + '"/>';
+      ticks += '<text class="muted" x="' + X(i) + '" y="' + (OY + 16) + '" text-anchor="middle">' + i + '</text>';
+      ticks += '<text class="muted" x="' + (OX - 8) + '" y="' + (Y(i) + 4) + '" text-anchor="end">' + i + '</text>';
+    }
+    var pts = [];
+    for (var x = XMIN; x <= XMAX + 1e-9; x += 0.05) pts.push(r1(X(x)) + ' ' + r1(Y(f(x))));
+    var W = X(XMAX) + 14, H = Y(YMIN) + 4;
+    box.classList.add('tryit');
+    box.innerHTML =
+      '<p class="tryit-title">' + ICON.slider + esc(T.tryIt) + '</p>' +
+      '<p class="tryit-note" style="margin:0 0 6px">' + esc(T.derivHint) + '</p>' +
+      '<div class="tryit-eq js-sec" aria-live="polite"></div>' +
+      '<svg class="plot" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(T.derivAria) + '">' +
+        '<defs><clipPath id="de-clip"><rect x="' + X(XMIN) + '" y="' + Y(YMAX) + '" width="' + (X(XMAX) - X(XMIN)) + '" height="' + (Y(YMIN) - Y(YMAX)) + '"/></clipPath></defs>' +
+        grid + ticks +
+        '<line class="ax" x1="' + X(XMIN) + '" y1="' + OY + '" x2="' + (W - 6) + '" y2="' + OY + '"/>' +
+        '<line class="ax" x1="' + OX + '" y1="' + H + '" x2="' + OX + '" y2="8"/>' +
+        '<path class="ah" d="M' + W + ' ' + OY + 'L' + (W - 9) + ' ' + (OY - 4.5) + 'L' + (W - 9) + ' ' + (OY + 4.5) + 'Z"/>' +
+        '<path class="ah" d="M' + OX + ' 0L' + (OX - 4.5) + ' 9L' + (OX + 4.5) + ' 9Z"/>' +
+        '<text class="m" x="' + (W - 12) + '" y="' + (OY - 8) + '">x</text>' +
+        '<text class="m" x="' + (OX + 8) + '" y="14">y</text>' +
+        '<g clip-path="url(#de-clip)">' +
+          '<path class="ln" d="M' + pts.join('L') + '"/>' +
+          '<line class="ln2-dash js-tan"/>' +
+          '<line class="ln3 js-secl"/>' +
+        '</g>' +
+        '<line class="guide js-dx"/><line class="guide js-dy"/>' +
+        '<text class="m js-dxl" text-anchor="middle">Δx</text><text class="m js-dyl">Δy</text>' +
+
+        '<circle class="pt js-b" r="5.5"/><text class="js-bl" style="font-weight:700">B</text>' +
+        '<circle class="pt-hi" r="6" cx="' + X(X0) + '" cy="' + Y(Y0) + '"/>' +
+        '<text x="' + (X(X0) - 16) + '" y="' + (Y(Y0) + 4) + '" style="font-weight:700">A</text>' +
+      '</svg>' +
+      '<ul class="chart-legend"><li><span class="sw" aria-hidden="true"></span><span class="js-fx"></span></li>' +
+        '<li><span class="sw sw-3" aria-hidden="true"></span>' + esc(T.secant) + '</li>' +
+        '<li><span class="sw sw-dash" aria-hidden="true"></span>' + esc(T.tangent) + '</li></ul>' +
+      '<div class="ctrl"><label for="de-h" class="h-lab"></label><input id="de-h" type="range" min="-2" max="2" step="0.1" value="2"><output for="de-h"></output></div>' +
+      '<div class="tryit-eq js-tanv" style="font-size:1rem"></div>' +
+      '<p class="tryit-note js-note"></p>';
+
+    var hIn = $('#de-h', box), hOut = $('output[for="de-h"]', box);
+    var el = function (c) { return $('.' + c, box); };
+    var tan = el('js-tan'), sec = el('js-secl'), dx = el('js-dx'), dy = el('js-dy');
+    var dxl = el('js-dxl'), dyl = el('js-dyl'), b = el('js-b'), bl = el('js-bl');
+    var note = el('js-note');
+    renderInline(el('js-fx'), 'f(x)');
+    renderInline($('.h-lab', box), '\\Delta x');
+    var dec = function (v, n) {
+      var s = String(Number(v.toFixed(n)));
+      return T.decimal === ',' ? s.replace('.', ',') : s;
+    };
+    var tex = function (v, n) { return (v < 0 ? '-' : '') + dec(Math.abs(v), n).replace(',', '{,}'); };
+    var setLine = function (ln, m, x0, y0) {
+      ln.setAttribute('x1', X(XMIN)); ln.setAttribute('y1', Y(y0 + m * (XMIN - x0)));
+      ln.setAttribute('x2', X(XMAX)); ln.setAttribute('y2', Y(y0 + m * (XMAX - x0)));
+    };
+    var place = function (t, x, y) { t.setAttribute('x', x); t.setAttribute('y', y); };
+    setLine(tan, D0, X0, Y0);
+    el('js-tanv').innerHTML = esc(T.tanSlope) + ': <span class="js-tanm"></span>';
+    renderInline(el('js-tanm'), "f'(3) = 1");
+
+    function draw() {
+      var h = Math.round(parseFloat(hIn.value) * 10) / 10;
+      hOut.textContent = dec(h, 1);
+      var show = h !== 0;
+      [sec, dx, dy, dxl, dyl, b, bl].forEach(function (e) { e.style.display = show ? '' : 'none'; });
+      if (!show) {
+        el('js-sec').innerHTML = '<span class="js-secm"></span>';
+        renderInline(el('js-secm'), '\\Delta x = 0');
+        note.textContent = T.derivZero;
+        note.style.display = '';
+        return;
+      }
+      var xb = X0 + h, yb = f(xb), d = yb - Y0, m = d / h;
+      setLine(sec, m, X0, Y0);
+      dx.setAttribute('x1', X(X0)); dx.setAttribute('y1', Y(Y0)); dx.setAttribute('x2', X(xb)); dx.setAttribute('y2', Y(Y0));
+      dy.setAttribute('x1', X(xb)); dy.setAttribute('y1', Y(Y0)); dy.setAttribute('x2', X(xb)); dy.setAttribute('y2', Y(yb));
+      b.setAttribute('cx', X(xb)); b.setAttribute('cy', Y(yb));
+      place(bl, X(xb) + (h > 0 ? 9 : -18), Y(yb) - 8);
+      place(dxl, (X(X0) + X(xb)) / 2, Y(Y0) + (d >= 0 ? 17 : -8));
+      place(dyl, X(xb) + 6, h > 0 ? Y(Y0 + d / 3) + 5 : (Y(Y0) + Y(yb)) / 2 + 5);
+      dxl.style.display = Math.abs(h) * S >= 34 ? '' : 'none';
+      dyl.style.display = h > 0 && d * S >= 30 ? '' : 'none';
+      el('js-sec').innerHTML = '<span class="tryit-lab">' + esc(T.secSlope) + ':</span> <span class="js-secm"></span>';
+      renderInline(el('js-secm'), '\\frac{\\Delta y}{\\Delta x} = \\frac{' + tex(d, 3) + '}{' + tex(h, 1) + '} = ' + tex(m, 3));
+      note.textContent = '';
+      note.style.display = 'none';
+    }
+    hIn.addEventListener('input', draw);
+    draw();
+  }
+
+  /* ------------------------------------------------------------------
      9. FORMULĖS (KaTeX)
      Eilutėje: \( ... \)    Atskiroje eilutėje: \[ ... \]
      ------------------------------------------------------------------ */
@@ -1354,6 +1494,7 @@
       $all('.q', qz).forEach(function (q, i) { initQuestion(q, i, numbering); });
     });
     $all('[data-widget="line-explorer"]').forEach(initLineExplorer);
+    $all('[data-widget="deriv-explorer"]').forEach(initDerivExplorer);
     initTerms();
   }
 
