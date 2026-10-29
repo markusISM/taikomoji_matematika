@@ -1010,3 +1010,9 @@ svg text.c5 { fill: var(--tip); }
 .anat-card ul.flist li { margin: 0 0 8px; overflow-x: auto; overflow-y: hidden; }
 .tryit-lab { font-size: .95rem; color: var(--muted); margin-right: 4px; }
 .chart-legend .sw-dash { background: repeating-linear-gradient(90deg, var(--chart-2) 0 6px, transparent 6px 10px); }
+
+/* Išvestinių lentelės: stulpelių tiek, kiek telpa; sudėtinių funkcijų lentelė – eilutėmis */
+.anat.dtbl { grid-template-columns: repeat(auto-fit, minmax(min(100%, 205px), 1fr)); }
+.anat.dtbl.dtbl-rows { grid-template-columns: 1fr; }
+.dtbl-rows ul.flist { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); align-items: center; gap: 2px 24px; }
+.dtbl-rows ul.flist li { margin: 0; padding: 3px 0; }

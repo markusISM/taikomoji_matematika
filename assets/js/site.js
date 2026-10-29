@@ -1175,7 +1175,7 @@
       '<ul class="chart-legend"><li><span class="sw" aria-hidden="true"></span><span class="js-fx"></span></li>' +
         '<li><span class="sw sw-3" aria-hidden="true"></span>' + esc(T.secant) + '</li>' +
         '<li><span class="sw sw-dash" aria-hidden="true"></span>' + esc(T.tangent) + '</li></ul>' +
-      '<div class="ctrl"><label for="de-h" class="h-lab"></label><input id="de-h" type="range" min="-2" max="2" step="0.1" value="2"><output for="de-h"></output></div>' +
+      '<div class="ctrl"><label for="de-h" class="h-lab"></label><input id="de-h" type="range" min="0" max="2" step="0.1" value="2"><output for="de-h"></output></div>' +
       '<div class="tryit-eq js-tanv" style="font-size:1rem"></div>' +
       '<p class="tryit-note js-note"></p>';
 
