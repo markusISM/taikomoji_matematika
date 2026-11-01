@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Absolute Extrema · Applied Mathematics</title>
+<meta name="description" content="Absolute extrema: the largest and the smallest value of a function on a closed interval, the closed-interval method – critical points and the endpoints. How to solve, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-6-absoliutieji-ekstremumai.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=68">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=68"></script>
+</head>
+<body data-page="m65">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 6 · Applications · Section 5</span>
+    <h1>Absolute Extrema</h1>
+    <p class="lead">In this section we look for the largest and the smallest value of a function over the whole specified interval: the greatest profit during a season, the lowest average cost within a production range, or the highest value of an asset over a specified period.</p>
+    <ul class="jump">
+      <li><a href="#absoliutus">Absolute extrema</a></li>
+      <li><a href="#metodas">Closed-interval method</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. ABSOLIUTIEJI EKSTREMUMAI ============ -->
+  <section class="section" id="absoliutus" aria-labelledby="h-abs">
+    <h2 id="h-abs">Absolute extrema</h2>
+
+    <article class="card">
+      <p>An <strong>absolute extremum</strong> is the largest or smallest value of a function over its entire relevant domain or interval. In applications, this may be the greatest profit during a season, the lowest average cost within a production range, or the highest value of an asset over a specified period. The task is to compare all possible candidates within that range.</p>
+      <p>The <strong>absolute maximum</strong> is the largest function value on the interval, and the <strong>absolute minimum</strong> is the smallest. A <a href="tema-6-vietiniai-ekstremumai.html">relative extremum</a> involves comparison with nearby values; an absolute extremum involves comparison with every value on the specified interval.</p>
+      <p>A relative maximum inside the interval may be lower than the function value at an endpoint. Keep these distinctions in mind:</p>
+      <ul>
+        <li>a relative extremum need not be an absolute extremum;</li>
+        <li>an absolute extremum may occur at an endpoint, even if the function does not change direction there;</li>
+        <li>the candidate list must include all interior critical points and both endpoints. Compare the function values at these candidates to identify the absolute extrema.</li>
+      </ul>
+
+      <figure class="abs-fig">
+        <svg viewBox="0 0 520 270" role="img" aria-label="Graph of a function on the interval from a to b: a relative maximum at x1, the absolute minimum at x2, the absolute maximum at the endpoint b">
+          <line class="ax" x1="24" y1="236" x2="506" y2="236"/>
+          <path class="ah" d="M516 236L506 231.5L506 240.5Z"/>
+          <line class="ax" x1="40" y1="262" x2="40" y2="14"/>
+          <path class="ah" d="M40 4L35.5 14L44.5 14Z"/>
+          <text class="m" x="500" y="226">x</text>
+          <text class="m" x="50" y="18">y</text>
+          <line class="guide" x1="90" y1="236" x2="90" y2="168"/>
+          <line class="guide" x1="200" y1="236" x2="200" y2="92"/>
+          <line class="guide" x1="330" y1="236" x2="330" y2="202"/>
+          <line class="guide" x1="460" y1="236" x2="460" y2="44"/>
+          <path class="ln" d="M90 168C130 118 160 92 200 92C250 92 280 202 330 202C390 202 430 112 460 44"/>
+          <circle class="pt" cx="90" cy="168" r="6"/>
+          <circle class="pt" cx="200" cy="92" r="6"/>
+          <circle class="pt-hi" cx="330" cy="202" r="7"/>
+          <circle class="pt-hi" cx="460" cy="44" r="7"/>
+          <text class="m" x="90" y="256" text-anchor="middle">a</text>
+          <text class="m" x="200" y="256" text-anchor="middle">x<tspan class="n" dy="4" font-size="11">1</tspan></text>
+          <text class="m" x="330" y="256" text-anchor="middle">x<tspan class="n" dy="4" font-size="11">2</tspan></text>
+          <text class="m" x="460" y="256" text-anchor="middle">b</text>
+          <text class="fig-lab" x="200" y="74" text-anchor="middle">relative max</text>
+          <text class="fig-lab exam" x="330" y="226" text-anchor="middle">absolute min</text>
+          <text class="fig-lab exam" x="448" y="30" text-anchor="end">absolute max</text>
+        </svg>
+        <figcaption>Inside the interval \([a,\, b]\) there is a relative maximum at \(x_1\), but the largest value is reached at the endpoint \(b\). The smallest value is reached at the interior critical point \(x_2\).</figcaption>
+      </figure>
+    </article>
+  </section>
+
+  <!-- ============ 2. UŽDAROJO INTERVALO METODAS ============ -->
+  <section class="section" id="metodas" aria-labelledby="h-method">
+    <h2 id="h-method">The closed-interval method</h2>
+
+    <article class="card">
+      <p>A closed interval \([a,\, b]\) includes both endpoints. If a function is continuous throughout this interval, it attains both an absolute maximum and an absolute minimum there.</p>
+      <div class="model-note"><strong>For a function \(f(x)\) continuous on a closed interval \([a,\, b]\), each absolute extremum occurs either at an interior critical point or at an endpoint, \(a\) or \(b\).</strong></div>
+      <p style="margin-top:12px">The examples below have finitely many interior critical points, so the candidates form a finite list.</p>
+      <p>An absolute extremum in the interior is also a relative extremum, so it must occur at a critical point. Endpoints must be checked separately because the largest or smallest value may occur where the specified interval ends. A derivative need not exist at an endpoint for the function to be continuous there.</p>
+      <p>You do not need to classify each critical point using the <a href="tema-6-vietiniai-ekstremumai.html#pozymis">first-derivative test</a>. Evaluate the original function at all retained critical points and both endpoints, then compare the values. Include every candidate, even if it would not give a relative extremum.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Define the variable, the quantity being studied and the closed interval specified in the problem. Construct the function if necessary: revenue is \(R(x) = p\cdot x\); profit is \(P(x) = R(x) - TC(x)\); average cost is total cost divided by the relevant quantity. Check that the function is continuous throughout the interval before applying this method.</li>
+        <li>Differentiate the function. If the derivative is a polynomial, retain its standard polynomial form. Simplify other expressions as needed while preserving the original domain restrictions.</li>
+        <li>Find the critical points: solve \(f'(x) = 0\) and check where the derivative does not exist while the function is defined. Keep only critical points strictly inside the specified interval. Values outside the interval are discarded; endpoints are included separately.</li>
+        <li>Evaluate the original function at every retained critical point and at both endpoints. Use function values, rather than derivative values, for this comparison.</li>
+        <li>Compare the candidate values. The largest is the absolute maximum and the smallest is the absolute minimum. State the requested values, where they occur and their units. If a value occurs at more than one candidate, report every corresponding location.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Forgotten endpoints.</strong> The largest or smallest value may occur at an endpoint, even if the function does not change direction there.</li>
+            <li><strong>Relative instead of absolute.</strong> The function value at a relative maximum may be lower than the value at an endpoint.</li>
+            <li><strong>Critical points outside the interval.</strong> Discard them – only the critical points inside the interval and both endpoints are compared.</li>
+            <li><strong>Derivative values instead of function values.</strong> Use the values of the original function for the comparison.</li>
+            <li><strong>An incomplete answer.</strong> State both the value and the point where it occurs, with their units.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time. In the value tables, the largest value is marked in green and the smallest in red.</p>
+
+    <!-- 1 pavyzdys: TM 6.6, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Seasonal profit of a seaside hotel</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A seaside hotel is open for a six-month season. Its monthly profit, in thousands of euros, \(t\) months after the season opens is
+        <div class="fit-sm">\[ P(t) = 2t^3 - 21t^2 + 60t + 40,\quad 0 \leq t \leq 6 \]</div>
+        Find when monthly profit is largest and smallest during the season, and calculate both values.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>The polynomial is continuous throughout the stated closed interval. Differentiate each term:</p>
+          \[ P'(t) = 6t^2 - 42t + 60 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical points</span></h4>
+          <p>The derivative exists everywhere. Set \(P'(t) = 0\) and solve the quadratic using its discriminant:</p>
+          \[ 6t^2 - 42t + 60 = 0 \]
+          \[ \begin{aligned} D &amp;= (-42)^2 - 4\cdot 6\cdot 60 \\ &amp;= 1764 - 1440 = 324 \\ \sqrt{D} &amp;= 18 \end{aligned} \]
+          \[ \begin{gathered} t_1 = \frac{42 - 18}{2\cdot 6} = \frac{24}{12} = 2 \\ t_2 = \frac{42 + 18}{2\cdot 6} = \frac{60}{12} = 5 \end{gathered} \]
+          <p>Both roots lie strictly inside \([0,\, 6]\), so retain both.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>Evaluate the original profit function at both interior critical points and both endpoints. This gives four candidates:</p>
+          \[ \begin{aligned} P(0) &amp;= 40 \\ P(2) &amp;= 16 - 84 + 120 + 40 = 92 \\ P(5) &amp;= 250 - 525 + 300 + 40 = 65 \\ P(6) &amp;= 432 - 756 + 360 + 40 = 76 \end{aligned} \]
+          <div class="tbl-wrap"><table class="vtable ext">
+            <tbody>
+              <tr><th scope="row">\(t\)</th><td>\(0\)</td><td>\(2\)</td><td>\(5\)</td><td>\(6\)</td></tr>
+              <tr><th scope="row">\(P(t)\)</th><td class="ext-min">\(40\)</td><td class="ext-max">\(92\)</td><td>\(65\)</td><td>\(76\)</td></tr>
+            </tbody>
+          </table></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Maximum monthly profit: 92 thousand euros two months after the season opens. Minimum monthly profit: 40 thousand euros at the start of the season.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 6.6, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Market value of a vintage car</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A vintage car is bought and restored. Its market value, in thousands of euros, \(t\) years after the restoration is \[ V(t) = t^3 - 9t^2 + 24t + 10,\quad 0 \leq t \leq 6 \] The owner intends to sell within six years. Find when market value is largest and smallest over that period, and calculate both values.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>The polynomial is continuous on the specified interval. Differentiate term by term:</p>
+          \[ V'(t) = 3t^2 - 18t + 24 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical points</span></h4>
+          <p>Set the derivative equal to zero and solve the quadratic using its discriminant. Both roots lie inside the specified interval:</p>
+          \[ 3t^2 - 18t + 24 = 0 \]
+          \[ \begin{aligned} D &amp;= (-18)^2 - 4\cdot 3\cdot 24 \\ &amp;= 324 - 288 = 36 \\ \sqrt{D} &amp;= 6 \end{aligned} \]
+          \[ \begin{gathered} t_1 = \frac{18 - 6}{2\cdot 3} = \frac{12}{6} = 2 \\ t_2 = \frac{18 + 6}{2\cdot 3} = \frac{24}{6} = 4 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>Substitute the two interior critical points and both endpoints into the original value function:</p>
+          \[ \begin{aligned} V(0) &amp;= 10 \\ V(2) &amp;= 8 - 36 + 48 + 10 = 30 \\ V(4) &amp;= 64 - 144 + 96 + 10 = 26 \\ V(6) &amp;= 216 - 324 + 144 + 10 = 46 \end{aligned} \]
+          <div class="tbl-wrap"><table class="vtable ext">
+            <tbody>
+              <tr><th scope="row">\(t\)</th><td>\(0\)</td><td>\(2\)</td><td>\(4\)</td><td>\(6\)</td></tr>
+              <tr><th scope="row">\(V(t)\)</th><td class="ext-min">\(10\)</td><td>\(30\)</td><td>\(26\)</td><td class="ext-max">\(46\)</td></tr>
+            </tbody>
+          </table></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Maximum market value: 46 thousand euros after six years. Minimum market value: 10 thousand euros immediately after restoration.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.6, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Average cost in a limited production range</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A plant can produce between 200 and 600 units a day. The average cost of one unit, in euros, is \[ \begin{gathered} ATC(x) = 0.05x + 10 + \frac{1620}{x}, \\ 200 \leq x \leq 600 \end{gathered} \] where \(x\) is the number of units produced per day. Find the daily output at which average cost is lowest and highest, and calculate both costs.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>The function is continuous throughout the stated production range because output is positive. Rewrite the reciprocal term as a negative power, then apply the power rule:</p>
+          \[ ATC(x) = 0.05x + 10 + 1620x^{-1} \]
+          \[ \begin{aligned} ATC'(x) &amp;= 0.05 - 1620x^{-2} \\ &amp;= 0.05 - \frac{1620}{x^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical points</span></h4>
+          <p>The derivative exists throughout the production range. Set it equal to zero, clear the nonzero denominator, and solve the resulting quadratic using its discriminant:</p>
+          \[ 0.05 - \frac{1620}{x^2} = 0 \;\Longrightarrow\; x^2 - 32400 = 0 \]
+          \[ D = 0^2 - 4\cdot 1\cdot(-32400) = 129600 &gt; 0 \]
+          \[ \begin{gathered} x_{1.2} = \frac{-0 \pm \sqrt{129600}}{2} = \pm 180 \\ \Longrightarrow\; x_1 = -180;\quad x_2 = 180 \end{gathered} \]
+          <p><strong>Neither root is retained.</strong> The root \(x = -180\) is a negative output, and \(x = 180\) lies outside \([200,\, 600]\). There are therefore no interior critical points in the permitted range. Only the two endpoints remain as candidates.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>Evaluate average cost at the two permitted endpoints:</p>
+          \[ \begin{gathered} ATC(200) = 10 + 10 + 8.1 = 28.1 \\ ATC(600) = 30 + 10 + 2.7 = 42.7 \end{gathered} \]
+          <div class="tbl-wrap"><table class="vtable ext">
+            <tbody>
+              <tr><th scope="row">\(x\)</th><td>\(200\)</td><td>\(600\)</td></tr>
+              <tr><th scope="row">\(ATC(x)\)</th><td class="ext-min">\(28.1\)</td><td class="ext-max">\(42.7\)</td></tr>
+            </tbody>
+          </table></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Minimum average cost: 28.10&nbsp;euros per unit at 200 units per day. Maximum average cost: 42.70&nbsp;euros per unit at 600 units per day.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.6, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Profit from making chairs</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A workshop can make up to 400 chairs a week. The price at which \(x\) chairs a week can be sold is \[ p = -0.1x + 80 \] euros, and the weekly total cost is \[ TC(x) = 0.02x^2 + 20x + 3000 \] euros. Find the largest and smallest weekly profit within the workshop’s production capacity and the output at which each occurs.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The quantity</span></h4>
+          <p>Multiply quantity by unit price to obtain revenue. Then subtract the entire total cost function and combine like terms. The permitted output runs from zero to the weekly capacity:</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0.1x + 80)x \\ &amp;= -0.1x^2 + 80x \end{aligned} \]
+          \[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= -0.1x^2 + 80x \\ &amp;\phantom{=}\; - 0.02x^2 - 20x - 3000 \\ &amp;= -0.12x^2 + 60x - 3000, \\ &amp;\phantom{=}\; 0 \leq x \leq 400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>The profit function is continuous throughout the stated interval. Differentiate its simplified polynomial form:</p>
+          \[ P'(x) = -0.24x + 60 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical point</span></h4>
+          <p>Set the derivative equal to zero and solve the linear equation:</p>
+          \[ \begin{aligned} &amp;-0.24x + 60 = 0 \\ \Longrightarrow\;&amp; 0.24x = 60 \\ \Longrightarrow\;&amp; x = \frac{60}{0.24} = 250 \end{aligned} \]
+          <p>This solution lies strictly inside \([0,\, 400]\), so retain it.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The values</span></h4>
+          <p>Evaluate the original profit function at the interior critical point and both endpoints:</p>
+          <div class="fit-sm">\[ \begin{aligned} P(0) &amp;= -3000 \\ P(250) &amp;= -0.12\cdot 62500 + 15000 - 3000 \\ &amp;= -7500 + 12000 = 4500 \\ P(400) &amp;= -0.12\cdot 160000 + 24000 - 3000 \\ &amp;= -19200 + 21000 = 1800 \end{aligned} \]</div>
+          <div class="tbl-wrap"><table class="vtable ext">
+            <tbody>
+              <tr><th scope="row">\(x\)</th><td>\(0\)</td><td>\(250\)</td><td>\(400\)</td></tr>
+              <tr><th scope="row">\(P(x)\)</th><td class="ext-min">\(-3000\)</td><td class="ext-max">\(4500\)</td><td>\(1800\)</td></tr>
+            </tbody>
+          </table></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Maximum weekly profit: 4500&nbsp;euros at 250 chairs per week. Minimum weekly profit: \(-3000\)&nbsp;euros at zero output.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.6, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Orders during an advertising campaign</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The daily number of orders received by an online shop \(t\) days after the start of a ten-day promotional campaign is \[ N(t) = 200te^{-0.2t} + 50,\quad 0 \leq t \leq 10 \] orders. Find when the daily number of orders is largest and smallest during the campaign, and calculate both values.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>The function is continuous throughout the stated closed interval. Apply the <a href="tema-6.html#sandaugos">product rule</a> to the first term. For its exponential factor, use the <a href="tema-6.html#sudetines">chain rule</a> with inner derivative \(-0.2\). The constant term has derivative zero:</p>
+          \[ \begin{aligned} N'(t) &amp;= 200e^{-0.2t} \\ &amp;\phantom{=}\; + 200t\cdot e^{-0.2t}\cdot(-0.2) \\ &amp;= 200e^{-0.2t}(1 - 0.2t) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical point</span></h4>
+          <p>The derivative exists throughout the interval. The exponential factor is always positive, so only the factor in brackets can make the product zero:</p>
+          \[ 1 - 0.2t = 0 \;\Longrightarrow\; t = 5 \]
+          <p>This critical point lies inside \([0,\, 10]\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>Evaluate the original order function at the critical point and both endpoints. Use unrounded values for the calculation and round the final order counts:</p>
+          \[ \begin{aligned} N(0) &amp;= 50 \\ N(5) &amp;= 1000e^{-1} + 50 \approx 417.9 \\ N(10) &amp;= 2000e^{-2} + 50 \approx 320.7 \end{aligned} \]
+          <div class="tbl-wrap"><table class="vtable ext">
+            <tbody>
+              <tr><th scope="row">\(t\)</th><td>\(0\)</td><td>\(5\)</td><td>\(10\)</td></tr>
+              <tr><th scope="row">\(N(t)\)</th><td class="ext-min">\(50\)</td><td class="ext-max">\(\approx 417.9\)</td><td>\(\approx 320.7\)</td></tr>
+            </tbody>
+          </table></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Most orders: approximately 418 per day, five days after the campaign starts. Fewest orders: 50 per day at the start.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 6.6, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>When to sell a plot of woodland</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A plot of woodland can be sold at any time within the next forty years. Its present value, in euros, if it is sold \(t\) years from now is
+        <div class="fit-sm">\[ V(t) = 100000e^{0.4\sqrt{t} - 0.04t},\quad 0 \leq t \leq 40 \]</div>
+        Find the sale time that gives the largest present value within the stated period, and calculate that value.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>The function is continuous on the whole closed interval, including its endpoints. For positive time, use the <a href="tema-6.html#sudetines">chain rule</a> on the exponential. Rewrite \(\sqrt{t} = t^{0.5}\); the square root has derivative \(\dfrac{1}{2\sqrt{t}}\). Differentiate the full exponent, then multiply by the original exponential:</p>
+          <div class="fit-sm">\[ \begin{aligned} V'(t) &amp;= 100000e^{0.4\sqrt{t} - 0.04t}\cdot\left(\frac{0.4}{2\sqrt{t}} - 0.04\right) \\ &amp;= 100000e^{0.4\sqrt{t} - 0.04t}\cdot\left(\frac{0.2}{\sqrt{t}} - 0.04\right) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical point</span></h4>
+          <p>For positive time, the exponential factor is always positive. Set the expression in brackets equal to zero, isolate the square root, then square both sides:</p>
+          \[ \begin{aligned} &amp;\frac{0.2}{\sqrt{t}} - 0.04 = 0 \\ \Longrightarrow\;&amp; \sqrt{t} = \frac{0.2}{0.04} = 5 \\ \Longrightarrow\;&amp; t = 25 \end{aligned} \]
+          <p>At \(t = 0\), the derivative formula contains \(\sqrt{t}\) in the denominator, so there is no finite derivative. The original function is still defined and continuous there. Since \(t = 0\) is an endpoint, its function value must be included in the comparison.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>Evaluate the original present-value function at the interior critical point and both endpoints:</p>
+          \[ \begin{aligned} V(0) &amp;= 100000e^0 = 100000 \\ V(25) &amp;= 100000e^{2 - 1} \\ &amp;= 100000e \approx 271828 \\ V(40) &amp;= 100000e^{0.4\sqrt{40} - 1.6} \\ &amp;\approx 100000e^{0.9298} \approx 253406 \end{aligned} \]
+          <div class="tbl-wrap"><table class="vtable ext">
+            <tbody>
+              <tr><th scope="row">\(t\)</th><td>\(0\)</td><td>\(25\)</td><td>\(40\)</td></tr>
+              <tr><th scope="row">\(V(t)\)</th><td class="ext-min">\(100000\)</td><td class="ext-max">\(\approx 271828\)</td><td>\(\approx 253406\)</td></tr>
+            </tbody>
+          </table></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> The largest present value is approximately 271&nbsp;828&nbsp;euros, obtained by selling the plot 25 years from now.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: the derivative, the critical points inside the interval, the function values at the critical points and at the endpoints, the comparison and the answer. The answer gives the derivatives, the candidates and the final results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A seasonal business is open for ten months. Its monthly profit, in thousands of euros, \(t\) months after the season opens is</p>
+          <div class="fit-sm">\[ P(t) = t^3 - 15t^2 + 48t + 100,\quad 0 \leq t \leq 10 \]</div>
+          <p>In which month is the profit largest, in which smallest, and how large is it in each case?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative:</strong></p>
+          \[ P'(t) = 3t^2 - 30t + 48 \]
+          <p><strong>The critical points:</strong></p>
+          \[ \begin{aligned} D &amp;= (-30)^2 - 4\cdot 3\cdot 48 \\ &amp;= 900 - 576 = 324 \\ \sqrt{D} &amp;= 18 \end{aligned} \]
+          \[ \begin{gathered} t_1 = \frac{30 - 18}{2\cdot 3} = 2 \\ t_2 = \frac{30 + 18}{2\cdot 3} = 8 \end{gathered} \]
+          <p><strong>Answer.</strong> The candidates are \(t = 0;\ 2;\ 8;\ 10\), and the values are \(P(0) = 100\), \(P(2) = 144\), \(P(8) = 36\), \(P(10) = 80\). The profit is largest in the second month, 144 thousand euros, and smallest in the eighth, 36 thousand euros.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A workshop can make between 100 and 400 units a week. The price at which \(x\) units a week can be sold is</p>
+          \[ p = 300 - 10\sqrt{x} \]
+          <p>euros, the variable cost is 60&nbsp;euros a unit and the fixed costs are 2000&nbsp;euros a week. What is the largest weekly profit the workshop can make, and what is the smallest?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          \[ R(x) = p\cdot x = 300x - 10x^{\frac{3}{2}} \]
+          \[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= 240x - 10x^{\frac{3}{2}} - 2000, \\ &amp;\phantom{=}\; 100 \leq x \leq 400 \end{aligned} \]
+          <p><strong>The derivative:</strong></p>
+          \[ P'(x) = 240 - 15\sqrt{x} \]
+          <p><strong>Answer.</strong> The only critical point is \(\sqrt{x} = 16\) \(\;\Longrightarrow\; x = 256\), and it lies inside the range, so the candidates are \(x = 100;\ 256;\ 400\) with the values \(P(100) = 12000\), \(P(256) = 18480\), \(P(400) = 14000\). The largest weekly profit is 18&nbsp;480&nbsp;euros, at 256 units a week, and the smallest is 12&nbsp;000&nbsp;euros, at 100 units a week.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>An online shop runs a twelve-day campaign. On day \(t\) of the campaign it receives</p>
+          \[ N(t) = 150te^{-0.25t} + 30,\quad 0 \leq t \leq 12 \]
+          <p>orders. On which day is the number of orders largest, on which smallest, and how many orders are there?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative</strong> (the product rule, with the chain rule inside):</p>
+          \[ \begin{aligned} N'(t) &amp;= 150e^{-0.25t} \\ &amp;\phantom{=}\; + 150t\cdot e^{-0.25t}\cdot(-0.25) \\ &amp;= 150e^{-0.25t}(1 - 0.25t) \end{aligned} \]
+          <p><strong>Answer.</strong> The only critical point is \(t = 4\), so the candidates are \(t = 0;\ 4;\ 12\) with the values \(N(0) = 30\), \(N(4) \approx 250.7\), \(N(12) \approx 119.6\). The shop receives the most orders on the fourth day, about 251, and the fewest on the day the campaign starts, 30.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A pond is stocked with fish. The expected yield, in kilograms, \(t\) weeks after the stocking is</p>
+          \[ E(t) = \frac{4000t}{t^2 + 100} + 50,\quad 0 \leq t \leq 30 \]
+          <p>In which week is the expected yield largest, in which smallest, and how large is it in each case?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative</strong> (the quotient rule):</p>
+          \[ \begin{aligned} E'(t) &amp;= \frac{4000(t^2 + 100) - 4000t\cdot 2t}{(t^2 + 100)^2} \\ &amp;= \frac{4000(100 - t^2)}{(t^2 + 100)^2} \end{aligned} \]
+          <p><strong>Answer.</strong> The only critical point inside the range is \(t = 10\) (the root \(t = -10\) is discarded), so the candidates are \(t = 0;\ 10;\ 30\) with the values \(E(0) = 50\), \(E(10) = 250\), \(E(30) = 170\). The expected yield is largest in the tenth week, 250&nbsp;kilograms, and smallest at the stocking, 50&nbsp;kilograms.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 5, 6.1–6.3, 6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 10.4</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Calculus for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">Chapter 4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

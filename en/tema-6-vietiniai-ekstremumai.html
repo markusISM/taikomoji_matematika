@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relative Extrema · Applied Mathematics</title>
+<meta name="description" content="Relative extrema: relative maximum and minimum, critical points, the first-derivative test and the sign chart. Maximising revenue and profit, minimising cost. Step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-6-vietiniai-ekstremumai.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=68">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=68"></script>
+</head>
+<body data-page="m64">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 6 · Applications · Section 4</span>
+    <h1>Relative Extrema</h1>
+    <p class="lead">In this section derivatives help to find where a quantity reaches a high or low value: which output gives the greatest profit, which price gives the greatest revenue, or which period of ownership gives the lowest average cost.</p>
+    <ul class="jump">
+      <li><a href="#ekstremumai">Relative extrema</a></li>
+      <li><a href="#pozymis">First-derivative test</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. VIETINIAI EKSTREMUMAI ============ -->
+  <section class="section" id="ekstremumai" aria-labelledby="h-ext">
+    <h2 id="h-ext">Relative extrema</h2>
+
+    <article class="card">
+      <p>Many management problems ask where a quantity reaches a high or low value: which output gives the greatest profit, which price gives the greatest revenue, or which period of ownership gives the lowest average cost. Relative extrema describe values that are highest or lowest compared with nearby values. Derivatives help us locate and classify these candidates.</p>
+      <p>A function \(f(x)\) has a <strong>relative (local) maximum</strong> at \(x_0\) if its value there is at least as large as its values at nearby points. It has a <strong>relative (local) minimum</strong> if its value there is at most as large as its values at nearby points. Together, these are called <strong>relative extrema</strong>.</p>
+      <p>The word <em>relative</em> means that we compare nearby values only. A relative maximum need not be the largest value on the whole domain, and a relative minimum need not be the smallest. A function may have several local peaks and valleys. Finding an absolute maximum or minimum requires comparison over the full relevant domain.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The location of an extremum and the function value</h3>
+      <p>Distinguish the <strong>location</strong> from the <strong>function value</strong>. The location \(x_0\) tells us at which output, price or time an extremum occurs. The value \(f(x_0)\) gives the corresponding profit, revenue or cost. State both when the question asks for them. In this section, relative extrema refer to interior points; endpoints must be considered separately when finding <a href="tema-6-absoliutieji-ekstremumai.html">absolute extrema</a>.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. PIRMASIS POŽYMIS ============ -->
+  <section class="section" id="pozymis" aria-labelledby="h-test">
+    <h2 id="h-test">Critical points and the first-derivative test</h2>
+
+    <article class="card">
+      <p>To find possible relative extrema, first locate the <a href="tema-6-didejimas-ir-mazejimas.html#kritiniai">critical points</a>. A number \(x_0\) in the domain is a critical point if</p>
+      <div class="formula">\[ \begin{gathered} f'(x_0) = 0 \quad \text{or} \\ f'(x_0) \text{ does not exist.} \end{gathered} \]</div>
+      <p>Being a critical point is necessary for an interior relative extremum, but it is not sufficient. A zero derivative may occur while a function continues increasing or decreasing on both sides. Critical points are therefore candidates that must be classified.</p>
+      <p>The <strong>first-derivative test</strong> compares the signs immediately to the left and right of a critical point. For a function continuous at that point:</p>
+      <ul>
+        <li>if \(f'(x)\) changes from positive to negative at \(x_0\), then \(f(x_0)\) is a <strong>relative maximum</strong>;</li>
+        <li>if \(f'(x)\) changes from negative to positive at \(x_0\), then \(f(x_0)\) is a <strong>relative minimum</strong>;</li>
+        <li>if \(f'(x)\) keeps the same sign on both sides, there is <strong>no extremum</strong> at \(x_0\).</li>
+      </ul>
+      <p>The sign chart summarises the test. An upward arrow followed by a downward arrow indicates a relative maximum; a downward arrow followed by an upward arrow indicates a relative minimum. If the arrows point in the same direction, the critical point does not give a relative extremum.</p>
+      <div data-widget="sign-chart" data-spec='{"fp":"f&#39;(x)","f":"f(x)","v":"x","pts":[{"x":"x_1","z":true,"t":"max"},{"x":"x_2","z":true,"t":"min"},{"x":"x_3","z":true}],"s":["+","-","+","+"],"outL":false,"outR":false}'></div>
+      <p class="formula-note" style="text-align:center">At \(x_1\) there is a relative maximum, at \(x_2\) a relative minimum, and at \(x_3\) there is no extremum: the derivative is positive on both sides of it.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Define the variable, the quantity being studied and their units. If needed, construct the function: revenue is price times quantity, \(R(x) = p\cdot x\); profit is \(P(x) = R(x) - TC(x)\); average cost is total cost divided by the relevant quantity. Treat the variable as continuous when applying derivatives.</li>
+        <li>Differentiate the function. If the derivative is a polynomial, combine like terms and retain its standard polynomial form. Simplify other expressions as needed.</li>
+        <li>Find the critical points: solve \(f'(x) = 0\) and check where the derivative does not exist while the function is defined. Solve any resulting quadratic equation using the discriminant. Discard solutions that make no sense in the context of the problem, such as a negative quantity or time.</li>
+        <li>Mark the critical points on a number line (in applied problems, starting from 0). Choose a test value from each interval into which they divide the line and substitute it into the derivative. Use the signs on both sides to classify each critical point as a relative maximum, a relative minimum or neither.</li>
+        <li>Evaluate the original function at each confirmed extremum. Give the location and function value with their units. If the question asks for the largest or smallest value over the full domain, also justify why the local result gives that overall value.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:22px">The sign chart</h3>
+      <p>Write the derivative’s sign above each interval and an arrow below it to show whether the original function increases or decreases. Label the classification below each critical point. A zero above a dot means the derivative is zero there; no derivative value is shown where it does not exist. Classify the critical point from the signs on both sides.</p>
+      <p>In applied problems a quantity, a price or a time cannot be negative, so start the sign chart at 0 and leave its right end open. If the function is not defined at 0, for example when it divides by the variable, mark this point with a hollow dot.</p>
+      <div data-widget="sign-chart" data-spec='{"fp":"f&#39;(x)","f":"f(x)","v":"x","pts":[{"x":"0"},{"x":"x_1","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>A critical point is not yet an extremum.</strong> A zero derivative may occur while a function continues increasing or decreasing on both sides. Classify the point from the signs on both sides.</li>
+            <li><strong>The location and the value.</strong> \(x_0\) tells at which output, price or time the extremum occurs, and \(f(x_0)\) gives the profit, revenue or cost itself. State both when the question asks for them.</li>
+            <li><strong>Relative and absolute.</strong> A relative maximum need not be the largest value over the whole domain. If the largest or smallest value is asked for, justify it.</li>
+            <li><strong>Solutions that make no sense.</strong> Discard solutions that give a negative quantity or time.</li>
+            <li><strong>The revenue function.</strong> When the price depends on the quantity, substitute the whole price expression before multiplying by \(x\).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- 1 pavyzdys: TM 6.5, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Ferry revenue</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The number of passengers \(x\) a ferry route carries a month and the ticket price are related by \[ p = 120 - 0.1x \] euros. How many passengers per month maximise revenue? Find the corresponding ticket price and monthly revenue.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The quantity</span></h4>
+          <p>Monthly revenue is the ticket price multiplied by the number of passengers. The price depends on \(x\), so substitute the price relation before multiplying:</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (120 - 0.1x)x \\ &amp;= 120x - 0.1x^2 \end{aligned} \]
+          <p>Revenue is measured in euros per month.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Differentiate the linear and quadratic terms:</p>
+          \[ R'(x) = 120 - 0.2x \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical point</span></h4>
+          <p>The polynomial derivative exists everywhere. Set it equal to zero:</p>
+          \[ \begin{aligned} &amp;120 - 0.2x = 0 \\ \Longrightarrow\;&amp; 0.2x = 120 \\ \Longrightarrow\;&amp; x = 600 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The signs</span></h4>
+          <p>Choose a value on each side of the critical point and substitute it into the derivative:</p>
+          \[ \begin{gathered} R'(200) = 120 - 40 = 80 &gt; 0 \\ R'(1000) = 120 - 200 = -80 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(x)","f":"R(x)","v":"x","pts":[{"x":"0"},{"x":"600","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test and the values</span></h4>
+          <p>The derivative changes from positive to negative at \(x = 600\), so \(R(600)\) is a relative maximum. Revenue increases before this output and decreases afterwards, so this is also the largest revenue.</p>
+          \[ \begin{aligned} R(600) &amp;= 120\cdot 600 - 0.1\cdot 600^2 \\ &amp;= 72000 - 36000 = 36000 \end{aligned} \]
+          \[ p = 120 - 0.1\cdot 600 = 60 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Maximum monthly revenue is 36&nbsp;000&nbsp;euros at 600 passengers per month and a ticket price of 60&nbsp;euros.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 6.5, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Revenue from backpacks</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The price at which \(x\) backpacks a month can be sold is \[ p = 90 - 2\sqrt{x} \] euros. Find the monthly sales quantity and unit price that maximise revenue, and calculate the maximum revenue.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The quantity</span></h4>
+          <p>Multiply the unit price by the monthly sales quantity. Rewrite the square-root term as a power to apply the power rule:</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (90 - 2\sqrt{x})x \\ &amp;= 90x - 2x\sqrt{x} = 90x - 2x^{\frac{3}{2}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Apply the <a href="tema-6.html#daugiklio">constant multiple rule</a> and the power rule to each term:</p>
+          \[ R'(x) = 90 - 2\cdot\frac{3}{2}x^{\frac{1}{2}} = 90 - 3\sqrt{x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical point</span></h4>
+          <p>Set the derivative equal to zero. Isolate the square root, then square both sides:</p>
+          \[ \begin{aligned} &amp;90 - 3\sqrt{x} = 0 \\ \Longrightarrow\;&amp; \sqrt{x} = 30 \\ \Longrightarrow\;&amp; x = 900 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The signs</span></h4>
+          <p>Choose a value on each side of the critical point:</p>
+          \[ \begin{gathered} R'(400) = 90 - 3\cdot 20 = 30 &gt; 0 \\ R'(1600) = 90 - 3\cdot 40 = -30 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(x)","f":"R(x)","v":"x","pts":[{"x":"0"},{"x":"900","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test and the values</span></h4>
+          <p>The derivative changes from positive to negative at \(x = 900\), so \(R(900)\) is a relative maximum. Revenue increases before this output and decreases afterwards, so this is also the largest revenue.</p>
+          \[ \begin{aligned} R(900) &amp;= 90\cdot 900 - 2\cdot 900\cdot 30 \\ &amp;= 81000 - 54000 = 27000 \end{aligned} \]
+          \[ p = 90 - 2\cdot 30 = 30 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Maximum monthly revenue is 27&nbsp;000&nbsp;euros at 900 backpacks per month and a unit price of 30&nbsp;euros.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.5, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Profit of a print shop</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A print shop sells \(x\) copies of a book a month at the price \[ p = -0.002x + 30 \] euros, and its monthly total cost is \[ TC(x) = 0.001x^2 + 6x + 4000 \] euros. Find the monthly sales quantity and unit price that maximise profit, and calculate the maximum profit.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The quantity</span></h4>
+          <p>First multiply quantity by unit price to obtain revenue. Then subtract the entire total cost function, changing the sign of each cost term, and combine like terms:</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0.002x + 30)x \\ &amp;= -0.002x^2 + 30x \end{aligned} \]
+          \[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= -0.002x^2 + 30x \\ &amp;\phantom{=}\; - 0.001x^2 - 6x - 4000 \\ &amp;= -0.003x^2 + 24x - 4000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Differentiate the simplified profit function term by term:</p>
+          \[ P'(x) = -0.006x + 24 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical point</span></h4>
+          <p>Set the derivative equal to zero and solve the linear equation:</p>
+          \[ \begin{aligned} &amp;-0.006x + 24 = 0 \\ \Longrightarrow\;&amp; 0.006x = 24 \\ \Longrightarrow\;&amp; x = \frac{24}{0.006} = 4000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The signs</span></h4>
+          <p>Substitute one value below the critical point and one above it:</p>
+          \[ \begin{gathered} P'(2000) = -12 + 24 = 12 &gt; 0 \\ P'(6000) = -36 + 24 = -12 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(x)","f":"P(x)","v":"x","pts":[{"x":"0"},{"x":"4000","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The test and the values</span></h4>
+          <p>The derivative changes from positive to negative at \(x = 4000\), giving a relative maximum. Profit increases before this output and decreases afterwards, so this is also the largest profit.</p>
+          \[ \begin{aligned} P(4000) &amp;= -0.003\cdot 4000^2 \\ &amp;\phantom{=}\; + 24\cdot 4000 - 4000 \\ &amp;= -48000 + 96000 - 4000 \\ &amp;= 44000 \end{aligned} \]
+          \[ p = -0.002\cdot 4000 + 30 = 22 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Maximum monthly profit is 44&nbsp;000&nbsp;euros at 4000 copies per month and a unit price of 22&nbsp;euros.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.5, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Monthly profit from a new product</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A company’s monthly profit from a product, in thousands of euros, \(t\) months after its launch is \[ P(t) = t^3 - 18t^2 + 96t + 40 \] Find the locations and values of the relative extrema of profit.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>Differentiate each term and keep the derivative in standard polynomial form:</p>
+          \[ P'(t) = 3t^2 - 36t + 96 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical points</span></h4>
+          <p>The derivative exists everywhere. Set it equal to zero and divide by three. Solve the resulting quadratic using its discriminant:</p>
+          \[ t^2 - 12t + 32 = 0 \]
+          \[ \begin{aligned} D &amp;= (-12)^2 - 4\cdot 1\cdot 32 \\ &amp;= 144 - 128 = 16 &gt; 0 \end{aligned} \]
+          \[ \begin{gathered} t_{1.2} = \frac{12 \pm \sqrt{16}}{2} = \frac{12 \pm 4}{2} \\ \Longrightarrow\; t_1 = 4;\quad t_2 = 8 \end{gathered} \]
+          <p>There are two critical points, so both must be classified.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The signs</span></h4>
+          <p>Choose one interior test value from each of the three intervals and substitute it into the polynomial derivative:</p>
+          <div class="fit-sm">\[ \begin{aligned} P'(2) &amp;= 3\cdot 2^2 - 36\cdot 2 + 96 = 36 &gt; 0 \\ P'(6) &amp;= 3\cdot 6^2 - 36\cdot 6 + 96 = -12 &lt; 0 \\ P'(10) &amp;= 3\cdot 10^2 - 36\cdot 10 + 96 = 36 &gt; 0 \end{aligned} \]</div>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(t)","f":"P(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true,"t":"max"},{"x":"8","z":true,"t":"min"}],"s":["+","-","+"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The test and the values</span></h4>
+          <p>At \(t = 4\), the derivative changes from positive to negative, giving a relative maximum. At \(t = 8\), it changes from negative to positive, giving a relative minimum. Substitute both times into the original profit function:</p>
+          \[ \begin{gathered} P(4) = 64 - 288 + 384 + 40 = 200 \\ P(8) = 512 - 1152 + 768 + 40 = 168 \end{gathered} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Relative maximum: 200 thousand euros at month four. Relative minimum: 168 thousand euros at month eight.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.5, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Average annual cost of a delivery van</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A delivery van costs 21&nbsp;600 euros to buy, and over its first \(t\) years repairs and servicing cost \(600t^2\) euros in total. The average annual cost of owning the van is therefore \[ A(t) = \frac{21600 + 600t^2}{t} \] euros per year. Find the period of ownership that minimises average annual cost, and calculate that minimum cost.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>Divide each term in the numerator by time, then rewrite the reciprocal term as a negative power. This allows the power rule to be used directly:</p>
+          \[ A(t) = \frac{21600}{t} + 600t = 21600t^{-1} + 600t \]
+          \[ \begin{aligned} A'(t) &amp;= -21600t^{-2} + 600 \\ &amp;= 600 - \frac{21600}{t^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical point</span></h4>
+          <p>For \(t &gt; 0\), the derivative exists everywhere. Set it equal to zero, clear the nonzero denominator, and solve the resulting quadratic using its discriminant:</p>
+          \[ 600 - \frac{21600}{t^2} = 0 \;\Longrightarrow\; t^2 - 36 = 0 \]
+          \[ D = 0^2 - 4\cdot 1\cdot(-36) = 144 &gt; 0 \]
+          \[ \begin{gathered} t_{1.2} = \frac{-0 \pm \sqrt{144}}{2} = \pm 6 \\ \Longrightarrow\; t_1 = -6;\quad t_2 = 6 \end{gathered} \]
+          <p>Discard \(t = -6\) because the period of ownership cannot be negative. Only the positive root is a critical point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The signs</span></h4>
+          <p>Substitute one positive time below the critical point and one above it. The function is not defined at \(t = 0\), so this point is marked with a hollow dot in the chart:</p>
+          \[ \begin{gathered} A'(3) = 600 - 2400 = -1800 &lt; 0 \\ A'(12) = 600 - 150 = 450 &gt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;(t)","f":"A(t)","v":"t","pts":[{"x":"0","o":true},{"x":"6","z":true,"t":"min"}],"s":["-","+"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The test and the value</span></h4>
+          <p>The derivative changes from negative to positive at \(t = 6\), giving a relative minimum. Average annual cost decreases before this time and increases afterwards, so this is also the lowest average annual cost.</p>
+          \[ \begin{aligned} A(6) &amp;= \frac{21600}{6} + 600\cdot 6 \\ &amp;= 3600 + 3600 = 7200 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> The minimum average annual cost is 7200&nbsp;euros per year after six years of ownership.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 6.5, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Market share after a rebranding</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> \(t\) months after a rebranding a company holds \[ S(t) = \frac{400t}{t^2 + 64},\quad t \geq 0 \] percent of its market. Find when market share is largest and calculate that share.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>Apply the <a href="tema-6.html#dalmens">quotient rule</a>. Differentiate the numerator and denominator separately, retain the subtraction sign, and square the original denominator. Expand and combine the terms in the numerator:</p>
+          \[ \begin{aligned} S'(t) &amp;= \frac{400(t^2 + 64) - 400t\cdot 2t}{(t^2 + 64)^2} \\ &amp;= \frac{400t^2 + 25600 - 800t^2}{(t^2 + 64)^2} \\ &amp;= \frac{-400t^2 + 25600}{(t^2 + 64)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical point</span></h4>
+          <p>The denominator is always positive, so the derivative exists everywhere. Set the numerator equal to zero, divide by its nonzero coefficient, and solve the quadratic using the discriminant:</p>
+          \[ t^2 - 64 = 0 \]
+          \[ D = 0^2 - 4\cdot 1\cdot(-64) = 256 &gt; 0 \]
+          \[ \begin{gathered} t_{1.2} = \frac{-0 \pm \sqrt{256}}{2} = \pm 8 \\ \Longrightarrow\; t_1 = -8;\quad t_2 = 8 \end{gathered} \]
+          <p>Discard \(t = -8\) because time is measured from the rebranding onwards.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The signs</span></h4>
+          <p>Choose a nonnegative time on each side of the critical point and substitute it into the derivative:</p>
+          \[ S'(4) = \frac{-400\cdot 4^2 + 25600}{(4^2 + 64)^2} = 3 &gt; 0 \]
+          <div class="fit-sm">\[ S'(12) = \frac{-400\cdot 12^2 + 25600}{(12^2 + 64)^2} \approx -0.74 &lt; 0 \]</div>
+          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"0"},{"x":"8","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The test and the value</span></h4>
+          <p>The derivative changes from positive to negative at \(t = 8\), so \(S(8)\) is a relative maximum. Market share increases before this time and decreases afterwards, so this is also its largest value.</p>
+          \[ S(8) = \frac{400\cdot 8}{64 + 64} = \frac{3200}{128} = 25 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> The maximum market share is 25&nbsp;percent, reached eight months after the rebranding.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 6.5, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Training time and worker output</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A firm gives each worker \(x\) hours of training a month. A trained worker then assembles \[ Q(x) = 400 + 300\ln(x + 1) - 50x \] units per month. Find the monthly training time that maximises output per worker and calculate the maximum output.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>Use the <a href="tema-6.html#sudetines">chain rule</a> for the logarithm: the inner function is \(u(x) = x + 1\), whose derivative is one. Combine the terms over a common denominator and collect the numerator:</p>
+          \[ \begin{aligned} Q'(x) &amp;= \frac{300}{x + 1} - 50 = \frac{300 - 50(x + 1)}{x + 1} \\ &amp;= \frac{-50x + 250}{x + 1} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical point</span></h4>
+          <p>Training time is nonnegative, so the denominator is nonzero and the derivative exists. Set the numerator equal to zero:</p>
+          \[ -50x + 250 = 0 \;\Longrightarrow\; x = 5 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The signs</span></h4>
+          <p>Substitute one training time below the critical point and one above it:</p>
+          \[ \begin{gathered} Q'(1) = \frac{200}{2} = 100 &gt; 0 \\ Q'(9) = \frac{-200}{10} = -20 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"0"},{"x":"5","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The test and the value</span></h4>
+          <p>The derivative changes from positive to negative at \(x = 5\), so \(Q(5)\) is a relative maximum. Output increases before this training time and decreases afterwards, so this is also the largest output.</p>
+          \[ Q(5) = 400 + 300\ln 6 - 50\cdot 5 \approx 687.5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Maximum output is approximately 687.5 units per worker per month, with five hours of training per month.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 6.5, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">Example 8</span>
+        <h3>Cumulative revenue without an extremum</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The revenue a software firm has earned from a product altogether, in thousands of euros, \(t\) years after its release is \[ R(t) = t^3 - 12t^2 + 48t + 100 \] Find any relative extrema of cumulative revenue.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative</span></h4>
+          <p>Differentiate term by term and retain the standard polynomial form:</p>
+          \[ R'(t) = 3t^2 - 24t + 48 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The critical point</span></h4>
+          <p>The derivative exists everywhere. Set it equal to zero and divide by three. Use the discriminant to solve the quadratic:</p>
+          \[ t^2 - 8t + 16 = 0 \]
+          \[ D = (-8)^2 - 4\cdot 1\cdot 16 = 64 - 64 = 0 \]
+          \[ t_{1.2} = \frac{8 \pm \sqrt{0}}{2} = 4 \]
+          <p>A zero discriminant gives one repeated root. Its classification still depends on the derivative’s signs on both sides.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The signs</span></h4>
+          <p>Choose one value on each side of the critical point and substitute it into the polynomial derivative:</p>
+          \[ \begin{aligned} R'(2) &amp;= 3\cdot 2^2 - 24\cdot 2 + 48 = 12 &gt; 0 \\ R'(6) &amp;= 3\cdot 6^2 - 24\cdot 6 + 48 = 12 &gt; 0 \end{aligned} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(t)","f":"R(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true}],"s":["+","+"],"outR":false}'></div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The test</span></h4>
+          <p>The derivative is positive on both sides of \(t = 4\), so this critical point gives neither a relative maximum nor a relative minimum.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Cumulative revenue has no relative extrema: the sign of the derivative does not change at the critical point \(t = 4\).
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: the quantity, the derivative, the critical points, the signs and the sign chart, the test and the values, the answer. The answer gives the functions, the derivatives and the final results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The weekly demand for a gadget is given by</p>
+          \[ p = 200e^{-0.002x} \]
+          <p>euros, where \(x\) is the number of gadgets sold. How many gadgets a week should be sold to earn the largest revenue, what price does that mean, and how large is the revenue?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          \[ R(x) = p\cdot x = 200xe^{-0.002x} \]
+          <p><strong>The derivative</strong> (the product rule, with the chain rule inside):</p>
+          \[ \begin{aligned} R'(x) &amp;= 200e^{-0.002x} \\ &amp;\phantom{=}\; + 200x\cdot e^{-0.002x}\cdot(-0.002) \\ &amp;= 200e^{-0.002x}(1 - 0.002x) \end{aligned} \]
+          <p><strong>Answer.</strong> An exponential is never zero, so the critical point comes from \(1 - 0.002x = 0\), that is \(x = 500\). The derivative passes from plus to minus there, so the revenue has a maximum. Selling 500 gadgets a week at \(p = 200e^{-1} \approx 73.58\)&nbsp;euros gives the largest revenue, \(R(500) \approx 36787.94\)&nbsp;euros a week.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A workshop sells \(x\) units a month at the price</p>
+          \[ p = 150 - 2\sqrt{x} \]
+          <p>euros. The variable cost is 30&nbsp;euros a unit and the fixed costs are 4000&nbsp;euros a month. How many units should be made and sold to earn the largest profit, at what price, and how large is that profit?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = 150x - 2x\sqrt{x} \\ &amp;= 150x - 2x^{\frac{3}{2}} \end{aligned} \]
+          <div class="fit-sm">\[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= 150x - 2x^{\frac{3}{2}} - 30x - 4000 \\ &amp;= 120x - 2x^{\frac{3}{2}} - 4000 \end{aligned} \]</div>
+          <p><strong>The derivative:</strong></p>
+          \[ P'(x) = 120 - 3\sqrt{x} \]
+          <p><strong>Answer.</strong> The critical point is</p>
+          \[ \begin{aligned} &amp;120 - 3\sqrt{x} = 0 \\ \Longrightarrow\;&amp; \sqrt{x} = 40 \\ \Longrightarrow\;&amp; x = 1600 \end{aligned} \]
+          <p>and the derivative passes from plus to minus there, so the profit has a maximum. Making and selling 1600 units a month at \(p = 70\)&nbsp;euros gives the largest profit, \(P(1600) = 60\,000\)&nbsp;euros a month.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A firm’s quarterly profit, in thousands of euros, \(t\) quarters after a reorganisation is</p>
+          \[ P(t) = 2t^3 - 39t^2 + 180t + 300 \]
+          <p>Find the relative extrema of the profit and interpret them.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative:</strong></p>
+          \[ P'(t) = 6t^2 - 78t + 180 \]
+          <p><strong>The critical points:</strong></p>
+          \[ \begin{aligned} D &amp;= (-78)^2 - 4\cdot 6\cdot 180 \\ &amp;= 6084 - 4320 = 1764 \\ \sqrt{D} &amp;= 42 \end{aligned} \]
+          \[ \begin{gathered} t_1 = \frac{78 - 42}{2\cdot 6} = 3 \\ t_2 = \frac{78 + 42}{2\cdot 6} = 10 \end{gathered} \]
+          <p><strong>Answer.</strong> At \(t = 3\) the derivative passes from plus to minus, so \(P(3) = 543\) thousand euros is a relative maximum; at \(t = 10\) it passes from minus to plus, so \(P(10) = 200\) thousand euros is a relative minimum. The reorganisation lifts the profit for three quarters, the profit then slides for seven quarters, and from the tenth quarter on it grows again.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A workshop’s average cost of making one unit, in euros, when it makes \(x\) units a day is</p>
+          \[ ATC(x) = \frac{x^2 + 40x + 4000}{x + 20} \]
+          <p>At which output is the average cost smallest, and how large is it then?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative</strong> (the quotient rule):</p>
+          <div class="fit-sm">\[ \begin{gathered} ATC'(x) = \\ \frac{(2x + 40)(x + 20) - (x^2 + 40x + 4000)}{(x + 20)^2} \\ = \frac{x^2 + 40x - 3200}{(x + 20)^2} \end{gathered} \]</div>
+          <p><strong>The critical points:</strong></p>
+          \[ \begin{aligned} D &amp;= 40^2 - 4\cdot 1\cdot(-3200) \\ &amp;= 1600 + 12800 = 14400 \\ \sqrt{D} &amp;= 120 \end{aligned} \]
+          \[ \begin{gathered} x_1 = \frac{-40 + 120}{2} = 40 \\ x_2 = \frac{-40 - 120}{2} = -80 \end{gathered} \]
+          <p><strong>Answer.</strong> The root \(x_2 = -80\) is a negative output and is discarded. At \(x = 40\) the derivative passes from minus to plus, so the average cost has a minimum: making 40 units a day makes a unit cheapest, \(ATC(40) = 120\)&nbsp;euros.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 5, 6.1–6.3, 6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Calculus for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">Chapter 4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marginal Analysis · Applied Mathematics</title>
+<meta name="description" content="Marginal analysis: the total cost, revenue, profit and average total cost functions; marginal cost, marginal revenue, marginal profit and their interpretation. How to solve, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-6-ribine-analize.html">
+<link rel="alternate" hreflang="en" href="../en/tema-6-ribine-analize.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=68">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=68"></script>
+</head>
+<body data-page="m61">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 6 · Applications · Section 1</span>
+    <h1>Marginal Analysis</h1>
+    <p class="lead">This section examines how a firm’s costs, revenue and profit change when output changes. Derivatives are used to estimate the effect of a small increase in production and sales: whether additional output would increase profit at the current production level.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Functions</a></li>
+      <li><a href="#ribiniai">Marginal functions</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. FUNKCIJOS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">The functions of a firm</h2>
+
+    <article class="card">
+      <p>Here \(x\) denotes the quantity produced and sold over a stated period. We treat output as a continuous variable, even when the actual products are counted in whole units.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Total cost</h3>
+      <p>The total cost of producing \(x\) units includes variable costs, which depend on output, and fixed costs, which do not change with output over the range considered. If the variable cost per unit is constant at \(V\) and fixed costs are \(F\), then</p>
+      <div class="formula">\[ TC(x) = Vx + F \]</div>
+      <p>This linear model assumes a constant variable cost per unit. Other cost models may be nonlinear; when a total cost function is supplied, use that function directly.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Revenue</h3>
+      <p>Revenue equals the quantity sold multiplied by the unit price. If the unit price is constant at \(p\) euros, then \(R(x) = px\). In a price–demand model, the price depends on the quantity sold: the relation \(p = p(x)\) gives the unit price at which \(x\) units can be sold. The models below assume that all units sell at this same price:</p>
+      <div class="formula">\[ R(x) = x\cdot p(x) \]</div>
+      <p class="tip"><strong>Keep the notation distinct.</strong> Lowercase \(p\) denotes the unit price, while uppercase \(P\) denotes total profit.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Profit</h3>
+      <p>Profit is revenue minus total cost:</p>
+      <div class="formula">\[ P(x) = R(x) - TC(x) \]</div>
+
+      <h3 class="subhead" style="margin-top:22px">Average total cost</h3>
+      <p>Average total cost is the total cost per unit at an output of \(x\) units. Divide total cost by output:</p>
+      <div class="formula">\[ ATC(x) = \frac{TC(x)}{x} \]</div>
+      <p>Average total cost is defined only for positive output. Dividing fixed costs by \(x\) spreads them across the units produced. This lowers the fixed-cost component per unit as output grows, but average total cost need not always fall: rising variable costs per unit may eventually offset this effect.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. RIBINIAI DYDŽIAI ============ -->
+  <section class="section" id="ribiniai" aria-labelledby="h-marg">
+    <h2 id="h-marg">The marginal functions</h2>
+
+    <article class="card">
+      <p>A <strong>marginal function</strong> is the derivative of the corresponding function with respect to output. The table summarises the notation used in this section:</p>
+      <div class="anat dtbl dtbl-rows">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Total cost</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Function</span>\(TC(x)\)</li>
+            <li><span class="fl-lab">Marginal function</span>\(MC(x) = TC'(x)\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Revenue</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Function</span>\(R(x) = x\cdot p(x)\)</li>
+            <li><span class="fl-lab">Marginal function</span>\(MR(x) = R'(x)\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Profit</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Function</span>\(P(x) = R(x) - TC(x)\)</li>
+            <li><span class="fl-lab">Marginal function</span>\(MP(x) = P'(x) = MR(x) - MC(x)\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">4</span><strong>Average total cost</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Function</span>\(ATC(x) = \dfrac{TC(x)}{x}\)</li>
+            <li><span class="fl-lab">Marginal function</span>\(MATC(x) = ATC'(x)\)</li>
+          </ul>
+        </div>
+      </div>
+      <p>The identity \(MP(x) = MR(x) - MC(x)\) follows by differentiating revenue minus total cost. It provides two ways to calculate marginal profit: differentiate the profit function directly, or subtract marginal cost from marginal revenue. Comparing the two results is a useful check.</p>
+    </article>
+
+    <article class="card" id="interpretacija">
+      <h3 class="subhead">What a marginal value means</h3>
+      <p>At an output of \(x_0\) units, marginal cost, revenue and profit give instantaneous rates of change. They can also be used to estimate the effect of producing and selling one additional unit:</p>
+      <ul>
+        <li>if the output increases by one unit from \(x_0\), the <strong>total cost</strong> changes by approximately \(MC(x_0)\);</li>
+        <li>if the output increases by one unit from \(x_0\), the <strong>revenue</strong> changes by approximately \(MR(x_0)\);</li>
+        <li>if the output increases by one unit from \(x_0\), the <strong>profit</strong> changes by approximately \(MP(x_0)\).</li>
+      </ul>
+      <p>A positive marginal value indicates an increase in the corresponding quantity for a sufficiently small increase in output; a negative value indicates a decrease. Negative marginal profit means that marginal cost exceeds marginal revenue at that output level.</p>
+
+      <details class="more more--why">
+        <summary><span class="ico" aria-hidden="true">?</span><span>Why approximately?</span></summary>
+        <div class="more-body">
+          <p>A derivative measures an instantaneous rate, whereas adding one unit is a finite change. The estimate is accurate when the marginal function changes little over that interval; it is not automatically accurate at every output level. For an exact one-unit change, evaluate the original function at the new output and subtract its value at the original output. For a different small increase in output, multiply the marginal value by the size of that increase.</p>
+        </div>
+      </details>
+
+      <h3 class="subhead" style="margin-top:22px">Units</h3>
+      <p>Marginal cost, revenue and profit are measured in money per unit of output, such as euros per kilogram or euros per copy. For \(MATC\), the quantity being differentiated is already a cost per unit. Its units are therefore euros per unit of output per additional unit of output. At \(x_0\), the value \(MATC(x_0)\) estimates how much average total cost changes when output increases by one unit. A negative value means average cost is falling locally; it does not mean total cost is falling.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Define the variable: \(x\) is the quantity produced and sold over the stated period. Identify the units of output and money.</li>
+        <li>Construct the required function. Use \(R(x) = x\cdot p(x)\) for revenue. When the variable cost per unit is constant, use \(TC(x) = Vx + F\) for total cost. Then obtain profit from \(P(x) = R(x) - TC(x)\), or average total cost from \(ATC(x) = \dfrac{TC(x)}{x}\). If the required function is already given, start with it.</li>
+        <li>Simplify the function where this makes differentiation easier. Identify the <a href="tema-6.html#taisykles">differentiation rules</a> and show the main steps. Differentiate before substituting a numerical output level.</li>
+        <li>Substitute the specified output into the marginal function. Keep sufficient precision during the calculation and round the final monetary estimate appropriately.</li>
+        <li>State the units and interpret the sign. Explain the estimated effect of one additional unit at the specified output. Distinguish a change in a total from a change in an average.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Substituting into the original function.</strong> Substitute the output into the marginal function, not into the total cost, revenue or profit function.</li>
+            <li><strong>Substituting before differentiating.</strong> First find the derivative as a function, and only then substitute the numerical output.</li>
+            <li><strong>Price and profit.</strong> Lowercase \(p\) denotes the unit price, while uppercase \(P\) denotes total profit.</li>
+            <li><strong>Total and marginal profit.</strong> These are different quantities: positive total profit can coexist with negative marginal profit.</li>
+            <li><strong>A change in an average.</strong> A negative value of \(MATC\) means that average total cost is falling, not that total cost is falling.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- 1 pavyzdys: TM 6.2, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Marginal cost of a coffee roastery</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A coffee roastery roasts \(x\) kilograms of coffee a day. Its daily total cost, in euros, is
+        <div class="fit-sm">\[ TC(x) = 0.0003x^3 - 0.09x^2 + 80x + 6000 \]</div>
+        Find the marginal cost function and the marginal cost at an output of 200 kilograms a day. Interpret the result.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal cost function</span></h4>
+          <p>Total cost is already given. Differentiate each term using the <a href="tema-6.html#daugiklio">constant multiple rule</a> and the power rule: multiply each coefficient by its exponent, then reduce the exponent by one. The linear term contributes its coefficient, and the fixed cost contributes zero because it does not depend on output.</p>
+          \[ \begin{aligned} MC(x) &amp;= TC'(x) \\ &amp;= 0.0003\cdot 3x^2 - 0.09\cdot 2x + 80 \\ &amp;= 0.0009x^2 - 0.18x + 80 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Marginal cost at \(x = 200\)</span></h4>
+          <p>Substitute the daily output into the marginal cost function, not the original total cost function:</p>
+          <div class="fit-sm">\[ \begin{aligned} MC(200) &amp;= 0.0009\cdot 200^2 - 0.18\cdot 200 + 80 \\ &amp;= 36 - 36 + 80 = 80 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> \(MC(x) = 0.0009x^2 - 0.18x + 80\); \(MC(200) = 80\)&nbsp;euros per kilogram. Increasing daily output from 200 to 201 kilograms increases daily total cost by approximately 80&nbsp;euros. This is an estimate of the additional cost, not the total cost or the average cost per kilogram.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 6.2, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Marginal cost of a cloud service</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A cloud-service provider serves \(x\) users. Its monthly total cost, in euros, is \[ TC(x) = 800 + 150\ln(x + 1) \] Find the marginal cost function and the marginal cost at 99 users. Interpret the result.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal cost function</span></h4>
+          <p>The fixed cost has derivative zero. Keep the coefficient of the logarithm and apply the <a href="tema-6.html#sudetines">chain rule</a>. The outer function is the natural logarithm; its derivative is the reciprocal of its input. The inner function is \(u(x) = x + 1\), whose derivative is one. Multiply by this inner derivative, so the denominator remains the original expression inside the logarithm:</p>
+          \[ \begin{aligned} MC(x) &amp;= TC'(x) = 0 + 150\cdot\frac{1}{x + 1} \\ &amp;= \frac{150}{x + 1} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Marginal cost at \(x = 99\)</span></h4>
+          \[ MC(99) = \frac{150}{99 + 1} = \frac{150}{100} = 1.5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> \(MC(x) = \dfrac{150}{x + 1}\); \(MC(99) = 1.5\)&nbsp;euros per user. Increasing the number of users from 99 to 100 raises monthly total cost by approximately 1.50&nbsp;euros. In this model, marginal cost falls as the number of users grows: each additional user adds less to cost than the previous one. Total cost nevertheless continues to increase because its derivative remains positive.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.2, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Marginal revenue of a board game</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A board-game publisher can sell \(x\) copies of a game a month at the unit price \[ p = -0.02x + 60,\quad 0 \leq x \leq 3000 \] where \(p\) is in euros. Find the revenue function and the marginal revenue function, and compute the marginal revenue at 1000 copies a month. Interpret the result.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The revenue function</span></h4>
+          <p>The given relation describes the price of one copy. To obtain total revenue, multiply that price by the number of copies sold. Distribute the output variable across both terms in the price expression. This gives a polynomial that can be differentiated term by term:</p>
+          \[ \begin{aligned} R(x) &amp;= x\cdot p(x) = x(-0.02x + 60) \\ &amp;= -0.02x^2 + 60x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal revenue</span></h4>
+          <p>Differentiate the quadratic and linear terms using the power rule, then substitute the specified monthly sales:</p>
+          \[ \begin{aligned} MR(x) &amp;= R'(x) = -0.02\cdot 2x + 60 \\ &amp;= -0.04x + 60 \end{aligned} \]
+          \[ \begin{aligned} MR(1000) &amp;= -0.04\cdot 1000 + 60 \\ &amp;= -40 + 60 = 20 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> \(R(x) = -0.02x^2 + 60x\), \(MR(x) = -0.04x + 60\); \(MR(1000) = 20\)&nbsp;euros per copy. Increasing monthly sales from 1000 to 1001 copies raises revenue by approximately 20&nbsp;euros. At 1000 copies, the unit price is \(p(1000) = 40\)&nbsp;euros. Marginal revenue is lower than this price because selling an additional copy requires a lower price on every copy sold under this model. The revenue gained from additional sales is partly offset by that price reduction.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.2, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Marginal revenue of a robot vacuum cleaner</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The weekly demand for a robot vacuum cleaner is described by \[ p = 120e^{-0.002x} \] where \(p\) is the unit price in euros and \(x\) is the quantity sold. Find the marginal revenue function and compute the marginal revenue at 200 units a week. Interpret the result.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The revenue function</span></h4>
+          <p>Multiply the quantity sold by the price–demand function to obtain weekly revenue:</p>
+          \[ R(x) = x\cdot p(x) = 120xe^{-0.002x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal revenue</span></h4>
+          <p>Revenue is the product of \(120x\) and \(e^{-0.002x}\). Apply the <a href="tema-6.html#sandaugos">product rule</a>: differentiate the first factor and keep the second unchanged, then add the unchanged first factor multiplied by the derivative of the second. For the exponential factor, use the <a href="tema-6.html#sudetines">chain rule</a>. Its derivative is the original exponential multiplied by the derivative of its exponent, \(-0.002\). This creates the negative contribution in the second term:</p>
+          \[ \begin{aligned} MR(x) &amp;= 120\cdot e^{-0.002x} \\ &amp;\phantom{=}\; + 120x\cdot e^{-0.002x}\cdot(-0.002) \\ &amp;= 120e^{-0.002x}(1 - 0.002x) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Marginal revenue at \(x = 200\)</span></h4>
+          <p>In the simplified derivative, the exponential factor is the unit price and the bracket accounts for the effect of lowering that price as sales grow. Substitute the output into both factors. Use the unrounded exponential value in the calculation and round the final result:</p>
+          \[ \begin{aligned} MR(200) &amp;= 120e^{-0.4}(1 - 0.4) \\ &amp;\approx 120\cdot 0.6703\cdot 0.6 \approx 48.26 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> \(MR(x) = 120e^{-0.002x}(1 - 0.002x)\); \(MR(200) \approx 48.26\)&nbsp;euros per unit. Increasing weekly sales from 200 to 201 vacuum cleaners raises weekly revenue by approximately 48.26&nbsp;euros. The positive value indicates that revenue is increasing at this sales level. This result alone does not establish whether profit increases; that also depends on marginal cost.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.2, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Marginal profit of garden benches</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A workshop makes wooden garden benches. Its monthly price–demand relation gives the price per bench in euros, and its cost function gives monthly total cost in euros: \[ \begin{gathered} p = -0.05x + 90 \\ TC(x) = 0.01x^2 + 20x + 15000 \end{gathered} \] Compute the marginal profit at outputs of 300, 500 and 700 benches a month and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The revenue and profit functions</span></h4>
+          <p>Multiply quantity by unit price to obtain revenue. Subtract the entire total cost function to obtain profit, changing the sign of each cost term. Combine the quadratic terms, then the linear terms:</p>
+          <div class="fit-sm">\[ R(x) = x(-0.05x + 90) = -0.05x^2 + 90x \]</div>
+          \[ \begin{aligned} P(x) &amp;= -0.05x^2 + 90x \\ &amp;\phantom{=}\; - 0.01x^2 - 20x - 15000 \\ &amp;= -0.06x^2 + 70x - 15000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal profit</span></h4>
+          <p>Differentiate the simplified profit function using the power rule. The fixed-cost term has derivative zero. The resulting function shows how the rate of change of profit depends on monthly output:</p>
+          \[ \begin{aligned} MP(x) &amp;= P'(x) = -0.06\cdot 2x + 70 \\ &amp;= -0.12x + 70 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Marginal profit at the three levels</span></h4>
+          <p>Evaluate the same marginal profit function at each specified output. Keep the sign of each result:</p>
+          \[ \begin{aligned} MP(300) &amp;= -0.12\cdot 300 + 70 \\ &amp;= -36 + 70 = 34 \\[6pt] MP(500) &amp;= -0.12\cdot 500 + 70 \\ &amp;= -60 + 70 = 10 \\[6pt] MP(700) &amp;= -0.12\cdot 700 + 70 \\ &amp;= -84 + 70 = -14 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>\(MP(300) = 34\)&nbsp;euros per bench, \(MP(500) = 10\)&nbsp;euros per bench and \(MP(700) = -14\)&nbsp;euros per bench. Starting from 300 benches, an additional bench raises monthly profit by approximately 34&nbsp;euros; starting from 500, it raises profit by approximately 10&nbsp;euros. Starting from 700, the estimated change is \(-14\)&nbsp;euros, so profit decreases by about 14&nbsp;euros.</p>
+            <p>Marginal profit changes from positive to negative between 500 and 700 benches. For comparison, total profit is \(P(500) = 5000\)&nbsp;euros and \(P(700) = 4600\)&nbsp;euros. These profit levels are different quantities from the marginal values: positive total profit can coexist with negative marginal profit.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 6.2, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Average cost of making vases</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A glassworks makes \(x\) decorative vases a month at a total cost, in euros, of \[ TC(x) = 0.05x^2 + 30x + 12000 \] Find the average total cost function and the marginal average total cost function. Compute both at an output of 200 vases a month and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The average total cost function</span></h4>
+          <p>Divide total cost by output to obtain average total cost. Divide each term separately: the quadratic term becomes linear, the linear term becomes constant, and the fixed-cost term becomes a reciprocal. Write this reciprocal as a negative power so that the power rule can be used. Average total cost is defined only for positive output:</p>
+          \[ \begin{aligned} ATC(x) &amp;= \frac{TC(x)}{x} \\ &amp;= \frac{0.05x^2}{x} + \frac{30x}{x} + \frac{12000}{x} \\ &amp;= 0.05x + 30 + 12000x^{-1} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal average total cost</span></h4>
+          <p>Differentiate the three terms separately. The linear term contributes its coefficient, the constant contributes zero, and the negative power contributes a minus sign while its exponent decreases by one. Finally, rewrite the negative power as a fraction. The <a href="tema-6.html#dalmens">quotient rule</a> would also work on the original fraction, but simplifying first requires fewer steps.</p>
+          \[ \begin{aligned} MATC(x) &amp;= ATC'(x) \\ &amp;= 0.05 - 12000x^{-2} \\ &amp;= 0.05 - \frac{12000}{x^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Values at \(x = 200\)</span></h4>
+          <p>Evaluate both functions: average total cost gives a cost per vase, while its derivative gives the rate at which that average changes as output increases:</p>
+          \[ \begin{aligned} ATC(200) &amp;= 0.05\cdot 200 + 30 + \frac{12000}{200} \\ &amp;= 10 + 30 + 60 = 100 \end{aligned} \]
+          \[ \begin{aligned} MATC(200) &amp;= 0.05 - \frac{12000}{200^2} \\ &amp;= 0.05 - 0.3 = -0.25 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>\(ATC(x) = 0.05x + 30 + \dfrac{12000}{x}\), \(MATC(x) = 0.05 - \dfrac{12000}{x^2}\); \(ATC(200) = 100\)&nbsp;euros per vase, and \(MATC(200) = -0.25\)&nbsp;euros per vase per additional vase of output.</p>
+            <p>At 200 vases a month, average total cost is 100&nbsp;euros per vase. Increasing output from 200 to 201 vases changes that average by approximately \(-0.25\)&nbsp;euros per vase: a decrease of about 25&nbsp;cents per vase. At this output, the reduction in fixed cost per vase outweighs the increase in variable cost per vase. This describes a fall in average cost, not in total cost.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: build the function of the quantity in question, find its derivative, substitute the given output and explain the result. The answer gives the functions, the derivatives and the final results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A dairy’s daily total cost of producing \(x\) litres of yoghurt is</p>
+          \[ TC(x) = 0.0002x^3 - 0.06x^2 + 30x + 900 \]
+          <p>euros. Find the marginal cost at an output of 150 litres a day and interpret it.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative:</strong></p>
+          \[ \begin{aligned} MC(x) &amp;= TC'(x) \\ &amp;= 0.0006x^2 - 0.12x + 30 \end{aligned} \]
+          <p><strong>Answer.</strong> \(MC(150) = 25.5\)&nbsp;euros a litre. If the output increases by one litre from 150 litres a day, the total cost will grow by approximately 25.50&nbsp;euros.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The monthly demand for a smart doorbell is given by</p>
+          \[ p = \frac{1800}{x + 20} \]
+          <p>euros, where \(x\) is the number of doorbells sold. Find the revenue function, the marginal revenue function and the marginal revenue at a sales level of 40 doorbells; interpret the result.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          \[ R(x) = p\cdot x = \frac{1800x}{x + 20} \]
+          <p><strong>The derivative (the quotient rule):</strong></p>
+          \[ \begin{aligned} MR(x) &amp;= R'(x) \\ &amp;= \frac{1800(x + 20) - 1800x}{(x + 20)^2} \\ &amp;= \frac{36000}{(x + 20)^2} \end{aligned} \]
+          <p><strong>Answer.</strong> \(MR(40) = 10\)&nbsp;euros a doorbell. If sales increase by one doorbell from 40 a month, the revenue will grow by approximately 10&nbsp;euros.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A tool maker sells \(x\) units a month at the price</p>
+          \[ p = 200 - 4\sqrt{x} \]
+          <p>euros, and its monthly total cost is</p>
+          \[ TC(x) = 0.05x^2 + 50x + 3000 \]
+          <p>euros. Find the marginal revenue, the marginal cost and the marginal profit at an output of 100 units; interpret the marginal profit.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective functions:</strong></p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = 200x - 4x\sqrt{x} \\ &amp;= 200x - 4x^{\frac{3}{2}} \end{aligned} \]
+          <div class="fit-sm">\[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= 150x - 4x^{\frac{3}{2}} - 0.05x^2 - 3000 \end{aligned} \]</div>
+          <p><strong>The derivatives:</strong></p>
+          \[ \begin{gathered} MR(x) = 200 - 6\sqrt{x} \\ MC(x) = 0.1x + 50 \\ MP(x) = 150 - 6\sqrt{x} - 0.1x \end{gathered} \]
+          <p><strong>Answer.</strong> \(MR(100) = 140\)&nbsp;euros, \(MC(100) = 60\)&nbsp;euros and \(MP(100) = 80\)&nbsp;euros a unit. If the output increases by one unit from 100 a month, the profit will grow by approximately 80&nbsp;euros.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A plant’s daily total cost of making \(x\) units is</p>
+          \[ TC(x) = 0.01x^3 - 2x^2 + 200x + 6000 \]
+          <p>euros. Find the average total cost and the marginal average total cost at an output of 100 units; interpret both.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          <div class="fit-sm">\[ \begin{aligned} ATC(x) &amp;= \frac{TC(x)}{x} \\ &amp;= 0.01x^2 - 2x + 200 + 6000x^{-1} \end{aligned} \]</div>
+          <p><strong>The derivative:</strong></p>
+          \[ \begin{aligned} MATC(x) &amp;= ATC'(x) \\ &amp;= 0.02x - 2 - \frac{6000}{x^2} \end{aligned} \]
+          <p><strong>Answer.</strong> \(ATC(100) = 160\)&nbsp;euros a unit and \(MATC(100) = -0.6\)&nbsp;euros a unit. One unit costs 160&nbsp;euros on average; if the output increases by one unit from 100 a day, the average cost of a unit will fall by approximately 60&nbsp;cents.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 5, 6.1–6.3, 6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 9</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

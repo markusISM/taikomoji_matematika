@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change Analysis · Applied Mathematics</title>
+<meta name="description" content="Change analysis: the derivative as a rate of change – what is changing, with respect to what and in what units; estimating a change, Δy ≈ f'(x₀)·Δx. How to solve, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-6-pokyciu-analize.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=68">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=68"></script>
+</head>
+<body data-page="m62">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 6 · Applications · Section 2</span>
+    <h1>Change Analysis</h1>
+    <p class="lead">In this section the derivative is applied not only to cost, revenue and profit but also to other quantities: it shows how fast a quantity is changing and by how much it will change if the quantity it depends on moves a little.</p>
+    <ul class="jump">
+      <li><a href="#greitis">Rate of change</a></li>
+      <li><a href="#ivertis">Estimating a change</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. KITIMO GREITIS ============ -->
+  <section class="section" id="greitis" aria-labelledby="h-rate">
+    <h2 id="h-rate">The derivative as a rate of change</h2>
+
+    <article class="card">
+      <p>Cost, revenue and profit are not the only quantities worth watching. A membership, a market share, the value of a machine, the time an operation takes, the number of units customers are willing to buy – each of them depends on something else, and in each case the practical question is the same: how fast is it changing, and by how much will it change if that something else moves a little? The derivative answers both questions, and all that differs from one application to the next is which two quantities are involved and what units they carry.</p>
+      <p>Let a quantity \(y\) depend on a quantity \(x\), so that \(y = f(x)\). Then \(f'(x_0)\) is the rate at which \(y\) changes per unit of \(x\) at the point \(x_0\). Three things have to be named every time, and an answer that leaves any of them out is incomplete:</p>
+      <div class="phases phases--3">
+        <div class="phase"><span class="ph-ico" aria-hidden="true">1</span><div><strong>What is changing</strong><span>The quantity \(y\).</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">2</span><div><strong>With respect to what</strong><span>The quantity \(x\).</span></div></div>
+        <div class="phase"><span class="ph-ico" aria-hidden="true">3</span><div><strong>In what units</strong><span>The unit of \(y\) divided by the unit of \(x\).</span></div></div>
+      </div>
+
+      <h3 class="subhead" style="margin-top:22px">Units</h3>
+      <p>If \(y\) is in euros and \(x\) in years, the derivative is in euros per year; if \(y\) is in minutes and \(x\) counts units produced, it is in minutes per unit. The unit is not decoration: it is what makes the number readable.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The sign</h3>
+      <p>The sign gives the direction. If \(f'(x_0) &gt; 0\) the quantity is growing at that point, if \(f'(x_0) &lt; 0\) it is falling, and the larger the absolute value the faster the movement.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. POKYČIO ĮVERTIS ============ -->
+  <section class="section" id="ivertis" aria-labelledby="h-est">
+    <h2 id="h-est">Estimating a change</h2>
+
+    <article class="card">
+      <p>The derivative is what the quotient of the two changes settles on as the step shrinks, so for a step \(\Delta x\) that is small</p>
+      <div class="formula">\[ \begin{gathered} \frac{\Delta y}{\Delta x} \approx f'(x_0) \\ \Longrightarrow\; \Delta y \approx f'(x_0)\cdot\Delta x \end{gathered} \]</div>
+      <p>This is the working formula of the whole section. The step need not be one unit; it is multiplied by the rate just as it stands. When the step is one unit the formula shortens to \(\Delta y \approx f'(x_0)\), and the result is read in the words</p>
+      <div class="model-note"><strong>If \(x\) increases by one unit from \(x_0\), then \(y\) will change by approximately \(f'(x_0)\).</strong></div>
+      <p style="margin-top:12px">The estimate is good for small steps and gets better the smaller the step is, because the rate itself changes as \(x\) moves. How the secant line approaches the tangent line as \(\Delta x\) decreases can be seen in the <a href="tema-6.html#isvestine">interactive graph on the Topic 6 page</a>.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Name the two quantities: what is changing, and with respect to what. Write down the function that connects them.</li>
+        <li>Differentiate it, writing the differentiation out in full.</li>
+        <li>Substitute the point and compute \(f'(x_0)\). If the value of the quantity itself is asked for as well, compute \(f(x_0)\) separately – the two numbers answer different questions.</li>
+        <li>If a step other than one unit is asked about, multiply: \(\Delta y \approx f'(x_0)\cdot\Delta x\).</li>
+        <li>State the answer with its unit and interpret it: if \(x\) increases by one unit from the given point, by how much \(y\) will change.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>An incomplete answer.</strong> The answer does not say what is changing, with respect to what, or in what units the rate is measured.</li>
+            <li><strong>A step other than one unit.</strong> The rate must be multiplied by the actual step, for example by \(\Delta t = 0.5\) years for half a year.</li>
+            <li><strong>The quantity and its rate of change.</strong> \(f(x_0)\) and \(f'(x_0)\) answer different questions: what the value of the quantity is, and how fast it is changing.</li>
+            <li><strong>The sign.</strong> A negative derivative means that the quantity is falling at that point; the answer must say so in words.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- 1 pavyzdys: TM 6.3, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Fuel cost and the speed of a lorry</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A logistics firm has measured the fuel cost of one kilometre as a function of the average speed of the lorry, \(C = f(v)\) euros per kilometre, where \(v\) is the average speed in kilometres per hour. Explain what \(f'(v)\) means and give its units. Knowing that \(f'(80) = 0.004\), estimate the change in the fuel cost of one kilometre if the average speed is raised from 80 to 82 kilometres per hour.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>What is changing and with respect to what</span></h4>
+          <p>The fuel cost of one kilometre changes with respect to the average speed, so \(f'(v)\) is the rate at which that cost changes per unit of speed. Its unit is the unit of the cost divided by the unit of the speed: euros per kilometre for each kilometre per hour.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The step</span></h4>
+          <p>The speed is raised from 80 to 82, so \(\Delta v = 82 - 80 = 2\) kilometres per hour, and the change is estimated from the rate:</p>
+          \[ \Delta C \approx f'(80)\cdot\Delta v = 0.004\cdot 2 = 0.008 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> \(f'(80) = 0.004\)&nbsp;euros per kilometre for each kilometre per hour. If the average speed increases by 2&nbsp;kilometres per hour from 80, the fuel cost of one kilometre will change by approximately 0.008&nbsp;euros, that is, it will rise by about 0.8&nbsp;cents. The rate is positive, so at this speed driving faster makes every kilometre dearer.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 6.3, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Subscribers of an online magazine</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The number of subscribers of an online magazine \(t\) months after its launch is
+        <div class="fit-sm">\[ N(t) = 50t^2 + 300t + 1200,\quad 0 \leq t \leq 24 \]</div>
+        Find the number of subscribers six months after the launch and the rate at which that number is growing then. Interpret the rate.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>What is changing and with respect to what</span></h4>
+          <p>The number of subscribers changes with respect to time, measured in months, so the rate will be in subscribers per month.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The quantity itself</span></h4>
+          \[ \begin{aligned} N(6) &amp;= 50\cdot 6^2 + 300\cdot 6 + 1200 \\ &amp;= 1800 + 1800 + 1200 = 4800 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The rate</span></h4>
+          <p>The function is a sum of three terms, each a number times a power. Apply the <a href="tema-6.html#daugiklio">constant multiple rule</a> and the power rule; the derivative of the constant is zero:</p>
+          \[ N'(t) = 50\cdot 2t + 300 = 100t + 300 \]
+          \[ N'(6) = 100\cdot 6 + 300 = 900 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Six months after the launch the magazine has 4800 subscribers, and that number is growing at a rate of 900 subscribers a month. If the time increases by one month from the sixth month, the number of subscribers will change by approximately 900.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.3, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Market share of a new brand</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The share of its market held by a new brand \(t\) years after the launch is \[ S(t) = 6\sqrt{t},\quad 0 \leq t \leq 9 \] per cent. Find the market share four years after the launch and the rate at which it is growing then. Interpret the rate.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>What is changing and with respect to what</span></h4>
+          <p>The market share, measured in per cent, changes with respect to time in years, so the rate is in percentage points per year.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The quantity itself</span></h4>
+          \[ S(4) = 6\sqrt{4} = 6\cdot 2 = 12 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The rate</span></h4>
+          <p>The square root is one of the elementary derivatives in the <a href="tema-6.html#lentele">table of derivatives</a>:</p>
+          \[ S'(t) = 6\cdot\frac{1}{2\sqrt{t}} = \frac{3}{\sqrt{t}} \]
+          \[ S'(4) = \frac{3}{\sqrt{4}} = \frac{3}{2} = 1.5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Four years after the launch the brand holds 12&nbsp;per cent of the market, and its share is growing at 1.5 percentage points a year. If the time increases by one year from the fourth year, the market share will change by approximately 1.5 percentage points. The rate \(\dfrac{3}{\sqrt{t}}\) shrinks as the years pass, so the share keeps growing but ever more slowly.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.3, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>The falling value of a machine</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A machine bought for 24&nbsp;000 euros loses value according to \[ V(t) = 24000e^{-0.15t} \] euros, where \(t\) is the age of the machine in years.
+        <ol type="a">
+          <li>How fast is the machine losing value when it is four years old?</li>
+          <li>Estimate how much its value will change during the following half-year.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>What is changing and with respect to what</span></h4>
+          <p>The value of the machine changes with respect to its age in years, so the rate is in euros per year.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The rate</span></h4>
+          <p>The function is a number times an exponential of an expression, so the <a href="tema-6.html#sudetines">chain rule</a> applies with the inner derivative \(-0.15\):</p>
+          \[ \begin{aligned} V'(t) &amp;= 24000\cdot e^{-0.15t}\cdot(-0.15) \\ &amp;= -3600e^{-0.15t} \end{aligned} \]
+          \[ \begin{aligned} V'(4) &amp;= -3600e^{-0.6} \\ &amp;\approx -3600\cdot 0.5488 \approx -1975.72 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The change over half a year</span></h4>
+          <p>The step is \(\Delta t = 0.5\) years:</p>
+          \[ \begin{aligned} \Delta V &amp;\approx V'(4)\cdot\Delta t \\ &amp;\approx -1975.72\cdot 0.5 \approx -987.86 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) \(V'(4) \approx -1975.72\)&nbsp;euros per year. If the age increases by one year from four years, the value of the machine will change by approximately \(-1976\)&nbsp;euros, that is, it will fall by about 1976&nbsp;euros.</p>
+            <p>b) Over the following half-year the value will change by approximately \(-988\)&nbsp;euros.</p>
+            <p>The rate is negative at every age, so the machine never regains value; and because \(e^{-0.15t}\) shrinks with \(t\), the losses themselves get smaller as the machine gets older.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.3, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Output of a packing line</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The output of a packing line worked by \(x\) people is \[ Q(x) = \frac{50x}{x + 4} \] parcels an hour. Find the output and the rate at which it changes with the number of workers when six people are on the line. Interpret the rate.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>What is changing and with respect to what</span></h4>
+          <p>The output changes with respect to the number of workers, so the rate is in parcels an hour per worker.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The quantity itself</span></h4>
+          \[ Q(6) = \frac{50\cdot 6}{6 + 4} = \frac{300}{10} = 30 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The rate</span></h4>
+          <p>The function is a fraction whose denominator contains \(x\), so the <a href="tema-6.html#dalmens">quotient rule</a> applies:</p>
+          \[ \begin{aligned} Q'(x) &amp;= \frac{50(x + 4) - 50x\cdot 1}{(x + 4)^2} \\ &amp;= \frac{50x + 200 - 50x}{(x + 4)^2} = \frac{200}{(x + 4)^2} \end{aligned} \]
+          \[ Q'(6) = \frac{200}{(6 + 4)^2} = \frac{200}{100} = 2 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> With six people the line packs 30 parcels an hour, and the output is rising at 2&nbsp;parcels an hour per worker. If the number of workers increases by one from six, the output will change by approximately 2&nbsp;parcels an hour. The rate \(\dfrac{200}{(x + 4)^2}\) falls as the line grows, so every further worker adds less than the one before.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 6.3, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Assembly time of a product</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The time needed to assemble one unit of a new product falls as the workers gain practice: \[ T(x) = 120 - 18\ln x \] minutes, where \(x\) is the number of the unit being assembled. Find the assembly time of the thirtieth unit and the rate at which the time is changing there. Interpret the rate.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>What is changing and with respect to what</span></h4>
+          <p>The assembly time changes with respect to the number of units already assembled, so the rate is in minutes per unit.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The quantity itself</span></h4>
+          \[ \begin{aligned} T(30) &amp;= 120 - 18\ln 30 \\ &amp;\approx 120 - 61.22 \approx 58.78 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The rate</span></h4>
+          <p>The first term is a constant and the second a number times a logarithm:</p>
+          \[ T'(x) = 0 - 18\cdot\frac{1}{x} = -\frac{18}{x} \]
+          \[ T'(30) = -\frac{18}{30} = -0.6 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> The thirtieth unit takes about 58.78&nbsp;minutes to assemble, and the assembly time is falling at 0.6&nbsp;minutes per unit. If the number of the unit increases by one from the thirtieth, the assembly time will change by approximately \(-0.6\)&nbsp;minutes, that is, it will fall by about 36&nbsp;seconds. The saving per unit keeps shrinking, because the rate is \(-\dfrac{18}{x}\) and \(x\) is growing.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 6.3, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Quantity demanded and the price</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> At a unit price of \(p\) euros the weekly quantity demanded of a product is \[ x(p) = 9000 - 25p^2,\quad 0 \leq p \leq 18 \] units. Find the quantity demanded and the rate at which it changes with the price when the price is 12 euros. Interpret the rate.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>What is changing and with respect to what</span></h4>
+          <p>Here the independent variable is not the quantity produced but the price: the quantity demanded changes with respect to the price, so the rate is in units per euro.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The quantity itself</span></h4>
+          \[ \begin{aligned} x(12) &amp;= 9000 - 25\cdot 12^2 \\ &amp;= 9000 - 3600 = 5400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The rate</span></h4>
+          \[ x'(p) = 0 - 25\cdot 2p = -50p \]
+          \[ x'(12) = -50\cdot 12 = -600 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> At a price of 12&nbsp;euros customers buy 5400 units a week, and the quantity demanded is falling at 600 units per euro. If the price increases by one euro from 12&nbsp;euros, the quantity demanded will change by approximately \(-600\) units, that is, it will fall by about 600 units. The rate is negative at every price, which is what a demand relation must do: the dearer the product, the less of it is bought.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 6.3, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">Example 8</span>
+        <h3>Visitors to a shopping centre</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The number of visitors to a shopping centre \(t\) months after it opened is \[ N(t) = 40te^{-0.1t} \] thousand a month. Find the rate at which the number of visitors is changing five months and fifteen months after the opening, and interpret the two results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>What is changing and with respect to what</span></h4>
+          <p>The monthly number of visitors changes with respect to time in months, so the rate is in thousands of visitors per month.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The rate</span></h4>
+          <p>The function is a product of \(40t\) and \(e^{-0.1t}\), so the <a href="tema-6.html#sandaugos">product rule</a> applies, and the second factor needs the <a href="tema-6.html#sudetines">chain rule</a> with the inner derivative \(-0.1\):</p>
+          \[ \begin{aligned} N'(t) &amp;= 40\cdot e^{-0.1t} \\ &amp;\phantom{=}\; + 40t\cdot e^{-0.1t}\cdot(-0.1) \\ &amp;= 40e^{-0.1t}(1 - 0.1t) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>At the two moments</span></h4>
+          \[ \begin{aligned} N'(5) &amp;= 40e^{-0.5}(1 - 0.5) \\ &amp;\approx 40\cdot 0.6065\cdot 0.5 \approx 12.13 \end{aligned} \]
+          \[ \begin{aligned} N'(15) &amp;= 40e^{-1.5}(1 - 1.5) \\ &amp;\approx 40\cdot 0.2231\cdot(-0.5) \approx -4.46 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>Five months after the opening \(N'(5) \approx 12.13\)&nbsp;thousand visitors per month: if the time increases by one month from the fifth month, the number of visitors will change by approximately 12.13&nbsp;thousand. Fifteen months after the opening \(N'(15) \approx -4.46\)&nbsp;thousand visitors per month: if the time increases by one month from the fifteenth month, the number of visitors will change by approximately \(-4.46\)&nbsp;thousand, that is, it will fall.</p>
+            <p>The sign is decided by the factor \(1 - 0.1t\), because \(40e^{-0.1t}\) is positive for every \(t\). That factor is positive while \(t &lt; 10\) and negative afterwards, so the centre gains visitors for the first ten months and loses them from then on.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: say what is changing and with respect to what, find the derivative, give the units and explain the result. The answer gives the derivatives and the final results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The cumulative number of downloads of an application, in thousands, \(t\) days after its release is</p>
+          \[ D(t) = 120\sqrt{t} + 8t \]
+          <p>Find \(D(9)\) and \(D'(9)\), give the units of each and explain what they say.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative:</strong></p>
+          \[ D'(t) = \frac{60}{\sqrt{t}} + 8 \]
+          <p><strong>Answer.</strong> \(D(9) = 432\) thousand downloads and \(D'(9) = 28\) thousand downloads a day. Nine days after the release the application has been downloaded 432 thousand times, and at that moment the number is growing at 28 thousand downloads a day.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A machine’s value, in euros, \(t\) years after it was bought is</p>
+          \[ V(t) = 32000e^{-0.2t} \]
+          <p>Find \(V'(3)\) with its units, and estimate by how much the value changes during the half-year that follows.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative:</strong></p>
+          \[ V'(t) = -6400e^{-0.2t} \]
+          <p><strong>Answer.</strong> \(V'(3) \approx -3512.39\)&nbsp;euros a year. Over half a year,</p>
+          <div class="fit-sm">\[ \begin{aligned} \Delta V &amp;\approx V'(3)\cdot\Delta t \\ &amp;\approx -3512.39\cdot 0.5 \approx -1756.20\ \text{euros} \end{aligned} \]</div>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The average waiting time at a service counter, in minutes, when \(x\) clerks are on duty is</p>
+          \[ W(x) = \frac{180 + 20x}{x + 1} \]
+          <p>Find \(W'(3)\) with its units and interpret it.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative (the quotient rule):</strong></p>
+          \[ \begin{aligned} W'(x) &amp;= \frac{20(x + 1) - (180 + 20x)}{(x + 1)^2} \\ &amp;= -\frac{160}{(x + 1)^2} \end{aligned} \]
+          <p><strong>Answer.</strong> \(W'(3) = -10\) minutes a clerk. If one more clerk is put on duty when three are working, the average wait will fall by approximately 10&nbsp;minutes.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The fuel a lorry uses per 100 kilometres, in litres, depends on the load it carries: \(F = f(m)\), where \(m\) is the load in tonnes. It is known that \(f'(12) = 0.8\).</p>
+          <ol type="a">
+            <li>What are the units of \(f'(m)\), and what does the given value say?</li>
+            <li>Estimate the change in the fuel used if the load grows from 12 to 14 tonnes.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Answer.</strong> a) Litres per 100 kilometres for each tonne of load. At a load of 12 tonnes, one extra tonne raises the fuel used by approximately 0.8 litres per 100 kilometres.</p>
+          <p>b) \(\Delta F \approx f'(12)\cdot\Delta m = 0.8\cdot 2 = 1.6\) litres per 100 kilometres.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 5, 6.1–6.3, 6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 9</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Increasing and Decreasing Functions · Applied Mathematics</title>
+<meta name="description" content="Increasing and decreasing functions: the sign of the derivative and intervals of monotonicity, critical points, the sign chart. How to solve, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-6-didejimas-ir-mazejimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=68">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=68"></script>
+</head>
+<body data-page="m63">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 6 · Applications · Section 3</span>
+    <h1>Increasing and Decreasing Functions</h1>
+    <p class="lead">In this section the sign of the derivative is used to find on which intervals a function increases and on which it decreases. In applications, these intervals show when a quantity such as profit, sales or average cost rises or falls.</p>
+    <ul class="jump">
+      <li><a href="#monotoniskumas">Sign of the derivative</a></li>
+      <li><a href="#kritiniai">Critical points</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#pagrindimas">Whole interval</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MONOTONIŠKUMAS ============ -->
+  <section class="section" id="monotoniskumas" aria-labelledby="h-mono">
+    <h2 id="h-mono">Increasing and decreasing functions</h2>
+
+    <article class="card">
+      <p>A function is <strong>increasing</strong> on an interval if its values rise as the input increases, and <strong>decreasing</strong> if its values fall. These are called intervals of increase and decrease, or <strong>intervals of monotonicity</strong>. In applications, they identify the range over which a quantity such as profit, sales or average cost rises or falls. The aim is to find these intervals and interpret them in the context of the problem.</p>
+      <p>The derivative measures the function’s rate of change and the slope of its tangent line. Its sign allows us to determine whether the function is increasing or decreasing:</p>
+      <ul>
+        <li>if \(f'(x) &gt; 0\) at every point of an interval, then \(f(x)\) is <strong>increasing</strong> on that interval;</li>
+        <li>if \(f'(x) &lt; 0\) at every point of an interval, then \(f(x)\) is <strong>decreasing</strong> on that interval.</li>
+      </ul>
+      <p class="tip"><strong>The sign matters, not the size.</strong> For this task, we need the sign of the derivative, rather than its numerical size. A positive function value does not imply that the function is increasing: the direction of change depends on the derivative. An isolated zero of the derivative does not, by itself, establish a change in direction.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. KRITINIAI TAŠKAI ============ -->
+  <section class="section" id="kritiniai" aria-labelledby="h-crit">
+    <h2 id="h-crit">Critical points</h2>
+
+    <article class="card">
+      <p>Critical points identify where the direction of change may change. A number \(x_0\) in the domain of \(f(x)\) is a <strong>critical point</strong> if</p>
+      <div class="formula">\[ \begin{gathered} f'(x_0) = 0 \quad \text{or} \\ f'(x_0) \text{ does not exist.} \end{gathered} \]</div>
+      <p>First locate every critical point and every boundary or gap in the domain. On each remaining open interval, the derivative exists and is nonzero, so its sign cannot change there. One convenient test value in each interval is therefore enough to determine the sign of \(f'(x)\) throughout that interval. Test both sides of a critical point: the signs may be different or the same.</p>
+      <p>A number outside the domain is not a critical point, but it must still be marked because it separates parts of the domain. A critical point is given by an input value; the corresponding point on the graph also includes the function value. Calculate that value only if the question asks for it.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Find the domain. Check restrictions from the formula, such as a denominator, logarithm or root, and from the context, such as a production capacity or a specified time period. Retain these restrictions throughout the solution.</li>
+        <li>Differentiate the function. If the derivative is a polynomial, combine like terms and retain its standard polynomial form. For other expressions, simplify as needed while keeping the original domain restrictions.</li>
+        <li>Find the critical points: solve \(f'(x) = 0\) and check where the derivative does not exist while the function itself is defined. Solve any resulting quadratic equation using its discriminant. Also identify excluded values and domain endpoints.</li>
+        <li>Mark the critical points, domain endpoints and excluded values on a number line. In each open interval within the domain, choose an interior test value and substitute it into the derivative. For a polynomial derivative, use its standard polynomial form. Do not use a critical point as the test value.</li>
+        <li>State the intervals of increase and decrease, then explain what they mean for the quantity in the problem. The intervals below use open endpoints to show where the derivative has a strict sign. When the function is continuous at an included endpoint, the corresponding monotonic interval may also include that endpoint.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:22px">The sign chart</h3>
+      <p>Write the sign of the derivative above each interval and an upward or downward arrow below it to show the direction of change of the original function. Mark critical points and domain boundaries on the line. A zero above a dot means the derivative is zero there; no derivative value is shown where it does not exist. A hollow dot marks an excluded value, and shading marks values outside the domain. Read the signs and arrows together: a critical point is a possible change in direction, not an automatic one.</p>
+      <div data-widget="sign-chart" data-spec='{"fp":"f&#39;(x)","f":"f(x)","v":"x","pts":[{"x":"a","o":true},{"x":"x_1","z":true},{"x":"x_2"}],"s":["+","-","+"],"outR":false}'></div>
+      <p class="formula-note" style="text-align:center">Notation in the chart: the value \(a\) is not in the domain, the derivative is zero at \(x_1\), and it does not exist at \(x_2\).</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The function value instead of the derivative.</strong> A positive function value does not imply that the function is increasing: the direction of change depends on the sign of the derivative.</li>
+            <li><strong>A zero derivative is not yet a change in direction.</strong> Test both sides of a critical point: the signs may be different or the same.</li>
+            <li><strong>A critical point as the test value.</strong> Test the sign inside an interval, not at a critical point, where the derivative is zero or does not exist.</li>
+            <li><strong>Forgotten restrictions.</strong> A denominator, a logarithm, a root and the context of the problem (capacity, time period) restrict the domain; discard roots that do not belong to the domain.</li>
+            <li><strong>Points where the derivative does not exist.</strong> They are also critical points if the function itself is defined there.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples: finding intervals of increase and decrease</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- 1 pavyzdys: TM 6.4, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Monthly profit of a workshop</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A workshop can make up to 800 units of a product a month. Its monthly profit, in euros, is \[ P(x) = -0.02x^2 + 24x - 3000 \] where \(x\) is the number of units made and sold. Over which production levels does the profit grow, and over which does it fall?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The domain</span></h4>
+          <p>The formula is defined for all real inputs, but the context restricts production: output cannot be negative or exceed capacity. Hence \(0 \leq x \leq 800\). We treat production as continuous when applying the derivative.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Differentiate the profit function term by term using the power rule. The constant cost contributes zero. The resulting derivative is <a href="tema-6-ribine-analize.html">marginal profit</a>:</p>
+          \[ \begin{aligned} P'(x) &amp;= -0.02\cdot 2x + 24 \\ &amp;= -0.04x + 24 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical point</span></h4>
+          <p>The derivative is a polynomial, so it exists throughout the domain. Set it equal to zero and solve:</p>
+          \[ \begin{aligned} &amp;-0.04x + 24 = 0 \\ \Longrightarrow\;&amp; 0.04x = 24 \\ \Longrightarrow\;&amp; x = \frac{24}{0.04} = 600 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The signs</span></h4>
+          <p>The critical point divides the domain into two intervals. Test one value below it and one above it:</p>
+          \[ \begin{gathered} P'(100) = -4 + 24 = 20 &gt; 0 \\ P'(700) = -28 + 24 = -4 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(x)","f":"P(x)","v":"x","pts":[{"x":"0"},{"x":"600","z":true},{"x":"800"}],"s":["+","-"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Profit is increasing on \((0,\, 600)\) and decreasing on \((600,\, 800)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 6.4, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Sales of a new product</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The monthly sales of a product \(t\) months after its launch are \[ \begin{gathered} S(t) = 2t^3 - 48t^2 + 288t + 2000, \\ 0 \leq t \leq 16 \end{gathered} \] units. During which parts of this period are monthly sales increasing, and during which are they decreasing?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The domain</span></h4>
+          <p>Use the time period specified in the problem: \(0 \leq t \leq 16\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Differentiate term by term and combine like terms. Keep the derivative in standard polynomial form:</p>
+          \[ S'(t) = 6t^2 - 96t + 288 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical points</span></h4>
+          <p>The derivative exists everywhere. Set it equal to zero and divide by six. For the resulting quadratic, calculate the discriminant and use the quadratic formula:</p>
+          \[ t^2 - 16t + 48 = 0 \]
+          \[ \begin{aligned} D &amp;= (-16)^2 - 4\cdot 1\cdot 48 \\ &amp;= 256 - 192 = 64 &gt; 0 \end{aligned} \]
+          \[ \begin{gathered} t_{1.2} = \frac{16 \pm \sqrt{64}}{2} = \frac{16 \pm 8}{2} \\ \Longrightarrow\; t_1 = 4;\quad t_2 = 12 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The signs</span></h4>
+          <p>Both critical points lie in the domain, giving three intervals. Choose an interior value from each interval and substitute it into the polynomial derivative:</p>
+          <div class="fit-sm">\[ \begin{aligned} S'(1) &amp;= 6\cdot 1^2 - 96\cdot 1 + 288 = 198 &gt; 0 \\ S'(8) &amp;= 6\cdot 8^2 - 96\cdot 8 + 288 = -96 &lt; 0 \\ S'(14) &amp;= 6\cdot 14^2 - 96\cdot 14 + 288 = 120 &gt; 0 \end{aligned} \]</div>
+          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true},{"x":"12","z":true},{"x":"16"}],"s":["+","-","+"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Monthly sales are increasing on \((0,\, 4)\) and \((12,\, 16)\), and decreasing on \((4,\, 12)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.4, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Average cost of garden lamps</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> The average total cost of one garden lamp, in euros, is \[ ATC(x) = 0.5x + 20 + \frac{200}{x} \] where \(x\) is the number of lamps made a day. Over which output levels does the average cost fall, and over which does it rise?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The domain</span></h4>
+          <p>Average cost requires positive output. The formula is also undefined at \(x = 0\), so the relevant domain is \((0,\, +\infty)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Rewrite the reciprocal term as a negative power, then use the power rule on each term. The constant term has derivative zero:</p>
+          \[ ATC(x) = 0.5x + 20 + 200x^{-1} \]
+          \[ \begin{aligned} ATC'(x) &amp;= 0.5 - 200x^{-2} \\ &amp;= 0.5 - \frac{200}{x^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical point</span></h4>
+          <p>The derivative exists at every positive output. Set it equal to zero, clear the nonzero denominator, and solve the resulting quadratic using the discriminant:</p>
+          \[ 0.5 - \frac{200}{x^2} = 0 \;\Longrightarrow\; x^2 - 400 = 0 \]
+          \[ D = 0^2 - 4\cdot 1\cdot(-400) = 1600 &gt; 0 \]
+          \[ \begin{gathered} x_{1.2} = \frac{-0 \pm \sqrt{1600}}{2\cdot 1} = \pm 20 \\ \Longrightarrow\; x_1 = -20;\quad x_2 = 20 \end{gathered} \]
+          <p>The root \(x = -20\) is outside the domain and must be discarded. Only the positive root is a critical point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The signs</span></h4>
+          <p>Choose one positive output below the critical point and one above it:</p>
+          \[ \begin{gathered} ATC'(10) = 0.5 - 2 = -1.5 &lt; 0 \\ ATC'(40) = 0.5 - 0.125 = 0.375 &gt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"ATC&#39;(x)","f":"ATC(x)","v":"x","pts":[{"x":"0","o":true},{"x":"20","z":true}],"s":["-","+"],"outR":false}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Average total cost is decreasing on \((0,\, 20)\) and increasing on \((20,\, +\infty)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.4, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Hourly output of a worker</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> \(x\) hours after the start of a twelve-hour shift a worker is assembling \[ Q(x) = 30 + 40\ln x - 4x \] items an hour. During which part of the shift is this hourly output increasing, and during which is it decreasing?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The domain</span></h4>
+          <p>The logarithm requires \(x &gt; 0\), and the shift ends after twelve hours, giving \(0 &lt; x \leq 12\). The formula predicts negative output very close to the start, so its practical interpretation is limited to times when predicted output is nonnegative.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Differentiate the logarithmic and linear terms; the constant contributes zero. Combine the result into one fraction and factor the numerator to make its sign clear:</p>
+          \[ Q'(x) = \frac{40}{x} - 4 = \frac{40 - 4x}{x} = \frac{4(10 - x)}{x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical point</span></h4>
+          <p>For \(x &gt; 0\), the denominator is nonzero, so the derivative exists throughout the domain. The fraction is zero only when its numerator is zero:</p>
+          \[ 4(10 - x) = 0 \;\Longrightarrow\; x = 10 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The signs</span></h4>
+          <p>The denominator is positive throughout the domain, so the numerator determines the sign. Test a value on each side of the critical point:</p>
+          \[ \begin{gathered} Q'(1) = \frac{36}{1} = 36 &gt; 0 \\ Q'(11) = \frac{-4}{11} &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"0","o":true},{"x":"10","z":true},{"x":"12"}],"s":["+","-"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Hourly output is increasing on \((0,\, 10)\) and decreasing on \((10,\, 12)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.4, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Applications for a vacancy</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A company advertises a vacancy. \(t\) days after the advertisement appears it is receiving \[ A(t) = 120te^{-0.25t} \] applications a day. Over which days does the daily number of applications grow, and over which does it fall?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The domain</span></h4>
+          <p>Time is measured from publication of the advertisement, so \(t \geq 0\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>The function is the product of \(120t\) and \(e^{-0.25t}\). Apply the <a href="tema-6.html#sandaugos">product rule</a>: differentiate the first factor and retain the second, then add the first factor multiplied by the derivative of the second. For the exponential, use the <a href="tema-6.html#sudetines">chain rule</a>: multiply the original exponential by the inner derivative \(-0.25\). Finally, factor out the common exponential term:</p>
+          \[ \begin{aligned} A'(t) &amp;= 120e^{-0.25t} \\ &amp;\phantom{=}\; + 120t\cdot e^{-0.25t}\cdot(-0.25) \\ &amp;= 120e^{-0.25t}(1 - 0.25t) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical point</span></h4>
+          <p>The derivative exists throughout the domain. Its exponential factor is always positive, so only the linear factor can make the product zero:</p>
+          \[ \begin{aligned} &amp;1 - 0.25t = 0 \\ \Longrightarrow\;&amp; 0.25t = 1 \\ \Longrightarrow\;&amp; t = 4 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The signs</span></h4>
+          <p>The factor \(120e^{-0.25t}\) is positive for every \(t\), so the sign of the derivative is determined entirely by \(1 - 0.25t\). Test one value on each side of the critical point:</p>
+          \[ \begin{gathered} 1 - 0.25\cdot 1 = 0.75 &gt; 0 \\ 1 - 0.25\cdot 8 = -1 &lt; 0 \end{gathered} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;(t)","f":"A(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true}],"s":["+","-"],"outR":false}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> The daily number of applications is increasing on \((0,\, 4)\) and decreasing on \((4,\, +\infty)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 6.4, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Revenue during a promotion</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> During a sixteen-week promotion, a shop’s weekly revenue is modelled by \[ T(t) = 50 - 9\sqrt[3]{(t - 8)^2} \] thousand euros, where \(t\) is the number of weeks since the promotion began. During which parts of the promotion is weekly revenue increasing or decreasing?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The domain</span></h4>
+          <p>A cube root is defined for every real input, so the formula adds no restriction. The sixteen-week promotion gives \(0 \leq t \leq 16\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Rewrite the cube root as a fractional power. Apply the power rule together with the <a href="tema-6.html#sudetines">chain rule</a>: the inner function is \(u(t) = t - 8\), whose derivative is one. The resulting negative exponent places a cube root in the denominator:</p>
+          \[ T(t) = 50 - 9(t - 8)^{\frac{2}{3}} \]
+          \[ \begin{aligned} T'(t) &amp;= -9\cdot\frac{2}{3}(t - 8)^{-\frac{1}{3}} \\ &amp;= -6(t - 8)^{-\frac{1}{3}} = -\frac{6}{\sqrt[3]{t - 8}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical point</span></h4>
+          <p>The equation \(T'(t) = 0\) has no solution: the numerator is the nonzero constant \(-6\). However, at \(t = 8\), the denominator \(\sqrt[3]{t - 8}\) is zero, so \(T'(8)\) does not exist. The function itself is defined there, with \(T(8) = 50\). Thus this value is a critical point even though the derivative is not zero.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The signs</span></h4>
+          <p>A cube root has the same sign as its input. Before week eight, the denominator is negative, making the derivative positive; afterwards it is positive, making the derivative negative. Test values confirm this:</p>
+          <div class="fit-sm">\[ \begin{aligned} T'(4) &amp;= -\frac{6}{\sqrt[3]{-4}} \approx -\frac{6}{-1.587} \approx 3.78 &gt; 0 \\ T'(12) &amp;= -\frac{6}{\sqrt[3]{4}} \approx -\frac{6}{1.587} \approx -3.78 &lt; 0 \end{aligned} \]</div>
+          <div data-widget="sign-chart" data-spec='{"fp":"T&#39;(t)","f":"T(t)","v":"t","pts":[{"x":"0"},{"x":"8"},{"x":"16"}],"s":["+","-"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> Weekly revenue is increasing on \((0,\, 8)\) and decreasing on \((8,\, 16)\).
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PAGRINDIMAS VISAME INTERVALE ============ -->
+  <section class="section" id="pagrindimas" aria-labelledby="h-whole">
+    <h2 id="h-whole">Examples: proving increase or decrease throughout an interval</h2>
+    <p class="section-intro">Some questions ask whether a function increases or decreases throughout a specified interval. Use the same method, but establish a single sign for \(f'(x)\) over the entire interval. A strictly positive derivative proves increase; a strictly negative derivative proves decrease. A sign chart then has one sign and one arrow. An isolated zero of the derivative can still be consistent with a strictly monotonic function, so the strict-sign test is sufficient rather than necessary.</p>
+    <p class="section-intro">For a polynomial derivative, solve for its zeros using the discriminant and divide the domain at any critical points. The derivative has a constant sign on each interval containing no critical points. Choose one interior test value from each such interval and substitute it into the polynomial. If there are no critical points in the domain, one interior test value is enough.</p>
+
+    <!-- 7 pavyzdys: TM 6.4, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Resale value of a machine</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A machine is bought for 450 thousand euros. Its resale value, in thousands of euros, \(t\) years after the purchase is \[ V(t) = 400e^{-0.2t} + 50 \] Show that the resale value decreases throughout the period described by the model.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The domain</span></h4>
+          <p>Time is measured from the purchase, so \(t \geq 0\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Keep the constant coefficient, differentiate the exponential using the <a href="tema-6.html#sudetines">chain rule</a>, and multiply by the inner derivative \(-0.2\). The constant term has derivative zero:</p>
+          \[ \begin{aligned} V'(t) &amp;= 400e^{-0.2t}\cdot(-0.2) + 0 \\ &amp;= -80e^{-0.2t} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical points</span></h4>
+          <p>There are none. The derivative exists for every \(t\), and \(e^{-0.2t} &gt; 0\). Multiplication by a negative constant therefore gives a negative derivative throughout the domain:</p>
+          \[ -80e^{-0.2t} &lt; 0 \quad \text{for every } t \geq 0 \]
+          <div data-widget="sign-chart" data-spec='{"fp":"V&#39;(t)","f":"V(t)","v":"t","pts":[{"x":"0"}],"s":["-"],"outR":false}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> \(V(t)\) is decreasing on \([0,\, +\infty)\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 6.4, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">Example 8</span>
+        <h3>City spending on public transport</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span> A city’s spending on public transport, in millions of euros, \(t\) years after 2020 is \[ \begin{gathered} S(t) = 0.02t^3 - 0.9t^2 + 7.5t + 20, \\ 0 \leq t \leq 4 \end{gathered} \] Show that spending increases throughout the stated period.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The domain</span></h4>
+          <p>The specified interval is \(0 \leq t \leq 4\), corresponding to 2020–2024.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Differentiate each term and keep the derivative in standard polynomial form:</p>
+          \[ S'(t) = 0.06t^2 - 1.8t + 7.5 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical points</span></h4>
+          <p>The derivative exists everywhere. Set it equal to zero and divide by the nonzero common coefficient. Solve the quadratic using the discriminant:</p>
+          \[ t^2 - 30t + 125 = 0 \]
+          \[ \begin{aligned} D &amp;= (-30)^2 - 4\cdot 1\cdot 125 \\ &amp;= 900 - 500 = 400 &gt; 0 \end{aligned} \]
+          \[ \begin{gathered} t_{1.2} = \frac{30 \pm \sqrt{400}}{2} = \frac{30 \pm 20}{2} \\ \Longrightarrow\; t_1 = 5;\quad t_2 = 25 \end{gathered} \]
+          <p>Neither solution belongs to \([0,\, 4]\). The derivative has no zeros or undefined values in this interval, so its sign is constant there.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The sign</span></h4>
+          <p>Choose an interior test value and substitute it into the polynomial derivative:</p>
+          \[ \begin{aligned} S'(2) &amp;= 0.06\cdot 2^2 - 1.8\cdot 2 + 7.5 \\ &amp;= 4.14 &gt; 0 \end{aligned} \]
+          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"0"},{"x":"4"}],"s":["+"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> \(S(t)\) is increasing throughout \([0,\, 4]\).
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 9 pavyzdys: TM 6.4, 9 pavyzdys -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">Example 9</span>
+        <h3>Users of an application</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The number of registered users of an application, in thousands, \(t\) months after its launch is
+        <div class="fit-sm">\[ N(t) = t^3 - 9t^2 + 30t + 20,\quad 0 \leq t \leq 12 \]</div>
+        Show that the number of registered users increases throughout the first year.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The domain</span></h4>
+          <p>The first year corresponds to \(0 \leq t \leq 12\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative</span></h4>
+          <p>Differentiate the polynomial term by term:</p>
+          \[ N'(t) = 3t^2 - 18t + 30 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The critical points</span></h4>
+          <p>The derivative exists everywhere. Dividing the equation \(N'(t) = 0\) by its nonzero common coefficient gives \(t^2 - 6t + 10 = 0\). Calculate the discriminant:</p>
+          \[ \begin{aligned} D &amp;= (-6)^2 - 4\cdot 1\cdot 10 \\ &amp;= 36 - 40 = -4 &lt; 0 \end{aligned} \]
+          <p>The discriminant is negative, so the derivative has no real zeros and there are no critical points. The derivative exists throughout the domain, so its sign cannot change there.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The sign</span></h4>
+          <p>Choose an interior test value and substitute it into the polynomial derivative. Since the interval contains no critical points, this sign applies throughout the interval:</p>
+          \[ N'(6) = 3\cdot 6^2 - 18\cdot 6 + 30 = 30 &gt; 0 \]
+          <div data-widget="sign-chart" data-spec='{"fp":"N&#39;(t)","f":"N(t)","v":"t","pts":[{"x":"0"},{"x":"12"}],"s":["+"]}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span> \(N(t)\) is increasing throughout \([0,\, 12]\).
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 6. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: the domain, the derivative, the critical points, the signs and the sign chart, the answer. The answer gives the derivatives, the critical points and the final results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The daily number of visitors to a website, in hundreds, \(t\) weeks after a redesign is</p>
+          \[ V(t) = t^3 - 15t^2 + 63t + 50,\quad 0 \leq t \leq 12 \]
+          <p>Over which weeks does the number of visitors grow, and over which does it fall?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative:</strong></p>
+          \[ V'(t) = 3t^2 - 30t + 63 \]
+          <p><strong>The critical points:</strong></p>
+          \[ \begin{aligned} D &amp;= (-30)^2 - 4\cdot 3\cdot 63 \\ &amp;= 900 - 756 = 144 \\ \sqrt{D} &amp;= 12 \end{aligned} \]
+          \[ \begin{gathered} t_1 = \frac{30 - 12}{2\cdot 3} = 3 \\ t_2 = \frac{30 + 12}{2\cdot 3} = 7 \end{gathered} \]
+          <p><strong>Answer.</strong> The number of visitors grows on \((0,\, 3)\), falls on \((3,\, 7)\) and grows again on \((7,\, 12)\).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The monthly sales of a product, in thousands of units, \(t\) months after its launch are</p>
+          \[ S(t) = 40t^2e^{-0.5t},\quad t \geq 0 \]
+          <p>Over which months do the sales grow, and over which do they fall?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative</strong> (the product rule, with the chain rule inside):</p>
+          \[ \begin{aligned} S'(t) &amp;= 80te^{-0.5t} \\ &amp;\phantom{=}\; + 40t^2\cdot e^{-0.5t}\cdot(-0.5) \\ &amp;= 20te^{-0.5t}(4 - t) \end{aligned} \]
+          <p><strong>Answer.</strong> The critical points are \(t = 0\) and \(t = 4\). For \(t &gt; 0\) the factor \(20te^{-0.5t}\) is positive, so the sign is the sign of \(4 - t\). The sales grow on \((0,\, 4)\) and fall on \((4,\, +\infty)\).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The hourly number of page views of a news story, in thousands, \(t\) hours after it is published is</p>
+          \[ V(t) = \frac{90t}{t^2 + 36},\quad t \geq 0 \]
+          <p>Over which hours does the number of page views grow, and over which does it fall?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative</strong> (the quotient rule):</p>
+          \[ \begin{aligned} V'(t) &amp;= \frac{90(t^2 + 36) - 90t\cdot 2t}{(t^2 + 36)^2} \\ &amp;= \frac{90(36 - t^2)}{(t^2 + 36)^2} \end{aligned} \]
+          <p><strong>Answer.</strong> The critical point is \(t = 6\) (the root \(t = -6\) is discarded). The number of page views grows on \((0,\, 6)\) and falls on \((6,\, +\infty)\).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The cumulative output of a production line, in thousands of units, \(t\) months after it is installed is</p>
+          \[ Q(t) = t^3 - 6t^2 + 15t + 40,\quad 0 \leq t \leq 12 \]
+          <p>Show that the cumulative output only grows.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivative:</strong></p>
+          \[ Q'(t) = 3t^2 - 12t + 15 \]
+          <p><strong>The critical points:</strong></p>
+          \[ \begin{aligned} D &amp;= (-12)^2 - 4\cdot 3\cdot 15 \\ &amp;= 144 - 180 = -36 &lt; 0 \end{aligned} \]
+          <p><strong>Answer.</strong> The discriminant is negative, so \(Q'(t) = 0\) has no roots and the function has no critical points at all. The derivative therefore keeps one sign, and \(Q'(0) = 15 &gt; 0\) shows which: \(Q'(t) &gt; 0\) for every \(t\), so the cumulative output grows over the whole period.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 5, 6.1–6.3, 6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Calculus for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">Chapter 4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
