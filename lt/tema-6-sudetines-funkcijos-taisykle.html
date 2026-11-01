@@ -68,72 +68,155 @@
   <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
     <h2 id="h-ex">Pavyzdžiai</h2>
 
-    <!-- 1 pavyzdys: TM 6.1, 4.3 -->
+    <!-- 1 pavyzdys: TM 6.1, 4.3 a -->
     <article class="card example" id="pavyzdys-1">
       <header class="example-head">
         <span class="example-tag">1 pavyzdys</span>
-        <h3>Penkios sudėtinės funkcijos</h3>
+        <h3>Laipsnis</h3>
       </header>
       <div class="problem">
         <span class="label">Sąlyga</span>
-        Raskite \(f'(x)\), kai
-        <ol type="a">
-          <li>\(f(x) = (3x^2 - 5)^4\);</li>
-          <li>\(f(x) = e^{2x^3 - x}\);</li>
-          <li>\(f(x) = \ln(x^2 + 4)\);</li>
-          <li>\(f(x) = \sqrt{4x + 7}\);</li>
-          <li>\(f(x) = \cos(3x^2)\).</li>
-        </ol>
+        Raskite \(f'(x)\), kai \(f(x) = (3x^2 - 5)^4\).
       </div>
       <div class="steps">
         <section class="step">
-          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
-          <p>Visos funkcijos yra sudėtinės, todėl taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Kiekvienu atveju nustatykite vidinę funkciją \(u(x)\) ir jai taikomą veiksmą. Diferencijuokite išorinę funkciją, vidinio reiškinio nekeisdami, tada padauginkite iš vidinės funkcijos išvestinės. Logaritmo ir kvadratinės šaknies atvejais ši išvestinė atsiduria trupmenos skaitiklyje.</p>
+          <h4><span class="step-no">1</span><span>Išorinė ir vidinė funkcijos</span></h4>
+          <p>Funkcija sudėtinė, todėl taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Išorinė funkcija – kėlimas ketvirtuoju laipsniu, vidinė – \(u(x) = 3x^2 - 5\), jos išvestinė \(u'(x) = 6x\).</p>
         </section>
         <section class="step">
-          <h4><span class="step-no">2</span><span>a) Laipsnis</span></h4>
-          <p>Išorinė funkcija – kėlimas ketvirtuoju laipsniu, vidinė – \(u(x) = 3x^2 - 5\), jos išvestinė \(u'(x) = 6x\). Laipsninės funkcijos išvestinės formulę taikykite visam reiškiniui skliaustuose: padauginkite iš laipsnio rodiklio ir rodiklį sumažinkite vienetu. Reiškinį skliaustuose palikite nepakeistą ir padauginkite iš jo išvestinės:</p>
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Laipsninės funkcijos išvestinės formulę taikykite visam reiškiniui skliaustuose: padauginkite iš laipsnio rodiklio ir rodiklį sumažinkite vienetu. Reiškinį skliaustuose palikite nepakeistą ir padauginkite iš jo išvestinės:</p>
           \[ \begin{aligned} f'(x) &amp;= 4(3x^2 - 5)^3\cdot 6x \\ &amp;= 24x(3x^2 - 5)^3 \end{aligned} \]
-        </section>
-        <section class="step">
-          <h4><span class="step-no">3</span><span>b) Rodiklinė funkcija</span></h4>
-          <p>Išorinė funkcija – \(e^u\), vidinė – \(u(x) = 2x^3 - x\), jos išvestinė \(u'(x) = 6x^2 - 1\). Diferencijuojant rodiklinę funkciją su pagrindu \(e\), ji pati nesikeičia. Padauginkite ją iš rodiklio išvestinės, pastarąją užrašydami skliaustuose:</p>
-          \[ f'(x) = e^{2x^3 - x}\cdot(6x^2 - 1) \]
-        </section>
-        <section class="step">
-          <h4><span class="step-no">4</span><span>c) Logaritmas</span></h4>
-          <p>Išorinė funkcija – \(\ln u\), vidinė – \(u(x) = x^2 + 4\), jos išvestinė \(u'(x) = 2x\). Natūraliojo logaritmo išvestinė yra jo argumento atvirkštinis dydis. Padauginus iš vidinės funkcijos išvestinės, ši atsiduria skaitiklyje, o vidinė funkcija – vardiklyje:</p>
-          \[ f'(x) = \frac{1}{x^2 + 4}\cdot 2x = \frac{2x}{x^2 + 4} \]
-        </section>
-        <section class="step">
-          <h4><span class="step-no">5</span><span>d) Kvadratinė šaknis</span></h4>
-          <p>Išorinė funkcija – kvadratinė šaknis, vidinė – \(u(x) = 4x + 7\), jos išvestinė \(u'(x) = 4\). Taikykite kvadratinės šaknies išvestinės formulę, visą vidinį reiškinį palikdami po šaknies ženklu, ir padauginkite iš 4. Skaitinį koeficientą suprastinkite tik pritaikę taisyklę:</p>
-          \[ f'(x) = \frac{4}{2\sqrt{4x + 7}} = \frac{2}{\sqrt{4x + 7}} \]
-        </section>
-        <section class="step">
-          <h4><span class="step-no">6</span><span>e) Kosinusas</span></h4>
-          <p>Išorinė funkcija – \(\cos u\), vidinė – \(u(x) = 3x^2\), jos išvestinė \(u'(x) = 6x\). Kosinuso išvestinė yra sinusas su minuso ženklu. Vidinį reiškinį palikite sinuso argumentu ir padauginkite iš vidinės funkcijos išvestinės. Nepamirškite minuso ženklo:</p>
-          \[ \begin{aligned} f'(x) &amp;= -\sin(3x^2)\cdot 6x \\ &amp;= -6x\sin(3x^2) \end{aligned} \]
         </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
-            <ul class="ans-list">
-              <li>a)&nbsp;\(f'(x) = 24x(3x^2 - 5)^3\)</li>
-              <li>b)&nbsp;\(f'(x) = (6x^2 - 1)\,e^{2x^3 - x}\)</li>
-              <li>c)&nbsp;\(f'(x) = \dfrac{2x}{x^2 + 4}\)</li>
-              <li>d)&nbsp;\(f'(x) = \dfrac{2}{\sqrt{4x + 7}}\)</li>
-              <li>e)&nbsp;\(f'(x) = -6x\sin(3x^2)\)</li>
-            </ul>
+            \[ f'(x) = 24x(3x^2 - 5)^3 \]
           </div>
         </section>
       </div>
     </article>
 
-    <!-- 2 pavyzdys -->
+    <!-- 2 pavyzdys: TM 6.1, 4.3 b -->
     <article class="card example" id="pavyzdys-2">
       <header class="example-head">
         <span class="example-tag">2 pavyzdys</span>
+        <h3>Rodiklinė funkcija</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = e^{2x^3 - x}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išorinė ir vidinė funkcijos</span></h4>
+          <p>Funkcija sudėtinė, todėl taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Išorinė funkcija – \(e^u\), vidinė – \(u(x) = 2x^3 - x\), jos išvestinė \(u'(x) = 6x^2 - 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Diferencijuojant rodiklinę funkciją su pagrindu \(e\), ji pati nesikeičia. Padauginkite ją iš rodiklio išvestinės, pastarąją užrašydami skliaustuose:</p>
+          \[ f'(x) = e^{2x^3 - x}\cdot(6x^2 - 1) \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = (6x^2 - 1)\,e^{2x^3 - x} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 6.1, 4.3 c -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Logaritmas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \ln(x^2 + 4)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išorinė ir vidinė funkcijos</span></h4>
+          <p>Funkcija sudėtinė, todėl taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Išorinė funkcija – \(\ln u\), vidinė – \(u(x) = x^2 + 4\), jos išvestinė \(u'(x) = 2x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Natūraliojo logaritmo išvestinė yra jo argumento atvirkštinis dydis. Padauginus iš vidinės funkcijos išvestinės, ši atsiduria skaitiklyje, o vidinė funkcija – vardiklyje:</p>
+          \[ f'(x) = \frac{1}{x^2 + 4}\cdot 2x = \frac{2x}{x^2 + 4} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \dfrac{2x}{x^2 + 4} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 6.1, 4.3 d -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Kvadratinė šaknis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \sqrt{4x + 7}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išorinė ir vidinė funkcijos</span></h4>
+          <p>Funkcija sudėtinė, todėl taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Išorinė funkcija – kvadratinė šaknis, vidinė – \(u(x) = 4x + 7\), jos išvestinė \(u'(x) = 4\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Taikykite kvadratinės šaknies išvestinės formulę, visą vidinį reiškinį palikdami po šaknies ženklu, ir padauginkite iš 4. Skaitinį koeficientą suprastinkite tik pritaikę taisyklę:</p>
+          \[ f'(x) = \frac{4}{2\sqrt{4x + 7}} = \frac{2}{\sqrt{4x + 7}} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \dfrac{2}{\sqrt{4x + 7}} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 6.1, 4.3 e -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Kosinusas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \cos(3x^2)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išorinė ir vidinė funkcijos</span></h4>
+          <p>Funkcija sudėtinė, todėl taikykite <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Išorinė funkcija – \(\cos u\), vidinė – \(u(x) = 3x^2\), jos išvestinė \(u'(x) = 6x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Kosinuso išvestinė yra sinusas su minuso ženklu. Vidinį reiškinį palikite sinuso argumentu ir padauginkite iš vidinės funkcijos išvestinės. Nepamirškite minuso ženklo:</p>
+          \[ \begin{aligned} f'(x) &amp;= -\sin(3x^2)\cdot 6x \\ &amp;= -6x\sin(3x^2) \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = -6x\sin(3x^2) \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
         <h3>Šaknis rodiklyje</h3>
       </header>
       <div class="problem">
@@ -169,19 +252,28 @@
     <div class="quiz" data-numbering="task">
       <article class="card q" data-type="open">
         <div class="q-text">
-          <p>Raskite \(f'(x)\), kai</p>
-          <ol type="a">
-            <li>\(f(x) = (2x^2 + 5)^6\);</li>
-            <li>\(f(x) = e^{3x^2 - 4x}\);</li>
-            <li>\(f(x) = \sqrt{6x - 1}\).</li>
-          </ol>
+          <p>Raskite \(f'(x)\), kai \(f(x) = (2x^2 + 5)^6\).</p>
         </div>
         <div class="q-answer">
-          <ul class="ans-list">
-            <li>a)&nbsp;\(f'(x) = 24x(2x^2 + 5)^5\)</li>
-            <li>b)&nbsp;\(f'(x) = (6x - 4)\,e^{3x^2 - 4x}\)</li>
-            <li>c)&nbsp;\(f'(x) = \dfrac{3}{\sqrt{6x - 1}}\)</li>
-          </ul>
+          <p>\(f'(x) = 24x(2x^2 + 5)^5\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite \(f'(x)\), kai \(f(x) = e^{3x^2 - 4x}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = (6x - 4)\,e^{3x^2 - 4x}\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite \(f'(x)\), kai \(f(x) = \sqrt{6x - 1}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = \dfrac{3}{\sqrt{6x - 1}}\)</p>
         </div>
       </article>
     </div>

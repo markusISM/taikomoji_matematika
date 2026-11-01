@@ -76,12 +76,14 @@
         <li>Apibrėžkite kintamąjį, nagrinėjamą dydį ir jų matavimo vienetus. Jei reikia, sudarykite funkciją: pajamos yra kainos ir kiekio sandauga, \(R(x) = p\cdot x\); pelnas yra \(P(x) = R(x) - TC(x)\); vidutinės sąnaudos – bendrosios sąnaudos, padalytos iš atitinkamo kiekio. Taikydami išvestines, kintamąjį laikykite tolydžiuoju.</li>
         <li>Diferencijuokite funkciją. Jei išvestinė yra daugianaris, sutraukite panašiuosius narius ir palikite standartinę daugianario formą. Kitus reiškinius prireikus supaprastinkite.</li>
         <li>Raskite kritinius taškus: išspręskite \(f'(x) = 0\) ir patikrinkite, kur išvestinė neegzistuoja, nors funkcija apibrėžta. Gautas kvadratines lygtis spręskite naudodami diskriminantą. Atmeskite sprendinius, kurie uždavinio kontekste neturi prasmės, pavyzdžiui, neigiamą kiekį ar laiką.</li>
-        <li>Skaičių tiesėje pažymėkite kritinius taškus. Iš kiekvieno intervalo, į kuriuos jie padalija tiesę, pasirinkite reikšmę ir įstatykite ją į išvestinę. Pagal ženklus abipus kritinio taško nustatykite, ar jame yra vietinis maksimumas, vietinis minimumas, ar ekstremumo nėra.</li>
+        <li>Skaičių tiesėje (taikomuosiuose uždaviniuose – nuo 0) pažymėkite kritinius taškus. Iš kiekvieno intervalo, į kuriuos jie padalija tiesę, pasirinkite reikšmę ir įstatykite ją į išvestinę. Pagal ženklus abipus kritinio taško nustatykite, ar jame yra vietinis maksimumas, vietinis minimumas, ar ekstremumo nėra.</li>
         <li>Apskaičiuokite pradinės funkcijos reikšmę kiekviename patvirtintame ekstremumo taške. Nurodykite tašką ir funkcijos reikšmę su matavimo vienetais. Jei prašoma didžiausios ar mažiausios reikšmės visoje srityje, pagrįskite, kodėl vietinis ekstremumas yra ir absoliutus.</li>
       </ol>
 
       <h3 class="subhead" style="margin-top:22px">Ženklų schema</h3>
       <p>Virš kiekvieno intervalo užrašykite išvestinės ženklą, o po juo pažymėkite rodyklę, rodančią, ar pradinė funkcija didėja, ar mažėja. Po kritiniu tašku nurodykite jo tipą. Nulis virš taško reiškia, kad išvestinė jame lygi nuliui; ten, kur ji neegzistuoja, išvestinės reikšmė nerašoma. Kritinio taško tipą nustatykite pagal ženklus abiejose jo pusėse.</p>
+      <p>Taikomuosiuose uždaviniuose kiekis, kaina ar laikas negali būti neigiami, todėl ženklų schemą pradėkite nuo 0, o dešinįjį jos galą palikite atvirą. Jei funkcija taške 0 neapibrėžta, pavyzdžiui, kai kintamuoju dalijama, šį tašką pažymėkite tuščiaviduriu skrituliuku.</p>
+      <div data-widget="sign-chart" data-spec='{"fp":"f&#39;(x)","f":"f(x)","v":"x","pts":[{"x":"0"},{"x":"x_1","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
 
       <details class="more more--mistake">
         <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
@@ -136,7 +138,7 @@
           <h4><span class="step-no">4</span><span>Ženklai</span></h4>
           <p>Pasirinkite po vieną reikšmę iš intervalų abipus kritinio taško ir įstatykite į išvestinę:</p>
           \[ \begin{gathered} R'(200) = 120 - 40 = 80 &gt; 0 \\ R'(1000) = 120 - 200 = -80 &lt; 0 \end{gathered} \]
-          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(x)","f":"R(x)","v":"x","pts":[{"x":"600","z":true,"t":"max"}],"s":["+","-"],"outL":false,"outR":false}'></div>
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(x)","f":"R(x)","v":"x","pts":[{"x":"0"},{"x":"600","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Požymis ir reikšmės</span></h4>
@@ -185,7 +187,7 @@
           <h4><span class="step-no">4</span><span>Ženklai</span></h4>
           <p>Pasirinkite po vieną reikšmę iš intervalų abipus kritinio taško:</p>
           \[ \begin{gathered} R'(400) = 90 - 3\cdot 20 = 30 &gt; 0 \\ R'(1600) = 90 - 3\cdot 40 = -30 &lt; 0 \end{gathered} \]
-          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(x)","f":"R(x)","v":"x","pts":[{"x":"900","z":true,"t":"max"}],"s":["+","-"],"outL":false,"outR":false}'></div>
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(x)","f":"R(x)","v":"x","pts":[{"x":"0"},{"x":"900","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Požymis ir reikšmės</span></h4>
@@ -237,7 +239,7 @@
           <h4><span class="step-no">4</span><span>Ženklai</span></h4>
           <p>Įstatykite po vieną reikšmę iš intervalų kairėje ir dešinėje nuo kritinio taško:</p>
           \[ \begin{gathered} P'(2000) = -12 + 24 = 12 &gt; 0 \\ P'(6000) = -36 + 24 = -12 &lt; 0 \end{gathered} \]
-          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(x)","f":"P(x)","v":"x","pts":[{"x":"4000","z":true,"t":"max"}],"s":["+","-"],"outL":false,"outR":false}'></div>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(x)","f":"P(x)","v":"x","pts":[{"x":"0"},{"x":"4000","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Požymis ir reikšmės</span></h4>
@@ -263,8 +265,8 @@
       <div class="problem">
         <span class="label">Sąlyga</span>
         Įmonės mėnesio pelnas iš gaminio tūkstančiais eurų, praėjus \(t\) mėnesių nuo gaminio pateikimo rinkai, yra
-        <div class="fit-sm">\[ P(t) = t^3 - 18t^2 + 96t + 40,\quad 0 \leq t \leq 12 \]</div>
-        Raskite pelno vietinių ekstremumų taškus ir reikšmes pirmaisiais metais.
+        \[ P(t) = t^3 - 18t^2 + 96t + 40 \]
+        Raskite pelno vietinių ekstremumų taškus ir reikšmes.
       </div>
       <div class="steps">
         <section class="step">
@@ -284,7 +286,7 @@
           <h4><span class="step-no">3</span><span>Ženklai</span></h4>
           <p>Iš kiekvieno iš trijų intervalų vidaus pasirinkite reikšmę ir įstatykite ją į daugianario formos išvestinę:</p>
           <div class="fit-sm">\[ \begin{aligned} P'(2) &amp;= 3\cdot 2^2 - 36\cdot 2 + 96 = 36 &gt; 0 \\ P'(6) &amp;= 3\cdot 6^2 - 36\cdot 6 + 96 = -12 &lt; 0 \\ P'(10) &amp;= 3\cdot 10^2 - 36\cdot 10 + 96 = 36 &gt; 0 \end{aligned} \]</div>
-          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(t)","f":"P(t)","v":"t","pts":[{"x":"4","z":true,"t":"max"},{"x":"8","z":true,"t":"min"}],"s":["+","-","+"],"outL":false,"outR":false}'></div>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(t)","f":"P(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true,"t":"max"},{"x":"8","z":true,"t":"min"}],"s":["+","-","+"],"outR":false}'></div>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Požymis ir reikšmės</span></h4>
@@ -329,9 +331,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Ženklai</span></h4>
-          <p>Įstatykite po vieną teigiamą laiko reikšmę iš intervalų abipus kritinio taško:</p>
+          <p>Įstatykite po vieną teigiamą laiko reikšmę iš intervalų abipus kritinio taško. Taške \(t = 0\) funkcija neapibrėžta, todėl schemoje jis pažymėtas tuščiaviduriu skrituliuku:</p>
           \[ \begin{gathered} A'(3) = 600 - 2400 = -1800 &lt; 0 \\ A'(12) = 600 - 150 = 450 &gt; 0 \end{gathered} \]
-          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;(t)","f":"A(t)","v":"t","pts":[{"x":"6","z":true,"t":"min"}],"s":["-","+"],"outL":false,"outR":false}'></div>
+          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;(t)","f":"A(t)","v":"t","pts":[{"x":"0","o":true},{"x":"6","z":true,"t":"min"}],"s":["-","+"],"outR":false}'></div>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Požymis ir reikšmė</span></h4>
@@ -378,7 +380,7 @@
           <p>Pasirinkite po vieną neneigiamą laiko reikšmę iš intervalų abipus kritinio taško ir įstatykite į išvestinę:</p>
           \[ S'(4) = \frac{-400\cdot 4^2 + 25600}{(4^2 + 64)^2} = 3 &gt; 0 \]
           <div class="fit-sm">\[ S'(12) = \frac{-400\cdot 12^2 + 25600}{(12^2 + 64)^2} \approx -0{,}74 &lt; 0 \]</div>
-          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"8","z":true,"t":"max"}],"s":["+","-"],"outL":false,"outR":false}'></div>
+          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"0"},{"x":"8","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Požymis ir reikšmė</span></h4>
@@ -421,7 +423,7 @@
           <h4><span class="step-no">3</span><span>Ženklai</span></h4>
           <p>Įstatykite po vieną mokymų trukmę iš intervalų abipus kritinio taško:</p>
           \[ \begin{gathered} Q'(1) = \frac{200}{2} = 100 &gt; 0 \\ Q'(9) = \frac{-200}{10} = -20 &lt; 0 \end{gathered} \]
-          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"5","z":true,"t":"max"}],"s":["+","-"],"outL":false,"outR":false}'></div>
+          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"0"},{"x":"5","z":true,"t":"max"}],"s":["+","-"],"outR":false}'></div>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Požymis ir reikšmė</span></h4>
@@ -446,8 +448,8 @@
       <div class="problem">
         <span class="label">Sąlyga</span>
         Bendrosios pajamos, kurias programinės įrangos įmonė iki šiol gavo iš gaminio, tūkstančiais eurų, praėjus \(t\) metų nuo jo pateikimo rinkai, yra
-        <div class="fit-sm">\[ R(t) = t^3 - 12t^2 + 48t + 100,\quad 0 \leq t \leq 8 \]</div>
-        Raskite galimus sukauptų pajamų vietinius ekstremumus per pirmuosius aštuonerius metus.
+        \[ R(t) = t^3 - 12t^2 + 48t + 100 \]
+        Raskite galimus sukauptų pajamų vietinius ekstremumus.
       </div>
       <div class="steps">
         <section class="step">
@@ -467,7 +469,7 @@
           <h4><span class="step-no">3</span><span>Ženklai</span></h4>
           <p>Pasirinkite po vieną reikšmę iš intervalų abipus kritinio taško ir įstatykite į daugianario formos išvestinę:</p>
           \[ \begin{aligned} R'(2) &amp;= 3\cdot 2^2 - 24\cdot 2 + 48 = 12 &gt; 0 \\ R'(6) &amp;= 3\cdot 6^2 - 24\cdot 6 + 48 = 12 &gt; 0 \end{aligned} \]
-          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(t)","f":"R(t)","v":"t","pts":[{"x":"4","z":true}],"s":["+","+"],"outL":false,"outR":false}'></div>
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(t)","f":"R(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true}],"s":["+","+"],"outR":false}'></div>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Požymis</span></h4>
@@ -476,7 +478,7 @@
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
-            Sukauptos pajamos neturi vietinių ekstremumų pirmųjų aštuonerių metų laikotarpio viduje.
+            Sukauptos pajamos vietinių ekstremumų neturi: kritiniame taške \(t = 4\) išvestinės ženklas nesikeičia.
           </div>
         </section>
       </div>
