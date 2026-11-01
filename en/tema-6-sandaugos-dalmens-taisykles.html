@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Product and Quotient Rules · Applied Mathematics</title>
+<meta name="description" content="Step-by-step examples of calculating derivatives with the product and quotient rules. Practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-6-sandaugos-dalmens-taisykles.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=67">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=67"></script>
+</head>
+<body data-page="m6b">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 6 · Calculating derivatives · Section 2</span>
+    <h1>The Product and Quotient Rules</h1>
+    <p class="lead">In this section you will find examples of calculating derivatives with the product and quotient rules, together with practice problems. Try to solve each problem yourself first, then reveal the solution one step at a time.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Rules</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ RULES ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">The rules used</h2>
+    <article class="card">
+      <h3 class="subhead">The product rule</h3>
+      <div class="formula fit">\[ \begin{aligned} \big(u(x)\cdot v(x)\big)' &amp;= u'(x)\cdot v(x) \\ &amp;\phantom{=}\; + u(x)\cdot v'(x) \end{aligned} \]</div>
+      <h3 class="subhead" style="margin-top:22px">The quotient rule</h3>
+      <div class="formula">\[ \left(\frac{u(x)}{v(x)}\right)' = \frac{u'(x)v(x) - u(x)v'(x)}{v^2(x)} \]</div>
+      <p>In a product, either factor may be labelled \(u(x)\); in a quotient, \(u(x)\) is always the numerator and \(v(x)\) the denominator. The rules are explained, with detailed examples, in the <a href="tema-6.html#sandaugos">product rule</a> and <a href="tema-6.html#dalmens">quotient rule</a> cards on the Topic 6 page.</p>
+    </article>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+
+    <!-- Example 1: AM 6.1, 4.2 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A product of a power and a logarithm</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = x^2\ln x\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>Both factors depend on \(x\), so apply the <a href="tema-6.html#sandaugos">product rule</a>. In the rule, use \(u(x) = x^2\) and \(v(x) = \ln x\) as the two factors. First differentiate the power and multiply by the unchanged logarithm. Then add the unchanged power multiplied by the derivative of the logarithm.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= (x^2)'\cdot\ln x + x^2\cdot(\ln x)' \\ &amp;= 2x\ln x + x^2\cdot\frac{1}{x} \end{aligned} \]
+          <p>Write these two terms before simplifying; differentiating both factors in a single product would give an incorrect result.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Simplifying</span></h4>
+          <p>In the second term, one power of \(x\) cancels with the denominator. Both remaining terms share this factor, so factor it out to obtain the final expression:</p>
+          \[ f'(x) = 2x\ln x + x = x(2\ln x + 1) \]
+          <p>The expanded and factored answers are equivalent.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = x(2\ln x + 1) \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>A quotient of two polynomials</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = \dfrac{2x + 1}{x^2 + 3}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>The denominator depends on \(x\), so apply the <a href="tema-6.html#dalmens">quotient rule</a>. Use \(u(x) = 2x + 1\) for the numerator and \(v(x) = x^2 + 3\) for the denominator in the rule. Their derivatives are \(u'(x) = 2\) and \(v'(x) = 2x\). Form the derivative of the numerator times the unchanged denominator, then subtract the unchanged numerator times the derivative of the denominator. Divide this entire difference by the square of the original denominator.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} f'(x) &amp;= \frac{(2x + 1)'(x^2 + 3) - (2x + 1)(x^2 + 3)'}{(x^2 + 3)^2} \\ &amp;= \frac{2(x^2 + 3) - (2x + 1)\cdot 2x}{(x^2 + 3)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Simplifying</span></h4>
+          <p>Expand both products in the numerator. The subtraction applies to the entire second product, so each of its terms changes sign. Combine like terms, then factor out \(-2\) if desired:</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{2x^2 + 6 - 4x^2 - 2x}{(x^2 + 3)^2} \\ &amp;= \frac{-2x^2 - 2x + 6}{(x^2 + 3)^2} \\ &amp;= \frac{-2(x^2 + x - 3)}{(x^2 + 3)^2} \end{aligned} \]
+          <p>Keep the denominator squared; no common factor cancels in this example.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = \frac{-2(x^2 + x - 3)}{(x^2 + 3)^2} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A quotient of a root and a binomial</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = \dfrac{\sqrt{x}}{x + 1}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>Apply the <a href="tema-6.html#dalmens">quotient rule</a>, using \(u(x) = \sqrt{x}\) for the numerator and \(v(x) = x + 1\) for the denominator. Differentiate the square root using the <a href="tema-6.html#lentele">table</a>; the derivative of the denominator is one. Substitute these derivatives into the rule before simplifying.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          \[ f'(x) = \frac{\dfrac{1}{2\sqrt{x}}\cdot(x + 1) - \sqrt{x}\cdot 1}{(x + 1)^2} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Simplifying</span></h4>
+          <p>To clear the fraction within the numerator, multiply the overall numerator and denominator by \(2\sqrt{x}\). This preserves the value of the fraction, and \(\sqrt{x}\cdot\sqrt{x} = x\):</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{(x + 1) - 2\sqrt{x}\cdot\sqrt{x}}{2\sqrt{x}(x + 1)^2} \\ &amp;= \frac{x + 1 - 2x}{2\sqrt{x}(x + 1)^2} \\ &amp;= \frac{1 - x}{2\sqrt{x}(x + 1)^2} \end{aligned} \]
+          <p>The derivative is valid for \(x &gt; 0\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = \frac{1 - x}{2\sqrt{x}(x + 1)^2} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: identify the structure of the function, choose the rule, differentiate and simplify the result. Then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = x^3e^x\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = 3x^2e^x + x^3e^x\) \(= x^2e^x(3 + x)\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = (x^2 - 1)\ln x\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = 2x\ln x + \dfrac{x^2 - 1}{x}\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = \dfrac{3x - 2}{x^2 + 1}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = \dfrac{-3x^2 + 4x + 3}{(x^2 + 1)^2}\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 5, 6.1–6.3, 6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapters 9, 10.1, 10.4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

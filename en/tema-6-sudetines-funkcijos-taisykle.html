@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Chain Rule · Applied Mathematics</title>
+<meta name="description" content="Step-by-step examples of differentiating composite functions: the outer and the inner function; powers, roots, exponential, logarithmic and trigonometric functions. Practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-6-sudetines-funkcijos-taisykle.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=67">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=67"></script>
+</head>
+<body data-page="m6c">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 6 · Calculating derivatives · Section 3</span>
+    <h1>The Chain Rule</h1>
+    <p class="lead">In this section you will find examples of calculating derivatives with the chain rule, together with practice problems. Try to solve each problem yourself first, then reveal the solution one step at a time.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Rules</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ RULES ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">The rules used</h2>
+    <article class="card">
+      <div class="formula">\[ \big(g(u(x))\big)' = g'\big(u(x)\big)\cdot u'(x) \]</div>
+      <p>Here \(g(u)\) is the outer function and \(u(x)\) is the inner function. For the functions in the table, this gives the following formulas:</p>
+      <div class="anat dtbl dtbl-rows" style="margin-top:12px">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Power and root</strong></div>
+          <ul class="flist">
+            <li>\(\big((u(x))^n\big)' = n(u(x))^{n-1}\cdot u'(x)\)</li>
+            <li>\(\left(\sqrt{u(x)}\right)' = \dfrac{u'(x)}{2\sqrt{u(x)}}\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Exponential and logarithmic functions</strong></div>
+          <ul class="flist">
+            <li>\(\left(e^{u(x)}\right)' = e^{u(x)}\cdot u'(x)\)</li>
+            <li>\(\big(\ln u(x)\big)' = \dfrac{u'(x)}{u(x)}\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Sine and cosine</strong></div>
+          <ul class="flist">
+            <li>\(\big(\sin u(x)\big)' = \cos u(x)\cdot u'(x)\)</li>
+            <li>\(\big(\cos u(x)\big)' = -\sin u(x)\cdot u'(x)\)</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:12px">The rule, with examples of how to identify the outer and the inner function, is explained in the <a href="tema-6.html#sudetines">chain rule card</a> on the Topic 6 page.</p>
+    </article>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+
+    <!-- Example 1: AM 6.1, 4.3 a -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A power</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = (3x^2 - 5)^4\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The outer and the inner function</span></h4>
+          <p>The function is composite, so apply the <a href="tema-6.html#sudetines">chain rule</a>. Outer: the fourth power. Inner: \(u(x) = 3x^2 - 5\), whose derivative is \(u'(x) = 6x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          <p>Apply the power rule to the whole bracket: bring down the exponent and reduce it by one. Keep the expression inside the bracket unchanged, then multiply by its derivative:</p>
+          \[ \begin{aligned} f'(x) &amp;= 4(3x^2 - 5)^3\cdot 6x \\ &amp;= 24x(3x^2 - 5)^3 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = 24x(3x^2 - 5)^3 \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 6.1, 4.3 b -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>An exponential function</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = e^{2x^3 - x}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The outer and the inner function</span></h4>
+          <p>The function is composite, so apply the <a href="tema-6.html#sudetines">chain rule</a>. Outer: \(e^u\). Inner: \(u(x) = 2x^3 - x\), whose derivative is \(u'(x) = 6x^2 - 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          <p>The derivative of an exponential with base \(e\) retains the original exponential factor. Multiply it by the derivative of the exponent, keeping that derivative in brackets:</p>
+          \[ f'(x) = e^{2x^3 - x}\cdot(6x^2 - 1) \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = (6x^2 - 1)\,e^{2x^3 - x} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 6.1, 4.3 c -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A logarithm</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = \ln(x^2 + 4)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The outer and the inner function</span></h4>
+          <p>The function is composite, so apply the <a href="tema-6.html#sudetines">chain rule</a>. Outer: \(\ln u\). Inner: \(u(x) = x^2 + 4\), whose derivative is \(u'(x) = 2x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          <p>The derivative of the logarithm is the reciprocal of its input. Multiplying by the inner derivative places that derivative in the numerator and the original inner expression in the denominator:</p>
+          \[ f'(x) = \frac{1}{x^2 + 4}\cdot 2x = \frac{2x}{x^2 + 4} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = \dfrac{2x}{x^2 + 4} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 6.1, 4.3 d -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>A square root</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = \sqrt{4x + 7}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The outer and the inner function</span></h4>
+          <p>The function is composite, so apply the <a href="tema-6.html#sudetines">chain rule</a>. Outer: the square root. Inner: \(u(x) = 4x + 7\), whose derivative is \(u'(x) = 4\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          <p>Use the square root derivative with the entire inner expression under the root, then multiply by four. Simplify the numerical coefficient only after applying the chain rule:</p>
+          \[ f'(x) = \frac{4}{2\sqrt{4x + 7}} = \frac{2}{\sqrt{4x + 7}} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = \dfrac{2}{\sqrt{4x + 7}} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5: AM 6.1, 4.3 e -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>A cosine</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = \cos(3x^2)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The outer and the inner function</span></h4>
+          <p>The function is composite, so apply the <a href="tema-6.html#sudetines">chain rule</a>. Outer: \(\cos u\). Inner: \(u(x) = 3x^2\), whose derivative is \(u'(x) = 6x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          <p>Differentiating cosine gives negative sine. Retain the original inner expression as the sine argument, then multiply by the inner derivative. Keep the minus sign throughout the calculation:</p>
+          \[ \begin{aligned} f'(x) &amp;= -\sin(3x^2)\cdot 6x \\ &amp;= -6x\sin(3x^2) \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = -6x\sin(3x^2) \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>A root in the exponent</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = e^{\sqrt{x}}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>Apply the <a href="tema-6.html#sudetines">chain rule</a>. The outer function is \(e^u\); the inner function is \(u(x) = \sqrt{x}\), with derivative \(u'(x) = \dfrac{1}{2\sqrt{x}}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          <p>Differentiating the outer exponential leaves it unchanged. Multiply this exponential by the derivative of the square root, then write the product as a single fraction:</p>
+          \[ f'(x) = e^{\sqrt{x}}\cdot\frac{1}{2\sqrt{x}} = \frac{e^{\sqrt{x}}}{2\sqrt{x}} \]
+          <p>The derivative is valid for \(x &gt; 0\); it is not finite at \(x = 0\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = \frac{e^{\sqrt{x}}}{2\sqrt{x}} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: identify the structure of the function, choose the rule, differentiate and simplify the result. Then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = (2x^2 + 5)^6\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = 24x(2x^2 + 5)^5\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = e^{3x^2 - 4x}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = (6x - 4)\,e^{3x^2 - 4x}\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = \sqrt{6x - 1}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = \dfrac{3}{\sqrt{6x - 1}}\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 5, 6.1–6.3, 6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapters 9, 10.1, 10.4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

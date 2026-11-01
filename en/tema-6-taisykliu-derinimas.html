@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Combining the Rules · Applied Mathematics</title>
+<meta name="description" content="Step-by-step examples of calculating derivatives in which the chain rule is combined with the product or quotient rule. Practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-6-taisykliu-derinimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=67">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=67"></script>
+</head>
+<body data-page="m6d">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 6 · Calculating derivatives · Section 4</span>
+    <h1>Combining the Rules</h1>
+    <p class="lead">In this section you will find examples of calculating derivatives in which several rules have to be combined in one function, together with practice problems. Try to solve each problem yourself first, then reveal the solution one step at a time.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Rules</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ RULES ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">The rules used</h2>
+    <article class="card">
+      <h3 class="subhead">The product rule</h3>
+      <div class="formula fit">\[ \begin{aligned} \big(u(x)\cdot v(x)\big)' &amp;= u'(x)\cdot v(x) \\ &amp;\phantom{=}\; + u(x)\cdot v'(x) \end{aligned} \]</div>
+      <h3 class="subhead" style="margin-top:22px">The quotient rule</h3>
+      <div class="formula">\[ \left(\frac{u(x)}{v(x)}\right)' = \frac{u'(x)v(x) - u(x)v'(x)}{v^2(x)} \]</div>
+      <h3 class="subhead" style="margin-top:22px">The chain rule</h3>
+      <div class="formula">\[ \big(g(u(x))\big)' = g'\big(u(x)\big)\cdot u'(x) \]</div>
+      <p>The rules are explained in the <a href="tema-6.html#sandaugos">product rule</a>, <a href="tema-6.html#dalmens">quotient rule</a> and <a href="tema-6.html#sudetines">chain rule</a> cards on the Topic 6 page.</p>
+    </article>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">These examples combine the chain rule with the product or quotient rule. First identify the structure of the whole function and write the corresponding rule. Then use the chain rule wherever a factor, numerator or denominator is itself a composite function.</p>
+
+    <!-- Example 1: AM 6.1, 4.4 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A product of a power and an exponential function</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = x^2e^{-3x}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>The factors are \(x^2\) and \(e^{-3x}\), so start with the <a href="tema-6.html#sandaugos">product rule</a>. Its first term differentiates the power and keeps the exponential unchanged. Its second term keeps the power unchanged and differentiates the exponential. For that derivative, use the <a href="tema-6.html#sudetines">chain rule</a>: the inner function is \(-3x\), with derivative \(-3\). Multiply the unchanged exponential by this inner derivative.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          \[ f'(x) = 2x\cdot e^{-3x} + x^2\cdot e^{-3x}\cdot(-3) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Simplifying</span></h4>
+          <p>Finally, factor out the common exponential and one power of the input, \(xe^{-3x}\):</p>
+          \[ \begin{aligned} f'(x) &amp;= 2xe^{-3x} - 3x^2e^{-3x} \\ &amp;= xe^{-3x}(2 - 3x) \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = xe^{-3x}(2 - 3x) \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>A product of the input and a root</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = x\sqrt{x^2 + 1}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>Apply the <a href="tema-6.html#sandaugos">product rule</a> to \(x\) and \(\sqrt{x^2 + 1}\). The derivative of the first factor is one, giving the unchanged square root as the first term. For the second term, keep the first factor and differentiate the square root using the <a href="tema-6.html#sudetines">chain rule</a>. Its inner function is \(x^2 + 1\), with derivative \(2x\). Divide the inner derivative by twice the original square root, then simplify the numerical factors.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= 1\cdot\sqrt{x^2 + 1} + x\cdot\frac{2x}{2\sqrt{x^2 + 1}} \\ &amp;= \sqrt{x^2 + 1} + \frac{x^2}{\sqrt{x^2 + 1}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Simplifying</span></h4>
+          <p>To combine the terms, use the common denominator \(\sqrt{x^2 + 1}\). Multiply the first term by this denominator divided by itself. The two square roots in its numerator multiply to give their radicand. Then add the numerators:</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{x^2 + 1 + x^2}{\sqrt{x^2 + 1}} \\ &amp;= \frac{2x^2 + 1}{\sqrt{x^2 + 1}} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = \frac{2x^2 + 1}{\sqrt{x^2 + 1}} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A quotient of an exponential function and a binomial</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = \dfrac{e^{2x}}{x + 1}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>The denominator depends on \(x\), so apply the <a href="tema-6.html#dalmens">quotient rule</a>. Differentiate the numerator using the <a href="tema-6.html#sudetines">chain rule</a>: \((e^{2x})' = 2e^{2x}\). The factor two comes from differentiating the exponent. The denominator has derivative one. Substitute both derivatives into the quotient rule, retaining the subtraction sign and squaring the original denominator. The function and its derivative are undefined at \(x = -1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          \[ f'(x) = \frac{2e^{2x}(x + 1) - e^{2x}\cdot 1}{(x + 1)^2} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Simplifying</span></h4>
+          <p>Factor \(e^{2x}\) out of both terms in the numerator. Inside the brackets, expand the product and combine the constant terms:</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{e^{2x}(2x + 2 - 1)}{(x + 1)^2} \\ &amp;= \frac{e^{2x}(2x + 1)}{(x + 1)^2} \end{aligned} \]
+          <p>The exponential remains in the answer because it is not a common factor of the numerator and denominator.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = \frac{e^{2x}(2x + 1)}{(x + 1)^2} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: identify the structure of the function, choose the rule, differentiate and simplify the result. Then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = e^{2x}\ln x\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = e^{2x}\left(2\ln x + \dfrac{1}{x}\right)\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = x\sqrt{3x + 1}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = \dfrac{9x + 2}{2\sqrt{3x + 1}}\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 5, 6.1–6.3, 6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapters 9, 10.1, 10.4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
