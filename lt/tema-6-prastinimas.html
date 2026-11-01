@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Išvestinių skaičiavimas naudojant prastinimą · Taikomoji matematika</title>
+<meta name="description" content="Išvestinių skaičiavimo pavyzdžiai žingsnis po žingsnio, kai prieš diferencijuojant funkcija supaprastinama: trupmenos prastinimas, logaritmo savybė, skliaustų išskleidimas. Uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=64">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=64"></script>
+</head>
+<body data-page="m6e">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">6 tema · Išvestinių skaičiavimas · 5 skyrius</span>
+    <h1>Išvestinių skaičiavimas naudojant prastinimą</h1>
+    <p class="lead">Šiame skyriuje rasite išvestinių skaičiavimo pavyzdžių, kuriuose prieš diferencijuojant funkciją patogu supaprastinti, ir uždavinių savarankiškam darbui. Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Taisyklės</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ TAISYKLĖS ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">Taikomos taisyklės</h2>
+    <article class="card">
+      <p>Pavyzdžiuose naudojami šie pertvarkymai:</p>
+      <ul>
+        <li>trupmenos, kurios vardiklis yra vienanaris, skaitiklio narius padalykite iš vardiklio: \(\dfrac{a + b}{c} = \dfrac{a}{c} + \dfrac{b}{c}\), \(c \neq 0\);</li>
+        <li>laipsnio logaritmas: \(\ln(x^k) = k\ln x\), \(x &gt; 0\);</li>
+        <li>laipsnių su tuo pačiu pagrindu sandauga: \(e^a\cdot e^b = e^{a + b}\);</li>
+        <li>dvinario kvadratas: \((a + b)^2 = a^2 + 2ab + b^2\).</li>
+      </ul>
+      <p>Pertvarkę funkciją, išlaikykite pradinės funkcijos apibrėžimo srities apribojimus. Išvestinių lentelė ir taisyklės pateiktos <a href="tema-6.html#lentele">6 temos puslapyje</a>.</p>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Prieš pasirinkdami taisyklę, patikrinkite, ar funkcijos išraišką galima supaprastinti algebriškai. Suprastinus bendruosius daugiklius arba pritaikius logaritmų ir laipsnių savybes, gali prireikti mažiau veiksmų. Išlaikykite pradinės funkcijos apibrėžimo srities apribojimus. Aukšto laipsnio reiškinį išskleisti paprastai ne taip patogu, kaip iš karto taikyti sudėtinės funkcijos išvestinės taisyklę.</p>
+
+    <!-- 1 pavyzdys: TM 6.1, 4.5 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Trupmena, kurią galima suprastinti</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \dfrac{x^3 + 4x^2 - x}{x}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Supaprastinimas</span></h4>
+          <p>Kiekvienas skaitiklio narys turi daugiklį \(x\). Kiekvieną narį padalykite iš vardiklio ir gausite daugianarį:</p>
+          \[ \begin{aligned} f(x) &amp;= \frac{x^3}{x} + \frac{4x^2}{x} - \frac{x}{x} \\ &amp;= x^2 + 4x - 1,\quad x \neq 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Taikykite <a href="tema-6.html#sumos">sumos taisyklę</a> ir laipsninės funkcijos išvestinės formulę:</p>
+          \[ f'(x) = 2x + 4 \]
+          <p>Dalmens taisyklė duotų tą patį rezultatą, tačiau reikėtų daugiau algebrinių veiksmų. Išvestinė galioja tik pradinės funkcijos apibrėžimo srityje, kuriai nulis nepriklauso.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = 2x + 4,\quad x \neq 0 \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Laipsnio logaritmas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \ln(x^3)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Supaprastinimas</span></h4>
+          <p>Galima taikyti sudėtinės funkcijos išvestinės taisyklę, tačiau logaritmo laipsnio savybė leidžia skaičiuoti trumpiau. Laipsnio logaritmą perrašykite kaip konstantos ir logaritmo sandaugą. Pradinė funkcija apibrėžta, kai \(x &gt; 0\).</p>
+          \[ f(x) = \ln(x^3) = 3\ln x \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          <p>Taikykite <a href="tema-6.html#daugiklio">pastovaus daugiklio taisyklę</a>:</p>
+          \[ f'(x) = 3\cdot\frac{1}{x} = \frac{3}{x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <p>Sudėtinės funkcijos išvestinės taisyklė duoda tą patį rezultatą:</p>
+          \[ f'(x) = \frac{1}{x^3}\cdot 3x^2 = \frac{3x^2}{x^3} = \frac{3}{x} \]
+          <p>Panašiai, pritaikius laipsnių savybę, sandauga \(e^x\cdot e^{3x}\) perrašoma kaip \(e^{4x}\), o jos išvestinė yra \(4e^{4x}\). Supaprastinus reiškinį prieš diferencijuojant, sandaugos taisyklės nereikia.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{3}{x} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Dvinario kvadratas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = (2x + 1)^2\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmasis būdas – sudėtinės funkcijos taisyklė</span></h4>
+          <p>Taikant <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>, vidinė funkcija yra \(u(x) = 2x + 1\), o jos išvestinė \(u'(x) = 2\):</p>
+          \[ \begin{aligned} f'(x) &amp;= 2(2x + 1)\cdot 2 \\ &amp;= 4(2x + 1) = 8x + 4 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Antrasis būdas – skliaustų išskleidimas</span></h4>
+          <p>Prieš diferencijuodami išskleiskite kvadratą:</p>
+          \[ \begin{gathered} f(x) = 4x^2 + 4x + 1 \\ \Longrightarrow\; f'(x) = 8x + 4 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kurį būdą rinktis</span></h4>
+          <p>Kai reiškinys pakeltas kvadratu, abu būdai trumpi. Tačiau penktajam laipsniui \((x^2 + 1)^5\) išskleisti reikia gerokai daugiau algebrinių veiksmų, o sudėtinės funkcijos išvestinės taisyklė iš karto duoda</p>
+          \[ \begin{aligned} \big((x^2 + 1)^5\big)' &amp;= 5(x^2 + 1)^4\cdot 2x \\ &amp;= 10x(x^2 + 1)^4 \end{aligned} \]
+          <p>Tokiais atvejais skliaustų neskleiskite ir taikykite sudėtinės funkcijos išvestinės taisyklę.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = 8x + 4 \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: nustatykite funkcijos struktūrą, pasirinkite taisyklę, diferencijuokite ir supaprastinkite rezultatą. Tada pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite \(f'(x)\), kai \(f(x) = \dfrac{8x^4 + 6x^3 - 2x}{2x}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Suprastinus \(f(x) = 4x^3 + 3x^2 - 1\), \(x \neq 0\); \(f'(x) = 12x^2 + 6x\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">5, 6.1–6.3, 6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">9, 10.1, 10.4 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

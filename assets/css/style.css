@@ -1062,3 +1062,23 @@ ul.ans-list li:last-child { margin-bottom: 0; }
 .vtable.ext td.ext-max { background: var(--success-soft); font-weight: 700; }
 .vtable.ext td.ext-min { background: var(--danger-soft); font-weight: 700; }
 @media (max-width: 440px) { .vtable.ext th, .vtable.ext td { padding: 5px 7px; } }
+
+/* 6 tema: pavyzdžiai taisyklių kortelėse, funkcijų u, v, g sąrašai */
+.rule-ex { margin: 14px 0 6px; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); border-left: 3px solid var(--accent-strong); }
+.rule-ex-h { margin: 0 0 6px; font-size: .72rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; color: var(--accent-strong); }
+.rule-ex p { margin: 0 0 8px; }
+.rule-ex p:last-child { margin-bottom: 0; }
+.rule-ex + .rule-ex { margin-top: 10px; }
+ul.gu { list-style: none; padding: 0; margin: 6px 0 8px; display: grid; gap: 5px; }
+ul.gu li { margin: 0; padding: 6px 10px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); }
+.gu-lab { display: inline-block; margin-right: 8px; font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.chain-exs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border); }
+.chain-ex { padding: 10px 12px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); }
+.chain-ex .chain-task { margin: 0 0 6px; font-weight: 600; }
+.chain-ex ul.gu li { background: var(--surface-2); }
+.chain-ex .katex-display { margin: .5em 0 0; }
+@media (max-width: 440px) {
+  .rule-ex { padding: 10px 10px; }
+  .chain-ex { padding: 8px 8px; }
+  ul.gu li { padding: 5px 8px; }
+}

@@ -270,9 +270,21 @@
         desc: { lt: 'Dualusis uždavinys: mažiausios išlaidos ir reikalavimų viršijimas.', en: 'The dual problem: the minimum cost and the requirements that are exceeded.' } }
     ],
     t6: [
-      { id: 'm60', status: 'active', href: { lt: 'tema-6-isvestiniu-skaiciavimas.html', en: null },
-        title: { lt: 'Išvestinių skaičiavimo pavyzdžiai', en: 'Differentiation Examples' },
-        desc: { lt: 'Keturiolika pavyzdžių žingsnis po žingsnio pagal taikomas taisykles ir uždaviniai savarankiškam darbui.', en: 'Fourteen step-by-step examples grouped by the rules they use, and problems for independent practice.' } },
+      { id: 'm6a', status: 'active', href: { lt: 'tema-6-daugiklio-sumos-taisykles.html', en: null },
+        title: { lt: 'Pastovaus daugiklio, sumos ir skirtumo išvestinių taisyklės', en: 'Constant Multiple, Sum and Difference Rules' },
+        desc: { lt: 'Daugianariai ir elementariųjų funkcijų sumos: kiekvienas narys diferencijuojamas atskirai.', en: 'Polynomials and sums of elementary functions: each term is differentiated separately.' } },
+      { id: 'm6b', status: 'active', href: { lt: 'tema-6-sandaugos-dalmens-taisykles.html', en: null },
+        title: { lt: 'Sandaugos ir dalmens išvestinių taisyklės', en: 'Product and Quotient Rules' },
+        desc: { lt: 'Dviejų funkcijų sandauga ir dalmuo: kaip nustatyti abi funkcijas ir taikyti formulę.', en: 'The product and the quotient of two functions: how to identify both functions and apply the formula.' } },
+      { id: 'm6c', status: 'active', href: { lt: 'tema-6-sudetines-funkcijos-taisykle.html', en: null },
+        title: { lt: 'Sudėtinės funkcijos išvestinės taisyklė', en: 'The Chain Rule' },
+        desc: { lt: 'Laipsnis, šaknis, rodiklinė, logaritminė ir trigonometrinės funkcijos, kurių argumentas – kitas reiškinys.', en: 'Powers, roots, exponential, logarithmic and trigonometric functions whose argument is another expression.' } },
+      { id: 'm6d', status: 'active', href: { lt: 'tema-6-taisykliu-derinimas.html', en: null },
+        title: { lt: 'Taisyklių derinimo pavyzdžiai', en: 'Combining the Rules' },
+        desc: { lt: 'Sudėtinė funkcija sandaugoje ar dalmenyje: kelios taisyklės viename skaičiavime.', en: 'A composite function in a product or a quotient: several rules in one calculation.' } },
+      { id: 'm6e', status: 'active', href: { lt: 'tema-6-prastinimas.html', en: null },
+        title: { lt: 'Išvestinių skaičiavimas naudojant prastinimą', en: 'Simplifying Before Differentiating' },
+        desc: { lt: 'Trupmenos prastinimas, logaritmo savybės ir skliaustų atskliaudimas prieš diferencijuojant.', en: 'Reducing a fraction, using the properties of logarithms and expanding brackets before differentiating.' } },
       { id: 'm61', status: 'active', href: { lt: 'tema-6-ribine-analize.html', en: null },
         title: { lt: 'Ribinė analizė', en: 'Marginal Analysis' },
         desc: { lt: 'Ribinės sąnaudos, pajamos ir pelnas: kaip papildomas pagamintas ir parduotas vienetas keičia įmonės rodiklius.', en: 'Marginal cost, revenue and profit: how one more unit produced and sold changes the company’s figures.' } },
@@ -338,8 +350,16 @@
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
     t6:      { parent: 'home', href: { lt: 'tema-6.html', en: null },
                title: { lt: '6 tema', en: 'Topic 6' } },
-    m60:     { parent: 't6', topic: 't6', model: 'm60', href: { lt: 'tema-6-isvestiniu-skaiciavimas.html', en: null },
-               title: { lt: 'Išvestinių skaičiavimo pavyzdžiai', en: 'Differentiation Examples' } },
+    m6a:     { parent: 't6', topic: 't6', model: 'm6a', href: { lt: 'tema-6-daugiklio-sumos-taisykles.html', en: null },
+               title: { lt: 'Pastovaus daugiklio, sumos ir skirtumo išvestinių taisyklės', en: 'Constant Multiple, Sum and Difference Rules' } },
+    m6b:     { parent: 't6', topic: 't6', model: 'm6b', href: { lt: 'tema-6-sandaugos-dalmens-taisykles.html', en: null },
+               title: { lt: 'Sandaugos ir dalmens išvestinių taisyklės', en: 'Product and Quotient Rules' } },
+    m6c:     { parent: 't6', topic: 't6', model: 'm6c', href: { lt: 'tema-6-sudetines-funkcijos-taisykle.html', en: null },
+               title: { lt: 'Sudėtinės funkcijos išvestinės taisyklė', en: 'The Chain Rule' } },
+    m6d:     { parent: 't6', topic: 't6', model: 'm6d', href: { lt: 'tema-6-taisykliu-derinimas.html', en: null },
+               title: { lt: 'Taisyklių derinimo pavyzdžiai', en: 'Combining the Rules' } },
+    m6e:     { parent: 't6', topic: 't6', model: 'm6e', href: { lt: 'tema-6-prastinimas.html', en: null },
+               title: { lt: 'Išvestinių skaičiavimas naudojant prastinimą', en: 'Simplifying Before Differentiating' } },
     m61:     { parent: 't6', topic: 't6', model: 'm61', href: { lt: 'tema-6-ribine-analize.html', en: null },
                title: { lt: 'Ribinė analizė', en: 'Marginal Analysis' } },
     m62:     { parent: 't6', topic: 't6', model: 'm62', href: { lt: 'tema-6-pokyciu-analize.html', en: null },
@@ -485,14 +505,15 @@
   function buildModelGrid() {
     $all('[data-models]').forEach(function (box) {
       var list = MODELS[box.getAttribute('data-models')] || [];
-      /* data-only / data-skip: rodyti tik nurodytus arba praleisti nurodytus skyrius (numeracija – visos temos sąraše) */
+      /* data-only / data-skip: rodyti tik nurodytus arba praleisti nurodytus skyrius (numeracija – rodomame sąraše) */
       var only = (box.getAttribute('data-only') || '').split(' ').filter(Boolean);
       var skip = (box.getAttribute('data-skip') || '').split(' ').filter(Boolean);
-      var html = '';
-      list.forEach(function (m, i) {
+      var html = '', n = 0;
+      list.forEach(function (m) {
         if (only.length && only.indexOf(m.id) < 0) return;
         if (skip.indexOf(m.id) >= 0) return;
-        var head = '<span class="m-no">' + esc(T.chapterN(i + 1)) + '</span><h3>' + esc(tr(m.title)) + '</h3>' +
+        n++;
+        var head = '<span class="m-no">' + esc(T.chapterN(n)) + '</span><h3>' + esc(tr(m.title)) + '</h3>' +
           '<p>' + tr(m.desc) + '</p>';
         if (m.status === 'active' && m.href && m.href[LANG]) {
           html += '<a class="model-card" href="' + m.href[LANG] + '">' + head +
@@ -1151,39 +1172,42 @@
 
   /* ------------------------------------------------------------------
      8b. IŠVESTINĖS IŠVEDIMO BRĖŽINYS  (<div data-widget="deriv-explorer">)
-     f(x) = 0,1x³ − 0,4x² + 0,7x − 0,2; taškas A(3; 1), f'(3) = 1.
-     Slankikliu keičiamas Δx: kirstinė per A ir B(3 + Δx; f(3 + Δx)) artėja prie liestinės.
+     Vartojimo išlaidų funkcija C(x) = 100 + 0,9x − 0,0001x²; taškas A(1000; 900), C'(1000) = 0,7.
+     Slankikliu keičiamas Δx: kirstinė per A ir B(1000 + Δx; C(1000 + Δx)) artėja prie liestinės.
      ------------------------------------------------------------------ */
   function initDerivExplorer(box) {
-    var f = function (x) { return 0.1 * x * x * x - 0.4 * x * x + 0.7 * x - 0.2; };
-    var X0 = 3, Y0 = f(X0), D0 = 1;                 // A(3; 1), f'(3) = 1
-    var S = 44, OX = 34, OY = 306, XMAX = 6.3, YMAX = 6.8, XMIN = -0.6, YMIN = -0.6;
-    var X = function (x) { return OX + x * S; }, Y = function (y) { return OY - y * S; };
+    var f = function (x) { return 100 + 0.9 * x - 0.0001 * x * x; };
+    var X0 = 1000, Y0 = f(X0), D0 = 0.7;            // A(1000; 900), C'(1000) = 0,7
+    var SX = 0.065, SY = 0.115, OX = 44, OY = 308;
+    var XMAX = 4300, YMAX = 2600, XMIN = -400, YMIN = -230;
+    var X = function (x) { return OX + x * SX; }, Y = function (y) { return OY - y * SY; };
     var r1 = function (v) { return Math.round(v * 10) / 10; };
-    var grid = '', ticks = '';
-    for (var i = 1; i <= 6; i++) {
-      grid += '<line class="grid" x1="' + X(i) + '" y1="' + Y(YMAX) + '" x2="' + X(i) + '" y2="' + Y(YMIN) + '"/>';
-      grid += '<line class="grid" x1="' + X(XMIN) + '" y1="' + Y(i) + '" x2="' + X(XMAX) + '" y2="' + Y(i) + '"/>';
-      ticks += '<text class="muted" x="' + X(i) + '" y="' + (OY + 16) + '" text-anchor="middle">' + i + '</text>';
-      ticks += '<text class="muted" x="' + (OX - 8) + '" y="' + (Y(i) + 4) + '" text-anchor="end">' + i + '</text>';
+    var grid = '', ticks = '', i;
+    for (i = 1000; i <= 4000; i += 1000) {
+      grid += '<line class="grid" x1="' + r1(X(i)) + '" y1="' + r1(Y(YMAX)) + '" x2="' + r1(X(i)) + '" y2="' + r1(Y(YMIN)) + '"/>';
+      ticks += '<text class="muted" x="' + r1(X(i)) + '" y="' + (OY + 16) + '" text-anchor="middle">' + i + '</text>';
+    }
+    for (i = 500; i <= 2500; i += 500) {
+      grid += '<line class="grid" x1="' + r1(X(XMIN)) + '" y1="' + r1(Y(i)) + '" x2="' + r1(X(XMAX)) + '" y2="' + r1(Y(i)) + '"/>';
+      ticks += '<text class="muted" x="' + (OX - 6) + '" y="' + r1(Y(i) + 4) + '" text-anchor="end">' + i + '</text>';
     }
     var pts = [];
-    for (var x = XMIN; x <= XMAX + 1e-9; x += 0.05) pts.push(r1(X(x)) + ' ' + r1(Y(f(x))));
-    var W = X(XMAX) + 14, H = Y(YMIN) + 4;
+    for (var x = 0; x <= XMAX + 1e-9; x += 50) pts.push(r1(X(x)) + ' ' + r1(Y(f(x))));
+    var W = r1(X(XMAX) + 14), H = r1(Y(YMIN) + 4);
     box.classList.add('tryit');
     box.innerHTML =
       '<p class="tryit-title">' + ICON.slider + esc(T.tryIt) + '</p>' +
       '<p class="tryit-note" style="margin:0 0 6px">' + esc(T.derivHint) + '</p>' +
       '<div class="tryit-eq js-sec" aria-live="polite"></div>' +
       '<svg class="plot" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(T.derivAria) + '">' +
-        '<defs><clipPath id="de-clip"><rect x="' + X(XMIN) + '" y="' + Y(YMAX) + '" width="' + (X(XMAX) - X(XMIN)) + '" height="' + (Y(YMIN) - Y(YMAX)) + '"/></clipPath></defs>' +
+        '<defs><clipPath id="de-clip"><rect x="' + r1(X(XMIN)) + '" y="' + r1(Y(YMAX)) + '" width="' + r1(X(XMAX) - X(XMIN)) + '" height="' + r1(Y(YMIN) - Y(YMAX)) + '"/></clipPath></defs>' +
         grid + ticks +
-        '<line class="ax" x1="' + X(XMIN) + '" y1="' + OY + '" x2="' + (W - 6) + '" y2="' + OY + '"/>' +
+        '<line class="ax" x1="' + r1(X(XMIN)) + '" y1="' + OY + '" x2="' + (W - 6) + '" y2="' + OY + '"/>' +
         '<line class="ax" x1="' + OX + '" y1="' + H + '" x2="' + OX + '" y2="8"/>' +
         '<path class="ah" d="M' + W + ' ' + OY + 'L' + (W - 9) + ' ' + (OY - 4.5) + 'L' + (W - 9) + ' ' + (OY + 4.5) + 'Z"/>' +
         '<path class="ah" d="M' + OX + ' 0L' + (OX - 4.5) + ' 9L' + (OX + 4.5) + ' 9Z"/>' +
         '<text class="m" x="' + (W - 12) + '" y="' + (OY - 8) + '">x</text>' +
-        '<text class="m" x="' + (OX + 8) + '" y="14">y</text>' +
+        '<text class="m" x="' + (OX + 8) + '" y="14">C</text>' +
         '<g clip-path="url(#de-clip)">' +
           '<path class="ln" d="M' + pts.join('L') + '"/>' +
           '<line class="ln2-dash js-tan"/>' +
@@ -1193,13 +1217,13 @@
         '<text class="m js-dxl" text-anchor="middle">Δx</text><text class="m js-dyl">Δy</text>' +
 
         '<circle class="pt js-b" r="5.5"/><text class="js-bl" style="font-weight:700">B</text>' +
-        '<circle class="pt-hi" r="6" cx="' + X(X0) + '" cy="' + Y(Y0) + '"/>' +
-        '<text x="' + (X(X0) - 16) + '" y="' + (Y(Y0) + 4) + '" style="font-weight:700">A</text>' +
+        '<circle class="pt-hi" r="6" cx="' + r1(X(X0)) + '" cy="' + r1(Y(Y0)) + '"/>' +
+        '<text x="' + r1(X(X0) - 16) + '" y="' + r1(Y(Y0) + 4) + '" style="font-weight:700">A</text>' +
       '</svg>' +
       '<ul class="chart-legend"><li><span class="sw" aria-hidden="true"></span><span class="js-fx"></span></li>' +
         '<li><span class="sw sw-3" aria-hidden="true"></span>' + esc(T.secant) + '</li>' +
         '<li><span class="sw sw-dash" aria-hidden="true"></span>' + esc(T.tangent) + '</li></ul>' +
-      '<div class="ctrl"><label for="de-h" class="h-lab"></label><input id="de-h" type="range" min="0" max="2" step="0.1" value="2"><output for="de-h"></output></div>' +
+      '<div class="ctrl"><label for="de-h" class="h-lab"></label><input id="de-h" type="range" min="0" max="2000" step="100" value="2000"><output for="de-h"></output></div>' +
       '<div class="tryit-eq js-tanv" style="font-size:1rem"></div>' +
       '<p class="tryit-note js-note"></p>';
 
@@ -1208,7 +1232,7 @@
     var tan = el('js-tan'), sec = el('js-secl'), dx = el('js-dx'), dy = el('js-dy');
     var dxl = el('js-dxl'), dyl = el('js-dyl'), b = el('js-b'), bl = el('js-bl');
     var note = el('js-note');
-    renderInline(el('js-fx'), 'f(x)');
+    renderInline(el('js-fx'), 'C(x)');
     renderInline($('.h-lab', box), '\\Delta x');
     var dec = function (v, n) {
       var s = String(Number(v.toFixed(n)));
@@ -1216,17 +1240,17 @@
     };
     var tex = function (v, n) { return (v < 0 ? '-' : '') + dec(Math.abs(v), n).replace(',', '{,}'); };
     var setLine = function (ln, m, x0, y0) {
-      ln.setAttribute('x1', X(XMIN)); ln.setAttribute('y1', Y(y0 + m * (XMIN - x0)));
-      ln.setAttribute('x2', X(XMAX)); ln.setAttribute('y2', Y(y0 + m * (XMAX - x0)));
+      ln.setAttribute('x1', r1(X(XMIN))); ln.setAttribute('y1', r1(Y(y0 + m * (XMIN - x0))));
+      ln.setAttribute('x2', r1(X(XMAX))); ln.setAttribute('y2', r1(Y(y0 + m * (XMAX - x0))));
     };
-    var place = function (t, x, y) { t.setAttribute('x', x); t.setAttribute('y', y); };
+    var place = function (t, x, y) { t.setAttribute('x', r1(x)); t.setAttribute('y', r1(y)); };
     setLine(tan, D0, X0, Y0);
     el('js-tanv').innerHTML = esc(T.tanSlope) + ': <span class="js-tanm"></span>';
-    renderInline(el('js-tanm'), "f'(3) = 1");
+    renderInline(el('js-tanm'), "C'(1000) = " + tex(D0, 1));
 
     function draw() {
-      var h = Math.round(parseFloat(hIn.value) * 10) / 10;
-      hOut.textContent = dec(h, 1);
+      var h = Math.round(parseFloat(hIn.value));
+      hOut.textContent = String(h);
       var show = h !== 0;
       [sec, dx, dy, dxl, dyl, b, bl].forEach(function (e) { e.style.display = show ? '' : 'none'; });
       if (!show) {
@@ -1238,16 +1262,16 @@
       }
       var xb = X0 + h, yb = f(xb), d = yb - Y0, m = d / h;
       setLine(sec, m, X0, Y0);
-      dx.setAttribute('x1', X(X0)); dx.setAttribute('y1', Y(Y0)); dx.setAttribute('x2', X(xb)); dx.setAttribute('y2', Y(Y0));
-      dy.setAttribute('x1', X(xb)); dy.setAttribute('y1', Y(Y0)); dy.setAttribute('x2', X(xb)); dy.setAttribute('y2', Y(yb));
-      b.setAttribute('cx', X(xb)); b.setAttribute('cy', Y(yb));
-      place(bl, X(xb) + (h > 0 ? 9 : -18), Y(yb) - 8);
-      place(dxl, (X(X0) + X(xb)) / 2, Y(Y0) + (d >= 0 ? 17 : -8));
-      place(dyl, X(xb) + 6, h > 0 ? Y(Y0 + d / 3) + 5 : (Y(Y0) + Y(yb)) / 2 + 5);
-      dxl.style.display = Math.abs(h) * S >= 34 ? '' : 'none';
-      dyl.style.display = h > 0 && d * S >= 30 ? '' : 'none';
+      dx.setAttribute('x1', r1(X(X0))); dx.setAttribute('y1', r1(Y(Y0))); dx.setAttribute('x2', r1(X(xb))); dx.setAttribute('y2', r1(Y(Y0)));
+      dy.setAttribute('x1', r1(X(xb))); dy.setAttribute('y1', r1(Y(Y0))); dy.setAttribute('x2', r1(X(xb))); dy.setAttribute('y2', r1(Y(yb)));
+      b.setAttribute('cx', r1(X(xb))); b.setAttribute('cy', r1(Y(yb)));
+      if (h * SX >= 30) place(bl, X(xb) - 17, Y(yb) - 9); else place(bl, X(xb) + 8, Y(yb) + 5);
+      place(dxl, (X(X0) + X(xb)) / 2, Y(Y0) + 17);
+      place(dyl, X(xb) + 6, Y(Y0 + d / 3) + 5);
+      dxl.style.display = h * SX >= 34 ? '' : 'none';
+      dyl.style.display = d * SY >= 30 ? '' : 'none';
       el('js-sec').innerHTML = '<span class="tryit-lab">' + esc(T.secSlope) + ':</span> <span class="js-secm"></span>';
-      renderInline(el('js-secm'), '\\frac{\\Delta y}{\\Delta x} = \\frac{' + tex(d, 3) + '}{' + tex(h, 1) + '} = ' + tex(m, 3));
+      renderInline(el('js-secm'), '\\frac{\\Delta y}{\\Delta x} = \\frac{' + tex(d, 2) + '}{' + h + '} = ' + tex(m, 4));
       note.textContent = '';
       note.style.display = 'none';
     }

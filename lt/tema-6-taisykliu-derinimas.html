@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taisyklių derinimo pavyzdžiai · Taikomoji matematika</title>
+<meta name="description" content="Išvestinių skaičiavimo pavyzdžiai žingsnis po žingsnio, kai sudėtinės funkcijos išvestinės taisyklė derinama su sandaugos arba dalmens taisykle. Uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=64">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=64"></script>
+</head>
+<body data-page="m6d">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">6 tema · Išvestinių skaičiavimas · 4 skyrius</span>
+    <h1>Taisyklių derinimo pavyzdžiai</h1>
+    <p class="lead">Šiame skyriuje rasite išvestinių skaičiavimo pavyzdžių, kuriuose vienoje funkcijoje reikia derinti kelias taisykles, ir uždavinių savarankiškam darbui. Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Taisyklės</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ TAISYKLĖS ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">Taikomos taisyklės</h2>
+    <article class="card">
+      <h3 class="subhead">Sandaugos taisyklė</h3>
+      <div class="formula fit">\[ \begin{aligned} \big(u(x)\cdot v(x)\big)' &amp;= u'(x)\cdot v(x) \\ &amp;\phantom{=}\; + u(x)\cdot v'(x) \end{aligned} \]</div>
+      <h3 class="subhead" style="margin-top:22px">Dalmens taisyklė</h3>
+      <div class="formula">\[ \left(\frac{u(x)}{v(x)}\right)' = \frac{u'(x)v(x) - u(x)v'(x)}{v^2(x)} \]</div>
+      <h3 class="subhead" style="margin-top:22px">Sudėtinės funkcijos išvestinės taisyklė</h3>
+      <div class="formula">\[ \big(g(u(x))\big)' = g'\big(u(x)\big)\cdot u'(x) \]</div>
+      <p>Taisyklių paaiškinimai pateikti 6 temos puslapio <a href="tema-6.html#sandaugos">sandaugos</a>, <a href="tema-6.html#dalmens">dalmens</a> ir <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės</a> taisyklių kortelėse.</p>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Šiuose pavyzdžiuose sudėtinės funkcijos išvestinės taisyklė derinama su sandaugos arba dalmens taisykle. Pirmiausia nustatykite visos funkcijos struktūrą ir užrašykite atitinkamą taisyklę. Tada sudėtinės funkcijos išvestinės taisyklę taikykite tiems daugikliams, skaitikliui ar vardikliui, kurie patys yra sudėtinės funkcijos.</p>
+
+    <!-- 1 pavyzdys: TM 6.1, 4.4 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Laipsninės ir rodiklinės funkcijų sandauga</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = x^2e^{-3x}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Daugikliai yra \(x^2\) ir \(e^{-3x}\), todėl pirmiausia taikykite <a href="tema-6.html#sandaugos">sandaugos taisyklę</a>. Pirmajame naryje diferencijuokite laipsninę funkciją, o rodiklinę palikite nepakeistą. Antrajame naryje laipsninę funkciją palikite nepakeistą, o rodiklinę diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>: vidinė funkcija yra \(-3x\), jos išvestinė lygi \(-3\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ f'(x) = 2x\cdot e^{-3x} + x^2\cdot e^{-3x}\cdot(-3) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Prastinimas</span></h4>
+          <p>Prieš skliaustus iškelkite bendrąjį daugiklį \(xe^{-3x}\):</p>
+          \[ \begin{aligned} f'(x) &amp;= 2xe^{-3x} - 3x^2e^{-3x} \\ &amp;= xe^{-3x}(2 - 3x) \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = xe^{-3x}(2 - 3x) \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Argumento ir šaknies sandauga</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = x\sqrt{x^2 + 1}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Daugikliams \(x\) ir \(\sqrt{x^2 + 1}\) taikykite <a href="tema-6.html#sandaugos">sandaugos taisyklę</a>. Pirmojo daugiklio išvestinė lygi vienetui, todėl pirmasis narys yra nepakeista šaknis. Antrajame naryje \(x\) palikite nepakeistą, o šaknį diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>: vidinė funkcija yra \(x^2 + 1\), jos išvestinė lygi \(2x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= 1\cdot\sqrt{x^2 + 1} + x\cdot\frac{2x}{2\sqrt{x^2 + 1}} \\ &amp;= \sqrt{x^2 + 1} + \frac{x^2}{\sqrt{x^2 + 1}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Prastinimas</span></h4>
+          <p>Kad galėtumėte sudėti narius, suvienodinkite jų vardiklius: pirmąjį narį padauginkite ir padalykite iš \(\sqrt{x^2 + 1}\). Dviejų vienodų kvadratinių šaknų sandauga lygi pošakniui. Tada sudėkite skaitiklius:</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{x^2 + 1 + x^2}{\sqrt{x^2 + 1}} \\ &amp;= \frac{2x^2 + 1}{\sqrt{x^2 + 1}} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{2x^2 + 1}{\sqrt{x^2 + 1}} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Rodiklinės funkcijos ir dvinario dalmuo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite \(f'(x)\), kai \(f(x) = \dfrac{e^{2x}}{x + 1}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Taisyklės</span></h4>
+          <p>Vardiklis priklauso nuo \(x\), todėl taikykite <a href="tema-6.html#dalmens">dalmens taisyklę</a>. Skaitiklį diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>: \((e^{2x})' = 2e^{2x}\), nes daugiklis 2 gaunamas diferencijuojant rodiklį. Vardiklio išvestinė lygi vienetui. Funkcija ir jos išvestinė neapibrėžtos, kai \(x = -1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Diferencijavimas</span></h4>
+          \[ f'(x) = \frac{2e^{2x}(x + 1) - e^{2x}\cdot 1}{(x + 1)^2} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Prastinimas</span></h4>
+          <p>Iš abiejų skaitiklio narių prieš skliaustus iškelkite \(e^{2x}\). Skliaustuose išskleiskite sandaugą ir sutraukite pastoviuosius narius:</p>
+          \[ \begin{aligned} f'(x) &amp;= \frac{e^{2x}(2x + 2 - 1)}{(x + 1)^2} \\ &amp;= \frac{e^{2x}(2x + 1)}{(x + 1)^2} \end{aligned} \]
+          <p>Rodiklinis daugiklis atsakyme lieka, nes jis nėra bendras skaitiklio ir vardiklio daugiklis.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ f'(x) = \frac{e^{2x}(2x + 1)}{(x + 1)^2} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: nustatykite funkcijos struktūrą, pasirinkite taisyklę, diferencijuokite ir supaprastinkite rezultatą. Tada pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite \(f'(x)\), kai</p>
+          <ol type="a">
+            <li>\(f(x) = e^{2x}\ln x\);</li>
+            <li>\(f(x) = x\sqrt{3x + 1}\).</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <ul class="ans-list">
+            <li>a)&nbsp;\(f'(x) = e^{2x}\left(2\ln x + \dfrac{1}{x}\right)\)</li>
+            <li>b)&nbsp;\(f'(x) = \dfrac{9x + 2}{2\sqrt{3x + 1}}\)</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">5, 6.1–6.3, 6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">9, 10.1, 10.4 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

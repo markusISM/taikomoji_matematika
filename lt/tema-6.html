@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=63">
+<link rel="stylesheet" href="../assets/css/style.css?v=64">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=63"></script>
+<script defer src="../assets/js/site.js?v=64"></script>
 </head>
 <body data-page="t6">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -41,30 +41,121 @@
       <p>Funkcija aprašo, kaip vienas dydis priklauso nuo kito, o jos išvestinė nusako, kaip greitai funkcija kinta. Kai argumentas pakinta nuo \(x_1\) iki \(x_2\), t. y. dydžiu \(\Delta x = x_2 - x_1\), funkcijos reikšmė pakinta dydžiu \(\Delta y = f(x_2) - f(x_1)\). Šių pokyčių santykis</p>
       <div class="formula">\[ \begin{aligned} \frac{\Delta y}{\Delta x} &amp;= \frac{f(x_2) - f(x_1)}{x_2 - x_1} \\ &amp;= \frac{f(x + \Delta x) - f(x)}{\Delta x} \end{aligned} \]</div>
       <p>nusako <strong>vidutinį funkcijos kitimo greitį</strong> tame intervale. Geometriškai tai yra <strong>kirstinės</strong> – tiesės, jungiančios du atitinkamus funkcijos grafiko taškus, – nuolydis.</p>
+      <figure class="abs-fig">
+        <svg viewBox="0 0 480 320" role="img" aria-label="Funkcijos grafikas ir kirstinė per taškus A ir B; horizontalus pokytis Δx ir vertikalus pokytis Δy">
+        <line class="ax" x1="42" y1="282" x2="468" y2="282"/><path class="ah" d="M478 282L468 277.5L468 286.5Z"/>
+        <line class="ax" x1="56" y1="296" x2="56" y2="14"/><path class="ah" d="M56 4L51.5 14L60.5 14Z"/>
+        <text class="m" x="470" y="272">x</text><text class="m" x="66" y="18">y</text>
+        <line class="guide" x1="113.0" y1="282" x2="113.0" y2="200.8"/>
+        <line class="guide" x1="303.0" y1="282" x2="303.0" y2="58.2"/>
+        <line class="guide" x1="56" y1="200.8" x2="113.0" y2="200.8"/>
+        <line class="guide" x1="56" y1="58.2" x2="303.0" y2="58.2"/>
+        <path class="ln" d="M56.0 270.5L57.9 268.0L59.8 265.5L61.7 263.0L63.6 260.5L65.5 258.0L67.4 255.6L69.3 253.1L71.2 250.7L73.1 248.3L75.0 245.9L76.9 243.5L78.8 241.1L80.7 238.8L82.6 236.4L84.5 234.1L86.4 231.8L88.3 229.5L90.2 227.2L92.1 224.9L94.0 222.7L95.9 220.4L97.8 218.2L99.7 216.0L101.6 213.8L103.5 211.6L105.4 209.4L107.3 207.2L109.2 205.1L111.1 202.9L113.0 200.8L114.9 198.7L116.8 196.6L118.7 194.5L120.6 192.5L122.5 190.4L124.4 188.4L126.3 186.3L128.2 184.3L130.1 182.3L132.0 180.3L133.9 178.4L135.8 176.4L137.7 174.5L139.6 172.5L141.5 170.6L143.4 168.7L145.3 166.8L147.2 165.0L149.1 163.1L151.0 161.2L152.9 159.4L154.8 157.6L156.7 155.8L158.6 154.0L160.5 152.2L162.4 150.5L164.3 148.7L166.2 147.0L168.1 145.2L170.0 143.5L171.9 141.8L173.8 140.2L175.7 138.5L177.6 136.8L179.5 135.2L181.4 133.6L183.3 132.0L185.2 130.4L187.1 128.8L189.0 127.2L190.9 125.7L192.8 124.1L194.7 122.6L196.6 121.1L198.5 119.6L200.4 118.1L202.3 116.6L204.2 115.1L206.1 113.7L208.0 112.3L209.9 110.8L211.8 109.4L213.7 108.0L215.6 106.7L217.5 105.3L219.4 104.0L221.3 102.6L223.2 101.3L225.1 100.0L227.0 98.7L228.9 97.4L230.8 96.1L232.7 94.9L234.6 93.6L236.5 92.4L238.4 91.2L240.3 90.0L242.2 88.8L244.1 87.7L246.0 86.5L247.9 85.4L249.8 84.2L251.7 83.1L253.6 82.0L255.5 80.9L257.4 79.8L259.3 78.8L261.2 77.7L263.1 76.7L265.0 75.7L266.9 74.7L268.8 73.7L270.7 72.7L272.6 71.8L274.5 70.8L276.4 69.9L278.3 68.9L280.2 68.0L282.1 67.1L284.0 66.3L285.9 65.4L287.8 64.5L289.7 63.7L291.6 62.9L293.5 62.1L295.4 61.3L297.3 60.5L299.2 59.7L301.1 59.0L303.0 58.2L304.9 57.5L306.8 56.8L308.7 56.1L310.6 55.4L312.5 54.7L314.4 54.0L316.3 53.4L318.2 52.8L320.1 52.1L322.0 51.5L323.9 50.9L325.8 50.4L327.7 49.8L329.6 49.3L331.5 48.7L333.4 48.2L335.3 47.7L337.2 47.2L339.1 46.7L341.0 46.2L342.9 45.8L344.8 45.4L346.7 44.9L348.6 44.5L350.5 44.1L352.4 43.7L354.3 43.4L356.2 43.0L358.1 42.7L360.0 42.3L361.9 42.0L363.8 41.7L365.7 41.4L367.6 41.2L369.5 40.9L371.4 40.7L373.3 40.4L375.2 40.2L377.1 40.0L379.0 39.8L380.9 39.6L382.8 39.5L384.7 39.3L386.6 39.2L388.5 39.1L390.4 39.0L392.3 38.9L394.2 38.8L396.1 38.7L398.0 38.7L399.9 38.6L401.8 38.6L403.7 38.6L405.6 38.6L407.5 38.6L409.4 38.6L411.3 38.7L413.2 38.7L415.1 38.8L417.0 38.9"/>
+        <line class="ln3" x1="71.2" y1="232.2" x2="344.8" y2="26.8"/>
+        <line class="leg" x1="113.0" y1="200.8" x2="303.0" y2="200.8"/>
+        <line class="leg" x1="303.0" y1="200.8" x2="303.0" y2="58.2"/>
+        <text class="exam" x="208.0" y="220.8" text-anchor="middle" style="font-size:15px">Δ<tspan class="i">x</tspan> = <tspan class="i">x</tspan><tspan font-size="11" dy="4">2</tspan><tspan dy="-4"> − </tspan><tspan class="i">x</tspan><tspan font-size="11" dy="4">1</tspan></text>
+        <text class="exam" x="311.0" y="134.5" style="font-size:15px">Δ<tspan class="i">y</tspan></text>
+        <circle class="pt-hi" cx="113.0" cy="200.8" r="6"/><circle class="pt-hi" cx="303.0" cy="58.2" r="6"/>
+        <text x="107.0" y="188.8" text-anchor="end" style="font-weight:700;font-size:15px">A</text>
+        <text x="293.0" y="46.2" text-anchor="end" style="font-weight:700;font-size:15px">B</text>
+        <text class="m" x="113.0" y="302" text-anchor="middle">x<tspan class="n" font-size="11" dy="4">1</tspan></text>
+        <text class="m" x="303.0" y="302" text-anchor="middle">x<tspan class="n" font-size="11" dy="4">2</tspan></text>
+        <text class="m" x="50" y="205.8" text-anchor="end">f(x<tspan class="n" font-size="11" dy="4">1</tspan><tspan dy="-4">)</tspan></text>
+        <text class="m" x="50" y="63.2" text-anchor="end">f(x<tspan class="n" font-size="11" dy="4">2</tspan><tspan dy="-4">)</tspan></text>
+        <text class="c3" x="348.8" y="18.8" text-anchor="start" style="font-size:14px;font-weight:600">kirstinė</text>
+        <text class="c1 m" x="413.2" y="62.7" text-anchor="middle">y = f(x)</text>
+        </svg>
+        <figcaption>Kirstinė eina per grafiko taškus \(A\) ir \(B\). Jos nuolydis lygus vertikalaus pokyčio \(\Delta y\) ir horizontalaus pokyčio \(\Delta x\) santykiui.</figcaption>
+      </figure>
       <p class="tip">Kirstinė yra tiesė, todėl jos nuolydis skaičiuojamas taip pat kaip <a href="tema-1.html#nuolydis-skaiciavimas">1 temoje</a>: iš dviejų tiesės taškų.</p>
+
+      <div class="subtype">
+        <h4>Ką praktiškai reiškia kirstinės nuolydis</h4>
+        <p>Tarkime, namų ūkio mėnesio vartojimo išlaidos \(C\) (eurais) priklauso nuo jo mėnesio disponuojamų pajamų \(x\) (eurais), kai pajamos yra nuo 0 iki 4000 eurų, taip:</p>
+        <div class="formula">\[ C(x) = 100 + 0{,}9x - 0{,}0001x^2 \]</div>
+        <p>Kai pajamos yra 1000 eurų, vartojimo išlaidos yra \(C(1000) = 100 + 900 - 100 = 900\) eurų, o kai pajamos yra 3000 eurų, – \(C(3000) = 100 + 2700 - 900 = 1900\) eurų. Grafike tai taškai \(A(1000;\, 900)\) ir \(B(3000;\, 1900)\).</p>
+        <figure class="abs-fig">
+          <svg viewBox="0 0 500 320" role="img" aria-label="Vartojimo išlaidų funkcijos C(x) = 100 + 0,9x − 0,0001x² grafikas ir kirstinė per taškus A(1000; 900) ir B(3000; 1900)">
+          <line class="grid" x1="161.0" y1="268" x2="161.0" y2="18.9"/>
+          <text class="muted" x="161.0" y="285" text-anchor="middle">1000</text>
+          <line class="grid" x1="260.0" y1="268" x2="260.0" y2="18.9"/>
+          <text class="muted" x="260.0" y="285" text-anchor="middle">2000</text>
+          <line class="grid" x1="359.0" y1="268" x2="359.0" y2="18.9"/>
+          <text class="muted" x="359.0" y="285" text-anchor="middle">3000</text>
+          <line class="grid" x1="458.0" y1="268" x2="458.0" y2="18.9"/>
+          <text class="muted" x="458.0" y="285" text-anchor="middle">4000</text>
+          <line class="grid" x1="62" y1="221.0" x2="482.8" y2="221.0"/>
+          <text class="muted" x="55" y="225.0" text-anchor="end">500</text>
+          <line class="grid" x1="62" y1="174.0" x2="482.8" y2="174.0"/>
+          <text class="muted" x="55" y="178.0" text-anchor="end">1000</text>
+          <line class="grid" x1="62" y1="127.0" x2="482.8" y2="127.0"/>
+          <text class="muted" x="55" y="131.0" text-anchor="end">1500</text>
+          <line class="grid" x1="62" y1="80.0" x2="482.8" y2="80.0"/>
+          <text class="muted" x="55" y="84.0" text-anchor="end">2000</text>
+          <line class="grid" x1="62" y1="33.0" x2="482.8" y2="33.0"/>
+          <text class="muted" x="55" y="37.0" text-anchor="end">2500</text>
+          <line class="ax" x1="62" y1="268" x2="488.8" y2="268"/><path class="ah" d="M498.8 268L488.8 263.5L488.8 272.5Z"/>
+          <line class="ax" x1="62" y1="268" x2="62" y2="14"/><path class="ah" d="M62 4L57.5 14L66.5 14Z"/>
+          <text class="m" x="486.8" y="258">x</text><text class="m" x="72" y="18">C</text>
+          <text class="muted" x="269.9" y="308" text-anchor="middle">Disponuojamos pajamos, eurų per mėnesį</text>
+          <text class="muted" transform="translate(16 145.8) rotate(-90)" text-anchor="middle">Vartojimo išlaidos, eurų per mėnesį</text>
+          <line class="guide" x1="161.0" y1="268" x2="161.0" y2="183.4"/>
+          <line class="guide" x1="359.0" y1="268" x2="359.0" y2="89.4"/>
+          <path class="ln" d="M62.0 258.6L64.0 256.9L66.0 255.2L67.9 253.6L69.9 251.9L71.9 250.2L73.9 248.6L75.9 246.9L77.8 245.3L79.8 243.7L81.8 242.1L83.8 240.4L85.8 238.8L87.7 237.2L89.7 235.6L91.7 234.1L93.7 232.5L95.7 230.9L97.6 229.4L99.6 227.8L101.6 226.3L103.6 224.7L105.6 223.2L107.5 221.7L109.5 220.2L111.5 218.7L113.5 217.1L115.5 215.7L117.4 214.2L119.4 212.7L121.4 211.2L123.4 209.8L125.4 208.3L127.3 206.9L129.3 205.4L131.3 204.0L133.3 202.6L135.3 201.1L137.2 199.7L139.2 198.3L141.2 196.9L143.2 195.5L145.2 194.2L147.1 192.8L149.1 191.4L151.1 190.1L153.1 188.7L155.1 187.4L157.0 186.0L159.0 184.7L161.0 183.4L163.0 182.1L165.0 180.8L166.9 179.5L168.9 178.2L170.9 176.9L172.9 175.6L174.9 174.4L176.8 173.1L178.8 171.9L180.8 170.6L182.8 169.4L184.8 168.1L186.7 166.9L188.7 165.7L190.7 164.5L192.7 163.3L194.7 162.1L196.6 160.9L198.6 159.8L200.6 158.6L202.6 157.4L204.6 156.3L206.5 155.1L208.5 154.0L210.5 152.8L212.5 151.7L214.5 150.6L216.4 149.5L218.4 148.4L220.4 147.3L222.4 146.2L224.4 145.1L226.3 144.1L228.3 143.0L230.3 141.9L232.3 140.9L234.3 139.9L236.2 138.8L238.2 137.8L240.2 136.8L242.2 135.8L244.2 134.8L246.1 133.8L248.1 132.8L250.1 131.8L252.1 130.8L254.1 129.9L256.0 128.9L258.0 127.9L260.0 127.0L262.0 126.1L264.0 125.1L265.9 124.2L267.9 123.3L269.9 122.4L271.9 121.5L273.9 120.6L275.8 119.7L277.8 118.8L279.8 118.0L281.8 117.1L283.8 116.3L285.7 115.4L287.7 114.6L289.7 113.7L291.7 112.9L293.7 112.1L295.6 111.3L297.6 110.5L299.6 109.7L301.6 108.9L303.6 108.1L305.5 107.4L307.5 106.6L309.5 105.8L311.5 105.1L313.5 104.4L315.4 103.6L317.4 102.9L319.4 102.2L321.4 101.5L323.4 100.8L325.3 100.1L327.3 99.4L329.3 98.7L331.3 98.0L333.3 97.4L335.2 96.7L337.2 96.1L339.2 95.4L341.2 94.8L343.2 94.2L345.1 93.5L347.1 92.9L349.1 92.3L351.1 91.7L353.1 91.1L355.0 90.5L357.0 90.0L359.0 89.4L361.0 88.8L363.0 88.3L364.9 87.7L366.9 87.2L368.9 86.7L370.9 86.2L372.9 85.6L374.8 85.1L376.8 84.6L378.8 84.1L380.8 83.7L382.8 83.2L384.7 82.7L386.7 82.2L388.7 81.8L390.7 81.3L392.7 80.9L394.6 80.5L396.6 80.0L398.6 79.6L400.6 79.2L402.6 78.8L404.5 78.4L406.5 78.0L408.5 77.7L410.5 77.3L412.5 76.9L414.4 76.6L416.4 76.2L418.4 75.9L420.4 75.5L422.4 75.2L424.3 74.9L426.3 74.6L428.3 74.3L430.3 74.0L432.3 73.7L434.2 73.4L436.2 73.1L438.2 72.9L440.2 72.6L442.2 72.3L444.1 72.1L446.1 71.9L448.1 71.6L450.1 71.4L452.1 71.2L454.0 71.0L456.0 70.8L458.0 70.6"/>
+          <line class="ln3" x1="91.7" y1="216.3" x2="448.1" y2="47.1"/>
+          <line class="leg" x1="161.0" y1="183.4" x2="359.0" y2="183.4"/>
+          <line class="leg" x1="359.0" y1="183.4" x2="359.0" y2="89.4"/>
+          <text class="exam" x="260.0" y="202.4" text-anchor="middle" style="font-size:14px">Δ<tspan class="i">x</tspan> = 2000</text>
+          <text class="exam" x="366.0" y="141.4" style="font-size:14px">Δ<tspan class="i">y</tspan> = 1000</text>
+          <circle class="pt-hi" cx="161.0" cy="183.4" r="6"/><circle class="pt-hi" cx="359.0" cy="89.4" r="6"/>
+          <text x="153.0" y="173.4" text-anchor="end" style="font-weight:700;font-size:14px">A(1000; 900)</text>
+          <text x="351.0" y="77.4" text-anchor="end" style="font-weight:700;font-size:14px">B(3000; 1900)</text>
+          <text class="c3" x="452.1" y="51.1" text-anchor="start" style="font-size:13px;font-weight:600">kirstinė</text>
+          <text class="c1 m" x="458.0" y="92.6" text-anchor="middle">C(x)</text>
+          </svg>
+          <figcaption>Vartojimo išlaidų funkcijos grafikas ir kirstinė per taškus \(A\) ir \(B\).</figcaption>
+        </figure>
+        <p>Kirstinės nuolydis:</p>
+        <div class="formula">\[ \frac{\Delta y}{\Delta x} = \frac{1900 - 900}{3000 - 1000} = \frac{1000}{2000} = 0{,}5 \]</div>
+        <p><strong>Interpretacija.</strong> Kai disponuojamos pajamos padidėja nuo 1000 iki 3000 eurų, kiekvienas papildomas pajamų euras vidutiniškai padidina vartojimo išlaidas 0,50 euro, o likę 0,50 euro sutaupomi. Kirstinės nuolydis matuojamas eurais vartojimo išlaidų vienam pajamų eurui.</p>
+        <p>Tai <strong>vidutinis</strong> rodiklis visam 2000 eurų pajamų prieaugiui. Grafikas nėra tiesė: ties mažesnėmis pajamomis jis statesnis, ties didesnėmis – lėkštesnis. Todėl kirstinės nuolydis neparodo, kaip vartojimo išlaidos reaguoja į pajamų pokytį, kai pajamos yra būtent 1000 eurų. Į šį klausimą atsako išvestinė.</p>
+      </div>
     </article>
 
     <article class="card concept" id="isvestine">
       <div class="concept-head"><span class="num">2</span><h3>Išvestinė – momentinis kitimo greitis</h3></div>
-      <p>Kai \(\Delta x \to 0\), antrasis taškas artėja prie pirmojo, o kirstinė – prie <strong>liestinės</strong>. Jei santykis \(\frac{\Delta y}{\Delta x}\) artėja prie baigtinės ribos, ši riba nusako liestinės nuolydį. Ji vadinama funkcijos <strong>išvestine</strong> taške \(x\):</p>
-      <div class="formula">\[ f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x} \]</div>
-      <p>Šis apibrėžimas susieja dvi išvestinės interpretacijas: išvestinė yra <strong>momentinis</strong> funkcijos kitimo greitis ir grafiko liestinės nuolydis.</p>
-      <p>Išvestinės skaičiavimo veiksmas vadinamas <strong>diferencijavimu</strong>. Jei baigtinė riba egzistuoja kiekviename atvirojo intervalo taške, funkcija tame intervale yra <strong>diferencijuojama</strong>. Išvestines galima skaičiuoti pagal apibrėžimą, tačiau toliau pateiktos taisyklės, kurios išplaukia iš apibrėžimo, paprastai leidžia tai padaryti paprasčiau.</p>
+      <p><strong>Koks grafiko nuolydis viename taške?</strong> Grįžkime prie vartojimo išlaidų pavyzdžio. Tarkime, namų ūkio disponuojamos pajamos yra 1000 eurų. Kiek padidės vartojimo išlaidos, jei pajamos padidės dar vienu euru? Kirstinės nuolydis 0,5 į šį klausimą neatsako, nes apibūdina visą intervalą nuo 1000 iki 3000 eurų. Reikia grafiko nuolydžio pačiame taške \(A\).</p>
+      <p>Šį nuolydį galima rasti artinant antrąjį kirstinės tašką prie pirmojo, t. y. mažinant argumento pokytį \(\Delta x\) artyn nulio. Tada taškas \(B\) slenka grafiku link taško \(A\), o kirstinė vis mažiau skiriasi nuo <strong>liestinės</strong> – tiesės, kuri eina per tašką \(A\) ir rodo grafiko kryptį tame taške.</p>
 
       <div class="subtype">
         <h4>Kaip kirstinė virsta liestine</h4>
-        <p>Brėžinyje pavaizduotas funkcijos \(f(x) = 0{,}1x^3 - 0{,}4x^2 + 0{,}7x - 0{,}2\) grafikas ir jo taškas \(A(3;\, 1)\). Antrasis kirstinės taškas \(B\) nuo taško \(A\) nutolęs argumento pokyčiu \(\Delta x\).</p>
+        <p>Brėžinyje pavaizduotas vartojimo išlaidų funkcijos \(C(x) = 100 + 0{,}9x - 0{,}0001x^2\) grafikas ir jo taškas \(A(1000;\, 900)\). Antrasis kirstinės taškas \(B\) nuo taško \(A\) nutolęs pajamų pokyčiu \(\Delta x\) eurų.</p>
         <div data-widget="deriv-explorer"></div>
-        <p style="margin-top:14px">Tą patį matome skaičiais: mažinant \(\Delta x\), kirstinės nuolydis artėja prie 1.</p>
+        <p style="margin-top:14px">Tą patį matome skaičiais: mažinant \(\Delta x\), kirstinės nuolydis artėja prie 0,7.</p>
         <div class="tbl-wrap">
           <table class="vtable compact">
             <tbody>
-              <tr><th scope="row">\(\Delta x\)</th><td>2</td><td>1</td><td>0,5</td><td>0,1</td><td>0,01</td></tr>
-              <tr><th scope="row">\(\dfrac{\Delta y}{\Delta x}\)</th><td>2,4</td><td>1,6</td><td>1,275</td><td>1,051</td><td>1,00501</td></tr>
+              <tr><th scope="row">\(\Delta x\)</th><td>2000</td><td>1000</td><td>100</td><td>10</td><td>1</td></tr>
+              <tr><th scope="row">\(\dfrac{\Delta y}{\Delta x}\)</th><td>0,5</td><td>0,6</td><td>0,69</td><td>0,699</td><td>0,6999</td></tr>
             </tbody>
           </table>
         </div>
-        <p>Riba lygi liestinės nuolydžiui taške \(A\): \(f'(3) = 1\). Susipažinę su toliau pateiktomis taisyklėmis, šią reikšmę gausite ir be ribos: \(f'(x) = 0{,}3x^2 - 0{,}8x + 0{,}7\), todėl \(f'(3) = 2{,}7 - 2{,}4 + 0{,}7 = 1\).</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Išvestinės apibrėžimas</h4>
+        <p>Jei, artinant \(\Delta x\) prie nulio, kirstinės nuolydis \(\frac{\Delta y}{\Delta x}\) artėja prie baigtinės ribos, ši riba nusako liestinės nuolydį. Ji vadinama funkcijos <strong>išvestine</strong> taške \(x\):</p>
+        <div class="formula">\[ f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x} \]</div>
+        <p>Šis apibrėžimas susieja dvi išvestinės interpretacijas: išvestinė yra <strong>momentinis</strong> funkcijos kitimo greitis ir grafiko liestinės nuolydis.</p>
+        <p>Išvestinės skaičiavimo veiksmas vadinamas <strong>diferencijavimu</strong>. Jei baigtinė riba egzistuoja kiekviename atvirojo intervalo taške, funkcija tame intervale yra <strong>diferencijuojama</strong>. Išvestines galima skaičiuoti pagal apibrėžimą, tačiau toliau pateiktos taisyklės, kurios išplaukia iš apibrėžimo, paprastai leidžia tai padaryti paprasčiau.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Ką rodo išvestinė vartojimo išlaidų pavyzdyje</h4>
+        <p>Lentelėje matėme, kad liestinės nuolydis taške \(A\) lygus 0,7, t. y. \(C'(1000) = 0{,}7\). Tai reiškia, kad, kai disponuojamos pajamos yra 1000 eurų, papildomas pajamų euras padidina vartojimo išlaidas apytiksliai 0,70 euro, o apie 0,30 euro sutaupoma. Ekonomikoje šis dydis vadinamas <strong>ribiniu polinkiu vartoti</strong>.</p>
+        <p>Išvestinė yra funkcija, todėl ją galima apskaičiuoti bet kuriam pajamų lygiui. Pagal toliau pateiktas taisykles \(C'(x) = 0{,}9 - 0{,}0002x\) (žr. <a href="#reiksme-taske">7 kortelę</a>). Kai pajamos yra 3000 eurų, \(C'(3000) = 0{,}3\): papildomas pajamų euras padidina vartojimo išlaidas tik apytiksliai 0,30 euro. Šiame modelyje, didėjant pajamoms, vis mažesnė papildomo euro dalis išleidžiama vartojimui, todėl grafikas lėkštėja.</p>
+        <p class="tip"><strong>Kirstinė ar liestinė?</strong> Kirstinės nuolydis 0,5 yra vidutinis kitimo greitis intervale \([1000;\, 3000]\). Liestinės nuolydis \(C'(1000) = 0{,}7\) yra momentinis kitimo greitis taške \(x = 1000\).</p>
       </div>
     </article>
 
@@ -72,12 +163,12 @@
       <div class="concept-head"><span class="num">3</span><h3>Dvi išvestinės interpretacijos ir žymėjimas</h3></div>
       <p>Abi interpretacijos apibūdina tą pačią išvestinę skirtingais požiūriais:</p>
       <ul>
-        <li><strong>Kitimo greitis.</strong> \(f'(x)\) nusako momentinį funkcijos \(f(x)\) kitimo greitį argumento \(x\) atžvilgiu. Norėdami apytiksliai įvertinti funkcijos reikšmės pokytį, išvestinę padauginkite iš mažo argumento pokyčio: \(\Delta y \approx f'(x)\cdot \Delta x\).</li>
+        <li><strong>Kitimo greitis.</strong> \(f'(x)\) nusako momentinį funkcijos \(f(x)\) kitimo greitį argumento \(x\) atžvilgiu. Norėdami apytiksliai įvertinti funkcijos reikšmės pokytį, išvestinę padauginkite iš mažo argumento pokyčio: \(\Delta y \approx f'(x)\cdot \Delta x\). Pavyzdžiui, jei 1000 eurų disponuojamos pajamos padidėja 20 eurų, vartojimo išlaidos padidėja apytiksliai \(0{,}7\cdot 20 = 14\) eurų.</li>
         <li><strong>Liestinės nuolydis.</strong> \(f'(x_1)\) yra funkcijos grafiko liestinės nuolydis taške, kuriame \(x = x_1\). Teigiama išvestinė reiškia, kad liestinė kyla, o neigiama – kad ji leidžiasi.</li>
       </ul>
       <div class="subtype">
         <h4>Žymėjimas</h4>
-        <p>Funkcijos \(f(x)\) išvestinė šioje temoje žymima \(f'(x)\). Taip pat vartojami žymėjimai \(y'\), \(\dfrac{dy}{dx}\) ir \(\dfrac{d}{dx}f(x)\). Išvestinės reikšmė konkrečiame taške žymima, pavyzdžiui, \(f'(5)\): pirmiausia raskite išvestinės funkciją, tada įstatykite nurodytą argumento reikšmę.</p>
+        <p>Funkcijos \(f(x)\) išvestinė šioje temoje žymima \(f'(x)\). Taip pat vartojami žymėjimai \(y'\), \(\dfrac{dy}{dx}\) ir \(\dfrac{d}{dx}f(x)\). Išvestinės reikšmė konkrečiame taške žymima, pavyzdžiui, \(f'(5)\). Kaip ją apskaičiuoti, parodyta <a href="#reiksme-taske">7 kortelėje</a>.</p>
       </div>
     </article>
   </section>
@@ -124,7 +215,8 @@
         <p>Šaknis ir atvirkštinius dydžius galima užrašyti laipsniais. Tada abiem atvejais taikoma laipsninės funkcijos išvestinės formulė:</p>
         <div class="formula">\[ \begin{gathered} \sqrt{x} = x^{0{,}5} \\ \Longrightarrow\; (\sqrt{x})' = 0{,}5x^{-0{,}5} = \frac{1}{2\sqrt{x}} \end{gathered} \]</div>
         <div class="formula">\[ \begin{gathered} \frac{1}{x} = x^{-1} \\ \Longrightarrow\; \left(\frac{1}{x}\right)' = -x^{-2} = -\frac{1}{x^2} \end{gathered} \]</div>
-        <p>Bendruoju atveju \(\dfrac{1}{x^n} = x^{-n}\). Kai konstanta dalijama iš argumento \(x\) laipsnio, trupmeną paprastai patogiau perrašyti laipsniu su neigiamuoju rodikliu, nei taikyti dalmens taisyklę.</p>
+        <p>Bendruoju atveju \(\dfrac{1}{x^n} = x^{-n}\), todėl</p>
+        <div class="formula">\[ \left(\frac{1}{x^n}\right)' = -nx^{-n-1} = -\frac{n}{x^{n+1}} \]</div>
       </div>
     </article>
   </section>
@@ -138,7 +230,6 @@
       <div class="formula">\[ \big(c\, u(x)\big)' = c\, u'(x) \]</div>
       <p><strong>Kada taikoma.</strong> Funkcija dauginama iš konstantos. Konstantą palikite nepakeistą ir padauginkite ją iš funkcijos išvestinės:</p>
       <div class="formula">\[ \begin{gathered} (6x^5)' = 6\cdot 5x^4 = 30x^4 \\ (5e^x)' = 5e^x \end{gathered} \]</div>
-      <p>Taikant sandaugos taisyklę taip pat gautume teisingą rezultatą, nes konstantos išvestinė lygi nuliui. Tačiau pastovaus daugiklio taisyklė leidžia tą patį rezultatą gauti atliekant mažiau veiksmų.</p>
     </article>
 
     <article class="card concept" id="sumos">
@@ -149,30 +240,98 @@
       <p>Šią taisyklę kartu su pastovaus daugiklio taisykle taikykite diferencijuodami daugianarius ir lentelėje pateiktų elementariųjų funkcijų sumas.</p>
     </article>
 
+    <article class="card concept" id="reiksme-taske">
+      <div class="concept-head"><span class="num">7</span><h3>Išvestinės reikšmė konkrečiame taške</h3></div>
+      <p>Užrašas \(f'(a)\) reiškia išvestinės reikšmę, kai \(x = a\). Ją raskite dviem žingsniais, būtent tokia tvarka:</p>
+      <ol>
+        <li>raskite išvestinės funkciją \(f'(x)\);</li>
+        <li>į gautą išvestinę įstatykite \(x = a\).</li>
+      </ol>
+      <div class="rule-ex">
+        <p class="rule-ex-h">1 pavyzdys</p>
+        <p>Raskite \(C'(1000)\), kai \(C(x) = 100 + 0{,}9x - 0{,}0001x^2\).</p>
+        <p><strong>1 žingsnis – išvestinės funkcija.</strong> Diferencijuokite kiekvieną narį (sumos ir pastovaus daugiklio taisyklės). Konstantos 100 išvestinė lygi nuliui:</p>
+        \[ \begin{aligned} C'(x) &amp;= 0 + 0{,}9 - 0{,}0001\cdot 2x \\ &amp;= 0{,}9 - 0{,}0002x \end{aligned} \]
+        <p><strong>2 žingsnis – reikšmė taške.</strong> Į išvestinę įstatykite \(x = 1000\):</p>
+        \[ C'(1000) = 0{,}9 - 0{,}0002\cdot 1000 = 0{,}7 \]
+        <p>Gavome tą patį liestinės nuolydį, kurį <a href="#isvestine">2 kortelėje</a> radome mažindami \(\Delta x\).</p>
+      </div>
+      <div class="rule-ex">
+        <p class="rule-ex-h">2 pavyzdys</p>
+        <p>Raskite \(f'(4)\), kai \(f(x) = x^3 - 6\sqrt{x}\).</p>
+        <p><strong>1 žingsnis – išvestinės funkcija.</strong></p>
+        \[ f'(x) = 3x^2 - 6\cdot\frac{1}{2\sqrt{x}} = 3x^2 - \frac{3}{\sqrt{x}} \]
+        <p><strong>2 žingsnis – reikšmė taške.</strong> Į išvestinę įstatykite \(x = 4\):</p>
+        \[ \begin{aligned} f'(4) &amp;= 3\cdot 16 - \frac{3}{\sqrt{4}} \\ &amp;= 48 - 1{,}5 = 46{,}5 \end{aligned} \]
+      </div>
+      <p class="tip"><strong>Dažna klaida – sukeisti žingsnius.</strong> Jei pirmiausia į funkciją įstatysite \(x = 1000\) ir tik tada diferencijuosite, gausite skaičių \(C(1000) = 900\), o bet kurio skaičiaus išvestinė lygi nuliui: \((900)' = 0\). Šis nulis nėra \(C'(1000)\). Taip pat nepainiokite dviejų skirtingų dydžių: \(C(1000) = 900\) – vartojimo išlaidos eurais, o \(C'(1000) = 0{,}7\) – jų kitimo greitis eurais vienam pajamų eurui.</p>
+    </article>
+
     <article class="card concept" id="sandaugos">
-      <div class="concept-head"><span class="num">7</span><h3>Sandaugos taisyklė</h3></div>
+      <div class="concept-head"><span class="num">8</span><h3>Sandaugos taisyklė</h3></div>
       <div class="formula fit">\[ \big(u(x)\cdot v(x)\big)' = u'(x)\cdot v(x) + u(x)\cdot v'(x) \]</div>
-      <p><strong>Kada taikoma.</strong> Dauginamos dvi argumento \(x\) funkcijos, pavyzdžiui, \(x^2 \ln x\) arba \(xe^{-3x}\). Taisyklė taikoma ir kitų kintamųjų funkcijoms, pavyzdžiui, \(\sqrt{t}\cdot e^{-2t}\). Jei vienas daugiklis yra konstanta, taikykite <a href="#daugiklio">pastovaus daugiklio taisyklę</a>.</p>
-      <p><strong>Daugiklių tvarka.</strong> Bet kurį daugiklį galima pažymėti \(u(x)\) – rezultatas nuo to nesikeičia. Išvestinę sudaro du nariai: pirmojo daugiklio išvestinę padauginkite iš nepakeisto antrojo daugiklio, tada pridėkite pirmojo daugiklio ir antrojo daugiklio išvestinės sandaugą:</p>
-      <div class="formula">\[ \begin{aligned} (5x^3e^x)' &amp;= 15x^2e^x + 5x^3e^x \\ &amp;= 5x^2e^x(3 + x) \end{aligned} \]</div>
+      <p><strong>Kada taikoma.</strong> Dauginamos dvi argumento \(x\) funkcijos, pavyzdžiui, \(x^2 \ln x\) arba \(xe^{-3x}\). Taisyklė taikoma ir kitų kintamųjų funkcijoms, pavyzdžiui, \(\sqrt{t}\cdot e^{-2t}\).</p>
+      <p><strong>Daugiklių tvarka.</strong> Bet kurį daugiklį galima pažymėti \(u(x)\) – rezultatas nuo to nesikeičia. Išvestinę sudaro du nariai: pirmojo daugiklio išvestinę padauginkite iš nepakeisto antrojo daugiklio, tada pridėkite pirmojo daugiklio ir antrojo daugiklio išvestinės sandaugą.</p>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Pavyzdys</p>
+        <p>Raskite funkcijos \(f(x) = 5x^3e^x\) išvestinę.</p>
+        <p><strong>Kodėl sandaugos taisyklė?</strong> Funkcija yra dviejų argumento \(x\) funkcijų – \(5x^3\) ir \(e^x\) – sandauga. Abu daugikliai kinta kartu su \(x\), todėl taikoma sandaugos taisyklė.</p>
+        <p><strong>Funkcijos \(u(x)\) ir \(v(x)\).</strong> Pirmąjį daugiklį pažymėkite \(u(x)\), antrąjį – \(v(x)\) ir raskite jų išvestines:</p>
+        <ul class="gu">
+          <li><span class="gu-lab">Pirmasis daugiklis</span> \(u(x) = 5x^3\), \(u'(x) = 15x^2\)</li>
+          <li><span class="gu-lab">Antrasis daugiklis</span> \(v(x) = e^x\), \(v'(x) = e^x\)</li>
+        </ul>
+        <p><strong>Formulė.</strong> Šias keturias išraiškas įrašykite į formulę \(u'(x)\cdot v(x) + u(x)\cdot v'(x)\):</p>
+        \[ f'(x) = 15x^2\cdot e^x + 5x^3\cdot e^x \]
+        <p><strong>Supaprastinimas.</strong> Abu nariai turi bendrą daugiklį \(5x^2e^x\). Iškėlę jį prieš skliaustus, gauname:</p>
+        \[ f'(x) = 5x^2e^x(3 + x) \]
+      </div>
       <p class="tip"><strong>Dažna klaida.</strong> Reiškinys \(u'(x)\cdot v'(x)\) neatitinka sandaugos taisyklės: vien padauginus abiejų daugiklių išvestines, reikiamų narių negaunama.</p>
     </article>
 
     <article class="card concept" id="dalmens">
-      <div class="concept-head"><span class="num">8</span><h3>Dalmens taisyklė</h3></div>
+      <div class="concept-head"><span class="num">9</span><h3>Dalmens taisyklė</h3></div>
       <div class="formula">\[ \left(\frac{u(x)}{v(x)}\right)' = \frac{u'(x)v(x) - u(x)v'(x)}{v^2(x)} \]</div>
       <p><strong>Kada taikoma.</strong> Trupmenos vardiklis priklauso nuo \(x\). Skaitiklį pažymėkite \(u(x)\), o vardiklį – \(v(x)\). Išvestinės vardiklyje pradinį vardiklį pakelkite kvadratu. Taisyklė taikoma ten, kur vardiklis nelygus nuliui. Jei vardiklis yra konstanta, galima taikyti pastovaus daugiklio taisyklę: \(\dfrac{u(x)}{5} = \dfrac{1}{5}u(x)\).</p>
-      <p><strong>Sandaugų tvarka skaitiklyje.</strong> Pirmiausia užrašykite \(u'(x)v(x)\), tada atimkite \(u(x)v'(x)\). Tvarka svarbi: sukeitus šias sandaugas vietomis, pasikeičia rezultato ženklas. Kiekvieną sandaugą laikykite skliaustuose, kol išskleisite ir supaprastinsite skaitiklį:</p>
-      <div class="formula">\[ \begin{aligned} \left(\frac{8x}{1 + \ln x}\right)' &amp;= \frac{8(1 + \ln x) - 8x\cdot\frac{1}{x}}{(1 + \ln x)^2} \\ &amp;= \frac{8 + 8\ln x - 8}{(1 + \ln x)^2} \\ &amp;= \frac{8\ln x}{(1 + \ln x)^2} \end{aligned} \]</div>
+      <p><strong>Sandaugų tvarka skaitiklyje.</strong> Pirmiausia užrašykite \(u'(x)v(x)\), tada atimkite \(u(x)v'(x)\). Tvarka svarbi: sukeitus šias sandaugas vietomis, pasikeičia rezultato ženklas. Kiekvieną sandaugą laikykite skliaustuose, kol išskleisite ir supaprastinsite skaitiklį.</p>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Pavyzdys</p>
+        <p>Raskite funkcijos \(f(x) = \dfrac{8x}{1 + \ln x}\) išvestinę.</p>
+        <p><strong>Kodėl dalmens taisyklė?</strong> Funkcija yra dviejų argumento \(x\) funkcijų dalmuo, o jos vardiklis \(1 + \ln x\) priklauso nuo \(x\). Todėl taikoma dalmens taisyklė.</p>
+        <p><strong>Funkcijos \(u(x)\) ir \(v(x)\).</strong> Skaitiklį pažymėkite \(u(x)\), vardiklį – \(v(x)\). Čia, kitaip nei sandaugoje, šių funkcijų sukeisti negalima.</p>
+        <ul class="gu">
+          <li><span class="gu-lab">Skaitiklis</span> \(u(x) = 8x\), \(u'(x) = 8\)</li>
+          <li><span class="gu-lab">Vardiklis</span> \(v(x) = 1 + \ln x\), \(v'(x) = \dfrac{1}{x}\)</li>
+        </ul>
+        <p><strong>Formulė.</strong> Įrašykite šias išraiškas į formulę; skaitiklyje pirmiausia užrašykite \(u'(x)v(x)\), tada atimkite \(u(x)v'(x)\):</p>
+        \[ f'(x) = \frac{8\cdot(1 + \ln x) - 8x\cdot\frac{1}{x}}{(1 + \ln x)^2} \]
+        <p><strong>Supaprastinimas.</strong> Kadangi \(8x\cdot\frac{1}{x} = 8\), skaitiklis lygus \(8 + 8\ln x - 8 = 8\ln x\):</p>
+        \[ f'(x) = \frac{8\ln x}{(1 + \ln x)^2} \]
+      </div>
     </article>
 
     <article class="card concept" id="sudetines">
-      <div class="concept-head"><span class="num">9</span><h3>Sudėtinės funkcijos išvestinės taisyklė</h3></div>
+      <div class="concept-head"><span class="num">10</span><h3>Sudėtinės funkcijos išvestinės taisyklė</h3></div>
       <div class="formula">\[ \big(g(u(x))\big)' = g'\big(u(x)\big)\cdot u'(x) \]</div>
-      <p><strong>Kada taikoma.</strong> Vienos funkcijos argumentas yra kitas reiškinys: jis keliamas laipsniu, iš jo traukiama šaknis, jis įrašomas į rodiklinės funkcijos rodiklį arba į funkcijas \(\ln\), \(\sin\), \(\cos\). <strong>Išorinė funkcija</strong> atitinka veiksmą, kuris, įstačius \(x\) reikšmę, atliekamas paskutinis; <strong>vidinė funkcija</strong> yra jos argumentas. Formulėje \(g\) žymi išorinę funkciją, o \(u(x)\) – vidinę.</p>
-      <p>Pavyzdžiui, skaičiuojant \(e^{2x - 1}\), pirmiausia randama \(2x - 1\) reikšmė, tada \(e\) pakeliamas gautuoju laipsniu. Taigi išorinė funkcija yra \(e^u\), o vidinė – \(u(x) = 2x - 1\). Raskite išorinės funkcijos išvestinę, jos argumentą palikite nepakeistą ir padauginkite iš vidinės funkcijos išvestinės:</p>
-      <div class="formula">\[ \left(e^{2x - 1}\right)' = e^{2x - 1}\cdot (2x - 1)' = 2e^{2x - 1} \]</div>
-      <p>Lentelėje pateiktoms funkcijoms taip gaunama:</p>
+      <p><strong>Kada taikoma.</strong> Vienos funkcijos argumentas yra kitas reiškinys: jis keliamas laipsniu, iš jo traukiama šaknis, jis įrašomas į rodiklinės funkcijos rodiklį arba į funkcijas \(\ln\), \(\sin\), \(\cos\). <strong>Išorinė funkcija</strong> \(g(u)\) atitinka veiksmą, kuris, įstačius \(x\) reikšmę, atliekamas paskutinis; <strong>vidinė funkcija</strong> \(u(x)\) yra jos argumentas.</p>
+      <p><strong>Kaip taikyti.</strong> Sudėtinės funkcijos išvestinę raskite trimis žingsniais:</p>
+      <ol>
+        <li>nustatykite išorinę funkciją \(g(u)\) ir vidinę funkciją \(u(x)\);</li>
+        <li>raskite abiejų funkcijų išvestines \(g'(u)\) ir \(u'(x)\);</li>
+        <li>į \(g'(u)\) vietoje \(u\) įrašykite visą vidinę funkciją \(u(x)\) ir padauginkite iš \(u'(x)\).</li>
+      </ol>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Pavyzdys</p>
+        <p>Raskite funkcijos \(f(x) = e^{2x - 1}\) išvestinę.</p>
+        <p>Skaičiuojant \(e^{2x - 1}\) reikšmę, pirmiausia apskaičiuojamas rodiklis \(2x - 1\), o paskutinis veiksmas – \(e\) kėlimas šiuo laipsniu. Todėl:</p>
+        <ul class="gu">
+          <li><span class="gu-lab">Išorinė</span> \(g(u) = e^u\), \(g'(u) = e^u\)</li>
+          <li><span class="gu-lab">Vidinė</span> \(u(x) = 2x - 1\), \(u'(x) = 2\)</li>
+        </ul>
+        <p>Į \(g'(u) = e^u\) vietoje \(u\) įrašykite \(2x - 1\) ir padauginkite iš \(u'(x) = 2\):</p>
+        \[ \begin{aligned} f'(x) &amp;= g'\big(u(x)\big)\cdot u'(x) \\ &amp;= e^{2x - 1}\cdot 2 = 2e^{2x - 1} \end{aligned} \]
+      </div>
+      <p>Taip pat gaunamos lentelėje pateiktų funkcijų sudėtinių atvejų formulės. Prie kiekvienos formulių poros pateikti du pavyzdžiai.</p>
       <div class="anat dtbl dtbl-rows">
         <div class="anat-card">
           <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Laipsnis ir šaknis</strong></div>
@@ -180,6 +339,24 @@
             <li>\(\big((u(x))^n\big)' = n(u(x))^{n-1}\cdot u'(x)\)</li>
             <li>\(\left(\sqrt{u(x)}\right)' = \dfrac{u'(x)}{2\sqrt{u(x)}}\)</li>
           </ul>
+          <div class="chain-exs">
+            <div class="chain-ex">
+              <p class="chain-task">Raskite \(f'(x)\), kai \(f(x) = (x^2 + 3x)^5\).</p>
+              <ul class="gu">
+                <li><span class="gu-lab">Išorinė</span> \(g(u) = u^5\), \(g'(u) = 5u^4\)</li>
+                <li><span class="gu-lab">Vidinė</span> \(u(x) = x^2 + 3x\), \(u'(x) = 2x + 3\)</li>
+              </ul>
+              \[ \begin{aligned} f'(x) &amp;= g'\big(u(x)\big)\cdot u'(x) \\ &amp;= 5(x^2 + 3x)^4\cdot(2x + 3) \end{aligned} \]
+            </div>
+            <div class="chain-ex">
+              <p class="chain-task">Raskite \(f'(x)\), kai \(f(x) = \sqrt{x^3 + 1}\).</p>
+              <ul class="gu">
+                <li><span class="gu-lab">Išorinė</span> \(g(u) = \sqrt{u}\), \(g'(u) = \dfrac{1}{2\sqrt{u}}\)</li>
+                <li><span class="gu-lab">Vidinė</span> \(u(x) = x^3 + 1\), \(u'(x) = 3x^2\)</li>
+              </ul>
+              \[ \begin{aligned} f'(x) &amp;= g'\big(u(x)\big)\cdot u'(x) \\ &amp;= \frac{1}{2\sqrt{x^3 + 1}}\cdot 3x^2 \\ &amp;= \frac{3x^2}{2\sqrt{x^3 + 1}} \end{aligned} \]
+            </div>
+          </div>
         </div>
         <div class="anat-card">
           <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Rodiklinė ir logaritminė funkcijos</strong></div>
@@ -187,6 +364,24 @@
             <li>\(\left(e^{u(x)}\right)' = e^{u(x)}\cdot u'(x)\)</li>
             <li>\(\big(\ln u(x)\big)' = \dfrac{u'(x)}{u(x)}\)</li>
           </ul>
+          <div class="chain-exs">
+            <div class="chain-ex">
+              <p class="chain-task">Raskite \(f'(x)\), kai \(f(x) = e^{x^2 + 5x}\).</p>
+              <ul class="gu">
+                <li><span class="gu-lab">Išorinė</span> \(g(u) = e^u\), \(g'(u) = e^u\)</li>
+                <li><span class="gu-lab">Vidinė</span> \(u(x) = x^2 + 5x\), \(u'(x) = 2x + 5\)</li>
+              </ul>
+              \[ \begin{aligned} f'(x) &amp;= g'\big(u(x)\big)\cdot u'(x) \\ &amp;= e^{x^2 + 5x}\cdot(2x + 5) \end{aligned} \]
+            </div>
+            <div class="chain-ex">
+              <p class="chain-task">Raskite \(f'(x)\), kai \(f(x) = \ln(5x - 2)\).</p>
+              <ul class="gu">
+                <li><span class="gu-lab">Išorinė</span> \(g(u) = \ln u\), \(g'(u) = \dfrac{1}{u}\)</li>
+                <li><span class="gu-lab">Vidinė</span> \(u(x) = 5x - 2\), \(u'(x) = 5\)</li>
+              </ul>
+              \[ \begin{aligned} f'(x) &amp;= g'\big(u(x)\big)\cdot u'(x) \\ &amp;= \frac{1}{5x - 2}\cdot 5 = \frac{5}{5x - 2} \end{aligned} \]
+            </div>
+          </div>
         </div>
         <div class="anat-card">
           <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Sinusas ir kosinusas</strong></div>
@@ -194,25 +389,42 @@
             <li>\(\big(\sin u(x)\big)' = \cos u(x)\cdot u'(x)\)</li>
             <li>\(\big(\cos u(x)\big)' = -\sin u(x)\cdot u'(x)\)</li>
           </ul>
+          <div class="chain-exs">
+            <div class="chain-ex">
+              <p class="chain-task">Raskite \(f'(x)\), kai \(f(x) = \sin(4x)\).</p>
+              <ul class="gu">
+                <li><span class="gu-lab">Išorinė</span> \(g(u) = \sin u\), \(g'(u) = \cos u\)</li>
+                <li><span class="gu-lab">Vidinė</span> \(u(x) = 4x\), \(u'(x) = 4\)</li>
+              </ul>
+              \[ \begin{aligned} f'(x) &amp;= g'\big(u(x)\big)\cdot u'(x) \\ &amp;= \cos(4x)\cdot 4 = 4\cos(4x) \end{aligned} \]
+            </div>
+            <div class="chain-ex">
+              <p class="chain-task">Raskite \(f'(x)\), kai \(f(x) = \cos(x^2 + 1)\).</p>
+              <ul class="gu">
+                <li><span class="gu-lab">Išorinė</span> \(g(u) = \cos u\), \(g'(u) = -\sin u\)</li>
+                <li><span class="gu-lab">Vidinė</span> \(u(x) = x^2 + 1\), \(u'(x) = 2x\)</li>
+              </ul>
+              \[ \begin{aligned} f'(x) &amp;= g'\big(u(x)\big)\cdot u'(x) \\ &amp;= -\sin(x^2 + 1)\cdot 2x \\ &amp;= -2x\sin(x^2 + 1) \end{aligned} \]
+            </div>
+          </div>
         </div>
       </div>
       <p class="tip"><strong>Nepamirškite vidinės funkcijos išvestinės.</strong> Kiekvienoje formulėje yra \(u'(x)\) – kaip daugiklis arba trupmenos skaitiklyje. Ją praleisti yra dažna klaida. Skaičiavimą tikrinkite dviem žingsniais: diferencijuokite išorinę funkciją, išlaikydami jos argumentą, tada padauginkite iš šio argumento išvestinės. Kai \(u(x) = x\), vidinės funkcijos išvestinė lygi vienetui, todėl gaunama įprasta lentelės formulė.</p>
     </article>
   </section>
 
-  <!-- ============ IŠVESTINIŲ SKAIČIAVIMO PAVYZDŽIAI ============ -->
   <!-- ============ IŠVESTINIŲ SKAIČIAVIMAS ============ -->
   <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
     <h2 id="h-ex">Išvestinių skaičiavimas</h2>
-    <p class="section-intro">Taisyklių taikymas be ekonominių situacijų: pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.</p>
-    <div class="model-grid" data-models="t6" data-only="m60"></div>
+    <p class="section-intro">Čia rasite matematinių išvestinių skaičiavimo pavyzdžių ir uždavinių savarankiškam darbui. Skyriai suskirstyti pagal taikomas taisykles.</p>
+    <div class="model-grid" data-models="t6" data-only="m6a m6b m6c m6d m6e"></div>
   </section>
 
   <!-- ============ TAIKYMAI ============ -->
   <section class="section" id="taikymai" aria-labelledby="h-apps">
     <h2 id="h-apps">Taikymai</h2>
-    <p class="section-intro">Išvestinė padeda nustatyti, kaip kinta įmonės sąnaudos, pajamos ir pelnas, kaip greitai kinta įvairūs dydžiai, kuriuose intervaluose funkcija didėja ar mažėja ir kur ji įgyja didžiausią ar mažiausią reikšmę. Pasirinkite skyrių.</p>
-    <div class="model-grid" data-models="t6" data-skip="m60"></div>
+    <p class="section-intro">Čia rasite ekonominių ir vadybinių uždavinių, kuriuose naudojamas išvestinių skaičiavimas, pavyzdžių: kaip kinta įmonės sąnaudos, pajamos ir pelnas, kaip greitai kinta įvairūs dydžiai, kuriuose intervaluose funkcija didėja ar mažėja ir kur ji įgyja didžiausią ar mažiausią reikšmę.</p>
+    <div class="model-grid" data-models="t6" data-skip="m6a m6b m6c m6d m6e"></div>
   </section>
 
   <section class="section sources" aria-labelledby="h-src">
