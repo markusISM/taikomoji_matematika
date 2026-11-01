@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Constant Multiple, Sum and Difference Rules · Applied Mathematics</title>
+<meta name="description" content="Step-by-step examples of calculating derivatives with the constant multiple rule, the sum and difference rule and the table of derivatives of the elementary functions. Practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-6-daugiklio-sumos-taisykles.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=66">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=66"></script>
+</head>
+<body data-page="m6a">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 6 · Calculating derivatives · Section 1</span>
+    <h1>The Constant Multiple, Sum and Difference Rules</h1>
+    <p class="lead">In this section you will find examples of calculating derivatives with the constant multiple rule, the sum and difference rule and the table of derivatives of the elementary functions, together with practice problems. Try to solve each problem yourself first, then reveal the solution one step at a time.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Rules</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ RULES ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">The rules used</h2>
+    <article class="card">
+      <h3 class="subhead">The constant multiple rule</h3>
+      <div class="formula">\[ \big(c\, u(x)\big)' = c\, u'(x) \]</div>
+      <h3 class="subhead" style="margin-top:22px">The sum and difference rule</h3>
+      <div class="formula">\[ \big(u(x) \pm v(x)\big)' = u'(x) \pm v'(x) \]</div>
+      <p>The derivatives of the elementary functions are listed in the <a href="tema-6.html#lentele">table of derivatives</a>, and the rules are explained in the <a href="tema-6.html#daugiklio">constant multiple rule</a> and <a href="tema-6.html#sumos">sum and difference rule</a> cards on the Topic 6 page.</p>
+    </article>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+
+    <!-- Example 1: AM 6.1, 4.1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A polynomial</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = 5x^4 - 3x^2 + 7x - 2\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>The function consists of four terms, so differentiate the four terms separately (<a href="tema-6.html#sumos">the sum and difference rule</a>). For the first three terms, keep each coefficient (<a href="tema-6.html#daugiklio">the constant multiple rule</a>) and apply the power rule. The final term is constant, so its derivative is zero.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= (5x^4)' - (3x^2)' + (7x)' - (2)' \\ &amp;= 5\cdot 4x^3 - 3\cdot 2x + 7\cdot 1 - 0 \\ &amp;= 20x^3 - 6x + 7 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = 20x^3 - 6x + 7 \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 6.1, 4.1 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>A root, a logarithm and an exponential function</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = 2\sqrt{x} + 5\ln x - 3e^x\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>Differentiate each term separately (<a href="tema-6.html#sumos">the sum and difference rule</a>), keeping its constant coefficient (<a href="tema-6.html#daugiklio">the constant multiple rule</a>). Use the <a href="tema-6.html#lentele">table of derivatives</a> for the square root, logarithmic and exponential derivatives.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Differentiation</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= 2\cdot\frac{1}{2\sqrt{x}} + 5\cdot\frac{1}{x} - 3e^x \\ &amp;= \frac{1}{\sqrt{x}} + \frac{5}{x} - 3e^x \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = \frac{1}{\sqrt{x}} + \frac{5}{x} - 3e^x \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 6.1, 4.1 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A negative power and trigonometric functions</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find \(f'(x)\) if \(f(x) = \dfrac{4}{x^3} + 3\sin x - 2\cos x\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The rules</span></h4>
+          <p>The first term has a constant numerator and a power of \(x\) in the denominator. Rewrite it as a negative power and apply the power rule. For the remaining terms, use the sine and cosine derivatives from the <a href="tema-6.html#lentele">table</a>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Rewriting</span></h4>
+          \[ \frac{4}{x^3} = 4x^{-3} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Differentiation</span></h4>
+          \[ \begin{aligned} f'(x) &amp;= 4\cdot(-3)x^{-4} + 3\cos x \\ &amp;\phantom{=}\; - 2\cdot(-\sin x) \\ &amp;= -12x^{-4} + 3\cos x + 2\sin x \\ &amp;= -\frac{12}{x^4} + 3\cos x + 2\sin x \end{aligned} \]
+          <p>Finally, rewrite the negative power as a fraction. Either form of the derivative is valid.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ f'(x) = -\frac{12}{x^4} + 3\cos x + 2\sin x \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: identify the structure of the function, choose the rule, differentiate and simplify the result. Then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = 4x^5 - 6x^3 + 2x - 9\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = 20x^4 - 18x^2 + 2\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = 3\sqrt{x} - \dfrac{7}{x} + 2\cdot 3^x\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = \dfrac{3}{2\sqrt{x}} + \dfrac{7}{x^2} + 2\cdot 3^x\ln 3\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find \(f'(x)\) if \(f(x) = 5\ln x + 4\cos x - \dfrac{x^4}{2}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'(x) = \dfrac{5}{x} - 4\sin x - 2x^3\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 5, 6.1–6.3, 6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapters 9, 10.1, 10.4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

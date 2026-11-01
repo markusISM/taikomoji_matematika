@@ -270,7 +270,7 @@
         desc: { lt: 'Dualusis uždavinys: mažiausios išlaidos ir reikalavimų viršijimas.', en: 'The dual problem: the minimum cost and the requirements that are exceeded.' } }
     ],
     t6: [
-      { id: 'm6a', status: 'active', href: { lt: 'tema-6-daugiklio-sumos-taisykles.html', en: null },
+      { id: 'm6a', status: 'active', href: { lt: 'tema-6-daugiklio-sumos-taisykles.html', en: 'tema-6-daugiklio-sumos-taisykles.html' },
         title: { lt: 'Pastovaus daugiklio, sumos ir skirtumo išvestinių taisyklės', en: 'The Constant Multiple, Sum and Difference Rules' },
         desc: { lt: 'Daugianariai ir elementariųjų funkcijų sumos: kiekvienas narys diferencijuojamas atskirai.', en: 'Polynomials and sums of elementary functions: each term is differentiated separately.' } },
       { id: 'm6b', status: 'active', href: { lt: 'tema-6-sandaugos-dalmens-taisykles.html', en: null },
@@ -350,7 +350,7 @@
                title: { lt: 'Standartiniai minimizavimo uždaviniai', en: 'Standard Minimization Problems' } },
     t6:      { parent: 'home', href: { lt: 'tema-6.html', en: 'tema-6.html' },
                title: { lt: '6 tema', en: 'Topic 6' } },
-    m6a:     { parent: 't6', topic: 't6', model: 'm6a', href: { lt: 'tema-6-daugiklio-sumos-taisykles.html', en: null },
+    m6a:     { parent: 't6', topic: 't6', model: 'm6a', href: { lt: 'tema-6-daugiklio-sumos-taisykles.html', en: 'tema-6-daugiklio-sumos-taisykles.html' },
                title: { lt: 'Pastovaus daugiklio, sumos ir skirtumo išvestinių taisyklės', en: 'The Constant Multiple, Sum and Difference Rules' } },
     m6b:     { parent: 't6', topic: 't6', model: 'm6b', href: { lt: 'tema-6-sandaugos-dalmens-taisykles.html', en: null },
                title: { lt: 'Sandaugos ir dalmens išvestinių taisyklės', en: 'The Product and Quotient Rules' } },
