@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optimizavimas · Taikomoji matematika</title>
+<meta name="description" content="Optimizavimas taikant antrąjį pakankamąjį ekstremumų požymį: tikslo funkcijos sudarymas – pajamos, pelnas, vidutinės sąnaudos. Sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=74">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=74"></script>
+</head>
+<body data-page="m74">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">7 tema · Taikymai · 4 skyrius</span>
+    <h1>Optimizavimas</h1>
+    <p class="lead">Šiame skyriuje didžiausios pajamos ir pelnas bei mažiausios vidutinės sąnaudos randami taikant antrąjį pakankamąjį ekstremumų požymį: antroji išvestinė kritiniame taške parodo, ar jame yra maksimumas, ar minimumas.</p>
+    <ul class="jump">
+      <li><a href="#pozymis">Antrasis požymis</a></li>
+      <li><a href="#tikslo">Tikslo funkcija</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. ANTRASIS POŽYMIS ============ -->
+  <section class="section" id="pozymis" aria-labelledby="h-test">
+    <h2 id="h-test">Antrasis pakankamasis ekstremumų požymis</h2>
+
+    <article class="card">
+      <p>Ankstesnėje temoje funkcijos ekstremumai buvo randami pagal <a href="tema-6-vietiniai-ekstremumai.html">pirmosios išvestinės ženklų schemą</a>: kritinis taškas, kuriame \(f'(x)\) ženklas keičiasi iš teigiamo į neigiamą, yra maksimumo taškas, o keičiantis iš neigiamo į teigiamą – minimumo taškas. Antroji išvestinė leidžia tą patį nustatyti trumpiau, nes parodo kreivės formą ties pačiu kritiniu tašku. Ženklų schemos tuomet nereikia.</p>
+      <p><strong>Kritiniai taškai randami kaip ir anksčiau.</strong> Tai apibrėžimo sričiai priklausančios reikšmės \(x = c\), kurioms</p>
+      <div class="formula">\[ \begin{gathered} f'(c) = 0\quad\text{arba} \\ f'(c)\ \text{neegzistuoja} \end{gathered} \]</div>
+      <p>Tada požymis taikomas kiekvienam taškui atskirai.</p>
+      <div class="model-note"><strong>Antrasis pakankamasis ekstremumų požymis.</strong> Tarkime, kad \(x = c\) yra funkcijos \(y = f(x)\) kritinis taškas. Tada:
+        <ul style="margin:6px 0 0">
+          <li>jei \(f''(c) &lt; 0\), tai \(x = c\) yra vietinio maksimumo taškas;</li>
+          <li>jei \(f''(c) &gt; 0\), tai \(x = c\) yra vietinio minimumo taškas;</li>
+          <li>jei \(f''(c) = 0\), požymis nepritaikomas.</li>
+        </ul>
+      </div>
+      <figure class="abs-fig">
+          <svg viewBox="0 0 520 244" role="img" aria-label="Kritiniame taške c: jei antroji išvestinė neigiama – vietinis maksimumas, jei teigiama – vietinis minimumas">
+          <line class="ax" x1="20" y1="190" x2="250" y2="190"/>
+          <line class="ax" x1="270" y1="190" x2="500" y2="190"/>
+          <line class="guide" x1="135" y1="70" x2="135" y2="190"/>
+          <path class="ln" d="M30.0 180.0L32.1 175.6L34.2 171.4L36.3 167.2L38.4 163.1L40.5 159.1L42.6 155.2L44.7 151.4L46.8 147.6L48.9 144.0L51.0 140.4L53.1 136.9L55.2 133.5L57.3 130.2L59.4 127.0L61.5 123.9L63.6 120.9L65.7 117.9L67.8 115.1L69.9 112.3L72.0 109.6L74.1 107.0L76.2 104.5L78.3 102.1L80.4 99.7L82.5 97.5L84.6 95.3L86.7 93.3L88.8 91.3L90.9 89.4L93.0 87.6L95.1 85.9L97.2 84.3L99.3 82.7L101.4 81.3L103.5 79.9L105.6 78.6L107.7 77.4L109.8 76.3L111.9 75.3L114.0 74.4L116.1 73.6L118.2 72.8L120.3 72.2L122.4 71.6L124.5 71.1L126.6 70.7L128.7 70.4L130.8 70.2L132.9 70.0L135.0 70.0L137.1 70.0L139.2 70.2L141.3 70.4L143.4 70.7L145.5 71.1L147.6 71.6L149.7 72.2L151.8 72.8L153.9 73.6L156.0 74.4L158.1 75.3L160.2 76.3L162.3 77.4L164.4 78.6L166.5 79.9L168.6 81.3L170.7 82.7L172.8 84.3L174.9 85.9L177.0 87.6L179.1 89.4L181.2 91.3L183.3 93.3L185.4 95.3L187.5 97.5L189.6 99.7L191.7 102.1L193.8 104.5L195.9 107.0L198.0 109.6L200.1 112.3L202.2 115.1L204.3 117.9L206.4 120.9L208.5 123.9L210.6 127.0L212.7 130.2L214.8 133.5L216.9 136.9L219.0 140.4L221.1 144.0L223.2 147.6L225.3 151.4L227.4 155.2L229.5 159.1L231.6 163.1L233.7 167.2L235.8 171.4L237.9 175.6L240.0 180.0"/>
+          <line class="ln2-dash" x1="75" y1="70" x2="195" y2="70"/>
+          <circle class="pt-hi" cx="135" cy="70" r="6.5"/>
+          <line class="guide" x1="385" y1="170" x2="385" y2="190"/>
+          <path class="ln" d="M280.0 60.0L282.1 64.4L284.2 68.6L286.3 72.8L288.4 76.9L290.5 80.9L292.6 84.8L294.7 88.6L296.8 92.4L298.9 96.0L301.0 99.6L303.1 103.1L305.2 106.5L307.3 109.8L309.4 113.0L311.5 116.1L313.6 119.1L315.7 122.1L317.8 124.9L319.9 127.7L322.0 130.4L324.1 133.0L326.2 135.5L328.3 137.9L330.4 140.3L332.5 142.5L334.6 144.7L336.7 146.7L338.8 148.7L340.9 150.6L343.0 152.4L345.1 154.1L347.2 155.7L349.3 157.3L351.4 158.7L353.5 160.1L355.6 161.4L357.7 162.6L359.8 163.7L361.9 164.7L364.0 165.6L366.1 166.4L368.2 167.2L370.3 167.8L372.4 168.4L374.5 168.9L376.6 169.3L378.7 169.6L380.8 169.8L382.9 170.0L385.0 170.0L387.1 170.0L389.2 169.8L391.3 169.6L393.4 169.3L395.5 168.9L397.6 168.4L399.7 167.8L401.8 167.2L403.9 166.4L406.0 165.6L408.1 164.7L410.2 163.7L412.3 162.6L414.4 161.4L416.5 160.1L418.6 158.7L420.7 157.3L422.8 155.7L424.9 154.1L427.0 152.4L429.1 150.6L431.2 148.7L433.3 146.7L435.4 144.7L437.5 142.5L439.6 140.3L441.7 137.9L443.8 135.5L445.9 133.0L448.0 130.4L450.1 127.7L452.2 124.9L454.3 122.1L456.4 119.1L458.5 116.1L460.6 113.0L462.7 109.8L464.8 106.5L466.9 103.1L469.0 99.6L471.1 96.0L473.2 92.4L475.3 88.6L477.4 84.8L479.5 80.9L481.6 76.9L483.7 72.8L485.8 68.6L487.9 64.4L490.0 60.0"/>
+          <line class="ln2-dash" x1="325" y1="170" x2="445" y2="170"/>
+          <circle class="pt-hi" cx="385" cy="170" r="6.5"/>
+          <text class="m" x="135" y="210" text-anchor="middle" style="font-size:18px">c</text>
+          <text class="m" x="385" y="210" text-anchor="middle" style="font-size:18px">c</text>
+          <text class="m" x="135" y="30" text-anchor="middle" style="font-size:19px"><tspan class="i">f</tspan>″(<tspan class="i">c</tspan>) &lt; 0</text>
+          <text class="m" x="385" y="30" text-anchor="middle" style="font-size:19px"><tspan class="i">f</tspan>″(<tspan class="i">c</tspan>) &gt; 0</text>
+          <text x="135" y="236" text-anchor="middle" font-style="italic" style="font-size:17px">vietinis maksimumas</text>
+          <text x="385" y="236" text-anchor="middle" font-style="italic" style="font-size:17px">vietinis minimumas</text>
+          </svg>
+        <figcaption>Kritiniame taške antrosios išvestinės ženklas parodo ekstremumo tipą.</figcaption>
+      </figure>
+      <p>Tai paaiškina antrosios išvestinės prasmė. Jei \(f''(c) &lt; 0\), kreivė ties \(x = c\) yra <a href="tema-7-funkcijos-iskilumas.html">išgaubta</a>, o išgaubtos kreivės taškas su horizontalia liestine yra viršūnė. Jei \(f''(c) &gt; 0\), kreivė ties \(x = c\) yra įgaubta, todėl toks taškas yra žemiausias artimų taškų atžvilgiu.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Kada požymis nepritaikomas</h3>
+      <p>Jei \(f''(c) = 0\), antroji išvestinė neleidžia nustatyti taško tipo: jame gali būti maksimumas, minimumas arba nebūti nei vieno. Tas pats galioja, kai \(f''(c)\) neegzistuoja. Tokiais atvejais kritinis taškas nagrinėjamas pagal \(f'\) ženklų schemą, kaip ankstesnėje temoje.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Nuo vietinio ekstremumo iki uždavinio atsakymo</h3>
+      <p>Požymis nustato <strong>vietinį</strong> ekstremumą, o taikomajame uždavinyje prašoma didžiausios arba mažiausios dydžio reikšmės. Šio skyriaus uždaviniuose jos sutampa; tai galima pagrįsti išvestinėmis. Jei \(f''(x) &lt; 0\) ne tik kritiniame taške, bet ir kiekviename intervalo taške, funkcija išgaubta visame intervale. Vieninteliame kritiniame taške rastas vietinis maksimumas tuomet yra didžiausia galima dydžio reikšmė. Jei \(f''(x) &gt; 0\) visame intervale, analogiškai pagrindžiama mažiausia reikšmė.</p>
+      <p class="tip">Todėl verta nagrinėti visą antrosios išvestinės išraišką, o ne tik jos reikšmę kritiniame taške. Jei ji išlaiko tą patį ženklą visame uždavinio kontekstą atitinkančiame intervale, galima pagrįsti rastą didžiausią ar mažiausią reikšmę.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. TIKSLO FUNKCIJA ============ -->
+  <section class="section" id="tikslo" aria-labelledby="h-obj">
+    <h2 id="h-obj">Tikslo funkcijos sudarymas</h2>
+
+    <article class="card">
+      <p>Daugelyje taikomųjų uždavinių optimizuojama funkcija nepateikiama. Sąlygoje pateikta informacija, pagal kurią reikia ją sudaryti. Funkcija, kurios reikšmę siekiama padaryti kuo didesnę arba kuo mažesnę, vadinama <strong>tikslo funkcija</strong>. Keturi atvejai apima daugumą šio skyriaus ekonominių uždavinių.</p>
+      <div class="anat dtbl dtbl-rows">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Pajamos pagal paklausos funkciją</strong></div>
+          <ul class="flist">
+            <li>\(R(x) = p\cdot x\)</li>
+          </ul>
+          <p class="lvl-txt">Paklausos funkcija nusako kainą \(p\), už kurią galima parduoti \(x\) gaminių. Pajamos yra kainos ir parduoto kiekio sandauga. Prieš dauginant, kaina \(p\) išreiškiama kintamojo \(x\) funkcija, kad pajamos būtų vieno kintamojo funkcija.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Pelnas pagal paklausos ir sąnaudų funkcijas</strong></div>
+          <ul class="flist">
+            <li>\(P(x) = R(x) - TC(x)\)</li>
+            <li>\(P(x) = p\cdot x - TC(x)\)</li>
+          </ul>
+          <p class="lvl-txt">Pelnas yra pajamų ir bendrųjų sąnaudų skirtumas. Abi dalys turi būti išreikštos to paties kintamojo \(x\) funkcijomis. Sąnaudų išraiškos skliaustus reikia atskliausti atidžiai, nes kiekvieno jos nario ženklas pasikeičia.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Pelnas pagal gamybos funkciją</strong></div>
+          <ul class="flist">
+            <li>\(P(x) = p\cdot Q(x) - w\cdot x\)</li>
+          </ul>
+          <p class="lvl-txt">Gamybos funkcija \(Q(x)\) nusako įmonės gamybos kiekį, kai naudojama \(x\) ištekliaus vienetų: darbuotojų, įrenginių darbo valandų ar žaliavų. Produkcija parduodama pastovia \(p\) eurų vieneto kaina, o ištekliaus vienetas kainuoja \(w\) eurų. Pirmasis narys yra pajamos, antrasis – ištekliaus sąnaudos. Jei įmonė taip pat patiria pastoviųjų sąnaudų \(F\), jos taip pat atimamos.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">4</span><strong>Vidutinės sąnaudos</strong></div>
+          <ul class="flist">
+            <li>\(ATC(x) = \dfrac{TC(x)}{x}\)</li>
+          </ul>
+          <p class="lvl-txt">Vidutinės sąnaudos yra \(x\) gaminių bendrosios sąnaudos, padalytos iš gaminių skaičiaus. Kiekvienas bendrųjų sąnaudų narys atskirai dalijamas iš \(x\). Taip gautą funkciją lengviau diferencijuoti.</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Paaiškinkite, ką reiškia kintamasis \(x\) ir kokiame intervale gali kisti jo reikšmės. Prekių kiekis, darbuotojų skaičius ir valandų skaičius negali būti neigiami.</li>
+        <li>Pagal <a href="#tikslo">tikslo funkcijų formules</a> sudarykite tikslo funkciją. Atskliauskite ir sutraukite panašiuosius narius.</li>
+        <li>Diferencijuokite. Išspręskite \(f'(x) = 0\) ir raskite taškus, kuriuose \(f'(x)\) neegzistuoja. Tai kritiniai taškai. Uždavinyje nagrinėjamam intervalui nepriklausančius taškus atmeskite.</li>
+        <li>Diferencijuokite dar kartą ir kritinį tašką įstatykite į \(f''(x)\). Neigiama reikšmė rodo maksimumą, teigiama – minimumą. Jei reikšmė lygi nuliui, taikykite \(f'\) ženklų schemą.</li>
+        <li>Atsakykite į uždavinio klausimus: nurodykite \(x\) reikšmę ir, jei prašoma, kainą, gamybos kiekį, pajamas, pelną ar sąnaudas.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:18px">Jei pirmoji išvestinė yra racionalioji funkcija</h3>
+      <p>Užrašykite ją viena trupmena ir prilyginkite nuliui. Trupmena lygi nuliui tik tada, kai skaitiklis lygus nuliui, o vardiklis nelygus nuliui, todėl lygtis pakeičiama sistema:</p>
+      <div class="formula">\[ \frac{u(x)}{v(x)} = 0 \;\Longleftrightarrow\; \begin{cases} u(x) = 0 \\ v(x) \neq 0 \end{cases} \]</div>
+      <p>Antrąją sąlygą taip pat būtina patikrinti: reikšmė, su kuria vardiklis lygus nuliui, nepriklauso funkcijos apibrėžimo sričiai, todėl negali būti sprendinys.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>\(f''(c) = 0\) laikoma atsakymu.</strong> Tada požymis nepritaikomas – kritinį tašką reikia nagrinėti pagal \(f'\) ženklų schemą.</li>
+            <li><strong>Vietinis ekstremumas laikomas didžiausia ar mažiausia reikšme be pagrindimo.</strong> Reikia parodyti, kad antroji išvestinė išlaiko tą patį ženklą visame nagrinėjamame intervale.</li>
+            <li><strong>Neatidžiai atskliaustos sąnaudos.</strong> Atimant bendrąsias sąnaudas, keičiasi kiekvieno jų nario ženklas.</li>
+            <li><strong>Nepatikrintas vardiklis.</strong> Reikšmė, su kuria vardiklis lygus nuliui, negali būti kritinis taškas.</li>
+            <li><strong>Neatmesti neigiami sprendiniai.</strong> Kiekis, darbuotojų ar valandų skaičius negali būti neigiami.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 7.4, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Didžiausios savaitės pajamos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė per savaitę parduoda \(x\) gaminių. Savaitės paklausos funkcija yra
+        \[ p = -0{,}04x + 60 \]
+        eurų vienam gaminiui.
+        <ol type="a">
+          <li>Raskite pardavimo kiekį, su kuriuo pajamos didžiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite atitinkamą kainą ir pajamas.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Tikslo funkcija</span></h4>
+          <p>Pajamos yra kainos ir parduoto kiekio sandauga:</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0{,}04x + 60)x \\ &amp;= -0{,}04x^2 + 60x,\qquad x \ge 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pirmoji išvestinė ir kritinis taškas</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ R'(x) = -0{,}08x + 60 \]
+          <p>Kritinis taškas randamas iš \(R'(x) = 0\):</p>
+          \[ \begin{gathered} -0{,}08x + 60 = 0 \;\Longrightarrow\; 0{,}08x = 60 \\ \Longrightarrow\; x = 750 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Diferencijuojame dar kartą:</p>
+          \[ R''(x) = -0{,}08 \]
+          <p>todėl \(R''(750) = -0{,}08 &lt; 0\), o \(x = 750\) yra vietinio maksimumo taškas. Antroji išvestinė neigiama visoms \(x\) reikšmėms, todėl pajamos didžiausios parduodant 750 gaminių per savaitę.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Kaina ir pajamos</span></h4>
+          <p>Atitinkama kaina ir pajamos yra</p>
+          \[ p = -0{,}04\cdot 750 + 60 = 30 \]
+          \[ R(750) = 30\cdot 750 = 22500 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pajamos didžiausios parduodant 750 gaminių per savaitę. Vieneto kaina tuomet yra 30&nbsp;eurų, o pajamos – 22&nbsp;500&nbsp;eurų per savaitę.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 7.4, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Didžiausias savaitės pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė per savaitę gali parduoti \(x\) gaminių, kai vieneto kaina yra
+        \[ p = -0{,}02x + 90 \]
+        eurų, o jų gamybos bendrosios sąnaudos yra
+        \[ TC(x) = 0{,}03x^2 + 20x + 5000 \]
+        eurų.
+        <ol type="a">
+          <li>Raskite gamybos kiekį, su kuriuo pelnas didžiausias. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite atitinkamą kainą ir pelną.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Tikslo funkcija</span></h4>
+          <p>Pajamos yra</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0{,}02x + 90)x \\ &amp;= -0{,}02x^2 + 90x \end{aligned} \]
+          <p>o pelnas – pajamų ir bendrųjų sąnaudų skirtumas:</p>
+          \[ \begin{aligned} P(x) &amp;= -0{,}02x^2 + 90x \\ &amp;\phantom{=}\; - \left(0{,}03x^2 + 20x + 5000\right) \\ &amp;= -0{,}05x^2 + 70x - 5000,\quad x \ge 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pirmoji išvestinė ir kritinis taškas</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ P'(x) = -0{,}1x + 70 \]
+          <p>Kritinis taškas randamas iš \(P'(x) = 0\):</p>
+          \[ \begin{gathered} -0{,}1x + 70 = 0 \;\Longrightarrow\; 0{,}1x = 70 \\ \Longrightarrow\; x = 700 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Diferencijuojame dar kartą:</p>
+          \[ P''(x) = -0{,}1 \]
+          <p>todėl \(P''(700) = -0{,}1 &lt; 0\), o \(x = 700\) yra vietinio maksimumo taškas. Antroji išvestinė neigiama visoms \(x\) reikšmėms, todėl pelnas didžiausias pagaminant 700 gaminių per savaitę.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Kaina ir pelnas</span></h4>
+          <p>Atitinkama kaina ir pelnas yra</p>
+          \[ p = -0{,}02\cdot 700 + 90 = 76 \]
+          \[ \begin{aligned} P(700) &amp;= -0{,}05\cdot 700^2 + 70\cdot 700 \\ &amp;\phantom{=}\; - 5000 \\ &amp;= -24500 + 49000 - 5000 \\ &amp;= 19500 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pelnas didžiausias pagaminant 700 gaminių per savaitę. Vieneto kaina tuomet yra 76&nbsp;eurai, o pelnas – 19&nbsp;500&nbsp;eurų per savaitę.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 7.4, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Mažiausios vidutinės sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dienos bendrosios sąnaudos gaminant \(x\) gaminių yra
+        \[ TC(x) = 0{,}5x^2 + 40x + 7200 \]
+        eurų.
+        <ol type="a">
+          <li>Raskite gamybos kiekį, su kuriuo vidutinės sąnaudos mažiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite šias vidutines sąnaudas.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Tikslo funkcija</span></h4>
+          <p>Vidutinės sąnaudos yra bendrosios sąnaudos, padalytos iš gaminių skaičiaus. Kiekvieną narį dalydami atskirai, gauname</p>
+          \[ \begin{aligned} ATC(x) &amp;= \frac{0{,}5x^2 + 40x + 7200}{x} \\ &amp;= 0{,}5x + 40 + \frac{7200}{x},\quad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pirmoji išvestinė</span></h4>
+          <p>Paskutinį narį prieš diferencijuojant perrašome laipsniu: \(\dfrac{7200}{x} = 7200x^{-1}\). Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ \begin{aligned} ATC'(x) &amp;= 0{,}5 + 7200\cdot(-1)x^{-2} \\ &amp;= 0{,}5 - \frac{7200}{x^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas</span></h4>
+          <p>Kritinis taškas randamas iš \(ATC'(x) = 0\). Išvestinė yra racionalioji funkcija, todėl pirmiausia ją užrašome viena trupmena:</p>
+          \[ ATC'(x) = \frac{0{,}5x^2 - 7200}{x^2} \]
+          <p>Trupmena lygi nuliui tik tada, kai skaitiklis lygus nuliui, o vardiklis nelygus nuliui:</p>
+          <div class="fit-sm">\[ \frac{0{,}5x^2 - 7200}{x^2} = 0 \;\Longleftrightarrow\; \begin{cases} 0{,}5x^2 - 7200 = 0 \\ x^2 \neq 0 \end{cases} \]</div>
+          \[ \begin{gathered} 0{,}5x^2 = 7200 \;\Longrightarrow\; x^2 = 14400 \\ \Longrightarrow\; x = \pm 120 \end{gathered} \]
+          <p>Vardiklis lygus nuliui tik tada, kai \(x = 0\), tačiau ši reikšmė nėra gautos lygties šaknis. Sprendinys \(x = -120\) negali reikšti gaminių skaičiaus, todėl atmetamas. Taigi kritinis taškas yra \(x = 120\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Dar kartą diferencijuodami \(-7200x^{-2}\), gauname</p>
+          \[ ATC''(x) = -7200\cdot(-2)x^{-3} = \frac{14400}{x^3} \]
+          <p>todėl \(ATC''(120) = \dfrac{14400}{120^3} &gt; 0\), o \(x = 120\) yra vietinio minimumo taškas. Antroji išvestinė teigiama visoms \(x &gt; 0\) reikšmėms, todėl vidutinės sąnaudos mažiausios pagaminant 120 gaminių per dieną.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Vidutinės sąnaudos</span></h4>
+          \[ \begin{aligned} ATC(120) &amp;= 0{,}5\cdot 120 + 40 + \frac{7200}{120} \\ &amp;= 60 + 40 + 60 = 160 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Vidutinės sąnaudos mažiausios pagaminant 120 gaminių per dieną. Jos tuomet lygios 160&nbsp;eurų vienam gaminiui.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 7.4, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Darbuotojų skaičius ir pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvės, kuriose dirba \(x\) darbuotojų, pagamina
+        \[ Q(x) = 30\sqrt{x} \]
+        gaminių per dieną. Kiekvienas gaminys parduodamas už 8&nbsp;eurus, o kiekvienam darbuotojui mokama 24&nbsp;eurai per dieną.
+        <ol type="a">
+          <li>Raskite darbuotojų skaičių, su kuriuo pelnas didžiausias. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite atitinkamą gamybos kiekį ir pelną.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Tikslo funkcija</span></h4>
+          <p>Pajamos yra vieneto kainos ir gamybos kiekio sandauga, o sąnaudos – darbo užmokesčio ir darbuotojų skaičiaus sandauga:</p>
+          \[ \begin{aligned} P(x) &amp;= 8\cdot Q(x) - 24x \\ &amp;= 8\cdot 30\sqrt{x} - 24x \\ &amp;= 240\sqrt{x} - 24x,\quad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pirmoji išvestinė</span></h4>
+          <p>Šaknies išvestinė yra \(\left(\sqrt{x}\right)' = \dfrac{1}{2\sqrt{x}}\), todėl</p>
+          \[ P'(x) = 240\cdot\frac{1}{2\sqrt{x}} - 24 = \frac{120}{\sqrt{x}} - 24 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas</span></h4>
+          <p>Kritinis taškas randamas iš \(P'(x) = 0\). Išvestinė yra racionalioji funkcija, todėl pirmiausia ją užrašome viena trupmena:</p>
+          \[ P'(x) = \frac{120 - 24\sqrt{x}}{\sqrt{x}} \]
+          <p>Trupmena lygi nuliui tik tada, kai skaitiklis lygus nuliui, o vardiklis nelygus nuliui:</p>
+          <div class="fit-sm">\[ \frac{120 - 24\sqrt{x}}{\sqrt{x}} = 0 \;\Longleftrightarrow\; \begin{cases} 120 - 24\sqrt{x} = 0 \\ \sqrt{x} \neq 0 \end{cases} \]</div>
+          \[ 24\sqrt{x} = 120 \;\Longrightarrow\; \sqrt{x} = 5 \;\Longrightarrow\; x = 25 \]
+          <p>Su šiuo sprendiniu vardiklis yra \(\sqrt{25} = 5 \neq 0\), todėl kritinis taškas yra \(x = 25\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Skaičiuodami antrąją išvestinę, šaknį perrašome laipsniu: \(\dfrac{120}{\sqrt{x}} = 120x^{-\frac{1}{2}}\). Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ P''(x) = 120\cdot\left(-\frac{1}{2}\right)x^{-\frac{3}{2}} = -\frac{60}{\sqrt{x^3}} \]
+          <p>Kritiniame taške \(\sqrt{25^3} = \sqrt{15625} = 125\), todėl</p>
+          \[ P''(25) = -\frac{60}{125} = -0{,}48 &lt; 0 \]
+          <p>Taigi \(x = 25\) yra vietinio maksimumo taškas. Antroji išvestinė neigiama visoms \(x &gt; 0\) reikšmėms, todėl pelnas didžiausias, kai dirba 25 darbuotojai.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Gamybos kiekis ir pelnas</span></h4>
+          <p>Kai dirba 25 darbuotojai, gamybos kiekis ir pelnas yra</p>
+          \[ Q(25) = 30\sqrt{25} = 150 \]
+          \[ \begin{aligned} P(25) &amp;= 240\cdot 5 - 24\cdot 25 \\ &amp;= 1200 - 600 = 600 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pelnas didžiausias, kai dirba 25 darbuotojai. Dirbtuvės tuomet pagamina 150 gaminių per dieną, o pelnas yra 600&nbsp;eurų per dieną.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 7.4, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Pajamos, kai paklausa rodiklinė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gaminio savaitės paklausos funkcija yra
+        \[ p = 150e^{-0{,}004x} \]
+        eurų vienam gaminiui, čia \(x\) – parduotų gaminių skaičius.
+        <ol type="a">
+          <li>Raskite pardavimo kiekį, su kuriuo pajamos didžiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite atitinkamą kainą ir pajamas cento tikslumu.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Tikslo funkcija</span></h4>
+          <p>Pajamos yra kainos ir parduoto kiekio sandauga:</p>
+          \[ R(x) = p\cdot x = 150x\cdot e^{-0{,}004x},\qquad x \ge 0 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pirmoji išvestinė</span></h4>
+          <p>Pajamos yra sandauga, todėl taikoma <a href="tema-6.html#sandaugos">sandaugos taisyklė</a>, kai \(u(x) = 150x\) ir \(v(x) = e^{-0{,}004x}\). Pirmojo daugiklio išvestinė yra \(u'(x) = 150\). Antrasis daugiklis yra sudėtinė rodiklinė funkcija, kurios vidinė funkcija yra \(-0{,}004x\), todėl taikoma <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklė</a>:</p>
+          \[ \begin{aligned} v'(x) &amp;= e^{-0{,}004x}\cdot(-0{,}004) \\ &amp;= -0{,}004e^{-0{,}004x} \end{aligned} \]
+          <p>Įstatę į sandaugos taisyklės formulę \(\big(u(x)\cdot v(x)\big)' = u'(x)\cdot v(x) + u(x)\cdot v'(x)\), gauname</p>
+          \[ \begin{aligned} R'(x) &amp;= 150e^{-0{,}004x} \\ &amp;\phantom{=}\; + 150x\cdot\left(-0{,}004e^{-0{,}004x}\right) \end{aligned} \]
+          <p>Iškeliame bendrąjį daugiklį \(150e^{-0{,}004x}\):</p>
+          \[ R'(x) = 150e^{-0{,}004x}(1 - 0{,}004x) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas</span></h4>
+          <p>Rodiklinė funkcija teigiama visoms \(x\) reikšmėms, todėl sandauga lygi nuliui tik tada, kai reiškinys skliaustuose lygus nuliui:</p>
+          \[ \begin{gathered} 1 - 0{,}004x = 0 \;\Longrightarrow\; 0{,}004x = 1 \\ \Longrightarrow\; x = 250 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Pirmoji išvestinė vėl yra sandauga, todėl dar kartą taikoma sandaugos taisyklė, kai \(u(x) = 150e^{-0{,}004x}\) ir \(v(x) = 1 - 0{,}004x\). Jų išvestinės yra \(u'(x) = -0{,}6e^{-0{,}004x}\) ir \(v'(x) = -0{,}004\). Įstatę gauname</p>
+          \[ \begin{aligned} R''(x) &amp;= -0{,}6e^{-0{,}004x}(1 - 0{,}004x) \\ &amp;\phantom{=}\; + 150e^{-0{,}004x}\cdot(-0{,}004) \end{aligned} \]
+          <p>Antrasis narys yra \(-0{,}6e^{-0{,}004x}\), todėl iškeliame bendrąjį daugiklį \(-0{,}6e^{-0{,}004x}\):</p>
+          \[ \begin{aligned} R''(x) &amp;= -0{,}6e^{-0{,}004x}(1 - 0{,}004x + 1) \\ &amp;= -0{,}6e^{-0{,}004x}(2 - 0{,}004x) \end{aligned} \]
+          <p>Kritiniame taške \(-0{,}004\cdot 250 = -1\) ir \(2 - 0{,}004\cdot 250 = 1\), todėl</p>
+          \[ R''(250) = -0{,}6e^{-1}\cdot 1 \approx -0{,}22 &lt; 0 \]
+          <p>Taigi \(x = 250\) yra vietinio maksimumo taškas. Pirmoji išvestinė teigiama iki 250 gaminių ir neigiama viršijus šį kiekį, todėl pajamos didžiausios parduodant 250 gaminių per savaitę.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Kaina ir pajamos</span></h4>
+          <p>Atitinkama kaina ir pajamos yra</p>
+          \[ p = 150e^{-1} \approx 55{,}18 \]
+          \[ R(250) = 250\cdot 150e^{-1} \approx 13795{,}48 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pajamos didžiausios parduodant 250 gaminių per savaitę. Vieneto kaina tuomet yra maždaug 55,18&nbsp;euro, o pajamos – maždaug 13&nbsp;795,48&nbsp;euro per savaitę.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 7.4, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Įrenginio darbo valandos ir pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė, naudojanti \(x\) įrenginio darbo valandų per dieną, pagamina
+        \[ Q(x) = \frac{100x}{x + 10} \]
+        gaminių per dieną. Kiekvienas gaminys parduodamas už 12&nbsp;eurų, o įrenginio darbo valanda kainuoja 30&nbsp;eurų.
+        <ol type="a">
+          <li>Raskite įrenginio darbo valandų skaičių, su kuriuo pelnas didžiausias. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite atitinkamą gamybos kiekį ir pelną.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Tikslo funkcija</span></h4>
+          <p>Pajamos yra vieneto kainos ir gamybos kiekio sandauga, o sąnaudos – įrenginio darbo valandos kainos ir valandų skaičiaus sandauga:</p>
+          \[ \begin{aligned} P(x) &amp;= 12\cdot\frac{100x}{x + 10} - 30x \\ &amp;= \frac{1200x}{x + 10} - 30x,\qquad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pirmoji išvestinė</span></h4>
+          <p>Pirmasis narys yra dalmuo. Skaitiklį pažymėkite \(u(x) = 1200x\), o vardiklį – \(v(x) = x + 10\). Tada \(u'(x) = 1200\) ir \(v'(x) = 1\). Pagal <a href="tema-6.html#dalmens">dalmens taisyklę</a> gauname</p>
+          \[ \begin{aligned} \left(\frac{1200x}{x + 10}\right)' &amp;= \frac{1200(x + 10) - 1200x\cdot 1}{(x + 10)^2} \\ &amp;= \frac{1200x + 12000 - 1200x}{(x + 10)^2} \\ &amp;= \frac{12000}{(x + 10)^2} \end{aligned} \]
+          <p>todėl pelno pirmoji išvestinė yra</p>
+          \[ P'(x) = \frac{12000}{(x + 10)^2} - 30 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas</span></h4>
+          <p>Kritinis taškas randamas iš \(P'(x) = 0\). Išvestinė yra racionalioji funkcija, todėl pirmiausia ją užrašome viena trupmena:</p>
+          \[ P'(x) = \frac{12000 - 30(x + 10)^2}{(x + 10)^2} \]
+          <p>Trupmena lygi nuliui tik tada, kai skaitiklis lygus nuliui, o vardiklis nelygus nuliui:</p>
+          <div class="fit-sm">\[ \begin{gathered} \frac{12000 - 30(x + 10)^2}{(x + 10)^2} = 0 \\ \Longleftrightarrow\; \begin{cases} 12000 - 30(x + 10)^2 = 0 \\ (x + 10)^2 \neq 0 \end{cases} \end{gathered} \]</div>
+          \[ \begin{gathered} 30(x + 10)^2 = 12000 \\ \Longrightarrow\; (x + 10)^2 = 400 \\ \Longrightarrow\; x + 10 = \pm 20 \end{gathered} \]
+          <p>Vardiklis lygus nuliui tik tada, kai \(x = -10\), tačiau ši reikšmė nėra gautos lygties šaknis. Pirmoji šaknis duoda \(x = 10\), o antroji – \(x = -30\). Neigiamas valandų skaičius negalimas, todėl antroji šaknis atmetama.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Skaičiuodami antrąją išvestinę, pirmąjį narį perrašome laipsniu: \(\dfrac{12000}{(x + 10)^2} = 12000(x + 10)^{-2}\). Taikoma sudėtinės laipsninės funkcijos išvestinės formulė \(\big((u(x))^n\big)' = n(u(x))^{n-1}\cdot u'(x)\), kai vidinė funkcija yra \(u(x) = x + 10\), o \(u'(x) = 1\):</p>
+          \[ \begin{aligned} P''(x) &amp;= 12000\cdot(-2)(x + 10)^{-3}\cdot 1 \\ &amp;= -\frac{24000}{(x + 10)^3} \end{aligned} \]
+          <p>Kritiniame taške gauname</p>
+          \[ P''(10) = -\frac{24000}{20^3} = -\frac{24000}{8000} = -3 &lt; 0 \]
+          <p>todėl \(x = 10\) yra vietinio maksimumo taškas. Antroji išvestinė neigiama visoms \(x &gt; 0\) reikšmėms, todėl pelnas didžiausias naudojant įrenginį 10 valandų per dieną.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Gamybos kiekis ir pelnas</span></h4>
+          <p>Kai įrenginys naudojamas 10 valandų, gamybos kiekis ir pelnas yra</p>
+          \[ Q(10) = \frac{100\cdot 10}{20} = 50 \]
+          \[ \begin{aligned} P(10) &amp;= \frac{1200\cdot 10}{20} - 30\cdot 10 \\ &amp;= 600 - 300 = 300 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pelnas didžiausias naudojant įrenginį 10 valandų per dieną. Įmonė tuomet pagamina 50 gaminių per dieną, o pelnas yra 300&nbsp;eurų per dieną.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: sudarykite tikslo funkciją, raskite kritinį tašką, taikykite antrąjį pakankamąjį ekstremumų požymį ir atsakykite į visus uždavinio klausimus. Atsakyme pateikta tikslo funkcija, kritinis taškas ir galutiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gaminio savaitės paklausos funkcija yra</p>
+          \[ p = -0{,}05x + 80 \]
+          <p>eurų vienam gaminiui.</p>
+          <ol type="a">
+            <li>Raskite pardavimo kiekį, su kuriuo savaitės pajamos didžiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+            <li>Raskite atitinkamą kainą ir pajamas.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija:</strong></p>
+          \[ R(x) = p\cdot x = -0{,}05x^2 + 80x \]
+          <p><strong>Išvestinė ir kritinis taškas:</strong></p>
+          \[ \begin{gathered} R'(x) = -0{,}1x + 80 = 0 \\ \Longrightarrow\; x = 800 \end{gathered} \]
+          \[ R''(x) = -0{,}1 &lt; 0 \]
+          <p><strong>Atsakymas.</strong> Pajamos didžiausios parduodant 800 gaminių per savaitę. Vieneto kaina tuomet yra 40&nbsp;eurų, o pajamos – 32&nbsp;000&nbsp;eurų per savaitę.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gaminio savaitės paklausos funkcija yra \(p = -0{,}04x + 120\) eurų vienam gaminiui, o savaitės bendrosios sąnaudos gaminant \(x\) gaminių yra</p>
+          \[ TC(x) = 0{,}02x^2 + 30x + 7000 \]
+          <p>eurų.</p>
+          <ol type="a">
+            <li>Raskite gamybos kiekį, su kuriuo savaitės pelnas didžiausias. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+            <li>Raskite atitinkamą kainą ir pelną.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija:</strong></p>
+          \[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= -0{,}06x^2 + 90x - 7000 \end{aligned} \]
+          <p><strong>Išvestinė ir kritinis taškas:</strong></p>
+          \[ \begin{gathered} P'(x) = -0{,}12x + 90 = 0 \\ \Longrightarrow\; x = 750 \end{gathered} \]
+          \[ P''(x) = -0{,}12 &lt; 0 \]
+          <p><strong>Atsakymas.</strong> Pelnas didžiausias pagaminant 750 gaminių per savaitę. Vieneto kaina tuomet yra 90&nbsp;eurų, o pelnas – 26&nbsp;750&nbsp;eurų per savaitę.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Dienos bendrosios sąnaudos gaminant \(x\) gaminių yra</p>
+          \[ TC(x) = 0{,}25x^2 + 60x + 4900 \]
+          <p>eurų.</p>
+          <ol type="a">
+            <li>Raskite gamybos kiekį, su kuriuo vidutinės sąnaudos mažiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+            <li>Raskite šias vidutines sąnaudas.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija:</strong></p>
+          \[ \begin{aligned} ATC(x) &amp;= \frac{TC(x)}{x} \\ &amp;= 0{,}25x + 60 + \frac{4900}{x} \end{aligned} \]
+          <p>Čia \(x &gt; 0\).</p>
+          <p><strong>Išvestinė ir kritinis taškas:</strong></p>
+          \[ \begin{aligned} ATC'(x) &amp;= 0{,}25 - \frac{4900}{x^2} \\ &amp;= \frac{0{,}25x^2 - 4900}{x^2} = 0 \end{aligned} \]
+          \[ \Longrightarrow\; x^2 = 19600 \;\Longrightarrow\; x = 140 \]
+          <p>Sprendinys \(x = -140\) negali reikšti gaminių skaičiaus, todėl atmetamas; \(ATC''(x) = \dfrac{9800}{x^3} &gt; 0\).</p>
+          <p><strong>Atsakymas.</strong> Vidutinės sąnaudos mažiausios pagaminant 140 gaminių per dieną. Jos tuomet lygios 130&nbsp;eurų vienam gaminiui.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Dirbtuvės, kuriose dirba \(x\) darbuotojų, pagamina \(Q(x) = 80\sqrt{x}\) gaminių per dieną. Kiekvienas gaminys parduodamas už 6&nbsp;eurus, o kiekvienam darbuotojui mokama 40&nbsp;eurų per dieną.</p>
+          <ol type="a">
+            <li>Raskite darbuotojų skaičių, su kuriuo dienos pelnas didžiausias. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+            <li>Raskite atitinkamą gamybos kiekį ir pelną.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija:</strong></p>
+          \[ \begin{aligned} P(x) &amp;= 6\cdot Q(x) - 40x \\ &amp;= 480\sqrt{x} - 40x,\qquad x &gt; 0 \end{aligned} \]
+          <p><strong>Išvestinė ir kritinis taškas:</strong></p>
+          \[ \begin{aligned} P'(x) &amp;= \frac{240}{\sqrt{x}} - 40 \\ &amp;= \frac{240 - 40\sqrt{x}}{\sqrt{x}} = 0 \end{aligned} \]
+          \[ \Longrightarrow\; \sqrt{x} = 6 \;\Longrightarrow\; x = 36 \]
+          <p>\(P''(x) = -\dfrac{120}{\sqrt{x^3}}\) ir \(P''(36) = -\dfrac{120}{216} \approx -0{,}56 &lt; 0\).</p>
+          <p><strong>Atsakymas.</strong> Pelnas didžiausias, kai dirba 36 darbuotojai. Dirbtuvės tuomet pagamina 480 gaminių per dieną, o pelnas yra 1440&nbsp;eurų per dieną.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">6.4–6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">10.2, 10.5 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
