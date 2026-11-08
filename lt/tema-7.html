@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7 tema. Aukštesnės eilės išvestinės · Taikomoji matematika</title>
+<meta name="description" content="Aukštesnės eilės išvestinės: apibrėžimas, žymėjimas ir skaičiavimas. Antros eilės išvestinės prasmė ir interpretacija pagal pajamų ir reklamos biudžeto sąryšį, interaktyvus funkcijos ir jos išvestinių grafikas. Taikymai – atskiruose skyriuose.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=69">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=69"></script>
+</head>
+<body data-page="t7">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">7 tema</span>
+    <h1>Aukštesnės eilės išvestinės</h1>
+    <ul class="jump">
+      <li><a href="#apibrezimas">Sąvoka</a></li>
+      <li><a href="#skaiciavimas">Skaičiavimas</a></li>
+      <li><a href="#reklama">Antroji išvestinė</a></li>
+      <li><a href="#interpretavimas">Interpretavimas</a></li>
+      <li><a href="#taikymai">Taikymai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ AUKŠTESNĖS EILĖS IŠVESTINĖS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">Aukštesnės eilės išvestinių sąvoka</h2>
+
+    <article class="card concept" id="apibrezimas">
+      <div class="concept-head"><span class="num">1</span><h3>Išvestinės išvestinė</h3></div>
+      <p>Funkcijos išvestinė pati yra funkcija, todėl ją galima diferencijuoti dar kartą. Pirmoji išvestinė rodo, kokiu greičiu dydis kinta, tačiau neparodo, ar šis greitis išlieka pastovus, didėja ar mažėja. Pavyzdžiui, įmonei, kurios pardavimo kiekis didėja, svarbu žinoti ir tai, ar jis didėja vis sparčiau, ar vis lėčiau. Į šį klausimą atsako antroji išvestinė.</p>
+      <p>Funkcijos \(y = f(x)\) <strong>antros eilės išvestine</strong> vadinama jos pirmos eilės išvestinės išvestinė:</p>
+      <div class="formula">\[ f''(x) = \big(f'(x)\big)' = \frac{d^2y}{dx^2} \]</div>
+      <p>Diferencijuoti galima ir toliau, kol atitinkamos išvestinės egzistuoja. Funkcijos <strong>\(n\)-tosios eilės išvestinė</strong> yra \((n-1)\)-osios eilės išvestinės išvestinė:</p>
+      <div class="formula">\[ f^{(n)}(x) = \big(f^{(n-1)}(x)\big)' = \frac{d^ny}{dx^n} \]</div>
+      <p>Antros, trečios ir tolesnių eilių išvestinės vadinamos <strong>aukštesnės eilės išvestinėmis</strong>.</p>
+
+      <div class="subtype">
+        <h4>Žymėjimas</h4>
+        <p>Antroji išvestinė žymima \(f''(x)\), \(y''\) arba \(\dfrac{d^2y}{dx^2}\), trečioji – \(f'''(x)\) arba \(y'''\). Kai išvestinės eilė didesnė už tris, vietoj brūkšnelių eilė rašoma skliaustuose: \(f^{(4)}(x)\), \(f^{(n)}(x)\) arba \(\dfrac{d^ny}{dx^n}\). Antrosios išvestinės reikšmė konkrečiame taške žymima, pavyzdžiui, \(f''(2)\).</p>
+        <p class="tip"><strong>Skliaustai būtini.</strong> \(f^{(4)}(x)\) yra ketvirtos eilės išvestinė, o \(f^4(x)\) paprastai reiškia funkcijos ketvirtąjį laipsnį \(\big(f(x)\big)^4\).</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="skaiciavimas">
+      <div class="concept-head"><span class="num">2</span><h3>Kaip apskaičiuoti aukštesnės eilės išvestines</h3></div>
+      <p>Aukštesnės eilės išvestinės skaičiuojamos taikant tas pačias <a href="tema-6.html#taisykles">diferencijavimo taisykles</a> kaip ir pirmoji išvestinė. Funkcija diferencijuojama vieną kartą, rezultatas supaprastinamas, tada diferencijuojamas dar kartą. Supaprastinimo žingsnio nepraleiskite: išvestinę, užrašytą šaknimi ar trupmena, dažnai sunkiau diferencijuoti nei tą patį reiškinį, užrašytą laipsnių suma.</p>
+
+      <div class="subtype">
+        <h4>Šaknys ir trupmenos – laipsniais</h4>
+        <p>Dažniausiai pakanka dviejų pertvarkymo taisyklių. Bet kurio laipsnio šaknį galima užrašyti laipsniu, o atvirkštinį dydį – laipsniu su neigiamu rodikliu:</p>
+        <div class="formula">\[ \sqrt[n]{x^m} = x^{\frac{m}{n}}, \qquad \frac{1}{x^n} = x^{-n} \]</div>
+        <p>Taigi \(\sqrt{x} = x^{0{,}5}\), \(\sqrt{x^3} = x^{1{,}5}\), \(\sqrt[3]{x^2} = x^{\frac{2}{3}}\) ir \(\dfrac{1}{x^2} = x^{-2}\). Taip užrašytai funkcijai galima tiesiogiai taikyti laipsninės funkcijos išvestinės formulę, o tada ją dar kartą taikyti pirmajai išvestinei.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>Viena funkcija – kelios išvestinės</h4>
+        <p>Visą eigą panagrinėkime su viena funkcija. Įmonės mėnesio pajamos \(R\) (tūkst. eurų) priklauso nuo mėnesio reklamos biudžeto \(x\) (tūkst. eurų):</p>
+        <div class="formula">\[ \begin{gathered} R(x) = -0{,}1x^3 + 1{,}5x^2 + 100, \\ 0 \le x \le 10 \end{gathered} \]</div>
+        <p>Diferencijuodami kiekvieną gautą išvestinę dar kartą, gauname:</p>
+        <ol class="derive">
+          <li>
+            <span class="dl">Funkcija</span>
+            \[ R(x) = -0{,}1x^3 + 1{,}5x^2 + 100 \]
+          </li>
+          <li>
+            <span class="dl">Pirmos eilės išvestinė</span>
+            \[ \begin{aligned} R'(x) &= -0{,}1\cdot 3x^2 + 1{,}5\cdot 2x \\ &= -0{,}3x^2 + 3x \end{aligned} \]
+          </li>
+          <li>
+            <span class="dl">Antros eilės išvestinė</span>
+            \[ R''(x) = -0{,}3\cdot 2x + 3 = -0{,}6x + 3 \]
+          </li>
+          <li>
+            <span class="dl">Trečios eilės išvestinė</span>
+            \[ R'''(x) = -0{,}6 \]
+          </li>
+          <li>
+            <span class="dl">Ketvirtos eilės išvestinė</span>
+            \[ R^{(4)}(x) = 0 \]
+          </li>
+        </ol>
+        <p>Visos tolesnės išvestinės taip pat lygios nuliui. Kiekvieną kartą diferencijuojant daugianario laipsnis sumažėja vienetu, todėl \(n\)-ojo laipsnio daugianaris turi lygiai \(n\) nelygių nuliui išvestinių. Taikomuosiuose uždaviniuose dažniausiai interpretuojamos tik pirmosios dvi išvestinės, todėl toliau nagrinėjama antroji išvestinė.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ ANTROS EILĖS IŠVESTINĖS PRASMĖ ============ -->
+  <section class="section" id="prasme" aria-labelledby="h-meaning">
+    <h2 id="h-meaning">Antros eilės išvestinės prasmė</h2>
+
+    <article class="card concept" id="reklama">
+      <div class="concept-head"><span class="num">3</span><h3>Pajamos ir reklamos biudžetas</h3></div>
+      <p>Grįžkime prie pajamų funkcijos \(R(x) = -0{,}1x^3 + 1{,}5x^2 + 100\). Funkcija ir kiekviena jos išvestinė atsako į skirtingą klausimą. Panagrinėkime atvejį, kai reklamai skiriama 2 tūkst. eurų, t. y. \(x = 2\).</p>
+      <div class="anat dtbl dtbl-rows lvl">
+        <div class="anat-card k0">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Pajamos</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Funkcija</span>\(R(x) = -0{,}1x^3 + 1{,}5x^2 + 100\)</li>
+            <li><span class="fl-lab">Kai \(x = 2\)</span>\(R(2) = -0{,}8 + 6 + 100 = 105{,}2\)</li>
+          </ul>
+          <p class="lvl-txt">Kai reklamai skiriama 2 tūkst. eurų, pajamos siekia 105,2 tūkst. eurų.</p>
+        </div>
+        <div class="anat-card k1">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Pajamų pokytis, biudžetą padidinus 1 tūkst. eurų</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Pirmoji išvestinė</span>\(R'(x) = -0{,}3x^2 + 3x\)</li>
+            <li><span class="fl-lab">Kai \(x = 2\)</span>\(R'(2) = -1{,}2 + 6 = 4{,}8\)</li>
+          </ul>
+          <p class="lvl-txt">Padidinus biudžetą nuo 2 iki 3 tūkst. eurų, pajamos išaugs apytiksliai 4,8 tūkst. eurų. Šis dydis vadinamas <strong>ribinėmis pajamomis</strong>.</p>
+        </div>
+        <div class="anat-card k2">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Kaip kinta papildomo tūkstančio grąža</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Antroji išvestinė</span>\(R''(x) = -0{,}6x + 3\)</li>
+            <li><span class="fl-lab">Kai \(x = 2\)</span>\(R''(2) = -1{,}2 + 3 = 1{,}8\)</li>
+          </ul>
+          <p class="lvl-txt">Kai biudžetas jau yra 3 tūkst. eurų, dar vienas papildomas tūkstantis atneš apytiksliai 1,8 tūkst. eurų daugiau papildomų pajamų nei tūkstantis, kuriuo biudžetas buvo padidintas nuo 2 iki 3 tūkst. eurų.</p>
+        </div>
+      </div>
+      <p>Taigi pirmoji išvestinė parodo, kiek pajamų atneša papildomas reklamai skirtas tūkstantis eurų, o antroji – ar kiekvienas kitas tūkstantis atneša daugiau, ar mažiau nei ankstesnis.</p>
+
+      <div data-widget="second-deriv"></div>
+      <p class="tip" style="margin-top:14px"><strong>Atkreipkite dėmesį į ašis.</strong> Pajamų \(R(x)\) reikšmės atidėtos kairiojoje ašyje ir prasideda nuo 100 tūkst. eurų. Išvestinių \(R'(x)\) ir \(R''(x)\) reikšmės atidėtos dešiniojoje ašyje. Jos gerokai mažesnės už pajamas, todėl vienoje ašyje jų grafikai būtų beveik nematomi.</p>
+
+      <div class="subtype">
+        <h4>Ką matome grafike</h4>
+        <ul>
+          <li>Kai \(0 \le x &lt; 5\), \(R''(x) &gt; 0\): ribinės pajamos \(R'(x)\) didėja, o pajamų grafikas kyla vis staigiau.</li>
+          <li>Kai \(x = 5\), \(R''(5) = 0\): ribinės pajamos pasiekia didžiausią reikšmę \(R'(5) = 7{,}5\) tūkst. eurų.</li>
+          <li>Kai \(5 &lt; x \le 10\), \(R''(x) &lt; 0\): ribinės pajamos mažėja: pajamos vis dar didėja, tačiau grafikas kyla vis lėčiau. Kai \(x = 10\), \(R'(10) = 0\): papildomas tūkstantis pajamų beveik nebepadidina.</li>
+        </ul>
+        <p>Biudžetas, nuo kurio ribinės pajamos pradeda mažėti, nagrinėjamas skyriuje „Vingio taškai ir mažėjančio rezultatyvumo dėsnis“.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="zenklas">
+      <div class="concept-head"><span class="num">4</span><h3>Ką rodo antrosios išvestinės ženklas</h3></div>
+      <p>Pirmoji išvestinė yra dydžio kitimo greitis. Ji taip pat yra funkcija, todėl pati turi kitimo greitį – tai ir yra antroji išvestinė. Kitaip tariant, \(f''(x)\) rodo <strong>pokyčio spartą</strong>: kaip greitai didėja arba mažėja pats kitimo greitis. Fizikoje toks dydis vadinamas pagreičiu. Ši analogija naudinga: automobilis gali lėtėti ir vis tiek važiuoti pirmyn. Panašiai gali kisti ir ekonominiai dydžiai.</p>
+      <p>Interpretacijai pakanka žinoti antrosios išvestinės ženklą:</p>
+      <ul>
+        <li>jei \(f''(x) &gt; 0\), tai \(f'(x)\) didėja: dydžio kitimo greitis didėja;</li>
+        <li>jei \(f''(x) &lt; 0\), tai \(f'(x)\) mažėja: dydžio kitimo greitis mažėja.</li>
+      </ul>
+      <p class="tip"><strong>Ko ženklas nereiškia.</strong> Neigiama antroji išvestinė <strong>nereiškia</strong>, kad pats dydis mažėja. Ji reiškia, kad mažėja dydžio kitimo greitis. Ar dydis didėja, ar mažėja, nustatoma tik pagal pirmąją išvestinę: \(f'\) rodo dydžio kitimo kryptį, o \(f''\) – kaip kinta pats kitimo greitis.</p>
+
+      <div class="subtype">
+        <h4>Du biudžetai su vienodomis ribinėmis pajamomis</h4>
+        <p>Palyginkime du mėnesio reklamos biudžetus – 2 ir 8 tūkst. eurų. Brėžinyje įjunkite visus tris grafikus ir slankikliu nustatykite pirmiausia \(x = 2\), o paskui \(x = 8\).</p>
+        <div class="tbl-wrap">
+          <table class="vtable">
+            <tbody>
+              <tr><th scope="row">\(x\)</th><td>2</td><td>8</td></tr>
+              <tr><th scope="row">\(R(x)\)</th><td>105,2</td><td>144,8</td></tr>
+              <tr><th scope="row">\(R'(x)\)</th><td>4,8</td><td>4,8</td></tr>
+              <tr><th scope="row">\(R''(x)\)</th><td>1,8</td><td>−1,8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Abiem atvejais \(R' = 4{,}8\): papildomas tūkstantis eurų reklamai padidintų pajamas maždaug 4,8 tūkst. eurų, nesvarbu, ar įmonė skiria 2, ar 8 tūkst. eurų. Vertinant tik pagal pirmąją išvestinę, šios dvi situacijos yra vienodos.</p>
+        <p>Antroji išvestinė parodo skirtumą. Kai \(x = 2\), \(R''(2) = 1{,}8 &gt; 0\), todėl ribinės pajamos dar didėja: kitas reklamai skirtas tūkstantis eurų duos daugiau pajamų nei ankstesnis, o dar kitas – dar daugiau. Kai \(x = 8\), \(R''(8) = -1{,}8 &lt; 0\), todėl ribinės pajamos mažėja: kiekvienas papildomas tūkstantis eurų duoda mažiau pajamų nei ankstesnis. Pajamos vis dar didėja, nes \(R'(8) &gt; 0\), tačiau vis lėčiau. Taigi, kai skiriama 2 tūkst. eurų, papildomų reklamos išlaidų rezultatyvumas didėja, o kai 8 tūkst. eurų – mažėja.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="interpretavimas">
+      <div class="concept-head"><span class="num">5</span><h3>Kaip interpretuoti antrąją išvestinę</h3></div>
+      <p>Pirmoji išvestinė interpretuojama įprastai: kintamajam padidėjus vienu vienetu nuo \(x_0\), dydis pasikeis apytiksliai \(f'(x_0)\). Antroji išvestinė interpretuojama panašiai, tik kalbama apie kitimo greitį: kintamajam padidėjus vienu vienetu nuo \(x_0\), <strong>kitimo greitis</strong> pasikeis apytiksliai \(f''(x_0)\).</p>
+      <p>Kai reklamos biudžetas \(x = 2\), šios dvi interpretacijos yra tokios:</p>
+      <ul>
+        <li>biudžetui padidėjus vienu tūkstančiu eurų nuo 2 tūkst., pajamos padidės apytiksliai 4,8 tūkst. eurų;</li>
+        <li>biudžetui padidėjus vienu tūkstančiu eurų nuo 2 tūkst., pačios ribinės pajamos padidės apytiksliai 1,8 tūkst. eurų.</li>
+      </ul>
+      <p>Abu įverčiai apytiksliai dėl tos pačios priežasties: išvestinių reikšmės apskaičiuotos viename taške \(x = 2\), o per visą vieneto ilgio pokytį kitimo greičiai neišlieka pastovūs.</p>
+      <p class="tip"><strong>Patikrinkime.</strong> Tikslūs pokyčiai yra \(R(3) - R(2) = 110{,}8 - 105{,}2 = 5{,}6\) ir \(R'(3) - R'(2) = 6{,}3 - 4{,}8 = 1{,}5\). Įverčiai 4,8 ir 1,8 nuo jų šiek tiek skiriasi, tačiau teisingai parodo pokyčių kryptį ir apytikslį dydį.</p>
+      <p>Taikomuosiuose uždaviniuose interpretacija yra atsakymo dalis. Paprastai reikia dviejų sakinių: pirmuoju nusakoma, kaip, kintamajam padidėjus vienu vienetu, pasikeičia dydis, antruoju – kaip pasikeičia pats kitimo greitis. Tokių uždavinių pavyzdžių rasite skyriuje „Pokyčio sparta“.</p>
+    </article>
+  </section>
+
+  <!-- ============ TAIKYMAI ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Taikymai</h2>
+    <p class="section-intro">Čia rasite ekonominių ir vadybinių uždavinių, kuriuose naudojama antroji išvestinė: ar dydis kinta vis sparčiau, ar vis lėčiau, kokia funkcijos grafiko forma, nuo kada papildomi ištekliai duoda vis mažesnį prieaugį ir kur funkcija įgyja didžiausią ar mažiausią reikšmę.</p>
+    <div class="model-grid" data-models="t7"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">6.4–6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">9.5, 10.2, 10.5 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

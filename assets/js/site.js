@@ -74,6 +74,15 @@
       tanSlope: 'Liestinės nuolydis',
       derivZero: 'Kai Δx = 0, taškas B sutampa su A ir kirstinės nėra. Kuo mažesnis Δx, tuo kirstinė arčiau liestinės.',
       derivAria: 'Funkcijos grafikas, kirstinė per taškus A ir B ir liestinė taške A',
+      sdHint: 'Mygtukais įjunkite arba išjunkite funkcijos ir jos išvestinių grafikus, o slankikliu keiskite reklamos biudžetą x.',
+      sdGroup: 'Rodomi grafikai',
+      sdAria: 'Pajamų funkcijos R(x) ir jos pirmosios bei antrosios išvestinių grafikai',
+      sdXAxis: 'reklamos biudžetas, tūkst. €',
+      sdUnit: 'tūkst. €',
+      sdNone: 'Įjunkite bent vieną grafiką.',
+      sdUp: 'Ribinės pajamos didėja: kiekvienas kitas reklamai skirtas tūkstantis eurų duoda vis daugiau papildomų pajamų.',
+      sdTop: 'Ribinės pajamos šiame taške didžiausios: iki jo jos didėja, o toliau pradeda mažėti.',
+      sdDown: 'Ribinės pajamos mažėja: kiekvienas kitas reklamai skirtas tūkstantis eurų duoda vis mažiau papildomų pajamų.',
       signAria: 'Išvestinės ženklų schema',
       incr: 'didėja', decr: 'mažėja',
       decimal: ',',
@@ -153,6 +162,15 @@
       tanSlope: 'Slope of the tangent line',
       derivZero: 'When Δx = 0, point B coincides with A and there is no secant line. The smaller Δx is, the closer the secant line is to the tangent line.',
       derivAria: 'Graph of the function, the secant line through points A and B and the tangent line at A',
+      sdHint: 'Use the buttons to show or hide the graphs of the function and its derivatives, and move the slider to change the advertising budget x.',
+      sdGroup: 'Graphs shown',
+      sdAria: 'Graphs of the revenue function R(x) and its first and second derivatives',
+      sdXAxis: 'advertising budget, thousand €',
+      sdUnit: 'thousand €',
+      sdNone: 'Turn on at least one graph.',
+      sdUp: 'Marginal revenue is increasing: each additional thousand euros spent on advertising brings more additional revenue than the one before.',
+      sdTop: 'Marginal revenue is at its highest here: it increases up to this point and starts to decrease after it.',
+      sdDown: 'Marginal revenue is decreasing: each additional thousand euros spent on advertising brings less additional revenue than the one before.',
       signAria: 'Sign chart of the derivative',
       incr: 'increasing', decr: 'decreasing',
       decimal: '.',
@@ -199,7 +217,8 @@
       title: { lt: 'Tarpinis egzaminas', en: 'Midterm exam' } },
     { id: 't6', num: 6, status: 'active', href: { lt: 'tema-6.html', en: 'tema-6.html' },
       title: { lt: 'Pirmos eilės išvestinės', en: 'The First Order Derivative' } },
-    { id: 't7', num: 7, status: 'soon', title: { lt: 'Aukštesnės eilės išvestinės', en: 'The Higher Order Derivative' } },
+    { id: 't7', num: 7, status: 'active', href: { lt: 'tema-7.html' },
+      title: { lt: 'Aukštesnės eilės išvestinės', en: 'The Higher Order Derivative' } },
     { id: 't8', num: 8, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų išvestinės', en: 'Functions of Several Variables. Partial Derivatives' } },
     { id: 't9', num: 9, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų ekstremumai', en: 'Extrema of Functions of Several Variables, the Lagrange Problem' } },
     { id: 't10', num: 10, status: 'soon', title: { lt: 'Neapibrėžtinis integralas', en: 'Indefinite Integral' } },
@@ -300,6 +319,23 @@
       { id: 'm65', status: 'active', href: { lt: 'tema-6-absoliutieji-ekstremumai.html', en: 'tema-6-absoliutieji-ekstremumai.html' },
         title: { lt: 'Absoliutieji ekstremumai', en: 'Absolute Extrema' },
         desc: { lt: 'Didžiausia ir mažiausia funkcijos reikšmė intervale.', en: 'The largest and the smallest value of a function on an interval.' } }
+    ],
+    t7: [
+      { id: 'm71', status: 'soon',
+        title: { lt: 'Pokyčio sparta', en: 'The Second Order Derivative' },
+        desc: { lt: 'Antroji išvestinė kaip kitimo greičio kitimo greitis: ar dydis kinta vis sparčiau, ar vis lėčiau.', en: 'The second derivative as the rate of change of a rate of change: whether a quantity changes faster and faster or slower and slower.' } },
+      { id: 'm72', status: 'soon',
+        title: { lt: 'Funkcijos iškilumas', en: 'Concavity of a Function' },
+        desc: { lt: 'Antrosios išvestinės ženklas parodo, kuriuose intervaluose funkcijos grafikas išgaubtas, o kuriuose įgaubtas.', en: 'The sign of the second derivative shows on which intervals the graph of a function is concave down and on which it is concave up.' } },
+      { id: 'm73', status: 'soon',
+        title: { lt: 'Vingio taškai ir mažėjančio rezultatyvumo dėsnis', en: 'Inflection Points and Diminishing Returns' },
+        desc: { lt: 'Taškai, kuriuose pasikeičia grafiko iškilumas, ir riba, nuo kurios papildomi ištekliai duoda vis mažesnį prieaugį.', en: 'Points where the concavity of the graph changes and the level beyond which additional resources bring smaller and smaller gains.' } },
+      { id: 'm74', status: 'soon',
+        title: { lt: 'Optimizavimas', en: 'Optimization Using the Second Derivative Test' },
+        desc: { lt: 'Antrasis pakankamasis ekstremumų požymis: didžiausios pajamos ar pelnas ir mažiausios vidutinės sąnaudos.', en: 'The second derivative test: the maximum revenue or profit and the minimum average cost.' } },
+      { id: 'm75', status: 'soon',
+        title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' },
+        desc: { lt: 'Tikslo funkciją reikia sudaryti patiems: paklausos funkcija pagal sąlygos duomenis, plotų ir tūrių optimizavimas.', en: 'The objective function has to be set up first: a demand function from the given data, optimizing areas and volumes.' } }
     ]
   };
 
@@ -370,6 +406,8 @@
                title: { lt: 'Vietiniai ekstremumai', en: 'Relative Extrema' } },
     m65:     { parent: 't6', topic: 't6', model: 'm65', href: { lt: 'tema-6-absoliutieji-ekstremumai.html', en: 'tema-6-absoliutieji-ekstremumai.html' },
                title: { lt: 'Absoliutieji ekstremumai', en: 'Absolute Extrema' } },
+    t7:      { parent: 'home', href: { lt: 'tema-7.html', en: null },
+               title: { lt: '7 tema', en: 'Topic 7' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -1280,6 +1318,135 @@
   }
 
   /* ------------------------------------------------------------------
+     8b2. ANTROSIOS IŠVESTINĖS BRĖŽINYS  (<div data-widget="second-deriv">)
+     Pajamos R(x) = −0,1x³ + 1,5x² + 100 (tūkst. €), x – reklamos biudžetas (tūkst. €), 0 ≤ x ≤ 10;
+     R'(x) = −0,3x² + 3x, R''(x) = −0,6x + 3.
+     Kairioji ašis – R (100–160), dešinioji – R' ir R'' (−4–12); R = 100 atitinka 0.
+     Mygtukais įjungiami ir išjungiami grafikai, slankikliu keičiamas x.
+     ------------------------------------------------------------------ */
+  var sdCount = 0;
+  function initSecondDeriv(box) {
+    var uid = 'sd' + (++sdCount);
+    var F = [
+      function (x) { return -0.1 * x * x * x + 1.5 * x * x + 100; },
+      function (x) { return -0.3 * x * x + 3 * x; },
+      function (x) { return -0.6 * x + 3; }
+    ];
+    var NAME = ['R', "R'", "R''"];
+    var SVGN = ['R', 'R′', 'R″'];
+    var CLS = ['c1', 'exam', 'c2'];
+    var W = 400, H = 306, PL = 44, PR = 358, PT = 32, PB = 262;
+    var X = function (x) { return PL + x * (PR - PL - 12) / 10; };
+    var YR = function (v) { return PB - (v - 80) * (PB - PT) / 80; };
+    var YD = function (d) { return YR(100 + 5 * d); };
+    var Y = [YR, YD, YD];
+    var r1 = function (v) { return Math.round(v * 10) / 10; };
+    var minus = function (v) { return v < 0 ? '−' + (-v) : String(v); };
+    var fn = function (k) { return '<tspan class="i">' + SVGN[k].charAt(0) + '</tspan>' + SVGN[k].slice(1) + '(<tspan class="i">x</tspan>)'; };
+    var grid = '', ticks = '', i;
+    for (i = 0; i <= 10; i++) {
+      grid += '<line class="grid" x1="' + r1(X(i)) + '" y1="' + PT + '" x2="' + r1(X(i)) + '" y2="' + PB + '"/>';
+      ticks += '<text class="muted" x="' + r1(X(i)) + '" y="' + (PB + 16) + '" text-anchor="middle">' + i + '</text>';
+    }
+    for (i = -4; i <= 12; i += 2) {
+      grid += '<line class="grid" x1="' + PL + '" y1="' + r1(YD(i)) + '" x2="' + PR + '" y2="' + r1(YD(i)) + '"/>';
+      ticks += '<text class="muted" x="' + (PR + 7) + '" y="' + r1(YD(i) + 4) + '">' + minus(i) + '</text>';
+      if (i >= 0) ticks += '<text class="muted" x="' + (PL - 7) + '" y="' + r1(YD(i) + 4) + '" text-anchor="end">' + (100 + 5 * i) + '</text>';
+    }
+    var curves = '';
+    for (var k = 0; k < 3; k++) {
+      var pts = [];
+      for (i = 0; i <= 100; i++) pts.push(r1(X(i / 10)) + ' ' + r1(Y[k](F[k](i / 10))));
+      curves += '<g class="js-g' + k + '"><path class="sd-ln sd-' + k + '" d="M' + pts.join('L') + '"/></g>';
+    }
+    var lab = [
+      [X(9.2), YR(F[0](9.2)) - 12],
+      [X(5), YD(F[1](5)) - 11],
+      [X(9.1), YD(F[2](9.1)) - 11]
+    ];
+    var labels = '';
+    for (k = 0; k < 3; k++) {
+      labels += '<text class="' + CLS[k] + ' m b js-l' + k + '" x="' + r1(lab[k][0]) + '" y="' + r1(lab[k][1]) + '" text-anchor="middle">' + fn(k) + '</text>';
+    }
+    box.classList.add('tryit');
+    box.innerHTML =
+      '<p class="tryit-title">' + ICON.slider + esc(T.tryIt) + '</p>' +
+      '<p class="tryit-note" style="margin:0 0 8px">' + esc(T.sdHint) + '</p>' +
+      '<div class="sd-btns" role="group" aria-label="' + esc(T.sdGroup) + '">' +
+        [0, 1, 2].map(function (k) {
+          return '<button type="button" class="sd-btn sd-b' + k + '" data-k="' + k + '" aria-pressed="' + (k === 0) + '">' +
+            '<span class="dot" aria-hidden="true"></span><span class="js-bt' + k + '"></span></button>';
+        }).join('') +
+      '</div>' +
+      '<svg class="plot plot-wide" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(T.sdAria) + '">' +
+        grid +
+        '<line class="ax" x1="' + PL + '" y1="' + PB + '" x2="' + PL + '" y2="' + PT + '"/>' +
+        '<line class="ax" x1="' + PR + '" y1="' + PB + '" x2="' + PR + '" y2="' + PT + '"/>' +
+        '<line class="ax sd-zero" x1="' + PL + '" y1="' + r1(YD(0)) + '" x2="' + PR + '" y2="' + r1(YD(0)) + '"/>' +
+        ticks +
+        '<text class="c1" x="' + (PL - 30) + '" y="' + (PT - 14) + '">' + fn(0) + ', ' + esc(T.sdUnit) + '</text>' +
+        '<text x="' + (W - 6) + '" y="' + (PT - 14) + '" text-anchor="end"><tspan class="sd-t1">' + fn(1) + '</tspan>, <tspan class="sd-t2">' + fn(2) + '</tspan></text>' +
+        '<text class="muted" x="' + r1((PL + PR) / 2) + '" y="' + (H - 4) + '" text-anchor="middle"><tspan class="i">x</tspan> – ' + esc(T.sdXAxis) + '</text>' +
+        '<line class="guide js-gx" y1="' + PB + '" y2="' + PT + '"/>' +
+        curves + labels +
+        '<circle class="sd-pt sd-p0 js-p0" r="5.5"/><circle class="sd-pt sd-p1 js-p1" r="5.5"/><circle class="sd-pt sd-p2 js-p2" r="5.5"/>' +
+      '</svg>' +
+      '<div class="ctrl"><label for="' + uid + '-x" class="x-lab"></label><input id="' + uid + '-x" type="range" min="0" max="10" step="1" value="2"><output for="' + uid + '-x"></output></div>' +
+      '<div class="sd-vals" aria-live="polite"></div>' +
+      '<p class="tryit-note js-note"></p>';
+
+    var el = function (c) { return $('.' + c, box); };
+    var xIn = $('#' + uid + '-x', box), xOut = $('output[for="' + uid + '-x"]', box);
+    var vals = $('.sd-vals', box), note = el('js-note'), gx = el('js-gx');
+    var on = [true, false, false];
+    renderInline($('.x-lab', box), 'x');
+    for (k = 0; k < 3; k++) renderInline(el('js-bt' + k), NAME[k] + '(x)');
+    var dec = function (v, n) {
+      var s = String(Number(v.toFixed(n)));
+      return T.decimal === ',' ? s.replace('.', ',') : s;
+    };
+    var tex = function (v) { return (v < 0 ? '-' : '') + dec(Math.abs(v), 1).replace(',', '{,}'); };
+
+    function draw() {
+      var x = Math.round(parseFloat(xIn.value));
+      xOut.textContent = String(x);
+      gx.setAttribute('x1', r1(X(x))); gx.setAttribute('x2', r1(X(x)));
+      var html = '', any = false;
+      for (var k = 0; k < 3; k++) {
+        var disp = on[k] ? '' : 'none';
+        el('js-g' + k).style.display = disp;
+        el('js-l' + k).style.display = disp;
+        var p = el('js-p' + k);
+        p.style.display = disp;
+        p.setAttribute('cx', r1(X(x))); p.setAttribute('cy', r1(Y[k](F[k](x))));
+        if (on[k]) { any = true; html += '<span class="sd-val sd-v' + k + '"><span class="js-v' + k + '"></span></span>'; }
+      }
+      vals.innerHTML = any ? html : '<span class="sd-none">' + esc(T.sdNone) + '</span>';
+      for (k = 0; k < 3; k++) {
+        if (!on[k]) continue;
+        var v = F[k](x);
+        if (Math.abs(v) < 1e-9) v = 0;
+        renderInline(el('js-v' + k), NAME[k] + '(' + x + ') = ' + tex(v));
+      }
+      var d2 = F[2](x);
+      if (Math.abs(d2) < 1e-9) d2 = 0;
+      var rel = d2 > 0 ? '> 0' : (d2 < 0 ? '< 0' : '= 0');
+      note.innerHTML = '<span class="js-ns"></span>: ' + esc(d2 > 0 ? T.sdUp : (d2 < 0 ? T.sdDown : T.sdTop));
+      renderInline(el('js-ns'), "R''(" + x + ') ' + rel);
+    }
+    $all('.sd-btn', box).forEach(function (b) {
+      b.addEventListener('click', function () {
+        var k = +b.getAttribute('data-k');
+        on[k] = !on[k];
+        b.setAttribute('aria-pressed', String(on[k]));
+        draw();
+      });
+    });
+    xIn.addEventListener('input', draw);
+    draw();
+  }
+
+  /* ------------------------------------------------------------------
      8c. IŠVESTINĖS ŽENKLŲ SCHEMA (sign-chart)
      <div data-widget="sign-chart" data-spec='{...}'></div>
      spec: fp, f – eilučių užrašai (TeX), v – kintamasis (TeX);
@@ -1591,6 +1758,7 @@
     });
     $all('[data-widget="line-explorer"]').forEach(initLineExplorer);
     $all('[data-widget="deriv-explorer"]').forEach(initDerivExplorer);
+    $all('[data-widget="second-deriv"]').forEach(initSecondDeriv);
     initTerms();
   }
 

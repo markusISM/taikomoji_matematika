@@ -1082,3 +1082,39 @@ ul.gu li { margin: 0; padding: 6px 10px; border-radius: 8px; background: var(--s
   .chain-ex { padding: 8px 8px; }
   ul.gu li { padding: 5px 8px; }
 }
+
+/* ---------- Antrosios išvestinės brėžinys (second-deriv) ---------- */
+.tryit svg.plot.plot-wide { max-width: 520px; }
+.sd-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 4px 0 12px; }
+.sd-btn { --c: var(--chart); display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 4px 14px; border-radius: 999px; border: 2px solid var(--border); background: var(--surface); color: var(--muted); font: inherit; font-size: 1.02rem; cursor: pointer; transition: background-color .15s, border-color .15s, color .15s; }
+.sd-btn .dot { flex: none; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--c); background: transparent; }
+.sd-btn:hover { border-color: var(--c); }
+.sd-btn[aria-pressed="true"] { border-color: var(--c); color: var(--text); background: color-mix(in srgb, var(--c) 14%, var(--surface)); }
+.sd-btn[aria-pressed="true"] .dot { background: var(--c); }
+.sd-btn.sd-b1, .sd-val.sd-v1 { --c: var(--exam); }
+.sd-btn.sd-b2, .sd-val.sd-v2 { --c: var(--chart-2); }
+svg .sd-ln { fill: none; stroke-width: 3; stroke-linecap: round; stroke: var(--chart); }
+svg .sd-ln.sd-1 { stroke: var(--exam); }
+svg .sd-ln.sd-2 { stroke: var(--chart-2); }
+svg .sd-zero { stroke: var(--text); stroke-width: 1.4; }
+svg .sd-pt { stroke: var(--surface); stroke-width: 2; fill: var(--chart); }
+svg .sd-pt.sd-p1 { fill: var(--exam); }
+svg .sd-pt.sd-p2 { fill: var(--chart-2); }
+svg tspan.sd-t1 { fill: var(--exam); }
+svg tspan.sd-t2 { fill: var(--chart-2); }
+.sd-vals { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 10px; margin: 10px 0 0; min-height: 2.2em; }
+.sd-val { --c: var(--chart); display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--c); font-size: 1.02rem; }
+.sd-none { color: var(--muted); font-size: .92rem; align-self: center; }
+.anat.lvl .anat-card.k0 { border-left: 4px solid var(--chart); }
+.anat.lvl .anat-card.k1 { border-left: 4px solid var(--exam); }
+.anat.lvl .anat-card.k2 { border-left: 4px solid var(--chart-2); }
+.anat.lvl ul.flist li { margin-bottom: 4px; }
+.anat-card p.lvl-txt { margin: 6px 0 2px; font-size: .95rem; }
+@media (max-width: 480px) {
+  .tryit svg.plot-wide text { font-size: 16px; }
+  .tryit svg.plot-wide text.m.b { font-size: 17px; }
+  .sd-btns { gap: 6px; }
+  .sd-btn { gap: 6px; padding: 4px 9px; font-size: .98rem; }
+  .sd-btn .dot { width: 10px; height: 10px; }
+}
+.fl-lab .katex { text-transform: none; }
