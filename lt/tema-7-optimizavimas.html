@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=74">
+<link rel="stylesheet" href="../assets/css/style.css?v=76">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=74"></script>
+<script defer src="../assets/js/site.js?v=76"></script>
 </head>
 <body data-page="m74">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -75,9 +75,8 @@
       <h3 class="subhead" style="margin-top:22px">Kada požymis nepritaikomas</h3>
       <p>Jei \(f''(c) = 0\), antroji išvestinė neleidžia nustatyti taško tipo: jame gali būti maksimumas, minimumas arba nebūti nei vieno. Tas pats galioja, kai \(f''(c)\) neegzistuoja. Tokiais atvejais kritinis taškas nagrinėjamas pagal \(f'\) ženklų schemą, kaip ankstesnėje temoje.</p>
 
-      <h3 class="subhead" style="margin-top:22px">Nuo vietinio ekstremumo iki uždavinio atsakymo</h3>
-      <p>Požymis nustato <strong>vietinį</strong> ekstremumą, o taikomajame uždavinyje prašoma didžiausios arba mažiausios dydžio reikšmės. Šio skyriaus uždaviniuose jos sutampa; tai galima pagrįsti išvestinėmis. Jei \(f''(x) &lt; 0\) ne tik kritiniame taške, bet ir kiekviename intervalo taške, funkcija išgaubta visame intervale. Vieninteliame kritiniame taške rastas vietinis maksimumas tuomet yra didžiausia galima dydžio reikšmė. Jei \(f''(x) &gt; 0\) visame intervale, analogiškai pagrindžiama mažiausia reikšmė.</p>
-      <p class="tip">Todėl verta nagrinėti visą antrosios išvestinės išraišką, o ne tik jos reikšmę kritiniame taške. Jei ji išlaiko tą patį ženklą visame uždavinio kontekstą atitinkančiame intervale, galima pagrįsti rastą didžiausią ar mažiausią reikšmę.</p>
+      <h3 class="subhead" style="margin-top:22px">Kritinio taško tipas ir uždavinio atsakymas</h3>
+      <p>Taikomuosiuose uždaviniuose pakanka nustatyti antrosios išvestinės ženklą kritiniame taške: neigiamas ženklas rodo didžiausią, o teigiamas – mažiausią ieškomo dydžio reikšmę.</p>
     </article>
   </section>
 
@@ -143,8 +142,8 @@
         <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
         <div class="more-body">
           <ul>
+            <li><strong>Kritinis taškas ieškomas prilyginus nuliui antrąją išvestinę.</strong> Kritiniai taškai randami iš \(f'(x) = 0\) (arba ten, kur \(f'(x)\) neegzistuoja). Lygtis \(f''(x) = 0\) duoda galimus vingio taškus, o ne ekstremumus. Antroji išvestinė čia naudojama tik kritinio taško tipui nustatyti.</li>
             <li><strong>\(f''(c) = 0\) laikoma atsakymu.</strong> Tada požymis nepritaikomas – kritinį tašką reikia nagrinėti pagal \(f'\) ženklų schemą.</li>
-            <li><strong>Vietinis ekstremumas laikomas didžiausia ar mažiausia reikšme be pagrindimo.</strong> Reikia parodyti, kad antroji išvestinė išlaiko tą patį ženklą visame nagrinėjamame intervale.</li>
             <li><strong>Neatidžiai atskliaustos sąnaudos.</strong> Atimant bendrąsias sąnaudas, keičiasi kiekvieno jų nario ženklas.</li>
             <li><strong>Nepatikrintas vardiklis.</strong> Reikšmė, su kuria vardiklis lygus nuliui, negali būti kritinis taškas.</li>
             <li><strong>Neatmesti neigiami sprendiniai.</strong> Kiekis, darbuotojų ar valandų skaičius negali būti neigiami.</li>
@@ -192,7 +191,7 @@
           <h4><span class="step-no">3</span><span>a) Antrasis pakankamasis požymis</span></h4>
           <p>Diferencijuojame dar kartą:</p>
           \[ R''(x) = -0{,}08 \]
-          <p>todėl \(R''(750) = -0{,}08 &lt; 0\), o \(x = 750\) yra vietinio maksimumo taškas. Antroji išvestinė neigiama visoms \(x\) reikšmėms, todėl pajamos didžiausios parduodant 750 gaminių per savaitę.</p>
+          <p>todėl \(R''(750) = -0{,}08 &lt; 0\), o \(x = 750\) yra vietinio maksimumo taškas. Taigi pajamos didžiausios parduodant 750 gaminių per savaitę.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>b) Kaina ir pajamos</span></h4>
@@ -246,7 +245,7 @@
           <h4><span class="step-no">3</span><span>a) Antrasis pakankamasis požymis</span></h4>
           <p>Diferencijuojame dar kartą:</p>
           \[ P''(x) = -0{,}1 \]
-          <p>todėl \(P''(700) = -0{,}1 &lt; 0\), o \(x = 700\) yra vietinio maksimumo taškas. Antroji išvestinė neigiama visoms \(x\) reikšmėms, todėl pelnas didžiausias pagaminant 700 gaminių per savaitę.</p>
+          <p>todėl \(P''(700) = -0{,}1 &lt; 0\), o \(x = 700\) yra vietinio maksimumo taškas. Taigi pelnas didžiausias pagaminant 700 gaminių per savaitę.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>b) Kaina ir pelnas</span></h4>
@@ -303,7 +302,7 @@
           <h4><span class="step-no">4</span><span>a) Antrasis pakankamasis požymis</span></h4>
           <p>Dar kartą diferencijuodami \(-7200x^{-2}\), gauname</p>
           \[ ATC''(x) = -7200\cdot(-2)x^{-3} = \frac{14400}{x^3} \]
-          <p>todėl \(ATC''(120) = \dfrac{14400}{120^3} &gt; 0\), o \(x = 120\) yra vietinio minimumo taškas. Antroji išvestinė teigiama visoms \(x &gt; 0\) reikšmėms, todėl vidutinės sąnaudos mažiausios pagaminant 120 gaminių per dieną.</p>
+          <p>todėl \(ATC''(120) = \dfrac{14400}{120^3} &gt; 0\), o \(x = 120\) yra vietinio minimumo taškas. Taigi vidutinės sąnaudos mažiausios pagaminant 120 gaminių per dieną.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>b) Vidutinės sąnaudos</span></h4>
@@ -360,7 +359,7 @@
           \[ P''(x) = 120\cdot\left(-\frac{1}{2}\right)x^{-\frac{3}{2}} = -\frac{60}{\sqrt{x^3}} \]
           <p>Kritiniame taške \(\sqrt{25^3} = \sqrt{15625} = 125\), todėl</p>
           \[ P''(25) = -\frac{60}{125} = -0{,}48 &lt; 0 \]
-          <p>Taigi \(x = 25\) yra vietinio maksimumo taškas. Antroji išvestinė neigiama visoms \(x &gt; 0\) reikšmėms, todėl pelnas didžiausias, kai dirba 25 darbuotojai.</p>
+          <p>Taigi \(x = 25\) yra vietinio maksimumo taškas. Taigi pelnas didžiausias, kai dirba 25 darbuotojai.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>b) Gamybos kiekis ir pelnas</span></h4>
@@ -421,7 +420,7 @@
           \[ \begin{aligned} R''(x) &amp;= -0{,}6e^{-0{,}004x}(1 - 0{,}004x + 1) \\ &amp;= -0{,}6e^{-0{,}004x}(2 - 0{,}004x) \end{aligned} \]
           <p>Kritiniame taške \(-0{,}004\cdot 250 = -1\) ir \(2 - 0{,}004\cdot 250 = 1\), todėl</p>
           \[ R''(250) = -0{,}6e^{-1}\cdot 1 \approx -0{,}22 &lt; 0 \]
-          <p>Taigi \(x = 250\) yra vietinio maksimumo taškas. Pirmoji išvestinė teigiama iki 250 gaminių ir neigiama viršijus šį kiekį, todėl pajamos didžiausios parduodant 250 gaminių per savaitę.</p>
+          <p>Taigi \(x = 250\) yra vietinio maksimumo taškas. Taigi pajamos didžiausios parduodant 250 gaminių per savaitę.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>b) Kaina ir pajamos</span></h4>
@@ -482,7 +481,7 @@
           \[ \begin{aligned} P''(x) &amp;= 12000\cdot(-2)(x + 10)^{-3}\cdot 1 \\ &amp;= -\frac{24000}{(x + 10)^3} \end{aligned} \]
           <p>Kritiniame taške gauname</p>
           \[ P''(10) = -\frac{24000}{20^3} = -\frac{24000}{8000} = -3 &lt; 0 \]
-          <p>todėl \(x = 10\) yra vietinio maksimumo taškas. Antroji išvestinė neigiama visoms \(x &gt; 0\) reikšmėms, todėl pelnas didžiausias naudojant įrenginį 10 valandų per dieną.</p>
+          <p>todėl \(x = 10\) yra vietinio maksimumo taškas. Taigi pelnas didžiausias naudojant įrenginį 10 valandų per dieną.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>b) Gamybos kiekis ir pelnas</span></h4>

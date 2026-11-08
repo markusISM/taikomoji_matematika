@@ -335,7 +335,7 @@
       { id: 'm74', status: 'active', href: { lt: 'tema-7-optimizavimas.html' },
         title: { lt: 'Optimizavimas', en: 'Optimization Using the Second Derivative Test' },
         desc: { lt: 'Antrasis pakankamasis ekstremumų požymis: didžiausios pajamos ar pelnas ir mažiausios vidutinės sąnaudos.', en: 'The second derivative test: the maximum revenue or profit and the minimum average cost.' } },
-      { id: 'm75', status: 'soon',
+      { id: 'm75', status: 'active', href: { lt: 'tema-7-sudetingesni-uzdaviniai.html' },
         title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' },
         desc: { lt: 'Tikslo funkciją reikia sudaryti patiems: paklausos funkcija pagal sąlygos duomenis, plotų ir tūrių optimizavimas.', en: 'The objective function has to be set up first: a demand function from the given data, optimizing areas and volumes.' } }
     ]
@@ -418,6 +418,8 @@
                title: { lt: 'Vingio taškai ir mažėjančio rezultatyvumo dėsnis', en: 'Inflection Points and Diminishing Returns' } },
     m74:     { parent: 't7', topic: 't7', model: 'm74', href: { lt: 'tema-7-optimizavimas.html', en: null },
                title: { lt: 'Optimizavimas', en: 'Optimization Using the Second Derivative Test' } },
+    m75:     { parent: 't7', topic: 't7', model: 'm75', href: { lt: 'tema-7-sudetingesni-uzdaviniai.html', en: null },
+               title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
