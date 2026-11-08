@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funkcijos iškilumas · Taikomoji matematika</title>
+<meta name="description" content="Funkcijos iškilumas: įgaubtos ir išgaubtos funkcijos, antrosios išvestinės ženklas, keturi kitimo atvejai – greitas ir lėtas augimas, greitas ir lėtas mažėjimas. Sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=71">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=71"></script>
+</head>
+<body data-page="m72">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">7 tema · Taikymai · 2 skyrius</span>
+    <h1>Funkcijos iškilumas</h1>
+    <p class="lead">Šiame skyriuje antrosios išvestinės ženklas naudojamas kreivės formai nustatyti: ar funkcijos grafikas įgaubtas, ar išgaubtas. Kartu su pirmąja išvestine jis leidžia apibūdinti, kaip kinta dydis.</p>
+    <ul class="jump">
+      <li><a href="#iskilumas">Iškilumas</a></li>
+      <li><a href="#atvejai">Keturi atvejai</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. IŠGAUBTOS IR ĮGAUBTOS FUNKCIJOS ============ -->
+  <section class="section" id="iskilumas" aria-labelledby="h-shape">
+    <h2 id="h-shape">Išgaubtos ir įgaubtos funkcijos</h2>
+
+    <article class="card">
+      <p>Žinoti, kad dydis didėja, dar nereiškia žinoti, kaip jis didėja. Dviejų įmonių pardavimo kiekis gali didėti, nors jų situacijos visiškai skirtingos: vienos įmonės mėnesio pardavimo prieaugis didėja, o kitos pardavimo kiekis vis dar didėja, tačiau prieaugis kas mėnesį mažėja. Skirtumą nusako ne kitimo kryptis, kurią rodo pirmoji išvestinė, o kreivės forma. Ši forma turi savo pavadinimą.</p>
+      <p>Kreivė yra <strong>išgaubta</strong>, jei ji yra <strong>žemiau</strong> savo liestinių, ir <strong>įgaubta</strong>, jei yra <strong>aukščiau</strong> jų. Įgaubtos kreivės forma primena dubens vidų, o išgaubtos – kalvos viršūnę.</p>
+      <figure class="abs-fig">
+          <svg viewBox="0 0 520 244" role="img" aria-label="Įgaubta kreivė yra aukščiau savo liestinių, išgaubta – žemiau">
+          <path class="ln" d="M20.0 50.0L22.2 54.0L24.4 57.8L26.6 61.6L28.8 65.4L31.0 69.0L33.2 72.6L35.4 76.0L37.6 79.4L39.8 82.8L42.0 86.0L44.2 89.2L46.4 92.2L48.6 95.2L50.8 98.2L53.0 101.0L55.2 103.8L57.4 106.4L59.6 109.0L61.8 111.6L64.0 114.0L66.2 116.4L68.4 118.6L70.6 120.8L72.8 123.0L75.0 125.0L77.2 127.0L79.4 128.8L81.6 130.6L83.8 132.4L86.0 134.0L88.2 135.6L90.4 137.0L92.6 138.4L94.8 139.8L97.0 141.0L99.2 142.2L101.4 143.2L103.6 144.2L105.8 145.2L108.0 146.0L110.2 146.8L112.4 147.4L114.6 148.0L116.8 148.6L119.0 149.0L121.2 149.4L123.4 149.6L125.6 149.8L127.8 150.0L130.0 150.0L132.2 150.0L134.4 149.8L136.6 149.6L138.8 149.4L141.0 149.0L143.2 148.6L145.4 148.0L147.6 147.4L149.8 146.8L152.0 146.0L154.2 145.2L156.4 144.2L158.6 143.2L160.8 142.2L163.0 141.0L165.2 139.8L167.4 138.4L169.6 137.0L171.8 135.6L174.0 134.0L176.2 132.4L178.4 130.6L180.6 128.8L182.8 127.0L185.0 125.0L187.2 123.0L189.4 120.8L191.6 118.6L193.8 116.4L196.0 114.0L198.2 111.6L200.4 109.0L202.6 106.4L204.8 103.8L207.0 101.0L209.2 98.2L211.4 95.2L213.6 92.2L215.8 89.2L218.0 86.0L220.2 82.8L222.4 79.4L224.6 76.0L226.8 72.6L229.0 69.0L231.2 65.4L233.4 61.6L235.6 57.8L237.8 54.0L240.0 50.0"/>
+          <path class="ln" d="M280.0 160.0L282.2 156.0L284.4 152.2L286.6 148.4L288.8 144.6L291.0 141.0L293.2 137.4L295.4 134.0L297.6 130.6L299.8 127.2L302.0 124.0L304.2 120.8L306.4 117.8L308.6 114.8L310.8 111.8L313.0 109.0L315.2 106.2L317.4 103.6L319.6 101.0L321.8 98.4L324.0 96.0L326.2 93.6L328.4 91.4L330.6 89.2L332.8 87.0L335.0 85.0L337.2 83.0L339.4 81.2L341.6 79.4L343.8 77.6L346.0 76.0L348.2 74.4L350.4 73.0L352.6 71.6L354.8 70.2L357.0 69.0L359.2 67.8L361.4 66.8L363.6 65.8L365.8 64.8L368.0 64.0L370.2 63.2L372.4 62.6L374.6 62.0L376.8 61.4L379.0 61.0L381.2 60.6L383.4 60.4L385.6 60.2L387.8 60.0L390.0 60.0L392.2 60.0L394.4 60.2L396.6 60.4L398.8 60.6L401.0 61.0L403.2 61.4L405.4 62.0L407.6 62.6L409.8 63.2L412.0 64.0L414.2 64.8L416.4 65.8L418.6 66.8L420.8 67.8L423.0 69.0L425.2 70.2L427.4 71.6L429.6 73.0L431.8 74.4L434.0 76.0L436.2 77.6L438.4 79.4L440.6 81.2L442.8 83.0L445.0 85.0L447.2 87.0L449.4 89.2L451.6 91.4L453.8 93.6L456.0 96.0L458.2 98.4L460.4 101.0L462.6 103.6L464.8 106.2L467.0 109.0L469.2 111.8L471.4 114.8L473.6 117.8L475.8 120.8L478.0 124.0L480.2 127.2L482.4 130.6L484.6 134.0L486.8 137.4L489.0 141.0L491.2 144.6L493.4 148.4L495.6 152.2L497.8 156.0L500.0 160.0"/>
+          <line class="ln2-dash" x1="10.0" y1="60.7" x2="135.0" y2="184.7"/>
+          <line class="ln2-dash" x1="125.0" y1="179.5" x2="250.0" y2="65.9"/>
+          <line class="ln2-dash" x1="272.0" y1="147.3" x2="398.0" y2="22.3"/>
+          <line class="ln2-dash" x1="382.0" y1="27.7" x2="508.0" y2="142.3"/>
+          <circle class="pt-hi" cx="70.0" cy="120.2" r="5.5"/>
+          <circle class="pt-hi" cx="185.0" cy="125.0" r="5.5"/>
+          <circle class="pt-hi" cx="330.0" cy="89.8" r="5.5"/>
+          <circle class="pt-hi" cx="445.0" cy="85.0" r="5.5"/>
+          <text class="m" x="130" y="90" text-anchor="middle" style="font-size:19px"><tspan class="i">f</tspan>″(<tspan class="i">x</tspan>) &gt; 0</text>
+          <text class="m" x="390" y="130" text-anchor="middle" style="font-size:19px"><tspan class="i">f</tspan>″(<tspan class="i">x</tspan>) &lt; 0</text>
+          <text class="fig-lab" x="130" y="210" text-anchor="middle" style="font-size:19px">Įgaubta</text>
+          <text class="fig-lab" x="390" y="210" text-anchor="middle" style="font-size:19px">Išgaubta</text>
+          <text class="muted" x="130" y="234" text-anchor="middle" style="font-size:16px">kreivė aukščiau liestinių</text>
+          <text class="muted" x="390" y="234" text-anchor="middle" style="font-size:16px">kreivė žemiau liestinių</text>
+          </svg>
+        <figcaption>Dvi kreivių formos. Kiekvienos kreivės liestinės nubrėžtos dviejuose taškuose.</figcaption>
+      </figure>
+      <p>Antroji išvestinė parodo, kuri iš šių dviejų formų būdinga kreivei. Liestinės nuolydis yra \(f'(x)\). Įgaubtos kreivės liestinės nuolydis didėja didėjant \(x\), o dydis didėja tuomet, kai jo išvestinė teigiama. Funkcijos \(f'(x)\) išvestinė yra \(f''(x)\), todėl gauname taisyklę:</p>
+      <ul>
+        <li>jei \(f''(x) &gt; 0\) kiekviename intervalo \((a;\, b)\) taške, tai \(f(x)\) yra <strong>įgaubta</strong> intervale \((a;\, b)\);</li>
+        <li>jei \(f''(x) &lt; 0\) kiekviename intervalo \((a;\, b)\) taške, tai \(f(x)\) yra <strong>išgaubta</strong> intervale \((a;\, b)\).</li>
+      </ul>
+      <p>Tai matyti ir <a href="tema-7.html#reklama">7 temos puslapio grafike</a>: pajamų funkcijos \(R(x)\) grafikas įgaubtas, kai \(0 &lt; x &lt; 5\) (ten \(R''(x) &gt; 0\)), ir išgaubtas, kai \(5 &lt; x &lt; 10\) (ten \(R''(x) &lt; 0\)).</p>
+      <p class="tip"><strong>Iškilumo pobūdis ir kitimo kryptis yra skirtingi dalykai.</strong> Įgaubta funkcija gali didėti arba mažėti; tas pats galioja ir išgaubtai funkcijai. Išvestinės \(f'\) ženklas rodo dydžio kitimo kryptį, o \(f''\) ženklas – kreivės formą. Norint apibūdinti dydžio kitimą, reikia nustatyti abu ženklus. Tai nagrinėjama toliau.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. KETURI ATVEJAI ============ -->
+  <section class="section" id="atvejai" aria-labelledby="h-cases">
+    <h2 id="h-cases">Kaip dvi išvestinės apibūdina funkciją</h2>
+
+    <article class="card">
+      <p>Išvestinė \(f'(x)\) gali būti teigiama arba neigiama, taip pat ir \(f''(x)\), todėl galimi keturi ženklų deriniai. Kiekvienas turi trumpą pavadinimą. Jie apima visus atvejus, kai dydis išlaiko tą pačią kitimo kryptį ir kreivės formą:</p>
+      <div class="tbl-wrap">
+        <table class="vtable cases-tbl">
+          <thead>
+            <tr><th scope="col">\(f'(x)\)</th><th scope="col">\(f''(x)\)</th><th scope="col">Funkcija yra</th><th scope="col">Kitimas yra</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(&gt; 0\)</td><td>\(&gt; 0\)</td><td>didėjanti ir įgaubta</td><td><strong>greitas augimas</strong></td></tr>
+            <tr><td>\(&lt; 0\)</td><td>\(&gt; 0\)</td><td>mažėjanti ir įgaubta</td><td><strong>lėtas mažėjimas</strong></td></tr>
+            <tr><td>\(&gt; 0\)</td><td>\(&lt; 0\)</td><td>didėjanti ir išgaubta</td><td><strong>lėtas augimas</strong></td></tr>
+            <tr><td>\(&lt; 0\)</td><td>\(&lt; 0\)</td><td>mažėjanti ir išgaubta</td><td><strong>greitas mažėjimas</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="fig-grid" role="group" aria-label="Keturi kitimo atvejai">
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><path class="ln" d="M26.0 72.0L28.0 72.0L30.0 71.9L32.0 71.7L34.0 71.4L36.0 71.1L38.0 70.7L40.0 70.2L42.0 69.7L44.0 69.1L46.0 68.4L48.0 67.6L50.0 66.8L52.0 65.9L54.0 64.9L56.0 63.8L58.0 62.7L60.0 61.5L62.0 60.3L64.0 58.9L66.0 57.5L68.0 56.0L70.0 54.5L72.0 52.8L74.0 51.1L76.0 49.3L78.0 47.5L80.0 45.6L82.0 43.6L84.0 41.5L86.0 39.4L88.0 37.2L90.0 34.9L92.0 32.5L94.0 30.1L96.0 27.6L98.0 25.0L100.0 22.4L102.0 19.7L104.0 16.9L106.0 14.0"/></svg>
+          <figcaption>Greitas augimas<span class="sub">\(f' &gt; 0,\ f'' &gt; 0\)</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><path class="ln" d="M26.0 14.0L28.0 16.9L30.0 19.7L32.0 22.4L34.0 25.0L36.0 27.6L38.0 30.1L40.0 32.5L42.0 34.9L44.0 37.2L46.0 39.4L48.0 41.5L50.0 43.6L52.0 45.6L54.0 47.5L56.0 49.3L58.0 51.1L60.0 52.8L62.0 54.5L64.0 56.0L66.0 57.5L68.0 58.9L70.0 60.3L72.0 61.5L74.0 62.7L76.0 63.8L78.0 64.9L80.0 65.9L82.0 66.8L84.0 67.6L86.0 68.4L88.0 69.1L90.0 69.7L92.0 70.2L94.0 70.7L96.0 71.1L98.0 71.4L100.0 71.7L102.0 71.9L104.0 72.0L106.0 72.0"/></svg>
+          <figcaption>Lėtas mažėjimas<span class="sub">\(f' &lt; 0,\ f'' &gt; 0\)</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><path class="ln" d="M26.0 72.0L28.0 69.1L30.0 66.3L32.0 63.6L34.0 61.0L36.0 58.4L38.0 55.9L40.0 53.5L42.0 51.1L44.0 48.8L46.0 46.6L48.0 44.5L50.0 42.4L52.0 40.4L54.0 38.5L56.0 36.7L58.0 34.9L60.0 33.2L62.0 31.5L64.0 30.0L66.0 28.5L68.0 27.1L70.0 25.7L72.0 24.5L74.0 23.3L76.0 22.2L78.0 21.1L80.0 20.1L82.0 19.2L84.0 18.4L86.0 17.6L88.0 16.9L90.0 16.3L92.0 15.8L94.0 15.3L96.0 14.9L98.0 14.6L100.0 14.3L102.0 14.1L104.0 14.0L106.0 14.0"/></svg>
+          <figcaption>Lėtas augimas<span class="sub">\(f' &gt; 0,\ f'' &lt; 0\)</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><path class="ln" d="M26.0 14.0L28.0 14.0L30.0 14.1L32.0 14.3L34.0 14.6L36.0 14.9L38.0 15.3L40.0 15.8L42.0 16.3L44.0 16.9L46.0 17.6L48.0 18.4L50.0 19.2L52.0 20.1L54.0 21.1L56.0 22.2L58.0 23.3L60.0 24.5L62.0 25.7L64.0 27.1L66.0 28.5L68.0 30.0L70.0 31.5L72.0 33.2L74.0 34.9L76.0 36.7L78.0 38.5L80.0 40.4L82.0 42.4L84.0 44.5L86.0 46.6L88.0 48.8L90.0 51.1L92.0 53.5L94.0 55.9L96.0 58.4L98.0 61.0L100.0 63.6L102.0 66.3L104.0 69.1L106.0 72.0"/></svg>
+          <figcaption>Greitas mažėjimas<span class="sub">\(f' &lt; 0,\ f'' &lt; 0\)</span></figcaption>
+        </figure>
+      </div>
+      <p style="margin-top:14px">Šiuos keturis atvejus lengviau įsiminti skaitant juos kaip teiginius apie dydžio kitimą, o ne kaip grafiko sąlygas.</p>
+      <ul>
+        <li><strong>Greitas augimas.</strong> Dydis didėja, ir kiekvieno laikotarpio prieaugis yra didesnis nei ankstesnio. Taip kinta pardavimo kiekis, kuris per mėnesį padidėja iš pradžių 10, paskui 14, tada 19 vienetų.</li>
+        <li><strong>Lėtas mažėjimas.</strong> Dydis mažėja, tačiau kiekvieną laikotarpį sumažėja mažiau nei ankstesnį. Taip kinta neparduotų prekių atsargos, kurios sumažėja iš pradžių 19, paskui 14, tada 10 vienetų.</li>
+        <li><strong>Lėtas augimas.</strong> Dydis vis dar didėja, tačiau kiekvieno laikotarpio prieaugis mažesnis nei ankstesnio. Taip kinta pardavimo kiekis, kuris per mėnesį padidėja iš pradžių 19, paskui 14, tada 10 vienetų.</li>
+        <li><strong>Greitas mažėjimas.</strong> Dydis mažėja, ir kiekvieną laikotarpį sumažėja daugiau nei ankstesnį. Taip kinta atsargos, kurios sumažėja iš pradžių 10, paskui 14, tada 19 vienetų.</li>
+      </ul>
+      <p class="tip"><strong>Ko nereiškia žodžiai „greitas“ ir „lėtas“.</strong> Jie nelygina pokyčio dydžio su kitais dydžiais už nagrinėjamos funkcijos ribų. Lėtai augantis dydis gali turėti labai didelį prieaugį; žodis „lėtas“ tik nusako, kad šis prieaugis mažėja. Panašiai greitai mažėjantis dydis šiuo momentu nebūtinai mažėja sparčiai: šis žodis nusako, kad mažėjimo mastas didėja. Abu žodžiai apibūdina paties kitimo greičio kitimo kryptį.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Vienai funkcijai – keli atvejai</h3>
+      <p>Vienai funkcijai gali būti būdingi keli iš šių keturių atvejų. Kreivės forma gali nesikeisti, nors kitimo kryptis pasikeičia. Jei dydis iš pradžių mažėja, paskui didėja, o funkcija visą laiką įgaubta, iš pradžių būdingas lėtas mažėjimas, paskui – greitas augimas. Tokiu atveju intervalą reikia padalyti taške, kuriame \(f'(x)\) keičia ženklą, ir kiekvieną dalį apibūdinti atskirai.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Užrašykite funkciją, uždavinyje nurodytą intervalą ir paaiškinkite, ką reiškia kintamasis.</li>
+        <li>Diferencijuokite. Įvardykite taikomą taisyklę ir funkcijas, kurioms ją taikote. Šaknis ir atvirkštinius dydžius pirmiausia <a href="tema-7.html#skaiciavimas">perrašykite laipsniais</a>.</li>
+        <li>Nustatykite \(f'(x)\) ženklą intervale. Jei jis visur vienodas, funkcija didėja arba mažėja visame intervale. Jei ženklas keičiasi, išspręskite \(f'(x) = 0\), nubraižykite <a href="tema-6-didejimas-ir-mazejimas.html">ženklų schemą</a> ir pagal ją nustatykite monotoniškumo intervalus.</li>
+        <li>Diferencijuokite pirmąją išvestinę ir gaukite \(f''(x)\). Nustatykite jos ženklą intervale. Funkcija įgaubta ten, kur ženklas teigiamas, ir išgaubta ten, kur jis neigiamas.</li>
+        <li>Sujunkite abu ženklus, pagal <a href="#atvejai">keturių atvejų lentelę</a> įvardykite kitimo pobūdį ir interpretuokite jį uždavinio kontekste. Jei kitimo kryptis pasikeičia, kiekvieną monotoniškumo intervalą nagrinėkite atskirai.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:18px">Kaip pagrįsti, kad ženklas nesikeičia</h3>
+      <p>Jei kreivės forma nesikeičia, nereikia atskirai tikrinti kiekvieno taško. Pakanka pagrindimo, galiojančio visame intervale. Dažniausiai remiamasi šiomis savybėmis:</p>
+      <ul>
+        <li>rodiklinė funkcija teigiama nepriklausomai nuo rodiklio;</li>
+        <li>kvadratas neneigiamas;</li>
+        <li>trupmenos ženklas sutampa su skaitiklio ženklu, kai vardiklis teigiamas;</li>
+        <li>teigiamų narių suma teigiama.</li>
+      </ul>
+      <div class="model-note"><strong>Interpretacija.</strong> Nustačius du ženklus, atsakymas dar nebaigtas. Uždavinyje prašoma įvardyti ir paaiškinti kitimo pobūdį jo kontekste. Šis paaiškinimas yra atsakymo dalis: kaip kinta dydis ir ar jo pokytis didėja, ar mažėja.</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Iškilumas painiojamas su kitimo kryptimi.</strong> Įgaubta funkcija gali ir didėti, ir mažėti. Kitimo kryptį rodo \(f'\) ženklas, o kreivės formą – \(f''\) ženklas.</li>
+            <li><strong>„Lėtas“ suprantamas kaip „mažas“.</strong> Lėtai augantis dydis gali turėti labai didelį prieaugį: žodis „lėtas“ tik nusako, kad šis prieaugis mažėja.</li>
+            <li><strong>Nepadalytas intervalas.</strong> Jei \(f'(x)\) keičia ženklą, kitimo pobūdį reikia nustatyti kiekviename monotoniškumo intervale atskirai.</li>
+            <li><strong>Atsakyme – tik ženklai.</strong> Reikia įvardyti kitimo pobūdį ir paaiškinti jį uždavinio kontekste.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 7.2, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Kurjerių įmonės sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kurjerių įmonės savaitės veiklos sąnaudos eurais, kai per savaitę pristatoma \(x\) šimtų siuntų, yra
+        <div class="fit-sm">\[ C(x) = 20x^2 + 300x + 2000,\quad 0 \le x \le 15 \]</div>
+        <ol type="a">
+          <li>Parodykite, kad sąnaudos didėja intervale \([0;\, 15]\).</li>
+          <li>Parodykite, kad funkcijos \(C(x)\) grafikas įgaubtas intervale \([0;\, 15]\).</li>
+          <li>Apibūdinkite sąnaudų kitimą.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kitimo kryptis</span></h4>
+          <p>Funkcija yra laipsnių suma, todėl laipsninės funkcijos išvestinės formulė taikoma kiekvienam nariui:</p>
+          \[ C'(x) = 40x + 300 \]
+          <p>Kiekvienai \(x\) reikšmei intervale \([0;\, 15]\) narys \(40x\) neneigiamas, o 300 teigiamas, todėl jų suma teigiama:</p>
+          \[ C'(x) = 40x + 300 &gt; 0 \]
+          <p>Taigi sąnaudos didėja visame intervale.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Antroji išvestinė ir iškilumas</span></h4>
+          <p>Diferencijuodami pirmąją išvestinę, gauname</p>
+          \[ C''(x) = 40 \]
+          <p>Tai teigiama konstanta, todėl \(C''(x) &gt; 0\) kiekviename taške, o grafikas įgaubtas visame intervale.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(C'(x) = 40x + 300 &gt; 0\), todėl sąnaudos didėja intervale \([0;\, 15]\).</p>
+            <p>b) \(C''(x) = 40 &gt; 0\), todėl grafikas įgaubtas intervale \([0;\, 15]\).</p>
+            <p>c) Sąnaudos didėja, o funkcija įgaubta, todėl būdingas <strong>greitas augimas</strong>. Kiekvieno papildomo šimto siuntų pristatymas įmonei kainuoja daugiau nei ankstesnio: esant mažiausiam kiekiui, ribinės sąnaudos yra \(C'(0) = 300\)&nbsp;eurų šimtui siuntų, o esant didžiausiam – \(C'(15) = 900\)&nbsp;eurų šimtui siuntų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 7.2, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Keltų operatoriaus pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Keltų operatoriaus mėnesio pelnas tūkstančiais eurų, kai bilieto kaina yra \(x\) eurų, yra
+        <div class="fit-sm">\[ P(x) = -0{,}5x^2 + 30x - 250,\quad 0 \le x \le 50 \]</div>
+        <ol type="a">
+          <li>Raskite intervalus, kuriuose pelnas didėja ir mažėja.</li>
+          <li>Parodykite, kad funkcijos \(P(x)\) grafikas išgaubtas intervale \([0;\, 50]\).</li>
+          <li>Apibūdinkite pelno kitimą kiekviename a) dalyje rastame intervale.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kritinis taškas</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ P'(x) = -x + 30 \]
+          <p>Išvestinė keičia ženklą, todėl kritinis taškas randamas iš \(P'(x) = 0\):</p>
+          \[ -x + 30 = 0 \;\Longrightarrow\; x = 30 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Ženklų schema</span></h4>
+          <p>Ženklus nustatome pasirinkę po vieną tašką abipus kritinio taško: \(P'(10) = 20 &gt; 0\) ir \(P'(40) = -10 &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(x)","f":"P(x)","v":"x","pts":[{"x":"0"},{"x":"30","z":true},{"x":"50"}],"s":["+","-"]}'></div>
+          <p>Pelnas didėja intervale \((0;\, 30)\) ir mažėja intervale \((30;\, 50)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Antroji išvestinė ir iškilumas</span></h4>
+          <p>Diferencijuodami pirmąją išvestinę, gauname</p>
+          \[ P''(x) = -1 \]
+          <p>Tai neigiama konstanta, todėl \(P''(x) &lt; 0\) kiekviename taške, o grafikas išgaubtas visame intervale.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Pelnas didėja intervale \((0;\, 30)\) ir mažėja intervale \((30;\, 50)\).</p>
+            <p>b) \(P''(x) = -1 &lt; 0\), todėl grafikas išgaubtas intervale \([0;\, 50]\).</p>
+            <p>c) Intervale \((0;\, 30)\) pelnas didėja, o funkcija išgaubta, todėl būdingas <strong>lėtas augimas</strong>: kiekvienas papildomas bilieto kainos euras pelną padidina mažiau nei ankstesnis. Intervale \((30;\, 50)\) pelnas mažėja, o funkcija išgaubta, todėl būdingas <strong>greitas mažėjimas</strong>: kiekvienas papildomas euras pelną sumažina daugiau nei ankstesnis.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 7.2, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Vidutinės vienos siuntos sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Siuntų pristatymo įmonės vidutinės vienos siuntos sąnaudos eurais, kai furgonas vienu reisu veža \(x\) šimtų siuntų, yra
+        <div class="fit-sm">\[ A(x) = 0{,}5x + \frac{18}{x} + 4,\quad 1 \le x \le 12 \]</div>
+        <ol type="a">
+          <li>Raskite intervalus, kuriuose vidutinės sąnaudos didėja ir mažėja.</li>
+          <li>Parodykite, kad funkcijos \(A(x)\) grafikas įgaubtas intervale \([1;\, 12]\).</li>
+          <li>Apibūdinkite vidutinių sąnaudų kitimą kiekviename a) dalyje rastame intervale.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė</span></h4>
+          <p>Vidurinis narys yra atvirkštinis dydis, todėl prieš diferencijuojant jis perrašomas laipsniu pagal taisyklę \(\dfrac{1}{x^n} = x^{-n}\):</p>
+          \[ A(x) = 0{,}5x + 18x^{-1} + 4 \]
+          \[ \begin{aligned} A'(x) &amp;= 0{,}5 + 18\cdot(-1)x^{-2} \\ &amp;= 0{,}5 - \frac{18}{x^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Kritinis taškas ir ženklų schema</span></h4>
+          <p>Kritinis taškas randamas iš \(A'(x) = 0\):</p>
+          \[ \begin{gathered} 0{,}5 - \frac{18}{x^2} = 0 \\ \Longrightarrow\; x^2 = \frac{18}{0{,}5} = 36 \;\Longrightarrow\; x = 6 \end{gathered} \]
+          <p>Antrasis sprendinys \(x = -6\) atmetamas, nes siuntų skaičius negali būti neigiamas. Ženklus nustatome pasirinkę po vieną tašką abipus: \(A'(1) = -17{,}5 &lt; 0\) ir \(A'(12) = 0{,}375 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;(x)","f":"A(x)","v":"x","pts":[{"x":"1"},{"x":"6","z":true},{"x":"12"}],"s":["-","+"]}'></div>
+          <p>Vidutinės sąnaudos mažėja intervale \((1;\, 6)\) ir didėja intervale \((6;\, 12)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Antroji išvestinė ir iškilumas</span></h4>
+          <p>Pirmąją išvestinę vėl perrašome laipsniu ir diferencijuojame:</p>
+          \[ A'(x) = 0{,}5 - 18x^{-2} \]
+          \[ A''(x) = -18\cdot(-2)x^{-3} = \frac{36}{x^3} \]
+          <p>Šiame intervale \(x\) teigiamas, todėl \(x^3\) taip pat teigiamas. Trupmena su teigiamu skaitikliu ir vardikliu teigiama, todėl \(A''(x) &gt; 0\), o grafikas įgaubtas visame intervale.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Vidutinės sąnaudos mažėja intervale \((1;\, 6)\) ir didėja intervale \((6;\, 12)\).</p>
+            <p>b) \(A''(x) = \dfrac{36}{x^3} &gt; 0\), todėl grafikas įgaubtas intervale \([1;\, 12]\).</p>
+            <p>c) Intervale \((1;\, 6)\) vidutinės sąnaudos mažėja, o funkcija įgaubta, todėl būdingas <strong>lėtas mažėjimas</strong>: didesnis siuntų kiekis vis dar sumažina vidutines vienos siuntos sąnaudas, tačiau kiekvienas papildomas šimtas siuntų leidžia sutaupyti mažiau nei ankstesnis. Intervale \((6;\, 12)\) vidutinės sąnaudos didėja, o funkcija įgaubta, todėl būdingas <strong>greitas augimas</strong>: kiekvienas papildomas šimtas siuntų vidutines sąnaudas padidina daugiau nei ankstesnis.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 7.2, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Prie naujo tinklo prijungti namų ūkiai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Telekomunikacijų operatorius mieste tiesia naują tinklą. Praėjus \(t\) mėnesių nuo darbų pradžios, prie jo prijungtų namų ūkių dalis procentais yra
+        <div class="fit-sm">\[ N(t) = 25\ln(2t + 1),\quad 0 \le t \le 10 \]</div>
+        <ol type="a">
+          <li>Parodykite, kad dalis didėja intervale \([0;\, 10]\).</li>
+          <li>Parodykite, kad funkcijos \(N(t)\) grafikas išgaubtas intervale \([0;\, 10]\).</li>
+          <li>Apibūdinkite dalies kitimą.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kitimo kryptis</span></h4>
+          <p>Reikia <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklės</a>. <strong>Išorinė funkcija</strong> yra logaritmas \(\ln u\), o <strong>vidinė funkcija</strong> – \(u(t) = 2t + 1\), kurios \(u'(t) = 2\). Taikoma formulė</p>
+          \[ \big(\ln u(t)\big)' = \frac{u'(t)}{u(t)} \]
+          <p>todėl</p>
+          \[ N'(t) = 25\cdot\frac{2}{2t + 1} = \frac{50}{2t + 1} \]
+          <p>Kiekvienai \(t\) reikšmei intervale \([0;\, 10]\) vardiklis \(2t + 1\) ne mažesnis už 1, todėl teigiamas. Trupmena su teigiamu skaitikliu ir vardikliu teigiama, todėl \(N'(t) &gt; 0\), o dalis didėja visame intervale.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Antroji išvestinė ir iškilumas</span></h4>
+          <p>Pirmosios išvestinės skaitiklis pastovus, todėl ją perrašome laipsniu ir taikome sudėtinės laipsninės funkcijos išvestinės formulę su ta pačia vidine funkcija:</p>
+          \[ N'(t) = 50(2t + 1)^{-1} \]
+          \[ \begin{aligned} N''(t) &amp;= 50\cdot(-1)(2t + 1)^{-2}\cdot 2 \\ &amp;= -\frac{100}{(2t + 1)^2} \end{aligned} \]
+          <p>Vardiklis \((2t + 1)^2\) yra nenulinis kvadratas, todėl teigiamas, o skaitiklis yra \(-100\). Trupmena su neigiamu skaitikliu ir teigiamu vardikliu neigiama, todėl \(N''(t) &lt; 0\), o grafikas išgaubtas visame intervale.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(N'(t) = \dfrac{50}{2t + 1} &gt; 0\), todėl dalis didėja intervale \([0;\, 10]\).</p>
+            <p>b) \(N''(t) = -\dfrac{100}{(2t + 1)^2} &lt; 0\), todėl grafikas išgaubtas intervale \([0;\, 10]\).</p>
+            <p>c) Dalis didėja, o funkcija išgaubta, todėl būdingas <strong>lėtas augimas</strong>. Kas mėnesį prijungiama daugiau namų ūkių, tačiau jų prieaugis mažesnis nei ankstesnį mėnesį: pradžioje dalis didėja \(N'(0) = 50\)&nbsp;procentinių punktų per mėnesį, o po dešimties mėnesių – \(N'(10) \approx 2{,}38\)&nbsp;procentinio punkto per mėnesį.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 7.2, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Praneštos programos klaidos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Išleidus naują programos versiją, per savaitę \(t\) praneštų klaidų skaičius yra
+        \[ F(t) = 800e^{-0{,}3t},\quad t \ge 0 \]
+        <ol type="a">
+          <li>Parodykite, kad praneštų klaidų skaičius mažėja.</li>
+          <li>Parodykite, kad funkcijos \(F(t)\) grafikas įgaubtas.</li>
+          <li>Apibūdinkite klaidų skaičiaus kitimą.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kitimo kryptis</span></h4>
+          <p>Laipsnio rodiklis nėra vien \(t\), todėl taikoma <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklė</a>. <strong>Išorinė funkcija</strong> yra \(e^u\), <strong>vidinė</strong> – \(u(t) = -0{,}3t\), o \(u'(t) = -0{,}3\). Taikoma formulė</p>
+          \[ \big(e^{u(t)}\big)' = e^{u(t)}\cdot u'(t) \]
+          <p>todėl</p>
+          \[ \begin{aligned} F'(t) &amp;= 800e^{-0{,}3t}\cdot(-0{,}3) \\ &amp;= -240e^{-0{,}3t} \end{aligned} \]
+          <p>Rodiklinė funkcija teigiama nepriklausomai nuo rodiklio, todėl \(e^{-0{,}3t} &gt; 0\) visoms \(t\) reikšmėms. Neigiamo ir teigiamo skaičių sandauga neigiama, todėl \(F'(t) &lt; 0\), o praneštų klaidų skaičius mažėja.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Antroji išvestinė ir iškilumas</span></h4>
+          <p>Ta pati taisyklė taikoma pirmajai išvestinei:</p>
+          \[ \begin{aligned} F''(t) &amp;= -240e^{-0{,}3t}\cdot(-0{,}3) \\ &amp;= 72e^{-0{,}3t} \end{aligned} \]
+          <p>Čia 72 teigiamas, rodiklinė funkcija taip pat teigiama, todėl \(F''(t) &gt; 0\), o grafikas įgaubtas.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(F'(t) = -240e^{-0{,}3t} &lt; 0\), todėl praneštų klaidų skaičius mažėja.</p>
+            <p>b) \(F''(t) = 72e^{-0{,}3t} &gt; 0\), todėl grafikas įgaubtas.</p>
+            <p>c) Klaidų skaičius mažėja, o funkcija įgaubta, todėl būdingas <strong>lėtas mažėjimas</strong>. Kas savaitę pranešama mažiau klaidų, tačiau šis pagerėjimas taip pat mažėja: pirmą savaitę kitimo greitis yra \(F'(0) = -240\)&nbsp;klaidų per savaitę, o penktą – \(F'(4) \approx -72{,}29\)&nbsp;klaidos per savaitę.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 7.2, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Lankytojai prie parodos stendo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė dalyvauja prekybos parodoje. Praėjus \(t\) valandų nuo parodos atidarymo, prie jos stendo lankytojai atvyksta
+        \[ S(t) = 120te^{-0{,}2t},\quad 0 \le t \le 8 \]
+        žmonių per valandą greičiu.
+        <ol type="a">
+          <li>Raskite intervalus, kuriuose lankytojų atvykimo greitis didėja ir mažėja.</li>
+          <li>Parodykite, kad funkcijos \(S(t)\) grafikas išgaubtas intervale \([0;\, 8]\).</li>
+          <li>Apibūdinkite atvykimo greičio kitimą kiekviename a) dalyje rastame intervale.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė</span></h4>
+          <p>Funkcija yra sandauga, todėl taikoma <a href="tema-6.html#sandaugos">sandaugos taisyklė</a>:</p>
+          <div class="fit-sm">\[ \big(u(t)\cdot v(t)\big)' = u'(t)\cdot v(t) + u(t)\cdot v'(t) \]</div>
+          <p>Pažymėkite \(u(t) = 120t\) ir \(v(t) = e^{-0{,}2t}\). Tada \(u'(t) = 120\), o antrąjį daugiklį diferencijuokite pagal sudėtinės rodiklinės funkcijos išvestinės formulę. Vidinė funkcija čia yra \(-0{,}2t\):</p>
+          \[ v'(t) = e^{-0{,}2t}\cdot(-0{,}2) = -0{,}2e^{-0{,}2t} \]
+          <p>todėl</p>
+          \[ \begin{aligned} S'(t) &amp;= 120e^{-0{,}2t} + 120t\cdot\left(-0{,}2e^{-0{,}2t}\right) \\ &amp;= 120e^{-0{,}2t}(1 - 0{,}2t) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Kritinis taškas ir ženklų schema</span></h4>
+          <p>Daugiklis \(120e^{-0{,}2t}\) teigiamas visoms \(t\) reikšmėms, todėl išvestinės ženklą lemia \(1 - 0{,}2t\) ženklas. Kritinis taškas yra</p>
+          \[ 1 - 0{,}2t = 0 \;\Longrightarrow\; t = 5 \]
+          <p>Pasirinkę po vieną tašką abipus, gauname: \(S'(2) \approx 48{,}26 &gt; 0\) ir \(S'(7) \approx -11{,}84 &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"0"},{"x":"5","z":true},{"x":"8"}],"s":["+","-"]}'></div>
+          <p>Atvykimo greitis didėja intervale \((0;\, 5)\) ir mažėja intervale \((5;\, 8)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Antroji išvestinė ir iškilumas</span></h4>
+          <p>Supaprastinta pirmoji išvestinė vėl yra sandauga, kurios daugikliai dabar yra \(u(t) = 120e^{-0{,}2t}\) ir \(v(t) = 1 - 0{,}2t\), o jų išvestinės – \(u'(t) = -24e^{-0{,}2t}\) ir \(v'(t) = -0{,}2\):</p>
+          \[ \begin{aligned} S''(t) &amp;= -24e^{-0{,}2t}(1 - 0{,}2t) \\ &amp;\phantom{=}\; + 120e^{-0{,}2t}\cdot(-0{,}2) \end{aligned} \]
+          <p>Abiejuose nariuose yra daugiklis \(e^{-0{,}2t}\), todėl jį iškeliame prieš skliaustus:</p>
+          \[ \begin{aligned} S''(t) &amp;= e^{-0{,}2t}\left[-24(1 - 0{,}2t) - 24\right] \\ &amp;= e^{-0{,}2t}(4{,}8t - 48) \\ &amp;= 4{,}8e^{-0{,}2t}(t - 10) \end{aligned} \]
+          <p>Rodiklinė funkcija teigiama, o kiekvienai \(t\) reikšmei intervale \([0;\, 8]\) reiškinys skliaustuose \(t - 10\) neigiamas. Teigiamo ir neigiamo skaičių sandauga neigiama, todėl \(S''(t) &lt; 0\), o grafikas išgaubtas visame intervale.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Atvykimo greitis didėja intervale \((0;\, 5)\) ir mažėja intervale \((5;\, 8)\).</p>
+            <p>b) \(S''(t) = 4{,}8e^{-0{,}2t}(t - 10) &lt; 0\), todėl grafikas išgaubtas intervale \([0;\, 8]\).</p>
+            <p>c) Intervale \((0;\, 5)\) atvykimo greitis didėja, o funkcija išgaubta, todėl būdingas <strong>lėtas augimas</strong>: kas valandą atvyksta daugiau žmonių nei ankstesnę, tačiau šis prieaugis kas valandą mažėja. Intervale \((5;\, 8)\) atvykimo greitis mažėja, o funkcija išgaubta, todėl būdingas <strong>greitas mažėjimas</strong>: greitis mažėja, ir kas valandą sumažėja daugiau.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 7.2, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Lojalumo programos klientų išlaidos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Parduotuvė pradeda lojalumo programą. Praėjus \(t\) mėnesių nuo jos pradžios, vidutinė vieno kliento per mėnesį išleidžiama suma yra
+        \[ A(t) = \frac{50t + 80}{t + 4},\quad t \ge 0 \]
+        eurų.
+        <ol type="a">
+          <li>Parodykite, kad vidutinė suma didėja.</li>
+          <li>Parodykite, kad funkcijos \(A(t)\) grafikas išgaubtas.</li>
+          <li>Apibūdinkite vidutinės sumos kitimą.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kitimo kryptis</span></h4>
+          <p>Funkcija yra trupmena, todėl taikoma <a href="tema-6.html#dalmens">dalmens taisyklė</a>:</p>
+          \[ \left(\frac{u(t)}{v(t)}\right)' = \frac{u'(t)v(t) - u(t)v'(t)}{v^2(t)} \]
+          <p>Skaitiklį pažymėkite \(u(t) = 50t + 80\), o vardiklį – \(v(t) = t + 4\). Tada \(u'(t) = 50\) ir \(v'(t) = 1\):</p>
+          \[ \begin{aligned} A'(t) &amp;= \frac{50(t + 4) - (50t + 80)\cdot 1}{(t + 4)^2} \\ &amp;= \frac{50t + 200 - 50t - 80}{(t + 4)^2} \\ &amp;= \frac{120}{(t + 4)^2} \end{aligned} \]
+          <p>Kai \(t \ge 0\), vardiklis \((t + 4)^2\) yra teigiamo skaičiaus kvadratas, todėl teigiamas; skaitiklis 120 taip pat teigiamas. Taigi trupmena teigiama, \(A'(t) &gt; 0\), o vidutinė suma didėja.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Antroji išvestinė ir iškilumas</span></h4>
+          <p>Dar kartą taikyti dalmens taisyklės nereikia, nes skaitiklis dabar pastovus. Pirmąją išvestinę perrašome laipsniu ir taikome sudėtinės laipsninės funkcijos išvestinės formulę, kai vidinė funkcija yra \(u(t) = t + 4\), o \(u'(t) = 1\):</p>
+          \[ A'(t) = 120(t + 4)^{-2} \]
+          \[ \begin{aligned} A''(t) &amp;= 120\cdot(-2)(t + 4)^{-3}\cdot 1 \\ &amp;= -\frac{240}{(t + 4)^3} \end{aligned} \]
+          <p>Kai \(t \ge 0\), turime \(t + 4 \ge 4 &gt; 0\), todėl \((t + 4)^3\) taip pat teigiamas. Skaitiklis yra \(-240\), todėl \(A''(t) &lt; 0\), o grafikas išgaubtas.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(A'(t) = \dfrac{120}{(t + 4)^2} &gt; 0\), todėl vidutinė suma didėja.</p>
+            <p>b) \(A''(t) = -\dfrac{240}{(t + 4)^3} &lt; 0\), todėl grafikas išgaubtas.</p>
+            <p>c) Vidutinė suma didėja, o funkcija išgaubta, todėl būdingas <strong>lėtas augimas</strong>. Klientai kas mėnesį išleidžia daugiau, tačiau mėnesio prieaugis mažėja: pirmą mėnesį vidutinė suma didėja \(A'(0) = 7{,}5\)&nbsp;euro per mėnesį, o po metų – \(A'(12) \approx 0{,}47\)&nbsp;euro per mėnesį.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: nustatykite pirmosios ir antrosios išvestinių ženklus, įvardykite kitimo pobūdį ir paaiškinkite jį uždavinio kontekste. Atsakyme pateiktos išvestinės, intervalai ir kitimo pobūdis – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonės sukauptos pajamos tūkstančiais eurų, praėjus \(t\) mėnesių nuo veiklos pradžios, yra</p>
+          <div class="fit-sm">\[ R(t) = 0{,}5t^3 + 2t^2 + 30t,\quad 0 \le t \le 10 \]</div>
+          <ol type="a">
+            <li>Raskite intervalus, kuriuose pajamos didėja ir mažėja.</li>
+            <li>Raskite intervalus, kuriuose pajamų funkcija įgaubta ir išgaubta.</li>
+            <li>Apibūdinkite pajamų augimą.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(R'(t) = 1{,}5t^2 + 4t + 30\); \(D = 16 - 180 = -164 &lt; 0\), todėl kritinių taškų nėra, o \(R'(0) = 30 &gt; 0\). Pajamos didėja intervale \([0;\, 10]\).</p>
+          <p>b) \(R''(t) = 3t + 4 &gt; 0\) intervale \([0;\, 10]\), todėl pajamų funkcija jame įgaubta.</p>
+          <p>c) Pajamoms intervale \([0;\, 10]\) būdingas <strong>greitas augimas</strong>.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gamyklos dienos produkcijos kiekis vienetais, kai įrenginys naudojamas \(x\) valandų, yra</p>
+          <div class="fit-sm">\[ Q(x) = 400\sqrt{x} + 20x,\quad 1 \le x \le 100 \]</div>
+          <ol type="a">
+            <li>Raskite intervalus, kuriuose gamybos kiekis didėja ir mažėja.</li>
+            <li>Raskite intervalus, kuriuose gamybos funkcija įgaubta ir išgaubta.</li>
+            <li>Apibūdinkite gamybos kiekio augimą.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(Q'(x) = \dfrac{200}{\sqrt{x}} + 20 &gt; 0\) intervale \([1;\, 100]\), todėl gamybos kiekis jame didėja.</p>
+          <p>b) \(Q''(x) = -\dfrac{100}{\sqrt{x^3}} &lt; 0\) intervale \([1;\, 100]\), todėl gamybos funkcija jame išgaubta.</p>
+          <p>c) Gamybos kiekiui intervale \([1;\, 100]\) būdingas <strong>lėtas augimas</strong>.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įrenginio vertė tūkstančiais eurų, praėjus \(t\) metų nuo jo įsigijimo, yra</p>
+          \[ V(t) = 90e^{-0{,}25t},\quad 0 \le t \le 10 \]
+          <ol type="a">
+            <li>Raskite intervalus, kuriuose vertė didėja ir mažėja.</li>
+            <li>Raskite intervalus, kuriuose vertės funkcija įgaubta ir išgaubta.</li>
+            <li>Apibūdinkite vertės kitimą.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(V'(t) = -22{,}5e^{-0{,}25t} &lt; 0\) intervale \([0;\, 10]\), todėl vertė jame mažėja.</p>
+          <p>b) \(V''(t) = 5{,}625e^{-0{,}25t} &gt; 0\) intervale \([0;\, 10]\), todėl vertės funkcija jame įgaubta.</p>
+          <p>c) Vertei intervale \([0;\, 10]\) būdingas <strong>lėtas mažėjimas</strong>.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonės mėnesio pelnas tūkstančiais eurų, praėjus \(t\) mėnesių nuo reorganizavimo, yra</p>
+          <div class="fit-sm">\[ P(t) = t^3 - 12t^2 + 36t + 20,\quad 4 \le t \le 10 \]</div>
+          <ol type="a">
+            <li>Raskite intervalus, kuriuose pelnas didėja ir mažėja.</li>
+            <li>Raskite intervalus, kuriuose pelno funkcija įgaubta ir išgaubta.</li>
+            <li>Apibūdinkite pelno kitimą.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(P'(t) = 3t^2 - 24t + 36\); padaliję iš 3, gauname \(t^2 - 8t + 12 = 0\), \(D = 64 - 48 = 16\). Sprendiniai yra \(t_1 = 2\) ir \(t_2 = 6\), iš kurių tik 6 priklauso nagrinėjamam intervalui; \(P'(5) = -9 &lt; 0\) ir \(P'(7) = 15 &gt; 0\). Pelnas mažėja intervale \([4;\, 6]\) ir didėja intervale \([6;\, 10]\).</p>
+          <p>b) \(P''(t) = 6t - 24 &gt; 0\) intervale \([4;\, 10]\), todėl pelno funkcija jame įgaubta.</p>
+          <p>c) Pelnui intervale \([4;\, 6]\) būdingas <strong>lėtas mažėjimas</strong>, o intervale \([6;\, 10]\) – <strong>greitas augimas</strong>.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">6.4–6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">10.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
