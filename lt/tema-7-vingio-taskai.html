@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=72">
+<link rel="stylesheet" href="../assets/css/style.css?v=73">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=72"></script>
+<script defer src="../assets/js/site.js?v=73"></script>
 </head>
 <body data-page="m73">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -337,7 +337,7 @@
             <span class="label">Atsakymas</span>
             <p>a) Klientų skaičius mažėja visame intervale \((0;\, 20)\).</p>
             <p>b) Vingio taškas yra \(t = 10\).</p>
-            <p>c) Klientų skaičius mažėja visą laikotarpį. Iki dešimto mėnesio kreivė išgaubta, o po jo – įgaubta. Taigi intervale \((0;\, 10)\) būdingas <strong>greitas mažėjimas</strong>, o intervale \((10;\, 20)\) – <strong>lėtas mažėjimas</strong>. Iki dešimto mėnesio kas mėnesį prarandama daugiau klientų nei ankstesnį, o po jo mėnesio netekimas mažėja. Dešimtą mėnesį klientų skaičius mažėja didžiausiu greičiu.</p>
+            <p>c) Klientų skaičius mažėja visą laikotarpį. Pirmus dešimt mėnesių kreivė išgaubta, o vėliau – įgaubta. Taigi intervale \((0;\, 10)\) būdingas <strong>greitas mažėjimas</strong>, o intervale \((10;\, 20)\) – <strong>lėtas mažėjimas</strong>. Pirmus dešimt mėnesių kas mėnesį prarandama daugiau klientų nei ankstesnį, o vėliau mėnesio netekimas mažėja. Praėjus dešimčiai mėnesių, klientų skaičius mažėja didžiausiu greičiu.</p>
           </div>
         </section>
       </div>
@@ -397,7 +397,7 @@
               <li>intervale \((3;\, 5)\) pelnas mažėja, o funkcija įgaubta, todėl būdingas <strong>lėtas mažėjimas</strong>;</li>
               <li>intervale \((5;\, 8)\) pelnas didėja, o funkcija įgaubta, todėl būdingas <strong>greitas augimas</strong>.</li>
             </ul>
-            <p>Pelnas vieną mėnesį didėja, tada keturis mėnesius mažėja, o nuo penkto mėnesio vėl didėja. Vingio taškas \(t = 3\) kitimo krypties nekeičia: pelnas mažėja ir prieš jį, ir po jo. Pasikeičia mažėjimo greitis: jis nustoja didėti ir pradeda mažėti. Trečią mėnesį pelnas mažėja greičiausiai per visą laikotarpį.</p>
+            <p>Pirmą mėnesį pelnas didėja, kitus keturis mėnesius mažėja, o praėjus penkiems mėnesiams vėl pradeda didėti. Vingio taškas \(t = 3\) kitimo krypties nekeičia: pelnas mažėja ir prieš jį, ir po jo. Pasikeičia mažėjimo greitis: jis nustoja didėti ir pradeda mažėti. Praėjus trims mėnesiams, pelnas mažėja greičiausiai per visą laikotarpį.</p>
           </div>
         </section>
       </div>
@@ -452,7 +452,7 @@
             <span class="label">Atsakymas</span>
             <p>a) Pajamos didėja visame intervale \((0;\, 6)\).</p>
             <p>b) Vingio taškų nėra.</p>
-            <p>c) Pajamos didėja, o funkcija įgaubta visą laikotarpį, todėl nuo produkto išleidimo iki šeštų metų būdingas <strong>greitas augimas</strong>: kiekvieni metai duoda didesnį pajamų prieaugį nei ankstesni. Antrais metais augimo spartėjimas akimirkai sustoja, nes \(R''(2) = 0\), tačiau augimas nepradeda lėtėti.</p>
+            <p>c) Pajamos didėja, o funkcija įgaubta visą laikotarpį, todėl per visus šešerius metus nuo produkto išleidimo būdingas <strong>greitas augimas</strong>: kiekvieni metai duoda didesnį pajamų prieaugį nei ankstesni. Praėjus dvejiems metams, augimo spartėjimas akimirkai sustoja, nes \(R''(2) = 0\), tačiau augimas nepradeda lėtėti.</p>
           </div>
         </section>
       </div>
@@ -468,7 +468,7 @@
         <span class="label">Sąlyga</span>
         Įmonė paskelbia produkto atšaukimą. Praėjus \(t\) savaičių, ji gauna
         \[ A(t) = 400te^{-0{,}5t},\quad 0 \le t \le 12 \]
-        skundų per savaitę. Skundų skaičius pirmas dvi savaites didėja, o nuo antros savaitės mažėja.
+        skundų per savaitę. Skundų skaičius pirmas dvi savaites didėja, o praėjus dviem savaitėms pradeda mažėti.
         <ol type="a">
           <li>Raskite funkcijos \(A(t)\) vingio tašką.</li>
           <li>Apibūdinkite, kas pasikeičia šiame taške.</li>
@@ -489,7 +489,7 @@
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>a) Vingio taškas</span></h4>
-          <p>Rodiklinė funkcija niekada nelygi nuliui, todėl antroji išvestinė lygi nuliui tik tada, kai \(t - 4 = 0\), t.&nbsp;y. \(t = 4\). Rodiklinis daugiklis teigiamas, todėl \(A''(t)\) ženklą lemia \(t - 4\) ženklas: iki ketvirtos savaitės neigiamas, o po jos – teigiamas.</p>
+          <p>Rodiklinė funkcija niekada nelygi nuliui, todėl antroji išvestinė lygi nuliui tik tada, kai \(t - 4 = 0\), t.&nbsp;y. \(t = 4\). Rodiklinis daugiklis teigiamas, todėl \(A''(t)\) ženklą lemia \(t - 4\) ženklas: kai \(t &lt; 4\), jis neigiamas, o kai \(t &gt; 4\) – teigiamas.</p>
           <div data-widget="sign-chart" data-spec='{"fp":"A&#39;&#39;(t)","f":"A(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true},{"x":"12"}],"s":["-","+"],"cc":true}'></div>
           <p>Ženklas keičiasi, todėl vingio taškas yra \(t = 4\).</p>
         </section>
@@ -497,7 +497,7 @@
           <div class="answer-box">
             <span class="label">Atsakymas</span>
             <p>a) Vingio taškas yra \(t = 4\).</p>
-            <p>b) Ketvirtą savaitę skundų skaičius mažėja. Iki šio taško kreivė išgaubta, o po jo – įgaubta. Taigi intervale \((2;\, 4)\) būdingas <strong>greitas mažėjimas</strong>, o intervale \((4;\, 12)\) – <strong>lėtas mažėjimas</strong>. Ketvirtą savaitę skundų skaičius mažėja didžiausiu greičiu. Po jos skundų skaičius vis dar mažėja, tačiau kas savaitę sumažėja mažiau.</p>
+            <p>b) Praėjus keturioms savaitėms, skundų skaičius mažėja. Iki šio taško kreivė išgaubta, o po jo – įgaubta. Taigi intervale \((2;\, 4)\) būdingas <strong>greitas mažėjimas</strong>, o intervale \((4;\, 12)\) – <strong>lėtas mažėjimas</strong>. Praėjus keturioms savaitėms, skundų skaičius mažėja didžiausiu greičiu. Vėliau skundų skaičius vis dar mažėja, tačiau kas savaitę sumažėja mažiau.</p>
           </div>
         </section>
       </div>
@@ -565,7 +565,7 @@
             <span class="label">Atsakymas</span>
             <p>a) \(H'(t) &gt; 0\), todėl namų ūkių skaičius didėja visoms \(t \ge 0\) reikšmėms.</p>
             <p>b) Mažėjančio rezultatyvumo taškas yra \(t = 4\).</p>
-            <p>c) Intervale \((0;\, 4)\) namų ūkių skaičiui būdingas <strong>greitas augimas</strong>, o intervale \((4;\, +\infty)\) – <strong>lėtas augimas</strong>. Iki ketvirto mėnesio kas mėnesį prisijungia daugiau naujų namų ūkių nei ankstesnį, o po jo – mažiau. Paslauga toliau plinta, tačiau ketvirtą mėnesį ji plinta greičiausiai.</p>
+            <p>c) Intervale \((0;\, 4)\) namų ūkių skaičiui būdingas <strong>greitas augimas</strong>, o intervale \((4;\, +\infty)\) – <strong>lėtas augimas</strong>. Pirmus keturis mėnesius kas mėnesį prisijungia daugiau naujų namų ūkių nei ankstesnį, o vėliau – mažiau. Paslauga toliau plinta, tačiau greičiausiai ji plinta praėjus keturiems mėnesiams.</p>
           </div>
         </section>
       </div>
@@ -592,7 +592,7 @@
         <div class="q-answer">
           <p>a) \(C'(x) = 0{,}3x^2 - 9x + 90\); \(D = 81 - 108 = -27 &lt; 0\), todėl kritinių taškų nėra, o \(C'(0) = 90 &gt; 0\). Sąnaudos didėja intervale \([0;\, 30]\).</p>
           <p>b) Iš \(C''(x) = 0{,}6x - 9 = 0\) gauname \(x = 15\); \(C''(10) = -3 &lt; 0\) ir \(C''(20) = 3 &gt; 0\), todėl vingio taškas yra \(x = 15\).</p>
-          <p>c) Sąnaudoms intervale \([0;\, 15]\) būdingas <strong>lėtas augimas</strong>, o intervale \([15;\, 30]\) – <strong>greitas augimas</strong>. Ribinės sąnaudos mažiausios pagaminant 15 tonų.</p>
+          <p>c) Sąnaudoms intervale \([0;\, 15)\) būdingas <strong>lėtas augimas</strong>, o intervale \((15;\, 30]\) – <strong>greitas augimas</strong>. Ribinės sąnaudos mažiausios pagaminant 15 tonų.</p>
         </div>
       </article>
 
@@ -624,9 +624,9 @@
           </ol>
         </div>
         <div class="q-answer">
-          <p>a) \(V'(t) = 500e^{-0{,}2t}(1 - 0{,}2t)\) (sandaugos taisyklė); kritinis taškas yra \(t = 5\). Lankytojų skaičius didėja intervale \([0;\, 5]\) ir mažėja intervale \([5;\, 20]\).</p>
+          <p>a) \(V'(t) = 500e^{-0{,}2t}(1 - 0{,}2t)\) (sandaugos taisyklė); kritinis taškas yra \(t = 5\). Lankytojų skaičius didėja intervale \([0;\, 5)\) ir mažėja intervale \((5;\, 20]\).</p>
           <p>b) \(V''(t) = 20e^{-0{,}2t}(t - 10)\); taške \(t = 10\) ženklas keičiasi iš neigiamo į teigiamą, todėl vingio taškas yra \(t = 10\).</p>
-          <p>c) Dešimtą dieną lankytojų skaičius mažėja, o kreivė iš išgaubtos tampa įgaubta, todėl <strong>greitas mažėjimas</strong> pereina į <strong>lėtą mažėjimą</strong>.</p>
+          <p>c) Praėjus dešimčiai dienų, lankytojų skaičius mažėja, o kreivė iš išgaubtos tampa įgaubta, todėl <strong>greitas mažėjimas</strong> pereina į <strong>lėtą mažėjimą</strong>.</p>
         </div>
       </article>
 
@@ -644,7 +644,7 @@
           <p>Visame atsakyme žymime \(w = e^{4 - 0{,}4t}\), todėl \(w &gt; 0\) visoms \(t\) reikšmėms.</p>
           <p>a) \(L'(t) = \dfrac{360w}{(1 + w)^2} &gt; 0\) (dalmens ir sudėtinės funkcijos išvestinės taisyklės), todėl namų ūkių skaičius didėja intervale \([0;\, 30]\).</p>
           <p>b) Iš \(L''(t) = \dfrac{144w(w - 1)}{(1 + w)^3} = 0\) gauname \(w = 1\), t.&nbsp;y. \(4 - 0{,}4t = 0\) ir \(t = 10\); čia ženklas keičiasi iš teigiamo į neigiamą, todėl mažėjančio rezultatyvumo taškas yra \(t = 10\).</p>
-          <p>c) Iki dešimto mėnesio kas mėnesį prisijungia daugiau naujų namų ūkių nei ankstesnį, o nuo dešimto mėnesio – mažiau.</p>
+          <p>c) Pirmus dešimt mėnesių kas mėnesį prisijungia daugiau naujų namų ūkių nei ankstesnį, o vėliau – mažiau.</p>
         </div>
       </article>
     </div>

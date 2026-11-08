@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="en" href="../en/tema-6-absoliutieji-ekstremumai.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=72">
+<link rel="stylesheet" href="../assets/css/style.css?v=73">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=72"></script>
+<script defer src="../assets/js/site.js?v=73"></script>
 </head>
 <body data-page="m65">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -413,7 +413,7 @@
         <div class="q-text">
           <p>Sezoninė įmonė dirba dešimt mėnesių. Jos mėnesio pelnas tūkstančiais eurų, praėjus \(t\) mėnesių nuo sezono pradžios, yra</p>
           <div class="fit-sm">\[ P(t) = t^3 - 15t^2 + 48t + 100,\quad 0 \leq t \leq 10 \]</div>
-          <p>Kurį mėnesį pelnas didžiausias, kurį mažiausias ir koks jo dydis kiekvienu atveju?</p>
+          <p>Kada pelnas didžiausias, kada mažiausias ir koks jo dydis kiekvienu atveju?</p>
         </div>
         <div class="q-answer">
           <p><strong>Išvestinė:</strong></p>
@@ -421,7 +421,7 @@
           <p><strong>Kritiniai taškai:</strong></p>
           \[ \begin{aligned} D &amp;= (-30)^2 - 4\cdot 3\cdot 48 \\ &amp;= 900 - 576 = 324 \\ \sqrt{D} &amp;= 18 \end{aligned} \]
           \[ \begin{gathered} t_1 = \frac{30 - 18}{2\cdot 3} = 2 \\ t_2 = \frac{30 + 18}{2\cdot 3} = 8 \end{gathered} \]
-          <p><strong>Atsakymas.</strong> Tikrinami taškai yra \(t = 0;\ 2;\ 8;\ 10\), o funkcijos reikšmės – \(P(0) = 100\), \(P(2) = 144\), \(P(8) = 36\), \(P(10) = 80\). Didžiausias pelnas – 144 tūkstančiai eurų antrą mėnesį, mažiausias – 36 tūkstančiai eurų aštuntą mėnesį.</p>
+          <p><strong>Atsakymas.</strong> Tikrinami taškai yra \(t = 0;\ 2;\ 8;\ 10\), o funkcijos reikšmės – \(P(0) = 100\), \(P(2) = 144\), \(P(8) = 36\), \(P(10) = 80\). Didžiausias pelnas – 144 tūkstančiai eurų praėjus dviem mėnesiams nuo sezono pradžios, mažiausias – 36 tūkstančiai eurų praėjus aštuoniems mėnesiams.</p>
         </div>
       </article>
 
@@ -445,12 +445,12 @@
         <div class="q-text">
           <p>Internetinė parduotuvė vykdo dvylikos dienų kampaniją. Praėjus \(t\) dienų nuo kampanijos pradžios, ji gauna</p>
           \[ N(t) = 150te^{-0{,}25t} + 30,\quad 0 \leq t \leq 12 \]
-          <p>užsakymų. Kurią dieną užsakymų skaičius didžiausias, kurią mažiausias ir kiek užsakymų gaunama?</p>
+          <p>užsakymų. Kada užsakymų skaičius didžiausias, kada mažiausias ir kiek užsakymų gaunama?</p>
         </div>
         <div class="q-answer">
           <p><strong>Išvestinė</strong> (sandaugos taisyklė, rodikliniam daugikliui taikant sudėtinės funkcijos išvestinės taisyklę):</p>
           \[ \begin{aligned} N'(t) &amp;= 150e^{-0{,}25t} \\ &amp;\phantom{=}\; + 150t\cdot e^{-0{,}25t}\cdot(-0{,}25) \\ &amp;= 150e^{-0{,}25t}(1 - 0{,}25t) \end{aligned} \]
-          <p><strong>Atsakymas.</strong> Vienintelis kritinis taškas yra \(t = 4\), todėl tikrinami taškai yra \(t = 0;\ 4;\ 12\), o atitinkamos funkcijos reikšmės – \(N(0) = 30\), \(N(4) \approx 250{,}7\), \(N(12) \approx 119{,}6\). Daugiausia užsakymų gaunama ketvirtą dieną – maždaug 251, mažiausiai kampanijos pradžios dieną – 30.</p>
+          <p><strong>Atsakymas.</strong> Vienintelis kritinis taškas yra \(t = 4\), todėl tikrinami taškai yra \(t = 0;\ 4;\ 12\), o atitinkamos funkcijos reikšmės – \(N(0) = 30\), \(N(4) \approx 250{,}7\), \(N(12) \approx 119{,}6\). Daugiausia užsakymų gaunama praėjus keturioms dienoms nuo kampanijos pradžios – maždaug 251, mažiausiai kampanijos pradžioje – 30.</p>
         </div>
       </article>
 
@@ -458,12 +458,12 @@
         <div class="q-text">
           <p>Tvenkinys įžuvinamas. Tikėtinas sugautų žuvų kiekis kilogramais, praėjus \(t\) savaičių nuo įžuvinimo, yra</p>
           \[ E(t) = \frac{4000t}{t^2 + 100} + 50,\quad 0 \leq t \leq 30 \]
-          <p>Kurią savaitę tikėtinas sugautų žuvų kiekis didžiausias, kurią mažiausias ir koks jis kiekvienu atveju?</p>
+          <p>Kada tikėtinas sugautų žuvų kiekis didžiausias, kada mažiausias ir koks jis kiekvienu atveju?</p>
         </div>
         <div class="q-answer">
           <p><strong>Išvestinė</strong> (dalmens taisyklė):</p>
           \[ \begin{aligned} E'(t) &amp;= \frac{4000(t^2 + 100) - 4000t\cdot 2t}{(t^2 + 100)^2} \\ &amp;= \frac{4000(100 - t^2)}{(t^2 + 100)^2} \end{aligned} \]
-          <p><strong>Atsakymas.</strong> Vienintelis intervalo viduje esantis kritinis taškas yra \(t = 10\) (sprendinys \(t = -10\) atmetamas), todėl tikrinami taškai yra \(t = 0;\ 10;\ 30\), o atitinkamos funkcijos reikšmės – \(E(0) = 50\), \(E(10) = 250\), \(E(30) = 170\). Didžiausias tikėtinas sugautų žuvų kiekis – 250&nbsp;kilogramų dešimtą savaitę. Mažiausias – 50&nbsp;kilogramų įžuvinimo metu.</p>
+          <p><strong>Atsakymas.</strong> Vienintelis intervalo viduje esantis kritinis taškas yra \(t = 10\) (sprendinys \(t = -10\) atmetamas), todėl tikrinami taškai yra \(t = 0;\ 10;\ 30\), o atitinkamos funkcijos reikšmės – \(E(0) = 50\), \(E(10) = 250\), \(E(30) = 170\). Didžiausias tikėtinas sugautų žuvų kiekis – 250&nbsp;kilogramų praėjus dešimčiai savaičių nuo įžuvinimo. Mažiausias – 50&nbsp;kilogramų įžuvinimo metu.</p>
         </div>
       </article>
     </div>

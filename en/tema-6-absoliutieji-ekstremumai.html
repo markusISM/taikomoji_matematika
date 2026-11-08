@@ -9,10 +9,10 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="lt" href="../lt/tema-6-absoliutieji-ekstremumai.html">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=72">
+<link rel="stylesheet" href="../assets/css/style.css?v=73">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=72"></script>
+<script defer src="../assets/js/site.js?v=73"></script>
 </head>
 <body data-page="m65">
 <noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
@@ -393,7 +393,7 @@
         <div class="q-text">
           <p>A seasonal business is open for ten months. Its monthly profit, in thousands of euros, \(t\) months after the season opens is</p>
           <div class="fit-sm">\[ P(t) = t^3 - 15t^2 + 48t + 100,\quad 0 \leq t \leq 10 \]</div>
-          <p>In which month is the profit largest, in which smallest, and how large is it in each case?</p>
+          <p>When is the profit largest, when is it smallest, and how large is it in each case?</p>
         </div>
         <div class="q-answer">
           <p><strong>The derivative:</strong></p>
@@ -401,7 +401,7 @@
           <p><strong>The critical points:</strong></p>
           \[ \begin{aligned} D &amp;= (-30)^2 - 4\cdot 3\cdot 48 \\ &amp;= 900 - 576 = 324 \\ \sqrt{D} &amp;= 18 \end{aligned} \]
           \[ \begin{gathered} t_1 = \frac{30 - 18}{2\cdot 3} = 2 \\ t_2 = \frac{30 + 18}{2\cdot 3} = 8 \end{gathered} \]
-          <p><strong>Answer.</strong> The candidates are \(t = 0;\ 2;\ 8;\ 10\), and the values are \(P(0) = 100\), \(P(2) = 144\), \(P(8) = 36\), \(P(10) = 80\). The profit is largest in the second month, 144 thousand euros, and smallest in the eighth, 36 thousand euros.</p>
+          <p><strong>Answer.</strong> The candidates are \(t = 0;\ 2;\ 8;\ 10\), and the values are \(P(0) = 100\), \(P(2) = 144\), \(P(8) = 36\), \(P(10) = 80\). The profit is largest two months after the start of the season, 144 thousand euros, and smallest eight months after the start, 36 thousand euros.</p>
         </div>
       </article>
 
@@ -425,12 +425,12 @@
         <div class="q-text">
           <p>An online shop runs a twelve-day campaign. On day \(t\) of the campaign it receives</p>
           \[ N(t) = 150te^{-0.25t} + 30,\quad 0 \leq t \leq 12 \]
-          <p>orders. On which day is the number of orders largest, on which smallest, and how many orders are there?</p>
+          <p>orders. When is the number of orders largest, when is it smallest, and how many orders are there?</p>
         </div>
         <div class="q-answer">
           <p><strong>The derivative</strong> (the product rule, with the chain rule inside):</p>
           \[ \begin{aligned} N'(t) &amp;= 150e^{-0.25t} \\ &amp;\phantom{=}\; + 150t\cdot e^{-0.25t}\cdot(-0.25) \\ &amp;= 150e^{-0.25t}(1 - 0.25t) \end{aligned} \]
-          <p><strong>Answer.</strong> The only critical point is \(t = 4\), so the candidates are \(t = 0;\ 4;\ 12\) with the values \(N(0) = 30\), \(N(4) \approx 250.7\), \(N(12) \approx 119.6\). The shop receives the most orders on the fourth day, about 251, and the fewest on the day the campaign starts, 30.</p>
+          <p><strong>Answer.</strong> The only critical point is \(t = 4\), so the candidates are \(t = 0;\ 4;\ 12\) with the values \(N(0) = 30\), \(N(4) \approx 250.7\), \(N(12) \approx 119.6\). The shop receives the most orders four days after the start of the campaign, about 251, and the fewest at the start of the campaign, 30.</p>
         </div>
       </article>
 
@@ -438,12 +438,12 @@
         <div class="q-text">
           <p>A pond is stocked with fish. The expected yield, in kilograms, \(t\) weeks after the stocking is</p>
           \[ E(t) = \frac{4000t}{t^2 + 100} + 50,\quad 0 \leq t \leq 30 \]
-          <p>In which week is the expected yield largest, in which smallest, and how large is it in each case?</p>
+          <p>When is the expected yield largest, when is it smallest, and how large is it in each case?</p>
         </div>
         <div class="q-answer">
           <p><strong>The derivative</strong> (the quotient rule):</p>
           \[ \begin{aligned} E'(t) &amp;= \frac{4000(t^2 + 100) - 4000t\cdot 2t}{(t^2 + 100)^2} \\ &amp;= \frac{4000(100 - t^2)}{(t^2 + 100)^2} \end{aligned} \]
-          <p><strong>Answer.</strong> The only critical point inside the range is \(t = 10\) (the root \(t = -10\) is discarded), so the candidates are \(t = 0;\ 10;\ 30\) with the values \(E(0) = 50\), \(E(10) = 250\), \(E(30) = 170\). The expected yield is largest in the tenth week, 250&nbsp;kilograms, and smallest at the stocking, 50&nbsp;kilograms.</p>
+          <p><strong>Answer.</strong> The only critical point inside the range is \(t = 10\) (the root \(t = -10\) is discarded), so the candidates are \(t = 0;\ 10;\ 30\) with the values \(E(0) = 50\), \(E(10) = 250\), \(E(30) = 170\). The expected yield is largest ten weeks after stocking, 250&nbsp;kilograms, and smallest at the stocking, 50&nbsp;kilograms.</p>
         </div>
       </article>
     </div>

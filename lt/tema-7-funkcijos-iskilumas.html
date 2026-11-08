@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=72">
+<link rel="stylesheet" href="../assets/css/style.css?v=73">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=72"></script>
+<script defer src="../assets/js/site.js?v=73"></script>
 </head>
 <body data-page="m72">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -353,7 +353,7 @@
       </header>
       <div class="problem">
         <span class="label">Sąlyga</span>
-        Išleidus naują programos versiją, per savaitę \(t\) praneštų klaidų skaičius yra
+        Praėjus \(t\) savaičių nuo naujos programos versijos išleidimo, per savaitę praneštų klaidų skaičius yra
         \[ F(t) = 800e^{-0{,}3t},\quad t \ge 0 \]
         <ol type="a">
           <li>Parodykite, kad praneštų klaidų skaičius mažėja.</li>
@@ -381,7 +381,7 @@
             <span class="label">Atsakymas</span>
             <p>a) \(F'(t) = -240e^{-0{,}3t} &lt; 0\), todėl praneštų klaidų skaičius mažėja.</p>
             <p>b) \(F''(t) = 72e^{-0{,}3t} &gt; 0\), todėl grafikas įgaubtas.</p>
-            <p>c) Klaidų skaičius mažėja, o funkcija įgaubta, todėl būdingas <strong>lėtas mažėjimas</strong>. Kas savaitę pranešama mažiau klaidų, tačiau šis pagerėjimas taip pat mažėja: pirmą savaitę kitimo greitis yra \(F'(0) = -240\)&nbsp;klaidų per savaitę, o penktą – \(F'(4) \approx -72{,}29\)&nbsp;klaidos per savaitę.</p>
+            <p>c) Klaidų skaičius mažėja, o funkcija įgaubta, todėl būdingas <strong>lėtas mažėjimas</strong>. Kas savaitę pranešama mažiau klaidų, tačiau šis pagerėjimas taip pat mažėja: išleidimo metu kitimo greitis yra \(F'(0) = -240\)&nbsp;klaidų per savaitę, o praėjus keturioms savaitėms – \(F'(4) \approx -72{,}29\)&nbsp;klaidos per savaitę.</p>
           </div>
         </section>
       </div>
@@ -479,7 +479,7 @@
             <span class="label">Atsakymas</span>
             <p>a) \(A'(t) = \dfrac{120}{(t + 4)^2} &gt; 0\), todėl vidutinė suma didėja.</p>
             <p>b) \(A''(t) = -\dfrac{240}{(t + 4)^3} &lt; 0\), todėl grafikas išgaubtas.</p>
-            <p>c) Vidutinė suma didėja, o funkcija išgaubta, todėl būdingas <strong>lėtas augimas</strong>. Klientai kas mėnesį išleidžia daugiau, tačiau mėnesio prieaugis mažėja: pirmą mėnesį vidutinė suma didėja \(A'(0) = 7{,}5\)&nbsp;euro per mėnesį, o po metų – \(A'(12) \approx 0{,}47\)&nbsp;euro per mėnesį.</p>
+            <p>c) Vidutinė suma didėja, o funkcija išgaubta, todėl būdingas <strong>lėtas augimas</strong>. Klientai kas mėnesį išleidžia daugiau, tačiau mėnesio prieaugis mažėja: programos pradžioje vidutinė suma didėja \(A'(0) = 7{,}5\)&nbsp;euro per mėnesį, o praėjus metams – \(A'(12) \approx 0{,}47\)&nbsp;euro per mėnesį.</p>
           </div>
         </section>
       </div>
@@ -554,9 +554,9 @@
           </ol>
         </div>
         <div class="q-answer">
-          <p>a) \(P'(t) = 3t^2 - 24t + 36\); padaliję iš 3, gauname \(t^2 - 8t + 12 = 0\), \(D = 64 - 48 = 16\). Sprendiniai yra \(t_1 = 2\) ir \(t_2 = 6\), iš kurių tik 6 priklauso nagrinėjamam intervalui; \(P'(5) = -9 &lt; 0\) ir \(P'(7) = 15 &gt; 0\). Pelnas mažėja intervale \([4;\, 6]\) ir didėja intervale \([6;\, 10]\).</p>
-          <p>b) \(P''(t) = 6t - 24 &gt; 0\) intervale \([4;\, 10]\), todėl pelno funkcija jame įgaubta.</p>
-          <p>c) Pelnui intervale \([4;\, 6]\) būdingas <strong>lėtas mažėjimas</strong>, o intervale \([6;\, 10]\) – <strong>greitas augimas</strong>.</p>
+          <p>a) \(P'(t) = 3t^2 - 24t + 36\); padaliję iš 3, gauname \(t^2 - 8t + 12 = 0\), \(D = 64 - 48 = 16\). Sprendiniai yra \(t_1 = 2\) ir \(t_2 = 6\), iš kurių tik 6 priklauso nagrinėjamam intervalui; \(P'(5) = -9 &lt; 0\) ir \(P'(7) = 15 &gt; 0\). Pelnas mažėja intervale \([4;\, 6)\) ir didėja intervale \((6;\, 10]\).</p>
+          <p>b) \(P''(t) = 6t - 24 &gt; 0\) intervale \((4;\, 10]\), todėl pelno funkcija jame įgaubta.</p>
+          <p>c) Pelnui intervale \((4;\, 6)\) būdingas <strong>lėtas mažėjimas</strong>, o intervale \((6;\, 10]\) – <strong>greitas augimas</strong>.</p>
         </div>
       </article>
     </div>
