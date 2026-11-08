@@ -321,7 +321,7 @@
         desc: { lt: 'Didžiausia ir mažiausia funkcijos reikšmė intervale.', en: 'The largest and the smallest value of a function on an interval.' } }
     ],
     t7: [
-      { id: 'm71', status: 'soon',
+      { id: 'm71', status: 'active', href: { lt: 'tema-7-pokycio-sparta.html' },
         title: { lt: 'Pokyčio sparta', en: 'The Second Order Derivative' },
         desc: { lt: 'Antroji išvestinė kaip kitimo greičio kitimo greitis: ar dydis kinta vis sparčiau, ar vis lėčiau.', en: 'The second derivative as the rate of change of a rate of change: whether a quantity changes faster and faster or slower and slower.' } },
       { id: 'm72', status: 'soon',
@@ -408,6 +408,8 @@
                title: { lt: 'Absoliutieji ekstremumai', en: 'Absolute Extrema' } },
     t7:      { parent: 'home', href: { lt: 'tema-7.html', en: null },
                title: { lt: '7 tema', en: 'Topic 7' } },
+    m71:     { parent: 't7', topic: 't7', model: 'm71', href: { lt: 'tema-7-pokycio-sparta.html', en: null },
+               title: { lt: 'Pokyčio sparta', en: 'The Second Order Derivative' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },

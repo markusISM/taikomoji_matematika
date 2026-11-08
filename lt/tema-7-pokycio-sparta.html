@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pokyčio sparta · Taikomoji matematika</title>
+<meta name="description" content="Pokyčio sparta: antroji išvestinė kaip kitimo greičio kitimo greitis, jos ženklas, matavimo vienetai ir interpretacija. Sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=70">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=70"></script>
+</head>
+<body data-page="m71">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">7 tema · Taikymai · 1 skyrius</span>
+    <h1>Pokyčio sparta</h1>
+    <p class="lead">Šiame skyriuje antroji išvestinė taikoma ekonominiams dydžiams: ji parodo, ar dydis kinta vis sparčiau, ar vis lėčiau, ir kiek pasikeis jo kitimo greitis, argumentui padidėjus vienu vienetu.</p>
+    <ul class="jump">
+      <li><a href="#sparta">Pokyčio sparta</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. POKYČIO SPARTA ============ -->
+  <section class="section" id="sparta" aria-labelledby="h-rate">
+    <h2 id="h-rate">Antroji išvestinė kaip pokyčio sparta</h2>
+
+    <article class="card">
+      <p>Pirmoji išvestinė yra dydžio kitimo greitis. Ji taip pat yra funkcija, todėl turi savo kitimo greitį – antrąją išvestinę. Taigi \(f''(x)\) rodo <strong>pokyčio spartą</strong>: kaip greitai didėja arba mažėja pats kitimo greitis. Kaip tai atrodo grafike, galite pamatyti <a href="tema-7.html#reklama">7 temos puslapio interaktyviame grafike</a>.</p>
+      <p>Pirmoji išvestinė interpretuojama įprastai, o antroji – panašiai, tik kalbama apie kitimo greitį:</p>
+      <div class="model-note"><strong>Jei \(x\) padidėja vienu vienetu nuo \(x_0\), dydis pasikeičia apytiksliai \(f'(x_0)\).</strong></div>
+      <div class="model-note"><strong>Jei \(x\) padidėja vienu vienetu nuo \(x_0\), kitimo greitis pasikeičia apytiksliai \(f''(x_0)\).</strong></div>
+      <p style="margin-top:12px">Abu įverčiai apytiksliai dėl tos pačios priežasties: išvestinių reikšmės apskaičiuotos viename taške \(x_0\), o per visą vieneto ilgio pokytį kitimo greičiai neišlieka pastovūs.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Ženklas</h3>
+      <p>Interpretacijai pakanka žinoti antrosios išvestinės ženklą:</p>
+      <ul>
+        <li>jei \(f''(x) &gt; 0\), tai \(f'(x)\) didėja: dydžio kitimo greitis didėja;</li>
+        <li>jei \(f''(x) &lt; 0\), tai \(f'(x)\) mažėja: dydžio kitimo greitis mažėja.</li>
+      </ul>
+      <p class="tip"><strong>Ko ženklas nereiškia.</strong> Neigiama antroji išvestinė <strong>nereiškia</strong>, kad pats dydis mažėja. Ji reiškia, kad mažėja dydžio kitimo greitis. Ar dydis didėja, ar mažėja, nustatoma tik pagal pirmąją išvestinę. Todėl abiejų išvestinių ženklus vertinkite kartu: pavyzdžiui, jei \(f'(x_0) &lt; 0\), o \(f''(x_0) &gt; 0\), dydis mažėja, tačiau vis lėčiau (žr. <a href="#pavyzdys-3">3 pavyzdį</a>).</p>
+
+      <h3 class="subhead" style="margin-top:22px">Matavimo vienetai</h3>
+      <p>Antroji išvestinė matuojama pirmosios išvestinės vienetais, tenkančiais vienam argumento vienetui. Pavyzdžiui, jei ribinės sąnaudos matuojamos eurais tonai, antroji sąnaudų išvestinė rodo, keliais eurais tonai jos pasikeičia, pagaminus dar vieną toną (<a href="#pavyzdys-1">1 pavyzdys</a>). Jei naudotojų skaičiaus didėjimo greitis matuojamas tūkstančiais per mėnesį, antroji išvestinė rodo, keliais tūkstančiais per mėnesį šis greitis pasikeičia kas mėnesį (<a href="#pavyzdys-4">4 pavyzdys</a>).</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Užrašykite funkciją ir paaiškinkite, ką reiškia kintamasis. Jei nagrinėjamas dydis nepateiktas formule, pirmiausia ją sudarykite.</li>
+        <li>Diferencijuokite. Prieš diferencijuodami šaknis ir atvirkštinius dydžius <a href="tema-7.html#skaiciavimas">perrašykite laipsniais</a>. Įvardykite taikomą taisyklę ir funkcijas, kurioms ją taikote.</li>
+        <li>Supaprastinkite pirmąją išvestinę. Jei taip bus lengviau diferencijuoti toliau, vėl perrašykite ją laipsniu.</li>
+        <li>Diferencijuokite supaprastintą pirmąją išvestinę ir supaprastinkite rezultatą.</li>
+        <li>Uždavinyje nurodytą kintamojo reikšmę įstatykite į \(f'\) ir \(f''\), tada interpretuokite abu rezultatus.</li>
+      </ol>
+      <div class="model-note"><strong>Interpretacija.</strong> Apskaičiavus du skaičius, atsakymas dar nebaigtas. Tokio pobūdžio uždaviniuose reikia paaiškinti jų reikšmę uždavinio kontekste – tai yra atsakymo dalis. Reikia dviejų sakinių: pirmuoju nusakoma, kaip, kintamajam padidėjus vienu vienetu, pasikeičia dydis, antruoju – kaip pasikeičia pats kitimo greitis.</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Neigiama antroji išvestinė – „dydis mažėja“.</strong> Neigiama antroji išvestinė reiškia, kad mažėja kitimo greitis. Ar dydis didėja, ar mažėja, rodo pirmoji išvestinė.</li>
+            <li><strong>Praleistas supaprastinimas.</strong> Nesupaprastintą pirmąją išvestinę sunkiau diferencijuoti antrą kartą.</li>
+            <li><strong>Šaknys ir trupmenos neperrašytos laipsniais.</strong> Išvestinę, užrašytą šaknimi ar trupmena, dažnai sunkiau diferencijuoti nei tą patį reiškinį, užrašytą laipsniu.</li>
+            <li><strong>Atsakyme – tik skaičiai.</strong> Reikia interpretuoti abu rezultatus: kaip pasikeičia dydis ir kaip pasikeičia jo kitimo greitis.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 7.1, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Chemijos gamyklos ribinės sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Chemijos gamyklos dienos bendrosios sąnaudos, pagaminant \(x\) tonų produkcijos, yra
+        <div class="fit-sm">\[ TC(x) = 0{,}02x^3 - 1{,}2x^2 + 40x + 500 \]</div>
+        eurų. Raskite ribines sąnaudas, kai per dieną pagaminama 10 tonų, ir šių ribinių sąnaudų kitimo greitį. Interpretuokite abu rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmoji išvestinė</span></h4>
+          <p>Funkcija yra laipsnių suma, todėl laipsninės funkcijos išvestinės formulė taikoma kiekvienam nariui (<a href="tema-6.html#sumos">sumos ir skirtumo taisyklė</a>), o konstantos 500 išvestinė lygi nuliui:</p>
+          \[ \begin{aligned} MC(x) &amp;= TC'(x) \\ &amp;= 0{,}02\cdot 3x^2 - 1{,}2\cdot 2x + 40 \\ &amp;= 0{,}06x^2 - 2{,}4x + 40 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Antroji išvestinė</span></h4>
+          <p>Pirmoji išvestinė taip pat yra laipsnių suma, todėl ta pati formulė taikoma dar kartą:</p>
+          \[ TC''(x) = 0{,}06\cdot 2x - 2{,}4 = 0{,}12x - 2{,}4 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
+          \[ \begin{aligned} MC(10) &amp;= 0{,}06\cdot 100 - 2{,}4\cdot 10 + 40 \\ &amp;= 6 - 24 + 40 = 22 \end{aligned} \]
+          \[ \begin{aligned} TC''(10) &amp;= 0{,}12\cdot 10 - 2{,}4 \\ &amp;= 1{,}2 - 2{,}4 = -1{,}2 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Ribinės sąnaudos yra 22&nbsp;eurai tonai, o jų pokytis kiekvienai papildomai tonai yra \(-1{,}2\)&nbsp;euro tonai. Dienos gamybos kiekiui padidėjus viena tona nuo 10 tonų, bendrosios sąnaudos padidės maždaug 22&nbsp;eurais. Dienos gamybos kiekiui padidėjus viena tona nuo 10 tonų, pačios ribinės sąnaudos sumažės maždaug 1,20&nbsp;euro. Taigi už papildomą toną vis dar reikia mokėti, tačiau kiekviena papildoma tona kainuoja šiek tiek mažiau nei ankstesnė.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 7.1, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Dirbtuvių ribinis darbo produktas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvėse, kuriose dirba \(x\) darbuotojų, pagaminama
+        \[ Q(x) = 60\sqrt{x} \]
+        gaminių per valandą. Raskite ribinį darbo produktą, kai dirba 25 darbuotojai, ir jo kitimo greitį. Interpretuokite abu rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Šaknis – laipsniu</span></h4>
+          <p>Pirmiausia šaknį perrašykite laipsniu. Pagal taisyklę \(\sqrt[n]{x^m} = x^{\frac{m}{n}}\) kintamojo \(x\) kvadratinė šaknis yra \(\sqrt{x} = \sqrt{x^1} = x^{\frac{1}{2}} = x^{0{,}5}\), todėl</p>
+          \[ Q(x) = 60x^{0{,}5} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmoji išvestinė</span></h4>
+          <p>Dabar taikoma laipsninės funkcijos išvestinės formulė: rodiklis tampa daugikliu, o tada sumažinamas vienetu.</p>
+          \[ \begin{aligned} Q'(x) &amp;= 60\cdot 0{,}5x^{0{,}5 - 1} = 30x^{-0{,}5} \\ &amp;= \frac{30}{x^{0{,}5}} = \frac{30}{\sqrt{x}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Antroji išvestinė</span></h4>
+          <p>Pirmoji išvestinė jau užrašyta laipsniu \(30x^{-0{,}5}\), todėl ta pati formulė taikoma dar kartą:</p>
+          \[ \begin{aligned} Q''(x) &amp;= 30\cdot(-0{,}5)x^{-0{,}5 - 1} = -15x^{-1{,}5} \\ &amp;= -\frac{15}{x^{1{,}5}} = -\frac{15}{\sqrt{x^3}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Reikšmės</span></h4>
+          \[ Q'(25) = \frac{30}{\sqrt{25}} = \frac{30}{5} = 6 \]
+          \[ \begin{aligned} Q''(25) &amp;= -\frac{15}{\sqrt{25^3}} = -\frac{15}{\sqrt{15625}} \\ &amp;= -\frac{15}{125} = -0{,}12 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Ribinis darbo produktas yra 6&nbsp;gaminiai per valandą vienam darbuotojui, o jo pokytis kiekvienam papildomam darbuotojui yra \(-0{,}12\)&nbsp;gaminio per valandą vienam darbuotojui. Kai dirba 25 darbuotojai, įdarbinus dar vieną, gamybos kiekis padidės maždaug 6&nbsp;gaminiais per valandą. Įdarbinus dar vieną darbuotoją po jo, papildomas gamybos kiekio prieaugis bus maždaug 0,12&nbsp;gaminio per valandą mažesnis. Taigi kiekvienas naujas darbuotojas vis dar padidina gamybos kiekį, tačiau mažiau nei anksčiau įdarbintas darbuotojas.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 7.1, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Įrenginio perpardavimo vertė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įrenginio perpardavimo vertė, praėjus \(t\) metų nuo jo įsigijimo, yra
+        \[ V(t) = 40000e^{-0{,}25t} \]
+        eurų. Raskite vertės kitimo greitį praėjus ketveriems metams nuo įsigijimo ir šio kitimo greičio kitimo greitį. Interpretuokite abu rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmoji išvestinė</span></h4>
+          <p>Laipsnio rodiklis nėra vien \(t\), todėl reikia <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklės</a>. <strong>Išorinė funkcija</strong> yra rodiklinė funkcija \(e^u\), o <strong>vidinė</strong> – \(u(t) = -0{,}25t\). Rodiklinės funkcijos su vidine funkcija išvestinės formulė yra</p>
+          \[ \big(e^{u(t)}\big)' = e^{u(t)}\cdot u'(t) \]
+          <p>Čia \(u'(t) = -0{,}25\), o pastovus daugiklis 40&nbsp;000 išlieka:</p>
+          \[ \begin{aligned} V'(t) &amp;= 40000\cdot e^{-0{,}25t}\cdot(-0{,}25) \\ &amp;= -10000e^{-0{,}25t} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Antroji išvestinė</span></h4>
+          <p>Pirmosios išvestinės forma tokia pati kaip pradinės funkcijos, skiriasi tik pastovus daugiklis. Todėl ta pati taisyklė taikoma dar kartą:</p>
+          \[ \begin{aligned} V''(t) &amp;= -10000\cdot e^{-0{,}25t}\cdot(-0{,}25) \\ &amp;= 2500e^{-0{,}25t} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
+          <p>Kai \(t = 4\), laipsnio rodiklis yra \(-0{,}25\cdot 4 = -1\):</p>
+          \[ V'(4) = -10000e^{-1} \approx -3678{,}79 \]
+          \[ V''(4) = 2500e^{-1} \approx 919{,}70 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Praėjus ketveriems metams nuo įsigijimo, įrenginio vertė mažėja maždaug 3678,79&nbsp;euro per metus, o šis vertės mažėjimas kiekvienais papildomais metais sumažėja maždaug 919,70&nbsp;euro per metus. Įrenginį naudojant dar metus, jo vertė sumažės maždaug 3678,79&nbsp;euro. Dar kitais metais vertė sumažės maždaug 919,70&nbsp;euro mažiau nei šiais metais. Abiejų išvestinių ženklai skiriasi ir abu yra svarbūs: vertė mažėja, tačiau vis lėčiau.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 7.1, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Paslaugos naudotojų skaičius</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Paslaugos registruotų naudotojų skaičius tūkstančiais, praėjus \(x\) mėnesių nuo jos teikimo pradžios, yra
+        \[ N(x) = 20\ln(2x + 1) \]
+        Raskite naudotojų skaičiaus didėjimo greitį praėjus dviem mėnesiams nuo paslaugos teikimo pradžios ir šio didėjimo greičio kitimo greitį. Interpretuokite abu rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmoji išvestinė</span></h4>
+          <p>Vėl taikoma <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklė</a>. <strong>Išorinė funkcija</strong> yra logaritmas \(\ln u\), o <strong>vidinė</strong> – \(u(x) = 2x + 1\). Logaritminės funkcijos su vidine funkcija išvestinės formulė yra</p>
+          \[ \big(\ln u(x)\big)' = \frac{u'(x)}{u(x)} \]
+          <p>Čia \(u'(x) = 2\), todėl</p>
+          \[ N'(x) = 20\cdot\frac{2}{2x + 1} = \frac{40}{2x + 1} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Antroji išvestinė</span></h4>
+          <p>Pirmoji išvestinė yra trupmena su pastoviu skaitikliu, todėl lengviau ją perrašyti laipsniu \(\dfrac{40}{2x + 1} = 40(2x + 1)^{-1}\) ir taikyti laipsninės funkcijos su vidine funkcija išvestinės formulę:</p>
+          \[ \big((u(x))^n\big)' = n(u(x))^{n-1}\cdot u'(x) \]
+          <p>Kai \(n = -1\) ir \(u(x) = 2x + 1\), tai \(u'(x) = 2\):</p>
+          \[ \begin{aligned} N''(x) &amp;= 40\cdot(-1)(2x + 1)^{-2}\cdot 2 \\ &amp;= -\frac{80}{(2x + 1)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
+          <p>Kai \(x = 2\), vidinės funkcijos reikšmė yra \(2\cdot 2 + 1 = 5\):</p>
+          \[ N'(2) = \frac{40}{5} = 8 \]
+          \[ N''(2) = -\frac{80}{5^2} = -\frac{80}{25} = -3{,}2 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Praėjus dviem mėnesiams nuo paslaugos teikimo pradžios, naudotojų skaičius didėja 8&nbsp;tūkstančiais per mėnesį, o šis prieaugis kiekvieną papildomą mėnesį sumažėja 3,2&nbsp;tūkstančio per mėnesį. Praėjus dar vienam mėnesiui, atsiras maždaug 8&nbsp;tūkstančiai naujų naudotojų. Dar kitą mėnesį naujų naudotojų bus maždaug 3,2&nbsp;tūkstančio mažiau nei šį mėnesį. Paslaugos naudotojų skaičius toliau didėja, tačiau naujų naudotojų skaičius per mėnesį sparčiai mažėja.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 7.1, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Plantacijos medienos vertė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Plantacijoje augančių medžių medienos vertė tūkstančiais eurų po \(t\) metų yra
+        \[ W(t) = 50te^{-0{,}1t} + 200 \]
+        Raskite vertės kitimo greitį po penkerių metų ir šio kitimo greičio kitimo greitį. Interpretuokite abu rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmoji išvestinė</span></h4>
+          <p>Pirmasis narys yra dviejų funkcijų sandauga, todėl taikoma <a href="tema-6.html#sandaugos">sandaugos taisyklė</a>:</p>
+          <div class="fit-sm">\[ \big(u(t)\cdot v(t)\big)' = u'(t)\cdot v(t) + u(t)\cdot v'(t) \]</div>
+          <p>Pažymėkite \(u(t) = 50t\) ir \(v(t) = e^{-0{,}1t}\). Tada \(u'(t) = 50\), o antrojo daugiklio išvestinė randama taikant sudėtinės rodiklinės funkcijos išvestinės taisyklę. Vidinė funkcija čia yra \(-0{,}1t\):</p>
+          \[ v'(t) = e^{-0{,}1t}\cdot(-0{,}1) = -0{,}1e^{-0{,}1t} \]
+          <p>Konstantos 200 išvestinė lygi nuliui, todėl</p>
+          \[ \begin{aligned} W'(t) &amp;= 50e^{-0{,}1t} + 50t\cdot\left(-0{,}1e^{-0{,}1t}\right) \\ &amp;= 50e^{-0{,}1t} - 5te^{-0{,}1t} \\ &amp;= 50e^{-0{,}1t}(1 - 0{,}1t) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Antroji išvestinė</span></h4>
+          <p>Supaprastinta pirmoji išvestinė vėl yra sandauga, kurios daugikliai dabar yra \(u(t) = 50e^{-0{,}1t}\) ir \(v(t) = 1 - 0{,}1t\). Čia \(u'(t) = -5e^{-0{,}1t}\) ir \(v'(t) = -0{,}1\):</p>
+          \[ \begin{aligned} W''(t) &amp;= -5e^{-0{,}1t}(1 - 0{,}1t) \\ &amp;\phantom{=}\; + 50e^{-0{,}1t}\cdot(-0{,}1) \end{aligned} \]
+          <p>Abiejuose nariuose yra daugiklis \(e^{-0{,}1t}\), todėl jį iškelkite prieš skliaustus:</p>
+          \[ \begin{aligned} W''(t) &amp;= e^{-0{,}1t}\left[-5(1 - 0{,}1t) - 5\right] \\ &amp;= e^{-0{,}1t}(0{,}5t - 10) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
+          <p>Kai \(t = 5\), laipsnio rodiklis yra \(-0{,}5\):</p>
+          \[ \begin{aligned} W'(5) &amp;= 50e^{-0{,}5}\cdot(1 - 0{,}5) \\ &amp;= 25e^{-0{,}5} \approx 15{,}16 \end{aligned} \]
+          \[ \begin{aligned} W''(5) &amp;= e^{-0{,}5}\cdot(2{,}5 - 10) \\ &amp;= -7{,}5e^{-0{,}5} \approx -4{,}55 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Po penkerių metų medienos vertė didėja maždaug 15,16&nbsp;tūkstančio eurų per metus, o šis prieaugis kiekvienais papildomais metais sumažėja maždaug 4,55&nbsp;tūkstančio eurų per metus. Medžius palikus augti dar metus, jų medienos vertė padidės maždaug 15,16&nbsp;tūkstančio eurų. Dar kitais metais ji padidės maždaug 4,55&nbsp;tūkstančio eurų mažiau. Taigi medienos vertė kasmet vis dar didėja, tačiau kiekvieni papildomi metai ją padidina mažiau nei ankstesni.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 7.1, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Gaminio rinkos dalis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gaminio užimama rinkos dalis procentais, praėjus \(t\) mėnesių nuo jo pateikimo rinkai, yra
+        \[ S(t) = \frac{60t}{t + 10} \]
+        Raskite rinkos dalį, jos didėjimo greitį ir šio didėjimo greičio kitimo greitį praėjus dešimčiai mėnesių nuo gaminio pateikimo rinkai. Interpretuokite paskutinius du rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmoji išvestinė</span></h4>
+          <p>Funkcija yra trupmena, todėl taikoma <a href="tema-6.html#dalmens">dalmens taisyklė</a>:</p>
+          \[ \left(\frac{u(t)}{v(t)}\right)' = \frac{u'(t)v(t) - u(t)v'(t)}{v^2(t)} \]
+          <p>Skaitiklį pažymėkite \(u(t) = 60t\), o vardiklį – \(v(t) = t + 10\). Tada \(u'(t) = 60\) ir \(v'(t) = 1\):</p>
+          \[ \begin{aligned} S'(t) &amp;= \frac{60(t + 10) - 60t\cdot 1}{(t + 10)^2} \\ &amp;= \frac{60t + 600 - 60t}{(t + 10)^2} = \frac{600}{(t + 10)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Antroji išvestinė</span></h4>
+          <p>Dar kartą taikyti dalmens taisyklės nereikia. Skaitiklis dabar pastovus, todėl pirmoji išvestinė perrašoma laipsniu su vidine funkcija: \(\dfrac{600}{(t + 10)^2} = 600(t + 10)^{-2}\). Taikoma laipsninės funkcijos su vidine funkcija išvestinės formulė, kai \(u(t) = t + 10\) ir \(u'(t) = 1\):</p>
+          \[ \begin{aligned} S''(t) &amp;= 600\cdot(-2)(t + 10)^{-3}\cdot 1 \\ &amp;= -\frac{1200}{(t + 10)^3} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
+          <p>Kai \(t = 10\), vidinės funkcijos reikšmė yra \(t + 10 = 20\):</p>
+          \[ S(10) = \frac{600}{20} = 30 \]
+          \[ S'(10) = \frac{600}{20^2} = \frac{600}{400} = 1{,}5 \]
+          \[ S''(10) = -\frac{1200}{20^3} = -\frac{1200}{8000} = -0{,}15 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Praėjus dešimčiai mėnesių nuo pateikimo rinkai, gaminys užima 30&nbsp;procentų rinkos. Rinkos dalis didėja 1,5&nbsp;procentinio punkto per mėnesį, o šis prieaugis kiekvieną papildomą mėnesį sumažėja 0,15&nbsp;procentinio punkto per mėnesį. Praėjus dar vienam mėnesiui, rinkos dalis padidės maždaug 1,5&nbsp;procentinio punkto. Dar kitą mėnesį ji padidės maždaug 0,15&nbsp;procentinio punkto mažiau. Taigi gaminys vis dar perima rinkos dalį iš konkurentų, tačiau kas mėnesį jos perima vis mažiau.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: raskite abi išvestines, apskaičiuokite jų reikšmes ir interpretuokite abu rezultatus. Atsakyme pateiktos išvestinės, jų reikšmės ir interpretacija – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Dienos bendrosios sąnaudos gaminant \(x\) gaminių yra</p>
+          <div class="fit-sm">\[ TC(x) = 0{,}02x^3 - 1{,}5x^2 + 60x + 800 \]</div>
+          <p>eurų. Raskite \(TC'(20)\) ir \(TC''(20)\) ir interpretuokite abu rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ TC'(x) = 0{,}06x^2 - 3x + 60 \]
+          \[ TC''(x) = 0{,}12x - 3 \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ TC'(20) = 24;\qquad TC''(20) = -0{,}6 \]
+          <p><strong>Atsakymas.</strong> Kai per dieną pagaminama 20 gaminių, papildomas gaminys sąnaudas padidina maždaug 24&nbsp;eurais, o šis prieaugis kiekvienam papildomam gaminiui sumažėja 0,6&nbsp;euro.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Produkto atsargų kiekis sandėlyje tonomis, praėjus \(t\) dienų nuo pristatymo, yra</p>
+          \[ Q(t) = 800e^{-0{,}1t} \]
+          <p>Raskite \(Q'(10)\) ir \(Q''(10)\) ir interpretuokite abu rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės (sudėtinės funkcijos išvestinės taisyklė):</strong></p>
+          \[ Q'(t) = -80e^{-0{,}1t} \]
+          \[ Q''(t) = 8e^{-0{,}1t} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ Q'(10) = -80e^{-1} \approx -29{,}43 \]
+          \[ Q''(10) = 8e^{-1} \approx 2{,}94 \]
+          <p><strong>Atsakymas.</strong> Dešimtą dieną atsargos mažėja maždaug 29,43&nbsp;tonos per dieną, o šis mažėjimas kasdien sumažėja maždaug 2,94&nbsp;tonos per dieną.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonės mėnesio pardavimo kiekis tūkstančiais vienetų, praėjus \(t\) mėnesių nuo gaminio dizaino atnaujinimo, yra</p>
+          \[ S(t) = 18\ln(t + 1) + 4t \]
+          <p>Raskite \(S'(5)\) ir \(S''(5)\) ir interpretuokite abu rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės (pirmoji – pagal sudėtinės funkcijos išvestinės taisyklę):</strong></p>
+          \[ S'(t) = \frac{18}{t + 1} + 4 \]
+          \[ S''(t) = -\frac{18}{(t + 1)^2} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ S'(5) = 7;\qquad S''(5) = -0{,}5 \]
+          <p><strong>Atsakymas.</strong> Penktą mėnesį pardavimo kiekis didėja 7&nbsp;tūkstančiais vienetų per mėnesį, o šis prieaugis kas mėnesį sumažėja 0,5&nbsp;tūkstančio vienetų per mėnesį.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Nauju mokėjimo būdu besinaudojančių klientų dalis procentais, praėjus \(t\) mėnesių nuo jo įdiegimo, yra</p>
+          \[ H(t) = \frac{80t}{t + 12} \]
+          <p>Raskite \(H'(8)\) ir \(H''(8)\) ir interpretuokite abu rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės (dalmens taisyklė):</strong></p>
+          \[ H'(t) = \frac{960}{(t + 12)^2} \]
+          \[ H''(t) = -\frac{1920}{(t + 12)^3} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ H'(8) = 2{,}4;\qquad H''(8) = -0{,}24 \]
+          <p><strong>Atsakymas.</strong> Aštuntą mėnesį dalis didėja 2,4&nbsp;procentinio punkto per mėnesį, o šis prieaugis kas mėnesį sumažėja 0,24&nbsp;procentinio punkto per mėnesį.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">6.4–6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">9.5 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
