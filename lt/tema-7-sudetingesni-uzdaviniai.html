@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sudėtingesni optimizavimo uždaviniai · Taikomoji matematika</title>
+<meta name="description" content="Sudėtingesni optimizavimo uždaviniai: paklausos funkcijos sudarymas pagal sąlygos duomenis, plotų ir tūrių optimizavimas, antrojo nežinomojo pašalinimas. Pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=76">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=76"></script>
+</head>
+<body data-page="m75">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">7 tema · Taikymai · 5 skyrius</span>
+    <h1>Sudėtingesni optimizavimo uždaviniai</h1>
+    <p class="lead">Šiame skyriuje tikslo funkciją reikia sudaryti patiems: paklausos funkciją – pagal sąlygos duomenis, o plotų ir tūrių uždaviniuose – pagal geometrinės figūros ar kūno matmenis.</p>
+    <ul class="jump">
+      <li><a href="#tikslo">Tikslo funkcija</a></li>
+      <li><a href="#paklausa">Paklausos funkcija</a></li>
+      <li><a href="#geometrija">Plotai ir tūriai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. TIKSLO FUNKCIJOS SUDARYMAS ============ -->
+  <section class="section" id="tikslo" aria-labelledby="h-obj">
+    <h2 id="h-obj">Tikslo funkcijos sudarymas</h2>
+
+    <article class="card">
+      <p>Šio skyriaus uždaviniai sprendžiami taip pat kaip <a href="tema-7-optimizavimas.html">ankstesnio</a>: tikslo funkcija diferencijuojama, randami kritiniai taškai ir pagal antrąjį pakankamąjį ekstremumų požymį nustatoma, kuriame iš jų yra maksimumas ar minimumas. Nauja yra tai, kas atliekama prieš diferencijuojant, nes tikslo funkcijai sudaryti reikia daugiau darbo.</p>
+      <p>Dažniausiai pasitaiko dviejų rūšių uždaviniai. Vienuose paklausos funkciją reikia sudaryti pagal sąlygos duomenis, kituose optimizuojamas dydis priklauso nuo geometrinės figūros ar kūno matmenų. Kiekviena rūšis nagrinėjama atskirai.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Kritinis taškas ieškomas prilyginus nuliui antrąją išvestinę.</strong> Kritiniai taškai randami iš \(f'(x) = 0\) (arba ten, kur \(f'(x)\) neegzistuoja). Lygtis \(f''(x) = 0\) duoda galimus vingio taškus, o ne ekstremumus. Antroji išvestinė čia naudojama tik kritinio taško tipui nustatyti.</li>
+            <li><strong>Teigiamas paklausos funkcijos nuolydis.</strong> Nuolydis turi būti neigiamas, nes už didesnę kainą parduodama mažiau gaminių. Teigiama reikšmė rodo, kad prarastas vieno iš pokyčių ženklas.</li>
+            <li><strong>Nepašalintas antrasis nežinomasis.</strong> Prieš diferencijuojant optimizuojamas dydis turi tapti vieno kintamojo funkcija.</li>
+            <li><strong>Nenurodyti visi matmenys.</strong> Pabaigoje antrasis matmuo randamas gautą rezultatą įstačius į sąlygos lygtį.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. PAKLAUSOS FUNKCIJA ============ -->
+  <section class="section" id="paklausa" aria-labelledby="h-dem">
+    <h2 id="h-dem">Uždaviniai, kuriuose reikia sudaryti paklausos funkciją</h2>
+
+    <article class="card">
+      <h3 class="subhead">Paklausos funkcijos sudarymas</h3>
+      <p>Paklausos funkcija yra tiesinė ir, kaip <a href="tema-1.html">1 temoje</a>, užrašoma pagal nuolydį ir sankirtą su vertikaliąja ašimi. Kaina išreiškiama kiekio funkcija:</p>
+      <div class="formula">\[ p = ax + b,\qquad a &lt; 0 \]</div>
+      <p>Koeficientai \(a\) ir \(b\) randami pagal uždavinio duomenis. Galimi du atvejai.</p>
+      <div class="anat dtbl">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Du taškai</strong></div>
+          <p class="lvl-txt">Sąlygoje nurodyta, kad parduodama \(x_1\) gaminių už kainą \(p_1\) ir \(x_2\) gaminių už kainą \(p_2\). Tai paklausos tiesės taškai \((x_1;\, p_1)\) ir \((x_2;\, p_2)\), todėl</p>
+          <ul class="flist">
+            <li>\(a = \dfrac{p_2 - p_1}{x_2 - x_1}\)</li>
+            <li>\(b = -ax_1 + p_1\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Vienas taškas ir kitimo greitis</strong></div>
+          <p class="lvl-txt">Sąlygoje pateiktas vienas taškas \((x_1;\, p_1)\) ir nurodyta, kaip pasikeičia kiekis pasikeitus kainai. Nuolydis yra šių pokyčių santykis, o sankirta su vertikaliąja ašimi randama pagal pateiktą tašką:</p>
+          <ul class="flist">
+            <li>\(a = \dfrac{\Delta p}{\Delta x}\)</li>
+            <li>\(b = -ax_1 + p_1\)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="tip">Nuolydis turi būti neigiamas, nes už didesnę kainą parduodama mažiau gaminių. Teigiama reikšmė rodo, kad prarastas vieno iš pokyčių ženklas.</p>
+      <p>Kai paklausos funkcija žinoma, tikslo funkcija sudaroma pagal <a href="tema-7-optimizavimas.html#tikslo">ankstesnio skyriaus formules</a>:</p>
+      <div class="formula">\[ \begin{gathered} R(x) = p\cdot x = (ax + b)x \\ P(x) = R(x) - TC(x) \end{gathered} \]</div>
+      <p>Atsakymas pateikiamas uždavinio kontekste: nurodomas kiekis ir jį atitinkanti kaina \(p = ax + b\).</p>
+    </article>
+
+    <p class="section-intro" style="margin-top:22px">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 7.5, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Kino teatro bilietai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kino teatras per savaitę parduoda 400 bilietų po 9&nbsp;eurus. Apklausos duomenimis, bilietui kainuojant 12&nbsp;eurų, per savaitę būtų parduodama tik 280 bilietų. Paklausos funkcija tiesinė.
+        <ol type="a">
+          <li>Raskite bilietų skaičių, su kuriuo savaitės pajamos didžiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite atitinkamą bilieto kainą ir pajamas.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Paklausos funkcija</span></h4>
+          <p>Pažymėkime \(x\) per savaitę parduotų bilietų skaičių, o \(p\) – bilieto kainą. Duomenys duoda du taškus: \((400;\, 9)\) ir \((280;\, 12)\). Nuolydis ir sankirta su vertikaliąja ašimi yra</p>
+          \[ a = \frac{12 - 9}{280 - 400} = \frac{3}{-120} = -0{,}025 \]
+          \[ \begin{aligned} b &amp;= -ax_1 + p_1 = 0{,}025\cdot 400 + 9 \\ &amp;= 10 + 9 = 19 \end{aligned} \]
+          <p>Taigi paklausos funkcija yra \(p = -0{,}025x + 19\). Patikriname pagal antrąjį tašką: \(-0{,}025\cdot 280 + 19 = 12\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Tikslo funkcija</span></h4>
+          <p>Pajamos yra</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0{,}025x + 19)x \\ &amp;= -0{,}025x^2 + 19x,\quad 0 \le x \le 760 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas ir antrasis požymis</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ R'(x) = -0{,}05x + 19 \]
+          <p>Kritinis taškas randamas iš \(R'(x) = 0\):</p>
+          \[ \begin{gathered} -0{,}05x + 19 = 0 \;\Longrightarrow\; 0{,}05x = 19 \\ \Longrightarrow\; x = 380 \end{gathered} \]
+          <p>Diferencijuodami dar kartą, gauname \(R''(x) = -0{,}05 &lt; 0\), todėl \(x = 380\) yra vietinio maksimumo taškas. Pajamos didžiausios parduodant 380 bilietų per savaitę.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Kaina ir pajamos</span></h4>
+          <p>Atitinkama kaina ir pajamos yra</p>
+          \[ p = -0{,}025\cdot 380 + 19 = 9{,}5 \]
+          \[ R(380) = 9{,}5\cdot 380 = 3610 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pajamos didžiausios parduodant 380 bilietų per savaitę. Bilieto kaina tuomet yra 9,5&nbsp;euro, o pajamos – 3610&nbsp;eurų per savaitę.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 7.5, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Gamintojo mėnesio pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamintojas per mėnesį parduoda 600 gaminių po 50&nbsp;eurų. Vienetui kainuojant 65&nbsp;eurus, per mėnesį būtų parduodama tik 450 gaminių. Paklausos funkcija tiesinė. Mėnesio bendrosios sąnaudos gaminant \(x\) gaminių yra
+        \[ TC(x) = 0{,}05x^2 + 20x + 4000 \]
+        eurų.
+        <ol type="a">
+          <li>Raskite gamybos kiekį, su kuriuo mėnesio pelnas didžiausias. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite atitinkamą vieneto kainą ir pelną.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Paklausos funkcija</span></h4>
+          <p>Pažymėkime \(x\) per mėnesį parduotų gaminių skaičių, o \(p\) – vieneto kainą. Du taškai yra \((600;\, 50)\) ir \((450;\, 65)\), todėl</p>
+          \[ a = \frac{65 - 50}{450 - 600} = \frac{15}{-150} = -0{,}1 \]
+          \[ \begin{aligned} b &amp;= -ax_1 + p_1 = 0{,}1\cdot 600 + 50 \\ &amp;= 60 + 50 = 110 \end{aligned} \]
+          <p>Paklausos funkcija yra \(p = -0{,}1x + 110\). Patikriname pagal antrąjį tašką: \(-0{,}1\cdot 450 + 110 = 65\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Tikslo funkcija</span></h4>
+          <p>Pajamos yra</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0{,}1x + 110)x \\ &amp;= -0{,}1x^2 + 110x \end{aligned} \]
+          <p>o pelnas – pajamų ir bendrųjų sąnaudų skirtumas:</p>
+          \[ \begin{aligned} P(x) &amp;= -0{,}1x^2 + 110x \\ &amp;\phantom{=}\; - \left(0{,}05x^2 + 20x + 4000\right) \\ &amp;= -0{,}15x^2 + 90x - 4000 \end{aligned} \]
+          <p>Čia \(0 \le x \le 1100\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas ir antrasis požymis</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ P'(x) = -0{,}3x + 90 \]
+          <p>Kritinis taškas randamas iš \(P'(x) = 0\):</p>
+          \[ \begin{gathered} -0{,}3x + 90 = 0 \;\Longrightarrow\; 0{,}3x = 90 \\ \Longrightarrow\; x = 300 \end{gathered} \]
+          <p>Diferencijuodami dar kartą, gauname \(P''(x) = -0{,}3 &lt; 0\), todėl \(x = 300\) yra vietinio maksimumo taškas. Pelnas didžiausias pagaminant 300 gaminių per mėnesį.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Kaina ir pelnas</span></h4>
+          <p>Atitinkama kaina ir pelnas yra</p>
+          \[ p = -0{,}1\cdot 300 + 110 = 80 \]
+          \[ \begin{aligned} P(300) &amp;= -0{,}15\cdot 300^2 + 90\cdot 300 \\ &amp;\phantom{=}\; - 4000 \\ &amp;= -13500 + 27000 - 4000 \\ &amp;= 9500 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pelnas didžiausias pagaminant 300 gaminių per mėnesį. Vieneto kaina tuomet yra 80&nbsp;eurų, o pelnas – 9500&nbsp;eurų per mėnesį.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 7.5, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Ausinių kaina ir pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Parduotuvė per mėnesį parduoda 200 ausinių po 50&nbsp;eurų. Savininkas numato, kad kainą padidinus vienu euru, per mėnesį būtų parduodamos ketverios ausinės mažiau. Parduotuvė vienas ausines įsigyja už 20&nbsp;eurų.
+        <ol type="a">
+          <li>Raskite ausinių skaičių, su kuriuo mėnesio pelnas didžiausias. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite atitinkamą kainą ir pelną.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Paklausos funkcija</span></h4>
+          <p>Pažymėkime \(x\) per mėnesį parduotų ausinių skaičių, o \(p\) – kainą. Duomenys duoda vieną tašką \((200;\, 50)\) ir kitimo greitį: kaina padidėja 1&nbsp;euru, o kiekis sumažėja ketveriomis ausinėmis, todėl \(\Delta p = 1\) ir \(\Delta x = -4\). Taigi</p>
+          \[ a = \frac{\Delta p}{\Delta x} = \frac{1}{-4} = -0{,}25 \]
+          \[ \begin{aligned} b &amp;= -ax_1 + p_1 = 0{,}25\cdot 200 + 50 \\ &amp;= 50 + 50 = 100 \end{aligned} \]
+          <p>Paklausos funkcija yra \(p = -0{,}25x + 100\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Tikslo funkcija</span></h4>
+          <p>Vienos ausinės parduotuvei kainuoja 20&nbsp;eurų, todėl bendrosios sąnaudos yra \(TC(x) = 20x\), o pelnas yra</p>
+          \[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= (-0{,}25x + 100)x - 20x \\ &amp;= -0{,}25x^2 + 80x \end{aligned} \]
+          <p>Čia \(0 \le x \le 400\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas ir antrasis požymis</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ P'(x) = -0{,}5x + 80 \]
+          <p>Kritinis taškas randamas iš \(P'(x) = 0\):</p>
+          \[ \begin{gathered} -0{,}5x + 80 = 0 \;\Longrightarrow\; 0{,}5x = 80 \\ \Longrightarrow\; x = 160 \end{gathered} \]
+          <p>Diferencijuodami dar kartą, gauname \(P''(x) = -0{,}5 &lt; 0\), todėl \(x = 160\) yra vietinio maksimumo taškas. Pelnas didžiausias parduodant 160 ausinių per mėnesį.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Kaina ir pelnas</span></h4>
+          <p>Atitinkama kaina ir pelnas yra</p>
+          \[ p = -0{,}25\cdot 160 + 100 = 60 \]
+          \[ \begin{aligned} P(160) &amp;= -0{,}25\cdot 160^2 + 80\cdot 160 \\ &amp;= -6400 + 12800 = 6400 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Pelnas didžiausias parduodant 160 ausinių per mėnesį. Kaina tuomet yra 60&nbsp;eurų, o pelnas – 6400&nbsp;eurų per mėnesį.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. PLOTAI IR TŪRIAI ============ -->
+  <section class="section" id="geometrija" aria-labelledby="h-geo">
+    <h2 id="h-geo">Plotų ir tūrių optimizavimo uždaviniai</h2>
+
+    <article class="card">
+      <h3 class="subhead">Pagrindinių figūrų ir kūnų formulės</h3>
+      <p>Šiuose uždaviniuose aprašoma geometrinė figūra ar kūnas: žemės sklypas, dėžė, siunta. Du matmenys nežinomi, o optimizuojamas dydis užrašomas pagal atitinkamas formules.</p>
+      <div class="anat dtbl">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Stačiakampis, kurio kraštinės \(x\) ir \(y\)</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Plotas</span>\(A = xy\)</li>
+            <li><span class="fl-lab">Perimetras</span>\(Per = 2x + 2y\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Stačiakampis gretasienis, kurio pagrindo matmenys \(x\) ir \(y\), o aukštis \(h\)</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Tūris</span>\(V = xyh\)</li>
+            <li><span class="fl-lab">Paviršiaus plotas</span>\(S = 2xy + 2xh + 2yh\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Ritinys, kurio spindulys \(r\), o ilgis \(l\)</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Tūris</span>\(V = \pi r^2 l\)</li>
+            <li><span class="fl-lab">Paviršiaus plotas</span>\(S = 2\pi r^2 + 2\pi rl\)</li>
+          </ul>
+        </div>
+      </div>
+      <p>Dėžė be dangčio turi tik vieną pagrindą, todėl jos paviršiaus plotas yra \(S = xy + 2xh + 2yh\). Jei pagrindas kvadratinis, tai \(y = x\), o formulės tampa \(V = x^2h\) ir \(S = x^2 + 4xh\). Ritinio šoninio paviršiaus plotas yra \(2\pi rl\), o jo skerspjūvio apskritimo ilgis, vadinamas siuntos apimtimi, yra \(2\pi r\).</p>
+      <p>Jei figūroje yra statusis trikampis, kurio statiniai \(a\) ir \(b\), trečioji kraštinė randama pagal Pitagoro teoremą: \(c = \sqrt{a^2 + b^2}\).</p>
+
+      <h3 class="subhead" style="margin-top:22px">Antrojo nežinomojo pašalinimas</h3>
+      <p>Optimizuojamas dydis užrašomas naudojant du nežinomus matmenis, tačiau prieš diferencijuojant jis turi tapti vieno kintamojo funkcija. Sąlygoje visada pateiktas dar vienas šių matmenų ryšys: fiksuotas plotas, tūris, medžiagos kiekis ar bendras ilgis. Pagal šį ryšį pašalinamas antrasis nežinomasis.</p>
+      <ol class="steps-list">
+        <li>Pažymėkite abu matmenis ir jais išreikškite optimizuojamą dydį.</li>
+        <li>Uždavinio sąlygą užrašykite lygtimi su tais pačiais dviem matmenimis.</li>
+        <li>Iš šios lygties išreikškite vieną matmenį ir įstatykite į pirmąją išraišką. Lieka vieno kintamojo funkcija, kuri toliau nagrinėjama įprastai.</li>
+      </ol>
+      <p>Pabaigoje antrasis matmuo randamas gautą rezultatą įstatant į sąlygos lygtį, nes dažniausiai prašoma nurodyti visus matmenis.</p>
+    </article>
+
+    <p class="section-intro" style="margin-top:22px">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 4 pavyzdys: TM 7.5, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Sandėliavimo aikštelės tvora</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Reikia aptverti stačiakampę 1800 kvadratinių metrų sandėliavimo aikštelę. Priekinė tvora medinė ir kainuoja 45&nbsp;eurus už metrą, o kitų trijų pusių vielinė tvora kainuoja 15&nbsp;eurų už metrą.
+        <ol type="a">
+          <li>Raskite aikštelės matmenis, su kuriais tvoros sąnaudos mažiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite šias sąnaudas.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Matmenys ir sąnaudos</span></h4>
+          <p>Pažymėkime \(x\) priekinės kraštinės ilgį, o \(y\) – gretimos kraštinės ilgį metrais.</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 360 230" role="img" aria-label="Stačiakampė aikštelė: priekinė kraštinė x – medinė tvora, kitos trys kraštinės – vielinė tvora, plotas 1800 kvadratinių metrų">
+          <rect x="60" y="40" width="240" height="130" fill="none" stroke="var(--chart)" stroke-width="2.5"/>
+          <line x1="56" y1="170" x2="304" y2="170" stroke="var(--exam)" stroke-width="7" stroke-linecap="round"/>
+          <text x="180" y="112" text-anchor="middle" style="font-size:17px">plotas 1800 m²</text>
+          <text class="m" x="180" y="196" text-anchor="middle" style="font-size:18px"><tspan class="i">x</tspan></text>
+          <text x="180" y="218" text-anchor="middle" font-style="italic" class="exam" style="font-size:15px">medinė tvora</text>
+          <text class="m" x="44" y="111" text-anchor="end" style="font-size:18px"><tspan class="i">y</tspan></text>
+          <text x="180" y="30" text-anchor="middle" font-style="italic" class="c1" style="font-size:15px">vielinė tvora</text>
+          </svg>
+          </figure>
+          <p>Priekinės kraštinės \(x\) ilgio tvora kainuoja 45&nbsp;eurus už metrą. Galinės kraštinės, kurios ilgis taip pat \(x\), ir dviejų \(y\) ilgio šoninių kraštinių tvora kainuoja 15&nbsp;eurų už metrą. Taigi tvoros sąnaudos yra</p>
+          \[ C = 45x + 15x + 2\cdot 15y = 60x + 30y \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Antrojo nežinomojo pašalinimas</span></h4>
+          <p>Sąlyga nusako aikštelės plotą:</p>
+          \[ xy = 1800 \;\Longrightarrow\; y = \frac{1800}{x} \]
+          <p>Įstatę į sąnaudų išraišką, pašaliname antrąjį nežinomąjį:</p>
+          \[ \begin{aligned} C(x) &amp;= 60x + 30\cdot\frac{1800}{x} \\ &amp;= 60x + \frac{54000}{x},\quad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas</span></h4>
+          <p>Antrąjį narį perrašome laipsniu: \(\dfrac{54000}{x} = 54000x^{-1}\). Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ \begin{aligned} C'(x) &amp;= 60 + 54000\cdot(-1)x^{-2} \\ &amp;= 60 - \frac{54000}{x^2} \end{aligned} \]
+          <p>Išvestinė yra racionalioji funkcija, todėl ją užrašome viena trupmena, o lygtį \(C'(x) = 0\) pakeičiame sistema:</p>
+          <div class="fit-sm">\[ \frac{60x^2 - 54000}{x^2} = 0 \;\Longleftrightarrow\; \begin{cases} 60x^2 - 54000 = 0 \\ x^2 \neq 0 \end{cases} \]</div>
+          \[ \begin{gathered} 60x^2 = 54000 \;\Longrightarrow\; x^2 = 900 \\ \Longrightarrow\; x = \pm 30 \end{gathered} \]
+          <p>Vardiklis lygus nuliui tik tada, kai \(x = 0\), tačiau ši reikšmė nėra gautos lygties šaknis. Sprendinys \(x = -30\) negali reikšti ilgio, todėl atmetamas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Dar kartą diferencijuodami \(-54000x^{-2}\), gauname</p>
+          \[ C''(x) = -54000\cdot(-2)x^{-3} = \frac{108000}{x^3} \]
+          <p>todėl \(C''(30) = \dfrac{108000}{27000} = 4 &gt; 0\), o \(x = 30\) yra vietinio minimumo taškas. Kitos kraštinės ilgis yra</p>
+          \[ y = \frac{1800}{30} = 60 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Sąnaudos</span></h4>
+          <p>Tvoros sąnaudos tuomet yra</p>
+          \[ \begin{aligned} C(30) &amp;= 60\cdot 30 + \frac{54000}{30} \\ &amp;= 1800 + 1800 = 3600 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Sąnaudos mažiausios, kai priekinės medinės tvoros ilgis yra 30&nbsp;metrų, o gretimos kraštinės – 60&nbsp;metrų. Tvora tuomet kainuoja 3600&nbsp;eurų.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 7.5, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Kompostavimo konteineris</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Daržovių ūkis gamina atvirą (be dangčio) stačiakampio pagrindo kompostavimo konteinerį, kurio tūris turi būti 16 kubinių metrų. Pagrindo ilgis turi būti dvigubai didesnis už plotį. Pagrindo medžiaga kainuoja 3&nbsp;eurus už kvadratinį metrą, o šonų medžiaga – 2&nbsp;eurus už kvadratinį metrą.
+        <ol type="a">
+          <li>Raskite konteinerio matmenis, su kuriais medžiagos sąnaudos mažiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite šias sąnaudas.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Matmenys ir sąnaudos</span></h4>
+          <p>Pažymėkime \(x\) pagrindo plotį; tada jo ilgis yra \(2x\). Konteinerio aukštį pažymėkime \(h\). Visi matmenys matuojami metrais.</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 360 230" role="img" aria-label="Kompostavimo konteineris be dangčio: pagrindo ilgis 2x, plotis x, aukštis h">
+          <path d="M70 190L140 145L320 145" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4" fill="none"/>
+          <path d="M140 145L140 45" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4" fill="none"/>
+          <path d="M70 90L250 90L250 190L70 190Z" stroke="var(--chart)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+          <path d="M70 90L140 45L320 45L250 90" stroke="var(--chart)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+          <path d="M250 190L320 145L320 45" stroke="var(--chart)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+          <text class="m" x="160.0" y="214" text-anchor="middle" style="font-size:18px">2<tspan class="i">x</tspan></text>
+          <text class="m" x="297.0" y="185.5" style="font-size:18px"><tspan class="i">x</tspan></text>
+          <text class="m" x="58" y="146.0" text-anchor="end" style="font-size:18px"><tspan class="i">h</tspan></text>
+          <text x="195.0" y="33" text-anchor="middle" font-style="italic" class="muted" style="font-size:15px">be dangčio</text>
+          </svg>
+          </figure>
+          <p>Pagrindas yra stačiakampis, kurio plotas \(2x^2\). Du šonai yra stačiakampiai, kurių matmenys \(x\) ir \(h\), o kiti du – \(2x\) ir \(h\), todėl šonų plotas yra \(2xh + 4xh = 6xh\). Medžiagos sąnaudos yra</p>
+          \[ C = 3\cdot 2x^2 + 2\cdot 6xh = 6x^2 + 12xh \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Antrojo nežinomojo pašalinimas</span></h4>
+          <p>Sąlyga nusako konteinerio tūrį:</p>
+          \[ 2x^2h = 16 \;\Longrightarrow\; h = \frac{8}{x^2} \]
+          <p>Įstatę į sąnaudų išraišką, pašaliname antrąjį nežinomąjį:</p>
+          \[ \begin{aligned} C(x) &amp;= 6x^2 + 12x\cdot\frac{8}{x^2} \\ &amp;= 6x^2 + \frac{96}{x},\quad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas</span></h4>
+          <p>Antrąjį narį perrašę laipsniu \(\dfrac{96}{x} = 96x^{-1}\) ir pritaikę laipsninės funkcijos išvestinės formulę, gauname</p>
+          \[ C'(x) = 12x + 96\cdot(-1)x^{-2} = 12x - \frac{96}{x^2} \]
+          <p>Išvestinė yra racionalioji funkcija, todėl ją užrašome viena trupmena, o lygtį \(C'(x) = 0\) pakeičiame sistema:</p>
+          <div class="fit-sm">\[ \frac{12x^3 - 96}{x^2} = 0 \;\Longleftrightarrow\; \begin{cases} 12x^3 - 96 = 0 \\ x^2 \neq 0 \end{cases} \]</div>
+          \[ 12x^3 = 96 \;\Longrightarrow\; x^3 = 8 \;\Longrightarrow\; x = 2 \]
+          <p>Vardiklis lygus nuliui tik tada, kai \(x = 0\), tačiau ši reikšmė nėra sprendinys.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Dar kartą diferencijuodami \(-96x^{-2}\), gauname</p>
+          \[ C''(x) = 12 - 96\cdot(-2)x^{-3} = 12 + \frac{192}{x^3} \]
+          <p>todėl \(C''(2) = 12 + \dfrac{192}{8} = 12 + 24 = 36 &gt; 0\), o \(x = 2\) yra vietinio minimumo taškas. Kiti du matmenys yra</p>
+          \[ 2x = 4;\qquad h = \frac{8}{2^2} = 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Sąnaudos</span></h4>
+          <p>Medžiagos sąnaudos tuomet yra</p>
+          \[ C(2) = 6\cdot 2^2 + \frac{96}{2} = 24 + 48 = 72 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Sąnaudos mažiausios, kai konteinerio pagrindo matmenys yra 2 ir 4&nbsp;metrai, o aukštis – 2&nbsp;metrai. Medžiaga tuomet kainuoja 72&nbsp;eurus.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 7.5, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Kavos pakuotė siuntai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kavos skrudykla siunčia kavos pupeles ritinio formos pakuotėse. Kurjerių tarnyba tokią siuntą priima tik tada, kai pakuotės ilgio ir apimties suma neviršija 120 centimetrų. Apimtis yra ritinio skerspjūvio apskritimo ilgis. Kad į vieną siuntą tilptų kuo daugiau kavos, skrudykla nori, kad pakuotės tūris būtų kuo didesnis.
+        <ol type="a">
+          <li>Raskite didžiausio tūrio pakuotės, kurią priima kurjerių tarnyba, matmenis. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite šį tūrį.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Matmenys ir tūris</span></h4>
+          <p>Pažymėkime \(r\) pakuotės spindulį, o \(l\) – ilgį centimetrais. Apimtis yra \(2\pi r\).</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 360 220" role="img" aria-label="Ritinio formos pakuotė: spindulys r, ilgis l, apimtis 2πr">
+          <path d="M80 50L280 50M80 160L280 160" stroke="var(--chart)" stroke-width="2.5" fill="none"/>
+          <ellipse cx="80" cy="105" rx="20" ry="55" fill="var(--surface)" stroke="var(--chart)" stroke-width="2.5"/>
+          <ellipse cx="280" cy="105" rx="20" ry="55" fill="none" stroke="var(--chart)" stroke-width="2.5"/>
+          <line class="ax" x1="80" y1="105" x2="80" y2="58"/><path class="ah" d="M80 51L75.5 60L84.5 60Z"/>
+          <text class="m" x="88" y="89" style="font-size:18px"><tspan class="i">r</tspan></text>
+          <line class="ax" x1="88" y1="182" x2="272" y2="182"/><path class="ah" d="M80 182L89 177.5L89 186.5Z"/><path class="ah" d="M280 182L271 177.5L271 186.5Z"/>
+          <text class="m" x="180.0" y="204" text-anchor="middle" style="font-size:18px"><tspan class="i">l</tspan></text>
+          <text x="180.0" y="36" text-anchor="middle" font-style="italic" style="font-size:16px">apimtis 2π<tspan class="i">r</tspan></text>
+          </svg>
+          </figure>
+          <p>Ritinio tūris yra \(V = \pi r^2 l\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Antrojo nežinomojo pašalinimas</span></h4>
+          <p>Didžiausios pakuotės ilgio ir apimties suma lygi tiksliai 120 centimetrų, todėl sąlyga yra</p>
+          \[ 2\pi r + l = 120 \;\Longrightarrow\; l = 120 - 2\pi r \]
+          <p>Įstatę į tūrio išraišką, pašaliname antrąjį nežinomąjį:</p>
+          \[ \begin{aligned} V(r) &amp;= \pi r^2(120 - 2\pi r) \\ &amp;= 120\pi r^2 - 2\pi^2 r^3,\quad 0 &lt; r &lt; \frac{60}{\pi} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas</span></h4>
+          <p>\(\pi\) yra skaičius, o ne kintamasis, todėl pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ V'(r) = 240\pi r - 6\pi^2 r^2 \]
+          <p>Kritiniai taškai randami iš \(V'(r) = 0\). Iškeliame bendrąjį daugiklį \(6\pi r\):</p>
+          \[ \begin{gathered} 6\pi r(40 - \pi r) = 0 \\ \Longrightarrow\; r = 0\quad\text{arba}\quad \pi r = 40 \\ \Longrightarrow\; r = \frac{40}{\pi} \approx 12{,}73 \end{gathered} \]
+          <p>Pakuotė, kurios spindulys \(r = 0\), neegzistuoja, todėl ši šaknis atmetama.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Diferencijuojame dar kartą:</p>
+          \[ V''(r) = 240\pi - 12\pi^2 r \]
+          <p>Kritiniame taške gauname</p>
+          \[ \begin{aligned} V''\!\left(\frac{40}{\pi}\right) &amp;= 240\pi - 12\pi^2\cdot\frac{40}{\pi} \\ &amp;= 240\pi - 480\pi = -240\pi &lt; 0 \end{aligned} \]
+          <p>todėl \(r = \dfrac{40}{\pi}\) yra vietinio maksimumo taškas. Pakuotės ilgis yra</p>
+          \[ l = 120 - 2\pi\cdot\frac{40}{\pi} = 120 - 80 = 40 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Tūris</span></h4>
+          <p>Šios pakuotės tūris yra</p>
+          \[ \begin{aligned} V &amp;= \pi\cdot\left(\frac{40}{\pi}\right)^2\cdot 40 \\ &amp;= \frac{64000}{\pi} \approx 20371{,}83 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Tūris didžiausias, kai pakuotės spindulys yra maždaug 12,73&nbsp;centimetro, o ilgis – 40&nbsp;centimetrų. Tūris tuomet yra maždaug 20&nbsp;371,83&nbsp;kubinio centimetro.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 7.5, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Ūkio prijungimas prie šviesolaidžio</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Interneto tiekėjas jungia ūkį \(E\) prie šviesolaidžio tinklo. Ūkis yra už 3 kilometrų nuo tiesaus kelio, o artimiausias jam kelio taškas yra \(A\). Tinklo stotis \(S\) yra prie kelio, 10 kilometrų nuo \(A\). Kabelis bus tiesiamas tiesiai per mišką nuo \(E\) iki kelio taško \(P\), esančio tarp \(A\) ir \(S\), o toliau – palei kelią nuo \(P\) iki \(S\). Kabelio tiesimas per mišką kainuoja 2500&nbsp;eurų už kilometrą, o palei kelią – 1500&nbsp;eurų už kilometrą.
+        <ol type="a">
+          <li>Raskite taško \(P\) vietą, su kuria kabelio sąnaudos mažiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+          <li>Raskite šias sąnaudas.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Kabelio sąnaudos</span></h4>
+          <p>Pažymėkime \(x\) atstumą nuo \(A\) iki \(P\) kilometrais.</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 400 230" role="img" aria-label="Kabelis nuo ūkio E per mišką iki kelio taško P ir palei kelią iki stoties S; EA = 3 km, AP = x, PS = 10 − x">
+          <rect x="10" y="20" width="380" height="130" fill="var(--chart-2)" fill-opacity=".12"/>
+          <line class="ax" x1="10" y1="150" x2="390" y2="150"/>
+          <line class="guide" x1="70" y1="60" x2="70" y2="150"/>
+          <line x1="70" y1="60" x2="170" y2="150" stroke="var(--chart)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="170" y1="150" x2="350" y2="150" stroke="var(--exam)" stroke-width="4.5" stroke-linecap="round"/>
+          <circle cx="70" cy="60" r="5.5" fill="var(--text)"/>
+          <text class="m" x="56" y="48" text-anchor="middle" style="font-size:18px"><tspan class="i">E</tspan></text>
+          <circle cx="70" cy="150" r="5.5" fill="var(--text)"/>
+          <text class="m" x="56" y="138" text-anchor="middle" style="font-size:18px"><tspan class="i">A</tspan></text>
+          <circle cx="170" cy="150" r="5.5" fill="var(--text)"/>
+          <text class="m" x="170" y="138" text-anchor="middle" style="font-size:18px"><tspan class="i">P</tspan></text>
+          <circle cx="350" cy="150" r="5.5" fill="var(--text)"/>
+          <text class="m" x="350" y="138" text-anchor="middle" style="font-size:18px"><tspan class="i">S</tspan></text>
+          <line class="ax" x1="44" y1="68" x2="44" y2="142"/><path class="ah" d="M44 60L39.5 69L48.5 69Z"/><path class="ah" d="M44 150L39.5 141L48.5 141Z"/>
+          <text x="37" y="111.0" text-anchor="end" style="font-size:16px">3</text>
+          <line class="ax" x1="78" y1="176" x2="162" y2="176"/><path class="ah" d="M70 176L79 171.5L79 180.5Z"/><path class="ah" d="M170 176L161 171.5L161 180.5Z"/>
+          <line class="ax" x1="178" y1="176" x2="342" y2="176"/><path class="ah" d="M170 176L179 171.5L179 180.5Z"/><path class="ah" d="M350 176L341 171.5L341 180.5Z"/>
+          <text class="m" x="120.0" y="198" text-anchor="middle" style="font-size:18px"><tspan class="i">x</tspan></text>
+          <text class="m" x="260.0" y="198" text-anchor="middle" style="font-size:18px">10 − <tspan class="i">x</tspan></text>
+          <text x="260" y="60" text-anchor="middle" font-style="italic" class="muted" style="font-size:16px">miškas</text>
+          <text x="12" y="172" font-style="italic" class="muted" style="font-size:15px">kelias</text>
+          </svg>
+          </figure>
+          <p>Kabelio dalis per mišką yra stačiojo trikampio, kurio statiniai 3 ir \(x\), įžambinė. Pagal Pitagoro teoremą jos ilgis yra \(\sqrt{x^2 + 9}\), o dalies palei kelią ilgis – \(10 - x\). Kabelio sąnaudos yra</p>
+          \[ \begin{aligned} C(x) &amp;= 2500\sqrt{x^2 + 9} + 1500(10 - x), \\ &amp;\phantom{=}\; 0 \le x \le 10 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pirmoji išvestinė</span></h4>
+          <p>Pirmasis narys yra sudėtinė funkcija: išorinė funkcija yra kvadratinė šaknis, o vidinė – \(u(x) = x^2 + 9\). Pagal formulę \(\left(\sqrt{u(x)}\right)' = \dfrac{u'(x)}{2\sqrt{u(x)}}\) gauname</p>
+          \[ \left(\sqrt{x^2 + 9}\right)' = \frac{2x}{2\sqrt{x^2 + 9}} = \frac{x}{\sqrt{x^2 + 9}} \]
+          <p>todėl</p>
+          \[ C'(x) = \frac{2500x}{\sqrt{x^2 + 9}} - 1500 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kritinis taškas</span></h4>
+          <p>Kritinis taškas randamas iš \(C'(x) = 0\):</p>
+          \[ \begin{gathered} \frac{2500x}{\sqrt{x^2 + 9}} = 1500 \\ \Longrightarrow\; 2500x = 1500\sqrt{x^2 + 9} \\ \Longrightarrow\; 5x = 3\sqrt{x^2 + 9} \end{gathered} \]
+          <p>Kai \(x \ge 0\), abi lygties pusės neneigiamos, todėl jas galima pakelti kvadratu:</p>
+          \[ \begin{gathered} 25x^2 = 9\left(x^2 + 9\right) \;\Longrightarrow\; 16x^2 = 81 \\ \Longrightarrow\; x^2 = \frac{81}{16} \;\Longrightarrow\; x = 2{,}25 \end{gathered} \]
+          <p>Neigiama šaknis negali reikšti atstumo, todėl atmetama.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) Antrasis pakankamasis požymis</span></h4>
+          <p>Skaičiuodami antrąją išvestinę, pirmąją užrašome sandauga, kai \(u(x) = 2500x\) ir \(v(x) = \left(x^2 + 9\right)^{-\frac{1}{2}}\). Tada \(u'(x) = 2500\), o \(v(x)\) diferencijuojama pagal sudėtinės laipsninės funkcijos išvestinės formulę, kurios vidinė funkcija yra \(x^2 + 9\):</p>
+          \[ \begin{aligned} v'(x) &amp;= -\frac{1}{2}\left(x^2 + 9\right)^{-\frac{3}{2}}\cdot 2x \\ &amp;= -\frac{x}{\sqrt{\left(x^2 + 9\right)^3}} \end{aligned} \]
+          <p>Įstatę į sandaugos taisyklės formulę, gauname</p>
+          \[ C''(x) = \frac{2500}{\sqrt{x^2 + 9}} - \frac{2500x^2}{\sqrt{\left(x^2 + 9\right)^3}} \]
+          <p>Bendrasis vardiklis yra \(\sqrt{\left(x^2 + 9\right)^3}\), nes \(\sqrt{\left(x^2 + 9\right)^3} = \left(x^2 + 9\right)\sqrt{x^2 + 9}\):</p>
+          \[ \begin{aligned} C''(x) &amp;= \frac{2500\left(x^2 + 9\right) - 2500x^2}{\sqrt{\left(x^2 + 9\right)^3}} \\ &amp;= \frac{22500}{\sqrt{\left(x^2 + 9\right)^3}} \end{aligned} \]
+          <p>Ši išraiška teigiama visoms \(x\) reikšmėms, todėl \(x = 2{,}25\) yra vietinio minimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Sąnaudos</span></h4>
+          <p>Kabelio per mišką ilgis yra \(\sqrt{2{,}25^2 + 9} = \sqrt{14{,}0625} = 3{,}75\)&nbsp;kilometro, o palei kelią – \(10 - 2{,}25 = 7{,}75\)&nbsp;kilometro, todėl sąnaudos yra</p>
+          \[ \begin{aligned} C(2{,}25) &amp;= 2500\cdot 3{,}75 + 1500\cdot 7{,}75 \\ &amp;= 9375 + 11625 = 21000 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            Sąnaudos mažiausios, kai taškas \(P\) yra už 2,25&nbsp;kilometro nuo \(A\). Kabelis tuomet kainuoja 21&nbsp;000&nbsp;eurų.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: sudarykite paklausos funkciją arba pašalinkite antrąjį nežinomąjį, raskite kritinį tašką, taikykite antrąjį pakankamąjį ekstremumų požymį ir atsakykite į visus uždavinio klausimus. Atsakyme pateiktos pagrindinės funkcijos, kritinis taškas ir galutiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Sporto klubas per mėnesį parduoda 300 abonementų po 40&nbsp;eurų. Abonementui kainuojant 55&nbsp;eurus, per mėnesį būtų parduodama tik 240 abonementų. Paklausos funkcija tiesinė.</p>
+          <ol type="a">
+            <li>Raskite abonementų skaičių, su kuriuo mėnesio pajamos didžiausios. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+            <li>Raskite atitinkamą kainą ir pajamas.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Paklausos funkcija:</strong></p>
+          \[ a = \frac{55 - 40}{240 - 300} = -0{,}25 \]
+          \[ b = 0{,}25\cdot 300 + 40 = 115 \]
+          \[ p = -0{,}25x + 115 \]
+          <p><strong>Tikslo funkcija:</strong></p>
+          \[ R(x) = p\cdot x = -0{,}25x^2 + 115x \]
+          <p><strong>Išvestinė ir kritinis taškas:</strong></p>
+          \[ \begin{gathered} R'(x) = -0{,}5x + 115 = 0 \\ \Longrightarrow\; x = 230 \end{gathered} \]
+          \[ R''(x) = -0{,}5 &lt; 0 \]
+          <p><strong>Atsakymas.</strong> Pajamos didžiausios parduodant 230 abonementų per mėnesį. Kaina tuomet yra 57,5&nbsp;euro, o pajamos – 13&nbsp;225&nbsp;eurai per mėnesį.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kepykla per savaitę parduoda 480 pyragų po 12&nbsp;eurų. Kainą padidinus 0,5&nbsp;euro, per savaitę parduodama 20 pyragų mažiau. Vieno pyrago gamyba kepyklai kainuoja 4&nbsp;eurus.</p>
+          <ol type="a">
+            <li>Raskite pyragų skaičių, su kuriuo savaitės pelnas didžiausias. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+            <li>Raskite atitinkamą kainą ir pelną.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Paklausos funkcija:</strong></p>
+          \[ a = \frac{\Delta p}{\Delta x} = \frac{0{,}5}{-20} = -0{,}025 \]
+          \[ b = 0{,}025\cdot 480 + 12 = 24 \]
+          \[ p = -0{,}025x + 24 \]
+          <p><strong>Tikslo funkcija:</strong></p>
+          \[ \begin{aligned} P(x) &amp;= p\cdot x - 4x \\ &amp;= -0{,}025x^2 + 20x \end{aligned} \]
+          <p><strong>Išvestinė ir kritinis taškas:</strong></p>
+          \[ \begin{gathered} P'(x) = -0{,}05x + 20 = 0 \\ \Longrightarrow\; x = 400 \end{gathered} \]
+          \[ P''(x) = -0{,}05 &lt; 0 \]
+          <p><strong>Atsakymas.</strong> Pelnas didžiausias parduodant 400 pyragų per savaitę. Vieno pyrago kaina tuomet yra 14&nbsp;eurų, o pelnas – 4000&nbsp;eurų per savaitę.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Stačiakampį 7200 kvadratinių metrų sklypą upės pakrantėje reikia aptverti iš trijų pusių. Palei upę esančiai kraštinei tvoros nereikia.</p>
+          <ol type="a">
+            <li>Raskite sklypo matmenis, su kuriais reikia trumpiausios tvoros. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+            <li>Raskite šios tvoros ilgį.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>\(x\) – palei upę esančios kraštinės ilgis, o \(y\) – gretimos kraštinės ilgis metrais.</p>
+          <p><strong>Tikslo funkcija ir sąlyga:</strong></p>
+          \[ F = x + 2y \]
+          \[ xy = 7200 \;\Longrightarrow\; y = \frac{7200}{x} \]
+          \[ F(x) = x + \frac{14400}{x} \]
+          <p><strong>Išvestinė ir kritinis taškas:</strong></p>
+          \[ \begin{aligned} F'(x) &amp;= 1 - \frac{14400}{x^2} \\ &amp;= \frac{x^2 - 14400}{x^2} = 0 \end{aligned} \]
+          \[ \Longrightarrow\; x = 120 \]
+          <p>Sprendinys \(x = -120\) negali reikšti ilgio, todėl atmetamas; \(F''(x) = \dfrac{28800}{x^3} &gt; 0\).</p>
+          <p><strong>Atsakymas.</strong> Tvoros reikia mažiausiai, kai palei upę esančios kraštinės ilgis yra 120&nbsp;metrų, o gretimos – 60&nbsp;metrų. Tvoros ilgis tuomet yra 240&nbsp;metrų.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Dažų gamintojas pakuoja dažus į 1 litro (1000 kubinių centimetrų) tūrio uždaras ritinio formos skardines.</p>
+          <ol type="a">
+            <li>Raskite skardinės spindulį ir aukštį, su kuriais reikia mažiausiai skardos. Atsakymą pateikite dviejų skaitmenų po kablelio tikslumu. Naudokitės antruoju pakankamuoju požymiu, jei galima.</li>
+            <li>Raskite sunaudotos skardos plotą dviejų skaitmenų po kablelio tikslumu.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija ir sąlyga:</strong></p>
+          \[ S = 2\pi r^2 + 2\pi rh \]
+          \[ \pi r^2h = 1000 \;\Longrightarrow\; h = \frac{1000}{\pi r^2} \]
+          \[ S(r) = 2\pi r^2 + \frac{2000}{r},\qquad r &gt; 0 \]
+          <p><strong>Išvestinė ir kritinis taškas:</strong></p>
+          \[ \begin{aligned} S'(r) &amp;= 4\pi r - \frac{2000}{r^2} \\ &amp;= \frac{4\pi r^3 - 2000}{r^2} = 0 \end{aligned} \]
+          \[ \begin{gathered} \Longrightarrow\; r^3 = \frac{500}{\pi} \\ \Longrightarrow\; r = \sqrt[3]{\frac{500}{\pi}} \approx 5{,}42 \end{gathered} \]
+          <p>\(S''(r) = 4\pi + \dfrac{4000}{r^3} &gt; 0\).</p>
+          <p><strong>Atsakymas.</strong> Skardos reikia mažiausiai, kai spindulys yra maždaug 5,42&nbsp;centimetro, o aukštis – 10,84&nbsp;centimetro. Plotas tuomet yra maždaug 553,58&nbsp;kvadratinio centimetro.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">6.4–6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">10.5 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
