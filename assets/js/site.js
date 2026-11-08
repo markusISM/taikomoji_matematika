@@ -85,6 +85,7 @@
       sdDown: 'Ribinės pajamos mažėja: kiekvienas kitas reklamai skirtas tūkstantis eurų duoda vis mažiau papildomų pajamų.',
       signAria: 'Išvestinės ženklų schema',
       incr: 'didėja', decr: 'mažėja',
+      concUp: 'įgaubta', concDown: 'išgaubta',
       decimal: ',',
       // Grafikų užrašai
       unitEur: 'Eur',
@@ -173,6 +174,7 @@
       sdDown: 'Marginal revenue is decreasing: each additional thousand euros spent on advertising brings less additional revenue than the one before.',
       signAria: 'Sign chart of the derivative',
       incr: 'increasing', decr: 'decreasing',
+      concUp: 'concave up', concDown: 'concave down',
       decimal: '.',
       // Chart labels
       unitEur: 'EUR',
@@ -327,7 +329,7 @@
       { id: 'm72', status: 'active', href: { lt: 'tema-7-funkcijos-iskilumas.html' },
         title: { lt: 'Funkcijos iškilumas', en: 'Concavity of a Function' },
         desc: { lt: 'Antrosios išvestinės ženklas parodo, kuriuose intervaluose funkcijos grafikas išgaubtas, o kuriuose įgaubtas.', en: 'The sign of the second derivative shows on which intervals the graph of a function is concave down and on which it is concave up.' } },
-      { id: 'm73', status: 'soon',
+      { id: 'm73', status: 'active', href: { lt: 'tema-7-vingio-taskai.html' },
         title: { lt: 'Vingio taškai ir mažėjančio rezultatyvumo dėsnis', en: 'Inflection Points and Diminishing Returns' },
         desc: { lt: 'Taškai, kuriuose pasikeičia grafiko iškilumas, ir riba, nuo kurios papildomi ištekliai duoda vis mažesnį prieaugį.', en: 'Points where the concavity of the graph changes and the level beyond which additional resources bring smaller and smaller gains.' } },
       { id: 'm74', status: 'soon',
@@ -412,6 +414,8 @@
                title: { lt: 'Pokyčio sparta', en: 'The Second Order Derivative' } },
     m72:     { parent: 't7', topic: 't7', model: 'm72', href: { lt: 'tema-7-funkcijos-iskilumas.html', en: null },
                title: { lt: 'Funkcijos iškilumas', en: 'Concavity of a Function' } },
+    m73:     { parent: 't7', topic: 't7', model: 'm73', href: { lt: 'tema-7-vingio-taskai.html', en: null },
+               title: { lt: 'Vingio taškai ir mažėjančio rezultatyvumo dėsnis', en: 'Inflection Points and Diminishing Returns' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -1457,6 +1461,7 @@
            pts: [{x: "4", z: true – išvestinė lygi 0, o: true – neleistina reikšmė (tuščias taškas)}];
            s: išvestinės ženklai kiekviename intervale ("+" arba "-");
            pts[i].t – taško tipas po tašku funkcijos eilutėje (pvz., "max", "min");
+           cc: true – antrosios išvestinės schema: apatinėje eilutėje vietoj rodyklių – „įgaubta“ / „išgaubta“;
            outL / outR: true (numatyta) – kairėje / dešinėje nuo kraštinio taško
            reikšmės nepriklauso apibrėžimo sričiai (pilka sritis); false – sritis tęsiasi iki ∓∞.
      Taškai išdėstomi schemiškai (vienodais tarpais), kaip ženklų schemose.
@@ -1486,10 +1491,15 @@
     var signs = spec.s || [], words = [];
     for (var k = 0; k < nb - 1; k++) {
       var c = (pos[k] + pos[k + 1]) / 2, up = signs[k] === '+';
-      html += '<span class="sc-sign" style="left:' + c + '%">\\(' + (up ? '+' : '-') + '\\)</span>' +
-        '<span class="sc-arr ' + (up ? 'up' : 'down') + '" style="left:' + c + '%"><svg viewBox="0 0 24 24" aria-hidden="true">' +
-        (up ? '<path d="M5 19L19 5M10 5h9v9"/>' : '<path d="M5 5l14 14M19 10v9h-9"/>') + '</svg></span>';
-      words.push(up ? T.incr : T.decr);
+      html += '<span class="sc-sign" style="left:' + c + '%">\\(' + (up ? '+' : '-') + '\\)</span>';
+      if (spec.cc) {
+        html += '<span class="sc-cc" style="left:' + c + '%">' + esc(up ? T.concUp : T.concDown) + '</span>';
+        words.push(up ? T.concUp : T.concDown);
+      } else {
+        html += '<span class="sc-arr ' + (up ? 'up' : 'down') + '" style="left:' + c + '%"><svg viewBox="0 0 24 24" aria-hidden="true">' +
+          (up ? '<path d="M5 19L19 5M10 5h9v9"/>' : '<path d="M5 5l14 14M19 10v9h-9"/>') + '</svg></span>';
+        words.push(up ? T.incr : T.decr);
+      }
     }
     box.innerHTML = '<div class="signchart" role="img" aria-label="' + esc(spec.aria || (T.signAria + ': ' + words.join(', '))) + '">' +
       '<div class="sc-lab sc-top">\\(' + spec.fp + '\\)</div>' +

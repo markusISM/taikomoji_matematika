@@ -1122,3 +1122,5 @@ svg tspan.sd-t2 { fill: var(--chart-2); }
 .vtable.cases-tbl td:nth-child(n+3), .vtable.cases-tbl th:nth-child(n+3) { text-align: left; }
 .fig-grid figcaption .sub .katex { font-size: 1em; }
 @media (max-width: 440px) { .vtable.cases-tbl th, .vtable.cases-tbl td { padding: 5px 6px; font-size: .9rem; } }
+.sc-cc { position: absolute; top: 114px; transform: translate(-50%, -50%); font-style: italic; font-size: .92rem; line-height: 1.2; white-space: nowrap; }
+@media (max-width: 440px) { .sc-cc { font-size: .8rem; } }

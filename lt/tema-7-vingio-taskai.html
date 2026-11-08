@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vingio taškai ir mažėjančio rezultatyvumo dėsnis · Taikomoji matematika</title>
+<meta name="description" content="Vingio taškai ir mažėjančio rezultatyvumo dėsnis: kaip rasti vingio tašką, kas jame pasikeičia, mažėjančio rezultatyvumo taškas. Sprendimo eiga, pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=72">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=72"></script>
+</head>
+<body data-page="m73">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">7 tema · Taikymai · 3 skyrius</span>
+    <h1>Vingio taškai ir mažėjančio rezultatyvumo dėsnis</h1>
+    <p class="lead">Šiame skyriuje nagrinėjami taškai, kuriuose pasikeičia kreivės forma, ir vienas svarbiausių jų taikymų – mažėjančio rezultatyvumo taškas: nuo kurio išteklių kiekio kiekvienas papildomas vienetas duoda vis mažesnį rezultatą.</p>
+    <ul class="jump">
+      <li><a href="#vingis">Vingio taškai</a></li>
+      <li><a href="#rezultatyvumas">Mažėjantis rezultatyvumas</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. VINGIO TAŠKAI ============ -->
+  <section class="section" id="vingis" aria-labelledby="h-infl">
+    <h2 id="h-infl">Vingio taškai</h2>
+
+    <article class="card">
+      <p>Retai dydis ilgą laiką išlaiko tą pačią kitimo kryptį ir kreivės formą. Pardavimo kiekis kurį laiką didėja vis sparčiau, o paskui pradeda didėti lėčiau; mažėjimas iš pradžių spartėja, paskui vėl lėtėja. Momentas, kai tai pasikeičia, dažnai yra vienas svarbiausių nagrinėjant funkciją. Jis turi savo pavadinimą.</p>
+      <p>Funkcijos \(y = f(x)\) grafiko taškas, kuriame egzistuoja liestinė ir pasikeičia <a href="tema-7-funkcijos-iskilumas.html">iškilumo pobūdis</a>, vadinamas <strong>vingio tašku</strong>. Vienoje jo pusėje kreivė įgaubta, kitoje – išgaubta.</p>
+      <figure class="abs-fig">
+          <svg viewBox="0 0 520 236" role="img" aria-label="Kreivė su vingio tašku: kairėje įgaubta, dešinėje išgaubta">
+          <line class="ax" x1="30" y1="212" x2="505" y2="212"/><line class="ax" x1="30" y1="212" x2="30" y2="20"/>
+          <line class="guide" x1="260.0" y1="115.0" x2="260.0" y2="212"/>
+          <path class="ln" d="M40.0 190.0L44.4 190.0L48.8 189.8L53.2 189.6L57.6 189.3L62.0 188.9L66.4 188.4L70.8 187.9L75.2 187.3L79.6 186.6L84.0 185.8L88.4 185.0L92.8 184.0L97.2 183.1L101.6 182.0L106.0 180.9L110.4 179.7L114.8 178.5L119.2 177.2L123.6 175.8L128.0 174.4L132.4 172.9L136.8 171.4L141.2 169.8L145.6 168.2L150.0 166.6L154.4 164.9L158.8 163.1L163.2 161.3L167.6 159.5L172.0 157.6L176.4 155.7L180.8 153.8L185.2 151.8L189.6 149.8L194.0 147.7L198.4 145.7L202.8 143.6L207.2 141.5L211.6 139.4L216.0 137.2L220.4 135.0L224.8 132.8L229.2 130.6L233.6 128.4L238.0 126.2L242.4 124.0L246.8 121.7L251.2 119.5L255.6 117.2L260.0 115.0L264.4 112.8L268.8 110.5L273.2 108.3L277.6 106.0L282.0 103.8L286.4 101.6L290.8 99.4L295.2 97.2L299.6 95.0L304.0 92.8L308.4 90.6L312.8 88.5L317.2 86.4L321.6 84.3L326.0 82.3L330.4 80.2L334.8 78.2L339.2 76.2L343.6 74.3L348.0 72.4L352.4 70.5L356.8 68.7L361.2 66.9L365.6 65.1L370.0 63.4L374.4 61.8L378.8 60.2L383.2 58.6L387.6 57.1L392.0 55.6L396.4 54.2L400.8 52.8L405.2 51.5L409.6 50.3L414.0 49.1L418.4 48.0L422.8 46.9L427.2 46.0L431.6 45.0L436.0 44.2L440.4 43.4L444.8 42.7L449.2 42.1L453.6 41.6L458.0 41.1L462.4 40.7L466.8 40.4L471.2 40.2L475.6 40.0L480.0 40.0"/>
+          <line class="ln2-dash" x1="88.0" y1="190.3" x2="212.0" y2="142.8"/>
+          <line class="ln2-dash" x1="308.0" y1="87.2" x2="432.0" y2="39.7"/>
+          <line class="ax" x1="190" y1="62" x2="252.0" y2="107.0"/><path class="ah" d="M252.0 107.0L246.0 96.5L240.2 104.6Z"/>
+          <circle class="pt-hi" cx="260.0" cy="115.0" r="6.5"/>
+          <text class="fig-lab" x="180" y="50" text-anchor="middle" style="font-size:19px">vingio taškas</text>
+          <text x="140" y="203" text-anchor="middle" font-style="italic" style="font-size:18px">įgaubta</text>
+          <text x="390" y="203" text-anchor="middle" font-style="italic" style="font-size:18px">išgaubta</text>
+          </svg>
+        <figcaption>Vingio taške kreivė iš įgaubtos tampa išgaubta.</figcaption>
+      </figure>
+
+      <h3 class="subhead" style="margin-top:22px">Kaip rasti vingio tašką</h3>
+      <p>Iškilumo pobūdį lemia \(f''(x)\) ženklas, todėl vingio taške šis ženklas keičiasi. Funkcijos ženklas gali keistis tik ten, kur ji lygi nuliui arba neegzistuoja. Taigi galimi vingio taškai randami iš sąlygų:</p>
+      <div class="formula">\[ \begin{gathered} f''(x) = 0\quad\text{arba} \\ f''(x)\ \text{neegzistuoja} \end{gathered} \]</div>
+      <p>Kiekvieną galimą tašką reikia <strong>patikrinti</strong>, nustatant \(f''(x)\) ženklą abiejose jo pusėse. Aiškiausia tai parodyti ženklų schemoje. Jei ženklas pasikeičia, gaunamas vingio taškas. Jei ženklas nesikeičia, vingio taško nėra. Atsakyme nurodoma reikšmė \(x_0\), kurioje įvyksta šis pokytis.</p>
+      <p class="tip"><strong>Vien nulio nepakanka.</strong> Taškas, kuriame \(f''(x) = 0\), nebūtinai yra vingio taškas. Antroji išvestinė gali būti lygi nuliui, tačiau abipus išlaikyti tą patį ženklą. Tada kreivės forma nesikeičia. Tai panašu į kritinį tašką, kuriame nėra ekstremumo: ženklo pasikeitimą reikia patikrinti, o ne numanyti (žr. <a href="#pavyzdys-5">5 pavyzdį</a>).</p>
+
+      <h3 class="subhead" style="margin-top:22px" id="pasikeicia">Kas pasikeičia vingio taške</h3>
+      <p>Vingio taške dydžio kitimo kryptis nesikeičia, nes šį tašką apibrėžia ne \(f'(x)\) ženklas. Pasikeičia dydžio kitimo pobūdis. Iš <a href="tema-7-funkcijos-iskilumas.html#atvejai">keturių kitimo apibūdinimų</a> pakeitę tik iškilumo pobūdį, gauname keturis galimus perėjimus:</p>
+      <div class="tbl-wrap">
+        <table class="vtable cases-tbl">
+          <thead>
+            <tr><th scope="col">Funkcija</th><th scope="col">Vingio taške kitimas keičiasi iš</th><th scope="col">į</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>didėja</td><td>greito augimo</td><td>lėtą augimą</td></tr>
+            <tr><td>didėja</td><td>lėto augimo</td><td>greitą augimą</td></tr>
+            <tr><td>mažėja</td><td>lėto mažėjimo</td><td>greitą mažėjimą</td></tr>
+            <tr><td>mažėja</td><td>greito mažėjimo</td><td>lėtą mažėjimą</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="fig-grid" role="group" aria-label="Keturi perėjimai vingio taške">
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><line class="guide" x1="66" y1="43.0" x2="66" y2="76"/><path class="ln" d="M26.0 72.0L28.0 71.9L30.0 71.6L32.0 71.1L34.0 70.4L36.0 69.5L38.0 68.5L40.0 67.3L42.0 66.0L44.0 64.5L46.0 62.9L48.0 61.3L50.0 59.5L52.0 57.6L54.0 55.7L56.0 53.6L58.0 51.6L60.0 49.5L62.0 47.3L64.0 45.2L66.0 43.0L68.0 40.8L70.0 38.7L72.0 36.5L74.0 34.4L76.0 32.4L78.0 30.3L80.0 28.4L82.0 26.5L84.0 24.7L86.0 23.1L88.0 21.5L90.0 20.0L92.0 18.7L94.0 17.5L96.0 16.5L98.0 15.6L100.0 14.9L102.0 14.4L104.0 14.1L106.0 14.0"/><circle class="pt-hi" cx="66" cy="43.0" r="4"/></svg>
+          <figcaption>Greitas augimas<span class="sub">→ lėtas augimas</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><line class="guide" x1="66" y1="43.0" x2="66" y2="76"/><path class="ln" d="M26.0 72.0L28.0 67.9L30.0 64.1L32.0 60.8L34.0 57.8L36.0 55.2L38.0 52.9L40.0 51.0L42.0 49.3L44.0 47.8L46.0 46.6L48.0 45.6L50.0 44.9L52.0 44.2L54.0 43.8L56.0 43.5L58.0 43.2L60.0 43.1L62.0 43.0L64.0 43.0L66.0 43.0L68.0 43.0L70.0 43.0L72.0 42.9L74.0 42.8L76.0 42.5L78.0 42.2L80.0 41.8L82.0 41.1L84.0 40.4L86.0 39.4L88.0 38.2L90.0 36.7L92.0 35.0L94.0 33.1L96.0 30.8L98.0 28.2L100.0 25.2L102.0 21.9L104.0 18.1L106.0 14.0"/><circle class="pt-hi" cx="66" cy="43.0" r="4"/></svg>
+          <figcaption>Lėtas augimas<span class="sub">→ greitas augimas</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><line class="guide" x1="66" y1="43.0" x2="66" y2="76"/><path class="ln" d="M26.0 14.0L28.0 18.1L30.0 21.9L32.0 25.2L34.0 28.2L36.0 30.8L38.0 33.1L40.0 35.0L42.0 36.7L44.0 38.2L46.0 39.4L48.0 40.4L50.0 41.1L52.0 41.8L54.0 42.2L56.0 42.5L58.0 42.8L60.0 42.9L62.0 43.0L64.0 43.0L66.0 43.0L68.0 43.0L70.0 43.0L72.0 43.1L74.0 43.2L76.0 43.5L78.0 43.8L80.0 44.2L82.0 44.9L84.0 45.6L86.0 46.6L88.0 47.8L90.0 49.3L92.0 51.0L94.0 52.9L96.0 55.2L98.0 57.8L100.0 60.8L102.0 64.1L104.0 67.9L106.0 72.0"/><circle class="pt-hi" cx="66" cy="43.0" r="4"/></svg>
+          <figcaption>Lėtas mažėjimas<span class="sub">→ greitas mažėjimas</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><line class="guide" x1="66" y1="43.0" x2="66" y2="76"/><path class="ln" d="M26.0 14.0L28.0 14.1L30.0 14.4L32.0 14.9L34.0 15.6L36.0 16.5L38.0 17.5L40.0 18.7L42.0 20.0L44.0 21.5L46.0 23.1L48.0 24.7L50.0 26.5L52.0 28.4L54.0 30.3L56.0 32.4L58.0 34.4L60.0 36.5L62.0 38.7L64.0 40.8L66.0 43.0L68.0 45.2L70.0 47.3L72.0 49.5L74.0 51.6L76.0 53.6L78.0 55.7L80.0 57.6L82.0 59.5L84.0 61.3L86.0 62.9L88.0 64.5L90.0 66.0L92.0 67.3L94.0 68.5L96.0 69.5L98.0 70.4L100.0 71.1L102.0 71.6L104.0 71.9L106.0 72.0"/><circle class="pt-hi" cx="66" cy="43.0" r="4"/></svg>
+          <figcaption>Greitas mažėjimas<span class="sub">→ lėtas mažėjimas</span></figcaption>
+        </figure>
+      </div>
+      <p style="margin-top:14px">Tą patį tašką galima interpretuoti ir kitaip; taikomuosiuose uždaviniuose ši interpretacija naudingesnė. Antroji išvestinė yra funkcijos \(f'(x)\) kitimo greitis. Todėl, kai \(f''(x)\) ženklas keičiasi iš teigiamo į neigiamą, pirmoji išvestinė nustoja didėti ir pradeda mažėti: šiame taške ji <strong>didžiausia</strong>. Kai ženklas keičiasi priešinga kryptimi, pirmoji išvestinė tame taške <strong>mažiausia</strong>. Taigi vingio taške dydis kinta didžiausiu arba mažiausiu greičiu.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. MAŽĖJANČIO REZULTATYVUMO TAŠKAS ============ -->
+  <section class="section" id="rezultatyvumas" aria-labelledby="h-dim">
+    <h2 id="h-dim">Mažėjančio rezultatyvumo taškas</h2>
+
+    <article class="card">
+      <p>Vienas iš keturių perėjimų ypač svarbus, nes apibūdina beveik visų įmonės naudojamų išteklių poveikį. Reklamos, mokymų, įrenginių ar darbo išlaidos iš pradžių duoda didelį rezultatą, tačiau, pasiekus tam tikrą išlaidų lygį, kiekvieno papildomo euro poveikis mažėja. Šis reiškinys vadinamas <strong>mažėjančio rezultatyvumo dėsniu</strong>, o taškas, kuriame prasideda šis pokytis, turi atskirą pavadinimą.</p>
+      <div class="model-note"><strong>Taškas, kuriame funkcijos kitimas iš greito augimo pereina į lėtą augimą, vadinamas mažėjančio rezultatyvumo tašku.</strong></div>
+      <p style="margin-top:12px">Tai vingio taškas su dviem papildomomis sąlygomis: funkcija didėja, o iš įgaubtos tampa išgaubta. Kaip paaiškinta <a href="#pasikeicia">anksčiau</a>, pirmoji išvestinė čia didžiausia. Todėl šis taškas ir svarbus: papildomo ištekliaus vieneto rezultatyvumas čia didžiausias, taigi papildomas vienetas duoda daugiau nei bet kuriame kitame taške. Už šio taško kiekvienas papildomas vienetas duoda mažesnį rezultatą nei ankstesnis.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Reklamos biudžetas</h3>
+      <p>Grįžkime prie <a href="tema-7.html#reklama">7 temos puslapio</a> pavyzdžio. Įmonės pajamos tūkstančiais eurų, kai reklamai per mėnesį skiriama \(x\) tūkstančių eurų, yra</p>
+      <div class="formula">\[ \begin{gathered} R(x) = -0{,}1x^3 + 1{,}5x^2 + 100, \\ 0 \le x \le 10 \end{gathered} \]</div>
+      <p>Abi išvestinės yra</p>
+      <div class="formula">\[ R'(x) = -0{,}3x^2 + 3x \]
+        \[ R''(x) = -0{,}6x + 3 \]</div>
+      <p>Antroji išvestinė lygi nuliui, kai</p>
+      <div class="formula">\[ \begin{gathered} -0{,}6x + 3 = 0 \;\Longrightarrow\; 0{,}6x = 3 \\ \Longrightarrow\; x = 5 \end{gathered} \]</div>
+      <p>ir šiame taške keičia ženklą: \(R''(2) = 1{,}8 &gt; 0\) ir \(R''(8) = -1{,}8 &lt; 0\). Taigi kreivė įgaubta, kai reklamos biudžetas mažesnis už 5 tūkstančius eurų, ir išgaubta, kai jis didesnis. Pajamos didėja visoje nagrinėjamoje srityje, nes \(R'(x) = x(3 - 0{,}3x)\) teigiama, kai \(0 &lt; x &lt; 10\). Todėl greitas augimas pereina į lėtą augimą, o mažėjančio rezultatyvumo taškas yra \(x = 5\).</p>
+      <figure class="abs-fig">
+          <svg viewBox="0 0 520 236" role="img" aria-label="Pajamų R(x) ir ribinių pajamų R′(x) grafikai: kai x = 5, pajamų grafiko vingio taškas, o ribinės pajamos didžiausios – 7,5">
+          <line class="ax" x1="40" y1="190" x2="248" y2="190"/><path class="ah" d="M256 190L248 185.5L248 194.5Z"/>
+          <line class="ax" x1="40" y1="190" x2="40" y2="30"/><path class="ah" d="M40 22L35.5 30L44.5 30Z"/>
+          <line class="ax" x1="300" y1="190" x2="508" y2="190"/><path class="ah" d="M516 190L508 185.5L508 194.5Z"/>
+          <line class="ax" x1="300" y1="190" x2="300" y2="30"/><path class="ah" d="M300 22L295.5 30L304.5 30Z"/>
+          <line class="guide" x1="135.0" y1="125.0" x2="135.0" y2="190"/>
+          <line class="guide" x1="395.0" y1="55.0" x2="395.0" y2="190"/>
+          <line class="guide" x1="300" y1="55.0" x2="395.0" y2="55.0"/>
+          <path class="ln" d="M40.0 190.0L41.9 190.0L43.8 189.8L45.7 189.7L47.6 189.4L49.5 189.1L51.4 188.7L53.3 188.2L55.2 187.6L57.1 187.0L59.0 186.4L60.9 185.6L62.8 184.8L64.7 184.0L66.6 183.1L68.5 182.1L70.4 181.1L72.3 180.0L74.2 178.9L76.1 177.7L78.0 176.5L79.9 175.2L81.8 173.9L83.7 172.5L85.6 171.1L87.5 169.7L89.4 168.2L91.3 166.7L93.2 165.1L95.1 163.5L97.0 161.9L98.9 160.3L100.8 158.6L102.7 156.9L104.6 155.1L106.5 153.4L108.4 151.6L110.3 149.8L112.2 148.0L114.1 146.1L116.0 144.2L117.9 142.4L119.8 140.5L121.7 138.6L123.6 136.6L125.5 134.7L127.4 132.8L129.3 130.8L131.2 128.9L133.1 126.9L135.0 125.0L136.9 123.1L138.8 121.1L140.7 119.2L142.6 117.2L144.5 115.3L146.4 113.4L148.3 111.4L150.2 109.5L152.1 107.6L154.0 105.8L155.9 103.9L157.8 102.0L159.7 100.2L161.6 98.4L163.5 96.6L165.4 94.9L167.3 93.1L169.2 91.4L171.1 89.7L173.0 88.1L174.9 86.5L176.8 84.9L178.7 83.3L180.6 81.8L182.5 80.3L184.4 78.9L186.3 77.5L188.2 76.1L190.1 74.8L192.0 73.5L193.9 72.3L195.8 71.1L197.7 70.0L199.6 68.9L201.5 67.9L203.4 66.9L205.3 66.0L207.2 65.2L209.1 64.4L211.0 63.6L212.9 63.0L214.8 62.4L216.7 61.8L218.6 61.3L220.5 60.9L222.4 60.6L224.3 60.3L226.2 60.2L228.1 60.0L230.0 60.0"/>
+          <path class="ln" d="M300.0 190.0L301.9 184.7L303.8 179.4L305.7 174.3L307.6 169.3L309.5 164.3L311.4 159.5L313.3 154.8L315.2 150.3L317.1 145.8L319.0 141.4L320.9 137.1L322.8 133.0L324.7 128.9L326.6 125.0L328.5 121.1L330.4 117.4L332.3 113.8L334.2 110.3L336.1 106.9L338.0 103.6L339.9 100.4L341.8 97.3L343.7 94.4L345.6 91.5L347.5 88.8L349.4 86.1L351.3 83.6L353.2 81.1L355.1 78.8L357.0 76.6L358.9 74.5L360.8 72.5L362.7 70.6L364.6 68.8L366.5 67.2L368.4 65.6L370.3 64.1L372.2 62.8L374.1 61.5L376.0 60.4L377.9 59.4L379.8 58.5L381.7 57.6L383.6 56.9L385.5 56.3L387.4 55.9L389.3 55.5L391.2 55.2L393.1 55.1L395.0 55.0L396.9 55.1L398.8 55.2L400.7 55.5L402.6 55.9L404.5 56.3L406.4 56.9L408.3 57.6L410.2 58.5L412.1 59.4L414.0 60.4L415.9 61.5L417.8 62.8L419.7 64.1L421.6 65.6L423.5 67.1L425.4 68.8L427.3 70.6L429.2 72.5L431.1 74.5L433.0 76.6L434.9 78.8L436.8 81.1L438.7 83.6L440.6 86.1L442.5 88.8L444.4 91.5L446.3 94.4L448.2 97.3L450.1 100.4L452.0 103.6L453.9 106.9L455.8 110.3L457.7 113.8L459.6 117.4L461.5 121.1L463.4 125.0L465.3 128.9L467.2 133.0L469.1 137.1L471.0 141.4L472.9 145.8L474.8 150.3L476.7 154.8L478.6 159.5L480.5 164.3L482.4 169.3L484.3 174.3L486.2 179.4L488.1 184.7L490.0 190.0"/>
+          <circle class="pt-hi" cx="135.0" cy="125.0" r="6"/><circle class="pt-hi" cx="395.0" cy="55.0" r="6"/>
+          <text class="muted" x="40.0" y="210" text-anchor="middle" style="font-size:16px">0</text>
+          <text class="muted" x="135.0" y="210" text-anchor="middle" style="font-size:16px">5</text>
+          <text class="muted" x="230.0" y="210" text-anchor="middle" style="font-size:16px">10</text>
+          <text class="muted" x="300.0" y="210" text-anchor="middle" style="font-size:16px">0</text>
+          <text class="muted" x="395.0" y="210" text-anchor="middle" style="font-size:16px">5</text>
+          <text class="muted" x="490.0" y="210" text-anchor="middle" style="font-size:16px">10</text>
+          <text class="muted" x="293" y="60.0" text-anchor="end" style="font-size:16px">7,5</text>
+          <text class="m" x="135.0" y="22" text-anchor="middle" style="font-size:19px"><tspan class="i">R</tspan>(<tspan class="i">x</tspan>)</text>
+          <text class="m" x="395.0" y="22" text-anchor="middle" style="font-size:19px"><tspan class="i">R</tspan>′(<tspan class="i">x</tspan>)</text>
+          <text x="70.4" y="134" text-anchor="middle" font-style="italic" style="font-size:17px">įgaubta</text>
+          <text x="190.1" y="160" text-anchor="middle" font-style="italic" style="font-size:17px">išgaubta</text>
+          <text class="muted" x="236.0" y="228" text-anchor="end" style="font-size:15px">x, tūkst. €</text>
+          <text class="muted" x="496.0" y="228" text-anchor="end" style="font-size:15px">x, tūkst. €</text>
+          </svg>
+        <figcaption>Pajamos ir ribinės pajamos. Esant 5 tūkstančių eurų biudžetui, pasikeičia kreivės forma, o ribinės pajamos yra didžiausios.</figcaption>
+      </figure>
+      <p>Dešinysis paveikslas parodo, kuo šis taškas svarbus. Ribinės pajamos \(R'(x)\) didėja, kol biudžetas pasiekia 5 tūkstančius eurų. Tame taške \(R'(5) = 7{,}5\), o toliau ribinės pajamos mažėja. Iki šio biudžeto kiekvienas papildomas reklamos tūkstantis eurų duoda daugiau pajamų nei ankstesnis. Nuo šio biudžeto kiekvienas papildomas tūkstantis duoda mažiau. Abiem atvejais pajamos toliau didėja, tačiau už kiekvieną papildomą eurą gaunamas vis mažesnis pajamų prieaugis.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Užrašykite funkciją, uždavinyje nurodytą intervalą ir paaiškinkite, ką reiškia kintamasis.</li>
+        <li>Diferencijuokite. Išspręskite \(f'(x) = 0\), nubraižykite \(f'\) ženklų schemą ir pagal ją nustatykite monotoniškumo intervalus. Nagrinėjamam intervalui nepriklausančius kritinius taškus atmeskite, tačiau ženklų schemą vis tiek sudarykite, nes reikia žinoti dydžio kitimo kryptį.</li>
+        <li>Diferencijuokite dar kartą. Išspręskite \(f''(x) = 0\) ir raskite intervalo taškus, kuriuose \(f''(x)\) neegzistuoja. Tai galimi vingio taškai.</li>
+        <li>Nubraižykite \(f''\) ženklų schemą. Kur ženklas keičiasi, yra vingio taškas; kur nesikeičia, jo nėra.</li>
+        <li>Pagal <a href="#pasikeicia">keturis perėjimus</a> įvardykite, kas tame taške pasikeičia, ir interpretuokite uždavinio kontekste.</li>
+      </ol>
+      <div class="model-note"><strong>Jei prašoma mažėjančio rezultatyvumo taško.</strong> Tai vingio taškas, kuriame didėjanti funkcija iš įgaubtos tampa išgaubta. Jį galima nustatyti iš abiejų ženklų schemų.</div>
+      <div class="model-note"><strong>Interpretacija.</strong> Radus tašką, atsakymas dar nebaigtas. Uždavinyje prašoma paaiškinti, kas jame įvyksta, remiantis uždavinio kontekstu. Šis paaiškinimas yra atsakymo dalis.</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Vien nulio nepakanka.</strong> Taškas, kuriame \(f''(x) = 0\), laikomas vingio tašku nepatikrinus, ar \(f''(x)\) ženklas abipus jo keičiasi.</li>
+            <li><strong>Vingio taškas – ne ekstremumas.</strong> Vingio taške dydžio kitimo kryptis nesikeičia; pasikeičia kitimo pobūdis.</li>
+            <li><strong>Nėra \(f'\) ženklų schemos.</strong> Net jei kritiniai taškai nepriklauso intervalui, kitimo kryptį reikia nustatyti, kitaip neįmanoma įvardyti kitimo pobūdžio.</li>
+            <li><strong>Atsakyme – tik taškas.</strong> Reikia paaiškinti, kas tame taške pasikeičia uždavinio kontekste.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 7.3, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Gamyklos dienos sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamyklos dienos bendrosios sąnaudos, pagaminant \(x\) tonų produkto, yra
+        <div class="fit-sm">\[ \begin{gathered} C(x) = 0{,}2x^3 - 6x^2 + 80x + 500, \\ 0 \le x \le 20 \end{gathered} \]</div>
+        eurų.
+        <ol type="a">
+          <li>Raskite intervalus, kuriuose sąnaudos didėja ir mažėja.</li>
+          <li>Raskite funkcijos \(C(x)\) vingio tašką.</li>
+          <li>Apibūdinkite, kas pasikeičia šiame taške.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kritiniai taškai</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ C'(x) = 0{,}6x^2 - 12x + 80 \]
+          <p>Kritiniai taškai randami iš \(C'(x) = 0\). Tai kvadratinė lygtis, kurios diskriminantas yra</p>
+          \[ \begin{aligned} D &amp;= (-12)^2 - 4\cdot 0{,}6\cdot 80 \\ &amp;= 144 - 192 = -48 &lt; 0 \end{aligned} \]
+          <p>todėl kritinių taškų nėra, o \(C'\) ženklas nesikeičia. Kurį ženklą ji išlaiko, nustatome pagal vieną reikšmę: \(C'(0) = 80 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"C&#39;(x)","f":"C(x)","v":"x","pts":[{"x":"0"},{"x":"20"}],"s":["+"]}'></div>
+          <p>Sąnaudos didėja visame intervale \((0;\, 20)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Antroji išvestinė ir galimas vingio taškas</span></h4>
+          <p>Diferencijuodami pirmąją išvestinę, gauname</p>
+          \[ C''(x) = 1{,}2x - 12 \]
+          <p>Ji egzistuoja visur, todėl vienintelis galimas vingio taškas randamas iš \(C''(x) = 0\):</p>
+          \[ 1{,}2x - 12 = 0 \;\Longrightarrow\; x = 10 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Antrosios išvestinės ženklų schema</span></h4>
+          <p>Ženklai abipus taško: \(C''(5) = -6 &lt; 0\) ir \(C''(15) = 6 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"C&#39;&#39;(x)","f":"C(x)","v":"x","pts":[{"x":"0"},{"x":"10","z":true},{"x":"20"}],"s":["-","+"],"cc":true}'></div>
+          <p>Ženklas keičiasi, todėl vingio taškas yra \(x = 10\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Sąnaudos didėja visame intervale \((0;\, 20)\).</p>
+            <p>b) Vingio taškas yra \(x = 10\).</p>
+            <p>c) Sąnaudos didėja visame intervale. Iki 10 tonų funkcija išgaubta, o nuo 10 tonų – įgaubta. Taigi intervale \((0;\, 10)\) būdingas <strong>lėtas augimas</strong>, o intervale \((10;\, 20)\) – <strong>greitas augimas</strong>. Iki 10 tonų per dieną kiekviena papildoma tona kainuoja mažiau nei ankstesnė, o viršijus šį kiekį – daugiau. Ribinės sąnaudos mažiausios, kai pagaminama 10 tonų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 7.3, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Darbuotojų skaičius ir gamybos kiekis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamyklos mėnesio produkcijos kiekis tūkstančiais vienetų, kai joje dirba \(x\) darbuotojų, yra
+        <div class="fit-sm">\[ \begin{gathered} Q(x) = -0{,}02x^3 + 1{,}8x^2 + 42x, \\ 0 \le x \le 50 \end{gathered} \]</div>
+        <ol type="a">
+          <li>Raskite intervalus, kuriuose gamybos kiekis didėja ir mažėja.</li>
+          <li>Raskite mažėjančio rezultatyvumo tašką.</li>
+          <li>Paaiškinkite jo reikšmę gamyklai.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kritiniai taškai</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ Q'(x) = -0{,}06x^2 + 3{,}6x + 42 \]
+          <p>Kritiniai taškai randami iš \(Q'(x) = 0\). Padaliję iš \(-0{,}06\), gauname \(x^2 - 60x - 700 = 0\). Šios lygties diskriminantas yra</p>
+          \[ \begin{aligned} D &amp;= (-60)^2 - 4\cdot 1\cdot(-700) \\ &amp;= 3600 + 2800 = 6400 \end{aligned} \]
+          \[ \sqrt{D} = 80 \]
+          \[ x_1 = \frac{60 - 80}{2} = -10 \]
+          \[ x_2 = \frac{60 + 80}{2} = 70 \]
+          <p>Abu sprendiniai nepriklauso intervalui \([0;\, 50]\), todėl \(Q'\) ženklas intervalo viduje nesikeičia. Jį nustatome pagal vieną reikšmę: \(Q'(0) = 42 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"0"},{"x":"50"}],"s":["+"]}'></div>
+          <p>Gamybos kiekis didėja visame intervale \((0;\, 50)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Antroji išvestinė ir galimas vingio taškas</span></h4>
+          <p>Diferencijuodami pirmąją išvestinę, gauname</p>
+          \[ Q''(x) = -0{,}12x + 3{,}6 \]
+          <p>Prilyginame nuliui:</p>
+          \[ \begin{gathered} -0{,}12x + 3{,}6 = 0 \;\Longrightarrow\; 0{,}12x = 3{,}6 \\ \Longrightarrow\; x = 30 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Antrosios išvestinės ženklų schema</span></h4>
+          <p>Ženklai abipus taško: \(Q''(10) = 2{,}4 &gt; 0\) ir \(Q''(40) = -1{,}2 &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"0"},{"x":"30","z":true},{"x":"50"}],"s":["+","-"],"cc":true}'></div>
+          <p>Ženklas keičiasi iš teigiamo į neigiamą, o gamybos kiekis didėja, todėl mažėjančio rezultatyvumo taškas yra \(x = 30\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Gamybos kiekis didėja visame intervale \((0;\, 50)\).</p>
+            <p>b) Mažėjančio rezultatyvumo taškas yra \(x = 30\).</p>
+            <p>c) Intervale \((0;\, 30)\) gamybos kiekiui būdingas <strong>greitas augimas</strong>, o intervale \((30;\, 50)\) – <strong>lėtas augimas</strong>. Iki trisdešimto darbuotojo kiekvienas naujas darbuotojas gamybos kiekį padidina daugiau nei ankstesnis, o nuo trisdešimto – mažiau. Įdarbinusi daugiau nei 30 darbuotojų, gamykla vis dar padidina gamybos kiekį, tačiau kiekvieno papildomo darbuotojo rezultatas mažėja.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 7.3, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Klientai atėjus konkurentui</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Į rinką ateina konkurentas. Praėjus \(t\) mėnesių, ankstesne paslauga vis dar naudojasi
+        <div class="fit-sm">\[ N(t) = 0{,}05t^3 - 1{,}5t^2 + 250,\quad 0 \le t \le 20 \]</div>
+        tūkstančių klientų.
+        <ol type="a">
+          <li>Raskite intervalus, kuriuose klientų skaičius didėja ir mažėja.</li>
+          <li>Raskite funkcijos \(N(t)\) vingio tašką.</li>
+          <li>Apibūdinkite, kas pasikeičia šiame taške.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kritiniai taškai</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ N'(t) = 0{,}15t^2 - 3t \]
+          <p>Kritiniai taškai randami iš \(N'(t) = 0\). Tai kvadratinė lygtis be laisvojo nario. Jos diskriminantas yra</p>
+          \[ D = (-3)^2 - 4\cdot 0{,}15\cdot 0 = 9 \]
+          \[ \sqrt{D} = 3 \]
+          \[ t_1 = \frac{3 - 3}{2\cdot 0{,}15} = 0;\qquad t_2 = \frac{3 + 3}{2\cdot 0{,}15} = 20 \]
+          <p>Abu kritiniai taškai sutampa su intervalo galais, todėl ženklas intervalo viduje nesikeičia. Jį nustatome pagal vieną reikšmę: \(N'(10) = 15 - 30 = -15 &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"N&#39;(t)","f":"N(t)","v":"t","pts":[{"x":"0","z":true},{"x":"20","z":true}],"s":["-"]}'></div>
+          <p>Klientų skaičius mažėja visame intervale \((0;\, 20)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Antroji išvestinė ir galimas vingio taškas</span></h4>
+          <p>Diferencijuodami pirmąją išvestinę, gauname</p>
+          \[ N''(t) = 0{,}3t - 3 \]
+          <p>Prilyginame nuliui:</p>
+          \[ 0{,}3t - 3 = 0 \;\Longrightarrow\; t = 10 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Antrosios išvestinės ženklų schema</span></h4>
+          <p>Ženklai abipus taško: \(N''(5) = -1{,}5 &lt; 0\) ir \(N''(15) = 1{,}5 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"N&#39;&#39;(t)","f":"N(t)","v":"t","pts":[{"x":"0"},{"x":"10","z":true},{"x":"20"}],"s":["-","+"],"cc":true}'></div>
+          <p>Ženklas keičiasi, todėl vingio taškas yra \(t = 10\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Klientų skaičius mažėja visame intervale \((0;\, 20)\).</p>
+            <p>b) Vingio taškas yra \(t = 10\).</p>
+            <p>c) Klientų skaičius mažėja visą laikotarpį. Iki dešimto mėnesio kreivė išgaubta, o po jo – įgaubta. Taigi intervale \((0;\, 10)\) būdingas <strong>greitas mažėjimas</strong>, o intervale \((10;\, 20)\) – <strong>lėtas mažėjimas</strong>. Iki dešimto mėnesio kas mėnesį prarandama daugiau klientų nei ankstesnį, o po jo mėnesio netekimas mažėja. Dešimtą mėnesį klientų skaičius mažėja didžiausiu greičiu.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 7.3, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Pelnas po reorganizavimo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonės mėnesio pelnas tūkstančiais eurų, praėjus \(t\) mėnesių nuo reorganizavimo, yra
+        <div class="fit-sm">\[ P(t) = t^3 - 9t^2 + 15t + 40,\quad 0 \le t \le 8 \]</div>
+        <ol type="a">
+          <li>Raskite intervalus, kuriuose pelnas didėja ir mažėja.</li>
+          <li>Raskite funkcijos \(P(t)\) vingio tašką.</li>
+          <li>Apibūdinkite pelno kitimą kiekvienoje laikotarpio dalyje.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kritiniai taškai</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ P'(t) = 3t^2 - 18t + 15 \]
+          <p>Kritiniai taškai randami iš \(P'(t) = 0\). Lygties diskriminantas yra</p>
+          \[ \begin{aligned} D &amp;= (-18)^2 - 4\cdot 3\cdot 15 \\ &amp;= 324 - 180 = 144 \end{aligned} \]
+          \[ \sqrt{D} = 12 \]
+          \[ t_1 = \frac{18 - 12}{2\cdot 3} = 1;\qquad t_2 = \frac{18 + 12}{2\cdot 3} = 5 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pirmosios išvestinės ženklų schema</span></h4>
+          <p>Abu sprendiniai yra intervalo viduje. Pasirenkame po vieną reikšmę kiekvienoje iš trijų dalių: \(P'(0{,}5) = 6{,}75 &gt; 0\), \(P'(3) = -12 &lt; 0\) ir \(P'(6{,}5) = 24{,}75 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(t)","f":"P(t)","v":"t","pts":[{"x":"0"},{"x":"1","z":true},{"x":"5","z":true},{"x":"8"}],"s":["+","-","+"]}'></div>
+          <p>Pelnas didėja intervale \((0;\, 1)\), mažėja intervale \((1;\, 5)\) ir vėl didėja intervale \((5;\, 8)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Antroji išvestinė ir vingio taškas</span></h4>
+          <p>Diferencijuodami pirmąją išvestinę, gauname</p>
+          \[ P''(t) = 6t - 18 \]
+          <p>Prilyginame nuliui:</p>
+          \[ 6t - 18 = 0 \;\Longrightarrow\; t = 3 \]
+          <p>Ženklai abipus taško: \(P''(1) = -12 &lt; 0\) ir \(P''(5) = 12 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;&#39;(t)","f":"P(t)","v":"t","pts":[{"x":"0"},{"x":"3","z":true},{"x":"8"}],"s":["-","+"],"cc":true}'></div>
+          <p>Ženklas keičiasi, todėl vingio taškas yra \(t = 3\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Pelnas didėja intervale \((0;\, 1)\), mažėja intervale \((1;\, 5)\) ir vėl didėja intervale \((5;\, 8)\).</p>
+            <p>b) Vingio taškas yra \(t = 3\).</p>
+            <p>c) Šiuo laikotarpiu pasikeičia ir kitimo kryptis, ir kreivės forma. Abi ženklų schemos kartu padalija jį į keturias dalis:</p>
+            <ul>
+              <li>intervale \((0;\, 1)\) pelnas didėja, o funkcija išgaubta, todėl būdingas <strong>lėtas augimas</strong>;</li>
+              <li>intervale \((1;\, 3)\) pelnas mažėja, o funkcija išgaubta, todėl būdingas <strong>greitas mažėjimas</strong>;</li>
+              <li>intervale \((3;\, 5)\) pelnas mažėja, o funkcija įgaubta, todėl būdingas <strong>lėtas mažėjimas</strong>;</li>
+              <li>intervale \((5;\, 8)\) pelnas didėja, o funkcija įgaubta, todėl būdingas <strong>greitas augimas</strong>.</li>
+            </ul>
+            <p>Pelnas vieną mėnesį didėja, tada keturis mėnesius mažėja, o nuo penkto mėnesio vėl didėja. Vingio taškas \(t = 3\) kitimo krypties nekeičia: pelnas mažėja ir prieš jį, ir po jo. Pasikeičia mažėjimo greitis: jis nustoja didėti ir pradeda mažėti. Trečią mėnesį pelnas mažėja greičiausiai per visą laikotarpį.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 7.3, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Pajamos iš programinės įrangos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Programinės įrangos įmonės bendrosios pajamos iš produkto tūkstančiais eurų, praėjus \(t\) metų nuo jo išleidimo, yra
+        <div class="fit-sm">\[ \begin{gathered} R(t) = t^4 - 8t^3 + 24t^2 + 100, \\ 0 \le t \le 6 \end{gathered} \]</div>
+        <ol type="a">
+          <li>Raskite intervalus, kuriuose pajamos didėja ir mažėja.</li>
+          <li>Raskite funkcijos \(R(t)\) vingio taškus, jei jų yra.</li>
+          <li>Apibūdinkite pajamų kitimą šiuo laikotarpiu.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė ir kritiniai taškai</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ \begin{aligned} R'(t) &amp;= 4t^3 - 24t^2 + 48t \\ &amp;= 4t\left(t^2 - 6t + 12\right) \end{aligned} \]
+          <p>Pirmasis daugiklis lygus nuliui, kai \(t = 0\). Reiškinio skliaustuose diskriminantas yra</p>
+          \[ \begin{aligned} D &amp;= (-6)^2 - 4\cdot 1\cdot 12 \\ &amp;= 36 - 48 = -12 &lt; 0 \end{aligned} \]
+          <p>todėl reiškinys skliaustuose neturi nulių ir išlaiko vieną ženklą. Kai \(t = 0\), jo reikšmė 12, todėl jis visur teigiamas. Vienintelis kritinis taškas yra \(t = 0\), kairysis intervalo galas, o \(R'(1) = 28 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(t)","f":"R(t)","v":"t","pts":[{"x":"0","z":true},{"x":"6"}],"s":["+"]}'></div>
+          <p>Pajamos didėja visame intervale \((0;\, 6)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Antroji išvestinė ir galimas vingio taškas</span></h4>
+          <p>Diferencijuodami pirmąją išvestinę, gauname</p>
+          \[ R''(t) = 12t^2 - 48t + 48 \]
+          <p>Prilyginę nuliui, gauname kvadratinę lygtį. Jos diskriminantas yra</p>
+          \[ \begin{aligned} D &amp;= (-48)^2 - 4\cdot 12\cdot 48 \\ &amp;= 2304 - 2304 = 0 \end{aligned} \]
+          <p>Kai diskriminantas lygus nuliui, gaunama viena dviguboji šaknis:</p>
+          \[ t = \frac{48}{2\cdot 12} = 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Antrosios išvestinės ženklų schema</span></h4>
+          <p>Dviguboji šaknis įspėja, kad ženklas šiame taške gali nesikeisti. Reikšmės abipus rodo, kad jis iš tiesų nesikeičia:</p>
+          \[ R''(1) = 12 - 48 + 48 = 12 &gt; 0 \]
+          \[ R''(3) = 108 - 144 + 48 = 12 &gt; 0 \]
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;&#39;(t)","f":"R(t)","v":"t","pts":[{"x":"0"},{"x":"2","z":true},{"x":"6"}],"s":["+","+"],"cc":true}'></div>
+          <p><strong>Vingio taško nėra.</strong> Antroji išvestinė taške \(t = 2\) lygi nuliui, tačiau abipus teigiama. Taigi kreivė įgaubta visą laikotarpį ir jos iškilumo pobūdis nesikeičia.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Pajamos didėja visame intervale \((0;\, 6)\).</p>
+            <p>b) Vingio taškų nėra.</p>
+            <p>c) Pajamos didėja, o funkcija įgaubta visą laikotarpį, todėl nuo produkto išleidimo iki šeštų metų būdingas <strong>greitas augimas</strong>: kiekvieni metai duoda didesnį pajamų prieaugį nei ankstesni. Antrais metais augimo spartėjimas akimirkai sustoja, nes \(R''(2) = 0\), tačiau augimas nepradeda lėtėti.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 7.3, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Skundai po produkto atšaukimo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė paskelbia produkto atšaukimą. Praėjus \(t\) savaičių, ji gauna
+        \[ A(t) = 400te^{-0{,}5t},\quad 0 \le t \le 12 \]
+        skundų per savaitę. Skundų skaičius pirmas dvi savaites didėja, o nuo antros savaitės mažėja.
+        <ol type="a">
+          <li>Raskite funkcijos \(A(t)\) vingio tašką.</li>
+          <li>Apibūdinkite, kas pasikeičia šiame taške.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė</span></h4>
+          <p>Funkcija yra sandauga, todėl taikoma <a href="tema-6.html#sandaugos">sandaugos taisyklė</a>:</p>
+          <div class="fit-sm">\[ \big(u(t)\cdot v(t)\big)' = u'(t)\cdot v(t) + u(t)\cdot v'(t) \]</div>
+          <p>Pažymėkite \(u(t) = 400t\) ir \(v(t) = e^{-0{,}5t}\). Tada \(u'(t) = 400\), o antrąjį daugiklį diferencijuojame pagal sudėtinės rodiklinės funkcijos išvestinės formulę. Vidinė funkcija čia yra \(-0{,}5t\), todėl \(v'(t) = -0{,}5e^{-0{,}5t}\):</p>
+          \[ \begin{aligned} A'(t) &amp;= 400e^{-0{,}5t} + 400t\cdot\left(-0{,}5e^{-0{,}5t}\right) \\ &amp;= 400e^{-0{,}5t} - 200te^{-0{,}5t} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Antroji išvestinė</span></h4>
+          <p>Diferencijuodami pirmosios išvestinės narius pagal tas pačias sandaugos ir sudėtinės funkcijos taisykles, gauname</p>
+          \[ \begin{aligned} A''(t) &amp;= -200e^{-0{,}5t} - 200e^{-0{,}5t} \\ &amp;\phantom{=}\; + 100te^{-0{,}5t} \\ &amp;= e^{-0{,}5t}(100t - 400) \\ &amp;= 100e^{-0{,}5t}(t - 4) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Vingio taškas</span></h4>
+          <p>Rodiklinė funkcija niekada nelygi nuliui, todėl antroji išvestinė lygi nuliui tik tada, kai \(t - 4 = 0\), t.&nbsp;y. \(t = 4\). Rodiklinis daugiklis teigiamas, todėl \(A''(t)\) ženklą lemia \(t - 4\) ženklas: iki ketvirtos savaitės neigiamas, o po jos – teigiamas.</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;&#39;(t)","f":"A(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true},{"x":"12"}],"s":["-","+"],"cc":true}'></div>
+          <p>Ženklas keičiasi, todėl vingio taškas yra \(t = 4\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Vingio taškas yra \(t = 4\).</p>
+            <p>b) Ketvirtą savaitę skundų skaičius mažėja. Iki šio taško kreivė išgaubta, o po jo – įgaubta. Taigi intervale \((2;\, 4)\) būdingas <strong>greitas mažėjimas</strong>, o intervale \((4;\, 12)\) – <strong>lėtas mažėjimas</strong>. Ketvirtą savaitę skundų skaičius mažėja didžiausiu greičiu. Po jos skundų skaičius vis dar mažėja, tačiau kas savaitę sumažėja mažiau.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 7.3, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Naujos paslaugos plitimas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Mieste pradedama teikti nauja paslauga. Praėjus \(t\) mėnesių nuo jos teikimo pradžios, užsiregistravusių namų ūkių skaičius tūkstančiais yra
+        \[ H(t) = \frac{600}{1 + e^{2 - 0{,}5t}},\quad t \ge 0 \]
+        <ol type="a">
+          <li>Parodykite, kad namų ūkių skaičius didėja.</li>
+          <li>Raskite mažėjančio rezultatyvumo tašką.</li>
+          <li>Paaiškinkite jo reikšmę paslaugą teikiančiai įmonei.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pirmoji išvestinė</span></h4>
+          <p>Funkcija yra trupmena, todėl taikoma <a href="tema-6.html#dalmens">dalmens taisyklė</a>:</p>
+          \[ \left(\frac{u(t)}{v(t)}\right)' = \frac{u'(t)v(t) - u(t)v'(t)}{v^2(t)} \]
+          <p>Skaitiklį pažymėkite \(u(t) = 600\), o vardiklį – \(v(t) = 1 + e^{2 - 0{,}5t}\). Tada \(u'(t) = 0\), o \(v'(t)\) randama pagal sudėtinės rodiklinės funkcijos išvestinės formulę. Vidinė funkcija yra \(2 - 0{,}5t\):</p>
+          \[ v'(t) = e^{2 - 0{,}5t}\cdot(-0{,}5) = -0{,}5e^{2 - 0{,}5t} \]
+          <p>todėl</p>
+          <div class="fit-sm">\[ \begin{aligned} H'(t) &amp;= \frac{0\cdot\left(1 + e^{2 - 0{,}5t}\right) - 600\cdot\left(-0{,}5e^{2 - 0{,}5t}\right)}{\left(1 + e^{2 - 0{,}5t}\right)^2} \\ &amp;= \frac{300e^{2 - 0{,}5t}}{\left(1 + e^{2 - 0{,}5t}\right)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pirmosios išvestinės ženklas</span></h4>
+          <p>Rodiklinė funkcija teigiama nepriklausomai nuo rodiklio, todėl skaitiklis teigiamas. Vardiklis yra nenulinis kvadratas, todėl taip pat teigiamas. Taigi trupmena teigiama ir kritinių taškų nėra.</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"H&#39;(t)","f":"H(t)","v":"t","pts":[{"x":"0"}],"s":["+"],"outR":false}'></div>
+          <p>Namų ūkių skaičius didėja visoms \(t \ge 0\) reikšmėms.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Antroji išvestinė</span></h4>
+          <p>Pirmoji išvestinė vėl yra trupmena, todėl dalmens taisyklė taikoma dar kartą. Kad formulės būtų trumpesnės, pažymėkime \(w = e^{2 - 0{,}5t}\). Pagal sudėtinės rodiklinės funkcijos išvestinės formulę \(w' = -0{,}5w\), o pirmoji išvestinė yra</p>
+          \[ H'(t) = \frac{300w}{(1 + w)^2} \]
+          <p>Dabar skaitiklis yra \(u(t) = 300w\), o vardiklis – \(v(t) = (1 + w)^2\). Jų išvestinės yra</p>
+          \[ u'(t) = 300\cdot(-0{,}5w) = -150w \]
+          \[ \begin{aligned} v'(t) &amp;= 2(1 + w)\cdot(-0{,}5w) \\ &amp;= -w(1 + w) \end{aligned} \]
+          <p>Čia \(v'\) randama pagal sudėtinės laipsninės funkcijos išvestinės formulę, kurios vidinė funkcija yra \(1 + w\). Įstatę į dalmens taisyklės formulę, gauname:</p>
+          <div class="fit-sm">\[ H''(t) = \frac{-150w(1 + w)^2 + 300w^2(1 + w)}{(1 + w)^4} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Suprastinimas</span></h4>
+          <p>Abiejuose skaitiklio nariuose yra daugiklis \(1 + w\), todėl trupmeną galima juo suprastinti ir vardiklio ketvirtąjį laipsnį sumažinti iki trečiojo:</p>
+          \[ H''(t) = \frac{-150w(1 + w) + 300w^2}{(1 + w)^3} \]
+          <p>Skaitiklyje išskleidę skliaustus, gauname \(-150w - 150w^2 + 300w^2\). Iškėlę bendrąjį daugiklį \(150w\), gauname</p>
+          \[ H''(t) = \frac{150w(w - 1)}{(1 + w)^3},\qquad w = e^{2 - 0{,}5t} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Vingio taškas</span></h4>
+          <p>Daugiklis \(150w\) ir vardiklis teigiami, todėl antroji išvestinė lygi nuliui tik tada, kai</p>
+          <div class="fit-sm">\[ \begin{gathered} e^{2 - 0{,}5t} - 1 = 0 \;\Longrightarrow\; e^{2 - 0{,}5t} = e^0 \\ \Longrightarrow\; 2 - 0{,}5t = 0 \;\Longrightarrow\; t = 4 \end{gathered} \]</div>
+          <p>Kai \(t &lt; 4\), laipsnio rodiklis \(2 - 0{,}5t\) teigiamas, todėl \(e^{2 - 0{,}5t} &gt; 1\) ir \(H''(t) &gt; 0\). Kai \(t &gt; 4\), rodiklis neigiamas, todėl \(e^{2 - 0{,}5t} &lt; 1\) ir \(H''(t) &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"H&#39;&#39;(t)","f":"H(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true}],"s":["+","-"],"outR":false,"cc":true}'></div>
+          <p>Ženklas keičiasi iš teigiamo į neigiamą, o funkcija didėja, todėl mažėjančio rezultatyvumo taškas yra \(t = 4\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(H'(t) &gt; 0\), todėl namų ūkių skaičius didėja visoms \(t \ge 0\) reikšmėms.</p>
+            <p>b) Mažėjančio rezultatyvumo taškas yra \(t = 4\).</p>
+            <p>c) Intervale \((0;\, 4)\) namų ūkių skaičiui būdingas <strong>greitas augimas</strong>, o intervale \((4;\, +\infty)\) – <strong>lėtas augimas</strong>. Iki ketvirto mėnesio kas mėnesį prisijungia daugiau naujų namų ūkių nei ankstesnį, o po jo – mažiau. Paslauga toliau plinta, tačiau ketvirtą mėnesį ji plinta greičiausiai.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: nubraižykite pirmosios ir antrosios išvestinių ženklų schemas, raskite vingio tašką ir paaiškinkite, kas jame pasikeičia. Atsakyme pateiktos išvestinės, taškai ir išvados – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gamyklos savaitės bendrosios sąnaudos, pagaminant \(x\) tonų produkto, yra</p>
+          <div class="fit-sm">\[ \begin{gathered} C(x) = 0{,}1x^3 - 4{,}5x^2 + 90x + 700, \\ 0 \le x \le 30 \end{gathered} \]</div>
+          <p>eurų.</p>
+          <ol type="a">
+            <li>Raskite intervalus, kuriuose sąnaudos didėja ir mažėja.</li>
+            <li>Raskite funkcijos \(C(x)\) vingio tašką.</li>
+            <li>Apibūdinkite, kas pasikeičia šiame taške.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(C'(x) = 0{,}3x^2 - 9x + 90\); \(D = 81 - 108 = -27 &lt; 0\), todėl kritinių taškų nėra, o \(C'(0) = 90 &gt; 0\). Sąnaudos didėja intervale \([0;\, 30]\).</p>
+          <p>b) Iš \(C''(x) = 0{,}6x - 9 = 0\) gauname \(x = 15\); \(C''(10) = -3 &lt; 0\) ir \(C''(20) = 3 &gt; 0\), todėl vingio taškas yra \(x = 15\).</p>
+          <p>c) Sąnaudoms intervale \([0;\, 15]\) būdingas <strong>lėtas augimas</strong>, o intervale \([15;\, 30]\) – <strong>greitas augimas</strong>. Ribinės sąnaudos mažiausios pagaminant 15 tonų.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonės per mėnesį gaunamų užsakymų skaičius, kai reklamai per mėnesį skiriama \(x\) tūkstančių eurų, yra</p>
+          <div class="fit-sm">\[ \begin{gathered} N(x) = -0{,}02x^3 + 1{,}5x^2 + 36x, \\ 0 \le x \le 50 \end{gathered} \]</div>
+          <ol type="a">
+            <li>Parodykite, kad užsakymų skaičius didėja visame intervale.</li>
+            <li>Raskite mažėjančio rezultatyvumo tašką.</li>
+            <li>Paaiškinkite jo reikšmę įmonei.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(N'(x) = -0{,}06x^2 + 3x + 36\); padaliję iš \(-0{,}06\), gauname \(x^2 - 50x - 600 = 0\), \(D = 2500 + 2400 = 4900\), \(\sqrt{D} = 70\). Sprendiniai \(x_1 = -10\) ir \(x_2 = 60\) nepriklauso nagrinėjamam intervalui; \(N'(0) = 36 &gt; 0\). Užsakymų skaičius didėja intervale \([0;\, 50]\).</p>
+          <p>b) Iš \(N''(x) = -0{,}12x + 3 = 0\) gauname \(x = 25\); \(N''(20) = 0{,}6 &gt; 0\) ir \(N''(30) = -0{,}6 &lt; 0\), todėl mažėjančio rezultatyvumo taškas yra \(x = 25\).</p>
+          <p>c) Iki 25 tūkstančių eurų mėnesio biudžeto kiekvienas papildomas tūkstantis eurų duoda daugiau naujų užsakymų nei ankstesnis, o viršijus šį biudžetą – mažiau.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Svetainės lankytojų skaičius, praėjus \(t\) dienų nuo reklamos paskelbimo, yra</p>
+          \[ V(t) = 500te^{-0{,}2t},\quad 0 \le t \le 20 \]
+          <ol type="a">
+            <li>Raskite intervalus, kuriuose lankytojų skaičius didėja ir mažėja.</li>
+            <li>Raskite funkcijos \(V(t)\) vingio tašką.</li>
+            <li>Apibūdinkite, kas pasikeičia šiame taške.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(V'(t) = 500e^{-0{,}2t}(1 - 0{,}2t)\) (sandaugos taisyklė); kritinis taškas yra \(t = 5\). Lankytojų skaičius didėja intervale \([0;\, 5]\) ir mažėja intervale \([5;\, 20]\).</p>
+          <p>b) \(V''(t) = 20e^{-0{,}2t}(t - 10)\); taške \(t = 10\) ženklas keičiasi iš neigiamo į teigiamą, todėl vingio taškas yra \(t = 10\).</p>
+          <p>c) Dešimtą dieną lankytojų skaičius mažėja, o kreivė iš išgaubtos tampa įgaubta, todėl <strong>greitas mažėjimas</strong> pereina į <strong>lėtą mažėjimą</strong>.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Nauja paslauga besinaudojančių namų ūkių skaičius tūkstančiais, praėjus \(t\) mėnesių nuo jos teikimo pradžios, yra</p>
+          \[ L(t) = \frac{900}{1 + e^{4 - 0{,}4t}},\quad 0 \le t \le 30 \]
+          <ol type="a">
+            <li>Parodykite, kad namų ūkių skaičius didėja visame intervale.</li>
+            <li>Raskite mažėjančio rezultatyvumo tašką.</li>
+            <li>Paaiškinkite jo reikšmę paslaugai.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>Visame atsakyme žymime \(w = e^{4 - 0{,}4t}\), todėl \(w &gt; 0\) visoms \(t\) reikšmėms.</p>
+          <p>a) \(L'(t) = \dfrac{360w}{(1 + w)^2} &gt; 0\) (dalmens ir sudėtinės funkcijos išvestinės taisyklės), todėl namų ūkių skaičius didėja intervale \([0;\, 30]\).</p>
+          <p>b) Iš \(L''(t) = \dfrac{144w(w - 1)}{(1 + w)^3} = 0\) gauname \(w = 1\), t.&nbsp;y. \(4 - 0{,}4t = 0\) ir \(t = 10\); čia ženklas keičiasi iš teigiamo į neigiamą, todėl mažėjančio rezultatyvumo taškas yra \(t = 10\).</p>
+          <p>c) Iki dešimto mėnesio kas mėnesį prisijungia daugiau naujų namų ūkių nei ankstesnį, o nuo dešimto mėnesio – mažiau.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">6.4–6.6 skyriai</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">10.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
