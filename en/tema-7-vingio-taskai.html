@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inflection Points and the Law of Diminishing Returns · Applied Mathematics</title>
+<meta name="description" content="Inflection points and the law of diminishing returns: how to find an inflection point, what changes at it, the point of diminishing returns. How to solve, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-7-vingio-taskai.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=80">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=80"></script>
+</head>
+<body data-page="m73">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 7 · Applications · Section 3</span>
+    <h1>Inflection Points and the Law of Diminishing Returns</h1>
+    <p class="lead">This section deals with the points at which the shape of a curve changes, and with one of their most important applications – the point of diminishing returns: the amount of a resource beyond which each additional unit gives a smaller and smaller result.</p>
+    <ul class="jump">
+      <li><a href="#vingis">Inflection points</a></li>
+      <li><a href="#rezultatyvumas">Diminishing returns</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. INFLECTION POINTS ============ -->
+  <section class="section" id="vingis" aria-labelledby="h-infl">
+    <h2 id="h-infl">Inflection points</h2>
+
+    <article class="card">
+      <p>A quantity that keeps one direction and one shape for a long time is rare. Sales grow faster and faster for a while and then begin to grow more slowly; a fall becomes faster and then becomes slower again. The moment at which this happens is often one of the most important points when a function is analysed. It has its own name.</p>
+      <p>A point on the graph of a function \(y = f(x)\) where the tangent line exists and where the <a href="tema-7-funkcijos-iskilumas.html">concavity</a> changes is called an <strong>inflection point</strong>. On one side of it the curve is convex and on the other side it is concave.</p>
+      <figure class="abs-fig">
+          <svg viewBox="0 0 520 236" role="img" aria-label="A curve with an inflection point: convex on the left, concave on the right">
+          <line class="ax" x1="30" y1="212" x2="505" y2="212"/><line class="ax" x1="30" y1="212" x2="30" y2="20"/>
+          <line class="guide" x1="260.0" y1="115.0" x2="260.0" y2="212"/>
+          <path class="ln" d="M40.0 190.0L44.4 190.0L48.8 189.8L53.2 189.6L57.6 189.3L62.0 188.9L66.4 188.4L70.8 187.9L75.2 187.3L79.6 186.6L84.0 185.8L88.4 185.0L92.8 184.0L97.2 183.1L101.6 182.0L106.0 180.9L110.4 179.7L114.8 178.5L119.2 177.2L123.6 175.8L128.0 174.4L132.4 172.9L136.8 171.4L141.2 169.8L145.6 168.2L150.0 166.6L154.4 164.9L158.8 163.1L163.2 161.3L167.6 159.5L172.0 157.6L176.4 155.7L180.8 153.8L185.2 151.8L189.6 149.8L194.0 147.7L198.4 145.7L202.8 143.6L207.2 141.5L211.6 139.4L216.0 137.2L220.4 135.0L224.8 132.8L229.2 130.6L233.6 128.4L238.0 126.2L242.4 124.0L246.8 121.7L251.2 119.5L255.6 117.2L260.0 115.0L264.4 112.8L268.8 110.5L273.2 108.3L277.6 106.0L282.0 103.8L286.4 101.6L290.8 99.4L295.2 97.2L299.6 95.0L304.0 92.8L308.4 90.6L312.8 88.5L317.2 86.4L321.6 84.3L326.0 82.3L330.4 80.2L334.8 78.2L339.2 76.2L343.6 74.3L348.0 72.4L352.4 70.5L356.8 68.7L361.2 66.9L365.6 65.1L370.0 63.4L374.4 61.8L378.8 60.2L383.2 58.6L387.6 57.1L392.0 55.6L396.4 54.2L400.8 52.8L405.2 51.5L409.6 50.3L414.0 49.1L418.4 48.0L422.8 46.9L427.2 46.0L431.6 45.0L436.0 44.2L440.4 43.4L444.8 42.7L449.2 42.1L453.6 41.6L458.0 41.1L462.4 40.7L466.8 40.4L471.2 40.2L475.6 40.0L480.0 40.0"/>
+          <line class="ln2-dash" x1="88.0" y1="190.3" x2="212.0" y2="142.8"/>
+          <line class="ln2-dash" x1="308.0" y1="87.2" x2="432.0" y2="39.7"/>
+          <line class="ax" x1="190" y1="62" x2="252.0" y2="107.0"/><path class="ah" d="M252.0 107.0L246.0 96.5L240.2 104.6Z"/>
+          <circle class="pt-hi" cx="260.0" cy="115.0" r="6.5"/>
+          <text class="fig-lab" x="180" y="50" text-anchor="middle" style="font-size:19px">inflection point</text>
+          <text x="140" y="203" text-anchor="middle" font-style="italic" style="font-size:18px">convex</text>
+          <text x="390" y="203" text-anchor="middle" font-style="italic" style="font-size:18px">concave</text>
+          </svg>
+        <figcaption>At the inflection point the curve passes from convex to concave.</figcaption>
+      </figure>
+
+      <h3 class="subhead" style="margin-top:22px">How to find an inflection point</h3>
+      <p>The concavity is decided by the sign of \(f''(x)\), so at an inflection point that sign changes. The sign of a function can only change where the function is zero or where it does not exist. So the possible inflection points come from the conditions:</p>
+      <div class="formula">\[ \begin{gathered} f''(x) = 0\quad\text{or} \\ f''(x)\ \text{does not exist} \end{gathered} \]</div>
+      <p>Each possible point then has to be <strong>tested</strong>, by finding the sign of \(f''(x)\) on both sides of it. A sign chart is the clearest way of doing this. If the sign changes, there is an inflection point. If the sign stays the same, there is none. The answer is the value \(x_0\) at which the change happens.</p>
+      <p class="tip"><strong>Zero is not enough.</strong> A point where \(f''(x) = 0\) need not be an inflection point. The second derivative can be zero and keep the same sign on both sides, and then the shape of the curve does not change. This is similar to a critical point that carries no extremum: the change of sign has to be checked, not assumed (see <a href="#pavyzdys-5">Example 5</a>).</p>
+
+      <h3 class="subhead" style="margin-top:22px" id="pasikeicia">What changes at an inflection point</h3>
+      <p>The direction of the quantity does not change at an inflection point, because the point is not defined by the sign of \(f'(x)\). What changes is the way in which the quantity changes. Taking the <a href="tema-7-funkcijos-iskilumas.html#atvejai">four descriptions of change</a> and changing only the concavity gives four possible transitions:</p>
+      <div class="tbl-wrap">
+        <table class="vtable cases-tbl">
+          <thead>
+            <tr><th scope="col">The function is</th><th scope="col">At the inflection point the change passes from</th><th scope="col">to</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>increasing</td><td>fast increasing</td><td>slow increasing</td></tr>
+            <tr><td>increasing</td><td>slow increasing</td><td>fast increasing</td></tr>
+            <tr><td>decreasing</td><td>slow decreasing</td><td>fast decreasing</td></tr>
+            <tr><td>decreasing</td><td>fast decreasing</td><td>slow decreasing</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="fig-grid" role="group" aria-label="The four transitions at an inflection point">
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><line class="guide" x1="66" y1="43.0" x2="66" y2="76"/><path class="ln" d="M26.0 72.0L28.0 71.9L30.0 71.6L32.0 71.1L34.0 70.4L36.0 69.5L38.0 68.5L40.0 67.3L42.0 66.0L44.0 64.5L46.0 62.9L48.0 61.3L50.0 59.5L52.0 57.6L54.0 55.7L56.0 53.6L58.0 51.6L60.0 49.5L62.0 47.3L64.0 45.2L66.0 43.0L68.0 40.8L70.0 38.7L72.0 36.5L74.0 34.4L76.0 32.4L78.0 30.3L80.0 28.4L82.0 26.5L84.0 24.7L86.0 23.1L88.0 21.5L90.0 20.0L92.0 18.7L94.0 17.5L96.0 16.5L98.0 15.6L100.0 14.9L102.0 14.4L104.0 14.1L106.0 14.0"/><circle class="pt-hi" cx="66" cy="43.0" r="4"/></svg>
+          <figcaption>Fast increasing<span class="sub">→ slow increasing</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><line class="guide" x1="66" y1="43.0" x2="66" y2="76"/><path class="ln" d="M26.0 72.0L28.0 67.9L30.0 64.1L32.0 60.8L34.0 57.8L36.0 55.2L38.0 52.9L40.0 51.0L42.0 49.3L44.0 47.8L46.0 46.6L48.0 45.6L50.0 44.9L52.0 44.2L54.0 43.8L56.0 43.5L58.0 43.2L60.0 43.1L62.0 43.0L64.0 43.0L66.0 43.0L68.0 43.0L70.0 43.0L72.0 42.9L74.0 42.8L76.0 42.5L78.0 42.2L80.0 41.8L82.0 41.1L84.0 40.4L86.0 39.4L88.0 38.2L90.0 36.7L92.0 35.0L94.0 33.1L96.0 30.8L98.0 28.2L100.0 25.2L102.0 21.9L104.0 18.1L106.0 14.0"/><circle class="pt-hi" cx="66" cy="43.0" r="4"/></svg>
+          <figcaption>Slow increasing<span class="sub">→ fast increasing</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><line class="guide" x1="66" y1="43.0" x2="66" y2="76"/><path class="ln" d="M26.0 14.0L28.0 18.1L30.0 21.9L32.0 25.2L34.0 28.2L36.0 30.8L38.0 33.1L40.0 35.0L42.0 36.7L44.0 38.2L46.0 39.4L48.0 40.4L50.0 41.1L52.0 41.8L54.0 42.2L56.0 42.5L58.0 42.8L60.0 42.9L62.0 43.0L64.0 43.0L66.0 43.0L68.0 43.0L70.0 43.0L72.0 43.1L74.0 43.2L76.0 43.5L78.0 43.8L80.0 44.2L82.0 44.9L84.0 45.6L86.0 46.6L88.0 47.8L90.0 49.3L92.0 51.0L94.0 52.9L96.0 55.2L98.0 57.8L100.0 60.8L102.0 64.1L104.0 67.9L106.0 72.0"/><circle class="pt-hi" cx="66" cy="43.0" r="4"/></svg>
+          <figcaption>Slow decreasing<span class="sub">→ fast decreasing</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><line class="guide" x1="66" y1="43.0" x2="66" y2="76"/><path class="ln" d="M26.0 14.0L28.0 14.1L30.0 14.4L32.0 14.9L34.0 15.6L36.0 16.5L38.0 17.5L40.0 18.7L42.0 20.0L44.0 21.5L46.0 23.1L48.0 24.7L50.0 26.5L52.0 28.4L54.0 30.3L56.0 32.4L58.0 34.4L60.0 36.5L62.0 38.7L64.0 40.8L66.0 43.0L68.0 45.2L70.0 47.3L72.0 49.5L74.0 51.6L76.0 53.6L78.0 55.7L80.0 57.6L82.0 59.5L84.0 61.3L86.0 62.9L88.0 64.5L90.0 66.0L92.0 67.3L94.0 68.5L96.0 69.5L98.0 70.4L100.0 71.1L102.0 71.6L104.0 71.9L106.0 72.0"/><circle class="pt-hi" cx="66" cy="43.0" r="4"/></svg>
+          <figcaption>Fast decreasing<span class="sub">→ slow decreasing</span></figcaption>
+        </figure>
+      </div>
+      <p style="margin-top:14px">There is a second way of reading the same point, and in applied problems it is the more useful one. The second derivative is the rate of change of \(f'(x)\). So when the sign of \(f''(x)\) passes from positive to negative, the first derivative stops growing and begins to fall: it is <strong>largest</strong> at that point. When the sign passes the other way, the first derivative is <strong>smallest</strong> there. An inflection point is therefore the place where the quantity changes at its greatest or at its smallest speed.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. THE POINT OF DIMINISHING RETURNS ============ -->
+  <section class="section" id="rezultatyvumas" aria-labelledby="h-dim">
+    <h2 id="h-dim">The point of diminishing returns</h2>
+
+    <article class="card">
+      <p>One of the four transitions matters more than the others, because it describes the effect of almost every input a firm uses. Spending on advertising, on training, on machines or on labour gives a large result at first, but once a certain level of spending has been reached, the effect of each further euro becomes smaller. This phenomenon is called the <strong>law of diminishing returns</strong>, and the point at which this turn happens has its own name.</p>
+      <div class="model-note"><strong>The point at which the change of a function passes from fast increasing to slow increasing is called the point of diminishing returns.</strong></div>
+      <p style="margin-top:12px">It is an inflection point with two extra conditions: the function is increasing, and it passes from convex to concave. As explained <a href="#pasikeicia">above</a>, the first derivative is largest there. That is what makes the point important: the return on an additional unit of the input is at its highest, so one more unit adds more here than at any other point. Beyond this point every further unit adds less than the unit before it.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The advertising budget</h3>
+      <p>Let us return to the example on the <a href="tema-7.html#reklama">Topic 7 page</a>. A firm’s revenue, in thousands of euros, when it spends \(x\) thousand euros a month on advertising is</p>
+      <div class="formula">\[ \begin{gathered} R(x) = -0.1x^3 + 1.5x^2 + 100, \\ 0 \le x \le 10 \end{gathered} \]</div>
+      <p>The two derivatives are</p>
+      <div class="formula">\[ R'(x) = -0.3x^2 + 3x \]
+        \[ R''(x) = -0.6x + 3 \]</div>
+      <p>The second derivative is zero when</p>
+      <div class="formula">\[ \begin{gathered} -0.6x + 3 = 0 \;\Longrightarrow\; 0.6x = 3 \\ \Longrightarrow\; x = 5 \end{gathered} \]</div>
+      <p>and it changes sign there: \(R''(2) = 1.8 &gt; 0\) and \(R''(8) = -1.8 &lt; 0\). So the curve is convex when the advertising budget is below 5 thousand euros and concave when it is above. The revenue is increasing on the whole range, because \(R'(x) = x(3 - 0.3x)\) is positive for \(0 &lt; x &lt; 10\). The behaviour therefore passes from fast increasing to slow increasing, and the point of diminishing returns is \(x = 5\).</p>
+      <figure class="abs-fig">
+          <svg viewBox="0 0 520 236" role="img" aria-label="Graphs of the revenue R(x) and the marginal revenue R′(x): at x = 5 the revenue graph has an inflection point and the marginal revenue is largest, 7.5">
+          <line class="ax" x1="40" y1="190" x2="248" y2="190"/><path class="ah" d="M256 190L248 185.5L248 194.5Z"/>
+          <line class="ax" x1="40" y1="190" x2="40" y2="30"/><path class="ah" d="M40 22L35.5 30L44.5 30Z"/>
+          <line class="ax" x1="300" y1="190" x2="508" y2="190"/><path class="ah" d="M516 190L508 185.5L508 194.5Z"/>
+          <line class="ax" x1="300" y1="190" x2="300" y2="30"/><path class="ah" d="M300 22L295.5 30L304.5 30Z"/>
+          <line class="guide" x1="135.0" y1="125.0" x2="135.0" y2="190"/>
+          <line class="guide" x1="395.0" y1="55.0" x2="395.0" y2="190"/>
+          <line class="guide" x1="300" y1="55.0" x2="395.0" y2="55.0"/>
+          <path class="ln" d="M40.0 190.0L41.9 190.0L43.8 189.8L45.7 189.7L47.6 189.4L49.5 189.1L51.4 188.7L53.3 188.2L55.2 187.6L57.1 187.0L59.0 186.4L60.9 185.6L62.8 184.8L64.7 184.0L66.6 183.1L68.5 182.1L70.4 181.1L72.3 180.0L74.2 178.9L76.1 177.7L78.0 176.5L79.9 175.2L81.8 173.9L83.7 172.5L85.6 171.1L87.5 169.7L89.4 168.2L91.3 166.7L93.2 165.1L95.1 163.5L97.0 161.9L98.9 160.3L100.8 158.6L102.7 156.9L104.6 155.1L106.5 153.4L108.4 151.6L110.3 149.8L112.2 148.0L114.1 146.1L116.0 144.2L117.9 142.4L119.8 140.5L121.7 138.6L123.6 136.6L125.5 134.7L127.4 132.8L129.3 130.8L131.2 128.9L133.1 126.9L135.0 125.0L136.9 123.1L138.8 121.1L140.7 119.2L142.6 117.2L144.5 115.3L146.4 113.4L148.3 111.4L150.2 109.5L152.1 107.6L154.0 105.8L155.9 103.9L157.8 102.0L159.7 100.2L161.6 98.4L163.5 96.6L165.4 94.9L167.3 93.1L169.2 91.4L171.1 89.7L173.0 88.1L174.9 86.5L176.8 84.9L178.7 83.3L180.6 81.8L182.5 80.3L184.4 78.9L186.3 77.5L188.2 76.1L190.1 74.8L192.0 73.5L193.9 72.3L195.8 71.1L197.7 70.0L199.6 68.9L201.5 67.9L203.4 66.9L205.3 66.0L207.2 65.2L209.1 64.4L211.0 63.6L212.9 63.0L214.8 62.4L216.7 61.8L218.6 61.3L220.5 60.9L222.4 60.6L224.3 60.3L226.2 60.2L228.1 60.0L230.0 60.0"/>
+          <path class="ln" d="M300.0 190.0L301.9 184.7L303.8 179.4L305.7 174.3L307.6 169.3L309.5 164.3L311.4 159.5L313.3 154.8L315.2 150.3L317.1 145.8L319.0 141.4L320.9 137.1L322.8 133.0L324.7 128.9L326.6 125.0L328.5 121.1L330.4 117.4L332.3 113.8L334.2 110.3L336.1 106.9L338.0 103.6L339.9 100.4L341.8 97.3L343.7 94.4L345.6 91.5L347.5 88.8L349.4 86.1L351.3 83.6L353.2 81.1L355.1 78.8L357.0 76.6L358.9 74.5L360.8 72.5L362.7 70.6L364.6 68.8L366.5 67.2L368.4 65.6L370.3 64.1L372.2 62.8L374.1 61.5L376.0 60.4L377.9 59.4L379.8 58.5L381.7 57.6L383.6 56.9L385.5 56.3L387.4 55.9L389.3 55.5L391.2 55.2L393.1 55.1L395.0 55.0L396.9 55.1L398.8 55.2L400.7 55.5L402.6 55.9L404.5 56.3L406.4 56.9L408.3 57.6L410.2 58.5L412.1 59.4L414.0 60.4L415.9 61.5L417.8 62.8L419.7 64.1L421.6 65.6L423.5 67.1L425.4 68.8L427.3 70.6L429.2 72.5L431.1 74.5L433.0 76.6L434.9 78.8L436.8 81.1L438.7 83.6L440.6 86.1L442.5 88.8L444.4 91.5L446.3 94.4L448.2 97.3L450.1 100.4L452.0 103.6L453.9 106.9L455.8 110.3L457.7 113.8L459.6 117.4L461.5 121.1L463.4 125.0L465.3 128.9L467.2 133.0L469.1 137.1L471.0 141.4L472.9 145.8L474.8 150.3L476.7 154.8L478.6 159.5L480.5 164.3L482.4 169.3L484.3 174.3L486.2 179.4L488.1 184.7L490.0 190.0"/>
+          <circle class="pt-hi" cx="135.0" cy="125.0" r="6"/><circle class="pt-hi" cx="395.0" cy="55.0" r="6"/>
+          <text class="muted" x="40.0" y="210" text-anchor="middle" style="font-size:16px">0</text>
+          <text class="muted" x="135.0" y="210" text-anchor="middle" style="font-size:16px">5</text>
+          <text class="muted" x="230.0" y="210" text-anchor="middle" style="font-size:16px">10</text>
+          <text class="muted" x="300.0" y="210" text-anchor="middle" style="font-size:16px">0</text>
+          <text class="muted" x="395.0" y="210" text-anchor="middle" style="font-size:16px">5</text>
+          <text class="muted" x="490.0" y="210" text-anchor="middle" style="font-size:16px">10</text>
+          <text class="muted" x="293" y="60.0" text-anchor="end" style="font-size:16px">7.5</text>
+          <text class="m" x="135.0" y="22" text-anchor="middle" style="font-size:19px"><tspan class="i">R</tspan>(<tspan class="i">x</tspan>)</text>
+          <text class="m" x="395.0" y="22" text-anchor="middle" style="font-size:19px"><tspan class="i">R</tspan>′(<tspan class="i">x</tspan>)</text>
+          <text x="70.4" y="134" text-anchor="middle" font-style="italic" style="font-size:17px">convex</text>
+          <text x="190.1" y="160" text-anchor="middle" font-style="italic" style="font-size:17px">concave</text>
+          <text class="muted" x="236.0" y="228" text-anchor="end" style="font-size:15px">x, thousand €</text>
+          <text class="muted" x="496.0" y="228" text-anchor="end" style="font-size:15px">x, thousand €</text>
+          </svg>
+        <figcaption>The revenue and the marginal revenue. At the budget of 5 thousand euros the curve changes its shape and the marginal revenue is largest.</figcaption>
+      </figure>
+      <p>The right-hand picture shows why the point matters. The marginal revenue \(R'(x)\) rises until the budget reaches 5 thousand euros, where \(R'(5) = 7.5\), and falls afterwards. Up to that budget every further thousand euros of advertising brings in more revenue than the thousand before it. From that budget on every further thousand brings in less. The revenue keeps growing either way, but each further euro brings a smaller and smaller increase in revenue.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Write down the function and the interval the problem names, and say what the variable means.</li>
+        <li>Differentiate. Solve \(f'(x) = 0\), draw the sign chart of \(f'\) and read the intervals of monotonicity from it. Critical points that lie outside the interval are discarded, but the sign chart is still drawn, because the direction of the quantity has to be known.</li>
+        <li>Differentiate again. Solve \(f''(x) = 0\) and find the points of the interval where \(f''(x)\) does not exist. These are the possible inflection points.</li>
+        <li>Draw the sign chart of \(f''\). Where the sign changes there is an inflection point; where it does not, there is none.</li>
+        <li>Name what changes there, using the <a href="#pasikeicia">four transitions</a>, and interpret it in the words of the problem.</li>
+      </ol>
+      <div class="model-note"><strong>If the point of diminishing returns is asked for.</strong> It is the inflection point at which an increasing function passes from convex to concave. It can be found from the two sign charts.</div>
+      <div class="model-note"><strong>The interpretation.</strong> The answer is not finished when the point has been found. The problem asks for what happens at that point to be explained in the words of the problem, and that explanation is part of the answer.</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Zero is not enough.</strong> A point where \(f''(x) = 0\) is taken as an inflection point without checking whether the sign of \(f''(x)\) changes on either side of it.</li>
+            <li><strong>An inflection point is not an extremum.</strong> The direction of the quantity does not change at an inflection point; what changes is the way in which it changes.</li>
+            <li><strong>No sign chart of \(f'\).</strong> Even if the critical points lie outside the interval, the direction of change has to be found; otherwise the behaviour cannot be named.</li>
+            <li><strong>Only the point in the answer.</strong> What changes at that point has to be explained in the words of the problem.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM 7.3, Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Daily costs of a plant</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A plant’s daily total cost of producing \(x\) tonnes of a product is
+        <div class="fit-sm">\[ \begin{gathered} C(x) = 0.2x^3 - 6x^2 + 80x + 500, \\ 0 \le x \le 20 \end{gathered} \]</div>
+        euros.
+        <ol type="a">
+          <li>Find the intervals on which the cost is increasing and decreasing.</li>
+          <li>Find the inflection point of \(C(x)\).</li>
+          <li>Describe what changes at that point.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the critical points</span></h4>
+          <p>The power rule gives</p>
+          \[ C'(x) = 0.6x^2 - 12x + 80 \]
+          <p>The critical points come from \(C'(x) = 0\), which is a quadratic equation. Its discriminant is</p>
+          \[ \begin{aligned} D &amp;= (-12)^2 - 4\cdot 0.6\cdot 80 \\ &amp;= 144 - 192 = -48 &lt; 0 \end{aligned} \]
+          <p>so there are no critical points and the sign of \(C'\) does not change. One value settles which sign it keeps: \(C'(0) = 80 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"C&#39;(x)","f":"C(x)","v":"x","pts":[{"x":"0"},{"x":"20"}],"s":["+"]}'></div>
+          <p>The cost is increasing on the whole interval \((0,\, 20)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) The second derivative and the possible inflection point</span></h4>
+          <p>Differentiating the first derivative gives</p>
+          \[ C''(x) = 1.2x - 12 \]
+          <p>It exists everywhere, so the only possible inflection point comes from \(C''(x) = 0\):</p>
+          \[ 1.2x - 12 = 0 \;\Longrightarrow\; x = 10 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The sign chart of the second derivative</span></h4>
+          <p>The signs on each side: \(C''(5) = -6 &lt; 0\) and \(C''(15) = 6 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"C&#39;&#39;(x)","f":"C(x)","v":"x","pts":[{"x":"0"},{"x":"10","z":true},{"x":"20"}],"s":["-","+"],"cc":true}'></div>
+          <p>The sign changes, so the inflection point is \(x = 10\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The cost is increasing on the whole interval \((0,\, 20)\).</p>
+            <p>b) The inflection point is \(x = 10\).</p>
+            <p>c) The cost is increasing on the whole interval. Up to 10 tonnes the function is concave, and from 10 tonnes on it is convex. So the cost is <strong>slow increasing</strong> on \((0,\, 10)\) and <strong>fast increasing</strong> on \((10,\, 20)\). Up to an output of 10 tonnes a day every further tonne costs less than the tonne before it, and beyond that output every further tonne costs more. The marginal cost is smallest at an output of 10 tonnes.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 7.3, Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Number of workers and output</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A factory’s monthly output, in thousands of units, when it employs \(x\) workers is
+        <div class="fit-sm">\[ \begin{gathered} Q(x) = -0.02x^3 + 1.8x^2 + 42x, \\ 0 \le x \le 50 \end{gathered} \]</div>
+        <ol type="a">
+          <li>Find the intervals on which the output is increasing and decreasing.</li>
+          <li>Find the point of diminishing returns.</li>
+          <li>Explain what it means for the factory.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the critical points</span></h4>
+          <p>The power rule gives</p>
+          \[ Q'(x) = -0.06x^2 + 3.6x + 42 \]
+          <p>The critical points come from \(Q'(x) = 0\). Dividing by \(-0.06\) gives \(x^2 - 60x - 700 = 0\). The discriminant of this equation is</p>
+          \[ \begin{aligned} D &amp;= (-60)^2 - 4\cdot 1\cdot(-700) \\ &amp;= 3600 + 2800 = 6400 \end{aligned} \]
+          \[ \sqrt{D} = 80 \]
+          \[ x_1 = \frac{60 - 80}{2} = -10 \]
+          \[ x_2 = \frac{60 + 80}{2} = 70 \]
+          <p>Both roots lie outside \([0,\, 50]\), so the sign of \(Q'\) does not change inside the interval. One value settles it: \(Q'(0) = 42 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"0"},{"x":"50"}],"s":["+"]}'></div>
+          <p>The output is increasing on the whole interval \((0,\, 50)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) The second derivative and the possible inflection point</span></h4>
+          <p>Differentiating the first derivative gives</p>
+          \[ Q''(x) = -0.12x + 3.6 \]
+          <p>Setting it equal to zero:</p>
+          \[ \begin{gathered} -0.12x + 3.6 = 0 \;\Longrightarrow\; 0.12x = 3.6 \\ \Longrightarrow\; x = 30 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The sign chart of the second derivative</span></h4>
+          <p>The signs on each side: \(Q''(10) = 2.4 &gt; 0\) and \(Q''(40) = -1.2 &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"Q&#39;&#39;(x)","f":"Q(x)","v":"x","pts":[{"x":"0"},{"x":"30","z":true},{"x":"50"}],"s":["+","-"],"cc":true}'></div>
+          <p>The sign changes from plus to minus while the output is increasing, so the point of diminishing returns is \(x = 30\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The output is increasing on the whole interval \((0,\, 50)\).</p>
+            <p>b) The point of diminishing returns is \(x = 30\).</p>
+            <p>c) The output is <strong>fast increasing</strong> on \((0,\, 30)\) and <strong>slow increasing</strong> on \((30,\, 50)\). Up to the thirtieth worker every new worker adds more to the output than the worker hired before, and from the thirtieth worker on every new worker adds less. With more than 30 workers the factory still increases its output, but the result of each additional worker becomes smaller.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 7.3, Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Customers after a competitor enters</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A competitor enters the market. \(t\) months later the existing service still has
+        <div class="fit-sm">\[ N(t) = 0.05t^3 - 1.5t^2 + 250,\quad 0 \le t \le 20 \]</div>
+        thousand customers.
+        <ol type="a">
+          <li>Find the intervals on which the number of customers is increasing and decreasing.</li>
+          <li>Find the inflection point of \(N(t)\).</li>
+          <li>Describe what changes at that point.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the critical points</span></h4>
+          <p>The power rule gives</p>
+          \[ N'(t) = 0.15t^2 - 3t \]
+          <p>The critical points come from \(N'(t) = 0\), which is a quadratic equation with no constant term. Its discriminant is</p>
+          \[ D = (-3)^2 - 4\cdot 0.15\cdot 0 = 9 \]
+          \[ \sqrt{D} = 3 \]
+          \[ t_1 = \frac{3 - 3}{2\cdot 0.15} = 0;\qquad t_2 = \frac{3 + 3}{2\cdot 0.15} = 20 \]
+          <p>The two critical points are the ends of the interval, so the sign does not change inside it. One value settles it: \(N'(10) = 15 - 30 = -15 &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"N&#39;(t)","f":"N(t)","v":"t","pts":[{"x":"0","z":true},{"x":"20","z":true}],"s":["-"]}'></div>
+          <p>The number of customers is decreasing on the whole interval \((0,\, 20)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) The second derivative and the possible inflection point</span></h4>
+          <p>Differentiating the first derivative gives</p>
+          \[ N''(t) = 0.3t - 3 \]
+          <p>Setting it equal to zero:</p>
+          \[ 0.3t - 3 = 0 \;\Longrightarrow\; t = 10 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The sign chart of the second derivative</span></h4>
+          <p>The signs on each side: \(N''(5) = -1.5 &lt; 0\) and \(N''(15) = 1.5 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"N&#39;&#39;(t)","f":"N(t)","v":"t","pts":[{"x":"0"},{"x":"10","z":true},{"x":"20"}],"s":["-","+"],"cc":true}'></div>
+          <p>The sign changes, so the inflection point is \(t = 10\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The number of customers is decreasing on the whole interval \((0,\, 20)\).</p>
+            <p>b) The inflection point is \(t = 10\).</p>
+            <p>c) The number of customers is decreasing over the whole period. During the first ten months the curve is concave, and after that it is convex. So the number of customers is <strong>fast decreasing</strong> on \((0,\, 10)\) and <strong>slow decreasing</strong> on \((10,\, 20)\). During the first ten months the service loses more customers each month than in the month before, and after that the monthly loss becomes smaller. Ten months after the competitor enters, the number of customers falls at the greatest speed.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 7.3, Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Profit after a reorganisation</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company’s monthly profit, in thousands of euros, \(t\) months after a reorganisation is
+        <div class="fit-sm">\[ P(t) = t^3 - 9t^2 + 15t + 40,\quad 0 \le t \le 8 \]</div>
+        <ol type="a">
+          <li>Find the intervals on which the profit is increasing and decreasing.</li>
+          <li>Find the inflection point of \(P(t)\).</li>
+          <li>Describe how the profit behaves on each part of the period.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the critical points</span></h4>
+          <p>The power rule gives</p>
+          \[ P'(t) = 3t^2 - 18t + 15 \]
+          <p>The critical points come from \(P'(t) = 0\). The discriminant of the equation is</p>
+          \[ \begin{aligned} D &amp;= (-18)^2 - 4\cdot 3\cdot 15 \\ &amp;= 324 - 180 = 144 \end{aligned} \]
+          \[ \sqrt{D} = 12 \]
+          \[ t_1 = \frac{18 - 12}{2\cdot 3} = 1;\qquad t_2 = \frac{18 + 12}{2\cdot 3} = 5 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The sign chart of the first derivative</span></h4>
+          <p>Both roots lie inside the interval. One value in each of the three parts: \(P'(0.5) = 6.75 &gt; 0\), \(P'(3) = -12 &lt; 0\) and \(P'(6.5) = 24.75 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(t)","f":"P(t)","v":"t","pts":[{"x":"0"},{"x":"1","z":true},{"x":"5","z":true},{"x":"8"}],"s":["+","-","+"]}'></div>
+          <p>The profit is increasing on \((0,\, 1)\), decreasing on \((1,\, 5)\) and increasing again on \((5,\, 8)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The second derivative and the inflection point</span></h4>
+          <p>Differentiating the first derivative gives</p>
+          \[ P''(t) = 6t - 18 \]
+          <p>Setting it equal to zero:</p>
+          \[ 6t - 18 = 0 \;\Longrightarrow\; t = 3 \]
+          <p>The signs on each side: \(P''(1) = -12 &lt; 0\) and \(P''(5) = 12 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;&#39;(t)","f":"P(t)","v":"t","pts":[{"x":"0"},{"x":"3","z":true},{"x":"8"}],"s":["-","+"],"cc":true}'></div>
+          <p>The sign changes, so the inflection point is \(t = 3\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The profit is increasing on \((0,\, 1)\), decreasing on \((1,\, 5)\) and increasing again on \((5,\, 8)\).</p>
+            <p>b) The inflection point is \(t = 3\).</p>
+            <p>c) Here both the direction and the shape change during the period, and the two sign charts together cut it into four parts:</p>
+            <ul>
+              <li>on \((0,\, 1)\) the profit is increasing and concave, so it is <strong>slow increasing</strong>;</li>
+              <li>on \((1,\, 3)\) it is decreasing and concave, so it is <strong>fast decreasing</strong>;</li>
+              <li>on \((3,\, 5)\) it is decreasing and convex, so it is <strong>slow decreasing</strong>;</li>
+              <li>on \((5,\, 8)\) it is increasing and convex, so it is <strong>fast increasing</strong>.</li>
+            </ul>
+            <p>In the first month the profit rises, over the next four months it falls, and five months after the reorganisation it starts to rise again. The inflection point \(t = 3\) does not change the direction: the profit is falling before and after it. What changes is the speed of the fall: it stops growing and begins to decrease. Three months after the reorganisation the profit falls faster than at any other time in the period.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5: AM 7.3, Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Revenue from software</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A software firm’s total revenue from a product, in thousands of euros, \(t\) years after its release is
+        <div class="fit-sm">\[ \begin{gathered} R(t) = t^4 - 8t^3 + 24t^2 + 100, \\ 0 \le t \le 6 \end{gathered} \]</div>
+        <ol type="a">
+          <li>Find the intervals on which the revenue is increasing and decreasing.</li>
+          <li>Find the inflection points of \(R(t)\), if there are any.</li>
+          <li>Describe how the revenue changes over the period.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the critical points</span></h4>
+          <p>The power rule gives</p>
+          \[ \begin{aligned} R'(t) &amp;= 4t^3 - 24t^2 + 48t \\ &amp;= 4t\left(t^2 - 6t + 12\right) \end{aligned} \]
+          <p>The first factor is zero at \(t = 0\). For the expression in brackets the discriminant is</p>
+          \[ \begin{aligned} D &amp;= (-6)^2 - 4\cdot 1\cdot 12 \\ &amp;= 36 - 48 = -12 &lt; 0 \end{aligned} \]
+          <p>so the expression in brackets has no zeros and keeps one sign. At \(t = 0\) its value is 12, so it is positive everywhere. The only critical point is therefore \(t = 0\), the left end of the interval, and \(R'(1) = 28 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;(t)","f":"R(t)","v":"t","pts":[{"x":"0","z":true},{"x":"6"}],"s":["+"]}'></div>
+          <p>The revenue is increasing on the whole interval \((0,\, 6)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) The second derivative and the possible inflection point</span></h4>
+          <p>Differentiating the first derivative gives</p>
+          \[ R''(t) = 12t^2 - 48t + 48 \]
+          <p>Setting it equal to zero gives a quadratic equation. Its discriminant is</p>
+          \[ \begin{aligned} D &amp;= (-48)^2 - 4\cdot 12\cdot 48 \\ &amp;= 2304 - 2304 = 0 \end{aligned} \]
+          <p>A discriminant equal to zero means one repeated root:</p>
+          \[ t = \frac{48}{2\cdot 12} = 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The sign chart of the second derivative</span></h4>
+          <p>A repeated root is a warning that the sign may not change there. The values on each side show that it does not:</p>
+          \[ R''(1) = 12 - 48 + 48 = 12 &gt; 0 \]
+          \[ R''(3) = 108 - 144 + 48 = 12 &gt; 0 \]
+          <div data-widget="sign-chart" data-spec='{"fp":"R&#39;&#39;(t)","f":"R(t)","v":"t","pts":[{"x":"0"},{"x":"2","z":true},{"x":"6"}],"s":["+","+"],"cc":true}'></div>
+          <p><strong>There is no inflection point.</strong> The second derivative is zero at \(t = 2\) but positive on both sides. So the curve is convex over the whole period and its concavity does not change.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The revenue is increasing on the whole interval \((0,\, 6)\).</p>
+            <p>b) There are no inflection points.</p>
+            <p>c) The revenue is increasing and convex over the whole period, so it is <strong>fast increasing</strong> throughout the six years after the release: every year adds more revenue than the year before. Two years after the release the speeding up of the growth stops for a moment, because \(R''(2) = 0\), but the growth does not begin to slow down.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6: AM 7.3, Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Complaints after a product recall</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company announces a product recall. \(t\) weeks later it is receiving
+        \[ A(t) = 400te^{-0.5t},\quad 0 \le t \le 12 \]
+        complaints a week. The number of complaints grows during the first two weeks and starts to fall two weeks after the announcement.
+        <ol type="a">
+          <li>Find the inflection point of \(A(t)\).</li>
+          <li>Describe what changes at that point.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative</span></h4>
+          <p>The function is a product, so <a href="tema-6.html#sandaugos">the product rule</a> is used:</p>
+          <div class="fit-sm">\[ \big(u(t)\cdot v(t)\big)' = u'(t)\cdot v(t) + u(t)\cdot v'(t) \]</div>
+          <p>Take \(u(t) = 400t\) and \(v(t) = e^{-0.5t}\). Then \(u'(t) = 400\), and the second factor is differentiated by the exponential form of the chain rule, whose inner function here is \(-0.5t\), so \(v'(t) = -0.5e^{-0.5t}\):</p>
+          \[ \begin{aligned} A'(t) &amp;= 400e^{-0.5t} + 400t\cdot\left(-0.5e^{-0.5t}\right) \\ &amp;= 400e^{-0.5t} - 200te^{-0.5t} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The second derivative</span></h4>
+          <p>Differentiating the terms of the first derivative by the same product and chain rules gives</p>
+          \[ \begin{aligned} A''(t) &amp;= -200e^{-0.5t} - 200e^{-0.5t} \\ &amp;\phantom{=}\; + 100te^{-0.5t} \\ &amp;= e^{-0.5t}(100t - 400) \\ &amp;= 100e^{-0.5t}(t - 4) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The inflection point</span></h4>
+          <p>An exponential is never zero, so the second derivative is zero only when \(t - 4 = 0\), that is \(t = 4\). The exponential factor is positive, so the sign of \(A''(t)\) is the sign of \(t - 4\): negative when \(t &lt; 4\) and positive when \(t &gt; 4\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;&#39;(t)","f":"A(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true},{"x":"12"}],"s":["-","+"],"cc":true}'></div>
+          <p>The sign changes, so the inflection point is \(t = 4\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The inflection point is \(t = 4\).</p>
+            <p>b) Four weeks after the announcement the number of complaints is falling. Before this point the curve is concave, and after it convex. So the number of complaints is <strong>fast decreasing</strong> on \((2,\, 4)\) and <strong>slow decreasing</strong> on \((4,\, 12)\). Four weeks after the announcement the number of complaints falls at the greatest speed. After that it still falls, but by less each week.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 7: AM 7.3, Example 7 -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Spread of a new service</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A new service is offered in a town. \(t\) months after it is launched, the number of households that have signed up, in thousands, is
+        \[ H(t) = \frac{600}{1 + e^{2 - 0.5t}},\quad t \ge 0 \]
+        <ol type="a">
+          <li>Show that the number of households is increasing.</li>
+          <li>Find the point of diminishing returns.</li>
+          <li>Explain what it means for the company that offers the service.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative</span></h4>
+          <p>The function is a fraction, so <a href="tema-6.html#dalmens">the quotient rule</a> is used:</p>
+          \[ \left(\frac{u(t)}{v(t)}\right)' = \frac{u'(t)v(t) - u(t)v'(t)}{v^2(t)} \]
+          <p>Label the numerator \(u(t) = 600\) and the denominator \(v(t) = 1 + e^{2 - 0.5t}\). Then \(u'(t) = 0\), and \(v'(t)\) is found by the exponential form of the chain rule, whose inner function is \(2 - 0.5t\):</p>
+          \[ v'(t) = e^{2 - 0.5t}\cdot(-0.5) = -0.5e^{2 - 0.5t} \]
+          <p>so</p>
+          <div class="fit-sm">\[ \begin{aligned} H'(t) &amp;= \frac{0\cdot\left(1 + e^{2 - 0.5t}\right) - 600\cdot\left(-0.5e^{2 - 0.5t}\right)}{\left(1 + e^{2 - 0.5t}\right)^2} \\ &amp;= \frac{300e^{2 - 0.5t}}{\left(1 + e^{2 - 0.5t}\right)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The sign of the first derivative</span></h4>
+          <p>An exponential is positive whatever its exponent, so the numerator is positive. The denominator is the square of a number that is not zero, so it is positive as well. The fraction is therefore positive and there are no critical points.</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"H&#39;(t)","f":"H(t)","v":"t","pts":[{"x":"0"}],"s":["+"],"outR":false}'></div>
+          <p>The number of households is increasing for every \(t \ge 0\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The second derivative</span></h4>
+          <p>The first derivative is again a fraction, so the quotient rule is used a second time. To keep the formulas shorter, let \(w = e^{2 - 0.5t}\). By the exponential form of the chain rule \(w' = -0.5w\), and the first derivative is</p>
+          \[ H'(t) = \frac{300w}{(1 + w)^2} \]
+          <p>Now the numerator is \(u(t) = 300w\) and the denominator is \(v(t) = (1 + w)^2\). Their derivatives are</p>
+          \[ u'(t) = 300\cdot(-0.5w) = -150w \]
+          \[ \begin{aligned} v'(t) &amp;= 2(1 + w)\cdot(-0.5w) \\ &amp;= -w(1 + w) \end{aligned} \]
+          <p>Here \(v'\) needed the power form of the chain rule, with the inner function \(1 + w\). Substituting into the quotient rule gives:</p>
+          <div class="fit-sm">\[ H''(t) = \frac{-150w(1 + w)^2 + 300w^2(1 + w)}{(1 + w)^4} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Simplifying</span></h4>
+          <p>Both terms of the numerator contain the factor \(1 + w\), so the fraction can be reduced by it, and the fourth power in the denominator becomes the third:</p>
+          \[ H''(t) = \frac{-150w(1 + w) + 300w^2}{(1 + w)^3} \]
+          <p>Opening the brackets in the numerator gives \(-150w - 150w^2 + 300w^2\). Taking out the common factor \(150w\) gives</p>
+          \[ H''(t) = \frac{150w(w - 1)}{(1 + w)^3},\qquad w = e^{2 - 0.5t} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The inflection point</span></h4>
+          <p>The factor \(150w\) and the denominator are positive, so the second derivative is zero only when</p>
+          <div class="fit-sm">\[ \begin{gathered} e^{2 - 0.5t} - 1 = 0 \;\Longrightarrow\; e^{2 - 0.5t} = e^0 \\ \Longrightarrow\; 2 - 0.5t = 0 \;\Longrightarrow\; t = 4 \end{gathered} \]</div>
+          <p>For \(t &lt; 4\) the exponent \(2 - 0.5t\) is positive, so \(e^{2 - 0.5t} &gt; 1\) and \(H''(t) &gt; 0\). For \(t &gt; 4\) the exponent is negative, so \(e^{2 - 0.5t} &lt; 1\) and \(H''(t) &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"H&#39;&#39;(t)","f":"H(t)","v":"t","pts":[{"x":"0"},{"x":"4","z":true}],"s":["+","-"],"outR":false,"cc":true}'></div>
+          <p>The sign changes from plus to minus while the function is increasing, so the point of diminishing returns is \(t = 4\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) \(H'(t) &gt; 0\), so the number of households is increasing for every \(t \ge 0\).</p>
+            <p>b) The point of diminishing returns is \(t = 4\).</p>
+            <p>c) The number of households is <strong>fast increasing</strong> on \((0,\, 4)\) and <strong>slow increasing</strong> on \((4,\, +\infty)\). During the first four months each month brings more new households than the month before, and after that each month brings fewer. The service keeps spreading, but it spreads fastest four months after the launch.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: draw the sign charts of the first and second derivatives, find the inflection point and explain what changes at it. The answer gives the derivatives, the points and the conclusions – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A plant’s weekly total cost of producing \(x\) tonnes of a product is</p>
+          <div class="fit-sm">\[ \begin{gathered} C(x) = 0.1x^3 - 4.5x^2 + 90x + 700, \\ 0 \le x \le 30 \end{gathered} \]</div>
+          <p>euros.</p>
+          <ol type="a">
+            <li>Find the intervals on which the cost is increasing and decreasing.</li>
+            <li>Find the inflection point of \(C(x)\).</li>
+            <li>Describe what changes at that point.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(C'(x) = 0.3x^2 - 9x + 90\); \(D = 81 - 108 = -27 &lt; 0\), so there are no critical points, and \(C'(0) = 90 &gt; 0\). The cost is increasing on \([0,\, 30]\).</p>
+          <p>b) \(C''(x) = 0.6x - 9 = 0\) gives \(x = 15\); \(C''(10) = -3 &lt; 0\) and \(C''(20) = 3 &gt; 0\), so the inflection point is \(x = 15\).</p>
+          <p>c) The cost is <strong>slow increasing</strong> on \([0,\, 15)\) and <strong>fast increasing</strong> on \((15,\, 30]\). The marginal cost is smallest at an output of 15 tonnes.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The monthly number of orders a company receives when it spends \(x\) thousand euros a month on advertising is</p>
+          <div class="fit-sm">\[ \begin{gathered} N(x) = -0.02x^3 + 1.5x^2 + 36x, \\ 0 \le x \le 50 \end{gathered} \]</div>
+          <ol type="a">
+            <li>Show that the number of orders is increasing on the whole interval.</li>
+            <li>Find the point of diminishing returns.</li>
+            <li>Explain what it means for the company.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(N'(x) = -0.06x^2 + 3x + 36\); dividing by \(-0.06\) gives \(x^2 - 50x - 600 = 0\), \(D = 2500 + 2400 = 4900\), \(\sqrt{D} = 70\). The roots \(x_1 = -10\) and \(x_2 = 60\) lie outside the interval; \(N'(0) = 36 &gt; 0\). The number of orders is increasing on \([0,\, 50]\).</p>
+          <p>b) \(N''(x) = -0.12x + 3 = 0\) gives \(x = 25\); \(N''(20) = 0.6 &gt; 0\) and \(N''(30) = -0.6 &lt; 0\), so the point of diminishing returns is \(x = 25\).</p>
+          <p>c) Up to a budget of 25 thousand euros a month every further thousand euros brings more new orders than the thousand before it, and beyond that budget every further thousand brings fewer.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The number of visitors to a website \(t\) days after an advertisement appeared is</p>
+          \[ V(t) = 500te^{-0.2t},\quad 0 \le t \le 20 \]
+          <ol type="a">
+            <li>Find the intervals on which the number of visitors is increasing and decreasing.</li>
+            <li>Find the inflection point of \(V(t)\).</li>
+            <li>Describe what changes at that point.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(V'(t) = 500e^{-0.2t}(1 - 0.2t)\) (the product rule); the critical point is \(t = 5\). The number of visitors is increasing on \([0,\, 5)\) and decreasing on \((5,\, 20]\).</p>
+          <p>b) \(V''(t) = 20e^{-0.2t}(t - 10)\); the sign changes from minus to plus at \(t = 10\), so the inflection point is \(t = 10\).</p>
+          <p>c) Ten days after the advertisement appeared, the number of visitors is falling and the curve passes from concave to convex, so <strong>fast decreasing</strong> changes to <strong>slow decreasing</strong>.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The number of households, in thousands, that use a new service \(t\) months after it was launched is</p>
+          \[ L(t) = \frac{900}{1 + e^{4 - 0.4t}},\quad 0 \le t \le 30 \]
+          <ol type="a">
+            <li>Show that the number of households is increasing on the whole interval.</li>
+            <li>Find the point of diminishing returns.</li>
+            <li>Explain what it means for the service.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>Throughout the answer \(w = e^{4 - 0.4t}\), so that \(w &gt; 0\) for every \(t\).</p>
+          <p>a) \(L'(t) = \dfrac{360w}{(1 + w)^2} &gt; 0\) (the quotient rule and the chain rule), so the number of households is increasing on \([0,\, 30]\).</p>
+          <p>b) \(L''(t) = \dfrac{144w(w - 1)}{(1 + w)^3} = 0\) gives \(w = 1\), that is \(4 - 0.4t = 0\) and \(t = 10\); the sign changes from plus to minus there, so the point of diminishing returns is \(t = 10\).</p>
+          <p>c) During the first ten months each month brings more new households than the month before, and after that each month brings fewer.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 6.4–6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 10.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
