@@ -323,7 +323,7 @@
         desc: { lt: 'Didžiausia ir mažiausia funkcijos reikšmė intervale.', en: 'The largest and the smallest value of a function on an interval.' } }
     ],
     t7: [
-      { id: 'm71', status: 'active', href: { lt: 'tema-7-pokycio-sparta.html' },
+      { id: 'm71', status: 'active', href: { lt: 'tema-7-pokycio-sparta.html', en: 'tema-7-pokycio-sparta.html' },
         title: { lt: 'Pokyčio sparta', en: 'The Pace of Change' },
         desc: { lt: 'Antroji išvestinė kaip kitimo greičio kitimo greitis: ar dydis kinta vis sparčiau, ar vis lėčiau.', en: 'The second derivative as the rate of change of a rate of change: whether a quantity changes faster and faster or slower and slower.' } },
       { id: 'm72', status: 'active', href: { lt: 'tema-7-funkcijos-iskilumas.html' },
@@ -410,7 +410,7 @@
                title: { lt: 'Absoliutieji ekstremumai', en: 'Absolute Extrema' } },
     t7:      { parent: 'home', href: { lt: 'tema-7.html', en: 'tema-7.html' },
                title: { lt: '7 tema', en: 'Topic 7' } },
-    m71:     { parent: 't7', topic: 't7', model: 'm71', href: { lt: 'tema-7-pokycio-sparta.html', en: null },
+    m71:     { parent: 't7', topic: 't7', model: 'm71', href: { lt: 'tema-7-pokycio-sparta.html', en: 'tema-7-pokycio-sparta.html' },
                title: { lt: 'Pokyčio sparta', en: 'The Pace of Change' } },
     m72:     { parent: 't7', topic: 't7', model: 'm72', href: { lt: 'tema-7-funkcijos-iskilumas.html', en: null },
                title: { lt: 'Funkcijos iškilumas', en: 'Concavity of a Function' } },

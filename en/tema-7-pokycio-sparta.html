@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pace of Change · Applied Mathematics</title>
+<meta name="description" content="The pace of change: the second derivative as the rate of change of a rate of change, its sign and its interpretation. How to solve, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-7-pokycio-sparta.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=78">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=78"></script>
+</head>
+<body data-page="m71">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 7 · Applications · Section 1</span>
+    <h1>The Pace of Change</h1>
+    <p class="lead">In this section the second derivative is applied to economic quantities: it shows whether a quantity changes faster and faster or more and more slowly, and by how much its rate of change will change when the input increases by one unit.</p>
+    <ul class="jump">
+      <li><a href="#sparta">Pace of change</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. THE PACE OF CHANGE ============ -->
+  <section class="section" id="sparta" aria-labelledby="h-rate">
+    <h2 id="h-rate">The second derivative as the pace of change</h2>
+
+    <article class="card">
+      <p>The first derivative is the rate at which a quantity changes. It is a function too, so it has a rate of change of its own: the second derivative. So \(f''(x)\) measures the <strong>pace of change</strong>: how quickly the rate of change itself rises or falls. You can see what this looks like in the <a href="tema-7.html#reklama">interactive graph on the Topic 7 page</a>.</p>
+      <p>The first derivative is interpreted in the usual way, and the second one in the same way, only it refers to the rate of change:</p>
+      <div class="model-note"><strong>If \(x\) increases by one unit from \(x_0\), the quantity changes by approximately \(f'(x_0)\).</strong></div>
+      <div class="model-note"><strong>If \(x\) increases by one unit from \(x_0\), the rate of change changes by approximately \(f''(x_0)\).</strong></div>
+      <p style="margin-top:12px">Both values are approximate, and for the same reason: they are measured at the single point \(x_0\), and over a whole unit step the rates do not stay the same.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The sign</h3>
+      <p>Only the sign of the second derivative is needed to interpret it:</p>
+      <ul>
+        <li>if \(f''(x) &gt; 0\), then \(f'(x)\) is increasing: the rate of change of the quantity increases;</li>
+        <li>if \(f''(x) &lt; 0\), then \(f'(x)\) is decreasing: the rate of change of the quantity decreases.</li>
+      </ul>
+      <p class="tip"><strong>What the sign does not mean.</strong> A negative second derivative does <strong>not</strong> mean that the quantity itself is falling. It means that the rate of change of the quantity is decreasing. Whether the quantity rises or falls is decided by the first derivative alone. So read the signs of both derivatives together: for example, if \(f'(x_0) &lt; 0\) and \(f''(x_0) &gt; 0\), the quantity is falling, but more and more slowly (see <a href="#pavyzdys-3">Example 3</a>).</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Write down the function and say what the variable means. If the quantity is not given by a formula, build it first.</li>
+        <li>Differentiate. Before differentiating, <a href="tema-7.html#skaiciavimas">write roots and reciprocals as powers</a>. Name the rule that is being used and the functions it is applied to.</li>
+        <li>Simplify the first derivative, and again write it as a power if that makes the next step easier.</li>
+        <li>Differentiate the simplified first derivative and simplify the result.</li>
+        <li>Substitute the value of the variable the problem names into \(f'\) and into \(f''\), and interpret both results.</li>
+      </ol>
+      <div class="model-note"><strong>The interpretation.</strong> The answer is not finished when the two numbers have been computed. Every problem of this kind asks for them to be explained in the words of the problem, and that explanation is part of the answer. Two sentences are needed: one saying how the quantity changes when the variable increases by one unit, and one saying how the rate of change itself changes.</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>A negative second derivative read as “the quantity is falling”.</strong> A negative second derivative means that the rate of change is decreasing. Whether the quantity rises or falls is shown by the first derivative.</li>
+            <li><strong>Skipping the simplification.</strong> A first derivative that has not been simplified is harder to differentiate a second time.</li>
+            <li><strong>Roots and fractions not written as powers.</strong> A derivative written as a root or a fraction is often harder to differentiate than the same expression written as a power.</li>
+            <li><strong>Only numbers in the answer.</strong> Both results have to be interpreted: how the quantity changes and how its rate of change changes.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM 7.1, Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Marginal cost at a chemical plant</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A chemical plant’s daily total cost of producing \(x\) tonnes is
+        <div class="fit-sm">\[ TC(x) = 0.02x^3 - 1.2x^2 + 40x + 500 \]</div>
+        euros. Find the marginal cost at an output of 10 tonnes a day and the rate at which that marginal cost is changing. Interpret both results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first derivative</span></h4>
+          <p>The function is a sum of powers, so the power rule is applied to each term (<a href="tema-6.html#sumos">the sum and difference rule</a>), and the derivative of the constant 500 is zero:</p>
+          \[ \begin{aligned} MC(x) &amp;= TC'(x) \\ &amp;= 0.02\cdot 3x^2 - 1.2\cdot 2x + 40 \\ &amp;= 0.06x^2 - 2.4x + 40 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The second derivative</span></h4>
+          <p>The first derivative is again a sum of powers, so the same rule is applied again:</p>
+          \[ TC''(x) = 0.06\cdot 2x - 2.4 = 0.12x - 2.4 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          \[ \begin{aligned} MC(10) &amp;= 0.06\cdot 100 - 2.4\cdot 10 + 40 \\ &amp;= 6 - 24 + 40 = 22 \end{aligned} \]
+          \[ \begin{aligned} TC''(10) &amp;= 0.12\cdot 10 - 2.4 \\ &amp;= 1.2 - 2.4 = -1.2 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The marginal cost is 22&nbsp;euros a tonne, and it is changing by \(-1.2\)&nbsp;euros a tonne for each further tonne. If the output increases by one tonne from 10 tonnes a day, the total cost will grow by approximately 22&nbsp;euros. If the output increases by one tonne from 10 tonnes a day, the marginal cost itself will fall by approximately 1.20&nbsp;euros. So the plant still pays more for every extra tonne, but each extra tonne costs a little less than the one before it.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 7.1, Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Marginal product of labour in a workshop</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A workshop employing \(x\) workers produces
+        \[ Q(x) = 60\sqrt{x} \]
+        units an hour. Find the marginal product of labour at 25 workers and the rate at which it is changing. Interpret both results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The root as a power</span></h4>
+          <p>First write the root as a power. By the rule \(\sqrt[n]{x^m} = x^{\frac{m}{n}}\) the square root of \(x\) is \(\sqrt{x} = \sqrt{x^1} = x^{\frac{1}{2}} = x^{0.5}\), so</p>
+          \[ Q(x) = 60x^{0.5} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first derivative</span></h4>
+          <p>Now the power rule applies: the exponent comes down in front and is then lowered by one.</p>
+          \[ \begin{aligned} Q'(x) &amp;= 60\cdot 0.5x^{0.5 - 1} = 30x^{-0.5} \\ &amp;= \frac{30}{x^{0.5}} = \frac{30}{\sqrt{x}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The second derivative</span></h4>
+          <p>The first derivative is already written as a power, \(30x^{-0.5}\), so the power rule is applied to it in the same way:</p>
+          \[ \begin{aligned} Q''(x) &amp;= 30\cdot(-0.5)x^{-0.5 - 1} = -15x^{-1.5} \\ &amp;= -\frac{15}{x^{1.5}} = -\frac{15}{\sqrt{x^3}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The values</span></h4>
+          \[ Q'(25) = \frac{30}{\sqrt{25}} = \frac{30}{5} = 6 \]
+          \[ \begin{aligned} Q''(25) &amp;= -\frac{15}{\sqrt{25^3}} = -\frac{15}{\sqrt{15625}} \\ &amp;= -\frac{15}{125} = -0.12 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The marginal product of labour is 6&nbsp;units an hour per worker, and it is changing by \(-0.12\)&nbsp;units an hour per worker for each further worker. If one more worker is taken on when 25 are employed, the output will grow by approximately 6&nbsp;units an hour. If one more worker is taken on after that, the gain will be approximately 0.12&nbsp;units an hour smaller. So every new worker still adds output, but adds less than the worker hired before.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 7.1, Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Resale value of a machine</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A machine’s resale value \(t\) years after it was bought is
+        \[ V(t) = 40000e^{-0.25t} \]
+        euros. Find the rate at which the value is changing four years after the purchase, and the rate at which that rate is changing. Interpret both results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first derivative</span></h4>
+          <p>The exponent is not simply \(t\), so <a href="tema-6.html#sudetines">the chain rule</a> is needed. The <strong>outer function</strong> is the exponential \(e^u\) and the <strong>inner function</strong> is \(u(t) = -0.25t\). The rule for an exponential with an inner function is</p>
+          \[ \big(e^{u(t)}\big)' = e^{u(t)}\cdot u'(t) \]
+          <p>Here \(u'(t) = -0.25\), and the constant factor 40000 is simply carried along:</p>
+          \[ \begin{aligned} V'(t) &amp;= 40000\cdot e^{-0.25t}\cdot(-0.25) \\ &amp;= -10000e^{-0.25t} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The second derivative</span></h4>
+          <p>The first derivative has the same shape as the function itself, only with a different constant in front, so exactly the same rule is used once more:</p>
+          \[ \begin{aligned} V''(t) &amp;= -10000\cdot e^{-0.25t}\cdot(-0.25) \\ &amp;= 2500e^{-0.25t} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>At \(t = 4\) the exponent is \(-0.25\cdot 4 = -1\):</p>
+          \[ V'(4) = -10000e^{-1} \approx -3678.79 \]
+          \[ V''(4) = 2500e^{-1} \approx 919.70 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Four years after the purchase the machine is losing about 3678.79&nbsp;euros of value a year, and that loss is becoming smaller by about 919.70&nbsp;euros a year for each further year. If the machine is kept one year longer, it will lose approximately 3678.79&nbsp;euros. The year after that it will lose approximately 919.70&nbsp;euros less than this one. The two signs are different here, and both are needed: the value falls, but it falls more and more slowly.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 7.1, Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Users of a service</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The number of registered users of a service, in thousands, \(x\) months after its launch is
+        \[ N(x) = 20\ln(2x + 1) \]
+        Find the rate at which the number of users is growing two months after the launch, and the rate at which that growth is changing. Interpret both results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first derivative</span></h4>
+          <p><a href="tema-6.html#sudetines">The chain rule</a> is used again. The <strong>outer function</strong> is the logarithm \(\ln u\) and the <strong>inner function</strong> is \(u(x) = 2x + 1\). The rule for a logarithm with an inner function is</p>
+          \[ \big(\ln u(x)\big)' = \frac{u'(x)}{u(x)} \]
+          <p>Here \(u'(x) = 2\), so</p>
+          \[ N'(x) = 20\cdot\frac{2}{2x + 1} = \frac{40}{2x + 1} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The second derivative</span></h4>
+          <p>The first derivative is a fraction with a constant numerator, so instead of the quotient rule it is easier to write it as a power, \(\dfrac{40}{2x + 1} = 40(2x + 1)^{-1}\), and use the power rule with an inner function:</p>
+          \[ \big((u(x))^n\big)' = n(u(x))^{n-1}\cdot u'(x) \]
+          <p>With \(n = -1\) and \(u(x) = 2x + 1\), \(u'(x) = 2\):</p>
+          \[ \begin{aligned} N''(x) &amp;= 40\cdot(-1)(2x + 1)^{-2}\cdot 2 \\ &amp;= -\frac{80}{(2x + 1)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>At \(x = 2\) the inner function is \(2\cdot 2 + 1 = 5\):</p>
+          \[ N'(2) = \frac{40}{5} = 8 \]
+          \[ N''(2) = -\frac{80}{5^2} = -\frac{80}{25} = -3.2 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Two months after the launch the service is gaining 8&nbsp;thousand users a month, and that gain is becoming smaller by 3.2&nbsp;thousand a month for each further month. If one more month passes, the service will gain approximately 8&nbsp;thousand users. The month after that it will gain approximately 3.2&nbsp;thousand fewer new users than this one. The service keeps growing, but the number of new users each month is falling quickly.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5: AM 7.1, Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Value of the timber on a plantation</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The value of the standing timber on a plantation, in thousands of euros, \(t\) years from now is
+        \[ W(t) = 50te^{-0.1t} + 200 \]
+        Find the rate at which the value is changing five years from now, and the rate at which that rate is changing. Interpret both results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first derivative</span></h4>
+          <p>The first term is a product of two functions, so <a href="tema-6.html#sandaugos">the product rule</a> is used:</p>
+          <div class="fit-sm">\[ \big(u(t)\cdot v(t)\big)' = u'(t)\cdot v(t) + u(t)\cdot v'(t) \]</div>
+          <p>Take \(u(t) = 50t\) and \(v(t) = e^{-0.1t}\). Then \(u'(t) = 50\), and the derivative of the second factor is found by the exponential form of the chain rule, whose inner function here is \(-0.1t\):</p>
+          \[ v'(t) = e^{-0.1t}\cdot(-0.1) = -0.1e^{-0.1t} \]
+          <p>The derivative of the constant 200 is zero, so</p>
+          \[ \begin{aligned} W'(t) &amp;= 50e^{-0.1t} + 50t\cdot\left(-0.1e^{-0.1t}\right) \\ &amp;= 50e^{-0.1t} - 5te^{-0.1t} \\ &amp;= 50e^{-0.1t}(1 - 0.1t) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The second derivative</span></h4>
+          <p>The simplified first derivative is again a product, now of \(u(t) = 50e^{-0.1t}\) and \(v(t) = 1 - 0.1t\). Here \(u'(t) = -5e^{-0.1t}\) and \(v'(t) = -0.1\):</p>
+          \[ \begin{aligned} W''(t) &amp;= -5e^{-0.1t}(1 - 0.1t) \\ &amp;\phantom{=}\; + 50e^{-0.1t}\cdot(-0.1) \end{aligned} \]
+          <p>Both terms contain the factor \(e^{-0.1t}\), so it is taken outside the brackets:</p>
+          \[ \begin{aligned} W''(t) &amp;= e^{-0.1t}\left[-5(1 - 0.1t) - 5\right] \\ &amp;= e^{-0.1t}(0.5t - 10) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>At \(t = 5\) the exponent is \(-0.5\):</p>
+          \[ \begin{aligned} W'(5) &amp;= 50e^{-0.5}\cdot(1 - 0.5) \\ &amp;= 25e^{-0.5} \approx 15.16 \end{aligned} \]
+          \[ \begin{aligned} W''(5) &amp;= e^{-0.5}\cdot(2.5 - 10) \\ &amp;= -7.5e^{-0.5} \approx -4.55 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Five years from now the timber is gaining about 15.16&nbsp;thousand euros of value a year, and that gain is becoming smaller by about 4.55&nbsp;thousand euros a year for each further year. If the plantation is left standing one more year, its value will grow by approximately 15.16&nbsp;thousand euros. The year after that it will grow by approximately 4.55&nbsp;thousand euros less. So the timber is still worth more each year, but each extra year adds less than the year before.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6: AM 7.1, Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Market share of a product</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The share of a market held by a product, in percent, \(t\) months after its launch is
+        \[ S(t) = \frac{60t}{t + 10} \]
+        Find the share, the rate at which it is growing and the rate at which that growth is changing ten months after the launch. Interpret the last two results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first derivative</span></h4>
+          <p>The function is a fraction, so <a href="tema-6.html#dalmens">the quotient rule</a> is used:</p>
+          \[ \left(\frac{u(t)}{v(t)}\right)' = \frac{u'(t)v(t) - u(t)v'(t)}{v^2(t)} \]
+          <p>Label the numerator \(u(t) = 60t\) and the denominator \(v(t) = t + 10\), so \(u'(t) = 60\) and \(v'(t) = 1\):</p>
+          \[ \begin{aligned} S'(t) &amp;= \frac{60(t + 10) - 60t\cdot 1}{(t + 10)^2} \\ &amp;= \frac{60t + 600 - 60t}{(t + 10)^2} = \frac{600}{(t + 10)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The second derivative</span></h4>
+          <p>The quotient rule is not needed a second time. The numerator is now a constant, so the first derivative is a single power with an inner function, \(\dfrac{600}{(t + 10)^2} = 600(t + 10)^{-2}\), and the power rule with an inner function applies, with \(u(t) = t + 10\) and \(u'(t) = 1\):</p>
+          \[ \begin{aligned} S''(t) &amp;= 600\cdot(-2)(t + 10)^{-3}\cdot 1 \\ &amp;= -\frac{1200}{(t + 10)^3} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>At \(t = 10\) the inner function is \(t + 10 = 20\):</p>
+          \[ S(10) = \frac{600}{20} = 30 \]
+          \[ S'(10) = \frac{600}{20^2} = \frac{600}{400} = 1.5 \]
+          \[ S''(10) = -\frac{1200}{20^3} = -\frac{1200}{8000} = -0.15 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            Ten months after the launch the product holds 30&nbsp;percent of the market. The share is growing by 1.5&nbsp;percentage points a month, and that growth is becoming smaller by 0.15&nbsp;percentage points a month for each further month. If one more month passes, the share will rise by approximately 1.5&nbsp;percentage points. The month after that it will rise by approximately 0.15&nbsp;percentage points less. So the product still takes market share from its competitors, but it takes less and less of it every month.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: find both derivatives, calculate their values and interpret both results. The answer gives the derivatives, their values and the interpretation – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The daily total cost of producing \(x\) units of a product is</p>
+          <div class="fit-sm">\[ TC(x) = 0.02x^3 - 1.5x^2 + 60x + 800 \]</div>
+          <p>euros. Find \(TC'(20)\) and \(TC''(20)\) and interpret both results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ TC'(x) = 0.06x^2 - 3x + 60 \]
+          \[ TC''(x) = 0.12x - 3 \]
+          <p><strong>The values:</strong></p>
+          \[ TC'(20) = 24;\qquad TC''(20) = -0.6 \]
+          <p><strong>Answer.</strong> At an output of 20 units a day one more unit adds about 24&nbsp;euros to the cost, and that addition is falling by 0.6&nbsp;euros for each further unit.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The stock of a product in a warehouse, in tonnes, \(t\) days after a delivery is</p>
+          \[ Q(t) = 800e^{-0.1t} \]
+          <p>Find \(Q'(10)\) and \(Q''(10)\) and interpret both results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives (the chain rule):</strong></p>
+          \[ Q'(t) = -80e^{-0.1t} \]
+          \[ Q''(t) = 8e^{-0.1t} \]
+          <p><strong>The values:</strong></p>
+          \[ Q'(10) = -80e^{-1} \approx -29.43 \]
+          \[ Q''(10) = 8e^{-1} \approx 2.94 \]
+          <p><strong>Answer.</strong> Ten days after the delivery, the stock is falling by about 29.43&nbsp;tonnes a day, and that fall is becoming smaller by about 2.94&nbsp;tonnes a day every day.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A firm’s monthly sales, in thousands of units, \(t\) months after a redesign of its product are</p>
+          \[ S(t) = 18\ln(t + 1) + 4t \]
+          <p>Find \(S'(5)\) and \(S''(5)\) and interpret both results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives (the chain rule in the first one):</strong></p>
+          \[ S'(t) = \frac{18}{t + 1} + 4 \]
+          \[ S''(t) = -\frac{18}{(t + 1)^2} \]
+          <p><strong>The values:</strong></p>
+          \[ S'(5) = 7;\qquad S''(5) = -0.5 \]
+          <p><strong>Answer.</strong> Five months after the redesign, the sales are growing by 7&nbsp;thousand units a month, and that growth is falling by 0.5&nbsp;thousand units a month every month.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The share of customers, in percent, who pay with a new method \(t\) months after it was introduced is</p>
+          \[ H(t) = \frac{80t}{t + 12} \]
+          <p>Find \(H'(8)\) and \(H''(8)\) and interpret both results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives (the quotient rule):</strong></p>
+          \[ H'(t) = \frac{960}{(t + 12)^2} \]
+          \[ H''(t) = -\frac{1920}{(t + 12)^3} \]
+          <p><strong>The values:</strong></p>
+          \[ H'(8) = 2.4;\qquad H''(8) = -0.24 \]
+          <p><strong>Answer.</strong> Eight months after the method was introduced, the share is growing by 2.4&nbsp;percentage points a month, and that growth is falling by 0.24&nbsp;percentage points a month every month.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 6.4–6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 9.5</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
