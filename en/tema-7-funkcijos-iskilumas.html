@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concavity of a Function · Applied Mathematics</title>
+<meta name="description" content="Concavity of a function: convex and concave functions, the sign of the second derivative, the four kinds of change – fast and slow increasing, fast and slow decreasing. How to solve, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-7-funkcijos-iskilumas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=79">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=79"></script>
+</head>
+<body data-page="m72">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 7 · Applications · Section 2</span>
+    <h1>Concavity of a Function</h1>
+    <p class="lead">In this section the sign of the second derivative is used to find the shape of a curve: whether the graph of a function is convex or concave. Together with the first derivative it describes how a quantity changes.</p>
+    <ul class="jump">
+      <li><a href="#iskilumas">Concavity</a></li>
+      <li><a href="#atvejai">Four cases</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. CONCAVE AND CONVEX FUNCTIONS ============ -->
+  <section class="section" id="iskilumas" aria-labelledby="h-shape">
+    <h2 id="h-shape">Concave and convex functions</h2>
+
+    <article class="card">
+      <p>Knowing that a quantity is growing is not the same as knowing how it grows. Two firms can both report rising sales and be in completely different positions: one is selling more every month than the month before, the other is still growing but adding less each month. The difference is not in the direction of the change, which the first derivative gives, but in the shape of the curve. That shape has a name.</p>
+      <p>A curve is <strong>concave</strong> if it lies <strong>below</strong> its tangent lines, and <strong>convex</strong> if it lies <strong>above</strong> them. A convex curve has the shape of the inside of a bowl; a concave curve has the shape of the top of a hill.</p>
+      <figure class="abs-fig">
+          <svg viewBox="0 0 520 244" role="img" aria-label="A convex curve lies above its tangent lines, a concave curve lies below them">
+          <path class="ln" d="M20.0 50.0L22.2 54.0L24.4 57.8L26.6 61.6L28.8 65.4L31.0 69.0L33.2 72.6L35.4 76.0L37.6 79.4L39.8 82.8L42.0 86.0L44.2 89.2L46.4 92.2L48.6 95.2L50.8 98.2L53.0 101.0L55.2 103.8L57.4 106.4L59.6 109.0L61.8 111.6L64.0 114.0L66.2 116.4L68.4 118.6L70.6 120.8L72.8 123.0L75.0 125.0L77.2 127.0L79.4 128.8L81.6 130.6L83.8 132.4L86.0 134.0L88.2 135.6L90.4 137.0L92.6 138.4L94.8 139.8L97.0 141.0L99.2 142.2L101.4 143.2L103.6 144.2L105.8 145.2L108.0 146.0L110.2 146.8L112.4 147.4L114.6 148.0L116.8 148.6L119.0 149.0L121.2 149.4L123.4 149.6L125.6 149.8L127.8 150.0L130.0 150.0L132.2 150.0L134.4 149.8L136.6 149.6L138.8 149.4L141.0 149.0L143.2 148.6L145.4 148.0L147.6 147.4L149.8 146.8L152.0 146.0L154.2 145.2L156.4 144.2L158.6 143.2L160.8 142.2L163.0 141.0L165.2 139.8L167.4 138.4L169.6 137.0L171.8 135.6L174.0 134.0L176.2 132.4L178.4 130.6L180.6 128.8L182.8 127.0L185.0 125.0L187.2 123.0L189.4 120.8L191.6 118.6L193.8 116.4L196.0 114.0L198.2 111.6L200.4 109.0L202.6 106.4L204.8 103.8L207.0 101.0L209.2 98.2L211.4 95.2L213.6 92.2L215.8 89.2L218.0 86.0L220.2 82.8L222.4 79.4L224.6 76.0L226.8 72.6L229.0 69.0L231.2 65.4L233.4 61.6L235.6 57.8L237.8 54.0L240.0 50.0"/>
+          <path class="ln" d="M280.0 160.0L282.2 156.0L284.4 152.2L286.6 148.4L288.8 144.6L291.0 141.0L293.2 137.4L295.4 134.0L297.6 130.6L299.8 127.2L302.0 124.0L304.2 120.8L306.4 117.8L308.6 114.8L310.8 111.8L313.0 109.0L315.2 106.2L317.4 103.6L319.6 101.0L321.8 98.4L324.0 96.0L326.2 93.6L328.4 91.4L330.6 89.2L332.8 87.0L335.0 85.0L337.2 83.0L339.4 81.2L341.6 79.4L343.8 77.6L346.0 76.0L348.2 74.4L350.4 73.0L352.6 71.6L354.8 70.2L357.0 69.0L359.2 67.8L361.4 66.8L363.6 65.8L365.8 64.8L368.0 64.0L370.2 63.2L372.4 62.6L374.6 62.0L376.8 61.4L379.0 61.0L381.2 60.6L383.4 60.4L385.6 60.2L387.8 60.0L390.0 60.0L392.2 60.0L394.4 60.2L396.6 60.4L398.8 60.6L401.0 61.0L403.2 61.4L405.4 62.0L407.6 62.6L409.8 63.2L412.0 64.0L414.2 64.8L416.4 65.8L418.6 66.8L420.8 67.8L423.0 69.0L425.2 70.2L427.4 71.6L429.6 73.0L431.8 74.4L434.0 76.0L436.2 77.6L438.4 79.4L440.6 81.2L442.8 83.0L445.0 85.0L447.2 87.0L449.4 89.2L451.6 91.4L453.8 93.6L456.0 96.0L458.2 98.4L460.4 101.0L462.6 103.6L464.8 106.2L467.0 109.0L469.2 111.8L471.4 114.8L473.6 117.8L475.8 120.8L478.0 124.0L480.2 127.2L482.4 130.6L484.6 134.0L486.8 137.4L489.0 141.0L491.2 144.6L493.4 148.4L495.6 152.2L497.8 156.0L500.0 160.0"/>
+          <line class="ln2-dash" x1="10.0" y1="60.7" x2="135.0" y2="184.7"/>
+          <line class="ln2-dash" x1="125.0" y1="179.5" x2="250.0" y2="65.9"/>
+          <line class="ln2-dash" x1="272.0" y1="147.3" x2="398.0" y2="22.3"/>
+          <line class="ln2-dash" x1="382.0" y1="27.7" x2="508.0" y2="142.3"/>
+          <circle class="pt-hi" cx="70.0" cy="120.2" r="5.5"/>
+          <circle class="pt-hi" cx="185.0" cy="125.0" r="5.5"/>
+          <circle class="pt-hi" cx="330.0" cy="89.8" r="5.5"/>
+          <circle class="pt-hi" cx="445.0" cy="85.0" r="5.5"/>
+          <text class="m" x="130" y="90" text-anchor="middle" style="font-size:19px"><tspan class="i">f</tspan>″(<tspan class="i">x</tspan>) &gt; 0</text>
+          <text class="m" x="390" y="130" text-anchor="middle" style="font-size:19px"><tspan class="i">f</tspan>″(<tspan class="i">x</tspan>) &lt; 0</text>
+          <text class="fig-lab" x="130" y="210" text-anchor="middle" style="font-size:19px">Convex</text>
+          <text class="fig-lab" x="390" y="210" text-anchor="middle" style="font-size:19px">Concave</text>
+          <text class="muted" x="130" y="234" text-anchor="middle" style="font-size:16px">curve above its tangent lines</text>
+          <text class="muted" x="390" y="234" text-anchor="middle" style="font-size:16px">curve below its tangent lines</text>
+          </svg>
+        <figcaption>The two shapes. A tangent line is drawn at two points of each curve.</figcaption>
+      </figure>
+      <p>The second derivative decides which of the two shapes a curve has. The slope of the tangent line is \(f'(x)\). Along a convex curve this slope keeps increasing as \(x\) grows, and a quantity increases exactly when its own derivative is positive. The derivative of \(f'(x)\) is \(f''(x)\), so this gives the rule:</p>
+      <ul>
+        <li>if \(f''(x) &gt; 0\) at every point of an interval \((a,\, b)\), then \(f(x)\) is <strong>convex</strong> on \((a,\, b)\);</li>
+        <li>if \(f''(x) &lt; 0\) at every point of an interval \((a,\, b)\), then \(f(x)\) is <strong>concave</strong> on \((a,\, b)\).</li>
+      </ul>
+      <p>This can also be seen in the <a href="tema-7.html#reklama">graph on the Topic 7 page</a>: the graph of the revenue function \(R(x)\) is convex when \(0 &lt; x &lt; 5\) (there \(R''(x) &gt; 0\)) and concave when \(5 &lt; x &lt; 10\) (there \(R''(x) &lt; 0\)).</p>
+      <p class="tip"><strong>Concavity and direction are two different things.</strong> A convex function can be rising or falling, and so can a concave one. The sign of \(f'\) says which way the quantity moves; the sign of \(f''\) says which of the two shapes the curve has. Both signs have to be found before anything can be said about the behaviour of the quantity, and that is what the next section is about.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. THE FOUR CASES ============ -->
+  <section class="section" id="atvejai" aria-labelledby="h-cases">
+    <h2 id="h-cases">How the two derivatives describe a function</h2>
+
+    <article class="card">
+      <p>There are two possible signs for \(f'(x)\) and two for \(f''(x)\), so there are four possible combinations. Each of them has a short name, and the four names cover every way a quantity can behave while it keeps one direction and one shape:</p>
+      <div class="tbl-wrap">
+        <table class="vtable cases-tbl">
+          <thead>
+            <tr><th scope="col">\(f'(x)\)</th><th scope="col">\(f''(x)\)</th><th scope="col">The function is</th><th scope="col">The change is</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(&gt; 0\)</td><td>\(&gt; 0\)</td><td>increasing and convex</td><td><strong>fast increasing</strong></td></tr>
+            <tr><td>\(&lt; 0\)</td><td>\(&gt; 0\)</td><td>decreasing and convex</td><td><strong>slow decreasing</strong></td></tr>
+            <tr><td>\(&gt; 0\)</td><td>\(&lt; 0\)</td><td>increasing and concave</td><td><strong>slow increasing</strong></td></tr>
+            <tr><td>\(&lt; 0\)</td><td>\(&lt; 0\)</td><td>decreasing and concave</td><td><strong>fast decreasing</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="fig-grid" role="group" aria-label="The four kinds of change">
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><path class="ln" d="M26.0 72.0L28.0 72.0L30.0 71.9L32.0 71.7L34.0 71.4L36.0 71.1L38.0 70.7L40.0 70.2L42.0 69.7L44.0 69.1L46.0 68.4L48.0 67.6L50.0 66.8L52.0 65.9L54.0 64.9L56.0 63.8L58.0 62.7L60.0 61.5L62.0 60.3L64.0 58.9L66.0 57.5L68.0 56.0L70.0 54.5L72.0 52.8L74.0 51.1L76.0 49.3L78.0 47.5L80.0 45.6L82.0 43.6L84.0 41.5L86.0 39.4L88.0 37.2L90.0 34.9L92.0 32.5L94.0 30.1L96.0 27.6L98.0 25.0L100.0 22.4L102.0 19.7L104.0 16.9L106.0 14.0"/></svg>
+          <figcaption>Fast increasing<span class="sub">\(f' &gt; 0,\ f'' &gt; 0\)</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><path class="ln" d="M26.0 14.0L28.0 16.9L30.0 19.7L32.0 22.4L34.0 25.0L36.0 27.6L38.0 30.1L40.0 32.5L42.0 34.9L44.0 37.2L46.0 39.4L48.0 41.5L50.0 43.6L52.0 45.6L54.0 47.5L56.0 49.3L58.0 51.1L60.0 52.8L62.0 54.5L64.0 56.0L66.0 57.5L68.0 58.9L70.0 60.3L72.0 61.5L74.0 62.7L76.0 63.8L78.0 64.9L80.0 65.9L82.0 66.8L84.0 67.6L86.0 68.4L88.0 69.1L90.0 69.7L92.0 70.2L94.0 70.7L96.0 71.1L98.0 71.4L100.0 71.7L102.0 71.9L104.0 72.0L106.0 72.0"/></svg>
+          <figcaption>Slow decreasing<span class="sub">\(f' &lt; 0,\ f'' &gt; 0\)</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><path class="ln" d="M26.0 72.0L28.0 69.1L30.0 66.3L32.0 63.6L34.0 61.0L36.0 58.4L38.0 55.9L40.0 53.5L42.0 51.1L44.0 48.8L46.0 46.6L48.0 44.5L50.0 42.4L52.0 40.4L54.0 38.5L56.0 36.7L58.0 34.9L60.0 33.2L62.0 31.5L64.0 30.0L66.0 28.5L68.0 27.1L70.0 25.7L72.0 24.5L74.0 23.3L76.0 22.2L78.0 21.1L80.0 20.1L82.0 19.2L84.0 18.4L86.0 17.6L88.0 16.9L90.0 16.3L92.0 15.8L94.0 15.3L96.0 14.9L98.0 14.6L100.0 14.3L102.0 14.1L104.0 14.0L106.0 14.0"/></svg>
+          <figcaption>Slow increasing<span class="sub">\(f' &gt; 0,\ f'' &lt; 0\)</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 90" aria-hidden="true"><line class="ax" x1="12" y1="76" x2="109" y2="76"/><line class="ax" x1="20" y1="84" x2="20" y2="11"/><path class="ah" d="M115 76L108 72.5L108 79.5Z"/><path class="ah" d="M20 5L16.5 12L23.5 12Z"/><path class="ln" d="M26.0 14.0L28.0 14.0L30.0 14.1L32.0 14.3L34.0 14.6L36.0 14.9L38.0 15.3L40.0 15.8L42.0 16.3L44.0 16.9L46.0 17.6L48.0 18.4L50.0 19.2L52.0 20.1L54.0 21.1L56.0 22.2L58.0 23.3L60.0 24.5L62.0 25.7L64.0 27.1L66.0 28.5L68.0 30.0L70.0 31.5L72.0 33.2L74.0 34.9L76.0 36.7L78.0 38.5L80.0 40.4L82.0 42.4L84.0 44.5L86.0 46.6L88.0 48.8L90.0 51.1L92.0 53.5L94.0 55.9L96.0 58.4L98.0 61.0L100.0 63.6L102.0 66.3L104.0 69.1L106.0 72.0"/></svg>
+          <figcaption>Fast decreasing<span class="sub">\(f' &lt; 0,\ f'' &lt; 0\)</span></figcaption>
+        </figure>
+      </div>
+      <p style="margin-top:14px">The four cases are easier to remember when they are read as sentences about a quantity rather than as conditions on a graph.</p>
+      <ul>
+        <li><strong>Fast increasing.</strong> The quantity grows, and it grows by more in each period than in the one before. Sales that rise by 10, then 14, then 19 units a month behave in this way.</li>
+        <li><strong>Slow decreasing.</strong> The quantity falls, but it loses less in each period than in the one before. A stock of unsold goods that drops by 19, then 14, then 10 units behaves in this way.</li>
+        <li><strong>Slow increasing.</strong> The quantity still grows, but it adds less in each period than in the one before. Sales that rise by 19, then 14, then 10 units a month behave in this way.</li>
+        <li><strong>Fast decreasing.</strong> The quantity falls, and it loses more in each period than in the one before. A stock that drops by 10, then 14, then 19 units behaves in this way.</li>
+      </ul>
+      <p class="tip"><strong>What “fast” and “slow” do not mean.</strong> They do not compare the size of the change with anything outside the function. A quantity that is slow increasing can still be growing by very large amounts; the word “slow” only says that those amounts are getting smaller. In the same way, a fast decreasing quantity need not be falling quickly at this moment: the word says that the fall is getting larger. The two words describe the direction in which the rate of change itself is moving.</p>
+
+      <h3 class="subhead" style="margin-top:22px">One function – several cases</h3>
+      <p>One function can show more than one of the four cases. The shape of a curve may stay the same while its direction changes. A quantity that falls and then rises, and is convex all the time, is slow decreasing first and fast increasing afterwards. In that case the interval has to be split at the point where \(f'(x)\) changes sign, and each part described on its own.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Write down the function and the interval the problem names, and say what the variable means.</li>
+        <li>Differentiate. Name the rule that is being used and the functions it is applied to, and <a href="tema-7.html#skaiciavimas">write roots and reciprocals as powers</a> first.</li>
+        <li>Find the sign of \(f'(x)\) on the interval. If the sign is the same everywhere, the function is increasing or decreasing on the whole interval. If it changes, solve \(f'(x) = 0\), draw the <a href="tema-6-didejimas-ir-mazejimas.html">sign chart</a> and read the intervals of monotonicity from it.</li>
+        <li>Differentiate the first derivative to get \(f''(x)\), and find its sign on the interval. The function is convex where the sign is positive and concave where it is negative.</li>
+        <li>Put the two signs together, name the behaviour from the <a href="#atvejai">table of the four cases</a>, and interpret it in the words of the problem. If the direction changes, do this separately on each interval of monotonicity.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:18px">Showing that a sign does not change</h3>
+      <p>When the shape stays the same, no point has to be tested one by one. It is enough to give a reason that holds everywhere on the interval. The usual reasons are these:</p>
+      <ul>
+        <li>an exponential is positive whatever its exponent;</li>
+        <li>a square is never negative;</li>
+        <li>a fraction has the sign of its numerator when its denominator is positive;</li>
+        <li>a sum of positive terms is positive.</li>
+      </ul>
+      <div class="model-note"><strong>The interpretation.</strong> The answer is not finished when the two signs have been found. The problem asks for the behaviour to be named and explained in the words of the problem, and that explanation is part of the answer: what the quantity does, and whether the change is becoming larger or smaller.</div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Concavity confused with the direction of change.</strong> A convex function can be rising or falling. The direction of change is shown by the sign of \(f'\), and the shape of the curve by the sign of \(f''\).</li>
+            <li><strong>“Slow” read as “small”.</strong> A quantity that is slow increasing can still be growing by very large amounts: the word “slow” only says that those amounts are getting smaller.</li>
+            <li><strong>The interval not split.</strong> If \(f'(x)\) changes sign, the behaviour has to be found on each interval of monotonicity separately.</li>
+            <li><strong>Only signs in the answer.</strong> The behaviour has to be named and explained in the words of the problem.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM 7.2, Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Costs of a courier firm</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A courier firm’s weekly operating cost, in euros, when it delivers \(x\) hundred parcels a week is
+        <div class="fit-sm">\[ C(x) = 20x^2 + 300x + 2000,\quad 0 \le x \le 15 \]</div>
+        <ol type="a">
+          <li>Show that the cost is increasing on \([0,\, 15]\).</li>
+          <li>Show that the graph of \(C(x)\) is convex on \([0,\, 15]\).</li>
+          <li>Describe how the cost changes.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the direction of change</span></h4>
+          <p>The function is a sum of powers, so the power rule is applied to each term:</p>
+          \[ C'(x) = 40x + 300 \]
+          <p>For every \(x\) in \([0,\, 15]\) the term \(40x\) is not negative and 300 is positive, so their sum is positive:</p>
+          \[ C'(x) = 40x + 300 &gt; 0 \]
+          <p>The cost is therefore increasing on the whole interval.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) The second derivative and concavity</span></h4>
+          <p>Differentiating the first derivative gives</p>
+          \[ C''(x) = 40 \]
+          <p>This is a positive constant, so \(C''(x) &gt; 0\) at every point and the graph is convex on the whole interval.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) \(C'(x) = 40x + 300 &gt; 0\), so the cost is increasing on \([0,\, 15]\).</p>
+            <p>b) \(C''(x) = 40 &gt; 0\), so the graph is convex on \([0,\, 15]\).</p>
+            <p>c) The cost is increasing and convex, so it is <strong>fast increasing</strong>. Every further hundred parcels costs the firm more than the hundred before it: at the lowest load the marginal cost is \(C'(0) = 300\)&nbsp;euros per hundred parcels, and at the highest it is \(C'(15) = 900\)&nbsp;euros per hundred parcels.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 7.2, Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Profit of a ferry operator</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A ferry operator’s monthly profit, in thousands of euros, when the ticket price is \(x\) euros is
+        <div class="fit-sm">\[ P(x) = -0.5x^2 + 30x - 250,\quad 0 \le x \le 50 \]</div>
+        <ol type="a">
+          <li>Find the intervals on which the profit is increasing and decreasing.</li>
+          <li>Show that the graph of \(P(x)\) is concave on \([0,\, 50]\).</li>
+          <li>Describe how the profit changes on each of the intervals found in part a).</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the critical point</span></h4>
+          <p>The power rule gives</p>
+          \[ P'(x) = -x + 30 \]
+          <p>This changes sign, so the critical point is found from \(P'(x) = 0\):</p>
+          \[ -x + 30 = 0 \;\Longrightarrow\; x = 30 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The sign chart</span></h4>
+          <p>One point on each side of the critical point gives the signs: \(P'(10) = 20 &gt; 0\) and \(P'(40) = -10 &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"P&#39;(x)","f":"P(x)","v":"x","pts":[{"x":"0"},{"x":"30","z":true},{"x":"50"}],"s":["+","-"]}'></div>
+          <p>The profit is increasing on \((0,\, 30)\) and decreasing on \((30,\, 50)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The second derivative and concavity</span></h4>
+          <p>Differentiating the first derivative gives</p>
+          \[ P''(x) = -1 \]
+          <p>This is a negative constant, so \(P''(x) &lt; 0\) at every point and the graph is concave on the whole interval.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The profit is increasing on \((0,\, 30)\) and decreasing on \((30,\, 50)\).</p>
+            <p>b) \(P''(x) = -1 &lt; 0\), so the graph is concave on \([0,\, 50]\).</p>
+            <p>c) On \((0,\, 30)\) the profit is increasing and concave, so it is <strong>slow increasing</strong>: each further euro added to the ticket price raises the profit by less than the euro before it. On \((30,\, 50)\) the profit is decreasing and concave, so it is <strong>fast decreasing</strong>: each further euro lowers the profit by more than the euro before it.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 7.2, Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Average cost per parcel</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A delivery firm’s average cost per parcel, in euros, when a van carries \(x\) hundred parcels on a round is
+        <div class="fit-sm">\[ A(x) = 0.5x + \frac{18}{x} + 4,\quad 1 \le x \le 12 \]</div>
+        <ol type="a">
+          <li>Find the intervals on which the average cost is increasing and decreasing.</li>
+          <li>Show that the graph of \(A(x)\) is convex on \([1,\, 12]\).</li>
+          <li>Describe how the average cost changes on each of the intervals found in part a).</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative</span></h4>
+          <p>The middle term is a reciprocal, so it is written as a power before differentiating, by the rule \(\dfrac{1}{x^n} = x^{-n}\):</p>
+          \[ A(x) = 0.5x + 18x^{-1} + 4 \]
+          \[ \begin{aligned} A'(x) &amp;= 0.5 + 18\cdot(-1)x^{-2} \\ &amp;= 0.5 - \frac{18}{x^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The critical point and the sign chart</span></h4>
+          <p>The critical point is found from \(A'(x) = 0\):</p>
+          \[ \begin{gathered} 0.5 - \frac{18}{x^2} = 0 \\ \Longrightarrow\; x^2 = \frac{18}{0.5} = 36 \;\Longrightarrow\; x = 6 \end{gathered} \]
+          <p>The second root \(x = -6\) is discarded, because the number of parcels cannot be negative. One point on each side gives the signs: \(A'(1) = -17.5 &lt; 0\) and \(A'(12) = 0.375 &gt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"A&#39;(x)","f":"A(x)","v":"x","pts":[{"x":"1"},{"x":"6","z":true},{"x":"12"}],"s":["-","+"]}'></div>
+          <p>The average cost is decreasing on \((1,\, 6)\) and increasing on \((6,\, 12)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The second derivative and concavity</span></h4>
+          <p>The first derivative is written as a power again and differentiated:</p>
+          \[ A'(x) = 0.5 - 18x^{-2} \]
+          \[ A''(x) = -18\cdot(-2)x^{-3} = \frac{36}{x^3} \]
+          <p>On the interval \(x\) is positive, so \(x^3\) is positive as well. A fraction with a positive numerator and a positive denominator is positive, so \(A''(x) &gt; 0\) and the graph is convex on the whole interval.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The average cost is decreasing on \((1,\, 6)\) and increasing on \((6,\, 12)\).</p>
+            <p>b) \(A''(x) = \dfrac{36}{x^3} &gt; 0\), so the graph is convex on \([1,\, 12]\).</p>
+            <p>c) On \((1,\, 6)\) the average cost is decreasing and convex, so it is <strong>slow decreasing</strong>: a larger round still makes the average parcel cheaper, but each further hundred parcels saves less than the hundred before it. On \((6,\, 12)\) it is increasing and convex, so it is <strong>fast increasing</strong>: each further hundred parcels now raises the average cost by more than the hundred before it.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 7.2, Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Households connected to a new network</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A telecoms operator is building a new network in a city. \(t\) months after the work starts, the share of households connected to it, in percent, is
+        <div class="fit-sm">\[ N(t) = 25\ln(2t + 1),\quad 0 \le t \le 10 \]</div>
+        <ol type="a">
+          <li>Show that the share is increasing on \([0,\, 10]\).</li>
+          <li>Show that the graph of \(N(t)\) is concave on \([0,\, 10]\).</li>
+          <li>Describe how the share changes.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the direction of change</span></h4>
+          <p><a href="tema-6.html#sudetines">The chain rule</a> is needed. The <strong>outer function</strong> is the logarithm \(\ln u\) and the <strong>inner function</strong> is \(u(t) = 2t + 1\), with \(u'(t) = 2\). The rule is</p>
+          \[ \big(\ln u(t)\big)' = \frac{u'(t)}{u(t)} \]
+          <p>so</p>
+          \[ N'(t) = 25\cdot\frac{2}{2t + 1} = \frac{50}{2t + 1} \]
+          <p>For every \(t\) in \([0,\, 10]\) the denominator \(2t + 1\) is at least 1, so it is positive. A fraction with a positive numerator and a positive denominator is positive, so \(N'(t) &gt; 0\) and the share is increasing on the whole interval.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) The second derivative and concavity</span></h4>
+          <p>The first derivative has a constant numerator, so it is written as a power and the power form of the chain rule is used, with the same inner function:</p>
+          \[ N'(t) = 50(2t + 1)^{-1} \]
+          \[ \begin{aligned} N''(t) &amp;= 50\cdot(-1)(2t + 1)^{-2}\cdot 2 \\ &amp;= -\frac{100}{(2t + 1)^2} \end{aligned} \]
+          <p>The denominator \((2t + 1)^2\) is the square of a number that is not zero, so it is positive, and the numerator is \(-100\). A fraction with a negative numerator and a positive denominator is negative, so \(N''(t) &lt; 0\) and the graph is concave on the whole interval.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) \(N'(t) = \dfrac{50}{2t + 1} &gt; 0\), so the share is increasing on \([0,\, 10]\).</p>
+            <p>b) \(N''(t) = -\dfrac{100}{(2t + 1)^2} &lt; 0\), so the graph is concave on \([0,\, 10]\).</p>
+            <p>c) The share is increasing and concave, so it is <strong>slow increasing</strong>. More households are connected every month, but each month connects fewer of them than the month before: at the start the share grows by \(N'(0) = 50\)&nbsp;percentage points a month, and ten months later by \(N'(10) \approx 2.38\)&nbsp;percentage points a month.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5: AM 7.2, Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Faults reported in a program</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        \(t\) weeks after a new version of a program is released, the number of faults reported per week is
+        \[ F(t) = 800e^{-0.3t},\quad t \ge 0 \]
+        <ol type="a">
+          <li>Show that the number of reported faults is decreasing.</li>
+          <li>Show that the graph of \(F(t)\) is convex.</li>
+          <li>Describe how the number of faults changes.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the direction of change</span></h4>
+          <p>The exponent is not simply \(t\), so <a href="tema-6.html#sudetines">the chain rule</a> is used. The <strong>outer function</strong> is \(e^u\), the <strong>inner function</strong> is \(u(t) = -0.3t\) and \(u'(t) = -0.3\). The rule is</p>
+          \[ \big(e^{u(t)}\big)' = e^{u(t)}\cdot u'(t) \]
+          <p>so</p>
+          \[ \begin{aligned} F'(t) &amp;= 800e^{-0.3t}\cdot(-0.3) \\ &amp;= -240e^{-0.3t} \end{aligned} \]
+          <p>An exponential is positive whatever its exponent, so \(e^{-0.3t} &gt; 0\) for every \(t\). A negative number times a positive number is negative, so \(F'(t) &lt; 0\) and the number of reported faults is decreasing.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) The second derivative and concavity</span></h4>
+          <p>The same rule is applied to the first derivative:</p>
+          \[ \begin{aligned} F''(t) &amp;= -240e^{-0.3t}\cdot(-0.3) \\ &amp;= 72e^{-0.3t} \end{aligned} \]
+          <p>Here 72 is positive and the exponential is positive, so \(F''(t) &gt; 0\) and the graph is convex.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) \(F'(t) = -240e^{-0.3t} &lt; 0\), so the number of reported faults is decreasing.</p>
+            <p>b) \(F''(t) = 72e^{-0.3t} &gt; 0\), so the graph is convex.</p>
+            <p>c) The number of faults is decreasing and convex, so it is <strong>slow decreasing</strong>. Fewer faults are reported every week, but the weekly improvement is itself becoming smaller: at the release the rate of change is \(F'(0) = -240\)&nbsp;faults a week, and four weeks after the release it is \(F'(4) \approx -72.29\)&nbsp;faults a week.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6: AM 7.2, Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Visitors to a trade fair stand</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company has a stand at a trade fair. \(t\) hours after the fair opens, visitors arrive at the stand at the rate of
+        \[ S(t) = 120te^{-0.2t},\quad 0 \le t \le 8 \]
+        people an hour.
+        <ol type="a">
+          <li>Find the intervals on which the rate of arrivals is increasing and decreasing.</li>
+          <li>Show that the graph of \(S(t)\) is concave on \([0,\, 8]\).</li>
+          <li>Describe how the rate of arrivals changes on each of the intervals found in part a).</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative</span></h4>
+          <p>The function is a product, so <a href="tema-6.html#sandaugos">the product rule</a> is used:</p>
+          <div class="fit-sm">\[ \big(u(t)\cdot v(t)\big)' = u'(t)\cdot v(t) + u(t)\cdot v'(t) \]</div>
+          <p>Take \(u(t) = 120t\) and \(v(t) = e^{-0.2t}\). Then \(u'(t) = 120\), and the second factor is differentiated by the exponential form of the chain rule, whose inner function here is \(-0.2t\):</p>
+          \[ v'(t) = e^{-0.2t}\cdot(-0.2) = -0.2e^{-0.2t} \]
+          <p>so</p>
+          \[ \begin{aligned} S'(t) &amp;= 120e^{-0.2t} + 120t\cdot\left(-0.2e^{-0.2t}\right) \\ &amp;= 120e^{-0.2t}(1 - 0.2t) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The critical point and the sign chart</span></h4>
+          <p>The factor \(120e^{-0.2t}\) is positive for every \(t\), so the sign of the derivative is the sign of \(1 - 0.2t\). The critical point is</p>
+          \[ 1 - 0.2t = 0 \;\Longrightarrow\; t = 5 \]
+          <p>One point on each side gives: \(S'(2) \approx 48.26 &gt; 0\) and \(S'(7) \approx -11.84 &lt; 0\).</p>
+          <div data-widget="sign-chart" data-spec='{"fp":"S&#39;(t)","f":"S(t)","v":"t","pts":[{"x":"0"},{"x":"5","z":true},{"x":"8"}],"s":["+","-"]}'></div>
+          <p>The rate of arrivals is increasing on \((0,\, 5)\) and decreasing on \((5,\, 8)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The second derivative and concavity</span></h4>
+          <p>The simplified first derivative is again a product, now of \(u(t) = 120e^{-0.2t}\) and \(v(t) = 1 - 0.2t\), with \(u'(t) = -24e^{-0.2t}\) and \(v'(t) = -0.2\):</p>
+          \[ \begin{aligned} S''(t) &amp;= -24e^{-0.2t}(1 - 0.2t) \\ &amp;\phantom{=}\; + 120e^{-0.2t}\cdot(-0.2) \end{aligned} \]
+          <p>Both terms contain the factor \(e^{-0.2t}\), so it is taken outside the brackets:</p>
+          \[ \begin{aligned} S''(t) &amp;= e^{-0.2t}\left[-24(1 - 0.2t) - 24\right] \\ &amp;= e^{-0.2t}(4.8t - 48) \\ &amp;= 4.8e^{-0.2t}(t - 10) \end{aligned} \]
+          <p>The exponential is positive, and for every \(t\) in \([0,\, 8]\) the bracket \(t - 10\) is negative. A positive number times a negative number is negative, so \(S''(t) &lt; 0\) and the graph is concave on the whole interval.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The rate of arrivals is increasing on \((0,\, 5)\) and decreasing on \((5,\, 8)\).</p>
+            <p>b) \(S''(t) = 4.8e^{-0.2t}(t - 10) &lt; 0\), so the graph is concave on \([0,\, 8]\).</p>
+            <p>c) On \((0,\, 5)\) the rate of arrivals is increasing and concave, so it is <strong>slow increasing</strong>: more people arrive every hour than in the hour before, but the addition becomes smaller each hour. On \((5,\, 8)\) it is decreasing and concave, so it is <strong>fast decreasing</strong>: the rate falls, and it falls by more each hour.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 7: AM 7.2, Example 7 -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Customer spending in a loyalty programme</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A shop starts a loyalty programme. \(t\) months after it starts, the average amount one customer spends in a month is
+        \[ A(t) = \frac{50t + 80}{t + 4},\quad t \ge 0 \]
+        euros.
+        <ol type="a">
+          <li>Show that the average amount is increasing.</li>
+          <li>Show that the graph of \(A(t)\) is concave.</li>
+          <li>Describe how the average amount changes.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The first derivative and the direction of change</span></h4>
+          <p>The function is a fraction, so <a href="tema-6.html#dalmens">the quotient rule</a> is used:</p>
+          \[ \left(\frac{u(t)}{v(t)}\right)' = \frac{u'(t)v(t) - u(t)v'(t)}{v^2(t)} \]
+          <p>Label the numerator \(u(t) = 50t + 80\) and the denominator \(v(t) = t + 4\), so \(u'(t) = 50\) and \(v'(t) = 1\):</p>
+          \[ \begin{aligned} A'(t) &amp;= \frac{50(t + 4) - (50t + 80)\cdot 1}{(t + 4)^2} \\ &amp;= \frac{50t + 200 - 50t - 80}{(t + 4)^2} \\ &amp;= \frac{120}{(t + 4)^2} \end{aligned} \]
+          <p>For \(t \ge 0\) the denominator \((t + 4)^2\) is the square of a positive number, so it is positive, and the numerator 120 is positive. The fraction is therefore positive, \(A'(t) &gt; 0\), and the average amount is increasing.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) The second derivative and concavity</span></h4>
+          <p>The quotient rule is not needed a second time, because the numerator is now a constant. The first derivative is written as a power and the power form of the chain rule is used, with the inner function \(u(t) = t + 4\) and \(u'(t) = 1\):</p>
+          \[ A'(t) = 120(t + 4)^{-2} \]
+          \[ \begin{aligned} A''(t) &amp;= 120\cdot(-2)(t + 4)^{-3}\cdot 1 \\ &amp;= -\frac{240}{(t + 4)^3} \end{aligned} \]
+          <p>For \(t \ge 0\) we have \(t + 4 \ge 4 &gt; 0\), so \((t + 4)^3\) is positive as well. The numerator is \(-240\), so \(A''(t) &lt; 0\) and the graph is concave.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) \(A'(t) = \dfrac{120}{(t + 4)^2} &gt; 0\), so the average amount is increasing.</p>
+            <p>b) \(A''(t) = -\dfrac{240}{(t + 4)^3} &lt; 0\), so the graph is concave.</p>
+            <p>c) The average amount is increasing and concave, so it is <strong>slow increasing</strong>. Customers spend more every month, but the monthly addition becomes smaller: at the start of the programme the average amount rises by \(A'(0) = 7.5\)&nbsp;euros a month, and a year after the start by \(A'(12) \approx 0.47\)&nbsp;euros a month.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: find the signs of the first and second derivatives, name the behaviour and explain it in the words of the problem. The answer gives the derivatives, the intervals and the behaviour – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A firm’s cumulative revenue, in thousands of euros, \(t\) months after a launch is</p>
+          <div class="fit-sm">\[ R(t) = 0.5t^3 + 2t^2 + 30t,\quad 0 \le t \le 10 \]</div>
+          <ol type="a">
+            <li>Find the intervals on which the revenue is increasing and decreasing.</li>
+            <li>Find the intervals on which the revenue function is convex and concave.</li>
+            <li>Describe the growth of the revenue.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(R'(t) = 1.5t^2 + 4t + 30\); \(D = 16 - 180 = -164 &lt; 0\), so there are no critical points, and \(R'(0) = 30 &gt; 0\). The revenue is increasing on \([0,\, 10]\).</p>
+          <p>b) \(R''(t) = 3t + 4 &gt; 0\) on \([0,\, 10]\), so the revenue function is convex there.</p>
+          <p>c) The revenue is <strong>fast increasing</strong> on \([0,\, 10]\).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A plant’s daily output, in units, when it uses \(x\) hours of machine time is</p>
+          <div class="fit-sm">\[ Q(x) = 400\sqrt{x} + 20x,\quad 1 \le x \le 100 \]</div>
+          <ol type="a">
+            <li>Find the intervals on which the output is increasing and decreasing.</li>
+            <li>Find the intervals on which the output function is convex and concave.</li>
+            <li>Describe the growth of the output.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(Q'(x) = \dfrac{200}{\sqrt{x}} + 20 &gt; 0\) on \([1,\, 100]\), so the output is increasing there.</p>
+          <p>b) \(Q''(x) = -\dfrac{100}{\sqrt{x^3}} &lt; 0\) on \([1,\, 100]\), so the output function is concave there.</p>
+          <p>c) The output is <strong>slow increasing</strong> on \([1,\, 100]\).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The value of a machine, in thousands of euros, \(t\) years after it was bought is</p>
+          \[ V(t) = 90e^{-0.25t},\quad 0 \le t \le 10 \]
+          <ol type="a">
+            <li>Find the intervals on which the value is increasing and decreasing.</li>
+            <li>Find the intervals on which the value function is convex and concave.</li>
+            <li>Describe the change of the value.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(V'(t) = -22.5e^{-0.25t} &lt; 0\) on \([0,\, 10]\), so the value is decreasing there.</p>
+          <p>b) \(V''(t) = 5.625e^{-0.25t} &gt; 0\) on \([0,\, 10]\), so the value function is convex there.</p>
+          <p>c) The value is <strong>slow decreasing</strong> on \([0,\, 10]\).</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A company’s monthly profit, in thousands of euros, \(t\) months after a reorganisation is</p>
+          <div class="fit-sm">\[ P(t) = t^3 - 12t^2 + 36t + 20,\quad 4 \le t \le 10 \]</div>
+          <ol type="a">
+            <li>Find the intervals on which the profit is increasing and decreasing.</li>
+            <li>Find the intervals on which the profit function is convex and concave.</li>
+            <li>Describe the change of the profit.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>a) \(P'(t) = 3t^2 - 24t + 36\); dividing by 3 gives \(t^2 - 8t + 12 = 0\), \(D = 64 - 48 = 16\). The roots are \(t_1 = 2\) and \(t_2 = 6\), of which only 6 lies in the interval; \(P'(5) = -9 &lt; 0\) and \(P'(7) = 15 &gt; 0\). The profit is decreasing on \([4,\, 6)\) and increasing on \((6,\, 10]\).</p>
+          <p>b) \(P''(t) = 6t - 24 &gt; 0\) on \((4,\, 10]\), so the profit function is convex there.</p>
+          <p>c) The profit is <strong>slow decreasing</strong> on \((4,\, 6)\) and <strong>fast increasing</strong> on \((6,\, 10]\).</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 6.4–6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 10.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
