@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optimization · Applied Mathematics</title>
+<meta name="description" content="Optimization with the second derivative test: writing the objective function – revenue, profit, average cost. How to solve, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-7-optimizavimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=81">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=81"></script>
+</head>
+<body data-page="m74">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 7 · Applications · Section 4</span>
+    <h1>Optimization</h1>
+    <p class="lead">In this section the largest revenue and profit and the smallest average cost are found with the second derivative test: the second derivative at a critical point shows whether there is a maximum or a minimum there.</p>
+    <ul class="jump">
+      <li><a href="#pozymis">Second derivative test</a></li>
+      <li><a href="#tikslo">Objective function</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. SECOND DERIVATIVE TEST ============ -->
+  <section class="section" id="pozymis" aria-labelledby="h-test">
+    <h2 id="h-test">The second derivative test</h2>
+
+    <article class="card">
+      <p>In the previous topic the extrema of a function were found with the <a href="tema-6-vietiniai-ekstremumai.html">sign chart of the first derivative</a>: a critical point at which \(f'(x)\) changes from positive to negative is a maximum point, and a change from negative to positive gives a minimum point. The second derivative gives the same answer in a shorter way, because it shows the shape of the curve at the critical point itself. No sign chart is needed then.</p>
+      <p><strong>The critical points are found as before.</strong> They are the values \(x = c\) of the domain at which</p>
+      <div class="formula">\[ \begin{gathered} f'(c) = 0\quad\text{or} \\ f'(c)\ \text{does not exist} \end{gathered} \]</div>
+      <p>The test is then applied to each of them separately.</p>
+      <div class="model-note"><strong>The second derivative test.</strong> Let \(x = c\) be a critical point of a function \(y = f(x)\). Then:
+        <ul style="margin:6px 0 0">
+          <li>if \(f''(c) &lt; 0\), then \(x = c\) is a relative maximum point;</li>
+          <li>if \(f''(c) &gt; 0\), then \(x = c\) is a relative minimum point;</li>
+          <li>if \(f''(c) = 0\), the test gives no answer.</li>
+        </ul>
+      </div>
+      <figure class="abs-fig">
+          <svg viewBox="0 0 520 244" role="img" aria-label="At a critical point c: if the second derivative is negative – relative maximum, if positive – relative minimum">
+          <line class="ax" x1="20" y1="190" x2="250" y2="190"/>
+          <line class="ax" x1="270" y1="190" x2="500" y2="190"/>
+          <line class="guide" x1="135" y1="70" x2="135" y2="190"/>
+          <path class="ln" d="M30.0 180.0L32.1 175.6L34.2 171.4L36.3 167.2L38.4 163.1L40.5 159.1L42.6 155.2L44.7 151.4L46.8 147.6L48.9 144.0L51.0 140.4L53.1 136.9L55.2 133.5L57.3 130.2L59.4 127.0L61.5 123.9L63.6 120.9L65.7 117.9L67.8 115.1L69.9 112.3L72.0 109.6L74.1 107.0L76.2 104.5L78.3 102.1L80.4 99.7L82.5 97.5L84.6 95.3L86.7 93.3L88.8 91.3L90.9 89.4L93.0 87.6L95.1 85.9L97.2 84.3L99.3 82.7L101.4 81.3L103.5 79.9L105.6 78.6L107.7 77.4L109.8 76.3L111.9 75.3L114.0 74.4L116.1 73.6L118.2 72.8L120.3 72.2L122.4 71.6L124.5 71.1L126.6 70.7L128.7 70.4L130.8 70.2L132.9 70.0L135.0 70.0L137.1 70.0L139.2 70.2L141.3 70.4L143.4 70.7L145.5 71.1L147.6 71.6L149.7 72.2L151.8 72.8L153.9 73.6L156.0 74.4L158.1 75.3L160.2 76.3L162.3 77.4L164.4 78.6L166.5 79.9L168.6 81.3L170.7 82.7L172.8 84.3L174.9 85.9L177.0 87.6L179.1 89.4L181.2 91.3L183.3 93.3L185.4 95.3L187.5 97.5L189.6 99.7L191.7 102.1L193.8 104.5L195.9 107.0L198.0 109.6L200.1 112.3L202.2 115.1L204.3 117.9L206.4 120.9L208.5 123.9L210.6 127.0L212.7 130.2L214.8 133.5L216.9 136.9L219.0 140.4L221.1 144.0L223.2 147.6L225.3 151.4L227.4 155.2L229.5 159.1L231.6 163.1L233.7 167.2L235.8 171.4L237.9 175.6L240.0 180.0"/>
+          <line class="ln2-dash" x1="75" y1="70" x2="195" y2="70"/>
+          <circle class="pt-hi" cx="135" cy="70" r="6.5"/>
+          <line class="guide" x1="385" y1="170" x2="385" y2="190"/>
+          <path class="ln" d="M280.0 60.0L282.1 64.4L284.2 68.6L286.3 72.8L288.4 76.9L290.5 80.9L292.6 84.8L294.7 88.6L296.8 92.4L298.9 96.0L301.0 99.6L303.1 103.1L305.2 106.5L307.3 109.8L309.4 113.0L311.5 116.1L313.6 119.1L315.7 122.1L317.8 124.9L319.9 127.7L322.0 130.4L324.1 133.0L326.2 135.5L328.3 137.9L330.4 140.3L332.5 142.5L334.6 144.7L336.7 146.7L338.8 148.7L340.9 150.6L343.0 152.4L345.1 154.1L347.2 155.7L349.3 157.3L351.4 158.7L353.5 160.1L355.6 161.4L357.7 162.6L359.8 163.7L361.9 164.7L364.0 165.6L366.1 166.4L368.2 167.2L370.3 167.8L372.4 168.4L374.5 168.9L376.6 169.3L378.7 169.6L380.8 169.8L382.9 170.0L385.0 170.0L387.1 170.0L389.2 169.8L391.3 169.6L393.4 169.3L395.5 168.9L397.6 168.4L399.7 167.8L401.8 167.2L403.9 166.4L406.0 165.6L408.1 164.7L410.2 163.7L412.3 162.6L414.4 161.4L416.5 160.1L418.6 158.7L420.7 157.3L422.8 155.7L424.9 154.1L427.0 152.4L429.1 150.6L431.2 148.7L433.3 146.7L435.4 144.7L437.5 142.5L439.6 140.3L441.7 137.9L443.8 135.5L445.9 133.0L448.0 130.4L450.1 127.7L452.2 124.9L454.3 122.1L456.4 119.1L458.5 116.1L460.6 113.0L462.7 109.8L464.8 106.5L466.9 103.1L469.0 99.6L471.1 96.0L473.2 92.4L475.3 88.6L477.4 84.8L479.5 80.9L481.6 76.9L483.7 72.8L485.8 68.6L487.9 64.4L490.0 60.0"/>
+          <line class="ln2-dash" x1="325" y1="170" x2="445" y2="170"/>
+          <circle class="pt-hi" cx="385" cy="170" r="6.5"/>
+          <text class="m" x="135" y="210" text-anchor="middle" style="font-size:18px">c</text>
+          <text class="m" x="385" y="210" text-anchor="middle" style="font-size:18px">c</text>
+          <text class="m" x="135" y="30" text-anchor="middle" style="font-size:19px"><tspan class="i">f</tspan>″(<tspan class="i">c</tspan>) &lt; 0</text>
+          <text class="m" x="385" y="30" text-anchor="middle" style="font-size:19px"><tspan class="i">f</tspan>″(<tspan class="i">c</tspan>) &gt; 0</text>
+          <text x="135" y="236" text-anchor="middle" font-style="italic" style="font-size:17px">relative maximum</text>
+          <text x="385" y="236" text-anchor="middle" font-style="italic" style="font-size:17px">relative minimum</text>
+          </svg>
+        <figcaption>At a critical point the sign of the second derivative shows the type of the extremum.</figcaption>
+      </figure>
+      <p>The reason is the meaning of the second derivative. If \(f''(c) &lt; 0\), the curve is <a href="tema-7-funkcijos-iskilumas.html">concave</a> near \(x = c\), and a point with a horizontal tangent line on a concave curve is a top. If \(f''(c) &gt; 0\), the curve is convex near \(x = c\), so such a point is the lowest among the nearby points.</p>
+
+      <h3 class="subhead" style="margin-top:22px">When the test gives no answer</h3>
+      <p>If \(f''(c) = 0\), the second derivative does not show the type of the point: it may be a maximum, a minimum, or neither. The same is true when \(f''(c)\) does not exist. In these cases the critical point is examined with the sign chart of \(f'\), as in the previous topic.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The type of the critical point and the answer to the problem</h3>
+      <p>In applied problems it is enough to find the sign of the second derivative at the critical point: a negative sign shows the largest value of the quantity, and a positive sign the smallest.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. OBJECTIVE FUNCTION ============ -->
+  <section class="section" id="tikslo" aria-labelledby="h-obj">
+    <h2 id="h-obj">Writing the objective function</h2>
+
+    <article class="card">
+      <p>In many applied problems the function to be optimized is not given. The problem gives the information from which it has to be built. The function whose value has to be made as large or as small as possible is called the <strong>objective function</strong>. Four situations cover most of the economic problems of this section.</p>
+      <div class="anat dtbl dtbl-rows">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Revenue from a demand function</strong></div>
+          <ul class="flist">
+            <li>\(R(x) = p\cdot x\)</li>
+          </ul>
+          <p class="lvl-txt">A demand function gives the price \(p\) at which \(x\) units can be sold. The revenue is the price multiplied by the quantity sold. Before multiplying, the price \(p\) is written as a function of \(x\), so that the revenue is a function of one variable.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Profit from a demand function and a cost function</strong></div>
+          <ul class="flist">
+            <li>\(P(x) = R(x) - TC(x)\)</li>
+            <li>\(P(x) = p\cdot x - TC(x)\)</li>
+          </ul>
+          <p class="lvl-txt">The profit is the revenue minus the total cost. Both parts have to be written as functions of the same variable \(x\). The brackets around the cost have to be opened carefully, because every term of the cost changes its sign.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Profit from a production function</strong></div>
+          <ul class="flist">
+            <li>\(P(x) = p\cdot Q(x) - w\cdot x\)</li>
+          </ul>
+          <p class="lvl-txt">A production function \(Q(x)\) gives the output of a firm when it uses \(x\) units of an input: workers, machine hours or raw materials. The output is sold at a fixed price of \(p\) euros a unit, and a unit of the input costs \(w\) euros. The first term is the revenue, the second is the cost of the input. If the firm also has a fixed cost \(F\), it is subtracted as well.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">4</span><strong>Average cost</strong></div>
+          <ul class="flist">
+            <li>\(ATC(x) = \dfrac{TC(x)}{x}\)</li>
+          </ul>
+          <p class="lvl-txt">The average cost is the total cost of \(x\) units divided by the number of units. Each term of the total cost is divided by \(x\) separately. The function obtained this way is easier to differentiate.</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Explain what the variable \(x\) means and on which interval its values can vary. The quantity of a good, the number of workers and the number of hours cannot be negative.</li>
+        <li>Write the objective function using the <a href="#tikslo">objective function formulas</a>. Open the brackets and collect like terms.</li>
+        <li>Differentiate. Solve \(f'(x) = 0\) and find the points where \(f'(x)\) does not exist. These are the critical points. Drop the points that do not belong to the interval of the problem.</li>
+        <li>Differentiate again and substitute the critical point into \(f''(x)\). A negative value shows a maximum, a positive value a minimum. If the value is zero, use the sign chart of \(f'\).</li>
+        <li>Answer the questions of the problem: give the value of \(x\) and, if asked, the price, the output, the revenue, the profit or the cost.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:18px">If the first derivative is a rational function</h3>
+      <p>Write it as a single fraction and set it equal to zero. A fraction is zero only when its numerator is zero and its denominator is not, so the equation is replaced by a system:</p>
+      <div class="formula">\[ \frac{u(x)}{v(x)} = 0 \;\Longleftrightarrow\; \begin{cases} u(x) = 0 \\ v(x) \neq 0 \end{cases} \]</div>
+      <p>The second condition has to be checked as well: a value at which the denominator is zero does not belong to the domain of the function, so it cannot be a solution.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The critical point is found by setting the second derivative equal to zero.</strong> Critical points come from \(f'(x) = 0\) (or from the points where \(f'(x)\) does not exist). The equation \(f''(x) = 0\) gives possible inflection points, not extrema. Here the second derivative is used only to find the type of the critical point.</li>
+            <li><strong>\(f''(c) = 0\) is taken as the answer.</strong> In that case the test gives no answer – the critical point has to be examined with the sign chart of \(f'\).</li>
+            <li><strong>The brackets around the cost are opened carelessly.</strong> When the total cost is subtracted, every term of it changes its sign.</li>
+            <li><strong>The denominator is not checked.</strong> A value at which the denominator is zero cannot be a critical point.</li>
+            <li><strong>Negative solutions are not dropped.</strong> A quantity, a number of workers or a number of hours cannot be negative.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>The largest weekly revenue</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company sells \(x\) units of a product a week. The weekly demand function is
+        \[ p = -0.04x + 60 \]
+        euros a unit.
+        <ol type="a">
+          <li>Find the number of units that gives the largest revenue. Use the second derivative test, if possible.</li>
+          <li>Find the price and the revenue at that number.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The objective function</span></h4>
+          <p>The revenue is the price multiplied by the number of units sold:</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0.04x + 60)x \\ &amp;= -0.04x^2 + 60x,\qquad x \ge 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The first derivative and the critical point</span></h4>
+          <p>The power rule gives</p>
+          \[ R'(x) = -0.08x + 60 \]
+          <p>The critical point comes from \(R'(x) = 0\):</p>
+          \[ \begin{gathered} -0.08x + 60 = 0 \;\Longrightarrow\; 0.08x = 60 \\ \Longrightarrow\; x = 750 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The second derivative test</span></h4>
+          <p>Differentiating once more,</p>
+          \[ R''(x) = -0.08 \]
+          <p>so \(R''(750) = -0.08 &lt; 0\), and \(x = 750\) is a relative maximum point. So the revenue is largest when 750 units a week are sold.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The price and the revenue</span></h4>
+          <p>The price and the revenue at that number are</p>
+          \[ p = -0.04\cdot 750 + 60 = 30 \]
+          \[ R(750) = 30\cdot 750 = 22500 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The revenue is largest when 750 units a week are sold. The price is then 30&nbsp;euros a unit and the revenue is 22500&nbsp;euros a week.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>The largest weekly profit</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A firm can sell \(x\) units of its product a week at the price
+        \[ p = -0.02x + 90 \]
+        euros a unit, and the total cost of producing them is
+        \[ TC(x) = 0.03x^2 + 20x + 5000 \]
+        euros.
+        <ol type="a">
+          <li>Find the output that gives the largest profit. Use the second derivative test, if possible.</li>
+          <li>Find the price and the profit at that output.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The objective function</span></h4>
+          <p>The revenue is</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0.02x + 90)x \\ &amp;= -0.02x^2 + 90x \end{aligned} \]
+          <p>and the profit is the revenue minus the total cost:</p>
+          \[ \begin{aligned} P(x) &amp;= -0.02x^2 + 90x \\ &amp;\phantom{=}\; - \left(0.03x^2 + 20x + 5000\right) \\ &amp;= -0.05x^2 + 70x - 5000,\quad x \ge 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The first derivative and the critical point</span></h4>
+          <p>The power rule gives</p>
+          \[ P'(x) = -0.1x + 70 \]
+          <p>The critical point comes from \(P'(x) = 0\):</p>
+          \[ \begin{gathered} -0.1x + 70 = 0 \;\Longrightarrow\; 0.1x = 70 \\ \Longrightarrow\; x = 700 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The second derivative test</span></h4>
+          <p>Differentiating once more,</p>
+          \[ P''(x) = -0.1 \]
+          <p>so \(P''(700) = -0.1 &lt; 0\), and \(x = 700\) is a relative maximum point. So the profit is largest at an output of 700 units a week.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The price and the profit</span></h4>
+          <p>The price and the profit at that output are</p>
+          \[ p = -0.02\cdot 700 + 90 = 76 \]
+          \[ \begin{aligned} P(700) &amp;= -0.05\cdot 700^2 + 70\cdot 700 \\ &amp;\phantom{=}\; - 5000 \\ &amp;= -24500 + 49000 - 5000 \\ &amp;= 19500 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The profit is largest at an output of 700 units a week. The price is then 76&nbsp;euros a unit and the profit is 19500&nbsp;euros a week.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>The smallest average cost</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The daily total cost of producing \(x\) units of a product is
+        \[ TC(x) = 0.5x^2 + 40x + 7200 \]
+        euros.
+        <ol type="a">
+          <li>Find the output at which the average cost is smallest. Use the second derivative test, if possible.</li>
+          <li>Find that average cost.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The objective function</span></h4>
+          <p>The average cost is the total cost divided by the number of units. Dividing each term separately, we get</p>
+          \[ \begin{aligned} ATC(x) &amp;= \frac{0.5x^2 + 40x + 7200}{x} \\ &amp;= 0.5x + 40 + \frac{7200}{x},\quad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The first derivative</span></h4>
+          <p>The last term is written as a power before it is differentiated: \(\dfrac{7200}{x} = 7200x^{-1}\). The power rule gives</p>
+          \[ \begin{aligned} ATC'(x) &amp;= 0.5 + 7200\cdot(-1)x^{-2} \\ &amp;= 0.5 - \frac{7200}{x^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point</span></h4>
+          <p>The critical point comes from \(ATC'(x) = 0\). The derivative is a rational function, so it is first written as a single fraction:</p>
+          \[ ATC'(x) = \frac{0.5x^2 - 7200}{x^2} \]
+          <p>A fraction is zero only when its numerator is zero and its denominator is not:</p>
+          <div class="fit-sm">\[ \frac{0.5x^2 - 7200}{x^2} = 0 \;\Longleftrightarrow\; \begin{cases} 0.5x^2 - 7200 = 0 \\ x^2 \neq 0 \end{cases} \]</div>
+          \[ \begin{gathered} 0.5x^2 = 7200 \;\Longrightarrow\; x^2 = 14400 \\ \Longrightarrow\; x = \pm 120 \end{gathered} \]
+          <p>The denominator is zero only at \(x = 0\), and this value is not a root of the equation. The root \(x = -120\) cannot be a number of units, so it is dropped. So the critical point is \(x = 120\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) The second derivative test</span></h4>
+          <p>Differentiating \(-7200x^{-2}\) once more, we get</p>
+          \[ ATC''(x) = -7200\cdot(-2)x^{-3} = \frac{14400}{x^3} \]
+          <p>so \(ATC''(120) = \dfrac{14400}{120^3} &gt; 0\), and \(x = 120\) is a relative minimum point. So the average cost is smallest at an output of 120 units a day.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The average cost</span></h4>
+          \[ \begin{aligned} ATC(120) &amp;= 0.5\cdot 120 + 40 + \frac{7200}{120} \\ &amp;= 60 + 40 + 60 = 160 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The average cost is smallest at an output of 120 units a day. It is then 160&nbsp;euros a unit.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>The number of workers and profit</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A workshop that employs \(x\) workers produces
+        \[ Q(x) = 30\sqrt{x} \]
+        units a day. Each unit is sold for 8&nbsp;euros, and each worker is paid 24&nbsp;euros a day.
+        <ol type="a">
+          <li>Find the number of workers that gives the largest profit. Use the second derivative test, if possible.</li>
+          <li>Find the output and the profit at that number.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The objective function</span></h4>
+          <p>The revenue is the price of a unit multiplied by the output, and the cost is the wage multiplied by the number of workers:</p>
+          \[ \begin{aligned} P(x) &amp;= 8\cdot Q(x) - 24x \\ &amp;= 8\cdot 30\sqrt{x} - 24x \\ &amp;= 240\sqrt{x} - 24x,\quad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The first derivative</span></h4>
+          <p>The derivative of the root is \(\left(\sqrt{x}\right)' = \dfrac{1}{2\sqrt{x}}\), so</p>
+          \[ P'(x) = 240\cdot\frac{1}{2\sqrt{x}} - 24 = \frac{120}{\sqrt{x}} - 24 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point</span></h4>
+          <p>The critical point comes from \(P'(x) = 0\). The derivative is a rational function, so it is first written as a single fraction:</p>
+          \[ P'(x) = \frac{120 - 24\sqrt{x}}{\sqrt{x}} \]
+          <p>A fraction is zero only when its numerator is zero and its denominator is not:</p>
+          <div class="fit-sm">\[ \frac{120 - 24\sqrt{x}}{\sqrt{x}} = 0 \;\Longleftrightarrow\; \begin{cases} 120 - 24\sqrt{x} = 0 \\ \sqrt{x} \neq 0 \end{cases} \]</div>
+          \[ 24\sqrt{x} = 120 \;\Longrightarrow\; \sqrt{x} = 5 \;\Longrightarrow\; x = 25 \]
+          <p>At this root the denominator is \(\sqrt{25} = 5 \neq 0\), so the critical point is \(x = 25\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) The second derivative test</span></h4>
+          <p>For the second derivative the root is written as a power: \(\dfrac{120}{\sqrt{x}} = 120x^{-\frac{1}{2}}\). The power rule gives</p>
+          \[ P''(x) = 120\cdot\left(-\frac{1}{2}\right)x^{-\frac{3}{2}} = -\frac{60}{\sqrt{x^3}} \]
+          <p>At the critical point \(\sqrt{25^3} = \sqrt{15625} = 125\), so</p>
+          \[ P''(25) = -\frac{60}{125} = -0.48 &lt; 0 \]
+          <p>So \(x = 25\) is a relative maximum point, and the profit is largest with 25 workers.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The output and the profit</span></h4>
+          <p>The output and the profit with 25 workers are</p>
+          \[ Q(25) = 30\sqrt{25} = 150 \]
+          \[ \begin{aligned} P(25) &amp;= 240\cdot 5 - 24\cdot 25 \\ &amp;= 1200 - 600 = 600 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The profit is largest with 25 workers. The workshop then produces 150 units a day and the profit is 600&nbsp;euros a day.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Revenue with an exponential demand function</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The weekly demand function of a product is
+        \[ p = 150e^{-0.004x} \]
+        euros a unit, where \(x\) is the number of units sold.
+        <ol type="a">
+          <li>Find the number of units that gives the largest revenue. Use the second derivative test, if possible.</li>
+          <li>Find the price and the revenue at that number, to the nearest cent.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The objective function</span></h4>
+          <p>The revenue is the price multiplied by the number of units sold:</p>
+          \[ R(x) = p\cdot x = 150x\cdot e^{-0.004x},\qquad x \ge 0 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The first derivative</span></h4>
+          <p>The revenue is a product, so the <a href="tema-6.html#sandaugos">product rule</a> is used, with \(u(x) = 150x\) and \(v(x) = e^{-0.004x}\). The first factor gives \(u'(x) = 150\). The second factor is a composite exponential function with the inner function \(-0.004x\), so the <a href="tema-6.html#sudetines">chain rule</a> is used:</p>
+          \[ \begin{aligned} v'(x) &amp;= e^{-0.004x}\cdot(-0.004) \\ &amp;= -0.004e^{-0.004x} \end{aligned} \]
+          <p>Substituting into the product rule \(\big(u(x)\cdot v(x)\big)' = u'(x)\cdot v(x) + u(x)\cdot v'(x)\), we get</p>
+          \[ \begin{aligned} R'(x) &amp;= 150e^{-0.004x} \\ &amp;\phantom{=}\; + 150x\cdot\left(-0.004e^{-0.004x}\right) \end{aligned} \]
+          <p>The common factor \(150e^{-0.004x}\) is taken out:</p>
+          \[ R'(x) = 150e^{-0.004x}(1 - 0.004x) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point</span></h4>
+          <p>The exponential function is positive for every \(x\), so the product is zero only when the bracket is zero:</p>
+          \[ \begin{gathered} 1 - 0.004x = 0 \;\Longrightarrow\; 0.004x = 1 \\ \Longrightarrow\; x = 250 \end{gathered} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) The second derivative test</span></h4>
+          <p>The first derivative is again a product, so the product rule is used once more, with \(u(x) = 150e^{-0.004x}\) and \(v(x) = 1 - 0.004x\). Their derivatives are \(u'(x) = -0.6e^{-0.004x}\) and \(v'(x) = -0.004\). Substituting, we get</p>
+          \[ \begin{aligned} R''(x) &amp;= -0.6e^{-0.004x}(1 - 0.004x) \\ &amp;\phantom{=}\; + 150e^{-0.004x}\cdot(-0.004) \end{aligned} \]
+          <p>The second term is \(-0.6e^{-0.004x}\), so the common factor \(-0.6e^{-0.004x}\) is taken out:</p>
+          \[ \begin{aligned} R''(x) &amp;= -0.6e^{-0.004x}(1 - 0.004x + 1) \\ &amp;= -0.6e^{-0.004x}(2 - 0.004x) \end{aligned} \]
+          <p>At the critical point \(-0.004\cdot 250 = -1\) and \(2 - 0.004\cdot 250 = 1\), so</p>
+          \[ R''(250) = -0.6e^{-1}\cdot 1 \approx -0.22 &lt; 0 \]
+          <p>So \(x = 250\) is a relative maximum point, and the revenue is largest when 250 units a week are sold.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The price and the revenue</span></h4>
+          <p>The price and the revenue at that number are</p>
+          \[ p = 150e^{-1} \approx 55.18 \]
+          \[ R(250) = 250\cdot 150e^{-1} \approx 13795.48 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The revenue is largest when 250 units a week are sold. The price is then about 55.18&nbsp;euros a unit and the revenue is about 13795.48&nbsp;euros a week.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Machine hours and profit</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A firm that uses \(x\) machine hours a day produces
+        \[ Q(x) = \frac{100x}{x + 10} \]
+        units a day. Each unit is sold for 12&nbsp;euros, and a machine hour costs 30&nbsp;euros.
+        <ol type="a">
+          <li>Find the number of machine hours that gives the largest profit. Use the second derivative test, if possible.</li>
+          <li>Find the output and the profit at that number.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The objective function</span></h4>
+          <p>The revenue is the price of a unit multiplied by the output, and the cost is the price of a machine hour multiplied by the number of hours:</p>
+          \[ \begin{aligned} P(x) &amp;= 12\cdot\frac{100x}{x + 10} - 30x \\ &amp;= \frac{1200x}{x + 10} - 30x,\qquad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The first derivative</span></h4>
+          <p>The first term is a quotient. Label the numerator \(u(x) = 1200x\) and the denominator \(v(x) = x + 10\). Then \(u'(x) = 1200\) and \(v'(x) = 1\). By the <a href="tema-6.html#dalmens">quotient rule</a> we get</p>
+          \[ \begin{aligned} \left(\frac{1200x}{x + 10}\right)' &amp;= \frac{1200(x + 10) - 1200x\cdot 1}{(x + 10)^2} \\ &amp;= \frac{1200x + 12000 - 1200x}{(x + 10)^2} \\ &amp;= \frac{12000}{(x + 10)^2} \end{aligned} \]
+          <p>so the first derivative of the profit is</p>
+          \[ P'(x) = \frac{12000}{(x + 10)^2} - 30 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point</span></h4>
+          <p>The critical point comes from \(P'(x) = 0\). The derivative is a rational function, so it is first written as a single fraction:</p>
+          \[ P'(x) = \frac{12000 - 30(x + 10)^2}{(x + 10)^2} \]
+          <p>A fraction is zero only when its numerator is zero and its denominator is not:</p>
+          <div class="fit-sm">\[ \begin{gathered} \frac{12000 - 30(x + 10)^2}{(x + 10)^2} = 0 \\ \Longleftrightarrow\; \begin{cases} 12000 - 30(x + 10)^2 = 0 \\ (x + 10)^2 \neq 0 \end{cases} \end{gathered} \]</div>
+          \[ \begin{gathered} 30(x + 10)^2 = 12000 \\ \Longrightarrow\; (x + 10)^2 = 400 \\ \Longrightarrow\; x + 10 = \pm 20 \end{gathered} \]
+          <p>The denominator is zero only at \(x = -10\), and this value is not a root of the equation. The first root gives \(x = 10\), and the second one gives \(x = -30\). A number of hours cannot be negative, so the second root is dropped.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) The second derivative test</span></h4>
+          <p>For the second derivative the first term is written as a power: \(\dfrac{12000}{(x + 10)^2} = 12000(x + 10)^{-2}\). The power form of the chain rule is used, \(\big((u(x))^n\big)' = n(u(x))^{n-1}\cdot u'(x)\), with the inner function \(u(x) = x + 10\) and \(u'(x) = 1\):</p>
+          \[ \begin{aligned} P''(x) &amp;= 12000\cdot(-2)(x + 10)^{-3}\cdot 1 \\ &amp;= -\frac{24000}{(x + 10)^3} \end{aligned} \]
+          <p>At the critical point we get</p>
+          \[ P''(10) = -\frac{24000}{20^3} = -\frac{24000}{8000} = -3 &lt; 0 \]
+          <p>so \(x = 10\) is a relative maximum point. So the profit is largest at 10 machine hours a day.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The output and the profit</span></h4>
+          <p>The output and the profit at 10 machine hours are</p>
+          \[ Q(10) = \frac{100\cdot 10}{20} = 50 \]
+          \[ \begin{aligned} P(10) &amp;= \frac{1200\cdot 10}{20} - 30\cdot 10 \\ &amp;= 600 - 300 = 300 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The profit is largest at 10 machine hours a day. The firm then produces 50 units a day and the profit is 300&nbsp;euros a day.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: write the objective function, find the critical point, apply the second derivative test and answer all the questions of the problem. The answer gives the objective function, the critical point and the final results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The weekly demand function of a product is</p>
+          \[ p = -0.05x + 80 \]
+          <p>euros a unit.</p>
+          <ol type="a">
+            <li>Find the number of units that gives the largest weekly revenue. Use the second derivative test, if possible.</li>
+            <li>Find the price and the revenue at that number.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          \[ R(x) = p\cdot x = -0.05x^2 + 80x \]
+          <p><strong>The derivative and the critical point:</strong></p>
+          \[ \begin{gathered} R'(x) = -0.1x + 80 = 0 \\ \Longrightarrow\; x = 800 \end{gathered} \]
+          \[ R''(x) = -0.1 &lt; 0 \]
+          <p><strong>Answer.</strong> The revenue is largest when 800 units a week are sold. The price is then 40&nbsp;euros a unit and the revenue is 32000&nbsp;euros a week.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The weekly demand function of a product is \(p = -0.04x + 120\) euros a unit, and the weekly total cost of producing \(x\) units is</p>
+          \[ TC(x) = 0.02x^2 + 30x + 7000 \]
+          <p>euros.</p>
+          <ol type="a">
+            <li>Find the output that gives the largest weekly profit. Use the second derivative test, if possible.</li>
+            <li>Find the price and the profit at that output.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          \[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= -0.06x^2 + 90x - 7000 \end{aligned} \]
+          <p><strong>The derivative and the critical point:</strong></p>
+          \[ \begin{gathered} P'(x) = -0.12x + 90 = 0 \\ \Longrightarrow\; x = 750 \end{gathered} \]
+          \[ P''(x) = -0.12 &lt; 0 \]
+          <p><strong>Answer.</strong> The profit is largest at an output of 750 units a week. The price is then 90&nbsp;euros a unit and the profit is 26750&nbsp;euros a week.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The daily total cost of producing \(x\) units of a product is</p>
+          \[ TC(x) = 0.25x^2 + 60x + 4900 \]
+          <p>euros.</p>
+          <ol type="a">
+            <li>Find the output at which the average cost is smallest. Use the second derivative test, if possible.</li>
+            <li>Find that average cost.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          \[ \begin{aligned} ATC(x) &amp;= \frac{TC(x)}{x} \\ &amp;= 0.25x + 60 + \frac{4900}{x} \end{aligned} \]
+          <p>Here \(x &gt; 0\).</p>
+          <p><strong>The derivative and the critical point:</strong></p>
+          \[ \begin{aligned} ATC'(x) &amp;= 0.25 - \frac{4900}{x^2} \\ &amp;= \frac{0.25x^2 - 4900}{x^2} = 0 \end{aligned} \]
+          \[ \Longrightarrow\; x^2 = 19600 \;\Longrightarrow\; x = 140 \]
+          <p>The root \(x = -140\) cannot be a number of units, so it is dropped; \(ATC''(x) = \dfrac{9800}{x^3} &gt; 0\).</p>
+          <p><strong>Answer.</strong> The average cost is smallest at an output of 140 units a day. It is then 130&nbsp;euros a unit.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A workshop that employs \(x\) workers produces \(Q(x) = 80\sqrt{x}\) units a day. Each unit is sold for 6&nbsp;euros, and each worker is paid 40&nbsp;euros a day.</p>
+          <ol type="a">
+            <li>Find the number of workers that gives the largest daily profit. Use the second derivative test, if possible.</li>
+            <li>Find the output and the profit at that number.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          \[ \begin{aligned} P(x) &amp;= 6\cdot Q(x) - 40x \\ &amp;= 480\sqrt{x} - 40x,\qquad x &gt; 0 \end{aligned} \]
+          <p><strong>The derivative and the critical point:</strong></p>
+          \[ \begin{aligned} P'(x) &amp;= \frac{240}{\sqrt{x}} - 40 \\ &amp;= \frac{240 - 40\sqrt{x}}{\sqrt{x}} = 0 \end{aligned} \]
+          \[ \Longrightarrow\; \sqrt{x} = 6 \;\Longrightarrow\; x = 36 \]
+          <p>\(P''(x) = -\dfrac{120}{\sqrt{x^3}}\) and \(P''(36) = -\dfrac{120}{216} \approx -0.56 &lt; 0\).</p>
+          <p><strong>Answer.</strong> The profit is largest with 36 workers. The workshop then produces 480 units a day and the profit is 1440&nbsp;euros a day.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 6.4–6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapters 10.2, 10.5</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
