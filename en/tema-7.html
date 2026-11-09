@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 7. The Higher Order Derivative · Applied Mathematics</title>
+<meta name="description" content="Higher order derivatives: definition, notation and calculation. The meaning and interpretation of the second order derivative, using the relationship between revenue and the advertising budget, with an interactive graph of the function and its derivatives. Applications – in separate sections.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-7.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=77">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=77"></script>
+</head>
+<body data-page="t7">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 7</span>
+    <h1>The Higher Order Derivative</h1>
+    <ul class="jump">
+      <li><a href="#apibrezimas">Concept</a></li>
+      <li><a href="#skaiciavimas">Calculation</a></li>
+      <li><a href="#reklama">Second derivative</a></li>
+      <li><a href="#interpretavimas">Interpretation</a></li>
+      <li><a href="#taikymai">Applications</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ HIGHER ORDER DERIVATIVES ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">The concept of higher order derivatives</h2>
+
+    <article class="card concept" id="apibrezimas">
+      <div class="concept-head"><span class="num">1</span><h3>The derivative of the derivative</h3></div>
+      <p>The derivative of a function is itself a function, so it can be differentiated again. The first derivative says how fast a quantity is changing; it does not say whether that speed stays the same, grows or falls. For example, a firm whose sales are rising wants to know more than the fact that they rise: it wants to know whether they are rising faster and faster, or more and more slowly. That is the question the second derivative answers.</p>
+      <p>The <strong>second order derivative</strong> of a function \(y = f(x)\) is the derivative of its first order derivative:</p>
+      <div class="formula">\[ f''(x) = \big(f'(x)\big)' = \frac{d^2y}{dx^2} \]</div>
+      <p>Differentiating can be repeated as long as the corresponding derivatives exist. The <strong>\(n\)-th order derivative</strong> of a function is the derivative of its \((n-1)\)-th order derivative:</p>
+      <div class="formula">\[ f^{(n)}(x) = \big(f^{(n-1)}(x)\big)' = \frac{d^ny}{dx^n} \]</div>
+      <p>The second, third and further derivatives are called <strong>higher order derivatives</strong>.</p>
+
+      <div class="subtype">
+        <h4>Notation</h4>
+        <p>The second derivative is written \(f''(x)\), \(y''\) or \(\dfrac{d^2y}{dx^2}\), and the third one \(f'''(x)\) or \(y'''\). When the order is greater than three, it is written in parentheses instead of primes: \(f^{(4)}(x)\), \(f^{(n)}(x)\) or \(\dfrac{d^ny}{dx^n}\). The value of the second derivative at a particular point is written, for example, \(f''(2)\).</p>
+        <p class="tip"><strong>The parentheses are necessary.</strong> \(f^{(4)}(x)\) is the fourth order derivative, while \(f^4(x)\) usually means the fourth power of the function, \(\big(f(x)\big)^4\).</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="skaiciavimas">
+      <div class="concept-head"><span class="num">2</span><h3>How to find higher order derivatives</h3></div>
+      <p>Higher order derivatives are found with the same <a href="tema-6.html#taisykles">rules of differentiation</a> as the first derivative. The function is differentiated once, the result is simplified, and the simplified result is differentiated again. Do not skip the middle step: a derivative left as a root or as a fraction is often harder to differentiate than the same expression written as a sum of powers.</p>
+
+      <div class="subtype">
+        <h4>Roots and reciprocals as powers</h4>
+        <p>Two rules do almost all of this work. A root of any order can be written as a power, and a reciprocal as a power with a negative exponent:</p>
+        <div class="formula">\[ \sqrt[n]{x^m} = x^{\frac{m}{n}}, \qquad \frac{1}{x^n} = x^{-n} \]</div>
+        <p>So \(\sqrt{x} = x^{0.5}\), \(\sqrt{x^3} = x^{1.5}\), \(\sqrt[3]{x^2} = x^{\frac{2}{3}}\) and \(\dfrac{1}{x^2} = x^{-2}\). Once a function is written in this form, the power rule applies to it directly, and it applies again to the first derivative.</p>
+      </div>
+
+      <div class="subtype">
+        <h4>One function – several derivatives</h4>
+        <p>Here is the whole procedure on one function. A firm’s monthly revenue \(R\), in thousands of euros, depends on its monthly advertising budget \(x\), in thousands of euros:</p>
+        <div class="formula">\[ \begin{gathered} R(x) = -0.1x^3 + 1.5x^2 + 100, \\ 0 \le x \le 10 \end{gathered} \]</div>
+        <p>Differentiating each derivative obtained once more gives:</p>
+        <ol class="derive">
+          <li>
+            <span class="dl">Function</span>
+            \[ R(x) = -0.1x^3 + 1.5x^2 + 100 \]
+          </li>
+          <li>
+            <span class="dl">First order derivative</span>
+            \[ \begin{aligned} R'(x) &= -0.1\cdot 3x^2 + 1.5\cdot 2x \\ &= -0.3x^2 + 3x \end{aligned} \]
+          </li>
+          <li>
+            <span class="dl">Second order derivative</span>
+            \[ R''(x) = -0.3\cdot 2x + 3 = -0.6x + 3 \]
+          </li>
+          <li>
+            <span class="dl">Third order derivative</span>
+            \[ R'''(x) = -0.6 \]
+          </li>
+          <li>
+            <span class="dl">Fourth order derivative</span>
+            \[ R^{(4)}(x) = 0 \]
+          </li>
+        </ol>
+        <p>Every derivative after them is zero as well. A polynomial of degree \(n\) has exactly \(n\) derivatives that are not zero, because each differentiation lowers the degree by one. In applied problems the first two derivatives are almost always the only ones that are interpreted, so the rest of this page is about the second derivative.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ THE MEANING OF THE SECOND ORDER DERIVATIVE ============ -->
+  <section class="section" id="prasme" aria-labelledby="h-meaning">
+    <h2 id="h-meaning">The meaning of the second order derivative</h2>
+
+    <article class="card concept" id="reklama">
+      <div class="concept-head"><span class="num">3</span><h3>Revenue and the advertising budget</h3></div>
+      <p>Let us return to the revenue function \(R(x) = -0.1x^3 + 1.5x^2 + 100\). The function and each of its derivatives answer a different question. Consider the case when 2 thousand euros are spent on advertising, i.e. \(x = 2\).</p>
+      <div class="anat dtbl dtbl-rows lvl">
+        <div class="anat-card k0">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Revenue</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Function</span>\(R(x) = -0.1x^3 + 1.5x^2 + 100\)</li>
+            <li><span class="fl-lab">At \(x = 2\)</span>\(R(2) = -0.8 + 6 + 100 = 105.2\)</li>
+          </ul>
+          <p class="lvl-txt">When 2 thousand euros are spent on advertising, the revenue is 105.2 thousand euros.</p>
+        </div>
+        <div class="anat-card k1">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>The change in revenue when the budget increases by 1 thousand euros</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">First derivative</span>\(R'(x) = -0.3x^2 + 3x\)</li>
+            <li><span class="fl-lab">At \(x = 2\)</span>\(R'(2) = -1.2 + 6 = 4.8\)</li>
+          </ul>
+          <p class="lvl-txt">If the budget increases from 2 to 3 thousand euros, the revenue will grow by approximately 4.8 thousand euros. This quantity is called <strong>marginal revenue</strong>.</p>
+        </div>
+        <div class="anat-card k2">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>How the return on an additional thousand changes</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Second derivative</span>\(R''(x) = -0.6x + 3\)</li>
+            <li><span class="fl-lab">At \(x = 2\)</span>\(R''(2) = -1.2 + 3 = 1.8\)</li>
+          </ul>
+          <p class="lvl-txt">When the budget is already 3 thousand euros, one more additional thousand will bring approximately 1.8 thousand euros more additional revenue than the thousand by which the budget was increased from 2 to 3 thousand euros.</p>
+        </div>
+      </div>
+      <p>So the first derivative shows how much revenue an additional thousand euros spent on advertising brings in, and the second shows whether each next thousand brings in more or less than the one before.</p>
+
+      <div data-widget="second-deriv"></div>
+      <p class="tip" style="margin-top:14px"><strong>Note the axes.</strong> The values of the revenue \(R(x)\) are plotted on the left axis, which starts at 100 thousand euros. The values of the derivatives \(R'(x)\) and \(R''(x)\) are plotted on the right axis. They are much smaller than the revenue, so on a single axis their graphs would be almost invisible.</p>
+
+      <div class="subtype">
+        <h4>What the graph shows</h4>
+        <ul>
+          <li>When \(0 \le x &lt; 5\), \(R''(x) &gt; 0\): the marginal revenue \(R'(x)\) is increasing, and the revenue graph rises more and more steeply.</li>
+          <li>When \(x = 5\), \(R''(5) = 0\): the marginal revenue reaches its largest value, \(R'(5) = 7.5\) thousand euros.</li>
+          <li>When \(5 &lt; x \le 10\), \(R''(x) &lt; 0\): the marginal revenue is decreasing: the revenue is still increasing, but its graph rises more and more slowly. When \(x = 10\), \(R'(10) = 0\): an additional thousand hardly increases the revenue any more.</li>
+        </ul>
+        <p>The budget from which the marginal revenue starts to decrease is studied in the section “Inflection Points and the Law of Diminishing Returns”.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="zenklas">
+      <div class="concept-head"><span class="num">4</span><h3>What the sign of the second derivative shows</h3></div>
+      <p>The first derivative is the rate at which a quantity changes. It is a function too, so it has a rate of change of its own, and that is the second derivative. In other words, \(f''(x)\) measures the <strong>pace of change</strong>: how quickly the rate of change itself rises or falls. In physics this is called acceleration, and the comparison is useful here: a car can be slowing down and still be moving forward. Economic quantities can behave in the same way.</p>
+      <p>Only the sign of the second derivative is needed to interpret it:</p>
+      <ul>
+        <li>if \(f''(x) &gt; 0\), then \(f'(x)\) is increasing: the rate of change of the quantity increases;</li>
+        <li>if \(f''(x) &lt; 0\), then \(f'(x)\) is decreasing: the rate of change of the quantity decreases.</li>
+      </ul>
+      <p class="tip"><strong>What the sign does not mean.</strong> A negative second derivative does <strong>not</strong> mean that the quantity is falling. It means that the rate of change of the quantity is decreasing. Whether the quantity rises or falls is decided by the first derivative alone: \(f'\) shows in which direction the quantity changes, and \(f''\) shows how the rate of change itself changes.</p>
+
+      <div class="subtype">
+        <h4>Two budgets with the same marginal revenue</h4>
+        <p>Compare two monthly advertising budgets: 2 and 8 thousand euros. Turn on all three graphs in the chart above and use the slider to set first \(x = 2\) and then \(x = 8\).</p>
+        <div class="tbl-wrap">
+          <table class="vtable">
+            <tbody>
+              <tr><th scope="row">\(x\)</th><td>2</td><td>8</td></tr>
+              <tr><th scope="row">\(R(x)\)</th><td>105.2</td><td>144.8</td></tr>
+              <tr><th scope="row">\(R'(x)\)</th><td>4.8</td><td>4.8</td></tr>
+              <tr><th scope="row">\(R''(x)\)</th><td>1.8</td><td>−1.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>At both budgets \(R' = 4.8\): one more thousand euros of advertising would bring in about 4.8 thousand euros of revenue, whether the firm spends 2 thousand or 8 thousand. Taken on its own, the first derivative says that the two situations are the same.</p>
+        <p>The second derivative shows that they are not. At \(x = 2\), \(R''(2) = 1.8 &gt; 0\), so the marginal revenue is still rising: the next thousand euros of advertising will bring in more than the thousand just spent, and the one after that will bring in more again. At \(x = 8\), \(R''(8) = -1.8 &lt; 0\), so the marginal revenue is falling: every further thousand euros brings in less than the thousand before it. The revenue still grows, because \(R'(8) &gt; 0\), but more and more slowly. So at a budget of 2 thousand euros the effectiveness of additional advertising spending is increasing, and at 8 thousand euros it is decreasing.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="interpretavimas">
+      <div class="concept-head"><span class="num">5</span><h3>How to interpret the second derivative</h3></div>
+      <p>The first derivative is interpreted in the usual way: if the variable increases by one unit from \(x_0\), the quantity will change by approximately \(f'(x_0)\). The second derivative is interpreted in the same way, only it refers to the rate of change: if the variable increases by one unit from \(x_0\), the <strong>rate of change</strong> will change by approximately \(f''(x_0)\).</p>
+      <p>For the advertising budget \(x = 2\), the two interpretations are:</p>
+      <ul>
+        <li>if the budget increases by one thousand euros from 2 thousand, the revenue will grow by approximately 4.8 thousand euros;</li>
+        <li>if the budget increases by one thousand euros from 2 thousand, the marginal revenue itself will grow by approximately 1.8 thousand euros.</li>
+      </ul>
+      <p>Both values are approximate, and for the same reason: they are measured at the single point \(x = 2\), and over a whole unit step the rates do not stay the same.</p>
+      <p>In applied problems the interpretation is part of the answer. Two sentences are usually needed: one saying how the quantity changes when the variable increases by one unit, and one saying how the rate of change itself changes. Examples of such problems can be found in the section “The Pace of Change”.</p>
+    </article>
+  </section>
+
+  <!-- ============ APPLICATIONS ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Applications</h2>
+    <p class="section-intro">Here you will find economic and managerial problems in which the second derivative is used: whether a quantity changes faster and faster or more and more slowly, what shape the graph of a function has, from what point additional resources bring smaller and smaller gains, and where a function reaches its largest or smallest value.</p>
+    <div class="model-grid" data-models="t7"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this topic can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 6.4–6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapters 9.5, 10.2, 10.5</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
