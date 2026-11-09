@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced Optimization Problems · Applied Mathematics</title>
+<meta name="description" content="Advanced optimization problems: building the demand function from the data of the problem, optimizing areas and volumes, removing the second unknown. Step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-7-sudetingesni-uzdaviniai.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=82">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=82"></script>
+</head>
+<body data-page="m75">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 7 · Applications · Section 5</span>
+    <h1>Advanced Optimization Problems</h1>
+    <p class="lead">In this section you build the objective function yourself: the demand function is found from the data of the problem, and in area and volume problems the objective function is written from the dimensions of a geometric figure or solid.</p>
+    <ul class="jump">
+      <li><a href="#tikslo">Objective function</a></li>
+      <li><a href="#paklausa">Demand function</a></li>
+      <li><a href="#geometrija">Areas and volumes</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. SETTING UP THE OBJECTIVE FUNCTION ============ -->
+  <section class="section" id="tikslo" aria-labelledby="h-obj">
+    <h2 id="h-obj">Setting up the objective function</h2>
+
+    <article class="card">
+      <p>The problems of this section are solved in the same way as those of the <a href="tema-7-optimizavimas.html">previous one</a>: the objective function is differentiated, the critical points are found, and the second derivative test shows at which of them there is a maximum or a minimum. What is new is the work done before differentiating, because setting up the objective function requires more effort.</p>
+      <p>Two kinds of problems appear most often. In the first kind the demand function has to be built from the data of the problem; in the second kind the quantity to be optimized depends on the dimensions of a geometric figure or solid. Each kind is treated separately.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The critical point is found by setting the second derivative equal to zero.</strong> Critical points come from \(f'(x) = 0\) (or from the points where \(f'(x)\) does not exist). The equation \(f''(x) = 0\) gives possible inflection points, not extrema. Here the second derivative is used only to find the type of the critical point.</li>
+            <li><strong>A positive slope of the demand function.</strong> The slope has to be negative, because fewer units are sold at a higher price. A positive value means that the sign of one of the two changes was lost.</li>
+            <li><strong>The second unknown is not removed.</strong> Before differentiating, the quantity to be optimized has to become a function of one variable.</li>
+            <li><strong>Not all the dimensions are given.</strong> At the end the second dimension is found by substituting the result into the equation of the condition.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 2. DEMAND FUNCTION ============ -->
+  <section class="section" id="paklausa" aria-labelledby="h-dem">
+    <h2 id="h-dem">Problems in which the demand function has to be built</h2>
+
+    <article class="card">
+      <h3 class="subhead">Building the demand function</h3>
+      <p>The demand function is linear and, as in <a href="tema-1.html">Topic 1</a>, it is written with the slope and the vertical intercept. The price is expressed as a function of the quantity:</p>
+      <div class="formula">\[ p = ax + b,\qquad a &lt; 0 \]</div>
+      <p>The coefficients \(a\) and \(b\) are found from the data of the problem. There are two cases.</p>
+      <div class="anat dtbl">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Two points</strong></div>
+          <p class="lvl-txt">The problem says that \(x_1\) units are sold at the price \(p_1\) and \(x_2\) units at the price \(p_2\). These are the points \((x_1;\, p_1)\) and \((x_2;\, p_2)\) of the demand line, so</p>
+          <ul class="flist">
+            <li>\(a = \dfrac{p_2 - p_1}{x_2 - x_1}\)</li>
+            <li>\(b = -ax_1 + p_1\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>One point and a rate of change</strong></div>
+          <p class="lvl-txt">The problem gives one point \((x_1;\, p_1)\) and says how the quantity changes when the price changes. The slope is the ratio of these changes, and the vertical intercept is found from the given point:</p>
+          <ul class="flist">
+            <li>\(a = \dfrac{\Delta p}{\Delta x}\)</li>
+            <li>\(b = -ax_1 + p_1\)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="tip">The slope has to be negative, because fewer units are sold at a higher price. A positive value means that the sign of one of the two changes was lost.</p>
+      <p>When the demand function is known, the objective function is written with the <a href="tema-7-optimizavimas.html#tikslo">formulas of the previous section</a>:</p>
+      <div class="formula">\[ \begin{gathered} R(x) = p\cdot x = (ax + b)x \\ P(x) = R(x) - TC(x) \end{gathered} \]</div>
+      <p>The answer is given in the context of the problem: the quantity and the corresponding price \(p = ax + b\).</p>
+    </article>
+
+    <p class="section-intro" style="margin-top:22px">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Cinema tickets</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A cinema sells 400 tickets a week at the price of 9&nbsp;euros. A survey shows that at the price of 12&nbsp;euros only 280 tickets a week would be sold. The demand function is linear.
+        <ol type="a">
+          <li>Find the number of tickets that gives the largest weekly revenue. Use the second derivative test, if possible.</li>
+          <li>Find the price of a ticket and the revenue at that number.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The demand function</span></h4>
+          <p>Let \(x\) be the number of tickets sold in a week and \(p\) the price of a ticket. The data give two points, \((400;\, 9)\) and \((280;\, 12)\). The slope and the vertical intercept are</p>
+          \[ a = \frac{12 - 9}{280 - 400} = \frac{3}{-120} = -0.025 \]
+          \[ \begin{aligned} b &amp;= -ax_1 + p_1 = 0.025\cdot 400 + 9 \\ &amp;= 10 + 9 = 19 \end{aligned} \]
+          <p>So the demand function is \(p = -0.025x + 19\). Check with the second point: \(-0.025\cdot 280 + 19 = 12\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The objective function</span></h4>
+          <p>The revenue is</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0.025x + 19)x \\ &amp;= -0.025x^2 + 19x,\quad 0 \le x \le 760 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point and the second derivative test</span></h4>
+          <p>The power rule gives</p>
+          \[ R'(x) = -0.05x + 19 \]
+          <p>The critical point comes from \(R'(x) = 0\):</p>
+          \[ \begin{gathered} -0.05x + 19 = 0 \;\Longrightarrow\; 0.05x = 19 \\ \Longrightarrow\; x = 380 \end{gathered} \]
+          <p>Differentiating once more, we get \(R''(x) = -0.05 &lt; 0\), so \(x = 380\) is a relative maximum point. The revenue is largest when 380 tickets a week are sold.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The price and the revenue</span></h4>
+          <p>The price and the revenue at that number are</p>
+          \[ p = -0.025\cdot 380 + 19 = 9.5 \]
+          \[ R(380) = 9.5\cdot 380 = 3610 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The revenue is largest when 380 tickets a week are sold. The price of a ticket is then 9.5&nbsp;euros and the revenue is 3610&nbsp;euros a week.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>A producer's monthly profit</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A producer sells 600 units of a product a month at the price of 50&nbsp;euros. At the price of 65&nbsp;euros only 450 units a month would be sold. The demand function is linear. The monthly total cost of producing \(x\) units is
+        \[ TC(x) = 0.05x^2 + 20x + 4000 \]
+        euros.
+        <ol type="a">
+          <li>Find the output that gives the largest monthly profit. Use the second derivative test, if possible.</li>
+          <li>Find the price of a unit and the profit at that output.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The demand function</span></h4>
+          <p>Let \(x\) be the number of units sold in a month and \(p\) the price of a unit. The two points are \((600;\, 50)\) and \((450;\, 65)\), so</p>
+          \[ a = \frac{65 - 50}{450 - 600} = \frac{15}{-150} = -0.1 \]
+          \[ \begin{aligned} b &amp;= -ax_1 + p_1 = 0.1\cdot 600 + 50 \\ &amp;= 60 + 50 = 110 \end{aligned} \]
+          <p>The demand function is \(p = -0.1x + 110\). Check with the second point: \(-0.1\cdot 450 + 110 = 65\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The objective function</span></h4>
+          <p>The revenue is</p>
+          \[ \begin{aligned} R(x) &amp;= p\cdot x = (-0.1x + 110)x \\ &amp;= -0.1x^2 + 110x \end{aligned} \]
+          <p>and the profit is the revenue minus the total cost:</p>
+          \[ \begin{aligned} P(x) &amp;= -0.1x^2 + 110x \\ &amp;\phantom{=}\; - \left(0.05x^2 + 20x + 4000\right) \\ &amp;= -0.15x^2 + 90x - 4000 \end{aligned} \]
+          <p>Here \(0 \le x \le 1100\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point and the second derivative test</span></h4>
+          <p>The power rule gives</p>
+          \[ P'(x) = -0.3x + 90 \]
+          <p>The critical point comes from \(P'(x) = 0\):</p>
+          \[ \begin{gathered} -0.3x + 90 = 0 \;\Longrightarrow\; 0.3x = 90 \\ \Longrightarrow\; x = 300 \end{gathered} \]
+          <p>Differentiating once more, we get \(P''(x) = -0.3 &lt; 0\), so \(x = 300\) is a relative maximum point. The profit is largest at an output of 300 units a month.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The price and the profit</span></h4>
+          <p>The price and the profit at that output are</p>
+          \[ p = -0.1\cdot 300 + 110 = 80 \]
+          \[ \begin{aligned} P(300) &amp;= -0.15\cdot 300^2 + 90\cdot 300 \\ &amp;\phantom{=}\; - 4000 \\ &amp;= -13500 + 27000 - 4000 \\ &amp;= 9500 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The profit is largest at an output of 300 units a month. The price is then 80&nbsp;euros a unit and the profit is 9500&nbsp;euros a month.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>The price of headphones and profit</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A shop sells 200 pairs of headphones a month at the price of 50&nbsp;euros. The owner estimates that if the price is raised by one euro, four fewer pairs a month would be sold. The shop buys each pair for 20&nbsp;euros.
+        <ol type="a">
+          <li>Find the number of pairs that gives the largest monthly profit. Use the second derivative test, if possible.</li>
+          <li>Find the price and the profit at that number.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The demand function</span></h4>
+          <p>Let \(x\) be the number of pairs sold in a month and \(p\) the price of a pair. The data give one point, \((200;\, 50)\), and a rate of change: the price rises by 1&nbsp;euro while the quantity falls by four pairs, so \(\Delta p = 1\) and \(\Delta x = -4\). Therefore</p>
+          \[ a = \frac{\Delta p}{\Delta x} = \frac{1}{-4} = -0.25 \]
+          \[ \begin{aligned} b &amp;= -ax_1 + p_1 = 0.25\cdot 200 + 50 \\ &amp;= 50 + 50 = 100 \end{aligned} \]
+          <p>The demand function is \(p = -0.25x + 100\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The objective function</span></h4>
+          <p>A pair costs the shop 20&nbsp;euros, so the total cost is \(TC(x) = 20x\), and the profit is</p>
+          \[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= (-0.25x + 100)x - 20x \\ &amp;= -0.25x^2 + 80x \end{aligned} \]
+          <p>Here \(0 \le x \le 400\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point and the second derivative test</span></h4>
+          <p>The power rule gives</p>
+          \[ P'(x) = -0.5x + 80 \]
+          <p>The critical point comes from \(P'(x) = 0\):</p>
+          \[ \begin{gathered} -0.5x + 80 = 0 \;\Longrightarrow\; 0.5x = 80 \\ \Longrightarrow\; x = 160 \end{gathered} \]
+          <p>Differentiating once more, we get \(P''(x) = -0.5 &lt; 0\), so \(x = 160\) is a relative maximum point. The profit is largest when 160 pairs a month are sold.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The price and the profit</span></h4>
+          <p>The price and the profit at that number are</p>
+          \[ p = -0.25\cdot 160 + 100 = 60 \]
+          \[ \begin{aligned} P(160) &amp;= -0.25\cdot 160^2 + 80\cdot 160 \\ &amp;= -6400 + 12800 = 6400 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The profit is largest when 160 pairs a month are sold. The price is then 60&nbsp;euros and the profit is 6400&nbsp;euros a month.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 3. AREAS AND VOLUMES ============ -->
+  <section class="section" id="geometrija" aria-labelledby="h-geo">
+    <h2 id="h-geo">Problems in which an area or a volume is optimized</h2>
+
+    <article class="card">
+      <h3 class="subhead">The formulas of the basic shapes</h3>
+      <p>These problems describe a geometric figure or solid: a plot of land, a box, a parcel. Two of its dimensions are unknown, and the quantity to be optimized is written with the corresponding formulas.</p>
+      <div class="anat dtbl">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>A rectangle with the sides \(x\) and \(y\)</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Area</span>\(A = xy\)</li>
+            <li><span class="fl-lab">Perimeter</span>\(P = 2x + 2y\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>A rectangular box with the base \(x\) by \(y\) and the height \(h\)</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Volume</span>\(V = xyh\)</li>
+            <li><span class="fl-lab">Surface area</span>\(S = 2xy + 2xh + 2yh\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>A cylinder with the radius \(r\) and the length \(l\)</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Volume</span>\(V = \pi r^2 l\)</li>
+            <li><span class="fl-lab">Surface area</span>\(S = 2\pi r^2 + 2\pi rl\)</li>
+          </ul>
+        </div>
+      </div>
+      <p>A box without a lid has only one base, so its surface area is \(S = xy + 2xh + 2yh\). If the base is a square, then \(y = x\), and the formulas become \(V = x^2h\) and \(S = x^2 + 4xh\). The lateral surface area of a cylinder is \(2\pi rl\), and the length of the circle of its cross-section, called the girth of the parcel, is \(2\pi r\).</p>
+      <p>If the figure contains a right triangle with the legs \(a\) and \(b\), its third side is found by the Pythagorean theorem: \(c = \sqrt{a^2 + b^2}\).</p>
+
+      <h3 class="subhead" style="margin-top:22px">Removing the second unknown</h3>
+      <p>The quantity to be optimized is written with two unknown dimensions, but it has to become a function of one variable before it is differentiated. The problem always gives one more relation between these dimensions: a fixed area, volume, amount of material or total length. This relation is used to remove the second unknown.</p>
+      <ol class="steps-list">
+        <li>Name both dimensions and write the quantity to be optimized with them.</li>
+        <li>Write the condition of the problem as an equation in the same two dimensions.</li>
+        <li>Express one dimension from this equation and substitute it into the first expression. What is left is a function of one variable, which is then examined in the usual way.</li>
+      </ol>
+      <p>At the end the second dimension is found by substituting the result into the equation of the condition, because the problem usually asks for all the dimensions.</p>
+    </article>
+
+    <p class="section-intro" style="margin-top:22px">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>The fence of a storage yard</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A rectangular storage yard of 1800 square metres is to be fenced. The front fence is wooden and costs 45&nbsp;euros a metre, and the wire fence on the other three sides costs 15&nbsp;euros a metre.
+        <ol type="a">
+          <li>Find the dimensions of the yard that make the cost of the fence smallest. Use the second derivative test, if possible.</li>
+          <li>Find that cost.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The dimensions and the cost</span></h4>
+          <p>Let \(x\) be the length of the front side and \(y\) the length of the side next to it, in metres.</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 360 230" role="img" aria-label="Rectangular yard: front side x – wooden fence, the other three sides – wire fence, area 1800 square metres">
+          <rect x="60" y="40" width="240" height="130" fill="none" stroke="var(--chart)" stroke-width="2.5"/>
+          <line x1="56" y1="170" x2="304" y2="170" stroke="var(--exam)" stroke-width="7" stroke-linecap="round"/>
+          <text x="180" y="112" text-anchor="middle" style="font-size:17px">area 1800 m²</text>
+          <text class="m" x="180" y="196" text-anchor="middle" style="font-size:18px"><tspan class="i">x</tspan></text>
+          <text x="180" y="218" text-anchor="middle" font-style="italic" class="exam" style="font-size:15px">wooden fence</text>
+          <text class="m" x="44" y="111" text-anchor="end" style="font-size:18px"><tspan class="i">y</tspan></text>
+          <text x="180" y="30" text-anchor="middle" font-style="italic" class="c1" style="font-size:15px">wire fence</text>
+          </svg>
+          </figure>
+          <p>The fence on the front side of length \(x\) costs 45&nbsp;euros a metre. The fence on the back side, also of length \(x\), and on the two sides of length \(y\) costs 15&nbsp;euros a metre. So the cost of the fence is</p>
+          \[ C = 45x + 15x + 2\cdot 15y = 60x + 30y \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Removing the second unknown</span></h4>
+          <p>The condition gives the area of the yard:</p>
+          \[ xy = 1800 \;\Longrightarrow\; y = \frac{1800}{x} \]
+          <p>Substituting it into the cost removes the second unknown:</p>
+          \[ \begin{aligned} C(x) &amp;= 60x + 30\cdot\frac{1800}{x} \\ &amp;= 60x + \frac{54000}{x},\quad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point</span></h4>
+          <p>The second term is written as a power: \(\dfrac{54000}{x} = 54000x^{-1}\). The power rule gives</p>
+          \[ \begin{aligned} C'(x) &amp;= 60 + 54000\cdot(-1)x^{-2} \\ &amp;= 60 - \frac{54000}{x^2} \end{aligned} \]
+          <p>The derivative is a rational function, so it is written as a single fraction, and the equation \(C'(x) = 0\) is replaced by a system:</p>
+          <div class="fit-sm">\[ \frac{60x^2 - 54000}{x^2} = 0 \;\Longleftrightarrow\; \begin{cases} 60x^2 - 54000 = 0 \\ x^2 \neq 0 \end{cases} \]</div>
+          \[ \begin{gathered} 60x^2 = 54000 \;\Longrightarrow\; x^2 = 900 \\ \Longrightarrow\; x = \pm 30 \end{gathered} \]
+          <p>The denominator is zero only at \(x = 0\), and this value is not a root of the equation. The root \(x = -30\) cannot be a length, so it is dropped.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) The second derivative test</span></h4>
+          <p>Differentiating \(-54000x^{-2}\) once more, we get</p>
+          \[ C''(x) = -54000\cdot(-2)x^{-3} = \frac{108000}{x^3} \]
+          <p>so \(C''(30) = \dfrac{108000}{27000} = 4 &gt; 0\), and \(x = 30\) is a relative minimum point. The other side is</p>
+          \[ y = \frac{1800}{30} = 60 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The cost</span></h4>
+          <p>The cost of the fence is then</p>
+          \[ \begin{aligned} C(30) &amp;= 60\cdot 30 + \frac{54000}{30} \\ &amp;= 1800 + 1800 = 3600 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The cost is smallest when the wooden front side is 30&nbsp;metres long and the side next to it is 60&nbsp;metres long. The fence then costs 3600&nbsp;euros.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>A compost container</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A vegetable farm is making an open (without a lid) compost container with a rectangular base, and its volume has to be 16 cubic metres. The base has to be twice as long as it is wide. The material of the base costs 3&nbsp;euros a square metre and the material of the sides costs 2&nbsp;euros a square metre.
+        <ol type="a">
+          <li>Find the dimensions of the container that make the cost of the material smallest. Use the second derivative test, if possible.</li>
+          <li>Find that cost.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The dimensions and the cost</span></h4>
+          <p>Let \(x\) be the width of the base; then its length is \(2x\). Let \(h\) be the height of the container. All the dimensions are in metres.</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 360 230" role="img" aria-label="Compost container without a lid: base length 2x, width x, height h">
+          <path d="M70 190L140 145L320 145" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4" fill="none"/>
+          <path d="M140 145L140 45" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4" fill="none"/>
+          <path d="M70 90L250 90L250 190L70 190Z" stroke="var(--chart)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+          <path d="M70 90L140 45L320 45L250 90" stroke="var(--chart)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+          <path d="M250 190L320 145L320 45" stroke="var(--chart)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+          <text class="m" x="160.0" y="214" text-anchor="middle" style="font-size:18px">2<tspan class="i">x</tspan></text>
+          <text class="m" x="297.0" y="185.5" style="font-size:18px"><tspan class="i">x</tspan></text>
+          <text class="m" x="58" y="146.0" text-anchor="end" style="font-size:18px"><tspan class="i">h</tspan></text>
+          <text x="195.0" y="33" text-anchor="middle" font-style="italic" class="muted" style="font-size:15px">no lid</text>
+          </svg>
+          </figure>
+          <p>The base is a rectangle of area \(2x^2\). Two sides are rectangles \(x\) by \(h\), and the other two are \(2x\) by \(h\), so the area of the sides is \(2xh + 4xh = 6xh\). The cost of the material is</p>
+          \[ C = 3\cdot 2x^2 + 2\cdot 6xh = 6x^2 + 12xh \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Removing the second unknown</span></h4>
+          <p>The condition gives the volume of the container:</p>
+          \[ 2x^2h = 16 \;\Longrightarrow\; h = \frac{8}{x^2} \]
+          <p>Substituting it into the cost removes the second unknown:</p>
+          \[ \begin{aligned} C(x) &amp;= 6x^2 + 12x\cdot\frac{8}{x^2} \\ &amp;= 6x^2 + \frac{96}{x},\quad x &gt; 0 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point</span></h4>
+          <p>Writing the second term as a power, \(\dfrac{96}{x} = 96x^{-1}\), and applying the power rule, we get</p>
+          \[ C'(x) = 12x + 96\cdot(-1)x^{-2} = 12x - \frac{96}{x^2} \]
+          <p>The derivative is a rational function, so it is written as a single fraction, and the equation \(C'(x) = 0\) is replaced by a system:</p>
+          <div class="fit-sm">\[ \frac{12x^3 - 96}{x^2} = 0 \;\Longleftrightarrow\; \begin{cases} 12x^3 - 96 = 0 \\ x^2 \neq 0 \end{cases} \]</div>
+          \[ 12x^3 = 96 \;\Longrightarrow\; x^3 = 8 \;\Longrightarrow\; x = 2 \]
+          <p>The denominator is zero only at \(x = 0\), and this value is not a solution.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) The second derivative test</span></h4>
+          <p>Differentiating \(-96x^{-2}\) once more, we get</p>
+          \[ C''(x) = 12 - 96\cdot(-2)x^{-3} = 12 + \frac{192}{x^3} \]
+          <p>so \(C''(2) = 12 + \dfrac{192}{8} = 12 + 24 = 36 &gt; 0\), and \(x = 2\) is a relative minimum point. The other two dimensions are</p>
+          \[ 2x = 4;\qquad h = \frac{8}{2^2} = 2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The cost</span></h4>
+          <p>The cost of the material is then</p>
+          \[ C(2) = 6\cdot 2^2 + \frac{96}{2} = 24 + 48 = 72 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The cost is smallest when the base of the container is 2&nbsp;metres by 4&nbsp;metres and the height is 2&nbsp;metres. The material then costs 72&nbsp;euros.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Coffee packaging for shipping</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A coffee roasting workshop sends coffee beans in cylindrical packages. A courier service accepts such a parcel only if the length and the girth of the package together are not more than 120 centimetres. The girth is the length of the circle of the cross-section of the cylinder. To fit as much coffee as possible into one parcel, the workshop wants the volume of the package to be as large as possible.
+        <ol type="a">
+          <li>Find the dimensions of the package of the largest volume that the courier service accepts. Use the second derivative test, if possible.</li>
+          <li>Find that volume.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The dimensions and the volume</span></h4>
+          <p>Let \(r\) be the radius and \(l\) the length of the package, in centimetres. The girth is \(2\pi r\).</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 360 220" role="img" aria-label="Cylindrical package: radius r, length l, girth 2πr">
+          <path d="M80 50L280 50M80 160L280 160" stroke="var(--chart)" stroke-width="2.5" fill="none"/>
+          <ellipse cx="80" cy="105" rx="20" ry="55" fill="var(--surface)" stroke="var(--chart)" stroke-width="2.5"/>
+          <ellipse cx="280" cy="105" rx="20" ry="55" fill="none" stroke="var(--chart)" stroke-width="2.5"/>
+          <line class="ax" x1="80" y1="105" x2="80" y2="58"/><path class="ah" d="M80 51L75.5 60L84.5 60Z"/>
+          <text class="m" x="88" y="89" style="font-size:18px"><tspan class="i">r</tspan></text>
+          <line class="ax" x1="88" y1="182" x2="272" y2="182"/><path class="ah" d="M80 182L89 177.5L89 186.5Z"/><path class="ah" d="M280 182L271 177.5L271 186.5Z"/>
+          <text class="m" x="180.0" y="204" text-anchor="middle" style="font-size:18px"><tspan class="i">l</tspan></text>
+          <text x="180.0" y="36" text-anchor="middle" font-style="italic" style="font-size:16px">girth 2π<tspan class="i">r</tspan></text>
+          </svg>
+          </figure>
+          <p>The volume of a cylinder is \(V = \pi r^2 l\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Removing the second unknown</span></h4>
+          <p>For the largest package the length and the girth together are exactly 120 centimetres, so the condition is</p>
+          \[ 2\pi r + l = 120 \;\Longrightarrow\; l = 120 - 2\pi r \]
+          <p>Substituting it into the volume removes the second unknown:</p>
+          \[ \begin{aligned} V(r) &amp;= \pi r^2(120 - 2\pi r) \\ &amp;= 120\pi r^2 - 2\pi^2 r^3,\quad 0 &lt; r &lt; \frac{60}{\pi} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point</span></h4>
+          <p>\(\pi\) is a number and not a variable, so the power rule gives</p>
+          \[ V'(r) = 240\pi r - 6\pi^2 r^2 \]
+          <p>The critical points come from \(V'(r) = 0\). Taking out the common factor \(6\pi r\), we get</p>
+          \[ \begin{gathered} 6\pi r(40 - \pi r) = 0 \\ \Longrightarrow\; r = 0\quad\text{or}\quad \pi r = 40 \\ \Longrightarrow\; r = \frac{40}{\pi} \approx 12.73 \end{gathered} \]
+          <p>A package of radius \(r = 0\) does not exist, so this root is dropped.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) The second derivative test</span></h4>
+          <p>Differentiating once more:</p>
+          \[ V''(r) = 240\pi - 12\pi^2 r \]
+          <p>At the critical point we get</p>
+          \[ \begin{aligned} V''\!\left(\frac{40}{\pi}\right) &amp;= 240\pi - 12\pi^2\cdot\frac{40}{\pi} \\ &amp;= 240\pi - 480\pi = -240\pi &lt; 0 \end{aligned} \]
+          <p>so \(r = \dfrac{40}{\pi}\) is a relative maximum point. The length of the package is</p>
+          \[ l = 120 - 2\pi\cdot\frac{40}{\pi} = 120 - 80 = 40 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The volume</span></h4>
+          <p>The volume of this package is</p>
+          \[ \begin{aligned} V &amp;= \pi\cdot\left(\frac{40}{\pi}\right)^2\cdot 40 \\ &amp;= \frac{64000}{\pi} \approx 20371.83 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The volume is largest when the radius of the package is about 12.73&nbsp;centimetres and the length is 40&nbsp;centimetres. The volume is then about 20371.83&nbsp;cubic centimetres.
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 7 -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Connecting a farm to the fibre-optic network</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        An internet provider is connecting a farm \(E\) to its fibre-optic network. The farm is 3 kilometres from a straight road, and the point of the road nearest to it is \(A\). A network station \(S\) stands by the road, 10 kilometres from \(A\). The cable will be laid straight through the forest from \(E\) to a point \(P\) of the road between \(A\) and \(S\), and then along the road from \(P\) to \(S\). Laying the cable through the forest costs 2500&nbsp;euros a kilometre, and along the road 1500&nbsp;euros a kilometre.
+        <ol type="a">
+          <li>Find the position of the point \(P\) that makes the cost of the cable smallest. Use the second derivative test, if possible.</li>
+          <li>Find that cost.</li>
+        </ol>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The cost of the cable</span></h4>
+          <p>Let \(x\) be the distance from \(A\) to \(P\) in kilometres.</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 400 230" role="img" aria-label="Cable from the farm E through the forest to the road point P and along the road to the station S; EA = 3 km, AP = x, PS = 10 − x">
+          <rect x="10" y="20" width="380" height="130" fill="var(--chart-2)" fill-opacity=".12"/>
+          <line class="ax" x1="10" y1="150" x2="390" y2="150"/>
+          <line class="guide" x1="70" y1="60" x2="70" y2="150"/>
+          <line x1="70" y1="60" x2="170" y2="150" stroke="var(--chart)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="170" y1="150" x2="350" y2="150" stroke="var(--exam)" stroke-width="4.5" stroke-linecap="round"/>
+          <circle cx="70" cy="60" r="5.5" fill="var(--text)"/>
+          <text class="m" x="56" y="48" text-anchor="middle" style="font-size:18px"><tspan class="i">E</tspan></text>
+          <circle cx="70" cy="150" r="5.5" fill="var(--text)"/>
+          <text class="m" x="56" y="138" text-anchor="middle" style="font-size:18px"><tspan class="i">A</tspan></text>
+          <circle cx="170" cy="150" r="5.5" fill="var(--text)"/>
+          <text class="m" x="170" y="138" text-anchor="middle" style="font-size:18px"><tspan class="i">P</tspan></text>
+          <circle cx="350" cy="150" r="5.5" fill="var(--text)"/>
+          <text class="m" x="350" y="138" text-anchor="middle" style="font-size:18px"><tspan class="i">S</tspan></text>
+          <line class="ax" x1="44" y1="68" x2="44" y2="142"/><path class="ah" d="M44 60L39.5 69L48.5 69Z"/><path class="ah" d="M44 150L39.5 141L48.5 141Z"/>
+          <text x="37" y="111.0" text-anchor="end" style="font-size:16px">3</text>
+          <line class="ax" x1="78" y1="176" x2="162" y2="176"/><path class="ah" d="M70 176L79 171.5L79 180.5Z"/><path class="ah" d="M170 176L161 171.5L161 180.5Z"/>
+          <line class="ax" x1="178" y1="176" x2="342" y2="176"/><path class="ah" d="M170 176L179 171.5L179 180.5Z"/><path class="ah" d="M350 176L341 171.5L341 180.5Z"/>
+          <text class="m" x="120.0" y="198" text-anchor="middle" style="font-size:18px"><tspan class="i">x</tspan></text>
+          <text class="m" x="260.0" y="198" text-anchor="middle" style="font-size:18px">10 − <tspan class="i">x</tspan></text>
+          <text x="260" y="60" text-anchor="middle" font-style="italic" class="muted" style="font-size:16px">forest</text>
+          <text x="12" y="172" font-style="italic" class="muted" style="font-size:15px">road</text>
+          </svg>
+          </figure>
+          <p>The part of the cable through the forest is the hypotenuse of a right triangle with the legs 3 and \(x\). By the Pythagorean theorem its length is \(\sqrt{x^2 + 9}\), and the part along the road is \(10 - x\) long. The cost of the cable is</p>
+          \[ \begin{aligned} C(x) &amp;= 2500\sqrt{x^2 + 9} + 1500(10 - x), \\ &amp;\phantom{=}\; 0 \le x \le 10 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The first derivative</span></h4>
+          <p>The first term is a composite function: the outer function is the square root and the inner one is \(u(x) = x^2 + 9\). By the rule \(\left(\sqrt{u(x)}\right)' = \dfrac{u'(x)}{2\sqrt{u(x)}}\), we get</p>
+          \[ \left(\sqrt{x^2 + 9}\right)' = \frac{2x}{2\sqrt{x^2 + 9}} = \frac{x}{\sqrt{x^2 + 9}} \]
+          <p>so</p>
+          \[ C'(x) = \frac{2500x}{\sqrt{x^2 + 9}} - 1500 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The critical point</span></h4>
+          <p>The critical point comes from \(C'(x) = 0\):</p>
+          \[ \begin{gathered} \frac{2500x}{\sqrt{x^2 + 9}} = 1500 \\ \Longrightarrow\; 2500x = 1500\sqrt{x^2 + 9} \\ \Longrightarrow\; 5x = 3\sqrt{x^2 + 9} \end{gathered} \]
+          <p>When \(x \ge 0\), both sides of the equation are not negative, so they can be squared:</p>
+          \[ \begin{gathered} 25x^2 = 9\left(x^2 + 9\right) \;\Longrightarrow\; 16x^2 = 81 \\ \Longrightarrow\; x^2 = \frac{81}{16} \;\Longrightarrow\; x = 2.25 \end{gathered} \]
+          <p>The negative root cannot be a distance, so it is dropped.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>a) The second derivative test</span></h4>
+          <p>For the second derivative the first derivative is written as a product, with \(u(x) = 2500x\) and \(v(x) = \left(x^2 + 9\right)^{-\frac{1}{2}}\). Then \(u'(x) = 2500\), and \(v(x)\) is differentiated with the power form of the chain rule, with the inner function \(x^2 + 9\):</p>
+          \[ \begin{aligned} v'(x) &amp;= -\frac{1}{2}\left(x^2 + 9\right)^{-\frac{3}{2}}\cdot 2x \\ &amp;= -\frac{x}{\sqrt{\left(x^2 + 9\right)^3}} \end{aligned} \]
+          <p>Substituting into the product rule, we get</p>
+          \[ C''(x) = \frac{2500}{\sqrt{x^2 + 9}} - \frac{2500x^2}{\sqrt{\left(x^2 + 9\right)^3}} \]
+          <p>The common denominator is \(\sqrt{\left(x^2 + 9\right)^3}\), because \(\sqrt{\left(x^2 + 9\right)^3} = \left(x^2 + 9\right)\sqrt{x^2 + 9}\):</p>
+          \[ \begin{aligned} C''(x) &amp;= \frac{2500\left(x^2 + 9\right) - 2500x^2}{\sqrt{\left(x^2 + 9\right)^3}} \\ &amp;= \frac{22500}{\sqrt{\left(x^2 + 9\right)^3}} \end{aligned} \]
+          <p>This expression is positive for every \(x\), so \(x = 2.25\) is a relative minimum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The cost</span></h4>
+          <p>The part of the cable through the forest is \(\sqrt{2.25^2 + 9} = \sqrt{14.0625} = 3.75\)&nbsp;kilometres long, and the part along the road is \(10 - 2.25 = 7.75\)&nbsp;kilometres long, so the cost is</p>
+          \[ \begin{aligned} C(2.25) &amp;= 2500\cdot 3.75 + 1500\cdot 7.75 \\ &amp;= 9375 + 11625 = 21000 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            The cost is smallest when the point \(P\) lies 2.25&nbsp;kilometres from \(A\). The cable then costs 21000&nbsp;euros.
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: build the demand function or remove the second unknown, find the critical point, apply the second derivative test and answer all the questions of the problem. The answer gives the main functions, the critical point and the final results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A gym sells 300 memberships a month at the price of 40&nbsp;euros. At the price of 55&nbsp;euros only 240 memberships a month would be sold. The demand function is linear.</p>
+          <ol type="a">
+            <li>Find the number of memberships that gives the largest monthly revenue. Use the second derivative test, if possible.</li>
+            <li>Find the price and the revenue at that number.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The demand function:</strong></p>
+          \[ a = \frac{55 - 40}{240 - 300} = -0.25 \]
+          \[ b = 0.25\cdot 300 + 40 = 115 \]
+          \[ p = -0.25x + 115 \]
+          <p><strong>The objective function:</strong></p>
+          \[ R(x) = p\cdot x = -0.25x^2 + 115x \]
+          <p><strong>The derivative and the critical point:</strong></p>
+          \[ \begin{gathered} R'(x) = -0.5x + 115 = 0 \\ \Longrightarrow\; x = 230 \end{gathered} \]
+          \[ R''(x) = -0.5 &lt; 0 \]
+          <p><strong>Answer.</strong> The revenue is largest when 230 memberships a month are sold. The price is then 57.5&nbsp;euros and the revenue is 13225&nbsp;euros a month.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A bakery sells 480 cakes a week at the price of 12&nbsp;euros. If the price is raised by 0.5&nbsp;euro, 20 fewer cakes a week are sold. Producing one cake costs the bakery 4&nbsp;euros.</p>
+          <ol type="a">
+            <li>Find the number of cakes that gives the largest weekly profit. Use the second derivative test, if possible.</li>
+            <li>Find the price and the profit at that number.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The demand function:</strong></p>
+          \[ a = \frac{\Delta p}{\Delta x} = \frac{0.5}{-20} = -0.025 \]
+          \[ b = 0.025\cdot 480 + 12 = 24 \]
+          \[ p = -0.025x + 24 \]
+          <p><strong>The objective function:</strong></p>
+          \[ \begin{aligned} P(x) &amp;= p\cdot x - 4x \\ &amp;= -0.025x^2 + 20x \end{aligned} \]
+          <p><strong>The derivative and the critical point:</strong></p>
+          \[ \begin{gathered} P'(x) = -0.05x + 20 = 0 \\ \Longrightarrow\; x = 400 \end{gathered} \]
+          \[ P''(x) = -0.05 &lt; 0 \]
+          <p><strong>Answer.</strong> The profit is largest when 400 cakes a week are sold. The price of a cake is then 14&nbsp;euros and the profit is 4000&nbsp;euros a week.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A rectangular plot of 7200 square metres on the bank of a river is to be fenced on three sides. The side along the river needs no fence.</p>
+          <ol type="a">
+            <li>Find the dimensions of the plot that need the least fencing. Use the second derivative test, if possible.</li>
+            <li>Find the length of that fence.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p>\(x\) is the length of the side along the river, and \(y\) is the length of the side next to it, in metres.</p>
+          <p><strong>The objective function and the condition:</strong></p>
+          \[ F = x + 2y \]
+          \[ xy = 7200 \;\Longrightarrow\; y = \frac{7200}{x} \]
+          \[ F(x) = x + \frac{14400}{x} \]
+          <p><strong>The derivative and the critical point:</strong></p>
+          \[ \begin{aligned} F'(x) &amp;= 1 - \frac{14400}{x^2} \\ &amp;= \frac{x^2 - 14400}{x^2} = 0 \end{aligned} \]
+          \[ \Longrightarrow\; x = 120 \]
+          <p>The root \(x = -120\) cannot be a length, so it is dropped; \(F''(x) = \dfrac{28800}{x^3} &gt; 0\).</p>
+          <p><strong>Answer.</strong> The least fencing is needed when the side along the river is 120&nbsp;metres long and the side next to it is 60&nbsp;metres long. The fence is then 240&nbsp;metres long.</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A paint producer packs paint in closed cylindrical cans that hold 1 litre (1000 cubic centimetres).</p>
+          <ol type="a">
+            <li>Find the radius and the height of the can that uses the least sheet metal. Give the answer to two decimal places. Use the second derivative test, if possible.</li>
+            <li>Find the area of the sheet metal used, to two decimal places.</li>
+          </ol>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function and the condition:</strong></p>
+          \[ S = 2\pi r^2 + 2\pi rh \]
+          \[ \pi r^2h = 1000 \;\Longrightarrow\; h = \frac{1000}{\pi r^2} \]
+          \[ S(r) = 2\pi r^2 + \frac{2000}{r},\qquad r &gt; 0 \]
+          <p><strong>The derivative and the critical point:</strong></p>
+          \[ \begin{aligned} S'(r) &amp;= 4\pi r - \frac{2000}{r^2} \\ &amp;= \frac{4\pi r^3 - 2000}{r^2} = 0 \end{aligned} \]
+          \[ \begin{gathered} \Longrightarrow\; r^3 = \frac{500}{\pi} \\ \Longrightarrow\; r = \sqrt[3]{\frac{500}{\pi}} \approx 5.42 \end{gathered} \]
+          <p>\(S''(r) = 4\pi + \dfrac{4000}{r^3} &gt; 0\).</p>
+          <p><strong>Answer.</strong> The least sheet metal is needed when the radius is about 5.42&nbsp;centimetres and the height 10.84&nbsp;centimetres. The area is then about 553.58&nbsp;square centimetres.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapters 6.4–6.6</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 10.5</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
