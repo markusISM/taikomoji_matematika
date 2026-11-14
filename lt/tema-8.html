@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=83">
+<link rel="stylesheet" href="../assets/css/style.css?v=84">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=83"></script>
+<script defer src="../assets/js/site.js?v=84"></script>
 </head>
 <body data-page="t8">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -116,9 +116,9 @@
       <div class="concept-head"><span class="num">5</span><h3>Pirmos eilės dalinės išvestinės</h3></div>
       <p>Vieno kintamojo funkcija kinta keičiantis vieninteliam jos kintamajam. Funkcija \(z = f(x;\,y)\) gali kisti dviem būdais: keičiantis \(x\), kai \(y\) nekinta, arba keičiantis \(y\), kai \(x\) nekinta. Kiekvienam iš šių būdų apibrėžiama atskira išvestinė. Jos vadinamos <strong>dalinėmis išvestinėmis</strong>.</p>
       <p>Funkcijos \(z = f(x;\,y)\) pirmos eilės dalinė išvestinė pagal kintamąjį \(x\):</p>
-      <div class="formula fit">\[ \begin{gathered} f'_x(x;\,y) = z'_x = \\ \lim_{\Delta x \to 0}\frac{f(x + \Delta x;\,y) - f(x;\,y)}{\Delta x} \end{gathered} \]</div>
+      <div class="formula fit fit-xs">\[ f'_x(x;\,y) = z'_x = \lim_{\Delta x \to 0}\frac{f(x + \Delta x;\,y) - f(x;\,y)}{\Delta x} \]</div>
       <p>Funkcijos \(z = f(x;\,y)\) pirmos eilės dalinė išvestinė pagal kintamąjį \(y\):</p>
-      <div class="formula fit">\[ \begin{gathered} f'_y(x;\,y) = z'_y = \\ \lim_{\Delta y \to 0}\frac{f(x;\,y + \Delta y) - f(x;\,y)}{\Delta y} \end{gathered} \]</div>
+      <div class="formula fit fit-xs">\[ f'_y(x;\,y) = z'_y = \lim_{\Delta y \to 0}\frac{f(x;\,y + \Delta y) - f(x;\,y)}{\Delta y} \]</div>
       <p>Pirmos eilės dalinės išvestinės taip pat žymimos</p>
       <div class="formula">\[ \frac{\partial z}{\partial x},\quad \frac{\partial z}{\partial y},\quad \frac{\partial f}{\partial x},\quad \frac{\partial f}{\partial y} \]</div>
       <p>Pirmojoje riboje pokytis suteikiamas tik \(x\), o \(y\) abiejuose skaitiklio nariuose išlieka toks pats. Taigi \(z'_x\) yra funkcijos kitimo greitis pagal \(x\), kai \(y\) nekinta: \(x\) padidėjus vienetu, o \(y\) nepasikeitus, funkcijos pokytis apytiksliai lygus \(z'_x\). Analogiškai \(z'_y\) yra kitimo greitis pagal \(y\), kai \(x\) nekinta.</p>
