@@ -1145,3 +1145,6 @@ svg text.sf-ton { fill: var(--exam); font-weight: 700; font-size: 13px; }
 .sf-fn .katex { font-size: 1em; }
 .sf-vals { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 6px; margin-top: 10px; font-size: 1.05rem; min-height: 1.8em; text-align: center; }
 .tryit.sf .ctrl { max-width: 520px; margin-left: auto; margin-right: auto; }
+/* Ilgos vienos eilutės formulės siauriems ekranams (pvz., dalinių išvestinių apibrėžimai) */
+@media (max-width: 400px) { .formula.fit-xs .katex-display > .katex { font-size: .79em; } }
+@media (max-width: 340px) { .formula.fit-xs .katex-display > .katex { font-size: .66em; } }
