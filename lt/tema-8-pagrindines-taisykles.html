@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagrindinės dalinių išvestinių skaičiavimo taisyklės · Taikomoji matematika</title>
+<meta name="description" content="Dalinių išvestinių skaičiavimo pavyzdžiai žingsnis po žingsnio, kai kintamasis, pagal kurį nediferencijuojama, laikomas konstanta: daugianariai, laipsniai, šaknys ir dalinių išvestinių reikšmės taške. Uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=85">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=85"></script>
+</head>
+<body data-page="m8a">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">8 tema · Dalinių išvestinių skaičiavimas · 1 skyrius</span>
+    <h1>Pagrindinės dalinių išvestinių skaičiavimo taisyklės</h1>
+    <p class="lead">Šiame skyriuje rasite dalinių išvestinių skaičiavimo pavyzdžių, kuriuose kintamasis, pagal kurį nediferencijuojama, laikomas konstanta, ir uždavinių savarankiškam darbui. Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Taisyklės</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ TAISYKLĖS ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">Taikomos taisyklės</h2>
+    <article class="card">
+      <p>Ieškodami \(z'_x\), laikome \(y\) konstanta ir diferencijuojame pagal \(x\). Ieškodami \(z'_y\), laikome \(x\) konstanta ir diferencijuojame pagal \(y\). Naujų diferencijavimo taisyklių nereikia: konstanta reiškinyje gali būti atskiras narys arba daugiklis, o abiem atvejais taisyklės jau žinomos.</p>
+      <div class="formula">\[ (c)' = 0;\qquad \big(c\cdot u(x)\big)' = c\cdot u'(x) \]</div>
+      <div class="anat dtbl dtbl-rows" style="margin-top:12px">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Narys be diferencijavimo kintamojo</strong></div>
+          <p class="lvl-txt">Narys, kuriame nėra kintamojo, pagal kurį diferencijuojama, yra konstanta, todėl jo išvestinė lygi 0.</p>
+          <ul class="flist">
+            <li>\((4y^2)'_x = 0\)</li>
+            <li>\((\ln y)'_x = 0;\quad (7)'_x = 0\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Daugiklis be diferencijavimo kintamojo</strong></div>
+          <p class="lvl-txt">Daugiklis, kuriame nėra kintamojo, pagal kurį diferencijuojama, yra pastovus. Jis paliekamas, o diferencijuojama tik likusi nario dalis.</p>
+          <ul class="flist">
+            <li>\((x^2y)'_x = 2x\cdot y\)</li>
+            <li>\((x^2y)'_y = x^2\cdot 1 = x^2\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Šaknys ir trupmenos – laipsniais</strong></div>
+          <p class="lvl-txt">Prieš diferencijuodami šaknis ir trupmenas užrašykite laipsniais:</p>
+          <ul class="flist">
+            <li>\(\sqrt[n]{x^m} = x^{\frac{m}{n}};\quad \dfrac{1}{x^n} = x^{-n}\)</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:12px">Elementariųjų funkcijų išvestinės pateiktos 6 temos <a href="tema-6.html#lentele">išvestinių lentelėje</a>. Daugiau apie tai, kaip skaičiuojama dalinė išvestinė, rasite 8 temos puslapio kortelėse <a href="tema-8.html#skaiciavimas">„Kaip skaičiuojama dalinė išvestinė“</a> ir <a href="tema-8.html#eiga">„Skaičiavimo eiga“</a>.</p>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+
+    <!-- 1 pavyzdys: TM 8.1, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Kiekviename naryje – vienas kintamasis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite funkcijos \(z = 3x^2 + 5y^3 - 4x + 7y - 2\) pirmos eilės dalines išvestines.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pagal \(x\)</span></h4>
+          <p>Čia \(y\) yra konstanta. Nariuose \(5y^3\), \(7y\) ir \(2\) nėra \(x\), todėl jų išvestinės lygios 0. Likusius du narius diferencijuojame pagal laipsninės funkcijos išvestinės formulę:</p>
+          \[ \begin{aligned} z'_x &amp;= (3x^2)'_x + (5y^3)'_x - (4x)'_x \\ &amp;\phantom{=}\; + (7y)'_x - (2)'_x \\ &amp;= 6x + 0 - 4 + 0 - 0 = 6x - 4 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pagal \(y\)</span></h4>
+          <p>Dabar \(x\) yra konstanta. Nariuose \(3x^2\), \(4x\) ir \(2\) nėra \(y\):</p>
+          \[ z'_y = 0 + 15y^2 - 0 + 7 - 0 = 15y^2 + 7 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} z'_x &amp;= 6x - 4 \\ z'_y &amp;= 15y^2 + 7 \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 8.1, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Nariai su abiem kintamaisiais</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite funkcijos \(z = 4x^3y^2 - 5xy^4 + 2x - 6y\) pirmos eilės dalines išvestines.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pagal \(x\)</span></h4>
+          <p>Pirmajame naryje \(4y^2\) yra pastovus daugiklis, o \(x^3\) išvestinė lygi \(3x^2\), todėl gauname \(4y^2\cdot 3x^2 = 12x^2y^2\). Antrajame naryje \(5y^4\) yra pastovus daugiklis prie \(x\); kadangi \(x\) išvestinė lygi 1, po minuso ženklo lieka \(5y^4\). Trečiojo nario išvestinė lygi 2, o paskutiniame nėra \(x\):</p>
+          \[ \begin{aligned} z'_x &amp;= 4y^2\cdot 3x^2 - 5y^4\cdot 1 + 2 - 0 \\ &amp;= 12x^2y^2 - 5y^4 + 2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pagal \(y\)</span></h4>
+          <p>Pirmajame naryje \(4x^3\) yra pastovus daugiklis prie \(y^2\), todėl gauname \(4x^3\cdot 2y = 8x^3y\). Antrajame naryje \(5x\) yra pastovus daugiklis prie \(y^4\), todėl po minuso ženklo gauname \(5x\cdot 4y^3 = 20xy^3\). Trečiajame naryje nėra \(y\), o paskutinis diferencijuojamas kaip tiesinė funkcija:</p>
+          \[ \begin{aligned} z'_y &amp;= 4x^3\cdot 2y - 5x\cdot 4y^3 + 0 - 6 \\ &amp;= 8x^3y - 20xy^3 - 6 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} z'_x &amp;= 12x^2y^2 - 5y^4 + 2 \\ z'_y &amp;= 8x^3y - 20xy^3 - 6 \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 8.1, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Šaknis ir trupmena</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite funkcijos \(z = 8\sqrt{x}\cdot y^3 + \dfrac{x^2}{y}\) pirmos eilės dalines išvestines.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Pirmiausia šaknis ir trupmenas užrašome laipsniais pagal formules \(\sqrt[n]{x^m} = x^{\frac{m}{n}}\) ir \(\dfrac{1}{x^n} = x^{-n}\):</p>
+          \[ z = 8x^{\frac{1}{2}}y^3 + x^2y^{-1} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pagal \(x\)</span></h4>
+          <p>Daugikliai \(8y^3\) ir \(y^{-1}\) yra konstantos, o \(x\) laipsniai diferencijuojami:</p>
+          \[ \begin{aligned} z'_x &amp;= 8y^3\cdot \frac{1}{2}x^{-\frac{1}{2}} + y^{-1}\cdot 2x \\ &amp;= \frac{4y^3}{\sqrt{x}} + \frac{2x}{y} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pagal \(y\)</span></h4>
+          <p>Daugikliai \(8x^{\frac{1}{2}}\) ir \(x^2\) yra konstantos, o \(y\) laipsniai diferencijuojami:</p>
+          \[ \begin{aligned} z'_y &amp;= 8x^{\frac{1}{2}}\cdot 3y^2 + x^2\cdot(-1)y^{-2} \\ &amp;= 24\sqrt{x}\cdot y^2 - \frac{x^2}{y^2} \end{aligned} \]
+          <p>Antrasis funkcijos narys yra trupmena, tačiau <a href="tema-6.html#dalmens">dalmens taisyklės</a> neprireikė. Diferencijuojant pagal \(x\), vardiklis yra konstanta, o pagal \(y\) – skaitiklis. Abiem atvejais narį galima užrašyti kaip pastovaus daugiklio ir laipsnio sandaugą.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} z'_x &amp;= \frac{4y^3}{\sqrt{x}} + \frac{2x}{y} \\ z'_y &amp;= 24\sqrt{x}\cdot y^2 - \frac{x^2}{y^2} \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 8.1, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Laipsniai su dešimtainiais rodikliais</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite funkcijos \(z = 12x^{0{,}25}y^{0{,}75}\) pirmos eilės dalines išvestines.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pagal \(x\)</span></h4>
+          <p>Daugiklis \(12y^{0{,}75}\) yra pastovus. Reiškiniui \(x^{0{,}25}\) taikome laipsninės funkcijos išvestinės formulę; naujasis laipsnio rodiklis yra \(0{,}25 - 1 = -0{,}75\):</p>
+          \[ \begin{aligned} z'_x &amp;= 12y^{0{,}75}\cdot 0{,}25x^{-0{,}75} \\ &amp;= 3x^{-0{,}75}y^{0{,}75} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pagal \(y\)</span></h4>
+          <p>Daugiklis \(12x^{0{,}25}\) yra pastovus. Reiškiniui \(y^{0{,}75}\) taikome laipsninės funkcijos išvestinės formulę; naujasis laipsnio rodiklis yra \(0{,}75 - 1 = -0{,}25\):</p>
+          \[ \begin{aligned} z'_y &amp;= 12x^{0{,}25}\cdot 0{,}75y^{-0{,}25} \\ &amp;= 9x^{0{,}25}y^{-0{,}25} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} z'_x &amp;= 3x^{-0{,}75}y^{0{,}75} \\ z'_y &amp;= 9x^{0{,}25}y^{-0{,}25} \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 8.1, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Dalinių išvestinių reikšmės taške</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite funkcijos \(f(x;\,y) = x^3 - 2x^2y + 3y^2\) dalinių išvestinių reikšmes \(f'_x(2;\,1)\) ir \(f'_y(2;\,1)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Dalinės išvestinės</span></h4>
+          <p>Pirmiausia randame dalines išvestines, diferencijuodami po vieną narį kaip 2 pavyzdyje:</p>
+          \[ \begin{aligned} f'_x(x;\,y) &amp;= 3x^2 - 4xy \\ f'_y(x;\,y) &amp;= -2x^2 + 6y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Reikšmės taške</span></h4>
+          <p>Taško koordinates įstatome į jau apskaičiuotas išvestines, o ne į pradinę funkciją prieš diferencijuodami:</p>
+          \[ \begin{aligned} f'_x(2;\,1) &amp;= 3\cdot 2^2 - 4\cdot 2\cdot 1 \\ &amp;= 12 - 8 = 4 \\[6pt] f'_y(2;\,1) &amp;= -2\cdot 2^2 + 6\cdot 1 \\ &amp;= -8 + 6 = -2 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} f'_x(2;\,1) &amp;= 4 \\ f'_y(2;\,1) &amp;= -2 \end{aligned} \]
+            <p>Taške \((2;\,1)\), kintamajam \(x\) padidėjus vienetu, o \(y\) išlikus lygiam 1, funkcijos reikšmė padidėja apytiksliai 4. Kintamajam \(y\) padidėjus vienetu, o \(x\) išlikus lygiam 2, ji sumažėja apytiksliai 2.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: pasirinkite kintamąjį, nustatykite, kurie nariai ir daugikliai yra konstantos, diferencijuokite ir supaprastinkite rezultatą. Tada pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 8.1 rinkinys, 1 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = 5x^2 - 3y^4 + 2x - 9y + 4\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 10x + 2\);&nbsp;&nbsp; \(z'_y = -12y^3 - 9\)</p>
+        </div>
+      </article>
+
+      <!-- 1 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = 2x^4y - 7x^2y^3 + 3y\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 8x^3y - 14xy^3\);&nbsp;&nbsp; \(z'_y = 2x^4 - 21x^2y^2 + 3\)</p>
+        </div>
+      </article>
+
+      <!-- 1 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = x^3y^2 + 4xy - 6x + y^2\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 3x^2y^2 + 4y - 6\);&nbsp;&nbsp; \(z'_y = 2x^3y + 4x + 2y\)</p>
+        </div>
+      </article>
+
+      <!-- 1 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = 6\sqrt{x}\cdot y^2 - \dfrac{3x}{y}\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{3y^2}{\sqrt{x}} - \dfrac{3}{y}\);&nbsp;&nbsp; \(z'_y = 12\sqrt{x}\cdot y + \dfrac{3x}{y^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 1 e -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = \dfrac{4y}{x^2} - \dfrac{x^3}{y}\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = -\dfrac{8y}{x^3} - \dfrac{3x^2}{y}\);&nbsp;&nbsp; \(z'_y = \dfrac{4}{x^2} + \dfrac{x^3}{y^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 1 f -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = 20x^{0{,}4}y^{0{,}6}\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 8x^{-0{,}6}y^{0{,}6}\);&nbsp;&nbsp; \(z'_y = 12x^{0{,}4}y^{-0{,}4}\)</p>
+        </div>
+      </article>
+
+      <!-- 1 g -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = x^2e^y + y\ln x\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 2xe^y + \dfrac{y}{x}\);&nbsp;&nbsp; \(z'_y = x^2e^y + \ln x\)</p>
+        </div>
+      </article>
+
+      <!-- 1 h -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = 9\sqrt[3]{x^2}\cdot y - 2y^4\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{6y}{\sqrt[3]{x}}\);&nbsp;&nbsp; \(z'_y = 9\sqrt[3]{x^2} - 8y^3\)</p>
+        </div>
+      </article>
+
+      <!-- 7 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite funkcijos \(f(x;\,y) = x^3 + 2xy^2 - 5y\) pirmos eilės dalinių išvestinių reikšmes taške \((1;\,2)\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'_x(x;\,y) = 3x^2 + 2y^2\);&nbsp;&nbsp; \(f'_y(x;\,y) = 4xy - 5\)</p>
+          <p>\(f'_x(1;\,2) = 11\);&nbsp;&nbsp; \(f'_y(1;\,2) = 3\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">7 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
