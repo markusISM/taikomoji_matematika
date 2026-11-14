@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dalmens išvestinės taisyklė · Taikomoji matematika</title>
+<meta name="description" content="Dalinių išvestinių skaičiavimo pavyzdžiai žingsnis po žingsnio, kai taikoma dalmens taisyklė: kada jos reikia ir kada vardiklis yra konstanta. Uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=87">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=87"></script>
+</head>
+<body data-page="m8c">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">8 tema · Dalinių išvestinių skaičiavimas · 3 skyrius</span>
+    <h1>Dalmens išvestinės taisyklė</h1>
+    <p class="lead">Šiame skyriuje rasite dalinių išvestinių skaičiavimo pavyzdžių, kuriuose taikoma dalmens taisyklė, ir uždavinių savarankiškam darbui. Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Taisyklės</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ TAISYKLĖS ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">Taikomos taisyklės</h2>
+    <article class="card">
+      <p>Taikoma ta pati 6 temos dalmens taisyklė, tik kiekviena išvestinė skaičiuojama pagal pasirinktą kintamąjį:</p>
+      <div class="formula">\[ \begin{aligned} \left(\frac{u}{v}\right)'_x &amp;= \frac{u'_x\cdot v - u\cdot v'_x}{v^2} \\[12pt] \left(\frac{u}{v}\right)'_y &amp;= \frac{u'_y\cdot v - u\cdot v'_y}{v^2} \end{aligned} \]</div>
+      <p>Skaitiklį pažymėkime \(u\), o vardiklį – \(v\). Prieš taikant taisyklę verta patikrinti, ar jos reikia: konstantą žyminti raidė dažnai leidžia trupmeną užrašyti paprasčiau, su pastoviu daugikliu.</p>
+      <div class="anat dtbl dtbl-rows" style="margin-top:12px">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Vardiklis priklauso nuo kintamojo</strong></div>
+          <p class="lvl-txt">Diferencijuojant pagal pasirinktą kintamąjį, dalmens taisyklės reikia tik tada, kai vardiklis priklauso nuo to kintamojo.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Vardiklis nuo kintamojo nepriklauso</strong></div>
+          <p class="lvl-txt">Kitu atveju vardiklis yra konstanta. Trupmeną galima užrašyti kaip pastovaus daugiklio ir laipsnio sandaugą, kaip 1 skyriaus <a href="tema-8-pagrindines-taisykles.html#pavyzdys-3">3 pavyzdyje</a>.</p>
+        </div>
+      </div>
+      <p style="margin-top:12px">Dalmens taisyklės paaiškinimas pateiktas 6 temos puslapio <a href="tema-6.html#dalmens">dalmens taisyklės kortelėje</a>, o dalinių išvestinių skaičiavimo eiga – 8 temos puslapio kortelėje <a href="tema-8.html#eiga">„Skaičiavimo eiga“</a>.</p>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+
+    <!-- 1 pavyzdys: TM 8.1, 11 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Dviejų tiesinių reiškinių dalmuo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite funkcijos \(z = \dfrac{2x + y}{x - 3y}\) pirmos eilės dalines išvestines.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Skaitiklis ir vardiklis</span></h4>
+          <p>Vardiklyje yra ir \(x\), ir \(y\), todėl abiem dalinėms išvestinėms reikia dalmens taisyklės. Pažymėkime</p>
+          \[ u = 2x + y;\qquad v = x - 3y \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pagal \(x\)</span></h4>
+          <p>Skaitiklio ir vardiklio išvestinės yra \(u'_x = 2\) ir \(v'_x = 1\):</p>
+          \[ \begin{aligned} z'_x &amp;= \frac{2(x - 3y) - (2x + y)\cdot 1}{(x - 3y)^2} \\[6pt] &amp;= \frac{2x - 6y - 2x - y}{(x - 3y)^2} = -\frac{7y}{(x - 3y)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pagal \(y\)</span></h4>
+          <p>Skaitiklio ir vardiklio išvestinės yra \(u'_y = 1\) ir \(v'_y = -3\):</p>
+          \[ \begin{aligned} z'_y &amp;= \frac{1\cdot(x - 3y) - (2x + y)\cdot(-3)}{(x - 3y)^2} \\[6pt] &amp;= \frac{x - 3y + 6x + 3y}{(x - 3y)^2} = \frac{7x}{(x - 3y)^2} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} z'_x &amp;= -\frac{7y}{(x - 3y)^2} \\[10pt] z'_y &amp;= \frac{7x}{(x - 3y)^2} \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 8.1, 12 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Skaitiklyje – sandauga, vardiklyje – kvadratų suma</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite funkcijos \(z = \dfrac{xy}{x^2 + y^2}\) pirmos eilės dalines išvestines.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Skaitiklis ir vardiklis</span></h4>
+          <p>Pažymėkime</p>
+          \[ u = xy;\qquad v = x^2 + y^2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pagal \(x\)</span></h4>
+          <p>Skaitiklyje \(y\) yra pastovus daugiklis, todėl \(u'_x = y\); vardiklyje \(y^2\) yra konstanta, todėl \(v'_x = 2x\):</p>
+          \[ \begin{aligned} z'_x &amp;= \frac{y(x^2 + y^2) - xy\cdot 2x}{(x^2 + y^2)^2} \\[6pt] &amp;= \frac{x^2y + y^3 - 2x^2y}{(x^2 + y^2)^2} \\[6pt] &amp;= \frac{y^3 - x^2y}{(x^2 + y^2)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pagal \(y\)</span></h4>
+          <p>Analogiškai gauname \(u'_y = x\) ir \(v'_y = 2y\):</p>
+          \[ \begin{aligned} z'_y &amp;= \frac{x(x^2 + y^2) - xy\cdot 2y}{(x^2 + y^2)^2} \\[6pt] &amp;= \frac{x^3 + xy^2 - 2xy^2}{(x^2 + y^2)^2} \\[6pt] &amp;= \frac{x^3 - xy^2}{(x^2 + y^2)^2} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} z'_x &amp;= \frac{y^3 - x^2y}{(x^2 + y^2)^2} \\[10pt] z'_y &amp;= \frac{x^3 - xy^2}{(x^2 + y^2)^2} \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: kiekvienam kintamajam patikrinkite, ar nuo jo priklauso vardiklis, raskite skaitiklio ir vardiklio išvestines, taikykite dalmens taisyklę ir supaprastinkite skaitiklį. Tada pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 8.1 rinkinys, 3 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = \dfrac{3x - y}{x + 4y}\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{13y}{(x + 4y)^2}\);&nbsp;&nbsp; \(z'_y = -\dfrac{13x}{(x + 4y)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 3 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = \dfrac{x^2}{x + y}\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{x^2 + 2xy}{(x + y)^2}\);&nbsp;&nbsp; \(z'_y = -\dfrac{x^2}{(x + y)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 3 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = \dfrac{y}{x^2 + y^2}\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = -\dfrac{2xy}{(x^2 + y^2)^2}\);&nbsp;&nbsp; \(z'_y = \dfrac{x^2 - y^2}{(x^2 + y^2)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 3 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = \dfrac{x^2 - y^2}{x^2 + y^2}\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{4xy^2}{(x^2 + y^2)^2}\);&nbsp;&nbsp; \(z'_y = -\dfrac{4x^2y}{(x^2 + y^2)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 3 e -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = \dfrac{e^x}{x + y}\) pirmos eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{e^x(x + y - 1)}{(x + y)^2}\);&nbsp;&nbsp; \(z'_y = -\dfrac{e^x}{(x + y)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 7 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite funkcijos \(f(x;\,y) = \dfrac{x}{x + 2y}\) pirmos eilės dalinių išvestinių reikšmes taške \((2;\,1)\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'_x(x;\,y) = \dfrac{2y}{(x + 2y)^2}\);&nbsp;&nbsp; \(f'_y(x;\,y) = -\dfrac{2x}{(x + 2y)^2}\)</p>
+          <p>\(f'_x(2;\,1) = 0{,}125\);&nbsp;&nbsp; \(f'_y(2;\,1) = -0{,}25\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">7 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
