@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ribinė analizė (du produktai) · Taikomoji matematika</title>
+<meta name="description" content="Du produktus gaminančios įmonės pajamos, sąnaudos ir pelnas, ribiniai dydžiai kiekvieno produkto atžvilgiu ir jų interpretavimas. Pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=91">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=91"></script>
+</head>
+<body data-page="m81">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">8 tema · Taikymai · 1 skyrius</span>
+    <h1>Ribinė analizė</h1>
+    <p class="lead">Šiame skyriuje nagrinėjama, kaip du produktus gaminančios įmonės pajamos, sąnaudos ir pelnas kinta keičiantis vieno produkto kiekiui, kai kito produkto kiekis nekinta. Šiuos pokyčius apytiksliai nusako dalinės išvestinės – ribiniai dydžiai.</p>
+    <ul class="jump">
+      <li><a href="#funkcijos">Funkcijos</a></li>
+      <li><a href="#ribiniai">Ribiniai dydžiai</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. FUNKCIJOS ============ -->
+  <section class="section" id="funkcijos" aria-labelledby="h-func">
+    <h2 id="h-func">Dviejų produktų pajamos, sąnaudos ir pelnas</h2>
+
+    <article class="card">
+      <p>Dauguma įmonių gamina daugiau nei vieną produktą. Kepykla kepa duoną ir pyragus, baldų gamykla gamina stalus ir kėdes, kavos skrudykla parduoda kelis mišinius. Tokios įmonės pajamos, sąnaudos ir pelnas priklauso nuo visų produktų kiekių, todėl yra kelių kintamųjų funkcijos. Jų dalinės išvestinės parodo, kaip šie dydžiai kinta keičiantis vieno produkto kiekiui, kai kito produkto kiekis nekinta. Ekonomikoje šios dalinės išvestinės vadinamos <strong>ribiniais dydžiais</strong>.</p>
+      <p>Du produktus gaminančiai įmonei naudojami šie žymėjimai:</p>
+      <ul>
+        <li>\(x\) – pirmojo produkto kiekis; \(y\) – antrojo produkto kiekis;</li>
+        <li>\(p_1\) – pirmojo produkto kaina; \(p_2\) – antrojo produkto kaina;</li>
+        <li>\(V_1\) – pirmojo produkto vidutinės kintamosios sąnaudos; \(V_2\) – antrojo produkto vidutinės kintamosios sąnaudos;</li>
+        <li>\(FC\) – pastoviosios sąnaudos.</li>
+      </ul>
+      <p>Daroma prielaida, kad visa pagaminta produkcija parduodama, todėl \(x\) ir \(y\) žymi tiek pagamintus, tiek parduotus kiekius. Trys įmonės veiklą aprašančios funkcijos yra</p>
+      <div class="formula">\[ \begin{aligned} R(x;\,y) &amp;= p_1x + p_2y \\ TC(x;\,y) &amp;= V_1x + V_2y + FC \\ P(x;\,y) &amp;= R(x;\,y) - TC(x;\,y) \end{aligned} \]</div>
+      <p class="tip"><strong>Nesupainiokite žymėjimų.</strong> Mažoji raidė \(p\) su indeksu žymi produkto kainą, o didžioji raidė \(P\) – pelną.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Pajamos</h3>
+      <p>Pajamos randamos kiekvieno produkto kainą padauginus iš jo kiekio ir sudėjus abi sandaugas. Skaičiavimo eiga priklauso nuo to, kaip pateiktos kainos.</p>
+      <ul>
+        <li><strong>Pastovios kainos.</strong> Jei kainos \(p_1\) ir \(p_2\) yra skaičiai, pajamų funkcija yra tiesinė, pavyzdžiui, \(R(x;\,y) = 40x + 25y\).</li>
+        <li><strong>Paklausos funkcijos.</strong> Dažnai kainos priklauso nuo kiekių. Paklausos funkcija nusako kainą, už kurią galima parduoti kiekius \(x\) ir \(y\). Produkto kaina paprastai mažėja didėjant siūlomam jo kiekiui. Ji gali priklausyti ir nuo kito produkto kiekio: \(p_1 = p_1(x;\,y)\), \(p_2 = p_2(x;\,y)\).</li>
+      </ul>
+      <p>Paklausos funkcijas įstatome į pajamų formulę, atskliaudžiame ir sutraukiame panašiuosius narius:</p>
+      <div class="formula">\[ R(x;\,y) = p_1(x;\,y)\cdot x + p_2(x;\,y)\cdot y \]</div>
+      <p>Kiekvieną kainą dauginame tik iš atitinkamo produkto kiekio: pirmojo produkto kainą – iš \(x\), antrojo – iš \(y\). Gautoje pajamų funkcijoje atsiranda kiekių kvadratai ir sandauga \(xy\).</p>
+
+      <h3 class="subhead" style="margin-top:22px">Sąnaudos</h3>
+      <ul>
+        <li><strong>Sąnaudų duomenys.</strong> Jei sąlygoje pateiktos kiekvieno produkto vieneto kintamosios sąnaudos ir pastoviosios sąnaudos, bendrųjų sąnaudų funkcija yra tiesinė: \(TC(x;\,y) = V_1x + V_2y + FC\).</li>
+        <li><strong>Sąnaudų funkcija.</strong> Jei vieneto sąnaudos nėra pastovios, sąlygoje pateikiama visa funkcija \(TC(x;\,y)\). Joje gali būti kiekių kvadratų ir jų sandauga \(xy\).</li>
+      </ul>
+
+      <h3 class="subhead" style="margin-top:22px">Pelnas</h3>
+      <p>Pelnas yra pajamų ir bendrųjų sąnaudų skirtumas. Atimamą sąnaudų funkciją rašome skliaustuose. Atverdami šiuos skliaustus, pakeičiame kiekvieno juose esančio nario ženklą.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. RIBINIAI DYDŽIAI ============ -->
+  <section class="section" id="ribiniai" aria-labelledby="h-marg">
+    <h2 id="h-marg">Ribiniai dydžiai</h2>
+
+    <article class="card">
+      <p>Kiekviena iš trijų funkcijų turi dvi pirmos eilės dalines išvestines – po vieną kiekvieno produkto kiekio atžvilgiu. Taip gaunami šeši ribiniai dydžiai:</p>
+      <div class="tbl-wrap">
+        <table class="vtable">
+          <thead>
+            <tr><th scope="col">Ribinis dydis</th><th scope="col">Formulė</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ribinės pajamos pirmojo produkto atžvilgiu</td><td>\(MR_x = R'_x\)</td></tr>
+            <tr><td>ribinės pajamos antrojo produkto atžvilgiu</td><td>\(MR_y = R'_y\)</td></tr>
+            <tr><td>ribinės sąnaudos pirmojo produkto atžvilgiu</td><td>\(MC_x = TC'_x\)</td></tr>
+            <tr><td>ribinės sąnaudos antrojo produkto atžvilgiu</td><td>\(MC_y = TC'_y\)</td></tr>
+            <tr><td>ribinis pelnas pirmojo produkto atžvilgiu</td><td>\(MP_x = P'_x\)</td></tr>
+            <tr><td>ribinis pelnas antrojo produkto atžvilgiu</td><td>\(MP_y = P'_y\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Dalinė išvestinė pagal \(x\) skaičiuojama laikant \(y\) konstanta. Todėl \(MR_x\) parodo, kaip kinta pajamos keičiantis pirmojo produkto kiekiui, kai antrojo produkto kiekis nekinta. Jei \(x\) padidėja vienetu nuo \(x_0\), o \(y\) išlieka lygus \(y_0\), pajamų pokytis apytiksliai lygus \(MR_x(x_0;\,y_0)\) eurų. Kiti ribiniai dydžiai interpretuojami analogiškai. Vieno produkto atveju ribiniai dydžiai aptarti 6 temos skyriuje <a href="tema-6-ribine-analize.html">„Ribinė analizė“</a>.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Ribinių dydžių ryšys</h3>
+      <p>Pelnas yra pajamų ir sąnaudų skirtumas, o skirtumo išvestinė lygi išvestinių skirtumui. Todėl</p>
+      <div class="formula">\[ \begin{aligned} MP_x &amp;= MR_x - MC_x \\ MP_y &amp;= MR_y - MC_y \end{aligned} \]</div>
+      <p>Jei ribinės pajamos ir ribinės sąnaudos jau apskaičiuotos, ribinis pelnas randamas iš jų skirtumo. Jei reikia tik ribinio pelno, paprastai greičiau užrašyti pelno funkciją ir ją diferencijuoti.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Pastovūs ribiniai dydžiai</h3>
+      <p>Jei kainos pastovios, iš pajamų funkcijos \(p_1x + p_2y\) gauname \(MR_x = p_1\) ir \(MR_y = p_2\). Kai sąnaudos sudaromos pagal vieneto kintamąsias ir pastoviąsias sąnaudas, gauname \(MC_x = V_1\) ir \(MC_y = V_2\). Šiuo atveju ribiniai dydžiai yra skaičiai, nepriklausantys nuo gamybos kiekių. Kadangi funkcijos tiesinės, jais nusakomi pokyčiai yra tikslūs. Kitais čia nagrinėjamais atvejais ribiniai dydžiai yra kintamųjų \(x\) ir \(y\) funkcijos, kurių reikšmes reikia apskaičiuoti sąlygoje nurodytame taške.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">Interpretavimas</h3>
+      <p>Apskaičiuotą ribinį dydį reikia paaiškinti uždavinio kontekste – tai yra atsakymo dalis. Paaiškinime visada nurodoma, kurio produkto kiekis keičiasi, ir pabrėžiama, kad kito produkto kiekis nekinta:</p>
+      <div class="model-note"><em>Pirmojo produkto gamybos kiekiui padidėjus vienetu nuo \(x_0\), o antrojo produkto kiekiui išlikus lygiam \(y_0\), pajamų (sąnaudų, pelno) pokytis apytiksliai lygus \(MR_x(x_0;\,y_0)\) (\(MC_x(x_0;\,y_0)\), \(MP_x(x_0;\,y_0)\)) eurų.</em></div>
+      <p>Teigiama reikšmė reiškia, kad funkcijos reikšmė didėja, o neigiama – kad mažėja. Žodis „apytiksliai“ praleidžiamas tik tada, kai ribinis dydis pastovus.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+
+    <article class="card">
+      <p>Šio skyriaus uždaviniai daugiausia skiriasi duomenų pateikimu. Lentelėje parodyta, kaip kiekvienu atveju sudaromos funkcijos.</p>
+      <div class="tbl-wrap">
+        <table class="vtable">
+          <thead>
+            <tr><th scope="col">Kas pateikta sąlygoje</th><th scope="col">Kaip randamos funkcijos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>kainos \(p_1\), \(p_2\) ir sąnaudų duomenys \(V_1\), \(V_2\), \(FC\)</td><td style="text-align:left">\(R = p_1x + p_2y\),<br>\(TC = V_1x + V_2y + FC\),<br>\(P = R - TC\)</td></tr>
+            <tr><td>pajamų ir sąnaudų funkcijos</td><td style="text-align:left">naudojamos pateiktos funkcijos; \(P = R - TC\)</td></tr>
+            <tr><td>pelno funkcija</td><td style="text-align:left">diferencijuojama tiesiogiai</td></tr>
+            <tr><td>kainos ir sąnaudų funkcija</td><td style="text-align:left">\(R = p_1x + p_2y\),<br>sąnaudų funkcija pateikta,<br>\(P = R - TC\)</td></tr>
+            <tr><td>paklausos funkcijos</td><td style="text-align:left">\(R = p_1(x;\,y)\cdot x\)<br>\(\phantom{R}\;\; + p_2(x;\,y)\cdot y\)</td></tr>
+            <tr><td>paklausos funkcijos ir sąnaudų duomenys arba sąnaudų funkcija</td><td style="text-align:left">pajamos – pagal paklausos funkcijas, sąnaudos – kaip anksčiau; \(P = R - TC\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol class="steps-list">
+        <li>Nustatykite, kas pateikta sąlygoje, ir apibrėžkite kintamuosius: \(x\) ir \(y\) yra dviejų produktų kiekiai.</li>
+        <li>Pagal lentelę sudarykite reikiamas funkcijas. Atskliauskite ir sutraukite panašiuosius narius.</li>
+        <li>Raskite prašomas dalines išvestines. Diferencijuojant pagal \(x\), dydis \(y\) yra konstanta, o pagal \(y\) – dydis \(x\).</li>
+        <li>Duotuosius kiekius įstatykite į jau apskaičiuotas išvestines.</li>
+        <li>Kiekvieną gautą reikšmę interpretuokite pagal <a href="#interpretavimas">interpretavimo formuluotę</a>.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Kaina padauginta iš ne to kiekio.</strong> Kiekvieną kainą dauginame tik iš atitinkamo produkto kiekio: \(p_1\) – iš \(x\), \(p_2\) – iš \(y\).</li>
+            <li><strong>Nepakeisti ženklai.</strong> Atimamą sąnaudų funkciją rašome skliaustuose, o atverdami skliaustus pakeičiame kiekvieno nario ženklą.</li>
+            <li><strong>Kiekiai įstatyti per anksti.</strong> Pirmiausia raskite dalines išvestines, tik tada įstatykite duotuosius kiekius.</li>
+            <li><strong>Interpretacijoje nepaminėtas kitas produktas.</strong> Reikia nurodyti, kurio produkto kiekis keičiasi, ir pabrėžti, kad kito produkto kiekis nekinta.</li>
+            <li><strong>Žodis „apytiksliai“.</strong> Jis praleidžiamas tik tada, kai ribinis dydis pastovus.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <h3 class="subhead">Pateiktos kainos ir sąnaudų duomenys</h3>
+
+    <!-- 1 pavyzdys: TM 8.2, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Duona ir pyragai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kepykla per dieną iškepa \(x\) duonos kepalų ir \(y\) pyragų, parduodamų atitinkamai po 3 ir 18&nbsp;eurų. Vieneto kintamosios sąnaudos – atitinkamai 1,2 ir 7,5&nbsp;euro, o dienos pastoviosios sąnaudos – 350&nbsp;eurų.
+        <br>a) Sudarykite pajamų, sąnaudų ir pelno funkcijas.
+        <br>b) Raskite ir interpretuokite kiekvieno produkto ribines pajamas, ribines sąnaudas ir ribinį pelną.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Funkcijos</span></h4>
+          <p>Duota: \(p_1 = 3\), \(p_2 = 18\), \(V_1 = 1{,}2\), \(V_2 = 7{,}5\) ir \(FC = 350\). Todėl</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 3x + 18y \\ TC(x;\,y) &amp;= 1{,}2x + 7{,}5y + 350 \\ P(x;\,y) &amp;= 3x + 18y \\ &amp;\phantom{=}\; {}- (1{,}2x + 7{,}5y + 350) \\ &amp;= 1{,}8x + 10{,}5y - 350 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Ribiniai dydžiai</span></h4>
+          <p>Pagal \(x\) narių su \(y\) ir konstantų išvestinės lygios 0, o pagal \(y\) – narių su \(x\) išvestinės lygios 0:</p>
+          \[ \begin{aligned} MR_x &amp;= 3; &amp;\quad MR_y &amp;= 18 \\ MC_x &amp;= 1{,}2; &amp;\quad MC_y &amp;= 7{,}5 \\ MP_x &amp;= 1{,}8; &amp;\quad MP_y &amp;= 10{,}5 \end{aligned} \]
+          <p>Ribiniai dydžiai yra pastovūs, kaip nurodyta skiltyje <a href="#ribiniai">„Pastovūs ribiniai dydžiai“</a>: ribinės pajamos lygios kainai, ribinės sąnaudos – vieneto kintamosioms sąnaudoms, o ribinis pelnas – jų skirtumui.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(R(x;\,y) = 3x + 18y\); \(TC(x;\,y) = 1{,}2x + 7{,}5y + 350\); \(P(x;\,y) = 1{,}8x + 10{,}5y - 350\).</p>
+            <p>b) Duonos kiekiui padidėjus vienu kepalu, o pyragų kiekiui nepasikeitus, pajamos padidėja 3&nbsp;eurais, sąnaudos – 1,2&nbsp;euro, pelnas – 1,8&nbsp;euro. Pyragų kiekiui padidėjus vienu pyragu, o duonos kiekiui nepasikeitus, pajamos padidėja 18&nbsp;eurų, sąnaudos – 7,5&nbsp;euro, pelnas – 10,5&nbsp;euro. Šios reikšmės nepriklauso nuo gamybos kiekių.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Pateikta pajamų, sąnaudų arba pelno funkcija</h3>
+
+    <!-- 2 pavyzdys: TM 8.2, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Miesto ir kalnų dviračiai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamykla per savaitę pagamina \(x\) miesto ir \(y\) kalnų dviračių. Savaitės pajamos ir bendrosios sąnaudos eurais:
+        \[ \begin{aligned} R(x;\,y) &amp;= 320x + 450y \\ &amp;\phantom{=}\; {}- 0{,}4x^2 - 0{,}5y^2 - 0{,}2xy \\ TC(x;\,y) &amp;= 0{,}1x^2 + 0{,}15y^2 \\ &amp;\phantom{=}\; {}+ 120x + 160y + 9000 \end{aligned} \]
+        Raskite ribines pajamas, ribines sąnaudas ir ribinį pelną kiekvieno produkto atžvilgiu, kai pagaminama 100 miesto ir 150 kalnų dviračių. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribinės pajamos</span></h4>
+          <p>Pagal \(x\) nariai \(450y\) ir \(0{,}5y^2\) yra konstantos, jų išvestinės lygios 0. Sandaugoje \(0{,}2xy\) daugiklis \(0{,}2y\) pastovus. Pagal \(y\) kintamojo ir konstantos vaidmenys pasikeičia:</p>
+          \[ \begin{aligned} MR_x &amp;= 320 - 0{,}8x - 0{,}2y \\ MR_y &amp;= 450 - y - 0{,}2x \end{aligned} \]
+          <div class="fit-sm">\[ \begin{aligned} MR_x(100;\,150) &amp;= 320 - 80 - 30 = 210 \\ MR_y(100;\,150) &amp;= 450 - 150 - 20 = 280 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinės sąnaudos</span></h4>
+          <p>Sąnaudų funkcijoje nėra sandaugos \(xy\), todėl išvestinėse lieka po vieną kintamąjį:</p>
+          \[ \begin{aligned} MC_x &amp;= 0{,}2x + 120 \\ MC_y &amp;= 0{,}3y + 160 \end{aligned} \]
+          \[ \begin{aligned} MC_x(100;\,150) &amp;= 20 + 120 = 140 \\ MC_y(100;\,150) &amp;= 45 + 160 = 205 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ribinis pelnas</span></h4>
+          <p>Pagal <a href="#ribiniai">ribinių dydžių ryšį</a> jis lygus ribinių pajamų ir ribinių sąnaudų skirtumui:</p>
+          \[ \begin{aligned} MP_x(100;\,150) &amp;= 210 - 140 = 70 \\ MP_y(100;\,150) &amp;= 280 - 205 = 75 \end{aligned} \]
+          <p>Tos pačios reikšmės gaunamos iš pelno funkcijos</p>
+          \[ \begin{aligned} P(x;\,y) &amp;= 200x + 290y - 0{,}5x^2 \\ &amp;\phantom{=}\; {}- 0{,}65y^2 - 0{,}2xy - 9000 \end{aligned} \]
+          <p>kurios dalinės išvestinės yra \(P'_x = 200 - x - 0{,}2y\) ir \(P'_y = 290 - 1{,}3y - 0{,}2x\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Miesto dviračių kiekiui padidėjus vienetu nuo 100, o kalnų dviračių kiekiui išlikus lygiam 150, pajamos padidėja apytiksliai 210&nbsp;eurų, sąnaudos – 140&nbsp;eurų, pelnas – 70&nbsp;eurų. Kalnų dviračių kiekiui padidėjus vienetu nuo 150, o miesto dviračių kiekiui išlikus lygiam 100, pajamos padidėja apytiksliai 280&nbsp;eurų, sąnaudos – 205&nbsp;eurais, pelnas – 75&nbsp;eurais.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 8.2, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Žemė ir trąšos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Sodo prekių centras per savaitę parduoda \(x\) maišų žemės ir \(y\) maišų trąšų. Jo savaitės pelnas eurais yra
+        \[ \begin{aligned} P(x;\,y) &amp;= -0{,}01x^2 - 0{,}02y^2 + 0{,}005xy \\ &amp;\phantom{=}\; {}+ 6x + 9y - 800 \end{aligned} \]
+        Raskite ribinį pelną kiekvieno produkto atžvilgiu, kai parduodama 400 maišų žemės ir 200 maišų trąšų. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribinis pelnas</span></h4>
+          <p>Pelno funkcija pateikta, todėl ją diferencijuojame tiesiogiai:</p>
+          \[ \begin{aligned} MP_x &amp;= -0{,}02x + 0{,}005y + 6 \\ MP_y &amp;= -0{,}04y + 0{,}005x + 9 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Reikšmės</span></h4>
+          \[ \begin{aligned} MP_x(400;\,200) &amp;= -8 + 1 + 6 = -1 \\ MP_y(400;\,200) &amp;= -8 + 2 + 9 = 3 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Žemės pardavimo kiekiui padidėjus vienu maišu nuo 400, o trąšų kiekiui išlikus lygiam 200, pelnas sumažėja apytiksliai 1&nbsp;euru. Trąšų pardavimo kiekiui padidėjus vienu maišu nuo 200, o žemės kiekiui išlikus lygiam 400, pelnas padidėja apytiksliai 3&nbsp;eurais.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Pateiktos kainos ir sąnaudų funkcija</h3>
+
+    <!-- 4 pavyzdys: TM 8.2, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Stalai ir kėdės</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Baldų gamykla per savaitę pagamina \(x\) stalų ir \(y\) kėdžių. Stalas parduodamas už 240&nbsp;eurų, kėdė – už 90&nbsp;eurų. Savaitės bendrosios sąnaudos eurais yra
+        \[ \begin{aligned} TC(x;\,y) &amp;= 0{,}5x^2 + 0{,}1y^2 + 0{,}2xy \\ &amp;\phantom{=}\; {}+ 60x + 30y + 5000 \end{aligned} \]
+        Raskite ribinį pelną kiekvieno produkto atžvilgiu, kai pagaminama 80 stalų ir 200 kėdžių. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pelno funkcija</span></h4>
+          <p>Kainos pastovios, todėl \(R(x;\,y) = 240x + 90y\). Atimdami sąnaudų funkciją, pakeičiame visų jos narių ženklus:</p>
+          <div class="fit-sm">\[ \begin{aligned} P(x;\,y) &amp;= 240x + 90y - (0{,}5x^2 + 0{,}1y^2 \\ &amp;\phantom{=}\; {}+ 0{,}2xy + 60x + 30y + 5000) \\ &amp;= -0{,}5x^2 - 0{,}1y^2 - 0{,}2xy \\ &amp;\phantom{=}\; {}+ 180x + 60y - 5000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinis pelnas</span></h4>
+          <p>\(0{,}2xy\) išvestinė pagal \(x\) lygi \(0{,}2y\), o pagal \(y\) – \(0{,}2x\); minuso ženklas išlieka:</p>
+          \[ \begin{aligned} MP_x &amp;= -x - 0{,}2y + 180 \\ MP_y &amp;= -0{,}2y - 0{,}2x + 60 \end{aligned} \]
+          \[ \begin{aligned} MP_x(80;\,200) &amp;= -80 - 40 + 180 = 60 \\ MP_y(80;\,200) &amp;= -40 - 16 + 60 = 4 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Stalų kiekiui padidėjus vienetu nuo 80, o kėdžių kiekiui išlikus lygiam 200, pelnas padidėja apytiksliai 60&nbsp;eurų. Kėdžių kiekiui padidėjus vienetu nuo 200, o stalų kiekiui išlikus lygiam 80, pelnas padidėja apytiksliai 4&nbsp;eurais.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Pateiktos paklausos funkcijos</h3>
+
+    <!-- 5 pavyzdys: TM 8.2, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Laidinės ir belaidės ausinės</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė per savaitę parduoda \(x\) laidinių ir \(y\) belaidžių ausinių. Savaitės paklausos funkcijos yra
+        \[ \begin{aligned} p_1 &amp;= 90 - 0{,}04x - 0{,}01y \\ p_2 &amp;= 150 - 0{,}02x - 0{,}05y \end{aligned} \]
+        čia \(p_1\) ir \(p_2\) yra atitinkamai laidinių ir belaidžių ausinių kainos eurais. Raskite ribines pajamas kiekvieno produkto atžvilgiu, kai parduodama 500 laidinių ir 800 belaidžių ausinių. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pajamų funkcija</span></h4>
+          <p>Kiekvieną kainą dauginame iš atitinkamo produkto kiekio:</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= (90 - 0{,}04x - 0{,}01y)x \\ &amp;\phantom{=}\; {}+ (150 - 0{,}02x - 0{,}05y)y \\ &amp;= 90x - 0{,}04x^2 - 0{,}01xy \\ &amp;\phantom{=}\; {}+ 150y - 0{,}02xy - 0{,}05y^2 \end{aligned} \]
+          <p>Sutraukiame du narius su \(xy\):</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 90x + 150y \\ &amp;\phantom{=}\; {}- 0{,}04x^2 - 0{,}05y^2 - 0{,}03xy \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinės pajamos</span></h4>
+          \[ \begin{aligned} MR_x &amp;= 90 - 0{,}08x - 0{,}03y \\ MR_y &amp;= 150 - 0{,}1y - 0{,}03x \end{aligned} \]
+          \[ \begin{aligned} MR_x(500;\,800) &amp;= 90 - 40 - 24 = 26 \\ MR_y(500;\,800) &amp;= 150 - 80 - 15 = 55 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Laidinių ausinių kiekiui padidėjus vienetu nuo 500, o belaidžių ausinių kiekiui išlikus lygiam 800, pajamos padidėja apytiksliai 26&nbsp;eurais. Belaidžių ausinių kiekiui padidėjus vienetu nuo 800, o laidinių ausinių kiekiui išlikus lygiam 500, pajamos padidėja apytiksliai 55&nbsp;eurais.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 8.2, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Du kavos mišiniai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kavos skrudykla per mėnesį parduoda \(x\) kilogramų klasikinio kavos mišinio ir \(y\) kilogramų aukščiausios kokybės mišinio. Mėnesio paklausos funkcijos yra
+        \[ \begin{aligned} p_1 &amp;= 24 - 0{,}002x + 0{,}0005y \\ p_2 &amp;= 40 - 0{,}001x - 0{,}004y \end{aligned} \]
+        čia \(p_1\) ir \(p_2\) yra kilogramo kainos eurais. Vieneto kintamosios sąnaudos yra 8&nbsp;eurai klasikinio ir 14&nbsp;eurų aukščiausios kokybės mišinio kilogramui, o pastoviosios sąnaudos – 6000&nbsp;eurų per mėnesį. Raskite ribinį pelną kiekvieno mišinio atžvilgiu, kai parduodama 3000 kilogramų klasikinio ir 2000 kilogramų aukščiausios kokybės mišinio. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pajamų funkcija</span></h4>
+          \[ \begin{aligned} R(x;\,y) &amp;= (24 - 0{,}002x + 0{,}0005y)x \\ &amp;\phantom{=}\; {}+ (40 - 0{,}001x - 0{,}004y)y \\ &amp;= 24x - 0{,}002x^2 + 0{,}0005xy \\ &amp;\phantom{=}\; {}+ 40y - 0{,}001xy - 0{,}004y^2 \\ &amp;= 24x + 40y - 0{,}002x^2 \\ &amp;\phantom{=}\; {}- 0{,}004y^2 - 0{,}0005xy \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sąnaudų ir pelno funkcijos</span></h4>
+          <p>Pagal sąnaudų duomenis gauname \(TC(x;\,y) = 8x + 14y + 6000\), o pelnas yra</p>
+          <div class="fit-sm">\[ \begin{aligned} P(x;\,y) &amp;= 24x + 40y - 0{,}002x^2 \\ &amp;\phantom{=}\; {}- 0{,}004y^2 - 0{,}0005xy \\ &amp;\phantom{=}\; {}- (8x + 14y + 6000) \\ &amp;= 16x + 26y - 0{,}002x^2 \\ &amp;\phantom{=}\; {}- 0{,}004y^2 - 0{,}0005xy - 6000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ribinis pelnas</span></h4>
+          \[ \begin{aligned} MP_x &amp;= 16 - 0{,}004x - 0{,}0005y \\ MP_y &amp;= 26 - 0{,}008y - 0{,}0005x \end{aligned} \]
+          \[ \begin{aligned} MP_x(3000;\,2000) &amp;= 16 - 12 - 1 = 3 \\ MP_y(3000;\,2000) &amp;= 26 - 16 - 1{,}5 = 8{,}5 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Klasikinio mišinio kiekiui padidėjus vienu kilogramu nuo 3000, o aukščiausios kokybės mišinio kiekiui išlikus lygiam 2000, pelnas padidėja apytiksliai 3&nbsp;eurais. Aukščiausios kokybės mišinio kiekiui padidėjus vienu kilogramu nuo 2000, o klasikinio mišinio kiekiui išlikus lygiam 3000, pelnas padidėja apytiksliai 8,5&nbsp;euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 8.2, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Šampūnas ir kondicionierius</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kosmetikos įmonė per savaitę parduoda \(x\) buteliukų šampūno ir \(y\) buteliukų kondicionieriaus. Savaitės paklausos funkcijos yra
+        \[ \begin{aligned} p_1 &amp;= 100 - 2\sqrt{x} - 0{,}01y \\ p_2 &amp;= 120 - 0{,}02x - 0{,}05y \end{aligned} \]
+        čia \(p_1\) ir \(p_2\) yra kainos eurais, o savaitės bendrosios sąnaudos eurais yra
+        \[ TC(x;\,y) = 20x + 15y + 6\sqrt{xy} + 3000 \]
+        Raskite ribinį pelną kiekvieno produkto atžvilgiu, kai parduodama 400 buteliukų šampūno ir 900 buteliukų kondicionieriaus. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pajamų funkcija</span></h4>
+          \[ \begin{aligned} R(x;\,y) &amp;= \left(100 - 2\sqrt{x} - 0{,}01y\right)x \\ &amp;\phantom{=}\; {}+ (120 - 0{,}02x - 0{,}05y)y \end{aligned} \]
+          <p>Pirmajame skliauste gauname \(2\sqrt{x}\cdot x = 2x^{\frac{1}{2}}\cdot x = 2x^{\frac{3}{2}} = 2\sqrt{x^3}\). Atskliaudžiame ir sutraukiame narius su \(xy\):</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 100x + 120y - 2\sqrt{x^3} \\ &amp;\phantom{=}\; {}- 0{,}03xy - 0{,}05y^2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pelno funkcija</span></h4>
+          <p>Atimame sąnaudų funkciją:</p>
+          \[ \begin{aligned} P(x;\,y) &amp;= 80x + 105y - 2\sqrt{x^3} \\ &amp;\phantom{=}\; {}- 0{,}03xy - 0{,}05y^2 \\ &amp;\phantom{=}\; {}- 6\sqrt{xy} - 3000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ribinis pelnas</span></h4>
+          <p>Šaknis užrašome laipsniais: \(2\sqrt{x^3} = 2x^{\frac{3}{2}}\) ir \(6\sqrt{xy} = 6x^{\frac{1}{2}}y^{\frac{1}{2}}\). Diferencijuojant pagal \(x\), daugiklis \(6y^{\frac{1}{2}}\) yra pastovus:</p>
+          \[ \begin{aligned} MP_x &amp;= 80 - 2\cdot\frac{3}{2}x^{\frac{1}{2}} - 0{,}03y \\ &amp;\phantom{=}\; {}- 6y^{\frac{1}{2}}\cdot\frac{1}{2}x^{-\frac{1}{2}} \\ &amp;= 80 - 3\sqrt{x} - 0{,}03y - \frac{3\sqrt{y}}{\sqrt{x}} \end{aligned} \]
+          <p>Diferencijuojant pagal \(y\), daugiklis \(6x^{\frac{1}{2}}\) yra pastovus:</p>
+          \[ \begin{aligned} MP_y &amp;= 105 - 0{,}03x - 0{,}1y \\ &amp;\phantom{=}\; {}- 6x^{\frac{1}{2}}\cdot\frac{1}{2}y^{-\frac{1}{2}} \\ &amp;= 105 - 0{,}03x - 0{,}1y - \frac{3\sqrt{x}}{\sqrt{y}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Reikšmės</span></h4>
+          <p>Taške \((400;\,900)\) šaknų reikšmės yra \(\sqrt{400} = 20\) ir \(\sqrt{900} = 30\):</p>
+          <div class="fit-sm">\[ \begin{aligned} MP_x(400;\,900) &amp;= 80 - 3\cdot 20 \\ &amp;\phantom{=}\; {}- 0{,}03\cdot 900 - \frac{3\cdot 30}{20} \\ &amp;= 80 - 60 - 27 - 4{,}5 \\ &amp;= -11{,}5 \end{aligned} \]</div>
+          <div class="fit-sm">\[ \begin{aligned} MP_y(400;\,900) &amp;= 105 - 0{,}03\cdot 400 \\ &amp;\phantom{=}\; {}- 0{,}1\cdot 900 - \frac{3\cdot 20}{30} \\ &amp;= 105 - 12 - 90 - 2 \\ &amp;= 1 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Šampūno kiekiui padidėjus vienu buteliuku nuo 400, o kondicionieriaus kiekiui išlikus lygiam 900, pelnas sumažėja apytiksliai 11,5&nbsp;euro. Kondicionieriaus kiekiui padidėjus vienu buteliuku nuo 900, o šampūno kiekiui išlikus lygiam 400, pelnas padidėja apytiksliai 1&nbsp;euru.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: sudarykite reikiamas funkcijas, raskite dalines išvestines, įstatykite duotuosius kiekius ir interpretuokite rezultatus. Atsakyme pateiktos funkcijos, išvestinės, jų reikšmės ir interpretacija – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 8 rinkinys, 1 sk. 1 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Nedidelė alaus darykla parduoda lagerio butelį už 2,5&nbsp;euro, o elio – už 3,2&nbsp;euro. Vieno lagerio butelio kintamosios sąnaudos yra 1,1&nbsp;euro, o elio – 1,6&nbsp;euro. Pastoviosios sąnaudos sudaro 900&nbsp;eurų per savaitę. Pažymėkime \(x\) ir \(y\) per savaitę pagaminamų ir parduodamų lagerio ir elio butelių skaičius.</p>
+          <p>Sudarykite pajamų, sąnaudų ir pelno funkcijas bei raskite ribinius pelnus. Interpretuokite ribinius pelnus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Funkcijos:</strong></p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 2{,}5x + 3{,}2y \\ TC(x;\,y) &amp;= 1{,}1x + 1{,}6y + 900 \\ P(x;\,y) &amp;= 1{,}4x + 1{,}6y - 900 \end{aligned} \]
+          <p><strong>Ribiniai pelnai:</strong></p>
+          \[ MP_x = 1{,}4;\qquad MP_y = 1{,}6 \]
+          <p><strong>Atsakymas.</strong> Kiekvienas papildomas lagerio butelis savaitės pelną padidina 1,4&nbsp;euro, o kiekvienas papildomas elio butelis – 1,6&nbsp;euro, nepriklausomai nuo gamybos apimties.</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gamintojas per mėnesį pagamina \(x\) elektrinių paspirtukų ir \(y\) elektrinių dviračių. Mėnesio pajamos ir bendrosios sąnaudos eurais yra</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 900x + 600y \\ &amp;\phantom{=}\; {}- 0{,}5x^2 - 0{,}4y^2 - 0{,}2xy \\ TC(x;\,y) &amp;= 0{,}3x^2 + 0{,}2y^2 + 0{,}1xy \\ &amp;\phantom{=}\; {}+ 200x + 150y + 20000 \end{aligned} \]
+          <p>Raskite ribines pajamas, ribines sąnaudas ir ribinius pelnus, kai pagaminama ir parduodama 200 paspirtukų ir 300 dviračių. Interpretuokite ribinius pelnus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ \begin{aligned} MR_x &amp;= 900 - x - 0{,}2y \\ MR_y &amp;= 600 - 0{,}8y - 0{,}2x \\ MC_x &amp;= 0{,}6x + 0{,}1y + 200 \\ MC_y &amp;= 0{,}4y + 0{,}1x + 150 \end{aligned} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ \begin{aligned} MR_x(200;\,300) &amp;= 640 \\ MR_y(200;\,300) &amp;= 320 \\ MC_x(200;\,300) &amp;= 350 \\ MC_y(200;\,300) &amp;= 290 \\ MP_x(200;\,300) &amp;= 640 - 350 = 290 \\ MP_y(200;\,300) &amp;= 320 - 290 = 30 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Paspirtukų skaičiui padidėjus vienu nuo 200, o dviračių skaičiui išlikus 300, mėnesio pelnas padidėja apytiksliai 290&nbsp;eurų. Dviračių skaičiui padidėjus vienu nuo 300, o paspirtukų skaičiui išlikus 200, pelnas padidėja apytiksliai 30&nbsp;eurų.</p>
+        </div>
+      </article>
+
+      <!-- 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kino teatras per savaitę parduoda \(x\) bilietų į įprastus seansus ir \(y\) bilietų į 3D seansus. Savaitės pelnas eurais yra</p>
+          \[ \begin{aligned} P(x;\,y) &amp;= -0{,}002x^2 - 0{,}004y^2 + 0{,}001xy \\ &amp;\phantom{=}\; {}+ 8x + 10y - 3000 \end{aligned} \]
+          <p>Raskite ribinius pelnus, kai parduodama 2000 bilietų į įprastus seansus ir 1800 bilietų į 3D seansus. Interpretuokite rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ \begin{aligned} MP_x &amp;= -0{,}004x + 0{,}001y + 8 \\ MP_y &amp;= -0{,}008y + 0{,}001x + 10 \end{aligned} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ \begin{aligned} MP_x(2000;\,1800) &amp;= 1{,}8 \\ MP_y(2000;\,1800) &amp;= -2{,}4 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Bilietų į įprastus seansus skaičiui padidėjus vienu nuo 2000, o bilietų į 3D seansus skaičiui išlikus 1800, savaitės pelnas padidėja apytiksliai 1,8&nbsp;euro. Bilietų į 3D seansus skaičiui padidėjus vienu nuo 1800, o bilietų į įprastus seansus skaičiui išlikus 2000, pelnas sumažėja apytiksliai 2,4&nbsp;euro.</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonė per mėnesį parduoda \(x\) žygiams skirtų kuprinių ir \(y\) miesto kuprinių. Kainos eurais, už kurias galima parduoti šiuos kiekius, yra</p>
+          \[ \begin{aligned} p_1 &amp;= 60 - 0{,}01x - 0{,}005y \\ p_2 &amp;= 80 - 0{,}004x - 0{,}02y \end{aligned} \]
+          <p>Vienos žygiams skirtos kuprinės kintamosios sąnaudos yra 20&nbsp;eurų, o miesto kuprinės – 30&nbsp;eurų. Pastoviosios sąnaudos sudaro 5000&nbsp;eurų per mėnesį.</p>
+          <p>Sudarykite pelno funkciją ir raskite ribinius pelnus, kai parduodama 1000 žygiams skirtų kuprinių ir 800 miesto kuprinių. Interpretuokite rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Funkcijos:</strong></p>
+          <div class="fit-sm">\[ \begin{aligned} R(x;\,y) &amp;= (60 - 0{,}01x - 0{,}005y)x \\ &amp;\phantom{=}\; {}+ (80 - 0{,}004x - 0{,}02y)y \\ &amp;= 60x + 80y - 0{,}01x^2 \\ &amp;\phantom{=}\; {}- 0{,}02y^2 - 0{,}009xy \\[6pt] P(x;\,y) &amp;= 40x + 50y - 0{,}01x^2 \\ &amp;\phantom{=}\; {}- 0{,}02y^2 - 0{,}009xy - 5000 \end{aligned} \]</div>
+          <p><strong>Išvestinės ir jų reikšmės:</strong></p>
+          \[ \begin{aligned} MP_x &amp;= 40 - 0{,}02x - 0{,}009y \\ MP_y &amp;= 50 - 0{,}04y - 0{,}009x \end{aligned} \]
+          \[ \begin{aligned} MP_x(1000;\,800) &amp;= 12{,}8 \\ MP_y(1000;\,800) &amp;= 9 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Žygiams skirtų kuprinių skaičiui padidėjus vienu nuo 1000, o miesto kuprinių skaičiui išlikus 800, mėnesio pelnas padidėja apytiksliai 12,8&nbsp;euro. Miesto kuprinių skaičiui padidėjus vienu nuo 800, o žygiams skirtų kuprinių skaičiui išlikus 1000, pelnas padidėja apytiksliai 9&nbsp;eurais.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">7 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
