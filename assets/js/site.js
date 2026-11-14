@@ -83,6 +83,22 @@
       sdUp: 'Ribinės pajamos didėja: kiekvienas kitas reklamai skirtas tūkstantis eurų duoda vis daugiau papildomų pajamų.',
       sdTop: 'Ribinės pajamos šiame taške didžiausios: iki jo jos didėja, o toliau pradeda mažėti.',
       sdDown: 'Ribinės pajamos mažėja: kiekvienas kitas reklamai skirtas tūkstantis eurų duoda vis mažiau papildomų pajamų.',
+      sfFnGroup: 'Funkcija',
+      sfDirGroup: 'Kintamasis, pagal kurį diferencijuojama',
+      sfByX: 'Pagal x', sfByY: 'Pagal y',
+      sfRotL: 'Pasukti brėžinį į kairę', sfRotR: 'Pasukti brėžinį į dešinę',
+      sfHintSurface: 'Vilkite brėžinį arba spauskite rodykles, kad jį pasuktumėte. Slankikliais keiskite taško koordinates x ir y.',
+      sfHintLevels: 'Slankikliu keiskite aukštį C. Plokštuma z = C kerta paviršių lygio linija. Dešinėje ta pati linija pavaizduota xy plokštumoje kartu su kitomis lygio linijomis.',
+      sfHintSlice: 'Pasirinkite kintamąjį, pagal kurį diferencijuojama, ir slankikliais keiskite tašką. Kitas kintamasis laikomas pastoviu.',
+      sfAria: 'Dviejų kintamųjų funkcijos paviršius',
+      sfMapAria: 'Funkcijos lygio linijos xy plokštumoje',
+      sfSurfNote1: 'Paviršiaus aukštis virš taško ', sfSurfNote2: ' lygus funkcijos reikšmei ',
+      sfLvSq: 'Lygio linija – apskritimas, kurio centras yra koordinačių pradžioje, o spindulys lygus ',
+      sfLvLin: 'Lygio linija – tiesė ', sfLvLin2: '. Visų lygio linijų nuolydis lygus −2, todėl jos lygiagrečios.',
+      sfLvXy: 'Lygio linija – kreivė ', sfLvXy2: ': visuose jos taškuose ',
+      sfCutA: 'Plokštuma ',
+      sfCutB1: ' kerta paviršių kreive – kintamojo ', sfCutB2: ' funkcijos grafiku. Jos liestinės nuolydis taške ',
+      sfCutC: ' lygus dalinei išvestinei ',
       signAria: 'Išvestinės ženklų schema',
       incr: 'didėja', decr: 'mažėja',
       concUp: 'įgaubta', concDown: 'išgaubta',
@@ -172,6 +188,22 @@
       sdUp: 'Marginal revenue is increasing: each additional thousand euros spent on advertising brings more additional revenue than the one before.',
       sdTop: 'Marginal revenue is at its highest here: it increases up to this point and starts to decrease after it.',
       sdDown: 'Marginal revenue is decreasing: each additional thousand euros spent on advertising brings less additional revenue than the one before.',
+      sfFnGroup: 'Function',
+      sfDirGroup: 'Variable of differentiation',
+      sfByX: 'With respect to x', sfByY: 'With respect to y',
+      sfRotL: 'Rotate the graph to the left', sfRotR: 'Rotate the graph to the right',
+      sfHintSurface: 'Drag the graph or use the arrows to rotate it. Move the sliders to change the coordinates x and y of the point.',
+      sfHintLevels: 'Move the slider to change the height C. The plane z = C cuts the surface along a level curve. On the right the same curve is drawn in the xy-plane together with other level curves.',
+      sfHintSlice: 'Choose the variable of differentiation and move the sliders to change the point. The other variable is held constant.',
+      sfAria: 'The surface of a function of two variables',
+      sfMapAria: 'Level curves of the function in the xy-plane',
+      sfSurfNote1: 'The height of the surface above the point ', sfSurfNote2: ' equals the value of the function ',
+      sfLvSq: 'The level curve is a circle centred at the origin with radius ',
+      sfLvLin: 'The level curve is the line ', sfLvLin2: '. All level curves have slope −2, so they are parallel.',
+      sfLvXy: 'The level curve is the curve ', sfLvXy2: ': at each of its points ',
+      sfCutA: 'The plane ',
+      sfCutB1: ' cuts the surface along a curve – the graph of a function of ', sfCutB2: ' alone. The slope of its tangent line at ',
+      sfCutC: ' equals the partial derivative ',
       signAria: 'Sign chart of the derivative',
       incr: 'increasing', decr: 'decreasing',
       concUp: 'convex', concDown: 'concave',
@@ -221,7 +253,8 @@
       title: { lt: 'Pirmos eilės išvestinės', en: 'The First Order Derivative' } },
     { id: 't7', num: 7, status: 'active', href: { lt: 'tema-7.html', en: 'tema-7.html' },
       title: { lt: 'Aukštesnės eilės išvestinės', en: 'The Higher Order Derivative' } },
-    { id: 't8', num: 8, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų išvestinės', en: 'Functions of Several Variables. Partial Derivatives' } },
+    { id: 't8', num: 8, status: 'active', href: { lt: 'tema-8.html' },
+      title: { lt: 'Kelių kintamųjų funkcijos ir dalinės išvestinės', en: 'Functions of Several Variables. Partial Derivatives' } },
     { id: 't9', num: 9, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų ekstremumai', en: 'Extrema of Functions of Several Variables, the Lagrange Problem' } },
     { id: 't10', num: 10, status: 'soon', title: { lt: 'Neapibrėžtinis integralas', en: 'Indefinite Integral' } },
     { id: 't11', num: 11, status: 'soon', title: { lt: 'Apibrėžtinis integralas', en: 'Definite Integral' } },
@@ -338,6 +371,44 @@
       { id: 'm75', status: 'active', href: { lt: 'tema-7-sudetingesni-uzdaviniai.html', en: 'tema-7-sudetingesni-uzdaviniai.html' },
         title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' },
         desc: { lt: 'Tikslo funkciją reikia sudaryti patiems: paklausos funkcija pagal sąlygos duomenis, plotų ir tūrių optimizavimas.', en: 'The objective function has to be set up first: a demand function from the given data, optimizing areas and volumes.' } }
+    ],
+    t8: [
+      { id: 'm8a', status: 'soon',
+        title: { lt: 'Pagrindinės dalinių išvestinių skaičiavimo taisyklės', en: 'Basic Rules for Partial Derivatives' },
+        desc: { lt: 'Kintamasis, pagal kurį nediferencijuojama, laikomas konstanta: daugianariai, laipsniai ir šaknys.', en: 'The variable that is not differentiated is treated as a constant: polynomials, powers and roots.' } },
+      { id: 'm8b', status: 'soon',
+        title: { lt: 'Sandaugos išvestinės taisyklė', en: 'The Product Rule' },
+        desc: { lt: 'Sandaugos taisyklė taikoma, kai abu daugikliai priklauso nuo kintamojo, pagal kurį diferencijuojama.', en: 'The product rule is needed when both factors depend on the variable of differentiation.' } },
+      { id: 'm8c', status: 'soon',
+        title: { lt: 'Dalmens išvestinės taisyklė', en: 'The Quotient Rule' },
+        desc: { lt: 'Dalmens taisyklė taikoma, kai vardiklis priklauso nuo kintamojo, pagal kurį diferencijuojama.', en: 'The quotient rule is needed when the denominator depends on the variable of differentiation.' } },
+      { id: 'm8d', status: 'soon',
+        title: { lt: 'Sudėtinės funkcijos išvestinės taisyklė', en: 'The Chain Rule' },
+        desc: { lt: 'Laipsnis, šaknis, rodiklinė ir logaritminė funkcijos, kurių vidinė funkcija priklauso nuo kelių kintamųjų.', en: 'Powers, roots, exponential and logarithmic functions whose inner function depends on several variables.' } },
+      { id: 'm8e', status: 'soon',
+        title: { lt: 'Daugiau nei dviejų kintamųjų funkcijos dalinės išvestinės', en: 'Partial Derivatives of Functions of More Than Two Variables' },
+        desc: { lt: 'Trijų ir daugiau kintamųjų funkcijos: viena raidė žymi kintamąjį, o visos kitos – konstantas.', en: 'Functions of three or more variables: one letter is the variable and all the others are constants.' } },
+      { id: 'm8f', status: 'soon',
+        title: { lt: 'Antros eilės dalinės išvestinės', en: 'Second Order Partial Derivatives' },
+        desc: { lt: 'Keturios antros eilės dalinės išvestinės ir mišriųjų dalinių išvestinių lygybė.', en: 'The four second order partial derivatives and the equality of the mixed partial derivatives.' } },
+      { id: 'm81', status: 'soon',
+        title: { lt: 'Ribinė analizė', en: 'Marginal Analysis' },
+        desc: { lt: 'Du produktus gaminančios įmonės ribinės pajamos, sąnaudos ir pelnas kiekvieno produkto atžvilgiu.', en: 'The marginal revenue, cost and profit of a firm that makes two products, with respect to each product.' } },
+      { id: 'm82', status: 'soon',
+        title: { lt: 'Gamybos funkcija', en: 'The Production Function' },
+        desc: { lt: 'Gamybos apimties priklausomybė nuo išteklių: ribinis darbo ir kapitalo produktas, Kobo-Daglaso funkcija.', en: 'How output depends on the inputs: the marginal products of labour and capital, the Cobb–Douglas function.' } },
+      { id: 'm83', status: 'soon',
+        title: { lt: 'Pokyčių analizė', en: 'Change Analysis' },
+        desc: { lt: 'Dalinė išvestinė kaip kitimo greitis: kaip kinta dydis, kai keičiasi vienas veiksnys, o kiti nekinta.', en: 'The partial derivative as a rate of change: how a quantity changes when one factor changes and the others do not.' } },
+      { id: 'm84', status: 'soon',
+        title: { lt: 'Pakaitalai ir papildai', en: 'Substitute and Complementary Commodities' },
+        desc: { lt: 'Dalinių išvestinių ženklai parodo, ar dvi prekės yra pakaitalai, ar papildai.', en: 'The signs of the partial derivatives show whether two goods are substitutes or complements.' } },
+      { id: 'm85', status: 'soon',
+        title: { lt: 'Naudingumo funkcija ir ribinė pakeitimo norma', en: 'The Utility Function and the Marginal Rate of Substitution' },
+        desc: { lt: 'Abejingumo kreivės, ribinis naudingumas ir kiek vienos prekės vartotojas gali atsisakyti dėl papildomo kitos prekės vieneto.', en: 'Indifference curves, marginal utility and how much of one good a consumer can give up for one more unit of the other.' } },
+      { id: 'm86', status: 'soon',
+        title: { lt: 'Ribinė techninio pakeitimo norma', en: 'The Marginal Rate of Technical Substitution' },
+        desc: { lt: 'Izokvantės ir kiek vieno ištekliaus gali pakeisti papildomas kito ištekliaus vienetas, nekeičiant gamybos apimties.', en: 'Isoquants and how much of one input one more unit of the other input can replace without changing output.' } }
     ]
   };
 
@@ -420,6 +491,8 @@
                title: { lt: 'Optimizavimas', en: 'Optimization' } },
     m75:     { parent: 't7', topic: 't7', model: 'm75', href: { lt: 'tema-7-sudetingesni-uzdaviniai.html', en: 'tema-7-sudetingesni-uzdaviniai.html' },
                title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' } },
+    t8:      { parent: 'home', href: { lt: 'tema-8.html', en: null },
+               title: { lt: '8 tema', en: 'Topic 8' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -1459,6 +1532,496 @@
   }
 
   /* ------------------------------------------------------------------
+     8b3. DVIEJŲ KINTAMŲJŲ FUNKCIJOS PAVIRŠIUS  (<div data-widget="surface3d" data-mode="..." data-fns="sq lin xy">)
+     Paviršius z = f(x; y) piešiamas drobėje (canvas): tinklelio langeliai
+     rikiuojami pagal gylį (tolimesni piešiami pirmiau). Vilkimu arba mygtukais
+     keičiamas žiūrėjimo kampas. Režimai:
+       surface – taškas (x; y) ir paviršiaus aukštis virš jo z = f(x; y);
+       levels  – plokštuma z = C, lygio linija paviršiuje ir jos projekcija,
+                 dešinėje – lygio linijos xy plokštumoje (SVG);
+       slice   – pjūvis y = y0 (arba x = x0), pjūvio kreivė ir jos liestinė,
+                 kurios nuolydis lygus dalinei išvestinei.
+     ------------------------------------------------------------------ */
+  var sfCount = 0;
+  /* Skaičius TeX formatu: iki 2 ženklų po kablelio, LT kablelis – {,} */
+  function sfNum(v) {
+    var s = String(Number((Math.abs(v) < 1e-9 ? 0 : v).toFixed(2)));
+    return T.decimal === ',' ? s.replace('.', '{,}') : s;
+  }
+  function sfTxt(v) {
+    var s = String(Number((Math.abs(v) < 1e-9 ? 0 : v).toFixed(2)));
+    s = T.decimal === ',' ? s.replace('.', ',') : s;
+    return s.charAt(0) === '-' ? '−' + s.slice(1) : s;
+  }
+  function sfPar(v) { return v < 0 ? '(' + sfNum(v) + ')' : sfNum(v); }
+  /* Daugianaris iš narių [[koeficientas, 'x'], ...] */
+  function sfPoly(terms) {
+    var out = '';
+    terms.forEach(function (t) {
+      var c = t[0], v = t[1];
+      if (Math.abs(c) < 1e-9) return;
+      var a = Math.abs(c), body = v ? ((Math.abs(a - 1) < 1e-9 ? '' : sfNum(a)) + v) : sfNum(a);
+      if (!out) out = (c < 0 ? '-' : '') + body;
+      else out += (c < 0 ? ' - ' : ' + ') + body;
+    });
+    return out || '0';
+  }
+  var SURF = {
+    sq: {
+      tex: 'z = x^2 + y^2', f: function (x, y) { return x * x + y * y; },
+      x: [-3, 3], y: [-3, 3], z: [0, 18], tk: [-3, -2, -1, 0, 1, 2, 3], tl: [-3, 0, 3], zt: [0, 9, 18],
+      c: [1, 16, 1], c0: 4, lv: [1, 4, 9, 16], p0: [2, 1], s0: [1, 1], step: 0.5,
+      fx: function (x) { return 2 * x; }, fy: function (x, y) { return 2 * y; }, fxT: '2x', fyT: '2y',
+      val: function (a, b) { return sfPar(a) + '^2 + ' + sfPar(b) + '^2'; },
+      dx: function (a) { return '2\\cdot ' + sfPar(a); }, dy: function (a, b) { return '2\\cdot ' + sfPar(b); },
+      cutX: function (b) { return sfPoly([[1, 'x^2'], [b * b, '']]); },
+      cutY: function (a) { return sfPoly([[a * a, ''], [1, 'y^2']]); },
+      lvl: function (C) { return 'x^2 + y^2 = ' + sfNum(C); },
+      lab: function (C) { var r = Math.sqrt(C); return r <= 3 ? [r * 0.62, r * 0.79] : null; }
+    },
+    lin: {
+      tex: 'z = 4x + 2y', f: function (x, y) { return 4 * x + 2 * y; },
+      x: [-2, 2], y: [-2, 2], z: [-12, 12], tk: [-2, -1, 0, 1, 2], tl: [-2, 0, 2], zt: [-12, 0, 12],
+      c: [-8, 8, 1], c0: 4, lv: [-8, -4, 0, 4, 8], p0: [1, 1], s0: [0.5, 1], step: 0.5,
+      fx: function () { return 4; }, fy: function () { return 2; }, fxT: '4', fyT: '2',
+      val: function (a, b) { return '4\\cdot ' + sfPar(a) + ' + 2\\cdot ' + sfPar(b); },
+      dx: function () { return '4'; }, dy: function () { return '2'; },
+      cutX: function (b) { return sfPoly([[4, 'x'], [2 * b, '']]); },
+      cutY: function (a) { return sfPoly([[4 * a, ''], [2, 'y']]); },
+      lvl: function (C) { return '4x + 2y = ' + sfNum(C); },
+      lab: function (C) { var x = (C - 2.4) / 4; return Math.abs(x) <= 1.75 ? [x, 1.2] : [(C + 2.4) / 4, -1.2]; }
+    },
+    xy: {
+      tex: 'z = xy', f: function (x, y) { return x * y; },
+      x: [0, 6], y: [0, 6], z: [0, 36], tk: [0, 1, 2, 3, 4, 5, 6], tl: [0, 3, 6], zt: [0, 18, 36],
+      c: [1, 30, 1], c0: 9, lv: [4, 9, 16, 25], p0: [2, 3], s0: [2, 3], step: 0.5,
+      fx: function (x, y) { return y; }, fy: function (x) { return x; }, fxT: 'y', fyT: 'x',
+      val: function (a, b) { return sfPar(a) + '\\cdot ' + sfPar(b); },
+      dx: function (a, b) { return sfPar(b); }, dy: function (a) { return sfPar(a); },
+      cutX: function (b) { return sfPoly([[b, 'x']]); },
+      cutY: function (a) { return sfPoly([[a, 'y']]); },
+      lvl: function (C) { return 'xy = ' + sfNum(C); },
+      lab: function (C) { var r = Math.sqrt(C); return r <= 6 ? [r, r] : null; }
+    }
+  };
+  function sfHex(c) {
+    c = (c || '').trim();
+    var m = /^#([0-9a-f]{6})$/i.exec(c);
+    if (m) { var n = parseInt(m[1], 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+    m = /rgba?\(([^)]+)\)/.exec(c);
+    if (m) { var p = m[1].split(',').map(parseFloat); return [p[0], p[1], p[2]]; }
+    return [128, 128, 128];
+  }
+  function sfMix(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+  function sfRgb(c, a) {
+    return 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' + (a == null ? 1 : a) + ')';
+  }
+  /* Kvadratų žygiavimas: lygio linijos atkarpos viename langelyje.
+     v – reikšmės kampuose (f − C) tvarka (x0,y0), (x1,y0), (x1,y1), (x0,y1). */
+  function sfCell(x0, y0, x1, y1, v) {
+    var P = [[x0, y0], [x1, y0], [x1, y1], [x0, y1]], pts = [];
+    for (var k = 0; k < 4; k++) {
+      var a = v[k], b = v[(k + 1) % 4];
+      if ((a < 0 && b >= 0) || (a >= 0 && b < 0)) {
+        var t = a / (a - b), p = P[k], q = P[(k + 1) % 4];
+        pts.push([p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t]);
+      }
+    }
+    if (pts.length === 2) return [[pts[0], pts[1]]];
+    if (pts.length === 4) return [[pts[0], pts[1]], [pts[2], pts[3]]];
+    return [];
+  }
+  function initSurface3d(box) {
+    var uid = 'sf' + (++sfCount);
+    var mode = box.getAttribute('data-mode') || 'surface';
+    var keys = (box.getAttribute('data-fns') || 'sq lin xy').split(' ').filter(function (k) { return SURF[k]; });
+    var key = box.getAttribute('data-fn') || keys[0];
+    var az = -0.62, el = 0.52, dir = 'x';
+    var S = {};
+    function reset() {
+      var F = SURF[key];
+      S.a = mode === 'slice' ? F.s0[0] : F.p0[0];
+      S.b = mode === 'slice' ? F.s0[1] : F.p0[1];
+      S.C = F.c0;
+    }
+    var hint = mode === 'levels' ? T.sfHintLevels : (mode === 'slice' ? T.sfHintSlice : T.sfHintSurface);
+    var rotIco = function (d) {
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        (d < 0 ? '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/>' : '<path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v4h-4"/>') + '</svg>';
+    };
+    var sliders = mode === 'levels' ? ['C'] : ['a', 'b'];
+    box.classList.add('tryit', 'sf');
+    box.innerHTML =
+      '<p class="tryit-title">' + ICON.slider + esc(T.tryIt) + '</p>' +
+      '<p class="tryit-note" style="margin:0 0 8px">' + esc(hint) + '</p>' +
+      (keys.length > 1 ? '<div class="sd-btns sf-fns" role="group" aria-label="' + esc(T.sfFnGroup) + '">' +
+        keys.map(function (k) {
+          return '<button type="button" class="sd-btn sf-fn" data-k="' + k + '" aria-pressed="' + (k === key) + '"><span class="js-ft"></span></button>';
+        }).join('') + '</div>' : '') +
+      (mode === 'slice' ? '<div class="sd-btns sf-dirs" role="group" aria-label="' + esc(T.sfDirGroup) + '">' +
+        '<button type="button" class="sd-btn sd-b1 sf-dir" data-d="x" aria-pressed="true"><span class="dot" aria-hidden="true"></span>' + esc(T.sfByX) + '</button>' +
+        '<button type="button" class="sd-btn sd-b1 sf-dir" data-d="y" aria-pressed="false"><span class="dot" aria-hidden="true"></span>' + esc(T.sfByY) + '</button></div>' : '') +
+      '<div class="sf-panels ' + (mode === 'levels' ? 'two' : 'one') + '">' +
+        '<div class="sf-view"><canvas class="sf-cv" role="img"></canvas>' +
+          '<div class="sf-rot"><button type="button" class="sf-rb" data-r="-1" aria-label="' + esc(T.sfRotL) + '">' + rotIco(-1) + '</button>' +
+          '<button type="button" class="sf-rb" data-r="1" aria-label="' + esc(T.sfRotR) + '">' + rotIco(1) + '</button></div></div>' +
+        (mode === 'levels' ? '<div class="sf-map"></div>' : '') +
+      '</div>' +
+      sliders.map(function (s) {
+        return '<div class="ctrl"><label for="' + uid + '-' + s + '" class="js-l' + s + '"></label><input id="' + uid + '-' + s + '" type="range"><output for="' + uid + '-' + s + '"></output></div>';
+      }).join('') +
+      '<div class="sf-vals" aria-live="polite"></div>' +
+      '<p class="tryit-note js-note"></p>';
+
+    var cv = $('.sf-cv', box), view = $('.sf-view', box), map = $('.sf-map', box);
+    var vals = $('.sf-vals', box), note = $('.js-note', box);
+    var inp = {}, out = {};
+    sliders.forEach(function (s) { inp[s] = $('#' + uid + '-' + s, box); out[s] = $('output[for="' + uid + '-' + s + '"]', box); });
+    $all('.sf-fn', box).forEach(function (b) { renderInline($('.js-ft', b), SURF[b.getAttribute('data-k')].tex); });
+    function labels() {
+      if (mode === 'levels') { renderInline($('.js-lC', box), 'C'); return; }
+      renderInline($('.js-la', box), mode === 'slice' ? 'x_0' : 'x');
+      renderInline($('.js-lb', box), mode === 'slice' ? 'y_0' : 'y');
+    }
+    function setRanges() {
+      var F = SURF[key];
+      if (mode === 'levels') {
+        inp.C.min = F.c[0]; inp.C.max = F.c[1]; inp.C.step = F.c[2]; inp.C.value = S.C;
+      } else {
+        inp.a.min = F.x[0]; inp.a.max = F.x[1]; inp.a.step = F.step; inp.a.value = S.a;
+        inp.b.min = F.y[0]; inp.b.max = F.y[1]; inp.b.step = F.step; inp.b.value = S.b;
+      }
+    }
+    function colors() {
+      var cs = getComputedStyle(box);
+      var g = function (n) { return sfHex(cs.getPropertyValue(n)); };
+      return { chart: g('--chart'), c2: g('--chart-2'), c3: g('--chart-3'), exam: g('--exam'), text: g('--text'),
+        muted: g('--muted'), border: g('--border'), surf: g('--surface'), surf2: g('--surface-2') };
+    }
+    /* Tekstas su TeX intarpais: parts – eilutės arba {m: 'tex'} */
+    function rich(el, parts) {
+      el.innerHTML = parts.map(function (p, i) { return typeof p === 'string' ? esc(p) : '<span class="js-m' + i + '"></span>'; }).join('');
+      parts.forEach(function (p, i) { if (typeof p !== 'string') renderInline($('.js-m' + i, el), p.m); });
+    }
+
+    /* ---------- 3D brėžinys ---------- */
+    function draw3d() {
+      var F = SURF[key], col = colors();
+      var w = Math.max(220, Math.round(view.clientWidth || 320));
+      var h = Math.round(w * (mode === 'levels' ? 0.95 : 0.82));
+      var dpr = window.devicePixelRatio || 1;
+      cv.style.height = h + 'px';
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+      var g = cv.getContext('2d');
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      g.clearRect(0, 0, w, h);
+      var xm = (F.x[0] + F.x[1]) / 2, xh = (F.x[1] - F.x[0]) / 2;
+      var ym = (F.y[0] + F.y[1]) / 2, yh = (F.y[1] - F.y[0]) / 2;
+      var zm = (F.z[0] + F.z[1]) / 2, zh = (F.z[1] - F.z[0]) / 2, ZS = 0.8;
+      var ca = Math.cos(az), sa = Math.sin(az), ce = Math.cos(el), se = Math.sin(el);
+      var ext = 1.414 * se + ZS * ce;
+      var sc = Math.min((w - 48) / 3, (h - 64) / (2 * ext));
+      var cx = w / 2, cy = h / 2 + 4;
+      function pr(x, y, z) {
+        var X = (x - xm) / xh, Y = (y - ym) / yh, Z = (z - zm) / zh * ZS;
+        var xr = X * ca - Y * sa, yr = X * sa + Y * ca;
+        return [cx + sc * xr, cy - sc * (yr * se + Z * ce), yr * ce - Z * se];
+      }
+      function poly(pts, fill, stroke, lw) {
+        g.beginPath(); g.moveTo(pts[0][0], pts[0][1]);
+        for (var k = 1; k < pts.length; k++) g.lineTo(pts[k][0], pts[k][1]);
+        g.closePath();
+        if (fill) { g.fillStyle = fill; g.fill(); }
+        if (stroke) { g.strokeStyle = stroke; g.lineWidth = lw || 1; g.stroke(); }
+      }
+      function seg(p, q, color, lw, dash) {
+        g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(q[0], q[1]);
+        g.strokeStyle = color; g.lineWidth = lw; g.setLineDash(dash || []); g.stroke(); g.setLineDash([]);
+      }
+      function dot(p, r, fill, ring) {
+        g.beginPath(); g.arc(p[0], p[1], r, 0, 2 * Math.PI);
+        g.fillStyle = fill; g.fill();
+        if (ring) { g.strokeStyle = ring; g.lineWidth = 2; g.stroke(); }
+      }
+      function label(p, txt, color, align, italic, bold) {
+        g.font = italic ? 'italic 16px KaTeX_Math, "Times New Roman", serif' :
+          (bold ? '600 ' : '') + '12.5px system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif';
+        g.fillStyle = color; g.textAlign = align || 'center'; g.textBaseline = 'middle';
+        g.fillText(txt, p[0], p[1]);
+      }
+      var z0 = F.z[0], z1 = F.z[1];
+      /* Grindys: tinklelis ir ašys */
+      var corners = [[F.x[0], F.y[0]], [F.x[1], F.y[0]], [F.x[1], F.y[1]], [F.x[0], F.y[1]]].map(function (c) { return pr(c[0], c[1], z0); });
+      poly(corners, sfRgb(col.surf2, 0.75), sfRgb(col.border, 1), 1);
+      F.tk.forEach(function (t) {
+        seg(pr(t, F.y[0], z0), pr(t, F.y[1], z0), sfRgb(col.border, 1), 1);
+        seg(pr(F.x[0], t, z0), pr(F.x[1], t, z0), sfRgb(col.border, 1), 1);
+      });
+      var C3 = pr(xm, ym, z0);
+      var yb = pr(xm, F.y[0], z0)[2] < pr(xm, F.y[1], z0)[2] ? F.y[0] : F.y[1];
+      var xb = pr(F.x[0], ym, z0)[2] < pr(F.x[1], ym, z0)[2] ? F.x[0] : F.x[1];
+      var out2 = function (p, d) {
+        var vx = p[0] - C3[0], vy = p[1] - C3[1], L = Math.sqrt(vx * vx + vy * vy) || 1;
+        return [p[0] + vx / L * d, p[1] + vy / L * d];
+      };
+      var axC = sfRgb(col.muted, 1);
+      seg(pr(F.x[0], yb, z0), pr(F.x[1], yb, z0), axC, 1.6);
+      seg(pr(xb, F.y[0], z0), pr(xb, F.y[1], z0), axC, 1.6);
+      var xl = pr(xm, yb === F.y[0] ? yb - 0.42 * yh : yb + 0.42 * yh, z0);
+      label(xl, 'x', sfRgb(col.text, 1), 'center', true, true);
+      var yl = pr(xb === F.x[0] ? xb - 0.42 * xh : xb + 0.42 * xh, ym, z0);
+      label(yl, 'y', sfRgb(col.text, 1), 'center', true, true);
+      /* z ašis – kairiausiame kampe, išskyrus artimiausią */
+      var cand = [[F.x[0], F.y[0]], [F.x[1], F.y[0]], [F.x[1], F.y[1]], [F.x[0], F.y[1]]].filter(function (c) {
+        return !(c[0] === xb && c[1] === yb);
+      });
+      cand.sort(function (p, q) { return pr(p[0], p[1], z0)[0] - pr(q[0], q[1], z0)[0]; });
+      var zc = cand[0], zA = pr(zc[0], zc[1], z0), zB = pr(zc[0], zc[1], z1);
+      seg(zA, zB, axC, 1.6);
+      F.zt.forEach(function (t) { var p = pr(zc[0], zc[1], t); label([p[0] - 8, p[1]], sfTxt(t), axC, 'right'); });
+      label([zB[0], zB[1] - 12], 'z', sfRgb(col.text, 1), 'center', true, true);
+      /* ašių padalos (prie z ašies kampo – praleidžiamos, kad nesutaptų) */
+      F.tl.forEach(function (t) {
+        if (!(zc[1] === yb && t === zc[0])) {
+          var mx = pr(t, (yb === F.y[0] ? yb - 0.2 * yh : yb + 0.2 * yh), z0);
+          label([mx[0], mx[1]], sfTxt(t), axC);
+        }
+        if (!(zc[0] === xb && t === zc[1]) && t !== yb) {
+          var my = pr((xb === F.x[0] ? xb - 0.2 * xh : xb + 0.2 * xh), t, z0);
+          label([my[0], my[1]], sfTxt(t), axC);
+        }
+      });
+
+      /* Tinklelis ir elementai */
+      var N = 26, xs = [], ys = [], Zg = [], P = [], i, j;
+      for (i = 0; i <= N; i++) { xs.push(F.x[0] + (F.x[1] - F.x[0]) * i / N); ys.push(F.y[0] + (F.y[1] - F.y[0]) * i / N); }
+      for (i = 0; i <= N; i++) {
+        Zg.push([]); P.push([]);
+        for (j = 0; j <= N; j++) { var zz = F.f(xs[i], ys[j]); Zg[i].push(zz); P[i].push(pr(xs[i], ys[j], zz)); }
+      }
+      var items = [];
+      var lo = sfMix(col.surf2, col.chart, 0.16), hi = sfMix(col.surf2, col.chart, 0.92);
+      var mesh = sfRgb(col.text, 0.13);
+      var Lx = -0.35, Ly = -ce, Lz = se, LL = Math.sqrt(Lx * Lx + Ly * Ly + Lz * Lz);
+      for (i = 0; i < N; i++) {
+        for (j = 0; j < N; j++) {
+          var A = P[i][j], B = P[i + 1][j], Cc = P[i + 1][j + 1], D = P[i][j + 1];
+          var zav = (Zg[i][j] + Zg[i + 1][j] + Zg[i + 1][j + 1] + Zg[i][j + 1]) / 4;
+          var dzx = ((Zg[i + 1][j] + Zg[i + 1][j + 1]) - (Zg[i][j] + Zg[i][j + 1])) / 2 / zh * ZS / (2 / N);
+          var dzy = ((Zg[i][j + 1] + Zg[i + 1][j + 1]) - (Zg[i][j] + Zg[i + 1][j])) / 2 / zh * ZS / (2 / N);
+          var nx = -dzx, ny = -dzy, nz = 1, nl = Math.sqrt(nx * nx + ny * ny + 1);
+          var vx = (nx * ca - ny * sa) / nl, vy = (nx * sa + ny * ca) / nl, vz = nz / nl;
+          var lam = Math.abs(vx * Lx + vy * Ly + vz * Lz) / LL;
+          var t = Math.max(0, Math.min(1, (zav - z0) / (z1 - z0)));
+          var c = sfMix(lo, hi, t), sh = 0.62 + 0.38 * lam;
+          items.push({ d: (A[2] + B[2] + Cc[2] + D[2]) / 4, k: 'q', p: [A, B, Cc, D], fill: sfRgb([c[0] * sh, c[1] * sh, c[2] * sh], 0.97), mesh: true });
+        }
+      }
+      var floorSegs = [];
+      if (mode === 'levels') {
+        var Cv = S.C, plC = sfRgb(col.c2, 0.2), lvC = sfRgb(col.exam, 1);
+        for (i = 0; i < N; i++) {
+          for (j = 0; j < N; j++) {
+            var q = [pr(xs[i], ys[j], Cv), pr(xs[i + 1], ys[j], Cv), pr(xs[i + 1], ys[j + 1], Cv), pr(xs[i], ys[j + 1], Cv)];
+            var dq = (q[0][2] + q[1][2] + q[2][2] + q[3][2]) / 4;
+            items.push({ d: dq, k: 'q', p: q, fill: plC });
+            var sgs = sfCell(xs[i], ys[j], xs[i + 1], ys[j + 1],
+              [Zg[i][j] - Cv, Zg[i + 1][j] - Cv, Zg[i + 1][j + 1] - Cv, Zg[i][j + 1] - Cv]);
+            var dsurf = (P[i][j][2] + P[i + 1][j][2] + P[i + 1][j + 1][2] + P[i][j + 1][2]) / 4;
+            sgs.forEach(function (s) {
+              items.push({ d: Math.min(dq, dsurf) - 0.004, k: 's', a: pr(s[0][0], s[0][1], Cv), b: pr(s[1][0], s[1][1], Cv), c: lvC, w: 2.6 });
+              floorSegs.push([pr(s[0][0], s[0][1], z0), pr(s[1][0], s[1][1], z0)]);
+            });
+          }
+        }
+      }
+      var tanSeg = null, mark = null;
+      if (mode === 'slice') {
+        var a0 = S.a, b0 = S.b, plS = sfRgb(col.c3, 0.16), cvC = sfRgb(col.c3, 1), M = 6, NS = 48, k2;
+        var fixedY = dir === 'x';
+        var r0 = fixedY ? F.x : F.y;
+        var at = function (u, z) { return fixedY ? pr(u, b0, z) : pr(a0, u, z); };
+        var fu = function (u) { return fixedY ? F.f(u, b0) : F.f(a0, u); };
+        for (i = 0; i < N; i++) {
+          var u0 = r0[0] + (r0[1] - r0[0]) * i / N, u1 = r0[0] + (r0[1] - r0[0]) * (i + 1) / N;
+          for (k2 = 0; k2 < M; k2++) {
+            var za = z0 + (z1 - z0) * k2 / M, zb = z0 + (z1 - z0) * (k2 + 1) / M;
+            var qq = [at(u0, za), at(u1, za), at(u1, zb), at(u0, zb)];
+            items.push({ d: (qq[0][2] + qq[1][2] + qq[2][2] + qq[3][2]) / 4, k: 'q', p: qq, fill: plS });
+          }
+        }
+        var curve = [];
+        for (i = 0; i <= NS; i++) { var v0 = r0[0] + (r0[1] - r0[0]) * i / NS; curve.push(at(v0, fu(v0))); }
+        var u = fixedY ? a0 : b0, f0 = F.f(a0, b0), m = fixedY ? F.fx(a0, b0) : F.fy(a0, b0);
+        var span = (r0[1] - r0[0]) * 0.22, ua = u - span, ub = u + span;
+        var clip = function (uu) { return Math.max(z0, Math.min(z1, f0 + m * (uu - u))); };
+        if (m !== 0) {
+          var zLo = f0 + m * (ua - u), zHi = f0 + m * (ub - u);
+          if (zLo < z0 || zLo > z1) ua = u + (clip(ua) - f0) / m;
+          if (zHi < z0 || zHi > z1) ub = u + (clip(ub) - f0) / m;
+        }
+        tanSeg = [at(ua, f0 + m * (ua - u)), at(ub, f0 + m * (ub - u))];
+        mark = at(u, f0);
+      }
+      /* grindų projekcija */
+      floorSegs.forEach(function (s) { seg(s[0], s[1], sfRgb(col.exam, 0.85), 1.6, [4, 3]); });
+      items.sort(function (p, q) { return q.d - p.d; });
+      items.forEach(function (it) {
+        if (it.k === 'q') poly(it.p, it.fill, it.mesh ? mesh : null, 0.7);
+        else seg(it.a, it.b, it.c, it.w);
+      });
+      if (mode === 'surface') {
+        var fz = F.f(S.a, S.b), top = pr(S.a, S.b, fz), bot = pr(S.a, S.b, z0);
+        seg(bot, top, sfRgb(col.text, 0.9), 1.6, [5, 4]);
+        dot(bot, 4, sfRgb(col.text, 1));
+        dot(top, 5.5, sfRgb(col.exam, 1), sfRgb(col.surf, 1));
+        label([bot[0] + 10, bot[1] + 12], '(' + sfTxt(S.a) + '; ' + sfTxt(S.b) + ')', sfRgb(col.text, 1), 'left', false, true);
+        label([top[0] + 10, top[1] - 12], 'z = ' + sfTxt(fz), sfRgb(col.exam, 1), 'left', false, true);
+      }
+      if (mode === 'slice') {
+        /* pjūvio kreivė – virš paviršiaus, kad matytųsi visa */
+        g.lineJoin = 'round'; g.lineCap = 'round';
+        [[sfRgb(col.surf, 0.85), 5.5], [cvC, 2.8]].forEach(function (st) {
+          g.beginPath(); g.moveTo(curve[0][0], curve[0][1]);
+          for (var k = 1; k < curve.length; k++) g.lineTo(curve[k][0], curve[k][1]);
+          g.strokeStyle = st[0]; g.lineWidth = st[1]; g.stroke();
+        });
+        seg(tanSeg[0], tanSeg[1], sfRgb(col.surf, 0.9), 5.5);
+        seg(tanSeg[0], tanSeg[1], sfRgb(col.exam, 1), 2.6);
+        dot(mark, 5.5, sfRgb(col.exam, 1), sfRgb(col.surf, 1));
+      }
+      cv.setAttribute('aria-label', T.sfAria + ' ' + F.tex.replace(/\^2/g, '²'));
+    }
+
+    /* ---------- lygio linijų žemėlapis (SVG) ---------- */
+    function drawMap() {
+      if (!map) return;
+      var F = SURF[key], W = 300, H = 300, PL = 36, PR = 286, PT = 16, PB = 266;
+      var X = function (x) { return PL + (x - F.x[0]) / (F.x[1] - F.x[0]) * (PR - PL); };
+      var Y = function (y) { return PB - (y - F.y[0]) / (F.y[1] - F.y[0]) * (PB - PT); };
+      var r1 = function (v) { return Math.round(v * 10) / 10; };
+      var s = '', i, j;
+      F.tk.forEach(function (t) {
+        s += '<line class="grid" x1="' + r1(X(t)) + '" y1="' + PT + '" x2="' + r1(X(t)) + '" y2="' + PB + '"/>';
+        s += '<line class="grid" x1="' + PL + '" y1="' + r1(Y(t)) + '" x2="' + PR + '" y2="' + r1(Y(t)) + '"/>';
+      });
+      var ax0 = F.x[0] <= 0 && F.x[1] >= 0 ? X(0) : PL, ay0 = F.y[0] <= 0 && F.y[1] >= 0 ? Y(0) : PB;
+      s += '<line class="ax" x1="' + PL + '" y1="' + r1(ay0) + '" x2="' + PR + '" y2="' + r1(ay0) + '"/>';
+      s += '<line class="ax" x1="' + r1(ax0) + '" y1="' + PB + '" x2="' + r1(ax0) + '" y2="' + PT + '"/>';
+      F.tl.forEach(function (t) {
+        s += '<text class="muted" x="' + r1(X(t)) + '" y="' + (PB + 16) + '" text-anchor="middle">' + sfTxt(t) + '</text>';
+        s += '<text class="muted" x="' + (PL - 6) + '" y="' + r1(Y(t) + 4) + '" text-anchor="end">' + sfTxt(t) + '</text>';
+      });
+      s += '<text class="m" x="' + (PR - 2) + '" y="' + (PB + 30) + '" text-anchor="end">x</text>';
+      s += '<text class="m" x="' + (PL - 24) + '" y="' + (PT + 4) + '">y</text>';
+      var NM = 80;
+      function path(C) {
+        var d = '';
+        for (i = 0; i < NM; i++) {
+          var xa = F.x[0] + (F.x[1] - F.x[0]) * i / NM, xb2 = F.x[0] + (F.x[1] - F.x[0]) * (i + 1) / NM;
+          for (j = 0; j < NM; j++) {
+            var ya = F.y[0] + (F.y[1] - F.y[0]) * j / NM, yb2 = F.y[0] + (F.y[1] - F.y[0]) * (j + 1) / NM;
+            sfCell(xa, ya, xb2, yb2, [F.f(xa, ya) - C, F.f(xb2, ya) - C, F.f(xb2, yb2) - C, F.f(xa, yb2) - C]).forEach(function (sg) {
+              d += 'M' + r1(X(sg[0][0])) + ' ' + r1(Y(sg[0][1])) + 'L' + r1(X(sg[1][0])) + ' ' + r1(Y(sg[1][1]));
+            });
+          }
+        }
+        return d;
+      }
+      var labs = '';
+      F.lv.forEach(function (C) {
+        if (C === S.C) return;
+        s += '<path class="sf-lv" d="' + path(C) + '"/>';
+        var p = F.lab(C);
+        if (p) labs += '<text class="muted sf-lt" x="' + r1(X(p[0]) + 5) + '" y="' + r1(Y(p[1]) - 5) + '">' + sfTxt(C) + '</text>';
+      });
+      s += '<path class="sf-lv sf-on" d="' + path(S.C) + '"/>';
+      var pc = F.lab(S.C);
+      if (pc) labs += '<text class="sf-lt sf-ton" x="' + r1(X(pc[0]) + 5) + '" y="' + r1(Y(pc[1]) - 5) + '"><tspan class="i">C</tspan> = ' + sfTxt(S.C) + '</text>';
+      map.innerHTML = '<svg class="plot" viewBox="0 0 ' + W + ' ' + (H + 18) + '" role="img" aria-label="' + esc(T.sfMapAria) + '">' + s + labs + '</svg>';
+    }
+
+    /* ---------- reikšmės ir paaiškinimai ---------- */
+    function texts() {
+      var F = SURF[key], a = S.a, b = S.b;
+      if (mode === 'surface') {
+        out.a.textContent = sfTxt(a); out.b.textContent = sfTxt(b);
+        rich(vals, [{ m: 'f(' + sfNum(a) + ';\\,' + sfNum(b) + ') = ' + F.val(a, b) + ' = ' + sfNum(F.f(a, b)) }]);
+        rich(note, [T.sfSurfNote1, { m: '(' + sfNum(a) + ';\\,' + sfNum(b) + ')' }, T.sfSurfNote2, { m: sfNum(F.f(a, b)) }, '.']);
+      } else if (mode === 'levels') {
+        out.C.textContent = sfTxt(S.C);
+        rich(vals, [{ m: 'f(x;\\,y) = ' + sfNum(S.C) + '\\;\\Longrightarrow\\;' + F.lvl(S.C) }]);
+        var C = S.C, parts;
+        if (key === 'sq') parts = [T.sfLvSq, { m: '\\sqrt{' + sfNum(C) + '}' + (Math.abs(Math.sqrt(C) - Math.round(Math.sqrt(C))) < 1e-9 ? ' = ' + Math.round(Math.sqrt(C)) : '') }, '.'];
+        else if (key === 'lin') parts = [T.sfLvLin, { m: 'y = ' + sfPoly([[-2, 'x'], [C / 2, '']]) }, T.sfLvLin2];
+        else parts = [T.sfLvXy, { m: 'y = \\dfrac{' + sfNum(C) + '}{x}' }, T.sfLvXy2, { m: 'xy = ' + sfNum(C) }, '.'];
+        rich(note, parts);
+      } else {
+        out.a.textContent = sfTxt(a); out.b.textContent = sfTxt(b);
+        var byX = dir === 'x', dT = byX ? "z'_x" : "z'_y";
+        var dv = byX ? F.fx(a, b) : F.fy(a, b), dExpr = byX ? F.dx(a, b) : F.dy(a, b);
+        var pt = '(' + sfNum(a) + ';\\,' + sfNum(b) + ')';
+        rich(vals, [{ m: byX ? 'z = f(x;\\,' + sfNum(b) + ') = ' + F.cutX(b) : 'z = f(' + sfNum(a) + ';\\,y) = ' + F.cutY(a) },
+          ' ', { m: dT + ' = ' + (byX ? F.fxT : F.fyT) },
+          ' ', { m: dT + pt + ' = ' + (dExpr === sfNum(dv) ? sfNum(dv) : dExpr + ' = ' + sfNum(dv)) }]);
+        rich(note, byX ?
+          [T.sfCutA, { m: 'y = ' + sfNum(b) }, T.sfCutB1, { m: 'x' }, T.sfCutB2, { m: 'x = ' + sfNum(a) }, T.sfCutC, { m: dT + pt + ' = ' + sfNum(dv) }, '.'] :
+          [T.sfCutA, { m: 'x = ' + sfNum(a) }, T.sfCutB1, { m: 'y' }, T.sfCutB2, { m: 'y = ' + sfNum(b) }, T.sfCutC, { m: dT + pt + ' = ' + sfNum(dv) }, '.']);
+      }
+    }
+    function draw() { draw3d(); drawMap(); texts(); }
+
+    /* ---------- valdikliai ---------- */
+    $all('.sf-fn', box).forEach(function (b) {
+      b.addEventListener('click', function () {
+        key = b.getAttribute('data-k');
+        $all('.sf-fn', box).forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+        reset(); setRanges(); draw();
+      });
+    });
+    $all('.sf-dir', box).forEach(function (b) {
+      b.addEventListener('click', function () {
+        dir = b.getAttribute('data-d');
+        $all('.sf-dir', box).forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+        draw();
+      });
+    });
+    sliders.forEach(function (s) {
+      inp[s].addEventListener('input', function () { S[s] = parseFloat(inp[s].value); draw(); });
+    });
+    $all('.sf-rb', box).forEach(function (b) {
+      b.addEventListener('click', function () { az += 0.3 * (+b.getAttribute('data-r')); draw3d(); });
+    });
+    var drag = null;
+    cv.addEventListener('pointerdown', function (e) {
+      drag = { x: e.clientX, y: e.clientY, az: az, el: el, mouse: e.pointerType === 'mouse' };
+      if (cv.setPointerCapture) cv.setPointerCapture(e.pointerId);
+    });
+    cv.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      az = drag.az + (e.clientX - drag.x) * 0.012;
+      if (drag.mouse) el = Math.max(0.12, Math.min(1.25, drag.el + (e.clientY - drag.y) * 0.008));
+      draw3d();
+    });
+    var end = function () { drag = null; };
+    cv.addEventListener('pointerup', end);
+    cv.addEventListener('pointercancel', end);
+    var lastW = 0;
+    var onResize = function () {
+      var wv = view.clientWidth;
+      if (Math.abs(wv - lastW) > 2) { lastW = wv; draw3d(); }
+    };
+    if (window.ResizeObserver) new ResizeObserver(onResize).observe(view);
+    else window.addEventListener('resize', onResize);
+    if (window.matchMedia) {
+      var mq = window.matchMedia('(prefers-color-scheme: dark)');
+      var re = function () { draw3d(); };
+      if (mq.addEventListener) mq.addEventListener('change', re); else if (mq.addListener) mq.addListener(re);
+    }
+    labels(); reset(); setRanges(); draw();
+  }
+
+  /* ------------------------------------------------------------------
      8c. IŠVESTINĖS ŽENKLŲ SCHEMA (sign-chart)
      <div data-widget="sign-chart" data-spec='{...}'></div>
      spec: fp, f – eilučių užrašai (TeX), v – kintamasis (TeX);
@@ -1777,6 +2340,7 @@
     $all('[data-widget="line-explorer"]').forEach(initLineExplorer);
     $all('[data-widget="deriv-explorer"]').forEach(initDerivExplorer);
     $all('[data-widget="second-deriv"]').forEach(initSecondDeriv);
+    $all('[data-widget="surface3d"]').forEach(initSurface3d);
     initTerms();
   }
 

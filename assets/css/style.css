@@ -1125,3 +1125,23 @@ svg tspan.sd-t2 { fill: var(--chart-2); }
 .sc-cc { position: absolute; top: 114px; transform: translate(-50%, -50%); font-style: italic; font-size: .92rem; line-height: 1.2; white-space: nowrap; }
 @media (max-width: 440px) { .sc-cc { font-size: .8rem; } }
 .abs-fig.abs-fig--sm svg { max-width: 380px; }
+/* ---------- Dviejų kintamųjų funkcijos paviršius (surface3d) ---------- */
+.sf-panels { display: grid; gap: 10px; margin: 0 auto; }
+.sf-panels.one { max-width: 520px; }
+.sf-panels.two { grid-template-columns: 1fr 1fr; align-items: start; }
+@media (max-width: 600px) { .sf-panels.two { grid-template-columns: 1fr; max-width: 440px; } }
+.sf-view { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.sf-cv { display: block; width: 100%; height: 300px; touch-action: pan-y; cursor: grab; }
+.sf-cv:active { cursor: grabbing; }
+.sf-rot { display: flex; justify-content: flex-end; gap: 6px; padding: 0 6px 6px; margin-top: -4px; }
+.sf-rb { width: 36px; height: 36px; padding: 7px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; display: grid; place-items: center; }
+.sf-rb:hover { border-color: var(--accent-strong); color: var(--accent-strong); }
+.sf-rb svg { width: 18px; height: 18px; }
+.tryit.sf .sf-map svg.plot { max-width: none; }
+svg .sf-lv { fill: none; stroke: var(--muted); stroke-width: 1.4; stroke-opacity: .7; }
+svg .sf-lv.sf-on { stroke: var(--exam); stroke-width: 2.8; stroke-opacity: 1; stroke-linecap: round; }
+svg text.sf-lt { font-size: 12px; }
+svg text.sf-ton { fill: var(--exam); font-weight: 700; font-size: 13px; }
+.sf-fn .katex { font-size: 1em; }
+.sf-vals { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 6px; margin-top: 10px; font-size: 1.05rem; min-height: 1.8em; text-align: center; }
+.tryit.sf .ctrl { max-width: 520px; margin-left: auto; margin-right: auto; }
