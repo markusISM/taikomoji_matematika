@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antros eilės dalinės išvestinės · Taikomoji matematika</title>
+<meta name="description" content="Antros eilės dalinių išvestinių skaičiavimo pavyzdžiai žingsnis po žingsnio: keturios antros eilės dalinės išvestinės ir mišriųjų dalinių išvestinių lygybė. Uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=90">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=90"></script>
+</head>
+<body data-page="m8f">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">8 tema · Dalinių išvestinių skaičiavimas · 6 skyrius</span>
+    <h1>Antros eilės dalinės išvestinės</h1>
+    <p class="lead">Šiame skyriuje rasite antros eilės dalinių išvestinių skaičiavimo pavyzdžių ir uždavinių savarankiškam darbui. Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Taisyklės</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ TAISYKLĖS ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">Taikomos taisyklės</h2>
+    <article class="card">
+      <p>Funkcijos \(z = f(x;\,y)\) dalinės išvestinės \(z'_x\) ir \(z'_y\) pačios yra kintamųjų \(x\) ir \(y\) funkcijos. Todėl kiekvieną jų galima dar kartą diferencijuoti pagal \(x\) arba \(y\). Gaunamos keturios <strong>antros eilės dalinės išvestinės</strong>:</p>
+      <div class="formula">\[ \begin{aligned} z''_{xx} &amp;= (z'_x)'_x = \frac{\partial^2 z}{\partial x^2} \\[8pt] z''_{xy} &amp;= (z'_x)'_y = \frac{\partial^2 z}{\partial x\,\partial y} \\[8pt] z''_{yx} &amp;= (z'_y)'_x = \frac{\partial^2 z}{\partial y\,\partial x} \\[8pt] z''_{yy} &amp;= (z'_y)'_y = \frac{\partial^2 z}{\partial y^2} \end{aligned} \]</div>
+      <p>Indekso raidės skaitomos iš kairės į dešinę: \(z''_{xy}\) reiškia, kad funkcija pirmiausia diferencijuojama pagal \(x\), o paskui – pagal \(y\).</p>
+      <figure class="abs-fig abs-fig--sm">
+        <svg viewBox="0 0 350 236" role="img" aria-label="Schema: funkcija z = f(x; y) diferencijuojama pagal x ir pagal y – gaunamos z′x ir z′y; kiekviena jų vėl diferencijuojama pagal x ir pagal y – gaunamos z″xx, z″xy, z″yx ir z″yy"><defs><marker id="ar8f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" style="fill:var(--muted)"/></marker></defs><text class="muted" x="160" y="14" text-anchor="middle" style="font-style:italic;font-size:13px">pirmos eilės</text><text class="muted" x="312" y="14" text-anchor="middle" style="font-style:italic;font-size:13px">antros eilės</text><line class="ax" x1="94" y1="128" x2="130" y2="76" marker-end="url(#ar8f)"/><text class="m" x="112" y="94" text-anchor="middle" style="font-size:16px">x</text><line class="ax" x1="94" y1="128" x2="130" y2="180" marker-end="url(#ar8f)"/><text class="m" x="112" y="170" text-anchor="middle" style="font-size:16px">y</text><line class="ax" x1="189" y1="72" x2="279" y2="45" marker-end="url(#ar8f)"/><text class="m" x="234" y="50.5" text-anchor="middle" style="font-size:16px">x</text><line class="ax" x1="189" y1="72" x2="279" y2="99" marker-end="url(#ar8f)"/><text class="m" x="234" y="101.5" text-anchor="middle" style="font-size:16px">y</text><line class="ax" x1="189" y1="184" x2="279" y2="157" marker-end="url(#ar8f)"/><text class="m" x="234" y="162.5" text-anchor="middle" style="font-size:16px">x</text><line class="ax" x1="189" y1="184" x2="279" y2="211" marker-end="url(#ar8f)"/><text class="m" x="234" y="213.5" text-anchor="middle" style="font-size:16px">y</text><rect x="1" y="110" width="94" height="36" rx="8" style="fill:var(--surface-2);stroke:var(--border);stroke-width:1.5"/><text class="m" x="48" y="133" text-anchor="middle" style="font-size:17px">z <tspan class="n">=</tspan> f<tspan class="n">(</tspan>x<tspan class="n">;</tspan> y<tspan class="n">)</tspan></text><rect x="132" y="55" width="56" height="34" rx="8" style="fill:var(--surface-2);stroke:var(--border);stroke-width:1.5"/><text class="m" x="160" y="77" text-anchor="middle" style="font-size:17px">z<tspan style="font-family:'Times New Roman',serif;font-style:normal">′</tspan><tspan dx="-3" dy="5" style="font-size:12px">x</tspan></text><rect x="132" y="167" width="56" height="34" rx="8" style="fill:var(--surface-2);stroke:var(--border);stroke-width:1.5"/><text class="m" x="160" y="189" text-anchor="middle" style="font-size:17px">z<tspan style="font-family:'Times New Roman',serif;font-style:normal">′</tspan><tspan dx="-3" dy="5" style="font-size:12px">y</tspan></text><rect x="281" y="25" width="62" height="34" rx="8" style="fill:var(--surface-2);stroke:var(--border);stroke-width:1.5"/><text class="m" x="312" y="47" text-anchor="middle" style="font-size:17px">z<tspan style="font-family:'Times New Roman',serif;font-style:normal">″</tspan><tspan dx="-3" dy="5" style="font-size:12px">xx</tspan></text><rect x="281" y="85" width="62" height="34" rx="8" style="fill:var(--surface-2);stroke:var(--border);stroke-width:1.5"/><text class="m" x="312" y="107" text-anchor="middle" style="font-size:17px">z<tspan style="font-family:'Times New Roman',serif;font-style:normal">″</tspan><tspan dx="-3" dy="5" style="font-size:12px">xy</tspan></text><rect x="281" y="137" width="62" height="34" rx="8" style="fill:var(--surface-2);stroke:var(--border);stroke-width:1.5"/><text class="m" x="312" y="159" text-anchor="middle" style="font-size:17px">z<tspan style="font-family:'Times New Roman',serif;font-style:normal">″</tspan><tspan dx="-3" dy="5" style="font-size:12px">yx</tspan></text><rect x="281" y="197" width="62" height="34" rx="8" style="fill:var(--surface-2);stroke:var(--border);stroke-width:1.5"/><text class="m" x="312" y="219" text-anchor="middle" style="font-size:17px">z<tspan style="font-family:'Times New Roman',serif;font-style:normal">″</tspan><tspan dx="-3" dy="5" style="font-size:12px">yy</tspan></text></svg>
+        <figcaption>Kiekviena pirmos eilės dalinė išvestinė diferencijuojama pagal abu kintamuosius.</figcaption>
+      </figure>
+      <p>Išvestinės \(z''_{xy}\) ir \(z''_{yx}\) vadinamos <strong>mišriosiomis dalinėmis išvestinėmis</strong>. Jei funkcijos \(z = f(x;\,y)\) mišriosios dalinės išvestinės yra tolydžios taško aplinkoje, tame taške jos yra lygios:</p>
+      <div class="formula">\[ z''_{xy} = z''_{yx} \]</div>
+      <p>Todėl apskaičiavus abi mišriąsias dalines išvestines galima patikrinti sprendimą. Skaičiavimo metodas nesikeičia, naujų taisyklių nereikia: taikomos tos pačios taisyklės kaip pirmos eilės dalinėms išvestinėms (<a href="tema-8-pagrindines-taisykles.html">pagrindinės</a>, <a href="tema-8-sandaugos-taisykle.html">sandaugos</a>, <a href="tema-8-dalmens-taisykle.html">dalmens</a> ir <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinės funkcijos</a>).</p>
+      <h3 class="subhead" style="margin-top:22px">Skaičiavimo eiga</h3>
+      <ol class="steps-list">
+        <li>Raskite \(z'_x\) ir \(z'_y\).</li>
+        <li>Diferencijuokite \(z'_x\) pagal \(x\), kad gautumėte \(z''_{xx}\), ir pagal \(y\), kad gautumėte \(z''_{xy}\).</li>
+        <li>Diferencijuokite \(z'_y\) pagal \(x\), kad gautumėte \(z''_{yx}\), ir pagal \(y\), kad gautumėte \(z''_{yy}\).</li>
+        <li>Palyginkite abi mišriąsias dalines išvestines.</li>
+      </ol>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+
+    <!-- 1 pavyzdys: TM 8.1, 19 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Daugianaris</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite funkcijos \(z = x^3y^2 - 4x^2y + 5y^3\) antros eilės dalines išvestines.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          \[ \begin{aligned} z'_x &amp;= 3x^2y^2 - 8xy \\ z'_y &amp;= 2x^3y - 4x^2 + 15y^2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinės \(z'_x\) diferencijavimas</span></h4>
+          <p>Išvestinę \(z'_x\) diferencijuojame atskirai pagal \(x\) ir pagal \(y\):</p>
+          \[ \begin{aligned} z''_{xx} &amp;= 6xy^2 - 8y \\ z''_{xy} &amp;= 6x^2y - 8x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Išvestinės \(z'_y\) diferencijavimas</span></h4>
+          <p>Išvestinę \(z'_y\) diferencijuojame pagal tuos pačius du kintamuosius. Diferencijuojant pagal \(x\), paskutinio nario \(15y^2\) išvestinė lygi 0, o pagal \(y\) – vidurinio nario \(4x^2\) išvestinė lygi 0:</p>
+          \[ \begin{aligned} z''_{yx} &amp;= 6x^2y - 8x \\ z''_{yy} &amp;= 2x^3 + 30y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Patikrinimas</span></h4>
+          <p>Mišriosios dalinės išvestinės yra lygios: \(z''_{xy} = z''_{yx} = 6x^2y - 8x\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} z''_{xx} &amp;= 6xy^2 - 8y \\ z''_{xy} &amp;= z''_{yx} = 6x^2y - 8x \\ z''_{yy} &amp;= 2x^3 + 30y \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 8.1, 20 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Trupmena</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite funkcijos \(z = \dfrac{x^2}{y}\) antros eilės dalines išvestines.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <p>Funkciją užrašome \(z = x^2y^{-1}\), kad abu kintamieji būtų reiškiami laipsniais. Pirmos eilės dalinės išvestinės:</p>
+          \[ \begin{aligned} z'_x &amp;= 2xy^{-1} = \frac{2x}{y} \\[6pt] z'_y &amp;= x^2\cdot(-1)y^{-2} = -\frac{x^2}{y^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinės \(z'_x\) diferencijavimas</span></h4>
+          <p>Diferencijuodami \(z'_x = 2xy^{-1}\), gauname</p>
+          \[ \begin{aligned} z''_{xx} &amp;= 2y^{-1} = \frac{2}{y} \\[6pt] z''_{xy} &amp;= 2x\cdot(-1)y^{-2} = -\frac{2x}{y^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Išvestinės \(z'_y\) diferencijavimas</span></h4>
+          <p>Diferencijuodami \(z'_y = -x^2y^{-2}\), gauname</p>
+          \[ \begin{aligned} z''_{yx} &amp;= -2xy^{-2} = -\frac{2x}{y^2} \\[6pt] z''_{yy} &amp;= -x^2\cdot(-2)y^{-3} = \frac{2x^2}{y^3} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Patikrinimas</span></h4>
+          <p>Mišriosios dalinės išvestinės yra lygios: \(z''_{xy} = z''_{yx} = -\dfrac{2x}{y^2}\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} z''_{xx} &amp;= \frac{2}{y} \\[8pt] z''_{xy} &amp;= z''_{yx} = -\frac{2x}{y^2} \\[8pt] z''_{yy} &amp;= \frac{2x^2}{y^3} \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 8.1, 21 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Rodiklinė funkcija: prireikia sandaugos taisyklės</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Raskite funkcijos \(z = e^{x^2y}\) antros eilės dalines išvestines.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <p>Pirmos eilės dalines išvestines randame pagal <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinės funkcijos išvestinės taisyklę</a>. Vidinė funkcija yra \(u = x^2y\), o jos dalinės išvestinės – \(u'_x = 2xy\) ir \(u'_y = x^2\):</p>
+          \[ \begin{aligned} z'_x &amp;= 2xye^{x^2y} \\ z'_y &amp;= x^2e^{x^2y} \end{aligned} \]
+          <p>Kiekviena jų yra dviejų daugiklių sandauga, todėl skaičiuojant antros eilės dalines išvestines gali reikėti <a href="tema-8-sandaugos-taisykle.html">sandaugos taisyklės</a>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinės \(z'_x\) diferencijavimas</span></h4>
+          <p>Abu daugikliai \(2xy\) ir \(e^{x^2y}\) priklauso ir nuo \(x\), ir nuo \(y\), todėl sandaugos taisyklės reikia abiem atvejais. Daugiklių išvestinės pagal \(x\) yra \(2y\) ir \(2xye^{x^2y}\), o pagal \(y\) – \(2x\) ir \(x^2e^{x^2y}\):</p>
+          \[ \begin{aligned} z''_{xx} &amp;= 2ye^{x^2y} + 2xy\cdot 2xye^{x^2y} \\ &amp;= e^{x^2y}(2y + 4x^2y^2) \\[8pt] z''_{xy} &amp;= 2xe^{x^2y} + 2xy\cdot x^2e^{x^2y} \\ &amp;= e^{x^2y}(2x + 2x^3y) \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Išvestinės \(z'_y\) diferencijavimas</span></h4>
+          <p>Diferencijuojant pagal \(x\), abu daugikliai \(x^2\) ir \(e^{x^2y}\) priklauso nuo šio kintamojo; jų išvestinės yra \(2x\) ir \(2xye^{x^2y}\). Diferencijuojant pagal \(y\), daugiklis \(x^2\) yra pastovus, todėl sandaugos taisyklės nereikia:</p>
+          \[ \begin{aligned} z''_{yx} &amp;= 2xe^{x^2y} + x^2\cdot 2xye^{x^2y} \\ &amp;= e^{x^2y}(2x + 2x^3y) \\[8pt] z''_{yy} &amp;= x^2\cdot x^2e^{x^2y} = x^4e^{x^2y} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Patikrinimas</span></h4>
+          <p>Mišriosios dalinės išvestinės yra lygios: \(z''_{xy} = z''_{yx} = e^{x^2y}(2x + 2x^3y)\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} z''_{xx} &amp;= e^{x^2y}(2y + 4x^2y^2) \\ z''_{xy} &amp;= z''_{yx} = e^{x^2y}(2x + 2x^3y) \\ z''_{yy} &amp;= x^4e^{x^2y} \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: raskite pirmos eilės dalines išvestines, kiekvieną jų diferencijuokite pagal abu kintamuosius ir palyginkite mišriąsias dalines išvestines. Tada pasitikrinkite atsakymą.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 8.1 rinkinys, 8 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = x^4 - 3x^2y^2 + 2y^3\) antros eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 4x^3 - 6xy^2\);&nbsp;&nbsp; \(z'_y = -6x^2y + 6y^2\)</p>
+          <p>\(z''_{xx} = 12x^2 - 6y^2\);&nbsp;&nbsp; \(z''_{xy} = z''_{yx} = -12xy\);&nbsp;&nbsp; \(z''_{yy} = -6x^2 + 12y\)</p>
+        </div>
+      </article>
+
+      <!-- 8 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = 2x^3y - xy^4 + 5x\) antros eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 6x^2y - y^4 + 5\);&nbsp;&nbsp; \(z'_y = 2x^3 - 4xy^3\)</p>
+          <p>\(z''_{xx} = 12xy\);&nbsp;&nbsp; \(z''_{xy} = z''_{yx} = 6x^2 - 4y^3\);&nbsp;&nbsp; \(z''_{yy} = -12xy^2\)</p>
+        </div>
+      </article>
+
+      <!-- 8 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = \dfrac{y}{x}\) antros eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = -\dfrac{y}{x^2}\);&nbsp;&nbsp; \(z'_y = \dfrac{1}{x}\)</p>
+          <p>\(z''_{xx} = \dfrac{2y}{x^3}\);&nbsp;&nbsp; \(z''_{xy} = z''_{yx} = -\dfrac{1}{x^2}\);&nbsp;&nbsp; \(z''_{yy} = 0\)</p>
+        </div>
+      </article>
+
+      <!-- 8 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = e^{3x - 2y}\) antros eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 3e^{3x - 2y}\);&nbsp;&nbsp; \(z'_y = -2e^{3x - 2y}\)</p>
+          <p>\(z''_{xx} = 9e^{3x - 2y}\);&nbsp;&nbsp; \(z''_{xy} = z''_{yx} = -6e^{3x - 2y}\);&nbsp;&nbsp; \(z''_{yy} = 4e^{3x - 2y}\)</p>
+        </div>
+      </article>
+
+      <!-- 8 e -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = \ln(x + y^2)\) antros eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{1}{x + y^2}\);&nbsp;&nbsp; \(z'_y = \dfrac{2y}{x + y^2}\)</p>
+          <p>\(z''_{xx} = -\dfrac{1}{(x + y^2)^2}\);&nbsp;&nbsp; \(z''_{xy} = z''_{yx} = -\dfrac{2y}{(x + y^2)^2}\);&nbsp;&nbsp; \(z''_{yy} = \dfrac{2x - 2y^2}{(x + y^2)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 8 f -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Raskite funkcijos \(z = x\cdot e^{xy}\) antros eilės dalines išvestines.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = e^{xy}(1 + xy)\);&nbsp;&nbsp; \(z'_y = x^2e^{xy}\)</p>
+          <p>\(z''_{xx} = e^{xy}(2y + xy^2)\);&nbsp;&nbsp; \(z''_{xy} = z''_{yx} = e^{xy}(2x + x^2y)\);&nbsp;&nbsp; \(z''_{yy} = x^3e^{xy}\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">7 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
