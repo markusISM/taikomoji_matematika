@@ -373,7 +373,7 @@
         desc: { lt: 'Tikslo funkciją reikia sudaryti patiems: paklausos funkcija pagal sąlygos duomenis, plotų ir tūrių optimizavimas.', en: 'The objective function has to be set up first: a demand function from the given data, optimizing areas and volumes.' } }
     ],
     t8: [
-      { id: 'm8a', status: 'soon',
+      { id: 'm8a', status: 'active', href: { lt: 'tema-8-pagrindines-taisykles.html' },
         title: { lt: 'Pagrindinės dalinių išvestinių skaičiavimo taisyklės', en: 'Basic Rules for Partial Derivatives' },
         desc: { lt: 'Kintamasis, pagal kurį nediferencijuojama, laikomas konstanta: daugianariai, laipsniai ir šaknys.', en: 'The variable that is not differentiated is treated as a constant: polynomials, powers and roots.' } },
       { id: 'm8b', status: 'soon',
@@ -493,6 +493,8 @@
                title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' } },
     t8:      { parent: 'home', href: { lt: 'tema-8.html', en: null },
                title: { lt: '8 tema', en: 'Topic 8' } },
+    m8a:     { parent: 't8', topic: 't8', model: 'm8a', href: { lt: 'tema-8-pagrindines-taisykles.html', en: null },
+               title: { lt: 'Pagrindinės dalinių išvestinių skaičiavimo taisyklės', en: 'Basic Rules for Partial Derivatives' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
