@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Substitute and Complementary Commodities · Applied Mathematics</title>
+<meta name="description" content="How the signs of the cross derivatives of demand show whether two commodities are substitutes, complements or neither, and how the cross derivatives are interpreted. Step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-8-pakaitalai-ir-papildai.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=103">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=103"></script>
+</head>
+<body data-page="m84">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 8 · Applications · Section 4</span>
+    <h1>Substitute and Complementary Commodities</h1>
+    <p class="lead">This section looks at how the demand for one commodity depends on the price of another commodity. The signs of the partial derivatives of the demand functions show whether two commodities are substitutes, complements or neither.</p>
+    <ul class="jump">
+      <li><a href="#savokos">Concepts</a></li>
+      <li><a href="#pozymis">The rule</a></li>
+      <li><a href="#interpretavimas">The interpretation</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. CONCEPTS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-def">
+    <h2 id="h-def">Substitute and Complementary Commodities</h2>
+
+    <article class="card">
+      <p>The demand for a commodity depends not only on its own price but also on the prices of related commodities. Tea and coffee, butter and margarine, or bus and train tickets can replace each other: when one of them becomes more expensive, people buy more of the other. Cars and fuel, printers and ink cartridges, or game consoles and games are used together: when one of them becomes more expensive, people buy less of both.</p>
+      <div class="model-note">Two commodities are called <strong>substitutes</strong>if an increase in the price of either of them increases the demand for the other. They are called <strong>complements</strong>if an increase in the price of either of them decreases the demand for the other.</div>
+
+      <h3 class="subhead" style="margin-top:22px">Demand functions of two commodities</h3>
+      <p>Let \(p\) be the price of commodity A and \(r\) the price of commodity B. The quantity demanded of each commodity depends on both prices:</p>
+      <ul>
+        <li>demand function of commodity A: \(x = f(p;\,r)\);</li>
+        <li>demand function of commodity B: \(y = g(p;\,r)\).</li>
+      </ul>
+      <p>Because each quantity depends on two prices, the demand functions here express the quantities through the prices.</p>
+      <p>Each demand function has two first order partial derivatives. The derivative with respect to the commodity’s own price – \(f'_p\) for A and \(g'_r\) for B – is usually negative: a commodity is bought less when it becomes more expensive. The derivatives with respect to the price of the other commodity – \(f'_r\) for A and \(g'_p\) for B – show how the two commodities are related. From now on they will be called <strong>cross derivatives of demand</strong>.</p>
+      <p>All four derivatives:</p>
+      <div class="tbl-wrap">
+        <table class="vtable">
+          <thead>
+            <tr><th scope="col">Demand</th><th scope="col" style="text-align:center">With respect to \(p\)</th><th scope="col" style="text-align:center">With respect to \(r\)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>commodity A<br>\(x = f(p;\,r)\)</td><td style="text-align:center">\(f'_p\)<br>own price</td><td style="text-align:center">\(f'_r\)<br><strong>cross</strong></td></tr>
+            <tr><td>commodity B<br>\(y = g(p;\,r)\)</td><td style="text-align:center">\(g'_p\)<br><strong>cross</strong></td><td style="text-align:center">\(g'_r\)<br>own price</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. THE RULE ============ -->
+  <section class="section" id="pozymis" aria-labelledby="h-test">
+    <h2 id="h-test">How the relation is decided</h2>
+
+    <article class="card">
+      <p>The relation of the commodities is decided by the signs of both cross derivatives of demand:</p>
+      <div class="tbl-wrap">
+        <table class="vtable cases-tbl">
+          <thead>
+            <tr><th scope="col">\(f'_r\)</th><th scope="col">\(g'_p\)</th><th scope="col">Commodities A and B</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(&gt; 0\)</td><td>\(&gt; 0\)</td><td><strong>substitutes</strong></td></tr>
+            <tr><td>\(&lt; 0\)</td><td>\(&lt; 0\)</td><td><strong>complements</strong></td></tr>
+            <tr><td colspan="2">different signs, or at least one equals 0</td><td>neither substitutes nor complements</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The rule follows from the meaning of the cross derivatives of demand. Each of them shows how the demand for one commodity reacts when the price of the other commodity rises and its own price does not change. The relation has to hold in both directions, so both derivatives are needed.</p>
+      <div class="duo">
+        <div class="duo-card">
+          <h4>Both cross derivatives are positive – substitutes</h4>
+          <p>\(f'_r &gt; 0\) means that when the price of B rises, the demand for A increases. \(g'_p &gt; 0\) means that when the price of A rises, the demand for B increases. So when either commodity becomes more expensive, more of the other one is bought. The commodities can replace each other: when one of them becomes more expensive, buyers turn to the other, and its sales grow.</p>
+          <p style="margin-bottom:0">For example, when train tickets become more expensive, some passengers take the bus instead, and more bus tickets are sold.</p>
+        </div>
+        <div class="duo-card">
+          <h4>Both cross derivatives are negative – complements</h4>
+          <p>\(f'_r &lt; 0\) means that when the price of B rises, the demand for A decreases. \(g'_p &lt; 0\) means that when the price of A rises, the demand for B decreases. So when either commodity becomes more expensive, less of the other one is bought. The commodities are used together: when one of them becomes more expensive, people buy less of it, and so they also need less of the other.</p>
+          <p style="margin-bottom:0">For example, when game consoles become more expensive, fewer consoles are sold, and fewer games are bought to play on them.</p>
+        </div>
+      </div>
+      <p><strong>The signs are different, or one derivative is zero.</strong> The commodities react to each other’s prices in different ways. For example, a higher price of one of them raises the demand for the other, while a higher price of the other one lowers the demand for the first or does not change it at all. By this rule the commodities are neither substitutes nor complements.</p>
+      <p>Only the cross derivatives of demand decide the relation. The own-price derivatives describe how the demand for each commodity reacts to its own price, and they are not used to decide the relation.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The sign of a derivative that depends on the prices</h3>
+      <p>Prices are positive, so a derivative such as \(-0.05p\) or \(\frac{25}{\sqrt{r}}\) has the same sign for all prices. The relation then holds at all prices. If the sign of a derivative depends on the prices, the relation of the commodities depends on them too, and it is decided at the prices given in the problem.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">The interpretation of a cross derivative of demand</h3>
+      <p>The values of the derivatives \(f'_r\) and \(g'_p\) at the given prices are interpreted like any <a href="tema-8-pokyciu-analize.html#interpretavimas">rate of change</a>: name the price that changes and say that the other price does not change:</p>
+      <div class="model-note"><em>If the price of commodity B increases by one euro from \(r_0\), while the price of commodity A stays \(p_0\), the quantity demanded of commodity A will change by approximately \(f'_r(p_0;\,r_0)\) units.</em></div>
+      <div class="model-note"><em>If the price of commodity A increases by one euro from \(p_0\), while the price of commodity B stays \(r_0\), the quantity demanded of commodity B will change by approximately \(g'_p(p_0;\,r_0)\) units.</em></div>
+      <p>The word “approximately” is left out only when the derivative is a constant.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">How to solve</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Identify the two demand functions: \(x = f(p;\,r)\) for commodity A and \(y = g(p;\,r)\) for commodity B, where \(p\) is the price of A and \(r\) is the price of B.</li>
+        <li>Find \(f'_r\), the derivative of the demand for A with respect to the price of B, and \(g'_p\), the derivative of the demand for B with respect to the price of A.</li>
+        <li>Determine the sign of each derivative: for all positive prices or at the prices given in the problem.</li>
+        <li>Apply the <a href="#pozymis">rule</a>: both positive – substitutes; both negative – complements; otherwise – neither substitutes nor complements.</li>
+        <li>If the problem asks for it, calculate the values at the given prices and <a href="#interpretavimas">interpret them</a>.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The relation decided by the own-price derivatives.</strong> \(f'_p\) and \(g'_r\) show how the demand reacts to the commodity’s own price, and they are not used to decide the relation of the commodities.</li>
+            <li><strong>Only one cross derivative checked.</strong> The relation has to hold in both directions, so both derivatives \(f'_r\) and \(g'_p\) are needed.</li>
+            <li><strong>Derivatives of different signs taken as a sign of substitutes or complements.</strong> If the signs are different, or at least one derivative equals zero, the commodities are neither substitutes nor complements.</li>
+            <li><strong>The conclusion extended to all prices.</strong> If the sign of a derivative depends on the prices, the relation is decided only at the prices given in the problem.</li>
+            <li><strong>The other price not mentioned in the interpretation, or the word “approximately” used wrongly.</strong> Say that the other price does not change. The word “approximately” is left out only when the derivative is a constant.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM 8.5, Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Bus and train tickets</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A bus line and a train line connect two districts of a city. The daily demand functions for bus tickets and for train tickets are
+        \[ \begin{aligned} x &amp;= f(p;\,r) = 1200 - 30p + 20r \\ y &amp;= g(p;\,r) = 900 + 15p - 40r \end{aligned} \]
+        where \(p\) is the price of a bus ticket and \(r\) is the price of a train ticket in euros.
+        <br>a) Determine whether bus and train tickets are substitutes, complements or neither.
+        <br>b) Interpret the derivatives \(f'_r\) and \(g'_p\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The cross derivatives of demand</span></h4>
+          <p>With respect to \(r\) the terms \(1200\) and \(30p\) are constants, and with respect to \(p\) the terms \(900\) and \(40r\):</p>
+          \[ f'_r = 20 &gt; 0;\qquad g'_p = 15 &gt; 0 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The relation of the commodities</span></h4>
+          <p>Both cross derivatives of demand are positive, so the tickets are substitutes. The own-price derivatives \(f'_p = -30\) and \(g'_r = -40\) are negative, as expected.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The interpretation</span></h4>
+          <p>Both derivatives are constants, so the changes they describe are exact – the word “approximately” is not used.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) Bus and train tickets are substitutes.</p>
+            <p>b) If the price of a train ticket increases by one euro, while the price of a bus ticket does not change, the demand for bus tickets will increase by 20 tickets a day. If the price of a bus ticket increases by one euro, while the price of a train ticket does not change, the demand for train tickets will increase by 15 tickets a day.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 8.5, Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Game consoles and games</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The monthly demand functions of a shop for game consoles and for games are
+        <div class="fit-sm">\[ \begin{aligned} x &amp;= f(p;\,r) = 4000 - 6p - 0.05pr \\ y &amp;= g(p;\,r) = 15\,000 - 0.02p^2 - 80r \end{aligned} \]</div>
+        where \(p\) is the price of a console and \(r\) is the price of a game in euros.
+        <br>a) Determine whether consoles and games are substitutes, complements or neither.
+        <br>b) Find and interpret the cross derivatives of demand when a console costs 400 euros and a game costs 60 euros.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The cross derivatives of demand</span></h4>
+          <p>With respect to \(r\) the terms \(4000\) and \(6p\) are constants, and in the product \(0.05pr\) the factor \(0.05p\) is a constant multiplier. With respect to \(p\) the terms \(15\,000\) and \(80r\) are constants:</p>
+          \[ f'_r = -0.05p;\qquad g'_p = -0.04p \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The signs</span></h4>
+          <p>The price \(p\) is positive, so both derivatives are negative for all prices: \(f'_r &lt; 0\) and \(g'_p &lt; 0\). The commodities are complements.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The values</span></h4>
+          <p>At the prices \((400;\,60)\):</p>
+          \[ \begin{aligned} f'_r(400;\,60) &amp;= -0.05\cdot 400 = -20 \\ g'_p(400;\,60) &amp;= -0.04\cdot 400 = -16 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) Consoles and games are complements.</p>
+            <p>b) If the price of a game increases by one euro from 60, while the price of a console stays 400 euros, the demand for consoles will decrease by approximately 20 a month. If the price of a console increases by one euro from 400, while the price of a game stays 60 euros, the demand for games will decrease by approximately 16 a month.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 8.5, Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Cinema tickets and streaming subscriptions</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A survey in a city found that the monthly demand functions for cinema tickets and for streaming subscriptions are
+        \[ \begin{aligned} x &amp;= f(p;\,r) = 3000 - 120p + 50\sqrt{r} \\ y &amp;= g(p;\,r) = 8000 - 40\sqrt{p} - 200r \end{aligned} \]
+        where \(p\) is the price of a cinema ticket and \(r\) is the price of a monthly subscription in euros. Determine whether cinema tickets and streaming subscriptions are substitutes, complements or neither.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The cross derivatives of demand</span></h4>
+          <p>The roots are differentiated by the rule \(\big(\sqrt{r}\big)'_r = \frac{1}{2\sqrt{r}}\):</p>
+          \[ \begin{aligned} f'_r &amp;= 50\cdot\frac{1}{2\sqrt{r}} = \frac{25}{\sqrt{r}} \\[6pt] g'_p &amp;= -40\cdot\frac{1}{2\sqrt{p}} = -\frac{20}{\sqrt{p}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The signs</span></h4>
+          <p>The roots of positive prices are positive, so \(f'_r &gt; 0\) and \(g'_p &lt; 0\) for all prices. When subscriptions become more expensive, the demand for cinema tickets increases, but when cinema tickets become more expensive, the demand for subscriptions decreases. The signs of the derivatives are different.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>Cinema tickets and streaming subscriptions are neither substitutes nor complements.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 8.5, Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Theatre tickets and parking</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The monthly demand functions for the tickets of a theatre and for places in the car park next to it are
+        <div class="m-wide">\[ x = f(p;\,r) = \frac{60\,000}{p + 2r};\qquad y = g(p;\,r) = \frac{40\,000}{2p + r} \]</div><div class="m-narrow">\[ \begin{aligned} x &amp;= f(p;\,r) = \frac{60\,000}{p + 2r} \\[8pt] y &amp;= g(p;\,r) = \frac{40\,000}{2p + r} \end{aligned} \]</div>
+        where \(p\) is the price of a ticket and \(r\) is the price of a parking place for an evening, in euros.
+        <br>a) Determine whether theatre tickets and parking places are substitutes, complements or neither.
+        <br>b) Find and interpret the cross derivatives of demand when a ticket costs 20 euros and parking costs 10 euros.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The cross derivatives of demand</span></h4>
+          <p>The functions are written as powers: \(f = 60\,000(p + 2r)^{-1}\) and \(g = 40\,000(2p + r)^{-1}\). Both functions are <a href="tema-8-sudetines-funkcijos-taisykle.html">composite</a>: the outer function is the power with the exponent \(-1\). For \(f\) the inner function is \(u = p + 2r\), with \(u'_r = 2\); for \(g\) the inner function is \(u = 2p + r\), with \(u'_p = 2\). The power form of the chain rule gives</p>
+          <div class="m-wide">\[ \begin{aligned} f'_r &amp;= 60\,000\cdot(-1)(p + 2r)^{-2}\cdot 2 = -\frac{120\,000}{(p + 2r)^2} \\[6pt] g'_p &amp;= 40\,000\cdot(-1)(2p + r)^{-2}\cdot 2 = -\frac{80\,000}{(2p + r)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r &amp;= 60\,000\cdot(-1)(p + 2r)^{-2}\cdot 2 \\[4pt] &amp;= -\frac{120\,000}{(p + 2r)^2} \\[10pt] g'_p &amp;= 40\,000\cdot(-1)(2p + r)^{-2}\cdot 2 \\[4pt] &amp;= -\frac{80\,000}{(2p + r)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The signs</span></h4>
+          <p>The squares in the denominators are positive, so both derivatives are negative for all prices. The commodities are complements.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The values</span></h4>
+          <p>At the prices \((20;\,10)\) the denominators are \((20 + 20)^2 = 1600\) and \((40 + 10)^2 = 2500\):</p>
+          \[ \begin{aligned} f'_r(20;\,10) &amp;= -\frac{120\,000}{1600} = -75 \\[6pt] g'_p(20;\,10) &amp;= -\frac{80\,000}{2500} = -32 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) Theatre tickets and parking places are complements.</p>
+            <p>b) If the price of parking increases by one euro from 10, while the ticket price stays 20 euros, the demand for theatre tickets will decrease by approximately 75 a month. If the ticket price increases by one euro from 20, while the price of parking stays 10 euros, the demand for parking places will decrease by approximately 32 a month.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5: AM 8.5, Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Butter and margarine</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The weekly demand functions for butter and for margarine in a supermarket, in kilograms, are
+        <div class="m-wide">\[ x = f(p;\,r) = 400e^{-0.2p + 0.1r};\qquad y = g(p;\,r) = 600e^{0.05p - 0.3r} \]</div><div class="m-narrow">\[ \begin{aligned} x &amp;= f(p;\,r) = 400e^{-0.2p + 0.1r} \\ y &amp;= g(p;\,r) = 600e^{0.05p - 0.3r} \end{aligned} \]</div>
+        where \(p\) is the price of a kilogram of butter and \(r\) is the price of a kilogram of margarine in euros.
+        <br>a) Determine whether butter and margarine are substitutes, complements or neither.
+        <br>b) Find and interpret the cross derivatives of demand when butter costs 5 euros a kilogram and margarine costs 2 euros a kilogram.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The cross derivatives of demand</span></h4>
+          <p>Both functions are composite: the outer function is the exponential function, and the inner functions are \(-0.2p + 0.1r\) and \(0.05p - 0.3r\). The derivative of the first inner function with respect to \(r\) is \(0.1\), and the derivative of the second one with respect to \(p\) is \(0.05\). The rule \(\big(e^u\big)'_r = e^u\cdot u'_r\) gives</p>
+          <div class="m-wide">\[ \begin{aligned} f'_r &amp;= 400e^{-0.2p + 0.1r}\cdot 0.1 = 40e^{-0.2p + 0.1r} \\[6pt] g'_p &amp;= 600e^{0.05p - 0.3r}\cdot 0.05 = 30e^{0.05p - 0.3r} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r &amp;= 400e^{-0.2p + 0.1r}\cdot 0.1 \\[4pt] &amp;= 40e^{-0.2p + 0.1r} \\[10pt] g'_p &amp;= 600e^{0.05p - 0.3r}\cdot 0.05 \\[4pt] &amp;= 30e^{0.05p - 0.3r} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The signs</span></h4>
+          <p>The exponential function is positive for any exponent, so both derivatives are positive for all prices. The commodities are substitutes.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The values</span></h4>
+          <p>At the prices \((5;\,2)\) the exponents are \(-0.2\cdot 5 + 0.1\cdot 2 = -0.8\) and \(0.05\cdot 5 - 0.3\cdot 2 = -0.35\):</p>
+          \[ \begin{aligned} f'_r(5;\,2) &amp;= 40e^{-0.8} \approx 17.97 \\ g'_p(5;\,2) &amp;= 30e^{-0.35} \approx 21.14 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) Butter and margarine are substitutes.</p>
+            <p>b) If the price of margarine increases by one euro from 2, while the price of butter stays 5 euros a kilogram, the demand for butter will increase by approximately 17.97 kilograms a week. If the price of butter increases by one euro from 5, while the price of margarine stays 2 euros a kilogram, the demand for margarine will increase by approximately 21.14 kilograms a week.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6: AM 8.5, Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Museum and zoo tickets</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The daily demand functions for the tickets of a city museum and of a zoo are
+        \[ \begin{aligned} x &amp;= f(p;\,r) = 800 - 10p + 50re^{-0.1r} \\ y &amp;= g(p;\,r) = 500 - 20r + 40\ln(p + 1) \end{aligned} \]
+        where \(p\) is the price of a museum ticket and \(r\) is the price of a zoo ticket in euros. Determine whether the tickets are substitutes, complements or neither when
+        <br>a) a museum ticket costs 12 euros and a zoo ticket costs 8 euros;
+        <br>b) a museum ticket costs 12 euros and a zoo ticket costs 15 euros.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The derivative \(f'_r\)</span></h4>
+          <p>The terms \(800\) and \(10p\) are constants. The last term is a product, so the <a href="tema-8-sandaugos-taisykle.html">product rule</a> is used with \(u = 50r\) and \(v = e^{-0.1r}\). Here \(u'_r = 50\). The inner function of the exponential function is \(-0.1r\), so \(v'_r = -0.1e^{-0.1r}\):</p>
+          <div class="m-wide">\[ f'_r = 50e^{-0.1r} + 50r\cdot\left(-0.1e^{-0.1r}\right) = 50e^{-0.1r}(1 - 0.1r) \]</div><div class="m-narrow">\[ \begin{aligned} f'_r &amp;= 50e^{-0.1r} + 50r\cdot\left(-0.1e^{-0.1r}\right) \\[4pt] &amp;= 50e^{-0.1r}(1 - 0.1r) \end{aligned} \]</div>
+          <p>The factor \(50e^{-0.1r}\) is positive, so the sign of the derivative \(f'_r\) is decided by \(1 - 0.1r\): it is positive when \(r &lt; 10\) and negative when \(r &gt; 10\). So the relation of the commodities depends on the price of a zoo ticket.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The derivative \(g'_p\)</span></h4>
+          <p>The terms \(500\) and \(20r\) are constants. The rule \(\big(\ln u\big)'_p = \frac{u'_p}{u}\) is used with \(u = p + 1\):</p>
+          \[ g'_p = \frac{40}{p + 1} &gt; 0 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The prices \((12;\,8)\)</span></h4>
+          <div class="m-wide">\[ \begin{aligned} f'_r(12;\,8) &amp;= 50e^{-0.8}\cdot 0.2 = 10e^{-0.8} \approx 4.49 &gt; 0 \\[6pt] g'_p(12;\,8) &amp;= \frac{40}{13} \approx 3.08 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r(12;\,8) &amp;= 50e^{-0.8}\cdot 0.2 = 10e^{-0.8} \\[4pt] &amp;\approx 4.49 &gt; 0 \\[8pt] g'_p(12;\,8) &amp;= \frac{40}{13} \approx 3.08 &gt; 0 \end{aligned} \]</div>
+          <p>Both cross derivatives of demand are positive.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The prices \((12;\,15)\)</span></h4>
+          <div class="m-wide">\[ \begin{aligned} f'_r(12;\,15) &amp;= 50e^{-1.5}\cdot(-0.5) = -25e^{-1.5} \approx -5.58 &lt; 0 \\[6pt] g'_p(12;\,15) &amp;\approx 3.08 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r(12;\,15) &amp;= 50e^{-1.5}\cdot(-0.5) = -25e^{-1.5} \\[4pt] &amp;\approx -5.58 &lt; 0 \\[8pt] g'_p(12;\,15) &amp;\approx 3.08 &gt; 0 \end{aligned} \]</div>
+          <p>The signs of the derivatives are different.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) When a museum ticket costs 12 euros and a zoo ticket costs 8 euros, the tickets are substitutes.</p>
+            <p>b) When a museum ticket costs 12 euros and a zoo ticket costs 15 euros, the tickets are neither substitutes nor complements.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: find both cross derivatives of demand, determine their signs and apply the rule. The answer gives the derivatives and the conclusion – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM Topic 8 Problem Set, section 4, problem 1 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A bookshop sells e-books and printed books. When an e-book costs \(p\) euros and a printed book costs \(r\) euros, the monthly quantities demanded are</p>
+          \[ \begin{aligned} x &amp;= f(p;\,r) = 5000 - 40p + 25r \\ y &amp;= g(p;\,r) = 3000 + 10p - 30r \end{aligned} \]
+          <p>e-books and printed books, respectively. Determine whether the two products are substitutes, complements or neither.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ f'_r = 25 &gt; 0;\qquad g'_p = 10 &gt; 0 \]
+          <p><strong>Answer.</strong> Both derivatives are positive, so e-books and printed books are substitutes.</p>
+        </div>
+      </article>
+
+      <!-- problem 2 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>When a printer costs \(p\) euros and an ink cartridge for it costs \(r\) euros, the yearly quantities demanded of the printers and of the cartridges are</p>
+          \[ \begin{aligned} x &amp;= f(p;\,r) = 1200 - 3p - 4r \\ y &amp;= g(p;\,r) = 9000 - 20p - 50r \end{aligned} \]
+          <p>Determine whether the two products are substitutes, complements or neither.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ f'_r = -4 &lt; 0;\qquad g'_p = -20 &lt; 0 \]
+          <p><strong>Answer.</strong> Both derivatives are negative, so the printers and the ink cartridges are complements.</p>
+        </div>
+      </article>
+
+      <!-- problem 3 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A sports shop sells two products with unit prices of \(p\) and \(r\) euros. Their weekly quantities demanded are</p>
+          \[ \begin{aligned} x &amp;= f(p;\,r) = 600 - 5p + 4\sqrt{r} \\ y &amp;= g(p;\,r) = 900 - 30r - 0.5p^2 \end{aligned} \]
+          <p>Determine whether the two products are substitutes, complements or neither.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ f'_r = \frac{2}{\sqrt{r}} &gt; 0;\qquad g'_p = -p &lt; 0 \]
+          <p><strong>Answer.</strong> The derivatives have different signs, so the products are neither substitutes nor complements.</p>
+        </div>
+      </article>
+
+      <!-- problem 4 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Two scooter-sharing companies operate in a city. When a ride costs \(p\) euros with the first company and \(r\) euros with the second, the daily numbers of rides are</p>
+          <div class="m-wide">\[ x = f(p;\,r) = \frac{2000r}{p + r};\qquad y = g(p;\,r) = \frac{1500p}{p + r} \]</div><div class="m-narrow">\[ \begin{aligned} x &amp;= f(p;\,r) = \frac{2000r}{p + r} \\[8pt] y &amp;= g(p;\,r) = \frac{1500p}{p + r} \end{aligned} \]</div>
+          <p>a) Determine whether the two services are substitutes, complements or neither.</p>
+          <p>b) Find \(f'_r(4;\,6)\) and \(g'_p(4;\,6)\). Interpret the results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives (the quotient rule):</strong></p>
+          <div class="m-wide">\[ \begin{aligned} f'_r &amp;= \frac{2000(p + r) - 2000r\cdot 1}{(p + r)^2} = \frac{2000p}{(p + r)^2} &gt; 0 \\[8pt] g'_p &amp;= \frac{1500(p + r) - 1500p\cdot 1}{(p + r)^2} = \frac{1500r}{(p + r)^2} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r &amp;= \frac{2000(p + r) - 2000r\cdot 1}{(p + r)^2} \\[6pt] &amp;= \frac{2000p}{(p + r)^2} &gt; 0 \\[10pt] g'_p &amp;= \frac{1500(p + r) - 1500p\cdot 1}{(p + r)^2} \\[6pt] &amp;= \frac{1500r}{(p + r)^2} &gt; 0 \end{aligned} \]</div>
+          <p><strong>The values:</strong></p>
+          \[ \begin{aligned} f'_r(4;\,6) &amp;= \frac{8000}{100} = 80 \\[6pt] g'_p(4;\,6) &amp;= \frac{9000}{100} = 90 \end{aligned} \]
+          <p><strong>Answer.</strong> a) Both derivatives are positive for all prices, so the two services are substitutes. b) If the price of a ride with the second company increases by one euro from 6, while the price with the first company stays 4 euros, the number of rides with the first company will increase by approximately 80 a day. If the price of a ride with the first company increases by one euro from 4, while the price with the second company stays 6 euros, the number of rides with the second company will increase by approximately 90 a day.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 7</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

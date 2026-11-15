@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change Analysis · Applied Mathematics</title>
+<meta name="description" content="Partial derivatives as rates of change: the ∂ notation, the interpretation and the approximate change of a quantity when one variable changes. Step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-8-pokyciu-analize.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=103">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=103"></script>
+</head>
+<body data-page="m83">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 8 · Applications · Section 3</span>
+    <h1>Change Analysis</h1>
+    <p class="lead">In this section partial derivatives are explained as rates of change of a quantity: how fast a price, fuel consumption or waiting time changes when one factor changes and the others do not. The partial derivative is also used to estimate the change of a quantity approximately.</p>
+    <ul class="jump">
+      <li><a href="#greitis">Rate of change</a></li>
+      <li><a href="#pokytis">Estimating the change</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. RATE OF CHANGE ============ -->
+  <section class="section" id="greitis" aria-labelledby="h-rate">
+    <h2 id="h-rate">Partial derivatives as rates of change</h2>
+
+    <article class="card">
+      <p>Many quantities depend on several factors. The price of a flat depends on its floor area and on the age of the building, the fuel consumption of a lorry on its speed and on the mass of the load, a waiting time on the number of arriving customers and on the speed of service. When one factor changes and the others do not, the quantity changes at a certain rate. This rate of change is given by the partial derivative.</p>
+      <div class="model-note">Let \(z = f(x;\,y)\). The partial derivative \(z'_x(x_0;\,y_0)\) is the <strong>rate of change</strong> of the quantity \(z\) with respect to \(x\) at the point \((x_0;\,y_0)\), when \(y\) does not change and equals \(y_0\). In the same way \(z'_y(x_0;\,y_0)\) is the rate of change of \(z\) with respect to \(y\), when \(x\) does not change and equals \(x_0\).</div>
+      <p style="margin-top:12px">The derivative of a function of one variable as a rate of change is discussed in the <a href="tema-6-pokyciu-analize.html">Topic 6 section “Change Analysis”</a>. For a function of several variables there is one difference: only one variable changes, and the others are held constant. Graphically the partial derivative is the slope of the tangent line to a cross-section curve – this can be seen in the <a href="tema-8.html#dalines">graph on the Topic 8 page</a>.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Notation with the symbol \(\partial\)</h3>
+      <p>The same derivatives are often written with the symbol \(\partial\):</p>
+      <div class="formula">\[ \frac{\partial z}{\partial x} = z'_x;\qquad \frac{\partial z}{\partial y} = z'_y \]</div>
+      <p>Above the bar stands the symbol of the function or of the dependent quantity, and below it the variable of differentiation. In applied problems the letters are often chosen by the meaning of the quantities, so notations such as \(\frac{\partial P}{\partial x}\), \(\frac{\partial F}{\partial v}\) or \(\frac{\partial A}{\partial t}\) can be met. The value at a point is written \(\frac{\partial z}{\partial x}(x_0;\,y_0)\). Whatever the notation, the method of calculation is the same: every variable except the one below the bar is held constant.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">The interpretation</h3>
+      <p>A rate of change has to be explained in the words of the problem, and that explanation is part of the answer. It names the variable that changes and says that the other one does not change:</p>
+      <div class="model-note"><em>If \(x\) increases by one unit from \(x_0\), while \(y\) stays \(y_0\), the quantity \(z\) will change by approximately \(z'_x(x_0;\,y_0)\) units.</em></div>
+      <div class="model-note"><em>If \(y\) increases by one unit from \(y_0\), while \(x\) stays \(x_0\), the quantity \(z\) will change by approximately \(z'_y(x_0;\,y_0)\) units.</em></div>
+      <p>The change is measured in the same units as \(z\): euros, litres or minutes. A positive value means that \(z\) increases, a negative value means that it decreases.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. ESTIMATING THE CHANGE ============ -->
+  <section class="section" id="pokytis" aria-labelledby="h-change">
+    <h2 id="h-change">Approximate change of a quantity</h2>
+
+    <article class="card">
+      <p>A problem may ask not for the derivative itself but for the change of a quantity: by approximately how much will \(z\) change if \(x\) increases from 20 to 21? The partial derivative is used for this as well. If \(x\) changes by \(\Delta x\) units from \(x_0\), while \(y\) stays \(y_0\), the change of \(z\) is approximately</p>
+      <div class="formula">\[ \Delta z \approx z'_x(x_0;\,y_0)\cdot\Delta x \]</div>
+      <p>In the same way, if \(y\) changes by \(\Delta y\) units from \(y_0\), while \(x\) stays \(x_0\), then</p>
+      <div class="formula">\[ \Delta z \approx z'_y(x_0;\,y_0)\cdot\Delta y \]</div>
+      <p>Three things are important.</p>
+      <ul>
+        <li><strong>The change of the argument.</strong> \(\Delta x\) is the new value minus the initial value. From 20 to 21 it is \(\Delta x = 1\), so the value of the derivative alone estimates the change of \(z\). From 20 to 22 it is \(\Delta x = 2\), and from 20 to 19 it is \(\Delta x = -1\).</li>
+        <li><strong>The initial point.</strong> The derivative is calculated at the initial value, where the change starts: at 20, not at 21.</li>
+        <li><strong>The other variable.</strong> The variable that does not change keeps its given value, and that value is substituted into the derivative.</li>
+      </ul>
+      <p>The result is approximate. It is close to the true change when \(\Delta x\) is small compared with \(x_0\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">How to solve</h2>
+
+    <article class="card">
+      <p>The problems of this section may ask to find and interpret the rate of change of a quantity, to calculate partial derivatives written with the symbol \(\partial\), or to estimate the change of a quantity when one variable moves from one value to another. In all three cases the steps are the same.</p>
+      <ol class="steps-list">
+        <li>Define the quantity and the variables. Decide which variable changes and which one does not.</li>
+        <li>Find the partial derivative with respect to the variable that changes. If both derivatives are asked for, find both.</li>
+        <li>Substitute the coordinates of the point: the initial value of the changing variable and the given value of the other variable.</li>
+        <li>If the change of the quantity is asked for, find \(\Delta x\) and multiply: \(\Delta z \approx z'_x(x_0;\,y_0)\cdot\Delta x\).</li>
+        <li>Interpret the result in the words of the problem with the <a href="#interpretavimas">wording of the interpretation</a>.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The derivative calculated at the new value.</strong> It is calculated at the initial value, where the change starts: from 20 to 21 – at 20.</li>
+            <li><strong>A wrong change of the argument.</strong> \(\Delta x\) is the new value minus the initial value. When the value decreases, it is negative, and when \(\Delta x \ne 1\), the derivative has to be multiplied by \(\Delta x\).</li>
+            <li><strong>The value of the constant variable changed.</strong> The variable that does not change keeps its given value, and exactly that value is substituted into the derivative.</li>
+            <li><strong>The other variable not mentioned in the interpretation.</strong> Name the variable that changes and say that the other one does not change.</li>
+            <li><strong>The sign and the units ignored.</strong> A positive value means that the quantity increases, a negative one that it decreases. The change is measured in the same units as the quantity itself.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM 8.4, Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Sales and advertising</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company spends \(x\) thousand euros a month on internet advertising and \(y\) thousand euros on radio advertising. Its monthly sales are
+        <div class="m-wide">\[ S(x;\,y) = 400x + 300y - 4x^2 - 3y^2 + 2xy \]</div><div class="m-narrow">\[ \begin{aligned} S(x;\,y) &amp;= 400x + 300y \\ &amp;\phantom{=}\; {}- 4x^2 - 3y^2 + 2xy \end{aligned} \]</div>
+        units. Find the rate of change of the sales with respect to the spending on each type of advertising when 20 thousand euros are spent on internet advertising and 30 thousand euros on radio advertising. Interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The partial derivatives</span></h4>
+          <p>With respect to \(x\), the terms \(300y\) and \(3y^2\) are constants, and in the product \(2xy\) the factor \(2y\) is a constant multiplier. With respect to \(y\) the roles of the variable and the constant change:</p>
+          \[ \begin{aligned} S'_x &amp;= 400 - 8x + 2y \\ S'_y &amp;= 300 - 6y + 2x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The values</span></h4>
+          \[ \begin{aligned} S'_x(20;\,30) &amp;= 400 - 160 + 60 = 300 \\ S'_y(20;\,30) &amp;= 300 - 180 + 40 = 160 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the spending on internet advertising increases by one thousand euros from 20, while the spending on radio advertising stays 30 thousand euros, the monthly sales will increase by approximately 300 units. If the spending on radio advertising increases by one thousand euros from 30, while the spending on internet advertising stays 20 thousand euros, the monthly sales will increase by approximately 160 units.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 8.4, Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Prices of flats</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The price of a flat in a certain district of a city is
+        <div class="m-wide">\[ P(x;\,y) = 1.8x + 0.002x^2 - 0.04xy - 0.5y + 20 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= 1.8x + 0.002x^2 - 0.04xy \\ &amp;\phantom{=}\; {}- 0.5y + 20 \end{aligned} \]</div>
+        thousand euros, where \(x\) is the floor area in square metres and \(y\) is the age of the building in years.
+        <br>a) By approximately how much will the price change if the building is 25 years old and the floor area increases from 80 to 81 square metres?
+        <br>b) By approximately how much will the price change if the floor area is 80 square metres and the age of the building increases from 25 to 27 years?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The derivative with respect to \(x\)</span></h4>
+          <p>The floor area changes and the age of the building stays 25 years, so the derivative with respect to \(x\) is needed. The terms \(0.5y\) and \(20\) do not contain \(x\):</p>
+          \[ P'_x = 1.8 + 0.004x - 0.04y \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The change of the price</span></h4>
+          <p>The derivative is calculated at the initial floor area of 80 square metres. The change is \(\Delta x = 81 - 80 = 1\), so the value of the derivative estimates the change of the price:</p>
+          <div class="m-wide">\[ \Delta P \approx P'_x(80;\,25)\cdot 1 = 1.8 + 0.32 - 1 = 1.12 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta P &amp;\approx P'_x(80;\,25)\cdot 1 \\ &amp;= 1.8 + 0.32 - 1 = 1.12 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The derivative with respect to \(y\)</span></h4>
+          <p>Now the age changes and the floor area stays 80 square metres. With respect to \(y\), the terms \(1.8x\), \(0.002x^2\) and \(20\) are constants:</p>
+          \[ \begin{aligned} P'_y &amp;= -0.04x - 0.5 \\ P'_y(80;\,25) &amp;= -3.2 - 0.5 = -3.7 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The change of the price</span></h4>
+          <p>The age of the building changes by \(\Delta y = 27 - 25 = 2\) years, so</p>
+          <div class="m-wide">\[ \Delta P \approx P'_y(80;\,25)\cdot\Delta y = (-3.7)\cdot 2 = -7.4 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta P &amp;\approx P'_y(80;\,25)\cdot\Delta y \\ &amp;= (-3.7)\cdot 2 = -7.4 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) If the floor area increases from 80 to 81 square metres, while the building stays 25 years old, the price will increase by approximately 1.12 thousand euros, i.e. by about 1120 euros.</p>
+            <p>b) If the age of the building increases from 25 to 27 years, while the floor area stays 80 square metres, the price will decrease by approximately 7.4 thousand euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 8.4, Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Fuel consumption</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The fuel consumption of a lorry, in litres per 100 kilometres, is
+        <div class="m-wide">\[ F(v;\,m) = 10 + 0.002v^2 + 1.5\sqrt{m} + 0.02v\sqrt{m} \]</div><div class="m-narrow">\[ \begin{aligned} F(v;\,m) &amp;= 10 + 0.002v^2 \\ &amp;\phantom{=}\; {}+ 1.5\sqrt{m} + 0.02v\sqrt{m} \end{aligned} \]</div>
+        where \(v\) is the speed in kilometres per hour and \(m\) is the mass of the load in tonnes. Find \(\frac{\partial F}{\partial v}\) and \(\frac{\partial F}{\partial m}\) when the lorry carries a 16-tonne load at 80 kilometres per hour. Interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>With respect to \(v\)</span></h4>
+          <p>The mass of the load \(m\) is a constant, so the derivative of the term \(1.5\sqrt{m}\) is 0, and \(0.02\sqrt{m}\) is the constant multiplier of \(v\):</p>
+          \[ \frac{\partial F}{\partial v} = 0.004v + 0.02\sqrt{m} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>With respect to \(m\)</span></h4>
+          <p>The speed \(v\) is a constant. The root is written as a power, \(\sqrt{m} = m^{0.5}\); its derivative is \(\frac{1}{2\sqrt{m}}\):</p>
+          <div class="m-wide">\[ \frac{\partial F}{\partial m} = 1.5\cdot\frac{1}{2\sqrt{m}} + 0.02v\cdot\frac{1}{2\sqrt{m}} = \frac{0.75 + 0.01v}{\sqrt{m}} \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial F}{\partial m} &amp;= 1.5\cdot\frac{1}{2\sqrt{m}} + 0.02v\cdot\frac{1}{2\sqrt{m}} \\[6pt] &amp;= \frac{0.75 + 0.01v}{\sqrt{m}} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>At the point \((80;\,16)\) the root is \(\sqrt{16} = 4\):</p>
+          \[ \begin{aligned} \frac{\partial F}{\partial v}(80;\,16) &amp;= 0.32 + 0.08 = 0.4 \\[6pt] \frac{\partial F}{\partial m}(80;\,16) &amp;= \frac{0.75 + 0.8}{4} = 0.3875 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the speed increases by one kilometre per hour from 80, while the load stays 16 tonnes, the fuel consumption will increase by approximately 0.4 litres per 100 kilometres. If the load increases by one tonne from 16, while the speed stays 80 kilometres per hour, the fuel consumption will increase by approximately 0.3875 litres per 100 kilometres.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 8.4, Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Body mass index</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The body mass index of a person with body mass \(w\) kilograms and height \(h\) centimetres is
+        \[ B(w;\,h) = \frac{10\,000w}{h^2} \]
+        a) Find \(\frac{\partial B}{\partial w}\) and \(\frac{\partial B}{\partial h}\) for a person with a body mass of 80 kilograms and a height of 180 centimetres. Interpret the results.
+        <br>b) By approximately how much will this person’s body mass index change if the body mass decreases from 80 to 78 kilograms?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The partial derivatives</span></h4>
+          <p>The function is rewritten with a negative exponent: \(B = 10\,000w\cdot h^{-2}\). With respect to \(w\) the factor \(10\,000h^{-2}\) is a constant multiplier, and with respect to \(h\) the factor \(10\,000w\):</p>
+          <div class="m-wide">\[ \begin{aligned} \frac{\partial B}{\partial w} &amp;= 10\,000h^{-2} = \frac{10\,000}{h^2} \\[6pt] \frac{\partial B}{\partial h} &amp;= 10\,000w\cdot(-2)h^{-3} = -\frac{20\,000w}{h^3} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial B}{\partial w} &amp;= 10\,000h^{-2} = \frac{10\,000}{h^2} \\[10pt] \frac{\partial B}{\partial h} &amp;= 10\,000w\cdot(-2)h^{-3} \\[4pt] &amp;= -\frac{20\,000w}{h^3} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The values</span></h4>
+          <p>At the point \((80;\,180)\):</p>
+          <div class="m-wide">\[ \begin{aligned} \frac{\partial B}{\partial w}(80;\,180) &amp;= \frac{10\,000}{32\,400} \approx 0.31 \\[6pt] \frac{\partial B}{\partial h}(80;\,180) &amp;= -\frac{1\,600\,000}{5\,832\,000} \approx -0.27 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial B}{\partial w}(80;\,180) &amp;= \frac{10\,000}{32\,400} \approx 0.31 \\[10pt] \frac{\partial B}{\partial h}(80;\,180) &amp;= -\frac{1\,600\,000}{5\,832\,000} \\[4pt] &amp;\approx -0.27 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The change of the index</span></h4>
+          <p>The body mass changes by \(\Delta w = 78 - 80 = -2\) kilograms, and the height stays 180 centimetres:</p>
+          <div class="m-wide">\[ \Delta B \approx \frac{\partial B}{\partial w}(80;\,180)\cdot\Delta w = \frac{10\,000}{32\,400}\cdot(-2) \approx -0.62 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta B &amp;\approx \frac{\partial B}{\partial w}(80;\,180)\cdot\Delta w \\[6pt] &amp;= \frac{10\,000}{32\,400}\cdot(-2) \approx -0.62 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) If the body mass increases by one kilogram from 80, while the height stays 180 centimetres, the body mass index will increase by approximately 0.31. If the height increases by one centimetre from 180, while the body mass stays 80 kilograms, the index will decrease by approximately 0.27.</p>
+            <p>b) If the body mass decreases from 80 to 78 kilograms, while the height stays 180 centimetres, the body mass index will decrease by approximately 0.62.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5: AM 8.4, Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Waiting time in a queue</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        At a service point \(a\) customers arrive an hour, and the staff can serve \(s\) customers an hour. The average waiting time of a customer is
+        \[ W(a;\,s) = \frac{60}{s - a} \]
+        minutes. At present 20 customers arrive an hour, and the staff can serve 30.
+        <br>a) By approximately how much will the waiting time change if the number of arriving customers increases from 20 to 21 an hour?
+        <br>b) By approximately how much will the waiting time change if the staff can serve 32 customers an hour instead of 30?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The partial derivatives</span></h4>
+          <p>The function is written as a power, \(W = 60(s - a)^{-1}\). It is a <a href="tema-8-sudetines-funkcijos-taisykle.html">composite function</a>: the outer function is the power with the exponent \(-1\), the inner one is \(u = s - a\), and its partial derivatives are \(u'_a = -1\) and \(u'_s = 1\). The power form of the chain rule gives</p>
+          <div class="m-wide">\[ \begin{aligned} W'_a &amp;= 60\cdot(-1)(s - a)^{-2}\cdot(-1) = \frac{60}{(s - a)^2} \\[6pt] W'_s &amp;= 60\cdot(-1)(s - a)^{-2}\cdot 1 = -\frac{60}{(s - a)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} W'_a &amp;= 60\cdot(-1)(s - a)^{-2}\cdot(-1) \\[4pt] &amp;= \frac{60}{(s - a)^2} \\[10pt] W'_s &amp;= 60\cdot(-1)(s - a)^{-2}\cdot 1 \\[4pt] &amp;= -\frac{60}{(s - a)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The values</span></h4>
+          <p>At the point \((20;\,30)\) the inner function is \(30 - 20 = 10\):</p>
+          \[ \begin{aligned} W'_a(20;\,30) &amp;= \frac{60}{100} = 0.6 \\[6pt] W'_s(20;\,30) &amp;= -\frac{60}{100} = -0.6 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The change when more customers arrive</span></h4>
+          <p>The number of arriving customers changes by \(\Delta a = 1\), so the value of the derivative estimates the change: \(\Delta W \approx 0.6\cdot 1 = 0.6\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The change when the service is faster</span></h4>
+          <p>The staff can serve \(\Delta s = 32 - 30 = 2\) more customers an hour:</p>
+          <div class="fit-sm">\[ \Delta W \approx W'_s(20;\,30)\cdot\Delta s = (-0.6)\cdot 2 = -1.2 \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) If the number of arriving customers increases from 20 to 21 an hour, while the staff can still serve 30, the average waiting time will increase by approximately 0.6 minutes.</p>
+            <p>b) If the staff can serve 32 customers an hour instead of 30, while 20 customers still arrive an hour, the average waiting time will decrease by approximately 1.2 minutes.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6: AM 8.4, Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Savings</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A deposit of 10&nbsp;000 euros earns interest compounded continuously. After \(t\) years, at an annual interest rate of \(r\) percent, the deposit is worth
+        \[ A(r;\,t) = 10\,000e^{0.01rt} \]
+        euros.
+        <br>a) Find \(\frac{\partial A}{\partial r}\) and \(\frac{\partial A}{\partial t}\) when the interest rate is 5 percent and the period is 10 years. Interpret the results.
+        <br>b) By approximately how much will the value of the deposit after 10 years change if the interest rate increases from 5 to 5.5 percent?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The partial derivatives</span></h4>
+          <p>The function is composite: the outer function is the exponential function and the inner one is \(u = 0.01rt\). With respect to \(r\) the time \(t\) is a constant, so \(u'_r = 0.01t\); with respect to \(t\) the rate is a constant, so \(u'_t = 0.01r\). The rule \(\big(e^u\big)'_r = e^u\cdot u'_r\) gives</p>
+          <div class="m-wide">\[ \begin{aligned} \frac{\partial A}{\partial r} &amp;= 10\,000e^{0.01rt}\cdot 0.01t = 100te^{0.01rt} \\[6pt] \frac{\partial A}{\partial t} &amp;= 10\,000e^{0.01rt}\cdot 0.01r = 100re^{0.01rt} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial A}{\partial r} &amp;= 10\,000e^{0.01rt}\cdot 0.01t \\[4pt] &amp;= 100te^{0.01rt} \\[10pt] \frac{\partial A}{\partial t} &amp;= 10\,000e^{0.01rt}\cdot 0.01r \\[4pt] &amp;= 100re^{0.01rt} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The values</span></h4>
+          <p>At the point \((5;\,10)\) the exponent is \(0.01\cdot 5\cdot 10 = 0.5\), and \(e^{0.5} \approx 1.6487\):</p>
+          \[ \begin{aligned} \frac{\partial A}{\partial r}(5;\,10) &amp;= 1000e^{0.5} \approx 1648.72 \\[6pt] \frac{\partial A}{\partial t}(5;\,10) &amp;= 500e^{0.5} \approx 824.36 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) The change of the value</span></h4>
+          <p>The rate changes by \(\Delta r = 5.5 - 5 = 0.5\) of a percentage point, and the period stays 10 years:</p>
+          <div class="m-wide">\[ \Delta A \approx \frac{\partial A}{\partial r}(5;\,10)\cdot\Delta r = 1000e^{0.5}\cdot 0.5 \approx 824.36 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta A &amp;\approx \frac{\partial A}{\partial r}(5;\,10)\cdot\Delta r \\[6pt] &amp;= 1000e^{0.5}\cdot 0.5 \approx 824.36 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) If the interest rate increases by one percentage point from 5 percent, while the period stays 10 years, the value of the deposit will increase by approximately 1648.72 euros. If the period increases by one year from 10, while the rate stays 5 percent, the value will increase by approximately 824.36 euros.</p>
+            <p>b) If the interest rate increases from 5 to 5.5 percent, the value of the deposit after 10 years will increase by approximately 824.36 euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 7: AM 8.4, Example 7 -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Concentration of a medicine</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        After a patient takes a dose of \(d\) milligrams of a medicine, its concentration in the blood after \(t\) hours is
+        \[ C(d;\,t) = 10dte^{-0.2t} \]
+        micrograms per litre.
+        <br>a) Find \(\frac{\partial C}{\partial d}\) and \(\frac{\partial C}{\partial t}\) three hours after a dose of 50 milligrams is taken. Interpret the results.
+        <br>b) By approximately how much will the concentration change after a dose of 50 milligrams if the time increases from 6 to 6.5 hours?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) With respect to \(d\)</span></h4>
+          <p>The factor \(10te^{-0.2t}\) does not depend on \(d\), so it is a constant multiplier, and the derivative of \(d\) is 1:</p>
+          \[ \frac{\partial C}{\partial d} = 10te^{-0.2t} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) With respect to \(t\)</span></h4>
+          <p>The factor \(10d\) is a constant multiplier, and the rest, \(te^{-0.2t}\), is a product, so the <a href="tema-8-sandaugos-taisykle.html">product rule</a> is used with \(u = t\) and \(v = e^{-0.2t}\). Here \(u'_t = 1\). The inner function of the exponential function is \(-0.2t\), so \(v'_t = -0.2e^{-0.2t}\):</p>
+          <div class="m-wide bp-lg">\[ \frac{\partial C}{\partial t} = 10d\left(1\cdot e^{-0.2t} + t\cdot\left(-0.2e^{-0.2t}\right)\right) = 10de^{-0.2t}(1 - 0.2t) \]</div><div class="m-narrow bp-lg fit-sm">\[ \begin{aligned} \frac{\partial C}{\partial t} &amp;= 10d\left(1\cdot e^{-0.2t} + t\cdot\left(-0.2e^{-0.2t}\right)\right) \\[6pt] &amp;= 10de^{-0.2t}(1 - 0.2t) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The values</span></h4>
+          <p>At the point \((50;\,3)\) the exponential function is \(e^{-0.6} \approx 0.5488\):</p>
+          \[ \begin{aligned} \frac{\partial C}{\partial d}(50;\,3) &amp;= 30e^{-0.6} \approx 16.46 \\[6pt] \frac{\partial C}{\partial t}(50;\,3) &amp;= 500e^{-0.6}\cdot 0.4 \approx 109.76 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The derivative at 6 hours</span></h4>
+          <p>The derivative with respect to \(t\) is calculated at the initial time of 6 hours, where \(e^{-1.2} \approx 0.3012\):</p>
+          <div class="m-wide">\[ \frac{\partial C}{\partial t}(50;\,6) = 500e^{-1.2}\cdot(1 - 1.2) = -100e^{-1.2} \approx -30.12 \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial C}{\partial t}(50;\,6) &amp;= 500e^{-1.2}\cdot(1 - 1.2) \\[4pt] &amp;= -100e^{-1.2} \approx -30.12 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) The change of the concentration</span></h4>
+          <p>The time changes by \(\Delta t = 6.5 - 6 = 0.5\) hours, so</p>
+          <div class="m-wide">\[ \Delta C \approx \frac{\partial C}{\partial t}(50;\,6)\cdot\Delta t \approx (-30.12)\cdot 0.5 = -15.06 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta C &amp;\approx \frac{\partial C}{\partial t}(50;\,6)\cdot\Delta t \\[6pt] &amp;\approx (-30.12)\cdot 0.5 = -15.06 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) If the dose increases by one milligram from 50, the concentration after three hours will increase by approximately 16.46 micrograms per litre. If the time increases by one hour from 3, while the dose stays 50 milligrams, the concentration will increase by approximately 109.76 micrograms per litre.</p>
+            <p>b) If the time after a dose of 50 milligrams increases from 6 to 6.5 hours, the concentration will decrease by approximately 15.06 micrograms per litre.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: find the partial derivatives, substitute the given values, multiply by the change of the argument if needed, and interpret the results. The answer gives the derivatives, their values and the interpretation – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM Topic 8 Problem Set, section 3, problem 1 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The number of daily visitors to a museum website depends on the number \(x\) of posts published on social media a month and on the number \(y\) of newsletters sent:</p>
+          <div class="m-wide">\[ V(x;\,y) = 500 + 40x + 60y - 2x^2 - 3y^2 + xy \]</div><div class="m-narrow">\[ \begin{aligned} V(x;\,y) &amp;= 500 + 40x + 60y \\ &amp;\phantom{=}\; {}- 2x^2 - 3y^2 + xy \end{aligned} \]</div>
+          <p>Find the rates of change of the number of visitors with respect to the number of posts and the number of newsletters when the museum publishes 6 posts and sends 8 newsletters a month. Interpret the results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ \begin{aligned} V'_x &amp;= 40 - 4x + y \\ V'_y &amp;= 60 - 6y + x \end{aligned} \]
+          <p><strong>The values:</strong></p>
+          \[ \begin{aligned} V'_x(6;\,8) &amp;= 40 - 24 + 8 = 24 \\ V'_y(6;\,8) &amp;= 60 - 48 + 6 = 18 \end{aligned} \]
+          <p><strong>Answer.</strong> If the number of posts increases by one from 6, while the number of newsletters stays 8, the number of daily visitors to the website will increase by approximately 24. If the number of newsletters increases by one from 8, while the number of posts stays 6, the number of daily visitors will increase by approximately 18.</p>
+        </div>
+      </article>
+
+      <!-- problem 2 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The time in minutes that a cleaning company needs to clean an office building of \(a\) square metres with \(n\) cleaners is</p>
+          \[ T(a;\,n) = \frac{2a}{n} + 15 \]
+          <p>a) How will the cleaning time change if the number of cleaners increases from 10 to 11 and the floor area of the building is 2000 square metres?</p>
+          <p>b) How will the cleaning time change if 10 cleaners have to clean 2100 square metres instead of 2000?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ T'_n = -\frac{2a}{n^2};\qquad T'_a = \frac{2}{n} \]
+          <p>a) \(T'_n(2000;\,10) = -\frac{4000}{100} = -40\), \(\Delta n = 1\), so \(\Delta T \approx -40\).</p>
+          <p>b) \(T'_a(2000;\,10) = \frac{2}{10} = 0.2\), \(\Delta a = 100\), so \(\Delta T \approx 0.2\cdot 100 = 20\).</p>
+          <p><strong>Answer.</strong> a) The cleaning time will decrease by approximately 40 minutes. b) The cleaning time will increase by approximately 20 minutes.</p>
+        </div>
+      </article>
+
+      <!-- problem 3 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A student’s test score depends on the number of hours of study \(h\) and the number of hours of sleep \(s\) the night before the test:</p>
+          \[ S(h;\,s) = 10\sqrt{h}\cdot\ln(s + 1) \]
+          <p>Find \(\frac{\partial S}{\partial h}(16;\,7)\) and \(\frac{\partial S}{\partial s}(16;\,7)\). Interpret the results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ \begin{aligned} \frac{\partial S}{\partial h} &amp;= \frac{5\ln(s + 1)}{\sqrt{h}} \\[6pt] \frac{\partial S}{\partial s} &amp;= \frac{10\sqrt{h}}{s + 1} \end{aligned} \]
+          <p><strong>The values:</strong></p>
+          \[ \begin{aligned} \frac{\partial S}{\partial h}(16;\,7) &amp;= \frac{5\ln 8}{4} \approx 2.60 \\[6pt] \frac{\partial S}{\partial s}(16;\,7) &amp;= \frac{40}{8} = 5 \end{aligned} \]
+          <p><strong>Answer.</strong> If the study time increases by one hour from 16, while the sleep stays 7 hours, the test score will increase by approximately 2.60 points. If the sleep increases by one hour from 7, while the study time stays 16 hours, the test score will increase by approximately 5 points.</p>
+        </div>
+      </article>
+
+      <!-- problem 4 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>The price in euros of a used car of a certain model is</p>
+          \[ P(a;\,m) = 25\,000e^{-0.1a - 0.002m} \]
+          <p>where \(a\) is the age of the car in years and \(m\) is its mileage in thousands of kilometres.</p>
+          <p>a) Find \(\frac{\partial P}{\partial a}(3;\,50)\) and \(\frac{\partial P}{\partial m}(3;\,50)\). Interpret the results.</p>
+          <p>b) How will the price of a three-year-old car change if its mileage increases from 50 to 60 thousand kilometres?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives (the chain rule):</strong></p>
+          \[ \begin{aligned} \frac{\partial P}{\partial a} &amp;= -2500e^{-0.1a - 0.002m} \\[6pt] \frac{\partial P}{\partial m} &amp;= -50e^{-0.1a - 0.002m} \end{aligned} \]
+          <p><strong>The values:</strong></p>
+          <div class="fit-sm">\[ \begin{aligned} \frac{\partial P}{\partial a}(3;\,50) &amp;= -2500e^{-0.4} \approx -1675.80 \\[6pt] \frac{\partial P}{\partial m}(3;\,50) &amp;= -50e^{-0.4} \approx -33.52 \end{aligned} \]</div>
+          <p>b) \(\Delta m = 10\), so \(\Delta P \approx -50e^{-0.4}\cdot 10 \approx -335.16\).</p>
+          <p><strong>Answer.</strong> a) If the age of the car increases by one year from 3, while the mileage stays 50 thousand kilometres, the price will decrease by approximately 1675.80 euros. If the mileage increases by one thousand kilometres from 50, while the age stays 3 years, the price will decrease by approximately 33.52 euros. b) The price will decrease by approximately 335.16 euros.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 7</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Marginal Rate of Technical Substitution · Applied Mathematics</title>
+<meta name="description" content="Isoquants and the marginal rate of technical substitution: how much of one input an additional unit of another input can replace with the output unchanged. A comparison with the MRS, step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-8-techninio-pakeitimo-norma.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=103">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=103"></script>
+</head>
+<body data-page="m86">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 8 · Applications · Section 6</span>
+    <h1>The Marginal Rate of Technical Substitution</h1>
+    <p class="lead">This section looks at how a firm can replace one input with another without changing its output. It is the same question that a consumer faces when choosing a basket of goods, only a production function is used instead of a utility function.</p>
+    <ul class="jump">
+      <li><a href="#mrts">Isoquants and MRTS</a></li>
+      <li><a href="#interpretavimas">The interpretation</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. ISOQUANTS AND THE MRTS ============ -->
+  <section class="section" id="mrts" aria-labelledby="h-mrts">
+    <h2 id="h-mrts">Isoquants and the marginal rate of technical substitution</h2>
+
+    <article class="card">
+      <p>A firm faces a question similar to that of a consumer, for whom the <a href="tema-8-naudingumo-funkcija.html#mrs">marginal rate of substitution</a> shows how much of one good the consumer is willing to give up for an additional unit of another good. <a href="tema-8-gamybos-funkcija.html">The production function</a> \(Q = f(x;\,y)\) gives the output.</p>
+      <div class="model-note">The level curve \(f(x;\,y) = C\) of a production function, called an <strong>isoquant</strong>, joins all the combinations of inputs that give the same output.</div>
+      <p style="margin-top:12px">If the amount of the first input increases by one unit, the output increases by approximately \(Q'_x\). To keep the output unchanged, the amount of the second input is reduced: when it decreases by one unit, the output changes by approximately \(-Q'_y\), and when it changes by \(\Delta y\) – by approximately \(Q'_y\cdot\Delta y\). The changes offset each other when</p>
+      <div class="formula"><div class="m-wide">\[ Q'_x\cdot 1 + Q'_y\cdot\Delta y = 0 \;\;\Longrightarrow\;\; \Delta y = -\frac{Q'_x}{Q'_y} \]</div><div class="m-narrow">\[ \begin{gathered} Q'_x\cdot 1 + Q'_y\cdot\Delta y = 0 \\[4pt] \Downarrow \\[4pt] \Delta y = -\frac{Q'_x}{Q'_y} \end{gathered} \]</div></div>
+      <p>This change is the <strong>marginal rate of technical substitution</strong>:</p>
+      <div class="formula">\[ MRTS = -\frac{Q'_x}{Q'_y} \]</div>
+      <p>It equals the slope of the isoquant. Its absolute value shows how much of the second input one additional unit of the first input can replace, with the output unchanged. When the inputs are labour and capital, \(MRTS = -\frac{MPL}{MPK}\): \(|MRTS|\) is the amount of capital that one additional worker can replace or, the other way round, the amount of capital needed to replace one worker.</p>
+      <div data-widget="mrs-chart" data-mode="mrts"></div>
+      <p style="margin-top:14px">The figure shows the isoquants of the production function \(Q = xy\). Its marginal products are \(Q'_x = y\) and \(Q'_y = x\), so \(MRTS = -\frac{y}{x}\). When point A is moved to the right with the slider, \(|MRTS|\) decreases: the more of the first input is used, the less of the second input one more unit of it can replace.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">The interpretation</h3>
+      <div class="model-note"><em>If \(MRTS(x_0;\,y_0) = -m\), then with the inputs \((x_0;\,y_0)\) one additional unit of the first input can replace approximately \(m\) units of the second input, with the output unchanged.</em></div>
+
+      <h3 class="subhead" style="margin-top:22px">When the first input does not increase by one unit</h3>
+      <p>If the amount of the first input changes by \(\Delta x\) units, for example decreases by one unit (\(\Delta x = -1\)), the change in the amount of the second input that keeps the same output is approximately</p>
+      <div class="formula">\[ \Delta y \approx MRTS\cdot\Delta x \]</div>
+      <p>When \(\Delta x = -1\), \(\Delta y\) is positive: the smaller amount of the first input is compensated by an additional amount of the second input (see Examples <a href="#pavyzdys-2">2</a> and <a href="#pavyzdys-3">3</a>).</p>
+
+      <h3 class="subhead" style="margin-top:22px">MRS and MRTS compared</h3>
+      <div class="tbl-wrap">
+        <table class="vtable cmp-tbl">
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Consumer</th><th scope="col">Firm</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Function</th><td>utility function \(U(x;\,y)\)</td><td>production function \(Q = f(x;\,y)\)</td></tr>
+            <tr><th scope="row">Level curve</th><td>indifference curve</td><td>isoquant</td></tr>
+            <tr><th scope="row">Partial derivatives</th><td>marginal utilities \(MU_x\), \(MU_y\)</td><td>marginal products \(Q'_x\), \(Q'_y\)</td></tr>
+            <tr><th scope="row">Rate of substitution</th><td>\(MRS =\) \(-\dfrac{MU_x}{MU_y}\)</td><td>\(MRTS =\) \(-\dfrac{Q'_x}{Q'_y}\)</td></tr>
+            <tr><th scope="row">The absolute value shows</th><td>how much of the second good the consumer is willing to give up for an additional unit of the first good</td><td>how much of the second input an additional unit of the first input can replace</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">How to solve</h2>
+
+    <article class="card">
+      <p>A problem may ask for the MRTS and its interpretation directly. The same thing may also be asked in other words: how much of one input is needed to replace one unit of another input. Then the input whose amount changes by one unit is the first variable \(x\), and the input that compensates this change is the second variable \(y\).</p>
+      <ol class="steps-list">
+        <li>Write the function. Decide which input changes by one unit and which one compensates this change.</li>
+        <li>Find the two partial derivatives – the marginal products.</li>
+        <li>Write the ratio with the minus sign: \(MRTS = -\frac{Q'_x}{Q'_y}\). Common factors cancel, so it is often easier to simplify the fraction before substituting the numbers.</li>
+        <li>Substitute the given amounts of the inputs. If the amount of the first input changes by \(\Delta x\) units, calculate \(\Delta y \approx MRTS\cdot\Delta x\).</li>
+        <li>Interpret the result with the <a href="#interpretavimas">wording of the interpretation</a>.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The variables mixed up.</strong> The input that changes by one unit is the first variable \(x\), and the input that compensates is the second one, \(y\). In the question “how many robot hours are needed to replace one operator hour” it is the operator hours that change by one unit.</li>
+            <li><strong>The ratio turned upside down.</strong> \(MRTS = -\frac{Q'_x}{Q'_y}\): the numerator is the marginal product of the input that changes by one unit.</li>
+            <li><strong>A negative amount given in the interpretation.</strong> When \(MRTS = -m\), one additional unit of the first input can replace approximately \(m\) units of the second input.</li>
+            <li><strong>The direction of the change ignored.</strong> When the amount of the first input decreases (\(\Delta x = -1\)), the compensating change \(\Delta y \approx MRTS\cdot\Delta x\) is positive – more of the second input is needed.</li>
+            <li><strong>The ratio not simplified.</strong> Common factors, for example equal denominators or the bracket of a CES function, cancel, and the calculation becomes simpler.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM 8.6, Example 7 (function changed: 20 → 24) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Workers and capital</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A firm’s monthly output is \(Q(x;\,y) = 24x^{0.75}y^{0.25}\) units, where \(x\) is the number of workers and \(y\) is the capital in thousands of euros. The firm employs 30 workers and uses 50 thousand euros of capital. Find the marginal rate of technical substitution and interpret the result.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal products</span></h4>
+          <p>This is a <a href="tema-8-gamybos-funkcija.html#ribinis">Cobb-Douglas production function</a>, and the power rule gives</p>
+          <div class="m-wide">\[ \begin{aligned} MPL &amp;= 0.75\cdot 24x^{-0.25}y^{0.25} = 18x^{-0.25}y^{0.25} \\ MPK &amp;= 0.25\cdot 24x^{0.75}y^{-0.75} = 6x^{0.75}y^{-0.75} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} MPL &amp;= 18x^{-0.25}y^{0.25} \\ MPK &amp;= 6x^{0.75}y^{-0.75} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>MRTS</span></h4>
+          <p>As for a <a href="tema-8-naudingumo-funkcija.html#pavyzdys-3">Cobb-Douglas utility function</a>, the powers combine into \(\frac{y}{x}\):</p>
+          <div class="m-wide">\[ MRTS = -\frac{18x^{-0.25}y^{0.25}}{6x^{0.75}y^{-0.75}} = -3\cdot\frac{y}{x} \]</div><div class="m-narrow">\[ \begin{aligned} MRTS &amp;= -\frac{18x^{-0.25}y^{0.25}}{6x^{0.75}y^{-0.75}} \\[6pt] &amp;= -3\cdot\frac{y}{x} \end{aligned} \]</div>
+          \[ MRTS(30;\,50) = -3\cdot\frac{50}{30} = -5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The MRTS is \(-5\): with 30 workers and 50 thousand euros of capital, one additional worker can replace approximately 5 thousand euros of capital, with the output unchanged.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 8.6, Example 8 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Bakers and assistants</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A bakery bakes
+        \[ Q(x;\,y) = 3x^2 + 2xy + y^2 \]
+        loaves of bread a day, where \(x\) is the number of bakers’ hours and \(y\) is the number of assistants’ hours. Today 10 bakers’ hours and 30 assistants’ hours are planned, but one baker has to leave an hour early. How many additional assistants’ hours are needed to keep the output unchanged?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>What is asked</span></h4>
+          <p>The bakers’ hours change by one hour, and the assistants’ hours compensate this change. So \(x\) is the number of bakers’ hours, and one hour fewer means \(\Delta x = -1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal products</span></h4>
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= 6x + 2y; &amp;\qquad Q'_x(10;\,30) &amp;= 60 + 60 = 120 \\ Q'_y &amp;= 2x + 2y; &amp;\qquad Q'_y(10;\,30) &amp;= 20 + 60 = 80 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= 6x + 2y \\ Q'_y &amp;= 2x + 2y \\[6pt] Q'_x(10;\,30) &amp;= 60 + 60 = 120 \\ Q'_y(10;\,30) &amp;= 20 + 60 = 80 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The MRTS and the change</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} MRTS &amp;= -\frac{120}{80} = -1.5 \\[6pt] \Delta y &amp;\approx MRTS\cdot\Delta x = (-1.5)\cdot(-1) = 1.5 \end{aligned} \]</div>
+          <p>One bakers’ hour fewer lowers the output by approximately 120 loaves, and an additional assistants’ hour raises it by approximately 80 loaves.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>Approximately 1.5 additional assistants’ hours are needed.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 8.6, Example 9 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Operators and robots</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A workshop produces
+        \[ Q(x;\,y) = \frac{100xy}{2x + y} \]
+        parts a day, where \(x\) is the number of operator hours and \(y\) is the number of robot hours. The workshop uses 20 operator hours and 40 robot hours a day. How many robot hours are needed to replace one operator hour, so that the output does not change?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal products</span></h4>
+          <p>The <a href="tema-8-dalmens-taisykle.html">quotient rule</a> is used with \(u = 100xy\) and \(v = 2x + y\). With respect to \(x\): \(u'_x = 100y\), \(v'_x = 2\); with respect to \(y\): \(u'_y = 100x\), \(v'_y = 1\).</p>
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= \frac{100y(2x + y) - 100xy\cdot 2}{(2x + y)^2} = \frac{100y^2}{(2x + y)^2} \\[8pt] Q'_y &amp;= \frac{100x(2x + y) - 100xy\cdot 1}{(2x + y)^2} = \frac{200x^2}{(2x + y)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= \frac{100y(2x + y) - 100xy\cdot 2}{(2x + y)^2} \\[6pt] &amp;= \frac{100y^2}{(2x + y)^2} \\[10pt] Q'_y &amp;= \frac{100x(2x + y) - 100xy\cdot 1}{(2x + y)^2} \\[6pt] &amp;= \frac{200x^2}{(2x + y)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>MRTS</span></h4>
+          <p>The two derivatives have the same denominator, and it cancels:</p>
+          \[ \begin{aligned} MRTS &amp;= -\frac{100y^2}{200x^2} = -\frac{y^2}{2x^2} \\[6pt] MRTS(20;\,40) &amp;= -\frac{1600}{800} = -2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The change</span></h4>
+          <p>Replacing one operator hour means \(\Delta x = -1\):</p>
+          <div class="fit-sm">\[ \Delta y \approx MRTS\cdot\Delta x = (-2)\cdot(-1) = 2 \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>Approximately 2 robot hours are needed to replace one operator hour.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 8.6, Example 10 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Machines and workers</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The daily output of a packaging plant is given by the CES production function
+        \[ Q(x;\,y) = 50\left[0.4x^{-1} + 0.6y^{-1}\right]^{-1} \]
+        where \(x\) is the number of packaging machines and \(y\) is the number of workers. The plant has 10 machines and 30 workers. Find the marginal rate of technical substitution and interpret the result.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal products</span></h4>
+          <p>The function is a <a href="tema-8-sudetines-funkcijos-taisykle.html">composite function</a>: the inner function is the expression in the brackets, and the outer function is the power with the exponent \(-1\). The partial derivatives of the inner function are \(-0.4x^{-2}\) and \(-0.6y^{-2}\). The power form of the chain rule gives</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} Q'_x &amp;= 50\cdot(-1)\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2}\cdot\left(-0.4x^{-2}\right) = 20x^{-2}\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2} \\[8pt] Q'_y &amp;= 50\cdot(-1)\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2}\cdot\left(-0.6y^{-2}\right) = 30y^{-2}\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2} \end{aligned} \]</div><div class="m-narrow bp-lg fit-sm">\[ \begin{aligned} Q'_x &amp;= 50\cdot(-1)\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2} \\ &amp;\phantom{=}\;\cdot\left(-0.4x^{-2}\right) \\ &amp;= 20x^{-2}\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2} \\[10pt] Q'_y &amp;= 50\cdot(-1)\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2} \\ &amp;\phantom{=}\;\cdot\left(-0.6y^{-2}\right) \\ &amp;= 30y^{-2}\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>MRTS</span></h4>
+          <p>The power of the expression in the brackets is a factor of both marginal products, so it cancels:</p>
+          <div class="m-wide bp-lg">\[ MRTS = -\frac{20x^{-2}\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2}}{30y^{-2}\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2}} = -\frac{20x^{-2}}{30y^{-2}} = -\frac{2}{3}\cdot\left(\frac{y}{x}\right)^2 \]</div><div class="m-narrow bp-lg fit-sm">\[ \begin{aligned} MRTS &amp;= -\frac{20x^{-2}\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2}}{30y^{-2}\left[0.4x^{-1} + 0.6y^{-1}\right]^{-2}} \\[8pt] &amp;= -\frac{20x^{-2}}{30y^{-2}} = -\frac{2}{3}\cdot\left(\frac{y}{x}\right)^2 \end{aligned} \]</div>
+          \[ MRTS(10;\,30) = -\frac{2}{3}\cdot 3^2 = -6 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The MRTS is \(-6\): with 10 machines and 30 workers, one additional machine can replace approximately 6 workers, with the output unchanged.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: find the marginal products, write the MRTS and simplify it, substitute the given amounts of the inputs and interpret the result. The answer gives the intermediate results and the interpretation – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM Topic 8 Problem Set, section 5, problem 3 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A workshop produces</p>
+          \[ Q(x;\,y) = 50x^{0.4}y^{0.6} \]
+          <p>units of output a day, where \(x\) is the number of workers and \(y\) is the number of machine hours. Find the marginal rate of technical substitution when 20 workers and 60 machine hours are used. Interpret the result.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The marginal products:</strong></p>
+          \[ \begin{aligned} Q'_x &amp;= 20x^{-0.6}y^{0.6} \\ Q'_y &amp;= 30x^{0.4}y^{-0.4} \end{aligned} \]
+          <p><strong>The MRTS:</strong></p>
+          <div class="m-wide">\[ MRTS = -\frac{Q'_x}{Q'_y} = -\frac{20x^{-0.6}y^{0.6}}{30x^{0.4}y^{-0.4}} = -\frac{2y}{3x} \]</div><div class="m-narrow">\[ \begin{aligned} MRTS &amp;= -\frac{20x^{-0.6}y^{0.6}}{30x^{0.4}y^{-0.4}} \\[6pt] &amp;= -\frac{2y}{3x} \end{aligned} \]</div>
+          \[ MRTS(20;\,60) = -\frac{120}{60} = -2 \]
+          <p><strong>Answer.</strong> The MRTS is \(-2\): with 20 workers and 60 machine hours, one additional worker can replace approximately 2 machine hours, with the output unchanged.</p>
+        </div>
+      </article>
+
+      <!-- problem 4 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A warehouse with \(x\) robots and \(y\) workers handles</p>
+          \[ Q(x;\,y) = 100\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-2} \]
+          <p>pallets a day. The warehouse has 16 robots and 36 workers. Approximately how many workers can one additional robot replace, so that the number of pallets handled does not change?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The marginal products (the chain rule):</strong></p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} Q'_x &amp;= 100\cdot(-2)\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-3}\cdot\left(-0.25x^{-1.5}\right) \\ &amp;= 50\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-3}x^{-1.5} \\[10pt] Q'_y &amp;= 100\cdot(-2)\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-3}\cdot\left(-0.25y^{-1.5}\right) \\ &amp;= 50\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-3}y^{-1.5} \end{aligned} \]</div><div class="m-narrow bp-lg fit-sm">\[ \begin{aligned} Q'_x &amp;= 100\cdot(-2)\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-3} \\ &amp;\phantom{=}\;\cdot\left(-0.25x^{-1.5}\right) \\ &amp;= 50\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-3}x^{-1.5} \\[10pt] Q'_y &amp;= 100\cdot(-2)\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-3} \\ &amp;\phantom{=}\;\cdot\left(-0.25y^{-1.5}\right) \\ &amp;= 50\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-3}y^{-1.5} \end{aligned} \]</div>
+          <p><strong>The MRTS and the change</strong> (the common factor \(50\left[0.5x^{-0.5} + 0.5y^{-0.5}\right]^{-3}\) cancels):</p>
+          <div class="m-wide">\[ \begin{aligned} MRTS &amp;= -\frac{x^{-1.5}}{y^{-1.5}} = -\left(\frac{y}{x}\right)^{1.5} \\[6pt] MRTS(16;\,36) &amp;= -\left(\frac{9}{4}\right)^{1.5} = -\left(\frac{3}{2}\right)^3 = -3.375 \\[6pt] \Delta y &amp;\approx MRTS\cdot\Delta x = (-3.375)\cdot 1 = -3.375 \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} MRTS &amp;= -\frac{x^{-1.5}}{y^{-1.5}} \\[4pt] &amp;= -\left(\frac{y}{x}\right)^{1.5} \\[6pt] MRTS(16;\,36) &amp;= -\left(\frac{9}{4}\right)^{1.5} \\[4pt] &amp;= -\left(\frac{3}{2}\right)^3 = -3.375 \\[6pt] \Delta y &amp;\approx MRTS\cdot\Delta x \\ &amp;= (-3.375)\cdot 1 = -3.375 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> One additional robot can replace approximately 3.375 workers.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 7</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
