@@ -1153,3 +1153,4 @@ svg .sf-lv.sf-cd { stroke: var(--exam); stroke-width: 2; stroke-opacity: .9; }
 .m-narrow { display: none; }
 @media (max-width: 560px) { .m-wide { display: none; } .m-narrow { display: block; } }
 @media (max-width: 720px) { .m-wide.bp-lg { display: none; } .m-narrow.bp-lg { display: block; } }
+svg .ln-faint { stroke: var(--chart); stroke-width: 1.8; stroke-opacity: .4; fill: none; }

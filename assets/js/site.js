@@ -99,6 +99,13 @@
       sfCutA: 'Plokštuma ',
       sfCutB1: ' kerta paviršių kreive – kintamojo ', sfCutB2: ' funkcijos grafiku. Jos liestinės nuolydis taške ',
       sfCutC: ' lygus dalinei išvestinei ',
+      mrsHint: 'Slankikliu keiskite krepšelio A padėtį abejingumo kreivėje U = xy = 36. Brūkšninė linija – liestinė taške A. Laiptelis rodo, kiek antrosios prekės reikia atsisakyti už vieną papildomą pirmosios prekės vienetą.',
+      mrsAria: 'Naudingumo funkcijos U = xy abejingumo kreivės ir ribinė pakeitimo norma',
+      mrsCurve: 'abejingumo kreivės', mrsTan: 'liestinė taške A', mrsStep: 'pakeitimas pagal MRS',
+      mrsNote1: 'Turėdamas krepšelį ', mrsNote2: ', vartotojas už vieną papildomą pirmosios prekės vienetą pasirengęs atsisakyti apytiksliai ',
+      mrsUnit1: 'antrosios prekės vieneto', mrsUnitN: 'antrosios prekės vienetų',
+      mrsNote3: ', kad naudingumas nepasikeistų. Judant pačia kreive iki krepšelio B, antrosios prekės kiekis pasikeičia ',
+      mrsNote4: ' – MRS yra apytikslis šio pokyčio įvertinimas.',
       sfHintCobb: 'Slankikliais keiskite laipsnių rodiklius α ir β. Kairėje – Kobo-Daglaso funkcijos (A = 10) paviršius su lygio linijomis, dešinėje – tos pačios lygio linijos xy plokštumoje. Vilkite brėžinį arba spauskite rodykles, kad jį pasuktumėte.',
       sfCdLess: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja mažesne proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, tolsta viena nuo kitos.',
       sfCdEq: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja ta pačia proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, išsidėsčiusios vienodais atstumais.',
@@ -208,6 +215,13 @@
       sfCutA: 'The plane ',
       sfCutB1: ' cuts the surface along a curve – the graph of a function of ', sfCutB2: ' alone. The slope of its tangent line at ',
       sfCutC: ' equals the partial derivative ',
+      mrsHint: 'Move the slider to change the position of bundle A on the indifference curve U = xy = 36. The dashed line is the tangent line at A. The step shows how much of the second good must be given up for one more unit of the first good.',
+      mrsAria: 'Indifference curves of the utility function U = xy and the marginal rate of substitution',
+      mrsCurve: 'indifference curves', mrsTan: 'tangent line at A', mrsStep: 'substitution by MRS',
+      mrsNote1: 'With the bundle ', mrsNote2: ', the consumer is willing to give up approximately ',
+      mrsUnit1: 'units of the second good', mrsUnitN: 'units of the second good',
+      mrsNote3: ' for one more unit of the first good, keeping utility unchanged. Moving along the curve itself to bundle B, the amount of the second good changes by ',
+      mrsNote4: ' – the MRS is an approximation of this change.',
       sfHintCobb: 'Move the sliders to change the exponents α and β. On the left is the surface of the Cobb-Douglas function (A = 10) with its level curves; on the right are the same level curves in the xy-plane. Drag the graph or use the arrows to rotate it.',
       sfCdLess: 'When both inputs are increased in the same proportion, output increases in a smaller proportion. Hence the level curves for equally spaced output levels move further apart.',
       sfCdEq: 'When both inputs are increased in the same proportion, output increases in the same proportion. Hence the level curves for equally spaced output levels are evenly spaced.',
@@ -411,7 +425,7 @@
       { id: 'm84', status: 'active', href: { lt: 'tema-8-pakaitalai-ir-papildai.html' },
         title: { lt: 'Pakaitalai ir papildai', en: 'Substitute and Complementary Commodities' },
         desc: { lt: 'Dalinių išvestinių ženklai parodo, ar dvi prekės yra pakaitalai, ar papildai.', en: 'The signs of the partial derivatives show whether two goods are substitutes or complements.' } },
-      { id: 'm85', status: 'soon',
+      { id: 'm85', status: 'active', href: { lt: 'tema-8-naudingumo-funkcija.html' },
         title: { lt: 'Naudingumo funkcija ir ribinė pakeitimo norma', en: 'The Utility Function and the Marginal Rate of Substitution' },
         desc: { lt: 'Abejingumo kreivės, ribinis naudingumas ir kiek vienos prekės vartotojas gali atsisakyti dėl papildomo kitos prekės vieneto.', en: 'Indifference curves, marginal utility and how much of one good a consumer can give up for one more unit of the other.' } },
       { id: 'm86', status: 'soon',
@@ -521,6 +535,8 @@
                title: { lt: 'Pokyčių analizė', en: 'Change Analysis' } },
     m84:     { parent: 't8', topic: 't8', model: 'm84', href: { lt: 'tema-8-pakaitalai-ir-papildai.html', en: null },
                title: { lt: 'Pakaitalai ir papildai', en: 'Substitute and Complementary Commodities' } },
+    m85:     { parent: 't8', topic: 't8', model: 'm85', href: { lt: 'tema-8-naudingumo-funkcija.html', en: null },
+               title: { lt: 'Naudingumo funkcija ir ribinė pakeitimo norma', en: 'The Utility Function and the Marginal Rate of Substitution' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -2110,6 +2126,105 @@
   }
 
   /* ------------------------------------------------------------------
+     8b4. RIBINĖ PAKEITIMO NORMA  (<div data-widget="mrs-chart">)
+     Naudingumo funkcija U = xy, abejingumo kreivės U = 16, 36, 64.
+     Slankikliu keičiama krepšelio A(x0; 36/x0) padėtis kreivėje U = 36
+     (x0 reikšmės parinktos taip, kad y0 būtų baigtinė dešimtainė trupmena;
+     x0 ≤ 7,2, kad laiptelio užrašai nesusiliestų su kreivių užrašais).
+     Rodoma liestinė taške A, laiptelis Δx = 1, Δy ≈ MRS = −y0/x0 ir
+     tikslus kreivės taškas B(x0 + 1; 36/(x0 + 1)).
+     ------------------------------------------------------------------ */
+  var mrsCount = 0;
+  function initMrsChart(box) {
+    var uid = 'mrs' + (++mrsCount), C0 = 36, LV = [16, 36, 64], XM = 12;
+    var XS = [3, 4, 4.5, 5, 6, 7.2], K0 = 1;
+    var W = 340, PL = 36, PR = 316, PT = 18, PB = 298, H = 322;
+    var X = function (x) { return PL + x / XM * (PR - PL); }, Y = function (y) { return PB - y / XM * (PB - PT); };
+    var r1 = function (v) { return Math.round(v * 10) / 10; };
+    var g = '', i, k;
+    for (i = 2; i <= XM; i += 2) {
+      g += '<line class="grid" x1="' + r1(X(i)) + '" y1="' + PT + '" x2="' + r1(X(i)) + '" y2="' + PB + '"/>';
+      g += '<line class="grid" x1="' + PL + '" y1="' + r1(Y(i)) + '" x2="' + PR + '" y2="' + r1(Y(i)) + '"/>';
+      g += '<text class="muted" x="' + r1(X(i)) + '" y="' + (PB + 16) + '" text-anchor="middle">' + i + '</text>';
+      g += '<text class="muted" x="' + (PL - 7) + '" y="' + r1(Y(i) + 4) + '" text-anchor="end">' + i + '</text>';
+    }
+    g += '<text class="muted" x="' + (PL - 7) + '" y="' + (PB + 16) + '" text-anchor="end">0</text>';
+    g += '<line class="ax" x1="' + PL + '" y1="' + PB + '" x2="' + PR + '" y2="' + PB + '"/><path class="ah" d="M' + (PR + 10) + ' ' + PB + 'L' + PR + ' ' + (PB - 4.5) + 'L' + PR + ' ' + (PB + 4.5) + 'Z"/>';
+    g += '<line class="ax" x1="' + PL + '" y1="' + PB + '" x2="' + PL + '" y2="' + PT + '"/><path class="ah" d="M' + PL + ' ' + (PT - 10) + 'L' + (PL - 4.5) + ' ' + PT + 'L' + (PL + 4.5) + ' ' + PT + 'Z"/>';
+    g += '<text class="m" x="' + (PR + 2) + '" y="' + (PB - 9) + '">x</text><text class="m" x="' + (PL + 9) + '" y="' + (PT - 2) + '">y</text>';
+    LV.forEach(function (C) {
+      var pts = [], x0 = C / XM;
+      for (k = 0; k <= 120; k++) { var xx = x0 + (XM - x0) * k / 120; pts.push(r1(X(xx)) + ' ' + r1(Y(C / xx))); }
+      g += '<path class="' + (C === C0 ? 'ln' : 'ln-faint') + '" d="M' + pts.join('L') + '"/>';
+      var lx = 11.2;
+      g += '<text class="c1 halo" x="' + r1(X(lx)) + '" y="' + r1(Y(C / lx) - 8) + '" text-anchor="middle" style="font-weight:700"><tspan class="i">U</tspan> = ' + C + '</text>';
+    });
+    box.classList.add('tryit');
+    box.innerHTML =
+      '<p class="tryit-title">' + ICON.slider + esc(T.tryIt) + '</p>' +
+      '<p class="tryit-note" style="margin:0 0 6px">' + esc(T.mrsHint) + '</p>' +
+      '<svg class="plot" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(T.mrsAria) + '">' +
+        '<defs><clipPath id="' + uid + '-clip"><rect x="' + PL + '" y="' + PT + '" width="' + (PR - PL) + '" height="' + (PB - PT) + '"/></clipPath></defs>' +
+        g +
+        '<g clip-path="url(#' + uid + '-clip)"><line class="ln2-dash js-tan"/></g>' +
+        '<line class="leg js-hx"/><line class="leg js-vy"/>' +
+        '<text class="halo js-dxl" text-anchor="middle" style="font-weight:700">Δx = 1</text><text class="halo js-dyl" style="font-weight:700"></text>' +
+        '<circle class="pt js-b" r="5"/><text class="halo js-bl" style="font-weight:700">B</text>' +
+        '<circle class="pt-hi js-a" r="6"/><text class="halo js-al" text-anchor="end" style="font-weight:700">A</text>' +
+      '</svg>' +
+      '<ul class="chart-legend"><li><span class="sw" aria-hidden="true"></span>' + esc(T.mrsCurve) + '</li>' +
+        '<li><span class="sw sw-dash" aria-hidden="true"></span>' + esc(T.mrsTan) + '</li>' +
+        '<li><span class="sw sw-e" aria-hidden="true"></span>' + esc(T.mrsStep) + '</li></ul>' +
+      '<div class="ctrl"><label for="' + uid + '-x" class="js-xlab"></label><input id="' + uid + '-x" type="range" min="0" max="' + (XS.length - 1) + '" step="1" value="' + K0 + '"><output for="' + uid + '-x"></output></div>' +
+      '<div class="tryit-eq js-eq1" aria-live="polite"></div>' +
+      '<div class="tryit-eq js-eq2"></div>' +
+      '<p class="tryit-note js-note"></p>';
+    var el = function (c) { return $('.' + c, box); };
+    var inp = $('#' + uid + '-x', box), out = $('output[for="' + uid + '-x"]', box);
+    renderInline(el('js-xlab'), 'x_A');
+    var num = function (v) { var t = String(Number((Math.abs(v) < 1e-9 ? 0 : v).toFixed(2))); return T.decimal === ',' ? t.replace('.', '{,}') : t; };
+    var txt = function (v) { var t = String(Number(Math.abs(v).toFixed(2))); t = T.decimal === ',' ? t.replace('.', ',') : t; return (v < 0 ? '−' : '') + t; };
+    var unit = function (v) {
+      var r = Math.round(v * 100) / 100;
+      if (Math.abs(r - Math.round(r)) > 1e-9) return T.mrsUnit1;
+      var n = Math.round(r);
+      return (n % 10 === 1 && n % 100 !== 11) ? T.mrsUnit1 : T.mrsUnitN;
+    };
+    var rel = function (v) { return Math.abs(v * 100 - Math.round(v * 100)) < 1e-6 ? ' = ' : ' \\approx '; };
+    var line = function (e, a, b) { e.setAttribute('x1', r1(a[0])); e.setAttribute('y1', r1(a[1])); e.setAttribute('x2', r1(b[0])); e.setAttribute('y2', r1(b[1])); };
+    var place = function (e, x, y) { e.setAttribute('x', r1(x)); e.setAttribute('y', r1(y)); };
+    function draw() {
+      var x0 = XS[parseInt(inp.value, 10)], y0 = C0 / x0, m = -y0 / x0, xb = x0 + 1, yb = C0 / xb;
+      out.textContent = txt(x0);
+      line(el('js-tan'), [X(x0 - 20), Y(y0 - 20 * m)], [X(x0 + 20), Y(y0 + 20 * m)]);
+      line(el('js-hx'), [X(x0), Y(y0)], [X(xb), Y(y0)]);
+      line(el('js-vy'), [X(xb), Y(y0)], [X(xb), Y(y0 + m)]);
+      var a = el('js-a'), b = el('js-b');
+      a.setAttribute('cx', r1(X(x0))); a.setAttribute('cy', r1(Y(y0)));
+      b.setAttribute('cx', r1(X(xb))); b.setAttribute('cy', r1(Y(yb)));
+      place(el('js-al'), X(x0) - 10, Y(y0) + 5);
+      place(el('js-bl'), X(xb) + 9, Y(yb) + 15);
+      place(el('js-dxl'), (X(x0) + X(xb)) / 2, Y(y0) - 8);
+      var dyl = el('js-dyl');
+      dyl.textContent = 'Δy ≈ ' + txt(m);
+      place(dyl, X(xb) + 8, Y(y0 + m / 2) + 4);
+      var A = '(' + num(x0) + ';\\,' + num(y0) + ')';
+      el('js-eq1').innerHTML = '<span class="js-m1"></span> <span class="js-m1b" style="margin-left:.35em"></span> <span class="js-m1c" style="margin-left:.35em"></span>';
+      renderInline(el('js-m1'), 'A = ' + A + ':');
+      renderInline(el('js-m1b'), 'MU_x = y = ' + num(y0) + ';');
+      renderInline(el('js-m1c'), 'MU_y = x = ' + num(x0));
+      el('js-eq2').innerHTML = '<span class="js-m2"></span>';
+      renderInline(el('js-m2'), 'MRS = -\\frac{MU_x}{MU_y} = -\\frac{' + num(y0) + '}{' + num(x0) + '}' + rel(m) + num(m));
+      var note = el('js-note');
+      note.innerHTML = esc(T.mrsNote1) + '<span class="js-n1"></span>' + esc(T.mrsNote2) + esc(txt(-m)) + ' ' + esc(unit(-m)) + esc(T.mrsNote3) + '<span class="js-n2"></span>' + esc(T.mrsNote4);
+      renderInline(el('js-n1'), A);
+      renderInline(el('js-n2'), '\\Delta y = \\frac{36}{' + num(xb) + '} - ' + num(y0) + rel(yb - y0) + num(yb - y0));
+    }
+    inp.addEventListener('input', draw);
+    draw();
+  }
+
+  /* ------------------------------------------------------------------
      8c. IŠVESTINĖS ŽENKLŲ SCHEMA (sign-chart)
      <div data-widget="sign-chart" data-spec='{...}'></div>
      spec: fp, f – eilučių užrašai (TeX), v – kintamasis (TeX);
@@ -2429,6 +2544,7 @@
     $all('[data-widget="deriv-explorer"]').forEach(initDerivExplorer);
     $all('[data-widget="second-deriv"]').forEach(initSecondDeriv);
     $all('[data-widget="surface3d"]').forEach(initSurface3d);
+    $all('[data-widget="mrs-chart"]').forEach(initMrsChart);
     initTerms();
   }
 
