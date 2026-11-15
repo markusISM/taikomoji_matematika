@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamybos funkcija · Taikomoji matematika</title>
+<meta name="description" content="Gamybos funkcija ir ribinis produktas: Kobo-Daglaso, CES ir kitos gamybos funkcijos, ribinis darbo ir kapitalo produktas, pajamos, sąnaudos ir pelnas išteklių atžvilgiu. Pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=92">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=92"></script>
+</head>
+<body data-page="m82">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">8 tema · Taikymai · 2 skyrius</span>
+    <h1>Gamybos funkcija</h1>
+    <p class="lead">Šiame skyriuje nagrinėjama, kaip gamybos apimtis priklauso nuo naudojamų išteklių – darbo, kapitalo, žemės ar žaliavų – ir kaip ji kinta keičiantis vieno ištekliaus kiekiui. Pagal gamybos funkciją taip pat sudaromos pajamų, sąnaudų ir pelno funkcijos išteklių atžvilgiu.</p>
+    <ul class="jump">
+      <li><a href="#funkcija">Gamybos funkcija</a></li>
+      <li><a href="#ribinis">Ribinis produktas</a></li>
+      <li><a href="#pelnas">Pajamos ir pelnas</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. GAMYBOS FUNKCIJA ============ -->
+  <section class="section" id="funkcija" aria-labelledby="h-func">
+    <h2 id="h-func">Gamybos funkcija</h2>
+
+    <article class="card">
+      <p>Kiekviena įmonė naudoja išteklius prekėms gaminti ar paslaugoms teikti. Gamykla naudoja darbuotojų darbą, įrenginius ir energiją, ūkis – žemę, darbą ir trąšas, kepykla – kepėjų darbą, krosnis ir miltus. Gamyboje naudojami ištekliai vadinami <strong>gamybos ištekliais</strong>, o jų kiekių ir gamybos apimties ryšį aprašo gamybos funkcija.</p>
+      <div class="model-note"><strong>Gamybos funkcija</strong> \(z = f(x;\,y)\) nusako gamybos apimtį, kurią galima pasiekti naudojant \(x\) ir \(y\) vienetų gamybos išteklių.</div>
+      <p style="margin-top:12px">Dažniausiai nagrinėjami du ištekliai: <strong>darbas</strong>, matuojamas, pavyzdžiui, darbuotojų skaičiumi arba darbo valandomis, ir <strong>kapitalas</strong>, matuojamas įrenginių skaičiumi, jų darbo valandomis arba investuotais eurais. Gamybos išteklius gali būti ir žaliavos, energija ar žemė. Gamybos funkcija gali priklausyti nuo trijų ar daugiau išteklių, pavyzdžiui, \(z = f(x;\,y;\,w)\).</p>
+      <p>Gamybos funkcijos sudaromos pagal duomenis, o skirtingiems gamybos procesams taikomi skirtingi jų modeliai. Dažniausiai naudojama Kobo-Daglaso gamybos funkcija. Taip pat taikomi daugianariai, funkcijos su kitomis elementariosiomis funkcijomis ir CES funkcija.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Kobo-Daglaso gamybos funkcija</h3>
+      <p><strong>Kobo-Daglaso gamybos funkcija</strong> yra</p>
+      <div class="formula">\[ z = Ax^{\alpha}y^{\beta} \]</div>
+      <p>čia</p>
+      <ul>
+        <li>\(A\) – teigiama konstanta, reiškianti technologijų lygį;</li>
+        <li>\(x\) ir \(y\) – gamybos išteklių kiekiai;</li>
+        <li>\(z\) – gamybos apimtis;</li>
+        <li>\(\alpha\) ir \(\beta\) – gamybos apimties daliniai elastingumai atitinkamų išteklių atžvilgiu.</li>
+      </ul>
+      <p>Laipsnių rodikliai paprastai yra teigiami skaičiai, mažesni už 1, pavyzdžiui, \(z = 40x^{0{,}75}y^{0{,}25}\). Tuomet didėjant bet kurio ištekliaus kiekiui gamybos apimtis didėja, tačiau vis lėčiau. Suma \(\alpha + \beta\) parodo, kas vyksta abiejų išteklių kiekius padidinus ta pačia proporcija. Abu kiekius padauginus iš \(k\), gamybos apimtis padauginama iš \(k^{\alpha + \beta}\):</p>
+      <ul>
+        <li>jei \(\alpha + \beta = 1\), gamybos apimtis didėja ta pačia proporcija kaip išteklių kiekiai: dvigubai daugiau darbo ir kapitalo duoda dvigubai didesnę gamybos apimtį;</li>
+        <li>jei \(\alpha + \beta &lt; 1\), gamybos apimtis didėja mažesne proporcija nei išteklių kiekiai;</li>
+        <li>jei \(\alpha + \beta &gt; 1\), gamybos apimtis didėja didesne proporcija nei išteklių kiekiai.</li>
+      </ul>
+
+      <h3 class="subhead" style="margin-top:22px">Kiti modeliai</h3>
+      <p>Trijų išteklių Kobo-Daglaso funkcija turi tris laipsnių rodiklius, pavyzdžiui, \(z = Ax^{\alpha}y^{\beta}w^{\gamma}\). CES gamybos funkcijos pavyzdys:</p>
+      <div class="formula">\[ z = 30\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^{-1} \]</div>
+      <p>CES funkcija yra sudėtinė: skliaustuose esantis reiškinys yra vidinė funkcija, o laipsnis – išorinė. Todėl dalinės išvestinės randamos pagal <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinės funkcijos išvestinės taisyklę</a>.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. RIBINIS PRODUKTAS ============ -->
+  <section class="section" id="ribinis" aria-labelledby="h-mp">
+    <h2 id="h-mp">Ribinis produktas</h2>
+
+    <article class="card">
+      <p>Gamybos funkcijos pirmos eilės dalinės išvestinės nusako <strong>ribinį produktą</strong> atitinkamo gamybos ištekliaus atžvilgiu:</p>
+      <ul>
+        <li>\(f'_x(x;\,y)\) – ribinis produktas pirmojo ištekliaus atžvilgiu;</li>
+        <li>\(f'_y(x;\,y)\) – ribinis produktas antrojo ištekliaus atžvilgiu.</li>
+      </ul>
+      <p>Kai ištekliai yra darbas ir kapitalas, vartojami pavadinimai <strong>ribinis darbo produktas</strong>, \(MPL\), ir <strong>ribinis kapitalo produktas</strong>, \(MPK\).</p>
+      <p>Išvestinė pagal \(x\) skaičiuojama laikant \(y\) konstanta. Todėl ribinis produktas pirmojo ištekliaus atžvilgiu rodo, kaip kinta gamybos apimtis keičiantis tik šio ištekliaus kiekiui. Jei \(x\) padidėja vienetu nuo \(x_0\), o \(y\) išlieka lygus \(y_0\), gamybos apimties pokytis apytiksliai lygus \(f'_x(x_0;\,y_0)\) vienetų. Analogiškai, jei \(y\) padidėja vienetu nuo \(y_0\), o \(x\) išlieka lygus \(x_0\), gamybos apimties pokytis apytiksliai lygus \(f'_y(x_0;\,y_0)\) vienetų.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">Interpretavimas</h3>
+      <p>Apskaičiuotą ribinį produktą reikia paaiškinti uždavinio kontekste – tai yra atsakymo dalis. Paaiškinime nurodoma, kurio ištekliaus kiekis keičiasi, ir pabrėžiama, kad kito ištekliaus kiekis nekinta:</p>
+      <div class="model-note"><em>Pirmojo ištekliaus kiekiui padidėjus vienetu nuo \(x_0\), o antrojo ištekliaus kiekiui išlikus lygiam \(y_0\), gamybos apimties pokytis apytiksliai lygus \(f'_x(x_0;\,y_0)\) vienetų.</em></div>
+      <div class="model-note"><em>Antrojo ištekliaus kiekiui padidėjus vienetu nuo \(y_0\), o pirmojo ištekliaus kiekiui išlikus lygiam \(x_0\), gamybos apimties pokytis apytiksliai lygus \(f'_y(x_0;\,y_0)\) vienetų.</em></div>
+      <p>Teigiamas ribinis produktas reiškia, kad gamybos apimtis didėja, o neigiamas – kad mažėja: šio ištekliaus jau naudojama tiek daug, kad papildomas jo vienetas trukdo gamybai.</p>
+    </article>
+
+    <article class="card">
+      <h3 class="subhead">Kobo-Daglaso funkcijos ribiniai produktai</h3>
+      <p>Kobo-Daglaso funkcijoje \(Ay^{\beta}\) yra pastovus daugiklis diferencijuojant pagal \(x\), o \(Ax^{\alpha}\) – diferencijuojant pagal \(y\). Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+      <div class="formula">\[ \begin{aligned} f'_x(x;\,y) &amp;= \alpha Ax^{\alpha - 1}y^{\beta} \\ f'_y(x;\,y) &amp;= \beta Ax^{\alpha}y^{\beta - 1} \end{aligned} \]</div>
+      <p>Kai \(\alpha &lt; 1\), rodiklis \(\alpha - 1\) yra neigiamas. Todėl pirmojo ištekliaus ribinis produktas mažėja didėjant šio ištekliaus kiekiui ir didėja didėjant kito ištekliaus kiekiui. Tas pats galioja antrajam ištekliui, kai \(\beta &lt; 1\).</p>
+
+      <h3 class="subhead" style="margin-top:22px">Sprendimo eiga</h3>
+      <ol class="steps-list">
+        <li>Užrašykite gamybos funkciją ir paaiškinkite, ką reiškia kiekvienas išteklius.</li>
+        <li>Raskite dalinę išvestinę pagal kiekvieno ištekliaus kiekį. Kitų išteklių kiekius laikykite konstantomis.</li>
+        <li>Įstatykite duotuosius išteklių kiekius.</li>
+        <li>Kiekvieną reikšmę interpretuokite pagal <a href="#interpretavimas">interpretavimo formuluotę</a>.</li>
+      </ol>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAJAMOS, SĄNAUDOS IR PELNAS ============ -->
+  <section class="section" id="pelnas" aria-labelledby="h-profit">
+    <h2 id="h-profit">Pajamos, sąnaudos ir pelnas pagal gamybos funkciją</h2>
+
+    <article class="card">
+      <p>Gamybos funkcija nusako gamybos apimtį. Kai žinoma produkcijos vieneto kaina ir gamybos išteklių kainos, įmonės pajamas, sąnaudas ir pelną galima išreikšti išteklių kiekių funkcijomis. Naudojami šie žymėjimai:</p>
+      <ul>
+        <li>\(p\) – produkcijos vieneto kaina;</li>
+        <li>\(c_1\) – pirmojo ištekliaus vieneto kaina; \(c_2\) – antrojo ištekliaus vieneto kaina;</li>
+        <li>\(FC\) – pastoviosios sąnaudos.</li>
+      </ul>
+      <p><strong>Pajamos</strong> lygios kainos ir gamybos apimties sandaugai, o gamybos apimtį nusako gamybos funkcija. <strong>Sąnaudos</strong> yra ištekliams sumokėta suma kartu su pastoviosiomis sąnaudomis. <strong>Pelnas</strong> yra pajamų ir sąnaudų skirtumas:</p>
+      <div class="formula">\[ \begin{aligned} R(x;\,y) &amp;= p\cdot f(x;\,y) \\ TC(x;\,y) &amp;= c_1x + c_2y + FC \\ P(x;\,y) &amp;= p\cdot f(x;\,y) \\ &amp;\phantom{=}\; {}- (c_1x + c_2y + FC) \end{aligned} \]</div>
+    </article>
+
+    <article class="card" id="pelnas-ribiniai">
+      <h3 class="subhead">Ribiniai dydžiai išteklių atžvilgiu</h3>
+      <p>Šių funkcijų dalinės išvestinės rodo, kaip keičiasi pajamos, sąnaudos ir pelnas kintant vieno ištekliaus kiekiui. Kaina \(p\) yra pastovus daugiklis, todėl</p>
+      <div class="formula fit-sm">\[ \begin{aligned} R'_x &amp;= p\cdot f'_x; &amp;\quad R'_y &amp;= p\cdot f'_y \\ TC'_x &amp;= c_1; &amp;\quad TC'_y &amp;= c_2 \\ P'_x &amp;= p\cdot f'_x - c_1; &amp;\quad P'_y &amp;= p\cdot f'_y - c_2 \end{aligned} \]</div>
+      <p>Ribinės pajamos ištekliaus atžvilgiu lygios produkcijos vieneto kainos ir to ištekliaus ribinio produkto sandaugai: papildomas ištekliaus vienetas duoda apytiksliai \(f'_x\) produkcijos vienetų, o kiekvienas jų parduodamas už \(p\) eurų. Ribinės sąnaudos ištekliaus atžvilgiu lygios jo vieneto kainai. Ribinis pelnas yra šių dydžių skirtumas.</p>
+      <p>Interpretuojama pagal ribinio produkto <a href="#interpretavimas">interpretavimo formuluotę</a>, tik matavimo vienetas pakeičiamas eurais:</p>
+      <div class="model-note"><em>Pirmojo ištekliaus kiekiui padidėjus vienetu nuo \(x_0\), o antrojo ištekliaus kiekiui išlikus lygiam \(y_0\), pajamų (sąnaudų, pelno) pokytis apytiksliai lygus \(R'_x(x_0;\,y_0)\) (\(TC'_x(x_0;\,y_0)\), \(P'_x(x_0;\,y_0)\)) eurų.</em></div>
+      <div class="model-note"><em>Antrojo ištekliaus kiekiui padidėjus vienetu nuo \(y_0\), o pirmojo ištekliaus kiekiui išlikus lygiam \(x_0\), pajamų (sąnaudų, pelno) pokytis apytiksliai lygus \(R'_y(x_0;\,y_0)\) (\(TC'_y(x_0;\,y_0)\), \(P'_y(x_0;\,y_0)\)) eurų.</em></div>
+
+      <h3 class="subhead" style="margin-top:22px">Sprendimo eiga</h3>
+      <ol class="steps-list">
+        <li>Užrašykite gamybos funkciją ir apibrėžkite išteklius.</li>
+        <li>Sudarykite reikiamas funkcijas: \(R = p\cdot f(x;\,y)\), \(TC = c_1x + c_2y + FC\), \(P = R - TC\).</li>
+        <li>Raskite dalines išvestines pagal kiekvieno ištekliaus kiekį.</li>
+        <li>Įstatykite duotuosius išteklių kiekius.</li>
+        <li>Kiekvieną reikšmę interpretuokite pagal šios kortelės formuluotę.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Interpretacijoje nepaminėtas kitas išteklius.</strong> Reikia nurodyti, kurio ištekliaus kiekis keičiasi, ir pabrėžti, kad kito ištekliaus kiekis nekinta.</li>
+            <li><strong>Supainioti matavimo vienetai.</strong> Ribinis produktas matuojamas produkcijos vienetais, o ribinės pajamos, sąnaudos ir pelnas – eurais.</li>
+            <li><strong>Pajamos be gamybos funkcijos.</strong> Pajamos lygios kainos ir gamybos apimties sandaugai \(p\cdot f(x;\,y)\), o ne kainos ir ištekliaus kiekio sandaugai.</li>
+            <li><strong>Ribinės sąnaudos ištekliaus atžvilgiu.</strong> Kai sąnaudų funkcija tiesinė, jos lygios ištekliaus vieneto kainai \(c_1\) arba \(c_2\).</li>
+            <li><strong>Neigiamas ribinis produktas.</strong> Jis reiškia, kad šio ištekliaus jau naudojama tiek daug, kad papildomas jo vienetas gamybos apimtį sumažina.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <h3 class="subhead">Daugianariu išreikšta gamybos funkcija</h3>
+
+    <!-- 1 pavyzdys: TM 8.3, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Dirbtuvių įrenginiai ir darbuotojai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvių dienos gamybos apimtis yra
+        \[ \begin{aligned} Q(x;\,y) &amp;= 12x + 20y + 0{,}4xy \\ &amp;\phantom{=}\; {}- 0{,}3x^2 - 0{,}5y^2 \end{aligned} \]
+        vienetų. Čia \(x\) yra įrenginių darbo valandų, o \(y\) – darbuotojų darbo valandų skaičius per dieną. Raskite ribinį produktą kiekvieno ištekliaus atžvilgiu, kai naudojama 20 įrenginių ir 25 darbuotojų darbo valandos. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai produktai</span></h4>
+          <p>Pagal \(x\) nariai \(20y\) ir \(0{,}5y^2\) yra konstantos, jų išvestinės lygios 0. Sandaugoje \(0{,}4xy\) daugiklis \(0{,}4y\) pastovus. Pagal \(y\) kintamojo ir konstantos vaidmenys pasikeičia:</p>
+          \[ \begin{aligned} Q'_x &amp;= 12 + 0{,}4y - 0{,}6x \\ Q'_y &amp;= 20 + 0{,}4x - y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Reikšmės</span></h4>
+          \[ \begin{aligned} Q'_x(20;\,25) &amp;= 12 + 10 - 12 = 10 \\ Q'_y(20;\,25) &amp;= 20 + 8 - 25 = 3 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Įrenginių darbo laikui padidėjus viena valanda nuo 20, o darbuotojų darbo laikui išlikus lygiam 25 valandoms, gamybos apimtis padidėja apytiksliai 10 vienetų. Darbuotojų darbo laikui padidėjus viena valanda nuo 25, o įrenginių darbo laikui išlikus lygiam 20 valandų, gamybos apimtis padidėja apytiksliai 3 vienetais.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Kobo-Daglaso gamybos funkcija</h3>
+
+    <!-- 2 pavyzdys: TM 8.3, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Darbas ar kapitalas?</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonės mėnesio gamybos apimtis yra \(Q(x;\,y) = 40x^{0{,}75}y^{0{,}25}\) vienetų, kai naudojama \(x\) darbo ir \(y\) kapitalo vienetų. Šiuo metu įmonė naudoja 81 darbo ir 16 kapitalo vienetų.
+        <br>a) Raskite ribinį darbo ir ribinį kapitalo produktą. Interpretuokite rezultatus.
+        <br>b) Kurio ištekliaus kiekį įmonė turėtų didinti, siekdama labiau padidinti gamybos apimtį?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Ribinis darbo produktas</span></h4>
+          <p>Diferencijuojant pagal \(x\), daugiklis \(40y^{0{,}25}\) yra pastovus, o naujasis \(x\) laipsnio rodiklis yra \(0{,}75 - 1 = -0{,}25\):</p>
+          \[ \begin{aligned} MPL = Q'_x &amp;= 0{,}75\cdot 40x^{-0{,}25}y^{0{,}25} \\ &amp;= 30x^{-0{,}25}y^{0{,}25} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Ribinis kapitalo produktas</span></h4>
+          <p>Diferencijuojant pagal \(y\), daugiklis \(40x^{0{,}75}\) yra pastovus, o naujasis \(y\) laipsnio rodiklis yra \(0{,}25 - 1 = -0{,}75\):</p>
+          \[ \begin{aligned} MPK = Q'_y &amp;= 0{,}25\cdot 40x^{0{,}75}y^{-0{,}75} \\ &amp;= 10x^{0{,}75}y^{-0{,}75} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Reikšmės</span></h4>
+          <p>Laipsnius išreiškiame šaknimis: \(\sqrt[4]{81} = 3\) ir \(\sqrt[4]{16} = 2\), todėl</p>
+          \[ \begin{aligned} 81^{-0{,}25} &amp;= \frac{1}{3}; &amp;\quad 16^{0{,}25} &amp;= 2 \\[4pt] 81^{0{,}75} &amp;= 3^3 = 27; &amp;\quad 16^{-0{,}75} &amp;= \frac{1}{2^3} = \frac{1}{8} \end{aligned} \]
+          \[ \begin{aligned} MPL(81;\,16) &amp;= 30\cdot\frac{1}{3}\cdot 2 = 20 \\[4pt] MPK(81;\,16) &amp;= 10\cdot 27\cdot\frac{1}{8} = 33{,}75 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Palyginimas</span></h4>
+          <p>Ribinis kapitalo produktas didesnis už ribinį darbo produktą: \(33{,}75 &gt; 20\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Darbo kiekiui padidėjus vienetu nuo 81, o kapitalo kiekiui išlikus lygiam 16, gamybos apimtis padidėja apytiksliai 20 vienetų. Kapitalo kiekiui padidėjus vienetu nuo 16, o darbo kiekiui išlikus lygiam 81, gamybos apimtis padidėja apytiksliai 33,75 vieneto.</p>
+            <p>b) Įmonė turėtų didinti kapitalo kiekį, nes papildomas jo vienetas gamybos apimtį padidina daugiau nei papildomas darbo vienetas.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 8.3, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Ūkio žemė, technika ir darbuotojai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Ūkio metinė gamybos apimtis yra \(Q(x;\,y;\,z) = 2x^{0{,}5}y^{0{,}25}z^{0{,}25}\) tonų grūdų. Čia \(x\) – žemės plotas hektarais, \(y\) – į techniką investuotas kapitalas eurais, \(z\) – darbuotojų skaičius. Raskite ribinį produktą kiekvieno ištekliaus atžvilgiu, kai ūkis turi 25 hektarus žemės, į techniką investuota 10&nbsp;000 eurų ir dirba 16 darbuotojų. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai produktai</span></h4>
+          <p>Funkcija priklauso nuo trijų išteklių kiekių, todėl turi tris <a href="tema-8-daugiau-kintamuju.html">dalines išvestines</a>. Skaičiuojant kiekvieną jų, kitų dviejų išteklių kiekiai laikomi konstantomis:</p>
+          \[ \begin{aligned} Q'_x &amp;= 0{,}5\cdot 2x^{-0{,}5}y^{0{,}25}z^{0{,}25} \\ &amp;= x^{-0{,}5}y^{0{,}25}z^{0{,}25} \\[6pt] Q'_y &amp;= 0{,}25\cdot 2x^{0{,}5}y^{-0{,}75}z^{0{,}25} \\ &amp;= 0{,}5x^{0{,}5}y^{-0{,}75}z^{0{,}25} \\[6pt] Q'_z &amp;= 0{,}25\cdot 2x^{0{,}5}y^{0{,}25}z^{-0{,}75} \\ &amp;= 0{,}5x^{0{,}5}y^{0{,}25}z^{-0{,}75} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Laipsnių reikšmės</span></h4>
+          <p>Duotųjų kiekių šaknys yra \(\sqrt{25} = 5\), \(\sqrt[4]{10000} = 10\) ir \(\sqrt[4]{16} = 2\), todėl</p>
+          \[ \begin{aligned} 25^{-0{,}5} &amp;= \frac{1}{5} \\[4pt] 10000^{-0{,}75} &amp;= \frac{1}{10^3} = 0{,}001 \\[4pt] 16^{-0{,}75} &amp;= \frac{1}{8} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
+          \[ \begin{aligned} Q'_x &amp;= \frac{1}{5}\cdot 10\cdot 2 = 4 \\[4pt] Q'_y &amp;= 0{,}5\cdot 5\cdot 0{,}001\cdot 2 = 0{,}005 \\[4pt] Q'_z &amp;= 0{,}5\cdot 5\cdot 10\cdot\frac{1}{8} = 3{,}125 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Žemės plotui padidėjus vienu hektaru nuo 25, o kapitalui ir darbuotojų skaičiui nepasikeitus, gamybos apimtis padidėja apytiksliai 4 tonomis. Kapitalui padidėjus vienu euru nuo 10&nbsp;000, o žemės plotui ir darbuotojų skaičiui nepasikeitus, gamybos apimtis padidėja apytiksliai 0,005 tonos. Darbuotojų skaičiui padidėjus vienu nuo 16, o žemės plotui ir kapitalui nepasikeitus, gamybos apimtis padidėja apytiksliai 3,125 tonos.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Gamybos funkcijos su kitomis elementariosiomis funkcijomis</h3>
+
+    <!-- 4 pavyzdys: TM 8.3, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Spaustuvė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Spaustuvės dienos gamybos apimtis yra
+        \[ Q(x;\,y) = \frac{60xy}{x + 2y} \]
+        tūkstančių puslapių. Čia \(x\) yra darbuotojų, o \(y\) – įrenginių darbo valandų skaičius per dieną. Raskite ribinį produktą kiekvieno ištekliaus atžvilgiu, kai naudojama 30 darbuotojų ir 15 įrenginių darbo valandų. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pagal \(x\)</span></h4>
+          <p>Vardiklyje yra abu kintamieji, todėl abiem išvestinėms reikia <a href="tema-8-dalmens-taisykle.html">dalmens taisyklės</a>. Skaitiklį pažymėkime \(u = 60xy\), vardiklį – \(v = x + 2y\). Pagal \(x\): \(u'_x = 60y\) ir \(v'_x = 1\), todėl</p>
+          \[ \begin{aligned} Q'_x &amp;= \frac{60y(x + 2y) - 60xy\cdot 1}{(x + 2y)^2} \\[6pt] &amp;= \frac{60xy + 120y^2 - 60xy}{(x + 2y)^2} \\[6pt] &amp;= \frac{120y^2}{(x + 2y)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pagal \(y\)</span></h4>
+          <p>Pagal \(y\): \(u'_y = 60x\) ir \(v'_y = 2\), todėl</p>
+          \[ \begin{aligned} Q'_y &amp;= \frac{60x(x + 2y) - 60xy\cdot 2}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2 + 120xy - 120xy}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2}{(x + 2y)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
+          <p>Taške \((30;\,15)\) vardiklis lygus \((30 + 30)^2 = 3600\):</p>
+          \[ \begin{aligned} Q'_x(30;\,15) &amp;= \frac{120\cdot 225}{3600} = 7{,}5 \\[6pt] Q'_y(30;\,15) &amp;= \frac{60\cdot 900}{3600} = 15 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Darbuotojų darbo laikui padidėjus viena valanda nuo 30, o įrenginių darbo laikui išlikus lygiam 15 valandų, gamybos apimtis padidėja apytiksliai 7,5 tūkstančio puslapių. Įrenginių darbo laikui padidėjus viena valanda nuo 15, o darbuotojų darbo laikui išlikus lygiam 30 valandų, gamybos apimtis padidėja apytiksliai 15 tūkstančių puslapių.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 8.3, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Laboratorija</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Laboratorija per dieną ištiria
+        \[ Q(x;\,y) = 50\ln(1 + xy) \]
+        mėginių. Čia \(x\) – technikų skaičius, \(y\) – naudojamų analizatorių skaičius. Raskite ribinį produktą kiekvieno ištekliaus atžvilgiu, kai dirba 9 technikai ir naudojama 11 analizatorių. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai produktai</span></h4>
+          <p>Funkcija yra <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinė</a>: išorinė funkcija – logaritmas, vidinė – \(u = 1 + xy\), o jos dalinės išvestinės yra \(u'_x = y\) ir \(u'_y = x\). Pagal formulę \(\big(\ln u\big)'_x = \frac{u'_x}{u}\) gauname</p>
+          \[ Q'_x = \frac{50y}{1 + xy};\qquad Q'_y = \frac{50x}{1 + xy} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Reikšmės</span></h4>
+          <p>Taške \((9;\,11)\) vardiklis lygus \(1 + 9\cdot 11 = 100\):</p>
+          \[ \begin{aligned} Q'_x(9;\,11) &amp;= \frac{50\cdot 11}{100} = 5{,}5 \\[6pt] Q'_y(9;\,11) &amp;= \frac{50\cdot 9}{100} = 4{,}5 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Technikų skaičiui padidėjus vienu nuo 9, o analizatorių skaičiui išlikus lygiam 11, per dieną ištiriamų mėginių skaičius padidėja apytiksliai 5,5. Analizatorių skaičiui padidėjus vienu nuo 11, o technikų skaičiui išlikus lygiam 9, per dieną ištiriamų mėginių skaičius padidėja apytiksliai 4,5.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">CES gamybos funkcija</h3>
+
+    <!-- 6 pavyzdys: TM 8.3, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Gamyklos darbuotojai ir įrenginiai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamyklos savaitės gamybos apimtį nusako CES gamybos funkcija
+        \[ Q(x;\,y) = 30\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^{-1} \]
+        čia \(Q\) matuojama vienetais, \(x\) yra darbuotojų, o \(y\) – įrenginių skaičius. Raskite ribinį darbo ir ribinį kapitalo produktą, kai gamykloje dirba 10 darbuotojų ir naudojama 30 įrenginių. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Funkcijos sandara</span></h4>
+          <p>Išorinė funkcija yra laipsnis su rodikliu \(-1\), o vidinė – skliaustuose esantis reiškinys</p>
+          \[ u = 0{,}25x^{-1} + 0{,}75y^{-1} \]
+          <p>kurio dalines išvestines randame pagal laipsninės funkcijos išvestinės formulę:</p>
+          \[ u'_x = -0{,}25x^{-2};\qquad u'_y = -0{,}75y^{-2} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribiniai produktai</span></h4>
+          <p>Taikome sudėtinės laipsninės funkcijos išvestinės formulę \(\big(u^n\big)'_x = nu^{n-1}\cdot u'_x\), kai \(n = -1\):</p>
+          <div class="fit-sm">\[ \begin{aligned} MPL = Q'_x &amp;= 30\cdot(-1)u^{-2}\cdot\left(-0{,}25x^{-2}\right) \\[6pt] &amp;= \frac{7{,}5}{u^2x^2} \\[12pt] MPK = Q'_y &amp;= 30\cdot(-1)u^{-2}\cdot\left(-0{,}75y^{-2}\right) \\[6pt] &amp;= \frac{22{,}5}{u^2y^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
+          <p>Taške \((10;\,30)\) vidinės funkcijos reikšmė yra</p>
+          \[ \begin{aligned} u &amp;= \frac{0{,}25}{10} + \frac{0{,}75}{30} \\[6pt] &amp;= 0{,}025 + 0{,}025 = 0{,}05 \end{aligned} \]
+          \[ \begin{aligned} MPL(10;\,30) &amp;= \frac{7{,}5}{0{,}05^2\cdot 10^2} \\[6pt] &amp;= \frac{7{,}5}{0{,}25} = 30 \\[8pt] MPK(10;\,30) &amp;= \frac{22{,}5}{0{,}05^2\cdot 30^2} \\[6pt] &amp;= \frac{22{,}5}{2{,}25} = 10 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Darbuotojų skaičiui padidėjus vienu nuo 10, o įrenginių skaičiui išlikus lygiam 30, savaitės gamybos apimtis padidėja apytiksliai 30 vienetų. Įrenginių skaičiui padidėjus vienu nuo 30, o darbuotojų skaičiui išlikus lygiam 10, savaitės gamybos apimtis padidėja apytiksliai 10 vienetų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Pajamos, sąnaudos ir pelnas</h3>
+
+    <!-- 7 pavyzdys: TM 8.3, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Dirbtuvių pajamos, sąnaudos ir pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvės per dieną pagamina \(Q(x;\,y) = 12\sqrt{xy}\) vienetų. Čia \(x\) yra darbuotojų, o \(y\) – įrenginių darbo valandų skaičius. Gaminys parduodamas už 5&nbsp;eurus, darbuotojo darbo valanda kainuoja 12&nbsp;eurų, įrenginio – 40&nbsp;eurų, o dienos pastoviosios sąnaudos yra 300&nbsp;eurų. Raskite ribines pajamas, ribines sąnaudas ir ribinį pelną kiekvieno ištekliaus atžvilgiu, kai naudojamos 64 darbuotojų ir 16 įrenginių darbo valandų. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Funkcijos</span></h4>
+          <p>Gamybos funkcija yra Kobo-Daglaso funkcija \(Q = 12x^{0{,}5}y^{0{,}5}\). Todėl</p>
+          <div class="fit-sm">\[ \begin{aligned} R(x;\,y) &amp;= 5\cdot 12x^{0{,}5}y^{0{,}5} = 60x^{0{,}5}y^{0{,}5} \\ TC(x;\,y) &amp;= 12x + 40y + 300 \\ P(x;\,y) &amp;= 60x^{0{,}5}y^{0{,}5} - 12x - 40y - 300 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinės pajamos</span></h4>
+          <p>Diferencijuojant pagal \(x\), daugiklis \(60y^{0{,}5}\) yra pastovus, o pagal \(y\) – daugiklis \(60x^{0{,}5}\):</p>
+          \[ \begin{aligned} R'_x &amp;= 30x^{-0{,}5}y^{0{,}5} = \frac{30\sqrt{y}}{\sqrt{x}} \\[6pt] R'_y &amp;= 30x^{0{,}5}y^{-0{,}5} = \frac{30\sqrt{x}}{\sqrt{y}} \end{aligned} \]
+          \[ \begin{aligned} R'_x(64;\,16) &amp;= \frac{30\cdot 4}{8} = 15 \\[6pt] R'_y(64;\,16) &amp;= \frac{30\cdot 8}{4} = 60 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Ribinės sąnaudos</span></h4>
+          <p>Sąnaudų funkcija tiesinė, todėl ribinės sąnaudos lygios išteklių vieneto kainoms:</p>
+          \[ TC'_x = 12;\qquad TC'_y = 40 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Ribinis pelnas</span></h4>
+          <p>Pagal <a href="#pelnas-ribiniai">ribinių dydžių išteklių atžvilgiu formules</a> jis lygus ribinių pajamų ir ribinių sąnaudų skirtumui:</p>
+          \[ \begin{aligned} P'_x(64;\,16) &amp;= 15 - 12 = 3 \\ P'_y(64;\,16) &amp;= 60 - 40 = 20 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Darbuotojų darbo laikui padidėjus viena valanda nuo 64, o įrenginių darbo laikui išlikus lygiam 16 valandų, pajamos padidėja apytiksliai 15&nbsp;eurų, sąnaudos – 12&nbsp;eurų, pelnas – apytiksliai 3&nbsp;eurais. Įrenginių darbo laikui padidėjus viena valanda nuo 16, o darbuotojų darbo laikui išlikus lygiam 64 valandoms, pajamos padidėja apytiksliai 60&nbsp;eurų, sąnaudos – 40&nbsp;eurų, pelnas – apytiksliai 20&nbsp;eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 8.3, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Gamyklos ribinis pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamyklos dienos gamybos apimtis yra
+        \[ \begin{aligned} Q(x;\,y) &amp;= 30x + 40y + 0{,}2xy \\ &amp;\phantom{=}\; {}- 0{,}5x^2 - 0{,}4y^2 \end{aligned} \]
+        vienetų. Čia \(x\) yra darbuotojų, o \(y\) – naudojamų įrenginių skaičius. Gaminys parduodamas už 8&nbsp;eurus, darbuotojas kainuoja 60&nbsp;eurų per dieną, įrenginys – 100&nbsp;eurų per dieną, o dienos pastoviosios sąnaudos yra 400&nbsp;eurų. Raskite ribinį pelną kiekvieno ištekliaus atžvilgiu, kai dirba 20 darbuotojų ir naudojama 40 įrenginių. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pelno funkcija</span></h4>
+          <p>Pajamos lygios \(8\cdot Q(x;\,y)\), sąnaudos – \(60x + 100y + 400\), todėl</p>
+          \[ \begin{aligned} P(x;\,y) &amp;= 8(30x + 40y + 0{,}2xy \\ &amp;\phantom{=}\; {}- 0{,}5x^2 - 0{,}4y^2) \\ &amp;\phantom{=}\; {}- 60x - 100y - 400 \\ &amp;= 180x + 220y + 1{,}6xy \\ &amp;\phantom{=}\; {}- 4x^2 - 3{,}2y^2 - 400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribinis pelnas</span></h4>
+          \[ \begin{aligned} P'_x &amp;= 180 + 1{,}6y - 8x \\ P'_y &amp;= 220 + 1{,}6x - 6{,}4y \end{aligned} \]
+          \[ \begin{aligned} P'_x(20;\,40) &amp;= 180 + 64 - 160 = 84 \\ P'_y(20;\,40) &amp;= 220 + 32 - 256 = -4 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <p>Tos pačios reikšmės gaunamos pagal <a href="#pelnas-ribiniai">ribinių dydžių išteklių atžvilgiu formules</a>: ribiniai produktai yra \(Q'_x = 30 + 0{,}2y - x = 18\) ir \(Q'_y = 40 + 0{,}2x - 0{,}8y = 12\), todėl \(P'_x = 8\cdot 18 - 60 = 84\) ir \(P'_y = 8\cdot 12 - 100 = -4\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Darbuotojų skaičiui padidėjus vienu nuo 20, o įrenginių skaičiui išlikus lygiam 40, pelnas padidėja apytiksliai 84&nbsp;eurais. Įrenginių skaičiui padidėjus vienu nuo 40, o darbuotojų skaičiui išlikus lygiam 20, pelnas sumažėja apytiksliai 4&nbsp;eurais.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 9 pavyzdys: TM 8.3, 9 pavyzdys -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">9 pavyzdys</span>
+        <h3>Šiltnamio pomidorai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Šiltnamyje per savaitę užauginama
+        \[ Q(x;\,y) = 400\sqrt{x}\left(1 - e^{-0{,}05y}\right) \]
+        kilogramų pomidorų. Čia \(x\) yra darbuotojų darbo valandų skaičius, o \(y\) – trąšų kiekis kilogramais. Pomidorai parduodami po 3&nbsp;eurus už kilogramą, darbo valanda kainuoja 18&nbsp;eurų, kilogramas trąšų – 2&nbsp;eurus, o savaitės pastoviosios sąnaudos yra 1500&nbsp;eurų. Raskite ribinį pelną kiekvieno ištekliaus atžvilgiu, kai naudojama 100 darbo valandų ir 20 kilogramų trąšų. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pelno funkcija</span></h4>
+          \[ \begin{aligned} P(x;\,y) &amp;= 3\cdot 400\sqrt{x}\left(1 - e^{-0{,}05y}\right) \\ &amp;\phantom{=}\; {}- 18x - 2y - 1500 \\ &amp;= 1200\sqrt{x}\left(1 - e^{-0{,}05y}\right) \\ &amp;\phantom{=}\; {}- 18x - 2y - 1500 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pagal \(x\)</span></h4>
+          <p>Skliaustuose esančiame reiškinyje nėra \(x\), todėl jis yra pastovus daugiklis. Be to, \(\left(\sqrt{x}\right)'_x = \frac{1}{2\sqrt{x}}\):</p>
+          \[ \begin{aligned} P'_x &amp;= 1200\cdot\frac{1}{2\sqrt{x}}\left(1 - e^{-0{,}05y}\right) - 18 \\[6pt] &amp;= \frac{600\left(1 - e^{-0{,}05y}\right)}{\sqrt{x}} - 18 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pagal \(y\)</span></h4>
+          <p>Daugiklis \(1200\sqrt{x}\) yra pastovus. Rodiklinė funkcija yra sudėtinė, jos vidinė funkcija – \(-0{,}05y\). Todėl \(\left(e^{-0{,}05y}\right)'_y = -0{,}05e^{-0{,}05y}\), o skliaustuose esančio reiškinio išvestinė lygi \(0{,}05e^{-0{,}05y}\):</p>
+          \[ \begin{aligned} P'_y &amp;= 1200\sqrt{x}\cdot 0{,}05e^{-0{,}05y} - 2 \\ &amp;= 60\sqrt{x}\cdot e^{-0{,}05y} - 2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Reikšmės</span></h4>
+          <p>Taške \((100;\,20)\) gauname \(\sqrt{100} = 10\) ir \(e^{-0{,}05\cdot 20} = e^{-1} \approx 0{,}3679\):</p>
+          <div class="fit-sm">\[ \begin{aligned} P'_x(100;\,20) &amp;= \frac{600\left(1 - e^{-1}\right)}{10} - 18 \\[6pt] &amp;= 60\left(1 - e^{-1}\right) - 18 \approx 19{,}93 \\[8pt] P'_y(100;\,20) &amp;= 60\cdot 10\cdot e^{-1} - 2 \\ &amp;= 600e^{-1} - 2 \approx 218{,}73 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Darbuotojų darbo laikui padidėjus viena valanda nuo 100, o trąšų kiekiui išlikus lygiam 20 kilogramų, pelnas padidėja apytiksliai 19,93&nbsp;euro. Trąšų kiekiui padidėjus vienu kilogramu nuo 20, o darbo laikui išlikus lygiam 100 valandų, pelnas padidėja apytiksliai 218,73&nbsp;euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: raskite dalines išvestines pagal kiekvieno ištekliaus kiekį, įstatykite duotuosius kiekius ir interpretuokite rezultatus. Atsakyme pateiktos išvestinės, jų reikšmės ir interpretacija – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 8 rinkinys, 2 sk. 1 uždavinys (funkcija pakeista: 40 → 50) -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Logistikos centras per savaitę apdoroja</p>
+          \[ Q(x;\,y) = 50x^{0{,}8}y^{0{,}2} \]
+          <p>siuntų. Čia \(x\) – darbo valandų skaičius, \(y\) – įrangai skirtas kapitalas tūkstančiais eurų. Raskite ribinį darbo produktą ir ribinį kapitalo produktą, kai naudojamos 1024 darbo valandos ir 32 tūkstančiai eurų kapitalo. Interpretuokite rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ \begin{aligned} MPL = Q'_x &amp;= 40x^{-0{,}2}y^{0{,}2} \\ MPK = Q'_y &amp;= 10x^{0{,}8}y^{-0{,}8} \end{aligned} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ \begin{aligned} MPL(1024;\,32) &amp;= 40\cdot\frac{2}{4} = 20 \\[6pt] MPK(1024;\,32) &amp;= 10\cdot\frac{256}{16} = 160 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Darbo laikui padidėjus viena valanda nuo 1024, o kapitalui išlikus 32 tūkstančių eurų, centras per savaitę apdoroja apytiksliai 20 siuntų daugiau. Kapitalui padidėjus vienu tūkstančiu eurų nuo 32, o darbo laikui išlikus 1024 valandų, per savaitę apdorojama apytiksliai 160 siuntų daugiau.</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Automobilių plovykla, kurioje dirba \(x\) darbuotojų ir naudojama \(y\) plovimo linijų, per dieną aptarnauja</p>
+          \[ \begin{aligned} Q(x;\,y) &amp;= 12x + 15y + 0{,}3xy \\ &amp;\phantom{=}\; {}- 0{,}4x^2 - 0{,}5y^2 \end{aligned} \]
+          <p>automobilių. Raskite ribinius produktus, kai dirba 20 darbuotojų ir naudojamos 6 plovimo linijos. Interpretuokite rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ \begin{aligned} Q'_x &amp;= 12 + 0{,}3y - 0{,}8x \\ Q'_y &amp;= 15 + 0{,}3x - y \end{aligned} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ \begin{aligned} Q'_x(20;\,6) &amp;= 12 + 1{,}8 - 16 = -2{,}2 \\ Q'_y(20;\,6) &amp;= 15 + 6 - 6 = 15 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Darbuotojų skaičiui padidėjus vienu nuo 20, o plovimo linijų skaičiui išlikus 6, per dieną aptarnaujamų automobilių skaičius sumažėja apytiksliai 2,2. Plovimo linijų skaičiui padidėjus vienu nuo 6, o darbuotojų skaičiui išlikus 20, per dieną aptarnaujamų automobilių skaičius padidėja apytiksliai 15.</p>
+        </div>
+      </article>
+
+      <!-- 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Atliekų perdirbimo įmonė, kurioje dirba \(x\) darbuotojų ir naudojama \(y\) rūšiavimo įrenginių, per dieną perdirba</p>
+          \[ Q(x;\,y) = 400\left(1 - e^{-0{,}01xy}\right) \]
+          <p>tonų atliekų. Raskite ribinius produktus, kai dirba 10 darbuotojų ir naudojama 20 įrenginių. Interpretuokite rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės (sudėtinės funkcijos taisyklė):</strong></p>
+          \[ \begin{aligned} Q'_x &amp;= 4ye^{-0{,}01xy} \\ Q'_y &amp;= 4xe^{-0{,}01xy} \end{aligned} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ \begin{aligned} Q'_x(10;\,20) &amp;= 80e^{-2} \approx 10{,}83 \\ Q'_y(10;\,20) &amp;= 40e^{-2} \approx 5{,}41 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Darbuotojų skaičiui padidėjus vienu nuo 10, o įrenginių skaičiui išlikus 20, įmonė per dieną perdirba apytiksliai 10,83 tonos daugiau. Įrenginių skaičiui padidėjus vienu nuo 20, o darbuotojų skaičiui išlikus 10, per dieną perdirbama apytiksliai 5,41 tonos daugiau.</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Keramikos dirbtuvės per savaitę pagamina</p>
+          \[ Q(x;\,y) = 20x^{0{,}25}y^{0{,}75} \]
+          <p>puodelių. Čia \(x\) – keramikų darbo valandų skaičius, \(y\) – krosnies naudojimo valandų skaičius. Puodelis parduodamas už 2&nbsp;eurus, keramikų darbo valanda kainuoja 30&nbsp;eurų, krosnies naudojimo valanda – 12&nbsp;eurų, o pastoviosios sąnaudos sudaro 400&nbsp;eurų per savaitę.</p>
+          <p>Sudarykite pelno funkciją ir raskite ribinius pelnus abiejų išteklių atžvilgiu, kai naudojama 16 keramikų darbo valandų ir 81 krosnies naudojimo valanda. Interpretuokite rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Funkcija:</strong></p>
+          \[ \begin{aligned} P(x;\,y) &amp;= 2\cdot 20x^{0{,}25}y^{0{,}75} \\ &amp;\phantom{=}\; {}- (30x + 12y + 400) \\ &amp;= 40x^{0{,}25}y^{0{,}75} \\ &amp;\phantom{=}\; {}- 30x - 12y - 400 \end{aligned} \]
+          <p><strong>Išvestinės ir jų reikšmės:</strong></p>
+          \[ \begin{aligned} P'_x &amp;= 10x^{-0{,}75}y^{0{,}75} - 30 \\ P'_y &amp;= 30x^{0{,}25}y^{-0{,}25} - 12 \end{aligned} \]
+          \[ \begin{aligned} P'_x(16;\,81) &amp;= 10\cdot\frac{27}{8} - 30 = 3{,}75 \\[6pt] P'_y(16;\,81) &amp;= 30\cdot\frac{2}{3} - 12 = 8 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Keramikų darbo laikui padidėjus viena valanda nuo 16, o krosnies naudojimo laikui išlikus 81 valandos, savaitės pelnas padidėja apytiksliai 3,75&nbsp;euro. Krosnies naudojimo laikui padidėjus viena valanda nuo 81, o keramikų darbo laikui išlikus 16 valandų, pelnas padidėja apytiksliai 8&nbsp;eurais.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">7 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
