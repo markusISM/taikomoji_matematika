@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Production Function · Applied Mathematics</title>
+<meta name="description" content="The production function and the Cobb-Douglas function with an interactive graph, the marginal products of the inputs and their interpretation, the revenue, cost and profit with respect to the inputs. Step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-8-gamybos-funkcija.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=103">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=103"></script>
+</head>
+<body data-page="m82">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 8 · Applications · Section 2</span>
+    <h1>The Production Function</h1>
+    <p class="lead">This section examines how output depends on the inputs used – labour, capital, land or raw materials – and how it changes when the amount of one input changes. The production function is also used to build the revenue, cost and profit functions with respect to the inputs.</p>
+    <ul class="jump">
+      <li><a href="#funkcija">Production function</a></li>
+      <li><a href="#ribinis">Marginal product</a></li>
+      <li><a href="#pelnas">Revenue and profit</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. THE PRODUCTION FUNCTION ============ -->
+  <section class="section" id="funkcija" aria-labelledby="h-func">
+    <h2 id="h-func">The production function</h2>
+
+    <article class="card">
+      <p>Every firm turns resources into goods or services. A factory uses workers, machines and energy, a farm uses land, labour and fertiliser, a bakery uses bakers, ovens and flour. The resources used in production are called <strong>factor inputs</strong>, and the relation between the amounts of the inputs and the amount of output is described by a production function.</p>
+      <div class="model-note">A <strong>production function</strong> \(z = f(x;\,y)\) indicates the amount of output that can be produced when \(x\) and \(y\) units of factor inputs are used.</div>
+      <p style="margin-top:12px">The two inputs most often studied are <strong>labour</strong>, measured for example in workers or in hours of work, and <strong>capital</strong>, measured in machines, machine hours or euros invested. Any other resource can be an input as well: raw material, energy, land. A production function may also have three or more inputs, for example \(z = f(x;\,y;\,w)\).</p>
+      <p>Production functions are built from data, and different forms are used for different processes. The most common form is the Cobb-Douglas production function; polynomial functions, functions that contain other elementary functions, and the CES function are also used.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The Cobb-Douglas production function</h3>
+      <p>The <strong>Cobb-Douglas production function</strong> is</p>
+      <div class="formula">\[ z = Ax^{\alpha}y^{\beta} \]</div>
+      <p>where</p>
+      <ul>
+        <li>\(A\) is a positive constant representing the state of technology;</li>
+        <li>\(x\) and \(y\) are the amounts of factor inputs;</li>
+        <li>\(z\) is the amount of output;</li>
+        <li>\(\alpha\) and \(\beta\) are the partial elasticities of output with respect to the two inputs.</li>
+      </ul>
+      <p>The exponents are usually positive numbers smaller than 1, for example \(z = 40x^{0.75}y^{0.25}\). The output then grows when either input grows, but more and more slowly. The sum \(\alpha + \beta\) shows what happens when both inputs are increased in the same proportion. If both are multiplied by a number \(k\), the output is multiplied by \(k^{\alpha + \beta}\):</p>
+      <ul>
+        <li>if \(\alpha + \beta = 1\), the output grows in the same proportion as the inputs: twice as much labour and capital give twice as much output;</li>
+        <li>if \(\alpha + \beta &lt; 1\), the output grows in a smaller proportion than the inputs;</li>
+        <li>if \(\alpha + \beta &gt; 1\), the output grows in a larger proportion than the inputs.</li>
+      </ul>
+
+      <p>The graph shows how the surface of the Cobb-Douglas function and its <a href="tema-8.html#lygio-linijos">level curves</a> depend on the exponents \(\alpha\) and \(\beta\).</p>
+      <div data-widget="surface3d" data-mode="cobb"></div>
+    </article>
+  </section>
+
+  <!-- ============ 2. MARGINAL PRODUCT ============ -->
+  <section class="section" id="ribinis" aria-labelledby="h-mp">
+    <h2 id="h-mp">Marginal product</h2>
+
+    <article class="card">
+      <p>The first order partial derivatives of a production function represent the <strong>marginal product</strong> with respect to the corresponding input:</p>
+      <ul>
+        <li>\(f'_x(x;\,y)\) is the marginal product with respect to the first input;</li>
+        <li>\(f'_y(x;\,y)\) is the marginal product with respect to the second input.</li>
+      </ul>
+      <p>When the inputs are labour and capital, the marginal products are called the <strong>marginal product of labour</strong>, \(MPL\), and the <strong>marginal product of capital</strong>, \(MPK\).</p>
+      <p>The derivative with respect to \(x\) is calculated with \(y\) held constant, so the marginal product with respect to the first input shows how the output changes when only the amount of the first input changes. If \(x\) increases by one unit from \(x_0\) and \(y\) stays equal to \(y_0\), the output changes by approximately \(f'_x(x_0;\,y_0)\) units. In the same way, if \(y\) increases by one unit from \(y_0\) and \(x\) stays equal to \(x_0\), the output changes by approximately \(f'_y(x_0;\,y_0)\) units.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">The interpretation</h3>
+      <p>A calculated marginal product has to be explained in the words of the problem, and that explanation is part of the answer. The explanation names the input that changes and says that the amount of the other input does not change:</p>
+      <div class="model-note"><em>If the amount of the first input increases by one unit from \(x_0\), while the amount of the second input stays \(y_0\), the output will change by approximately \(f'_x(x_0;\,y_0)\) units.</em></div>
+      <div class="model-note"><em>If the amount of the second input increases by one unit from \(y_0\), while the amount of the first input stays \(x_0\), the output will change by approximately \(f'_y(x_0;\,y_0)\) units.</em></div>
+      <p>A positive marginal product means that the output increases, a negative one means that it decreases: there is already so much of that input that one more unit gets in the way.</p>
+    </article>
+
+    <article class="card">
+      <h3 class="subhead">The marginal products of the Cobb-Douglas function</h3>
+      <p>In the Cobb-Douglas function \(Ay^{\beta}\) is a constant multiplier with respect to \(x\), and \(Ax^{\alpha}\) is a constant multiplier with respect to \(y\). The power rule gives</p>
+      <div class="formula">\[ \begin{aligned} f'_x(x;\,y) &amp;= \alpha Ax^{\alpha - 1}y^{\beta} \\ f'_y(x;\,y) &amp;= \beta Ax^{\alpha}y^{\beta - 1} \end{aligned} \]</div>
+      <p>When \(\alpha &lt; 1\), the exponent \(\alpha - 1\) is negative, so the marginal product of the first input becomes smaller as more of that input is used, and larger as more of the other input is used. The same holds for the second input when \(\beta &lt; 1\).</p>
+
+      <h3 class="subhead" style="margin-top:22px">How to solve</h3>
+      <ol class="steps-list">
+        <li>Write the production function and say what each input means.</li>
+        <li>Find the partial derivative with respect to each input. Every other input is a constant.</li>
+        <li>Substitute the given amounts of the inputs.</li>
+        <li>Interpret each value with the <a href="#interpretavimas">wording of the interpretation</a>.</li>
+      </ol>
+    </article>
+  </section>
+
+  <!-- ============ 3. REVENUE, COST AND PROFIT ============ -->
+  <section class="section" id="pelnas" aria-labelledby="h-profit">
+    <h2 id="h-profit">Revenue, cost and profit from a production function</h2>
+
+    <article class="card">
+      <p>The production function gives the amount of output. When the price of the output and the prices of the inputs are known, the revenue, the cost and the profit of the firm can be written as functions of the amounts of the inputs. The following notation is used:</p>
+      <ul>
+        <li>\(p\) – the price of one unit of output;</li>
+        <li>\(c_1\) – the price of one unit of the first input; \(c_2\) – the price of one unit of the second input;</li>
+        <li>\(FC\) – the fixed cost.</li>
+      </ul>
+      <p><strong>The revenue</strong> is the price multiplied by the output, and the output is given by the production function. <strong>The cost</strong> is the amount paid for the inputs, together with the fixed cost. <strong>The profit</strong> is the revenue minus the cost:</p>
+      <div class="formula"><div class="m-wide">\[ \begin{aligned} R(x;\,y) &amp;= p\cdot f(x;\,y) \\ TC(x;\,y) &amp;= c_1x + c_2y + FC \\ P(x;\,y) &amp;= p\cdot f(x;\,y) - (c_1x + c_2y + FC) \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} R(x;\,y) &amp;= p\cdot f(x;\,y) \\ TC(x;\,y) &amp;= c_1x + c_2y + FC \\ P(x;\,y) &amp;= p\cdot f(x;\,y) \\ &amp;\phantom{=}\; {}- (c_1x + c_2y + FC) \end{aligned} \]</div></div>
+    </article>
+
+    <article class="card" id="pelnas-ribiniai">
+      <h3 class="subhead">Marginal values with respect to the inputs</h3>
+      <p>The partial derivatives of these functions show how the revenue, the cost and the profit change when the amount of one input changes. The price \(p\) is a constant multiplier, so</p>
+      <div class="formula"><div class="m-wide">\[ \begin{aligned} R'_x &amp;= p\cdot f'_x; &amp;\qquad TC'_x &amp;= c_1; &amp;\qquad P'_x &amp;= p\cdot f'_x - c_1 \\ R'_y &amp;= p\cdot f'_y; &amp;\qquad TC'_y &amp;= c_2; &amp;\qquad P'_y &amp;= p\cdot f'_y - c_2 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} R'_x &amp;= p\cdot f'_x \\ R'_y &amp;= p\cdot f'_y \end{aligned} \]\[ \begin{aligned} TC'_x &amp;= c_1 \\ TC'_y &amp;= c_2 \end{aligned} \]\[ \begin{aligned} P'_x &amp;= p\cdot f'_x - c_1 \\ P'_y &amp;= p\cdot f'_y - c_2 \end{aligned} \]</div></div>
+      <p>The marginal revenue with respect to an input is the price of the output multiplied by the marginal product of that input: one more unit of the input adds approximately \(f'_x\) units of output, and each of them is sold for \(p\) euros. The marginal cost with respect to an input is its price. The marginal profit is their difference.</p>
+      <p>The interpretation follows the <a href="#interpretavimas">wording for the marginal product</a>, with the unit changed to euros:</p>
+      <div class="model-note"><em>If the amount of the first input increases by one unit from \(x_0\), while the amount of the second input stays \(y_0\), the revenue (cost, profit) will change by approximately \(R'_x(x_0;\,y_0)\) (\(TC'_x(x_0;\,y_0)\), \(P'_x(x_0;\,y_0)\)) euros.</em></div>
+      <div class="model-note"><em>If the amount of the second input increases by one unit from \(y_0\), while the amount of the first input stays \(x_0\), the revenue (cost, profit) will change by approximately \(R'_y(x_0;\,y_0)\) (\(TC'_y(x_0;\,y_0)\), \(P'_y(x_0;\,y_0)\)) euros.</em></div>
+
+      <h3 class="subhead" style="margin-top:22px">How to solve</h3>
+      <ol class="steps-list">
+        <li>Write the production function and name the inputs.</li>
+        <li>Build the functions that are needed: \(R = p\cdot f(x;\,y)\), \(TC = c_1x + c_2y + FC\), \(P = R - TC\).</li>
+        <li>Find the partial derivatives with respect to each input.</li>
+        <li>Substitute the given amounts of the inputs.</li>
+        <li>Interpret each value with the wording of this card.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The other input not mentioned in the interpretation.</strong> Name the input whose amount changes and say that the amount of the other input does not change.</li>
+            <li><strong>Units confused.</strong> The marginal product is measured in units of output, while the marginal revenue, cost and profit are measured in euros.</li>
+            <li><strong>Revenue without the production function.</strong> The revenue is the price multiplied by the output, \(p\cdot f(x;\,y)\), not the price multiplied by the amount of an input.</li>
+            <li><strong>The marginal cost with respect to an input.</strong> When the cost function is linear, it is the price of one unit of the input, \(c_1\) or \(c_2\).</li>
+            <li><strong>A negative marginal product.</strong> It means that there is already so much of that input that one more unit reduces the output.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <h3 class="subhead">A polynomial production function</h3>
+
+    <!-- Example 1: AM 8.3, Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Machines and workers in a workshop</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The daily output of a workshop is
+        <div class="m-wide">\[ Q(x;\,y) = 12x + 20y + 0.4xy - 0.3x^2 - 0.5y^2 \]</div><div class="m-narrow">\[ \begin{aligned} Q(x;\,y) &amp;= 12x + 20y + 0.4xy \\ &amp;\phantom{=}\; {}- 0.3x^2 - 0.5y^2 \end{aligned} \]</div>
+        units, where \(x\) is the number of machine hours and \(y\) is the number of labour hours used in a day. Find the marginal product with respect to each input when 20 machine hours and 25 labour hours are used, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal products</span></h4>
+          <p>With respect to \(x\), the terms \(20y\) and \(0.5y^2\) are constants and give 0, and in \(0.4xy\) the factor \(0.4y\) is a constant multiplier. With respect to \(y\) the roles change:</p>
+          \[ \begin{aligned} Q'_x &amp;= 12 + 0.4y - 0.6x \\ Q'_y &amp;= 20 + 0.4x - y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The values</span></h4>
+          \[ \begin{aligned} Q'_x(20;\,25) &amp;= 12 + 10 - 12 = 10 \\ Q'_y(20;\,25) &amp;= 20 + 8 - 25 = 3 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the number of machine hours increases by one from 20, while the number of labour hours stays 25, the output will increase by approximately 10 units. If the number of labour hours increases by one from 25, while the number of machine hours stays 20, the output will increase by approximately 3 units.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">The Cobb-Douglas production function</h3>
+
+    <!-- Example 2: AM 8.3, Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Labour or capital?</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The monthly output of a firm is \(Q(x;\,y) = 40x^{0.75}y^{0.25}\) units when \(x\) units of labour and \(y\) units of capital are used. The firm currently uses 81 units of labour and 16 units of capital.
+        <br>a) Find the marginal product of labour and the marginal product of capital, and interpret the results.
+        <br>b) Which input should the firm increase if it wants to raise its output more?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The marginal product of labour</span></h4>
+          <p>With respect to \(x\) the factor \(40y^{0.25}\) is a constant multiplier, and the exponent of \(x\) becomes \(0.75 - 1 = -0.25\):</p>
+          <div class="m-wide">\[ MPL = Q'_x = 0.75\cdot 40x^{-0.25}y^{0.25} = 30x^{-0.25}y^{0.25} \]</div><div class="m-narrow">\[ \begin{aligned} MPL = Q'_x &amp;= 0.75\cdot 40x^{-0.25}y^{0.25} \\ &amp;= 30x^{-0.25}y^{0.25} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) The marginal product of capital</span></h4>
+          <p>With respect to \(y\) the factor \(40x^{0.75}\) is a constant multiplier, and the exponent of \(y\) becomes \(0.25 - 1 = -0.75\):</p>
+          <div class="m-wide">\[ MPK = Q'_y = 0.25\cdot 40x^{0.75}y^{-0.75} = 10x^{0.75}y^{-0.75} \]</div><div class="m-narrow">\[ \begin{aligned} MPK = Q'_y &amp;= 0.25\cdot 40x^{0.75}y^{-0.75} \\ &amp;= 10x^{0.75}y^{-0.75} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) The values</span></h4>
+          <p>Substituting \(x = 81\) and \(y = 16\):</p>
+          <div class="fit-sm">\[ \begin{aligned} MPL(81;\,16) &amp;= 30\cdot 81^{-0.25}\cdot 16^{0.25} = 20 \\[4pt] MPK(81;\,16) &amp;= 10\cdot 81^{0.75}\cdot 16^{-0.75} = 33.75 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) The comparison</span></h4>
+          <p>The marginal product of capital is larger than the marginal product of labour: \(33.75 &gt; 20\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) If the amount of labour increases by one unit from 81, while the amount of capital stays 16, the output will increase by approximately 20 units. If the amount of capital increases by one unit from 16, while the amount of labour stays 81, the output will increase by approximately 33.75 units.</p>
+            <p>b) The firm should increase capital, because one more unit of capital adds more output than one more unit of labour.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 8.3, Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Land, machinery and workers on a farm</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The yearly output of a farm is \(Q(x;\,y;\,z) = 2x^{0.5}y^{0.25}z^{0.25}\) tonnes of grain, where \(x\) is the land in hectares, \(y\) is the capital invested in machinery in euros, and \(z\) is the number of workers. Find the marginal product with respect to each input when the farm has 25 hectares of land, 10&nbsp;000 euros invested in machinery and 16 workers, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal products</span></h4>
+          <p>The function has three inputs, so it has three <a href="tema-8-daugiau-kintamuju.html">partial derivatives</a>. In each of them the other two inputs are constants:</p>
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= 0.5\cdot 2x^{-0.5}y^{0.25}z^{0.25} = x^{-0.5}y^{0.25}z^{0.25} \\[4pt] Q'_y &amp;= 0.25\cdot 2x^{0.5}y^{-0.75}z^{0.25} = 0.5x^{0.5}y^{-0.75}z^{0.25} \\[4pt] Q'_z &amp;= 0.25\cdot 2x^{0.5}y^{0.25}z^{-0.75} = 0.5x^{0.5}y^{0.25}z^{-0.75} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= 0.5\cdot 2x^{-0.5}y^{0.25}z^{0.25} \\ &amp;= x^{-0.5}y^{0.25}z^{0.25} \\[6pt] Q'_y &amp;= 0.25\cdot 2x^{0.5}y^{-0.75}z^{0.25} \\ &amp;= 0.5x^{0.5}y^{-0.75}z^{0.25} \\[6pt] Q'_z &amp;= 0.25\cdot 2x^{0.5}y^{0.25}z^{-0.75} \\ &amp;= 0.5x^{0.5}y^{0.25}z^{-0.75} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The values</span></h4>
+          <p>Substituting \(x = 25\), \(y = 10\,000\) and \(z = 16\):</p>
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= 25^{-0.5}\cdot 10\,000^{0.25}\cdot 16^{0.25} = 4 \\[4pt] Q'_y &amp;= 0.5\cdot 25^{0.5}\cdot 10\,000^{-0.75}\cdot 16^{0.25} = 0.005 \\[4pt] Q'_z &amp;= 0.5\cdot 25^{0.5}\cdot 10\,000^{0.25}\cdot 16^{-0.75} = 3.125 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= 25^{-0.5}\cdot 10\,000^{0.25}\cdot 16^{0.25} \\ &amp;= 4 \\[6pt] Q'_y &amp;= 0.5\cdot 25^{0.5}\cdot 10\,000^{-0.75}\cdot 16^{0.25} \\ &amp;= 0.005 \\[6pt] Q'_z &amp;= 0.5\cdot 25^{0.5}\cdot 10\,000^{0.25}\cdot 16^{-0.75} \\ &amp;= 3.125 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the land increases by one hectare from 25, while the capital and the number of workers do not change, the output will increase by approximately 4 tonnes. If the capital increases by one euro from 10&nbsp;000, while the land and the number of workers do not change, the output will increase by approximately 0.005 tonnes. If the number of workers increases by one from 16, while the land and the capital do not change, the output will increase by approximately 3.125 tonnes.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Production functions with other elementary functions</h3>
+
+    <!-- Example 4: AM 8.3, Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>A printing house</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The daily output of a printing house is
+        \[ Q(x;\,y) = \frac{60xy}{x + 2y} \]
+        thousand pages, where \(x\) is the number of labour hours and \(y\) is the number of machine hours used in a day. Find the marginal product with respect to each input when 30 labour hours and 15 machine hours are used, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>With respect to \(x\)</span></h4>
+          <p>The denominator contains both variables, so the <a href="tema-8-dalmens-taisykle.html">quotient rule</a> is needed for both derivatives. Label the numerator \(u = 60xy\) and the denominator \(v = x + 2y\). With respect to \(x\): \(u'_x = 60y\) and \(v'_x = 1\), so</p>
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= \frac{60y(x + 2y) - 60xy\cdot 1}{(x + 2y)^2} \\[6pt] &amp;= \frac{60xy + 120y^2 - 60xy}{(x + 2y)^2} = \frac{120y^2}{(x + 2y)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= \frac{60y(x + 2y) - 60xy\cdot 1}{(x + 2y)^2} \\[6pt] &amp;= \frac{60xy + 120y^2 - 60xy}{(x + 2y)^2} \\[6pt] &amp;= \frac{120y^2}{(x + 2y)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>With respect to \(y\)</span></h4>
+          <p>With respect to \(y\): \(u'_y = 60x\) and \(v'_y = 2\), so</p>
+          <div class="m-wide">\[ \begin{aligned} Q'_y &amp;= \frac{60x(x + 2y) - 60xy\cdot 2}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2 + 120xy - 120xy}{(x + 2y)^2} = \frac{60x^2}{(x + 2y)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_y &amp;= \frac{60x(x + 2y) - 60xy\cdot 2}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2 + 120xy - 120xy}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2}{(x + 2y)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>At the point \((30;\,15)\) the denominator is \((30 + 30)^2 = 3600\):</p>
+          \[ \begin{aligned} Q'_x(30;\,15) &amp;= \frac{120\cdot 225}{3600} = 7.5 \\[6pt] Q'_y(30;\,15) &amp;= \frac{60\cdot 900}{3600} = 15 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the number of labour hours increases by one from 30, while the number of machine hours stays 15, the output will increase by approximately 7.5 thousand pages. If the number of machine hours increases by one from 15, while the number of labour hours stays 30, the output will increase by approximately 15 thousand pages.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5: AM 8.3, Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>A laboratory</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A laboratory analyses
+        \[ Q(x;\,y) = 50\ln(1 + xy) \]
+        samples a day, where \(x\) is the number of technicians and \(y\) is the number of analysers in use. Find the marginal product with respect to each input when 9 technicians and 11 analysers are working, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal products</span></h4>
+          <p>The function is <a href="tema-8-sudetines-funkcijos-taisykle.html">composite</a>: the outer function is the logarithm and the inner one is \(u = 1 + xy\), with \(u'_x = y\) and \(u'_y = x\). By the rule \(\big(\ln u\big)'_x = \frac{u'_x}{u}\):</p>
+          \[ Q'_x = \frac{50y}{1 + xy};\qquad Q'_y = \frac{50x}{1 + xy} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The values</span></h4>
+          <p>At the point \((9;\,11)\) the denominator is \(1 + 9\cdot 11 = 100\):</p>
+          \[ \begin{aligned} Q'_x(9;\,11) &amp;= \frac{50\cdot 11}{100} = 5.5 \\[6pt] Q'_y(9;\,11) &amp;= \frac{50\cdot 9}{100} = 4.5 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the number of technicians increases by one from 9, while the number of analysers stays 11, the number of samples will increase by approximately 5.5 a day. If the number of analysers increases by one from 11, while the number of technicians stays 9, the number of samples will increase by approximately 4.5 a day.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">The CES production function</h3>
+
+    <!-- Example 6: AM 8.3, Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Workers and machines in a factory</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The weekly output of a factory is given by the CES production function
+        \[ Q(x;\,y) = 30\left[0.25x^{-1} + 0.75y^{-1}\right]^{-1} \]
+        where \(Q\) is measured in units, \(x\) is the number of workers and \(y\) is the number of machines. Find the marginal product of labour and the marginal product of capital when the factory has 10 workers and 30 machines, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The structure of the function</span></h4>
+          <p>The outer function is the power with the exponent \(-1\), and the inner function is the bracket</p>
+          \[ u = 0.25x^{-1} + 0.75y^{-1} \]
+          <p>whose partial derivatives are found by the power rule:</p>
+          \[ u'_x = -0.25x^{-2};\qquad u'_y = -0.75y^{-2} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal products</span></h4>
+          <p>The power form of the chain rule, \(\big(u^n\big)'_x = nu^{n-1}\cdot u'_x\), is used with \(n = -1\). The bracket is written in place of \(u\), and its partial derivatives in place of \(u'_x\) and \(u'_y\):</p>
+          <div class="m-wide">\[ \begin{aligned} MPL = Q'_x &amp;= 30\cdot(-1)\left[0.25x^{-1} + 0.75y^{-1}\right]^{-2}\cdot\left(-0.25x^{-2}\right) \\[6pt] &amp;= \frac{7.5}{x^2\left[0.25x^{-1} + 0.75y^{-1}\right]^2} \\[14pt] MPK = Q'_y &amp;= 30\cdot(-1)\left[0.25x^{-1} + 0.75y^{-1}\right]^{-2}\cdot\left(-0.75y^{-2}\right) \\[6pt] &amp;= \frac{22.5}{y^2\left[0.25x^{-1} + 0.75y^{-1}\right]^2} \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} MPL &amp;= Q'_x \\ &amp;= 30\cdot(-1)\left[0.25x^{-1} + 0.75y^{-1}\right]^{-2} \\ &amp;\phantom{=}\;\cdot\left(-0.25x^{-2}\right) \\[6pt] &amp;= \frac{7.5}{x^2\left[0.25x^{-1} + 0.75y^{-1}\right]^2} \\[14pt] MPK &amp;= Q'_y \\ &amp;= 30\cdot(-1)\left[0.25x^{-1} + 0.75y^{-1}\right]^{-2} \\ &amp;\phantom{=}\;\cdot\left(-0.75y^{-2}\right) \\[6pt] &amp;= \frac{22.5}{y^2\left[0.25x^{-1} + 0.75y^{-1}\right]^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The values</span></h4>
+          <p>At the point \((10;\,30)\) the bracket is</p>
+          <div class="fit-sm">\[ \frac{0.25}{10} + \frac{0.75}{30} = 0.025 + 0.025 = 0.05 \]</div>
+          <p>This value is substituted into the marginal products:</p>
+          <div class="m-wide">\[ \begin{aligned} MPL(10;\,30) &amp;= \frac{7.5}{10^2\cdot 0.05^2} = \frac{7.5}{0.25} = 30 \\[8pt] MPK(10;\,30) &amp;= \frac{22.5}{30^2\cdot 0.05^2} = \frac{22.5}{2.25} = 10 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} MPL(10;\,30) &amp;= \frac{7.5}{10^2\cdot 0.05^2} \\[6pt] &amp;= \frac{7.5}{0.25} = 30 \\[8pt] MPK(10;\,30) &amp;= \frac{22.5}{30^2\cdot 0.05^2} \\[6pt] &amp;= \frac{22.5}{2.25} = 10 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the number of workers increases by one from 10, while the number of machines stays 30, the output will increase by approximately 30 units a week. If the number of machines increases by one from 30, while the number of workers stays 10, the output will increase by approximately 10 units a week.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Revenue, cost and profit</h3>
+
+    <!-- Example 7: AM 8.3, Example 7 -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>The revenue, cost and profit of a workshop</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A workshop produces \(Q(x;\,y) = 12\sqrt{xy}\) units a day, where \(x\) is the number of labour hours and \(y\) is the number of machine hours. Each unit is sold for 5&nbsp;euros, a labour hour costs 12&nbsp;euros, a machine hour costs 40&nbsp;euros, and the fixed costs are 300&nbsp;euros a day. Find the marginal revenue, the marginal cost and the marginal profit with respect to each input when 64 labour hours and 16 machine hours are used, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The functions</span></h4>
+          <p>The production function is a Cobb-Douglas function, \(Q = 12x^{0.5}y^{0.5}\). Therefore</p>
+          <div class="fit-sm">\[ \begin{aligned} R(x;\,y) &amp;= 5\cdot 12x^{0.5}y^{0.5} = 60x^{0.5}y^{0.5} \\ TC(x;\,y) &amp;= 12x + 40y + 300 \\ P(x;\,y) &amp;= 60x^{0.5}y^{0.5} - 12x - 40y - 300 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal revenue</span></h4>
+          <p>With respect to \(x\) the factor \(60y^{0.5}\) is a constant multiplier, and with respect to \(y\) the factor \(60x^{0.5}\):</p>
+          \[ \begin{aligned} R'_x &amp;= 30x^{-0.5}y^{0.5} = \frac{30\sqrt{y}}{\sqrt{x}} \\[6pt] R'_y &amp;= 30x^{0.5}y^{-0.5} = \frac{30\sqrt{x}}{\sqrt{y}} \end{aligned} \]
+          \[ \begin{aligned} R'_x(64;\,16) &amp;= \frac{30\cdot 4}{8} = 15 \\[6pt] R'_y(64;\,16) &amp;= \frac{30\cdot 8}{4} = 60 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The marginal cost</span></h4>
+          <p>The cost is linear, so the marginal costs are the prices of the inputs:</p>
+          \[ TC'_x = 12;\qquad TC'_y = 40 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The marginal profit</span></h4>
+          <p>By the <a href="#pelnas-ribiniai">formulas for the marginal values with respect to the inputs</a> it is the difference of the marginal revenue and the marginal cost:</p>
+          \[ \begin{aligned} P'_x(64;\,16) &amp;= 15 - 12 = 3 \\ P'_y(64;\,16) &amp;= 60 - 40 = 20 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the number of labour hours increases by one from 64, while the number of machine hours stays 16, the revenue will increase by approximately 15&nbsp;euros, the cost by 12&nbsp;euros and the profit by approximately 3&nbsp;euros. If the number of machine hours increases by one from 16, while the number of labour hours stays 64, the revenue will increase by approximately 60&nbsp;euros, the cost by 40&nbsp;euros and the profit by approximately 20&nbsp;euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 8: AM 8.3, Example 8 -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">Example 8</span>
+        <h3>The marginal profit of a factory</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The daily output of a factory is
+        <div class="m-wide">\[ Q(x;\,y) = 30x + 40y + 0.2xy - 0.5x^2 - 0.4y^2 \]</div><div class="m-narrow">\[ \begin{aligned} Q(x;\,y) &amp;= 30x + 40y + 0.2xy \\ &amp;\phantom{=}\; {}- 0.5x^2 - 0.4y^2 \end{aligned} \]</div>
+        units, where \(x\) is the number of workers and \(y\) is the number of machines in use. Each unit is sold for 8&nbsp;euros, a worker costs 60&nbsp;euros a day, a machine costs 100&nbsp;euros a day, and the fixed costs are 400&nbsp;euros a day. Find the marginal profit with respect to each input when 20 workers and 40 machines are used, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The profit function</span></h4>
+          <p>The revenue is \(8\cdot Q(x;\,y)\) and the cost is \(60x + 100y + 400\), so</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= 8(30x + 40y + 0.2xy - 0.5x^2 - 0.4y^2) - 60x - 100y - 400 \\ &amp;= 180x + 220y + 1.6xy - 4x^2 - 3.2y^2 - 400 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= 8(30x + 40y + 0.2xy \\ &amp;\phantom{=}\; {}- 0.5x^2 - 0.4y^2) \\ &amp;\phantom{=}\; {}- 60x - 100y - 400 \\ &amp;= 180x + 220y + 1.6xy \\ &amp;\phantom{=}\; {}- 4x^2 - 3.2y^2 - 400 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal profit</span></h4>
+          \[ \begin{aligned} P'_x &amp;= 180 + 1.6y - 8x \\ P'_y &amp;= 220 + 1.6x - 6.4y \end{aligned} \]
+          \[ \begin{aligned} P'_x(20;\,40) &amp;= 180 + 64 - 160 = 84 \\ P'_y(20;\,40) &amp;= 220 + 32 - 256 = -4 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The check</span></h4>
+          <p>The same values follow from the <a href="#pelnas-ribiniai">formulas for the marginal values with respect to the inputs</a>: the marginal products are \(Q'_x = 30 + 0.2y - x = 18\) and \(Q'_y = 40 + 0.2x - 0.8y = 12\), so \(P'_x = 8\cdot 18 - 60 = 84\) and \(P'_y = 8\cdot 12 - 100 = -4\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the number of workers increases by one from 20, while the number of machines stays 40, the profit will increase by approximately 84&nbsp;euros. If the number of machines increases by one from 40, while the number of workers stays 20, the profit will decrease by approximately 4&nbsp;euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 9: AM 8.3, Example 9 -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">Example 9</span>
+        <h3>Greenhouse tomatoes</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A greenhouse produces
+        \[ Q(x;\,y) = 400\sqrt{x}\left(1 - e^{-0.05y}\right) \]
+        kilograms of tomatoes a week, where \(x\) is the number of labour hours and \(y\) is the amount of fertiliser in kilograms. The tomatoes are sold for 3&nbsp;euros a kilogram, a labour hour costs 18&nbsp;euros, a kilogram of fertiliser costs 2&nbsp;euros, and the fixed costs are 1500&nbsp;euros a week. Find the marginal profit with respect to each input when 100 labour hours and 20 kilograms of fertiliser are used, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The profit function</span></h4>
+          <div class="m-wide">\[ \begin{aligned} P(x;\,y) &amp;= 3\cdot 400\sqrt{x}\left(1 - e^{-0.05y}\right) - 18x - 2y - 1500 \\ &amp;= 1200\sqrt{x}\left(1 - e^{-0.05y}\right) - 18x - 2y - 1500 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= 3\cdot 400\sqrt{x}\left(1 - e^{-0.05y}\right) \\ &amp;\phantom{=}\; {}- 18x - 2y - 1500 \\ &amp;= 1200\sqrt{x}\left(1 - e^{-0.05y}\right) \\ &amp;\phantom{=}\; {}- 18x - 2y - 1500 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>With respect to \(x\)</span></h4>
+          <p>The bracket does not contain \(x\), so it is a constant multiplier, and \(\left(\sqrt{x}\right)'_x = \frac{1}{2\sqrt{x}}\):</p>
+          \[ \begin{aligned} P'_x &amp;= 1200\cdot\frac{1}{2\sqrt{x}}\left(1 - e^{-0.05y}\right) - 18 \\[6pt] &amp;= \frac{600\left(1 - e^{-0.05y}\right)}{\sqrt{x}} - 18 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>With respect to \(y\)</span></h4>
+          <p>The factor \(1200\sqrt{x}\) is a constant multiplier. The exponential function is composite with the inner function \(-0.05y\), so \(\left(e^{-0.05y}\right)'_y = -0.05e^{-0.05y}\) and the derivative of the bracket is \(0.05e^{-0.05y}\):</p>
+          \[ \begin{aligned} P'_y &amp;= 1200\sqrt{x}\cdot 0.05e^{-0.05y} - 2 \\ &amp;= 60\sqrt{x}\cdot e^{-0.05y} - 2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The values</span></h4>
+          <p>At the point \((100;\,20)\) the values are \(\sqrt{100} = 10\) and \(e^{-0.05\cdot 20} = e^{-1} \approx 0.3679\):</p>
+          <div class="m-wide">\[ \begin{aligned} P'_x(100;\,20) &amp;= \frac{600\left(1 - e^{-1}\right)}{10} - 18 = 60\left(1 - e^{-1}\right) - 18 \approx 19.93 \\[8pt] P'_y(100;\,20) &amp;= 60\cdot 10\cdot e^{-1} - 2 = 600e^{-1} - 2 \approx 218.73 \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} P'_x(100;\,20) &amp;= \frac{600\left(1 - e^{-1}\right)}{10} - 18 \\[6pt] &amp;= 60\left(1 - e^{-1}\right) - 18 \approx 19.93 \\[8pt] P'_y(100;\,20) &amp;= 60\cdot 10\cdot e^{-1} - 2 \\ &amp;= 600e^{-1} - 2 \approx 218.73 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the number of labour hours increases by one from 100, while the amount of fertiliser stays 20 kilograms, the profit will increase by approximately 19.93&nbsp;euros. If the amount of fertiliser increases by one kilogram from 20, while the number of labour hours stays 100, the profit will increase by approximately 218.73&nbsp;euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: find the partial derivatives with respect to each input, substitute the given amounts and interpret the results. The answer gives the derivatives, their values and the interpretation – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM Topic 8 Problem Set, 2, Problem 1 (as on the LT page: 50; AM – 40) -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A logistics centre handles</p>
+          \[ Q(x;\,y) = 50x^{0.8}y^{0.2} \]
+          <p>parcels a week, where \(x\) is the number of hours of labour and \(y\) is the capital invested in equipment, in thousands of euros. Find the marginal product of labour and the marginal product of capital when 1024 hours of labour and 32 thousand euros of capital are used, and interpret the results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ \begin{aligned} MPL = Q'_x &amp;= 40x^{-0.2}y^{0.2} \\ MPK = Q'_y &amp;= 10x^{0.8}y^{-0.8} \end{aligned} \]
+          <p><strong>The values:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} MPL(1024;\,32) &amp;= 40\cdot 1024^{-0.2}\cdot 32^{0.2} = 20 \\[4pt] MPK(1024;\,32) &amp;= 10\cdot 1024^{0.8}\cdot 32^{-0.8} = 160 \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} MPL(1024;\,32) &amp;= 40\cdot 1024^{-0.2}\cdot 32^{0.2} \\ &amp;= 20 \\[6pt] MPK(1024;\,32) &amp;= 10\cdot 1024^{0.8}\cdot 32^{-0.8} \\ &amp;= 160 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> If the labour increases by one hour from 1024, while the capital stays 32 thousand euros, the centre will handle approximately 20 more parcels a week. If the capital increases by one thousand euros from 32, while the labour stays 1024 hours, it will handle approximately 160 more parcels a week.</p>
+        </div>
+      </article>
+
+      <!-- Problem 2 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A car wash with \(x\) workers and \(y\) washing lines serves</p>
+          <div class="m-wide">\[ Q(x;\,y) = 12x + 15y + 0.3xy - 0.4x^2 - 0.5y^2 \]</div><div class="m-narrow">\[ \begin{aligned} Q(x;\,y) &amp;= 12x + 15y + 0.3xy \\ &amp;\phantom{=}\; {}- 0.4x^2 - 0.5y^2 \end{aligned} \]</div>
+          <p>cars a day. Find the marginal products when 20 workers and 6 washing lines are used, and interpret the results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ \begin{aligned} Q'_x &amp;= 12 + 0.3y - 0.8x \\ Q'_y &amp;= 15 + 0.3x - y \end{aligned} \]
+          <p><strong>The values:</strong></p>
+          \[ \begin{aligned} Q'_x(20;\,6) &amp;= 12 + 1.8 - 16 = -2.2 \\ Q'_y(20;\,6) &amp;= 15 + 6 - 6 = 15 \end{aligned} \]
+          <p><strong>Answer.</strong> If the number of workers increases by one from 20, while the number of washing lines stays 6, the number of cars served will decrease by approximately 2.2 a day. If the number of washing lines increases by one from 6, while the number of workers stays 20, the number of cars served will increase by approximately 15 a day.</p>
+        </div>
+      </article>
+
+      <!-- Problem 3 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A recycling plant with \(x\) workers and \(y\) sorting machines processes</p>
+          \[ Q(x;\,y) = 400\left(1 - e^{-0.01xy}\right) \]
+          <p>tonnes of waste a day. Find the marginal products when 10 workers and 20 machines are used, and interpret the results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives (the chain rule):</strong></p>
+          \[ \begin{aligned} Q'_x &amp;= 4ye^{-0.01xy} \\ Q'_y &amp;= 4xe^{-0.01xy} \end{aligned} \]
+          <p><strong>The values:</strong></p>
+          \[ \begin{aligned} Q'_x(10;\,20) &amp;= 80e^{-2} \approx 10.83 \\ Q'_y(10;\,20) &amp;= 40e^{-2} \approx 5.41 \end{aligned} \]
+          <p><strong>Answer.</strong> If the number of workers increases by one from 10, while the number of machines stays 20, the plant will process approximately 10.83 more tonnes a day. If the number of machines increases by one from 20, while the number of workers stays 10, it will process approximately 5.41 more tonnes a day.</p>
+        </div>
+      </article>
+
+      <!-- Problem 4 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A pottery workshop makes</p>
+          \[ Q(x;\,y) = 20x^{0.25}y^{0.75} \]
+          <p>mugs a week, where \(x\) is the number of hours of potters’ work and \(y\) is the number of hours the kiln is used. A mug is sold for 2&nbsp;euros, an hour of potters’ work costs 30&nbsp;euros, an hour of the kiln costs 12&nbsp;euros, and the fixed cost is 400&nbsp;euros a week.</p>
+          <p>Find the profit function and the marginal profits with respect to both inputs when 16 hours of work and 81 hours of the kiln are used. Interpret the results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The function:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} P(x;\,y) &amp;= 2\cdot 20x^{0.25}y^{0.75} - (30x + 12y + 400) \\ &amp;= 40x^{0.25}y^{0.75} - 30x - 12y - 400 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= 2\cdot 20x^{0.25}y^{0.75} \\ &amp;\phantom{=}\; {}- (30x + 12y + 400) \\ &amp;= 40x^{0.25}y^{0.75} \\ &amp;\phantom{=}\; {}- 30x - 12y - 400 \end{aligned} \]</div>
+          <p><strong>The derivatives and the values:</strong></p>
+          \[ \begin{aligned} P'_x &amp;= 10x^{-0.75}y^{0.75} - 30 \\ P'_y &amp;= 30x^{0.25}y^{-0.25} - 12 \end{aligned} \]
+          <div class="m-wide">\[ \begin{aligned} P'_x(16;\,81) &amp;= 10\cdot 16^{-0.75}\cdot 81^{0.75} - 30 = 3.75 \\[4pt] P'_y(16;\,81) &amp;= 30\cdot 16^{0.25}\cdot 81^{-0.25} - 12 = 8 \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} P'_x(16;\,81) &amp;= 10\cdot 16^{-0.75}\cdot 81^{0.75} - 30 \\ &amp;= 3.75 \\[6pt] P'_y(16;\,81) &amp;= 30\cdot 16^{0.25}\cdot 81^{-0.25} - 12 \\ &amp;= 8 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> If the potters’ work increases by one hour from 16, while the kiln is used 81 hours, the weekly profit will increase by approximately 3.75&nbsp;euros. If the use of the kiln increases by one hour from 81, while the potters’ work stays 16 hours, the profit will increase by approximately 8&nbsp;euros.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 7</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

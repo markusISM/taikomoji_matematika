@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marginal Analysis (Two Products) · Applied Mathematics</title>
+<meta name="description" content="The revenue, cost and profit of a firm that makes two products, the marginal quantities with respect to each product and their interpretation. Step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-8-ribine-analize.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=103">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=103"></script>
+</head>
+<body data-page="m81">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 8 · Applications · Section 1</span>
+    <h1>Marginal Analysis</h1>
+    <p class="lead">This section examines how the revenue, cost and profit of a firm that makes two products change when the quantity of one product changes and the quantity of the other does not. These changes are approximated by partial derivatives – the marginal quantities.</p>
+    <ul class="jump">
+      <li><a href="#funkcijos">Functions</a></li>
+      <li><a href="#ribiniai">Marginal quantities</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. FUNCTIONS ============ -->
+  <section class="section" id="funkcijos" aria-labelledby="h-func">
+    <h2 id="h-func">Revenue, cost and profit of two products</h2>
+
+    <article class="card">
+      <p>Most firms produce more than one product. A bakery bakes bread and cakes, a furniture factory makes tables and chairs, a coffee roastery sells several blends. The revenue, the cost and the profit of such a firm depend on the quantities of all its products at once, so they are functions of several variables. Their partial derivatives show how each of them changes when the quantity of one product changes and the quantity of the other does not, and in economics these partial derivatives are called <strong>marginal quantities</strong>.</p>
+      <p>For a firm that produces two products the following notation is used:</p>
+      <ul>
+        <li>\(x\) – the quantity of the first product; \(y\) – the quantity of the second product;</li>
+        <li>\(p_1\) – the price of the first product; \(p_2\) – the price of the second product;</li>
+        <li>\(V_1\) – the variable cost per unit of the first product; \(V_2\) – the variable cost per unit of the second product;</li>
+        <li>\(FC\) – the fixed cost.</li>
+      </ul>
+      <p>It is assumed that everything produced is sold, so \(x\) and \(y\) are both the quantities produced and the quantities sold. The three functions of the firm are</p>
+      <div class="formula">\[ \begin{aligned} R(x;\,y) &amp;= p_1x + p_2y \\ TC(x;\,y) &amp;= V_1x + V_2y + FC \\ P(x;\,y) &amp;= R(x;\,y) - TC(x;\,y) \end{aligned} \]</div>
+      <p class="tip"><strong>Do not confuse the notation.</strong> The lowercase letter \(p\) with a subscript is the price of a product, and the capital letter \(P\) is the profit.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The revenue</h3>
+      <p>The revenue is the price of each product multiplied by its quantity, added over both products. How it is found depends on how the prices are given.</p>
+      <ul>
+        <li><strong>Fixed prices.</strong> If the prices \(p_1\) and \(p_2\) are numbers, the revenue is a linear function, for example \(R(x;\,y) = 40x + 25y\).</li>
+        <li><strong>Demand functions.</strong> Often the prices depend on the quantities. A demand function gives the price at which the quantities \(x\) and \(y\) can be sold. The price of a product usually falls when more of it is offered, and it may also depend on the quantity of the other product: \(p_1 = p_1(x;\,y)\), \(p_2 = p_2(x;\,y)\).</li>
+      </ul>
+      <p>The demand functions are substituted into the formula of the revenue, the brackets are opened and like terms are collected:</p>
+      <div class="formula">\[ R(x;\,y) = p_1(x;\,y)\cdot x + p_2(x;\,y)\cdot y \]</div>
+      <p>Each price is multiplied by its own quantity only: the price of the first product by \(x\), the price of the second product by \(y\). The revenue then contains squares and the product \(xy\).</p>
+
+      <h3 class="subhead" style="margin-top:22px">The cost</h3>
+      <ul>
+        <li><strong>Cost data.</strong> If the problem gives the variable cost per unit of each product and the fixed cost, the total cost is the linear function \(TC(x;\,y) = V_1x + V_2y + FC\).</li>
+        <li><strong>A cost function.</strong> If the cost per unit is not constant, the problem gives the whole function \(TC(x;\,y)\). It may contain squares of the quantities and their product \(xy\).</li>
+      </ul>
+
+      <h3 class="subhead" style="margin-top:22px">The profit</h3>
+      <p>The profit is the revenue minus the total cost. When the cost function is subtracted, it is put in brackets, and every term inside the brackets changes its sign when they are opened.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. MARGINAL QUANTITIES ============ -->
+  <section class="section" id="ribiniai" aria-labelledby="h-marg">
+    <h2 id="h-marg">Marginal quantities</h2>
+
+    <article class="card">
+      <p>Each of the three functions has two first order partial derivatives, one with respect to each product. This gives six marginal quantities:</p>
+      <div class="tbl-wrap">
+        <table class="vtable">
+          <thead>
+            <tr><th scope="col">Marginal quantity</th><th scope="col">Formula</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>marginal revenue with respect to the first product</td><td>\(MR_x = R'_x\)</td></tr>
+            <tr><td>marginal revenue with respect to the second product</td><td>\(MR_y = R'_y\)</td></tr>
+            <tr><td>marginal cost with respect to the first product</td><td>\(MC_x = TC'_x\)</td></tr>
+            <tr><td>marginal cost with respect to the second product</td><td>\(MC_y = TC'_y\)</td></tr>
+            <tr><td>marginal profit with respect to the first product</td><td>\(MP_x = P'_x\)</td></tr>
+            <tr><td>marginal profit with respect to the second product</td><td>\(MP_y = P'_y\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The partial derivative with respect to \(x\) is calculated with \(y\) held constant, so \(MR_x\) shows how the revenue changes when the quantity of the first product changes and the quantity of the second product does not. If \(x\) increases by one unit from \(x_0\) and \(y\) stays equal to \(y_0\), the revenue changes by approximately \(MR_x(x_0;\,y_0)\) euros. In the same way \(MR_y\) shows how the revenue changes when the quantity of the second product changes and the quantity of the first product does not: if \(y\) increases by one unit from \(y_0\) and \(x\) stays equal to \(x_0\), the revenue changes by approximately \(MR_y(x_0;\,y_0)\) euros. The marginal cost and the marginal profit are interpreted in the same way. Marginal quantities for a single product are discussed in the Topic 6 section <a href="tema-6-ribine-analize.html">“Marginal Analysis”</a>.</p>
+
+      <h3 class="subhead" style="margin-top:22px">The relation between the marginal quantities</h3>
+      <p>The profit is the revenue minus the cost, and the derivative of a difference is the difference of the derivatives. Therefore</p>
+      <div class="formula">\[ \begin{aligned} MP_x &amp;= MR_x - MC_x \\ MP_y &amp;= MR_y - MC_y \end{aligned} \]</div>
+      <p>If the marginal revenue and the marginal cost have already been found, the marginal profit is their difference. If only the marginal profit is needed, it is usually quicker to write the profit function and differentiate it.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Constant marginal quantities</h3>
+      <p>If the prices are fixed, the revenue \(p_1x + p_2y\) gives \(MR_x = p_1\) and \(MR_y = p_2\). If the cost is built from the cost data, it gives \(MC_x = V_1\) and \(MC_y = V_2\). In this case the marginal quantities are numbers that do not depend on the quantities produced. Because the functions are linear, the changes they describe are exact. In every other case considered here the marginal quantities are functions of \(x\) and \(y\), and they have to be calculated at the point the problem names.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">The interpretation</h3>
+      <p>A calculated marginal value has to be explained in the words of the problem, and that explanation is part of the answer. The explanation always names the product that changes and says that the quantity of the other product does not change:</p>
+      <div class="model-note"><em>If the output of the first product increases by one unit from \(x_0\), while the output of the second product stays \(y_0\), the revenue (cost, profit) will change by approximately \(MR_x(x_0;\,y_0)\) (\(MC_x(x_0;\,y_0)\), \(MP_x(x_0;\,y_0)\)) euros.</em></div>
+      <div class="model-note"><em>If the output of the second product increases by one unit from \(y_0\), while the output of the first product stays \(x_0\), the revenue (cost, profit) will change by approximately \(MR_y(x_0;\,y_0)\) (\(MC_y(x_0;\,y_0)\), \(MP_y(x_0;\,y_0)\)) euros.</em></div>
+      <p>A positive value means that the function increases, a negative value means that it decreases. The word “approximately” is left out only when the marginal quantity is a constant.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">How to solve</h2>
+
+    <article class="card">
+      <p>The problems of this section differ mainly in the way the information is given. The table shows how the functions are found in each case.</p>
+      <div class="tbl-wrap">
+        <table class="vtable">
+          <thead>
+            <tr><th scope="col">What the problem gives</th><th scope="col">How the functions are found</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>the prices \(p_1\), \(p_2\) and the cost data \(V_1\), \(V_2\), \(FC\)</td><td style="text-align:left">\(R = p_1x + p_2y\),<br>\(TC = V_1x + V_2y + FC\),<br>\(P = R - TC\)</td></tr>
+            <tr><td>the revenue and cost functions</td><td style="text-align:left">used as given; \(P = R - TC\)</td></tr>
+            <tr><td>the profit function</td><td style="text-align:left">differentiated directly</td></tr>
+            <tr><td>the prices and a cost function</td><td style="text-align:left">\(R = p_1x + p_2y\),<br>the cost as given,<br>\(P = R - TC\)</td></tr>
+            <tr><td>the demand functions</td><td style="text-align:left">\(R = p_1(x;\,y)\cdot x\)<br>\(\phantom{R}\;\; + p_2(x;\,y)\cdot y\)</td></tr>
+            <tr><td>the demand functions and the cost data or a cost function</td><td style="text-align:left">the revenue from the demand functions, the cost as above; \(P = R - TC\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol class="steps-list">
+        <li>Read what the problem gives and name the variables: \(x\) and \(y\) are the quantities of the two products.</li>
+        <li>Build the functions that are needed, using the table. Open the brackets and collect like terms.</li>
+        <li>Find the partial derivatives that the problem asks for. With respect to \(x\) the quantity \(y\) is a constant, and with respect to \(y\) the quantity \(x\) is a constant.</li>
+        <li>Substitute the given quantities into the finished derivatives.</li>
+        <li>Interpret each value with the <a href="#interpretavimas">wording of the interpretation</a>.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>A price multiplied by the wrong quantity.</strong> Each price is multiplied by its own quantity only: \(p_1\) by \(x\), \(p_2\) by \(y\).</li>
+            <li><strong>Signs not changed.</strong> The cost function that is subtracted is put in brackets, and every term changes its sign when the brackets are opened.</li>
+            <li><strong>Quantities substituted too early.</strong> Find the partial derivatives first, and only then substitute the given quantities.</li>
+            <li><strong>The other product not mentioned in the interpretation.</strong> Name the product whose quantity changes and say that the quantity of the other product does not change.</li>
+            <li><strong>The word “approximately”.</strong> It is left out only when the marginal quantity is a constant.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <h3 class="subhead">The prices and the cost data are given</h3>
+
+    <!-- Example 1: AM 8.2, Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Bread and cakes</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A bakery bakes \(x\) loaves of bread and \(y\) cakes a day. A loaf is sold for 3&nbsp;euros and a cake for 18&nbsp;euros. The variable cost is 1.2&nbsp;euros per loaf and 7.5&nbsp;euros per cake, and the fixed costs are 350&nbsp;euros a day.
+        <br>a) Find the revenue, cost and profit functions.
+        <br>b) Find the marginal revenue, the marginal cost and the marginal profit with respect to each product and interpret them.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) The functions</span></h4>
+          <p>The data are \(p_1 = 3\), \(p_2 = 18\), \(V_1 = 1.2\), \(V_2 = 7.5\) and \(FC = 350\). Therefore</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 3x + 18y \\ TC(x;\,y) &amp;= 1.2x + 7.5y + 350 \\ P(x;\,y) &amp;= 3x + 18y \\ &amp;\phantom{=}\; {}- (1.2x + 7.5y + 350) \\ &amp;= 1.8x + 10.5y - 350 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) The marginal quantities</span></h4>
+          <p>With respect to \(x\) the terms with \(y\) and the constants give 0, and with respect to \(y\) the terms with \(x\) give 0:</p>
+          \[ \begin{aligned} MR_x &amp;= 3; &amp;\quad MR_y &amp;= 18 \\ MC_x &amp;= 1.2; &amp;\quad MC_y &amp;= 7.5 \\ MP_x &amp;= 1.8; &amp;\quad MP_y &amp;= 10.5 \end{aligned} \]
+          <p>The marginal quantities are constants, as stated in <a href="#ribiniai">“Constant marginal quantities”</a>: the marginal revenue is the price, the marginal cost is the variable cost per unit, and the marginal profit is their difference.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) \(R(x;\,y) = 3x + 18y\); \(TC(x;\,y) = 1.2x + 7.5y + 350\); \(P(x;\,y) = 1.8x + 10.5y - 350\).</p>
+            <p>b) If the output of bread increases by one loaf, while the output of cakes does not change, the revenue will increase by 3&nbsp;euros, the cost by 1.2&nbsp;euros and the profit by 1.8&nbsp;euros. If the output of cakes increases by one cake, while the output of bread does not change, the revenue will increase by 18&nbsp;euros, the cost by 7.5&nbsp;euros and the profit by 10.5&nbsp;euros. These values do not depend on the output.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">The revenue, cost or profit function is given</h3>
+
+    <!-- Example 2: AM 8.2, Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>City and mountain bikes</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A factory produces \(x\) city bikes and \(y\) mountain bikes a week. Its weekly revenue and total cost, in euros, are
+        \[ \begin{aligned} R(x;\,y) &amp;= 320x + 450y \\ &amp;\phantom{=}\; {}- 0.4x^2 - 0.5y^2 - 0.2xy \\ TC(x;\,y) &amp;= 0.1x^2 + 0.15y^2 \\ &amp;\phantom{=}\; {}+ 120x + 160y + 9000 \end{aligned} \]
+        Find the marginal revenue, the marginal cost and the marginal profit with respect to each product when 100 city bikes and 150 mountain bikes are produced, and interpret them.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal revenue</span></h4>
+          <p>With respect to \(x\), the terms \(450y\) and \(0.5y^2\) are constants and give 0, and in the term \(0.2xy\) the factor \(0.2y\) is a constant multiplier. With respect to \(y\) the roles change:</p>
+          \[ \begin{aligned} MR_x &amp;= 320 - 0.8x - 0.2y \\ MR_y &amp;= 450 - y - 0.2x \end{aligned} \]
+          <div class="fit-sm">\[ \begin{aligned} MR_x(100;\,150) &amp;= 320 - 80 - 30 = 210 \\ MR_y(100;\,150) &amp;= 450 - 150 - 20 = 280 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal cost</span></h4>
+          <p>The cost has no product \(xy\), so each derivative contains one variable only:</p>
+          \[ \begin{aligned} MC_x &amp;= 0.2x + 120 \\ MC_y &amp;= 0.3y + 160 \end{aligned} \]
+          \[ \begin{aligned} MC_x(100;\,150) &amp;= 20 + 120 = 140 \\ MC_y(100;\,150) &amp;= 45 + 160 = 205 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The marginal profit</span></h4>
+          <p>By the <a href="#ribiniai">relation between the marginal quantities</a> it is the difference of the marginal revenue and the marginal cost:</p>
+          \[ \begin{aligned} MP_x(100;\,150) &amp;= 210 - 140 = 70 \\ MP_y(100;\,150) &amp;= 280 - 205 = 75 \end{aligned} \]
+          <p>The same values come from the profit function</p>
+          \[ \begin{aligned} P(x;\,y) &amp;= 200x + 290y - 0.5x^2 \\ &amp;\phantom{=}\; {}- 0.65y^2 - 0.2xy - 9000 \end{aligned} \]
+          <p>whose partial derivatives are \(P'_x = 200 - x - 0.2y\) and \(P'_y = 290 - 1.3y - 0.2x\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the output of city bikes increases by one unit from 100, while the output of mountain bikes stays 150, the revenue will increase by approximately 210&nbsp;euros, the cost by approximately 140&nbsp;euros and the profit by approximately 70&nbsp;euros. If the output of mountain bikes increases by one unit from 150, while the output of city bikes stays 100, the revenue will increase by approximately 280&nbsp;euros, the cost by approximately 205&nbsp;euros and the profit by approximately 75&nbsp;euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 8.2, Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Soil and fertiliser</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A garden centre sells \(x\) bags of soil and \(y\) bags of fertiliser a week. Its weekly profit, in euros, is
+        \[ \begin{aligned} P(x;\,y) &amp;= -0.01x^2 - 0.02y^2 + 0.005xy \\ &amp;\phantom{=}\; {}+ 6x + 9y - 800 \end{aligned} \]
+        Find the marginal profit with respect to each product when 400 bags of soil and 200 bags of fertiliser are sold, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The marginal profit</span></h4>
+          <p>The profit function is given, so it is differentiated directly:</p>
+          \[ \begin{aligned} MP_x &amp;= -0.02x + 0.005y + 6 \\ MP_y &amp;= -0.04y + 0.005x + 9 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The values</span></h4>
+          \[ \begin{aligned} MP_x(400;\,200) &amp;= -8 + 1 + 6 = -1 \\ MP_y(400;\,200) &amp;= -8 + 2 + 9 = 3 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the sales of soil increase by one bag from 400, while the sales of fertiliser stay 200, the profit will decrease by approximately 1&nbsp;euro. If the sales of fertiliser increase by one bag from 200, while the sales of soil stay 400, the profit will increase by approximately 3&nbsp;euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">The prices and a cost function are given</h3>
+
+    <!-- Example 4: AM 8.2, Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Tables and chairs</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A furniture factory produces \(x\) tables and \(y\) chairs a week. A table is sold for 240&nbsp;euros and a chair for 90&nbsp;euros. The weekly total cost, in euros, is
+        \[ \begin{aligned} TC(x;\,y) &amp;= 0.5x^2 + 0.1y^2 + 0.2xy \\ &amp;\phantom{=}\; {}+ 60x + 30y + 5000 \end{aligned} \]
+        Find the marginal profit with respect to each product when 80 tables and 200 chairs are produced, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The profit function</span></h4>
+          <p>The prices are fixed, so \(R(x;\,y) = 240x + 90y\). The cost is subtracted with every sign changed:</p>
+          <div class="fit-sm">\[ \begin{aligned} P(x;\,y) &amp;= 240x + 90y - (0.5x^2 + 0.1y^2 \\ &amp;\phantom{=}\; {}+ 0.2xy + 60x + 30y + 5000) \\ &amp;= -0.5x^2 - 0.1y^2 - 0.2xy \\ &amp;\phantom{=}\; {}+ 180x + 60y - 5000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal profit</span></h4>
+          <p>The product \(0.2xy\) gives \(0.2y\) with respect to \(x\) and \(0.2x\) with respect to \(y\); the minus sign stays:</p>
+          \[ \begin{aligned} MP_x &amp;= -x - 0.2y + 180 \\ MP_y &amp;= -0.2y - 0.2x + 60 \end{aligned} \]
+          \[ \begin{aligned} MP_x(80;\,200) &amp;= -80 - 40 + 180 = 60 \\ MP_y(80;\,200) &amp;= -40 - 16 + 60 = 4 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the output of tables increases by one unit from 80, while the output of chairs stays 200, the profit will increase by approximately 60&nbsp;euros. If the output of chairs increases by one unit from 200, while the output of tables stays 80, the profit will increase by approximately 4&nbsp;euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">The demand functions are given</h3>
+
+    <!-- Example 5: AM 8.2, Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Wired and wireless headphones</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company sells \(x\) wired and \(y\) wireless headphones a week. The weekly demand functions are
+        \[ \begin{aligned} p_1 &amp;= 90 - 0.04x - 0.01y \\ p_2 &amp;= 150 - 0.02x - 0.05y \end{aligned} \]
+        where \(p_1\) and \(p_2\) are the prices of wired and wireless headphones in euros. Find the marginal revenue with respect to each product when 500 wired and 800 wireless headphones are sold, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The revenue function</span></h4>
+          <p>Each price is multiplied by its own quantity:</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= (90 - 0.04x - 0.01y)x \\ &amp;\phantom{=}\; {}+ (150 - 0.02x - 0.05y)y \\ &amp;= 90x - 0.04x^2 - 0.01xy \\ &amp;\phantom{=}\; {}+ 150y - 0.02xy - 0.05y^2 \end{aligned} \]
+          <p>The two terms with \(xy\) are collected:</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 90x + 150y \\ &amp;\phantom{=}\; {}- 0.04x^2 - 0.05y^2 - 0.03xy \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The marginal revenue</span></h4>
+          \[ \begin{aligned} MR_x &amp;= 90 - 0.08x - 0.03y \\ MR_y &amp;= 150 - 0.1y - 0.03x \end{aligned} \]
+          \[ \begin{aligned} MR_x(500;\,800) &amp;= 90 - 40 - 24 = 26 \\ MR_y(500;\,800) &amp;= 150 - 80 - 15 = 55 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the sales of wired headphones increase by one unit from 500, while the sales of wireless headphones stay 800, the revenue will increase by approximately 26&nbsp;euros. If the sales of wireless headphones increase by one unit from 800, while the sales of wired headphones stay 500, the revenue will increase by approximately 55&nbsp;euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6: AM 8.2, Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Two coffee blends</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A roastery sells \(x\) kilograms of a classic coffee blend and \(y\) kilograms of a premium blend a month. The monthly demand functions are
+        \[ \begin{aligned} p_1 &amp;= 24 - 0.002x + 0.0005y \\ p_2 &amp;= 40 - 0.001x - 0.004y \end{aligned} \]
+        where \(p_1\) and \(p_2\) are the prices per kilogram in euros. The variable cost is 8&nbsp;euros per kilogram of the classic blend and 14&nbsp;euros per kilogram of the premium blend, and the fixed costs are 6000&nbsp;euros a month. Find the marginal profit with respect to each blend when 3000 kilograms of the classic blend and 2000 kilograms of the premium blend are sold, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The revenue function</span></h4>
+          \[ \begin{aligned} R(x;\,y) &amp;= (24 - 0.002x + 0.0005y)x \\ &amp;\phantom{=}\; {}+ (40 - 0.001x - 0.004y)y \\ &amp;= 24x - 0.002x^2 + 0.0005xy \\ &amp;\phantom{=}\; {}+ 40y - 0.001xy - 0.004y^2 \\ &amp;= 24x + 40y - 0.002x^2 \\ &amp;\phantom{=}\; {}- 0.004y^2 - 0.0005xy \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The cost and profit functions</span></h4>
+          <p>The cost is built from the cost data, \(TC(x;\,y) = 8x + 14y + 6000\), and the profit is</p>
+          <div class="fit-sm">\[ \begin{aligned} P(x;\,y) &amp;= 24x + 40y - 0.002x^2 \\ &amp;\phantom{=}\; {}- 0.004y^2 - 0.0005xy \\ &amp;\phantom{=}\; {}- (8x + 14y + 6000) \\ &amp;= 16x + 26y - 0.002x^2 \\ &amp;\phantom{=}\; {}- 0.004y^2 - 0.0005xy - 6000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The marginal profit</span></h4>
+          \[ \begin{aligned} MP_x &amp;= 16 - 0.004x - 0.0005y \\ MP_y &amp;= 26 - 0.008y - 0.0005x \end{aligned} \]
+          \[ \begin{aligned} MP_x(3000;\,2000) &amp;= 16 - 12 - 1 = 3 \\ MP_y(3000;\,2000) &amp;= 26 - 16 - 1.5 = 8.5 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the sales of the classic blend increase by one kilogram from 3000, while the sales of the premium blend stay 2000, the profit will increase by approximately 3&nbsp;euros. If the sales of the premium blend increase by one kilogram from 2000, while the sales of the classic blend stay 3000, the profit will increase by approximately 8.5&nbsp;euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 7: AM 8.2, Example 7 -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Shampoo and conditioner</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A cosmetics firm sells \(x\) bottles of shampoo and \(y\) bottles of conditioner a week. The weekly demand functions are
+        \[ \begin{aligned} p_1 &amp;= 100 - 2\sqrt{x} - 0.01y \\ p_2 &amp;= 120 - 0.02x - 0.05y \end{aligned} \]
+        where \(p_1\) and \(p_2\) are the prices in euros, and the weekly total cost, in euros, is
+        \[ TC(x;\,y) = 20x + 15y + 6\sqrt{xy} + 3000 \]
+        Find the marginal profit with respect to each product when 400 bottles of shampoo and 900 bottles of conditioner are sold, and interpret the results.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The revenue function</span></h4>
+          \[ \begin{aligned} R(x;\,y) &amp;= \left(100 - 2\sqrt{x} - 0.01y\right)x \\ &amp;\phantom{=}\; {}+ (120 - 0.02x - 0.05y)y \end{aligned} \]
+          <p>In the first bracket \(2\sqrt{x}\cdot x = 2x^{\frac{1}{2}}\cdot x = 2x^{\frac{3}{2}} = 2\sqrt{x^3}\). Opening the brackets and collecting the terms with \(xy\):</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 100x + 120y - 2\sqrt{x^3} \\ &amp;\phantom{=}\; {}- 0.03xy - 0.05y^2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The profit function</span></h4>
+          <p>The cost function is subtracted:</p>
+          \[ \begin{aligned} P(x;\,y) &amp;= 80x + 105y - 2\sqrt{x^3} \\ &amp;\phantom{=}\; {}- 0.03xy - 0.05y^2 \\ &amp;\phantom{=}\; {}- 6\sqrt{xy} - 3000 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The marginal profit</span></h4>
+          <p>The roots are written as powers, \(2\sqrt{x^3} = 2x^{\frac{3}{2}}\) and \(6\sqrt{xy} = 6x^{\frac{1}{2}}y^{\frac{1}{2}}\). With respect to \(x\) the factor \(6y^{\frac{1}{2}}\) is a constant multiplier:</p>
+          \[ \begin{aligned} MP_x &amp;= 80 - 2\cdot\frac{3}{2}x^{\frac{1}{2}} - 0.03y \\ &amp;\phantom{=}\; {}- 6y^{\frac{1}{2}}\cdot\frac{1}{2}x^{-\frac{1}{2}} \\ &amp;= 80 - 3\sqrt{x} - 0.03y - \frac{3\sqrt{y}}{\sqrt{x}} \end{aligned} \]
+          <p>With respect to \(y\) the factor \(6x^{\frac{1}{2}}\) is a constant multiplier:</p>
+          \[ \begin{aligned} MP_y &amp;= 105 - 0.03x - 0.1y \\ &amp;\phantom{=}\; {}- 6x^{\frac{1}{2}}\cdot\frac{1}{2}y^{-\frac{1}{2}} \\ &amp;= 105 - 0.03x - 0.1y - \frac{3\sqrt{x}}{\sqrt{y}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The values</span></h4>
+          <p>At the point \((400;\,900)\) the roots are \(\sqrt{400} = 20\) and \(\sqrt{900} = 30\):</p>
+          <div class="fit-sm">\[ \begin{aligned} MP_x(400;\,900) &amp;= 80 - 3\cdot 20 \\ &amp;\phantom{=}\; {}- 0.03\cdot 900 - \frac{3\cdot 30}{20} \\ &amp;= 80 - 60 - 27 - 4.5 \\ &amp;= -11.5 \end{aligned} \]</div>
+          <div class="fit-sm">\[ \begin{aligned} MP_y(400;\,900) &amp;= 105 - 0.03\cdot 400 \\ &amp;\phantom{=}\; {}- 0.1\cdot 900 - \frac{3\cdot 20}{30} \\ &amp;= 105 - 12 - 90 - 2 \\ &amp;= 1 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>If the sales of shampoo increase by one bottle from 400, while the sales of conditioner stay 900, the profit will decrease by approximately 11.5&nbsp;euros. If the sales of conditioner increase by one bottle from 900, while the sales of shampoo stay 400, the profit will increase by approximately 1&nbsp;euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: build the functions that are needed, find the partial derivatives, substitute the given quantities and interpret the results. The answer gives the functions, the derivatives, their values and the interpretation – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM Topic 8 Problem Set, 1, Problem 1 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A small brewery sells lager at 2.5&nbsp;euros and ale at 3.2&nbsp;euros a bottle. The variable cost of one bottle is 1.1&nbsp;euros for lager and 1.6&nbsp;euros for ale, and the fixed cost is 900&nbsp;euros a week. Let \(x\) and \(y\) be the numbers of bottles of lager and ale produced and sold a week.</p>
+          <p>Find the revenue, cost and profit functions and the marginal profits. Interpret the marginal profits.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The functions:</strong></p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 2.5x + 3.2y \\ TC(x;\,y) &amp;= 1.1x + 1.6y + 900 \\ P(x;\,y) &amp;= 1.4x + 1.6y - 900 \end{aligned} \]
+          <p><strong>The marginal profits:</strong></p>
+          \[ MP_x = 1.4;\qquad MP_y = 1.6 \]
+          <p><strong>Answer.</strong> Each additional bottle of lager increases the weekly profit by 1.4&nbsp;euros, and each additional bottle of ale increases it by 1.6&nbsp;euros, whatever the output.</p>
+        </div>
+      </article>
+
+      <!-- Problem 2 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A manufacturer produces \(x\) electric scooters and \(y\) electric bicycles a month. The monthly revenue and total cost, in euros, are</p>
+          \[ \begin{aligned} R(x;\,y) &amp;= 900x + 600y \\ &amp;\phantom{=}\; {}- 0.5x^2 - 0.4y^2 - 0.2xy \\ TC(x;\,y) &amp;= 0.3x^2 + 0.2y^2 + 0.1xy \\ &amp;\phantom{=}\; {}+ 200x + 150y + 20000 \end{aligned} \]
+          <p>Find the marginal revenues, the marginal costs and the marginal profits when 200 scooters and 300 bicycles are produced and sold. Interpret the marginal profits.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ \begin{aligned} MR_x &amp;= 900 - x - 0.2y \\ MR_y &amp;= 600 - 0.8y - 0.2x \\ MC_x &amp;= 0.6x + 0.1y + 200 \\ MC_y &amp;= 0.4y + 0.1x + 150 \end{aligned} \]
+          <p><strong>The values:</strong></p>
+          \[ \begin{aligned} MR_x(200;\,300) &amp;= 640 \\ MR_y(200;\,300) &amp;= 320 \\ MC_x(200;\,300) &amp;= 350 \\ MC_y(200;\,300) &amp;= 290 \\ MP_x(200;\,300) &amp;= 640 - 350 = 290 \\ MP_y(200;\,300) &amp;= 320 - 290 = 30 \end{aligned} \]
+          <p><strong>Answer.</strong> If the number of scooters increases by one from 200, while the number of bicycles stays 300, the monthly profit will increase by approximately 290&nbsp;euros. If the number of bicycles increases by one from 300, while the number of scooters stays 200, the profit will increase by approximately 30&nbsp;euros.</p>
+        </div>
+      </article>
+
+      <!-- Problem 3 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A cinema sells \(x\) tickets for regular shows and \(y\) tickets for 3D shows a week. Its weekly profit, in euros, is</p>
+          \[ \begin{aligned} P(x;\,y) &amp;= -0.002x^2 - 0.004y^2 + 0.001xy \\ &amp;\phantom{=}\; {}+ 8x + 10y - 3000 \end{aligned} \]
+          <p>Find the marginal profits when 2000 regular and 1800 3D tickets are sold, and interpret the results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The derivatives:</strong></p>
+          \[ \begin{aligned} MP_x &amp;= -0.004x + 0.001y + 8 \\ MP_y &amp;= -0.008y + 0.001x + 10 \end{aligned} \]
+          <p><strong>The values:</strong></p>
+          \[ \begin{aligned} MP_x(2000;\,1800) &amp;= 1.8 \\ MP_y(2000;\,1800) &amp;= -2.4 \end{aligned} \]
+          <p><strong>Answer.</strong> If the number of regular tickets increases by one from 2000, while the number of 3D tickets stays 1800, the weekly profit will increase by approximately 1.8&nbsp;euros. If the number of 3D tickets increases by one from 1800, while the number of regular tickets stays 2000, the profit will decrease by approximately 2.4&nbsp;euros.</p>
+        </div>
+      </article>
+
+      <!-- Problem 4 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A company sells \(x\) hiking backpacks and \(y\) city backpacks a month. The prices, in euros, at which these quantities can be sold are</p>
+          \[ \begin{aligned} p_1 &amp;= 60 - 0.01x - 0.005y \\ p_2 &amp;= 80 - 0.004x - 0.02y \end{aligned} \]
+          <p>The variable cost of one backpack is 20&nbsp;euros for a hiking backpack and 30&nbsp;euros for a city backpack, and the fixed cost is 5000&nbsp;euros a month.</p>
+          <p>Find the profit function and the marginal profits when 1000 hiking and 800 city backpacks are sold. Interpret the results.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The functions:</strong></p>
+          <div class="fit-sm">\[ \begin{aligned} R(x;\,y) &amp;= (60 - 0.01x - 0.005y)x \\ &amp;\phantom{=}\; {}+ (80 - 0.004x - 0.02y)y \\ &amp;= 60x + 80y - 0.01x^2 \\ &amp;\phantom{=}\; {}- 0.02y^2 - 0.009xy \\[6pt] P(x;\,y) &amp;= 40x + 50y - 0.01x^2 \\ &amp;\phantom{=}\; {}- 0.02y^2 - 0.009xy - 5000 \end{aligned} \]</div>
+          <p><strong>The derivatives and the values:</strong></p>
+          \[ \begin{aligned} MP_x &amp;= 40 - 0.02x - 0.009y \\ MP_y &amp;= 50 - 0.04y - 0.009x \end{aligned} \]
+          \[ \begin{aligned} MP_x(1000;\,800) &amp;= 12.8 \\ MP_y(1000;\,800) &amp;= 9 \end{aligned} \]
+          <p><strong>Answer.</strong> If the number of hiking backpacks increases by one from 1000, while the number of city backpacks stays 800, the monthly profit will increase by approximately 12.8&nbsp;euros. If the number of city backpacks increases by one from 800, while the number of hiking backpacks stays 1000, the profit will increase by approximately 9&nbsp;euros.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 7</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
