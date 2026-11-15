@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pokyčių analizė · Taikomoji matematika</title>
+<meta name="description" content="Dalinės išvestinės kaip kitimo greičiai: žymėjimas ∂, interpretavimas ir apytikslis dydžio pokyčio įvertinimas, kai keičiasi vienas kintamasis. Pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=94">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=94"></script>
+</head>
+<body data-page="m83">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">8 tema · Taikymai · 3 skyrius</span>
+    <h1>Pokyčių analizė</h1>
+    <p class="lead">Šiame skyriuje dalinės išvestinės aiškinamos kaip dydžio kitimo greičiai: kaip greitai keičiasi kaina, degalų sąnaudos ar laukimo trukmė, kai keičiasi vienas veiksnys, o kiti nekinta. Pagal dalinę išvestinę taip pat apytiksliai įvertinamas dydžio pokytis.</p>
+    <ul class="jump">
+      <li><a href="#greitis">Kitimo greitis</a></li>
+      <li><a href="#pokytis">Pokyčio įvertinimas</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. KITIMO GREITIS ============ -->
+  <section class="section" id="greitis" aria-labelledby="h-rate">
+    <h2 id="h-rate">Dalinės išvestinės kaip kitimo greičiai</h2>
+
+    <article class="card">
+      <p>Daugelis dydžių priklauso nuo kelių veiksnių. Buto kaina priklauso nuo jo ploto ir pastato amžiaus, sunkvežimio degalų sąnaudos – nuo greičio ir krovinio masės, laukimo laikas – nuo atvykstančių klientų skaičiaus ir aptarnavimo spartos. Keičiantis vienam veiksniui, o kitiems nekintant, dydis kinta tam tikru greičiu. Šį kitimo greitį nusako dalinė išvestinė.</p>
+      <div class="model-note">Tarkime, \(z = f(x;\,y)\). Dalinė išvestinė \(z'_x(x_0;\,y_0)\) yra dydžio \(z\) <strong>kitimo greitis</strong> pagal \(x\) taške \((x_0;\,y_0)\), kai \(y\) nekinta ir yra lygus \(y_0\). Analogiškai \(z'_y(x_0;\,y_0)\) yra dydžio \(z\) kitimo greitis pagal \(y\), kai \(x\) nekinta ir yra lygus \(x_0\).</div>
+      <p style="margin-top:12px">Vieno kintamojo funkcijos išvestinė kaip kitimo greitis nagrinėta <a href="tema-6-pokyciu-analize.html">6 temos skyriuje „Pokyčio analizė“</a>. Kelių kintamųjų funkcijos atveju skirtumas vienas: keičiamas tik vienas kintamasis, o kiti laikomi pastoviais. Grafiškai dalinė išvestinė yra pjūvio kreivės liestinės nuolydis – tai matyti <a href="tema-8.html#dalines">8 temos puslapio brėžinyje</a>.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Žymėjimas simboliu \(\partial\)</h3>
+      <p>Tos pačios išvestinės dažnai žymimos simboliu \(\partial\):</p>
+      <div class="formula">\[ \frac{\partial z}{\partial x} = z'_x;\qquad \frac{\partial z}{\partial y} = z'_y \]</div>
+      <p>Virš brūkšnio rašomas funkcijos arba priklausomo dydžio žymuo, o po brūkšniu – kintamasis, pagal kurį diferencijuojama. Taikomuosiuose uždaviniuose raidės dažnai parenkamos pagal dydžių prasmę, todėl galima sutikti žymėjimus \(\frac{\partial P}{\partial x}\), \(\frac{\partial F}{\partial v}\) arba \(\frac{\partial A}{\partial t}\). Reikšmė taške žymima \(\frac{\partial z}{\partial x}(x_0;\,y_0)\). Kad ir koks žymėjimas, skaičiavimo metodas nesikeičia: visi kintamieji, išskyrus esantį po brūkšniu, laikomi konstantomis.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">Interpretavimas</h3>
+      <p>Kitimo greitį reikia paaiškinti uždavinio kontekste – tai yra atsakymo dalis. Nurodoma, kuris kintamasis keičiasi, ir pabrėžiama, kad kitas nekinta:</p>
+      <div class="model-note"><em>Kintamajam \(x\) padidėjus vienetu nuo \(x_0\), o \(y\) išlikus lygiam \(y_0\), dydžio \(z\) pokytis apytiksliai lygus \(z'_x(x_0;\,y_0)\) vienetų.</em></div>
+      <div class="model-note"><em>Kintamajam \(y\) padidėjus vienetu nuo \(y_0\), o \(x\) išlikus lygiam \(x_0\), dydžio \(z\) pokytis apytiksliai lygus \(z'_y(x_0;\,y_0)\) vienetų.</em></div>
+      <p>Pokytis matuojamas tais pačiais vienetais kaip \(z\): eurais, litrais ar minutėmis. Teigiama reikšmė reiškia, kad \(z\) didėja, o neigiama – kad mažėja.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. POKYČIO ĮVERTINIMAS ============ -->
+  <section class="section" id="pokytis" aria-labelledby="h-change">
+    <h2 id="h-change">Apytikslis dydžio pokyčio įvertinimas</h2>
+
+    <article class="card">
+      <p>Uždavinyje gali būti prašoma rasti ne pačią išvestinę, o dydžio pokytį: kiek apytiksliai pasikeis \(z\), jei \(x\) padidės nuo 20 iki 21? Tam taip pat naudojama dalinė išvestinė. Jei \(x\) pasikeičia \(\Delta x\) vienetų nuo \(x_0\), o \(y\) išlieka lygus \(y_0\), dydžio \(z\) pokytis apytiksliai lygus</p>
+      <div class="formula">\[ \Delta z \approx z'_x(x_0;\,y_0)\cdot\Delta x \]</div>
+      <p>Analogiškai, jei \(y\) pasikeičia \(\Delta y\) vienetų nuo \(y_0\), o \(x\) išlieka lygus \(x_0\), tai</p>
+      <div class="formula">\[ \Delta z \approx z'_y(x_0;\,y_0)\cdot\Delta y \]</div>
+      <p>Svarbūs trys dalykai.</p>
+      <ul>
+        <li><strong>Argumento pokytis.</strong> \(\Delta x\) yra naujosios ir pradinės reikšmių skirtumas. Keičiantis nuo 20 iki 21, gauname \(\Delta x = 1\), todėl dydžio \(z\) pokyčiui įvertinti pakanka pačios išvestinės reikšmės. Keičiantis nuo 20 iki 22, gauname \(\Delta x = 2\), o nuo 20 iki 19 – \(\Delta x = -1\).</li>
+        <li><strong>Pradinis taškas.</strong> Išvestinė skaičiuojama ties pradine reikšme, nuo kurios prasideda pokytis: ties 20, o ne ties 21.</li>
+        <li><strong>Kitas kintamasis.</strong> Nekintantis kintamasis išlaiko duotąją reikšmę. Ji ir įstatoma į išvestinę.</li>
+      </ul>
+      <p>Rezultatas yra apytikslis. Jis artimas tikrajam pokyčiui, kai \(\Delta x\) yra mažas, palyginti su \(x_0\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+
+    <article class="card">
+      <p>Šio skyriaus uždaviniuose gali būti prašoma rasti ir interpretuoti dydžio kitimo greitį, apskaičiuoti simboliu \(\partial\) užrašytas dalines išvestines arba apytiksliai įvertinti dydžio pokytį, vienam kintamajam pereinant iš vienos reikšmės į kitą. Visais trimis atvejais sprendimo eiga ta pati.</p>
+      <ol class="steps-list">
+        <li>Apibrėžkite nagrinėjamą dydį ir kintamuosius. Nustatykite, kuris kintamasis keičiasi, o kuris nekinta.</li>
+        <li>Raskite dalinę išvestinę pagal kintantį kintamąjį. Jei prašoma abiejų išvestinių, raskite abi.</li>
+        <li>Įstatykite taško koordinates: pradinę kintančio kintamojo reikšmę ir duotąją kito kintamojo reikšmę.</li>
+        <li>Jei prašoma dydžio pokyčio, raskite \(\Delta x\) ir padauginkite: \(\Delta z \approx z'_x(x_0;\,y_0)\cdot\Delta x\).</li>
+        <li>Interpretuokite rezultatą uždavinio kontekste pagal <a href="#interpretavimas">interpretavimo formuluotę</a>.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Išvestinė skaičiuojama naujojoje reikšmėje.</strong> Ji skaičiuojama ties pradine reikšme, nuo kurios prasideda pokytis: keičiantis nuo 20 iki 21 – ties 20.</li>
+            <li><strong>Neteisingas argumento pokytis.</strong> \(\Delta x\) yra naujosios ir pradinės reikšmių skirtumas. Kai reikšmė mažėja, jis neigiamas, o kai \(\Delta x \ne 1\), išvestinę reikia padauginti iš \(\Delta x\).</li>
+            <li><strong>Pakeista nekintančio kintamojo reikšmė.</strong> Nekintantis kintamasis išlaiko duotąją reikšmę, ir būtent ji įstatoma į išvestinę.</li>
+            <li><strong>Interpretacijoje nepaminėtas kitas kintamasis.</strong> Reikia nurodyti, kuris kintamasis keičiasi, ir pabrėžti, kad kitas nekinta.</li>
+            <li><strong>Neatsižvelgta į ženklą ir matavimo vienetus.</strong> Teigiama reikšmė reiškia, kad dydis didėja, neigiama – kad mažėja. Pokytis matuojamas tais pačiais vienetais kaip pats dydis.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 8.4, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Pardavimo kiekis ir reklama</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė per mėnesį interneto reklamai skiria \(x\) tūkstančių eurų, o radijo reklamai – \(y\) tūkstančių eurų. Mėnesio pardavimo kiekis yra
+        <div class="m-wide">\[ S(x;\,y) = 400x + 300y - 4x^2 - 3y^2 + 2xy \]</div><div class="m-narrow">\[ \begin{aligned} S(x;\,y) &amp;= 400x + 300y \\ &amp;\phantom{=}\; {}- 4x^2 - 3y^2 + 2xy \end{aligned} \]</div>
+        vienetų. Raskite pardavimo kiekio kitimo greitį kiekvienos reklamos rūšies išlaidų atžvilgiu, kai interneto reklamai skiriama 20 tūkstančių eurų, o radijo reklamai – 30 tūkstančių eurų. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Dalinės išvestinės</span></h4>
+          <p>Diferencijuojant pagal \(x\), nariai \(300y\) ir \(3y^2\) yra konstantos, o sandaugoje \(2xy\) daugiklis \(2y\) yra pastovus. Diferencijuojant pagal \(y\), kintamojo ir konstantos vaidmenys pasikeičia:</p>
+          \[ \begin{aligned} S'_x &amp;= 400 - 8x + 2y \\ S'_y &amp;= 300 - 6y + 2x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Reikšmės</span></h4>
+          \[ \begin{aligned} S'_x(20;\,30) &amp;= 400 - 160 + 60 = 300 \\ S'_y(20;\,30) &amp;= 300 - 180 + 40 = 160 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Interneto reklamos išlaidoms padidėjus vienu tūkstančiu eurų nuo 20, o radijo reklamos išlaidoms išlikus lygioms 30 tūkstančių eurų, mėnesio pardavimo kiekis padidėja apytiksliai 300 vienetų. Radijo reklamos išlaidoms padidėjus vienu tūkstančiu eurų nuo 30, o interneto reklamos išlaidoms išlikus lygioms 20 tūkstančių eurų, mėnesio pardavimo kiekis padidėja apytiksliai 160 vienetų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 8.4, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Butų kainos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Buto kaina tam tikrame miesto rajone yra
+        <div class="m-wide">\[ P(x;\,y) = 1{,}8x + 0{,}002x^2 - 0{,}04xy - 0{,}5y + 20 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= 1{,}8x + 0{,}002x^2 - 0{,}04xy \\ &amp;\phantom{=}\; {}- 0{,}5y + 20 \end{aligned} \]</div>
+        tūkstančių eurų. Čia \(x\) – plotas kvadratiniais metrais, \(y\) – pastato amžius metais.
+        <br>a) Kiek apytiksliai pasikeis kaina, jei pastato amžius yra 25 metai, o plotas padidėja nuo 80 iki 81 kvadratinio metro?
+        <br>b) Kiek apytiksliai pasikeis kaina, jei plotas yra 80 kvadratinių metrų, o pastato amžius padidėja nuo 25 iki 27 metų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Išvestinė pagal \(x\)</span></h4>
+          <p>Keičiasi plotas, o pastato amžius išlieka 25 metai, todėl reikia išvestinės pagal \(x\). Nariuose \(0{,}5y\) ir \(20\) nėra \(x\):</p>
+          \[ P'_x = 1{,}8 + 0{,}004x - 0{,}04y \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Kainos pokytis</span></h4>
+          <p>Išvestinę skaičiuojame ties pradiniu 80 kvadratinių metrų plotu. Pokytis yra \(\Delta x = 81 - 80 = 1\), todėl kainos pokyčiui įvertinti pakanka išvestinės reikšmės:</p>
+          <div class="m-wide">\[ \Delta P \approx P'_x(80;\,25)\cdot 1 = 1{,}8 + 0{,}32 - 1 = 1{,}12 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta P &amp;\approx P'_x(80;\,25)\cdot 1 \\ &amp;= 1{,}8 + 0{,}32 - 1 = 1{,}12 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Išvestinė pagal \(y\)</span></h4>
+          <p>Dabar keičiasi amžius, o plotas išlieka 80 kvadratinių metrų. Diferencijuojant pagal \(y\), nariai \(1{,}8x\), \(0{,}002x^2\) ir \(20\) yra konstantos:</p>
+          \[ \begin{aligned} P'_y &amp;= -0{,}04x - 0{,}5 \\ P'_y(80;\,25) &amp;= -3{,}2 - 0{,}5 = -3{,}7 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Kainos pokytis</span></h4>
+          <p>Pastato amžius pasikeičia \(\Delta y = 27 - 25 = 2\) metais, todėl</p>
+          <div class="m-wide">\[ \Delta P \approx P'_y(80;\,25)\cdot\Delta y = (-3{,}7)\cdot 2 = -7{,}4 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta P &amp;\approx P'_y(80;\,25)\cdot\Delta y \\ &amp;= (-3{,}7)\cdot 2 = -7{,}4 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Plotui padidėjus nuo 80 iki 81 kvadratinio metro, o pastato amžiui išlikus 25 metų, kaina padidėja apytiksliai 1,12 tūkstančio eurų, t.&nbsp;y. apie 1120 eurų.</p>
+            <p>b) Pastato amžiui padidėjus nuo 25 iki 27 metų, o plotui išlikus 80 kvadratinių metrų, kaina sumažėja apytiksliai 7,4 tūkstančio eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 8.4, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Degalų sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Sunkvežimio degalų sąnaudos litrais 100 kilometrų yra
+        <div class="m-wide">\[ F(v;\,m) = 10 + 0{,}002v^2 + 1{,}5\sqrt{m} + 0{,}02v\sqrt{m} \]</div><div class="m-narrow">\[ \begin{aligned} F(v;\,m) &amp;= 10 + 0{,}002v^2 \\ &amp;\phantom{=}\; {}+ 1{,}5\sqrt{m} + 0{,}02v\sqrt{m} \end{aligned} \]</div>
+        čia \(v\) – greitis kilometrais per valandą, \(m\) – krovinio masė tonomis. Apskaičiuokite \(\frac{\partial F}{\partial v}\) ir \(\frac{\partial F}{\partial m}\), kai sunkvežimis veža 16 tonų krovinį 80 kilometrų per valandą greičiu. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pagal \(v\)</span></h4>
+          <p>Krovinio masė \(m\) yra konstanta, todėl nario \(1{,}5\sqrt{m}\) išvestinė lygi 0, o \(0{,}02\sqrt{m}\) yra pastovus daugiklis prie \(v\):</p>
+          \[ \frac{\partial F}{\partial v} = 0{,}004v + 0{,}02\sqrt{m} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pagal \(m\)</span></h4>
+          <p>Greitis \(v\) yra konstanta. Šaknį užrašome laipsniu \(\sqrt{m} = m^{0{,}5}\); jos išvestinė lygi \(\frac{1}{2\sqrt{m}}\):</p>
+          <div class="m-wide">\[ \frac{\partial F}{\partial m} = 1{,}5\cdot\frac{1}{2\sqrt{m}} + 0{,}02v\cdot\frac{1}{2\sqrt{m}} = \frac{0{,}75 + 0{,}01v}{\sqrt{m}} \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial F}{\partial m} &amp;= 1{,}5\cdot\frac{1}{2\sqrt{m}} + 0{,}02v\cdot\frac{1}{2\sqrt{m}} \\[6pt] &amp;= \frac{0{,}75 + 0{,}01v}{\sqrt{m}} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
+          <p>Taške \((80;\,16)\) šaknies reikšmė yra \(\sqrt{16} = 4\):</p>
+          \[ \begin{aligned} \frac{\partial F}{\partial v}(80;\,16) &amp;= 0{,}32 + 0{,}08 = 0{,}4 \\[6pt] \frac{\partial F}{\partial m}(80;\,16) &amp;= \frac{0{,}75 + 0{,}8}{4} = 0{,}3875 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Greičiui padidėjus vienu kilometru per valandą nuo 80, o krovinio masei išlikus lygiai 16 tonų, degalų sąnaudos padidėja apytiksliai 0,4 litro 100 kilometrų. Krovinio masei padidėjus viena tona nuo 16, o greičiui išlikus lygiam 80 kilometrų per valandą, degalų sąnaudos padidėja apytiksliai 0,3875 litro 100 kilometrų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 8.4, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Kūno masės indeksas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Žmogaus, kurio kūno masė yra \(w\) kilogramų, o ūgis – \(h\) centimetrų, kūno masės indeksas yra
+        \[ B(w;\,h) = \frac{10\,000w}{h^2} \]
+        a) Apskaičiuokite \(\frac{\partial B}{\partial w}\) ir \(\frac{\partial B}{\partial h}\) žmogui, kurio kūno masė yra 80 kilogramų, o ūgis – 180 centimetrų. Interpretuokite rezultatus.
+        <br>b) Kiek apytiksliai pasikeis šio žmogaus kūno masės indeksas, jei kūno masė sumažėja nuo 80 iki 78 kilogramų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Dalinės išvestinės</span></h4>
+          <p>Funkciją perrašome su neigiamuoju laipsnio rodikliu: \(B = 10\,000w\cdot h^{-2}\). Diferencijuojant pagal \(w\), daugiklis \(10\,000h^{-2}\) yra pastovus, o pagal \(h\) – daugiklis \(10\,000w\):</p>
+          <div class="m-wide">\[ \begin{aligned} \frac{\partial B}{\partial w} &amp;= 10\,000h^{-2} = \frac{10\,000}{h^2} \\[6pt] \frac{\partial B}{\partial h} &amp;= 10\,000w\cdot(-2)h^{-3} = -\frac{20\,000w}{h^3} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial B}{\partial w} &amp;= 10\,000h^{-2} = \frac{10\,000}{h^2} \\[10pt] \frac{\partial B}{\partial h} &amp;= 10\,000w\cdot(-2)h^{-3} \\[4pt] &amp;= -\frac{20\,000w}{h^3} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Reikšmės</span></h4>
+          <p>Taške \((80;\,180)\):</p>
+          <div class="m-wide">\[ \begin{aligned} \frac{\partial B}{\partial w}(80;\,180) &amp;= \frac{10\,000}{32\,400} \approx 0{,}31 \\[6pt] \frac{\partial B}{\partial h}(80;\,180) &amp;= -\frac{1\,600\,000}{5\,832\,000} \approx -0{,}27 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial B}{\partial w}(80;\,180) &amp;= \frac{10\,000}{32\,400} \approx 0{,}31 \\[10pt] \frac{\partial B}{\partial h}(80;\,180) &amp;= -\frac{1\,600\,000}{5\,832\,000} \\[4pt] &amp;\approx -0{,}27 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Indekso pokytis</span></h4>
+          <p>Kūno masė pasikeičia \(\Delta w = 78 - 80 = -2\) kilogramais, o ūgis išlieka 180 centimetrų:</p>
+          <div class="m-wide">\[ \Delta B \approx \frac{\partial B}{\partial w}(80;\,180)\cdot\Delta w = \frac{10\,000}{32\,400}\cdot(-2) \approx -0{,}62 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta B &amp;\approx \frac{\partial B}{\partial w}(80;\,180)\cdot\Delta w \\[6pt] &amp;= \frac{10\,000}{32\,400}\cdot(-2) \approx -0{,}62 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Kūno masei padidėjus vienu kilogramu nuo 80, o ūgiui išlikus 180 centimetrų, kūno masės indeksas padidėja apytiksliai 0,31. Ūgiui padidėjus vienu centimetru nuo 180, o kūno masei išlikus 80 kilogramų, indeksas sumažėja apytiksliai 0,27.</p>
+            <p>b) Kūno masei sumažėjus nuo 80 iki 78 kilogramų, o ūgiui išlikus 180 centimetrų, kūno masės indeksas sumažėja apytiksliai 0,62.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 8.4, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Laukimo eilėje trukmė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Į aptarnavimo vietą per valandą atvyksta \(a\) klientų, o darbuotojai per valandą gali aptarnauti \(s\) klientų. Vidutinė kliento laukimo trukmė yra
+        \[ W(a;\,s) = \frac{60}{s - a} \]
+        minučių. Šiuo metu per valandą atvyksta 20 klientų, o darbuotojai gali aptarnauti 30.
+        <br>a) Kiek apytiksliai pasikeis laukimo trukmė, jei atvykstančių klientų skaičius padidėja nuo 20 iki 21 per valandą?
+        <br>b) Kiek apytiksliai pasikeis laukimo trukmė, jei darbuotojai per valandą galės aptarnauti 32 klientus vietoj 30?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Dalinės išvestinės</span></h4>
+          <p>Funkciją užrašome laipsniu \(W = 60(s - a)^{-1}\). Ji yra <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinė</a>: išorinė funkcija – laipsnis su rodikliu \(-1\), vidinė – \(u = s - a\), o jos dalinės išvestinės yra \(u'_a = -1\) ir \(u'_s = 1\). Pagal sudėtinės laipsninės funkcijos išvestinės formulę gauname</p>
+          <div class="m-wide">\[ \begin{aligned} W'_a &amp;= 60\cdot(-1)(s - a)^{-2}\cdot(-1) = \frac{60}{(s - a)^2} \\[6pt] W'_s &amp;= 60\cdot(-1)(s - a)^{-2}\cdot 1 = -\frac{60}{(s - a)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} W'_a &amp;= 60\cdot(-1)(s - a)^{-2}\cdot(-1) \\[4pt] &amp;= \frac{60}{(s - a)^2} \\[10pt] W'_s &amp;= 60\cdot(-1)(s - a)^{-2}\cdot 1 \\[4pt] &amp;= -\frac{60}{(s - a)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Reikšmės</span></h4>
+          <p>Taške \((20;\,30)\) vidinės funkcijos reikšmė yra \(30 - 20 = 10\):</p>
+          \[ \begin{aligned} W'_a(20;\,30) &amp;= \frac{60}{100} = 0{,}6 \\[6pt] W'_s(20;\,30) &amp;= -\frac{60}{100} = -0{,}6 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Pokytis, kai daugėja klientų</span></h4>
+          <p>Atvykstančių klientų skaičius pasikeičia \(\Delta a = 1\), todėl pokyčiui įvertinti pakanka išvestinės reikšmės: \(\Delta W \approx 0{,}6\cdot 1 = 0{,}6\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Pokytis, kai aptarnaujama sparčiau</span></h4>
+          <p>Per valandą galima aptarnauti \(\Delta s = 32 - 30 = 2\) klientais daugiau:</p>
+          <div class="fit-sm">\[ \Delta W \approx W'_s(20;\,30)\cdot\Delta s = (-0{,}6)\cdot 2 = -1{,}2 \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Atvykstančių klientų skaičiui padidėjus nuo 20 iki 21 per valandą, o darbuotojams tebegalint aptarnauti 30, vidutinė laukimo trukmė padidėja apytiksliai 0,6 minutės.</p>
+            <p>b) Darbuotojams per valandą galint aptarnauti 32 klientus vietoj 30, o atvykstančių klientų skaičiui išlikus 20 per valandą, vidutinė laukimo trukmė sumažėja apytiksliai 1,2 minutės.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 8.4, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Santaupos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        10&nbsp;000 eurų indėlio sudėtinės palūkanos skaičiuojamos tolydžiai. Praėjus \(t\) metų, kai metinė palūkanų norma yra \(r\) procentų, indėlio vertė lygi
+        \[ A(r;\,t) = 10\,000e^{0{,}01rt} \]
+        eurų.
+        <br>a) Apskaičiuokite \(\frac{\partial A}{\partial r}\) ir \(\frac{\partial A}{\partial t}\), kai palūkanų norma yra 5 procentai, o laikotarpis – 10 metų. Interpretuokite rezultatus.
+        <br>b) Kiek apytiksliai pasikeis indėlio vertė po 10 metų, jei palūkanų norma padidėja nuo 5 iki 5,5 procento?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Dalinės išvestinės</span></h4>
+          <p>Funkcija yra sudėtinė: išorinė – rodiklinė funkcija, vidinė – \(u = 0{,}01rt\). Diferencijuojant pagal \(r\), laikas \(t\) yra konstanta, todėl \(u'_r = 0{,}01t\); diferencijuojant pagal \(t\), norma yra konstanta, todėl \(u'_t = 0{,}01r\). Pagal formulę \(\big(e^u\big)'_r = e^u\cdot u'_r\) gauname</p>
+          <div class="m-wide">\[ \begin{aligned} \frac{\partial A}{\partial r} &amp;= 10\,000e^{0{,}01rt}\cdot 0{,}01t = 100te^{0{,}01rt} \\[6pt] \frac{\partial A}{\partial t} &amp;= 10\,000e^{0{,}01rt}\cdot 0{,}01r = 100re^{0{,}01rt} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial A}{\partial r} &amp;= 10\,000e^{0{,}01rt}\cdot 0{,}01t \\[4pt] &amp;= 100te^{0{,}01rt} \\[10pt] \frac{\partial A}{\partial t} &amp;= 10\,000e^{0{,}01rt}\cdot 0{,}01r \\[4pt] &amp;= 100re^{0{,}01rt} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Reikšmės</span></h4>
+          <p>Taške \((5;\,10)\) laipsnio rodiklis yra \(0{,}01\cdot 5\cdot 10 = 0{,}5\), o \(e^{0{,}5} \approx 1{,}6487\):</p>
+          \[ \begin{aligned} \frac{\partial A}{\partial r}(5;\,10) &amp;= 1000e^{0{,}5} \approx 1648{,}72 \\[6pt] \frac{\partial A}{\partial t}(5;\,10) &amp;= 500e^{0{,}5} \approx 824{,}36 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Vertės pokytis</span></h4>
+          <p>Norma pasikeičia \(\Delta r = 5{,}5 - 5 = 0{,}5\) procentinio punkto, o laikotarpis išlieka 10 metų:</p>
+          <div class="m-wide">\[ \Delta A \approx \frac{\partial A}{\partial r}(5;\,10)\cdot\Delta r = 1000e^{0{,}5}\cdot 0{,}5 \approx 824{,}36 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta A &amp;\approx \frac{\partial A}{\partial r}(5;\,10)\cdot\Delta r \\[6pt] &amp;= 1000e^{0{,}5}\cdot 0{,}5 \approx 824{,}36 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Palūkanų normai padidėjus vienu procentiniu punktu nuo 5 procentų, o laikotarpiui išlikus 10 metų, indėlio vertė padidėja apytiksliai 1648,72 euro. Laikotarpiui pailgėjus vienais metais nuo 10, o normai išlikus 5 procentų, vertė padidėja apytiksliai 824,36 euro.</p>
+            <p>b) Normai padidėjus nuo 5 iki 5,5 procento, indėlio vertė po 10 metų padidėja apytiksliai 824,36 euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 8.4, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Vaisto koncentracija</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Pacientui suvartojus \(d\) miligramų vaisto dozę, jo koncentracija kraujyje po \(t\) valandų yra
+        \[ C(d;\,t) = 10dte^{-0{,}2t} \]
+        mikrogramų litre.
+        <br>a) Apskaičiuokite \(\frac{\partial C}{\partial d}\) ir \(\frac{\partial C}{\partial t}\), praėjus trims valandoms po 50 miligramų dozės suvartojimo. Interpretuokite rezultatus.
+        <br>b) Kiek apytiksliai pasikeis koncentracija po 50 miligramų dozės suvartojimo, jei laikas padidėja nuo 6 iki 6,5 valandos?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Pagal \(d\)</span></h4>
+          <p>Daugiklis \(10te^{-0{,}2t}\) nepriklauso nuo \(d\), todėl jis yra pastovus, o \(d\) išvestinė lygi 1:</p>
+          \[ \frac{\partial C}{\partial d} = 10te^{-0{,}2t} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Pagal \(t\)</span></h4>
+          <p>Daugiklis \(10d\) yra pastovus, o likusi dalis \(te^{-0{,}2t}\) – sandauga, todėl taikome <a href="tema-8-sandaugos-taisykle.html">sandaugos taisyklę</a>, kai \(u = t\) ir \(v = e^{-0{,}2t}\). Čia \(u'_t = 1\). Rodiklinės funkcijos vidinė funkcija yra \(-0{,}2t\), todėl \(v'_t = -0{,}2e^{-0{,}2t}\):</p>
+          <div class="m-wide bp-lg">\[ \frac{\partial C}{\partial t} = 10d\left(1\cdot e^{-0{,}2t} + t\cdot\left(-0{,}2e^{-0{,}2t}\right)\right) = 10de^{-0{,}2t}(1 - 0{,}2t) \]</div><div class="m-narrow bp-lg fit-sm">\[ \begin{aligned} \frac{\partial C}{\partial t} &amp;= 10d\left(1\cdot e^{-0{,}2t} + t\cdot\left(-0{,}2e^{-0{,}2t}\right)\right) \\[6pt] &amp;= 10de^{-0{,}2t}(1 - 0{,}2t) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Reikšmės</span></h4>
+          <p>Taške \((50;\,3)\) rodiklinės funkcijos reikšmė yra \(e^{-0{,}6} \approx 0{,}5488\):</p>
+          \[ \begin{aligned} \frac{\partial C}{\partial d}(50;\,3) &amp;= 30e^{-0{,}6} \approx 16{,}46 \\[6pt] \frac{\partial C}{\partial t}(50;\,3) &amp;= 500e^{-0{,}6}\cdot 0{,}4 \approx 109{,}76 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Išvestinė ties 6 valandomis</span></h4>
+          <p>Išvestinę pagal \(t\) skaičiuojame ties pradiniu laiku – 6 valandomis, kai \(e^{-1{,}2} \approx 0{,}3012\):</p>
+          <div class="m-wide">\[ \frac{\partial C}{\partial t}(50;\,6) = 500e^{-1{,}2}\cdot(1 - 1{,}2) = -100e^{-1{,}2} \approx -30{,}12 \]</div><div class="m-narrow">\[ \begin{aligned} \frac{\partial C}{\partial t}(50;\,6) &amp;= 500e^{-1{,}2}\cdot(1 - 1{,}2) \\[4pt] &amp;= -100e^{-1{,}2} \approx -30{,}12 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>b) Koncentracijos pokytis</span></h4>
+          <p>Laikas pasikeičia \(\Delta t = 6{,}5 - 6 = 0{,}5\) valandos, todėl</p>
+          <div class="m-wide">\[ \Delta C \approx \frac{\partial C}{\partial t}(50;\,6)\cdot\Delta t \approx (-30{,}12)\cdot 0{,}5 = -15{,}06 \]</div><div class="m-narrow">\[ \begin{aligned} \Delta C &amp;\approx \frac{\partial C}{\partial t}(50;\,6)\cdot\Delta t \\[6pt] &amp;\approx (-30{,}12)\cdot 0{,}5 = -15{,}06 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Dozei padidėjus vienu miligramu nuo 50, koncentracija po trijų valandų padidėja apytiksliai 16,46 mikrogramo litre. Laikui pailgėjus viena valanda nuo 3, o dozei išlikus 50 miligramų, koncentracija padidėja apytiksliai 109,76 mikrogramo litre.</p>
+            <p>b) Laikui po 50 miligramų dozės suvartojimo pailgėjus nuo 6 iki 6,5 valandos, koncentracija sumažėja apytiksliai 15,06 mikrogramo litre.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: raskite dalines išvestines, įstatykite duotąsias reikšmes, prireikus padauginkite iš argumento pokyčio ir interpretuokite rezultatus. Atsakyme pateiktos išvestinės, jų reikšmės ir interpretacija – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 8 rinkinys, 3 sk. 1 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Muziejaus interneto svetainės lankytojų skaičius per dieną priklauso nuo per mėnesį paskelbiamų įrašų socialiniuose tinkluose skaičiaus \(x\) ir išsiunčiamų naujienlaiškių skaičiaus \(y\):</p>
+          <div class="m-wide">\[ V(x;\,y) = 500 + 40x + 60y - 2x^2 - 3y^2 + xy \]</div><div class="m-narrow">\[ \begin{aligned} V(x;\,y) &amp;= 500 + 40x + 60y \\ &amp;\phantom{=}\; {}- 2x^2 - 3y^2 + xy \end{aligned} \]</div>
+          <p>Raskite lankytojų skaičiaus kitimo greičius įrašų ir naujienlaiškių skaičiaus atžvilgiu, kai muziejus per mėnesį paskelbia 6 įrašus ir išsiunčia 8 naujienlaiškius. Interpretuokite rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ \begin{aligned} V'_x &amp;= 40 - 4x + y \\ V'_y &amp;= 60 - 6y + x \end{aligned} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ \begin{aligned} V'_x(6;\,8) &amp;= 40 - 24 + 8 = 24 \\ V'_y(6;\,8) &amp;= 60 - 48 + 6 = 18 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Įrašų skaičiui padidėjus vienu nuo 6, o naujienlaiškių skaičiui išlikus 8, svetainės lankytojų skaičius per dieną padidėja apytiksliai 24. Naujienlaiškių skaičiui padidėjus vienu nuo 8, o įrašų skaičiui išlikus 6, lankytojų skaičius per dieną padidėja apytiksliai 18.</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Laikas minutėmis, per kurį valymo įmonė išvalo \(a\) kvadratinių metrų ploto biurų pastatą, kai dirba \(n\) valytojų, yra</p>
+          \[ T(a;\,n) = \frac{2a}{n} + 15 \]
+          <p>a) Kaip pasikeis valymo laikas, jei valytojų skaičius padidės nuo 10 iki 11, o pastato plotas yra 2000 kvadratinių metrų?</p>
+          <p>b) Kaip pasikeis valymo laikas, jei 10 valytojų reikės išvalyti ne 2000, o 2100 kvadratinių metrų?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ T'_n = -\frac{2a}{n^2};\qquad T'_a = \frac{2}{n} \]
+          <p>a) \(T'_n(2000;\,10) = -\frac{4000}{100} = -40\), \(\Delta n = 1\), todėl \(\Delta T \approx -40\).</p>
+          <p>b) \(T'_a(2000;\,10) = \frac{2}{10} = 0{,}2\), \(\Delta a = 100\), todėl \(\Delta T \approx 0{,}2\cdot 100 = 20\).</p>
+          <p><strong>Atsakymas.</strong> a) Valymo laikas sumažėja apytiksliai 40 minučių. b) Valymo laikas padidėja apytiksliai 20 minučių.</p>
+        </div>
+      </article>
+
+      <!-- 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Studento testo rezultatas priklauso nuo mokymosi valandų skaičiaus \(h\) ir miego valandų skaičiaus \(s\) naktį prieš testą:</p>
+          \[ S(h;\,s) = 10\sqrt{h}\cdot\ln(s + 1) \]
+          <p>Raskite \(\frac{\partial S}{\partial h}(16;\,7)\) ir \(\frac{\partial S}{\partial s}(16;\,7)\). Interpretuokite rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ \begin{aligned} \frac{\partial S}{\partial h} &amp;= \frac{5\ln(s + 1)}{\sqrt{h}} \\[6pt] \frac{\partial S}{\partial s} &amp;= \frac{10\sqrt{h}}{s + 1} \end{aligned} \]
+          <p><strong>Reikšmės:</strong></p>
+          \[ \begin{aligned} \frac{\partial S}{\partial h}(16;\,7) &amp;= \frac{5\ln 8}{4} \approx 2{,}60 \\[6pt] \frac{\partial S}{\partial s}(16;\,7) &amp;= \frac{40}{8} = 5 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> Mokymosi laikui padidėjus viena valanda nuo 16, o miego trukmei išlikus 7 valandų, testo rezultatas padidėja apytiksliai 2,60 taško. Miego trukmei padidėjus viena valanda nuo 7, o mokymosi laikui išlikus 16 valandų, testo rezultatas padidėja apytiksliai 5 taškais.</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Tam tikro modelio naudoto automobilio kaina eurais yra</p>
+          \[ P(a;\,m) = 25\,000e^{-0{,}1a - 0{,}002m} \]
+          <p>čia \(a\) – automobilio amžius metais, \(m\) – jo rida tūkstančiais kilometrų.</p>
+          <p>a) Raskite \(\frac{\partial P}{\partial a}(3;\,50)\) ir \(\frac{\partial P}{\partial m}(3;\,50)\). Interpretuokite rezultatus.</p>
+          <p>b) Kaip pasikeis trejų metų automobilio kaina, jei jo rida padidės nuo 50 iki 60 tūkstančių kilometrų?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės (sudėtinės funkcijos taisyklė):</strong></p>
+          \[ \begin{aligned} \frac{\partial P}{\partial a} &amp;= -2500e^{-0{,}1a - 0{,}002m} \\[6pt] \frac{\partial P}{\partial m} &amp;= -50e^{-0{,}1a - 0{,}002m} \end{aligned} \]
+          <p><strong>Reikšmės:</strong></p>
+          <div class="fit-sm">\[ \begin{aligned} \frac{\partial P}{\partial a}(3;\,50) &amp;= -2500e^{-0{,}4} \approx -1675{,}80 \\[6pt] \frac{\partial P}{\partial m}(3;\,50) &amp;= -50e^{-0{,}4} \approx -33{,}52 \end{aligned} \]</div>
+          <p>b) \(\Delta m = 10\), todėl \(\Delta P \approx -50e^{-0{,}4}\cdot 10 \approx -335{,}16\).</p>
+          <p><strong>Atsakymas.</strong> a) Automobilio amžiui padidėjus vienais metais nuo 3, o ridai išlikus 50 tūkstančių kilometrų, kaina sumažėja apytiksliai 1675,80 euro. Ridai padidėjus vienu tūkstančiu kilometrų nuo 50, o amžiui išlikus 3 metų, kaina sumažėja apytiksliai 33,52 euro. b) Kaina sumažėja apytiksliai 335,16 euro.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">7 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
