@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naudingumo funkcija ir ribinė pakeitimo norma · Taikomoji matematika</title>
+<meta name="description" content="Naudingumo funkcija, abejingumo kreivės, ribinis naudingumas ir ribinė pakeitimo norma MRS: kiek vienos prekės vartotojas pasirengęs atsisakyti už papildomą kitos prekės vienetą. Pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=96">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=96"></script>
+</head>
+<body data-page="m85">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">8 tema · Taikymai · 5 skyrius</span>
+    <h1>Naudingumo funkcija ir ribinė pakeitimo norma</h1>
+    <p class="lead">Šiame skyriuje nagrinėjama, kaip vartotojo pasitenkinimas priklauso nuo dviejų prekių kiekių. Naudingumo funkcijos dalinės išvestinės – ribiniai naudingumai – parodo, kaip kinta naudingumas, o ribinė pakeitimo norma – kiek vienos prekės vartotojas pasirengęs atsisakyti už papildomą kitos prekės vienetą.</p>
+    <ul class="jump">
+      <li><a href="#naudingumas">Naudingumo funkcija</a></li>
+      <li><a href="#ribinis">Ribinis naudingumas</a></li>
+      <li><a href="#mrs">Ribinė pakeitimo norma</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. NAUDINGUMO FUNKCIJA ============ -->
+  <section class="section" id="naudingumas" aria-labelledby="h-util">
+    <h2 id="h-util">Naudingumo funkcija</h2>
+
+    <article class="card">
+      <p>Vartotojas renkasi, kiek kiekvienos prekės pirkti. Skirtingi deriniai teikia skirtingą pasitenkinimą: du kavos puodeliai ir vienas sumuštinis arba vienas kavos puodelis ir du sumuštiniai. Šiems deriniams palyginti ekonomikoje vartotojo pasitenkinimas nusakomas skaičiumi, vadinamu <strong>naudingumu</strong>.</p>
+      <p>Pirmosios prekės \(x\) vienetų ir antrosios prekės \(y\) vienetų derinys vadinamas <strong>vartojimo krepšeliu</strong> ir žymimas \((x;\,y)\).</p>
+      <div class="model-note"><strong>Naudingumo funkcija</strong> \(U = U(x;\,y)\) kiekvienam galimam vartojimo krepšeliui priskiria vartotojo pasitenkinimą nusakančią reikšmę; čia \(x\) ir \(y\) yra dviejų prekių vartojimo kiekiai.</div>
+      <p style="margin-top:12px">Naudingumo funkcijos reikšmė naudojama krepšeliams palyginti. Vartotojas teikia pirmenybę didesnio naudingumo krepšeliui. Du vienodo naudingumo krepšeliai jam yra lygiaverčiai, todėl nesvarbu, kurį pasirinkti. Pavyzdžiui, kai \(U(x;\,y) = xy\), abu krepšeliai \(A = (4;\,9)\) ir \(B = (6;\,6)\) duoda \(U = 36\) ir yra lygiaverčiai. Krepšelis \((5;\,8)\) duoda \(U = 40\), todėl jam teikiama pirmenybė prieš abu ankstesnius.</p>
+      <p>Naudingumo funkcijos gali būti tokių pačių formų kaip <a href="tema-8-gamybos-funkcija.html">gamybos funkcijos</a>: daugianariai, Kobo-Daglaso funkcijos \(U = Ax^{\alpha}y^{\beta}\), funkcijos su šaknimis, logaritmais ar rodiklinėmis funkcijomis.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Abejingumo kreivės</h3>
+      <p>Visi vienodą naudingumą teikiantys krepšeliai sudaro <strong>abejingumo kreivę</strong>. Tai naudingumo funkcijos <a href="tema-8.html#lygio-linijos">lygio linija</a>:</p>
+      <div class="formula">\[ U(x;\,y) = C \]</div>
+      <p>Judant viena abejingumo kreive, naudingumas nesikeičia. Toliau nuo koordinačių pradžios esanti kreivė atitinka didesnius abiejų prekių kiekius ir didesnį naudingumą.</p>
+      <figure class="abs-fig abs-fig--sm">
+        <svg viewBox="0 0 340 322" role="img" aria-label="Funkcijos U = xy abejingumo kreivės U = 16, U = 36 ir U = 64. Krepšeliai A(4; 9) ir B(6; 6) yra kreivėje U = 36, krepšelis (5; 8) – virš jos."><line class="grid" x1="82.7" y1="18" x2="82.7" y2="298"/><line class="grid" x1="36" y1="251.3" x2="316" y2="251.3"/><text class="muted" x="82.7" y="314" text-anchor="middle">2</text><text class="muted" x="29" y="255.3" text-anchor="end">2</text><line class="grid" x1="129.3" y1="18" x2="129.3" y2="298"/><line class="grid" x1="36" y1="204.7" x2="316" y2="204.7"/><text class="muted" x="129.3" y="314" text-anchor="middle">4</text><text class="muted" x="29" y="208.7" text-anchor="end">4</text><line class="grid" x1="176" y1="18" x2="176" y2="298"/><line class="grid" x1="36" y1="158" x2="316" y2="158"/><text class="muted" x="176" y="314" text-anchor="middle">6</text><text class="muted" x="29" y="162" text-anchor="end">6</text><line class="grid" x1="222.7" y1="18" x2="222.7" y2="298"/><line class="grid" x1="36" y1="111.3" x2="316" y2="111.3"/><text class="muted" x="222.7" y="314" text-anchor="middle">8</text><text class="muted" x="29" y="115.3" text-anchor="end">8</text><line class="grid" x1="269.3" y1="18" x2="269.3" y2="298"/><line class="grid" x1="36" y1="64.7" x2="316" y2="64.7"/><text class="muted" x="269.3" y="314" text-anchor="middle">10</text><text class="muted" x="29" y="68.7" text-anchor="end">10</text><line class="grid" x1="316" y1="18" x2="316" y2="298"/><line class="grid" x1="36" y1="18" x2="316" y2="18"/><text class="muted" x="316" y="314" text-anchor="middle">12</text><text class="muted" x="29" y="22" text-anchor="end">12</text><text class="muted" x="29" y="314" text-anchor="end">0</text><line class="ax" x1="36" y1="298" x2="316" y2="298"/><path class="ah" d="M326 298L316 293.5L316 302.5Z"/><line class="ax" x1="36" y1="298" x2="36" y2="18"/><path class="ah" d="M36 8L31.5 18L40.5 18Z"/><text class="m" x="318" y="289">x</text><text class="m" x="45" y="16">y</text><path class="ln" d="M67.1 18L69.2 35.5L71.3 50.9L73.3 64.7L75.4 76.9L77.5 88L79.6 98L81.6 107.1L83.7 115.4L85.8 123L87.9 130L89.9 136.5L92 142.4L94.1 148L96.1 153.2L98.2 158L100.3 162.5L102.4 166.7L104.4 170.7L106.5 174.5L108.6 178L110.7 181.3L112.7 184.5L114.8 187.5L116.9 190.3L119 193L121 195.6L123.1 198L125.2 200.3L127.3 202.5L129.3 204.7L131.4 206.7L133.5 208.6L135.6 210.5L137.6 212.3L139.7 214L141.8 215.6L143.9 217.2L145.9 218.8L148 220.2L150.1 221.6L152.1 223L154.2 224.3L156.3 225.6L158.4 226.8L160.4 228L162.5 229.1L164.6 230.3L166.7 231.3L168.7 232.4L170.8 233.4L172.9 234.4L175 235.3L177 236.2L179.1 237.1L181.2 238L183.3 238.8L185.3 239.7L187.4 240.5L189.5 241.2L191.6 242L193.6 242.7L195.7 243.5L197.8 244.2L199.9 244.8L201.9 245.5L204 246.1L206.1 246.8L208.1 247.4L210.2 248L212.3 248.6L214.4 249.2L216.4 249.7L218.5 250.3L220.6 250.8L222.7 251.3L224.7 251.8L226.8 252.3L228.9 252.8L231 253.3L233 253.8L235.1 254.2L237.2 254.7L239.3 255.1L241.3 255.6L243.4 256L245.5 256.4L247.6 256.8L249.6 257.2L251.7 257.6L253.8 258L255.9 258.4L257.9 258.7L260 259.1L262.1 259.5L264.1 259.8L266.2 260.2L268.3 260.5L270.4 260.8L272.4 261.2L274.5 261.5L276.6 261.8L278.7 262.1L280.7 262.4L282.8 262.7L284.9 263L287 263.3L289 263.6L291.1 263.9L293.2 264.1L295.3 264.4L297.3 264.7L299.4 264.9L301.5 265.2L303.6 265.4L305.6 265.7L307.7 265.9L309.8 266.2L311.9 266.4L313.9 266.7L316 266.9"/><text class="c1 halo" x="297.3" y="256.7" text-anchor="middle" style="font-weight:700"><tspan class="i">U</tspan> = 16</text><path class="ln" d="M106 18L107.8 24.8L109.5 31.3L111.2 37.5L113 43.5L114.8 49.1L116.5 54.5L118.2 59.7L120 64.7L121.7 69.4L123.5 74L125.3 78.4L127 82.6L128.8 86.7L130.5 90.6L132.2 94.4L134 98L135.8 101.5L137.5 104.9L139.2 108.2L141 111.3L142.8 114.4L144.5 117.4L146.2 120.2L148 123L149.8 125.7L151.5 128.3L153.2 130.8L155 133.3L156.8 135.7L158.5 138L160.2 140.3L162 142.4L163.8 144.6L165.5 146.6L167.2 148.7L169 150.6L170.8 152.5L172.5 154.4L174.2 156.2L176 158L177.8 159.7L179.5 161.4L181.2 163.1L183 164.7L184.8 166.2L186.5 167.8L188.3 169.3L190 170.7L191.8 172.2L193.5 173.6L195.2 174.9L197 176.3L198.7 177.6L200.5 178.9L202.2 180.1L204 181.3L205.8 182.5L207.5 183.7L209.2 184.9L211 186L212.8 187.1L214.5 188.2L216.2 189.3L218 190.3L219.8 191.3L221.5 192.3L223.3 193.3L225 194.3L226.8 195.2L228.5 196.2L230.2 197.1L232 198L233.7 198.9L235.5 199.8L237.2 200.6L239 201.4L240.8 202.3L242.5 203.1L244.2 203.9L246 204.7L247.8 205.4L249.5 206.2L251.2 206.9L253 207.7L254.8 208.4L256.5 209.1L258.2 209.8L260 210.5L261.8 211.2L263.5 211.8L265.2 212.5L267 213.2L268.8 213.8L270.5 214.4L272.2 215L274 215.6L275.8 216.2L277.5 216.8L279.2 217.4L281 218L282.8 218.6L284.5 219.1L286.2 219.7L288 220.2L289.8 220.8L291.5 221.3L293.2 221.8L295 222.3L296.8 222.8L298.5 223.3L300.2 223.8L302 224.3L303.8 224.8L305.5 225.3L307.2 225.7L309 226.2L310.8 226.7L312.5 227.1L314.2 227.6L316 228"/><text class="c1 halo" x="297.3" y="215" text-anchor="middle" style="font-weight:700"><tspan class="i">U</tspan> = 36</text><path class="ln" d="M160.4 18L161.7 20.9L163 23.7L164.3 26.5L165.6 29.2L166.9 31.9L168.2 34.5L169.5 37L170.8 39.5L172.1 42L173.4 44.4L174.7 46.8L176 49.1L177.3 51.4L178.6 53.6L179.9 55.8L181.2 58L182.5 60.1L183.8 62.2L185.1 64.3L186.4 66.3L187.7 68.3L189 70.2L190.3 72.1L191.6 74L192.9 75.9L194.1 77.7L195.4 79.5L196.7 81.2L198 83L199.3 84.7L200.6 86.3L201.9 88L203.2 89.6L204.5 91.2L205.8 92.8L207.1 94.4L208.4 95.9L209.7 97.4L211 98.9L212.3 100.4L213.6 101.8L214.9 103.2L216.2 104.6L217.5 106L218.8 107.4L220.1 108.7L221.4 110L222.7 111.3L224 112.6L225.3 113.9L226.6 115.1L227.9 116.4L229.1 117.6L230.4 118.8L231.7 120L233 121.2L234.3 122.3L235.6 123.5L236.9 124.6L238.2 125.7L239.5 126.8L240.8 127.9L242.1 128.9L243.4 130L244.7 131L246 132.1L247.3 133.1L248.6 134.1L249.9 135.1L251.2 136.1L252.5 137L253.8 138L255.1 138.9L256.4 139.9L257.7 140.8L259 141.7L260.3 142.6L261.6 143.5L262.9 144.4L264.1 145.3L265.4 146.1L266.7 147L268 147.8L269.3 148.7L270.6 149.5L271.9 150.3L273.2 151.1L274.5 151.9L275.8 152.7L277.1 153.5L278.4 154.3L279.7 155L281 155.8L282.3 156.5L283.6 157.3L284.9 158L286.2 158.7L287.5 159.4L288.8 160.2L290.1 160.9L291.4 161.6L292.7 162.2L294 162.9L295.3 163.6L296.6 164.3L297.9 164.9L299.1 165.6L300.4 166.2L301.7 166.9L303 167.5L304.3 168.1L305.6 168.8L306.9 169.4L308.2 170L309.5 170.6L310.8 171.2L312.1 171.8L313.4 172.4L314.7 173L316 173.6"/><text class="c1 halo" x="297.3" y="156.7" text-anchor="middle" style="font-weight:700"><tspan class="i">U</tspan> = 64</text><circle class="pt-hi" cx="129.3" cy="88" r="5.5"/><text class="halo" x="139.3" y="80" text-anchor="start" style="font-weight:700">A(4; 9)</text><circle class="pt-hi" cx="176" cy="158" r="5.5"/><text class="halo" x="186" y="150" text-anchor="start" style="font-weight:700">B(6; 6)</text><circle class="pt" cx="152.7" cy="111.3" r="5.5"/><text class="halo" x="162.7" y="103.3" text-anchor="start" style="font-weight:700">(5; 8)</text></svg>
+        <figcaption>Funkcijos \(U = xy\) abejingumo kreivės. Krepšeliai A ir B yra toje pačioje kreivėje, todėl teikia vienodą naudingumą. Krepšelis \((5;\,8)\) yra toliau nuo koordinačių pradžios nei kreivė \(U = 36\), todėl teikia didesnį naudingumą.</figcaption>
+      </figure>
+    </article>
+  </section>
+
+  <!-- ============ 2. RIBINIS NAUDINGUMAS ============ -->
+  <section class="section" id="ribinis" aria-labelledby="h-mu">
+    <h2 id="h-mu">Ribinis naudingumas</h2>
+
+    <article class="card" id="interpretavimas">
+      <p>Naudingumo funkcijos pirmos eilės dalinės išvestinės yra <strong>ribiniai naudingumai</strong>:</p>
+      <div class="formula">\[ MU_x = U'_x;\qquad MU_y = U'_y \]</div>
+      <p>Pirmosios prekės ribinis naudingumas \(MU_x\) rodo, kaip kinta naudingumas pirmosios prekės vartojimo kiekiui padidėjus vienetu, kai antrosios prekės kiekis nekinta. Antrosios prekės ribinis naudingumas \(MU_y\) interpretuojamas analogiškai. Interpretacija yra atsakymo dalis:</p>
+      <div class="model-note"><em>Pirmosios prekės vartojimo kiekiui padidėjus vienetu nuo \(x_0\), o antrosios prekės kiekiui išlikus lygiam \(y_0\), naudingumo pokytis apytiksliai lygus \(MU_x(x_0;\,y_0)\) vienetų.</em></div>
+      <div class="model-note"><em>Antrosios prekės vartojimo kiekiui padidėjus vienetu nuo \(y_0\), o pirmosios prekės kiekiui išlikus lygiam \(x_0\), naudingumo pokytis apytiksliai lygus \(MU_y(x_0;\,y_0)\) vienetų.</em></div>
+      <p>Ribinis naudingumas paprastai teigiamas, nes didesnis prekės kiekis teikia daugiau pasitenkinimo. Vartojimo kiekiui didėjant, ribinis naudingumas paprastai mažėja: pirmasis dienos kavos puodelis teikia daugiau pasitenkinimo nei penktasis.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. RIBINĖ PAKEITIMO NORMA ============ -->
+  <section class="section" id="mrs" aria-labelledby="h-mrs">
+    <h2 id="h-mrs">Ribinė pakeitimo norma</h2>
+
+    <article class="card">
+      <p>Tarkime, vartotojas turi krepšelį \((x_0;\,y_0)\), esantį abejingumo kreivėje. Judant šia kreive, bendrasis naudingumas nesikeičia.</p>
+      <ul>
+        <li>Gavus vieną papildomą pirmosios prekės vienetą, naudingumas padidėja apytiksliai \(MU_x\).</li>
+        <li>Kad naudingumas nepasikeistų, reikia atsisakyti dalies antrosios prekės. Atsisakius vieno jos vieneto, naudingumo pokytis apytiksliai lygus \(-MU_y\).</li>
+        <li>Antrosios prekės kiekio pokytį pažymėkime \(\Delta y\). Tuomet naudingumo pokytis apytiksliai lygus \(MU_y\cdot\Delta y\): atsisakyti vieno vieneto reiškia \(\Delta y = -1\), o atitinkamas naudingumo pokytis yra \(-MU_y\).</li>
+        <li>Kad naudingumo sumažėjimas kompensuotų padidėjimą, abiejų pokyčių suma prilyginama nuliui:</li>
+      </ul>
+      <div class="formula"><div class="m-wide">\[ MU_x\cdot 1 + MU_y\cdot\Delta y = 0 \;\;\Longrightarrow\;\; \Delta y = -\frac{MU_x}{MU_y} \]</div><div class="m-narrow">\[ \begin{gathered} MU_x\cdot 1 + MU_y\cdot\Delta y = 0 \\[4pt] \Downarrow \\[4pt] \Delta y = -\frac{MU_x}{MU_y} \end{gathered} \]</div></div>
+      <p>Šis antrosios prekės kiekio pokytis, išlaikantis tą patį naudingumą pirmosios prekės kiekiui padidėjus vienetu, vadinamas <strong>ribine pakeitimo norma</strong>:</p>
+      <div class="formula">\[ MRS = -\frac{MU_x}{MU_y} = -\frac{U'_x}{U'_y} \]</div>
+      <p>Ribinė pakeitimo norma nusako, kokiu santykiu vartotojas pasirengęs pakeisti vieną prekę kita, kad naudingumas nepasikeistų. Brėžinyje pirmosios prekės kiekis padidinamas vienetu, o antrosios sumažinamas apytiksliai \(|MRS|\) vienetų, išlaikant tą patį naudingumą. MRS neigiama, nes antrosios prekės kiekis mažėja. Dėl to abejingumo kreivė leidžiasi žemyn.</p>
+      <div data-widget="mrs-chart"></div>
+      <p style="margin-top:14px">Papildomą pirmosios prekės vienetą kompensuoja antrosios prekės kiekio pokytis, apytiksliai lygus MRS, ir vartotojas išlieka toje pačioje abejingumo kreivėje. Funkcijai \(U = xy\) ribiniai naudingumai yra \(MU_x = y\) ir \(MU_y = x\), todėl \(MRS = -\frac{y}{x}\).</p>
+      <p class="tip"><strong>Pastaba.</strong> Kai kuriuose vadovėliuose ribinė pakeitimo norma apibrėžiama kaip absoliučioji reikšmė \(MRS = \frac{MU_x}{MU_y}\), t.&nbsp;y. teigiamas skaičius. Abu žymėjimai nusako tą patį pakeitimą; minuso ženklas tik rodo, kad antrosios prekės kiekis mažėja.</p>
+    </article>
+
+    <article class="card" id="interpretavimas-mrs">
+      <h3 class="subhead">Interpretavimas</h3>
+      <div class="model-note"><em>Jei \(MRS(x_0;\,y_0) = -m\), tai turėdamas krepšelį \((x_0;\,y_0)\) vartotojas pasirengęs atsisakyti apytiksliai \(m\) antrosios prekės vienetų už vieną papildomą pirmosios prekės vienetą, kad naudingumas nepasikeistų.</em></div>
+      <p>MRS paprastai priklauso nuo krepšelio. Vartotojas, jau turintis daug pirmosios prekės, už dar vieną jos vienetą pasirengęs atsisakyti tik nedidelio antrosios prekės kiekio. Todėl \(|MRS|\) mažėja didėjant \(x\) – tai matyti ir brėžinyje, slankikliu perkeliant krepšelį A į dešinę.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Kai pirmosios prekės kiekis keičiasi ne padidėjant vienetu</h3>
+      <p>Jei pirmosios prekės kiekis pasikeičia \(\Delta x\) vienetų, pavyzdžiui, sumažėja vienetu (\(\Delta x = -1\)), tą patį naudingumą išlaikantis antrosios prekės kiekio pokytis apytiksliai lygus</p>
+      <div class="formula">\[ \Delta y \approx MRS\cdot\Delta x \]</div>
+      <p>Kai \(\Delta x = -1\), gaunamas teigiamas \(\Delta y\): praradimą kompensuoja papildomas antrosios prekės kiekis (žr. <a href="#pavyzdys-4">4 pavyzdį</a>).</p>
+    </article>
+  </section>
+
+  <!-- ============ 4. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+
+    <article class="card">
+      <p>Uždavinyje gali būti tiesiogiai prašoma rasti ir interpretuoti MRS. To paties gali būti klausiama ir kitais žodžiais: kiek vienos prekės vartotojas pasirengęs atsisakyti už papildomą kitos prekės vienetą. Tuomet vienetu kintantis prekės kiekis yra pirmasis kintamasis \(x\), o jį kompensuojantis kiekis – antrasis kintamasis \(y\).</p>
+      <ol class="steps-list">
+        <li>Užrašykite funkciją. Nustatykite, kurios prekės kiekis keičiasi vienetu, o kurios kompensuoja šį pokytį.</li>
+        <li>Raskite dvi dalines išvestines – ribinius naudingumus.</li>
+        <li>Užrašykite santykį su minuso ženklu: \(MRS = -\frac{MU_x}{MU_y}\). Bendri daugikliai susiprastina, todėl dažnai patogiau trupmeną supaprastinti prieš įstatant skaičius.</li>
+        <li>Įstatykite duotąjį krepšelį. Jei pirmosios prekės kiekis keičiasi \(\Delta x\) vienetų, apskaičiuokite \(\Delta y \approx MRS\cdot\Delta x\).</li>
+        <li>Interpretuokite rezultatą pagal <a href="#interpretavimas-mrs">interpretavimo formuluotę</a>.</li>
+      </ol>
+      <p>Tokia pati eiga taikoma ir ribinei techninio pakeitimo normai, kuri nagrinėjama kitame skyriuje.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Supainioti kintamieji.</strong> Vienetu kintanti prekė yra pirmasis kintamasis \(x\), o ją kompensuojanti – antrasis \(y\). Nuo to priklauso, kuris ribinis naudingumas rašomas skaitiklyje.</li>
+            <li><strong>Apverstas santykis.</strong> \(MRS = -\frac{MU_x}{MU_y}\): skaitiklyje – vienetu kintančios prekės ribinis naudingumas.</li>
+            <li><strong>Interpretacijoje nurodomas neigiamas kiekis.</strong> Kai \(MRS = -m\), vartotojas pasirengęs atsisakyti apytiksliai \(m\) antrosios prekės vienetų.</li>
+            <li><strong>Neatsižvelgta į pokyčio kryptį.</strong> Kai pirmosios prekės kiekis mažėja (\(\Delta x = -1\)), kompensuojantis pokytis \(\Delta y \approx MRS\cdot\Delta x\) yra teigiamas – antrosios prekės reikia daugiau.</li>
+            <li><strong>Ribinio naudingumo interpretacijoje nepaminėta kita prekė.</strong> Reikia pabrėžti, kad kitos prekės kiekis nekinta.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 5. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <h3 class="subhead">Ribiniai naudingumai</h3>
+
+    <!-- 1 pavyzdys: TM 8.6, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Knygos ir koncertai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Studento metinis naudingumas, perskaičius \(x\) knygų ir apsilankius \(y\) koncertų, yra
+        <div class="m-wide">\[ U(x;\,y) = 20x + 30y - x^2 - 2y^2 + xy \]</div><div class="m-narrow">\[ \begin{aligned} U(x;\,y) &amp;= 20x + 30y \\ &amp;\phantom{=}\; {}- x^2 - 2y^2 + xy \end{aligned} \]</div>
+        Studentas per metus perskaito 5 knygas ir apsilanko 4 koncertuose. Raskite ribinį knygų ir ribinį koncertų naudingumą. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai naudingumai</span></h4>
+          <p>Pagal \(x\) nariai \(30y\) ir \(2y^2\) yra konstantos, o pagal \(y\) – nariai \(20x\) ir \(x^2\):</p>
+          \[ \begin{aligned} MU_x &amp;= 20 - 2x + y \\ MU_y &amp;= 30 - 4y + x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Reikšmės</span></h4>
+          \[ \begin{aligned} MU_x(5;\,4) &amp;= 20 - 10 + 4 = 14 \\ MU_y(5;\,4) &amp;= 30 - 16 + 5 = 19 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Knygų skaičiui padidėjus vienu nuo 5, o koncertų skaičiui išlikus 4, naudingumas padidėja apytiksliai 14 vienetų. Koncertų skaičiui padidėjus vienu nuo 4, o knygų skaičiui išlikus 5, naudingumas padidėja apytiksliai 19 vienetų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 8.6, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Kava ir arbata</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Vartotojo savaitės naudingumas, išgėrus \(x\) puodelių kavos ir \(y\) puodelių arbatos, yra \(U(x;\,y) = 8\sqrt{x} + 12\sqrt{y}\). Raskite ribinį kavos ir ribinį arbatos naudingumą, kai per savaitę išgeriama 16 puodelių kavos ir 9 puodeliai arbatos. Interpretuokite rezultatus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai naudingumai</span></h4>
+          <p>Pagal formulę \(\big(\sqrt{x}\big)'_x = \frac{1}{2\sqrt{x}}\) gauname</p>
+          \[ \begin{aligned} MU_x &amp;= 8\cdot\frac{1}{2\sqrt{x}} = \frac{4}{\sqrt{x}} \\[6pt] MU_y &amp;= 12\cdot\frac{1}{2\sqrt{y}} = \frac{6}{\sqrt{y}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Reikšmės</span></h4>
+          \[ \begin{aligned} MU_x(16;\,9) &amp;= \frac{4}{4} = 1 \\[6pt] MU_y(16;\,9) &amp;= \frac{6}{3} = 2 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Kavos kiekiui padidėjus vienu puodeliu nuo 16, o arbatos kiekiui išlikus 9 puodelių, naudingumas padidėja apytiksliai 1 vienetu. Arbatos kiekiui padidėjus vienu puodeliu nuo 9, o kavos kiekiui išlikus 16 puodelių, naudingumas padidėja apytiksliai 2 vienetais.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Ribinė pakeitimo norma</h3>
+
+    <!-- 3 pavyzdys: TM 8.6, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Filmai ir serialai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Žiūrovo savaitės naudingumas, žiūrint filmus \(x\) valandų, o serialus – \(y\) valandų, yra \(U(x;\,y) = x^{0{,}6}y^{0{,}4}\). Raskite ribinę pakeitimo normą, kai per savaitę žiūrima 8 valandos filmų ir 12 valandų serialų. Interpretuokite rezultatą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai naudingumai</span></h4>
+          <p>Tai Kobo-Daglaso naudingumo funkcija. Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          \[ \begin{aligned} MU_x &amp;= 0{,}6x^{-0{,}4}y^{0{,}4} \\ MU_y &amp;= 0{,}4x^{0{,}6}y^{-0{,}6} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>MRS</span></h4>
+          <p>Dalijant laipsnius su tuo pačiu pagrindu, rodikliai atimami: \(\frac{x^{-0{,}4}}{x^{0{,}6}} = x^{-1}\) ir \(\frac{y^{0{,}4}}{y^{-0{,}6}} = y^1\), todėl</p>
+          <div class="m-wide">\[ MRS = -\frac{0{,}6x^{-0{,}4}y^{0{,}4}}{0{,}4x^{0{,}6}y^{-0{,}6}} = -1{,}5\cdot\frac{y}{x} \]</div><div class="m-narrow">\[ \begin{aligned} MRS &amp;= -\frac{0{,}6x^{-0{,}4}y^{0{,}4}}{0{,}4x^{0{,}6}y^{-0{,}6}} \\[6pt] &amp;= -1{,}5\cdot\frac{y}{x} \end{aligned} \]</div>
+          <p>Kiekvienai Kobo-Daglaso naudingumo funkcijai \(U = Ax^{\alpha}y^{\beta}\) analogiškai gaunama \(MRS = -\frac{\alpha}{\beta}\cdot\frac{y}{x}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Reikšmė</span></h4>
+          <p>Krepšeliui \((8;\,12)\):</p>
+          \[ MRS(8;\,12) = -1{,}5\cdot\frac{12}{8} = -2{,}25 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>MRS lygi \(-2{,}25\): per savaitę žiūrėdamas 8 valandas filmų ir 12 valandų serialų, žiūrovas už vieną papildomą filmų valandą pasirengęs atsisakyti apytiksliai 2,25 valandos serialų, kad naudingumas nepasikeistų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 8.6, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Sporto salė ir baseinas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Vartotojos mėnesio naudingumas, sporto salėje apsilankius \(x\), o baseine – \(y\) kartų, yra \(U(x;\,y) = (x + 4)(y + 1)\). Šį mėnesį ji planuoja 8 apsilankymus sporto salėje ir 17 baseine. Sporto salė vieną dieną nedirbs, todėl joje bus galima apsilankyti vienu kartu mažiau. Kiek papildomų apsilankymų baseine išlaikytų tą patį naudingumą?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ko prašoma</span></h4>
+          <p>Apsilankymų sporto salėje skaičius keičiasi vienetu, o apsilankymai baseine kompensuoja pokytį. Taigi \(x\) yra apsilankymų sporto salėje, \(y\) – apsilankymų baseine skaičius. Vienu apsilankymu sporto salėje mažiau reiškia \(\Delta x = -1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribiniai naudingumai</span></h4>
+          <p>Pagal \(x\) skliaustuose esantis reiškinys \((y + 1)\) yra pastovus daugiklis, o \(x + 4\) išvestinė lygi 1. Pagal \(y\) kintamojo ir konstantos vaidmenys pasikeičia:</p>
+          \[ \begin{aligned} MU_x &amp;= y + 1; &amp;\qquad MU_x(8;\,17) &amp;= 18 \\ MU_y &amp;= x + 4; &amp;\qquad MU_y(8;\,17) &amp;= 12 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>MRS ir pokytis</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} MRS &amp;= -\frac{MU_x}{MU_y} = -\frac{18}{12} = -1{,}5 \\[6pt] \Delta y &amp;\approx MRS\cdot\Delta x = (-1{,}5)\cdot(-1) = 1{,}5 \end{aligned} \]</div>
+          <p>Vienu apsilankymu sporto salėje mažiau naudingumą sumažina apytiksliai 18 vienetų, o papildomas apsilankymas baseine jį padidina apytiksliai 12 vienetų. Todėl praradimą kompensuoja 1,5 apsilankymo.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Tam pačiam naudingumui išlaikyti reikėtų apytiksliai 1,5 papildomo apsilankymo baseine.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 8.6, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Vaisiai ir sultys</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Vartotojo mėnesio naudingumas, suvartojus \(x\) kilogramų šviežių vaisių ir \(y\) litrų sulčių, yra
+        \[ U(x;\,y) = 20\ln x + 30\ln y \]
+        Vartotojas per mėnesį perka 6 kilogramus vaisių ir 18 litrų sulčių. Kiek litrų sulčių jis pasirengęs atsisakyti už vieną papildomą kilogramą vaisių?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai naudingumai</span></h4>
+          <p>Taikome formulę \(\big(\ln x\big)'_x = \frac{1}{x}\):</p>
+          \[ MU_x = \frac{20}{x};\qquad MU_y = \frac{30}{y} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>MRS</span></h4>
+          <p>Dalyba iš trupmenos pakeičiama daugyba iš jai atvirkštinės trupmenos:</p>
+          <div class="m-wide">\[ MRS = -\frac{20}{x}:\frac{30}{y} = -\frac{20}{x}\cdot\frac{y}{30} = -\frac{2y}{3x} \]</div><div class="m-narrow">\[ \begin{aligned} MRS &amp;= -\frac{20}{x}:\frac{30}{y} \\[6pt] &amp;= -\frac{20}{x}\cdot\frac{y}{30} = -\frac{2y}{3x} \end{aligned} \]</div>
+          \[ MRS(6;\,18) = -\frac{2\cdot 18}{3\cdot 6} = -2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pokytis</span></h4>
+          <p>Vienas papildomas kilogramas vaisių reiškia \(\Delta x = 1\), todėl \(\Delta y \approx MRS\cdot 1 = -2\): sulčių kiekis sumažėja apytiksliai 2 litrais.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Už vieną papildomą kilogramą vaisių vartotojas pasirengęs atsisakyti apytiksliai 2 litrų sulčių.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 8.6, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Atostogos pajūryje ir kalnuose</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Keliautojo metinis naudingumas, atostogaujant \(x\) dienų pajūryje ir \(y\) dienų kalnuose, yra
+        \[ U(x;\,y) = 60 - 24e^{-0{,}5x} - 20e^{-0{,}2y} \]
+        a) Raskite ir interpretuokite ribinę pakeitimo normą, kai pajūryje atostogaujama 4 dienas, o kalnuose – 10 dienų.
+        <br>b) Raskite ir interpretuokite ribinę pakeitimo normą, kai pajūryje atostogaujama 6 dienas, o kalnuose – 10 dienų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai naudingumai</span></h4>
+          <p>Kiekvienas rodiklinis narys yra <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinė funkcija</a>. Vidinės funkcijos \(-0{,}5x\) išvestinė lygi \(-0{,}5\), o \(-0{,}2y\) išvestinė – \(-0{,}2\):</p>
+          <div class="m-wide">\[ \begin{aligned} MU_x &amp;= -24e^{-0{,}5x}\cdot(-0{,}5) = 12e^{-0{,}5x} \\ MU_y &amp;= -20e^{-0{,}2y}\cdot(-0{,}2) = 4e^{-0{,}2y} \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} MU_x &amp;= -24e^{-0{,}5x}\cdot(-0{,}5) = 12e^{-0{,}5x} \\ MU_y &amp;= -20e^{-0{,}2y}\cdot(-0{,}2) = 4e^{-0{,}2y} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>MRS</span></h4>
+          <p>Dalijant laipsnius su tuo pačiu pagrindu, jų rodikliai atimami:</p>
+          <div class="m-wide">\[ MRS = -\frac{12e^{-0{,}5x}}{4e^{-0{,}2y}} = -3e^{-0{,}5x + 0{,}2y} \]</div><div class="m-narrow">\[ \begin{aligned} MRS &amp;= -\frac{12e^{-0{,}5x}}{4e^{-0{,}2y}} \\[6pt] &amp;= -3e^{-0{,}5x + 0{,}2y} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Krepšelis \((4;\,10)\)</span></h4>
+          <p>Taške \((4;\,10)\) laipsnio rodiklis yra \(-2 + 2 = 0\):</p>
+          \[ MRS(4;\,10) = -3e^0 = -3 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Krepšelis \((6;\,10)\)</span></h4>
+          <p>Taške \((6;\,10)\) laipsnio rodiklis yra \(-3 + 2 = -1\):</p>
+          \[ MRS(6;\,10) = -3e^{-1} \approx -1{,}10 \]
+          <p>Pajūryje praleisdamas daugiau dienų, keliautojas už dar vieną dieną pajūryje pasirengęs atsisakyti mažiau dienų kalnuose.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) MRS lygi \(-3\): atostogaudamas 4 dienas pajūryje ir 10 dienų kalnuose, keliautojas už vieną papildomą dieną pajūryje pasirengęs atsisakyti apytiksliai 3 dienų kalnuose, kad naudingumas nepasikeistų.</p>
+            <p>b) MRS apytiksliai lygi \(-1{,}10\): atostogaudamas 6 dienas pajūryje ir 10 dienų kalnuose, keliautojas už dar vieną dieną pajūryje pasirengęs atsisakyti apytiksliai 1,10 dienos kalnuose.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 6. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: raskite ribinius naudingumus, sudarykite MRS ir ją suprastinkite, įstatykite duotąjį krepšelį ir interpretuokite rezultatą. Atsakyme pateikti tarpiniai rezultatai ir interpretacija – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 8 rinkinys, 5 sk. 1 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Studento mėnesio naudingumas, perkant \(x\) picų išsinešti ir \(y\) sušių rinkinių, yra</p>
+          \[ U(x;\,y) = x^{0{,}25}y^{0{,}75} \]
+          <p>Raskite ribinę pakeitimo normą, kai studentas per mėnesį perka 6 picas ir 9 sušių rinkinius. Interpretuokite rezultatą.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Ribiniai naudingumai:</strong></p>
+          \[ \begin{aligned} MU_x &amp;= 0{,}25x^{-0{,}75}y^{0{,}75} \\ MU_y &amp;= 0{,}75x^{0{,}25}y^{-0{,}25} \end{aligned} \]
+          <p><strong>MRS:</strong></p>
+          <div class="m-wide">\[ MRS = -\frac{MU_x}{MU_y} = -\frac{0{,}25x^{-0{,}75}y^{0{,}75}}{0{,}75x^{0{,}25}y^{-0{,}25}} = -\frac{y}{3x} \]</div><div class="m-narrow">\[ \begin{aligned} MRS &amp;= -\frac{MU_x}{MU_y} = -\frac{0{,}25x^{-0{,}75}y^{0{,}75}}{0{,}75x^{0{,}25}y^{-0{,}25}} \\[6pt] &amp;= -\frac{y}{3x} \end{aligned} \]</div>
+          \[ MRS(6;\,9) = -\frac{9}{18} = -0{,}5 \]
+          <p><strong>Atsakymas.</strong> MRS lygi \(-0{,}5\): per mėnesį pirkdamas 6 picas ir 9 sušių rinkinius, studentas už vieną papildomą picą pasirengęs atsisakyti apytiksliai 0,5 sušių rinkinio, kad naudingumas nepasikeistų.</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Vartotojo metinis naudingumas, kai per metus teatre apsilankoma \(x\) kartų, o futbolo rungtynėse – \(y\) kartų, yra</p>
+          \[ U(x;\,y) = 2xy + 3x + 4y \]
+          <p>Šiais metais vartotojas planuoja 8 kartus apsilankyti teatre ir 6 kartus futbolo rungtynėse.</p>
+          <p>a) Raskite ribinius naudingumus ir interpretuokite rezultatus.</p>
+          <p>b) Vartotojas turi atsisakyti vieno apsilankymo teatre. Kiek apytiksliai papildomų apsilankymų futbolo rungtynėse išlaikytų tą patį naudingumą?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Ribiniai naudingumai:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} MU_x &amp;= 2y + 3; &amp;\qquad MU_x(8;\,6) &amp;= 15 \\ MU_y &amp;= 2x + 4; &amp;\qquad MU_y(8;\,6) &amp;= 20 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} MU_x &amp;= 2y + 3 \\ MU_y &amp;= 2x + 4 \\[6pt] MU_x(8;\,6) &amp;= 15 \\ MU_y(8;\,6) &amp;= 20 \end{aligned} \]</div>
+          <p><strong>MRS ir pokytis:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} MRS &amp;= -\frac{15}{20} = -0{,}75 \\[6pt] \Delta y &amp;\approx MRS\cdot\Delta x = (-0{,}75)\cdot(-1) = 0{,}75 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} MRS &amp;= -\frac{15}{20} = -0{,}75 \\[6pt] \Delta y &amp;\approx MRS\cdot\Delta x \\ &amp;= (-0{,}75)\cdot(-1) = 0{,}75 \end{aligned} \]</div>
+          <p><strong>Atsakymas.</strong> a) Apsilankymų teatre skaičiui padidėjus vienu nuo 8, o apsilankymų rungtynėse skaičiui išlikus 6, naudingumas padidėja apytiksliai 15 vienetų. Apsilankymų rungtynėse skaičiui padidėjus vienu nuo 6, o apsilankymų teatre skaičiui išlikus 8, naudingumas padidėja apytiksliai 20 vienetų. b) Apytiksliai 0,75 papildomo apsilankymo futbolo rungtynėse.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">7 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
