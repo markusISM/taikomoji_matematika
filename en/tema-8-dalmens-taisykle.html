@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Quotient Rule · Applied Mathematics</title>
+<meta name="description" content="Step-by-step examples of calculating partial derivatives with the quotient rule: when the rule is needed and when the denominator is a constant. Practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-8-dalmens-taisykle.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=102">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=102"></script>
+</head>
+<body data-page="m8c">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 8 · Calculating partial derivatives · Section 3</span>
+    <h1>The Quotient Rule</h1>
+    <p class="lead">In this section you will find examples of calculating partial derivatives with the quotient rule, together with practice problems. Try to solve each problem yourself first, then reveal the solution one step at a time.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Rules</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ RULES ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">The rules used</h2>
+    <article class="card">
+      <p>The quotient rule of Topic 6 is used as it is, with every derivative taken with respect to the chosen variable:</p>
+      <div class="formula">\[ \begin{aligned} \left(\frac{u}{v}\right)'_x &amp;= \frac{u'_x\cdot v - u\cdot v'_x}{v^2} \\[12pt] \left(\frac{u}{v}\right)'_y &amp;= \frac{u'_y\cdot v - u\cdot v'_y}{v^2} \end{aligned} \]</div>
+      <p>Label the numerator \(u\) and the denominator \(v\). Before the rule is used, it is worth checking that it is really needed, because a letter that is held constant often turns a fraction into a simple constant multiplier.</p>
+      <div class="anat dtbl dtbl-rows" style="margin-top:12px">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>The denominator depends on the variable</strong></div>
+          <p class="lvl-txt">The quotient rule is needed with respect to a variable only if the denominator contains that variable.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>The denominator does not depend on the variable</strong></div>
+          <p class="lvl-txt">Otherwise the denominator is a constant. The fraction can be written as a constant multiplied by a power, as in <a href="tema-8-pagrindines-taisykles.html#pavyzdys-3">Example 3</a> of Section 1.</p>
+        </div>
+      </div>
+      <p style="margin-top:12px">The quotient rule is explained in the <a href="tema-6.html#dalmens">quotient rule card</a> on the Topic 6 page, and the steps of calculating partial derivatives are given in the card <a href="tema-8.html#eiga">“The steps of the calculation”</a> on the Topic 8 page.</p>
+    </article>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+
+    <!-- Example 1: AM 8.1, Example 11 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>The quotient of two linear expressions</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find the first order partial derivatives of the function \(z = \dfrac{2x + y}{x - 3y}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The numerator and the denominator</span></h4>
+          <p>The denominator contains both \(x\) and \(y\), so the quotient rule is needed for each derivative. Let</p>
+          \[ u = 2x + y;\qquad v = x - 3y \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>With respect to \(x\)</span></h4>
+          <p>The numerator and the denominator give \(u'_x = 2\) and \(v'_x = 1\):</p>
+          \[ \begin{aligned} z'_x &amp;= \frac{2(x - 3y) - (2x + y)\cdot 1}{(x - 3y)^2} \\[6pt] &amp;= \frac{2x - 6y - 2x - y}{(x - 3y)^2} = -\frac{7y}{(x - 3y)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>With respect to \(y\)</span></h4>
+          <p>The numerator and the denominator give \(u'_y = 1\) and \(v'_y = -3\):</p>
+          \[ \begin{aligned} z'_y &amp;= \frac{1\cdot(x - 3y) - (2x + y)\cdot(-3)}{(x - 3y)^2} \\[6pt] &amp;= \frac{x - 3y + 6x + 3y}{(x - 3y)^2} = \frac{7x}{(x - 3y)^2} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{aligned} z'_x &amp;= -\frac{7y}{(x - 3y)^2} \\[10pt] z'_y &amp;= \frac{7x}{(x - 3y)^2} \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 8.1, Example 12 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>A product in the numerator, a sum of squares in the denominator</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find the first order partial derivatives of the function \(z = \dfrac{xy}{x^2 + y^2}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The numerator and the denominator</span></h4>
+          <p>Let</p>
+          \[ u = xy;\qquad v = x^2 + y^2 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>With respect to \(x\)</span></h4>
+          <p>In the numerator \(y\) is a constant multiplier, so \(u'_x = y\); in the denominator \(y^2\) is a constant term, so \(v'_x = 2x\):</p>
+          \[ \begin{aligned} z'_x &amp;= \frac{y(x^2 + y^2) - xy\cdot 2x}{(x^2 + y^2)^2} \\[6pt] &amp;= \frac{x^2y + y^3 - 2x^2y}{(x^2 + y^2)^2} \\[6pt] &amp;= \frac{y^3 - x^2y}{(x^2 + y^2)^2} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>With respect to \(y\)</span></h4>
+          <p>In the same way \(u'_y = x\) and \(v'_y = 2y\):</p>
+          \[ \begin{aligned} z'_y &amp;= \frac{x(x^2 + y^2) - xy\cdot 2y}{(x^2 + y^2)^2} \\[6pt] &amp;= \frac{x^3 + xy^2 - 2xy^2}{(x^2 + y^2)^2} \\[6pt] &amp;= \frac{x^3 - xy^2}{(x^2 + y^2)^2} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{aligned} z'_x &amp;= \frac{y^3 - x^2y}{(x^2 + y^2)^2} \\[10pt] z'_y &amp;= \frac{x^3 - xy^2}{(x^2 + y^2)^2} \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: for each variable check whether the denominator depends on it, find the derivatives of the numerator and the denominator, apply the quotient rule and simplify the numerator. Then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM 8.1 Problem Set, 3 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = \dfrac{3x - y}{x + 4y}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{13y}{(x + 4y)^2}\);&nbsp;&nbsp; \(z'_y = -\dfrac{13x}{(x + 4y)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 3 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = \dfrac{x^2}{x + y}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{x^2 + 2xy}{(x + y)^2}\);&nbsp;&nbsp; \(z'_y = -\dfrac{x^2}{(x + y)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 3 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = \dfrac{y}{x^2 + y^2}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = -\dfrac{2xy}{(x^2 + y^2)^2}\);&nbsp;&nbsp; \(z'_y = \dfrac{x^2 - y^2}{(x^2 + y^2)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 3 d (as on the LT page: x^2 - 2y^2; AM Problem Set – x^2 - y^2) -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = \dfrac{x^2 - 2y^2}{x^2 + y^2}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{6xy^2}{(x^2 + y^2)^2}\);&nbsp;&nbsp; \(z'_y = -\dfrac{6x^2y}{(x^2 + y^2)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 3 e -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = \dfrac{e^x}{x + y}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{e^x(x + y - 1)}{(x + y)^2}\);&nbsp;&nbsp; \(z'_y = -\dfrac{e^x}{(x + y)^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 7 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the values of the first order partial derivatives of the function \(f(x;\,y) = \dfrac{x}{x + 2y}\) at the point \((2;\,1)\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'_x(x;\,y) = \dfrac{2y}{(x + 2y)^2}\);&nbsp;&nbsp; \(f'_y(x;\,y) = -\dfrac{2x}{(x + 2y)^2}\)</p>
+          <p>\(f'_x(2;\,1) = 0.125\);&nbsp;&nbsp; \(f'_y(2;\,1) = -0.25\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 7</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

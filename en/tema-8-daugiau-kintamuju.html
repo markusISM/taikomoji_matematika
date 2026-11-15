@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partial Derivatives of Functions of More Than Two Variables · Applied Mathematics</title>
+<meta name="description" content="Step-by-step examples of calculating the partial derivatives of functions of three variables: one letter is the variable and all the others are constants. The values of partial derivatives at a point. Practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-8-daugiau-kintamuju.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=102">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=102"></script>
+</head>
+<body data-page="m8e">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 8 · Calculating partial derivatives · Section 5</span>
+    <h1>Partial Derivatives of Functions of More Than Two Variables</h1>
+    <p class="lead">In this section you will find examples of calculating the partial derivatives of functions of three variables, together with practice problems. Try to solve each problem yourself first, then reveal the solution one step at a time.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Rules</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ RULES ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">The rules used</h2>
+    <article class="card">
+      <p>Nothing changes when there are three or more independent variables. A function \(w = f(x;\,y;\,z)\) has three first order partial derivatives, \(w'_x\), \(w'_y\) and \(w'_z\). In each of them one letter is the variable and all the other letters are constants.</p>
+      <div class="tbl-wrap">
+        <table class="vtable cases-tbl">
+          <thead>
+            <tr><th scope="col">Derivative</th><th scope="col">Variable</th><th scope="col">Constants</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(w'_x\)</td><td>\(x\)</td><td>\(y,\ z\)</td></tr>
+            <tr><td>\(w'_y\)</td><td>\(y\)</td><td>\(x,\ z\)</td></tr>
+            <tr><td>\(w'_z\)</td><td>\(z\)</td><td>\(x,\ y\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The same rules are used as for functions of two variables: the <a href="tema-8-pagrindines-taisykles.html">basic rules</a>, the <a href="tema-8-sandaugos-taisykle.html">product rule</a>, the <a href="tema-8-dalmens-taisykle.html">quotient rule</a> and the <a href="tema-8-sudetines-funkcijos-taisykle.html">chain rule</a>. The steps of calculating partial derivatives are given in the card <a href="tema-8.html#eiga">“The steps of the calculation”</a> on the Topic 8 page.</p>
+    </article>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+
+    <!-- Example 1: AM 8.1, Example 17 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>A polynomial in three variables and its values at a point</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find the first order partial derivatives of the function \(w = x^2y + yz^3 - 4xz\) and their values at the point \((1;\,2;\,-1)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>With respect to \(x\)</span></h4>
+          <p>Here \(y\) and \(z\) are constants. The term \(yz^3\) does not contain \(x\):</p>
+          \[ w'_x = 2x\cdot y + 0 - 4z = 2xy - 4z \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>With respect to \(y\)</span></h4>
+          <p>Here \(x\) and \(z\) are constants. The term \(4xz\) does not contain \(y\):</p>
+          \[ w'_y = x^2\cdot 1 + z^3 - 0 = x^2 + z^3 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>With respect to \(z\)</span></h4>
+          <p>Here \(x\) and \(y\) are constants. The term \(x^2y\) does not contain \(z\):</p>
+          \[ w'_z = 0 + y\cdot 3z^2 - 4x = 3yz^2 - 4x \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The values at the point</span></h4>
+          <p>At the point \((1;\,2;\,-1)\) the values are</p>
+          \[ \begin{aligned} w'_x &amp;= 2\cdot 1\cdot 2 - 4\cdot(-1) = 8 \\ w'_y &amp;= 1^2 + (-1)^3 = 0 \\ w'_z &amp;= 3\cdot 2\cdot(-1)^2 - 4\cdot 1 = 2 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{aligned} w'_x &amp;= 2xy - 4z \\ w'_y &amp;= x^2 + z^3 \\ w'_z &amp;= 3yz^2 - 4x \end{aligned} \]
+            <p>At the point \((1;\,2;\,-1)\): \(w'_x = 8\), \(w'_y = 0\), \(w'_z = 2\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 8.1, Example 18 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>A composite function and a constant multiplier</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find the first order partial derivatives of the function \(w = z^2\cdot\ln(x + 2y)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>With respect to \(x\)</span></h4>
+          <p>The factor \(z^2\) is a constant multiplier. The logarithm is a <a href="tema-8-sudetines-funkcijos-taisykle.html">composite function</a> with the inner function \(x + 2y\), whose derivative with respect to \(x\) is 1:</p>
+          \[ w'_x = z^2\cdot\frac{1}{x + 2y} = \frac{z^2}{x + 2y} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>With respect to \(y\)</span></h4>
+          <p>The only difference is the derivative of the inner function, which is now 2:</p>
+          \[ w'_y = z^2\cdot\frac{2}{x + 2y} = \frac{2z^2}{x + 2y} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>With respect to \(z\)</span></h4>
+          <p>The logarithm does not contain \(z\), so it is a constant multiplier, and only \(z^2\) is differentiated:</p>
+          \[ w'_z = 2z\cdot\ln(x + 2y) \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{aligned} w'_x &amp;= \frac{z^2}{x + 2y} \\[10pt] w'_y &amp;= \frac{2z^2}{x + 2y} \\[10pt] w'_z &amp;= 2z\ln(x + 2y) \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: for each partial derivative decide which letter is the variable and which letters are constants, and apply the rules that are needed. Then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM 8.1 Problem Set, 6 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(w = x^2y - 3yz^2 + 4xz\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(w'_x = 2xy + 4z\);&nbsp;&nbsp; \(w'_y = x^2 - 3z^2\);&nbsp;&nbsp; \(w'_z = -6yz + 4x\)</p>
+        </div>
+      </article>
+
+      <!-- 6 b (as on the LT page: 4xy^2z^3; AM Problem Set – xy^2z^3) -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(w = 4xy^2z^3\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(w'_x = 4y^2z^3\);&nbsp;&nbsp; \(w'_y = 8xyz^3\);&nbsp;&nbsp; \(w'_z = 12xy^2z^2\)</p>
+        </div>
+      </article>
+
+      <!-- 6 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(w = e^{x + 2y - 3z}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(w'_x = e^{x + 2y - 3z}\);&nbsp;&nbsp; \(w'_y = 2e^{x + 2y - 3z}\);&nbsp;&nbsp; \(w'_z = -3e^{x + 2y - 3z}\)</p>
+        </div>
+      </article>
+
+      <!-- 6 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(w = \ln(x^2 + yz)\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(w'_x = \dfrac{2x}{x^2 + yz}\);&nbsp;&nbsp; \(w'_y = \dfrac{z}{x^2 + yz}\);&nbsp;&nbsp; \(w'_z = \dfrac{y}{x^2 + yz}\)</p>
+        </div>
+      </article>
+
+      <!-- 6 e -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(w = \dfrac{xy}{z}\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(w'_x = \dfrac{y}{z}\);&nbsp;&nbsp; \(w'_y = \dfrac{x}{z}\);&nbsp;&nbsp; \(w'_z = -\dfrac{xy}{z^2}\)</p>
+        </div>
+      </article>
+
+      <!-- 7 e -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the values of the first order partial derivatives of the function \(f(x;\,y;\,z) = x^2z + y\ln z\) at the point \((2;\,3;\,1)\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(f'_x(x;\,y;\,z) = 2xz\);&nbsp;&nbsp; \(f'_y(x;\,y;\,z) = \ln z\);&nbsp;&nbsp; \(f'_z(x;\,y;\,z) = x^2 + \dfrac{y}{z}\)</p>
+          <p>\(f'_x(2;\,3;\,1) = 4\);&nbsp;&nbsp; \(f'_y(2;\,3;\,1) = 0\);&nbsp;&nbsp; \(f'_z(2;\,3;\,1) = 7\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 7</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
