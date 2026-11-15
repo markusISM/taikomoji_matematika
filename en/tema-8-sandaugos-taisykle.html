@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Product Rule · Applied Mathematics</title>
+<meta name="description" content="Step-by-step examples of calculating partial derivatives with the product rule: when the rule is needed and when one factor is a constant multiplier. Practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-8-sandaugos-taisykle.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=100">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=100"></script>
+</head>
+<body data-page="m8b">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 8 · Calculating partial derivatives · Section 2</span>
+    <h1>The Product Rule</h1>
+    <p class="lead">In this section you will find examples of calculating partial derivatives with the product rule, together with practice problems. Try to solve each problem yourself first, then reveal the solution one step at a time.</p>
+    <ul class="jump">
+      <li><a href="#taisykles">Rules</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ RULES ============ -->
+  <section class="section" id="taisykles" aria-labelledby="h-rules">
+    <h2 id="h-rules">The rules used</h2>
+    <article class="card">
+      <p>The product rule of Topic 6 is used as it is, with every derivative taken with respect to the chosen variable:</p>
+      <div class="formula">\[ \begin{aligned} (u\cdot v)'_x &amp;= u'_x\cdot v + u\cdot v'_x \\ (u\cdot v)'_y &amp;= u'_y\cdot v + u\cdot v'_y \end{aligned} \]</div>
+      <p>Here \(u\) and \(v\) are functions of \(x\) and \(y\). Before the rule is used, it is worth checking that it is really needed, because a letter that is held constant often turns a product into a simple constant multiplier.</p>
+      <div class="anat dtbl dtbl-rows" style="margin-top:12px">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Both factors depend on the variable</strong></div>
+          <p class="lvl-txt">With respect to \(x\), the product rule is needed only if both factors contain \(x\); with respect to \(y\), only if both factors contain \(y\).</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>One factor does not depend on the variable</strong></div>
+          <p class="lvl-txt">A factor that does not contain the variable of differentiation is a constant multiplier. It stays where it is, and only the other factor is differentiated – the product rule is not needed.</p>
+        </div>
+      </div>
+      <p style="margin-top:12px">The product rule is explained in the <a href="tema-6.html#sandaugos">product rule card</a> on the Topic 6 page, and the steps of calculating partial derivatives are given in the card <a href="tema-8.html#eiga">“The steps of the calculation”</a> on the Topic 8 page.</p>
+    </article>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+
+    <!-- Example 1: AM 8.1, Example 9 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>The product of a power and a logarithm</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find the first order partial derivatives of the function \(z = x^2y\cdot\ln x\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>With respect to \(x\): the derivatives of the factors</span></h4>
+          <p>Both \(x^2y\) and \(\ln x\) contain \(x\), so the product rule is needed. Let \(u = x^2y\) and \(v = \ln x\). With \(y\) held constant,</p>
+          \[ u'_x = 2xy;\qquad v'_x = \frac{1}{x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>With respect to \(x\): the product rule</span></h4>
+          <p>Substituting into the rule:</p>
+          \[ \begin{aligned} z'_x &amp;= 2xy\cdot\ln x + x^2y\cdot\frac{1}{x} \\ &amp;= 2xy\ln x + xy \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>With respect to \(y\)</span></h4>
+          <p>Only the factor \(y\) contains \(y\). The rest of the function, \(x^2\ln x\), is a constant multiplier, and the derivative of \(y\) is 1. The product rule is not needed:</p>
+          \[ z'_y = x^2\ln x\cdot(y)'_y = x^2\ln x \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{aligned} z'_x &amp;= 2xy\ln x + xy \\ z'_y &amp;= x^2\ln x \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 8.1, Example 10 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>The product of two brackets</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Find the first order partial derivatives of the function \(z = (3x - y^2)(x^2 + 4y)\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The factors</span></h4>
+          <p>Both brackets contain \(x\) and both contain \(y\), so the product rule is needed for each derivative. Let</p>
+          \[ u = 3x - y^2;\qquad v = x^2 + 4y \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>With respect to \(x\)</span></h4>
+          <p>The factors give \(u'_x = 3\) and \(v'_x = 2x\):</p>
+          \[ \begin{aligned} z'_x &amp;= 3(x^2 + 4y) + (3x - y^2)\cdot 2x \\ &amp;= 3x^2 + 12y + 6x^2 - 2xy^2 \\ &amp;= 9x^2 - 2xy^2 + 12y \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>With respect to \(y\)</span></h4>
+          <p>The factors give \(u'_y = -2y\) and \(v'_y = 4\):</p>
+          \[ \begin{aligned} z'_y &amp;= -2y(x^2 + 4y) + (3x - y^2)\cdot 4 \\ &amp;= -2x^2y - 8y^2 + 12x - 4y^2 \\ &amp;= -2x^2y - 12y^2 + 12x \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            \[ \begin{aligned} z'_x &amp;= 9x^2 - 2xy^2 + 12y \\ z'_y &amp;= -2x^2y - 12y^2 + 12x \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write the solutions out as in the examples: for each variable check whether both factors depend on it, find the derivatives of the factors, apply the product rule and simplify the result. Then check your answer.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM 8.1 Problem Set, 2 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = (x^2 + y)(3x - 2y^2)\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 9x^2 - 4xy^2 + 3y\);&nbsp;&nbsp; \(z'_y = 3x - 4x^2y - 6y^2\)</p>
+        </div>
+      </article>
+
+      <!-- 2 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = xy^2\cdot e^x\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = y^2e^x(1 + x)\);&nbsp;&nbsp; \(z'_y = 2xye^x\)</p>
+        </div>
+      </article>
+
+      <!-- 2 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = x^3y\cdot\ln y\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 3x^2y\ln y\);&nbsp;&nbsp; \(z'_y = x^3(\ln y + 1)\)</p>
+        </div>
+      </article>
+
+      <!-- 2 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = (2x - y)e^y\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = 2e^y\);&nbsp;&nbsp; \(z'_y = e^y(2x - y - 1)\)</p>
+        </div>
+      </article>
+
+      <!-- 2 e -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Find the first order partial derivatives of the function \(z = \sqrt{x}\cdot(x + y^2)\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(z'_x = \dfrac{x + y^2}{2\sqrt{x}} + \sqrt{x}\);&nbsp;&nbsp; \(z'_y = 2y\sqrt{x}\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 7</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
