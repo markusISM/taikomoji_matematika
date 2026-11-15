@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ribinė techninio pakeitimo norma · Taikomoji matematika</title>
+<meta name="description" content="Izokvantės ir ribinė techninio pakeitimo norma MRTS: kiek vieno gamybos ištekliaus gali pakeisti papildomas kito ištekliaus vienetas, nekeičiant gamybos apimties. Pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=97">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=97"></script>
+</head>
+<body data-page="m86">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">8 tema · Taikymai · 6 skyrius</span>
+    <h1>Ribinė techninio pakeitimo norma</h1>
+    <p class="lead">Šiame skyriuje nagrinėjama, kaip įmonė gali pakeisti vieną gamybos išteklių kitu, nekeisdama gamybos apimties. Tai tas pats klausimas, kurį vartotojas sprendžia rinkdamasis prekių krepšelį, tik vietoj naudingumo funkcijos naudojama gamybos funkcija.</p>
+    <ul class="jump">
+      <li><a href="#mrts">Izokvantės ir MRTS</a></li>
+      <li><a href="#interpretavimas">Interpretavimas</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. IZOKVANTĖS IR MRTS ============ -->
+  <section class="section" id="mrts" aria-labelledby="h-mrts">
+    <h2 id="h-mrts">Izokvantės ir ribinė techninio pakeitimo norma</h2>
+
+    <article class="card">
+      <p>Įmonė sprendžia panašų klausimą kaip vartotojas, kuriam <a href="tema-8-naudingumo-funkcija.html#mrs">ribinė pakeitimo norma</a> parodo, kiek vienos prekės jis pasirengęs atsisakyti už papildomą kitos prekės vienetą. <a href="tema-8-gamybos-funkcija.html">Gamybos funkcija</a> \(Q = f(x;\,y)\) nusako gamybos apimtį.</p>
+      <div class="model-note">Gamybos funkcijos lygio linija \(f(x;\,y) = C\), vadinama <strong>izokvante</strong>, jungia visus vienodą gamybos apimtį duodančius išteklių derinius.</div>
+      <p style="margin-top:12px">Pirmojo ištekliaus kiekį padidinus vienetu, gamybos apimtis padidėja apytiksliai \(Q'_x\). Kad ji nepasikeistų, mažinamas antrojo ištekliaus kiekis: sumažinus jį vienetu, gamybos apimties pokytis apytiksliai lygus \(-Q'_y\), o kiekiui pasikeitus \(\Delta y\) – apytiksliai \(Q'_y\cdot\Delta y\). Pokyčiai kompensuoja vienas kitą, kai</p>
+      <div class="formula"><div class="m-wide">\[ Q'_x\cdot 1 + Q'_y\cdot\Delta y = 0 \;\;\Longrightarrow\;\; \Delta y = -\frac{Q'_x}{Q'_y} \]</div><div class="m-narrow">\[ \begin{gathered} Q'_x\cdot 1 + Q'_y\cdot\Delta y = 0 \\[4pt] \Downarrow \\[4pt] \Delta y = -\frac{Q'_x}{Q'_y} \end{gathered} \]</div></div>
+      <p>Šis pokytis yra <strong>ribinė techninio pakeitimo norma</strong>:</p>
+      <div class="formula">\[ MRTS = -\frac{Q'_x}{Q'_y} \]</div>
+      <p>Ji lygi izokvantės nuolydžiui. Jos absoliučioji reikšmė rodo, kiek antrojo ištekliaus gali pakeisti vienas papildomas pirmojo ištekliaus vienetas, nekeičiant gamybos apimties. Kai ištekliai yra darbas ir kapitalas, \(MRTS = -\frac{MPL}{MPK}\): \(|MRTS|\) yra kapitalo kiekis, kurį gali pakeisti vienas papildomas darbuotojas, arba, atvirkščiai, kapitalo kiekis, kurio reikia vienam darbuotojui pakeisti.</p>
+      <div data-widget="mrs-chart" data-mode="mrts"></div>
+      <p style="margin-top:14px">Brėžinyje pavaizduotos gamybos funkcijos \(Q = xy\) izokvantės. Jos ribiniai produktai yra \(Q'_x = y\) ir \(Q'_y = x\), todėl \(MRTS = -\frac{y}{x}\). Slankikliu perkeliant tašką A į dešinę, \(|MRTS|\) mažėja: kuo daugiau naudojama pirmojo ištekliaus, tuo mažiau antrojo ištekliaus gali pakeisti dar vienas jo vienetas.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">Interpretavimas</h3>
+      <div class="model-note"><em>Jei \(MRTS(x_0;\,y_0) = -m\), tai naudojant išteklių kiekius \((x_0;\,y_0)\) vienas papildomas pirmojo ištekliaus vienetas gali pakeisti apytiksliai \(m\) antrojo ištekliaus vienetų, nekeičiant gamybos apimties.</em></div>
+
+      <h3 class="subhead" style="margin-top:22px">Kai pirmojo ištekliaus kiekis keičiasi ne padidėjant vienetu</h3>
+      <p>Jei pirmojo ištekliaus kiekis pasikeičia \(\Delta x\) vienetų, pavyzdžiui, sumažėja vienetu (\(\Delta x = -1\)), tą pačią gamybos apimtį išlaikantis antrojo ištekliaus kiekio pokytis apytiksliai lygus</p>
+      <div class="formula">\[ \Delta y \approx MRTS\cdot\Delta x \]</div>
+      <p>Kai \(\Delta x = -1\), gaunamas teigiamas \(\Delta y\): sumažėjusį pirmojo ištekliaus kiekį kompensuoja papildomas antrojo ištekliaus kiekis (žr. <a href="#pavyzdys-2">2</a> ir <a href="#pavyzdys-3">3 pavyzdžius</a>).</p>
+
+      <h3 class="subhead" style="margin-top:22px">MRS ir MRTS palyginimas</h3>
+      <div class="tbl-wrap">
+        <table class="vtable cmp-tbl">
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Vartotojas</th><th scope="col">Įmonė</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Funkcija</th><td>naudingumo funkcija \(U(x;\,y)\)</td><td>gamybos funkcija \(Q = f(x;\,y)\)</td></tr>
+            <tr><th scope="row">Lygio linija</th><td>abejingumo kreivė</td><td>izokvantė</td></tr>
+            <tr><th scope="row">Dalinės išvestinės</th><td>ribiniai naudingumai \(MU_x\), \(MU_y\)</td><td>ribiniai produktai \(Q'_x\), \(Q'_y\)</td></tr>
+            <tr><th scope="row">Pakeitimo norma</th><td>\(MRS =\) \(-\dfrac{MU_x}{MU_y}\)</td><td>\(MRTS =\) \(-\dfrac{Q'_x}{Q'_y}\)</td></tr>
+            <tr><th scope="row">Absoliučioji reikšmė rodo</th><td>kiek antrosios prekės vartotojas pasirengęs atsisakyti už papildomą pirmosios prekės vienetą</td><td>kiek antrojo ištekliaus gali pakeisti papildomas pirmojo ištekliaus vienetas</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+
+    <article class="card">
+      <p>Uždavinyje gali būti tiesiogiai prašoma rasti ir interpretuoti MRTS. To paties gali būti klausiama ir kitais žodžiais: kiek vieno ištekliaus reikia kito ištekliaus vienetui pakeisti. Tuomet vienetu kintantis ištekliaus kiekis yra pirmasis kintamasis \(x\), o jį kompensuojantis kiekis – antrasis kintamasis \(y\).</p>
+      <ol class="steps-list">
+        <li>Užrašykite funkciją. Nustatykite, kurio ištekliaus kiekis keičiasi vienetu, o kurio kompensuoja šį pokytį.</li>
+        <li>Raskite dvi dalines išvestines – ribinius produktus.</li>
+        <li>Užrašykite santykį su minuso ženklu: \(MRTS = -\frac{Q'_x}{Q'_y}\). Bendri daugikliai susiprastina, todėl dažnai patogiau trupmeną supaprastinti prieš įstatant skaičius.</li>
+        <li>Įstatykite duotuosius išteklių kiekius. Jei pirmojo ištekliaus kiekis keičiasi \(\Delta x\) vienetų, apskaičiuokite \(\Delta y \approx MRTS\cdot\Delta x\).</li>
+        <li>Interpretuokite rezultatą pagal <a href="#interpretavimas">interpretavimo formuluotę</a>.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Supainioti kintamieji.</strong> Vienetu kintantis išteklius yra pirmasis kintamasis \(x\), o jį kompensuojantis – antrasis \(y\). Klausime „kiek robotų darbo valandų reikia vienai operatoriaus darbo valandai pakeisti“ vienetu kinta operatorių darbo laikas.</li>
+            <li><strong>Apverstas santykis.</strong> \(MRTS = -\frac{Q'_x}{Q'_y}\): skaitiklyje – vienetu kintančio ištekliaus ribinis produktas.</li>
+            <li><strong>Interpretacijoje nurodomas neigiamas kiekis.</strong> Kai \(MRTS = -m\), vienas papildomas pirmojo ištekliaus vienetas gali pakeisti apytiksliai \(m\) antrojo ištekliaus vienetų.</li>
+            <li><strong>Neatsižvelgta į pokyčio kryptį.</strong> Kai pirmojo ištekliaus kiekis mažėja (\(\Delta x = -1\)), kompensuojantis pokytis \(\Delta y \approx MRTS\cdot\Delta x\) yra teigiamas – antrojo ištekliaus reikia daugiau.</li>
+            <li><strong>Santykis nesuprastinamas.</strong> Bendri daugikliai, pavyzdžiui, vienodi vardikliai ar CES funkcijos skliaustuose esantis reiškinys, susiprastina, todėl skaičiuoti paprasčiau.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 3. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 8.6, 7 pavyzdys (funkcija pakeista: 20 → 24) -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Darbuotojai ir kapitalas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonės mėnesio gamybos apimtis yra \(Q(x;\,y) = 24x^{0{,}75}y^{0{,}25}\) vienetų. Čia \(x\) – darbuotojų skaičius, \(y\) – kapitalas tūkstančiais eurų. Įmonėje dirba 30 darbuotojų ir naudojama 50 tūkstančių eurų kapitalo. Raskite ribinę techninio pakeitimo normą ir interpretuokite rezultatą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai produktai</span></h4>
+          <p>Tai <a href="tema-8-gamybos-funkcija.html#ribinis">Kobo-Daglaso gamybos funkcija</a>. Pagal laipsninės funkcijos išvestinės formulę gauname</p>
+          <div class="m-wide">\[ \begin{aligned} MPL &amp;= 0{,}75\cdot 24x^{-0{,}25}y^{0{,}25} = 18x^{-0{,}25}y^{0{,}25} \\ MPK &amp;= 0{,}25\cdot 24x^{0{,}75}y^{-0{,}75} = 6x^{0{,}75}y^{-0{,}75} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} MPL &amp;= 18x^{-0{,}25}y^{0{,}25} \\ MPK &amp;= 6x^{0{,}75}y^{-0{,}75} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>MRTS</span></h4>
+          <p>Kaip ir <a href="tema-8-naudingumo-funkcija.html#pavyzdys-3">Kobo-Daglaso naudingumo funkcijos</a> atveju, laipsniai suprastinami iki \(\frac{y}{x}\):</p>
+          <div class="m-wide">\[ MRTS = -\frac{18x^{-0{,}25}y^{0{,}25}}{6x^{0{,}75}y^{-0{,}75}} = -3\cdot\frac{y}{x} \]</div><div class="m-narrow">\[ \begin{aligned} MRTS &amp;= -\frac{18x^{-0{,}25}y^{0{,}25}}{6x^{0{,}75}y^{-0{,}75}} \\[6pt] &amp;= -3\cdot\frac{y}{x} \end{aligned} \]</div>
+          \[ MRTS(30;\,50) = -3\cdot\frac{50}{30} = -5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>MRTS lygi \(-5\): kai dirba 30 darbuotojų ir naudojama 50 tūkstančių eurų kapitalo, vienas papildomas darbuotojas gali pakeisti apytiksliai 5 tūkstančius eurų kapitalo, nekeičiant gamybos apimties.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 8.6, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Kepėjai ir pagalbininkai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kepykla per dieną iškepa
+        \[ Q(x;\,y) = 3x^2 + 2xy + y^2 \]
+        duonos kepalų. Čia \(x\) – kepėjų, \(y\) – pagalbininkų darbo valandų skaičius. Šiandien planuojama 10 kepėjų ir 30 pagalbininkų darbo valandų, tačiau vienas kepėjas turės išeiti valanda anksčiau. Kiek papildomų pagalbininkų darbo valandų reikia, kad gamybos apimtis nepasikeistų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ko prašoma</span></h4>
+          <p>Kepėjų darbo laikas keičiasi viena valanda, o pagalbininkų darbo laikas kompensuoja pokytį. Taigi \(x\) yra kepėjų darbo valandų skaičius, o viena valanda mažiau reiškia \(\Delta x = -1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ribiniai produktai</span></h4>
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= 6x + 2y; &amp;\qquad Q'_x(10;\,30) &amp;= 60 + 60 = 120 \\ Q'_y &amp;= 2x + 2y; &amp;\qquad Q'_y(10;\,30) &amp;= 20 + 60 = 80 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= 6x + 2y \\ Q'_y &amp;= 2x + 2y \\[6pt] Q'_x(10;\,30) &amp;= 60 + 60 = 120 \\ Q'_y(10;\,30) &amp;= 20 + 60 = 80 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>MRTS ir pokytis</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} MRTS &amp;= -\frac{120}{80} = -1{,}5 \\[6pt] \Delta y &amp;\approx MRTS\cdot\Delta x = (-1{,}5)\cdot(-1) = 1{,}5 \end{aligned} \]</div>
+          <p>Viena kepėjų darbo valanda mažiau gamybos apimtį sumažina apytiksliai 120 kepalų, o papildoma pagalbininkų darbo valanda ją padidina apytiksliai 80 kepalų.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Reikia apytiksliai 1,5 papildomos pagalbininkų darbo valandos.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 8.6, 9 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Operatoriai ir robotai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvės per dieną pagamina
+        \[ Q(x;\,y) = \frac{100xy}{2x + y} \]
+        detalių. Čia \(x\) – operatorių, \(y\) – robotų darbo valandų skaičius. Per dieną naudojama 20 operatorių ir 40 robotų darbo valandų. Kiek robotų darbo valandų reikia vienai operatoriaus darbo valandai pakeisti, kad gamybos apimtis nepasikeistų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai produktai</span></h4>
+          <p>Taikome <a href="tema-8-dalmens-taisykle.html">dalmens taisyklę</a>, kai \(u = 100xy\) ir \(v = 2x + y\). Pagal \(x\): \(u'_x = 100y\), \(v'_x = 2\); pagal \(y\): \(u'_y = 100x\), \(v'_y = 1\).</p>
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= \frac{100y(2x + y) - 100xy\cdot 2}{(2x + y)^2} = \frac{100y^2}{(2x + y)^2} \\[8pt] Q'_y &amp;= \frac{100x(2x + y) - 100xy\cdot 1}{(2x + y)^2} = \frac{200x^2}{(2x + y)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= \frac{100y(2x + y) - 100xy\cdot 2}{(2x + y)^2} \\[6pt] &amp;= \frac{100y^2}{(2x + y)^2} \\[10pt] Q'_y &amp;= \frac{100x(2x + y) - 100xy\cdot 1}{(2x + y)^2} \\[6pt] &amp;= \frac{200x^2}{(2x + y)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>MRTS</span></h4>
+          <p>Abiejų išvestinių vardiklis vienodas ir suprastinamas:</p>
+          \[ \begin{aligned} MRTS &amp;= -\frac{100y^2}{200x^2} = -\frac{y^2}{2x^2} \\[6pt] MRTS(20;\,40) &amp;= -\frac{1600}{800} = -2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pokytis</span></h4>
+          <p>Pakeisti vieną operatoriaus darbo valandą reiškia \(\Delta x = -1\):</p>
+          <div class="fit-sm">\[ \Delta y \approx MRTS\cdot\Delta x = (-2)\cdot(-1) = 2 \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Vienai operatoriaus darbo valandai pakeisti reikia apytiksliai 2 robotų darbo valandų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 8.6, 10 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Įrenginiai ir darbuotojai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Pakavimo gamyklos dienos gamybos apimtį nusako CES gamybos funkcija
+        \[ Q(x;\,y) = 50\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-1} \]
+        čia \(x\) – pakavimo įrenginių, \(y\) – darbuotojų skaičius. Gamykloje yra 10 įrenginių ir dirba 30 darbuotojų. Raskite ribinę techninio pakeitimo normą ir interpretuokite rezultatą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Ribiniai produktai</span></h4>
+          <p>Funkcija <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinė</a>: vidinė funkcija yra skliaustuose esantis reiškinys, o išorinė – laipsnis su rodikliu \(-1\). Vidinės funkcijos dalinės išvestinės yra \(-0{,}4x^{-2}\) ir \(-0{,}6y^{-2}\). Pagal sudėtinės laipsninės funkcijos išvestinės formulę gauname</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} Q'_x &amp;= 50\cdot(-1)\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2}\cdot\left(-0{,}4x^{-2}\right) = 20x^{-2}\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2} \\[8pt] Q'_y &amp;= 50\cdot(-1)\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2}\cdot\left(-0{,}6y^{-2}\right) = 30y^{-2}\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2} \end{aligned} \]</div><div class="m-narrow bp-lg fit-sm">\[ \begin{aligned} Q'_x &amp;= 50\cdot(-1)\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2} \\ &amp;\phantom{=}\;\cdot\left(-0{,}4x^{-2}\right) \\ &amp;= 20x^{-2}\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2} \\[10pt] Q'_y &amp;= 50\cdot(-1)\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2} \\ &amp;\phantom{=}\;\cdot\left(-0{,}6y^{-2}\right) \\ &amp;= 30y^{-2}\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>MRTS</span></h4>
+          <p>Skliaustuose esančio reiškinio laipsnis yra abiejų ribinių produktų daugiklis, todėl jis suprastinamas:</p>
+          <div class="m-wide bp-lg">\[ MRTS = -\frac{20x^{-2}\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2}}{30y^{-2}\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2}} = -\frac{20x^{-2}}{30y^{-2}} = -\frac{2}{3}\cdot\left(\frac{y}{x}\right)^2 \]</div><div class="m-narrow bp-lg fit-sm">\[ \begin{aligned} MRTS &amp;= -\frac{20x^{-2}\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2}}{30y^{-2}\left[0{,}4x^{-1} + 0{,}6y^{-1}\right]^{-2}} \\[8pt] &amp;= -\frac{20x^{-2}}{30y^{-2}} = -\frac{2}{3}\cdot\left(\frac{y}{x}\right)^2 \end{aligned} \]</div>
+          \[ MRTS(10;\,30) = -\frac{2}{3}\cdot 3^2 = -6 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>MRTS lygi \(-6\): kai naudojama 10 įrenginių ir dirba 30 darbuotojų, vienas papildomas įrenginys gali pakeisti apytiksliai 6 darbuotojus, nekeičiant gamybos apimties.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 4. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: raskite ribinius produktus, sudarykite MRTS ir ją suprastinkite, įstatykite duotuosius išteklių kiekius ir interpretuokite rezultatą. Atsakyme pateikti tarpiniai rezultatai ir interpretacija – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 8 rinkinys, 5 sk. 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Dirbtuvės per dieną pagamina</p>
+          \[ Q(x;\,y) = 50x^{0{,}4}y^{0{,}6} \]
+          <p>produkcijos vienetų. Čia \(x\) – darbuotojų skaičius, \(y\) – įrenginių darbo valandų skaičius. Raskite ribinę techninio pakeitimo normą, kai dirba 20 darbuotojų ir naudojama 60 įrenginių darbo valandų. Interpretuokite rezultatą.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Ribiniai produktai:</strong></p>
+          \[ \begin{aligned} Q'_x &amp;= 20x^{-0{,}6}y^{0{,}6} \\ Q'_y &amp;= 30x^{0{,}4}y^{-0{,}4} \end{aligned} \]
+          <p><strong>MRTS:</strong></p>
+          <div class="m-wide">\[ MRTS = -\frac{Q'_x}{Q'_y} = -\frac{20x^{-0{,}6}y^{0{,}6}}{30x^{0{,}4}y^{-0{,}4}} = -\frac{2y}{3x} \]</div><div class="m-narrow">\[ \begin{aligned} MRTS &amp;= -\frac{20x^{-0{,}6}y^{0{,}6}}{30x^{0{,}4}y^{-0{,}4}} \\[6pt] &amp;= -\frac{2y}{3x} \end{aligned} \]</div>
+          \[ MRTS(20;\,60) = -\frac{120}{60} = -2 \]
+          <p><strong>Atsakymas.</strong> MRTS lygi \(-2\): kai dirba 20 darbuotojų ir naudojama 60 įrenginių darbo valandų, vienas papildomas darbuotojas gali pakeisti apytiksliai 2 įrenginių darbo valandas, nekeičiant gamybos apimties.</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Sandėlyje, kuriame naudojama \(x\) robotų ir dirba \(y\) darbuotojų, per dieną apdorojama</p>
+          \[ Q(x;\,y) = 100\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-2} \]
+          <p>padėklų. Sandėlyje yra 16 robotų ir dirba 36 darbuotojai. Kiek apytiksliai darbuotojų gali pakeisti vienas papildomas robotas, kad apdorojamų padėklų skaičius nepasikeistų?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Ribiniai produktai (sudėtinės funkcijos taisyklė):</strong></p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} Q'_x &amp;= 100\cdot(-2)\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-3}\cdot\left(-0{,}25x^{-1{,}5}\right) \\ &amp;= 50\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-3}x^{-1{,}5} \\[10pt] Q'_y &amp;= 100\cdot(-2)\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-3}\cdot\left(-0{,}25y^{-1{,}5}\right) \\ &amp;= 50\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-3}y^{-1{,}5} \end{aligned} \]</div><div class="m-narrow bp-lg fit-sm">\[ \begin{aligned} Q'_x &amp;= 100\cdot(-2)\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-3} \\ &amp;\phantom{=}\;\cdot\left(-0{,}25x^{-1{,}5}\right) \\ &amp;= 50\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-3}x^{-1{,}5} \\[10pt] Q'_y &amp;= 100\cdot(-2)\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-3} \\ &amp;\phantom{=}\;\cdot\left(-0{,}25y^{-1{,}5}\right) \\ &amp;= 50\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-3}y^{-1{,}5} \end{aligned} \]</div>
+          <p><strong>MRTS ir pokytis</strong> (bendras daugiklis \(50\left[0{,}5x^{-0{,}5} + 0{,}5y^{-0{,}5}\right]^{-3}\) suprastinamas):</p>
+          <div class="m-wide">\[ \begin{aligned} MRTS &amp;= -\frac{x^{-1{,}5}}{y^{-1{,}5}} = -\left(\frac{y}{x}\right)^{1{,}5} \\[6pt] MRTS(16;\,36) &amp;= -\left(\frac{9}{4}\right)^{1{,}5} = -\left(\frac{3}{2}\right)^3 = -3{,}375 \\[6pt] \Delta y &amp;\approx MRTS\cdot\Delta x = (-3{,}375)\cdot 1 = -3{,}375 \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} MRTS &amp;= -\frac{x^{-1{,}5}}{y^{-1{,}5}} \\[4pt] &amp;= -\left(\frac{y}{x}\right)^{1{,}5} \\[6pt] MRTS(16;\,36) &amp;= -\left(\frac{9}{4}\right)^{1{,}5} \\[4pt] &amp;= -\left(\frac{3}{2}\right)^3 = -3{,}375 \\[6pt] \Delta y &amp;\approx MRTS\cdot\Delta x \\ &amp;= (-3{,}375)\cdot 1 = -3{,}375 \end{aligned} \]</div>
+          <p><strong>Atsakymas.</strong> Vienas papildomas robotas gali pakeisti apytiksliai 3,375 darbuotojo.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">7 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
