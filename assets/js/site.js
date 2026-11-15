@@ -409,7 +409,7 @@
         desc: { lt: 'Tikslo funkciją reikia sudaryti patiems: paklausos funkcija pagal sąlygos duomenis, plotų ir tūrių optimizavimas.', en: 'The objective function has to be set up first: a demand function from the given data, optimizing areas and volumes.' } }
     ],
     t8: [
-      { id: 'm8a', status: 'active', href: { lt: 'tema-8-pagrindines-taisykles.html' },
+      { id: 'm8a', status: 'active', href: { lt: 'tema-8-pagrindines-taisykles.html', en: 'tema-8-pagrindines-taisykles.html' },
         title: { lt: 'Pagrindinės dalinių išvestinių skaičiavimo taisyklės', en: 'Basic Rules for Partial Derivatives' },
         desc: { lt: 'Kintamasis, pagal kurį nediferencijuojama, laikomas konstanta: daugianariai, laipsniai ir šaknys.', en: 'The variable that is not differentiated is treated as a constant: polynomials, powers and roots.' } },
       { id: 'm8b', status: 'active', href: { lt: 'tema-8-sandaugos-taisykle.html' },
@@ -529,7 +529,7 @@
                title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' } },
     t8:      { parent: 'home', href: { lt: 'tema-8.html', en: 'tema-8.html' },
                title: { lt: '8 tema', en: 'Topic 8' } },
-    m8a:     { parent: 't8', topic: 't8', model: 'm8a', href: { lt: 'tema-8-pagrindines-taisykles.html', en: null },
+    m8a:     { parent: 't8', topic: 't8', model: 'm8a', href: { lt: 'tema-8-pagrindines-taisykles.html', en: 'tema-8-pagrindines-taisykles.html' },
                title: { lt: 'Pagrindinės dalinių išvestinių skaičiavimo taisyklės', en: 'Basic Rules for Partial Derivatives' } },
     m8b:     { parent: 't8', topic: 't8', model: 'm8b', href: { lt: 'tema-8-sandaugos-taisykle.html', en: null },
                title: { lt: 'Sandaugos išvestinės taisyklė', en: 'The Product Rule' } },
