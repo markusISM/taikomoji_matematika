@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 8. Functions of Several Variables and Partial Derivatives · Applied Mathematics</title>
+<meta name="description" content="Functions of several variables: definition, the value at a point, the graph – a surface and level curves, with interactive graphs. First order partial derivatives: definition, notation, meaning and the steps of the calculation. Examples of calculating partial derivatives and applications – in separate sections.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-8.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=98">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=98"></script>
+</head>
+<body data-page="t8">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 8</span>
+    <h1>Functions of Several Variables and Partial Derivatives</h1>
+    <ul class="jump">
+      <li><a href="#funkcija">Function</a></li>
+      <li><a href="#lygio-linijos">Level curves</a></li>
+      <li><a href="#dalines">Partial derivatives</a></li>
+      <li><a href="#skaiciavimas">Calculation</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#taikymai">Applications</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ FUNCTIONS OF SEVERAL VARIABLES ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-functions">
+    <h2 id="h-functions">Functions of several variables</h2>
+
+    <article class="card concept" id="funkcija">
+      <div class="concept-head"><span class="num">1</span><h3>A function of several variables</h3></div>
+      <p>Every function of the previous topics had one independent variable: the cost depended on the output, the revenue on the number of units sold. In practice a quantity usually depends on several things at once. The revenue of a firm that sells two products depends on both quantities, the output of a factory depends on the labour and on the capital it uses, and the satisfaction of a consumer depends on how much of each good is consumed. Such quantities are described by functions of several variables.</p>
+      <div class="model-note">A real-valued <strong>function of two variables</strong> is a rule that associates each ordered pair \((x;\,y)\) in the domain with one and only one real number \(z\). The function is usually denoted by
+        <div class="formula">\[ z = f(x;\,y) \]</div>
+      </div>
+      <p>The variables \(x\) and \(y\) are the <strong>independent variables</strong>, and \(z\) is the <strong>dependent variable</strong>. A function of three or more variables is defined in the same way, for example \(w = f(x;\,y;\,z)\). A few functions of this kind:</p>
+      <ul>
+        <li>\(R(x;\,y) = 40x + 25y\) is the revenue from selling \(x\) units of one product at 40 euros and \(y\) units of another product at 25 euros;</li>
+        <li>\(f(x;\,y) = 50x^{0.6}y^{0.4}\) is the output of a factory that uses \(x\) units of labour and \(y\) units of capital;</li>
+        <li>\(U(x;\,y) = xy\) is the utility of a consumer who consumes \(x\) units of one good and \(y\) units of another;</li>
+        <li>\(TC(x;\,y;\,z) = 12x + 8y + 15z + 900\) is the total cost of a firm that produces three products.</li>
+      </ul>
+    </article>
+
+    <article class="card concept" id="reiksme">
+      <div class="concept-head"><span class="num">2</span><h3>The value of a function</h3></div>
+      <p>The value of a function at a point is found by putting the first number of the pair in place of \(x\) and the second number in place of \(y\). The order of the numbers matters.</p>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example</p>
+        <p>Find \(f(2;\,1)\), \(f(-1;\,3)\) and \(f(1;\,2)\) for the function \(f(x;\,y) = x^2y - 4x + 3y\).</p>
+        <div class="fit-sm">\[ \begin{aligned} f(2;\,1) &amp;= 2^2\cdot 1 - 4\cdot 2 + 3\cdot 1 \\ &amp;= 4 - 8 + 3 = -1 \end{aligned} \]</div>
+        <div class="fit-sm">\[ \begin{aligned} f(-1;\,3) &amp;= (-1)^2\cdot 3 - 4\cdot(-1) + 3\cdot 3 \\ &amp;= 3 + 4 + 9 = 16 \end{aligned} \]</div>
+        <div class="fit-sm">\[ \begin{aligned} f(1;\,2) &amp;= 1^2\cdot 2 - 4\cdot 1 + 3\cdot 2 \\ &amp;= 2 - 4 + 6 = 4 \end{aligned} \]</div>
+        <p>The pairs \((2;\,1)\) and \((1;\,2)\) contain the same numbers but give different values, because they are different points.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="grafikas">
+      <div class="concept-head"><span class="num">3</span><h3>The graph of a function of two variables</h3></div>
+      <p>A function of one variable is drawn in a plane with two axes. A function of two variables needs three axes: the independent variables are measured along the axes \(x\) and \(y\) of a horizontal plane, and the value \(z\) is measured upwards. Each pair \((x;\,y)\) is a point of the horizontal plane, and the value \(z = f(x;\,y)\) is the height of the graph above that point. All the points \((x;\,y;\,z)\) together form a <strong>surface</strong>.</p>
+      <div data-widget="surface3d" data-mode="surface" data-fns="sq lin xy"></div>
+      <p style="margin-top:14px">A function of three or more variables cannot be drawn in this way, but everything that is calculated below works for it without change.</p>
+    </article>
+
+    <article class="card concept" id="lygio-linijos">
+      <div class="concept-head"><span class="num">4</span><h3>Level curves</h3></div>
+      <p>A surface is not easy to draw and not easy to read. The same information can be shown in a plane, in the way a map shows a mountain: by lines that join the points of equal height.</p>
+      <div class="model-note">If the surface \(z = f(x;\,y)\) is cut by the horizontal plane \(z = C\), the projection of the intersection onto the \(xy\)-plane is called the <strong>level curve</strong> at height \(C\). The level curve consists of all the points \((x;\,y)\) that satisfy the equation
+        <div class="formula">\[ f(x;\,y) = C \]</div>
+      </div>
+      <div data-widget="surface3d" data-mode="levels" data-fns="sq lin xy"></div>
+      <p style="margin-top:14px">A level curve is found in two steps: the function is set equal to the given number \(C\), and the equation is solved for \(y\) if that is possible. The curve is then drawn for each value of \(C\). Along one level curve the value of the function does not change; it changes only when the point moves from one level curve to another.</p>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example 1</p>
+        <p>Find the level curves of the function \(z = x^2 + y^2\) at the heights \(C = 1\), \(C = 4\) and \(C = 9\).</p>
+        <p>Setting the function equal to \(C\) gives the equation \(x^2 + y^2 = C\). This is the equation of a circle with the centre at the origin and the radius \(\sqrt{C}\). The three level curves are therefore</p>
+        \[ \begin{gathered} x^2 + y^2 = 1;\quad x^2 + y^2 = 4; \\ x^2 + y^2 = 9 \end{gathered} \]
+        <p>that is, the circles with the radii 1, 2 and 3.</p>
+        <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 340 324" role="img" aria-label="Level curves of the function z = x² + y²: the circles x² + y² = 1, x² + y² = 4 and x² + y² = 9 with the radii 1, 2 and 3"><line class="grid" x1="57.2" y1="22" x2="57.2" y2="300"/><line class="grid" x1="95.8" y1="22" x2="95.8" y2="300"/><line class="grid" x1="134.4" y1="22" x2="134.4" y2="300"/><line class="grid" x1="173" y1="22" x2="173" y2="300"/><line class="grid" x1="211.6" y1="22" x2="211.6" y2="300"/><line class="grid" x1="250.2" y1="22" x2="250.2" y2="300"/><line class="grid" x1="288.8" y1="22" x2="288.8" y2="300"/><line class="grid" x1="34" y1="276.8" x2="312" y2="276.8"/><line class="grid" x1="34" y1="238.2" x2="312" y2="238.2"/><line class="grid" x1="34" y1="199.6" x2="312" y2="199.6"/><line class="grid" x1="34" y1="161" x2="312" y2="161"/><line class="grid" x1="34" y1="122.4" x2="312" y2="122.4"/><line class="grid" x1="34" y1="83.8" x2="312" y2="83.8"/><line class="grid" x1="34" y1="45.2" x2="312" y2="45.2"/><line class="ax" x1="34" y1="161" x2="312" y2="161"/><path class="ah" d="M322 161L312 156.5L312 165.5Z"/><line class="ax" x1="173" y1="300" x2="173" y2="22"/><path class="ah" d="M173 12L168.5 22L177.5 22Z"/><text class="m" x="316" y="151">x</text><text class="m" x="183" y="20">y</text><text class="muted" x="57.2" y="316" text-anchor="middle">−3</text><text class="muted" x="95.8" y="316" text-anchor="middle">−2</text><text class="muted" x="134.4" y="316" text-anchor="middle">−1</text><text class="muted" x="173" y="316" text-anchor="middle">0</text><text class="muted" x="211.6" y="316" text-anchor="middle">1</text><text class="muted" x="250.2" y="316" text-anchor="middle">2</text><text class="muted" x="288.8" y="316" text-anchor="middle">3</text><text class="muted" x="28" y="280.8" text-anchor="end">−3</text><text class="muted" x="28" y="242.2" text-anchor="end">−2</text><text class="muted" x="28" y="203.6" text-anchor="end">−1</text><text class="muted" x="28" y="165" text-anchor="end">0</text><text class="muted" x="28" y="126.4" text-anchor="end">1</text><text class="muted" x="28" y="87.8" text-anchor="end">2</text><text class="muted" x="28" y="49.2" text-anchor="end">3</text><circle class="ln" cx="173" cy="161" r="38.6"/><text class="c1 halo" x="198.5" y="121.9" text-anchor="middle" style="font-weight:700"><tspan class="i">C</tspan> = 1</text><circle class="ln" cx="173" cy="161" r="77.2"/><text class="c1 halo" x="217.8" y="88.4" text-anchor="middle" style="font-weight:700"><tspan class="i">C</tspan> = 4</text><circle class="ln" cx="173" cy="161" r="115.8"/><text class="c1 halo" x="237.1" y="55" text-anchor="middle" style="font-weight:700"><tspan class="i">C</tspan> = 9</text></svg>
+          <figcaption>The level curves of the function \(z = x^2 + y^2\) are circles with the centre at the origin.</figcaption>
+        </figure>
+      </div>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example 2</p>
+        <p>Find the level curves of the function \(z = 4x + 2y\) at the heights \(C = 0\), \(C = 4\) and \(C = 8\).</p>
+        <p>The equation \(4x + 2y = C\) is solved for \(y\):</p>
+        \[ 2y = -4x + C \;\Longrightarrow\; y = -2x + \frac{C}{2} \]
+        <p>Each value of \(C\) gives a line:</p>
+        \[ \begin{gathered} y = -2x;\quad y = -2x + 2; \\ y = -2x + 4 \end{gathered} \]
+        <p>The level curves are three parallel lines with the slope \(-2\).</p>
+        <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 340 457" role="img" aria-label="Level curves of the function z = 4x + 2y: the parallel lines y = −2x, y = −2x + 2 and y = −2x + 4"><line class="grid" x1="59.4" y1="22" x2="59.4" y2="444.99999999999994"/><line class="grid" x1="118.1" y1="22" x2="118.1" y2="444.99999999999994"/><line class="grid" x1="176.9" y1="22" x2="176.9" y2="444.99999999999994"/><line class="grid" x1="235.6" y1="22" x2="235.6" y2="444.99999999999994"/><line class="grid" x1="294.4" y1="22" x2="294.4" y2="444.99999999999994"/><line class="grid" x1="30" y1="409.7" x2="312" y2="409.7"/><line class="grid" x1="30" y1="351" x2="312" y2="351"/><line class="grid" x1="30" y1="292.2" x2="312" y2="292.2"/><line class="grid" x1="30" y1="233.5" x2="312" y2="233.5"/><line class="grid" x1="30" y1="174.7" x2="312" y2="174.7"/><line class="grid" x1="30" y1="116" x2="312" y2="116"/><line class="grid" x1="30" y1="57.2" x2="312" y2="57.2"/><line class="ax" x1="30" y1="292.2" x2="312" y2="292.2"/><path class="ah" d="M322 292.2L312 287.7L312 296.7Z"/><line class="ax" x1="118.1" y1="444.99999999999994" x2="118.1" y2="22"/><path class="ah" d="M118.1 12L113.6 22L122.6 22Z"/><text class="m" x="316" y="282.2">x</text><text class="m" x="128.1" y="20">y</text><text class="muted" x="59.4" y="309.2" text-anchor="middle">−1</text><text class="muted" x="176.9" y="309.2" text-anchor="middle">1</text><text class="muted" x="235.6" y="309.2" text-anchor="middle">2</text><text class="muted" x="294.4" y="309.2" text-anchor="middle">3</text><text class="muted" x="111.1" y="413.7" text-anchor="end">−2</text><text class="muted" x="111.1" y="355" text-anchor="end">−1</text><text class="muted" x="111.1" y="237.5" text-anchor="end">1</text><text class="muted" x="111.1" y="178.7" text-anchor="end">2</text><text class="muted" x="111.1" y="120" text-anchor="end">3</text><text class="muted" x="111.1" y="61.2" text-anchor="end">4</text><text class="muted" x="111.1" y="309.2" text-anchor="end">0</text><line class="ln" x1="30" y1="116" x2="194.5" y2="445"/><text class="c1 halo" x="49.8" y="139.5" style="font-weight:700"><tspan class="i">C</tspan> = 0</text><line class="ln" x1="41.8" y1="22" x2="253.2" y2="445"/><text class="c1 halo" x="108.5" y="139.5" style="font-weight:700"><tspan class="i">C</tspan> = 4</text><line class="ln" x1="100.5" y1="22" x2="312" y2="445"/><text class="c1 halo" x="167.2" y="139.5" style="font-weight:700"><tspan class="i">C</tspan> = 8</text></svg>
+          <figcaption>The level curves of a linear function are parallel lines.</figcaption>
+        </figure>
+      </div>
+      <p>Level curves are used again in the <a href="#taikymai">applications</a> of this topic. For a production function a level curve joins all the combinations of inputs that give the same output, and for a utility function it joins all the combinations of goods that give the same utility.</p>
+    </article>
+  </section>
+
+  <!-- ============ PARTIAL DERIVATIVES ============ -->
+  <section class="section" id="dalines-isvestines" aria-labelledby="h-partial">
+    <h2 id="h-partial">Partial derivatives</h2>
+
+    <article class="card concept" id="dalines">
+      <div class="concept-head"><span class="num">5</span><h3>First order partial derivatives</h3></div>
+      <p>A function of one variable can change in one way only: its variable changes. A function \(z = f(x;\,y)\) can change in two ways: \(x\) changes while \(y\) stays the same, or \(y\) changes while \(x\) stays the same. Each of the two ways has its own derivative, and these are called <strong>partial derivatives</strong>.</p>
+      <p>The first order partial derivative of \(z = f(x;\,y)\) with respect to \(x\):</p>
+      <div class="formula fit fit-xs">\[ f'_x(x;\,y) = z'_x = \lim_{\Delta x \to 0}\frac{f(x + \Delta x;\,y) - f(x;\,y)}{\Delta x} \]</div>
+      <p>The first order partial derivative of \(z = f(x;\,y)\) with respect to \(y\):</p>
+      <div class="formula fit fit-xs">\[ f'_y(x;\,y) = z'_y = \lim_{\Delta y \to 0}\frac{f(x;\,y + \Delta y) - f(x;\,y)}{\Delta y} \]</div>
+      <p>The first order partial derivatives are also denoted by</p>
+      <div class="formula">\[ \frac{\partial z}{\partial x},\quad \frac{\partial z}{\partial y},\quad \frac{\partial f}{\partial x},\quad \frac{\partial f}{\partial y} \]</div>
+      <p>In the first limit only \(x\) receives an increase, and \(y\) is the same in both terms of the numerator. So \(z'_x\) is the rate of change of the function with respect to \(x\) when \(y\) is held constant: if \(x\) increases by one unit and \(y\) does not change, the function changes by approximately \(z'_x\). In the same way \(z'_y\) is the rate of change with respect to \(y\) when \(x\) is held constant.</p>
+
+      <div class="subtype">
+        <h4>What a partial derivative shows on the graph</h4>
+        <p>When \(y\) is held constant at \(y_0\), the points of the surface with this value of \(y\) form a curve – the graph of the function of one variable \(z = f(x;\,y_0)\). The partial derivative \(z'_x(x_0;\,y_0)\) equals the slope of the tangent line to this curve at \(x_0\), just like the <a href="tema-6.html#isvestine">derivative of a function of one variable</a>. In the same way \(z'_y(x_0;\,y_0)\) equals the slope of the tangent line to the curve obtained when \(x\) is held constant.</p>
+        <div data-widget="surface3d" data-mode="slice" data-fns="sq lin xy"></div>
+      </div>
+    </article>
+
+    <article class="card concept" id="skaiciavimas">
+      <div class="concept-head"><span class="num">6</span><h3>How a partial derivative is calculated</h3></div>
+      <p>The definition gives the whole method. When the derivative with respect to \(x\) is taken, \(y\) does not change, so \(y\) behaves exactly like a number. Therefore:</p>
+      <ul>
+        <li>to find \(z'_x\), treat \(y\) as a constant and differentiate with respect to \(x\);</li>
+        <li>to find \(z'_y\), treat \(x\) as a constant and differentiate with respect to \(y\).</li>
+      </ul>
+      <p>No new rules of differentiation are needed. All the rules of <a href="tema-6.html">Topic 6</a> are used as they are, and the only new thing is to see clearly which letter is the variable and which letter is a constant. A constant can stand in a formula in two ways, and the rule for each of them is already known:</p>
+      <div class="formula">\[ (c)' = 0;\qquad \big(c\cdot u(x)\big)' = c\cdot u'(x) \]</div>
+      <ul>
+        <li><strong>A term without the variable.</strong> A term that does not contain the variable of differentiation is a constant standing alone, and its derivative is 0. With respect to \(x\), the terms \(4y^2\), \(\ln y\) and \(7\) all give 0.</li>
+        <li><strong>A factor without the variable.</strong> A factor that does not contain the variable of differentiation is a constant multiplier. It stays where it is, and only the rest of the term is differentiated. With respect to \(x\), the term \(x^2y\) is the power \(x^2\) multiplied by the constant \(y\), so its derivative is \(2x\cdot y\).</li>
+      </ul>
+      <p>The table shows the same terms differentiated in both ways.</p>
+      <div class="tbl-wrap">
+        <table class="vtable cases-tbl">
+          <thead>
+            <tr><th scope="col">Term</th><th scope="col">With respect to \(x\)</th><th scope="col">With respect to \(y\)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(7\)</td><td>\(0\)</td><td>\(0\)</td></tr>
+            <tr><td>\(5x^3\)</td><td>\(15x^2\)</td><td>\(0\)</td></tr>
+            <tr><td>\(4y^2\)</td><td>\(0\)</td><td>\(8y\)</td></tr>
+            <tr><td>\(x^2y\)</td><td>\(2xy\)</td><td>\(x^2\)</td></tr>
+            <tr><td>\(3xy^4\)</td><td>\(3y^4\)</td><td>\(12xy^3\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>In the fourth row \(y\) is the constant multiplier in the first derivative, and \(x^2\) is the constant multiplier in the second one: with respect to \(y\) the term is \(x^2\cdot y\), and the derivative of \(y\) is 1.</p>
+    </article>
+
+    <article class="card concept" id="eiga">
+      <div class="concept-head"><span class="num">7</span><h3>The steps of the calculation</h3></div>
+      <ol class="steps-list">
+        <li>Choose the variable of differentiation. Every other letter is a constant until this derivative is finished.</li>
+        <li>Go through the function term by term. A term without the variable gives 0.</li>
+        <li>In each remaining term leave the constant factors in place and differentiate the part that contains the variable.</li>
+        <li>Check whether the product rule, the quotient rule or the chain rule is needed (see the <a href="#pavyzdziai">sections below</a>). A rule is needed only when the variable appears in both factors of a product, in the denominator of a fraction, or inside another function.</li>
+        <li>Repeat the work for the other variable.</li>
+        <li>If the value at a point is asked, substitute the point into the finished derivative.</li>
+      </ol>
+    </article>
+  </section>
+
+  <!-- ============ CALCULATING PARTIAL DERIVATIVES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Calculating partial derivatives</h2>
+    <p class="section-intro">Here you will find mathematical examples of calculating partial derivatives and practice problems. The sections are arranged by the rules they apply.</p>
+    <div class="model-grid" data-models="t8" data-only="m8a m8b m8c m8d m8e m8f"></div>
+  </section>
+
+  <!-- ============ APPLICATIONS ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Applications</h2>
+    <p class="section-intro">Here you will find economic and managerial problems in which partial derivatives are used: the marginal quantities of a firm that makes several products, the production function, the rates of change of various quantities, the demand for related goods, and the decisions of consumers and firms when one good or input is replaced by another.</p>
+    <div class="model-grid" data-models="t8" data-skip="m8a m8b m8c m8d m8e m8f"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this topic can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 7</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapters 12.1–12.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
