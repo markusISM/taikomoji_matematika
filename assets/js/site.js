@@ -99,6 +99,10 @@
       sfCutA: 'Plokštuma ',
       sfCutB1: ' kerta paviršių kreive – kintamojo ', sfCutB2: ' funkcijos grafiku. Jos liestinės nuolydis taške ',
       sfCutC: ' lygus dalinei išvestinei ',
+      sfHintCobb: 'Slankikliais keiskite laipsnių rodiklius α ir β. Kairėje – Kobo-Daglaso funkcijos (A = 10) paviršius su lygio linijomis, dešinėje – tos pačios lygio linijos xy plokštumoje. Vilkite brėžinį arba spauskite rodykles, kad jį pasuktumėte.',
+      sfCdLess: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja mažesne proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, tolsta viena nuo kitos.',
+      sfCdEq: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja ta pačia proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, išsidėsčiusios vienodais atstumais.',
+      sfCdMore: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja didesne proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, artėja viena prie kitos.',
       signAria: 'Išvestinės ženklų schema',
       incr: 'didėja', decr: 'mažėja',
       concUp: 'įgaubta', concDown: 'išgaubta',
@@ -204,6 +208,10 @@
       sfCutA: 'The plane ',
       sfCutB1: ' cuts the surface along a curve – the graph of a function of ', sfCutB2: ' alone. The slope of its tangent line at ',
       sfCutC: ' equals the partial derivative ',
+      sfHintCobb: 'Move the sliders to change the exponents α and β. On the left is the surface of the Cobb-Douglas function (A = 10) with its level curves; on the right are the same level curves in the xy-plane. Drag the graph or use the arrows to rotate it.',
+      sfCdLess: 'When both inputs are increased in the same proportion, output increases in a smaller proportion. Hence the level curves for equally spaced output levels move further apart.',
+      sfCdEq: 'When both inputs are increased in the same proportion, output increases in the same proportion. Hence the level curves for equally spaced output levels are evenly spaced.',
+      sfCdMore: 'When both inputs are increased in the same proportion, output increases in a greater proportion. Hence the level curves for equally spaced output levels get closer together.',
       signAria: 'Sign chart of the derivative',
       incr: 'increasing', decr: 'decreasing',
       concUp: 'convex', concDown: 'concave',
@@ -1620,6 +1628,24 @@
       lab: function (C) { var r = Math.sqrt(C); return r <= 6 ? [r, r] : null; }
     }
   };
+  /* Kobo-Daglaso funkcija z = 10x^α y^β (režimas cobb): z ašies mastelis ir
+     lygio linijų aukščiai (vienodu žingsniu) parenkami pagal α ir β. */
+  function sfNice(v) {
+    var p = Math.pow(10, Math.floor(Math.log(v) / Math.LN10)), m = v / p;
+    return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10) * p;
+  }
+  function sfCobb(al, be) {
+    var A = 10, X = 10, r = al + be, top = A * Math.pow(X, r), st = sfNice(top / 8), lv = [], c;
+    var zT = st * Math.ceil(top / st - 1e-9), n = Math.round(zT / st);
+    for (c = st; c < top * 0.97; c += st) lv.push(Math.round(c * 1e6) / 1e6);
+    return {
+      tex: 'z = 10x^{' + sfNum(al) + '}y^{' + sfNum(be) + '}',
+      f: function (x, y) { return A * Math.pow(Math.max(x, 0), al) * Math.pow(Math.max(y, 0), be); },
+      x: [0, X], y: [0, X], z: [0, zT], tk: [0, 2, 4, 6, 8, 10], tl: [0, 5, 10],
+      zt: n % 2 === 0 ? [0, zT / 2, zT] : [0, zT], lv: lv,
+      lab: function (C) { var t = Math.pow(C / A, 1 / r); return t <= X * 0.94 ? [t, t] : null; }
+    };
+  }
   function sfHex(c) {
     c = (c || '').trim();
     var m = /^#([0-9a-f]{6})$/i.exec(c);
@@ -1649,23 +1675,26 @@
   }
   function initSurface3d(box) {
     var uid = 'sf' + (++sfCount);
-    var mode = box.getAttribute('data-mode') || 'surface';
-    var keys = (box.getAttribute('data-fns') || 'sq lin xy').split(' ').filter(function (k) { return SURF[k]; });
+    var mode = box.getAttribute('data-mode') || 'surface', cobb = mode === 'cobb';
+    var keys = cobb ? [] : (box.getAttribute('data-fns') || 'sq lin xy').split(' ').filter(function (k) { return SURF[k]; });
     var key = box.getAttribute('data-fn') || keys[0];
     var az = -0.62, el = 0.52, dir = 'x';
     var S = {};
+    function FF() { return cobb ? sfCobb(S.al, S.be) : SURF[key]; }
     function reset() {
+      if (cobb) { S.al = 0.75; S.be = 0.25; return; }
       var F = SURF[key];
       S.a = mode === 'slice' ? F.s0[0] : F.p0[0];
       S.b = mode === 'slice' ? F.s0[1] : F.p0[1];
       S.C = F.c0;
     }
-    var hint = mode === 'levels' ? T.sfHintLevels : (mode === 'slice' ? T.sfHintSlice : T.sfHintSurface);
+    var hint = cobb ? T.sfHintCobb : (mode === 'levels' ? T.sfHintLevels : (mode === 'slice' ? T.sfHintSlice : T.sfHintSurface));
     var rotIco = function (d) {
       return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         (d < 0 ? '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/>' : '<path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v4h-4"/>') + '</svg>';
     };
-    var sliders = mode === 'levels' ? ['C'] : ['a', 'b'];
+    var sliders = cobb ? ['al', 'be'] : (mode === 'levels' ? ['C'] : ['a', 'b']);
+    var twoP = cobb || mode === 'levels';
     box.classList.add('tryit', 'sf');
     box.innerHTML =
       '<p class="tryit-title">' + ICON.slider + esc(T.tryIt) + '</p>' +
@@ -1677,11 +1706,11 @@
       (mode === 'slice' ? '<div class="sd-btns sf-dirs" role="group" aria-label="' + esc(T.sfDirGroup) + '">' +
         '<button type="button" class="sd-btn sd-b1 sf-dir" data-d="x" aria-pressed="true"><span class="dot" aria-hidden="true"></span>' + esc(T.sfByX) + '</button>' +
         '<button type="button" class="sd-btn sd-b1 sf-dir" data-d="y" aria-pressed="false"><span class="dot" aria-hidden="true"></span>' + esc(T.sfByY) + '</button></div>' : '') +
-      '<div class="sf-panels ' + (mode === 'levels' ? 'two' : 'one') + '">' +
+      '<div class="sf-panels ' + (twoP ? 'two' : 'one') + '">' +
         '<div class="sf-view"><canvas class="sf-cv" role="img"></canvas>' +
           '<div class="sf-rot"><button type="button" class="sf-rb" data-r="-1" aria-label="' + esc(T.sfRotL) + '">' + rotIco(-1) + '</button>' +
           '<button type="button" class="sf-rb" data-r="1" aria-label="' + esc(T.sfRotR) + '">' + rotIco(1) + '</button></div></div>' +
-        (mode === 'levels' ? '<div class="sf-map"></div>' : '') +
+        (twoP ? '<div class="sf-map"></div>' : '') +
       '</div>' +
       sliders.map(function (s) {
         return '<div class="ctrl"><label for="' + uid + '-' + s + '" class="js-l' + s + '"></label><input id="' + uid + '-' + s + '" type="range"><output for="' + uid + '-' + s + '"></output></div>';
@@ -1695,11 +1724,16 @@
     sliders.forEach(function (s) { inp[s] = $('#' + uid + '-' + s, box); out[s] = $('output[for="' + uid + '-' + s + '"]', box); });
     $all('.sf-fn', box).forEach(function (b) { renderInline($('.js-ft', b), SURF[b.getAttribute('data-k')].tex); });
     function labels() {
+      if (cobb) { renderInline($('.js-lal', box), '\\alpha'); renderInline($('.js-lbe', box), '\\beta'); return; }
       if (mode === 'levels') { renderInline($('.js-lC', box), 'C'); return; }
       renderInline($('.js-la', box), mode === 'slice' ? 'x_0' : 'x');
       renderInline($('.js-lb', box), mode === 'slice' ? 'y_0' : 'y');
     }
     function setRanges() {
+      if (cobb) {
+        ['al', 'be'].forEach(function (s) { inp[s].min = 0.1; inp[s].max = 0.9; inp[s].step = 0.05; inp[s].value = S[s]; });
+        return;
+      }
       var F = SURF[key];
       if (mode === 'levels') {
         inp.C.min = F.c[0]; inp.C.max = F.c[1]; inp.C.step = F.c[2]; inp.C.value = S.C;
@@ -1722,9 +1756,9 @@
 
     /* ---------- 3D brėžinys ---------- */
     function draw3d() {
-      var F = SURF[key], col = colors();
+      var F = FF(), col = colors();
       var w = Math.max(220, Math.round(view.clientWidth || 320));
-      var h = Math.round(w * (mode === 'levels' ? 0.95 : 0.82));
+      var h = Math.round(w * (twoP ? 0.95 : 0.82));
       var dpr = window.devicePixelRatio || 1;
       cv.style.height = h + 'px';
       cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
@@ -1851,6 +1885,24 @@
           }
         }
       }
+      if (cobb) {
+        /* lygio linijos paviršiuje ir jų projekcijos grindyse */
+        var lvS = sfRgb(col.exam, 1);
+        F.lv.forEach(function (Cv) {
+          for (i = 0; i < N; i++) {
+            for (j = 0; j < N; j++) {
+              var sg2 = sfCell(xs[i], ys[j], xs[i + 1], ys[j + 1],
+                [Zg[i][j] - Cv, Zg[i + 1][j] - Cv, Zg[i + 1][j + 1] - Cv, Zg[i][j + 1] - Cv]);
+              if (!sg2.length) continue;
+              var ds = (P[i][j][2] + P[i + 1][j][2] + P[i + 1][j + 1][2] + P[i][j + 1][2]) / 4;
+              sg2.forEach(function (s) {
+                items.push({ d: ds - 0.004, k: 's', a: pr(s[0][0], s[0][1], Cv), b: pr(s[1][0], s[1][1], Cv), c: lvS, w: 2 });
+                floorSegs.push([pr(s[0][0], s[0][1], z0), pr(s[1][0], s[1][1], z0)]);
+              });
+            }
+          }
+        });
+      }
       var tanSeg = null, mark = null;
       if (mode === 'slice') {
         var a0 = S.a, b0 = S.b, plS = sfRgb(col.c3, 0.16), cvC = sfRgb(col.c3, 1), M = 6, NS = 48, k2;
@@ -1880,7 +1932,7 @@
         mark = at(u, f0);
       }
       /* grindų projekcija */
-      floorSegs.forEach(function (s) { seg(s[0], s[1], sfRgb(col.exam, 0.85), 1.6, [4, 3]); });
+      floorSegs.forEach(function (s) { seg(s[0], s[1], sfRgb(col.exam, cobb ? 0.55 : 0.85), cobb ? 1.2 : 1.6, [4, 3]); });
       items.sort(function (p, q) { return q.d - p.d; });
       items.forEach(function (it) {
         if (it.k === 'q') poly(it.p, it.fill, it.mesh ? mesh : null, 0.7);
@@ -1906,13 +1958,13 @@
         seg(tanSeg[0], tanSeg[1], sfRgb(col.exam, 1), 2.6);
         dot(mark, 5.5, sfRgb(col.exam, 1), sfRgb(col.surf, 1));
       }
-      cv.setAttribute('aria-label', T.sfAria + ' ' + F.tex.replace(/\^2/g, '²'));
+      cv.setAttribute('aria-label', T.sfAria + ' ' + F.tex.replace(/\^2/g, '²').replace(/[{}]/g, ''));
     }
 
     /* ---------- lygio linijų žemėlapis (SVG) ---------- */
     function drawMap() {
       if (!map) return;
-      var F = SURF[key], W = 300, H = 300, PL = 36, PR = 286, PT = 16, PB = 266;
+      var F = FF(), W = 300, H = 300, PL = 36, PR = 286, PT = 16, PB = 266;
       var X = function (x) { return PL + (x - F.x[0]) / (F.x[1] - F.x[0]) * (PR - PL); };
       var Y = function (y) { return PB - (y - F.y[0]) / (F.y[1] - F.y[0]) * (PB - PT); };
       var r1 = function (v) { return Math.round(v * 10) / 10; };
@@ -1929,7 +1981,7 @@
         s += '<text class="muted" x="' + (PL - 6) + '" y="' + r1(Y(t) + 4) + '" text-anchor="end">' + sfTxt(t) + '</text>';
       });
       s += '<text class="m" x="' + (PR - 2) + '" y="' + (PB + 30) + '" text-anchor="end">x</text>';
-      s += '<text class="m" x="' + (PL - 24) + '" y="' + (PT + 4) + '">y</text>';
+      s += '<text class="m" x="' + (PL - (cobb ? 34 : 24)) + '" y="' + (PT + 4) + '">y</text>';
       var NM = 80;
       function path(C) {
         var d = '';
@@ -1944,22 +1996,38 @@
         }
         return d;
       }
-      var labs = '';
+      var labs = '', lastL = null;
       F.lv.forEach(function (C) {
         if (C === S.C) return;
-        s += '<path class="sf-lv" d="' + path(C) + '"/>';
+        s += '<path class="sf-lv' + (cobb ? ' sf-cd' : '') + '" d="' + path(C) + '"/>';
         var p = F.lab(C);
-        if (p) labs += '<text class="muted sf-lt" x="' + r1(X(p[0]) + 5) + '" y="' + r1(Y(p[1]) - 5) + '">' + sfTxt(C) + '</text>';
+        if (!p) return;
+        var lx = X(p[0]) + 5, ly = Y(p[1]) - 5;
+        if (cobb) {
+          /* artimų linijų užrašai nepiešiami, kad nesusiliestų */
+          if (lastL && Math.abs(lx - lastL[0]) < 22 && Math.abs(ly - lastL[1]) < 16) return;
+          lastL = [lx, ly];
+          labs += '<text class="sf-lt sf-ton" x="' + r1(lx) + '" y="' + r1(ly) + '">' + sfTxt(C) + '</text>';
+        } else labs += '<text class="muted sf-lt" x="' + r1(lx) + '" y="' + r1(ly) + '">' + sfTxt(C) + '</text>';
       });
-      s += '<path class="sf-lv sf-on" d="' + path(S.C) + '"/>';
-      var pc = F.lab(S.C);
-      if (pc) labs += '<text class="sf-lt sf-ton" x="' + r1(X(pc[0]) + 5) + '" y="' + r1(Y(pc[1]) - 5) + '"><tspan class="i">C</tspan> = ' + sfTxt(S.C) + '</text>';
+      if (!cobb) {
+        s += '<path class="sf-lv sf-on" d="' + path(S.C) + '"/>';
+        var pc = F.lab(S.C);
+        if (pc) labs += '<text class="sf-lt sf-ton" x="' + r1(X(pc[0]) + 5) + '" y="' + r1(Y(pc[1]) - 5) + '"><tspan class="i">C</tspan> = ' + sfTxt(S.C) + '</text>';
+      }
       map.innerHTML = '<svg class="plot" viewBox="0 0 ' + W + ' ' + (H + 18) + '" role="img" aria-label="' + esc(T.sfMapAria) + '">' + s + labs + '</svg>';
     }
 
     /* ---------- reikšmės ir paaiškinimai ---------- */
     function texts() {
-      var F = SURF[key], a = S.a, b = S.b;
+      var F = FF(), a = S.a, b = S.b;
+      if (cobb) {
+        out.al.textContent = sfTxt(S.al); out.be.textContent = sfTxt(S.be);
+        var sum = Math.round((S.al + S.be) * 100) / 100;
+        rich(vals, [{ m: F.tex }, '\u2003', { m: '\\alpha + \\beta = ' + sfNum(sum) }]);
+        rich(note, [Math.abs(sum - 1) < 1e-9 ? T.sfCdEq : (sum < 1 ? T.sfCdLess : T.sfCdMore)]);
+        return;
+      }
       if (mode === 'surface') {
         out.a.textContent = sfTxt(a); out.b.textContent = sfTxt(b);
         rich(vals, [{ m: 'f(' + sfNum(a) + ';\\,' + sfNum(b) + ') = ' + F.val(a, b) + ' = ' + sfNum(F.f(a, b)) }]);

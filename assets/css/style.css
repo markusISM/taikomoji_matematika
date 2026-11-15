@@ -1148,3 +1148,8 @@ svg text.sf-ton { fill: var(--exam); font-weight: 700; font-size: 13px; }
 /* Ilgos vienos eilutės formulės siauriems ekranams (pvz., dalinių išvestinių apibrėžimai) */
 @media (max-width: 400px) { .formula.fit-xs .katex-display > .katex { font-size: .79em; } }
 @media (max-width: 340px) { .formula.fit-xs .katex-display > .katex { font-size: .66em; } }
+svg .sf-lv.sf-cd { stroke: var(--exam); stroke-width: 2; stroke-opacity: .9; }
+/* Formulė, kurios eilutės laužomos tik siaurame ekrane: .m-wide rodoma plačiame, .m-narrow – siaurame (≤560 px) */
+.m-narrow { display: none; }
+@media (max-width: 560px) { .m-wide { display: none; } .m-narrow { display: block; } }
+@media (max-width: 720px) { .m-wide.bp-lg { display: none; } .m-narrow.bp-lg { display: block; } }
