@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pakaitalai ir papildai · Taikomoji matematika</title>
+<meta name="description" content="Pakaitalai ir papildai: dviejų prekių paklausos funkcijos, kryžminės paklausos išvestinės, prekių ryšio požymis ir interpretavimas. Pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=95">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=95"></script>
+</head>
+<body data-page="m84">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">8 tema · Taikymai · 4 skyrius</span>
+    <h1>Pakaitalai ir papildai</h1>
+    <p class="lead">Šiame skyriuje nagrinėjama, kaip vienos prekės paklausa priklauso nuo kitos prekės kainos. Pagal paklausos funkcijų dalinių išvestinių ženklus nustatoma, ar dvi prekės yra pakaitalai, papildai ar nei vieni, nei kiti.</p>
+    <ul class="jump">
+      <li><a href="#savokos">Sąvokos</a></li>
+      <li><a href="#pozymis">Požymis</a></li>
+      <li><a href="#interpretavimas">Interpretavimas</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. SĄVOKOS ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-def">
+    <h2 id="h-def">Pakaitalai ir papildai</h2>
+
+    <article class="card">
+      <p>Prekės paklausa priklauso ne tik nuo jos pačios kainos, bet ir nuo susijusių prekių kainų. Arbata ir kava, sviestas ir margarinas, autobuso ir traukinio bilietai gali pakeisti vieni kitus: vienai prekei pabrangus, kitos perkama daugiau. Automobiliai ir degalai, spausdintuvai ir rašalo kasetės, žaidimų konsolės ir žaidimai vartojami kartu: vienai prekei pabrangus, abiejų perkama mažiau.</p>
+      <div class="model-note">Dvi prekės vadinamos <strong>pakaitalais</strong>, jei bet kurios iš jų kainos padidėjimas padidina kitos prekės paklausą. Jos vadinamos <strong>papildais</strong>, jei bet kurios iš jų kainos padidėjimas sumažina kitos prekės paklausą.</div>
+
+      <h3 class="subhead" style="margin-top:22px">Dviejų prekių paklausos funkcijos</h3>
+      <p>Tarkime, \(p\) yra prekės A, o \(r\) – prekės B kaina. Kiekvienos prekės paklausos kiekis priklauso nuo abiejų kainų:</p>
+      <ul>
+        <li>prekės A paklausos funkcija: \(x = f(p;\,r)\);</li>
+        <li>prekės B paklausos funkcija: \(y = g(p;\,r)\).</li>
+      </ul>
+      <p>Kadangi kiekvienas kiekis priklauso nuo dviejų kainų, paklausos funkcijos čia išreiškia kiekius per kainas.</p>
+      <p>Kiekviena paklausos funkcija turi dvi pirmos eilės dalines išvestines. Išvestinė pagal pačios prekės kainą – \(f'_p\) prekei A ir \(g'_r\) prekei B – paprastai yra neigiama: prekei pabrangus, jos perkama mažiau. Išvestinės pagal kitos prekės kainą – \(f'_r\) prekei A ir \(g'_p\) prekei B – parodo prekių ryšį. Toliau jas vadinsime <strong>kryžminėmis paklausos išvestinėmis</strong>.</p>
+      <p>Visos keturios išvestinės:</p>
+      <div class="tbl-wrap">
+        <table class="vtable">
+          <thead>
+            <tr><th scope="col">Paklausa</th><th scope="col" style="text-align:center">Pagal \(p\)</th><th scope="col" style="text-align:center">Pagal \(r\)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>prekės A<br>\(x = f(p;\,r)\)</td><td style="text-align:center">\(f'_p\)<br>pačios kainos</td><td style="text-align:center">\(f'_r\)<br><strong>kryžminė</strong></td></tr>
+            <tr><td>prekės B<br>\(y = g(p;\,r)\)</td><td style="text-align:center">\(g'_p\)<br><strong>kryžminė</strong></td><td style="text-align:center">\(g'_r\)<br>pačios kainos</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 2. POŽYMIS ============ -->
+  <section class="section" id="pozymis" aria-labelledby="h-test">
+    <h2 id="h-test">Kaip nustatomas prekių ryšys</h2>
+
+    <article class="card">
+      <p>Prekių ryšys nustatomas pagal abiejų kryžminių paklausos išvestinių ženklus:</p>
+      <div class="tbl-wrap">
+        <table class="vtable cases-tbl">
+          <thead>
+            <tr><th scope="col">\(f'_r\)</th><th scope="col">\(g'_p\)</th><th scope="col">Prekės A ir B</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(&gt; 0\)</td><td>\(&gt; 0\)</td><td><strong>pakaitalai</strong></td></tr>
+            <tr><td>\(&lt; 0\)</td><td>\(&lt; 0\)</td><td><strong>papildai</strong></td></tr>
+            <tr><td colspan="2">ženklai skirtingi arba bent viena lygi 0</td><td>nei pakaitalai, nei papildai</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Šis požymis išplaukia iš kryžminių paklausos išvestinių prasmės. Kiekviena jų rodo, kaip vienos prekės paklausa reaguoja į kitos prekės kainos padidėjimą, kai pačios prekės kaina nekinta. Ryšys turi galioti abiem kryptimis, todėl reikia abiejų išvestinių.</p>
+      <div class="duo">
+        <div class="duo-card">
+          <h4>Abi kryžminės išvestinės teigiamos – pakaitalai</h4>
+          <p>\(f'_r &gt; 0\) reiškia, kad pabrangus prekei B, prekės A paklausa didėja. \(g'_p &gt; 0\) reiškia, kad pabrangus prekei A, prekės B paklausa didėja. Taigi bet kuriai prekei pabrangus, kitos perkama daugiau. Prekės gali pakeisti viena kitą: vienai pabrangus, pirkėjai renkasi kitą, todėl jos pardavimo kiekis didėja.</p>
+          <p style="margin-bottom:0">Pavyzdžiui, pabrangus traukinio bilietams, dalis keleivių renkasi autobusą, todėl parduodama daugiau autobuso bilietų.</p>
+        </div>
+        <div class="duo-card">
+          <h4>Abi kryžminės išvestinės neigiamos – papildai</h4>
+          <p>\(f'_r &lt; 0\) reiškia, kad pabrangus prekei B, prekės A paklausa mažėja. \(g'_p &lt; 0\) reiškia, kad pabrangus prekei A, prekės B paklausa mažėja. Taigi bet kuriai prekei pabrangus, kitos perkama mažiau. Prekės vartojamos kartu: vienai pabrangus, jos perkama mažiau, todėl mažiau reikia ir kitos.</p>
+          <p style="margin-bottom:0">Pavyzdžiui, pabrangus žaidimų konsolėms, jų parduodama mažiau, todėl mažiau perkama ir joms skirtų žaidimų.</p>
+        </div>
+      </div>
+      <p><strong>Ženklai skirtingi arba viena išvestinė lygi nuliui.</strong> Prekės į viena kitos kainas reaguoja nevienodai. Pavyzdžiui, vienos prekės kainos padidėjimas didina kitos paklausą, tačiau antrosios kainos padidėjimas pirmosios paklausą mažina arba jos nekeičia. Pagal šį požymį prekės nėra nei pakaitalai, nei papildai.</p>
+      <p>Ryšys nustatomas tik pagal kryžmines paklausos išvestines. Išvestinės pagal pačios prekės kainą rodo jos paklausos reakciją į savo kainą ir šiam ryšiui nustatyti nenaudojamos.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Nuo kainų priklausančios išvestinės ženklas</h3>
+      <p>Kainos teigiamos, todėl išvestinės, pavyzdžiui, \(-0{,}05p\) arba \(\frac{25}{\sqrt{r}}\), ženklas nekinta esant bet kokioms kainoms. Tuomet nustatytas ryšys galioja visoms kainoms. Jei išvestinės ženklas priklauso nuo kainų, prekių ryšys taip pat priklauso nuo jų ir nustatomas esant sąlygoje nurodytoms kainoms.</p>
+    </article>
+
+    <article class="card" id="interpretavimas">
+      <h3 class="subhead">Kryžminės paklausos išvestinės interpretavimas</h3>
+      <p>Išvestinių \(f'_r\) ir \(g'_p\) reikšmės duotosiomis kainomis interpretuojamos kaip bet kuris <a href="tema-8-pokyciu-analize.html#interpretavimas">kitimo greitis</a>: nurodoma, kuri kaina keičiasi, ir pabrėžiama, kad kita nekinta:</p>
+      <div class="model-note"><em>Prekės B kainai padidėjus vienu euru nuo \(r_0\), o prekės A kainai išlikus lygiai \(p_0\), prekės A paklausos kiekio pokytis apytiksliai lygus \(f'_r(p_0;\,r_0)\) vienetų.</em></div>
+      <div class="model-note"><em>Prekės A kainai padidėjus vienu euru nuo \(p_0\), o prekės B kainai išlikus lygiai \(r_0\), prekės B paklausos kiekio pokytis apytiksliai lygus \(g'_p(p_0;\,r_0)\) vienetų.</em></div>
+      <p>Žodis „apytiksliai“ praleidžiamas tik tada, kai išvestinė yra pastovi.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+
+    <article class="card">
+      <ol class="steps-list">
+        <li>Nustatykite abi paklausos funkcijas: \(x = f(p;\,r)\) prekei A ir \(y = g(p;\,r)\) prekei B. Čia \(p\) yra prekės A, o \(r\) – prekės B kaina.</li>
+        <li>Raskite \(f'_r\) – prekės A paklausos išvestinę pagal prekės B kainą, ir \(g'_p\) – prekės B paklausos išvestinę pagal prekės A kainą.</li>
+        <li>Nustatykite kiekvienos išvestinės ženklą: visoms teigiamoms kainoms arba sąlygoje nurodytoms kainoms.</li>
+        <li>Taikykite <a href="#pozymis">požymį</a>: abi teigiamos – pakaitalai; abi neigiamos – papildai; kitais atvejais – nei pakaitalai, nei papildai.</li>
+        <li>Jei prašoma, apskaičiuokite reikšmes duotosiomis kainomis ir jas <a href="#interpretavimas">interpretuokite</a>.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Ryšys nustatomas pagal pačios prekės kainos išvestines.</strong> \(f'_p\) ir \(g'_r\) rodo paklausos reakciją į savo kainą ir prekių ryšiui nustatyti nenaudojamos.</li>
+            <li><strong>Patikrinama tik viena kryžminė išvestinė.</strong> Ryšys turi galioti abiem kryptimis, todėl reikia abiejų išvestinių \(f'_r\) ir \(g'_p\).</li>
+            <li><strong>Skirtingų ženklų išvestinės laikomos pakaitalų ar papildų požymiu.</strong> Jei ženklai skirtingi arba bent viena išvestinė lygi nuliui, prekės nėra nei pakaitalai, nei papildai.</li>
+            <li><strong>Išvada apibendrinama visoms kainoms.</strong> Jei išvestinės ženklas priklauso nuo kainų, ryšys nustatomas tik esant sąlygoje nurodytoms kainoms.</li>
+            <li><strong>Interpretacijoje nepaminėta kita kaina arba netinkamai vartojamas žodis „apytiksliai“.</strong> Reikia pabrėžti, kad kita kaina nekinta. Žodis „apytiksliai“ praleidžiamas tik tada, kai išvestinė pastovi.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 8.5, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Autobuso ir traukinio bilietai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Du miesto rajonus jungia autobuso ir traukinio maršrutai. Autobuso ir traukinio bilietų dienos paklausos funkcijos yra
+        \[ \begin{aligned} x &amp;= f(p;\,r) = 1200 - 30p + 20r \\ y &amp;= g(p;\,r) = 900 + 15p - 40r \end{aligned} \]
+        čia \(p\) – autobuso bilieto, \(r\) – traukinio bilieto kaina eurais.
+        <br>a) Nustatykite, ar autobuso ir traukinio bilietai yra pakaitalai, papildai ar nei vieni, nei kiti.
+        <br>b) Interpretuokite išvestines \(f'_r\) ir \(g'_p\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Kryžminės paklausos išvestinės</span></h4>
+          <p>Diferencijuojant pagal \(r\), nariai \(1200\) ir \(30p\) yra konstantos, o pagal \(p\) – nariai \(900\) ir \(40r\):</p>
+          \[ f'_r = 20 &gt; 0;\qquad g'_p = 15 &gt; 0 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Prekių ryšys</span></h4>
+          <p>Abi kryžminės paklausos išvestinės teigiamos, todėl bilietai yra pakaitalai. Išvestinės pagal pačios prekės kainą \(f'_p = -30\) ir \(g'_r = -40\) yra neigiamos, kaip ir tikėtasi.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Interpretavimas</span></h4>
+          <p>Abi išvestinės pastovios, todėl jomis nusakomi pokyčiai yra tikslūs – žodis „apytiksliai“ nevartojamas.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Autobuso ir traukinio bilietai yra pakaitalai.</p>
+            <p>b) Traukinio bilieto kainai padidėjus vienu euru, o autobuso bilieto kainai nepasikeitus, autobuso bilietų paklausa padidėja 20 bilietų per dieną. Autobuso bilieto kainai padidėjus vienu euru, o traukinio bilieto kainai nepasikeitus, traukinio bilietų paklausa padidėja 15 bilietų per dieną.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 8.5, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Žaidimų konsolės ir žaidimai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Parduotuvės mėnesio žaidimų konsolių ir žaidimų paklausos funkcijos yra
+        <div class="fit-sm">\[ \begin{aligned} x &amp;= f(p;\,r) = 4000 - 6p - 0{,}05pr \\ y &amp;= g(p;\,r) = 15\,000 - 0{,}02p^2 - 80r \end{aligned} \]</div>
+        čia \(p\) – konsolės, \(r\) – žaidimo kaina eurais.
+        <br>a) Nustatykite, ar konsolės ir žaidimai yra pakaitalai, papildai ar nei vieni, nei kiti.
+        <br>b) Apskaičiuokite ir interpretuokite kryžmines paklausos išvestines, kai konsolė kainuoja 400 eurų, o žaidimas – 60 eurų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Kryžminės paklausos išvestinės</span></h4>
+          <p>Pagal \(r\) nariai \(4000\) ir \(6p\) yra konstantos, o sandaugoje \(0{,}05pr\) daugiklis \(0{,}05p\) yra pastovus. Pagal \(p\) nariai \(15\,000\) ir \(80r\) yra konstantos:</p>
+          \[ f'_r = -0{,}05p;\qquad g'_p = -0{,}04p \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Ženklai</span></h4>
+          <p>Kaina \(p\) teigiama, todėl abi išvestinės neigiamos esant bet kokioms kainoms: \(f'_r &lt; 0\) ir \(g'_p &lt; 0\). Prekės yra papildai.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Reikšmės</span></h4>
+          <p>Kai kainos yra \((400;\,60)\):</p>
+          \[ \begin{aligned} f'_r(400;\,60) &amp;= -0{,}05\cdot 400 = -20 \\ g'_p(400;\,60) &amp;= -0{,}04\cdot 400 = -16 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Konsolės ir žaidimai yra papildai.</p>
+            <p>b) Žaidimo kainai padidėjus vienu euru nuo 60, o konsolės kainai išlikus 400 eurų, konsolių paklausa sumažėja apytiksliai 20 per mėnesį. Konsolės kainai padidėjus vienu euru nuo 400, o žaidimo kainai išlikus 60 eurų, žaidimų paklausa sumažėja apytiksliai 16 per mėnesį.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 8.5, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Kino bilietai ir vaizdo turinio prenumeratos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Mieste atliktas tyrimas parodė, kad kino bilietų ir vaizdo turinio prenumeratų mėnesio paklausos funkcijos yra
+        \[ \begin{aligned} x &amp;= f(p;\,r) = 3000 - 120p + 50\sqrt{r} \\ y &amp;= g(p;\,r) = 8000 - 40\sqrt{p} - 200r \end{aligned} \]
+        čia \(p\) – kino bilieto, \(r\) – mėnesio prenumeratos kaina eurais. Nustatykite, ar kino bilietai ir vaizdo turinio prenumeratos yra pakaitalai, papildai ar nei vieni, nei kiti.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kryžminės paklausos išvestinės</span></h4>
+          <p>Šaknis diferencijuojame pagal formulę \(\big(\sqrt{r}\big)'_r = \frac{1}{2\sqrt{r}}\):</p>
+          \[ \begin{aligned} f'_r &amp;= 50\cdot\frac{1}{2\sqrt{r}} = \frac{25}{\sqrt{r}} \\[6pt] g'_p &amp;= -40\cdot\frac{1}{2\sqrt{p}} = -\frac{20}{\sqrt{p}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Ženklai</span></h4>
+          <p>Teigiamų kainų šaknys teigiamos, todėl \(f'_r &gt; 0\) ir \(g'_p &lt; 0\) esant bet kokioms kainoms. Prenumeratai pabrangus, kino bilietų paklausa didėja, tačiau pabrangus kino bilietams, prenumeratų paklausa mažėja. Išvestinių ženklai skirtingi.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Kino bilietai ir vaizdo turinio prenumeratos nėra nei pakaitalai, nei papildai.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 8.5, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Teatro bilietai ir automobilių stovėjimas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Teatro bilietų ir šalia jo esančios automobilių stovėjimo aikštelės vietų mėnesio paklausos funkcijos yra
+        <div class="m-wide">\[ x = f(p;\,r) = \frac{60\,000}{p + 2r};\qquad y = g(p;\,r) = \frac{40\,000}{2p + r} \]</div><div class="m-narrow">\[ \begin{aligned} x &amp;= f(p;\,r) = \frac{60\,000}{p + 2r} \\[8pt] y &amp;= g(p;\,r) = \frac{40\,000}{2p + r} \end{aligned} \]</div>
+        čia \(p\) – bilieto kaina, \(r\) – stovėjimo vietos kaina vakarui eurais.
+        <br>a) Nustatykite, ar teatro bilietai ir stovėjimo vietos yra pakaitalai, papildai ar nei vieni, nei kiti.
+        <br>b) Apskaičiuokite ir interpretuokite kryžmines paklausos išvestines, kai bilietas kainuoja 20 eurų, o stovėjimas – 10 eurų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Kryžminės paklausos išvestinės</span></h4>
+          <p>Funkcijas užrašome laipsniais: \(f = 60\,000(p + 2r)^{-1}\) ir \(g = 40\,000(2p + r)^{-1}\). Abi funkcijos <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinės</a>: išorinė funkcija yra laipsnis su rodikliu \(-1\). Funkcijos \(f\) vidinė funkcija yra \(u = p + 2r\), jos išvestinė \(u'_r = 2\); funkcijos \(g\) vidinė funkcija yra \(u = 2p + r\), jos išvestinė \(u'_p = 2\). Pagal sudėtinės laipsninės funkcijos išvestinės formulę gauname</p>
+          <div class="m-wide">\[ \begin{aligned} f'_r &amp;= 60\,000\cdot(-1)(p + 2r)^{-2}\cdot 2 = -\frac{120\,000}{(p + 2r)^2} \\[6pt] g'_p &amp;= 40\,000\cdot(-1)(2p + r)^{-2}\cdot 2 = -\frac{80\,000}{(2p + r)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r &amp;= 60\,000\cdot(-1)(p + 2r)^{-2}\cdot 2 \\[4pt] &amp;= -\frac{120\,000}{(p + 2r)^2} \\[10pt] g'_p &amp;= 40\,000\cdot(-1)(2p + r)^{-2}\cdot 2 \\[4pt] &amp;= -\frac{80\,000}{(2p + r)^2} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Ženklai</span></h4>
+          <p>Vardiklių kvadratai teigiami, todėl abi išvestinės neigiamos esant bet kokioms kainoms. Prekės yra papildai.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Reikšmės</span></h4>
+          <p>Kai kainos yra \((20;\,10)\), vardikliai lygūs \((20 + 20)^2 = 1600\) ir \((40 + 10)^2 = 2500\):</p>
+          \[ \begin{aligned} f'_r(20;\,10) &amp;= -\frac{120\,000}{1600} = -75 \\[6pt] g'_p(20;\,10) &amp;= -\frac{80\,000}{2500} = -32 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Teatro bilietai ir stovėjimo vietos yra papildai.</p>
+            <p>b) Stovėjimo kainai padidėjus vienu euru nuo 10, o bilieto kainai išlikus 20 eurų, teatro bilietų paklausa sumažėja apytiksliai 75 per mėnesį. Bilieto kainai padidėjus vienu euru nuo 20, o stovėjimo kainai išlikus 10 eurų, stovėjimo vietų paklausa sumažėja apytiksliai 32 per mėnesį.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 8.5, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Sviestas ir margarinas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Prekybos centro savaitės sviesto ir margarino paklausos funkcijos kilogramais yra
+        <div class="m-wide">\[ x = f(p;\,r) = 400e^{-0{,}2p + 0{,}1r};\qquad y = g(p;\,r) = 600e^{0{,}05p - 0{,}3r} \]</div><div class="m-narrow">\[ \begin{aligned} x &amp;= f(p;\,r) = 400e^{-0{,}2p + 0{,}1r} \\ y &amp;= g(p;\,r) = 600e^{0{,}05p - 0{,}3r} \end{aligned} \]</div>
+        čia \(p\) – sviesto, \(r\) – margarino kilogramo kaina eurais.
+        <br>a) Nustatykite, ar sviestas ir margarinas yra pakaitalai, papildai ar nei vieni, nei kiti.
+        <br>b) Apskaičiuokite ir interpretuokite kryžmines paklausos išvestines, kai sviesto kilogramas kainuoja 5 eurus, o margarino – 2 eurus.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Kryžminės paklausos išvestinės</span></h4>
+          <p>Abi funkcijos sudėtinės: išorinė yra rodiklinė funkcija, o vidinės – \(-0{,}2p + 0{,}1r\) ir \(0{,}05p - 0{,}3r\). Pirmosios vidinės funkcijos išvestinė pagal \(r\) lygi \(0{,}1\), antrosios išvestinė pagal \(p\) – \(0{,}05\). Pagal formulę \(\big(e^u\big)'_r = e^u\cdot u'_r\) gauname</p>
+          <div class="m-wide">\[ \begin{aligned} f'_r &amp;= 400e^{-0{,}2p + 0{,}1r}\cdot 0{,}1 = 40e^{-0{,}2p + 0{,}1r} \\[6pt] g'_p &amp;= 600e^{0{,}05p - 0{,}3r}\cdot 0{,}05 = 30e^{0{,}05p - 0{,}3r} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r &amp;= 400e^{-0{,}2p + 0{,}1r}\cdot 0{,}1 \\[4pt] &amp;= 40e^{-0{,}2p + 0{,}1r} \\[10pt] g'_p &amp;= 600e^{0{,}05p - 0{,}3r}\cdot 0{,}05 \\[4pt] &amp;= 30e^{0{,}05p - 0{,}3r} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>a) Ženklai</span></h4>
+          <p>Rodiklinės funkcijos reikšmė teigiama esant bet kokiam laipsnio rodikliui, todėl abi išvestinės teigiamos visoms kainoms. Prekės yra pakaitalai.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>b) Reikšmės</span></h4>
+          <p>Kai kainos yra \((5;\,2)\), laipsnių rodikliai lygūs \(-0{,}2\cdot 5 + 0{,}1\cdot 2 = -0{,}8\) ir \(0{,}05\cdot 5 - 0{,}3\cdot 2 = -0{,}35\):</p>
+          \[ \begin{aligned} f'_r(5;\,2) &amp;= 40e^{-0{,}8} \approx 17{,}97 \\ g'_p(5;\,2) &amp;= 30e^{-0{,}35} \approx 21{,}14 \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Sviestas ir margarinas yra pakaitalai.</p>
+            <p>b) Margarino kainai padidėjus vienu euru nuo 2, o sviesto kainai išlikus 5 eurų už kilogramą, sviesto paklausa padidėja apytiksliai 17,97 kilogramo per savaitę. Sviesto kainai padidėjus vienu euru nuo 5, o margarino kainai išlikus 2 eurų už kilogramą, margarino paklausa padidėja apytiksliai 21,14 kilogramo per savaitę.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 8.5, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Muziejaus ir zoologijos sodo bilietai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Miesto muziejaus ir zoologijos sodo bilietų dienos paklausos funkcijos yra
+        \[ \begin{aligned} x &amp;= f(p;\,r) = 800 - 10p + 50re^{-0{,}1r} \\ y &amp;= g(p;\,r) = 500 - 20r + 40\ln(p + 1) \end{aligned} \]
+        čia \(p\) – muziejaus, \(r\) – zoologijos sodo bilieto kaina eurais. Nustatykite, ar bilietai yra pakaitalai, papildai ar nei vieni, nei kiti, kai
+        <br>a) muziejaus bilietas kainuoja 12 eurų, o zoologijos sodo – 8 eurus;
+        <br>b) muziejaus bilietas kainuoja 12 eurų, o zoologijos sodo – 15 eurų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Išvestinė \(f'_r\)</span></h4>
+          <p>Nariai \(800\) ir \(10p\) yra konstantos. Paskutinis narys yra sandauga, todėl taikome <a href="tema-8-sandaugos-taisykle.html">sandaugos taisyklę</a>, kai \(u = 50r\) ir \(v = e^{-0{,}1r}\). Čia \(u'_r = 50\). Rodiklinės funkcijos vidinė funkcija yra \(-0{,}1r\), todėl \(v'_r = -0{,}1e^{-0{,}1r}\):</p>
+          <div class="m-wide">\[ f'_r = 50e^{-0{,}1r} + 50r\cdot\left(-0{,}1e^{-0{,}1r}\right) = 50e^{-0{,}1r}(1 - 0{,}1r) \]</div><div class="m-narrow">\[ \begin{aligned} f'_r &amp;= 50e^{-0{,}1r} + 50r\cdot\left(-0{,}1e^{-0{,}1r}\right) \\[4pt] &amp;= 50e^{-0{,}1r}(1 - 0{,}1r) \end{aligned} \]</div>
+          <p>Daugiklis \(50e^{-0{,}1r}\) teigiamas, todėl išvestinės \(f'_r\) ženklą lemia \(1 - 0{,}1r\): jis teigiamas, kai \(r &lt; 10\), ir neigiamas, kai \(r &gt; 10\). Taigi prekių ryšys priklauso nuo zoologijos sodo bilieto kainos.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Išvestinė \(g'_p\)</span></h4>
+          <p>Nariai \(500\) ir \(20r\) yra konstantos. Taikome formulę \(\big(\ln u\big)'_p = \frac{u'_p}{u}\), kai \(u = p + 1\):</p>
+          \[ g'_p = \frac{40}{p + 1} &gt; 0 \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>a) Kainos \((12;\,8)\)</span></h4>
+          <div class="m-wide">\[ \begin{aligned} f'_r(12;\,8) &amp;= 50e^{-0{,}8}\cdot 0{,}2 = 10e^{-0{,}8} \approx 4{,}49 &gt; 0 \\[6pt] g'_p(12;\,8) &amp;= \frac{40}{13} \approx 3{,}08 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r(12;\,8) &amp;= 50e^{-0{,}8}\cdot 0{,}2 = 10e^{-0{,}8} \\[4pt] &amp;\approx 4{,}49 &gt; 0 \\[8pt] g'_p(12;\,8) &amp;= \frac{40}{13} \approx 3{,}08 &gt; 0 \end{aligned} \]</div>
+          <p>Abi kryžminės paklausos išvestinės teigiamos.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>b) Kainos \((12;\,15)\)</span></h4>
+          <div class="m-wide">\[ \begin{aligned} f'_r(12;\,15) &amp;= 50e^{-1{,}5}\cdot(-0{,}5) = -25e^{-1{,}5} \approx -5{,}58 &lt; 0 \\[6pt] g'_p(12;\,15) &amp;\approx 3{,}08 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r(12;\,15) &amp;= 50e^{-1{,}5}\cdot(-0{,}5) = -25e^{-1{,}5} \\[4pt] &amp;\approx -5{,}58 &lt; 0 \\[8pt] g'_p(12;\,15) &amp;\approx 3{,}08 &gt; 0 \end{aligned} \]</div>
+          <p>Išvestinių ženklai skirtingi.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Kai muziejaus bilietas kainuoja 12 eurų, o zoologijos sodo – 8 eurus, bilietai yra pakaitalai.</p>
+            <p>b) Kai muziejaus bilietas kainuoja 12 eurų, o zoologijos sodo – 15 eurų, bilietai nėra nei pakaitalai, nei papildai.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: raskite abi kryžmines paklausos išvestines, nustatykite jų ženklus ir pritaikykite požymį. Atsakyme pateiktos išvestinės ir išvada – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 8 rinkinys, 4 sk. 1 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Knygynas parduoda elektronines ir spausdintas knygas. Kai elektroninės knygos kaina yra \(p\) eurų, o spausdintos – \(r\) eurų, mėnesio paklausos kiekiai yra</p>
+          \[ \begin{aligned} x &amp;= f(p;\,r) = 5000 - 40p + 25r \\ y &amp;= g(p;\,r) = 3000 + 10p - 30r \end{aligned} \]
+          <p>atitinkamai elektroninių ir spausdintų knygų. Nustatykite, ar šios prekės yra pakaitalai, papildai ar nei vieni, nei kiti.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ f'_r = 25 &gt; 0;\qquad g'_p = 10 &gt; 0 \]
+          <p><strong>Atsakymas.</strong> Abi išvestinės teigiamos, todėl elektroninės ir spausdintos knygos yra pakaitalai.</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kai spausdintuvo kaina yra \(p\) eurų, o jam skirtos rašalo kasetės – \(r\) eurų, spausdintuvų ir kasečių metinės paklausos kiekiai yra</p>
+          \[ \begin{aligned} x &amp;= f(p;\,r) = 1200 - 3p - 4r \\ y &amp;= g(p;\,r) = 9000 - 20p - 50r \end{aligned} \]
+          <p>Nustatykite, ar šios prekės yra pakaitalai, papildai ar nei vieni, nei kiti.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ f'_r = -4 &lt; 0;\qquad g'_p = -20 &lt; 0 \]
+          <p><strong>Atsakymas.</strong> Abi išvestinės neigiamos, todėl spausdintuvai ir rašalo kasetės yra papildai.</p>
+        </div>
+      </article>
+
+      <!-- 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Sporto prekių parduotuvėje parduodamos dvi prekės, kurių vieneto kainos yra \(p\) ir \(r\) eurų. Jų savaitės paklausos kiekiai yra</p>
+          \[ \begin{aligned} x &amp;= f(p;\,r) = 600 - 5p + 4\sqrt{r} \\ y &amp;= g(p;\,r) = 900 - 30r - 0{,}5p^2 \end{aligned} \]
+          <p>Nustatykite, ar šios prekės yra pakaitalai, papildai ar nei vieni, nei kiti.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės:</strong></p>
+          \[ f'_r = \frac{2}{\sqrt{r}} &gt; 0;\qquad g'_p = -p &lt; 0 \]
+          <p><strong>Atsakymas.</strong> Išvestinių ženklai skirtingi, todėl prekės nėra nei pakaitalai, nei papildai.</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Mieste veikia dvi paspirtukų dalijimosi paslaugas teikiančios įmonės. Kai kelionė pirmosios įmonės paspirtuku kainuoja \(p\) eurų, o antrosios – \(r\) eurų, kelionių skaičiai per dieną yra</p>
+          <div class="m-wide">\[ x = f(p;\,r) = \frac{2000r}{p + r};\qquad y = g(p;\,r) = \frac{1500p}{p + r} \]</div><div class="m-narrow">\[ \begin{aligned} x &amp;= f(p;\,r) = \frac{2000r}{p + r} \\[8pt] y &amp;= g(p;\,r) = \frac{1500p}{p + r} \end{aligned} \]</div>
+          <p>a) Nustatykite, ar šios paslaugos yra pakaitalai, papildai ar nei vienos, nei kitos.</p>
+          <p>b) Raskite \(f'_r(4;\,6)\) ir \(g'_p(4;\,6)\). Interpretuokite rezultatus.</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Išvestinės (dalmens taisyklė):</strong></p>
+          <div class="m-wide">\[ \begin{aligned} f'_r &amp;= \frac{2000(p + r) - 2000r\cdot 1}{(p + r)^2} = \frac{2000p}{(p + r)^2} &gt; 0 \\[8pt] g'_p &amp;= \frac{1500(p + r) - 1500p\cdot 1}{(p + r)^2} = \frac{1500r}{(p + r)^2} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} f'_r &amp;= \frac{2000(p + r) - 2000r\cdot 1}{(p + r)^2} \\[6pt] &amp;= \frac{2000p}{(p + r)^2} &gt; 0 \\[10pt] g'_p &amp;= \frac{1500(p + r) - 1500p\cdot 1}{(p + r)^2} \\[6pt] &amp;= \frac{1500r}{(p + r)^2} &gt; 0 \end{aligned} \]</div>
+          <p><strong>Reikšmės:</strong></p>
+          \[ \begin{aligned} f'_r(4;\,6) &amp;= \frac{8000}{100} = 80 \\[6pt] g'_p(4;\,6) &amp;= \frac{9000}{100} = 90 \end{aligned} \]
+          <p><strong>Atsakymas.</strong> a) Abi išvestinės teigiamos esant bet kokioms kainoms, todėl paslaugos yra pakaitalai. b) Kelionės antrosios įmonės paspirtuku kainai padidėjus vienu euru nuo 6, o pirmosios įmonės kainai išlikus 4 eurų, pirmosios įmonės kelionių skaičius per dieną padidėja apytiksliai 80. Kelionės pirmosios įmonės paspirtuku kainai padidėjus vienu euru nuo 4, o antrosios įmonės kainai išlikus 6 eurų, antrosios įmonės kelionių skaičius per dieną padidėja apytiksliai 90.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">7 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
