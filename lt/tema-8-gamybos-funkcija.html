@@ -8,10 +8,10 @@
 <meta name="theme-color" content="#001a52">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=92">
+<link rel="stylesheet" href="../assets/css/style.css?v=93">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/js/site.js?v=92"></script>
+<script defer src="../assets/js/site.js?v=93"></script>
 </head>
 <body data-page="m82">
 <noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
@@ -60,10 +60,8 @@
         <li>jei \(\alpha + \beta &gt; 1\), gamybos apimtis didėja didesne proporcija nei išteklių kiekiai.</li>
       </ul>
 
-      <h3 class="subhead" style="margin-top:22px">Kiti modeliai</h3>
-      <p>Trijų išteklių Kobo-Daglaso funkcija turi tris laipsnių rodiklius, pavyzdžiui, \(z = Ax^{\alpha}y^{\beta}w^{\gamma}\). CES gamybos funkcijos pavyzdys:</p>
-      <div class="formula">\[ z = 30\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^{-1} \]</div>
-      <p>CES funkcija yra sudėtinė: skliaustuose esantis reiškinys yra vidinė funkcija, o laipsnis – išorinė. Todėl dalinės išvestinės randamos pagal <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinės funkcijos išvestinės taisyklę</a>.</p>
+      <p>Brėžinyje matyti, kaip Kobo-Daglaso funkcijos paviršius ir jos <a href="tema-8.html#lygio-linijos">lygio linijos</a> priklauso nuo laipsnių rodiklių \(\alpha\) ir \(\beta\).</p>
+      <div data-widget="surface3d" data-mode="cobb"></div>
     </article>
   </section>
 
@@ -117,13 +115,13 @@
         <li>\(FC\) – pastoviosios sąnaudos.</li>
       </ul>
       <p><strong>Pajamos</strong> lygios kainos ir gamybos apimties sandaugai, o gamybos apimtį nusako gamybos funkcija. <strong>Sąnaudos</strong> yra ištekliams sumokėta suma kartu su pastoviosiomis sąnaudomis. <strong>Pelnas</strong> yra pajamų ir sąnaudų skirtumas:</p>
-      <div class="formula">\[ \begin{aligned} R(x;\,y) &amp;= p\cdot f(x;\,y) \\ TC(x;\,y) &amp;= c_1x + c_2y + FC \\ P(x;\,y) &amp;= p\cdot f(x;\,y) \\ &amp;\phantom{=}\; {}- (c_1x + c_2y + FC) \end{aligned} \]</div>
+      <div class="formula"><div class="m-wide">\[ \begin{aligned} R(x;\,y) &amp;= p\cdot f(x;\,y) \\ TC(x;\,y) &amp;= c_1x + c_2y + FC \\ P(x;\,y) &amp;= p\cdot f(x;\,y) - (c_1x + c_2y + FC) \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} R(x;\,y) &amp;= p\cdot f(x;\,y) \\ TC(x;\,y) &amp;= c_1x + c_2y + FC \\ P(x;\,y) &amp;= p\cdot f(x;\,y) \\ &amp;\phantom{=}\; {}- (c_1x + c_2y + FC) \end{aligned} \]</div></div>
     </article>
 
     <article class="card" id="pelnas-ribiniai">
       <h3 class="subhead">Ribiniai dydžiai išteklių atžvilgiu</h3>
       <p>Šių funkcijų dalinės išvestinės rodo, kaip keičiasi pajamos, sąnaudos ir pelnas kintant vieno ištekliaus kiekiui. Kaina \(p\) yra pastovus daugiklis, todėl</p>
-      <div class="formula fit-sm">\[ \begin{aligned} R'_x &amp;= p\cdot f'_x; &amp;\quad R'_y &amp;= p\cdot f'_y \\ TC'_x &amp;= c_1; &amp;\quad TC'_y &amp;= c_2 \\ P'_x &amp;= p\cdot f'_x - c_1; &amp;\quad P'_y &amp;= p\cdot f'_y - c_2 \end{aligned} \]</div>
+      <div class="formula"><div class="m-wide">\[ \begin{aligned} R'_x &amp;= p\cdot f'_x; &amp;\qquad TC'_x &amp;= c_1; &amp;\qquad P'_x &amp;= p\cdot f'_x - c_1 \\ R'_y &amp;= p\cdot f'_y; &amp;\qquad TC'_y &amp;= c_2; &amp;\qquad P'_y &amp;= p\cdot f'_y - c_2 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} R'_x &amp;= p\cdot f'_x \\ R'_y &amp;= p\cdot f'_y \end{aligned} \]\[ \begin{aligned} TC'_x &amp;= c_1 \\ TC'_y &amp;= c_2 \end{aligned} \]\[ \begin{aligned} P'_x &amp;= p\cdot f'_x - c_1 \\ P'_y &amp;= p\cdot f'_y - c_2 \end{aligned} \]</div></div>
       <p>Ribinės pajamos ištekliaus atžvilgiu lygios produkcijos vieneto kainos ir to ištekliaus ribinio produkto sandaugai: papildomas ištekliaus vienetas duoda apytiksliai \(f'_x\) produkcijos vienetų, o kiekvienas jų parduodamas už \(p\) eurų. Ribinės sąnaudos ištekliaus atžvilgiu lygios jo vieneto kainai. Ribinis pelnas yra šių dydžių skirtumas.</p>
       <p>Interpretuojama pagal ribinio produkto <a href="#interpretavimas">interpretavimo formuluotę</a>, tik matavimo vienetas pakeičiamas eurais:</p>
       <div class="model-note"><em>Pirmojo ištekliaus kiekiui padidėjus vienetu nuo \(x_0\), o antrojo ištekliaus kiekiui išlikus lygiam \(y_0\), pajamų (sąnaudų, pelno) pokytis apytiksliai lygus \(R'_x(x_0;\,y_0)\) (\(TC'_x(x_0;\,y_0)\), \(P'_x(x_0;\,y_0)\)) eurų.</em></div>
@@ -169,7 +167,7 @@
       <div class="problem">
         <span class="label">Sąlyga</span>
         Dirbtuvių dienos gamybos apimtis yra
-        \[ \begin{aligned} Q(x;\,y) &amp;= 12x + 20y + 0{,}4xy \\ &amp;\phantom{=}\; {}- 0{,}3x^2 - 0{,}5y^2 \end{aligned} \]
+        <div class="m-wide">\[ Q(x;\,y) = 12x + 20y + 0{,}4xy - 0{,}3x^2 - 0{,}5y^2 \]</div><div class="m-narrow">\[ \begin{aligned} Q(x;\,y) &amp;= 12x + 20y + 0{,}4xy \\ &amp;\phantom{=}\; {}- 0{,}3x^2 - 0{,}5y^2 \end{aligned} \]</div>
         vienetų. Čia \(x\) yra įrenginių darbo valandų, o \(y\) – darbuotojų darbo valandų skaičius per dieną. Raskite ribinį produktą kiekvieno ištekliaus atžvilgiu, kai naudojama 20 įrenginių ir 25 darbuotojų darbo valandos. Interpretuokite rezultatus.
       </div>
       <div class="steps">
@@ -209,18 +207,17 @@
         <section class="step">
           <h4><span class="step-no">1</span><span>a) Ribinis darbo produktas</span></h4>
           <p>Diferencijuojant pagal \(x\), daugiklis \(40y^{0{,}25}\) yra pastovus, o naujasis \(x\) laipsnio rodiklis yra \(0{,}75 - 1 = -0{,}25\):</p>
-          \[ \begin{aligned} MPL = Q'_x &amp;= 0{,}75\cdot 40x^{-0{,}25}y^{0{,}25} \\ &amp;= 30x^{-0{,}25}y^{0{,}25} \end{aligned} \]
+          <div class="m-wide">\[ MPL = Q'_x = 0{,}75\cdot 40x^{-0{,}25}y^{0{,}25} = 30x^{-0{,}25}y^{0{,}25} \]</div><div class="m-narrow">\[ \begin{aligned} MPL = Q'_x &amp;= 0{,}75\cdot 40x^{-0{,}25}y^{0{,}25} \\ &amp;= 30x^{-0{,}25}y^{0{,}25} \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">2</span><span>a) Ribinis kapitalo produktas</span></h4>
           <p>Diferencijuojant pagal \(y\), daugiklis \(40x^{0{,}75}\) yra pastovus, o naujasis \(y\) laipsnio rodiklis yra \(0{,}25 - 1 = -0{,}75\):</p>
-          \[ \begin{aligned} MPK = Q'_y &amp;= 0{,}25\cdot 40x^{0{,}75}y^{-0{,}75} \\ &amp;= 10x^{0{,}75}y^{-0{,}75} \end{aligned} \]
+          <div class="m-wide">\[ MPK = Q'_y = 0{,}25\cdot 40x^{0{,}75}y^{-0{,}75} = 10x^{0{,}75}y^{-0{,}75} \]</div><div class="m-narrow">\[ \begin{aligned} MPK = Q'_y &amp;= 0{,}25\cdot 40x^{0{,}75}y^{-0{,}75} \\ &amp;= 10x^{0{,}75}y^{-0{,}75} \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>a) Reikšmės</span></h4>
-          <p>Laipsnius išreiškiame šaknimis: \(\sqrt[4]{81} = 3\) ir \(\sqrt[4]{16} = 2\), todėl</p>
-          \[ \begin{aligned} 81^{-0{,}25} &amp;= \frac{1}{3}; &amp;\quad 16^{0{,}25} &amp;= 2 \\[4pt] 81^{0{,}75} &amp;= 3^3 = 27; &amp;\quad 16^{-0{,}75} &amp;= \frac{1}{2^3} = \frac{1}{8} \end{aligned} \]
-          \[ \begin{aligned} MPL(81;\,16) &amp;= 30\cdot\frac{1}{3}\cdot 2 = 20 \\[4pt] MPK(81;\,16) &amp;= 10\cdot 27\cdot\frac{1}{8} = 33{,}75 \end{aligned} \]
+          <p>Įstatome \(x = 81\) ir \(y = 16\):</p>
+          <div class="fit-sm">\[ \begin{aligned} MPL(81;\,16) &amp;= 30\cdot 81^{-0{,}25}\cdot 16^{0{,}25} = 20 \\[4pt] MPK(81;\,16) &amp;= 10\cdot 81^{0{,}75}\cdot 16^{-0{,}75} = 33{,}75 \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>b) Palyginimas</span></h4>
@@ -250,16 +247,12 @@
         <section class="step">
           <h4><span class="step-no">1</span><span>Ribiniai produktai</span></h4>
           <p>Funkcija priklauso nuo trijų išteklių kiekių, todėl turi tris <a href="tema-8-daugiau-kintamuju.html">dalines išvestines</a>. Skaičiuojant kiekvieną jų, kitų dviejų išteklių kiekiai laikomi konstantomis:</p>
-          \[ \begin{aligned} Q'_x &amp;= 0{,}5\cdot 2x^{-0{,}5}y^{0{,}25}z^{0{,}25} \\ &amp;= x^{-0{,}5}y^{0{,}25}z^{0{,}25} \\[6pt] Q'_y &amp;= 0{,}25\cdot 2x^{0{,}5}y^{-0{,}75}z^{0{,}25} \\ &amp;= 0{,}5x^{0{,}5}y^{-0{,}75}z^{0{,}25} \\[6pt] Q'_z &amp;= 0{,}25\cdot 2x^{0{,}5}y^{0{,}25}z^{-0{,}75} \\ &amp;= 0{,}5x^{0{,}5}y^{0{,}25}z^{-0{,}75} \end{aligned} \]
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= 0{,}5\cdot 2x^{-0{,}5}y^{0{,}25}z^{0{,}25} = x^{-0{,}5}y^{0{,}25}z^{0{,}25} \\[4pt] Q'_y &amp;= 0{,}25\cdot 2x^{0{,}5}y^{-0{,}75}z^{0{,}25} = 0{,}5x^{0{,}5}y^{-0{,}75}z^{0{,}25} \\[4pt] Q'_z &amp;= 0{,}25\cdot 2x^{0{,}5}y^{0{,}25}z^{-0{,}75} = 0{,}5x^{0{,}5}y^{0{,}25}z^{-0{,}75} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= 0{,}5\cdot 2x^{-0{,}5}y^{0{,}25}z^{0{,}25} \\ &amp;= x^{-0{,}5}y^{0{,}25}z^{0{,}25} \\[6pt] Q'_y &amp;= 0{,}25\cdot 2x^{0{,}5}y^{-0{,}75}z^{0{,}25} \\ &amp;= 0{,}5x^{0{,}5}y^{-0{,}75}z^{0{,}25} \\[6pt] Q'_z &amp;= 0{,}25\cdot 2x^{0{,}5}y^{0{,}25}z^{-0{,}75} \\ &amp;= 0{,}5x^{0{,}5}y^{0{,}25}z^{-0{,}75} \end{aligned} \]</div>
         </section>
         <section class="step">
-          <h4><span class="step-no">2</span><span>Laipsnių reikšmės</span></h4>
-          <p>Duotųjų kiekių šaknys yra \(\sqrt{25} = 5\), \(\sqrt[4]{10000} = 10\) ir \(\sqrt[4]{16} = 2\), todėl</p>
-          \[ \begin{aligned} 25^{-0{,}5} &amp;= \frac{1}{5} \\[4pt] 10000^{-0{,}75} &amp;= \frac{1}{10^3} = 0{,}001 \\[4pt] 16^{-0{,}75} &amp;= \frac{1}{8} \end{aligned} \]
-        </section>
-        <section class="step">
-          <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
-          \[ \begin{aligned} Q'_x &amp;= \frac{1}{5}\cdot 10\cdot 2 = 4 \\[4pt] Q'_y &amp;= 0{,}5\cdot 5\cdot 0{,}001\cdot 2 = 0{,}005 \\[4pt] Q'_z &amp;= 0{,}5\cdot 5\cdot 10\cdot\frac{1}{8} = 3{,}125 \end{aligned} \]
+          <h4><span class="step-no">2</span><span>Reikšmės</span></h4>
+          <p>Įstatome \(x = 25\), \(y = 10\,000\) ir \(z = 16\):</p>
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= 25^{-0{,}5}\cdot 10\,000^{0{,}25}\cdot 16^{0{,}25} = 4 \\[4pt] Q'_y &amp;= 0{,}5\cdot 25^{0{,}5}\cdot 10\,000^{-0{,}75}\cdot 16^{0{,}25} = 0{,}005 \\[4pt] Q'_z &amp;= 0{,}5\cdot 25^{0{,}5}\cdot 10\,000^{0{,}25}\cdot 16^{-0{,}75} = 3{,}125 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= 25^{-0{,}5}\cdot 10\,000^{0{,}25}\cdot 16^{0{,}25} \\ &amp;= 4 \\[6pt] Q'_y &amp;= 0{,}5\cdot 25^{0{,}5}\cdot 10\,000^{-0{,}75}\cdot 16^{0{,}25} \\ &amp;= 0{,}005 \\[6pt] Q'_z &amp;= 0{,}5\cdot 25^{0{,}5}\cdot 10\,000^{0{,}25}\cdot 16^{-0{,}75} \\ &amp;= 3{,}125 \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
@@ -288,12 +281,12 @@
         <section class="step">
           <h4><span class="step-no">1</span><span>Pagal \(x\)</span></h4>
           <p>Vardiklyje yra abu kintamieji, todėl abiem išvestinėms reikia <a href="tema-8-dalmens-taisykle.html">dalmens taisyklės</a>. Skaitiklį pažymėkime \(u = 60xy\), vardiklį – \(v = x + 2y\). Pagal \(x\): \(u'_x = 60y\) ir \(v'_x = 1\), todėl</p>
-          \[ \begin{aligned} Q'_x &amp;= \frac{60y(x + 2y) - 60xy\cdot 1}{(x + 2y)^2} \\[6pt] &amp;= \frac{60xy + 120y^2 - 60xy}{(x + 2y)^2} \\[6pt] &amp;= \frac{120y^2}{(x + 2y)^2} \end{aligned} \]
+          <div class="m-wide">\[ \begin{aligned} Q'_x &amp;= \frac{60y(x + 2y) - 60xy\cdot 1}{(x + 2y)^2} \\[6pt] &amp;= \frac{60xy + 120y^2 - 60xy}{(x + 2y)^2} = \frac{120y^2}{(x + 2y)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_x &amp;= \frac{60y(x + 2y) - 60xy\cdot 1}{(x + 2y)^2} \\[6pt] &amp;= \frac{60xy + 120y^2 - 60xy}{(x + 2y)^2} \\[6pt] &amp;= \frac{120y^2}{(x + 2y)^2} \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">2</span><span>Pagal \(y\)</span></h4>
           <p>Pagal \(y\): \(u'_y = 60x\) ir \(v'_y = 2\), todėl</p>
-          \[ \begin{aligned} Q'_y &amp;= \frac{60x(x + 2y) - 60xy\cdot 2}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2 + 120xy - 120xy}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2}{(x + 2y)^2} \end{aligned} \]
+          <div class="m-wide">\[ \begin{aligned} Q'_y &amp;= \frac{60x(x + 2y) - 60xy\cdot 2}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2 + 120xy - 120xy}{(x + 2y)^2} = \frac{60x^2}{(x + 2y)^2} \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} Q'_y &amp;= \frac{60x(x + 2y) - 60xy\cdot 2}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2 + 120xy - 120xy}{(x + 2y)^2} \\[6pt] &amp;= \frac{60x^2}{(x + 2y)^2} \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
@@ -365,14 +358,15 @@
         </section>
         <section class="step">
           <h4><span class="step-no">2</span><span>Ribiniai produktai</span></h4>
-          <p>Taikome sudėtinės laipsninės funkcijos išvestinės formulę \(\big(u^n\big)'_x = nu^{n-1}\cdot u'_x\), kai \(n = -1\):</p>
-          <div class="fit-sm">\[ \begin{aligned} MPL = Q'_x &amp;= 30\cdot(-1)u^{-2}\cdot\left(-0{,}25x^{-2}\right) \\[6pt] &amp;= \frac{7{,}5}{u^2x^2} \\[12pt] MPK = Q'_y &amp;= 30\cdot(-1)u^{-2}\cdot\left(-0{,}75y^{-2}\right) \\[6pt] &amp;= \frac{22{,}5}{u^2y^2} \end{aligned} \]</div>
+          <p>Taikome sudėtinės laipsninės funkcijos išvestinės formulę \(\big(u^n\big)'_x = nu^{n-1}\cdot u'_x\), kai \(n = -1\). Vietoj \(u\) įrašome skliaustuose esantį reiškinį, o vietoj \(u'_x\) ir \(u'_y\) – jo dalines išvestines:</p>
+          <div class="m-wide">\[ \begin{aligned} MPL = Q'_x &amp;= 30\cdot(-1)\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^{-2}\cdot\left(-0{,}25x^{-2}\right) \\[6pt] &amp;= \frac{7{,}5}{x^2\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^2} \\[14pt] MPK = Q'_y &amp;= 30\cdot(-1)\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^{-2}\cdot\left(-0{,}75y^{-2}\right) \\[6pt] &amp;= \frac{22{,}5}{y^2\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^2} \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} MPL &amp;= Q'_x \\ &amp;= 30\cdot(-1)\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^{-2} \\ &amp;\phantom{=}\;\cdot\left(-0{,}25x^{-2}\right) \\[6pt] &amp;= \frac{7{,}5}{x^2\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^2} \\[14pt] MPK &amp;= Q'_y \\ &amp;= 30\cdot(-1)\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^{-2} \\ &amp;\phantom{=}\;\cdot\left(-0{,}75y^{-2}\right) \\[6pt] &amp;= \frac{22{,}5}{y^2\left[0{,}25x^{-1} + 0{,}75y^{-1}\right]^2} \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Reikšmės</span></h4>
-          <p>Taške \((10;\,30)\) vidinės funkcijos reikšmė yra</p>
-          \[ \begin{aligned} u &amp;= \frac{0{,}25}{10} + \frac{0{,}75}{30} \\[6pt] &amp;= 0{,}025 + 0{,}025 = 0{,}05 \end{aligned} \]
-          \[ \begin{aligned} MPL(10;\,30) &amp;= \frac{7{,}5}{0{,}05^2\cdot 10^2} \\[6pt] &amp;= \frac{7{,}5}{0{,}25} = 30 \\[8pt] MPK(10;\,30) &amp;= \frac{22{,}5}{0{,}05^2\cdot 30^2} \\[6pt] &amp;= \frac{22{,}5}{2{,}25} = 10 \end{aligned} \]
+          <p>Taške \((10;\,30)\) skliaustuose esančio reiškinio reikšmė yra</p>
+          <div class="fit-sm">\[ \frac{0{,}25}{10} + \frac{0{,}75}{30} = 0{,}025 + 0{,}025 = 0{,}05 \]</div>
+          <p>Ją įrašome į ribinių produktų išraiškas:</p>
+          <div class="m-wide">\[ \begin{aligned} MPL(10;\,30) &amp;= \frac{7{,}5}{10^2\cdot 0{,}05^2} = \frac{7{,}5}{0{,}25} = 30 \\[8pt] MPK(10;\,30) &amp;= \frac{22{,}5}{30^2\cdot 0{,}05^2} = \frac{22{,}5}{2{,}25} = 10 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} MPL(10;\,30) &amp;= \frac{7{,}5}{10^2\cdot 0{,}05^2} \\[6pt] &amp;= \frac{7{,}5}{0{,}25} = 30 \\[8pt] MPK(10;\,30) &amp;= \frac{22{,}5}{30^2\cdot 0{,}05^2} \\[6pt] &amp;= \frac{22{,}5}{2{,}25} = 10 \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
@@ -435,14 +429,14 @@
       <div class="problem">
         <span class="label">Sąlyga</span>
         Gamyklos dienos gamybos apimtis yra
-        \[ \begin{aligned} Q(x;\,y) &amp;= 30x + 40y + 0{,}2xy \\ &amp;\phantom{=}\; {}- 0{,}5x^2 - 0{,}4y^2 \end{aligned} \]
+        <div class="m-wide">\[ Q(x;\,y) = 30x + 40y + 0{,}2xy - 0{,}5x^2 - 0{,}4y^2 \]</div><div class="m-narrow">\[ \begin{aligned} Q(x;\,y) &amp;= 30x + 40y + 0{,}2xy \\ &amp;\phantom{=}\; {}- 0{,}5x^2 - 0{,}4y^2 \end{aligned} \]</div>
         vienetų. Čia \(x\) yra darbuotojų, o \(y\) – naudojamų įrenginių skaičius. Gaminys parduodamas už 8&nbsp;eurus, darbuotojas kainuoja 60&nbsp;eurų per dieną, įrenginys – 100&nbsp;eurų per dieną, o dienos pastoviosios sąnaudos yra 400&nbsp;eurų. Raskite ribinį pelną kiekvieno ištekliaus atžvilgiu, kai dirba 20 darbuotojų ir naudojama 40 įrenginių. Interpretuokite rezultatus.
       </div>
       <div class="steps">
         <section class="step">
           <h4><span class="step-no">1</span><span>Pelno funkcija</span></h4>
           <p>Pajamos lygios \(8\cdot Q(x;\,y)\), sąnaudos – \(60x + 100y + 400\), todėl</p>
-          \[ \begin{aligned} P(x;\,y) &amp;= 8(30x + 40y + 0{,}2xy \\ &amp;\phantom{=}\; {}- 0{,}5x^2 - 0{,}4y^2) \\ &amp;\phantom{=}\; {}- 60x - 100y - 400 \\ &amp;= 180x + 220y + 1{,}6xy \\ &amp;\phantom{=}\; {}- 4x^2 - 3{,}2y^2 - 400 \end{aligned} \]
+          <div class="m-wide bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= 8(30x + 40y + 0{,}2xy - 0{,}5x^2 - 0{,}4y^2) - 60x - 100y - 400 \\ &amp;= 180x + 220y + 1{,}6xy - 4x^2 - 3{,}2y^2 - 400 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= 8(30x + 40y + 0{,}2xy \\ &amp;\phantom{=}\; {}- 0{,}5x^2 - 0{,}4y^2) \\ &amp;\phantom{=}\; {}- 60x - 100y - 400 \\ &amp;= 180x + 220y + 1{,}6xy \\ &amp;\phantom{=}\; {}- 4x^2 - 3{,}2y^2 - 400 \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">2</span><span>Ribinis pelnas</span></h4>
@@ -477,7 +471,7 @@
       <div class="steps">
         <section class="step">
           <h4><span class="step-no">1</span><span>Pelno funkcija</span></h4>
-          \[ \begin{aligned} P(x;\,y) &amp;= 3\cdot 400\sqrt{x}\left(1 - e^{-0{,}05y}\right) \\ &amp;\phantom{=}\; {}- 18x - 2y - 1500 \\ &amp;= 1200\sqrt{x}\left(1 - e^{-0{,}05y}\right) \\ &amp;\phantom{=}\; {}- 18x - 2y - 1500 \end{aligned} \]
+          <div class="m-wide">\[ \begin{aligned} P(x;\,y) &amp;= 3\cdot 400\sqrt{x}\left(1 - e^{-0{,}05y}\right) - 18x - 2y - 1500 \\ &amp;= 1200\sqrt{x}\left(1 - e^{-0{,}05y}\right) - 18x - 2y - 1500 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= 3\cdot 400\sqrt{x}\left(1 - e^{-0{,}05y}\right) \\ &amp;\phantom{=}\; {}- 18x - 2y - 1500 \\ &amp;= 1200\sqrt{x}\left(1 - e^{-0{,}05y}\right) \\ &amp;\phantom{=}\; {}- 18x - 2y - 1500 \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">2</span><span>Pagal \(x\)</span></h4>
@@ -492,7 +486,7 @@
         <section class="step">
           <h4><span class="step-no">4</span><span>Reikšmės</span></h4>
           <p>Taške \((100;\,20)\) gauname \(\sqrt{100} = 10\) ir \(e^{-0{,}05\cdot 20} = e^{-1} \approx 0{,}3679\):</p>
-          <div class="fit-sm">\[ \begin{aligned} P'_x(100;\,20) &amp;= \frac{600\left(1 - e^{-1}\right)}{10} - 18 \\[6pt] &amp;= 60\left(1 - e^{-1}\right) - 18 \approx 19{,}93 \\[8pt] P'_y(100;\,20) &amp;= 60\cdot 10\cdot e^{-1} - 2 \\ &amp;= 600e^{-1} - 2 \approx 218{,}73 \end{aligned} \]</div>
+          <div class="m-wide">\[ \begin{aligned} P'_x(100;\,20) &amp;= \frac{600\left(1 - e^{-1}\right)}{10} - 18 = 60\left(1 - e^{-1}\right) - 18 \approx 19{,}93 \\[8pt] P'_y(100;\,20) &amp;= 60\cdot 10\cdot e^{-1} - 2 = 600e^{-1} - 2 \approx 218{,}73 \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} P'_x(100;\,20) &amp;= \frac{600\left(1 - e^{-1}\right)}{10} - 18 \\[6pt] &amp;= 60\left(1 - e^{-1}\right) - 18 \approx 19{,}93 \\[8pt] P'_y(100;\,20) &amp;= 60\cdot 10\cdot e^{-1} - 2 \\ &amp;= 600e^{-1} - 2 \approx 218{,}73 \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
@@ -521,7 +515,7 @@
           <p><strong>Išvestinės:</strong></p>
           \[ \begin{aligned} MPL = Q'_x &amp;= 40x^{-0{,}2}y^{0{,}2} \\ MPK = Q'_y &amp;= 10x^{0{,}8}y^{-0{,}8} \end{aligned} \]
           <p><strong>Reikšmės:</strong></p>
-          \[ \begin{aligned} MPL(1024;\,32) &amp;= 40\cdot\frac{2}{4} = 20 \\[6pt] MPK(1024;\,32) &amp;= 10\cdot\frac{256}{16} = 160 \end{aligned} \]
+          <div class="m-wide">\[ \begin{aligned} MPL(1024;\,32) &amp;= 40\cdot 1024^{-0{,}2}\cdot 32^{0{,}2} = 20 \\[4pt] MPK(1024;\,32) &amp;= 10\cdot 1024^{0{,}8}\cdot 32^{-0{,}8} = 160 \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} MPL(1024;\,32) &amp;= 40\cdot 1024^{-0{,}2}\cdot 32^{0{,}2} \\ &amp;= 20 \\[6pt] MPK(1024;\,32) &amp;= 10\cdot 1024^{0{,}8}\cdot 32^{-0{,}8} \\ &amp;= 160 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> Darbo laikui padidėjus viena valanda nuo 1024, o kapitalui išlikus 32 tūkstančių eurų, centras per savaitę apdoroja apytiksliai 20 siuntų daugiau. Kapitalui padidėjus vienu tūkstančiu eurų nuo 32, o darbo laikui išlikus 1024 valandų, per savaitę apdorojama apytiksliai 160 siuntų daugiau.</p>
         </div>
       </article>
@@ -530,7 +524,7 @@
       <article class="card q" data-type="open">
         <div class="q-text">
           <p>Automobilių plovykla, kurioje dirba \(x\) darbuotojų ir naudojama \(y\) plovimo linijų, per dieną aptarnauja</p>
-          \[ \begin{aligned} Q(x;\,y) &amp;= 12x + 15y + 0{,}3xy \\ &amp;\phantom{=}\; {}- 0{,}4x^2 - 0{,}5y^2 \end{aligned} \]
+          <div class="m-wide">\[ Q(x;\,y) = 12x + 15y + 0{,}3xy - 0{,}4x^2 - 0{,}5y^2 \]</div><div class="m-narrow">\[ \begin{aligned} Q(x;\,y) &amp;= 12x + 15y + 0{,}3xy \\ &amp;\phantom{=}\; {}- 0{,}4x^2 - 0{,}5y^2 \end{aligned} \]</div>
           <p>automobilių. Raskite ribinius produktus, kai dirba 20 darbuotojų ir naudojamos 6 plovimo linijos. Interpretuokite rezultatus.</p>
         </div>
         <div class="q-answer">
@@ -568,10 +562,10 @@
         </div>
         <div class="q-answer">
           <p><strong>Funkcija:</strong></p>
-          \[ \begin{aligned} P(x;\,y) &amp;= 2\cdot 20x^{0{,}25}y^{0{,}75} \\ &amp;\phantom{=}\; {}- (30x + 12y + 400) \\ &amp;= 40x^{0{,}25}y^{0{,}75} \\ &amp;\phantom{=}\; {}- 30x - 12y - 400 \end{aligned} \]
+          <div class="m-wide">\[ \begin{aligned} P(x;\,y) &amp;= 2\cdot 20x^{0{,}25}y^{0{,}75} - (30x + 12y + 400) \\ &amp;= 40x^{0{,}25}y^{0{,}75} - 30x - 12y - 400 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= 2\cdot 20x^{0{,}25}y^{0{,}75} \\ &amp;\phantom{=}\; {}- (30x + 12y + 400) \\ &amp;= 40x^{0{,}25}y^{0{,}75} \\ &amp;\phantom{=}\; {}- 30x - 12y - 400 \end{aligned} \]</div>
           <p><strong>Išvestinės ir jų reikšmės:</strong></p>
           \[ \begin{aligned} P'_x &amp;= 10x^{-0{,}75}y^{0{,}75} - 30 \\ P'_y &amp;= 30x^{0{,}25}y^{-0{,}25} - 12 \end{aligned} \]
-          \[ \begin{aligned} P'_x(16;\,81) &amp;= 10\cdot\frac{27}{8} - 30 = 3{,}75 \\[6pt] P'_y(16;\,81) &amp;= 30\cdot\frac{2}{3} - 12 = 8 \end{aligned} \]
+          <div class="m-wide">\[ \begin{aligned} P'_x(16;\,81) &amp;= 10\cdot 16^{-0{,}75}\cdot 81^{0{,}75} - 30 = 3{,}75 \\[4pt] P'_y(16;\,81) &amp;= 30\cdot 16^{0{,}25}\cdot 81^{-0{,}25} - 12 = 8 \end{aligned} \]</div><div class="m-narrow fit-sm">\[ \begin{aligned} P'_x(16;\,81) &amp;= 10\cdot 16^{-0{,}75}\cdot 81^{0{,}75} - 30 \\ &amp;= 3{,}75 \\[6pt] P'_y(16;\,81) &amp;= 30\cdot 16^{0{,}25}\cdot 81^{-0{,}25} - 12 \\ &amp;= 8 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> Keramikų darbo laikui padidėjus viena valanda nuo 16, o krosnies naudojimo laikui išlikus 81 valandos, savaitės pelnas padidėja apytiksliai 3,75&nbsp;euro. Krosnies naudojimo laikui padidėjus viena valanda nuo 81, o keramikų darbo laikui išlikus 16 valandų, pelnas padidėja apytiksliai 8&nbsp;eurais.</p>
         </div>
       </article>
