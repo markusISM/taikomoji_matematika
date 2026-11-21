@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9 tema. Kelių kintamųjų funkcijų ekstremumai · Taikomoji matematika</title>
+<meta name="description" content="Kelių kintamųjų funkcijų ekstremumai: kritiniai taškai, pakankamoji sąlyga ir balno taškas, interaktyvus paviršiaus brėžinys. Sąlyginis optimizavimas Lagranžo daugiklių metodu ir Lagranžo daugiklio prasmė. Taikymai – atskiruose skyriuose.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="t9">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">9 tema</span>
+    <h1>Kelių kintamųjų funkcijų ekstremumai</h1>
+    <ul class="jump">
+      <li><a href="#ekstremumai">Ekstremumai</a></li>
+      <li><a href="#pakankamoji">Pakankamoji sąlyga</a></li>
+      <li><a href="#lagranzo">Lagranžo uždavinys</a></li>
+      <li><a href="#daugiklis">Lagranžo daugiklis</a></li>
+      <li><a href="#taikymai">Taikymai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ OPTIMIZAVIMAS BE APRIBOJIMŲ ============ -->
+  <section class="section" id="be-apribojimu" aria-labelledby="h-free">
+    <h2 id="h-free">Optimizavimas be apribojimų</h2>
+    <p class="section-intro">Šioje dalyje aiškinama, kaip rasti didžiausią arba mažiausią dviejų kintamųjų funkcijos reikšmę, kai nėra kintamuosius siejančios sąlygos. Tokie uždaviniai vadinami <strong>optimizavimo be apribojimų uždaviniais</strong>. Sprendžiama dviem etapais: remiantis būtinąja sąlyga randami taškai, kuriuose gali būti ekstremumas, o taikant pakankamąją sąlygą, grindžiamą antros eilės išvestinėmis, nustatoma kiekvieno taško rūšis.</p>
+
+    <article class="card concept" id="ekstremumai">
+      <div class="concept-head"><span class="num">1</span><h3>Vietiniai ekstremumai ir kritiniai taškai</h3></div>
+      <div class="model-note">Funkcija \(z = f(x;\,y)\) taške \((a;\,b)\) turi <strong>vietinį maksimumą</strong>, jei \(f(a;\,b) \ge f(x;\,y)\) visiems taškams \((x;\,y)\), esantiems pakankamai arti taško \((a;\,b)\).</div>
+      <div class="model-note">Funkcija \(z = f(x;\,y)\) taške \((a;\,b)\) turi <strong>vietinį minimumą</strong>, jei \(f(a;\,b) \le f(x;\,y)\) visiems taškams \((x;\,y)\), esantiems pakankamai arti taško \((a;\,b)\).</div>
+      <p>Funkcijos grafike vietinis maksimumas atitinka paviršiaus kalvos viršūnę, o vietinis minimumas – slėnio dugną. Jei šiame taške abi pirmos eilės dalinės išvestinės egzistuoja, paviršiaus liestinės \(x\) ir \(y\) kryptimis yra horizontalios, todėl abi išvestinės lygios nuliui. Taip gaunama <strong>būtinoji ekstremumo sąlyga</strong>.</p>
+      <div class="model-note">Funkcijos \(f(x;\,y)\) <strong>kritinis taškas</strong> – tai taškas \((a;\,b)\), priklausantis funkcijos \(f(x;\,y)\) apibrėžimo sričiai, kuriame
+        \[ \left\{ \begin{aligned} f'_x(a;\,b) &amp;= 0 \\ f'_y(a;\,b) &amp;= 0 \end{aligned} \right. \]
+        arba bent viena dalinė išvestinė neegzistuoja.</div>
+      <p>Vietinis ekstremumas gali būti tik kritiniame taške. Atvirkščias teiginys negalioja: kritinis taškas gali būti ir <strong>balno taškas</strong>, kuriame viena kryptimi funkcija didėja, o kita – mažėja, panašiai kaip kalnų perėjoje. Brėžinyje galite palyginti visus tris atvejus: vietinį maksimumą, vietinį minimumą ir balno tašką. Visuose trijuose kritiniuose taškuose abi pirmos eilės dalinės išvestinės lygios nuliui.</p>
+      <div data-widget="surface3d" data-mode="crit" data-fns="pk mn sd"></div>
+      <p style="margin-top:12px">Vieno kintamojo funkcijos kritiniai taškai nagrinėti 6 temos skyriuje <a href="tema-6-vietiniai-ekstremumai.html">„Vietiniai ekstremumai“</a>, o dalinės išvestinės – <a href="tema-8.html#dalines">8 temoje</a>.</p>
+    </article>
+
+    <article class="card concept" id="pakankamoji">
+      <div class="concept-head"><span class="num">2</span><h3>Pakankamoji vietinio ekstremumo sąlyga</h3></div>
+      <p>Kritinio taško rūšis nustatoma pagal <a href="tema-8-antros-eiles.html">antros eilės dalines išvestines</a>, taikant <strong>pakankamąją sąlygą</strong>. Kritiniame taške \((a;\,b)\) apskaičiuojame</p>
+      <div class="formula"><div class="m-wide">\[ A = f''_{xx}(a;\,b);\qquad B = f''_{xy}(a;\,b);\qquad C = f''_{yy}(a;\,b) \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= f''_{xx}(a;\,b) \\ B &amp;= f''_{xy}(a;\,b) \\ C &amp;= f''_{yy}(a;\,b) \end{aligned} \]</div></div>
+      <p>ir <strong>diskriminantą</strong></p>
+      <div class="formula">\[ D = AC - B^2 \]</div>
+      <p>Tuomet:</p>
+      <div class="tbl-wrap">
+        <table class="vtable">
+          <thead>
+            <tr><th scope="col">Sąlyga</th><th scope="col">Išvada</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(D &gt; 0\) ir \(A &lt; 0\)</td><td>taške \((a;\,b)\) funkcija yra išgaubta, o \((a;\,b)\) yra <strong>vietinio maksimumo taškas</strong></td></tr>
+            <tr><td>\(D &gt; 0\) ir \(A &gt; 0\)</td><td>taške \((a;\,b)\) funkcija yra įgaubta, o \((a;\,b)\) yra <strong>vietinio minimumo taškas</strong></td></tr>
+            <tr><td>\(D &lt; 0\)</td><td>\((a;\,b)\) yra <strong>balno taškas</strong></td></tr>
+            <tr><td>\(D = 0\)</td><td>šis požymis nepritaikomas – reikia papildomo tyrimo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Dydžio \(A\) ženklas atlieka tokį pat vaidmenį kaip vieno kintamojo funkcijos antrosios išvestinės ženklas <a href="tema-7.html#zenklas">7 temoje</a>: neigiama reikšmė atitinka viršūnę, teigiama – slėnio dugną. Diskriminantas leidžia patikrinti, ar paviršius visomis kryptimis išlinkęs vienodai. Kai \(D &lt; 0\), viena kryptimi jis išlinkęs aukštyn, o kita – žemyn, todėl taškas yra balno taškas.</p>
+
+      <div class="subtype">
+        <h4>Kai funkcija yra antrojo laipsnio daugianaris</h4>
+        <p>Daugumoje taikomųjų uždavinių funkcija yra antrojo laipsnio daugianaris. Tuomet \(A\), \(B\) ir \(C\) yra nuo taško nepriklausantys skaičiai, o būtinoji sąlyga duoda dviejų tiesinių lygčių sistemą. Nagrinėjamuose uždaviniuose ji turi vieną sprendinį. Jei \(D &gt; 0\) ir \(A &lt; 0\), funkcija visur išgaubta, todėl vienintelis vietinis maksimumas yra ir didžiausia funkcijos reikšmė. Analogiškai, jei \(D &gt; 0\) ir \(A &gt; 0\), vienintelis vietinis minimumas yra mažiausia funkcijos reikšmė.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="kritiniai-taskai">
+      <div class="concept-head"><span class="num">3</span><h3>Kritinių taškų radimas ir jų rūšies nustatymas</h3></div>
+      <div class="rule-ex">
+        <p class="rule-ex-h">1 pavyzdys</p>
+        <p>Raskite funkcijos \(f(x;\,y) = x^3 - 3x + y^2 - 4y\) vietinius ekstremumus.</p>
+        <p><strong>Būtinoji sąlyga.</strong> Pirmos eilės dalinės išvestinės yra</p>
+        \[ f'_x = 3x^2 - 3;\qquad f'_y = 2y - 4 \]
+        <p>Pirmąją lygtį sprendžiame naudodami diskriminantą:</p>
+        <div class="formula"><div class="m-wide">\[ D = 0^2 - 4\cdot 3\cdot(-3) = 36;\quad x_{1,2} = \frac{-0 \pm \sqrt{36}}{2\cdot 3} = \pm 1 \]</div><div class="m-narrow">\[ \begin{gathered} D = 0^2 - 4\cdot 3\cdot(-3) = 36 \\ x_{1,2} = \frac{-0 \pm \sqrt{36}}{2\cdot 3} = \pm 1 \end{gathered} \]</div></div>
+        <div class="formula"><div class="m-wide">\[ \left\{ \begin{aligned} 3x^2 - 3 &amp;= 0 \\ 2y - 4 &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} x^2 &amp;= 1 \\ y &amp;= 2 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} x &amp;= \pm 1 \\ y &amp;= 2 \end{aligned} \right. \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} 3x^2 - 3 &amp;= 0 \\ 2y - 4 &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} x^2 &amp;= 1 \\ y &amp;= 2 \end{aligned} \right. \\[6pt] \Longrightarrow\; \left\{ \begin{aligned} x &amp;= \pm 1 \\ y &amp;= 2 \end{aligned} \right. \end{gathered} \]</div></div>
+        <p>Gaunami du kritiniai taškai: \((1;\,2)\) ir \((-1;\,2)\).</p>
+        <p><strong>Pakankamoji sąlyga.</strong> Antros eilės dalinės išvestinės yra</p>
+        \[ f''_{xx} = 6x;\qquad f''_{xy} = 0;\qquad f''_{yy} = 2 \]
+        <p>Šiuo atveju \(A\) priklauso nuo taško, todėl kiekvienas taškas tikrinamas atskirai.</p>
+        <div class="tbl-wrap">
+          <table class="vtable">
+            <thead>
+              <tr><th scope="col">Taškas</th><th scope="col">\((1;\,2)\)</th><th scope="col">\((-1;\,2)\)</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">\(A\)</th><td>\(6\)</td><td>\(-6\)</td></tr>
+              <tr><th scope="row">\(B\)</th><td>\(0\)</td><td>\(0\)</td></tr>
+              <tr><th scope="row">\(C\)</th><td>\(2\)</td><td>\(2\)</td></tr>
+              <tr><th scope="row">\(D\)</th><td>\(12 &gt; 0\)</td><td>\(-12 &lt; 0\)</td></tr>
+              <tr><th scope="row">Išvada</th><td>\(A &gt; 0\): vietinis minimumas</td><td>balno taškas</td></tr>
+            </tbody>
+          </table>
+        </div>
+        \[ f_{\min}(1;\,2) = 1 - 3 + 4 - 8 = -6 \]
+        <p><strong>Atsakymas.</strong> Funkcija turi vietinį minimumą \(f_{\min}(1;\,2) = -6\); taškas \((-1;\,2)\) yra balno taškas.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="kobo-daglas">
+      <div class="concept-head"><span class="num">4</span><h3>Kobo-Daglaso funkcijos</h3></div>
+      <p><a href="tema-8-gamybos-funkcija.html">Kobo-Daglaso funkcijai</a> \(Q = Ax^{\alpha}y^{\beta}\), kai \(x &gt; 0\) ir \(y &gt; 0\), diskriminantas neskaičiuojamas. Jos išgaubtumas ar įgaubtumas nustatomas pagal parametrus:</p>
+      <ul>
+        <li>funkcija <strong>išgaubta</strong>, jei \(A &gt; 0\) ir \(\alpha + \beta \le 1\);</li>
+        <li>funkcija <strong>įgaubta</strong>, jei \(A &lt; 0\) ir \(\alpha + \beta \le 1\).</li>
+      </ul>
+      <p>Pelno uždavinyje gamybos funkcija dauginama iš kainos ir atimamos išteklių sąnaudos:</p>
+      <div class="formula"><div class="m-wide">\[ P(x;\,y) = p\cdot Ax^{\alpha}y^{\beta} - c_1x - c_2y - FC \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= p\cdot Ax^{\alpha}y^{\beta} \\ &amp;\phantom{=}\; {}- c_1x - c_2y - FC \end{aligned} \]</div></div>
+      <p>Dauginant iš teigiamos kainos, išgaubtumas nesikeičia. Atimami nariai \(c_1x + c_2y + FC\) yra tiesiniai, todėl jie išgaubtumo taip pat nekeičia. Vadinasi, jei \(A &gt; 0\) ir \(\alpha + \beta \le 1\), pelno funkcija yra išgaubta, o jos kritinis taškas – maksimumo taškas. Pakankamoji sąlyga tikrinama pagal parametrus \(A\), \(\alpha\) ir \(\beta\), neskaičiuojant \(D\).</p>
+      <p>Sprendžiant būtinosios sąlygos lygčių sistemą, išteklių sąnaudos perkeliamos į dešiniąsias lygybių puses, o pirmoji lygtis padalijama iš antrosios. Suprastinami laipsniai su tuo pačiu pagrindu ir vienas kintamasis išreiškiamas per kitą. Gauta išraiška įstatoma į vieną iš lygčių.</p>
+    </article>
+
+    <article class="card concept" id="eiga">
+      <div class="concept-head"><span class="num">5</span><h3>Kaip spręsti taikomąjį optimizavimo uždavinį</h3></div>
+      <p>Taikomajame uždavinyje funkcija, kurios didžiausią arba mažiausią reikšmę reikia rasti, vadinama <strong>tikslo funkcija</strong>. Ji dažnai nėra duota tiesiogiai, todėl pirmasis sprendimo žingsnis – ją sudaryti. Dažniausiai nagrinėjamos šios tikslo funkcijos:</p>
+      <ul>
+        <li>dviejų gaminių <strong>pelnas</strong> \(P(x;\,y) = R(x;\,y) - TC(x;\,y)\), kai pajamos yra \(R = p_1x + p_2y\), jei kainos pastovios, arba \(R = p_1(x;\,y)\cdot x + p_2(x;\,y)\cdot y\), jei kainos duotos paklausos funkcijomis (8 temos skyrius <a href="tema-8-ribine-analize.html">„Ribinė analizė“</a>);</li>
+        <li><strong>pelnas</strong>, sudaromas pagal gamybos funkciją (8 temos skyrius <a href="tema-8-gamybos-funkcija.html">„Gamybos funkcija“</a>):
+          <div class="formula"><div class="m-wide">\[ P(x;\,y) = p\cdot Q(x;\,y) - c_1x - c_2y - FC \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= p\cdot Q(x;\,y) \\ &amp;\phantom{=}\; {}- c_1x - c_2y - FC \end{aligned} \]</div></div></li>
+        <li><strong>pelnas</strong> kaip kainų funkcija, kai parduodami kiekiai priklauso nuo kainų: kiekvienas parduotas gaminio vienetas duoda jo kainos ir vieneto sąnaudų skirtumą;</li>
+        <li>bet kuris kitas dviejų kintamųjų funkcija nusakomas dydis: sąnaudos, derlingumas, atstumas.</li>
+      </ul>
+      <p>Toliau sprendžiama tokia tvarka:</p>
+      <ol class="steps-list">
+        <li>Sudarykite tikslo funkciją.</li>
+        <li>Raskite pirmos eilės dalines išvestines, prilyginkite jas nuliui ir išspręskite lygčių sistemą. Jei lygtyse yra dešimtainių trupmenų, pirmiausia padauginkite lygtis iš tinkamo skaičiaus. Tada iš vienos lygties išreikškite vieną kintamąjį ir įstatykite į kitą. Jei išvestinė yra trupmena, užrašykite ją viena trupmena, o lygtį pakeiskite dviem sąlygomis: skaitiklis lygus nuliui, vardiklis nelygus nuliui.</li>
+        <li>Raskite antros eilės dalines išvestines, kritiniame taške apskaičiuokite \(A\), \(B\), \(C\) ir \(D = AC - B^2\). Nustatykite, ar taškas yra maksimumo, ar minimumo taškas. Jei pelno funkcija sudaryta pagal Kobo-Daglaso gamybos funkciją, tikrinkite parametrus (žr. <a href="#kobo-daglas">„Kobo-Daglaso funkcijos“</a>).</li>
+        <li>Apskaičiuokite uždavinyje prašomus dydžius: didžiausią ar mažiausią reikšmę, kainas, gamybos apimtį.</li>
+        <li>Suformuluokite atsakymą uždavinio kontekste.</li>
+      </ol>
+    </article>
+  </section>
+
+  <!-- ============ SĄLYGINIS OPTIMIZAVIMAS ============ -->
+  <section class="section" id="salyginis" aria-labelledby="h-cons">
+    <h2 id="h-cons">Sąlyginis optimizavimas</h2>
+    <p class="section-intro">Ankstesnės dalies uždaviniuose kintamųjų nesiejo papildoma sąlyga. Daugelyje taikomųjų uždavinių tokią sąlygą reikia tenkinti. Pavyzdžiui, išlaidos dviem ištekliams turi būti lygios biudžetui, iš dviejų sandėlių pristatomas bendras kiekis turi atitikti užsakymą, o gamybos apimtis turi pasiekti nustatytą lygį. Tokia sąlyga vadinama <strong>apribojimu</strong>, o pats uždavinys – <strong>sąlyginio optimizavimo uždaviniu</strong>. Tokie uždaviniai sprendžiami Lagranžo daugiklių metodu.</p>
+
+    <article class="card concept" id="lagranzo">
+      <div class="concept-head"><span class="num">6</span><h3>Lagranžo uždavinys</h3></div>
+      <p>Reikia rasti funkcijos \(z = f(x;\,y)\) vietinius ekstremumus, kai \(g(x;\,y) = m\). Funkcija \(f(x;\,y)\) yra <strong>tikslo funkcija</strong>. Lygtį \(g(x;\,y) = m\) turi tenkinti kintamųjų reikšmės, o \(m\) yra <strong>apribojimo konstanta</strong>, pavyzdžiui, biudžetas, reikalaujamas kiekis arba pajėgumas.</p>
+      <p>Uždavinį užrašome kaip <strong>modelį</strong>. Nurodome, kurią funkciją maksimizuojame ar minimizuojame, pagal kuriuos kintamuosius ir kokį apribojimą jie turi tenkinti:</p>
+      <div class="formula">\[ \begin{aligned} &amp;\max_{x;\,y}\; f(x;\,y) \\ &amp;\text{kai}\;\; g(x;\,y) = m \end{aligned} \]</div>
+      <p>Minimizavimo uždavinyje rašome \(\min_{x;\,y}\).</p>
+      <p>Brėžinyje matyti, kaip apribojimas keičia sprendinį. Be apribojimo mažiausia funkcijos \(f(x;\,y) = x^2 + y^2\) reikšmė yra 0, ji pasiekiama koordinačių pradžioje. Kai \(x + 2y = 10\), leistini tik tiesės taškai. Mažiausia funkcijos \(f\) reikšmė tiesėje pasiekiama ten, kur tiesė liečia vieną iš <a href="tema-8.html#lygio-linijos">lygio linijų</a>.</p>
+      <div data-widget="lagrange-chart"></div>
+    </article>
+
+    <article class="card concept" id="metodas">
+      <div class="concept-head"><span class="num">7</span><h3>Lagranžo daugiklių metodas</h3></div>
+      <p>Norėdami rasti funkcijos \(z = f(x;\,y)\) vietinius ekstremumus, kai \(g(x;\,y) = m\), atlikite šiuos veiksmus.</p>
+      <ol class="steps-list">
+        <li><strong>Sudarykite Lagranžo funkciją.</strong>
+          <div class="formula"><div class="m-wide">\[ L(x;\,y;\,\lambda) = f(x;\,y) - \lambda\big(g(x;\,y) - m\big) \]</div><div class="m-narrow">\[ \begin{gathered} L(x;\,y;\,\lambda) = f(x;\,y) \\ {}- \lambda\big(g(x;\,y) - m\big) \end{gathered} \]</div></div>
+          <p>Naujasis kintamasis \(\lambda\) vadinamas <strong>Lagranžo daugikliu</strong>. Apribojimą užrašome forma \(g(x;\,y) - m = 0\), kad dešiniojoje lygties pusėje būtų nulis. Iš tikslo funkcijos atimame kairiojoje pusėje esantį reiškinį, padaugintą iš \(\lambda\).</p>
+        </li>
+        <li><strong>Raskite funkcijos \(L(x;\,y;\,\lambda)\) kritinius taškus \((x_0;\,y_0;\,\lambda_0)\).</strong> Pirmos eilės dalines išvestines pagal \(x\) ir \(y\) prilyginkite nuliui, o į sistemą įtraukite ir apribojimo lygtį:
+          <div class="formula"><div class="m-wide bp-lg">\[ \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ L'_{\lambda}(x;\,y;\,\lambda) &amp;= 0 \end{aligned} \right. \quad\text{arba}\quad \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ g(x;\,y) &amp;= m \end{aligned} \right. \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ L'_{\lambda}(x;\,y;\,\lambda) &amp;= 0 \end{aligned} \right. \\[4pt] \text{arba} \\[4pt] \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ g(x;\,y) &amp;= m \end{aligned} \right. \end{gathered} \]</div></div>
+          <p>Abi sistemos lygiavertės. Išvestinė pagal \(\lambda\) yra \(L'_{\lambda} = -\big(g(x;\,y) - m\big)\). Ji lygi nuliui būtent tada, kai tenkinamas apribojimas. Sistemoje yra trys lygtys ir trys nežinomieji \(x\), \(y\) ir \(\lambda\). Paprastai iš pirmųjų dviejų lygčių išreiškiame \(\lambda\) ir gautas išraiškas prilyginame. Taip gauname lygtį su \(x\) ir \(y\), kurią sprendžiame kartu su apribojimo lygtimi. Kritiniame taške \((x_0;\,y_0;\,\lambda_0)\) pora \((x_0;\,y_0)\) yra taškas, kuriame gali būti ekstremumas, o \(\lambda_0\) – Lagranžo daugiklio reikšmė tame taške.</p>
+        </li>
+        <li><strong>Įstatykite \(\lambda_0\) į Lagranžo funkciją ir patikrinkite pakankamąją sąlygą.</strong> Apskaičiuokite antros eilės dalines funkcijos \(L\) išvestines pagal \(x\) ir \(y\). Į išvestines įstatykite \(x = x_0\) ir \(y = y_0\). Jei išvestinėse liko \(\lambda\), įstatykite ir \(\lambda = \lambda_0\). Gautas išvestinių reikšmes žymime \(A\), \(B\) ir \(C\):
+          <div class="formula"><div class="m-wide bp-lg">\[ A = L''_{xx}(x_0;\,y_0;\,\lambda_0);\quad B = L''_{xy}(x_0;\,y_0;\,\lambda_0);\quad C = L''_{yy}(x_0;\,y_0;\,\lambda_0) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(x_0;\,y_0;\,\lambda_0) \\ B &amp;= L''_{xy}(x_0;\,y_0;\,\lambda_0) \\ C &amp;= L''_{yy}(x_0;\,y_0;\,\lambda_0) \end{aligned} \]</div></div>
+          <p>Apskaičiuokite diskriminantą \(D = AC - B^2\). Kai jis teigiamas, Lagranžo funkcijos ekstremumo rūšį nustatome kaip <a href="#pakankamoji">optimizavimo be apribojimų uždaviniuose</a>. Ta pati išvada galioja tikslo funkcijai leistinoje srityje, nes ten apribojimo narys lygus nuliui.</p>
+          <ul>
+            <li>Jei \(D &gt; 0\) ir \(A &lt; 0\), tai \((x_0;\,y_0)\) yra vietinio maksimumo taškas.</li>
+            <li>Jei \(D &gt; 0\) ir \(A &gt; 0\), tai \((x_0;\,y_0)\) yra vietinio minimumo taškas.</li>
+            <li>Jei \(D &lt; 0\) arba \(D = 0\), šio požymio nepakanka. Reikia tirti, kaip tikslo funkcija kinta išilgai apribojimo kreivės.</li>
+          </ul>
+        </li>
+      </ol>
+    </article>
+
+    <article class="card concept" id="daugiklis">
+      <div class="concept-head"><span class="num">8</span><h3>Lagranžo daugiklio reikšmė</h3></div>
+      <p>Lagranžo daugiklis \(\lambda\) nusako optimalios tikslo funkcijos reikšmės kitimo greitį apribojimo konstantos \(m\) atžvilgiu. Kai \(m\) pasikeičia dydžiu \(\Delta m\), optimalios reikšmės \(f^{*}\) pokytis apytiksliai lygus sandaugai</p>
+      <div class="formula">\[ \Delta f^{*} \approx \lambda\cdot\Delta m \]</div>
+      <p>Pavyzdžiui, jei apribojimas nustato biudžetą ir \(\lambda = 0{,}5\), padidinus biudžetą vienu euru, didžiausia gamybos apimtis padidėja apytiksliai 0,5 vieneto.</p>
+      <p>Tai toks pat apytikslis pokyčio įvertinimas, kaip ir 8 temos skyriuje <a href="tema-8-pokyciu-analize.html#pokytis">„Pokyčių analizė“</a>: Lagranžo daugiklis atlieka išvestinės vaidmenį, o \(\Delta m\) – argumento pokyčio.</p>
+    </article>
+
+    <article class="card concept" id="lagranzo-pavyzdys">
+      <div class="concept-head"><span class="num">9</span><h3>Pirmasis pavyzdys</h3></div>
+      <div class="rule-ex">
+        <p class="rule-ex-h">2 pavyzdys</p>
+        <p>Raskite funkcijos \(f(x;\,y) = x^2 + y^2\) vietinį ekstremumą, kai \(x + 2y = 10\).</p>
+        <p><strong>Modelis.</strong> Ieškome mažiausios funkcijos reikšmės pagal \(x\) ir \(y\), kai tenkinamas duotas apribojimas:</p>
+        \[ \begin{aligned} &amp;\min_{x;\,y}\; f(x;\,y) = x^2 + y^2 \\ &amp;\text{kai}\;\; x + 2y = 10 \end{aligned} \]
+        <p><strong>Lagranžo funkcija.</strong> Apribojimą užrašome kaip \(x + 2y - 10 = 0\) ir sudarome Lagranžo funkciją:</p>
+        <div class="formula"><div class="m-wide">\[ L(x;\,y;\,\lambda) = x^2 + y^2 - \lambda(x + 2y - 10) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= x^2 + y^2 \\ &amp;\phantom{=}\; {}- \lambda(x + 2y - 10) \end{aligned} \]</div></div>
+        <p><strong>Kritinis taškas.</strong> Dalines išvestines pagal \(x\) ir \(y\) prilyginame nuliui. Į sistemą įtraukiame apribojimo lygtį:</p>
+        \[ L'_x = 2x - \lambda;\qquad L'_y = 2y - 2\lambda \]
+        \[ \left\{ \begin{aligned} 2x - \lambda &amp;= 0 \\ 2y - 2\lambda &amp;= 0 \\ x + 2y &amp;= 10 \end{aligned} \right. \]
+        <p>Iš pirmosios lygties gauname \(\lambda = 2x\), o iš antrosios – \(\lambda = y\). Sulyginę išraiškas gauname \(y = 2x\). Įstatę į apribojimo lygtį, gauname \(x + 4x = 10\), taigi \(x = 2\), \(y = 4\) ir \(\lambda = 4\). Kritinis taškas yra \((2;\,4;\,4)\).</p>
+        <p><strong>Pakankamoji sąlyga.</strong> Šiuo atveju antros eilės dalinės išvestinės nepriklauso nuo \(\lambda\):</p>
+        <div class="formula"><div class="m-wide">\[ \begin{gathered} A = L''_{xx} = 2;\quad B = L''_{xy} = 0;\quad C = L''_{yy} = 2 \\ D = 2\cdot 2 - 0^2 = 4 &gt; 0;\quad A &gt; 0 \end{gathered} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx} = 2 \\ B &amp;= L''_{xy} = 0 \\ C &amp;= L''_{yy} = 2 \\ D &amp;= 2\cdot 2 - 0^2 = 4 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div></div>
+        \[ f_{\min}(2;\,4) = 4 + 16 = 20 \]
+        <p><strong>Atsakymas.</strong> Kai \(x + 2y = 10\), funkcija turi vietinį minimumą \(f_{\min}(2;\,4) = 20\). Kadangi \(\lambda = 4\), apribojimo konstantai padidėjus nuo 10 iki 11, minimumas padidėtų apytiksliai 4 vienetais.</p>
+      </div>
+      <p>Šis uždavinys pavaizduotas <a href="#lagranzo">brėžinyje</a> aukščiau: taške \((2;\,4)\) lygio linija \(x^2 + y^2 = 20\) liečia tiesę \(x + 2y = 10\).</p>
+    </article>
+
+    <article class="card concept" id="kobo-daglas-l">
+      <div class="concept-head"><span class="num">10</span><h3>Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose</h3></div>
+      <p>Kai tikslo funkcija arba apribojimo kairioji pusė yra Kobo-Daglaso funkcija \(Q = Ax^{\alpha}y^{\beta}\), pakankamąją sąlygą šios temos uždaviniuose tikriname pagal išgaubtumą. Kaip ir <a href="#kobo-daglas">optimizavimo be apribojimų uždaviniuose</a>, esant neneigiamiems laipsnių rodikliams, funkcija yra išgaubta, jei \(A &gt; 0\) ir \(\alpha + \beta \le 1\).</p>
+      <ul>
+        <li><strong>Kobo-Daglaso funkcijos maksimizavimas esant tiesiniam apribojimui.</strong> Pavyzdžiui, ieškome didžiausios gamybos apimties esant biudžeto apribojimui \(c_1x + c_2y = m\). Lagranžo funkcijoje \(L = Ax^{\alpha}y^{\beta} - \lambda(c_1x + c_2y - m)\) pirmasis narys yra išgaubtas, o antrasis tiesinis, todėl \(L\) yra išgaubta funkcija. Kritinis taškas yra maksimumo taškas.</li>
+        <li><strong>Tiesinės funkcijos minimizavimas esant Kobo-Daglaso apribojimui.</strong> Pavyzdžiui, ieškome mažiausių sąnaudų esant reikalaujamai gamybos apimčiai \(Ax^{\alpha}y^{\beta} = Q\). Lagranžo funkcijoje \(L = c_1x + c_2y - \lambda(Ax^{\alpha}y^{\beta} - Q)\), kai \(\lambda &gt; 0\), išgaubtą funkciją padauginus iš \(-\lambda\), gaunama įgaubta funkcija. Tiesiniai nariai įgaubtumo nekeičia. Todėl \(L\) yra įgaubta funkcija, o kritinis taškas – minimumo taškas.</li>
+      </ul>
+      <p>Abiem atvejais pirmųjų dviejų sistemos lygčių narius su \(\lambda\) perkeliame į dešiniąsias puses ir vieną lygtį padalijame iš kitos. Daugiklis \(\lambda\) susiprastina. Suprastinę laipsnius su tuo pačiu pagrindu, vieną kintamąjį išreiškiame per kitą.</p>
+    </article>
+
+    <article class="card concept" id="eiga-salyginis">
+      <div class="concept-head"><span class="num">11</span><h3>Kaip spręsti taikomąjį sąlyginio optimizavimo uždavinį</h3></div>
+      <ol class="steps-list">
+        <li><strong>Užrašykite modelį.</strong> Apibrėžkite kintamuosius, tikslo funkciją \(f(x;\,y)\) ir apribojimą \(g(x;\,y) = m\). Nurodykite, ar reikia rasti didžiausią, ar mažiausią \(f(x;\,y)\) reikšmę, kai \(g(x;\,y) = m\).</li>
+        <li>Sudarykite Lagranžo funkciją \(L = f - \lambda(g - m)\).</li>
+        <li>Raskite \(L'_x\) ir \(L'_y\), prilyginkite jas nuliui ir į sistemą įtraukite apribojimo lygtį. Išspręskite trijų lygčių sistemą.</li>
+        <li>Nustatykite kritinio taško rūšį. Patikrinkite pakankamąją sąlygą pagal funkcijos \(L\) antros eilės dalines išvestines, įstatę kritinio taško koordinates ir \(\lambda\) reikšmę, arba pagal Kobo-Daglaso funkcijos išgaubtumą.</li>
+        <li>Apskaičiuokite optimalią reikšmę. Jei prašoma įvertinti jos pokytį, taikykite \(\Delta f^{*} \approx \lambda\cdot\Delta m\).</li>
+      </ol>
+    </article>
+  </section>
+
+  <!-- ============ TAIKYMAI ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Taikymai</h2>
+    <p class="section-intro">Čia rasite ekonominių ir vadybinių optimizavimo uždavinių: didžiausio pelno, mažiausių sąnaudų ir kitų optimalių sprendimų paiešką, kai kintamųjų nesieja jokia sąlyga, ir kai reikia tenkinti biudžeto, užsakymo ar kitą apribojimą. Sudėtingesniuose uždaviniuose tikslo funkciją ir apribojimą reikia sudaryti patiems pagal situacijos aprašymą.</p>
+    <div class="model-grid" data-models="t9"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">8 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.3 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
