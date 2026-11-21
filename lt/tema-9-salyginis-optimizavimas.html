@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagrindiniai sąlyginio optimizavimo uždaviniai · Taikomoji matematika</title>
+<meta name="description" content="Sąlyginio optimizavimo uždaviniai Lagranžo daugiklių metodu: modelio sudarymas, Lagranžo funkcija, trijų lygčių sistemos sprendimas (keitimu, Gauso metodu, lygčių dalyba), pakankamoji sąlyga ir Lagranžo daugiklio reikšmė. Pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m93">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">9 tema · Taikymai · 3 skyrius</span>
+    <h1>Pagrindiniai sąlyginio optimizavimo uždaviniai</h1>
+    <p class="lead">Šiame skyriuje sprendžiami taikomieji uždaviniai, kuriuose kintamuosius sieja papildoma sąlyga – apribojimas: reikia pagaminti nustatytą kiekį, įvykdyti užsakymą arba išleisti visą biudžetą. Tokie uždaviniai sprendžiami Lagranžo daugiklių metodu, kuris aprašytas 9 temos dalyje <a href="tema-9.html#salyginis">„Sąlyginis optimizavimas“</a>.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#sistema">Lygčių sistema</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Modelio sudarymas</h2>
+    <article class="card">
+      <p>Sąlyginio optimizavimo uždavinio sprendimas pradedamas modeliu (žr. <a href="tema-9.html#lagranzo">„Lagranžo uždavinys“</a>). Jį sudarome atsakydami į tris klausimus.</p>
+      <ol class="steps-list">
+        <li><strong>Kokius dydžius galima pasirinkti?</strong> Tai kintamieji \(x\) ir \(y\), pavyzdžiui, dviejų gaminių kiekiai, iš dviejų sandėlių pristatomi kiekiai, darbo ir įrenginių naudojimo valandos.</li>
+        <li><strong>Kurio dydžio reikia rasti didžiausią arba mažiausią reikšmę?</strong> Tai tikslo funkcija \(f(x;\,y)\): pelnas, sąnaudos, naudingumas ar gamybos apimtis. Ji gali būti duota sąlygoje arba ją reikia sudaryti iš dalių.</li>
+        <li><strong>Kokią sąlygą turi tenkinti kintamieji?</strong> Tai apribojimas \(g(x;\,y) = m\). Konstanta \(m\) gali būti biudžetas, reikalaujamas kiekis arba pajėgumas.</li>
+      </ol>
+
+      <h3 class="subhead">Dažniausi apribojimai</h3>
+      <div class="tbl-wrap">
+        <table class="vtable cmp-tbl">
+          <thead><tr><th scope="col">Sąlygoje</th><th scope="col">Apribojimas</th></tr></thead>
+          <tbody>
+            <tr><td>Iš viso reikia pagaminti arba pristatyti lygiai \(m\) vienetų</td><td>\(x + y = m\)</td></tr>
+            <tr><td>Visas biudžetas \(m\) išleidžiamas dviem ištekliams, kurių vieneto kainos \(c_1\) ir \(c_2\)</td><td>\(c_1x + c_2y = m\)</td></tr>
+            <tr><td>Gamybos apimtis \(Q(x;\,y)\) turi atitikti užsakymą \(m\)</td><td>\(Q(x;\,y) = m\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subhead">Tikslo funkcija – duota arba sudaroma</h3>
+      <p>Pelno, sąnaudų, naudingumo ar gamybos funkcija dažnai duota sąlygoje. Kitais atvejais tikslo funkciją sudarome patys:</p>
+      <ul>
+        <li>jei sąnaudos susideda iš kelių dalių, tikslo funkcija yra jų suma, pavyzdžiui, vežimo iš dviejų sandėlių sąnaudos (<a href="#pavyzdys-3">3 pavyzdys</a>);</li>
+        <li>jei žinomos išteklių vieneto kainos \(c_1\) ir \(c_2\), sąnaudos yra \(TC = c_1x + c_2y\) (<a href="#pavyzdys-7">7</a> ir <a href="#pavyzdys-8">8 pavyzdžiai</a>).</li>
+      </ul>
+      <p>Ta pati gamybos funkcija gali būti ir tikslo funkcija, ir apribojimas. Jei duotas biudžetas ir ieškoma didžiausios gamybos apimties, \(Q(x;\,y)\) yra tikslo funkcija, o \(c_1x + c_2y = m\) – apribojimas (<a href="#pavyzdys-6">6 pavyzdys</a>). Jei duotas užsakymas ir ieškoma mažiausių sąnaudų, tikslo funkcija yra \(c_1x + c_2y\), o \(Q(x;\,y) = m\) – apribojimas (<a href="#pavyzdys-8">8 pavyzdys</a>).</p>
+
+      <h3 class="subhead">Lagranžo funkcija ir Lagranžo daugiklis</h3>
+      <p>Apribojimą perrašome forma \(g(x;\,y) - m = 0\) – konstantą \(m\) perkeliame į kairiąją pusę. Iš tikslo funkcijos atimame šį reiškinį, padaugintą iš \(\lambda\) (žr. <a href="tema-9.html#metodas">„Lagranžo daugiklių metodas“</a>):</p>
+      \[ L(x;\,y;\,\lambda) = f(x;\,y) - \lambda\big(g(x;\,y) - m\big) \]
+      <p>Pavyzdžiui, jei biudžeto apribojimas yra \(8x + 2y = 200\), tai \(L = U(x;\,y) - \lambda(8x + 2y - 200)\).</p>
+      <p>Lagranžo daugiklio reikšmė kritiniame taške rodo, kiek apytiksliai pasikeičia optimali tikslo funkcijos reikšmė, kai apribojimo konstanta \(m\) padidėja vienu vienetu (žr. <a href="tema-9.html#daugiklis">„Lagranžo daugiklio reikšmė“</a>). Kai \(m\) pasikeičia dydžiu \(\Delta m\),</p>
+      \[ \Delta f^{*} \approx \lambda\cdot\Delta m \]
+      <p>Pokytis \(\Delta m\) matuojamas tais pačiais vienetais kaip \(m\). Jei pokytis nurodytas procentais, \(\Delta m\) apskaičiuojame nuo \(m\): pavyzdžiui, 10&nbsp;% nuo 1200 yra \(\Delta m = 120\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. LYGČIŲ SISTEMA ============ -->
+  <section class="section" id="sistema" aria-labelledby="h-sys">
+    <h2 id="h-sys">Lagranžo lygčių sistemos sprendimas</h2>
+    <article class="card">
+      <p>Lagranžo lygčių sistemą sudaro trys lygtys: \(L'_x = 0\), \(L'_y = 0\) ir apribojimo lygtis. Nežinomieji taip pat trys: \(x\), \(y\) ir \(\lambda\). Sprendimo būdas priklauso nuo to, ar sistema tiesinė.</p>
+
+      <h3 class="subhead">Kai sistema tiesinė</h3>
+      <p>Jei tikslo funkcija yra antrojo laipsnio daugianaris, o apribojimas tiesinis, pavyzdžiui, \(x + y = m\), visos trys lygtys yra tiesinės. Tokią sistemą patogu spręsti keitimu:</p>
+      <ol class="steps-list">
+        <li>Pirmosiose dviejose lygtyse narį su \(\lambda\) perkeliame į kitą pusę ir gauname dvi \(\lambda\) išraiškas.</li>
+        <li>Abi išraiškos lygios tam pačiam \(\lambda\), todėl jas sulyginame. Gaunama lygtis tik su \(x\) ir \(y\).</li>
+        <li>Iš šios lygties arba iš apribojimo lygties išreiškiame vieną kintamąjį ir įstatome į kitą lygtį. Gaunama lygtis su vienu kintamuoju.</li>
+        <li>Radę \(x\) ir \(y\), juos įstatome į vieną \(\lambda\) išraišką, o kita išraiška patikriname – turi gautis ta pati reikšmė.</li>
+      </ol>
+      <p>Tiesinę sistemą galima spręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>: išplėstinę matricą sudaro \(x\), \(y\) ir \(\lambda\) koeficientai bei laisvieji nariai. Sprendimas Gauso metodu pateiktas <a href="#pavyzdys-1">1–4 pavyzdžių</a> išskleidžiamuose languose.</p>
+
+      <h3 class="subhead">Kai sistema netiesinė</h3>
+      <p>Jei tikslo funkcijoje ar apribojime yra šaknų, logaritmų arba Kobo-Daglaso funkcija, sistema yra <strong>netiesinė</strong> ir Gauso metodas jai netinka. Pavyzdžiuose taikomi šie būdai:</p>
+      <ul>
+        <li><strong>\(\lambda\) išraiškų sulyginimas.</strong> Iš pirmųjų dviejų lygčių išreiškiame \(\lambda\) ir išraiškas sulyginame. Jei lieka šaknų, abi lygties puses keliame kvadratu (<a href="#pavyzdys-5">5 pavyzdys</a>).</li>
+        <li><strong>Lygčių dalyba.</strong> Narius su \(\lambda\) perkeliame į dešiniąsias puses ir vieną lygtį padalijame iš kitos. Daugiklis \(\lambda\) susiprastina, o laipsniai su tuo pačiu pagrindu suprastinami atimant rodiklius (<a href="#pavyzdys-6">6</a> ir <a href="#pavyzdys-8">8 pavyzdžiai</a>).</li>
+        <li><strong>Įstatymas į apribojimą.</strong> Jei apribojime yra tie patys reiškiniai kaip pirmosiose dviejose lygtyse, pavyzdžiui, \(\sqrt{x}\) ir \(\sqrt{y}\), juos išreiškiame per \(\lambda\) ir įstatome į apribojimo lygtį (<a href="#pavyzdys-7">7 pavyzdys</a>).</li>
+      </ul>
+      <p>Taikomuosiuose uždaviniuose kintamieji – kiekiai ar valandos – yra teigiami. Todėl lygtis galima dalyti iš kintamųjų, o lygtį, kurios abi pusės teigiamos, – kelti kvadratu.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+    <article class="card">
+      <ol class="steps-list">
+        <li><strong>Užrašykite modelį.</strong> Apibrėžkite kintamuosius, tikslo funkciją \(f(x;\,y)\) ir apribojimą \(g(x;\,y) = m\). Nurodykite, ar reikia rasti didžiausią, ar mažiausią \(f(x;\,y)\) reikšmę, kai \(g(x;\,y) = m\).</li>
+        <li>Sudarykite Lagranžo funkciją \(L = f - \lambda(g - m)\).</li>
+        <li>Raskite \(L'_x\) ir \(L'_y\), prilyginkite jas nuliui ir į sistemą įtraukite apribojimo lygtį. Išspręskite trijų lygčių sistemą (žr. <a href="#sistema">„Lagranžo lygčių sistemos sprendimas“</a>).</li>
+        <li>Nustatykite kritinio taško rūšį. Patikrinkite pakankamąją sąlygą pagal funkcijos \(L\) antros eilės dalines išvestines, įstatę kritinio taško koordinates ir \(\lambda\) reikšmę (žr. <a href="tema-9.html#metodas">„Lagranžo daugiklių metodas“</a>), arba pagal Kobo-Daglaso funkcijos išgaubtumą (žr. <a href="tema-9.html#kobo-daglas-l">„Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose“</a>).</li>
+        <li>Apskaičiuokite optimalią reikšmę. Jei prašoma įvertinti jos pokytį, taikykite \(\Delta f^{*} \approx \lambda\cdot\Delta m\).</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Neteisingai sudarytas apribojimas.</strong> Pavyzdžiui, biudžeto apribojime neįvertintos išteklių kainos: \(x + y = 200\) vietoje \(8x + 2y = 200\).</li>
+            <li><strong>Klaidingi ženklai Lagranžo funkcijoje.</strong> Konstanta \(m\) perkelta į kairiąją pusę nepakeitus jos ženklo arba pamirštas minusas prieš \(\lambda\).</li>
+            <li><strong>Pamirštas koeficientas prie \(\lambda\).</strong> Nario \(-\lambda(8x + 2y - 200)\) išvestinė pagal \(x\) yra \(-8\lambda\), o ne \(-\lambda\).</li>
+            <li><strong>Apribojimo lygtis neįtraukta į sistemą.</strong> Iš dviejų lygčių \(L'_x = 0\) ir \(L'_y = 0\) trijų nežinomųjų rasti negalima.</li>
+            <li><strong>Gauso metodas taikomas netiesinei sistemai.</strong> Gauso metodas tinka tik tiesinių lygčių sistemoms.</li>
+            <li><strong>Antros eilės išvestinėse neįstatytas \(\lambda\).</strong> Jei išvestinėse liko \(\lambda\), įstatomos ne tik kritinio taško koordinatės, bet ir \(\lambda\) reikšmė.</li>
+            <li><strong>Neteisingai apskaičiuotas \(\Delta m\).</strong> Tai apribojimo konstantos pokytis tais pačiais vienetais kaip \(m\): pavyzdžiui, 10&nbsp;% nuo 400 yra 40.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <h3 class="subhead">Kai lygčių sistema tiesinė</h3>
+    <!-- 1 pavyzdys: TM 9.3, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Miesto ir kalnų dviračiai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamykla per mėnesį pagamina \(x\) miesto dviračių ir \(y\) kalnų dviračių. Mėnesio pelnas eurais yra
+<div class="m-wide">\[ P(x;\,y) = -0{,}2x^2 - 0{,}1y^2 - 0{,}1xy + 100x + 80y - 5000 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= -0{,}2x^2 - 0{,}1y^2 - 0{,}1xy \\ &amp;\phantom{=}\; {}+ 100x + 80y - 5000 \end{aligned} \]</div>
+Gamykla per mėnesį turi pagaminti lygiai 400 dviračių.
+<br>a) Kiek kiekvienos rūšies dviračių reikėtų pagaminti, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?
+<br>b) Kaip pasikeistų didžiausias pelnas, jei gamybos pajėgumas padidėtų iki 410 dviračių per mėnesį?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) – per mėnesį pagaminamų miesto dviračių skaičius, \(y\) – kalnų dviračių skaičius.</p>
+          <p><strong>Tikslo funkcija.</strong> Reikia rasti didžiausią pelną. Pelno funkcija \(P(x;\,y)\) duota sąlygoje.</p>
+          <p><strong>Apribojimas.</strong> Abiejų rūšių dviračių per mėnesį turi būti pagaminta lygiai 400, todėl jų skaičių suma lygi 400: \(x + y = 400\).</p>
+          <p>Ieškome didžiausio pelno pagal \(x\) ir \(y\), kai tenkinamas apribojimas:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} &amp;\max_{x;\,y}\; P(x;\,y) = -0{,}2x^2 - 0{,}1y^2 - 0{,}1xy + 100x + 80y - 5000 \\ &amp;\text{kai}\;\; x + y = 400 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;\max_{x;\,y}\; P(x;\,y) \\ &amp;\text{kai}\;\; x + y = 400 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą perrašome taip, kad dešiniojoje pusėje būtų nulis: skaičių 400 perkeliame į kairiąją pusę ir gauname \(x + y - 400 = 0\). Iš tikslo funkcijos atimame šį reiškinį, padaugintą iš Lagranžo daugiklio \(\lambda\) (žr. <a href="tema-9.html#metodas">Lagranžo daugiklių metodą</a>):</p>
+          <div class="m-wide">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= -0{,}2x^2 - 0{,}1y^2 - 0{,}1xy + 100x + 80y - 5000 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 400) \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= -0{,}2x^2 - 0{,}1y^2 - 0{,}1xy \\ &amp;\phantom{=}\; {}+ 100x + 80y - 5000 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 400) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Randame Lagranžo funkcijos dalines išvestines pagal \(x\) ir \(y\). Diferencijuojant pagal \(x\), nariai \(-0{,}1y^2\), \(80y\) ir \(-5000\) yra konstantos, o \((-0{,}1xy)'_x = -0{,}1y\). Paskutinio nario \(-\lambda(x + y - 400)\) išvestinė ir pagal \(x\), ir pagal \(y\) lygi \(-\lambda\). Pagal \(y\) diferencijuojama analogiškai:</p>
+          <div class="m-wide bp-lg">\[ L'_x = -0{,}4x - 0{,}1y + 100 - \lambda;\qquad L'_y = -0{,}2y - 0{,}1x + 80 - \lambda \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} L'_x = -0{,}4x - 0{,}1y + 100 - \lambda \\ L'_y = -0{,}2y - 0{,}1x + 80 - \lambda \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui, o į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} -0{,}4x - 0{,}1y + 100 - \lambda &amp;= 0 \\ -0{,}2y - 0{,}1x + 80 - \lambda &amp;= 0 \\ x + y &amp;= 400 \end{aligned} \right. \]
+          <p>Sistemoje yra trys lygtys ir trys nežinomieji: \(x\), \(y\) ir \(\lambda\). Visi nežinomieji yra pirmojo laipsnio ir nesudauginti tarpusavyje, todėl sistema yra <strong>tiesinė</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmosiose dviejose lygtyse narį \(-\lambda\) perkeliame į dešiniąją pusę (jo ženklas pasikeičia):</p>
+          <div class="m-wide">\[ \lambda = -0{,}4x - 0{,}1y + 100;\qquad \lambda = -0{,}2y - 0{,}1x + 80 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = -0{,}4x - 0{,}1y + 100 \\ \lambda = -0{,}2y - 0{,}1x + 80 \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Abu reiškiniai lygūs tam pačiam \(\lambda\), todėl juos sulyginame:</p>
+          <div class="m-wide">\[ -0{,}4x - 0{,}1y + 100 = -0{,}2y - 0{,}1x + 80 \]</div><div class="m-narrow">\[ \begin{gathered} -0{,}4x - 0{,}1y + 100 \\ = -0{,}2y - 0{,}1x + 80 \end{gathered} \]</div>
+          <p>Narius su kintamaisiais perkeliame į kairiąją pusę, o skaičius – į dešiniąją (perkeliamų narių ženklai pasikeičia). Sutraukiame panašiuosius narius ir abi puses padauginame iš 10, kad neliktų dešimtainių trupmenų:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} -0{,}4x + 0{,}1x - 0{,}1y + 0{,}2y = 80 - 100 \\ \Longrightarrow\; -0{,}3x + 0{,}1y = -20 \;\Longrightarrow\; -3x + y = -200 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -0{,}4x + 0{,}1x - 0{,}1y + 0{,}2y = 80 - 100 \\ \Longrightarrow\; -0{,}3x + 0{,}1y = -20 \\ \Longrightarrow\; -3x + y = -200 \end{gathered} \]</div>
+          <p>Iš gautos lygties išreiškiame \(y\) – narį \(-3x\) perkeliame į dešiniąją pusę:</p>
+          \[ y = 3x - 200 \]
+          <p><strong>Įstatymas į apribojimą.</strong> Gautą reiškinį įstatome į apribojimo lygtį \(x + y = 400\) vietoje \(y\) ir sprendžiame lygtį su vienu kintamuoju:</p>
+          <div class="m-wide bp-lg">\[ x + (3x - 200) = 400 \;\Longrightarrow\; 4x - 200 = 400 \;\Longrightarrow\; 4x = 600 \;\Longrightarrow\; x = 150 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + (3x - 200) = 400 \\ \Longrightarrow\; 4x - 200 = 400 \\ \Longrightarrow\; 4x = 600 \\ \Longrightarrow\; x = 150 \end{gathered} \]</div>
+          <p>Rastą \(x\) įstatome į reiškinį \(y = 3x - 200\): \(y = 3\cdot 150 - 200 = 250\).</p>
+          <p><strong>Daugiklio reikšmė.</strong> Reikšmes \(x = 150\) ir \(y = 250\) įstatome į pirmąją \(\lambda\) išraišką, o antrąja patikriname:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} \lambda &amp;= -0{,}4\cdot 150 - 0{,}1\cdot 250 + 100 = -60 - 25 + 100 = 15 \\ \lambda &amp;= -0{,}2\cdot 250 - 0{,}1\cdot 150 + 80 = -50 - 15 + 80 = 15 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} \lambda &amp;= -0{,}4\cdot 150 - 0{,}1\cdot 250 + 100 \\ &amp;= -60 - 25 + 100 = 15 \\[4pt] \lambda &amp;= -0{,}2\cdot 250 - 0{,}1\cdot 150 + 80 \\ &amp;= -50 - 15 + 80 = 15 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((150;\,250;\,15)\): \(x = 150\), \(y = 250\), \(\lambda = 15\).</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Pirmiausia lygtis pertvarkome: nežinomuosius rašome kairiojoje pusėje tvarka \(x\), \(y\), \(\lambda\), o skaičius perkeliame į dešiniąją (jų ženklai pasikeičia). Kad neliktų dešimtainių trupmenų, pirmąsias dvi lygtis dauginame iš \(-10\):</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} -0{,}4x - 0{,}1y - \lambda = -100\;\big|\cdot(-10) \;&amp;\Longrightarrow\; 4x + y + 10\lambda = 1000 \\ -0{,}1x - 0{,}2y - \lambda = -80\;\big|\cdot(-10) \;&amp;\Longrightarrow\; x + 2y + 10\lambda = 800 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -0{,}4x - 0{,}1y - \lambda = -100\;\big|\cdot(-10) \\ \Longrightarrow\; 4x + y + 10\lambda = 1000 \\[4pt] -0{,}1x - 0{,}2y - \lambda = -80\;\big|\cdot(-10) \\ \Longrightarrow\; x + 2y + 10\lambda = 800 \end{gathered} \]</div>
+          <p>Išplėstinės matricos stulpeliai – nežinomųjų \(x\), \(y\) ir \(\lambda\) koeficientai, paskutinis stulpelis – laisvieji nariai (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>). Apribojimo lygtyje \(x\) koeficientas lygus 1, todėl ją rašome pirmąja eilute:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 400 \\ 4 &amp; 1 &amp; 10 &amp; 1000 \\ 1 &amp; 2 &amp; 10 &amp; 800 \end{array}\right) \]
+          <p>Kad po pagrindiniu elementu atsirastų nuliai, pirmąją eilutę dauginame iš \(-4\) ir pridedame prie antrosios, o padauginę iš \(-1\) – prie trečiosios:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 400 \\ 4 &amp; 1 &amp; 10 &amp; 1000 \\ 1 &amp; 2 &amp; 10 &amp; 800 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-4)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 400 \\ \htmlClass{hc}{0} &amp; -3 &amp; 10 &amp; -600 \\ \htmlClass{hc}{0} &amp; 1 &amp; 10 &amp; 400 \end{array}\right)\)</span></div>
+          <p>Trečiosios eilutės antrasis elementas lygus 1. Antrąją ir trečiąją eilutes sukeičiame vietomis – šis vienetas tampa pagrindiniu elementu. Tada antrąją eilutę dauginame iš 3 ir pridedame prie trečiosios, o gautą trečiąją eilutę dalijame iš 40:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 400 \\ 0 &amp; \htmlClass{hd}{1} &amp; 10 &amp; 400 \\ 0 &amp; -3 &amp; 10 &amp; -600 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 400 \\ 0 &amp; 1 &amp; 10 &amp; 400 \\ 0 &amp; \htmlClass{hc}{0} &amp; 40 &amp; 600 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,40} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 400 \\ 0 &amp; 1 &amp; 10 &amp; 400 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 15 \end{array}\right)\)</span></div>
+          <p><strong>Atbulinė eiga.</strong> Iš trečiosios eilutės \(\lambda = 15\). Antroji eilutė reiškia lygtį \(y + 10\lambda = 400\), o pirmoji – \(x + y = 400\):</p>
+          <div class="m-wide bp-lg">\[ y + 10\cdot 15 = 400 \;\Longrightarrow\; y = 250;\qquad x + 250 = 400 \;\Longrightarrow\; x = 150 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y + 10\cdot 15 = 400 \;\Longrightarrow\; y = 250 \\ x + 250 = 400 \;\Longrightarrow\; x = 150 \end{gathered} \]</div>
+          <p>Gaunamas tas pats sprendinys: \(x = 150\), \(y = 250\), \(\lambda = 15\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = -0{,}4;\quad B = L''_{xy} = -0{,}1;\quad C = L''_{yy} = -0{,}2 \\ D = AC - B^2 = (-0{,}4)\cdot(-0{,}2) - (-0{,}1)^2 = 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = -0{,}4 \\ B &amp;= L''_{xy} = -0{,}1 \\ C &amp;= L''_{yy} = -0{,}2 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}4)\cdot(-0{,}2) - (-0{,}1)^2 \\ &amp;= 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((150;\,250)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausias pelnas ir jo pokytis</span></h4>
+          <p><strong>a)</strong> Kritinio taško koordinates įstatome į pelno funkciją:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P_{\max}(150;\,250) &amp;= -0{,}2\cdot 150^2 - 0{,}1\cdot 250^2 - 0{,}1\cdot 150\cdot 250 \\ &amp;\phantom{=}\; {}+ 100\cdot 150 + 80\cdot 250 - 5000 \\ &amp;= -4500 - 6250 - 3750 + 15\,000 + 20\,000 - 5000 = 15\,500 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(150;\,250) \\ &amp;= -0{,}2\cdot 150^2 - 0{,}1\cdot 250^2 \\ &amp;\phantom{=}\; {}- 0{,}1\cdot 150\cdot 250 + 100\cdot 150 \\ &amp;\phantom{=}\; {}+ 80\cdot 250 - 5000 \\ &amp;= -4500 - 6250 - 3750 \\ &amp;\phantom{=}\; {}+ 15\,000 + 20\,000 - 5000 \\ &amp;= 15\,500 \end{aligned} \]</div>
+          <p><strong>b)</strong> Gamybos pajėgumas padidėja nuo 400 iki 410 dviračių, t.&nbsp;y. apribojimo konstanta padidėja dydžiu \(\Delta m = 10\). Lagranžo daugiklis \(\lambda = 15\) rodo, kad apribojimo konstantai padidėjus vienu dviračiu, didžiausias pelnas padidėja apytiksliai 15&nbsp;eurų (žr. <a href="tema-9.html#daugiklis">Lagranžo daugiklio reikšmę</a>):</p>
+          \[ \Delta P^{*} \approx \lambda\cdot\Delta m = 15\cdot 10 = 150 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Gamykla per mėnesį turėtų pagaminti 150 miesto ir 250 kalnų dviračių. Didžiausias mėnesio pelnas yra 15&nbsp;500 eurų. b) Didžiausias pelnas padidėtų apytiksliai 150 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 9.3, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Dieninė ir naktinė pamainos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė turi įvykdyti 500 vienetų užsakymą. Dieninėje pamainoje ji gali pagaminti \(x\) vienetų, o naktinėje – \(y\). Abi pamainos naudoja tuos pačius įrenginius, todėl sąnaudos eurais yra
+<div class="m-wide">\[ TC(x;\,y) = 0{,}3x^2 + 0{,}2y^2 + 0{,}1xy + 20x + 30y + 2000 \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 0{,}3x^2 + 0{,}2y^2 + 0{,}1xy \\ &amp;\phantom{=}\; {}+ 20x + 30y + 2000 \end{aligned} \]</div>
+a) Kiek vienetų reikėtų pagaminti kiekvienoje pamainoje, kad sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?
+<br>b) Ką šiame uždavinyje reiškia Lagranžo daugiklis?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) – dieninėje pamainoje pagaminamų vienetų skaičius, \(y\) – naktinėje pamainoje pagaminamų vienetų skaičius.</p>
+          <p><strong>Tikslo funkcija.</strong> Reikia rasti mažiausias sąnaudas. Sąnaudų funkcija \(TC(x;\,y)\) duota sąlygoje.</p>
+          <p><strong>Apribojimas.</strong> Abiejose pamainose kartu pagamintas kiekis turi atitikti užsakymą: \(x + y = 500\).</p>
+          <p>Ieškome mažiausių sąnaudų pagal \(x\) ir \(y\), kai tenkinamas apribojimas:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 0{,}3x^2 + 0{,}2y^2 + 0{,}1xy + 20x + 30y + 2000 \\ &amp;\text{kai}\;\; x + y = 500 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) \\ &amp;\text{kai}\;\; x + y = 500 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą užrašome forma \(x + y - 500 = 0\). Iš tikslo funkcijos atimame šį reiškinį, padaugintą iš \(\lambda\):</p>
+          <div class="m-wide">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 0{,}3x^2 + 0{,}2y^2 + 0{,}1xy + 20x + 30y + 2000 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 500) \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= 0{,}3x^2 + 0{,}2y^2 + 0{,}1xy \\ &amp;\phantom{=}\; {}+ 20x + 30y + 2000 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 500) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Diferencijuojant pagal \(x\), nariai \(0{,}2y^2\), \(30y\) ir \(2000\) yra konstantos, o \((0{,}1xy)'_x = 0{,}1y\). Pagal \(y\) diferencijuojama analogiškai. Nario \(-\lambda(x + y - 500)\) išvestinė pagal kiekvieną kintamąjį lygi \(-\lambda\):</p>
+          <div class="m-wide">\[ L'_x = 0{,}6x + 0{,}1y + 20 - \lambda;\qquad L'_y = 0{,}4y + 0{,}1x + 30 - \lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 0{,}6x + 0{,}1y + 20 - \lambda \\ L'_y = 0{,}4y + 0{,}1x + 30 - \lambda \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 0{,}6x + 0{,}1y + 20 - \lambda &amp;= 0 \\ 0{,}4y + 0{,}1x + 30 - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \]
+          <p>Visi trys nežinomieji \(x\), \(y\) ir \(\lambda\) yra pirmojo laipsnio, todėl sistema yra <strong>tiesinė</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmosiose dviejose lygtyse narį \(-\lambda\) perkeliame į dešiniąją pusę:</p>
+          <div class="m-wide">\[ \lambda = 0{,}6x + 0{,}1y + 20;\qquad \lambda = 0{,}4y + 0{,}1x + 30 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 0{,}6x + 0{,}1y + 20 \\ \lambda = 0{,}4y + 0{,}1x + 30 \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Abi išraiškas sulyginame. Narius su kintamaisiais perkeliame į kairiąją pusę, skaičius – į dešiniąją, sutraukiame panašiuosius narius ir abi puses padauginame iš 10:</p>
+          <div class="m-wide bp-lg">\[ 0{,}6x + 0{,}1y + 20 = 0{,}4y + 0{,}1x + 30 \;\Longrightarrow\; 0{,}5x - 0{,}3y = 10 \;\Longrightarrow\; 5x - 3y = 100 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 0{,}6x + 0{,}1y + 20 = 0{,}4y + 0{,}1x + 30 \\ \Longrightarrow\; 0{,}5x - 0{,}3y = 10 \\ \Longrightarrow\; 5x - 3y = 100 \end{gathered} \]</div>
+          <p><strong>Įstatymas.</strong> Šįkart patogiau iš apribojimo lygties \(x + y = 500\) išreikšti \(y = 500 - x\) ir įstatyti į gautą lygtį. Kadangi \(y\) padaugintas iš \(-3\), įstatytą reiškinį rašome skliaustuose:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} 5x - 3(500 - x) = 100 \;\Longrightarrow\; 5x - 1500 + 3x = 100 \\ \Longrightarrow\; 8x = 1600 \;\Longrightarrow\; x = 200 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 5x - 3(500 - x) = 100 \\ \Longrightarrow\; 5x - 1500 + 3x = 100 \\ \Longrightarrow\; 8x = 1600 \\ \Longrightarrow\; x = 200 \end{gathered} \]</div>
+          <p>Tada \(y = 500 - 200 = 300\).</p>
+          <p><strong>Daugiklio reikšmė.</strong> Reikšmes įstatome į pirmąją \(\lambda\) išraišką, o antrąja patikriname:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} \lambda &amp;= 0{,}6\cdot 200 + 0{,}1\cdot 300 + 20 = 120 + 30 + 20 = 170 \\ \lambda &amp;= 0{,}4\cdot 300 + 0{,}1\cdot 200 + 30 = 120 + 20 + 30 = 170 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} \lambda &amp;= 0{,}6\cdot 200 + 0{,}1\cdot 300 + 20 \\ &amp;= 120 + 30 + 20 = 170 \\[4pt] \lambda &amp;= 0{,}4\cdot 300 + 0{,}1\cdot 200 + 30 \\ &amp;= 120 + 20 + 30 = 170 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((200;\,300;\,170)\).</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Pirmiausia lygtis pertvarkome: nežinomuosius rašome kairiojoje pusėje tvarka \(x\), \(y\), \(\lambda\), o skaičius perkeliame į dešiniąją. Kad neliktų dešimtainių trupmenų, pirmąsias dvi lygtis dauginame iš 10:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} 0{,}6x + 0{,}1y - \lambda = -20\;\big|\cdot 10 \;&amp;\Longrightarrow\; 6x + y - 10\lambda = -200 \\ 0{,}1x + 0{,}4y - \lambda = -30\;\big|\cdot 10 \;&amp;\Longrightarrow\; x + 4y - 10\lambda = -300 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 0{,}6x + 0{,}1y - \lambda = -20\;\big|\cdot 10 \\ \Longrightarrow\; 6x + y - 10\lambda = -200 \\[4pt] 0{,}1x + 0{,}4y - \lambda = -30\;\big|\cdot 10 \\ \Longrightarrow\; x + 4y - 10\lambda = -300 \end{gathered} \]</div>
+          <p>Išplėstinės matricos stulpeliai – nežinomųjų \(x\), \(y\) ir \(\lambda\) koeficientai, paskutinis stulpelis – laisvieji nariai (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>). Apribojimo lygtyje \(x\) koeficientas lygus 1, todėl ją rašome pirmąja eilute:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 500 \\ 6 &amp; 1 &amp; -10 &amp; -200 \\ 1 &amp; 4 &amp; -10 &amp; -300 \end{array}\right) \]
+          <p>Pirmąją eilutę dauginame iš \(-6\) ir pridedame prie antrosios, o padauginę iš \(-1\) – prie trečiosios. Gautą antrąją eilutę dalijame iš \(-5\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 500 \\ 6 &amp; 1 &amp; -10 &amp; -200 \\ 1 &amp; 4 &amp; -10 &amp; -300 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-6)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ \htmlClass{hc}{0} &amp; -5 &amp; -10 &amp; -3200 \\ \htmlClass{hc}{0} &amp; 3 &amp; -10 &amp; -800 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ 0 &amp; \htmlClass{hd}{1} &amp; 2 &amp; 640 \\ 0 &amp; 3 &amp; -10 &amp; -800 \end{array}\right)\)</span></div>
+          <p>Antrąją eilutę dauginame iš \(-3\) ir pridedame prie trečiosios, o gautą trečiąją eilutę dalijame iš \(-16\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ 0 &amp; \htmlClass{hd}{1} &amp; 2 &amp; 640 \\ 0 &amp; 3 &amp; -10 &amp; -800 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ 0 &amp; 1 &amp; 2 &amp; 640 \\ 0 &amp; \htmlClass{hc}{0} &amp; -16 &amp; -2720 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-16)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ 0 &amp; 1 &amp; 2 &amp; 640 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 170 \end{array}\right)\)</span></div>
+          <p><strong>Atbulinė eiga.</strong> Iš trečiosios eilutės \(\lambda = 170\). Antroji eilutė reiškia lygtį \(y + 2\lambda = 640\), o pirmoji – \(x + y = 500\):</p>
+          <div class="m-wide bp-lg">\[ y + 2\cdot 170 = 640 \;\Longrightarrow\; y = 300;\qquad x + 300 = 500 \;\Longrightarrow\; x = 200 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y + 2\cdot 170 = 640 \;\Longrightarrow\; y = 300 \\ x + 300 = 500 \;\Longrightarrow\; x = 200 \end{gathered} \]</div>
+          <p>Gaunamas tas pats sprendinys: \(x = 200\), \(y = 300\), \(\lambda = 170\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = 0{,}6;\quad B = L''_{xy} = 0{,}1;\quad C = L''_{yy} = 0{,}4 \\ D = AC - B^2 = 0{,}6\cdot 0{,}4 - 0{,}1^2 = 0{,}24 - 0{,}01 = 0{,}23 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = 0{,}6 \\ B &amp;= L''_{xy} = 0{,}1 \\ C &amp;= L''_{yy} = 0{,}4 \\ D &amp;= AC - B^2 \\ &amp;= 0{,}6\cdot 0{,}4 - 0{,}1^2 \\ &amp;= 0{,}24 - 0{,}01 = 0{,}23 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((200;\,300)\) yra minimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Mažiausios sąnaudos</span></h4>
+          <p>Kritinio taško koordinates įstatome į sąnaudų funkciją:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} TC_{\min}(200;\,300) &amp;= 0{,}3\cdot 200^2 + 0{,}2\cdot 300^2 + 0{,}1\cdot 200\cdot 300 \\ &amp;\phantom{=}\; {}+ 20\cdot 200 + 30\cdot 300 + 2000 \\ &amp;= 12\,000 + 18\,000 + 6000 + 4000 + 9000 + 2000 = 51\,000 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;TC_{\min}(200;\,300) \\ &amp;= 0{,}3\cdot 200^2 + 0{,}2\cdot 300^2 \\ &amp;\phantom{=}\; {}+ 0{,}1\cdot 200\cdot 300 + 20\cdot 200 \\ &amp;\phantom{=}\; {}+ 30\cdot 300 + 2000 \\ &amp;= 12\,000 + 18\,000 + 6000 \\ &amp;\phantom{=}\; {}+ 4000 + 9000 + 2000 \\ &amp;= 51\,000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Lagranžo daugiklio prasmė</span></h4>
+          <p><strong>b)</strong> Apribojimo konstanta šiame uždavinyje yra užsakymo dydis \(m = 500\) vienetų. Lagranžo daugiklis rodo, kiek apytiksliai pasikeičia mažiausios sąnaudos, kai užsakymas padidėja vienu vienetu (žr. <a href="tema-9.html#daugiklis">Lagranžo daugiklio reikšmę</a>):</p>
+          \[ \Delta TC^{*} \approx \lambda\cdot\Delta m = 170\cdot 1 = 170 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Įmonė turėtų pagaminti 200 vienetų dieninėje pamainoje ir 300 vienetų naktinėje. Mažiausios sąnaudos yra 51&nbsp;000 eurų. b) Kai \(\lambda = 170\), užsakymui padidėjus vienu vienetu, mažiausios sąnaudos padidėtų apytiksliai 170 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 9.3, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Pristatymas iš dviejų sandėlių</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Prekybos tinklas iš dviejų sandėlių A ir B kas savaitę turi pristatyti parduotuvėms 1200 padėklų prekių. Savaitės sąnaudos vežant \(x\) padėklų iš sandėlio A yra \(0{,}01x^2 + 6x\) eurų, o vežant \(y\) padėklų iš sandėlio B – \(0{,}02y^2 + 3y\) eurų.
+<br>a) Kiek padėklų reikėtų pristatyti iš kiekvieno sandėlio, kad vežimo sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?
+<br>b) Kaip pasikeistų mažiausios sąnaudos, jei savaitės pristatymo kiekis padidėtų 10&nbsp;%?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) – per savaitę iš sandėlio A pristatomų padėklų skaičius, \(y\) – iš sandėlio B pristatomų padėklų skaičius.</p>
+          <p>Šįkart tikslo funkcija sąlygoje nepateikta – ją sudarome patys. Reikia rasti mažiausias <strong>bendrąsias</strong> vežimo sąnaudas. Jas sudaro dvi dalys: vežimo iš sandėlio A sąnaudos \(0{,}01x^2 + 6x\) ir vežimo iš sandėlio B sąnaudos \(0{,}02y^2 + 3y\). Bendrosios sąnaudos yra šių dalių suma:</p>
+          <div class="m-wide bp-lg">\[ TC(x;\,y) = \big(0{,}01x^2 + 6x\big) + \big(0{,}02y^2 + 3y\big) = 0{,}01x^2 + 6x + 0{,}02y^2 + 3y \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;TC(x;\,y) \\ &amp;= \big(0{,}01x^2 + 6x\big) + \big(0{,}02y^2 + 3y\big) \\ &amp;= 0{,}01x^2 + 6x + 0{,}02y^2 + 3y \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Modelis</span></h4>
+          <p><strong>Apribojimas.</strong> Iš abiejų sandėlių pristatytų padėklų suma turi būti lygi reikalaujamam kiekiui: \(x + y = 1200\).</p>
+          <p>Ieškome mažiausių bendrųjų sąnaudų pagal \(x\) ir \(y\), kai tenkinamas apribojimas:</p>
+          <div class="m-wide">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 0{,}01x^2 + 6x + 0{,}02y^2 + 3y \\ &amp;\text{kai}\;\; x + y = 1200 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) \\ &amp;\text{kai}\;\; x + y = 1200 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą užrašome forma \(x + y - 1200 = 0\) ir sudarome Lagranžo funkciją:</p>
+          <div class="m-wide bp-lg">\[ L(x;\,y;\,\lambda) = 0{,}01x^2 + 6x + 0{,}02y^2 + 3y - \lambda(x + y - 1200) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 0{,}01x^2 + 6x + 0{,}02y^2 + 3y \\ &amp;\phantom{=}\; {}- \lambda(x + y - 1200) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Lygčių sistema</span></h4>
+          <p>Vežimo iš sandėlio A sąnaudos priklauso tik nuo \(x\), o iš sandėlio B – tik nuo \(y\). Todėl \(L'_x\) nepriklauso nuo \(y\), o \(L'_y\) – nuo \(x\):</p>
+          <div class="m-wide">\[ L'_x = 0{,}02x + 6 - \lambda;\qquad L'_y = 0{,}04y + 3 - \lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 0{,}02x + 6 - \lambda \\ L'_y = 0{,}04y + 3 - \lambda \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 0{,}02x + 6 - \lambda &amp;= 0 \\ 0{,}04y + 3 - \lambda &amp;= 0 \\ x + y &amp;= 1200 \end{aligned} \right. \]
+          <p>Visi nežinomieji yra pirmojo laipsnio, todėl sistema yra <strong>tiesinė</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmosiose dviejose lygtyse narį \(-\lambda\) perkeliame į dešiniąją pusę:</p>
+          <div class="m-wide">\[ \lambda = 0{,}02x + 6;\qquad \lambda = 0{,}04y + 3 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 0{,}02x + 6 \\ \lambda = 0{,}04y + 3 \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Abi išraiškas sulyginame. Iš gautos lygties išreiškiame \(x\): skaičių 6 perkeliame į dešiniąją pusę, o tada abi puses dalijame iš \(0{,}02\):</p>
+          <div class="m-wide bp-lg">\[ 0{,}02x + 6 = 0{,}04y + 3 \;\Longrightarrow\; 0{,}02x = 0{,}04y - 3 \;\Longrightarrow\; x = 2y - 150 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 0{,}02x + 6 = 0{,}04y + 3 \\ \Longrightarrow\; 0{,}02x = 0{,}04y - 3 \\ \Longrightarrow\; x = 2y - 150 \end{gathered} \]</div>
+          <p><strong>Įstatymas į apribojimą.</strong> Reiškinį \(x = 2y - 150\) įstatome į apribojimo lygtį \(x + y = 1200\):</p>
+          <div class="m-wide bp-lg">\[ (2y - 150) + y = 1200 \;\Longrightarrow\; 3y - 150 = 1200 \;\Longrightarrow\; 3y = 1350 \;\Longrightarrow\; y = 450 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} (2y - 150) + y = 1200 \\ \Longrightarrow\; 3y - 150 = 1200 \\ \Longrightarrow\; 3y = 1350 \\ \Longrightarrow\; y = 450 \end{gathered} \]</div>
+          <p>Tada \(x = 2\cdot 450 - 150 = 750\).</p>
+          <p><strong>Daugiklio reikšmė.</strong> Reikšmes įstatome į abi \(\lambda\) išraiškas – gaunama ta pati reikšmė:</p>
+          <div class="m-wide">\[ \lambda = 0{,}02\cdot 750 + 6 = 21;\qquad \lambda = 0{,}04\cdot 450 + 3 = 21 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 0{,}02\cdot 750 + 6 = 21 \\ \lambda = 0{,}04\cdot 450 + 3 = 21 \end{gathered} \]</div>
+          <p>Kritinis taškas yra \((750;\,450;\,21)\).</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Pirmiausia lygtis pertvarkome: nežinomuosius rašome kairiojoje pusėje, o skaičius perkeliame į dešiniąją. Koeficientai – šimtosios dalys, todėl pirmąsias dvi lygtis dauginame iš 100:</p>
+          <div class="m-wide">\[ \begin{aligned} 0{,}02x - \lambda = -6\;\big|\cdot 100 \;&amp;\Longrightarrow\; 2x - 100\lambda = -600 \\ 0{,}04y - \lambda = -3\;\big|\cdot 100 \;&amp;\Longrightarrow\; 4y - 100\lambda = -300 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 0{,}02x - \lambda = -6\;\big|\cdot 100 \\ \Longrightarrow\; 2x - 100\lambda = -600 \\[4pt] 0{,}04y - \lambda = -3\;\big|\cdot 100 \\ \Longrightarrow\; 4y - 100\lambda = -300 \end{gathered} \]</div>
+          <p>Antrojoje lygtyje nėra \(y\), o trečiojoje – \(x\), todėl atitinkami matricos elementai lygūs 0.</p>
+          <p>Išplėstinės matricos stulpeliai – nežinomųjų \(x\), \(y\) ir \(\lambda\) koeficientai, paskutinis stulpelis – laisvieji nariai (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>). Apribojimo lygtyje \(x\) koeficientas lygus 1, todėl ją rašome pirmąja eilute:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 1200 \\ 2 &amp; 0 &amp; -100 &amp; -600 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right) \]
+          <p>Trečiosios eilutės pirmasis elementas jau lygus 0, todėl pirmąją eilutę dauginame iš \(-2\) ir pridedame tik prie antrosios. Gautą antrąją eilutę dalijame iš \(-2\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 1200 \\ 2 &amp; 0 &amp; -100 &amp; -600 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ \htmlClass{hc}{0} &amp; -2 &amp; -100 &amp; -3000 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-2)} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ 0 &amp; \htmlClass{hd}{1} &amp; 50 &amp; 1500 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right)\)</span></div>
+          <p>Antrąją eilutę dauginame iš \(-4\) ir pridedame prie trečiosios, o gautą trečiąją eilutę dalijame iš \(-300\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ 0 &amp; \htmlClass{hd}{1} &amp; 50 &amp; 1500 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ 0 &amp; 1 &amp; 50 &amp; 1500 \\ 0 &amp; \htmlClass{hc}{0} &amp; -300 &amp; -6300 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-300)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ 0 &amp; 1 &amp; 50 &amp; 1500 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 21 \end{array}\right)\)</span></div>
+          <p><strong>Atbulinė eiga.</strong> Iš trečiosios eilutės \(\lambda = 21\). Antroji eilutė reiškia lygtį \(y + 50\lambda = 1500\), o pirmoji – \(x + y = 1200\):</p>
+          <div class="m-wide bp-lg">\[ y + 50\cdot 21 = 1500 \;\Longrightarrow\; y = 450;\qquad x + 450 = 1200 \;\Longrightarrow\; x = 750 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y + 50\cdot 21 = 1500 \;\Longrightarrow\; y = 450 \\ x + 450 = 1200 \;\Longrightarrow\; x = 750 \end{gathered} \]</div>
+          <p>Gaunamas tas pats sprendinys: \(x = 750\), \(y = 450\), \(\lambda = 21\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = 0{,}02;\quad B = L''_{xy} = 0;\quad C = L''_{yy} = 0{,}04 \\ D = AC - B^2 = 0{,}02\cdot 0{,}04 - 0^2 = 0{,}0008 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = 0{,}02 \\ B &amp;= L''_{xy} = 0 \\ C &amp;= L''_{yy} = 0{,}04 \\ D &amp;= AC - B^2 \\ &amp;= 0{,}02\cdot 0{,}04 - 0^2 \\ &amp;= 0{,}0008 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((750;\,450)\) yra minimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Mažiausios sąnaudos ir jų pokytis</span></h4>
+          <p><strong>a)</strong> Kritinio taško koordinates įstatome į sąnaudų funkciją:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} TC_{\min}(750;\,450) &amp;= 0{,}01\cdot 750^2 + 6\cdot 750 + 0{,}02\cdot 450^2 + 3\cdot 450 \\ &amp;= 5625 + 4500 + 4050 + 1350 = 15\,525 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;TC_{\min}(750;\,450) \\ &amp;= 0{,}01\cdot 750^2 + 6\cdot 750 \\ &amp;\phantom{=}\; {}+ 0{,}02\cdot 450^2 + 3\cdot 450 \\ &amp;= 5625 + 4500 + 4050 + 1350 \\ &amp;= 15\,525 \end{aligned} \]</div>
+          <p><strong>b)</strong> Pristatymo kiekis padidėja 10&nbsp;%, t.&nbsp;y. apribojimo konstanta padidėja dydžiu \(\Delta m = 0{,}1\cdot 1200 = 120\) padėklų. Lagranžo daugiklis \(\lambda = 21\), todėl (žr. <a href="tema-9.html#daugiklis">Lagranžo daugiklio reikšmę</a>):</p>
+          \[ \Delta TC^{*} \approx \lambda\cdot\Delta m = 21\cdot 120 = 2520 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Iš sandėlio A reikėtų pristatyti 750 padėklų, o iš sandėlio B – 450. Mažiausios savaitės sąnaudos yra 15&nbsp;525 eurai. b) Mažiausios sąnaudos padidėtų apytiksliai 2520 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 9.3, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Darbuotojai ir įrenginiai mažose dirbtuvėse</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvės, kuriose dirba \(x\) darbuotojų ir naudojama \(y\) įrenginių, per dieną pagamina
+\[ Q(x;\,y) = 30x + 40y + xy - x^2 - 2y^2 \]
+vienetų. Dirbtuvėse yra lygiai 34 darbo vietos. Kiekvieną vietą užima vienas darbuotojas arba vienas įrenginys, todėl bendras jų skaičius turi būti 34.
+<br>a) Kiek darbuotojų ir įrenginių reikėtų, kad gamybos apimtis būtų didžiausia? Kokia yra didžiausia gamybos apimtis?
+<br>b) Ką šiame uždavinyje reiškia Lagranžo daugiklis?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) – darbuotojų skaičius, \(y\) – įrenginių skaičius.</p>
+          <p><strong>Tikslo funkcija.</strong> Reikia rasti didžiausią gamybos apimtį. Gamybos funkcija \(Q(x;\,y)\) duota sąlygoje.</p>
+          <p><strong>Apribojimas.</strong> Kiekvieną darbo vietą užima vienas darbuotojas arba vienas įrenginys, todėl darbuotojų ir įrenginių skaičių suma lygi darbo vietų skaičiui: \(x + y = 34\).</p>
+          <p>Ieškome didžiausios gamybos apimties pagal \(x\) ir \(y\), kai tenkinamas apribojimas:</p>
+          <div class="m-wide">\[ \begin{aligned} &amp;\max_{x;\,y}\; Q(x;\,y) = 30x + 40y + xy - x^2 - 2y^2 \\ &amp;\text{kai}\;\; x + y = 34 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\max_{x;\,y}\; Q(x;\,y) \\ &amp;\text{kai}\;\; x + y = 34 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą užrašome forma \(x + y - 34 = 0\) ir sudarome Lagranžo funkciją:</p>
+          <div class="m-wide bp-lg">\[ L(x;\,y;\,\lambda) = 30x + 40y + xy - x^2 - 2y^2 - \lambda(x + y - 34) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 30x + 40y + xy - x^2 - 2y^2 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 34) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Narys \(xy\) priklauso nuo abiejų kintamųjų: \((xy)'_x = y\), \((xy)'_y = x\). Nario \(-\lambda(x + y - 34)\) išvestinė pagal kiekvieną kintamąjį lygi \(-\lambda\):</p>
+          <div class="m-wide">\[ L'_x = 30 + y - 2x - \lambda;\qquad L'_y = 40 + x - 4y - \lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 30 + y - 2x - \lambda \\ L'_y = 40 + x - 4y - \lambda \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 30 + y - 2x - \lambda &amp;= 0 \\ 40 + x - 4y - \lambda &amp;= 0 \\ x + y &amp;= 34 \end{aligned} \right. \]
+          <p>Visi nežinomieji yra pirmojo laipsnio, todėl sistema yra <strong>tiesinė</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmosiose dviejose lygtyse narį \(-\lambda\) perkeliame į dešiniąją pusę:</p>
+          <div class="m-wide">\[ \lambda = 30 + y - 2x;\qquad \lambda = 40 + x - 4y \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 30 + y - 2x \\ \lambda = 40 + x - 4y \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Abi išraiškas sulyginame. Narius su kintamaisiais perkeliame į kairiąją pusę, skaičius – į dešiniąją ir sutraukiame panašiuosius narius:</p>
+          <div class="m-wide bp-lg">\[ 30 + y - 2x = 40 + x - 4y \;\Longrightarrow\; y + 4y - 2x - x = 40 - 30 \;\Longrightarrow\; 5y - 3x = 10 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 30 + y - 2x = 40 + x - 4y \\ \Longrightarrow\; y + 4y - 2x - x = 40 - 30 \\ \Longrightarrow\; 5y - 3x = 10 \end{gathered} \]</div>
+          <p><strong>Įstatymas.</strong> Iš apribojimo lygties \(x + y = 34\) išreiškiame \(y = 34 - x\) ir įstatome į gautą lygtį. Kadangi \(y\) padaugintas iš 5, įstatytą reiškinį rašome skliaustuose:</p>
+          <div class="m-wide bp-lg">\[ 5(34 - x) - 3x = 10 \;\Longrightarrow\; 170 - 5x - 3x = 10 \;\Longrightarrow\; -8x = -160 \;\Longrightarrow\; x = 20 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 5(34 - x) - 3x = 10 \\ \Longrightarrow\; 170 - 5x - 3x = 10 \\ \Longrightarrow\; -8x = -160 \\ \Longrightarrow\; x = 20 \end{gathered} \]</div>
+          <p>Tada \(y = 34 - 20 = 14\).</p>
+          <p><strong>Daugiklio reikšmė.</strong> Reikšmes įstatome į abi \(\lambda\) išraiškas – gaunama ta pati reikšmė:</p>
+          <div class="m-wide">\[ \lambda = 30 + 14 - 2\cdot 20 = 4;\qquad \lambda = 40 + 20 - 4\cdot 14 = 4 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 30 + 14 - 2\cdot 20 = 4 \\ \lambda = 40 + 20 - 4\cdot 14 = 4 \end{gathered} \]</div>
+          <p>Kritinis taškas yra \((20;\,14;\,4)\).</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Pirmiausia lygtis pertvarkome: nežinomuosius rašome kairiojoje pusėje tvarka \(x\), \(y\), \(\lambda\), o skaičius perkeliame į dešiniąją:</p>
+          <div class="m-wide">\[ \begin{aligned} 30 + y - 2x - \lambda = 0 \;&amp;\Longrightarrow\; -2x + y - \lambda = -30 \\ 40 + x - 4y - \lambda = 0 \;&amp;\Longrightarrow\; x - 4y - \lambda = -40 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 30 + y - 2x - \lambda = 0 \\ \Longrightarrow\; -2x + y - \lambda = -30 \\[4pt] 40 + x - 4y - \lambda = 0 \\ \Longrightarrow\; x - 4y - \lambda = -40 \end{gathered} \]</div>
+          <p>Išplėstinės matricos stulpeliai – nežinomųjų \(x\), \(y\) ir \(\lambda\) koeficientai, paskutinis stulpelis – laisvieji nariai (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>). Apribojimo lygtyje \(x\) koeficientas lygus 1, todėl ją rašome pirmąja eilute:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 34 \\ -2 &amp; 1 &amp; -1 &amp; -30 \\ 1 &amp; -4 &amp; -1 &amp; -40 \end{array}\right) \]
+          <p>Pirmąją eilutę dauginame iš 2 ir pridedame prie antrosios, o padauginę iš \(-1\) – prie trečiosios:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 34 \\ -2 &amp; 1 &amp; -1 &amp; -30 \\ 1 &amp; -4 &amp; -1 &amp; -40 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(2)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ \htmlClass{hc}{0} &amp; 3 &amp; -1 &amp; 38 \\ \htmlClass{hc}{0} &amp; -5 &amp; -1 &amp; -74 \end{array}\right)\)</span></div>
+          <p>Antrajame stulpelyje nėra elemento, lygaus 1. Kad nereikėtų dalyti ir neatsirastų trupmenų, antrąją eilutę dauginame iš 2 ir pridedame prie trečiosios – trečiosios eilutės antrasis elementas tampa lygus 1:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; 3 &amp; -1 &amp; 38 \\ 0 &amp; -5 &amp; -1 &amp; -74 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; 3 &amp; -1 &amp; 38 \\ 0 &amp; 1 &amp; -3 &amp; 2 \end{array}\right)\)</span></div>
+          <p>Antrąją ir trečiąją eilutes sukeičiame vietomis – vienetas tampa pagrindiniu elementu. Tada antrąją eilutę dauginame iš \(-3\) ir pridedame prie trečiosios, o gautą trečiąją eilutę dalijame iš 8:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; \htmlClass{hd}{1} &amp; -3 &amp; 2 \\ 0 &amp; 3 &amp; -1 &amp; 38 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; 1 &amp; -3 &amp; 2 \\ 0 &amp; \htmlClass{hc}{0} &amp; 8 &amp; 32 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,8} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; 1 &amp; -3 &amp; 2 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 4 \end{array}\right)\)</span></div>
+          <p><strong>Atbulinė eiga.</strong> Iš trečiosios eilutės \(\lambda = 4\). Antroji eilutė reiškia lygtį \(y - 3\lambda = 2\), o pirmoji – \(x + y = 34\):</p>
+          <div class="m-wide">\[ y - 3\cdot 4 = 2 \;\Longrightarrow\; y = 14;\qquad x + 14 = 34 \;\Longrightarrow\; x = 20 \]</div><div class="m-narrow">\[ \begin{gathered} y - 3\cdot 4 = 2 \;\Longrightarrow\; y = 14 \\ x + 14 = 34 \;\Longrightarrow\; x = 20 \end{gathered} \]</div>
+          <p>Gaunamas tas pats sprendinys: \(x = 20\), \(y = 14\), \(\lambda = 4\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = -2;\quad B = L''_{xy} = 1;\quad C = L''_{yy} = -4 \\ D = AC - B^2 = (-2)\cdot(-4) - 1^2 = 8 - 1 = 7 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = -2 \\ B &amp;= L''_{xy} = 1 \\ C &amp;= L''_{yy} = -4 \\ D &amp;= AC - B^2 \\ &amp;= (-2)\cdot(-4) - 1^2 \\ &amp;= 8 - 1 = 7 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((20;\,14)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausia gamybos apimtis</span></h4>
+          <p>Kritinio taško koordinates įstatome į gamybos funkciją:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} Q_{\max}(20;\,14) &amp;= 30\cdot 20 + 40\cdot 14 + 20\cdot 14 - 20^2 - 2\cdot 14^2 \\ &amp;= 600 + 560 + 280 - 400 - 392 = 648 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;Q_{\max}(20;\,14) \\ &amp;= 30\cdot 20 + 40\cdot 14 + 20\cdot 14 \\ &amp;\phantom{=}\; {}- 20^2 - 2\cdot 14^2 \\ &amp;= 600 + 560 + 280 - 400 - 392 \\ &amp;= 648 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Lagranžo daugiklio prasmė</span></h4>
+          <p><strong>b)</strong> Apribojimo konstanta šiame uždavinyje yra darbo vietų skaičius \(m = 34\). Lagranžo daugiklis rodo, kiek apytiksliai pasikeičia didžiausia gamybos apimtis, kai atsiranda viena papildoma darbo vieta (žr. <a href="tema-9.html#daugiklis">Lagranžo daugiklio reikšmę</a>):</p>
+          \[ \Delta Q^{*} \approx \lambda\cdot\Delta m = 4\cdot 1 = 4 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Dirbtuvėse turėtų dirbti 20 darbuotojų ir veikti 14 įrenginių. Didžiausia gamybos apimtis yra 648 vienetai per dieną. b) Kai \(\lambda = 4\), viena papildoma darbo vieta padidintų didžiausią gamybos apimtį apytiksliai 4 vienetais per dieną.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+    <h3 class="subhead" style="margin-top:22px">Kai lygčių sistema netiesinė</h3>
+    <!-- 5 pavyzdys: TM 9.3, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Kino bilietai ir filmų nuoma</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Studentas pramogoms skiria 200&nbsp;eurų per mėnesį. Kino bilietas kainuoja 8&nbsp;eurus, o filmo nuoma internetu – 2&nbsp;eurus. Naudingumas įsigijus \(x\) bilietų ir išsinuomojus \(y\) filmų yra
+\[ U(x;\,y) = 6\sqrt{x} + 4\sqrt{y} \]
+a) Kiek bilietų reikėtų įsigyti ir kiek filmų išsinuomoti, kad išleidus visą biudžetą naudingumas būtų didžiausias? Koks yra didžiausias naudingumas?
+<br>b) Kaip pasikeistų didžiausias naudingumas, jei biudžetas padidėtų 20&nbsp;eurų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) – per mėnesį įsigyjamų kino bilietų skaičius, \(y\) – išsinuomojamų filmų skaičius.</p>
+          <p><strong>Tikslo funkcija.</strong> Reikia rasti didžiausią naudingumą. Naudingumo funkcija \(U(x;\,y)\) duota sąlygoje.</p>
+          <p><strong>Apribojimas</strong> sudaromas iš biudžeto. Kiekvienas bilietas kainuoja 8&nbsp;eurus, todėl bilietams išleidžiama \(8x\) eurų. Kiekviena filmo nuoma kainuoja 2&nbsp;eurus, todėl nuomai išleidžiama \(2y\) eurų. Išleidus visą biudžetą, šių sumų suma lygi 200&nbsp;eurų: \(8x + 2y = 200\).</p>
+          <p>Ieškome didžiausio naudingumo pagal \(x\) ir \(y\), kai tenkinamas apribojimas:</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; U(x;\,y) = 6\sqrt{x} + 4\sqrt{y} \\ &amp;\text{kai}\;\; 8x + 2y = 200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą užrašome forma \(8x + 2y - 200 = 0\) ir sudarome Lagranžo funkciją:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 6\sqrt{x} + 4\sqrt{y} - \lambda(8x + 2y - 200) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 6\sqrt{x} + 4\sqrt{y} \\ &amp;\phantom{=}\; {}- \lambda(8x + 2y - 200) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Taikome išvestinės formulę \(\big(\sqrt{x}\big)'_x = \frac{1}{2\sqrt{x}}\): \(\big(6\sqrt{x}\big)'_x = \frac{6}{2\sqrt{x}} = \frac{3}{\sqrt{x}}\), \(\big(4\sqrt{y}\big)'_y = \frac{4}{2\sqrt{y}} = \frac{2}{\sqrt{y}}\). Atskliaudę paskutinį narį gauname \(-8\lambda x - 2\lambda y + 200\lambda\), todėl jo išvestinė pagal \(x\) lygi \(-8\lambda\), o pagal \(y\) – \(-2\lambda\):</p>
+          <div class="m-wide">\[ L'_x = \frac{3}{\sqrt{x}} - 8\lambda;\qquad L'_y = \frac{2}{\sqrt{y}} - 2\lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = \frac{3}{\sqrt{x}} - 8\lambda \\ L'_y = \frac{2}{\sqrt{y}} - 2\lambda \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} \frac{3}{\sqrt{x}} - 8\lambda &amp;= 0 \\ \frac{2}{\sqrt{y}} - 2\lambda &amp;= 0 \\ 8x + 2y &amp;= 200 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: kintamieji \(x\) ir \(y\) yra po šaknimis trupmenų vardikliuose. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms.</p>
+          <p>Kintamieji yra bilietų ir filmų skaičiai, be to, jie yra po šaknimis vardikliuose, todėl \(x &gt; 0\) ir \(y &gt; 0\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmojoje lygtyje narį \(-8\lambda\) perkeliame į dešiniąją pusę ir abi puses dalijame iš 8. Antrojoje lygtyje narį \(-2\lambda\) perkeliame į dešiniąją pusę ir abi puses dalijame iš 2:</p>
+          <div class="m-wide">\[ \lambda = \frac{3}{8\sqrt{x}};\qquad \lambda = \frac{1}{\sqrt{y}} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{3}{8\sqrt{x}} \\ \lambda = \frac{1}{\sqrt{y}} \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Abi išraiškas sulyginame. Dvi trupmenos lygios, todėl lygios ir jų kryžminės sandaugos: kairiosios trupmenos skaitiklis, padaugintas iš dešiniosios vardiklio, lygus dešiniosios skaitikliui, padaugintam iš kairiosios vardiklio:</p>
+          <div class="m-wide">\[ \frac{3}{8\sqrt{x}} = \frac{1}{\sqrt{y}} \;\Longrightarrow\; 3\sqrt{y} = 8\sqrt{x} \]</div><div class="m-narrow">\[ \begin{gathered} \frac{3}{8\sqrt{x}} = \frac{1}{\sqrt{y}} \\ \Longrightarrow\; 3\sqrt{y} = 8\sqrt{x} \end{gathered} \]</div>
+          <p>Kad atsikratytume šaknų, abi puses keliame kvadratu: \(\big(3\sqrt{y}\big)^2 = 9y\), \(\big(8\sqrt{x}\big)^2 = 64x\). Abi lygties pusės teigiamos, todėl keliant kvadratu pašalinių sprendinių neatsiranda. Tada abi puses dalijame iš 9 ir išreiškiame \(y\):</p>
+          <div class="m-wide">\[ 9y = 64x \;\Longrightarrow\; y = \frac{64x}{9} \]</div><div class="m-narrow">\[ \begin{gathered} 9y = 64x \\ \Longrightarrow\; y = \frac{64x}{9} \end{gathered} \]</div>
+          <p><strong>Įstatymas į apribojimą.</strong> Gautą reiškinį įstatome į apribojimo lygtį \(8x + 2y = 200\) vietoje \(y\). Kad neliktų trupmenos, abi lygties puses dauginame iš 9:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} 8x + 2\cdot\frac{64x}{9} = 200 \;\Longrightarrow\; 8x + \frac{128x}{9} = 200 \\ \Longrightarrow\; 72x + 128x = 1800 \;\Longrightarrow\; 200x = 1800 \;\Longrightarrow\; x = 9 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 8x + 2\cdot\frac{64x}{9} = 200 \\ \Longrightarrow\; 8x + \frac{128x}{9} = 200 \\ \Longrightarrow\; 72x + 128x = 1800 \\ \Longrightarrow\; 200x = 1800 \\ \Longrightarrow\; x = 9 \end{gathered} \]</div>
+          <p>Tada \(y = \frac{64\cdot 9}{9} = 64\).</p>
+          <p><strong>Daugiklio reikšmė.</strong> Įstatome \(y = 64\) į antrąją \(\lambda\) išraišką, o pirmąja patikriname (\(\sqrt{64} = 8\), \(\sqrt{9} = 3\)):</p>
+          <div class="m-wide">\[ \lambda = \frac{1}{\sqrt{64}} = \frac{1}{8} = 0{,}125;\qquad \lambda = \frac{3}{8\cdot\sqrt{9}} = \frac{3}{24} = 0{,}125 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{1}{\sqrt{64}} = \frac{1}{8} = 0{,}125 \\ \lambda = \frac{3}{8\cdot\sqrt{9}} = \frac{3}{24} = 0{,}125 \end{gathered} \]</div>
+          <p>Kritinis taškas yra \((9;\,64;\,0{,}125)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Kad būtų patogu diferencijuoti dar kartą, trupmenas užrašome laipsniais: \(\frac{3}{\sqrt{x}} = 3x^{-0{,}5}\), \(\frac{2}{\sqrt{y}} = 2y^{-0{,}5}\). Nariai su \(\lambda\) pirmos eilės išvestinėse yra pastovūs, todėl antros eilės išvestinėse \(\lambda\) nelieka:</p>
+          <div class="m-wide">\[ L''_{xx} = -1{,}5x^{-1{,}5};\qquad L''_{xy} = 0;\qquad L''_{yy} = -y^{-1{,}5} \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = -1{,}5x^{-1{,}5} \\ L''_{xy} = 0 \\ L''_{yy} = -y^{-1{,}5} \end{gathered} \]</div>
+          <p>Kritiniame taške \(x^{1{,}5} = 9\cdot\sqrt{9} = 27\), o \(y^{1{,}5} = 64\cdot\sqrt{64} = 512\):</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = -\frac{1{,}5}{27} = -\frac{1}{18};\quad B = 0;\quad C = -\frac{1}{512} \\ D = AC - B^2 = \Big(-\frac{1}{18}\Big)\cdot\Big(-\frac{1}{512}\Big) - 0^2 = \frac{1}{9216} &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= -\frac{1{,}5}{27} = -\frac{1}{18} \\ B &amp;= 0;\quad C = -\frac{1}{512} \\ D &amp;= \Big(-\frac{1}{18}\Big)\cdot\Big(-\frac{1}{512}\Big) - 0^2 \\ &amp;= \frac{1}{9216} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((9;\,64)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausias naudingumas ir jo pokytis</span></h4>
+          <p><strong>a)</strong> Kritinio taško koordinates įstatome į naudingumo funkciją:</p>
+          <div class="m-wide">\[ U_{\max}(9;\,64) = 6\sqrt{9} + 4\sqrt{64} = 6\cdot 3 + 4\cdot 8 = 50 \]</div><div class="m-narrow">\[ \begin{aligned} U_{\max}(9;\,64) &amp;= 6\sqrt{9} + 4\sqrt{64} \\ &amp;= 6\cdot 3 + 4\cdot 8 = 50 \end{aligned} \]</div>
+          <p><strong>b)</strong> Biudžetas padidėja 20&nbsp;eurų, t.&nbsp;y. \(\Delta m = 20\). Lagranžo daugiklis \(\lambda = 0{,}125\) rodo, kad biudžetą padidinus vienu euru, didžiausias naudingumas padidėja apytiksliai 0,125 vieneto (žr. <a href="tema-9.html#daugiklis">Lagranžo daugiklio reikšmę</a>):</p>
+          \[ \Delta U^{*} \approx \lambda\cdot\Delta m = 0{,}125\cdot 20 = 2{,}5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Studentas per mėnesį turėtų įsigyti 9 kino bilietus ir išsinuomoti 64 filmus. Didžiausias naudingumas yra 50. b) Didžiausias naudingumas padidėtų apytiksliai 2,5 vieneto.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 9.3, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Darbo ir įrenginių naudojimo valandos esant biudžeto apribojimui</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Surinkimo įmonė per dieną pagamina
+\[ Q(x;\,y) = 20x^{0{,}75}y^{0{,}25} \]
+vienetų. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naudojimo valandų skaičius. Darbo valanda kainuoja 15&nbsp;eurų, įrenginio naudojimo valanda – 80&nbsp;eurų, o dienos biudžetas abiem ištekliams yra 3200&nbsp;eurų.
+<br>a) Kiek darbo ir įrenginių naudojimo valandų reikėtų, kad gamybos apimtis būtų didžiausia? Kokia yra didžiausia gamybos apimtis?
+<br>b) Kaip pasikeistų didžiausia gamybos apimtis, jei biudžetas padidėtų 100&nbsp;eurų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) – darbo valandų skaičius per dieną, \(y\) – įrenginių naudojimo valandų skaičius per dieną.</p>
+          <p><strong>Tikslo funkcija.</strong> Reikia rasti didžiausią gamybos apimtį. Gamybos funkcija – Kobo-Daglaso funkcija \(Q(x;\,y)\) – duota sąlygoje.</p>
+          <p><strong>Apribojimas</strong> sudaromas iš biudžeto. Darbo valandos kainuoja \(15x\) eurų, įrenginių naudojimo valandos – \(80y\) eurų. Kartu šios sumos turi būti lygios dienos biudžetui: \(15x + 80y = 3200\).</p>
+          <p>Ieškome didžiausios gamybos apimties pagal \(x\) ir \(y\), kai tenkinamas apribojimas:</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; Q(x;\,y) = 20x^{0{,}75}y^{0{,}25} \\ &amp;\text{kai}\;\; 15x + 80y = 3200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą užrašome forma \(15x + 80y - 3200 = 0\) ir sudarome Lagranžo funkciją:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 20x^{0{,}75}y^{0{,}25} - \lambda(15x + 80y - 3200) \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= 20x^{0{,}75}y^{0{,}25} - \lambda(15x + 80y - 3200) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Diferencijuojant pagal \(x\), daugiklis \(y^{0{,}25}\) yra pastovus: \(\big(20x^{0{,}75}\big)'_x = 20\cdot 0{,}75x^{-0{,}25} = 15x^{-0{,}25}\). Diferencijuojant pagal \(y\), pastovus daugiklis yra \(x^{0{,}75}\): \(\big(20y^{0{,}25}\big)'_y = 20\cdot 0{,}25y^{-0{,}75} = 5y^{-0{,}75}\). Apribojimo nario išvestinės yra \(-15\lambda\) ir \(-80\lambda\):</p>
+          <div class="m-wide">\[ L'_x = 15x^{-0{,}25}y^{0{,}25} - 15\lambda;\qquad L'_y = 5x^{0{,}75}y^{-0{,}75} - 80\lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 15x^{-0{,}25}y^{0{,}25} - 15\lambda \\ L'_y = 5x^{0{,}75}y^{-0{,}75} - 80\lambda \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 15x^{-0{,}25}y^{0{,}25} - 15\lambda &amp;= 0 \\ 5x^{0{,}75}y^{-0{,}75} - 80\lambda &amp;= 0 \\ 15x + 80y &amp;= 3200 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: kintamieji pakelti trupmeniniais laipsniais ir sudauginti tarpusavyje. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas lygčių dalyba</span></h4>
+          <p>Pirmosiose dviejose lygtyse narius su \(\lambda\) perkeliame į dešiniąsias puses:</p>
+          \[ \left\{ \begin{aligned} 15x^{-0{,}25}y^{0{,}25} &amp;= 15\lambda \\ 5x^{0{,}75}y^{-0{,}75} &amp;= 80\lambda \end{aligned} \right. \]
+          <p><strong>Lygčių dalyba.</strong> Abiejose lygtyse yra tie patys kintamieji, tik skirtingais laipsniais, o dešiniosiose pusėse – \(\lambda\). Todėl pirmąją lygtį padalijame iš antrosios: kairiąją pusę iš kairiosios, dešiniąją – iš dešiniosios. Kairiosios pusės teigiamos, todėl \(\lambda \ne 0\) ir \(\lambda\) susiprastina. Laipsnius su tuo pačiu pagrindu dalijame atimdami rodiklius: \(x^{-0{,}25 - 0{,}75} = x^{-1}\), \(y^{0{,}25 - (-0{,}75)} = y^{1}\):</p>
+          <div class="m-wide bp-lg">\[ \frac{15x^{-0{,}25}y^{0{,}25}}{5x^{0{,}75}y^{-0{,}75}} = \frac{15\lambda}{80\lambda} \;\Longrightarrow\; 3x^{-1}y = \frac{3}{16} \;\Longrightarrow\; \frac{3y}{x} = \frac{3}{16} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{15x^{-0{,}25}y^{0{,}25}}{5x^{0{,}75}y^{-0{,}75}} = \frac{15\lambda}{80\lambda} \\ \Longrightarrow\; 3x^{-1}y = \frac{3}{16} \\ \Longrightarrow\; \frac{3y}{x} = \frac{3}{16} \end{gathered} \]</div>
+          <p>Abi puses dalijame iš 3 ir sudauginame kryžmiškai: \(16y = x\), t.&nbsp;y.</p>
+          \[ x = 16y \]
+          <p><strong>Įstatymas į apribojimą.</strong> Reiškinį \(x = 16y\) įstatome į apribojimo lygtį \(15x + 80y = 3200\):</p>
+          <div class="m-wide bp-lg">\[ 15\cdot 16y + 80y = 3200 \;\Longrightarrow\; 240y + 80y = 3200 \;\Longrightarrow\; 320y = 3200 \;\Longrightarrow\; y = 10 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 15\cdot 16y + 80y = 3200 \\ \Longrightarrow\; 240y + 80y = 3200 \\ \Longrightarrow\; 320y = 3200 \\ \Longrightarrow\; y = 10 \end{gathered} \]</div>
+          <p>Tada \(x = 16\cdot 10 = 160\).</p>
+          <p><strong>Daugiklio reikšmė.</strong> Pirmąją lygtį \(15x^{-0{,}25}y^{0{,}25} = 15\lambda\) padaliję iš 15, gauname \(\lambda = x^{-0{,}25}y^{0{,}25}\). Šį reiškinį patogu užrašyti viena trupmena: \(x^{-0{,}25}y^{0{,}25} = \big(\frac{y}{x}\big)^{0{,}25}\):</p>
+          \[ \lambda = \Big(\frac{10}{160}\Big)^{0{,}25} = \Big(\frac{1}{16}\Big)^{0{,}25} = 0{,}5 \]
+          <p>Paskutinę reikšmę galima rasti be skaičiuotuvo: \(0{,}5^4 = 0{,}0625 = \frac{1}{16}\). Kritinis taškas yra \((160;\,10;\,0{,}5)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Kritinio taško rūšis</span></h4>
+          <p>Gamybos funkcija yra Kobo-Daglaso funkcija, kurios \(A = 20 &gt; 0\) ir \(\alpha + \beta = 0{,}75 + 0{,}25 = 1 \le 1\), todėl ji išgaubta. Biudžeto apribojimo narys yra tiesinis, todėl Lagranžo funkcija \(L\) taip pat išgaubta (žr. <a href="tema-9.html#kobo-daglas-l">Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose</a>). Vadinasi, \((160;\,10)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausia gamybos apimtis ir jos pokytis</span></h4>
+          <p><strong>a)</strong> Laipsnių sandaugą apskaičiuojame pastebėję, kad \(160 = 16\cdot 10\) ir \(16^{0{,}75} = \big(16^{0{,}25}\big)^3 = 2^3 = 8\):</p>
+          <div class="m-wide">\[ 160^{0{,}75}\cdot 10^{0{,}25} = 16^{0{,}75}\cdot 10^{0{,}75}\cdot 10^{0{,}25} = 8\cdot 10 = 80 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;160^{0{,}75}\cdot 10^{0{,}25} \\ &amp;= 16^{0{,}75}\cdot 10^{0{,}75}\cdot 10^{0{,}25} \\ &amp;= 8\cdot 10 = 80 \end{aligned} \]</div>
+          \[ Q_{\max}(160;\,10) = 20\cdot 80 = 1600 \]
+          <p><strong>b)</strong> Biudžetas padidėja 100&nbsp;eurų, t.&nbsp;y. \(\Delta m = 100\). Lagranžo daugiklis \(\lambda = 0{,}5\) rodo, kad biudžetą padidinus vienu euru, didžiausia gamybos apimtis padidėja apytiksliai 0,5 vieneto (žr. <a href="tema-9.html#daugiklis">Lagranžo daugiklio reikšmę</a>):</p>
+          \[ \Delta Q^{*} \approx \lambda\cdot\Delta m = 0{,}5\cdot 100 = 50 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Per dieną įmonė turėtų skirti 160 darbo valandų ir 10 įrenginių naudojimo valandų. Didžiausia gamybos apimtis yra 1600 vienetų per dieną. b) Didžiausia gamybos apimtis padidėtų apytiksliai 50 vienetų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 9.3, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Spaustuvės užsakymas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Spaustuvė išspausdina
+\[ Q(x;\,y) = 12\sqrt{x} + 18\sqrt{y} \]
+tūkstančių puslapių. Čia \(x\) yra operatorių darbo valandų skaičius, o \(y\) – įrenginių naudojimo valandų skaičius. Operatoriaus darbo valanda kainuoja 16&nbsp;eurų, įrenginio naudojimo valanda – 36&nbsp;eurus. Spaustuvė gavo užsakymą išspausdinti 360 tūkstančių puslapių.
+<br>a) Kiek operatorių darbo ir įrenginių naudojimo valandų reikėtų, kad užsakymo sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?
+<br>b) Kaip pasikeistų mažiausios sąnaudos, jei užsakymas padidėtų 10 tūkstančių puslapių?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) – operatorių darbo valandų skaičius, \(y\) – įrenginių naudojimo valandų skaičius.</p>
+          <p><strong>Tikslo funkcija.</strong> Reikia rasti mažiausias užsakymo sąnaudas, o sąnaudų funkcijos sąlygoje nėra – ją sudarome. Operatoriaus darbo valanda kainuoja 16&nbsp;eurų, todėl už \(x\) valandų mokama \(16x\) eurų. Įrenginio naudojimo valanda kainuoja 36&nbsp;eurus, todėl už \(y\) valandų mokama \(36y\) eurų. Sąnaudos yra šių sumų suma:</p>
+          \[ TC(x;\,y) = 16x + 36y \]
+          <p><strong>Apribojimas.</strong> Funkcija \(Q(x;\,y)\) rodo, kiek tūkstančių puslapių išspausdinama. Išspausdintų puslapių skaičius turi atitikti užsakymą – 360 tūkstančių puslapių: \(12\sqrt{x} + 18\sqrt{y} = 360\). Atkreipkite dėmesį: gamybos funkcija čia yra ne tikslo funkcija, o apribojimas.</p>
+          <p>Ieškome mažiausių sąnaudų pagal \(x\) ir \(y\), kai tenkinamas apribojimas:</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 16x + 36y \\ &amp;\text{kai}\;\; 12\sqrt{x} + 18\sqrt{y} = 360 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą užrašome forma \(12\sqrt{x} + 18\sqrt{y} - 360 = 0\) ir sudarome Lagranžo funkciją:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 16x + 36y - \lambda\big(12\sqrt{x} + 18\sqrt{y} - 360\big) \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= 16x + 36y \\ &amp;\phantom{=}\; {}- \lambda\big(12\sqrt{x} + 18\sqrt{y} - 360\big) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Kadangi \(\big(\sqrt{x}\big)'_x = \frac{1}{2\sqrt{x}}\), nario \(-12\lambda\sqrt{x}\) išvestinė pagal \(x\) yra \(-\frac{12\lambda}{2\sqrt{x}} = -\frac{6\lambda}{\sqrt{x}}\). Analogiškai nario \(-18\lambda\sqrt{y}\) išvestinė pagal \(y\) yra \(-\frac{9\lambda}{\sqrt{y}}\):</p>
+          <div class="m-wide">\[ L'_x = 16 - \frac{6\lambda}{\sqrt{x}};\qquad L'_y = 36 - \frac{9\lambda}{\sqrt{y}} \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 16 - \frac{6\lambda}{\sqrt{x}} \\ L'_y = 36 - \frac{9\lambda}{\sqrt{y}} \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 16 - \frac{6\lambda}{\sqrt{x}} &amp;= 0 \\ 36 - \frac{9\lambda}{\sqrt{y}} &amp;= 0 \\ 12\sqrt{x} + 18\sqrt{y} &amp;= 360 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: kintamieji yra po šaknimis, o \(\lambda\) dalijamas iš \(\sqrt{x}\) ir \(\sqrt{y}\). Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas</span></h4>
+          <p>Šįkart patogu ne sulyginti \(\lambda\) išraiškas, o šaknis \(\sqrt{x}\) ir \(\sqrt{y}\) išreikšti per \(\lambda\) ir įstatyti į apribojimo lygtį, nes joje yra tos pačios šaknys.</p>
+          <p><strong>Šaknys per \(\lambda\).</strong> Pirmojoje lygtyje trupmeną perkeliame į dešiniąją pusę, abi puses dauginame iš \(\sqrt{x}\) ir dalijame iš 16. Antrąją lygtį pertvarkome taip pat:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} 16 = \frac{6\lambda}{\sqrt{x}} \;&amp;\Longrightarrow\; 16\sqrt{x} = 6\lambda \;\Longrightarrow\; \sqrt{x} = \frac{6\lambda}{16} = 0{,}375\lambda \\ 36 = \frac{9\lambda}{\sqrt{y}} \;&amp;\Longrightarrow\; 36\sqrt{y} = 9\lambda \;\Longrightarrow\; \sqrt{y} = \frac{9\lambda}{36} = 0{,}25\lambda \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 16 = \frac{6\lambda}{\sqrt{x}} \;\Longrightarrow\; 16\sqrt{x} = 6\lambda \\ \Longrightarrow\; \sqrt{x} = \frac{6\lambda}{16} = 0{,}375\lambda \\[6pt] 36 = \frac{9\lambda}{\sqrt{y}} \;\Longrightarrow\; 36\sqrt{y} = 9\lambda \\ \Longrightarrow\; \sqrt{y} = \frac{9\lambda}{36} = 0{,}25\lambda \end{gathered} \]</div>
+          <p><strong>Įstatymas į apribojimą.</strong> Gautus reiškinius įstatome į apribojimo lygtį \(12\sqrt{x} + 18\sqrt{y} = 360\) – gaunama lygtis su vienu nežinomuoju \(\lambda\):</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} 12\cdot 0{,}375\lambda + 18\cdot 0{,}25\lambda = 360 \;\Longrightarrow\; 4{,}5\lambda + 4{,}5\lambda = 360 \\ \Longrightarrow\; 9\lambda = 360 \;\Longrightarrow\; \lambda = 40 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 12\cdot 0{,}375\lambda + 18\cdot 0{,}25\lambda = 360 \\ \Longrightarrow\; 4{,}5\lambda + 4{,}5\lambda = 360 \\ \Longrightarrow\; 9\lambda = 360 \\ \Longrightarrow\; \lambda = 40 \end{gathered} \]</div>
+          <p><strong>Kintamųjų reikšmės.</strong> Reikšmę \(\lambda = 40\) įstatome į šaknų išraiškas, o tada abi lygybės puses keliame kvadratu:</p>
+          <div class="m-wide bp-lg">\[ \sqrt{x} = 0{,}375\cdot 40 = 15 \;\Longrightarrow\; x = 225;\qquad \sqrt{y} = 0{,}25\cdot 40 = 10 \;\Longrightarrow\; y = 100 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \sqrt{x} = 0{,}375\cdot 40 = 15 \;\Longrightarrow\; x = 225 \\ \sqrt{y} = 0{,}25\cdot 40 = 10 \;\Longrightarrow\; y = 100 \end{gathered} \]</div>
+          <p>Kritinis taškas yra \((225;\,100;\,40)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Trupmenas užrašome laipsniais: \(\frac{6\lambda}{\sqrt{x}} = 6\lambda x^{-0{,}5}\), \(\frac{9\lambda}{\sqrt{y}} = 9\lambda y^{-0{,}5}\). Diferencijuojame dar kartą, pavyzdžiui, \(\big(-6\lambda x^{-0{,}5}\big)'_x = 3\lambda x^{-1{,}5}\):</p>
+          <div class="m-wide">\[ L''_{xx} = 3\lambda x^{-1{,}5};\qquad L''_{xy} = 0;\qquad L''_{yy} = 4{,}5\lambda y^{-1{,}5} \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = 3\lambda x^{-1{,}5} \\ L''_{xy} = 0 \\ L''_{yy} = 4{,}5\lambda y^{-1{,}5} \end{gathered} \]</div>
+          <p>Šįkart antros eilės išvestinėse liko \(\lambda\), todėl kartu su kritinio taško koordinatėmis įstatome ir \(\lambda = 40\). Kritiniame taške \(x^{1{,}5} = 225\cdot\sqrt{225} = 3375\), o \(y^{1{,}5} = 100\cdot\sqrt{100} = 1000\):</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = \frac{3\cdot 40}{3375} \approx 0{,}036;\quad B = 0;\quad C = \frac{4{,}5\cdot 40}{1000} = 0{,}18 \\ D = AC - B^2 \approx 0{,}036\cdot 0{,}18 - 0^2 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= \frac{3\cdot 40}{3375} \approx 0{,}036;\quad B = 0 \\ C &amp;= \frac{4{,}5\cdot 40}{1000} = 0{,}18 \\ D &amp;= AC - B^2 \\ &amp;\approx 0{,}036\cdot 0{,}18 - 0^2 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((225;\,100)\) yra minimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Mažiausios sąnaudos ir jų pokytis</span></h4>
+          <p><strong>a)</strong> Kritinio taško koordinates įstatome į sąnaudų funkciją:</p>
+          <div class="m-wide">\[ TC_{\min}(225;\,100) = 16\cdot 225 + 36\cdot 100 = 3600 + 3600 = 7200 \]</div><div class="m-narrow">\[ \begin{aligned} TC_{\min}(225;\,100) &amp;= 16\cdot 225 + 36\cdot 100 \\ &amp;= 3600 + 3600 = 7200 \end{aligned} \]</div>
+          <p><strong>b)</strong> Apribojimo konstanta matuojama tūkstančiais puslapių, todėl užsakymui padidėjus 10 tūkstančių puslapių \(\Delta m = 10\). Lagranžo daugiklis \(\lambda = 40\) (žr. <a href="tema-9.html#daugiklis">Lagranžo daugiklio reikšmę</a>):</p>
+          \[ \Delta TC^{*} \approx \lambda\cdot\Delta m = 40\cdot 10 = 400 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Užsakymui įvykdyti reikėtų 225 operatorių darbo valandų ir 100 įrenginių naudojimo valandų. Mažiausios sąnaudos yra 7200 eurų. b) Mažiausios sąnaudos padidėtų apytiksliai 400 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 9.3, 9 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Baldų gamyklos užsakymas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Baldų gamykla pagamina
+\[ Q(x;\,y) = 8x^{0{,}5}y^{0{,}5} \]
+kėdžių. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naudojimo valandų skaičius. Darbo valanda kainuoja 16&nbsp;eurų, įrenginio naudojimo valanda – 100&nbsp;eurų. Gamykla turi įvykdyti 400 kėdžių užsakymą.
+<br>a) Kiek darbo ir įrenginių naudojimo valandų reikėtų, kad užsakymo sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?
+<br>b) Kaip pasikeistų mažiausios sąnaudos, jei užsakymas padidėtų 10&nbsp;%?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) – darbo valandų skaičius, \(y\) – įrenginių naudojimo valandų skaičius.</p>
+          <p><strong>Tikslo funkcija.</strong> Reikia rasti mažiausias užsakymo sąnaudas. Darbas kainuoja \(16x\) eurų, įrenginių naudojimas – \(100y\) eurų, todėl sąnaudų funkcija yra</p>
+          \[ TC(x;\,y) = 16x + 100y \]
+          <p><strong>Apribojimas.</strong> Pagamintų kėdžių skaičius turi atitikti užsakymą: \(8x^{0{,}5}y^{0{,}5} = 400\). Kaip ir ankstesniame pavyzdyje, gamybos funkcija čia yra apribojimas. Palyginkite su <a href="#pavyzdys-6">6 pavyzdžiu</a>, kuriame Kobo-Daglaso funkcija buvo tikslo funkcija, o apribojimą nustatė biudžetas.</p>
+          <p>Ieškome mažiausių sąnaudų pagal \(x\) ir \(y\), kai tenkinamas apribojimas:</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 16x + 100y \\ &amp;\text{kai}\;\; 8x^{0{,}5}y^{0{,}5} = 400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą užrašome forma \(8x^{0{,}5}y^{0{,}5} - 400 = 0\) ir sudarome Lagranžo funkciją:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 16x + 100y - \lambda\big(8x^{0{,}5}y^{0{,}5} - 400\big) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 16x + 100y \\ &amp;\phantom{=}\; {}- \lambda\big(8x^{0{,}5}y^{0{,}5} - 400\big) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Nario \(-8\lambda x^{0{,}5}y^{0{,}5}\) išvestinė pagal \(x\) yra \(-8\lambda\cdot 0{,}5x^{-0{,}5}y^{0{,}5} = -4\lambda x^{-0{,}5}y^{0{,}5}\), o pagal \(y\) – \(-4\lambda x^{0{,}5}y^{-0{,}5}\):</p>
+          <div class="m-wide">\[ L'_x = 16 - 4\lambda x^{-0{,}5}y^{0{,}5};\qquad L'_y = 100 - 4\lambda x^{0{,}5}y^{-0{,}5} \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 16 - 4\lambda x^{-0{,}5}y^{0{,}5} \\ L'_y = 100 - 4\lambda x^{0{,}5}y^{-0{,}5} \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 16 - 4\lambda x^{-0{,}5}y^{0{,}5} &amp;= 0 \\ 100 - 4\lambda x^{0{,}5}y^{-0{,}5} &amp;= 0 \\ 8x^{0{,}5}y^{0{,}5} &amp;= 400 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: kintamieji pakelti laipsniais ir sudauginti tarpusavyje bei su \(\lambda\). Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas lygčių dalyba</span></h4>
+          <p>Pirmosiose dviejose lygtyse narius su \(\lambda\) perkeliame į dešiniąsias puses ir lygybes užrašome atvirkščiai:</p>
+          \[ \left\{ \begin{aligned} 4\lambda x^{-0{,}5}y^{0{,}5} &amp;= 16 \\ 4\lambda x^{0{,}5}y^{-0{,}5} &amp;= 100 \end{aligned} \right. \]
+          <p><strong>Lygčių dalyba.</strong> Pirmąją lygtį padalijame iš antrosios. Daugiklis \(4\lambda\) susiprastina, o laipsnių rodiklius atimame: \(x^{-0{,}5 - 0{,}5} = x^{-1}\), \(y^{0{,}5 - (-0{,}5)} = y\):</p>
+          <div class="m-wide bp-lg">\[ \frac{4\lambda x^{-0{,}5}y^{0{,}5}}{4\lambda x^{0{,}5}y^{-0{,}5}} = \frac{16}{100} \;\Longrightarrow\; \frac{y}{x} = 0{,}16 \;\Longrightarrow\; y = 0{,}16x \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{4\lambda x^{-0{,}5}y^{0{,}5}}{4\lambda x^{0{,}5}y^{-0{,}5}} = \frac{16}{100} \\ \Longrightarrow\; \frac{y}{x} = 0{,}16 \\ \Longrightarrow\; y = 0{,}16x \end{gathered} \]</div>
+          <p><strong>Įstatymas į apribojimą.</strong> Kadangi \(x^{0{,}5}y^{0{,}5} = \sqrt{xy}\), įstatę \(y = 0{,}16x\) gauname \(\sqrt{x\cdot 0{,}16x} = \sqrt{0{,}16x^2} = 0{,}4x\) (nes \(x &gt; 0\)):</p>
+          <div class="m-wide bp-lg">\[ 8\sqrt{x\cdot 0{,}16x} = 400 \;\Longrightarrow\; 8\cdot 0{,}4x = 400 \;\Longrightarrow\; 3{,}2x = 400 \;\Longrightarrow\; x = 125 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 8\sqrt{x\cdot 0{,}16x} = 400 \\ \Longrightarrow\; 8\cdot 0{,}4x = 400 \\ \Longrightarrow\; 3{,}2x = 400 \\ \Longrightarrow\; x = 125 \end{gathered} \]</div>
+          <p>Tada \(y = 0{,}16\cdot 125 = 20\).</p>
+          <p><strong>Daugiklio reikšmė.</strong> Pirmojoje lygtyje \(x^{-0{,}5}y^{0{,}5} = \sqrt{\frac{y}{x}} = \sqrt{\frac{20}{125}} = \sqrt{0{,}16} = 0{,}4\):</p>
+          <div class="m-wide">\[ 4\lambda\cdot 0{,}4 = 16 \;\Longrightarrow\; 1{,}6\lambda = 16 \;\Longrightarrow\; \lambda = 10 \]</div><div class="m-narrow">\[ \begin{gathered} 4\lambda\cdot 0{,}4 = 16 \\ \Longrightarrow\; 1{,}6\lambda = 16 \\ \Longrightarrow\; \lambda = 10 \end{gathered} \]</div>
+          <p>Kritinis taškas yra \((125;\,20;\,10)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Kritinio taško rūšis</span></h4>
+          <p>Apribojimo kairioji pusė yra Kobo-Daglaso funkcija, kurios \(A = 8 &gt; 0\) ir \(\alpha + \beta = 0{,}5 + 0{,}5 = 1 \le 1\), todėl ji išgaubta. Kadangi \(\lambda = 10 &gt; 0\), narys \(-\lambda\big(8x^{0{,}5}y^{0{,}5} - 400\big)\) yra įgaubtas. Sąnaudų funkcija tiesinė, todėl \(L\) yra įgaubta funkcija (žr. <a href="tema-9.html#kobo-daglas-l">Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose</a>), o \((125;\,20)\) – minimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Mažiausios sąnaudos ir jų pokytis</span></h4>
+          <p><strong>a)</strong> Kritinio taško koordinates įstatome į sąnaudų funkciją:</p>
+          <div class="m-wide">\[ TC_{\min}(125;\,20) = 16\cdot 125 + 100\cdot 20 = 2000 + 2000 = 4000 \]</div><div class="m-narrow">\[ \begin{aligned} TC_{\min}(125;\,20) &amp;= 16\cdot 125 + 100\cdot 20 \\ &amp;= 2000 + 2000 = 4000 \end{aligned} \]</div>
+          <p><strong>b)</strong> Užsakymas padidėja 10&nbsp;%, t.&nbsp;y. \(\Delta m = 0{,}1\cdot 400 = 40\) kėdžių. Lagranžo daugiklis \(\lambda = 10\) (žr. <a href="tema-9.html#daugiklis">Lagranžo daugiklio reikšmę</a>):</p>
+          \[ \Delta TC^{*} \approx \lambda\cdot\Delta m = 10\cdot 40 = 400 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Užsakymui įvykdyti reikėtų 125 darbo valandų ir 20 įrenginių naudojimo valandų. Mažiausios sąnaudos yra 4000 eurų. b) Mažiausios sąnaudos padidėtų apytiksliai 400 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: sudarykite modelį ir Lagranžo funkciją, išspręskite lygčių sistemą, nustatykite kritinio taško rūšį ir apskaičiuokite prašomus dydžius. Atsakyme pateikti pagrindiniai tarpiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 9 rinkinys, 3 sk. 1 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Pieno perdirbimo įmonė per mėnesį pagamina \(x\) tonų natūralaus jogurto ir \(y\) tonų vaisinio jogurto. Jos mėnesio pelnas eurais yra</p>
+          <div class="m-wide">\[ P(x;\,y) = -0{,}2x^2 - 0{,}3y^2 - 0{,}2xy + 190x + 210y - 20\,000 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= -0{,}2x^2 - 0{,}3y^2 - 0{,}2xy \\ &amp;\phantom{=}\; {}+ 190x + 210y - 20\,000 \end{aligned} \]</div>
+          <p>Įmonė per mėnesį pagamina lygiai 500 tonų jogurto.</p>
+          <p>a) Kiek kiekvienos rūšies jogurto reikėtų pagaminti, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?<br>b) Kaip pasikeistų didžiausias pelnas, jei mėnesio gamybos pajėgumas padidėtų 10 tonų?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Modelis:</strong></p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; P(x;\,y) \\ &amp;\text{kai}\;\; x + y = 500 \end{aligned} \]
+          <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema tiesinė; sulyginus \(\lambda\) išraiškas gaunama \(x = 2y - 100\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 190 - 0{,}4x - 0{,}2y - \lambda &amp;= 0 \\ 210 - 0{,}6y - 0{,}2x - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \;\Longrightarrow\; (300;\,200;\,30) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 190 - 0{,}4x - 0{,}2y - \lambda &amp;= 0 \\ 210 - 0{,}6y - 0{,}2x - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \\ \Longrightarrow\; (300;\,200;\,30) \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide bp-lg">\[ A = -0{,}4;\quad B = -0{,}2;\quad C = -0{,}6;\quad D = 0{,}2 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -0{,}4;\quad B = -0{,}2;\quad C = -0{,}6 \\ D = 0{,}2 &gt; 0;\quad A &lt; 0 \end{gathered} \]</div>
+          <p><strong>Atsakymas.</strong> a) Per mėnesį reikėtų pagaminti 300 tonų natūralaus ir 200 tonų vaisinio jogurto. Didžiausias mėnesio pelnas yra \(P_{\max}(300;\,200) = 37\,000\) eurų. b) Pelno pokytis eurais yra \(\Delta P^{*} \approx 30\cdot 10 = 300\).</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kepyklų tinklas kasdien turi iš dviejų kepyklų pristatyti parduotuvėms 1000 dėžių duonos. Pristatyti \(x\) dėžių iš A kepyklos kainuoja \(0{,}02x^2 + 4x\) eurų, o pristatyti \(y\) dėžių iš B kepyklos kainuoja \(0{,}01y^2 + 8y\) eurų.</p>
+          <p>a) Kiek dėžių turėtų pristatyti kiekviena kepykla, kad bendrosios sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?<br>b) Kaip pasikeistų mažiausios sąnaudos, jei dienos pristatymo kiekis padidėtų 5&nbsp;%?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija</strong> (abiejų kepyklų pristatymo sąnaudų suma) <strong>ir modelis:</strong></p>
+          <div class="m-wide">\[ TC(x;\,y) = 0{,}02x^2 + 4x + 0{,}01y^2 + 8y \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 0{,}02x^2 + 4x \\ &amp;\phantom{=}\; {}+ 0{,}01y^2 + 8y \end{aligned} \]</div>
+          <div class="m-wide">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 0{,}02x^2 + 4x + 0{,}01y^2 + 8y \\ &amp;\text{kai}\;\; x + y = 1000 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) \\ &amp;\text{kai}\;\; x + y = 1000 \end{aligned} \]</div>
+          <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema tiesinė; sulyginus \(\lambda\) išraiškas gaunama \(y = 2x - 200\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 0{,}04x + 4 - \lambda &amp;= 0 \\ 0{,}02y + 8 - \lambda &amp;= 0 \\ x + y &amp;= 1000 \end{aligned} \right. \;\Longrightarrow\; (400;\,600;\,20) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 0{,}04x + 4 - \lambda &amp;= 0 \\ 0{,}02y + 8 - \lambda &amp;= 0 \\ x + y &amp;= 1000 \end{aligned} \right. \\ \Longrightarrow\; (400;\,600;\,20) \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide bp-lg">\[ A = 0{,}04;\quad B = 0;\quad C = 0{,}02;\quad D = 0{,}0008 &gt; 0;\quad A &gt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = 0{,}04;\quad B = 0;\quad C = 0{,}02 \\ D = 0{,}0008 &gt; 0;\quad A &gt; 0 \end{gathered} \]</div>
+          <p><strong>Atsakymas.</strong> a) Iš A kepyklos reikėtų pristatyti 400 dėžių, o iš B – 600. Mažiausios dienos sąnaudos yra \(TC_{\min}(400;\,600) = 13\,200\) eurų. b) 5&nbsp;% nuo 1000 yra \(\Delta m = 50\). Sąnaudų pokytis eurais yra \(\Delta TC^{*} \approx 20\cdot 50 = 1000\).</p>
+        </div>
+      </article>
+
+      <!-- 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Vartotojas per mėnesį išleidžia 500 eurų: \(x\) kartų apsilanko restorane po 10 eurų ir įsigyja \(y\) koncertų bilietų po 20 eurų. Naudingumo funkcija yra</p>
+          \[ U(x;\,y) = 4\ln x + 6\ln y \]
+          <p>a) Kiek kartų reikėtų apsilankyti restorane ir kiek koncertų bilietų įsigyti, kad išleidus visą biudžetą naudingumas būtų didžiausias?<br>b) Kaip pasikeistų didžiausias naudingumas, jei biudžetas padidėtų 50 eurų?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Modelis:</strong></p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; U(x;\,y) = 4\ln x + 6\ln y \\ &amp;\text{kai}\;\; 10x + 20y = 500 \end{aligned} \]
+          <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema netiesinė; iš pirmųjų dviejų lygčių \(\lambda = \frac{0{,}4}{x} = \frac{0{,}3}{y}\), todėl \(y = 0{,}75x\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} \frac{4}{x} - 10\lambda &amp;= 0 \\ \frac{6}{y} - 20\lambda &amp;= 0 \\ 10x + 20y &amp;= 500 \end{aligned} \right. \;\Longrightarrow\; (20;\,15;\,0{,}02) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} \frac{4}{x} - 10\lambda &amp;= 0 \\ \frac{6}{y} - 20\lambda &amp;= 0 \\ 10x + 20y &amp;= 500 \end{aligned} \right. \\ \Longrightarrow\; (20;\,15;\,0{,}02) \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide bp-lg">\[ A = -\frac{4}{400} = -0{,}01;\quad B = 0;\quad C = -\frac{6}{225} \approx -0{,}027;\quad D &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -\frac{4}{400} = -0{,}01;\quad B = 0 \\ C = -\frac{6}{225} \approx -0{,}027 \\ D &gt; 0;\quad A &lt; 0 \end{gathered} \]</div>
+          <p><strong>Atsakymas.</strong> a) Restorane reikėtų apsilankyti 20 kartų ir įsigyti 15 koncertų bilietų. \(U_{\max} = 4\ln 20 + 6\ln 15 \approx 28{,}23\). b) \(\Delta U^{*} \approx 0{,}02\cdot 50 = 1\).</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Baldų gamykla per mėnesį pagamina</p>
+          \[ Q(x;\,y) = 50x^{0{,}4}y^{0{,}6} \]
+          <p>stalų. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naudojimo valandų skaičius. Darbo valanda kainuoja 20 eurų, įrenginio naudojimo valanda – 30 eurų. Mėnesio biudžetas abiem ištekliams yra 5000 eurų.</p>
+          <p>a) Kiek darbo ir įrenginių naudojimo valandų reikėtų, kad gamybos apimtis būtų didžiausia? Kokia yra didžiausia gamybos apimtis?<br>b) Kaip pasikeistų didžiausia gamybos apimtis, jei biudžetas padidėtų 100 eurų?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Modelis:</strong></p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; Q(x;\,y) \\ &amp;\text{kai}\;\; 20x + 30y = 5000 \end{aligned} \]
+          <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema netiesinė; pirmąją lygtį padalijus iš antrosios, gaunama \(\frac{2y}{3x} = \frac{2}{3}\), t.&nbsp;y. \(x = y\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 20x^{-0{,}6}y^{0{,}6} &amp;= 20\lambda \\ 30x^{0{,}4}y^{-0{,}4} &amp;= 30\lambda \\ 20x + 30y &amp;= 5000 \end{aligned} \right. \;\Longrightarrow\; x = y \;\Longrightarrow\; (100;\,100;\,1) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 20x^{-0{,}6}y^{0{,}6} &amp;= 20\lambda \\ 30x^{0{,}4}y^{-0{,}4} &amp;= 30\lambda \\ 20x + 30y &amp;= 5000 \end{aligned} \right. \\ \Longrightarrow\; x = y \;\Longrightarrow\; (100;\,100;\,1) \end{gathered} \]</div>
+          <p><strong>Kritinio taško rūšis</strong></p>
+          <p>Kobo-Daglaso funkcijos parametrai tenkina \(A = 50 &gt; 0\) ir \(\alpha + \beta = 1 \le 1\). Funkcija \(L\) yra išgaubta, todėl \((100;\,100)\) yra maksimumo taškas.</p>
+          <p><strong>Atsakymas.</strong> a) Reikėtų 100 darbo valandų ir 100 įrenginių naudojimo valandų per mėnesį. Didžiausia gamybos apimtis yra \(Q_{\max} = 5000\) stalų. b) Gamybos apimties pokytis stalais yra \(\Delta Q^{*} \approx 1\cdot 100 = 100\).</p>
+        </div>
+      </article>
+
+      <!-- 5 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Valymo įmonė išvalo</p>
+          \[ Q(x;\,y) = 4x^{0{,}5}y^{0{,}5} \]
+          <p>šimtų kvadratinių metrų. Čia \(x\) yra darbo valandų skaičius, o \(y\) – valymo įrenginių naudojimo valandų skaičius. Darbo valanda kainuoja 9 eurus, įrenginio naudojimo valanda – 4 eurus. Įmonė turi išvalyti 24&nbsp;000 kvadratinių metrų plotą.</p>
+          <p>a) Kiek darbo ir įrenginių naudojimo valandų reikėtų, kad užsakymo sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?<br>b) Kaip pasikeistų mažiausios sąnaudos, jei užsakymas padidėtų 2000 kvadratinių metrų?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Modelis</strong> (plotas matuojamas šimtais kvadratinių metrų, todėl 24&nbsp;000&nbsp;m² atitinka 240):</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 9x + 4y \\ &amp;\text{kai}\;\; 4x^{0{,}5}y^{0{,}5} = 240 \end{aligned} \]
+          <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema netiesinė; pirmąją lygtį padalijus iš antrosios, gaunama \(\frac{y}{x} = 2{,}25\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 9 &amp;= 2\lambda x^{-0{,}5}y^{0{,}5} \\ 4 &amp;= 2\lambda x^{0{,}5}y^{-0{,}5} \\ 4x^{0{,}5}y^{0{,}5} &amp;= 240 \end{aligned} \right. \;\Longrightarrow\; y = 2{,}25x \;\Longrightarrow\; (40;\,90;\,3) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 9 &amp;= 2\lambda x^{-0{,}5}y^{0{,}5} \\ 4 &amp;= 2\lambda x^{0{,}5}y^{-0{,}5} \\ 4x^{0{,}5}y^{0{,}5} &amp;= 240 \end{aligned} \right. \\ \Longrightarrow\; y = 2{,}25x \;\Longrightarrow\; (40;\,90;\,3) \end{gathered} \]</div>
+          <p><strong>Kritinio taško rūšis</strong></p>
+          <p>Kobo-Daglaso apribojimo parametrai tenkina \(A = 4 &gt; 0\) ir \(\alpha + \beta = 1 \le 1\), o \(\lambda = 3 &gt; 0\). Funkcija \(L\) yra įgaubta, todėl \((40;\,90)\) yra minimumo taškas.</p>
+          <p><strong>Atsakymas.</strong> a) Reikėtų 40 darbo valandų ir 90 įrenginių naudojimo valandų. Mažiausios sąnaudos yra \(TC_{\min} = 720\) eurų. b) 2000&nbsp;m² atitinka \(\Delta m = 20\). Sąnaudų pokytis eurais yra \(\Delta TC^{*} \approx 3\cdot 20 = 60\).</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">8 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.3 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
