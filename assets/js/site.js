@@ -114,6 +114,18 @@
       mrtsNote3: ', nekeičiant gamybos apimties. Judant pačia izokvante iki taško B, antrojo ištekliaus kiekis pasikeičia ',
       mrtsNote4: ' – MRTS yra apytikslis šio pokyčio įvertinimas.',
       sfHintCobb: 'Slankikliais keiskite laipsnių rodiklius α ir β. Kairėje – Kobo-Daglaso funkcijos (A = 10) paviršius su lygio linijomis, dešinėje – tos pačios lygio linijos xy plokštumoje. Vilkite brėžinį arba spauskite rodykles, kad jį pasuktumėte.',
+      sfHintCrit: 'Pasirinkite funkciją ir slankikliais keiskite tašką (x₀; y₀). Per tašką nubrėžtos dvi pjūvio kreivės (x ir y kryptimis) ir jų liestinės. Vilkite brėžinį arba spauskite rodykles, kad jį pasuktumėte.',
+      sfCritLx: 'pjūvis y = y₀ ir jo liestinė', sfCritLy: 'pjūvis x = x₀ ir jo liestinė',
+      sfCritNo: 'Bent viena dalinė išvestinė nelygi 0, todėl bent viena liestinė nėra horizontali. Šis taškas nėra kritinis, ekstremumo jame nėra. Perkelkite tašką į (0; 0).',
+      sfCritYes: 'Abi dalinės išvestinės lygios 0, abi liestinės horizontalios – tai kritinis taškas. Antros eilės dalinės išvestinės: ',
+      sfCritMax: '. D > 0 ir A < 0, todėl tai vietinio maksimumo taškas.',
+      sfCritMin: '. D > 0 ir A > 0, todėl tai vietinio minimumo taškas.',
+      sfCritSad: '. D < 0, todėl tai balno taškas: x kryptimi funkcija čia turi minimumą, o y kryptimi – maksimumą.',
+      lgHint: 'Slankikliu keiskite taško P padėtį apribojimo tiesėje x + 2y = 10. Blankios linijos – funkcijos f = x² + y² lygio linijos (apskritimai), paryškinta – lygio linija, einanti per tašką P.',
+      lgAria: 'Funkcijos f = x² + y² lygio linijos ir apribojimo tiesė x + 2y = 10',
+      lgLine: 'apribojimas x + 2y = 10', lgLevels: 'lygio linijos', lgCur: 'lygio linija per tašką P',
+      lgNoteMin: 'Taške (2; 4) lygio linija f = 20 liečia apribojimo tiesę. Kituose tiesės taškuose f > 20, todėl 20 yra mažiausia funkcijos reikšmė, kai x + 2y = 10.',
+      lgNote1: 'Lygio linija f = ', lgNote2: ' kerta apribojimo tiesę dviejuose taškuose. Judant tiese link taško (2; 4), funkcijos reikšmė mažėja.',
       sfCdLess: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja mažesne proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, tolsta viena nuo kitos.',
       sfCdEq: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja ta pačia proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, išsidėsčiusios vienodais atstumais.',
       sfCdMore: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja didesne proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, artėja viena prie kitos.',
@@ -237,6 +249,18 @@
       mrtsNote3: ' without changing output. Moving along the isoquant itself to point B, the amount of the second input changes by ',
       mrtsNote4: ' – the MRTS is an approximation of this change.',
       sfHintCobb: 'Move the sliders to change the exponents α and β. On the left is the surface of the Cobb-Douglas function (A = 10) with its level curves; on the right are the same level curves in the xy-plane. Drag the graph or use the arrows to rotate it.',
+      sfHintCrit: 'Choose a function and move the sliders to change the point (x₀; y₀). Two cross-section curves are drawn through the point (in the x and y directions) together with their tangent lines. Drag the graph or use the arrows to rotate it.',
+      sfCritLx: 'cross-section y = y₀ and its tangent line', sfCritLy: 'cross-section x = x₀ and its tangent line',
+      sfCritNo: 'At least one partial derivative is not 0, so at least one tangent line is not horizontal. This is not a critical point, and there is no extremum here. Move the point to (0; 0).',
+      sfCritYes: 'Both partial derivatives are 0 and both tangent lines are horizontal – this is a critical point. The second order partial derivatives: ',
+      sfCritMax: '. D > 0 and A < 0, so this is a relative maximum point.',
+      sfCritMin: '. D > 0 and A > 0, so this is a relative minimum point.',
+      sfCritSad: '. D < 0, so this is a saddle point: in the x direction the function has a minimum here, and in the y direction a maximum.',
+      lgHint: 'Move the slider to change the position of point P on the constraint line x + 2y = 10. The faint curves are level curves of f = x² + y² (circles); the highlighted one passes through P.',
+      lgAria: 'Level curves of f = x² + y² and the constraint line x + 2y = 10',
+      lgLine: 'constraint x + 2y = 10', lgLevels: 'level curves', lgCur: 'level curve through P',
+      lgNoteMin: 'At (2; 4) the level curve f = 20 touches the constraint line. At all other points of the line f > 20, so 20 is the smallest value of the function when x + 2y = 10.',
+      lgNote1: 'The level curve f = ', lgNote2: ' crosses the constraint line at two points. Moving along the line towards (2; 4), the value of the function decreases.',
       sfCdLess: 'When both inputs are increased in the same proportion, output increases in a smaller proportion. Hence the level curves for equally spaced output levels move further apart.',
       sfCdEq: 'When both inputs are increased in the same proportion, output increases in the same proportion. Hence the level curves for equally spaced output levels are evenly spaced.',
       sfCdMore: 'When both inputs are increased in the same proportion, output increases in a greater proportion. Hence the level curves for equally spaced output levels get closer together.',
@@ -291,7 +315,7 @@
       title: { lt: 'Aukštesnės eilės išvestinės', en: 'The Higher Order Derivative' } },
     { id: 't8', num: 8, status: 'active', href: { lt: 'tema-8.html', en: 'tema-8.html' },
       title: { lt: 'Kelių kintamųjų funkcijos ir dalinės išvestinės', en: 'Functions of Several Variables and Partial Derivatives' } },
-    { id: 't9', num: 9, status: 'soon', title: { lt: 'Kelių kintamųjų funkcijų ekstremumai', en: 'Extrema of Functions of Several Variables, the Lagrange Problem' } },
+    { id: 't9', num: 9, status: 'active', href: { lt: 'tema-9.html' }, title: { lt: 'Kelių kintamųjų funkcijų ekstremumai', en: 'Extrema of Functions of Several Variables, the Lagrange Problem' } },
     { id: 't10', num: 10, status: 'soon', title: { lt: 'Neapibrėžtinis integralas', en: 'Indefinite Integral' } },
     { id: 't11', num: 11, status: 'soon', title: { lt: 'Apibrėžtinis integralas', en: 'Definite Integral' } },
     { id: 'final', type: 'exam', href: { lt: 'baigiamasis-egzaminas.html' },
@@ -445,6 +469,20 @@
       { id: 'm86', status: 'active', href: { lt: 'tema-8-techninio-pakeitimo-norma.html', en: 'tema-8-techninio-pakeitimo-norma.html' },
         title: { lt: 'Ribinė techninio pakeitimo norma', en: 'The Marginal Rate of Technical Substitution' },
         desc: { lt: 'Izokvantės ir kiek vieno ištekliaus gali pakeisti papildomas kito ištekliaus vienetas, nekeičiant gamybos apimties.', en: 'Isoquants and how much of one input one more unit of the other input can replace without changing output.' } }
+    ],
+    t9: [
+      { id: 'm91', status: 'soon',
+        title: { lt: 'Pagrindiniai optimizavimo uždaviniai', en: 'Standard Optimization Problems' },
+        desc: { lt: 'Kritiniai taškai ir pakankamoji sąlyga: didžiausias dviejų gaminių pelnas, pelnas pagal gamybos funkciją, mažiausios sąnaudos.', en: 'Critical points and the second derivative test: the maximum profit from two products, profit from a production function, the minimum cost.' } },
+      { id: 'm92', status: 'soon',
+        title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' },
+        desc: { lt: 'Tikslo funkciją reikia sudaryti pagal situacijos aprašymą: vieta ir atstumai, kainos, biudžeto paskirstymas, sąnaudos.', en: 'The objective function has to be set up from the description of the situation: location and distances, prices, budget allocation, costs.' } },
+      { id: 'm93', status: 'soon',
+        title: { lt: 'Pagrindiniai sąlyginio optimizavimo uždaviniai', en: 'Standard Constrained Optimization Problems' },
+        desc: { lt: 'Lagranžo daugiklių metodas: didžiausia gamybos apimtis esant biudžetui, mažiausios sąnaudos esant užsakymui ir Lagranžo daugiklio interpretacija.', en: 'The method of Lagrange multipliers: the maximum output within a budget, the minimum cost of an order and the interpretation of the Lagrange multiplier.' } },
+      { id: 'm94', status: 'soon',
+        title: { lt: 'Sudėtingesni sąlyginio optimizavimo uždaviniai', en: 'Advanced Constrained Optimization Problems' },
+        desc: { lt: 'Tikslo funkciją ir apribojimą reikia nustatyti iš situacijos aprašymo, dažnai remiantis geometrija.', en: 'The objective function and the constraint have to be found from the description of the situation, often with the help of geometry.' } }
     ]
   };
 
@@ -553,6 +591,8 @@
                title: { lt: 'Naudingumo funkcija ir ribinė pakeitimo norma', en: 'The Utility Function and the Marginal Rate of Substitution' } },
     m86:     { parent: 't8', topic: 't8', model: 'm86', href: { lt: 'tema-8-techninio-pakeitimo-norma.html', en: 'tema-8-techninio-pakeitimo-norma.html' },
                title: { lt: 'Ribinė techninio pakeitimo norma', en: 'The Marginal Rate of Technical Substitution' } },
+    t9:      { parent: 'home', href: { lt: 'tema-9.html', en: null },
+               title: { lt: '9 tema', en: 'Topic 9' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -1662,6 +1702,28 @@
       cutY: function (a) { return sfPoly([[a, 'y']]); },
       lvl: function (C) { return 'xy = ' + sfNum(C); },
       lab: function (C) { var r = Math.sqrt(C); return r <= 6 ? [r, r] : null; }
+    },
+    /* 9 tema (režimas crit): vietinis maksimumas, vietinis minimumas, balno taškas; H = [A, B, C] */
+    pk: {
+      tex: 'z = 8 - x^2 - y^2', f: function (x, y) { return 8 - x * x - y * y; },
+      x: [-2, 2], y: [-2, 2], z: [0, 8], tk: [-2, -1, 0, 1, 2], tl: [-2, 0, 2], zt: [0, 4, 8], p0: [1, 1], step: 0.5,
+      fx: function (x) { return -2 * x; }, fy: function (x, y) { return -2 * y; }, fxT: '-2x', fyT: '-2y',
+      dx: function (a) { return '-2\\cdot ' + sfPar(a); }, dy: function (a, b) { return '-2\\cdot ' + sfPar(b); },
+      H: [-2, 0, -2]
+    },
+    mn: {
+      tex: 'z = x^2 + y^2', f: function (x, y) { return x * x + y * y; },
+      x: [-2, 2], y: [-2, 2], z: [0, 8], tk: [-2, -1, 0, 1, 2], tl: [-2, 0, 2], zt: [0, 4, 8], p0: [1, 1], step: 0.5,
+      fx: function (x) { return 2 * x; }, fy: function (x, y) { return 2 * y; }, fxT: '2x', fyT: '2y',
+      dx: function (a) { return '2\\cdot ' + sfPar(a); }, dy: function (a, b) { return '2\\cdot ' + sfPar(b); },
+      H: [2, 0, 2]
+    },
+    sd: {
+      tex: 'z = x^2 - y^2 + 4', f: function (x, y) { return x * x - y * y + 4; },
+      x: [-2, 2], y: [-2, 2], z: [0, 8], tk: [-2, -1, 0, 1, 2], tl: [-2, 0, 2], zt: [0, 4, 8], p0: [1, 1], step: 0.5,
+      fx: function (x) { return 2 * x; }, fy: function (x, y) { return -2 * y; }, fxT: '2x', fyT: '-2y',
+      dx: function (a) { return '2\\cdot ' + sfPar(a); }, dy: function (a, b) { return '-2\\cdot ' + sfPar(b); },
+      H: [2, 0, -2]
     }
   };
   /* Kobo-Daglaso funkcija z = 10x^α y^β (režimas cobb): z ašies mastelis ir
@@ -1711,7 +1773,7 @@
   }
   function initSurface3d(box) {
     var uid = 'sf' + (++sfCount);
-    var mode = box.getAttribute('data-mode') || 'surface', cobb = mode === 'cobb';
+    var mode = box.getAttribute('data-mode') || 'surface', cobb = mode === 'cobb', crit = mode === 'crit';
     var keys = cobb ? [] : (box.getAttribute('data-fns') || 'sq lin xy').split(' ').filter(function (k) { return SURF[k]; });
     var key = box.getAttribute('data-fn') || keys[0];
     var az = -0.62, el = 0.52, dir = 'x';
@@ -1724,7 +1786,7 @@
       S.b = mode === 'slice' ? F.s0[1] : F.p0[1];
       S.C = F.c0;
     }
-    var hint = cobb ? T.sfHintCobb : (mode === 'levels' ? T.sfHintLevels : (mode === 'slice' ? T.sfHintSlice : T.sfHintSurface));
+    var hint = cobb ? T.sfHintCobb : (mode === 'levels' ? T.sfHintLevels : (mode === 'slice' ? T.sfHintSlice : (crit ? T.sfHintCrit : T.sfHintSurface)));
     var rotIco = function (d) {
       return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         (d < 0 ? '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/>' : '<path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v4h-4"/>') + '</svg>';
@@ -1748,6 +1810,8 @@
           '<button type="button" class="sf-rb" data-r="1" aria-label="' + esc(T.sfRotR) + '">' + rotIco(1) + '</button></div></div>' +
         (twoP ? '<div class="sf-map"></div>' : '') +
       '</div>' +
+      (crit ? '<ul class="chart-legend"><li><span class="sw sw-3" aria-hidden="true"></span>' + esc(T.sfCritLx) + '</li>' +
+        '<li><span class="sw sw-s" aria-hidden="true"></span>' + esc(T.sfCritLy) + '</li></ul>' : '') +
       sliders.map(function (s) {
         return '<div class="ctrl"><label for="' + uid + '-' + s + '" class="js-l' + s + '"></label><input id="' + uid + '-' + s + '" type="range"><output for="' + uid + '-' + s + '"></output></div>';
       }).join('') +
@@ -1762,8 +1826,8 @@
     function labels() {
       if (cobb) { renderInline($('.js-lal', box), '\\alpha'); renderInline($('.js-lbe', box), '\\beta'); return; }
       if (mode === 'levels') { renderInline($('.js-lC', box), 'C'); return; }
-      renderInline($('.js-la', box), mode === 'slice' ? 'x_0' : 'x');
-      renderInline($('.js-lb', box), mode === 'slice' ? 'y_0' : 'y');
+      renderInline($('.js-la', box), (mode === 'slice' || crit) ? 'x_0' : 'x');
+      renderInline($('.js-lb', box), (mode === 'slice' || crit) ? 'y_0' : 'y');
     }
     function setRanges() {
       if (cobb) {
@@ -1967,6 +2031,27 @@
         tanSeg = [at(ua, f0 + m * (ua - u)), at(ub, f0 + m * (ub - u))];
         mark = at(u, f0);
       }
+      /* crit: abi pjūvio kreivės per tašką (a; b) ir jų liestinės */
+      var critC = null;
+      if (crit) {
+        critC = [];
+        ['x', 'y'].forEach(function (d) {
+          var fyx = d === 'x', rr = fyx ? F.x : F.y, cu = [], ii;
+          var at2 = function (u, z) { return fyx ? pr(u, S.b, z) : pr(S.a, u, z); };
+          var fu2 = function (u) { return fyx ? F.f(u, S.b) : F.f(S.a, u); };
+          for (ii = 0; ii <= 48; ii++) { var vv = rr[0] + (rr[1] - rr[0]) * ii / 48; cu.push(at2(vv, fu2(vv))); }
+          var u0 = fyx ? S.a : S.b, f00 = F.f(S.a, S.b), mm = fyx ? F.fx(S.a, S.b) : F.fy(S.a, S.b);
+          var sp = (rr[1] - rr[0]) * 0.2, ua2 = u0 - sp, ub2 = u0 + sp;
+          var zt2 = function (uu) { return f00 + mm * (uu - u0); };
+          var cl2 = function (z) { return Math.max(z0, Math.min(z1, z)); };
+          if (mm !== 0) {
+            if (zt2(ua2) < z0 || zt2(ua2) > z1) ua2 = u0 + (cl2(zt2(ua2)) - f00) / mm;
+            if (zt2(ub2) < z0 || zt2(ub2) > z1) ub2 = u0 + (cl2(zt2(ub2)) - f00) / mm;
+          }
+          critC.push({ cu: cu, t: [at2(ua2, zt2(ua2)), at2(ub2, zt2(ub2))], c: fyx ? col.c3 : col.c2 });
+        });
+        mark = pr(S.a, S.b, F.f(S.a, S.b));
+      }
       /* grindų projekcija */
       floorSegs.forEach(function (s) { seg(s[0], s[1], sfRgb(col.exam, cobb ? 0.55 : 0.85), cobb ? 1.2 : 1.6, [4, 3]); });
       items.sort(function (p, q) { return q.d - p.d; });
@@ -1992,6 +2077,21 @@
         });
         seg(tanSeg[0], tanSeg[1], sfRgb(col.surf, 0.9), 5.5);
         seg(tanSeg[0], tanSeg[1], sfRgb(col.exam, 1), 2.6);
+        dot(mark, 5.5, sfRgb(col.exam, 1), sfRgb(col.surf, 1));
+      }
+      if (crit) {
+        g.lineJoin = 'round'; g.lineCap = 'round';
+        critC.forEach(function (c) {
+          [[sfRgb(col.surf, 0.85), 5.5], [sfRgb(c.c, 1), 2.8]].forEach(function (st) {
+            g.beginPath(); g.moveTo(c.cu[0][0], c.cu[0][1]);
+            for (var k = 1; k < c.cu.length; k++) g.lineTo(c.cu[k][0], c.cu[k][1]);
+            g.strokeStyle = st[0]; g.lineWidth = st[1]; g.stroke();
+          });
+        });
+        critC.forEach(function (c) {
+          seg(c.t[0], c.t[1], sfRgb(col.surf, 0.9), 5.5);
+          seg(c.t[0], c.t[1], sfRgb(c.c, 1), 2.4, [6, 4]);
+        });
         dot(mark, 5.5, sfRgb(col.exam, 1), sfRgb(col.surf, 1));
       }
       cv.setAttribute('aria-label', T.sfAria + ' ' + F.tex.replace(/\^2/g, '²').replace(/[{}]/g, ''));
@@ -2076,6 +2176,17 @@
         else if (key === 'lin') parts = [T.sfLvLin, { m: 'y = ' + sfPoly([[-2, 'x'], [C / 2, '']]) }, T.sfLvLin2];
         else parts = [T.sfLvXy, { m: 'y = \\dfrac{' + sfNum(C) + '}{x}' }, T.sfLvXy2, { m: 'xy = ' + sfNum(C) }, '.'];
         rich(note, parts);
+      } else if (crit) {
+        out.a.textContent = sfTxt(a); out.b.textContent = sfTxt(b);
+        var ptc = '(' + sfNum(a) + ';\\,' + sfNum(b) + ')', vx = F.fx(a, b), vy = F.fy(a, b);
+        var ex = function (e, v) { return e === sfNum(v) ? sfNum(v) : e + ' = ' + sfNum(v); };
+        rich(vals, [{ m: "f'_x = " + F.fxT + ';' }, ' ', { m: "f'_x" + ptc + ' = ' + ex(F.dx(a, b), vx) + ';' }, ' ',
+          { m: "f'_y = " + F.fyT + ';' }, ' ', { m: "f'_y" + ptc + ' = ' + ex(F.dy(a, b), vy) }]);
+        if (Math.abs(vx) < 1e-9 && Math.abs(vy) < 1e-9) {
+          var HA = F.H[0], HB = F.H[1], HC = F.H[2], HD = HA * HC - HB * HB;
+          rich(note, [T.sfCritYes, { m: 'A = ' + sfNum(HA) + ',\\; B = ' + sfNum(HB) + ',\\; C = ' + sfNum(HC) + ',\\; D = AC - B^2 = ' + sfNum(HD) },
+            HD < 0 ? T.sfCritSad : (HA < 0 ? T.sfCritMax : T.sfCritMin)]);
+        } else rich(note, [T.sfCritNo]);
       } else {
         out.a.textContent = sfTxt(a); out.b.textContent = sfTxt(b);
         var byX = dir === 'x', dT = byX ? "z'_x" : "z'_y";
@@ -2139,6 +2250,86 @@
       if (mq.addEventListener) mq.addEventListener('change', re); else if (mq.addListener) mq.addListener(re);
     }
     labels(); reset(); setRanges(); draw();
+  }
+
+  /* ------------------------------------------------------------------
+     9a1. LAGRANŽO UŽDAVINYS  (<div data-widget="lagrange-chart">)
+     f = x² + y², apribojimas x + 2y = 10. Slankikliu keičiama taško
+     P(x; (10 − x)/2) padėtis tiesėje (x = 0, 1, …, 8). Rodoma lygio linija
+     (apskritimas) per P; taške (2; 4) ji liečia tiesę – sąlyginis minimumas.
+     ------------------------------------------------------------------ */
+  var lgCount = 0;
+  function initLagrange(box) {
+    var uid = 'lg' + (++lgCount), XM = 10, YM = 6, K0 = 6;
+    var W = 340, PL = 36, PR = 316, PT = 20, PB = PT + (PR - PL) * YM / XM, H = PB + 26;
+    var X = function (x) { return PL + x / XM * (PR - PL); }, Y = function (y) { return PB - y / YM * (PB - PT); };
+    var r1 = function (v) { return Math.round(v * 10) / 10; };
+    var arc = function (r) {
+      var pts = [], k;
+      for (k = 0; k <= 90; k++) { var t = k / 90 * Math.PI / 2; pts.push(r1(X(r * Math.cos(t))) + ' ' + r1(Y(r * Math.sin(t)))); }
+      return 'M' + pts.join('L');
+    };
+    var g = '', fl = '', i;
+    for (i = 1; i <= XM; i++) {
+      g += '<line class="grid" x1="' + r1(X(i)) + '" y1="' + PT + '" x2="' + r1(X(i)) + '" y2="' + PB + '"/>';
+      if (i % 2 === 0) g += '<text class="muted" x="' + r1(X(i)) + '" y="' + (PB + 16) + '" text-anchor="middle">' + i + '</text>';
+    }
+    for (i = 1; i <= YM; i++) {
+      g += '<line class="grid" x1="' + PL + '" y1="' + r1(Y(i)) + '" x2="' + PR + '" y2="' + r1(Y(i)) + '"/>';
+      if (i % 2 === 0) g += '<text class="muted" x="' + (PL - 7) + '" y="' + r1(Y(i) + 4) + '" text-anchor="end">' + i + '</text>';
+    }
+    g += '<text class="muted" x="' + (PL - 7) + '" y="' + (PB + 16) + '" text-anchor="end">0</text>';
+    g += '<line class="ax" x1="' + PL + '" y1="' + PB + '" x2="' + PR + '" y2="' + PB + '"/><path class="ah" d="M' + (PR + 10) + ' ' + PB + 'L' + PR + ' ' + (PB - 4.5) + 'L' + PR + ' ' + (PB + 4.5) + 'Z"/>';
+    g += '<line class="ax" x1="' + PL + '" y1="' + PB + '" x2="' + PL + '" y2="' + PT + '"/><path class="ah" d="M' + PL + ' ' + (PT - 10) + 'L' + (PL - 4.5) + ' ' + PT + 'L' + (PL + 4.5) + ' ' + PT + 'Z"/>';
+    g += '<text class="m" x="' + (PR + 2) + '" y="' + (PB - 9) + '">x</text><text class="m" x="' + (PL + 9) + '" y="' + (PT - 4) + '">y</text>';
+    for (i = 1; i <= 11; i++) fl += '<path class="lv-faint" d="' + arc(i) + '"/>';
+    box.classList.add('tryit');
+    box.innerHTML =
+      '<p class="tryit-title">' + ICON.slider + esc(T.tryIt) + '</p>' +
+      '<p class="tryit-note" style="margin:0 0 6px">' + esc(T.lgHint) + '</p>' +
+      '<svg class="plot" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(T.lgAria) + '">' +
+        '<defs><clipPath id="' + uid + '-clip"><rect x="' + PL + '" y="' + PT + '" width="' + (PR - PL) + '" height="' + (PB - PT) + '"/></clipPath></defs>' +
+        g +
+        '<g clip-path="url(#' + uid + '-clip)">' + fl +
+          '<line class="ln" x1="' + r1(X(0)) + '" y1="' + r1(Y(5)) + '" x2="' + r1(X(10)) + '" y2="' + r1(Y(0)) + '"/>' +
+          '<path class="leg js-cur" style="stroke-width:2.8"/></g>' +
+        '<text class="halo js-fl" style="font-weight:700"></text>' +
+        '<circle class="pt-hi js-p" r="6"/><text class="halo js-pl" style="font-weight:700">P</text>' +
+      '</svg>' +
+      '<ul class="chart-legend"><li><span class="sw" aria-hidden="true"></span>' + esc(T.lgLine) + '</li>' +
+        '<li><span class="sw sw-env" aria-hidden="true"></span>' + esc(T.lgLevels) + '</li>' +
+        '<li><span class="sw sw-e" aria-hidden="true"></span>' + esc(T.lgCur) + '</li></ul>' +
+      '<div class="ctrl"><label for="' + uid + '-x" class="js-xlab"></label><input id="' + uid + '-x" type="range" min="0" max="8" step="1" value="' + K0 + '"><output for="' + uid + '-x"></output></div>' +
+      '<div class="tryit-eq js-eq1" aria-live="polite"></div>' +
+      '<div class="tryit-eq js-eq2"></div>' +
+      '<p class="tryit-note js-note"></p>';
+    var el = function (c) { return $('.' + c, box); };
+    var inp = $('#' + uid + '-x', box), out = $('output[for="' + uid + '-x"]', box);
+    renderInline(el('js-xlab'), 'x_P');
+    var num = function (v) { var t = String(Number(v.toFixed(2))); return T.decimal === ',' ? t.replace('.', '{,}') : t; };
+    var txt = function (v) { var t = String(Number(v.toFixed(2))); return T.decimal === ',' ? t.replace('.', ',') : t; };
+    var sq = function (v) { return Math.abs(v - Math.round(v)) < 1e-9 ? num(v) + '^2' : '(' + num(v) + ')^2'; };
+    var place = function (e, x, y) { e.setAttribute('x', r1(x)); e.setAttribute('y', r1(y)); };
+    function draw() {
+      var x = parseInt(inp.value, 10), y = (10 - x) / 2, f = x * x + y * y, r = Math.sqrt(f);
+      out.textContent = txt(x);
+      el('js-cur').setAttribute('d', arc(r));
+      var p = el('js-p');
+      p.setAttribute('cx', r1(X(x))); p.setAttribute('cy', r1(Y(y)));
+      place(el('js-pl'), X(x) + 9, Y(y) - 9);
+      var fl2 = el('js-fl');
+      fl2.textContent = 'f = ' + txt(f);
+      fl2.setAttribute('text-anchor', 'end');
+      place(fl2, X(r) - 5, PB - 6);
+      var P = '(' + num(x) + ';\\,' + num(y) + ')';
+      el('js-eq1').innerHTML = '<span class="js-m1"></span>';
+      renderInline(el('js-m1'), 'P = ' + P);
+      el('js-eq2').innerHTML = '<span class="js-m2"></span>';
+      renderInline(el('js-m2'), 'f' + P + ' = ' + sq(x) + ' + ' + sq(y) + ' = ' + num(f));
+      el('js-note').textContent = x === 2 ? T.lgNoteMin : T.lgNote1 + txt(f) + T.lgNote2;
+    }
+    inp.addEventListener('input', draw);
+    draw();
   }
 
   /* ------------------------------------------------------------------
@@ -2571,6 +2762,7 @@
     $all('[data-widget="second-deriv"]').forEach(initSecondDeriv);
     $all('[data-widget="surface3d"]').forEach(initSurface3d);
     $all('[data-widget="mrs-chart"]').forEach(initMrsChart);
+    $all('[data-widget="lagrange-chart"]').forEach(initLagrange);
     initTerms();
   }
 
