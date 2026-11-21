@@ -85,7 +85,7 @@
       <ol class="steps-list">
         <li>Sudarykite tikslo funkciją.</li>
         <li>Raskite pirmos eilės dalines išvestines, prilyginkite jas nuliui ir išspręskite lygčių sistemą (žr. <a href="#sistema">„Būtinosios sąlygos lygčių sistema“</a>). Jei lygtyse yra dešimtainių trupmenų, pirmiausia padauginkite lygtis iš tinkamo skaičiaus. Jei išvestinė yra trupmena, užrašykite ją viena trupmena, o lygtį pakeiskite dviem sąlygomis: skaitiklis lygus nuliui, vardiklis nelygus nuliui.</li>
-        <li>Raskite antros eilės dalines išvestines, kritiniame taške apskaičiuokite \(A\), \(B\), \(C\) ir \(D = AC - B^2\). Nustatykite, ar taškas yra maksimumo, ar minimumo taškas (<a href="tema-9.html#pakankamoji">pakankamoji sąlyga</a>). Jei pelno funkcija sudaryta pagal Kobo-Daglaso gamybos funkciją, tikrinkite parametrus (<a href="tema-9.html#kobo-daglas">Kobo-Daglaso funkcijos</a>).</li>
+        <li>Kritinį tašką pažymėkite raide, pavyzdžiui, \(K\). Raskite antros eilės dalines išvestines ir į jas įstatykite taško \(K\) koordinates – taip gausite \(A\), \(B\), \(C\). Apskaičiuokite \(D = AC - B^2\). Nustatykite, ar taškas yra maksimumo, ar minimumo taškas (<a href="tema-9.html#pakankamoji">pakankamoji sąlyga</a>). Jei pelno funkcija sudaryta pagal Kobo-Daglaso gamybos funkciją, tikrinkite parametrus (<a href="tema-9.html#kobo-daglas">Kobo-Daglaso funkcijos</a>).</li>
         <li>Apskaičiuokite uždavinyje prašomus dydžius: didžiausią ar mažiausią reikšmę, kainas, gamybos apimtį.</li>
         <li>Suformuluokite atsakymą uždavinio kontekste.</li>
       </ol>
@@ -152,7 +152,7 @@
           \[ x = \frac{-700}{-5} = 140 \]
           <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 600 - 3x\):</p>
           <div class="m-wide">\[ y = 600 - 3\cdot 140 = 600 - 420 = 180 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 600 - 3\cdot 140 \\ &amp;= 600 - 420 = 180 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((140;\,180)\). Patikriname, įstatę reikšmes į abi lygtis: \(3\cdot 140 + 180 = 600\) ir \(140 + 2\cdot 180 = 500\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(140;\,180)\). Patikriname, įstatę reikšmes į abi lygtis: \(3\cdot 140 + 180 = 600\) ir \(140 + 2\cdot 180 = 500\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -170,9 +170,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}6;\quad B = P''_{xy} = -0{,}2;\quad C = P''_{yy} = -0{,}4 \\ D = AC - B^2 = (-0{,}6)\cdot (-0{,}4) - (-0{,}2)^2 = 0{,}24 - 0{,}04 = 0{,}2 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}6 \\ B &amp;= P''_{xy} = -0{,}2 \\ C &amp;= P''_{yy} = -0{,}4 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}6)\cdot (-0{,}4) - (-0{,}2)^2 \\ &amp;= 0{,}24 - 0{,}04 = 0{,}2 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((140;\,180)\) yra maksimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0{,}6;\quad B = P''_{xy}(K) = -0{,}2;\quad C = P''_{yy}(K) = -0{,}4 \\ D = AC - B^2 = (-0{,}6)\cdot (-0{,}4) - (-0{,}2)^2 = 0{,}24 - 0{,}04 = 0{,}2 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0{,}6 \\ B &amp;= P''_{xy}(K) = -0{,}2 \\ C &amp;= P''_{yy}(K) = -0{,}4 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}6)\cdot (-0{,}4) - (-0{,}2)^2 \\ &amp;= 0{,}24 - 0{,}04 = 0{,}2 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(140;\,180)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Didžiausias pelnas</span></h4>
@@ -231,7 +231,7 @@
           \[ x = \frac{-1650}{-11} = 150 \]
           <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 800 - 4x\):</p>
           <div class="m-wide">\[ y = 800 - 4\cdot 150 = 800 - 600 = 200 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 800 - 4\cdot 150 \\ &amp;= 800 - 600 = 200 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((150;\,200)\). Patikriname, įstatę reikšmes į abi lygtis: \(4\cdot 150 + 200 = 800\) ir \(150 + 3\cdot 200 = 750\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(150;\,200)\). Patikriname, įstatę reikšmes į abi lygtis: \(4\cdot 150 + 200 = 800\) ir \(150 + 3\cdot 200 = 750\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -249,9 +249,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}8;\quad B = P''_{xy} = -0{,}2;\quad C = P''_{yy} = -0{,}6 \\ D = AC - B^2 = (-0{,}8)\cdot (-0{,}6) - (-0{,}2)^2 = 0{,}48 - 0{,}04 = 0{,}44 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}8 \\ B &amp;= P''_{xy} = -0{,}2 \\ C &amp;= P''_{yy} = -0{,}6 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}8)\cdot (-0{,}6) - (-0{,}2)^2 \\ &amp;= 0{,}48 - 0{,}04 = 0{,}44 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((150;\,200)\) yra maksimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0{,}8;\quad B = P''_{xy}(K) = -0{,}2;\quad C = P''_{yy}(K) = -0{,}6 \\ D = AC - B^2 = (-0{,}8)\cdot (-0{,}6) - (-0{,}2)^2 = 0{,}48 - 0{,}04 = 0{,}44 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0{,}8 \\ B &amp;= P''_{xy}(K) = -0{,}2 \\ C &amp;= P''_{yy}(K) = -0{,}6 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}8)\cdot (-0{,}6) - (-0{,}2)^2 \\ &amp;= 0{,}48 - 0{,}04 = 0{,}44 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(150;\,200)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Didžiausias pelnas</span></h4>
@@ -313,7 +313,7 @@
           \[ x = \frac{-5000}{-5} = 1000 \]
           <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 3000 - 2x\):</p>
           <div class="m-wide">\[ y = 3000 - 2\cdot 1000 = 3000 - 2000 = 1000 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 3000 - 2\cdot 1000 \\ &amp;= 3000 - 2000 = 1000 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((1000;\,1000)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 1000 + 1000 = 3000\) ir \(1000 + 3\cdot 1000 = 4000\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(1000;\,1000)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 1000 + 1000 = 3000\) ir \(1000 + 3\cdot 1000 = 4000\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -331,9 +331,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}04;\quad B = P''_{xy} = -0{,}02;\quad C = P''_{yy} = -0{,}06 \\ D = AC - B^2 = (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 = 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}04 \\ B &amp;= P''_{xy} = -0{,}02 \\ C &amp;= P''_{yy} = -0{,}06 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 \\ &amp;= 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((1000;\,1000)\) yra maksimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0{,}04;\quad B = P''_{xy}(K) = -0{,}02;\quad C = P''_{yy}(K) = -0{,}06 \\ D = AC - B^2 = (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 = 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0{,}04 \\ B &amp;= P''_{xy}(K) = -0{,}02 \\ C &amp;= P''_{yy}(K) = -0{,}06 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 \\ &amp;= 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(1000;\,1000)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Kainos ir didžiausias pelnas</span></h4>
@@ -399,7 +399,7 @@
           \[ x = \frac{-52\,800}{-44} = 1200 \]
           <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 12\,200 - 9x\):</p>
           <div class="m-wide">\[ y = 12\,200 - 9\cdot 1200 = 12\,200 - 10\,800 = 1400 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 12\,200 - 9\cdot 1200 \\ &amp;= 12\,200 - 10\,800 = 1400 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((1200;\,1400)\). Patikriname, įstatę reikšmes į abi lygtis: \(9\cdot 1200 + 1400 = 12\,200\) ir \(1200 + 5\cdot 1400 = 8200\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(1200;\,1400)\). Patikriname, įstatę reikšmes į abi lygtis: \(9\cdot 1200 + 1400 = 12\,200\) ir \(1200 + 5\cdot 1400 = 8200\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -417,9 +417,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}09;\quad B = P''_{xy} = -0{,}01;\quad C = P''_{yy} = -0{,}05 \\ D = AC - B^2 = (-0{,}09)\cdot (-0{,}05) - (-0{,}01)^2 = 0{,}0045 - 0{,}0001 = 0{,}0044 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}09 \\ B &amp;= P''_{xy} = -0{,}01 \\ C &amp;= P''_{yy} = -0{,}05 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}09)\cdot (-0{,}05) - (-0{,}01)^2 \\ &amp;= 0{,}0045 - 0{,}0001 = 0{,}0044 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((1200;\,1400)\) yra maksimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0{,}09;\quad B = P''_{xy}(K) = -0{,}01;\quad C = P''_{yy}(K) = -0{,}05 \\ D = AC - B^2 = (-0{,}09)\cdot (-0{,}05) - (-0{,}01)^2 = 0{,}0045 - 0{,}0001 = 0{,}0044 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0{,}09 \\ B &amp;= P''_{xy}(K) = -0{,}01 \\ C &amp;= P''_{yy}(K) = -0{,}05 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}09)\cdot (-0{,}05) - (-0{,}01)^2 \\ &amp;= 0{,}0045 - 0{,}0001 = 0{,}0044 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(1200;\,1400)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Kainos ir didžiausias pelnas</span></h4>
@@ -482,7 +482,7 @@
           \[ x = \frac{-8750}{-5} = 1750 \]
           <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 4500 - 2x\):</p>
           <div class="m-wide">\[ y = 4500 - 2\cdot 1750 = 4500 - 3500 = 1000 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 4500 - 2\cdot 1750 \\ &amp;= 4500 - 3500 = 1000 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((1750;\,1000)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 1750 + 1000 = 4500\) ir \(1750 + 3\cdot 1000 = 4750\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(1750;\,1000)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 1750 + 1000 = 4500\) ir \(1750 + 3\cdot 1000 = 4750\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -500,9 +500,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}04;\quad B = P''_{xy} = -0{,}02;\quad C = P''_{yy} = -0{,}06 \\ D = AC - B^2 = (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 = 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}04 \\ B &amp;= P''_{xy} = -0{,}02 \\ C &amp;= P''_{yy} = -0{,}06 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 \\ &amp;= 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((1750;\,1000)\) yra maksimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0{,}04;\quad B = P''_{xy}(K) = -0{,}02;\quad C = P''_{yy}(K) = -0{,}06 \\ D = AC - B^2 = (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 = 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0{,}04 \\ B &amp;= P''_{xy}(K) = -0{,}02 \\ C &amp;= P''_{yy}(K) = -0{,}06 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 \\ &amp;= 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(1750;\,1000)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Kaina ir didžiausias pelnas</span></h4>
@@ -564,7 +564,7 @@
           \[ r = \frac{27{,}5}{5} = 5{,}5 \]
           <p>Rastą \(r\) reikšmę įstatome į reiškinį \(p = 3r - 10\):</p>
           <div class="m-wide">\[ p = 3\cdot 5{,}5 - 10 = 16{,}5 - 10 = 6{,}5 \]</div><div class="m-narrow">\[ \begin{aligned} p &amp;= 3\cdot 5{,}5 - 10 \\ &amp;= 16{,}5 - 10 = 6{,}5 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((6{,}5;\,5{,}5)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 6{,}5 - 5{,}5 = 7{,}5\) ir \(-6{,}5 + 3\cdot 5{,}5 = 10\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(6{,}5;\,5{,}5)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 6{,}5 - 5{,}5 = 7{,}5\) ir \(-6{,}5 + 3\cdot 5{,}5 = 10\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -582,9 +582,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{pp} = -80;\quad B = P''_{pr} = 40;\quad C = P''_{rr} = -120 \\ D = AC - B^2 = (-80)\cdot (-120) - 40^2 = 9600 - 1600 = 8000 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{pp} = -80 \\ B &amp;= P''_{pr} = 40 \\ C &amp;= P''_{rr} = -120 \\ D &amp;= AC - B^2 \\ &amp;= (-80)\cdot (-120) - 40^2 \\ &amp;= 9600 - 1600 = 8000 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((6{,}5;\,5{,}5)\) yra maksimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{pp}(K) = -80;\quad B = P''_{pr}(K) = 40;\quad C = P''_{rr}(K) = -120 \\ D = AC - B^2 = (-80)\cdot (-120) - 40^2 = 9600 - 1600 = 8000 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{pp}(K) = -80 \\ B &amp;= P''_{pr}(K) = 40 \\ C &amp;= P''_{rr}(K) = -120 \\ D &amp;= AC - B^2 \\ &amp;= (-80)\cdot (-120) - 40^2 \\ &amp;= 9600 - 1600 = 8000 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(6{,}5;\,5{,}5)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Kiekiai ir didžiausias pelnas</span></h4>
@@ -645,7 +645,7 @@
           \[ x = \frac{-140}{-7} = 20 \]
           <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 4x - 50\):</p>
           <div class="m-wide">\[ y = 4\cdot 20 - 50 = 80 - 50 = 30 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 4\cdot 20 - 50 \\ &amp;= 80 - 50 = 30 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((20;\,30)\). Patikriname, įstatę reikšmes į abi lygtis: \(4\cdot 20 - 30 = 50\) ir \(20 - 2\cdot 30 = -40\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(20;\,30)\). Patikriname, įstatę reikšmes į abi lygtis: \(4\cdot 20 - 30 = 50\) ir \(20 - 2\cdot 30 = -40\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -663,9 +663,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -24;\quad B = P''_{xy} = 6;\quad C = P''_{yy} = -12 \\ D = AC - B^2 = (-24)\cdot (-12) - 6^2 = 288 - 36 = 252 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -24 \\ B &amp;= P''_{xy} = 6 \\ C &amp;= P''_{yy} = -12 \\ D &amp;= AC - B^2 \\ &amp;= (-24)\cdot (-12) - 6^2 \\ &amp;= 288 - 36 = 252 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((20;\,30)\) yra maksimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -24;\quad B = P''_{xy}(K) = 6;\quad C = P''_{yy}(K) = -12 \\ D = AC - B^2 = (-24)\cdot (-12) - 6^2 = 288 - 36 = 252 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -24 \\ B &amp;= P''_{xy}(K) = 6 \\ C &amp;= P''_{yy}(K) = -12 \\ D &amp;= AC - B^2 \\ &amp;= (-24)\cdot (-12) - 6^2 \\ &amp;= 288 - 36 = 252 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(20;\,30)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Gamybos apimtis ir didžiausias pelnas</span></h4>
@@ -722,11 +722,11 @@
           <div class="m-wide bp-lg">\[ 60x^{0{,}25}(4x)^{-0{,}5} = 10 \;\Longrightarrow\; 60\cdot 0{,}5\cdot x^{0{,}25 - 0{,}5} = 10 \;\Longrightarrow\; 30x^{-0{,}25} = 10 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 60x^{0{,}25}(4x)^{-0{,}5} = 10 \\ \Longrightarrow\; 60\cdot 0{,}5\cdot x^{0{,}25 - 0{,}5} = 10 \\ \Longrightarrow\; 30x^{-0{,}25} = 10 \end{gathered} \]</div>
           <p>Abi puses padalijame iš 30. Neigiamas laipsnio rodiklis reiškia atvirkštinį skaičių, todėl:</p>
           <div class="m-wide">\[ x^{-0{,}25} = \frac{1}{3} \;\Longrightarrow\; x^{0{,}25} = 3 \;\Longrightarrow\; x = 3^4 = 81 \]</div><div class="m-narrow">\[ \begin{gathered} x^{-0{,}25} = \frac{1}{3} \;\Longrightarrow\; x^{0{,}25} = 3 \\ \Longrightarrow\; x = 3^4 = 81 \end{gathered} \]</div>
-          <p>Rastą \(x\) įstatome į reiškinį \(y = 4x\): \(y = 4\cdot 81 = 324\). Kritinis taškas yra \((81;\,324)\).</p>
+          <p>Rastą \(x\) įstatome į reiškinį \(y = 4x\): \(y = 4\cdot 81 = 324\). Gauname kritinį tašką \(K(81;\,324)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Gamybos funkcija yra <a href="tema-9.html#kobo-daglas">Kobo-Daglaso funkcija</a>, kurios \(A = 20 &gt; 0\) ir \(\alpha + \beta = 0{,}25 + 0{,}5 = 0{,}75 \le 1\), todėl ji išgaubta. Pelno funkcija taip pat išgaubta, todėl taškas \((81;\,324)\) yra maksimumo taškas.</p>
+          <p>Gamybos funkcija yra <a href="tema-9.html#kobo-daglas">Kobo-Daglaso funkcija</a>, kurios \(A = 20 &gt; 0\) ir \(\alpha + \beta = 0{,}25 + 0{,}5 = 0{,}75 \le 1\), todėl ji išgaubta. Pelno funkcija taip pat išgaubta, todėl \(K(81;\,324)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">7</span><span>Gamybos apimtis ir didžiausias pelnas</span></h4>
@@ -781,15 +781,15 @@
           <p>Iš lygčių, kuriose skaitikliai prilyginti nuliui, randame \(x\) ir \(y\), o iš vardiklių sąlygų – reikšmes, kurių kintamieji įgyti negali:</p>
           <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 57 - 3x &amp;= 0 \\ x + 1 &amp;\ne 0 \\ 85 - 5y &amp;= 0 \\ y + 1 &amp;\ne 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 3x &amp;= 57 \\ x &amp;\ne -1 \\ 5y &amp;= 85 \\ y &amp;\ne -1 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} x &amp;= 19 \\ x &amp;\ne -1 \\ y &amp;= 17 \\ y &amp;\ne -1 \end{aligned} \right. \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 57 - 3x &amp;= 0 \\ x + 1 &amp;\ne 0 \\ 85 - 5y &amp;= 0 \\ y + 1 &amp;\ne 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 3x &amp;= 57 \\ x &amp;\ne -1 \\ 5y &amp;= 85 \\ y &amp;\ne -1 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} x &amp;= 19 \\ x &amp;\ne -1 \\ y &amp;= 17 \\ y &amp;\ne -1 \end{aligned} \right. \end{gathered} \]</div>
           <p>Vardiklių sąlygos rodo, kad \(x\) ir \(y\) negali būti lygūs \(-1\). Rasti sprendiniai \(x = 19\) ir \(y = 17\) su šia reikšme nesutampa, todėl sąlygos tenkinamos. Be to, \(-1\) yra neigiamas skaičius, o atstovų skaičius negali būti neigiamas, todėl ši reikšmė mūsų nedomina.</p>
-          <p>Kritinis taškas yra \((19;\,17)\).</p>
+          <p>Gauname kritinį tašką \(K(19;\,17)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Šį kartą antros eilės dalinės išvestinės priklauso nuo taško, todėl įstatome kritinio taško koordinates:</p>
+          <p>Šį kartą antros eilės dalinės išvestinės priklauso nuo \(x\) ir \(y\), todėl jos nėra skaičiai:</p>
           <div class="m-wide">\[ N''_{xx} = -\frac{60}{(x + 1)^2};\qquad N''_{xy} = 0;\qquad N''_{yy} = -\frac{90}{(y + 1)^2} \]</div><div class="m-narrow">\[ \begin{gathered} N''_{xx} = -\frac{60}{(x + 1)^2}; \\ N''_{xy} = 0; \\ N''_{yy} = -\frac{90}{(y + 1)^2} \end{gathered} \]</div>
-          <div class="m-wide">\[ A = -\frac{60}{400} = -0{,}15;\qquad B = 0;\qquad C = -\frac{90}{324} = -\frac{5}{18} \]</div><div class="m-narrow">\[ \begin{gathered} A = -\frac{60}{400} = -0{,}15; \\ B = 0; \\ C = -\frac{90}{324} = -\frac{5}{18} \end{gathered} \]</div>
-          <div class="m-wide">\[ D = AC - B^2 = (-0{,}15)\cdot\Big(-\frac{5}{18}\Big) - 0^2 = \frac{1}{24} &gt; 0 \]</div><div class="m-narrow">\[ \begin{aligned} D &amp;= AC - B^2 \\ &amp;= (-0{,}15)\cdot\Big(-\frac{5}{18}\Big) - 0^2 \\ &amp;= \frac{1}{24} &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((19;\,17)\) yra maksimumo taškas.</p>
+          <p>Skaičius \(A\), \(B\) ir \(C\) gauname į išvestines įstatę kritinio taško \(K(19;\,17)\) koordinates \(x = 19\) ir \(y = 17\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -\frac{60}{(19 + 1)^2} = -\frac{60}{400} = -0{,}15 \\ B &amp;= N''_{xy}(K) = 0 \\ C &amp;= N''_{yy}(K) = -\frac{90}{(17 + 1)^2} = -\frac{90}{324} = -\frac{5}{18} \\ D &amp;= AC - B^2 = (-0{,}15)\cdot\Big(-\frac{5}{18}\Big) - 0^2 = \frac{1}{24} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -\frac{60}{(19 + 1)^2} \\ &amp;= -\frac{60}{400} = -0{,}15 \\ B &amp;= N''_{xy}(K) = 0 \\ C &amp;= N''_{yy}(K) = -\frac{90}{(17 + 1)^2} \\ &amp;= -\frac{90}{324} = -\frac{5}{18} \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}15)\cdot\Big(-\frac{5}{18}\Big) - 0^2 \\ &amp;= \frac{1}{24} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(19;\,17)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Didžiausias pelnas</span></h4>
@@ -842,7 +842,7 @@
           \[ y = \frac{175}{7} = 25 \]
           <p>Rastą \(y\) reikšmę įstatome į reiškinį \(x = y + 15\):</p>
           <div class="m-wide">\[ x = 25 + 15 = 40 \]</div><div class="m-narrow">\[ \begin{aligned} x &amp;= 25 + 15 \\ &amp;= 40 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((40;\,25)\). Patikriname, įstatę reikšmes į abi lygtis: \(40 - 25 = 15\) ir \(-40 + 8\cdot 25 = 160\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(40;\,25)\). Patikriname, įstatę reikšmes į abi lygtis: \(40 - 25 = 15\) ir \(-40 + 8\cdot 25 = 160\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -860,9 +860,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = TC''_{xx} = 0{,}1;\quad B = TC''_{xy} = -0{,}1;\quad C = TC''_{yy} = 0{,}8 \\ D = AC - B^2 = 0{,}1\cdot 0{,}8 - (-0{,}1)^2 = 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= TC''_{xx} = 0{,}1 \\ B &amp;= TC''_{xy} = -0{,}1 \\ C &amp;= TC''_{yy} = 0{,}8 \\ D &amp;= AC - B^2 \\ &amp;= 0{,}1\cdot 0{,}8 - (-0{,}1)^2 \\ &amp;= 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((40;\,25)\) yra minimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = TC''_{xx}(K) = 0{,}1;\quad B = TC''_{xy}(K) = -0{,}1;\quad C = TC''_{yy}(K) = 0{,}8 \\ D = AC - B^2 = 0{,}1\cdot 0{,}8 - (-0{,}1)^2 = 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = 0{,}1 \\ B &amp;= TC''_{xy}(K) = -0{,}1 \\ C &amp;= TC''_{yy}(K) = 0{,}8 \\ D &amp;= AC - B^2 \\ &amp;= 0{,}1\cdot 0{,}8 - (-0{,}1)^2 \\ &amp;= 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(40;\,25)\) yra minimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Mažiausios sąnaudos</span></h4>
@@ -915,15 +915,15 @@
           \[ \left\{ \begin{aligned} x &amp;= -10\ln 0{,}05 \\ y &amp;= -10\ln\frac{1}{30} \end{aligned} \right. \]
           <p>Logaritmus suprastiname ta pačia taisykle. Kadangi \(0{,}05 = \frac{1}{20} = 20^{-1}\), tai \(\ln 0{,}05 = \ln 20^{-1} = -\ln 20\). Analogiškai \(\ln\frac{1}{30} = \ln 30^{-1} = -\ln 30\). Todėl</p>
           \[ \begin{aligned} x &amp;= -10\cdot(-\ln 20) = 10\ln 20 \approx 29{,}96 \\ y &amp;= -10\cdot(-\ln 30) = 10\ln 30 \approx 34{,}01 \end{aligned} \]
-          <p>Kritinis taškas yra \((10\ln 20;\,10\ln 30) \approx (29{,}96;\,34{,}01)\).</p>
+          <p>Gauname kritinį tašką \(K(10\ln 20;\,10\ln 30)\); apytiksliai \(K(29{,}96;\,34{,}01)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Kritiniame taške \(e^{-0{,}1x} = 0{,}05\) ir \(e^{-0{,}1y} = \frac{1}{30}\), todėl</p>
+          <p>Antros eilės dalinės išvestinės priklauso nuo \(x\) ir \(y\):</p>
           <div class="m-wide">\[ TC''_{xx} = 400e^{-0{,}1x};\qquad TC''_{xy} = 0;\qquad TC''_{yy} = 900e^{-0{,}1y} \]</div><div class="m-narrow">\[ \begin{gathered} TC''_{xx} = 400e^{-0{,}1x}; \\ TC''_{xy} = 0; \\ TC''_{yy} = 900e^{-0{,}1y} \end{gathered} \]</div>
-          <div class="m-wide">\[ A = 400\cdot 0{,}05 = 20;\qquad B = 0;\qquad C = 900\cdot\frac{1}{30} = 30 \]</div><div class="m-narrow">\[ \begin{gathered} A = 400\cdot 0{,}05 = 20; \\ B = 0; \\ C = 900\cdot\frac{1}{30} = 30 \end{gathered} \]</div>
-          \[ D = AC - B^2 = 20\cdot 30 - 0^2 = 600 &gt; 0 \]
-          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl kritinis taškas yra minimumo taškas.</p>
+          <p>Įstatome kritinio taško \(K(10\ln 20;\,10\ln 30)\) koordinates. Iš lygčių sistemos žinome, kad šiame taške \(e^{-0{,}1x} = 0{,}05\) ir \(e^{-0{,}1y} = \frac{1}{30}\), todėl</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = 400\cdot 0{,}05 = 20 \\ B &amp;= TC''_{xy}(K) = 0 \\ C &amp;= TC''_{yy}(K) = 900\cdot\frac{1}{30} = 30 \\ D &amp;= AC - B^2 = 20\cdot 30 - 0^2 = 600 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = 400\cdot 0{,}05 = 20 \\ B &amp;= TC''_{xy}(K) = 0 \\ C &amp;= TC''_{yy}(K) = 900\cdot\frac{1}{30} = 30 \\ D &amp;= AC - B^2 = 20\cdot 30 - 0^2 \\ &amp;= 600 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(10\ln 20;\,10\ln 30)\) yra minimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Mažiausios sąnaudos</span></h4>
@@ -978,7 +978,7 @@
           \[ x = \frac{1050}{7} = 150 \]
           <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 4x - 350\):</p>
           <div class="m-wide">\[ y = 4\cdot 150 - 350 = 600 - 350 = 250 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 4\cdot 150 - 350 \\ &amp;= 600 - 350 = 250 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((150;\,250)\). Patikriname, įstatę reikšmes į abi lygtis: \(4\cdot 150 - 250 = 350\) ir \(-150 + 2\cdot 250 = 350\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(150;\,250)\). Patikriname, įstatę reikšmes į abi lygtis: \(4\cdot 150 - 250 = 350\) ir \(-150 + 2\cdot 250 = 350\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -996,9 +996,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = Y''_{xx} = -0{,}4;\quad B = Y''_{xy} = 0{,}1;\quad C = Y''_{yy} = -0{,}2 \\ D = AC - B^2 = (-0{,}4)\cdot (-0{,}2) - 0{,}1^2 = 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= Y''_{xx} = -0{,}4 \\ B &amp;= Y''_{xy} = 0{,}1 \\ C &amp;= Y''_{yy} = -0{,}2 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}4)\cdot (-0{,}2) - 0{,}1^2 \\ &amp;= 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((150;\,250)\) yra maksimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = Y''_{xx}(K) = -0{,}4;\quad B = Y''_{xy}(K) = 0{,}1;\quad C = Y''_{yy}(K) = -0{,}2 \\ D = AC - B^2 = (-0{,}4)\cdot (-0{,}2) - 0{,}1^2 = 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= Y''_{xx}(K) = -0{,}4 \\ B &amp;= Y''_{xy}(K) = 0{,}1 \\ C &amp;= Y''_{yy}(K) = -0{,}2 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}4)\cdot (-0{,}2) - 0{,}1^2 \\ &amp;= 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(150;\,250)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Didžiausias derlingumas</span></h4>
@@ -1056,7 +1056,7 @@
           \[ x = \frac{-210}{-7} = 30 \]
           <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 2x - 40\):</p>
           <div class="m-wide">\[ y = 2\cdot 30 - 40 = 60 - 40 = 20 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 2\cdot 30 - 40 \\ &amp;= 60 - 40 = 20 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((30;\,20)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 30 - 20 = 40\) ir \(30 - 4\cdot 20 = -50\) – abi lygybės teisingos.</p>
+          <p>Gauname kritinį tašką \(K(30;\,20)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 30 - 20 = 40\) ir \(30 - 4\cdot 20 = -50\) – abi lygybės teisingos.</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -1074,9 +1074,9 @@
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = N''_{xx} = -1;\quad B = N''_{xy} = 0{,}5;\quad C = N''_{yy} = -2 \\ D = AC - B^2 = (-1)\cdot (-2) - 0{,}5^2 = 2 - 0{,}25 = 1{,}75 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= N''_{xx} = -1 \\ B &amp;= N''_{xy} = 0{,}5 \\ C &amp;= N''_{yy} = -2 \\ D &amp;= AC - B^2 \\ &amp;= (-1)\cdot (-2) - 0{,}5^2 \\ &amp;= 2 - 0{,}25 = 1{,}75 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((30;\,20)\) yra maksimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = N''_{xx}(K) = -1;\quad B = N''_{xy}(K) = 0{,}5;\quad C = N''_{yy}(K) = -2 \\ D = AC - B^2 = (-1)\cdot (-2) - 0{,}5^2 = 2 - 0{,}25 = 1{,}75 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -1 \\ B &amp;= N''_{xy}(K) = 0{,}5 \\ C &amp;= N''_{yy}(K) = -2 \\ D &amp;= AC - B^2 \\ &amp;= (-1)\cdot (-2) - 0{,}5^2 \\ &amp;= 2 - 0{,}25 = 1{,}75 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(30;\,20)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Didžiausias grynasis pelnas</span></h4>
@@ -1107,9 +1107,9 @@
         </div>
         <div class="q-answer">
           <p><strong>Lygčių sistema ir kritinis taškas:</strong></p>
-          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 140 - 0{,}8x - 0{,}2y &amp;= 0 \\ 90 - 0{,}6y - 0{,}2x &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 4x + y &amp;= 700 \\ x + 3y &amp;= 450 \end{aligned} \right. \;\Longrightarrow\; (150;\,100) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 140 - 0{,}8x - 0{,}2y &amp;= 0 \\ 90 - 0{,}6y - 0{,}2x &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 4x + y &amp;= 700 \\ x + 3y &amp;= 450 \end{aligned} \right. \\ \Longrightarrow\; (150;\,100) \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 140 - 0{,}8x - 0{,}2y &amp;= 0 \\ 90 - 0{,}6y - 0{,}2x &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 4x + y &amp;= 700 \\ x + 3y &amp;= 450 \end{aligned} \right. \;\Longrightarrow\; K(150;\,100) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 140 - 0{,}8x - 0{,}2y &amp;= 0 \\ 90 - 0{,}6y - 0{,}2x &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 4x + y &amp;= 700 \\ x + 3y &amp;= 450 \end{aligned} \right. \\ \Longrightarrow\; K(150;\,100) \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="m-wide"><div class="m-wide"><div class="m-wide bp-lg">\[ A = -0{,}8;\quad B = -0{,}2;\quad C = -0{,}6;\quad D = 0{,}44 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -0{,}8; \\ B = -0{,}2; \\ C = -0{,}6; \\ D = 0{,}44 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -0{,}8; \\ B = -0{,}2; \\ C = -0{,}6; \\ D = 0{,}44 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -0{,}8; \\ B = -0{,}2; \\ C = -0{,}6; \\ D = 0{,}44 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0{,}8 \\ B &amp;= P''_{xy}(K) = -0{,}2 \\ C &amp;= P''_{yy}(K) = -0{,}6 \\ D &amp;= 0{,}44 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0{,}8 \\ B &amp;= P''_{xy}(K) = -0{,}2 \\ C &amp;= P''_{yy}(K) = -0{,}6 \\ D &amp;= 0{,}44 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> Per mėnesį reikėtų pagaminti 150 skaityklių ir 100 planšetinių kompiuterių. Didžiausias mėnesio pelnas yra \(P_{\max}(150;\,100) = 9000\) eurų.</p>
         </div>
       </article>
@@ -1126,9 +1126,9 @@
           <p><strong>Tikslo funkcija:</strong></p>
           <div class="m-wide">\[ P(x;\,y) = 50x + 60y - 0{,}02x^2 - 0{,}04y^2 - 0{,}02xy - 10\,000 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= 50x + 60y - 0{,}02x^2 \\ &amp;\phantom{=}\; {}- 0{,}04y^2 - 0{,}02xy - 10\,000 \end{aligned} \]</div>
           <p><strong>Lygčių sistema ir kritinis taškas:</strong></p>
-          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 50 - 0{,}04x - 0{,}02y &amp;= 0 \\ 60 - 0{,}02x - 0{,}08y &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 2x + y &amp;= 2500 \\ x + 4y &amp;= 3000 \end{aligned} \right. \;\Longrightarrow\; (1000;\,500) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 50 - 0{,}04x - 0{,}02y &amp;= 0 \\ 60 - 0{,}02x - 0{,}08y &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 2x + y &amp;= 2500 \\ x + 4y &amp;= 3000 \end{aligned} \right. \\ \Longrightarrow\; (1000;\,500) \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 50 - 0{,}04x - 0{,}02y &amp;= 0 \\ 60 - 0{,}02x - 0{,}08y &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 2x + y &amp;= 2500 \\ x + 4y &amp;= 3000 \end{aligned} \right. \;\Longrightarrow\; K(1000;\,500) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 50 - 0{,}04x - 0{,}02y &amp;= 0 \\ 60 - 0{,}02x - 0{,}08y &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 2x + y &amp;= 2500 \\ x + 4y &amp;= 3000 \end{aligned} \right. \\ \Longrightarrow\; K(1000;\,500) \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="m-wide"><div class="m-wide"><div class="m-wide bp-lg">\[ A = -0{,}04;\quad B = -0{,}02;\quad C = -0{,}08;\quad D = 0{,}0028 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -0{,}04; \\ B = -0{,}02; \\ C = -0{,}08; \\ D = 0{,}0028 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -0{,}04; \\ B = -0{,}02; \\ C = -0{,}08; \\ D = 0{,}0028 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -0{,}04; \\ B = -0{,}02; \\ C = -0{,}08; \\ D = 0{,}0028 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0{,}04 \\ B &amp;= P''_{xy}(K) = -0{,}02 \\ C &amp;= P''_{yy}(K) = -0{,}08 \\ D &amp;= 0{,}0028 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0{,}04 \\ B &amp;= P''_{xy}(K) = -0{,}02 \\ C &amp;= P''_{yy}(K) = -0{,}08 \\ D &amp;= 0{,}0028 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> Reikėtų parduoti 1000 plento dviračių, kai \(p_1 = 45\), ir 500 elektrinių dviračių, kai \(p_2 = 60\). Kainos išreikštos šimtais eurų. Didžiausias mėnesio pelnas yra \(P_{\max}(1000;\,500) = 30\,000\) šimtų eurų.</p>
         </div>
       </article>
@@ -1145,9 +1145,9 @@
           <p><strong>Tikslo funkcija:</strong></p>
           <div class="m-wide bp-lg">\[ P(p;\,r) = (p - 3)(300 - 30p + 10r) + (r - 2)(200 + 10p - 20r) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(p;\,r) \\ &amp;= (p - 3)(300 - 30p + 10r) \\ &amp;\phantom{=}\; {}+ (r - 2)(200 + 10p - 20r) \end{aligned} \]</div>
           <p><strong>Lygčių sistema ir kritinis taškas:</strong></p>
-          <div class="m-wide">\[ \left\{ \begin{aligned} P'_p &amp;= 370 - 60p + 20r = 0 \\ P'_r &amp;= 210 + 20p - 40r = 0 \end{aligned} \right. \;\Longrightarrow\; (9{,}5;\,10) \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} P'_p &amp;= 370 - 60p + 20r = 0 \\ P'_r &amp;= 210 + 20p - 40r = 0 \end{aligned} \right. \\ \Longrightarrow\; (9{,}5;\,10) \end{gathered} \]</div>
+          <div class="m-wide">\[ \left\{ \begin{aligned} P'_p &amp;= 370 - 60p + 20r = 0 \\ P'_r &amp;= 210 + 20p - 40r = 0 \end{aligned} \right. \;\Longrightarrow\; K(9{,}5;\,10) \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} P'_p &amp;= 370 - 60p + 20r = 0 \\ P'_r &amp;= 210 + 20p - 40r = 0 \end{aligned} \right. \\ \Longrightarrow\; K(9{,}5;\,10) \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="m-wide"><div class="m-wide">\[ A = -60;\quad B = 20;\quad C = -40;\quad D = 2000 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow">\[ \begin{gathered} A = -60; \\ B = 20; \\ C = -40; \\ D = 2000 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -60; \\ B = 20; \\ C = -40; \\ D = 2000 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{pp}(K) = -60 \\ B &amp;= P''_{pr}(K) = 20 \\ C &amp;= P''_{rr}(K) = -40 \\ D &amp;= 2000 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{pp}(K) = -60 \\ B &amp;= P''_{pr}(K) = 20 \\ C &amp;= P''_{rr}(K) = -40 \\ D &amp;= 2000 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> A mišinio pakuotė turėtų kainuoti 9,5&nbsp;euro, o B mišinio – 10&nbsp;eurų. Per savaitę būtų parduota atitinkamai 115 ir 95 pakuotės. Didžiausias savaitės pelnas yra \(P_{\max} = 1507{,}5\) euro.</p>
         </div>
       </article>
@@ -1165,7 +1165,7 @@
           <div class="m-wide bp-lg">\[ P(x;\,y) = 80x^{0{,}5}y^{0{,}25} - 10x - 20y - 200;\qquad \left\{ \begin{aligned} 40x^{-0{,}5}y^{0{,}25} &amp;= 10 \\ 20x^{0{,}5}y^{-0{,}75} &amp;= 20 \end{aligned} \right. \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} P(x;\,y) = 80x^{0{,}5}y^{0{,}25} \\ {}- 10x - 20y - 200 \\ \left\{ \begin{aligned} 40x^{-0{,}5}y^{0{,}25} &amp;= 10 \\ 20x^{0{,}5}y^{-0{,}75} &amp;= 20 \end{aligned} \right. \end{gathered} \]</div>
           <p><strong>Lygčių dalyba</strong> (sistema netiesinė, Gauso metodas netinka):</p>
           <div class="m-wide bp-lg">\[ \frac{2y}{x} = \frac{1}{2} \;\Longrightarrow\; x = 4y \;\Longrightarrow\; 40y^{-0{,}25} = 20 \;\Longrightarrow\; y = 16;\qquad x = 64 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{2y}{x} = \frac{1}{2} \;\Longrightarrow\; x = 4y \\ \Longrightarrow\; 40y^{-0{,}25} = 20 \\ \Longrightarrow\; y = 16;\quad x = 64 \end{gathered} \]</div>
-          <p><strong>Kritinio taško rūšis:</strong> Kobo-Daglaso funkcija yra išgaubta, nes \(A = 10 &gt; 0\) ir \(\alpha + \beta = 0{,}75 \le 1\). Todėl \((64;\,16)\) yra maksimumo taškas.</p>
+          <p><strong>Kritinio taško rūšis:</strong> Kobo-Daglaso funkcija yra išgaubta, nes \(A = 10 &gt; 0\) ir \(\alpha + \beta = 0{,}75 \le 1\). Todėl \(K(64;\,16)\) yra maksimumo taškas.</p>
           <p><strong>Atsakymas.</strong> Reikėtų 64 darbo valandų ir 16 spaudimo įrenginio naudojimo valandų per savaitę. Gamybos apimtis yra \(Q = 160\) butelių, o didžiausias savaitės pelnas yra \(P_{\max}(64;\,16) = 120\) eurų.</p>
         </div>
       </article>
@@ -1182,9 +1182,10 @@
           <div class="m-wide">\[ N(x;\,y) = 40\ln(x + 2) + 90\ln(y + 3) - 2x - 3y \]</div><div class="m-narrow">\[ \begin{aligned} &amp;N(x;\,y) \\ &amp;= 40\ln(x + 2) + 90\ln(y + 3) \\ &amp;\phantom{=}\; {}- 2x - 3y \end{aligned} \]</div>
           <p><strong>Išvestinės su bendru vardikliu ir lygčių sistema:</strong></p>
           <div class="m-wide bp-lg">\[ N'_x = \frac{40 - 2(x + 2)}{x + 2} = \frac{36 - 2x}{x + 2};\qquad N'_y = \frac{90 - 3(y + 3)}{y + 3} = \frac{81 - 3y}{y + 3} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} N'_x &amp;= \frac{40 - 2(x + 2)}{x + 2} = \frac{36 - 2x}{x + 2} \\ N'_y &amp;= \frac{90 - 3(y + 3)}{y + 3} = \frac{81 - 3y}{y + 3} \end{aligned} \]</div>
-          \[ \left\{ \begin{aligned} 36 - 2x &amp;= 0 \\ x + 2 &amp;\ne 0 \\ 81 - 3y &amp;= 0 \\ y + 3 &amp;\ne 0 \end{aligned} \right. \;\Longrightarrow\; (18;\,27) \]
+          \[ \left\{ \begin{aligned} 36 - 2x &amp;= 0 \\ x + 2 &amp;\ne 0 \\ 81 - 3y &amp;= 0 \\ y + 3 &amp;\ne 0 \end{aligned} \right. \;\Longrightarrow\; K(18;\,27) \]
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="m-wide"><div class="m-wide"><div class="m-wide bp-lg"><div class="m-wide bp-lg">\[ A = -\frac{40}{400} = -0{,}1;\quad B = 0;\quad C = -\frac{90}{900} = -0{,}1;\quad D = 0{,}01 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -\frac{40}{400} = -0{,}1; \\ B = 0; \\ C = -\frac{90}{900} = -0{,}1; \\ D = 0{,}01 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -\frac{40}{400} = -0{,}1; \\ B = 0; \\ C = -\frac{90}{900} = -0{,}1; \\ D = 0{,}01 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -\frac{40}{400} = -0{,}1; \\ B = 0; \\ C = -\frac{90}{900} = -0{,}1; \\ D = 0{,}01 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -\frac{40}{400} = -0{,}1; \\ B = 0; \\ C = -\frac{90}{900} = -0{,}1; \\ D = 0{,}01 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div>
+          <p>Antros eilės dalinės išvestinės \(N''_{xx} = -\frac{40}{(x + 2)^2}\), \(N''_{xy} = 0\), \(N''_{yy} = -\frac{90}{(y + 3)^2}\). Įstatome \(K(18;\,27)\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -\frac{40}{(18 + 2)^2} = -0{,}1 \\ B &amp;= N''_{xy}(K) = 0 \\ C &amp;= N''_{yy}(K) = -\frac{90}{(27 + 3)^2} = -0{,}1 \\ D &amp;= 0{,}01 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -\frac{40}{(18 + 2)^2} \\ &amp;= -0{,}1 \\ B &amp;= N''_{xy}(K) = 0 \\ C &amp;= N''_{yy}(K) = -\frac{90}{(27 + 3)^2} \\ &amp;= -0{,}1 \\ D &amp;= 0{,}01 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> Pardavimo komandai reikėtų skirti 18 mokymų dienų, o klientų aptarnavimo komandai – 27. Didžiausias pelnas, atėmus mokymų sąnaudas, yra apytiksliai 308,94 tūkstančio eurų:</p>
           <div class="m-wide">\[ N_{\max} = 40\ln 20 + 90\ln 30 - 117 \approx 308{,}94 \]</div><div class="m-narrow">\[ \begin{aligned} N_{\max} &amp;= 40\ln 20 + 90\ln 30 - 117 \\ &amp;\approx 308{,}94 \end{aligned} \]</div>
         </div>

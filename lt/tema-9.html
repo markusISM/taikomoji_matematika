@@ -52,8 +52,9 @@
 
     <article class="card concept" id="pakankamoji">
       <div class="concept-head"><span class="num">2</span><h3>Pakankamoji vietinio ekstremumo sąlyga</h3></div>
-      <p>Kritinio taško rūšis nustatoma pagal <a href="tema-8-antros-eiles.html">antros eilės dalines išvestines</a>, taikant <strong>pakankamąją sąlygą</strong>. Kritiniame taške \((a;\,b)\) apskaičiuojame</p>
-      <div class="formula"><div class="m-wide">\[ A = f''_{xx}(a;\,b);\qquad B = f''_{xy}(a;\,b);\qquad C = f''_{yy}(a;\,b) \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= f''_{xx}(a;\,b) \\ B &amp;= f''_{xy}(a;\,b) \\ C &amp;= f''_{yy}(a;\,b) \end{aligned} \]</div></div>
+      <p>Kritinio taško rūšis nustatoma pagal <a href="tema-8-antros-eiles.html">antros eilės dalines išvestines</a>, taikant <strong>pakankamąją sąlygą</strong>. Kritinį tašką pažymime raide, dažniausiai \(K\): pavyzdžiui, \(K(a;\,b)\). Jei kritinių taškų keli, juos žymime \(K_1\), \(K_2\) ir t.&nbsp;t. Pirmiausia randame antros eilės dalines išvestines \(f''_{xx}\), \(f''_{xy}\) ir \(f''_{yy}\), o tada į jas įstatome kritinio taško koordinates. Gautas reikšmes žymime \(A\), \(B\) ir \(C\):</p>
+      <div class="formula"><div class="m-wide">\[ A = f''_{xx}(K);\qquad B = f''_{xy}(K);\qquad C = f''_{yy}(K) \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= f''_{xx}(K) \\ B &amp;= f''_{xy}(K) \\ C &amp;= f''_{yy}(K) \end{aligned} \]</div></div>
+      <p>Jei antros eilės išvestinėje yra kintamųjų, ji nėra lygi skaičiui – skaičių gauname tik įstatę kritinio taško koordinates. Todėl rašome, pavyzdžiui, \(f''_{xx} = 6x\) ir \(A = f''_{xx}(K) = 6\cdot 1 = 6\), bet ne \(f''_{xx} = 6x = 6\).</p>
       <p>ir <strong>diskriminantą</strong></p>
       <div class="formula">\[ D = AC - B^2 \]</div>
       <p>Tuomet:</p>
@@ -63,9 +64,9 @@
             <tr><th scope="col">Sąlyga</th><th scope="col">Išvada</th></tr>
           </thead>
           <tbody>
-            <tr><td>\(D &gt; 0\) ir \(A &lt; 0\)</td><td>taške \((a;\,b)\) funkcija yra išgaubta, o \((a;\,b)\) yra <strong>vietinio maksimumo taškas</strong></td></tr>
-            <tr><td>\(D &gt; 0\) ir \(A &gt; 0\)</td><td>taške \((a;\,b)\) funkcija yra įgaubta, o \((a;\,b)\) yra <strong>vietinio minimumo taškas</strong></td></tr>
-            <tr><td>\(D &lt; 0\)</td><td>\((a;\,b)\) yra <strong>balno taškas</strong></td></tr>
+            <tr><td>\(D &gt; 0\) ir \(A &lt; 0\)</td><td>taške \(K\) funkcija yra išgaubta, o \(K\) yra <strong>vietinio maksimumo taškas</strong></td></tr>
+            <tr><td>\(D &gt; 0\) ir \(A &gt; 0\)</td><td>taške \(K\) funkcija yra įgaubta, o \(K\) yra <strong>vietinio minimumo taškas</strong></td></tr>
+            <tr><td>\(D &lt; 0\)</td><td>\(K\) yra <strong>balno taškas</strong></td></tr>
             <tr><td>\(D = 0\)</td><td>šis požymis nepritaikomas – reikia papildomo tyrimo</td></tr>
           </tbody>
         </table>
@@ -91,26 +92,18 @@
         <div class="m-wide">\[ 3x^2 - 3 = 0 \;\Longrightarrow\; x^2 - 1 = 0 \;\Longrightarrow\; (x - 1)(x + 1) = 0 \]</div><div class="m-narrow">\[ \begin{gathered} 3x^2 - 3 = 0 \;\Longrightarrow\; x^2 - 1 = 0 \\ \Longrightarrow\; (x - 1)(x + 1) = 0 \end{gathered} \]</div>
         <p>Sandauga lygi nuliui, kai bent vienas jos daugiklis lygus nuliui, todėl \(x = 1\) arba \(x = -1\). Iš antrosios lygties gauname \(y = 2\):</p>
         \[ \left\{ \begin{aligned} x &amp;= \pm 1 \\ y &amp;= 2 \end{aligned} \right. \]
-        <p>Gaunami du kritiniai taškai: \((1;\,2)\) ir \((-1;\,2)\).</p>
+        <p>Gaunami du kritiniai taškai. Pažymime juos \(K_1(1;\,2)\) ir \(K_2(-1;\,2)\).</p>
         <p><strong>Pakankamoji sąlyga.</strong> Antros eilės dalinės išvestinės yra</p>
         \[ f''_{xx} = 6x;\qquad f''_{xy} = 0;\qquad f''_{yy} = 2 \]
-        <p>Šiuo atveju \(A\) priklauso nuo taško, todėl kiekvienas taškas tikrinamas atskirai.</p>
-        <div class="tbl-wrap">
-          <table class="vtable">
-            <thead>
-              <tr><th scope="col">Taškas</th><th scope="col">\((1;\,2)\)</th><th scope="col">\((-1;\,2)\)</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">\(A\)</th><td>\(6\)</td><td>\(-6\)</td></tr>
-              <tr><th scope="row">\(B\)</th><td>\(0\)</td><td>\(0\)</td></tr>
-              <tr><th scope="row">\(C\)</th><td>\(2\)</td><td>\(2\)</td></tr>
-              <tr><th scope="row">\(D\)</th><td>\(12 &gt; 0\)</td><td>\(-12 &lt; 0\)</td></tr>
-              <tr><th scope="row">Išvada</th><td>\(A &gt; 0\): vietinis minimumas</td><td>balno taškas</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <p>Išvestinėje \(f''_{xx}\) yra \(x\), todėl \(A\) priklauso nuo taško ir kiekvieną kritinį tašką tikriname atskirai.</p>
+        <p><strong>Taškas \(K_1(1;\,2)\).</strong> Įstatome \(x = 1\), \(y = 2\):</p>
+        <div class="m-wide">\[ \begin{aligned} A &amp;= f''_{xx}(K_1) = 6\cdot 1 = 6 \\ B &amp;= f''_{xy}(K_1) = 0 \\ C &amp;= f''_{yy}(K_1) = 2 \\ D &amp;= AC - B^2 = 6\cdot 2 - 0^2 = 12 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= f''_{xx}(K_1) = 6\cdot 1 = 6 \\ B &amp;= f''_{xy}(K_1) = 0 \\ C &amp;= f''_{yy}(K_1) = 2 \\ D &amp;= AC - B^2 = 6\cdot 2 - 0^2 \\ &amp;= 12 &gt; 0 \end{aligned} \]</div>
+        <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K_1\) yra vietinio minimumo taškas.</p>
+        <p><strong>Taškas \(K_2(-1;\,2)\).</strong> Įstatome \(x = -1\), \(y = 2\):</p>
+        <div class="m-wide">\[ \begin{aligned} A &amp;= f''_{xx}(K_2) = 6\cdot(-1) = -6 \\ B &amp;= f''_{xy}(K_2) = 0 \\ C &amp;= f''_{yy}(K_2) = 2 \\ D &amp;= AC - B^2 = (-6)\cdot 2 - 0^2 = -12 &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= f''_{xx}(K_2) = 6\cdot(-1) = -6 \\ B &amp;= f''_{xy}(K_2) = 0 \\ C &amp;= f''_{yy}(K_2) = 2 \\ D &amp;= AC - B^2 = (-6)\cdot 2 - 0^2 \\ &amp;= -12 &lt; 0 \end{aligned} \]</div>
+        <p>\(D &lt; 0\), todėl \(K_2\) yra balno taškas.</p>
         \[ f_{\min}(1;\,2) = 1 - 3 + 4 - 8 = -6 \]
-        <p><strong>Atsakymas.</strong> Funkcija turi vietinį minimumą \(f_{\min}(1;\,2) = -6\); taškas \((-1;\,2)\) yra balno taškas.</p>
+        <p><strong>Atsakymas.</strong> Taškas \(K_1(1;\,2)\) yra vietinio minimumo taškas, \(f_{\min}(1;\,2) = -6\); \(K_2(-1;\,2)\) yra balno taškas.</p>
       </div>
     </article>
 
@@ -151,16 +144,16 @@
           <div class="formula"><div class="m-wide">\[ L(x;\,y;\,\lambda) = f(x;\,y) - \lambda\big(g(x;\,y) - m\big) \]</div><div class="m-narrow">\[ \begin{gathered} L(x;\,y;\,\lambda) = f(x;\,y) \\ {}- \lambda\big(g(x;\,y) - m\big) \end{gathered} \]</div></div>
           <p>Naujasis kintamasis \(\lambda\) vadinamas <strong>Lagranžo daugikliu</strong>. Apribojimą užrašome forma \(g(x;\,y) - m = 0\), kad dešiniojoje lygties pusėje būtų nulis. Iš tikslo funkcijos atimame kairiojoje pusėje esantį reiškinį, padaugintą iš \(\lambda\).</p>
         </li>
-        <li><strong>Raskite funkcijos \(L(x;\,y;\,\lambda)\) kritinius taškus \((x_0;\,y_0;\,\lambda_0)\).</strong> Pirmos eilės dalines išvestines pagal \(x\) ir \(y\) prilyginkite nuliui, o į sistemą įtraukite ir apribojimo lygtį:
+        <li><strong>Raskite funkcijos \(L(x;\,y;\,\lambda)\) kritinius taškus.</strong> Pirmos eilės dalines išvestines pagal \(x\) ir \(y\) prilyginkite nuliui, o į sistemą įtraukite ir apribojimo lygtį:
           <div class="formula"><div class="m-wide bp-lg">\[ \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ L'_{\lambda}(x;\,y;\,\lambda) &amp;= 0 \end{aligned} \right. \quad\text{arba}\quad \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ g(x;\,y) &amp;= m \end{aligned} \right. \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ L'_{\lambda}(x;\,y;\,\lambda) &amp;= 0 \end{aligned} \right. \\[4pt] \text{arba} \\[4pt] \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ g(x;\,y) &amp;= m \end{aligned} \right. \end{gathered} \]</div></div>
-          <p>Abi sistemos lygiavertės. Išvestinė pagal \(\lambda\) yra \(L'_{\lambda} = -\big(g(x;\,y) - m\big)\). Ji lygi nuliui būtent tada, kai tenkinamas apribojimas. Sistemoje yra trys lygtys ir trys nežinomieji \(x\), \(y\) ir \(\lambda\). Paprastai iš pirmųjų dviejų lygčių išreiškiame \(\lambda\) ir gautas išraiškas prilyginame. Taip gauname lygtį su \(x\) ir \(y\), kurią sprendžiame kartu su apribojimo lygtimi. Kritiniame taške \((x_0;\,y_0;\,\lambda_0)\) pora \((x_0;\,y_0)\) yra taškas, kuriame gali būti ekstremumas, o \(\lambda_0\) – Lagranžo daugiklio reikšmė tame taške.</p>
+          <p>Abi sistemos lygiavertės. Išvestinė pagal \(\lambda\) yra \(L'_{\lambda} = -\big(g(x;\,y) - m\big)\). Ji lygi nuliui būtent tada, kai tenkinamas apribojimas. Sistemoje yra trys lygtys ir trys nežinomieji \(x\), \(y\) ir \(\lambda\). Paprastai iš pirmųjų dviejų lygčių išreiškiame \(\lambda\) ir gautas išraiškas prilyginame. Taip gauname lygtį su \(x\) ir \(y\), kurią sprendžiame kartu su apribojimo lygtimi. Gautą tašką, kuriame gali būti ekstremumas, pažymime raide, pavyzdžiui, \(K(x_0;\,y_0)\), o jį atitinkančią Lagranžo daugiklio reikšmę – \(\lambda_0\). Daugiklio \(\lambda\) į taško koordinates neįtraukiame.</p>
         </li>
-        <li><strong>Įstatykite \(\lambda_0\) į Lagranžo funkciją ir patikrinkite pakankamąją sąlygą.</strong> Apskaičiuokite antros eilės dalines funkcijos \(L\) išvestines pagal \(x\) ir \(y\). Į išvestines įstatykite \(x = x_0\) ir \(y = y_0\). Jei išvestinėse liko \(\lambda\), įstatykite ir \(\lambda = \lambda_0\). Gautas išvestinių reikšmes žymime \(A\), \(B\) ir \(C\):
-          <div class="formula"><div class="m-wide bp-lg">\[ A = L''_{xx}(x_0;\,y_0;\,\lambda_0);\quad B = L''_{xy}(x_0;\,y_0;\,\lambda_0);\quad C = L''_{yy}(x_0;\,y_0;\,\lambda_0) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(x_0;\,y_0;\,\lambda_0) \\ B &amp;= L''_{xy}(x_0;\,y_0;\,\lambda_0) \\ C &amp;= L''_{yy}(x_0;\,y_0;\,\lambda_0) \end{aligned} \]</div></div>
+        <li><strong>Patikrinkite pakankamąją sąlygą.</strong> Apskaičiuokite antros eilės dalines funkcijos \(L\) išvestines pagal \(x\) ir \(y\). Į išvestines įstatykite kritinio taško \(K\) koordinates \(x = x_0\) ir \(y = y_0\). Jei išvestinėse yra \(\lambda\), įstatykite ir \(\lambda = \lambda_0\). Gautas išvestinių reikšmes žymime \(A\), \(B\) ir \(C\):
+          <div class="formula"><div class="m-wide">\[ A = L''_{xx}(K);\qquad B = L''_{xy}(K);\qquad C = L''_{yy}(K) \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) \\ B &amp;= L''_{xy}(K) \\ C &amp;= L''_{yy}(K) \end{aligned} \]</div></div>
           <p>Apskaičiuokite diskriminantą \(D = AC - B^2\). Kai jis teigiamas, Lagranžo funkcijos ekstremumo rūšį nustatome kaip <a href="#pakankamoji">optimizavimo be apribojimų uždaviniuose</a>. Ta pati išvada galioja tikslo funkcijai leistinoje srityje, nes ten apribojimo narys lygus nuliui.</p>
           <ul>
-            <li>Jei \(D &gt; 0\) ir \(A &lt; 0\), tai \((x_0;\,y_0)\) yra vietinio maksimumo taškas.</li>
-            <li>Jei \(D &gt; 0\) ir \(A &gt; 0\), tai \((x_0;\,y_0)\) yra vietinio minimumo taškas.</li>
+            <li>Jei \(D &gt; 0\) ir \(A &lt; 0\), tai \(K\) yra vietinio maksimumo taškas.</li>
+            <li>Jei \(D &gt; 0\) ir \(A &gt; 0\), tai \(K\) yra vietinio minimumo taškas.</li>
             <li>Jei \(D &lt; 0\) arba \(D = 0\), šio požymio nepakanka. Reikia tirti, kaip tikslo funkcija kinta išilgai apribojimo kreivės.</li>
           </ul>
         </li>
@@ -187,9 +180,10 @@
         <p><strong>Kritinis taškas.</strong> Dalines išvestines pagal \(x\) ir \(y\) prilyginame nuliui. Į sistemą įtraukiame apribojimo lygtį:</p>
         \[ L'_x = 2x - \lambda;\qquad L'_y = 2y - 2\lambda \]
         \[ \left\{ \begin{aligned} 2x - \lambda &amp;= 0 \\ 2y - 2\lambda &amp;= 0 \\ x + 2y &amp;= 10 \end{aligned} \right. \]
-        <p>Iš pirmosios lygties gauname \(\lambda = 2x\), o iš antrosios – \(\lambda = y\). Sulyginę išraiškas gauname \(y = 2x\). Įstatę į apribojimo lygtį, gauname \(x + 4x = 10\), taigi \(x = 2\), \(y = 4\) ir \(\lambda = 4\). Kritinis taškas yra \((2;\,4;\,4)\).</p>
-        <p><strong>Pakankamoji sąlyga.</strong> Šiuo atveju antros eilės dalinės išvestinės nepriklauso nuo \(\lambda\):</p>
-        <div class="m-wide">\[ \begin{gathered} A = L''_{xx} = 2;\quad B = L''_{xy} = 0;\quad C = L''_{yy} = 2 \\ D = 2\cdot 2 - 0^2 = 4 &gt; 0;\quad A &gt; 0 \end{gathered} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx} = 2 \\ B &amp;= L''_{xy} = 0 \\ C &amp;= L''_{yy} = 2 \\ D &amp;= 2\cdot 2 - 0^2 = 4 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div>
+        <p>Iš pirmosios lygties gauname \(\lambda = 2x\), o iš antrosios – \(\lambda = y\). Sulyginę išraiškas gauname \(y = 2x\). Įstatę į apribojimo lygtį, gauname \(x + 4x = 10\), taigi \(x = 2\), \(y = 4\) ir \(\lambda = 4\). Gauname kritinį tašką \(K(2;\,4)\) ir Lagranžo daugiklio reikšmę \(\lambda = 4\).</p>
+        <p><strong>Pakankamoji sąlyga.</strong> Antros eilės dalinės išvestinės \(L''_{xx} = 2\), \(L''_{xy} = 0\) ir \(L''_{yy} = 2\) yra pastovios ir nepriklauso nuo \(\lambda\). Jų reikšmės taške \(K\):</p>
+        <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 2 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 2 \\ D &amp;= AC - B^2 = 2\cdot 2 - 0^2 = 4 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 2 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 2 \\ D &amp;= AC - B^2 = 2\cdot 2 - 0^2 \\ &amp;= 4 &gt; 0 \end{aligned} \]</div>
+        <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(2;\,4)\) yra minimumo taškas.</p>
         \[ f_{\min}(2;\,4) = 4 + 16 = 20 \]
         <p><strong>Atsakymas.</strong> Kai \(x + 2y = 10\), funkcija turi vietinį minimumą \(f_{\min}(2;\,4) = 20\). Kadangi \(\lambda = 4\), apribojimo konstantai padidėjus nuo 10 iki 11, minimumas padidėtų apytiksliai 4 vienetais.</p>
       </div>

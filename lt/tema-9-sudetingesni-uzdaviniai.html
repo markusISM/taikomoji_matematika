@@ -71,7 +71,7 @@
       <ol class="steps-list">
         <li>Atsakykite į tris klausimus ir sudarykite tikslo funkciją (žr. <a href="#tikslo">„Tikslo funkcijos sudarymas“</a>). Jei funkcija priklauso nuo trijų kintamųjų, vieną iš jų išreikškite per kitus pagal sąlygą.</li>
         <li>Raskite pirmos eilės dalines išvestines, prilyginkite jas nuliui ir išspręskite lygčių sistemą (žr. <a href="#sistema">„Lygčių sistemos sprendimo būdai“</a>).</li>
-        <li>Pagal pakankamąją sąlygą nustatykite kiekvieno kritinio taško rūšį. Jei kritinių taškų yra keli, pakankamąją sąlygą tikrinkite kiekviename iš jų, o rezultatus surašykite į lentelę. Tarp kritinių taškų gali būti vietinių maksimumų, vietinių minimumų ir balno taškų.</li>
+        <li>Pagal pakankamąją sąlygą nustatykite kiekvieno kritinio taško rūšį. Kritinį tašką pažymėkite raide \(K\), o jei jų keli – \(K_1\), \(K_2\) ir t.&nbsp;t. Antros eilės išvestinių reikšmes \(A\), \(B\), \(C\) gaukite į išvestines įstatę kritinio taško koordinates. Jei kritinių taškų keli, pakankamąją sąlygą tikrinkite kiekviename iš jų atskirai. Tarp kritinių taškų gali būti vietinių maksimumų, vietinių minimumų ir balno taškų.</li>
         <li>Atmeskite taškus, kurie neatitinka uždavinio sąlygos, pavyzdžiui, kai išlaidos būtų neigiamos.</li>
         <li>Apskaičiuokite prašomus dydžius ir suformuluokite atsakymą uždavinio kontekste.</li>
       </ol>
@@ -137,14 +137,13 @@
           \[ \left\{ \begin{aligned} 8x - 32 &amp;= 0 \\ 8y - 36 &amp;= 0 \end{aligned} \right. \]
           <p>Sistema tiesinė, tačiau kiekvienoje lygtyje yra tik vienas kintamasis. Todėl nei keitimo, nei Gauso metodo nereikia – lygtis sprendžiame atskirai. Skaičių perkeliame į dešiniąją pusę ir abi puses padalijame iš 8:</p>
           \[ \begin{aligned} 8x &amp;= 32 \;\Longrightarrow\; x = 4 \\ 8y &amp;= 36 \;\Longrightarrow\; y = 4{,}5 \end{aligned} \]
-          <p>Kritinis taškas yra \((4;\,4{,}5)\).</p>
+          <p>Gauname kritinį tašką \(K(4;\,4{,}5)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Antros eilės dalinės išvestinės yra pastovios:</p>
-          <div class="m-wide">\[ A = T''_{xx} = 8;\qquad B = T''_{xy} = 0;\qquad C = T''_{yy} = 8 \]</div><div class="m-narrow">\[ \begin{gathered} A = T''_{xx} = 8; \\ B = T''_{xy} = 0; \\ C = T''_{yy} = 8 \end{gathered} \]</div>
-          \[ D = AC - B^2 = 8\cdot 8 - 0^2 = 64 &gt; 0 \]
-          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((4;\,4{,}5)\) yra minimumo taškas.</p>
+          <p>Antros eilės dalinės išvestinės \(T''_{xx} = 8\), \(T''_{xy} = 0\) ir \(T''_{yy} = 8\) yra pastovios, todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= T''_{xx}(K) = 8 \\ B &amp;= T''_{xy}(K) = 0 \\ C &amp;= T''_{yy}(K) = 8 \\ D &amp;= AC - B^2 = 8\cdot 8 - 0^2 = 64 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= T''_{xx}(K) = 8 \\ B &amp;= T''_{xy}(K) = 0 \\ C &amp;= T''_{yy}(K) = 8 \\ D &amp;= AC - B^2 = 8\cdot 8 - 0^2 \\ &amp;= 64 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(4;\,4{,}5)\) yra minimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Mažiausia atstumų kvadratų suma</span></h4>
@@ -200,35 +199,29 @@
           \[ x_1 = \frac{12 - 6}{2} = 3;\qquad x_2 = \frac{12 + 6}{2} = 9 \]
           <p>Kiekvieną \(x\) reikšmę įstatome į reiškinį \(y = 3x - 5\):</p>
           <div class="m-wide">\[ y_1 = 3\cdot 3 - 5 = 4;\qquad y_2 = 3\cdot 9 - 5 = 22 \]</div><div class="m-narrow">\[ \begin{gathered} y_1 = 3\cdot 3 - 5 = 4; \\ y_2 = 3\cdot 9 - 5 = 22 \end{gathered} \]</div>
-          <p>Gauname du kritinius taškus: \((3;\,4)\) ir \((9;\,22)\).</p>
+          <p>Gauname du kritinius taškus. Pažymime juos \(K_1(3;\,4)\) ir \(K_2(9;\,22)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
           <p>Antros eilės dalinės išvestinės yra</p>
           <div class="m-wide">\[ P''_{xx} = -6x;\qquad P''_{xy} = 12;\qquad P''_{yy} = -4 \]</div><div class="m-narrow">\[ \begin{gathered} P''_{xx} = -6x; \\ P''_{xy} = 12; \\ P''_{yy} = -4 \end{gathered} \]</div>
-          <p>Dydis \(A\) priklauso nuo taško, todėl pakankamąją sąlygą tikriname kiekviename taške atskirai:</p>
-          <div class="tbl-wrap">
-            <table class="vtable pts">
-              <thead><tr><th scope="col">Taškas</th><th scope="col">\((3;\,4)\)</th><th scope="col">\((9;\,22)\)</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">\(A\)</th><td>\(-18\)</td><td>\(-54\)</td></tr>
-                <tr><th scope="row">\(B\)</th><td>\(12\)</td><td>\(12\)</td></tr>
-                <tr><th scope="row">\(C\)</th><td>\(-4\)</td><td>\(-4\)</td></tr>
-                <tr><th scope="row">\(D\)</th><td>\(-72 &lt; 0\)</td><td>\(72 &gt; 0\)</td></tr>
-                <tr><th scope="row">Išvada</th><td>balno taškas</td><td>\(A &lt; 0\): maksimumas</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <p>Išvestinėje \(P''_{xx}\) yra \(x\), todėl \(A\) priklauso nuo taško ir kiekvieną kritinį tašką tikriname atskirai.</p>
+          <p><strong>Taškas \(K_1(3;\,4)\).</strong> Įstatome \(x = 3\) ir \(y = 4\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K_1) = -6\cdot 3 = -18 \\ B &amp;= P''_{xy}(K_1) = 12 \\ C &amp;= P''_{yy}(K_1) = -4 \\ D &amp;= AC - B^2 = (-18)\cdot(-4) - 12^2 = 72 - 144 = -72 &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K_1) = -6\cdot 3 = -18 \\ B &amp;= P''_{xy}(K_1) = 12 \\ C &amp;= P''_{yy}(K_1) = -4 \\ D &amp;= AC - B^2 \\ &amp;= (-18)\cdot(-4) - 12^2 \\ &amp;= 72 - 144 = -72 &lt; 0 \end{aligned} \]</div>
+          <p>\(D &lt; 0\), todėl \(K_1\) yra balno taškas.</p>
+          <p><strong>Taškas \(K_2(9;\,22)\).</strong> Įstatome \(x = 9\) ir \(y = 22\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K_2) = -6\cdot 9 = -54 \\ B &amp;= P''_{xy}(K_2) = 12 \\ C &amp;= P''_{yy}(K_2) = -4 \\ D &amp;= AC - B^2 = (-54)\cdot(-4) - 12^2 = 216 - 144 = 72 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K_2) = -6\cdot 9 = -54 \\ B &amp;= P''_{xy}(K_2) = 12 \\ C &amp;= P''_{yy}(K_2) = -4 \\ D &amp;= AC - B^2 \\ &amp;= (-54)\cdot(-4) - 12^2 \\ &amp;= 216 - 144 = 72 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K_2\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Didžiausias pelnas</span></h4>
-          <p>Taško \((9;\,22)\) koordinates įstatome į pelno funkciją:</p>
+          <p>Taško \(K_2(9;\,22)\) koordinates įstatome į pelno funkciją:</p>
           <div class="m-wide bp-lg">\[ \begin{aligned} P_{\max}(9;\,22) &amp;= -9^3 + 12\cdot 9\cdot 22 - 2\cdot 22^2 - 21\cdot 9 - 20\cdot 22 - 10 \\ &amp;= -729 + 2376 - 968 - 189 - 440 - 10 = 40 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(9;\,22) \\ &amp;= -9^3 + 12\cdot 9\cdot 22 - 2\cdot 22^2 \\ &amp;\phantom{=}\; {}- 21\cdot 9 - 20\cdot 22 - 10 \\ &amp;= -729 + 2376 - 968 \\ &amp;\phantom{=}\; {}- 189 - 440 - 10 = 40 \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
-            <p>Taškas \((3;\,4)\) yra balno taškas. Didžiausias mėnesio pelnas yra 40&nbsp;tūkstančių eurų, kai per mėnesį parduodama 900 abonementų ir 2200 asmeninių treniruočių.</p>
+            <p>Taškas \(K_1(3;\,4)\) yra balno taškas. Didžiausias mėnesio pelnas yra 40&nbsp;tūkstančių eurų, kai per mėnesį parduodama 900 abonementų ir 2200 asmeninių treniruočių.</p>
           </div>
         </section>
       </div>
@@ -289,15 +282,15 @@
           <div class="m-wide bp-lg">\[ (y + 9)^2 = 900 \;\Longrightarrow\; y^2 + 18y + 81 = 900 \;\Longrightarrow\; y^2 + 18y - 819 = 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} (y + 9)^2 = 900 \\ \Longrightarrow\; y^2 + 18y + 81 = 900 \\ \Longrightarrow\; y^2 + 18y - 819 = 0 \end{gathered} \]</div>
           <div class="m-wide">\[ D = 18^2 - 4\cdot 1\cdot(-819) = 324 + 3276 = 3600;\qquad \sqrt{D} = 60 \]</div><div class="m-narrow">\[ \begin{gathered} D = 18^2 - 4\cdot 1\cdot(-819) \\ = 324 + 3276 = 3600 \\ \sqrt{D} = 60 \end{gathered} \]</div>
           <div class="m-wide">\[ y_1 = \frac{-18 - 60}{2} = -39;\qquad y_2 = \frac{-18 + 60}{2} = 21 \]</div><div class="m-narrow">\[ \begin{gathered} y_1 = \frac{-18 - 60}{2} = -39; \\ y_2 = \frac{-18 + 60}{2} = 21 \end{gathered} \]</div>
-          <p>Neigiamą sprendinį \(y = -39\) atmetame, o \(y = 21\) nesutampa su draudžiama reikšme \(-9\). Kritinis taškas yra \((12;\,21)\).</p>
+          <p>Neigiamą sprendinį \(y = -39\) atmetame, o \(y = 21\) nesutampa su draudžiama reikšme \(-9\). Gauname kritinį tašką \(K(12;\,21)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
           <p>Trupmeną užrašome laipsniu: \(\frac{256}{(x + 4)^2} = 256(x + 4)^{-2}\). Tada \(\big(256(x + 4)^{-2}\big)'_x = -512(x + 4)^{-3}\). Analogiškai diferencijuojama pagal \(y\):</p>
           <div class="m-wide">\[ P''_{xx} = -\frac{512}{(x + 4)^3};\qquad P''_{xy} = 0;\qquad P''_{yy} = -\frac{1800}{(y + 9)^3} \]</div><div class="m-narrow">\[ \begin{gathered} P''_{xx} = -\frac{512}{(x + 4)^3}; \\ P''_{xy} = 0; \\ P''_{yy} = -\frac{1800}{(y + 9)^3} \end{gathered} \]</div>
-          <div class="m-wide">\[ \begin{gathered} A = -\frac{512}{16^3} = -\frac{512}{4096} = -0{,}125;\qquad B = 0 \\ C = -\frac{1800}{30^3} = -\frac{1800}{27\,000} = -\frac{1}{15} \end{gathered} \]</div><div class="m-narrow">\[ \begin{gathered} A = -\frac{512}{16^3} = -\frac{512}{4096} = -0{,}125 \\ B = 0 \\ C = -\frac{1800}{30^3} = -\frac{1800}{27\,000} = -\frac{1}{15} \end{gathered} \]</div>
-          <div class="m-wide">\[ D = AC - B^2 = (-0{,}125)\cdot\Big(-\frac{1}{15}\Big) - 0^2 = \frac{1}{120} &gt; 0 \]</div><div class="m-narrow">\[ \begin{aligned} D &amp;= AC - B^2 \\ &amp;= (-0{,}125)\cdot\Big(-\frac{1}{15}\Big) - 0^2 \\ &amp;= \frac{1}{120} &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((12;\,21)\) yra maksimumo taškas.</p>
+          <p>Išvestinės priklauso nuo \(x\) ir \(y\), todėl \(A\), \(B\) ir \(C\) gauname įstatę kritinio taško \(K(12;\,21)\) koordinates \(x = 12\) ir \(y = 21\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -\frac{512}{(12 + 4)^3} = -\frac{512}{4096} = -0{,}125 \\ B &amp;= P''_{xy}(K) = 0 \\ C &amp;= P''_{yy}(K) = -\frac{1800}{(21 + 9)^3} = -\frac{1800}{27\,000} = -\frac{1}{15} \\ D &amp;= AC - B^2 = (-0{,}125)\cdot\Big(-\frac{1}{15}\Big) - 0^2 = \frac{1}{120} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -\frac{512}{(12 + 4)^3} \\ &amp;= -\frac{512}{4096} = -0{,}125 \\ B &amp;= P''_{xy}(K) = 0 \\ C &amp;= P''_{yy}(K) = -\frac{1800}{(21 + 9)^3} \\ &amp;= -\frac{1800}{27\,000} = -\frac{1}{15} \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}125)\cdot\Big(-\frac{1}{15}\Big) - 0^2 \\ &amp;= \frac{1}{120} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(12;\,21)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Pardavimo kiekis ir didžiausias pelnas</span></h4>
@@ -374,16 +367,16 @@
           <div class="m-wide bp-lg">\[ 78y = 30\sqrt{5{,}76 + y^2} \;\Longrightarrow\; 13y = 5\sqrt{5{,}76 + y^2} \;\Longrightarrow\; 169y^2 = 25(5{,}76 + y^2) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 78y = 30\sqrt{5{,}76 + y^2} \\ \Longrightarrow\; 13y = 5\sqrt{5{,}76 + y^2} \\ \Longrightarrow\; 169y^2 = 25(5{,}76 + y^2) \end{gathered} \]</div>
           <div class="m-wide">\[ 169y^2 = 144 + 25y^2 \;\Longrightarrow\; 144y^2 = 144 \;\Longrightarrow\; y^2 = 1 \]</div><div class="m-narrow">\[ \begin{gathered} 169y^2 = 144 + 25y^2 \\ \Longrightarrow\; 144y^2 = 144 \;\Longrightarrow\; y^2 = 1 \end{gathered} \]</div>
           <p>Vėl gavome nepilnąją kvadratinę lygtį ir ją išskaidome dauginamaisiais:</p>
-          <div class="m-wide"><div class="m-wide">\[ y^2 - 1 = 0 \;\Longrightarrow\; (y - 1)(y + 1) = 0 \;\Longrightarrow\; y = 1\ \text{arba}\ y = -1 \]</div><div class="m-narrow">\[ \begin{gathered} y^2 - 1 = 0 \;\Longrightarrow\; (y - 1)(y + 1) = 0 \\ \Longrightarrow\; y = 1\ \text{arba}\ y = -1 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} y^2 - 1 = 0 \;\Longrightarrow\; (y - 1)(y + 1) = 0 \\ \Longrightarrow\; y = 1\ \text{arba}\ y = -1 \end{gathered} \]</div>
-          <p>Pradinėje lygtyje \(13y = 5\sqrt{5{,}76 + y^2}\) tinka tik teigiamas sprendinys \(y = 1\): \(13\cdot 1 = 13\) ir \(5\sqrt{6{,}76} = 5\cdot 2{,}6 = 13\). Kritinis taškas yra \((3;\,1)\).</p>
+          <div class="m-wide">\[ y^2 - 1 = 0 \;\Longrightarrow\; (y - 1)(y + 1) = 0 \;\Longrightarrow\; y = 1\ \text{arba}\ y = -1 \]</div><div class="m-narrow">\[ \begin{gathered} y^2 - 1 = 0 \;\Longrightarrow\; (y - 1)(y + 1) = 0 \\ \Longrightarrow\; y = 1\ \text{arba}\ y = -1 \end{gathered} \]</div>
+          <p>Pradinėje lygtyje \(13y = 5\sqrt{5{,}76 + y^2}\) tinka tik teigiamas sprendinys \(y = 1\): \(13\cdot 1 = 13\) ir \(5\sqrt{6{,}76} = 5\cdot 2{,}6 = 13\). Gauname kritinį tašką \(K(3;\,1)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Pakankamoji sąlyga</span></h4>
           <p>Taikome sandaugos ir sudėtinės funkcijos išvestinės taisykles:</p>
           <div class="m-wide bp-lg">\[ TC''_{xx} = \frac{50\cdot 16}{\big(\sqrt{16 + x^2}\big)^3};\qquad TC''_{xy} = 0;\qquad TC''_{yy} = \frac{78\cdot 5{,}76}{\big(\sqrt{5{,}76 + y^2}\big)^3} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} TC''_{xx} = \frac{50\cdot 16}{\big(\sqrt{16 + x^2}\big)^3} \\ TC''_{xy} = 0 \\ TC''_{yy} = \frac{78\cdot 5{,}76}{\big(\sqrt{5{,}76 + y^2}\big)^3} \end{gathered} \]</div>
-          <div class="m-wide">\[ A = \frac{800}{5^3} = 6{,}4;\qquad B = 0;\qquad C = \frac{449{,}28}{2{,}6^3} \approx 25{,}56 \]</div><div class="m-narrow">\[ \begin{gathered} A = \frac{800}{5^3} = 6{,}4; \\ B = 0; \\ C = \frac{449{,}28}{2{,}6^3} \approx 25{,}56 \end{gathered} \]</div>
-          <div class="m-wide">\[ D = AC - B^2 = 6{,}4\cdot 25{,}56 - 0^2 \approx 163{,}6 &gt; 0 \]</div><div class="m-narrow">\[ \begin{aligned} D &amp;= AC - B^2 \\ &amp;= 6{,}4\cdot 25{,}56 - 0^2 \approx 163{,}6 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((3;\,1)\) yra minimumo taškas.</p>
+          <p>Įstatome kritinio taško \(K(3;\,1)\) koordinates \(x = 3\) ir \(y = 1\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = \frac{50\cdot 16}{\big(\sqrt{16 + 3^2}\big)^3} = \frac{800}{5^3} = 6{,}4 \\ B &amp;= TC''_{xy}(K) = 0 \\ C &amp;= TC''_{yy}(K) = \frac{78\cdot 5{,}76}{\big(\sqrt{5{,}76 + 1^2}\big)^3} = \frac{449{,}28}{2{,}6^3} \approx 25{,}56 \\ D &amp;= AC - B^2 = 6{,}4\cdot 25{,}56 - 0^2 \approx 163{,}6 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= TC''_{xx}(K) \\ &amp;= \frac{50\cdot 16}{\big(\sqrt{16 + 3^2}\big)^3} = \frac{800}{5^3} \\ &amp;= 6{,}4 \\ B &amp;= TC''_{xy}(K) = 0 \\ C &amp;= TC''_{yy}(K) \\ &amp;= \frac{78\cdot 5{,}76}{\big(\sqrt{5{,}76 + 1^2}\big)^3} \\ &amp;= \frac{449{,}28}{2{,}6^3} \approx 25{,}56 \\ D &amp;= AC - B^2 \\ &amp;= 6{,}4\cdot 25{,}56 - 0^2 \\ &amp;\approx 163{,}6 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(3;\,1)\) yra minimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">7</span><span>Mažiausios sąnaudos</span></h4>
@@ -457,14 +450,15 @@
           <div class="m-wide">\[ \frac{xy^2}{x^2y} = \frac{18\,000}{12\,000} \;\Longrightarrow\; \frac{y}{x} = 1{,}5 \;\Longrightarrow\; y = 1{,}5x \]</div><div class="m-narrow">\[ \begin{gathered} \frac{xy^2}{x^2y} = \frac{18\,000}{12\,000} \\ \Longrightarrow\; \frac{y}{x} = 1{,}5 \;\Longrightarrow\; y = 1{,}5x \end{gathered} \]</div>
           <p>Gautą reiškinį įstatome į pirmąją lygtį vietoje \(y\):</p>
           <div class="m-wide bp-lg">\[ x^2\cdot 1{,}5x = 12\,000 \;\Longrightarrow\; 1{,}5x^3 = 12\,000 \;\Longrightarrow\; x^3 = 8000 \;\Longrightarrow\; x = \sqrt[3]{8000} = 20 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2\cdot 1{,}5x = 12\,000 \;\Longrightarrow\; 1{,}5x^3 = 12\,000 \\ \Longrightarrow\; x^3 = 8000 \;\Longrightarrow\; x = \sqrt[3]{8000} = 20 \end{gathered} \]</div>
-          <p>Rastą \(x\) įstatome į \(y = 1{,}5x\): \(y = 1{,}5\cdot 20 = 30\). Kritinis taškas yra \((20;\,30)\).</p>
+          <p>Rastą \(x\) įstatome į \(y = 1{,}5x\): \(y = 1{,}5\cdot 20 = 30\). Gauname kritinį tašką \(K(20;\,30)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės:</p>
           <div class="m-wide">\[ TC''_{xx} = \frac{240\,000}{x^3};\qquad TC''_{xy} = 10;\qquad TC''_{yy} = \frac{360\,000}{y^3} \]</div><div class="m-narrow">\[ \begin{gathered} TC''_{xx} = \frac{240\,000}{x^3}; \\ TC''_{xy} = 10; \\ TC''_{yy} = \frac{360\,000}{y^3} \end{gathered} \]</div>
-          <div class="m-wide">\[ A = \frac{240\,000}{8000} = 30;\qquad B = 10;\qquad C = \frac{360\,000}{27\,000} = \frac{40}{3} \]</div><div class="m-narrow">\[ \begin{gathered} A = \frac{240\,000}{8000} = 30; \\ B = 10; \\ C = \frac{360\,000}{27\,000} = \frac{40}{3} \end{gathered} \]</div>
-          <div class="m-wide">\[ D = AC - B^2 = 30\cdot\frac{40}{3} - 10^2 = 400 - 100 = 300 &gt; 0 \]</div><div class="m-narrow">\[ \begin{aligned} D &amp;= AC - B^2 = 30\cdot\frac{40}{3} - 10^2 \\ &amp;= 400 - 100 = 300 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((20;\,30)\) yra minimumo taškas.</p>
+          <p>Išvestinės \(TC''_{xx}\) ir \(TC''_{yy}\) priklauso nuo kintamųjų, todėl įstatome kritinio taško \(K(20;\,30)\) koordinates \(x = 20\) ir \(y = 30\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = \frac{240\,000}{20^3} = \frac{240\,000}{8000} = 30 \\ B &amp;= TC''_{xy}(K) = 10 \\ C &amp;= TC''_{yy}(K) = \frac{360\,000}{30^3} = \frac{360\,000}{27\,000} = \frac{40}{3} \\ D &amp;= AC - B^2 = 30\cdot\frac{40}{3} - 10^2 = 400 - 100 = 300 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = \frac{240\,000}{20^3} \\ &amp;= \frac{240\,000}{8000} = 30 \\ B &amp;= TC''_{xy}(K) = 10 \\ C &amp;= TC''_{yy}(K) = \frac{360\,000}{30^3} \\ &amp;= \frac{360\,000}{27\,000} = \frac{40}{3} \\ D &amp;= AC - B^2 = 30\cdot\frac{40}{3} - 10^2 \\ &amp;= 400 - 100 = 300 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(20;\,30)\) yra minimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">7</span><span>Aukštis ir mažiausios sąnaudos</span></h4>
@@ -516,25 +510,19 @@
           <p>Kadangi \(x \ge 0\), tinka \(x = 2\). Įstatę į antrąją lygtį, gauname \(2(1 - 0{,}25y^2) = 0\), todėl \(1 - 0{,}25y^2 = 0\). Taip pat sprendžiame:</p>
           <div class="m-wide">\[ y^2 - 4 = 0 \;\Longrightarrow\; (y - 2)(y + 2) = 0 \;\Longrightarrow\; y = 2\ \text{arba}\ y = -2 \]</div><div class="m-narrow">\[ \begin{gathered} y^2 - 4 = 0 \;\Longrightarrow\; (y - 2)(y + 2) = 0 \\ \Longrightarrow\; y = 2\ \text{arba}\ y = -2 \end{gathered} \]</div>
           <p>Kadangi \(y \ge 0\), tinka \(y = 2\). Gaunamas taškas \((2;\,2)\).</p>
-          <p>Kritiniai taškai yra \((0;\,0)\) ir \((2;\,2)\).</p>
+          <p>Gauname du kritinius taškus. Pažymime juos \(K_1(0;\,0)\) ir \(K_2(2;\,2)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
           <p>Pažymime \(g = e^{-0{,}125(x^2 + y^2)}\) ir dar kartą diferencijuojame pirmos eilės išvestines:</p>
           <div class="m-wide bp-lg">\[ \begin{gathered} E''_{xx} = yg(2{,}5x^3 - 30x);\qquad E''_{yy} = xg(2{,}5y^3 - 30y) \\ E''_{xy} = 40g(1 - 0{,}25x^2)(1 - 0{,}25y^2) \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} E''_{xx} &amp;= yg(2{,}5x^3 - 30x) \\ E''_{xy} &amp;= 40g(1 - 0{,}25x^2)(1 - 0{,}25y^2) \\ E''_{yy} &amp;= xg(2{,}5y^3 - 30y) \end{aligned} \]</div>
-          <p>Taške \((0;\,0)\) gauname \(g = e^{0} = 1\), o taške \((2;\,2)\) – \(g = e^{-0{,}125\cdot 8} = e^{-1}\):</p>
-          <div class="tbl-wrap">
-            <table class="vtable pts">
-              <thead><tr><th scope="col">Taškas</th><th scope="col">\((0;\,0)\)</th><th scope="col">\((2;\,2)\)</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">\(A\)</th><td>\(0\)</td><td>\(-80e^{-1}\)</td></tr>
-                <tr><th scope="row">\(B\)</th><td>\(40\)</td><td>\(0\)</td></tr>
-                <tr><th scope="row">\(C\)</th><td>\(0\)</td><td>\(-80e^{-1}\)</td></tr>
-                <tr><th scope="row">\(D\)</th><td>\(-1600 &lt; 0\)</td><td>\(6400e^{-2} &gt; 0\)</td></tr>
-                <tr><th scope="row">Išvada</th><td>balno taškas</td><td>\(A &lt; 0\): maksimumas</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <p>Taške \(K_1(0;\,0)\) gauname \(g = e^{0} = 1\), o taške \(K_2(2;\,2)\) – \(g = e^{-0{,}125\cdot 8} = e^{-1}\).</p>
+          <p><strong>Taškas \(K_1(0;\,0)\).</strong> Įstatome \(x = 0\), \(y = 0\) ir \(g = 1\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= E''_{xx}(K_1) = 0\cdot 1\cdot(2{,}5\cdot 0^3 - 30\cdot 0) = 0 \\ B &amp;= E''_{xy}(K_1) = 40\cdot 1\cdot(1 - 0)(1 - 0) = 40 \\ C &amp;= E''_{yy}(K_1) = 0\cdot 1\cdot(2{,}5\cdot 0^3 - 30\cdot 0) = 0 \\ D &amp;= AC - B^2 = 0\cdot 0 - 40^2 = -1600 &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= E''_{xx}(K_1) \\ &amp;= 0\cdot 1\cdot(2{,}5\cdot 0^3 - 30\cdot 0) \\ &amp;= 0 \\ B &amp;= E''_{xy}(K_1) \\ &amp;= 40\cdot 1\cdot(1 - 0)(1 - 0) = 40 \\ C &amp;= E''_{yy}(K_1) \\ &amp;= 0\cdot 1\cdot(2{,}5\cdot 0^3 - 30\cdot 0) \\ &amp;= 0 \\ D &amp;= AC - B^2 = 0\cdot 0 - 40^2 \\ &amp;= -1600 &lt; 0 \end{aligned} \]</div>
+          <p>\(D &lt; 0\), todėl \(K_1\) yra balno taškas.</p>
+          <p><strong>Taškas \(K_2(2;\,2)\).</strong> Įstatome \(x = 2\), \(y = 2\) ir \(g = e^{-1}\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= E''_{xx}(K_2) = 2e^{-1}(2{,}5\cdot 2^3 - 30\cdot 2) = -80e^{-1} \\ B &amp;= E''_{xy}(K_2) = 40e^{-1}(1 - 0{,}25\cdot 2^2)(1 - 0{,}25\cdot 2^2) = 0 \\ C &amp;= E''_{yy}(K_2) = 2e^{-1}(2{,}5\cdot 2^3 - 30\cdot 2) = -80e^{-1} \\ D &amp;= AC - B^2 = (-80e^{-1})^2 - 0^2 = 6400e^{-2} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= E''_{xx}(K_2) \\ &amp;= 2e^{-1}(2{,}5\cdot 2^3 - 30\cdot 2) \\ &amp;= -80e^{-1} \\ B &amp;= E''_{xy}(K_2) \\ &amp;= 40e^{-1}(1 - 0{,}25\cdot 2^2)(1 - 0{,}25\cdot 2^2) \\ &amp;= 0 \\ C &amp;= E''_{yy}(K_2) \\ &amp;= 2e^{-1}(2{,}5\cdot 2^3 - 30\cdot 2) \\ &amp;= -80e^{-1} \\ D &amp;= AC - B^2 \\ &amp;= (-80e^{-1})^2 - 0^2 \\ &amp;= 6400e^{-2} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K_2\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Didžiausia reikšmė</span></h4>
@@ -543,7 +531,7 @@
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
-            <p>Taškas \((0;\,0)\) yra balno taškas visoje plokštumoje, o leistinoje srityje jame pasiekiama mažiausia reikšmė. Daugiausia papildomų skambučių aptarnaujama, kai tiek muzikos garsumas, tiek papildomų pertraukų trukmė atitinka 2 skalės padalas. Tuomet darbuotojas per dieną aptarnauja apytiksliai 58,86 papildomo skambučio.</p>
+            <p>Taškas \(K_1(0;\,0)\) yra balno taškas visoje plokštumoje, o leistinoje srityje jame pasiekiama mažiausia reikšmė. Daugiausia papildomų skambučių aptarnaujama, kai tiek muzikos garsumas, tiek papildomų pertraukų trukmė atitinka 2 skalės padalas. Tuomet darbuotojas per dieną aptarnauja apytiksliai 58,86 papildomo skambučio.</p>
           </div>
         </section>
       </div>
@@ -605,28 +593,22 @@
           <div class="m-wide">\[ x = -2\ln 0{,}2 = 2\ln 5 \approx 3{,}22;\qquad T = 20\cdot(1 - 0{,}2) = 16 \]</div><div class="m-narrow">\[ \begin{gathered} x = -2\ln 0{,}2 = 2\ln 5 \approx 3{,}22; \\ T = 20\cdot(1 - 0{,}2) = 16 \end{gathered} \]</div>
           <p><strong>Kai \(u = 0{,}8\).</strong> Kadangi \(0{,}8 = \frac{1}{1{,}25} = 1{,}25^{-1}\), tai \(\ln 0{,}8 = -\ln 1{,}25\):</p>
           <div class="m-wide">\[ x = -2\ln 0{,}8 = 2\ln 1{,}25 \approx 0{,}45;\qquad T = 20\cdot(1 - 0{,}8) = 4 \]</div><div class="m-narrow">\[ \begin{gathered} x = -2\ln 0{,}8 = 2\ln 1{,}25 \approx 0{,}45; \\ T = 20\cdot(1 - 0{,}8) = 4 \end{gathered} \]</div>
-          <p>Kritiniai taškai \((T;\,x)\) yra \((16;\,2\ln 5)\) ir \((4;\,2\ln 1{,}25)\).</p>
+          <p>Gauname du kritinius taškus \((T;\,x)\). Pažymime juos \(K_1(16;\,2\ln 5)\) ir \(K_2(4;\,2\ln 1{,}25)\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Pakankamoji sąlyga</span></h4>
           <div class="m-wide">\[ P''_{TT} = -0{,}5;\qquad P''_{Tx} = 5e^{-0{,}5x};\qquad P''_{xx} = -2{,}5Te^{-0{,}5x} \]</div><div class="m-narrow">\[ \begin{gathered} P''_{TT} = -0{,}5; \\ P''_{Tx} = 5e^{-0{,}5x}; \\ P''_{xx} = -2{,}5Te^{-0{,}5x} \end{gathered} \]</div>
-          <p>Reikšmė \(e^{-0{,}5x} = u\) kiekviename taške jau žinoma (0,2 arba 0,8):</p>
-          <div class="tbl-wrap">
-            <table class="vtable pts">
-              <thead><tr><th scope="col">Taškas</th><th scope="col">\((16;\,2\ln 5)\)</th><th scope="col">\((4;\,2\ln 1{,}25)\)</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">\(A\)</th><td>\(-0{,}5\)</td><td>\(-0{,}5\)</td></tr>
-                <tr><th scope="row">\(B\)</th><td>\(1\)</td><td>\(4\)</td></tr>
-                <tr><th scope="row">\(C\)</th><td>\(-8\)</td><td>\(-8\)</td></tr>
-                <tr><th scope="row">\(D\)</th><td>\(3 &gt; 0\)</td><td>\(-12 &lt; 0\)</td></tr>
-                <tr><th scope="row">Išvada</th><td>\(A &lt; 0\): maksimumas</td><td>balno taškas</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <p>Išvestinės \(P''_{Tx}\) ir \(P''_{xx}\) priklauso nuo kintamųjų. Reikšmė \(e^{-0{,}5x} = u\) kiekviename taške jau žinoma.</p>
+          <p><strong>Taškas \(K_1(16;\,2\ln 5)\).</strong> Įstatome \(T = 16\) ir \(e^{-0{,}5x} = 0{,}2\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{TT}(K_1) = -0{,}5 \\ B &amp;= P''_{Tx}(K_1) = 5\cdot 0{,}2 = 1 \\ C &amp;= P''_{xx}(K_1) = -2{,}5\cdot 16\cdot 0{,}2 = -8 \\ D &amp;= AC - B^2 = (-0{,}5)\cdot(-8) - 1^2 = 4 - 1 = 3 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{TT}(K_1) = -0{,}5 \\ B &amp;= P''_{Tx}(K_1) = 5\cdot 0{,}2 = 1 \\ C &amp;= P''_{xx}(K_1) = -2{,}5\cdot 16\cdot 0{,}2 \\ &amp;= -8 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}5)\cdot(-8) - 1^2 = 4 - 1 \\ &amp;= 3 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K_1\) yra maksimumo taškas.</p>
+          <p><strong>Taškas \(K_2(4;\,2\ln 1{,}25)\).</strong> Įstatome \(T = 4\) ir \(e^{-0{,}5x} = 0{,}8\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{TT}(K_2) = -0{,}5 \\ B &amp;= P''_{Tx}(K_2) = 5\cdot 0{,}8 = 4 \\ C &amp;= P''_{xx}(K_2) = -2{,}5\cdot 4\cdot 0{,}8 = -8 \\ D &amp;= AC - B^2 = (-0{,}5)\cdot(-8) - 4^2 = 4 - 16 = -12 &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{TT}(K_2) = -0{,}5 \\ B &amp;= P''_{Tx}(K_2) = 5\cdot 0{,}8 = 4 \\ C &amp;= P''_{xx}(K_2) = -2{,}5\cdot 4\cdot 0{,}8 \\ &amp;= -8 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}5)\cdot(-8) - 4^2 = 4 - 16 \\ &amp;= -12 &lt; 0 \end{aligned} \]</div>
+          <p>\(D &lt; 0\), todėl \(K_2\) yra balno taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">7</span><span>Didžiausias pelnas</span></h4>
-          <p>Taške \((16;\,2\ln 5)\) \(e^{-0{,}5x} = 0{,}2\), todėl \(1 - e^{-0{,}5x} = 0{,}8\):</p>
+          <p>Taške \(K_1(16;\,2\ln 5)\) \(e^{-0{,}5x} = 0{,}2\), todėl \(1 - e^{-0{,}5x} = 0{,}8\):</p>
           <div class="m-wide bp-lg">\[ \begin{aligned} P_{\max} &amp;= 10\cdot 16\cdot 0{,}8 - 16\cdot 2\ln 5 - 0{,}25\cdot 16^2 \\ &amp;= 128 - 32\ln 5 - 64 = 64 - 32\ln 5 \approx 12{,}50 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} P_{\max} &amp;= 10\cdot 16\cdot 0{,}8 - 16\cdot 2\ln 5 \\ &amp;\phantom{=}\; {}- 0{,}25\cdot 16^2 \\ &amp;= 128 - 32\ln 5 - 64 \\ &amp;= 64 - 32\ln 5 \approx 12{,}50 \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
@@ -654,21 +636,16 @@
         </div>
         <div class="q-answer">
           <p><strong>Lygčių sistema ir kritiniai taškai</strong> (sistema netiesinė, Gauso metodas netinka):</p>
-          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 24y - 24x^2 &amp;= 0 \\ 24x - 3y^2 &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; y = x^2,\quad 3x(8 - x^3) = 0 \;\Longrightarrow\; (0;\,0),\ (2;\,4) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 24y - 24x^2 &amp;= 0 \\ 24x - 3y^2 &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; y = x^2,\quad 3x(8 - x^3) = 0 \\ \Longrightarrow\; (0;\,0),\ (2;\,4) \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 24y - 24x^2 &amp;= 0 \\ 24x - 3y^2 &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; y = x^2,\quad 3x(8 - x^3) = 0 \;\Longrightarrow\; K_1(0;\,0),\ K_2(2;\,4) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 24y - 24x^2 &amp;= 0 \\ 24x - 3y^2 &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; y = x^2,\quad 3x(8 - x^3) = 0 \\ \Longrightarrow\; K_1(0;\,0),\ K_2(2;\,4) \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="tbl-wrap">
-  <table class="vtable pts">
-    <thead><tr><th scope="col">Taškas</th><th scope="col">\((0;\,0)\)</th><th scope="col">\((2;\,4)\)</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">\(A\)</th><td>\(0\)</td><td>\(-96\)</td></tr>
-      <tr><th scope="row">\(B\)</th><td>\(24\)</td><td>\(24\)</td></tr>
-      <tr><th scope="row">\(C\)</th><td>\(0\)</td><td>\(-24\)</td></tr>
-      <tr><th scope="row">\(D\)</th><td>\(-576 &lt; 0\)</td><td>\(1728 &gt; 0\)</td></tr>
-      <tr><th scope="row">Išvada</th><td>balno taškas</td><td>\(A &lt; 0\): maksimumas</td></tr>
-    </tbody>
-  </table>
-</div>
-          <p><strong>Atsakymas.</strong> Per mėnesį reikėtų pagaminti 2&nbsp;tūkstančius spausdintuvų ir 4&nbsp;tūkstančius rašalo kasečių. Didžiausias mėnesio pelnas yra \(P_{\max}(2;\,4) = 64\) tūkstančiai eurų. Taškas \((0;\,0)\) yra balno taškas.</p>
+          <p>Antros eilės išvestinės: \(P''_{xx} = -48x\), \(P''_{xy} = 24\), \(P''_{yy} = -6y\).</p>
+          <p><strong>Taškas \(K_1(0;\,0)\)</strong>:</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K_1) = -48\cdot 0 = 0 \\ B &amp;= P''_{xy}(K_1) = 24 \\ C &amp;= P''_{yy}(K_1) = -6\cdot 0 = 0 \\ D &amp;= 0\cdot 0 - 24^2 = -576 &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K_1) = -48\cdot 0 = 0 \\ B &amp;= P''_{xy}(K_1) = 24 \\ C &amp;= P''_{yy}(K_1) = -6\cdot 0 = 0 \\ D &amp;= 0\cdot 0 - 24^2 = -576 &lt; 0 \end{aligned} \]</div>
+          <p>\(D &lt; 0\), todėl \(K_1\) yra balno taškas.</p>
+          <p><strong>Taškas \(K_2(2;\,4)\)</strong>:</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K_2) = -48\cdot 2 = -96 \\ B &amp;= P''_{xy}(K_2) = 24 \\ C &amp;= P''_{yy}(K_2) = -6\cdot 4 = -24 \\ D &amp;= (-96)\cdot(-24) - 24^2 = 1728 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K_2) = -48\cdot 2 \\ &amp;= -96 \\ B &amp;= P''_{xy}(K_2) = 24 \\ C &amp;= P''_{yy}(K_2) = -6\cdot 4 \\ &amp;= -24 \\ D &amp;= (-96)\cdot(-24) - 24^2 \\ &amp;= 1728 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K_2\) yra maksimumo taškas.</p>
+          <p><strong>Atsakymas.</strong> Per mėnesį reikėtų pagaminti 2&nbsp;tūkstančius spausdintuvų ir 4&nbsp;tūkstančius rašalo kasečių. Didžiausias mėnesio pelnas yra \(P_{\max}(2;\,4) = 64\) tūkstančiai eurų. Taškas \(K_1(0;\,0)\) yra balno taškas.</p>
         </div>
       </article>
 
@@ -682,9 +659,9 @@
           <p><strong>Tikslo funkcija:</strong></p>
           <div class="m-wide bp-lg">\[ T(x;\,y) = x^2 + y^2 + 2\big[(x - 6)^2 + (y - 2)^2\big] + (x - 3)^2 + (y - 8)^2 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;T(x;\,y) \\ &amp;= x^2 + y^2 + 2\big[(x - 6)^2 + (y - 2)^2\big] \\ &amp;\phantom{=}\; {}+ (x - 3)^2 + (y - 8)^2 \end{aligned} \]</div>
           <p><strong>Lygčių sistema ir kritinis taškas</strong> (kiekvienoje lygtyje vienas kintamasis):</p>
-          \[ \left\{ \begin{aligned} T'_x &amp;= 8x - 30 = 0 \\ T'_y &amp;= 8y - 24 = 0 \end{aligned} \right. \;\Longrightarrow\; (3{,}75;\,3) \]
+          <div class="m-wide">\[ \left\{ \begin{aligned} T'_x &amp;= 8x - 30 = 0 \\ T'_y &amp;= 8y - 24 = 0 \end{aligned} \right. \;\Longrightarrow\; K(3{,}75;\,3) \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} T'_x &amp;= 8x - 30 = 0 \\ T'_y &amp;= 8y - 24 = 0 \end{aligned} \right. \\ \Longrightarrow\; K(3{,}75;\,3) \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="m-wide">\[ A = 8;\quad B = 0;\quad C = 8;\quad D = 64 &gt; 0;\quad A &gt; 0 \]</div><div class="m-narrow">\[ \begin{gathered} A = 8;\quad B = 0;\quad C = 8 \\ D = 64 &gt; 0;\quad A &gt; 0 \end{gathered} \]</div>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= T''_{xx}(K) = 8 \\ B &amp;= T''_{xy}(K) = 0 \\ C &amp;= T''_{yy}(K) = 8 \\ D &amp;= 64 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= T''_{xx}(K) = 8 \\ B &amp;= T''_{xy}(K) = 0 \\ C &amp;= T''_{yy}(K) = 8 \\ D &amp;= 64 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> Centrą reikėtų įrengti taške \((3{,}75;\,3)\). Mažiausia atstumų kvadratų sumos reikšmė yra \(T_{\min} = 60{,}75\).</p>
         </div>
       </article>
@@ -700,20 +677,16 @@
           <p><strong>Lygčių sistema</strong> (iš tiesinės lygties išreiškiame \(y\) ir įstatome):</p>
           <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} -3x^2 + 12y &amp;= 0 \\ 12x - 4y - 20 &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; y = 3x - 5;\quad x^2 - 12x + 20 = 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} -3x^2 + 12y &amp;= 0 \\ 12x - 4y - 20 &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; y = 3x - 5 \\ \Longrightarrow\; x^2 - 12x + 20 = 0 \end{gathered} \]</div>
           <div class="m-wide">\[ D = 64 \;\Longrightarrow\; x_{1,2} = \frac{12 \pm 8}{2} \;\Longrightarrow\; x_1 = 2,\quad x_2 = 10 \]</div><div class="m-narrow">\[ \begin{gathered} D = 64 \;\Longrightarrow\; x_{1,2} = \frac{12 \pm 8}{2} \\ \Longrightarrow\; x_1 = 2,\quad x_2 = 10 \end{gathered} \]</div>
-          <p><strong>Kritiniai taškai ir pakankamoji sąlyga:</strong></p>
-          <div class="tbl-wrap">
-  <table class="vtable pts">
-    <thead><tr><th scope="col">Taškas</th><th scope="col">\((2;\,1)\)</th><th scope="col">\((10;\,25)\)</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">\(A\)</th><td>\(-12\)</td><td>\(-60\)</td></tr>
-      <tr><th scope="row">\(B\)</th><td>\(12\)</td><td>\(12\)</td></tr>
-      <tr><th scope="row">\(C\)</th><td>\(-4\)</td><td>\(-4\)</td></tr>
-      <tr><th scope="row">\(D\)</th><td>\(-96 &lt; 0\)</td><td>\(96 &gt; 0\)</td></tr>
-      <tr><th scope="row">Išvada</th><td>balno taškas</td><td>\(A &lt; 0\): maksimumas</td></tr>
-    </tbody>
-  </table>
-</div>
-          <p><strong>Atsakymas.</strong> Per mėnesį reikėtų parduoti 1000 telefonų ir 2500 priedų. Didžiausias mėnesio pelnas yra \(P_{\max}(10;\,25) = 200\) tūkstančių eurų. Taškas \((2;\,1)\) yra balno taškas.</p>
+          <p><strong>Kritiniai taškai:</strong> \(K_1(2;\,1)\) ir \(K_2(10;\,25)\).</p>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <p>Antros eilės išvestinės: \(P''_{xx} = -6x\), \(P''_{xy} = 12\), \(P''_{yy} = -4\).</p>
+          <p><strong>Taškas \(K_1(2;\,1)\)</strong>:</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K_1) = -6\cdot 2 = -12 \\ B &amp;= P''_{xy}(K_1) = 12 \\ C &amp;= P''_{yy}(K_1) = -4 \\ D &amp;= (-12)\cdot(-4) - 12^2 = -96 &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K_1) = -6\cdot 2 \\ &amp;= -12 \\ B &amp;= P''_{xy}(K_1) = 12 \\ C &amp;= P''_{yy}(K_1) = -4 \\ D &amp;= (-12)\cdot(-4) - 12^2 \\ &amp;= -96 &lt; 0 \end{aligned} \]</div>
+          <p>\(D &lt; 0\), todėl \(K_1\) yra balno taškas.</p>
+          <p><strong>Taškas \(K_2(10;\,25)\)</strong>:</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K_2) = -6\cdot 10 = -60 \\ B &amp;= P''_{xy}(K_2) = 12 \\ C &amp;= P''_{yy}(K_2) = -4 \\ D &amp;= (-60)\cdot(-4) - 12^2 = 96 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K_2) = -6\cdot 10 \\ &amp;= -60 \\ B &amp;= P''_{xy}(K_2) = 12 \\ C &amp;= P''_{yy}(K_2) = -4 \\ D &amp;= (-60)\cdot(-4) - 12^2 \\ &amp;= 96 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K_2\) yra maksimumo taškas.</p>
+          <p><strong>Atsakymas.</strong> Per mėnesį reikėtų parduoti 1000 telefonų ir 2500 priedų. Didžiausias mėnesio pelnas yra \(P_{\max}(10;\,25) = 200\) tūkstančių eurų. Taškas \(K_1(2;\,1)\) yra balno taškas.</p>
         </div>
       </article>
 
@@ -735,7 +708,9 @@
           <p>Abi lygtis pakėlus kvadratu, gaunamos nepilnosios kvadratinės lygtys; tinka tik teigiami sprendiniai:</p>
           <div class="m-wide bp-lg">\[ \begin{gathered} 4x^2 - 81 = 0 \;\Longrightarrow\; (2x - 9)(2x + 9) = 0 \;\Longrightarrow\; x = 4{,}5 \\ y^2 - 16 = 0 \;\Longrightarrow\; (y - 4)(y + 4) = 0 \;\Longrightarrow\; y = 4 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 4x^2 - 81 = 0 \\ \Longrightarrow\; (2x - 9)(2x + 9) = 0 \\ \Longrightarrow\; x = 4{,}5 \\[4pt] y^2 - 16 = 0 \\ \Longrightarrow\; (y - 4)(y + 4) = 0 \\ \Longrightarrow\; y = 4 \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="m-wide bp-lg">\[ A = \frac{60\cdot 36}{7{,}5^3} = 5{,}12;\quad B = 0;\quad C = \frac{45\cdot 9}{5^3} = 3{,}24;\quad D &gt; 0;\quad A &gt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = \frac{60\cdot 36}{7{,}5^3} = 5{,}12;\quad B = 0 \\ C = \frac{45\cdot 9}{5^3} = 3{,}24 \\ D &gt; 0;\quad A &gt; 0 \end{gathered} \]</div>
+          <p>Antros eilės išvestinės: \(TC''_{xx} = \frac{60\cdot 36}{\big(\sqrt{36 + x^2}\big)^3}\), \(TC''_{xy} = 0\), \(TC''_{yy} = \frac{45\cdot 9}{\big(\sqrt{9 + y^2}\big)^3}\). Įstatome kritinio taško \(K(4{,}5;\,4)\) koordinates:</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = \frac{60\cdot 36}{\big(\sqrt{36 + 4{,}5^2}\big)^3} = \frac{2160}{7{,}5^3} = 5{,}12 \\ B &amp;= TC''_{xy}(K) = 0 \\ C &amp;= TC''_{yy}(K) = \frac{45\cdot 9}{\big(\sqrt{9 + 4^2}\big)^3} = \frac{405}{5^3} = 3{,}24 \\ D &amp;= AC - B^2 = 5{,}12\cdot 3{,}24 - 0^2 \approx 16{,}59 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= TC''_{xx}(K) \\ &amp;= \frac{60\cdot 36}{\big(\sqrt{36 + 4{,}5^2}\big)^3} \\ &amp;= \frac{2160}{7{,}5^3} = 5{,}12 \\ B &amp;= TC''_{xy}(K) = 0 \\ C &amp;= TC''_{yy}(K) \\ &amp;= \frac{45\cdot 9}{\big(\sqrt{9 + 4^2}\big)^3} = \frac{405}{5^3} \\ &amp;= 3{,}24 \\ D &amp;= AC - B^2 \\ &amp;= 5{,}12\cdot 3{,}24 - 0^2 \\ &amp;\approx 16{,}59 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(4{,}5;\,4)\) yra minimumo taškas.</p>
           <p><strong>Atsakymas.</strong> Vamzdynas turėtų kirsti pelkės ribą 4,5&nbsp;km į rytus nuo S, o kelią pasiekti dar 4&nbsp;km toliau į rytus. Atkarpų ilgiai yra 7,5&nbsp;km pelkėje, 5&nbsp;km miške ir 6,5&nbsp;km palei kelią. Mažiausios tiesimo sąnaudos yra \(TC_{\min} = 909\) tūkstančiai eurų.</p>
         </div>
       </article>
@@ -749,23 +724,19 @@
         </div>
         <div class="q-answer">
           <p><strong>Išvestinės ir lygčių sistema:</strong></p>
-          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 30ye^{-\frac{x^2 + y^2}{18}}\Big(1 - \frac{x^2}{9}\Big) &amp;= 0 \\ 30xe^{-\frac{x^2 + y^2}{18}}\Big(1 - \frac{y^2}{9}\Big) &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; (0;\,0),\quad (3;\,3) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 30ye^{-\frac{x^2 + y^2}{18}}\Big(1 - \frac{x^2}{9}\Big) &amp;= 0 \\ 30xe^{-\frac{x^2 + y^2}{18}}\Big(1 - \frac{y^2}{9}\Big) &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; (0;\,0),\quad (3;\,3) \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 30ye^{-\frac{x^2 + y^2}{18}}\Big(1 - \frac{x^2}{9}\Big) &amp;= 0 \\ 30xe^{-\frac{x^2 + y^2}{18}}\Big(1 - \frac{y^2}{9}\Big) &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; K_1(0;\,0),\quad K_2(3;\,3) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 30ye^{-\frac{x^2 + y^2}{18}}\Big(1 - \frac{x^2}{9}\Big) &amp;= 0 \\ 30xe^{-\frac{x^2 + y^2}{18}}\Big(1 - \frac{y^2}{9}\Big) &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; K_1(0;\,0),\quad K_2(3;\,3) \end{gathered} \]</div>
           <p>Daugiklis \(30e^{-\frac{x^2 + y^2}{18}}\) niekada nelygus nuliui. Jei \(y = 0\), iš antrosios lygties gauname \(x = 0\), t.&nbsp;y. tašką \((0;\,0)\). Kai abu kintamieji teigiami, turi būti \(1 - \frac{x^2}{9} = 0\) ir \(1 - \frac{y^2}{9} = 0\). Padauginę iš 9, gauname nepilnąsias kvadratines lygtis ir jas išskaidome dauginamaisiais:</p>
           <div class="m-wide bp-lg">\[ \begin{gathered} x^2 - 9 = 0 \;\Longrightarrow\; (x - 3)(x + 3) = 0 \;\Longrightarrow\; x = 3 \\ y^2 - 9 = 0 \;\Longrightarrow\; (y - 3)(y + 3) = 0 \;\Longrightarrow\; y = 3 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2 - 9 = 0 \;\Longrightarrow\; (x - 3)(x + 3) = 0 \\ \Longrightarrow\; x = 3 \\[4pt] y^2 - 9 = 0 \;\Longrightarrow\; (y - 3)(y + 3) = 0 \\ \Longrightarrow\; y = 3 \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="tbl-wrap">
-  <table class="vtable pts">
-    <thead><tr><th scope="col">Taškas</th><th scope="col">\((0;\,0)\)</th><th scope="col">\((3;\,3)\)</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">\(A\)</th><td>\(0\)</td><td>\(-60e^{-1}\)</td></tr>
-      <tr><th scope="row">\(B\)</th><td>\(30\)</td><td>\(0\)</td></tr>
-      <tr><th scope="row">\(C\)</th><td>\(0\)</td><td>\(-60e^{-1}\)</td></tr>
-      <tr><th scope="row">\(D\)</th><td>\(-900 &lt; 0\)</td><td>\(3600e^{-2} &gt; 0\)</td></tr>
-      <tr><th scope="row">Išvada</th><td>balno taškas visoje plokštumoje</td><td>\(A &lt; 0\): maksimumas</td></tr>
-    </tbody>
-  </table>
-</div>
-          <p><strong>Atsakymas.</strong> Geriausia per savaitę skirti 3 valandas gyvai muzikai ir surengti 3 degustacijas. Didžiausias papildomų svečių skaičius yra \(E_{\max}(3;\,3) = 270e^{-1} \approx 99{,}33\). Taškas \((0;\,0)\) yra balno taškas visoje plokštumoje, o leistinoje srityje jame pasiekiama mažiausia reikšmė.</p>
+          <p>Pažymime \(g = e^{-\frac{x^2 + y^2}{18}}\). Antros eilės išvestinės:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} E''_{xx} = 30yg\Big(\frac{x^3}{81} - \frac{x}{3}\Big);\quad E''_{yy} = 30xg\Big(\frac{y^3}{81} - \frac{y}{3}\Big) \\ E''_{xy} = 30g\Big(1 - \frac{x^2}{9}\Big)\Big(1 - \frac{y^2}{9}\Big) \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} E''_{xx} &amp;= 30yg\Big(\frac{x^3}{81} - \frac{x}{3}\Big) \\ E''_{xy} &amp;= 30g\Big(1 - \frac{x^2}{9}\Big)\Big(1 - \frac{y^2}{9}\Big) \\ E''_{yy} &amp;= 30xg\Big(\frac{y^3}{81} - \frac{y}{3}\Big) \end{aligned} \]</div>
+          <p><strong>Taškas \(K_1(0;\,0)\)</strong>, čia \(g = 1\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= E''_{xx}(K_1) = 0 \\ B &amp;= E''_{xy}(K_1) = 30\cdot 1\cdot 1\cdot 1 = 30 \\ C &amp;= E''_{yy}(K_1) = 0 \\ D &amp;= 0\cdot 0 - 30^2 = -900 &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= E''_{xx}(K_1) = 0 \\ B &amp;= E''_{xy}(K_1) \\ &amp;= 30\cdot 1\cdot 1\cdot 1 = 30 \\ C &amp;= E''_{yy}(K_1) = 0 \\ D &amp;= 0\cdot 0 - 30^2 = -900 &lt; 0 \end{aligned} \]</div>
+          <p>\(D &lt; 0\), todėl \(K_1\) yra balno taškas visoje plokštumoje.</p>
+          <p><strong>Taškas \(K_2(3;\,3)\)</strong>, čia \(g = e^{-1}\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= E''_{xx}(K_2) = 90e^{-1}\Big(\frac{27}{81} - 1\Big) = -60e^{-1} \\ B &amp;= E''_{xy}(K_2) = 0 \\ C &amp;= E''_{yy}(K_2) = -60e^{-1} \\ D &amp;= 3600e^{-2} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= E''_{xx}(K_2) \\ &amp;= 90e^{-1}\Big(\frac{27}{81} - 1\Big) = -60e^{-1} \\ B &amp;= E''_{xy}(K_2) = 0 \\ C &amp;= E''_{yy}(K_2) = -60e^{-1} \\ D &amp;= 3600e^{-2} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K_2\) yra maksimumo taškas.</p>
+          <p><strong>Atsakymas.</strong> Geriausia per savaitę skirti 3 valandas gyvai muzikai ir surengti 3 degustacijas. Didžiausias papildomų svečių skaičius yra \(E_{\max}(3;\,3) = 270e^{-1} \approx 99{,}33\). Taškas \(K_1(0;\,0)\) yra balno taškas visoje plokštumoje, o leistinoje srityje jame pasiekiama mažiausia reikšmė.</p>
         </div>
       </article>
     </div>

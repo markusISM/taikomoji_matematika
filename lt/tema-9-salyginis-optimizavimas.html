@@ -108,8 +108,8 @@
       <ol class="steps-list">
         <li><strong>Užrašykite modelį.</strong> Apibrėžkite kintamuosius, tikslo funkciją \(f(x;\,y)\) ir apribojimą \(g(x;\,y) = m\). Nurodykite, ar reikia rasti didžiausią, ar mažiausią \(f(x;\,y)\) reikšmę, kai \(g(x;\,y) = m\).</li>
         <li>Sudarykite Lagranžo funkciją \(L = f - \lambda(g - m)\).</li>
-        <li>Raskite \(L'_x\) ir \(L'_y\), prilyginkite jas nuliui ir į sistemą įtraukite apribojimo lygtį. Išspręskite trijų lygčių sistemą (žr. <a href="#sistema">„Lagranžo lygčių sistemos sprendimas“</a>).</li>
-        <li>Nustatykite kritinio taško rūšį. Patikrinkite pakankamąją sąlygą pagal funkcijos \(L\) antros eilės dalines išvestines, įstatę kritinio taško koordinates ir \(\lambda\) reikšmę (žr. <a href="tema-9.html#metodas">„Lagranžo daugiklių metodas“</a>), arba pagal Kobo-Daglaso funkcijos išgaubtumą (žr. <a href="tema-9.html#kobo-daglas-l">„Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose“</a>).</li>
+        <li>Raskite \(L'_x\) ir \(L'_y\), prilyginkite jas nuliui ir į sistemą įtraukite apribojimo lygtį. Išspręskite trijų lygčių sistemą (žr. <a href="#sistema">„Lagranžo lygčių sistemos sprendimas“</a>). Gautą tašką pažymėkite raide, pavyzdžiui, \(K(x_0;\,y_0)\), o daugiklio reikšmę \(\lambda\) užrašykite atskirai – į taško koordinates jos neįtraukite.</li>
+        <li>Nustatykite kritinio taško rūšį. Patikrinkite pakankamąją sąlygą: į funkcijos \(L\) antros eilės dalines išvestines įstatykite taško \(K\) koordinates ir \(\lambda\) reikšmę ir gaukite \(A = L''_{xx}(K)\), \(B = L''_{xy}(K)\), \(C = L''_{yy}(K)\) (žr. <a href="tema-9.html#metodas">„Lagranžo daugiklių metodas“</a>), arba pagal Kobo-Daglaso funkcijos išgaubtumą (žr. <a href="tema-9.html#kobo-daglas-l">„Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose“</a>).</li>
         <li>Apskaičiuokite optimalią reikšmę. Jei prašoma įvertinti jos pokytį, taikykite \(\Delta f^{*} \approx \lambda\cdot\Delta m\).</li>
       </ol>
 
@@ -187,7 +187,7 @@ Gamykla per mėnesį turi pagaminti lygiai 400 dviračių.
           <p>Rastą \(x\) įstatome į reiškinį \(y = 3x - 200\): \(y = 3\cdot 150 - 200 = 250\).</p>
           <p><strong>Daugiklio reikšmė.</strong> Reikšmes \(x = 150\) ir \(y = 250\) įstatome į pirmąją \(\lambda\) išraišką, o antrąja patikriname:</p>
           <div class="m-wide bp-lg">\[ \begin{aligned} \lambda &amp;= -0{,}4\cdot 150 - 0{,}1\cdot 250 + 100 = -60 - 25 + 100 = 15 \\ \lambda &amp;= -0{,}2\cdot 250 - 0{,}1\cdot 150 + 80 = -50 - 15 + 80 = 15 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} \lambda &amp;= -0{,}4\cdot 150 - 0{,}1\cdot 250 + 100 \\ &amp;= -60 - 25 + 100 = 15 \\[4pt] \lambda &amp;= -0{,}2\cdot 250 - 0{,}1\cdot 150 + 80 \\ &amp;= -50 - 15 + 80 = 15 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((150;\,250;\,15)\): \(x = 150\), \(y = 250\), \(\lambda = 15\).</p>
+          <p>Gauname kritinį tašką \(K(150;\,250)\) ir Lagranžo daugiklio reikšmę \(\lambda = 15\).</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -208,9 +208,9 @@ Gamykla per mėnesį turi pagaminti lygiai 400 dviračių.
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = -0{,}4;\quad B = L''_{xy} = -0{,}1;\quad C = L''_{yy} = -0{,}2 \\ D = AC - B^2 = (-0{,}4)\cdot(-0{,}2) - (-0{,}1)^2 = 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = -0{,}4 \\ B &amp;= L''_{xy} = -0{,}1 \\ C &amp;= L''_{yy} = -0{,}2 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}4)\cdot(-0{,}2) - (-0{,}1)^2 \\ &amp;= 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((150;\,250)\) yra maksimumo taškas.</p>
+          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx}(K) = -0{,}4;\quad B = L''_{xy}(K) = -0{,}1;\quad C = L''_{yy}(K) = -0{,}2 \\ D = AC - B^2 = (-0{,}4)\cdot(-0{,}2) - (-0{,}1)^2 = 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -0{,}4 \\ B &amp;= L''_{xy}(K) = -0{,}1 \\ C &amp;= L''_{yy}(K) = -0{,}2 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}4)\cdot(-0{,}2) - (-0{,}1)^2 \\ &amp;= 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(150;\,250)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Didžiausias pelnas ir jo pokytis</span></h4>
@@ -274,7 +274,7 @@ a) Kiek vienetų reikėtų pagaminti kiekvienoje pamainoje, kad sąnaudos būtų
           <p>Tada \(y = 500 - 200 = 300\).</p>
           <p><strong>Daugiklio reikšmė.</strong> Reikšmes įstatome į pirmąją \(\lambda\) išraišką, o antrąja patikriname:</p>
           <div class="m-wide bp-lg">\[ \begin{aligned} \lambda &amp;= 0{,}6\cdot 200 + 0{,}1\cdot 300 + 20 = 120 + 30 + 20 = 170 \\ \lambda &amp;= 0{,}4\cdot 300 + 0{,}1\cdot 200 + 30 = 120 + 20 + 30 = 170 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} \lambda &amp;= 0{,}6\cdot 200 + 0{,}1\cdot 300 + 20 \\ &amp;= 120 + 30 + 20 = 170 \\[4pt] \lambda &amp;= 0{,}4\cdot 300 + 0{,}1\cdot 200 + 30 \\ &amp;= 120 + 20 + 30 = 170 \end{aligned} \]</div>
-          <p>Kritinis taškas yra \((200;\,300;\,170)\).</p>
+          <p>Gauname kritinį tašką \(K(200;\,300)\) ir Lagranžo daugiklio reikšmę \(\lambda = 170\).</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -295,9 +295,9 @@ a) Kiek vienetų reikėtų pagaminti kiekvienoje pamainoje, kad sąnaudos būtų
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = 0{,}6;\quad B = L''_{xy} = 0{,}1;\quad C = L''_{yy} = 0{,}4 \\ D = AC - B^2 = 0{,}6\cdot 0{,}4 - 0{,}1^2 = 0{,}24 - 0{,}01 = 0{,}23 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = 0{,}6 \\ B &amp;= L''_{xy} = 0{,}1 \\ C &amp;= L''_{yy} = 0{,}4 \\ D &amp;= AC - B^2 \\ &amp;= 0{,}6\cdot 0{,}4 - 0{,}1^2 \\ &amp;= 0{,}24 - 0{,}01 = 0{,}23 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((200;\,300)\) yra minimumo taškas.</p>
+          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx}(K) = 0{,}6;\quad B = L''_{xy}(K) = 0{,}1;\quad C = L''_{yy}(K) = 0{,}4 \\ D = AC - B^2 = 0{,}6\cdot 0{,}4 - 0{,}1^2 = 0{,}24 - 0{,}01 = 0{,}23 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 0{,}6 \\ B &amp;= L''_{xy}(K) = 0{,}1 \\ C &amp;= L''_{yy}(K) = 0{,}4 \\ D &amp;= AC - B^2 \\ &amp;= 0{,}6\cdot 0{,}4 - 0{,}1^2 \\ &amp;= 0{,}24 - 0{,}01 = 0{,}23 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(200;\,300)\) yra minimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Mažiausios sąnaudos</span></h4>
@@ -367,7 +367,7 @@ a) Kiek vienetų reikėtų pagaminti kiekvienoje pamainoje, kad sąnaudos būtų
           <p>Tada \(x = 2\cdot 450 - 150 = 750\).</p>
           <p><strong>Daugiklio reikšmė.</strong> Reikšmes įstatome į abi \(\lambda\) išraiškas – gaunama ta pati reikšmė:</p>
           <div class="m-wide">\[ \lambda = 0{,}02\cdot 750 + 6 = 21;\qquad \lambda = 0{,}04\cdot 450 + 3 = 21 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 0{,}02\cdot 750 + 6 = 21 \\ \lambda = 0{,}04\cdot 450 + 3 = 21 \end{gathered} \]</div>
-          <p>Kritinis taškas yra \((750;\,450;\,21)\).</p>
+          <p>Gauname kritinį tašką \(K(750;\,450)\) ir Lagranžo daugiklio reikšmę \(\lambda = 21\).</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -389,9 +389,9 @@ a) Kiek vienetų reikėtų pagaminti kiekvienoje pamainoje, kad sąnaudos būtų
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = 0{,}02;\quad B = L''_{xy} = 0;\quad C = L''_{yy} = 0{,}04 \\ D = AC - B^2 = 0{,}02\cdot 0{,}04 - 0^2 = 0{,}0008 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = 0{,}02 \\ B &amp;= L''_{xy} = 0 \\ C &amp;= L''_{yy} = 0{,}04 \\ D &amp;= AC - B^2 \\ &amp;= 0{,}02\cdot 0{,}04 - 0^2 \\ &amp;= 0{,}0008 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((750;\,450)\) yra minimumo taškas.</p>
+          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx}(K) = 0{,}02;\quad B = L''_{xy}(K) = 0;\quad C = L''_{yy}(K) = 0{,}04 \\ D = AC - B^2 = 0{,}02\cdot 0{,}04 - 0^2 = 0{,}0008 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 0{,}02 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 0{,}04 \\ D &amp;= AC - B^2 \\ &amp;= 0{,}02\cdot 0{,}04 - 0^2 \\ &amp;= 0{,}0008 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(750;\,450)\) yra minimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">7</span><span>Mažiausios sąnaudos ir jų pokytis</span></h4>
@@ -456,7 +456,7 @@ vienetų. Dirbtuvėse yra lygiai 34 darbo vietos. Kiekvieną vietą užima viena
           <p>Tada \(y = 34 - 20 = 14\).</p>
           <p><strong>Daugiklio reikšmė.</strong> Reikšmes įstatome į abi \(\lambda\) išraiškas – gaunama ta pati reikšmė:</p>
           <div class="m-wide">\[ \lambda = 30 + 14 - 2\cdot 20 = 4;\qquad \lambda = 40 + 20 - 4\cdot 14 = 4 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 30 + 14 - 2\cdot 20 = 4 \\ \lambda = 40 + 20 - 4\cdot 14 = 4 \end{gathered} \]</div>
-          <p>Kritinis taškas yra \((20;\,14;\,4)\).</p>
+          <p>Gauname kritinį tašką \(K(20;\,14)\) ir Lagranžo daugiklio reikšmę \(\lambda = 4\).</p>
           <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
           <details class="more more--why gauss-alt">
           <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
@@ -479,9 +479,9 @@ vienetų. Dirbtuvėse yra lygiai 34 darbo vietos. Kiekvieną vietą užima viena
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
-          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške lygios šiems skaičiams:</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = -2;\quad B = L''_{xy} = 1;\quad C = L''_{yy} = -4 \\ D = AC - B^2 = (-2)\cdot(-4) - 1^2 = 8 - 1 = 7 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = -2 \\ B &amp;= L''_{xy} = 1 \\ C &amp;= L''_{yy} = -4 \\ D &amp;= AC - B^2 \\ &amp;= (-2)\cdot(-4) - 1^2 \\ &amp;= 8 - 1 = 7 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((20;\,14)\) yra maksimumo taškas.</p>
+          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške \(K\) lygios tiems patiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx}(K) = -2;\quad B = L''_{xy}(K) = 1;\quad C = L''_{yy}(K) = -4 \\ D = AC - B^2 = (-2)\cdot(-4) - 1^2 = 8 - 1 = 7 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -2 \\ B &amp;= L''_{xy}(K) = 1 \\ C &amp;= L''_{yy}(K) = -4 \\ D &amp;= AC - B^2 \\ &amp;= (-2)\cdot(-4) - 1^2 \\ &amp;= 8 - 1 = 7 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(20;\,14)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Didžiausia gamybos apimtis</span></h4>
@@ -551,15 +551,15 @@ a) Kiek bilietų reikėtų įsigyti ir kiek filmų išsinuomoti, kad išleidus v
           <p>Tada \(y = \frac{64\cdot 9}{9} = 64\).</p>
           <p><strong>Daugiklio reikšmė.</strong> Įstatome \(y = 64\) į antrąją \(\lambda\) išraišką, o pirmąja patikriname (\(\sqrt{64} = 8\), \(\sqrt{9} = 3\)):</p>
           <div class="m-wide">\[ \lambda = \frac{1}{\sqrt{64}} = \frac{1}{8} = 0{,}125;\qquad \lambda = \frac{3}{8\cdot\sqrt{9}} = \frac{3}{24} = 0{,}125 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{1}{\sqrt{64}} = \frac{1}{8} = 0{,}125 \\ \lambda = \frac{3}{8\cdot\sqrt{9}} = \frac{3}{24} = 0{,}125 \end{gathered} \]</div>
-          <p>Kritinis taškas yra \((9;\,64;\,0{,}125)\).</p>
+          <p>Gauname kritinį tašką \(K(9;\,64)\) ir Lagranžo daugiklio reikšmę \(\lambda = 0{,}125\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
           <p>Kad būtų patogu diferencijuoti dar kartą, trupmenas užrašome laipsniais: \(\frac{3}{\sqrt{x}} = 3x^{-0{,}5}\), \(\frac{2}{\sqrt{y}} = 2y^{-0{,}5}\). Nariai su \(\lambda\) pirmos eilės išvestinėse yra pastovūs, todėl antros eilės išvestinėse \(\lambda\) nelieka:</p>
           <div class="m-wide">\[ L''_{xx} = -1{,}5x^{-1{,}5};\qquad L''_{xy} = 0;\qquad L''_{yy} = -y^{-1{,}5} \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = -1{,}5x^{-1{,}5} \\ L''_{xy} = 0 \\ L''_{yy} = -y^{-1{,}5} \end{gathered} \]</div>
-          <p>Kritiniame taške \(x^{1{,}5} = 9\cdot\sqrt{9} = 27\), o \(y^{1{,}5} = 64\cdot\sqrt{64} = 512\):</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = -\frac{1{,}5}{27} = -\frac{1}{18};\quad B = 0;\quad C = -\frac{1}{512} \\ D = AC - B^2 = \Big(-\frac{1}{18}\Big)\cdot\Big(-\frac{1}{512}\Big) - 0^2 = \frac{1}{9216} &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= -\frac{1{,}5}{27} = -\frac{1}{18} \\ B &amp;= 0;\quad C = -\frac{1}{512} \\ D &amp;= \Big(-\frac{1}{18}\Big)\cdot\Big(-\frac{1}{512}\Big) - 0^2 \\ &amp;= \frac{1}{9216} &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((9;\,64)\) yra maksimumo taškas.</p>
+          <p>Išvestinėse yra kintamųjų, todėl įstatome kritinio taško \(K(9;\,64)\) koordinates. Šiame taške \(x^{1{,}5} = 9\cdot\sqrt{9} = 27\), o \(y^{1{,}5} = 64\cdot\sqrt{64} = 512\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -\frac{1{,}5}{9^{1{,}5}} = -\frac{1{,}5}{27} = -\frac{1}{18} \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -\frac{1}{64^{1{,}5}} = -\frac{1}{512} \\ D &amp;= AC - B^2 = \Big(-\frac{1}{18}\Big)\cdot\Big(-\frac{1}{512}\Big) - 0^2 = \frac{1}{9216} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -\frac{1{,}5}{9^{1{,}5}} \\ &amp;= -\frac{1{,}5}{27} = -\frac{1}{18} \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -\frac{1}{64^{1{,}5}} \\ &amp;= -\frac{1}{512} \\ D &amp;= AC - B^2 \\ &amp;= \Big(-\frac{1}{18}\Big)\cdot\Big(-\frac{1}{512}\Big) - 0^2 \\ &amp;= \frac{1}{9216} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl \(K(9;\,64)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Didžiausias naudingumas ir jo pokytis</span></h4>
@@ -626,11 +626,11 @@ vienetų. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naudo
           <p>Tada \(x = 16\cdot 10 = 160\).</p>
           <p><strong>Daugiklio reikšmė.</strong> Pirmąją lygtį \(15x^{-0{,}25}y^{0{,}25} = 15\lambda\) padaliję iš 15, gauname \(\lambda = x^{-0{,}25}y^{0{,}25}\). Šį reiškinį patogu užrašyti viena trupmena: \(x^{-0{,}25}y^{0{,}25} = \big(\frac{y}{x}\big)^{0{,}25}\):</p>
           \[ \lambda = \Big(\frac{10}{160}\Big)^{0{,}25} = \Big(\frac{1}{16}\Big)^{0{,}25} = 0{,}5 \]
-          <p>Paskutinę reikšmę galima rasti be skaičiuotuvo: \(0{,}5^4 = 0{,}0625 = \frac{1}{16}\). Kritinis taškas yra \((160;\,10;\,0{,}5)\).</p>
+          <p>Paskutinę reikšmę galima rasti be skaičiuotuvo: \(0{,}5^4 = 0{,}0625 = \frac{1}{16}\). Gauname kritinį tašką \(K(160;\,10)\) ir Lagranžo daugiklio reikšmę \(\lambda = 0{,}5\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Kritinio taško rūšis</span></h4>
-          <p>Gamybos funkcija yra Kobo-Daglaso funkcija, kurios \(A = 20 &gt; 0\) ir \(\alpha + \beta = 0{,}75 + 0{,}25 = 1 \le 1\), todėl ji išgaubta. Biudžeto apribojimo narys yra tiesinis, todėl Lagranžo funkcija \(L\) taip pat išgaubta (žr. <a href="tema-9.html#kobo-daglas-l">Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose</a>). Vadinasi, \((160;\,10)\) yra maksimumo taškas.</p>
+          <p>Gamybos funkcija yra Kobo-Daglaso funkcija, kurios \(A = 20 &gt; 0\) ir \(\alpha + \beta = 0{,}75 + 0{,}25 = 1 \le 1\), todėl ji išgaubta. Biudžeto apribojimo narys yra tiesinis, todėl Lagranžo funkcija \(L\) taip pat išgaubta (žr. <a href="tema-9.html#kobo-daglas-l">Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose</a>). Vadinasi, \(K(160;\,10)\) yra maksimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Didžiausia gamybos apimtis ir jos pokytis</span></h4>
@@ -695,15 +695,15 @@ tūkstančių puslapių. Čia \(x\) yra operatorių darbo valandų skaičius, o 
           <div class="m-wide bp-lg">\[ \begin{gathered} 12\cdot 0{,}375\lambda + 18\cdot 0{,}25\lambda = 360 \;\Longrightarrow\; 4{,}5\lambda + 4{,}5\lambda = 360 \\ \Longrightarrow\; 9\lambda = 360 \;\Longrightarrow\; \lambda = 40 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 12\cdot 0{,}375\lambda + 18\cdot 0{,}25\lambda = 360 \\ \Longrightarrow\; 4{,}5\lambda + 4{,}5\lambda = 360 \\ \Longrightarrow\; 9\lambda = 360 \\ \Longrightarrow\; \lambda = 40 \end{gathered} \]</div>
           <p><strong>Kintamųjų reikšmės.</strong> Reikšmę \(\lambda = 40\) įstatome į šaknų išraiškas, o tada abi lygybės puses keliame kvadratu:</p>
           <div class="m-wide bp-lg">\[ \sqrt{x} = 0{,}375\cdot 40 = 15 \;\Longrightarrow\; x = 225;\qquad \sqrt{y} = 0{,}25\cdot 40 = 10 \;\Longrightarrow\; y = 100 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \sqrt{x} = 0{,}375\cdot 40 = 15 \;\Longrightarrow\; x = 225 \\ \sqrt{y} = 0{,}25\cdot 40 = 10 \;\Longrightarrow\; y = 100 \end{gathered} \]</div>
-          <p>Kritinis taškas yra \((225;\,100;\,40)\).</p>
+          <p>Gauname kritinį tašką \(K(225;\,100)\) ir Lagranžo daugiklio reikšmę \(\lambda = 40\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
           <p>Trupmenas užrašome laipsniais: \(\frac{6\lambda}{\sqrt{x}} = 6\lambda x^{-0{,}5}\), \(\frac{9\lambda}{\sqrt{y}} = 9\lambda y^{-0{,}5}\). Diferencijuojame dar kartą, pavyzdžiui, \(\big(-6\lambda x^{-0{,}5}\big)'_x = 3\lambda x^{-1{,}5}\):</p>
           <div class="m-wide">\[ L''_{xx} = 3\lambda x^{-1{,}5};\qquad L''_{xy} = 0;\qquad L''_{yy} = 4{,}5\lambda y^{-1{,}5} \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = 3\lambda x^{-1{,}5} \\ L''_{xy} = 0 \\ L''_{yy} = 4{,}5\lambda y^{-1{,}5} \end{gathered} \]</div>
-          <p>Šįkart antros eilės išvestinėse liko \(\lambda\), todėl kartu su kritinio taško koordinatėmis įstatome ir \(\lambda = 40\). Kritiniame taške \(x^{1{,}5} = 225\cdot\sqrt{225} = 3375\), o \(y^{1{,}5} = 100\cdot\sqrt{100} = 1000\):</p>
-          <div class="m-wide bp-lg">\[ \begin{gathered} A = \frac{3\cdot 40}{3375} \approx 0{,}036;\quad B = 0;\quad C = \frac{4{,}5\cdot 40}{1000} = 0{,}18 \\ D = AC - B^2 \approx 0{,}036\cdot 0{,}18 - 0^2 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= \frac{3\cdot 40}{3375} \approx 0{,}036;\quad B = 0 \\ C &amp;= \frac{4{,}5\cdot 40}{1000} = 0{,}18 \\ D &amp;= AC - B^2 \\ &amp;\approx 0{,}036\cdot 0{,}18 - 0^2 &gt; 0 \end{aligned} \]</div>
-          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((225;\,100)\) yra minimumo taškas.</p>
+          <p>Šįkart antros eilės išvestinėse yra ne tik \(x\) ir \(y\), bet ir \(\lambda\). Todėl įstatome kritinio taško \(K(225;\,100)\) koordinates ir daugiklio reikšmę \(\lambda = 40\). Šiame taške \(x^{1{,}5} = 225\cdot\sqrt{225} = 3375\), o \(y^{1{,}5} = 100\cdot\sqrt{100} = 1000\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = \frac{3\cdot 40}{225^{1{,}5}} = \frac{120}{3375} \approx 0{,}036 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = \frac{4{,}5\cdot 40}{100^{1{,}5}} = \frac{180}{1000} = 0{,}18 \\ D &amp;= AC - B^2 = \frac{120}{3375}\cdot 0{,}18 - 0^2 = 0{,}0064 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = \frac{3\cdot 40}{225^{1{,}5}} \\ &amp;= \frac{120}{3375} \approx 0{,}036 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = \frac{4{,}5\cdot 40}{100^{1{,}5}} \\ &amp;= \frac{180}{1000} = 0{,}18 \\ D &amp;= AC - B^2 \\ &amp;= \frac{120}{3375}\cdot 0{,}18 - 0^2 \\ &amp;= 0{,}0064 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl \(K(225;\,100)\) yra minimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Mažiausios sąnaudos ir jų pokytis</span></h4>
@@ -769,11 +769,11 @@ kėdžių. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naud
           <p>Tada \(y = 0{,}16\cdot 125 = 20\).</p>
           <p><strong>Daugiklio reikšmė.</strong> Pirmojoje lygtyje \(x^{-0{,}5}y^{0{,}5} = \sqrt{\frac{y}{x}} = \sqrt{\frac{20}{125}} = \sqrt{0{,}16} = 0{,}4\):</p>
           <div class="m-wide">\[ 4\lambda\cdot 0{,}4 = 16 \;\Longrightarrow\; 1{,}6\lambda = 16 \;\Longrightarrow\; \lambda = 10 \]</div><div class="m-narrow">\[ \begin{gathered} 4\lambda\cdot 0{,}4 = 16 \\ \Longrightarrow\; 1{,}6\lambda = 16 \\ \Longrightarrow\; \lambda = 10 \end{gathered} \]</div>
-          <p>Kritinis taškas yra \((125;\,20;\,10)\).</p>
+          <p>Gauname kritinį tašką \(K(125;\,20)\) ir Lagranžo daugiklio reikšmę \(\lambda = 10\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Kritinio taško rūšis</span></h4>
-          <p>Apribojimo kairioji pusė yra Kobo-Daglaso funkcija, kurios \(A = 8 &gt; 0\) ir \(\alpha + \beta = 0{,}5 + 0{,}5 = 1 \le 1\), todėl ji išgaubta. Kadangi \(\lambda = 10 &gt; 0\), narys \(-\lambda\big(8x^{0{,}5}y^{0{,}5} - 400\big)\) yra įgaubtas. Sąnaudų funkcija tiesinė, todėl \(L\) yra įgaubta funkcija (žr. <a href="tema-9.html#kobo-daglas-l">Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose</a>), o \((125;\,20)\) – minimumo taškas.</p>
+          <p>Apribojimo kairioji pusė yra Kobo-Daglaso funkcija, kurios \(A = 8 &gt; 0\) ir \(\alpha + \beta = 0{,}5 + 0{,}5 = 1 \le 1\), todėl ji išgaubta. Kadangi \(\lambda = 10 &gt; 0\), narys \(-\lambda\big(8x^{0{,}5}y^{0{,}5} - 400\big)\) yra įgaubtas. Sąnaudų funkcija tiesinė, todėl \(L\) yra įgaubta funkcija (žr. <a href="tema-9.html#kobo-daglas-l">Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose</a>), o \(K(125;\,20)\) – minimumo taškas.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Mažiausios sąnaudos ir jų pokytis</span></h4>
@@ -810,9 +810,9 @@ kėdžių. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naud
           <p><strong>Modelis:</strong></p>
           \[ \begin{aligned} &amp;\max_{x;\,y}\; P(x;\,y) \\ &amp;\text{kai}\;\; x + y = 500 \end{aligned} \]
           <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema tiesinė; sulyginus \(\lambda\) išraiškas gaunama \(x = 2y - 100\)):</p>
-          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 190 - 0{,}4x - 0{,}2y - \lambda &amp;= 0 \\ 210 - 0{,}6y - 0{,}2x - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \;\Longrightarrow\; (300;\,200;\,30) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 190 - 0{,}4x - 0{,}2y - \lambda &amp;= 0 \\ 210 - 0{,}6y - 0{,}2x - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \\ \Longrightarrow\; (300;\,200;\,30) \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 190 - 0{,}4x - 0{,}2y - \lambda &amp;= 0 \\ 210 - 0{,}6y - 0{,}2x - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \;\Longrightarrow\; K(300;\,200),\ \lambda = 30 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 190 - 0{,}4x - 0{,}2y - \lambda &amp;= 0 \\ 210 - 0{,}6y - 0{,}2x - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \\ \Longrightarrow\; K(300;\,200),\ \lambda = 30 \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="m-wide bp-lg">\[ A = -0{,}4;\quad B = -0{,}2;\quad C = -0{,}6;\quad D = 0{,}2 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -0{,}4;\quad B = -0{,}2;\quad C = -0{,}6 \\ D = 0{,}2 &gt; 0;\quad A &lt; 0 \end{gathered} \]</div>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -0{,}4 \\ B &amp;= L''_{xy}(K) = -0{,}2 \\ C &amp;= L''_{yy}(K) = -0{,}6 \\ D &amp;= 0{,}2 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -0{,}4 \\ B &amp;= L''_{xy}(K) = -0{,}2 \\ C &amp;= L''_{yy}(K) = -0{,}6 \\ D &amp;= 0{,}2 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> a) Per mėnesį reikėtų pagaminti 300 tonų natūralaus ir 200 tonų vaisinio jogurto. Didžiausias mėnesio pelnas yra \(P_{\max}(300;\,200) = 37\,000\) eurų. b) Pelno pokytis eurais yra \(\Delta P^{*} \approx 30\cdot 10 = 300\).</p>
         </div>
       </article>
@@ -828,9 +828,9 @@ kėdžių. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naud
           <div class="m-wide">\[ TC(x;\,y) = 0{,}02x^2 + 4x + 0{,}01y^2 + 8y \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 0{,}02x^2 + 4x \\ &amp;\phantom{=}\; {}+ 0{,}01y^2 + 8y \end{aligned} \]</div>
           <div class="m-wide">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 0{,}02x^2 + 4x + 0{,}01y^2 + 8y \\ &amp;\text{kai}\;\; x + y = 1000 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) \\ &amp;\text{kai}\;\; x + y = 1000 \end{aligned} \]</div>
           <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema tiesinė; sulyginus \(\lambda\) išraiškas gaunama \(y = 2x - 200\)):</p>
-          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 0{,}04x + 4 - \lambda &amp;= 0 \\ 0{,}02y + 8 - \lambda &amp;= 0 \\ x + y &amp;= 1000 \end{aligned} \right. \;\Longrightarrow\; (400;\,600;\,20) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 0{,}04x + 4 - \lambda &amp;= 0 \\ 0{,}02y + 8 - \lambda &amp;= 0 \\ x + y &amp;= 1000 \end{aligned} \right. \\ \Longrightarrow\; (400;\,600;\,20) \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 0{,}04x + 4 - \lambda &amp;= 0 \\ 0{,}02y + 8 - \lambda &amp;= 0 \\ x + y &amp;= 1000 \end{aligned} \right. \;\Longrightarrow\; K(400;\,600),\ \lambda = 20 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 0{,}04x + 4 - \lambda &amp;= 0 \\ 0{,}02y + 8 - \lambda &amp;= 0 \\ x + y &amp;= 1000 \end{aligned} \right. \\ \Longrightarrow\; K(400;\,600),\ \lambda = 20 \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="m-wide bp-lg">\[ A = 0{,}04;\quad B = 0;\quad C = 0{,}02;\quad D = 0{,}0008 &gt; 0;\quad A &gt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = 0{,}04;\quad B = 0;\quad C = 0{,}02 \\ D = 0{,}0008 &gt; 0;\quad A &gt; 0 \end{gathered} \]</div>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 0{,}04 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 0{,}02 \\ D &amp;= 0{,}0008 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 0{,}04 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 0{,}02 \\ D &amp;= 0{,}0008 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> a) Iš A kepyklos reikėtų pristatyti 400 dėžių, o iš B – 600. Mažiausios dienos sąnaudos yra \(TC_{\min}(400;\,600) = 13\,200\) eurų. b) 5&nbsp;% nuo 1000 yra \(\Delta m = 50\). Sąnaudų pokytis eurais yra \(\Delta TC^{*} \approx 20\cdot 50 = 1000\).</p>
         </div>
       </article>
@@ -846,9 +846,10 @@ kėdžių. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naud
           <p><strong>Modelis:</strong></p>
           \[ \begin{aligned} &amp;\max_{x;\,y}\; U(x;\,y) = 4\ln x + 6\ln y \\ &amp;\text{kai}\;\; 10x + 20y = 500 \end{aligned} \]
           <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema netiesinė; iš pirmųjų dviejų lygčių \(\lambda = \frac{0{,}4}{x} = \frac{0{,}3}{y}\), todėl \(y = 0{,}75x\)):</p>
-          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} \frac{4}{x} - 10\lambda &amp;= 0 \\ \frac{6}{y} - 20\lambda &amp;= 0 \\ 10x + 20y &amp;= 500 \end{aligned} \right. \;\Longrightarrow\; (20;\,15;\,0{,}02) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} \frac{4}{x} - 10\lambda &amp;= 0 \\ \frac{6}{y} - 20\lambda &amp;= 0 \\ 10x + 20y &amp;= 500 \end{aligned} \right. \\ \Longrightarrow\; (20;\,15;\,0{,}02) \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} \frac{4}{x} - 10\lambda &amp;= 0 \\ \frac{6}{y} - 20\lambda &amp;= 0 \\ 10x + 20y &amp;= 500 \end{aligned} \right. \;\Longrightarrow\; K(20;\,15),\ \lambda = 0{,}02 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} \frac{4}{x} - 10\lambda &amp;= 0 \\ \frac{6}{y} - 20\lambda &amp;= 0 \\ 10x + 20y &amp;= 500 \end{aligned} \right. \\ \Longrightarrow\; K(20;\,15),\ \lambda = 0{,}02 \end{gathered} \]</div>
           <p><strong>Pakankamoji sąlyga:</strong></p>
-          <div class="m-wide bp-lg">\[ A = -\frac{4}{400} = -0{,}01;\quad B = 0;\quad C = -\frac{6}{225} \approx -0{,}027;\quad D &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -\frac{4}{400} = -0{,}01;\quad B = 0 \\ C = -\frac{6}{225} \approx -0{,}027 \\ D &gt; 0;\quad A &lt; 0 \end{gathered} \]</div>
+          <p>Antros eilės išvestinės: \(L''_{xx} = -\frac{4}{x^2}\), \(L''_{xy} = 0\), \(L''_{yy} = -\frac{6}{y^2}\). Įstatome \(K(20;\,15)\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -\frac{4}{20^2} = -0{,}01 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -\frac{6}{15^2} \approx -0{,}027 \\ D &amp;= AC - B^2 \approx 0{,}00027 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -\frac{4}{20^2} \\ &amp;= -0{,}01 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -\frac{6}{15^2} \\ &amp;\approx -0{,}027 \\ D &amp;= AC - B^2 \approx 0{,}00027 &gt; 0 \\ A &amp;&lt; 0 \end{aligned} \]</div>
           <p><strong>Atsakymas.</strong> a) Restorane reikėtų apsilankyti 20 kartų ir įsigyti 15 koncertų bilietų. \(U_{\max} = 4\ln 20 + 6\ln 15 \approx 28{,}23\). b) \(\Delta U^{*} \approx 0{,}02\cdot 50 = 1\).</p>
         </div>
       </article>
@@ -865,9 +866,9 @@ kėdžių. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naud
           <p><strong>Modelis:</strong></p>
           \[ \begin{aligned} &amp;\max_{x;\,y}\; Q(x;\,y) \\ &amp;\text{kai}\;\; 20x + 30y = 5000 \end{aligned} \]
           <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema netiesinė; pirmąją lygtį padalijus iš antrosios, gaunama \(\frac{2y}{3x} = \frac{2}{3}\), t.&nbsp;y. \(x = y\)):</p>
-          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 20x^{-0{,}6}y^{0{,}6} &amp;= 20\lambda \\ 30x^{0{,}4}y^{-0{,}4} &amp;= 30\lambda \\ 20x + 30y &amp;= 5000 \end{aligned} \right. \;\Longrightarrow\; x = y \;\Longrightarrow\; (100;\,100;\,1) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 20x^{-0{,}6}y^{0{,}6} &amp;= 20\lambda \\ 30x^{0{,}4}y^{-0{,}4} &amp;= 30\lambda \\ 20x + 30y &amp;= 5000 \end{aligned} \right. \\ \Longrightarrow\; x = y \;\Longrightarrow\; (100;\,100;\,1) \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 20x^{-0{,}6}y^{0{,}6} &amp;= 20\lambda \\ 30x^{0{,}4}y^{-0{,}4} &amp;= 30\lambda \\ 20x + 30y &amp;= 5000 \end{aligned} \right. \;\Longrightarrow\; x = y \;\Longrightarrow\; K(100;\,100),\ \lambda = 1 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 20x^{-0{,}6}y^{0{,}6} &amp;= 20\lambda \\ 30x^{0{,}4}y^{-0{,}4} &amp;= 30\lambda \\ 20x + 30y &amp;= 5000 \end{aligned} \right. \\ \Longrightarrow\; x = y \\ \Longrightarrow\; K(100;\,100),\ \lambda = 1 \end{gathered} \]</div>
           <p><strong>Kritinio taško rūšis</strong></p>
-          <p>Kobo-Daglaso funkcijos parametrai tenkina \(A = 50 &gt; 0\) ir \(\alpha + \beta = 1 \le 1\). Funkcija \(L\) yra išgaubta, todėl \((100;\,100)\) yra maksimumo taškas.</p>
+          <p>Kobo-Daglaso funkcijos parametrai tenkina \(A = 50 &gt; 0\) ir \(\alpha + \beta = 1 \le 1\). Funkcija \(L\) yra išgaubta, todėl \(K(100;\,100)\) yra maksimumo taškas.</p>
           <p><strong>Atsakymas.</strong> a) Reikėtų 100 darbo valandų ir 100 įrenginių naudojimo valandų per mėnesį. Didžiausia gamybos apimtis yra \(Q_{\max} = 5000\) stalų. b) Gamybos apimties pokytis stalais yra \(\Delta Q^{*} \approx 1\cdot 100 = 100\).</p>
         </div>
       </article>
@@ -884,9 +885,9 @@ kėdžių. Čia \(x\) yra darbo valandų skaičius, o \(y\) – įrenginių naud
           <p><strong>Modelis</strong> (plotas matuojamas šimtais kvadratinių metrų, todėl 24&nbsp;000&nbsp;m² atitinka 240):</p>
           \[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 9x + 4y \\ &amp;\text{kai}\;\; 4x^{0{,}5}y^{0{,}5} = 240 \end{aligned} \]
           <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema netiesinė; pirmąją lygtį padalijus iš antrosios, gaunama \(\frac{y}{x} = 2{,}25\)):</p>
-          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 9 &amp;= 2\lambda x^{-0{,}5}y^{0{,}5} \\ 4 &amp;= 2\lambda x^{0{,}5}y^{-0{,}5} \\ 4x^{0{,}5}y^{0{,}5} &amp;= 240 \end{aligned} \right. \;\Longrightarrow\; y = 2{,}25x \;\Longrightarrow\; (40;\,90;\,3) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 9 &amp;= 2\lambda x^{-0{,}5}y^{0{,}5} \\ 4 &amp;= 2\lambda x^{0{,}5}y^{-0{,}5} \\ 4x^{0{,}5}y^{0{,}5} &amp;= 240 \end{aligned} \right. \\ \Longrightarrow\; y = 2{,}25x \;\Longrightarrow\; (40;\,90;\,3) \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 9 &amp;= 2\lambda x^{-0{,}5}y^{0{,}5} \\ 4 &amp;= 2\lambda x^{0{,}5}y^{-0{,}5} \\ 4x^{0{,}5}y^{0{,}5} &amp;= 240 \end{aligned} \right. \;\Longrightarrow\; y = 2{,}25x \;\Longrightarrow\; K(40;\,90),\ \lambda = 3 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 9 &amp;= 2\lambda x^{-0{,}5}y^{0{,}5} \\ 4 &amp;= 2\lambda x^{0{,}5}y^{-0{,}5} \\ 4x^{0{,}5}y^{0{,}5} &amp;= 240 \end{aligned} \right. \\ \Longrightarrow\; y = 2{,}25x \\ \Longrightarrow\; K(40;\,90),\ \lambda = 3 \end{gathered} \]</div>
           <p><strong>Kritinio taško rūšis</strong></p>
-          <p>Kobo-Daglaso apribojimo parametrai tenkina \(A = 4 &gt; 0\) ir \(\alpha + \beta = 1 \le 1\), o \(\lambda = 3 &gt; 0\). Funkcija \(L\) yra įgaubta, todėl \((40;\,90)\) yra minimumo taškas.</p>
+          <p>Kobo-Daglaso apribojimo parametrai tenkina \(A = 4 &gt; 0\) ir \(\alpha + \beta = 1 \le 1\), o \(\lambda = 3 &gt; 0\). Funkcija \(L\) yra įgaubta, todėl \(K(40;\,90)\) yra minimumo taškas.</p>
           <p><strong>Atsakymas.</strong> a) Reikėtų 40 darbo valandų ir 90 įrenginių naudojimo valandų. Mažiausios sąnaudos yra \(TC_{\min} = 720\) eurų. b) 2000&nbsp;m² atitinka \(\Delta m = 20\). Sąnaudų pokytis eurais yra \(\Delta TC^{*} \approx 3\cdot 20 = 60\).</p>
         </div>
       </article>
