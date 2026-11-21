@@ -471,7 +471,7 @@
         desc: { lt: 'Izokvantės ir kiek vieno ištekliaus gali pakeisti papildomas kito ištekliaus vienetas, nekeičiant gamybos apimties.', en: 'Isoquants and how much of one input one more unit of the other input can replace without changing output.' } }
     ],
     t9: [
-      { id: 'm91', status: 'soon',
+      { id: 'm91', status: 'active', href: { lt: 'tema-9-optimizavimas.html' },
         title: { lt: 'Pagrindiniai optimizavimo uždaviniai', en: 'Standard Optimization Problems' },
         desc: { lt: 'Kritiniai taškai ir pakankamoji sąlyga: didžiausias dviejų gaminių pelnas, pelnas pagal gamybos funkciją, mažiausios sąnaudos.', en: 'Critical points and the second derivative test: the maximum profit from two products, profit from a production function, the minimum cost.' } },
       { id: 'm92', status: 'soon',
@@ -593,6 +593,8 @@
                title: { lt: 'Ribinė techninio pakeitimo norma', en: 'The Marginal Rate of Technical Substitution' } },
     t9:      { parent: 'home', href: { lt: 'tema-9.html', en: null },
                title: { lt: '9 tema', en: 'Topic 9' } },
+    m91:     { parent: 't9', topic: 't9', model: 'm91', href: { lt: 'tema-9-optimizavimas.html', en: null },
+               title: { lt: 'Pagrindiniai optimizavimo uždaviniai', en: 'Standard Optimization Problems' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },

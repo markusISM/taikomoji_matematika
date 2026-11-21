@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagrindiniai optimizavimo uždaviniai · Taikomoji matematika</title>
+<meta name="description" content="Dviejų kintamųjų funkcijų optimizavimas be apribojimų: tikslo funkcijos sudarymas, būtinosios sąlygos lygčių sistemos sprendimas keitimu ir Gauso metodu, pakankamoji sąlyga. Didžiausias pelnas, mažiausios sąnaudos – pavyzdžiai žingsnis po žingsnio ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m91">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">9 tema · Taikymai · 1 skyrius</span>
+    <h1>Pagrindiniai optimizavimo uždaviniai</h1>
+    <p class="lead">Šiame skyriuje ieškoma didžiausio pelno, mažiausių sąnaudų ir kitų optimalių sprendimų, kai dydis priklauso nuo dviejų kintamųjų ir jų nesieja jokia papildoma sąlyga. Daugiausia dėmesio skiriama būtinosios sąlygos lygčių sistemos sprendimui.</p>
+    <ul class="jump">
+      <li><a href="#tikslo">Tikslo funkcija</a></li>
+      <li><a href="#sistema">Lygčių sistema</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. TIKSLO FUNKCIJA ============ -->
+  <section class="section" id="tikslo" aria-labelledby="h-goal">
+    <h2 id="h-goal">Tikslo funkcija</h2>
+    <article class="card">
+      <p>Taikomajame uždavinyje funkcija, kurios didžiausią arba mažiausią reikšmę reikia rasti, vadinama <strong>tikslo funkcija</strong>. Ji dažnai nėra duota tiesiogiai, todėl pirmasis sprendimo žingsnis – ją sudaryti. Dažniausiai nagrinėjamos šios tikslo funkcijos:</p>
+      <ul>
+        <li>dviejų gaminių <strong>pelnas</strong> \(P(x;\,y) = R(x;\,y) - TC(x;\,y)\), kai pajamos yra \(R = p_1x + p_2y\), jei kainos pastovios, arba \(R = p_1(x;\,y)\cdot x + p_2(x;\,y)\cdot y\), jei kainos duotos paklausos funkcijomis (8 temos skyrius <a href="tema-8-ribine-analize.html">„Ribinė analizė“</a>);</li>
+        <li><strong>pelnas</strong>, sudaromas pagal gamybos funkciją (8 temos skyrius <a href="tema-8-gamybos-funkcija.html">„Gamybos funkcija“</a>):
+          <div class="m-wide">\[ P(x;\,y) = p\cdot Q(x;\,y) - c_1x - c_2y - FC \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= p\cdot Q(x;\,y) \\ &amp;\phantom{=}\; {}- c_1x - c_2y - FC \end{aligned} \]</div></li>
+        <li><strong>pelnas</strong> kaip kainų funkcija, kai parduodami kiekiai priklauso nuo kainų: kiekvienas parduotas gaminio vienetas duoda jo kainos ir vieneto sąnaudų skirtumą;</li>
+        <li>bet kuris kitas dviejų kintamųjų funkcija nusakomas dydis: sąnaudos, derlingumas, atstumas.</li>
+      </ul>
+      <p>Sudaryta tikslo funkcija optimizuojama taikant būtinąją ir pakankamąją ekstremumo sąlygas, kaip aiškinama <a href="tema-9.html#be-apribojimu">9 temos puslapyje</a>.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. LYGČIŲ SISTEMA ============ -->
+  <section class="section" id="sistema" aria-labelledby="h-sys">
+    <h2 id="h-sys">Būtinosios sąlygos lygčių sistema</h2>
+    <article class="card">
+      <p>Prilyginus abi pirmos eilės dalines išvestines nuliui, gaunama dviejų lygčių sistema su dviem nežinomaisiais. Jos sprendinys yra kritinis taškas. Kaip sistemą spręsti, priklauso nuo to, ar ji tiesinė.</p>
+
+      <h3 class="subhead" style="margin-top:18px">Tiesinių lygčių sistema</h3>
+      <p>Kai tikslo funkcija yra antrojo laipsnio daugianaris, kaip daugumoje šio skyriaus uždavinių, abi dalinės išvestinės yra tiesinės. Gaunama tiesinių lygčių sistema, kurią patogiausia spręsti <strong>keitimu</strong>:</p>
+      <ol class="steps-list">
+        <li><strong>Sutvarkykite lygtis.</strong> Jei lygtyse yra dešimtainių trupmenų, kiekvieną lygtį padauginkite iš tokio skaičiaus, kad visi koeficientai taptų sveikaisiais. Iš to paties skaičiaus dauginamas kiekvienas lygties narys, taip pat ir laisvasis. Kintamuosius palikite kairiojoje pusėje, o skaičius perkelkite į dešiniąją. Perkeliamo nario ženklas pasikeičia.</li>
+        <li><strong>Išreikškite vieną kintamąjį.</strong> Pasirinkite lygtį, kurioje kurio nors kintamojo koeficientas lygus 1 arba \(-1\), ir iš jos išreikškite tą kintamąjį. Taip išvengiama trupmenų.</li>
+        <li><strong>Įstatykite reiškinį į kitą lygtį.</strong> Gautą reiškinį įrašykite į kitą lygtį vietoje išreikšto kintamojo. Jei prieš kintamąjį yra koeficientas ar minuso ženklas, reiškinį rašykite skliaustuose. Gaunama lygtis su vienu kintamuoju.</li>
+        <li><strong>Išspręskite lygtį su vienu kintamuoju.</strong> Atskliauskite, sutraukite panašiuosius narius, skaičius perkelkite į dešiniąją pusę ir abi puses padalykite iš kintamojo koeficiento.</li>
+        <li><strong>Raskite antrąjį kintamąjį.</strong> Rastą reikšmę įstatykite į 2 žingsnyje gautą reiškinį.</li>
+        <li><strong>Patikrinkite.</strong> Abiejų kintamųjų reikšmes įstatykite į abi lygtis – turi būti gautos teisingos lygybės.</li>
+      </ol>
+      <p>Tiesinių lygčių sistemą galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>, kuris nagrinėtas 3 temoje. Abu būdai duoda tą patį sprendinį. Pavyzdžiuose sistema sprendžiama keitimu, o kiekvieno sprendimo pabaigoje yra išskleidžiamas langelis „Sprendimas Gauso metodu“ tiems, kuriems šis metodas artimesnis.</p>
+
+      <h3 class="subhead" style="margin-top:22px">Netiesinių lygčių sistema</h3>
+      <p>Jei tikslo funkcijoje yra laipsnių su trupmeniniais rodikliais, logaritmų, rodiklinių funkcijų ar trupmenų su kintamuoju vardiklyje, dalinės išvestinės nėra tiesinės ir gaunama netiesinių lygčių sistema. <strong>Gauso metodas jai netinka</strong>: jis taikomas tik tiesinių lygčių sistemoms, kuriose kiekvienas nežinomasis yra pirmojo laipsnio ir tik dauginamas iš skaičiaus. Tokios sistemos sprendžiamos kitaip:</p>
+      <ul>
+        <li><strong>Kobo-Daglaso funkcija.</strong> Išteklių sąnaudas perkelkite į dešiniąsias lygybių puses ir pirmąją lygtį padalykite iš antrosios. Suprastinę laipsnius su tuo pačiu pagrindu, vieną kintamąjį išreikškite per kitą ir įstatykite į vieną iš lygčių (<a href="#pavyzdys-8">8 pavyzdys</a>).</li>
+        <li><strong>Trupmenos.</strong> Išvestinę užrašykite viena trupmena. Trupmena lygi nuliui, kai jos skaitiklis lygus nuliui, o vardiklis nelygus nuliui (<a href="#pavyzdys-9">9 pavyzdys</a>).</li>
+        <li><strong>Rodiklinės funkcijos.</strong> Lygtį pertvarkykite į pavidalą \(e^{u} = a\) ir abiejų pusių apskaičiuokite natūraliuosius logaritmus (<a href="#pavyzdys-11">11 pavyzdys</a>).</li>
+      </ul>
+      <p>Dažnai kiekvienoje tokios sistemos lygtyje yra tik vienas kintamasis. Tada lygtys sprendžiamos atskirai.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+    <article class="card">
+      <ol class="steps-list">
+        <li>Sudarykite tikslo funkciją.</li>
+        <li>Raskite pirmos eilės dalines išvestines, prilyginkite jas nuliui ir išspręskite lygčių sistemą (žr. <a href="#sistema">„Būtinosios sąlygos lygčių sistema“</a>). Jei lygtyse yra dešimtainių trupmenų, pirmiausia padauginkite lygtis iš tinkamo skaičiaus. Jei išvestinė yra trupmena, užrašykite ją viena trupmena, o lygtį pakeiskite dviem sąlygomis: skaitiklis lygus nuliui, vardiklis nelygus nuliui.</li>
+        <li>Raskite antros eilės dalines išvestines, kritiniame taške apskaičiuokite \(A\), \(B\), \(C\) ir \(D = AC - B^2\). Nustatykite, ar taškas yra maksimumo, ar minimumo taškas (<a href="tema-9.html#pakankamoji">pakankamoji sąlyga</a>). Jei pelno funkcija sudaryta pagal Kobo-Daglaso gamybos funkciją, tikrinkite parametrus (<a href="tema-9.html#kobo-daglas">Kobo-Daglaso funkcijos</a>).</li>
+        <li>Apskaičiuokite uždavinyje prašomus dydžius: didžiausią ar mažiausią reikšmę, kainas, gamybos apimtį.</li>
+        <li>Suformuluokite atsakymą uždavinio kontekste.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Padauginamas ne kiekvienas lygties narys.</strong> Dauginant ar dalijant lygtį, tuo pačiu skaičiumi reikia padauginti ar padalyti visus narius, taip pat ir laisvąjį.</li>
+            <li><strong>Pamirštas ženklo pakeitimas.</strong> Perkeltas į kitą lygties pusę narys keičia ženklą. Dauginant iš neigiamo skaičiaus, pasikeičia visų narių ženklai.</li>
+            <li><strong>Įstatant praleisti skliaustai.</strong> Jei prieš kintamąjį yra koeficientas ar minuso ženklas, įstatytas reiškinys rašomas skliaustuose: \(2(600 - 3x)\), o ne \(2\cdot 600 - 3x\).</li>
+            <li><strong>Gauso metodas taikomas netiesinei sistemai.</strong> Gauso metodas tinka tik tiesinių lygčių sistemoms.</li>
+            <li><strong>Nepatikrinta pakankamoji sąlyga.</strong> Kritinis taškas gali būti ir minimumo, ir maksimumo, ir balno taškas.</li>
+            <li><strong>Optimali reikšmė skaičiuojama įstačius koordinates ne į tikslo funkciją.</strong> Didžiausias pelnas ar mažiausios sąnaudos randami kritinio taško koordinates įstačius į tikslo funkciją, o ne į jos išvestines.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <h3 class="subhead">Pajamos, sąnaudos ir pelnas</h3>
+
+    <!-- 1 pavyzdys: TM 9.1, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Biuro kėdės ir stalai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Baldų gamykla per mėnesį pagamina \(x\) biuro kėdžių ir \(y\) biuro stalų. Mėnesio pelnas eurais yra
+        <div class="m-wide">\[ P(x;\,y) = -0{,}3x^2 - 0{,}2y^2 - 0{,}2xy + 120x + 100y - 5000 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= -0{,}3x^2 - 0{,}2y^2 - 0{,}2xy \\ &amp;\phantom{=}\; {}+ 120x + 100y - 5000 \end{aligned} \]</div>
+        Kiek kėdžių ir stalų gamykla turėtų pagaminti, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <p>Pelno funkcija duota tiesiogiai, todėl iš karto randame pirmos eilės dalines išvestines. Diferencijuojant pagal \(x\), nariai \(-0{,}2y^2\), \(100y\) ir \(-5000\) yra konstantos, o pagal \(y\) – nariai \(-0{,}3x^2\), \(120x\) ir \(-5000\):</p>
+          <div class="m-wide">\[ P'_x = -0{,}6x - 0{,}2y + 120;\qquad P'_y = -0{,}4y - 0{,}2x + 100 \]</div><div class="m-narrow">\[ \begin{aligned} P'_x &amp;= -0{,}6x - 0{,}2y + 120 \\ P'_y &amp;= -0{,}4y - 0{,}2x + 100 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} -0{,}6x - 0{,}2y + 120 &amp;= 0 \\ -0{,}2x - 0{,}4y + 100 &amp;= 0 \end{aligned} \right. \]
+          <p>Lygtyse yra dešimtainių trupmenų. Kad koeficientai taptų sveikaisiais skaičiais, kiekvieną lygtį padauginame iš \(-5\). Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} -0{,}6x - 0{,}2y + 120 = 0\;\big|\cdot (-5) \;&amp;\Longrightarrow\; 3x + y - 600 = 0 \\ -0{,}2x - 0{,}4y + 100 = 0\;\big|\cdot (-5) \;&amp;\Longrightarrow\; x + 2y - 500 = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} -0{,}6x - 0{,}2y + 120 = 0\;\big|\cdot (-5) \\ \Longrightarrow\; 3x + y - 600 = 0 \\[4pt] -0{,}2x - 0{,}4y + 100 = 0\;\big|\cdot (-5) \\ \Longrightarrow\; x + 2y - 500 = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} 3x + y &amp;= 600 \\ x + 2y &amp;= 500 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Pirmojoje lygtyje kintamojo \(y\) koeficientas lygus 1, todėl iš jos patogiausia išreikšti \(y\). Narį \(3x\) perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide">\[ 3x + y = 600 \;\Longrightarrow\; y = 600 - 3x \]</div><div class="m-narrow">\[ \begin{gathered} 3x + y = 600 \\ \Longrightarrow\; y = 600 - 3x \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(y\). Kadangi \(y\) lygtyje padaugintas iš 2, įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(x\):</p>
+          \[ x + 2(600 - 3x) = 500 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ x + 1200 - 6x = 500 \;\Longrightarrow\; -5x = 500 - 1200 \;\Longrightarrow\; -5x = -700 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 1200 - 6x = 500 \\ \Longrightarrow\; -5x = 500 - 1200 \\ \Longrightarrow\; -5x = -700 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(-5\):</p>
+          \[ x = \frac{-700}{-5} = 140 \]
+          <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 600 - 3x\):</p>
+          <div class="m-wide">\[ y = 600 - 3\cdot 140 = 600 - 420 = 180 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 600 - 3\cdot 140 \\ &amp;= 600 - 420 = 180 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((140;\,180)\). Patikriname, įstatę reikšmes į abi lygtis: \(3\cdot 140 + 180 = 600\) ir \(140 + 2\cdot 180 = 500\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Antrosios lygties pirmasis koeficientas lygus 1, todėl lygtis sukeičiame vietomis – šis vienetas tampa pagrindiniu elementu:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 2 &amp; 500 \\ 3 &amp; 1 &amp; 600 \end{array}\right) \]
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(-3\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(-5\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 2 &amp; 500 \\ 3 &amp; 1 &amp; 600 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 2 &amp; 500 \\ \htmlClass{hc}{0} &amp; -5 &amp; -900 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 2 &amp; 500 \\ 0 &amp; \htmlClass{hd}{1} &amp; 180 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(y = 180\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ x + 2\cdot 180 = 500 \;\Longrightarrow\; x = 140 \]
+          <p>Gaunamas tas pats sprendinys \((140;\,180)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}6;\quad B = P''_{xy} = -0{,}2;\quad C = P''_{yy} = -0{,}4 \\ D = AC - B^2 = (-0{,}6)\cdot (-0{,}4) - (-0{,}2)^2 = 0{,}24 - 0{,}04 = 0{,}2 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}6 \\ B &amp;= P''_{xy} = -0{,}2 \\ C &amp;= P''_{yy} = -0{,}4 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}6)\cdot (-0{,}4) - (-0{,}2)^2 \\ &amp;= 0{,}24 - 0{,}04 = 0{,}2 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((140;\,180)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Didžiausias pelnas</span></h4>
+          <p>Kritinio taško koordinates įstatome į pelno funkciją:</p>
+          <div class="m-wide bp-lg">\[ P_{\max}(140;\,180) = -5880 - 6480 - 5040 + 16\,800 + 18\,000 - 5000 = 12\,400 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(140;\,180) \\ &amp;= -5880 - 6480 - 5040 \\ &amp;\phantom{=}\; {}+ 16\,800 + 18\,000 - 5000 \\ &amp;= 12\,400 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Gamykla turėtų pagaminti 140 kėdžių ir 180 stalų per mėnesį. Didžiausias mėnesio pelnas yra 12&nbsp;400 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 9.1, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Sodo suolai ir stalai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvės parduoda sodo suolą už 180&nbsp;eurų, o sodo stalą – už 190&nbsp;eurų. Kai per mėnesį pagaminama \(x\) suolų ir \(y\) stalų, bendrosios sąnaudos eurais yra
+        <div class="m-wide">\[ TC(x;\,y) = 0{,}4x^2 + 0{,}3y^2 + 0{,}2xy + 20x + 40y + 3000 \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 0{,}4x^2 + 0{,}3y^2 + 0{,}2xy \\ &amp;\phantom{=}\; {}+ 20x + 40y + 3000 \end{aligned} \]</div>
+        Kiek suolų ir stalų dirbtuvės turėtų pagaminti, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <p>Kainos pastovios, todėl pajamos yra \(R(x;\,y) = 180x + 190y\). Pelnas lygus pajamų ir sąnaudų skirtumui. Sąnaudų funkciją rašome skliaustuose, nes atimami visi jos nariai:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= 180x + 190y - (0{,}4x^2 + 0{,}3y^2 + 0{,}2xy + 20x + 40y + 3000) \\ &amp;= 160x + 150y - 0{,}4x^2 - 0{,}3y^2 - 0{,}2xy - 3000 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= 180x + 190y - (0{,}4x^2 + 0{,}3y^2 \\ &amp;\phantom{=}\; {}+ 0{,}2xy + 20x + 40y + 3000) \\ &amp;= 160x + 150y - 0{,}4x^2 - 0{,}3y^2 \\ &amp;\phantom{=}\; {}- 0{,}2xy - 3000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <div class="m-wide">\[ P'_x = 160 - 0{,}8x - 0{,}2y;\qquad P'_y = 150 - 0{,}6y - 0{,}2x \]</div><div class="m-narrow">\[ \begin{aligned} P'_x &amp;= 160 - 0{,}8x - 0{,}2y \\ P'_y &amp;= 150 - 0{,}6y - 0{,}2x \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 160 - 0{,}8x - 0{,}2y &amp;= 0 \\ 150 - 0{,}6y - 0{,}2x &amp;= 0 \end{aligned} \right. \]
+          <p>Lygtyse yra dešimtainių trupmenų. Kad koeficientai taptų sveikaisiais skaičiais, kiekvieną lygtį padauginame iš 5. Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} 160 - 0{,}8x - 0{,}2y = 0\;\big|\cdot 5 \;&amp;\Longrightarrow\; 800 - 4x - y = 0 \\ 150 - 0{,}6y - 0{,}2x = 0\;\big|\cdot 5 \;&amp;\Longrightarrow\; 750 - 3y - x = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 160 - 0{,}8x - 0{,}2y = 0\;\big|\cdot 5 \\ \Longrightarrow\; 800 - 4x - y = 0 \\[4pt] 150 - 0{,}6y - 0{,}2x = 0\;\big|\cdot 5 \\ \Longrightarrow\; 750 - 3y - x = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} 4x + y &amp;= 800 \\ x + 3y &amp;= 750 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Pirmojoje lygtyje kintamojo \(y\) koeficientas lygus 1, todėl iš jos patogiausia išreikšti \(y\). Narį \(4x\) perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide">\[ 4x + y = 800 \;\Longrightarrow\; y = 800 - 4x \]</div><div class="m-narrow">\[ \begin{gathered} 4x + y = 800 \\ \Longrightarrow\; y = 800 - 4x \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(y\). Kadangi \(y\) lygtyje padaugintas iš 3, įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(x\):</p>
+          \[ x + 3(800 - 4x) = 750 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ x + 2400 - 12x = 750 \;\Longrightarrow\; -11x = 750 - 2400 \;\Longrightarrow\; -11x = -1650 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 2400 - 12x = 750 \\ \Longrightarrow\; -11x = 750 - 2400 \\ \Longrightarrow\; -11x = -1650 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(-11\):</p>
+          \[ x = \frac{-1650}{-11} = 150 \]
+          <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 800 - 4x\):</p>
+          <div class="m-wide">\[ y = 800 - 4\cdot 150 = 800 - 600 = 200 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 800 - 4\cdot 150 \\ &amp;= 800 - 600 = 200 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((150;\,200)\). Patikriname, įstatę reikšmes į abi lygtis: \(4\cdot 150 + 200 = 800\) ir \(150 + 3\cdot 200 = 750\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Antrosios lygties pirmasis koeficientas lygus 1, todėl lygtis sukeičiame vietomis – šis vienetas tampa pagrindiniu elementu:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 750 \\ 4 &amp; 1 &amp; 800 \end{array}\right) \]
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(-4\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(-11\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 750 \\ 4 &amp; 1 &amp; 800 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 750 \\ \htmlClass{hc}{0} &amp; -11 &amp; -2200 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-11)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 750 \\ 0 &amp; \htmlClass{hd}{1} &amp; 200 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(y = 200\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ x + 3\cdot 200 = 750 \;\Longrightarrow\; x = 150 \]
+          <p>Gaunamas tas pats sprendinys \((150;\,200)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}8;\quad B = P''_{xy} = -0{,}2;\quad C = P''_{yy} = -0{,}6 \\ D = AC - B^2 = (-0{,}8)\cdot (-0{,}6) - (-0{,}2)^2 = 0{,}48 - 0{,}04 = 0{,}44 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}8 \\ B &amp;= P''_{xy} = -0{,}2 \\ C &amp;= P''_{yy} = -0{,}6 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}8)\cdot (-0{,}6) - (-0{,}2)^2 \\ &amp;= 0{,}48 - 0{,}04 = 0{,}44 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((150;\,200)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausias pelnas</span></h4>
+          <div class="m-wide bp-lg">\[ P_{\max}(150;\,200) = 24\,000 + 30\,000 - 9000 - 12\,000 - 6000 - 3000 = 24\,000 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(150;\,200) \\ &amp;= 24\,000 + 30\,000 - 9000 \\ &amp;\phantom{=}\; {}- 12\,000 - 6000 - 3000 \\ &amp;= 24\,000 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Dirbtuvės turėtų pagaminti 150 suolų ir 200 stalų per mėnesį. Didžiausias mėnesio pelnas yra 24&nbsp;000 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 9.1, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Nešiojamosios ir namų garso kolonėlės</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė per mėnesį pagamina \(x\) nešiojamųjų ir \(y\) namų garso kolonėlių. Kainos eurais, už kurias galima parduoti šiuos kiekius, yra
+        <div class="m-wide">\[ p_1 = 90 - 0{,}02x - 0{,}01y;\qquad p_2 = 120 - 0{,}01x - 0{,}03y \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 90 - 0{,}02x - 0{,}01y; \\ p_2 = 120 - 0{,}01x - 0{,}03y \end{gathered} \]</div>
+        Vienos nešiojamosios kolonėlės kintamosios sąnaudos yra 30&nbsp;eurų, o namų kolonėlės – 40&nbsp;eurų. Pastoviosios sąnaudos sudaro 8000&nbsp;eurų per mėnesį.
+        <br>a) Kiek kiekvienos rūšies kolonėlių įmonė turėtų pagaminti, kad pelnas būtų didžiausias?
+        <br>b) Kokiomis kainomis reikėtų parduoti kolonėles? Koks yra didžiausias pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <p>Kiekvienos rūšies kolonėlių kainą dauginame iš tos rūšies kolonėlių kiekio:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} R(x;\,y) &amp;= (90 - 0{,}02x - 0{,}01y)x + (120 - 0{,}01x - 0{,}03y)y \\ &amp;= 90x + 120y - 0{,}02x^2 - 0{,}03y^2 - 0{,}02xy \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} R(x;\,y) &amp;= (90 - 0{,}02x - 0{,}01y)x \\ &amp;\phantom{=}\; {}+ (120 - 0{,}01x - 0{,}03y)y \\ &amp;= 90x + 120y - 0{,}02x^2 \\ &amp;\phantom{=}\; {}- 0{,}03y^2 - 0{,}02xy \end{aligned} \]</div>
+          <p>Sąnaudos yra kintamųjų ir pastoviųjų sąnaudų suma, o pelnas – pajamų ir sąnaudų skirtumas:</p>
+          <div class="m-wide">\[ \begin{aligned} TC(x;\,y) &amp;= 30x + 40y + 8000 \\ P(x;\,y) &amp;= 60x + 80y - 0{,}02x^2 - 0{,}03y^2 - 0{,}02xy - 8000 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 30x + 40y + 8000 \\ P(x;\,y) &amp;= 60x + 80y - 0{,}02x^2 \\ &amp;\phantom{=}\; {}- 0{,}03y^2 - 0{,}02xy - 8000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <div class="m-wide">\[ P'_x = 60 - 0{,}04x - 0{,}02y;\qquad P'_y = 80 - 0{,}06y - 0{,}02x \]</div><div class="m-narrow">\[ \begin{aligned} P'_x &amp;= 60 - 0{,}04x - 0{,}02y \\ P'_y &amp;= 80 - 0{,}06y - 0{,}02x \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 60 - 0{,}04x - 0{,}02y &amp;= 0 \\ 80 - 0{,}06y - 0{,}02x &amp;= 0 \end{aligned} \right. \]
+          <p>Lygtyse yra dešimtainių trupmenų. Kad koeficientai taptų sveikaisiais skaičiais, kiekvieną lygtį padauginame iš 50. Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} 60 - 0{,}04x - 0{,}02y = 0\;\big|\cdot 50 \;&amp;\Longrightarrow\; 3000 - 2x - y = 0 \\ 80 - 0{,}06y - 0{,}02x = 0\;\big|\cdot 50 \;&amp;\Longrightarrow\; 4000 - 3y - x = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 60 - 0{,}04x - 0{,}02y = 0\;\big|\cdot 50 \\ \Longrightarrow\; 3000 - 2x - y = 0 \\[4pt] 80 - 0{,}06y - 0{,}02x = 0\;\big|\cdot 50 \\ \Longrightarrow\; 4000 - 3y - x = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} 2x + y &amp;= 3000 \\ x + 3y &amp;= 4000 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Pirmojoje lygtyje kintamojo \(y\) koeficientas lygus 1, todėl iš jos patogiausia išreikšti \(y\). Narį \(2x\) perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide">\[ 2x + y = 3000 \;\Longrightarrow\; y = 3000 - 2x \]</div><div class="m-narrow">\[ \begin{gathered} 2x + y = 3000 \\ \Longrightarrow\; y = 3000 - 2x \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(y\). Kadangi \(y\) lygtyje padaugintas iš 3, įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(x\):</p>
+          \[ x + 3(3000 - 2x) = 4000 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ x + 9000 - 6x = 4000 \;\Longrightarrow\; -5x = 4000 - 9000 \;\Longrightarrow\; -5x = -5000 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 9000 - 6x = 4000 \\ \Longrightarrow\; -5x = 4000 - 9000 \\ \Longrightarrow\; -5x = -5000 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(-5\):</p>
+          \[ x = \frac{-5000}{-5} = 1000 \]
+          <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 3000 - 2x\):</p>
+          <div class="m-wide">\[ y = 3000 - 2\cdot 1000 = 3000 - 2000 = 1000 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 3000 - 2\cdot 1000 \\ &amp;= 3000 - 2000 = 1000 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((1000;\,1000)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 1000 + 1000 = 3000\) ir \(1000 + 3\cdot 1000 = 4000\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Antrosios lygties pirmasis koeficientas lygus 1, todėl lygtis sukeičiame vietomis – šis vienetas tampa pagrindiniu elementu:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 4000 \\ 2 &amp; 1 &amp; 3000 \end{array}\right) \]
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(-2\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(-5\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 4000 \\ 2 &amp; 1 &amp; 3000 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 4000 \\ \htmlClass{hc}{0} &amp; -5 &amp; -5000 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 4000 \\ 0 &amp; \htmlClass{hd}{1} &amp; 1000 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(y = 1000\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ x + 3\cdot 1000 = 4000 \;\Longrightarrow\; x = 1000 \]
+          <p>Gaunamas tas pats sprendinys \((1000;\,1000)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}04;\quad B = P''_{xy} = -0{,}02;\quad C = P''_{yy} = -0{,}06 \\ D = AC - B^2 = (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 = 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}04 \\ B &amp;= P''_{xy} = -0{,}02 \\ C &amp;= P''_{yy} = -0{,}06 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 \\ &amp;= 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((1000;\,1000)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Kainos ir didžiausias pelnas</span></h4>
+          <p>Kainas apskaičiuojame įstatę \(x = 1000\) ir \(y = 1000\) į kainų formules, o pelną – į pelno funkciją:</p>
+          <div class="m-wide">\[ p_1 = 90 - 20 - 10 = 60;\qquad p_2 = 120 - 10 - 30 = 80 \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 90 - 20 - 10 = 60; \\ p_2 = 120 - 10 - 30 = 80 \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ P_{\max}(1000;\,1000) = 60\,000 + 80\,000 - 20\,000 - 30\,000 - 20\,000 - 8000 = 62\,000 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(1000;\,1000) \\ &amp;= 60\,000 + 80\,000 - 20\,000 \\ &amp;\phantom{=}\; {}- 30\,000 - 20\,000 - 8000 \\ &amp;= 62\,000 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Įmonė turėtų pagaminti po 1000 nešiojamųjų ir namų kolonėlių per mėnesį.</p>
+            <p>b) Nešiojamąsias kolonėles reikėtų parduoti po 60&nbsp;eurų, o namų kolonėles – po 80&nbsp;eurų. Didžiausias mėnesio pelnas yra 62&nbsp;000 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 9.1, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Pardavimas dviejose rinkose</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė parduoda tą patį kavos aparatą šalies ir užsienio rinkose. Jei per mėnesį šalies rinkoje parduodama \(x\) aparatų, o užsienyje – \(y\), jų kainos eurais yra
+        <div class="m-wide">\[ p_1 = 152 - 0{,}04x;\qquad p_2 = 112 - 0{,}02y \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 152 - 0{,}04x; \\ p_2 = 112 - 0{,}02y \end{gathered} \]</div>
+        Visi aparatai gaminami vienoje gamykloje. Per mėnesį pagaminti \(Q\) aparatų kainuoja
+        \[ TC = 8000 + 30Q + 0{,}005Q^2 \]
+        eurų. Kiek aparatų ir kokiomis kainomis reikėtų parduoti kiekvienoje rinkoje, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <p>Pajamos gaunamos dviejose rinkose, todėl kiekvienos rinkos kainą dauginame iš joje parduodamo kiekio:</p>
+          <div class="m-wide bp-lg">\[ R(x;\,y) = (152 - 0{,}04x)x + (112 - 0{,}02y)y = 152x - 0{,}04x^2 + 112y - 0{,}02y^2 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;R(x;\,y) \\ &amp;= (152 - 0{,}04x)x + (112 - 0{,}02y)y \\ &amp;= 152x - 0{,}04x^2 + 112y - 0{,}02y^2 \end{aligned} \]</div>
+          <p>Sąnaudos priklauso nuo bendro pagamintų aparatų skaičiaus \(Q = x + y\):</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} TC(x;\,y) &amp;= 8000 + 30(x + y) + 0{,}005(x + y)^2 \\ P(x;\,y) &amp;= 152x - 0{,}04x^2 + 112y - 0{,}02y^2 - 8000 - 30(x + y) - 0{,}005(x + y)^2 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} TC(x;\,y) &amp;= 8000 + 30(x + y) \\ &amp;\phantom{=}\; {}+ 0{,}005(x + y)^2 \\ P(x;\,y) &amp;= 152x - 0{,}04x^2 + 112y \\ &amp;\phantom{=}\; {}- 0{,}02y^2 - 8000 \\ &amp;\phantom{=}\; {}- 30(x + y) \\ &amp;\phantom{=}\; {}- 0{,}005(x + y)^2 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <p>Pagal <a href="tema-8-sudetines-funkcijos-taisykle.html">sudėtinės funkcijos išvestinės taisyklę</a> \(\big((x + y)^2\big)'_x = 2(x + y)\). Analogiškai diferencijuojama pagal \(y\):</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P'_x &amp;= 152 - 0{,}08x - 30 - 0{,}01(x + y) = 122 - 0{,}09x - 0{,}01y \\ P'_y &amp;= 112 - 0{,}04y - 30 - 0{,}01(x + y) = 82 - 0{,}01x - 0{,}05y \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} P'_x &amp;= 152 - 0{,}08x - 30 - 0{,}01(x + y) \\ &amp;= 122 - 0{,}09x - 0{,}01y \\ P'_y &amp;= 112 - 0{,}04y - 30 - 0{,}01(x + y) \\ &amp;= 82 - 0{,}01x - 0{,}05y \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 122 - 0{,}09x - 0{,}01y &amp;= 0 \\ 82 - 0{,}01x - 0{,}05y &amp;= 0 \end{aligned} \right. \]
+          <p>Lygtyse yra dešimtainių trupmenų. Kad koeficientai taptų sveikaisiais skaičiais, kiekvieną lygtį padauginame iš 100. Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} 122 - 0{,}09x - 0{,}01y = 0\;\big|\cdot 100 \;&amp;\Longrightarrow\; 12\,200 - 9x - y = 0 \\ 82 - 0{,}01x - 0{,}05y = 0\;\big|\cdot 100 \;&amp;\Longrightarrow\; 8200 - x - 5y = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 122 - 0{,}09x - 0{,}01y = 0\;\big|\cdot 100 \\ \Longrightarrow\; 12\,200 - 9x - y = 0 \\[4pt] 82 - 0{,}01x - 0{,}05y = 0\;\big|\cdot 100 \\ \Longrightarrow\; 8200 - x - 5y = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} 9x + y &amp;= 12\,200 \\ x + 5y &amp;= 8200 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Pirmojoje lygtyje kintamojo \(y\) koeficientas lygus 1, todėl iš jos patogiausia išreikšti \(y\). Narį \(9x\) perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide">\[ 9x + y = 12\,200 \;\Longrightarrow\; y = 12\,200 - 9x \]</div><div class="m-narrow">\[ \begin{gathered} 9x + y = 12\,200 \\ \Longrightarrow\; y = 12\,200 - 9x \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(y\). Kadangi \(y\) lygtyje padaugintas iš 5, įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(x\):</p>
+          \[ x + 5(12\,200 - 9x) = 8200 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ x + 61\,000 - 45x = 8200 \;\Longrightarrow\; -44x = 8200 - 61\,000 \;\Longrightarrow\; -44x = -52\,800 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 61\,000 - 45x = 8200 \\ \Longrightarrow\; -44x = 8200 - 61\,000 \\ \Longrightarrow\; -44x = -52\,800 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(-44\):</p>
+          \[ x = \frac{-52\,800}{-44} = 1200 \]
+          <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 12\,200 - 9x\):</p>
+          <div class="m-wide">\[ y = 12\,200 - 9\cdot 1200 = 12\,200 - 10\,800 = 1400 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 12\,200 - 9\cdot 1200 \\ &amp;= 12\,200 - 10\,800 = 1400 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((1200;\,1400)\). Patikriname, įstatę reikšmes į abi lygtis: \(9\cdot 1200 + 1400 = 12\,200\) ir \(1200 + 5\cdot 1400 = 8200\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Antrosios lygties pirmasis koeficientas lygus 1, todėl lygtis sukeičiame vietomis – šis vienetas tampa pagrindiniu elementu:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 5 &amp; 8200 \\ 9 &amp; 1 &amp; 12\,200 \end{array}\right) \]
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(-9\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(-44\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 5 &amp; 8200 \\ 9 &amp; 1 &amp; 12\,200 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-9)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 5 &amp; 8200 \\ \htmlClass{hc}{0} &amp; -44 &amp; -61\,600 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-44)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 5 &amp; 8200 \\ 0 &amp; \htmlClass{hd}{1} &amp; 1400 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(y = 1400\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ x + 5\cdot 1400 = 8200 \;\Longrightarrow\; x = 1200 \]
+          <p>Gaunamas tas pats sprendinys \((1200;\,1400)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}09;\quad B = P''_{xy} = -0{,}01;\quad C = P''_{yy} = -0{,}05 \\ D = AC - B^2 = (-0{,}09)\cdot (-0{,}05) - (-0{,}01)^2 = 0{,}0045 - 0{,}0001 = 0{,}0044 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}09 \\ B &amp;= P''_{xy} = -0{,}01 \\ C &amp;= P''_{yy} = -0{,}05 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}09)\cdot (-0{,}05) - (-0{,}01)^2 \\ &amp;= 0{,}0045 - 0{,}0001 = 0{,}0044 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((1200;\,1400)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Kainos ir didžiausias pelnas</span></h4>
+          <div class="m-wide">\[ p_1 = 152 - 48 = 104;\qquad p_2 = 112 - 28 = 84 \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 152 - 48 = 104; \\ p_2 = 112 - 28 = 84 \end{gathered} \]</div>
+          <p>Pajamas ir sąnaudas apskaičiuojame atskirai. Iš viso pagaminama \(Q = 1200 + 1400 = 2600\) aparatų:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} R &amp;= 104\cdot 1200 + 84\cdot 1400 = 242\,400 \\ TC &amp;= 8000 + 30\cdot 2600 + 0{,}005\cdot 2600^2 = 119\,800 \\ P_{\max}(1200;\,1400) &amp;= 242\,400 - 119\,800 = 122\,600 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} R &amp;= 104\cdot 1200 + 84\cdot 1400 = 242\,400 \\ TC &amp;= 8000 + 30\cdot 2600 + 0{,}005\cdot 2600^2 \\ &amp;= 119\,800 \\ P_{\max} &amp;= 242\,400 - 119\,800 = 122\,600 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Įmonė turėtų per mėnesį šalies rinkoje parduoti 1200 aparatų po 104&nbsp;eurus, o užsienyje – 1400 aparatų po 84&nbsp;eurus. Didžiausias mėnesio pelnas yra 122&nbsp;600 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 9.1, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Kartu veikiantys du karjerai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Du karjerai yra vieninteliai skaldos tiekėjai regione. Kaina priklauso nuo bendro tiekiamo kiekio: jei pirmasis karjeras per savaitę tiekia \(x\) tonų, o antrasis – \(y\) tonų, tonos kaina yra
+        \[ p = 100 - 0{,}01(x + y) \]
+        eurų. Karjerų savaitės sąnaudos eurais yra
+        <div class="m-wide">\[ TC_1 = 10x + 0{,}01x^2;\qquad TC_2 = 5y + 0{,}02y^2 \]</div><div class="m-narrow">\[ \begin{gathered} TC_1 = 10x + 0{,}01x^2; \\ TC_2 = 5y + 0{,}02y^2 \end{gathered} \]</div>
+        Karjerai susitaria veikti kaip viena įmonė ir siekti didžiausio bendro pelno. Kiek turėtų tiekti kiekvienas karjeras? Kokia turėtų būti kaina ir koks yra didžiausias bendras pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <p>Abu karjerai parduoda ta pačia kaina, todėl bendrosios pajamos yra kainos ir bendro kiekio \(x + y\) sandauga. Bendras pelnas yra</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= \big(100 - 0{,}01(x + y)\big)(x + y) - (10x + 0{,}01x^2) - (5y + 0{,}02y^2) \\ &amp;= 100(x + y) - 0{,}01(x + y)^2 - 10x - 0{,}01x^2 - 5y - 0{,}02y^2 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= \big(100 - 0{,}01(x + y)\big)(x + y) \\ &amp;\phantom{=}\; {}- (10x + 0{,}01x^2) - (5y + 0{,}02y^2) \\ &amp;= 100(x + y) - 0{,}01(x + y)^2 \\ &amp;\phantom{=}\; {}- 10x - 0{,}01x^2 - 5y - 0{,}02y^2 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <p>Pagal sudėtinės funkcijos išvestinės taisyklę reiškinio \(0{,}01(x + y)^2\) išvestinė pagal kiekvieną kintamąjį yra \(0{,}02(x + y)\):</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P'_x &amp;= 100 - 0{,}02(x + y) - 10 - 0{,}02x = 90 - 0{,}04x - 0{,}02y \\ P'_y &amp;= 100 - 0{,}02(x + y) - 5 - 0{,}04y = 95 - 0{,}02x - 0{,}06y \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} P'_x &amp;= 100 - 0{,}02(x + y) - 10 - 0{,}02x \\ &amp;= 90 - 0{,}04x - 0{,}02y \\ P'_y &amp;= 100 - 0{,}02(x + y) - 5 - 0{,}04y \\ &amp;= 95 - 0{,}02x - 0{,}06y \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 90 - 0{,}04x - 0{,}02y &amp;= 0 \\ 95 - 0{,}02x - 0{,}06y &amp;= 0 \end{aligned} \right. \]
+          <p>Lygtyse yra dešimtainių trupmenų. Kad koeficientai taptų sveikaisiais skaičiais, kiekvieną lygtį padauginame iš 50. Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} 90 - 0{,}04x - 0{,}02y = 0\;\big|\cdot 50 \;&amp;\Longrightarrow\; 4500 - 2x - y = 0 \\ 95 - 0{,}02x - 0{,}06y = 0\;\big|\cdot 50 \;&amp;\Longrightarrow\; 4750 - x - 3y = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 90 - 0{,}04x - 0{,}02y = 0\;\big|\cdot 50 \\ \Longrightarrow\; 4500 - 2x - y = 0 \\[4pt] 95 - 0{,}02x - 0{,}06y = 0\;\big|\cdot 50 \\ \Longrightarrow\; 4750 - x - 3y = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} 2x + y &amp;= 4500 \\ x + 3y &amp;= 4750 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Pirmojoje lygtyje kintamojo \(y\) koeficientas lygus 1, todėl iš jos patogiausia išreikšti \(y\). Narį \(2x\) perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide">\[ 2x + y = 4500 \;\Longrightarrow\; y = 4500 - 2x \]</div><div class="m-narrow">\[ \begin{gathered} 2x + y = 4500 \\ \Longrightarrow\; y = 4500 - 2x \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(y\). Kadangi \(y\) lygtyje padaugintas iš 3, įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(x\):</p>
+          \[ x + 3(4500 - 2x) = 4750 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ x + 13\,500 - 6x = 4750 \;\Longrightarrow\; -5x = 4750 - 13\,500 \;\Longrightarrow\; -5x = -8750 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 13\,500 - 6x = 4750 \\ \Longrightarrow\; -5x = 4750 - 13\,500 \\ \Longrightarrow\; -5x = -8750 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(-5\):</p>
+          \[ x = \frac{-8750}{-5} = 1750 \]
+          <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 4500 - 2x\):</p>
+          <div class="m-wide">\[ y = 4500 - 2\cdot 1750 = 4500 - 3500 = 1000 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 4500 - 2\cdot 1750 \\ &amp;= 4500 - 3500 = 1000 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((1750;\,1000)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 1750 + 1000 = 4500\) ir \(1750 + 3\cdot 1000 = 4750\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Antrosios lygties pirmasis koeficientas lygus 1, todėl lygtis sukeičiame vietomis – šis vienetas tampa pagrindiniu elementu:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 4750 \\ 2 &amp; 1 &amp; 4500 \end{array}\right) \]
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(-2\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(-5\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 4750 \\ 2 &amp; 1 &amp; 4500 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 4750 \\ \htmlClass{hc}{0} &amp; -5 &amp; -5000 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 4750 \\ 0 &amp; \htmlClass{hd}{1} &amp; 1000 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(y = 1000\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ x + 3\cdot 1000 = 4750 \;\Longrightarrow\; x = 1750 \]
+          <p>Gaunamas tas pats sprendinys \((1750;\,1000)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -0{,}04;\quad B = P''_{xy} = -0{,}02;\quad C = P''_{yy} = -0{,}06 \\ D = AC - B^2 = (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 = 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -0{,}04 \\ B &amp;= P''_{xy} = -0{,}02 \\ C &amp;= P''_{yy} = -0{,}06 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}04)\cdot (-0{,}06) - (-0{,}02)^2 \\ &amp;= 0{,}0024 - 0{,}0004 = 0{,}002 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((1750;\,1000)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Kaina ir didžiausias pelnas</span></h4>
+          <p>Iš viso tiekiama \(1750 + 1000 = 2750\) tonų:</p>
+          \[ p = 100 - 0{,}01\cdot 2750 = 72{,}5 \]
+          <div class="m-wide bp-lg">\[ P_{\max}(1750;\,1000) = 72{,}5\cdot 2750 - (17\,500 + 30\,625) - (5000 + 20\,000) = 126\,250 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(1750;\,1000) \\ &amp;= 72{,}5\cdot 2750 - (17\,500 + 30\,625) \\ &amp;\phantom{=}\; {}- (5000 + 20\,000) = 126\,250 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Pirmasis karjeras turėtų tiekti 1750 tonų, o antrasis – 1000 tonų per savaitę. Tonos kaina būtų 72,5&nbsp;euro, o didžiausias bendras savaitės pelnas – 126&nbsp;250 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 9.1, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Kainos sulčių bare</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Sulčių baras parduoda šviežias sultis ir tirštuosius kokteilius. Kai sulčių porcija kainuoja \(p\) eurų, o kokteilis – \(r\) eurų, per dieną parduodama
+        <div class="m-wide">\[ x = 250 - 40p + 20r;\qquad y = 350 + 20p - 60r \]</div><div class="m-narrow">\[ \begin{gathered} x = 250 - 40p + 20r; \\ y = 350 + 20p - 60r \end{gathered} \]</div>
+        sulčių porcijų ir kokteilių. Vienos sulčių porcijos paruošimas kainuoja 2&nbsp;eurus, o kokteilio – 1,5&nbsp;euro.
+        Kokiomis kainomis reikėtų parduoti sultis ir kokteilius, kad dienos pelnas būtų didžiausias? Kiek jų būtų parduota ir koks yra didžiausias pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <p>Baras renkasi kainas, todėl pelnas yra kintamųjų \(p\) ir \(r\) funkcija. Kiekviena parduota sulčių porcija duoda \(p - 2\) eurų pelno, o kokteilis – \(r - 1{,}5\) euro:</p>
+          <div class="m-wide bp-lg">\[ P(p;\,r) = (p - 2)(250 - 40p + 20r) + (r - 1{,}5)(350 + 20p - 60r) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(p;\,r) \\ &amp;= (p - 2)(250 - 40p + 20r) \\ &amp;\phantom{=}\; {}+ (r - 1{,}5)(350 + 20p - 60r) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <p>Nariui, kurio abiejuose daugikliuose yra diferencijavimo kintamasis, taikome <a href="tema-8-sandaugos-taisykle.html">sandaugos taisyklę</a>. Kitame naryje pirmasis daugiklis yra konstanta:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P'_p &amp;= (250 - 40p + 20r) + (p - 2)\cdot(-40) + (r - 1{,}5)\cdot 20 = 300 - 80p + 40r \\ P'_r &amp;= (p - 2)\cdot 20 + (350 + 20p - 60r) + (r - 1{,}5)\cdot(-60) = 400 + 40p - 120r \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} P'_p &amp;= (250 - 40p + 20r) \\ &amp;\phantom{=}\; {}+ (p - 2)\cdot(-40) \\ &amp;\phantom{=}\; {}+ (r - 1{,}5)\cdot 20 \\ &amp;= 300 - 80p + 40r \\[4pt] P'_r &amp;= (p - 2)\cdot 20 \\ &amp;\phantom{=}\; {}+ (350 + 20p - 60r) \\ &amp;\phantom{=}\; {}+ (r - 1{,}5)\cdot(-60) \\ &amp;= 400 + 40p - 120r \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 300 - 80p + 40r &amp;= 0 \\ 400 + 40p - 120r &amp;= 0 \end{aligned} \right. \]
+          <p>Visi lygčių koeficientai dalijasi iš 40, todėl, kad skaičiai būtų mažesni, kiekvieną lygtį padalijame iš 40. Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} 300 - 80p + 40r = 0\;\big|{:}\,40 \;&amp;\Longrightarrow\; 7{,}5 - 2p + r = 0 \\ 400 + 40p - 120r = 0\;\big|{:}\,40 \;&amp;\Longrightarrow\; 10 + p - 3r = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 300 - 80p + 40r = 0\;\big|{:}\,40 \\ \Longrightarrow\; 7{,}5 - 2p + r = 0 \\[4pt] 400 + 40p - 120r = 0\;\big|{:}\,40 \\ \Longrightarrow\; 10 + p - 3r = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} 2p - r &amp;= 7{,}5 \\ -p + 3r &amp;= 10 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Antrojoje lygtyje kintamojo \(p\) koeficientas lygus \(-1\), todėl iš jos patogiausia išreikšti \(p\). Narį \(-p\) perkeliame į dešiniąją pusę, o skaičių \(10\) – į kairiąją. Perkeliamų narių ženklai pasikeičia:</p>
+          <div class="m-wide">\[ -p + 3r = 10 \;\Longrightarrow\; 3r - 10 = p \;\Longrightarrow\; p = 3r - 10 \]</div><div class="m-narrow">\[ \begin{gathered} -p + 3r = 10 \\ \Longrightarrow\; 3r - 10 = p \\ \Longrightarrow\; p = 3r - 10 \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į pirmąją lygtį vietoje \(p\). Kadangi \(p\) lygtyje padaugintas iš 2, įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(r\):</p>
+          \[ 2(3r - 10) - r = 7{,}5 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ 6r - 20 - r = 7{,}5 \;\Longrightarrow\; 5r = 7{,}5 + 20 \;\Longrightarrow\; 5r = 27{,}5 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 6r - 20 - r = 7{,}5 \\ \Longrightarrow\; 5r = 7{,}5 + 20 \\ \Longrightarrow\; 5r = 27{,}5 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(5\):</p>
+          \[ r = \frac{27{,}5}{5} = 5{,}5 \]
+          <p>Rastą \(r\) reikšmę įstatome į reiškinį \(p = 3r - 10\):</p>
+          <div class="m-wide">\[ p = 3\cdot 5{,}5 - 10 = 16{,}5 - 10 = 6{,}5 \]</div><div class="m-narrow">\[ \begin{aligned} p &amp;= 3\cdot 5{,}5 - 10 \\ &amp;= 16{,}5 - 10 = 6{,}5 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((6{,}5;\,5{,}5)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 6{,}5 - 5{,}5 = 7{,}5\) ir \(-6{,}5 + 3\cdot 5{,}5 = 10\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Antrosios lygties pirmasis koeficientas lygus \(-1\). Lygtis sukeičiame vietomis, o naująją pirmąją eilutę dalijame iš \(-1\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} -1 &amp; 3 &amp; 10 \\ 2 &amp; -1 &amp; 7{,}5 \end{array}\right)\begin{array}{l} \htmlClass{ha}{{:}\,(-1)} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -3 &amp; -10 \\ 2 &amp; -1 &amp; 7{,}5 \end{array}\right)\)</span></div>
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(-2\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(5\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -3 &amp; -10 \\ 2 &amp; -1 &amp; 7{,}5 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -3 &amp; -10 \\ \htmlClass{hc}{0} &amp; 5 &amp; 27{,}5 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,5} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -3 &amp; -10 \\ 0 &amp; \htmlClass{hd}{1} &amp; 5{,}5 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(r = 5{,}5\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ p - 3\cdot 5{,}5 = -10 \;\Longrightarrow\; p = 6{,}5 \]
+          <p>Gaunamas tas pats sprendinys \((6{,}5;\,5{,}5)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{pp} = -80;\quad B = P''_{pr} = 40;\quad C = P''_{rr} = -120 \\ D = AC - B^2 = (-80)\cdot (-120) - 40^2 = 9600 - 1600 = 8000 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{pp} = -80 \\ B &amp;= P''_{pr} = 40 \\ C &amp;= P''_{rr} = -120 \\ D &amp;= AC - B^2 \\ &amp;= (-80)\cdot (-120) - 40^2 \\ &amp;= 9600 - 1600 = 8000 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((6{,}5;\,5{,}5)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Kiekiai ir didžiausias pelnas</span></h4>
+          <p>Kainas įstatome į paklausos formules, o tada apskaičiuojame pelną:</p>
+          <div class="m-wide">\[ x = 250 - 260 + 110 = 100;\qquad y = 350 + 130 - 330 = 150 \]</div><div class="m-narrow">\[ \begin{gathered} x = 250 - 260 + 110 = 100; \\ y = 350 + 130 - 330 = 150 \end{gathered} \]</div>
+          <div class="m-wide">\[ P_{\max}(6{,}5;\,5{,}5) = 4{,}5\cdot 100 + 4\cdot 150 = 1050 \]</div><div class="m-narrow">\[ \begin{aligned} P_{\max}(6{,}5;\,5{,}5) &amp;= 4{,}5\cdot 100 + 4\cdot 150 \\ &amp;= 1050 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Sulčių porciją reikėtų parduoti už 6,5&nbsp;euro, o kokteilį – už 5,5&nbsp;euro. Per dieną būtų parduota 100 sulčių porcijų ir 150 kokteilių. Didžiausias dienos pelnas yra 1050 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 9.1, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Darbuotojai ir įrenginiai žaislų dirbtuvėse</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Dirbtuvės, kuriose dirba \(x\) darbuotojų ir naudojama \(y\) nuomojamų įrenginių, per dieną pagamina
+        <div class="m-wide">\[ Q(x;\,y) = 40x + 30y + 0{,}5xy - x^2 - 0{,}5y^2 \]</div><div class="m-narrow">\[ \begin{aligned} Q(x;\,y) &amp;= 40x + 30y + 0{,}5xy \\ &amp;\phantom{=}\; {}- x^2 - 0{,}5y^2 \end{aligned} \]</div>
+        medinių žaislų. Žaislas parduodamas už 12&nbsp;eurų. Vienas darbuotojas kainuoja 180&nbsp;eurų per dieną, įrenginio nuoma – 120&nbsp;eurų per dieną, o pastoviosios sąnaudos sudaro 2000&nbsp;eurų per dieną.
+        Kiek darbuotojų ir įrenginių reikėtų, kad dienos pelnas būtų didžiausias? Kokia būtų gamybos apimtis ir koks yra didžiausias pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <p>Pajamos yra kainos ir <a href="tema-8-gamybos-funkcija.html">gamybos funkcijos</a> sandauga. Iš jų atimame išteklių ir pastoviąsias sąnaudas:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= 12(40x + 30y + 0{,}5xy - x^2 - 0{,}5y^2) - 180x - 120y - 2000 \\ &amp;= 300x + 240y + 6xy - 12x^2 - 6y^2 - 2000 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= 12(40x + 30y + 0{,}5xy - x^2 - 0{,}5y^2) \\ &amp;\phantom{=}\; {}- 180x - 120y - 2000 \\ &amp;= 300x + 240y + 6xy - 12x^2 \\ &amp;\phantom{=}\; {}- 6y^2 - 2000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <div class="m-wide">\[ P'_x = 300 + 6y - 24x;\qquad P'_y = 240 + 6x - 12y \]</div><div class="m-narrow">\[ \begin{gathered} P'_x = 300 + 6y - 24x; \\ P'_y = 240 + 6x - 12y \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 300 + 6y - 24x &amp;= 0 \\ 240 + 6x - 12y &amp;= 0 \end{aligned} \right. \]
+          <p>Visi lygčių koeficientai dalijasi iš 6, todėl, kad skaičiai būtų mažesni, kiekvieną lygtį padalijame iš 6. Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} 300 + 6y - 24x = 0\;\big|{:}\,6 \;&amp;\Longrightarrow\; 50 + y - 4x = 0 \\ 240 + 6x - 12y = 0\;\big|{:}\,6 \;&amp;\Longrightarrow\; 40 + x - 2y = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 300 + 6y - 24x = 0\;\big|{:}\,6 \\ \Longrightarrow\; 50 + y - 4x = 0 \\[4pt] 240 + 6x - 12y = 0\;\big|{:}\,6 \\ \Longrightarrow\; 40 + x - 2y = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} 4x - y &amp;= 50 \\ x - 2y &amp;= -40 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Pirmojoje lygtyje kintamojo \(y\) koeficientas lygus \(-1\), todėl iš jos patogiausia išreikšti \(y\). Narį \(-y\) perkeliame į dešiniąją pusę, o skaičių \(50\) – į kairiąją. Perkeliamų narių ženklai pasikeičia:</p>
+          <div class="m-wide">\[ 4x - y = 50 \;\Longrightarrow\; 4x - 50 = y \;\Longrightarrow\; y = 4x - 50 \]</div><div class="m-narrow">\[ \begin{gathered} 4x - y = 50 \\ \Longrightarrow\; 4x - 50 = y \\ \Longrightarrow\; y = 4x - 50 \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(y\). Kadangi \(y\) lygtyje padaugintas iš \(-2\), įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(x\):</p>
+          \[ x - 2(4x - 50) = -40 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ x - 8x + 100 = -40 \;\Longrightarrow\; -7x = -40 - 100 \;\Longrightarrow\; -7x = -140 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x - 8x + 100 = -40 \\ \Longrightarrow\; -7x = -40 - 100 \\ \Longrightarrow\; -7x = -140 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(-7\):</p>
+          \[ x = \frac{-140}{-7} = 20 \]
+          <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 4x - 50\):</p>
+          <div class="m-wide">\[ y = 4\cdot 20 - 50 = 80 - 50 = 30 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 4\cdot 20 - 50 \\ &amp;= 80 - 50 = 30 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((20;\,30)\). Patikriname, įstatę reikšmes į abi lygtis: \(4\cdot 20 - 30 = 50\) ir \(20 - 2\cdot 30 = -40\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Antrosios lygties pirmasis koeficientas lygus 1, todėl lygtis sukeičiame vietomis – šis vienetas tampa pagrindiniu elementu:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -2 &amp; -40 \\ 4 &amp; -1 &amp; 50 \end{array}\right) \]
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(-4\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(7\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -2 &amp; -40 \\ 4 &amp; -1 &amp; 50 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -2 &amp; -40 \\ \htmlClass{hc}{0} &amp; 7 &amp; 210 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,7} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -2 &amp; -40 \\ 0 &amp; \htmlClass{hd}{1} &amp; 30 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(y = 30\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ x - 2\cdot 30 = -40 \;\Longrightarrow\; x = 20 \]
+          <p>Gaunamas tas pats sprendinys \((20;\,30)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx} = -24;\quad B = P''_{xy} = 6;\quad C = P''_{yy} = -12 \\ D = AC - B^2 = (-24)\cdot (-12) - 6^2 = 288 - 36 = 252 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx} = -24 \\ B &amp;= P''_{xy} = 6 \\ C &amp;= P''_{yy} = -12 \\ D &amp;= AC - B^2 \\ &amp;= (-24)\cdot (-12) - 6^2 \\ &amp;= 288 - 36 = 252 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((20;\,30)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Gamybos apimtis ir didžiausias pelnas</span></h4>
+          <div class="m-wide">\[ \begin{gathered} Q(20;\,30) = 800 + 900 + 300 - 400 - 450 = 1150 \\ P_{\max}(20;\,30) = 12\cdot 1150 - 180\cdot 20 - 120\cdot 30 - 2000 = 4600 \end{gathered} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;Q(20;\,30) \\ &amp;= 800 + 900 + 300 - 400 - 450 \\ &amp;= 1150 \\[4pt] &amp;P_{\max}(20;\,30) \\ &amp;= 12\cdot 1150 - 180\cdot 20 \\ &amp;\phantom{=}\; {}- 120\cdot 30 - 2000 \\ &amp;= 4600 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Dirbtuvės turėtų įdarbinti 20 darbuotojų ir išsinuomoti 30 įrenginių. Per dieną būtų pagaminama 1150 žaislų. Didžiausias dienos pelnas yra 4600 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 9.1, 9 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Darbas ir įranga mažojoje alaus darykloje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Mažoji alaus darykla per savaitę pagamina
+        \[ Q(x;\,y) = 20x^{0{,}25}y^{0{,}5} \]
+        alaus butelių. Čia \(x\) – darbo valandų skaičius, \(y\) – alaus gamybos įrangos naudojimo valandų skaičius. Butelis parduodamas už 6&nbsp;eurus, darbo valanda kainuoja 20&nbsp;eurų, įrangos naudojimo valanda – 10&nbsp;eurų, o pastoviosios sąnaudos sudaro 500&nbsp;eurų per savaitę.
+        Kiek darbo ir įrangos naudojimo valandų reikėtų, kad savaitės pelnas būtų didžiausias? Kokia būtų gamybos apimtis ir koks yra didžiausias pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <div class="m-wide bp-lg">\[ P(x;\,y) = 6\cdot 20x^{0{,}25}y^{0{,}5} - 20x - 10y - 500 = 120x^{0{,}25}y^{0{,}5} - 20x - 10y - 500 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= 6\cdot 20x^{0{,}25}y^{0{,}5} - 20x - 10y - 500 \\ &amp;= 120x^{0{,}25}y^{0{,}5} - 20x - 10y - 500 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <p>Pagal laipsninės funkcijos išvestinės formulę:</p>
+          <div class="m-wide">\[ P'_x = 30x^{-0{,}75}y^{0{,}5} - 20;\qquad P'_y = 60x^{0{,}25}y^{-0{,}5} - 10 \]</div><div class="m-narrow">\[ \begin{gathered} P'_x = 30x^{-0{,}75}y^{0{,}5} - 20; \\ P'_y = 60x^{0{,}25}y^{-0{,}5} - 10 \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui ir išteklių sąnaudas perkeliame į dešiniąsias puses:</p>
+          <div class="m-wide">\[ \left\{ \begin{aligned} 30x^{-0{,}75}y^{0{,}5} - 20 &amp;= 0 \\ 60x^{0{,}25}y^{-0{,}5} - 10 &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 30x^{-0{,}75}y^{0{,}5} &amp;= 20 \\ 60x^{0{,}25}y^{-0{,}5} &amp;= 10 \end{aligned} \right. \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} 30x^{-0{,}75}y^{0{,}5} - 20 &amp;= 0 \\ 60x^{0{,}25}y^{-0{,}5} - 10 &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 30x^{-0{,}75}y^{0{,}5} &amp;= 20 \\ 60x^{0{,}25}y^{-0{,}5} &amp;= 10 \end{aligned} \right. \end{gathered} \]</div>
+          <p>Ši sistema nėra tiesinė: kintamieji yra laipsniuose su trupmeniniais rodikliais, o kiekvienoje lygtyje yra abu kintamieji. Iš tokios lygties neišeina paprastai išreikšti vieno kintamojo per kitą. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms, kuriose kiekvienas nežinomasis yra pirmojo laipsnio ir tik dauginamas iš skaičiaus.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Lygčių dalyba</span></h4>
+          <p>Pirmąją lygtį padalijame iš antrosios: kairiąją pusę iš kairiosios, dešiniąją – iš dešiniosios. Koeficientai suprastėja \(\frac{30}{60} = 0{,}5\), o laipsniai su tuo pačiu pagrindu dalijami atimant jų rodiklius: \(x^{-0{,}75 - 0{,}25} = x^{-1}\) ir \(y^{0{,}5 - (-0{,}5)} = y\):</p>
+          <div class="m-wide">\[ \frac{30x^{-0{,}75}y^{0{,}5}}{60x^{0{,}25}y^{-0{,}5}} = \frac{20}{10} \;\Longrightarrow\; 0{,}5\cdot x^{-1}y = 2 \;\Longrightarrow\; 0{,}5\cdot\frac{y}{x} = 2 \]</div><div class="m-narrow">\[ \begin{gathered} \frac{30x^{-0{,}75}y^{0{,}5}}{60x^{0{,}25}y^{-0{,}5}} = \frac{20}{10} \\ \Longrightarrow\; 0{,}5\cdot x^{-1}y = 2 \;\Longrightarrow\; 0{,}5\cdot\frac{y}{x} = 2 \end{gathered} \]</div>
+          <p>Abi puses padauginę iš \(2x\), išreiškiame \(y\) per \(x\):</p>
+          \[ y = 4x \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Įstatymas į lygtį</span></h4>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(y\). Laipsnį \((4x)^{-0{,}5}\) skaidome į daugiklius: \(4^{-0{,}5} = \frac{1}{\sqrt{4}} = 0{,}5\), todėl \((4x)^{-0{,}5} = 0{,}5x^{-0{,}5}\):</p>
+          <div class="m-wide bp-lg">\[ 60x^{0{,}25}(4x)^{-0{,}5} = 10 \;\Longrightarrow\; 60\cdot 0{,}5\cdot x^{0{,}25 - 0{,}5} = 10 \;\Longrightarrow\; 30x^{-0{,}25} = 10 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 60x^{0{,}25}(4x)^{-0{,}5} = 10 \\ \Longrightarrow\; 60\cdot 0{,}5\cdot x^{0{,}25 - 0{,}5} = 10 \\ \Longrightarrow\; 30x^{-0{,}25} = 10 \end{gathered} \]</div>
+          <p>Abi puses padalijame iš 30. Neigiamas laipsnio rodiklis reiškia atvirkštinį skaičių, todėl:</p>
+          <div class="m-wide">\[ x^{-0{,}25} = \frac{1}{3} \;\Longrightarrow\; x^{0{,}25} = 3 \;\Longrightarrow\; x = 3^4 = 81 \]</div><div class="m-narrow">\[ \begin{gathered} x^{-0{,}25} = \frac{1}{3} \;\Longrightarrow\; x^{0{,}25} = 3 \\ \Longrightarrow\; x = 3^4 = 81 \end{gathered} \]</div>
+          <p>Rastą \(x\) įstatome į reiškinį \(y = 4x\): \(y = 4\cdot 81 = 324\). Kritinis taškas yra \((81;\,324)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Gamybos funkcija yra <a href="tema-9.html#kobo-daglas">Kobo-Daglaso funkcija</a>, kurios \(A = 20 &gt; 0\) ir \(\alpha + \beta = 0{,}25 + 0{,}5 = 0{,}75 \le 1\), todėl ji išgaubta. Pelno funkcija taip pat išgaubta, todėl taškas \((81;\,324)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Gamybos apimtis ir didžiausias pelnas</span></h4>
+          <p>Kadangi \(81^{0{,}25} = 3\) ir \(324^{0{,}5} = 18\),</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} Q(81;\,324) &amp;= 20\cdot 3\cdot 18 = 1080 \\ P_{\max}(81;\,324) &amp;= 6\cdot 1080 - 20\cdot 81 - 10\cdot 324 - 500 = 1120 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;Q(81;\,324) \\ &amp;= 20\cdot 3\cdot 18 = 1080 \\[4pt] &amp;P_{\max}(81;\,324) \\ &amp;= 6\cdot 1080 - 20\cdot 81 \\ &amp;\phantom{=}\; {}- 10\cdot 324 - 500 = 1120 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Darykla turėtų per savaitę naudoti 81 darbo valandą ir 324 įrangos naudojimo valandas. Būtų pagaminama 1080 butelių. Didžiausias savaitės pelnas yra 1120 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 9 pavyzdys: TM 9.1, 10 pavyzdys -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">9 pavyzdys</span>
+        <h3>Pardavimo atstovai dviejuose regionuose</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonėje dirba \(x\) pardavimo atstovų A regione ir \(y\) atstovų B regione. Jų atnešamas bendrasis mėnesio pelnas tūkstančiais eurų yra
+        \[ G(x;\,y) = 60\ln(x + 1) + 90\ln(y + 1) \]
+        Vienas atstovas įmonei kainuoja 3&nbsp;tūkstančius eurų per mėnesį A regione ir 5&nbsp;tūkstančius eurų B regione. Kiek atstovų reikėtų įdarbinti kiekviename regione, kad pelnas, atėmus jų išlaikymo sąnaudas, būtų didžiausias? Koks yra šis pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <div class="m-wide">\[ N(x;\,y) = 60\ln(x + 1) + 90\ln(y + 1) - 3x - 5y \]</div><div class="m-narrow">\[ \begin{aligned} N(x;\,y) &amp;= 60\ln(x + 1) + 90\ln(y + 1) \\ &amp;\phantom{=}\; {}- 3x - 5y \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <p>Pagal sudėtinės funkcijos išvestinės taisyklę \(\big(\ln(x + 1)\big)'_x = \frac{1}{x + 1}\). Analogiškai diferencijuojama pagal \(y\):</p>
+          \[ N'_x = \frac{60}{x + 1} - 3;\qquad N'_y = \frac{90}{y + 1} - 5 \]
+          <p>Kiekviena išvestinė yra trupmenos ir skaičiaus skirtumas. Norint atimti, reikia bendro vardiklio, todėl skaičių užrašome trupmena, kurios vardiklis \(x + 1\): \(3 = \frac{3(x + 1)}{x + 1}\). Tada atimame skaitiklius, o bendrą vardiklį paliekame:</p>
+          <div class="m-wide bp-lg">\[ N'_x = \frac{60}{x + 1} - \frac{3(x + 1)}{x + 1} = \frac{60 - 3(x + 1)}{x + 1} = \frac{60 - 3x - 3}{x + 1} = \frac{57 - 3x}{x + 1} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} N'_x &amp;= \frac{60}{x + 1} - \frac{3(x + 1)}{x + 1} \\ &amp;= \frac{60 - 3(x + 1)}{x + 1} = \frac{60 - 3x - 3}{x + 1} \\ &amp;= \frac{57 - 3x}{x + 1} \end{aligned} \]</div>
+          <p>Analogiškai \(5 = \frac{5(y + 1)}{y + 1}\):</p>
+          <div class="m-wide bp-lg">\[ N'_y = \frac{90}{y + 1} - \frac{5(y + 1)}{y + 1} = \frac{90 - 5(y + 1)}{y + 1} = \frac{90 - 5y - 5}{y + 1} = \frac{85 - 5y}{y + 1} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} N'_y &amp;= \frac{90}{y + 1} - \frac{5(y + 1)}{y + 1} \\ &amp;= \frac{90 - 5(y + 1)}{y + 1} = \frac{90 - 5y - 5}{y + 1} \\ &amp;= \frac{85 - 5y}{y + 1} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} \frac{57 - 3x}{x + 1} &amp;= 0 \\ \frac{85 - 5y}{y + 1} &amp;= 0 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: kintamieji yra trupmenų vardikliuose. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms, kuriose kiekvienas nežinomasis yra pirmojo laipsnio ir tik dauginamas iš skaičiaus.</p>
+          <p>Tačiau kiekvienoje lygtyje yra tik vienas kintamasis, todėl lygtis galima spręsti atskirai. Trupmena lygi nuliui, kai jos skaitiklis lygus nuliui, o vardiklis nelygus nuliui. Todėl kiekvieną lygtį pakeičiame dviem sąlygomis:</p>
+          \[ \left\{ \begin{aligned} 57 - 3x &amp;= 0 \\ x + 1 &amp;\ne 0 \\ 85 - 5y &amp;= 0 \\ y + 1 &amp;\ne 0 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas</span></h4>
+          <p>Iš pirmosios lygties \(3x = 57\), todėl \(x = 19\). Sąlyga \(x + 1 = 20 \ne 0\) tenkinama.</p>
+          <p>Iš trečiosios lygties \(5y = 85\), todėl \(y = 17\). Sąlyga \(y + 1 = 18 \ne 0\) taip pat tenkinama.</p>
+          <p>Kritinis taškas yra \((19;\,17)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Šį kartą antros eilės dalinės išvestinės priklauso nuo taško, todėl įstatome kritinio taško koordinates:</p>
+          <div class="m-wide">\[ N''_{xx} = -\frac{60}{(x + 1)^2};\qquad N''_{xy} = 0;\qquad N''_{yy} = -\frac{90}{(y + 1)^2} \]</div><div class="m-narrow">\[ \begin{gathered} N''_{xx} = -\frac{60}{(x + 1)^2}; \\ N''_{xy} = 0; \\ N''_{yy} = -\frac{90}{(y + 1)^2} \end{gathered} \]</div>
+          <div class="m-wide">\[ A = -\frac{60}{400} = -0{,}15;\qquad B = 0;\qquad C = -\frac{90}{324} = -\frac{5}{18} \]</div><div class="m-narrow">\[ \begin{gathered} A = -\frac{60}{400} = -0{,}15; \\ B = 0; \\ C = -\frac{90}{324} = -\frac{5}{18} \end{gathered} \]</div>
+          <div class="m-wide">\[ D = AC - B^2 = (-0{,}15)\cdot\Big(-\frac{5}{18}\Big) - 0^2 = \frac{1}{24} &gt; 0 \]</div><div class="m-narrow">\[ \begin{aligned} D &amp;= AC - B^2 \\ &amp;= (-0{,}15)\cdot\Big(-\frac{5}{18}\Big) - 0^2 \\ &amp;= \frac{1}{24} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((19;\,17)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausias pelnas</span></h4>
+          <div class="m-wide">\[ N_{\max}(19;\,17) = 60\ln 20 + 90\ln 18 - 57 - 85 \approx 297{,}88 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;N_{\max}(19;\,17) \\ &amp;= 60\ln 20 + 90\ln 18 - 57 - 85 \\ &amp;\approx 297{,}88 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Įmonė turėtų įdarbinti 19 atstovų A regione ir 17 atstovų B regione. Didžiausias mėnesio pelnas, atėmus atstovų išlaikymo sąnaudas, yra apytiksliai 297,88 tūkstančio eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 10 pavyzdys: TM 9.1, 11 pavyzdys -->
+    <article class="card example" id="pavyzdys-10">
+      <header class="example-head">
+        <span class="example-tag">10 pavyzdys</span>
+        <h3>Dažų maišymo režimas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Vienos dažų partijos gamybos sąnaudos eurais priklauso nuo mišinio temperatūros \(x\) Celsijaus laipsniais ir maišymo trukmės \(y\) minutėmis:
+        <div class="m-wide">\[ TC(x;\,y) = 0{,}05x^2 + 0{,}4y^2 - 0{,}1xy - 1{,}5x - 16y + 500 \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 0{,}05x^2 + 0{,}4y^2 - 0{,}1xy \\ &amp;\phantom{=}\; {}- 1{,}5x - 16y + 500 \end{aligned} \]</div>
+        Raskite temperatūrą ir maišymo trukmę, su kuriomis vienos partijos gamybos sąnaudos būtų mažiausios. Kokios yra mažiausios sąnaudos?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <div class="m-wide">\[ TC'_x = 0{,}1x - 0{,}1y - 1{,}5;\qquad TC'_y = 0{,}8y - 0{,}1x - 16 \]</div><div class="m-narrow">\[ \begin{aligned} TC'_x &amp;= 0{,}1x - 0{,}1y - 1{,}5 \\ TC'_y &amp;= 0{,}8y - 0{,}1x - 16 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 0{,}1x - 0{,}1y - 1{,}5 &amp;= 0 \\ 0{,}8y - 0{,}1x - 16 &amp;= 0 \end{aligned} \right. \]
+          <p>Lygtyse yra dešimtainių trupmenų. Kad koeficientai taptų sveikaisiais skaičiais, kiekvieną lygtį padauginame iš 10. Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} 0{,}1x - 0{,}1y - 1{,}5 = 0\;\big|\cdot 10 \;&amp;\Longrightarrow\; x - y - 15 = 0 \\ 0{,}8y - 0{,}1x - 16 = 0\;\big|\cdot 10 \;&amp;\Longrightarrow\; 8y - x - 160 = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 0{,}1x - 0{,}1y - 1{,}5 = 0\;\big|\cdot 10 \\ \Longrightarrow\; x - y - 15 = 0 \\[4pt] 0{,}8y - 0{,}1x - 16 = 0\;\big|\cdot 10 \\ \Longrightarrow\; 8y - x - 160 = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} x - y &amp;= 15 \\ -x + 8y &amp;= 160 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Pirmojoje lygtyje kintamojo \(x\) koeficientas lygus 1, todėl iš jos patogiausia išreikšti \(x\). Narį \(-y\) perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide">\[ x - y = 15 \;\Longrightarrow\; x = y + 15 \]</div><div class="m-narrow">\[ \begin{gathered} x - y = 15 \\ \Longrightarrow\; x = y + 15 \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(x\). Prieš \(x\) yra minuso ženklas, todėl įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(y\):</p>
+          \[ -(y + 15) + 8y = 160 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ -y - 15 + 8y = 160 \;\Longrightarrow\; 7y = 160 + 15 \;\Longrightarrow\; 7y = 175 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -y - 15 + 8y = 160 \\ \Longrightarrow\; 7y = 160 + 15 \\ \Longrightarrow\; 7y = 175 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(7\):</p>
+          \[ y = \frac{175}{7} = 25 \]
+          <p>Rastą \(y\) reikšmę įstatome į reiškinį \(x = y + 15\):</p>
+          <div class="m-wide">\[ x = 25 + 15 = 40 \]</div><div class="m-narrow">\[ \begin{aligned} x &amp;= 25 + 15 \\ &amp;= 40 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((40;\,25)\). Patikriname, įstatę reikšmes į abi lygtis: \(40 - 25 = 15\) ir \(-40 + 8\cdot 25 = 160\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Pirmosios eilutės pirmasis elementas jau lygus 1, todėl jis yra pagrindinis elementas:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -1 &amp; 15 \\ -1 &amp; 8 &amp; 160 \end{array}\right) \]
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(1\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(7\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -1 &amp; 15 \\ -1 &amp; 8 &amp; 160 \end{array}\right)\begin{array}{c} \htmlClass{ha}{1} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -1 &amp; 15 \\ \htmlClass{hc}{0} &amp; 7 &amp; 175 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,7} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -1 &amp; 15 \\ 0 &amp; \htmlClass{hd}{1} &amp; 25 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(y = 25\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ x - 25 = 15 \;\Longrightarrow\; x = 40 \]
+          <p>Gaunamas tas pats sprendinys \((40;\,25)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = TC''_{xx} = 0{,}1;\quad B = TC''_{xy} = -0{,}1;\quad C = TC''_{yy} = 0{,}8 \\ D = AC - B^2 = 0{,}1\cdot 0{,}8 - (-0{,}1)^2 = 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= TC''_{xx} = 0{,}1 \\ B &amp;= TC''_{xy} = -0{,}1 \\ C &amp;= TC''_{yy} = 0{,}8 \\ D &amp;= AC - B^2 \\ &amp;= 0{,}1\cdot 0{,}8 - (-0{,}1)^2 \\ &amp;= 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((40;\,25)\) yra minimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Mažiausios sąnaudos</span></h4>
+          <div class="m-wide">\[ TC_{\min}(40;\,25) = 80 + 250 - 100 - 60 - 400 + 500 = 270 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;TC_{\min}(40;\,25) \\ &amp;= 80 + 250 - 100 - 60 - 400 + 500 \\ &amp;= 270 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Dažus reikėtų maišyti 40 Celsijaus laipsnių temperatūroje 25 minutes. Mažiausios vienos partijos gamybos sąnaudos yra 270 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 11 pavyzdys: TM 9.1, 12 pavyzdys -->
+    <article class="card example" id="pavyzdys-11">
+      <header class="example-head">
+        <span class="example-tag">11 pavyzdys</span>
+        <h3>Dviejų gamybos linijų techninė priežiūra</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gamykloje veikia dvi gamybos linijos. Jei per mėnesį A linijos techninei priežiūrai skiriama \(x\) valandų, o B linijos – \(y\) valandų, mėnesio techninės priežiūros ir gedimų sąnaudos eurais yra
+        <div class="m-wide">\[ TC(x;\,y) = 200x + 300y + 40\,000e^{-0{,}1x} + 90\,000e^{-0{,}1y} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;TC(x;\,y) \\ &amp;= 200x + 300y \\ &amp;\phantom{=}\; {}+ 40\,000e^{-0{,}1x} + 90\,000e^{-0{,}1y} \end{aligned} \]</div>
+        Kiek valandų reikėtų skirti kiekvienos linijos techninei priežiūrai, kad sąnaudos būtų mažiausios? Kokios yra mažiausios sąnaudos?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <p>Pagal sudėtinės funkcijos išvestinės taisyklę \(\big(e^{-0{,}1x}\big)'_x = -0{,}1e^{-0{,}1x}\):</p>
+          <div class="m-wide">\[ TC'_x = 200 - 4000e^{-0{,}1x};\qquad TC'_y = 300 - 9000e^{-0{,}1y} \]</div><div class="m-narrow">\[ \begin{gathered} TC'_x = 200 - 4000e^{-0{,}1x}; \\ TC'_y = 300 - 9000e^{-0{,}1y} \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 200 - 4000e^{-0{,}1x} &amp;= 0 \\ 300 - 9000e^{-0{,}1y} &amp;= 0 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: kintamieji yra rodiklinių funkcijų laipsnio rodikliuose. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms, kuriose kiekvienas nežinomasis yra pirmojo laipsnio ir tik dauginamas iš skaičiaus.</p>
+          <p>Kiekvienoje lygtyje yra tik vienas kintamasis, todėl lygtis sprendžiame atskirai. Pirmiausia rodiklinę funkciją paliekame vieną kairiojoje pusėje: narį su ja perkeliame į dešinę ir abi puses padalijame iš jo koeficiento:</p>
+          <div class="m-wide">\[ \left\{ \begin{aligned} 4000e^{-0{,}1x} &amp;= 200 \\ 9000e^{-0{,}1y} &amp;= 300 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} e^{-0{,}1x} &amp;= 0{,}05 \\ e^{-0{,}1y} &amp;= \frac{1}{30} \end{aligned} \right. \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} 4000e^{-0{,}1x} &amp;= 200 \\ 9000e^{-0{,}1y} &amp;= 300 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} e^{-0{,}1x} &amp;= 0{,}05 \\ e^{-0{,}1y} &amp;= \frac{1}{30} \end{aligned} \right. \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sistemos sprendimas</span></h4>
+          <p>Apskaičiuojame abiejų kiekvienos lygties pusių natūraliuosius logaritmus. Kadangi \(\ln e^{u} = u\), kairiojoje pusėje lieka laipsnio rodiklis:</p>
+          <div class="m-wide bp-lg">\[ -0{,}1x = \ln 0{,}05 \;\Longrightarrow\; x = -10\ln 0{,}05 = 10\ln 20 \approx 29{,}96 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} -0{,}1x &amp;= \ln 0{,}05 \\ x &amp;= -10\ln 0{,}05 = 10\ln 20 \approx 29{,}96 \end{aligned} \]</div>
+          <div class="m-wide">\[ -0{,}1y = \ln\frac{1}{30} \;\Longrightarrow\; y = 10\ln 30 \approx 34{,}01 \]</div><div class="m-narrow">\[ \begin{aligned} -0{,}1y &amp;= \ln\frac{1}{30} \\ y &amp;= 10\ln 30 \approx 34{,}01 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Kritiniame taške \(e^{-0{,}1x} = 0{,}05\) ir \(e^{-0{,}1y} = \frac{1}{30}\), todėl</p>
+          <div class="m-wide">\[ TC''_{xx} = 400e^{-0{,}1x};\qquad TC''_{xy} = 0;\qquad TC''_{yy} = 900e^{-0{,}1y} \]</div><div class="m-narrow">\[ \begin{gathered} TC''_{xx} = 400e^{-0{,}1x}; \\ TC''_{xy} = 0; \\ TC''_{yy} = 900e^{-0{,}1y} \end{gathered} \]</div>
+          <div class="m-wide">\[ A = 400\cdot 0{,}05 = 20;\qquad B = 0;\qquad C = 900\cdot\frac{1}{30} = 30 \]</div><div class="m-narrow">\[ \begin{gathered} A = 400\cdot 0{,}05 = 20; \\ B = 0; \\ C = 900\cdot\frac{1}{30} = 30 \end{gathered} \]</div>
+          \[ D = AC - B^2 = 20\cdot 30 - 0^2 = 600 &gt; 0 \]
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl kritinis taškas yra minimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Mažiausios sąnaudos</span></h4>
+          <div class="m-wide bp-lg">\[ TC_{\min} = 200\cdot 10\ln 20 + 300\cdot 10\ln 30 + 40\,000\cdot 0{,}05 + 90\,000\cdot\frac{1}{30} \approx 21\,195{,}06 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} TC_{\min} &amp;= 200\cdot 10\ln 20 + 300\cdot 10\ln 30 \\ &amp;\phantom{=}\; {}+ 40\,000\cdot 0{,}05 + 90\,000\cdot\frac{1}{30} \\ &amp;\approx 21\,195{,}06 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Mažiausios sąnaudos gaunamos A linijos techninei priežiūrai skiriant apytiksliai 29,96 valandos per mėnesį, o B linijos – 34,01 valandos. Mažiausios mėnesio sąnaudos yra apytiksliai 21&nbsp;195,06 euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Kiti optimizavimo uždaviniai</h3>
+
+    <!-- 12 pavyzdys: TM 9.1, 13 pavyzdys -->
+    <article class="card example" id="pavyzdys-12">
+      <header class="example-head">
+        <span class="example-tag">12 pavyzdys</span>
+        <h3>Trąšos ir drėkinimas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kviečių derlingumas kilogramais iš hektaro priklauso nuo azoto trąšų kiekio \(x\) kilogramais hektarui ir drėkinimui skirto vandens kiekio \(y\) milimetrais:
+        <div class="m-wide">\[ Y(x;\,y) = 2000 + 35x + 35y - 0{,}2x^2 - 0{,}1y^2 + 0{,}1xy \]</div><div class="m-narrow">\[ \begin{aligned} Y(x;\,y) &amp;= 2000 + 35x + 35y \\ &amp;\phantom{=}\; {}- 0{,}2x^2 - 0{,}1y^2 + 0{,}1xy \end{aligned} \]</div>
+        Raskite trąšų ir vandens kiekius, su kuriais derlingumas būtų didžiausias. Koks yra didžiausias derlingumas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <div class="m-wide">\[ Y'_x = 35 - 0{,}4x + 0{,}1y;\qquad Y'_y = 35 - 0{,}2y + 0{,}1x \]</div><div class="m-narrow">\[ \begin{aligned} Y'_x &amp;= 35 - 0{,}4x + 0{,}1y \\ Y'_y &amp;= 35 - 0{,}2y + 0{,}1x \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 35 - 0{,}4x + 0{,}1y &amp;= 0 \\ 35 - 0{,}2y + 0{,}1x &amp;= 0 \end{aligned} \right. \]
+          <p>Lygtyse yra dešimtainių trupmenų. Kad koeficientai taptų sveikaisiais skaičiais, kiekvieną lygtį padauginame iš 10. Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} 35 - 0{,}4x + 0{,}1y = 0\;\big|\cdot 10 \;&amp;\Longrightarrow\; 350 - 4x + y = 0 \\ 35 - 0{,}2y + 0{,}1x = 0\;\big|\cdot 10 \;&amp;\Longrightarrow\; 350 - 2y + x = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 35 - 0{,}4x + 0{,}1y = 0\;\big|\cdot 10 \\ \Longrightarrow\; 350 - 4x + y = 0 \\[4pt] 35 - 0{,}2y + 0{,}1x = 0\;\big|\cdot 10 \\ \Longrightarrow\; 350 - 2y + x = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} 4x - y &amp;= 350 \\ -x + 2y &amp;= 350 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Pirmojoje lygtyje kintamojo \(y\) koeficientas lygus \(-1\), todėl iš jos patogiausia išreikšti \(y\). Narį \(-y\) perkeliame į dešiniąją pusę, o skaičių \(350\) – į kairiąją. Perkeliamų narių ženklai pasikeičia:</p>
+          <div class="m-wide">\[ 4x - y = 350 \;\Longrightarrow\; 4x - 350 = y \;\Longrightarrow\; y = 4x - 350 \]</div><div class="m-narrow">\[ \begin{gathered} 4x - y = 350 \\ \Longrightarrow\; 4x - 350 = y \\ \Longrightarrow\; y = 4x - 350 \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(y\). Kadangi \(y\) lygtyje padaugintas iš 2, įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(x\):</p>
+          \[ -x + 2(4x - 350) = 350 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ -x + 8x - 700 = 350 \;\Longrightarrow\; 7x = 350 + 700 \;\Longrightarrow\; 7x = 1050 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -x + 8x - 700 = 350 \\ \Longrightarrow\; 7x = 350 + 700 \\ \Longrightarrow\; 7x = 1050 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(7\):</p>
+          \[ x = \frac{1050}{7} = 150 \]
+          <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 4x - 350\):</p>
+          <div class="m-wide">\[ y = 4\cdot 150 - 350 = 600 - 350 = 250 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 4\cdot 150 - 350 \\ &amp;= 600 - 350 = 250 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((150;\,250)\). Patikriname, įstatę reikšmes į abi lygtis: \(4\cdot 150 - 250 = 350\) ir \(-150 + 2\cdot 250 = 350\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Antrosios lygties pirmasis koeficientas lygus \(-1\). Lygtis sukeičiame vietomis, o naująją pirmąją eilutę dalijame iš \(-1\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} -1 &amp; 2 &amp; 350 \\ 4 &amp; -1 &amp; 350 \end{array}\right)\begin{array}{l} \htmlClass{ha}{{:}\,(-1)} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -2 &amp; -350 \\ 4 &amp; -1 &amp; 350 \end{array}\right)\)</span></div>
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(-4\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(7\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -2 &amp; -350 \\ 4 &amp; -1 &amp; 350 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -2 &amp; -350 \\ \htmlClass{hc}{0} &amp; 7 &amp; 1750 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,7} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -2 &amp; -350 \\ 0 &amp; \htmlClass{hd}{1} &amp; 250 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(y = 250\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ x - 2\cdot 250 = -350 \;\Longrightarrow\; x = 150 \]
+          <p>Gaunamas tas pats sprendinys \((150;\,250)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = Y''_{xx} = -0{,}4;\quad B = Y''_{xy} = 0{,}1;\quad C = Y''_{yy} = -0{,}2 \\ D = AC - B^2 = (-0{,}4)\cdot (-0{,}2) - 0{,}1^2 = 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= Y''_{xx} = -0{,}4 \\ B &amp;= Y''_{xy} = 0{,}1 \\ C &amp;= Y''_{yy} = -0{,}2 \\ D &amp;= AC - B^2 \\ &amp;= (-0{,}4)\cdot (-0{,}2) - 0{,}1^2 \\ &amp;= 0{,}08 - 0{,}01 = 0{,}07 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((150;\,250)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Didžiausias derlingumas</span></h4>
+          <div class="m-wide bp-lg">\[ Y_{\max}(150;\,250) = 2000 + 5250 + 8750 - 4500 - 6250 + 3750 = 9000 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;Y_{\max}(150;\,250) \\ &amp;= 2000 + 5250 + 8750 \\ &amp;\phantom{=}\; {}- 4500 - 6250 + 3750 = 9000 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Didžiausias derlingumas gaunamas hektarui naudojant 150 kilogramų trąšų ir 250 milimetrų vandens. Didžiausias derlingumas yra 9000 kilogramų iš hektaro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 13 pavyzdys: TM 9.1, 14 pavyzdys -->
+    <article class="card example" id="pavyzdys-13">
+      <header class="example-head">
+        <span class="example-tag">13 pavyzdys</span>
+        <h3>Reklama televizijoje ir internete</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Įmonė planuoja reklamos kampaniją. Jei televizijos reklamai ji skirs \(x\) tūkstančių eurų, o interneto reklamai – \(y\) tūkstančių eurų, bendrasis pelnas iš papildomų pardavimų tūkstančiais eurų bus
+        <div class="m-wide">\[ G(x;\,y) = 200 + 21x + 26y - 0{,}5x^2 - y^2 + 0{,}5xy \]</div><div class="m-narrow">\[ \begin{aligned} G(x;\,y) &amp;= 200 + 21x + 26y \\ &amp;\phantom{=}\; {}- 0{,}5x^2 - y^2 + 0{,}5xy \end{aligned} \]</div>
+        Kiek įmonė turėtų skirti kiekvienai reklamos rūšiai, kad pelnas, atėmus kampanijos sąnaudas, būtų didžiausias? Koks yra šis pelnas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Tikslo funkcija</span></h4>
+          <p>Kampanijos sąnaudos yra \(x + y\) tūkstančių eurų, todėl grynasis pelnas yra</p>
+          <div class="m-wide bp-lg">\[ N(x;\,y) = G(x;\,y) - x - y = 200 + 20x + 25y - 0{,}5x^2 - y^2 + 0{,}5xy \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;N(x;\,y) \\ &amp;= G(x;\,y) - x - y \\ &amp;= 200 + 20x + 25y \\ &amp;\phantom{=}\; {}- 0{,}5x^2 - y^2 + 0{,}5xy \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pirmos eilės dalinės išvestinės</span></h4>
+          <div class="m-wide">\[ N'_x = 20 - x + 0{,}5y;\qquad N'_y = 25 - 2y + 0{,}5x \]</div><div class="m-narrow">\[ \begin{gathered} N'_x = 20 - x + 0{,}5y; \\ N'_y = 25 - 2y + 0{,}5x \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Abi dalines išvestines prilyginame nuliui:</p>
+          \[ \left\{ \begin{aligned} 20 - x + 0{,}5y &amp;= 0 \\ 25 - 2y + 0{,}5x &amp;= 0 \end{aligned} \right. \]
+          <p>Lygtyse yra dešimtainių trupmenų. Kad koeficientai taptų sveikaisiais skaičiais, kiekvieną lygtį padauginame iš 2. Taip pertvarkomas kiekvienas lygties narys, taip pat ir laisvasis:</p>
+          <div class="m-wide">\[ \begin{aligned} 20 - x + 0{,}5y = 0\;\big|\cdot 2 \;&amp;\Longrightarrow\; 40 - 2x + y = 0 \\ 25 - 2y + 0{,}5x = 0\;\big|\cdot 2 \;&amp;\Longrightarrow\; 50 - 4y + x = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 20 - x + 0{,}5y = 0\;\big|\cdot 2 \\ \Longrightarrow\; 40 - 2x + y = 0 \\[4pt] 25 - 2y + 0{,}5x = 0\;\big|\cdot 2 \\ \Longrightarrow\; 50 - 4y + x = 0 \end{gathered} \]</div>
+          <p>Kintamuosius paliekame kairiojoje pusėje, o skaičius – dešiniojoje. Perkeliant narį į kitą lygties pusę, jo ženklas pasikeičia. Gaunama tiesinių lygčių sistema:</p>
+          \[ \left\{ \begin{aligned} 2x - y &amp;= 40 \\ x - 4y &amp;= -50 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p>Pirmojoje lygtyje kintamojo \(y\) koeficientas lygus \(-1\), todėl iš jos patogiausia išreikšti \(y\). Narį \(-y\) perkeliame į dešiniąją pusę, o skaičių \(40\) – į kairiąją. Perkeliamų narių ženklai pasikeičia:</p>
+          <div class="m-wide">\[ 2x - y = 40 \;\Longrightarrow\; 2x - 40 = y \;\Longrightarrow\; y = 2x - 40 \]</div><div class="m-narrow">\[ \begin{gathered} 2x - y = 40 \\ \Longrightarrow\; 2x - 40 = y \\ \Longrightarrow\; y = 2x - 40 \end{gathered} \]</div>
+          <p>Gautą reiškinį įstatome į antrąją lygtį vietoje \(y\). Kadangi \(y\) lygtyje padaugintas iš \(-4\), įstatytą reiškinį rašome skliaustuose. Gaunama lygtis su vienu kintamuoju \(x\):</p>
+          \[ x - 4(2x - 40) = -50 \]
+          <p>Atskliaudžiame, sutraukiame panašiuosius narius, o skaičių perkeliame į dešiniąją pusę, pakeisdami jo ženklą:</p>
+          <div class="m-wide bp-lg">\[ x - 8x + 160 = -50 \;\Longrightarrow\; -7x = -50 - 160 \;\Longrightarrow\; -7x = -210 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x - 8x + 160 = -50 \\ \Longrightarrow\; -7x = -50 - 160 \\ \Longrightarrow\; -7x = -210 \end{gathered} \]</div>
+          <p>Abi lygties puses padalijame iš \(-7\):</p>
+          \[ x = \frac{-210}{-7} = 30 \]
+          <p>Rastą \(x\) reikšmę įstatome į reiškinį \(y = 2x - 40\):</p>
+          <div class="m-wide">\[ y = 2\cdot 30 - 40 = 60 - 40 = 20 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 2\cdot 30 - 40 \\ &amp;= 60 - 40 = 20 \end{aligned} \]</div>
+          <p>Kritinis taškas yra \((30;\,20)\). Patikriname, įstatę reikšmes į abi lygtis: \(2\cdot 30 - 20 = 40\) ir \(30 - 4\cdot 20 = -50\) – abi lygybės teisingos.</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Lygčių sistemos išplėstinė matrica sudaroma iš nežinomųjų koeficientų ir laisvųjų narių (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>).</p>
+          <p>Antrosios lygties pirmasis koeficientas lygus 1, todėl lygtis sukeičiame vietomis – šis vienetas tampa pagrindiniu elementu:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -4 &amp; -50 \\ 2 &amp; -1 &amp; 40 \end{array}\right) \]
+          <p>Kad po pagrindiniu elementu atsirastų 0, pirmąją eilutę dauginame iš \(-2\) ir pridedame prie antrosios, o gautą antrąją eilutę dalijame iš \(7\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -4 &amp; -50 \\ 2 &amp; -1 &amp; 40 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -4 &amp; -50 \\ \htmlClass{hc}{0} &amp; 7 &amp; 140 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,7} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -4 &amp; -50 \\ 0 &amp; \htmlClass{hd}{1} &amp; 20 \end{array}\right)\)</span></div>
+          <p>Atbulinė eiga: iš antrosios eilutės \(y = 20\). Šią reikšmę įstatome į pirmąją eilutę:</p>
+          \[ x - 4\cdot 20 = -50 \;\Longrightarrow\; x = 30 \]
+          <p>Gaunamas tas pats sprendinys \((30;\,20)\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra pastovios, todėl jų reikšmės kritiniame taške tiesiog lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = N''_{xx} = -1;\quad B = N''_{xy} = 0{,}5;\quad C = N''_{yy} = -2 \\ D = AC - B^2 = (-1)\cdot (-2) - 0{,}5^2 = 2 - 0{,}25 = 1{,}75 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= N''_{xx} = -1 \\ B &amp;= N''_{xy} = 0{,}5 \\ C &amp;= N''_{yy} = -2 \\ D &amp;= AC - B^2 \\ &amp;= (-1)\cdot (-2) - 0{,}5^2 \\ &amp;= 2 - 0{,}25 = 1{,}75 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((30;\,20)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausias grynasis pelnas</span></h4>
+          <div class="m-wide">\[ N_{\max}(30;\,20) = 200 + 600 + 500 - 450 - 400 + 300 = 750 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;N_{\max}(30;\,20) \\ &amp;= 200 + 600 + 500 - 450 - 400 + 300 \\ &amp;= 750 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Įmonė turėtų skirti 30&nbsp;tūkstančių eurų televizijos reklamai ir 20&nbsp;tūkstančių eurų interneto reklamai. Didžiausias pelnas, atėmus kampanijos sąnaudas, yra 750&nbsp;tūkstančių eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: sudarykite tikslo funkciją, išspręskite būtinosios sąlygos lygčių sistemą, patikrinkite pakankamąją sąlygą ir apskaičiuokite prašomus dydžius. Atsakyme pateikti pagrindiniai tarpiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 9 rinkinys, 1 sk. 1 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonė per mėnesį pagamina \(x\) elektroninių knygų skaityklių ir \(y\) planšetinių kompiuterių. Jos mėnesio pelnas eurais yra</p>
+          <div class="m-wide">\[ P(x;\,y) = -0{,}4x^2 - 0{,}3y^2 - 0{,}2xy + 140x + 90y - 6000 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= -0{,}4x^2 - 0{,}3y^2 - 0{,}2xy \\ &amp;\phantom{=}\; {}+ 140x + 90y - 6000 \end{aligned} \]</div>
+          <p>Kiek skaityklių ir planšetinių kompiuterių reikėtų pagaminti, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Lygčių sistema ir kritinis taškas:</strong></p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 140 - 0{,}8x - 0{,}2y &amp;= 0 \\ 90 - 0{,}6y - 0{,}2x &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 4x + y &amp;= 700 \\ x + 3y &amp;= 450 \end{aligned} \right. \;\Longrightarrow\; (150;\,100) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 140 - 0{,}8x - 0{,}2y &amp;= 0 \\ 90 - 0{,}6y - 0{,}2x &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 4x + y &amp;= 700 \\ x + 3y &amp;= 450 \end{aligned} \right. \\ \Longrightarrow\; (150;\,100) \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide"><div class="m-wide"><div class="m-wide bp-lg">\[ A = -0{,}8;\quad B = -0{,}2;\quad C = -0{,}6;\quad D = 0{,}44 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -0{,}8; \\ B = -0{,}2; \\ C = -0{,}6; \\ D = 0{,}44 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -0{,}8; \\ B = -0{,}2; \\ C = -0{,}6; \\ D = 0{,}44 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -0{,}8; \\ B = -0{,}2; \\ C = -0{,}6; \\ D = 0{,}44 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div>
+          <p><strong>Atsakymas.</strong> Per mėnesį reikėtų pagaminti 150 skaityklių ir 100 planšetinių kompiuterių. Didžiausias mėnesio pelnas yra \(P_{\max}(150;\,100) = 9000\) eurų.</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonė per mėnesį parduoda \(x\) plento dviračių ir \(y\) elektrinių dviračių šiomis kainomis, išreikštomis šimtais eurų:</p>
+          <div class="m-wide">\[ p_1 = 70 - 0{,}02x - 0{,}01y;\qquad p_2 = 90 - 0{,}01x - 0{,}04y \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 70 - 0{,}02x - 0{,}01y; \\ p_2 = 90 - 0{,}01x - 0{,}04y \end{gathered} \]</div>
+          <p>Vieno plento dviračio kintamosios sąnaudos yra 20, elektrinio – 30, o pastoviosios sąnaudos – 10&nbsp;000. Visos sąnaudos išreikštos šimtais eurų.</p>
+          <p>Kiek kiekvienos rūšies dviračių reikėtų parduoti ir kokiomis kainomis, kad pelnas būtų didžiausias? Koks yra didžiausias pelnas?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija:</strong></p>
+          <div class="m-wide">\[ P(x;\,y) = 50x + 60y - 0{,}02x^2 - 0{,}04y^2 - 0{,}02xy - 10\,000 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= 50x + 60y - 0{,}02x^2 \\ &amp;\phantom{=}\; {}- 0{,}04y^2 - 0{,}02xy - 10\,000 \end{aligned} \]</div>
+          <p><strong>Lygčių sistema ir kritinis taškas:</strong></p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 50 - 0{,}04x - 0{,}02y &amp;= 0 \\ 60 - 0{,}02x - 0{,}08y &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 2x + y &amp;= 2500 \\ x + 4y &amp;= 3000 \end{aligned} \right. \;\Longrightarrow\; (1000;\,500) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 50 - 0{,}04x - 0{,}02y &amp;= 0 \\ 60 - 0{,}02x - 0{,}08y &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 2x + y &amp;= 2500 \\ x + 4y &amp;= 3000 \end{aligned} \right. \\ \Longrightarrow\; (1000;\,500) \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide"><div class="m-wide"><div class="m-wide bp-lg">\[ A = -0{,}04;\quad B = -0{,}02;\quad C = -0{,}08;\quad D = 0{,}0028 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -0{,}04; \\ B = -0{,}02; \\ C = -0{,}08; \\ D = 0{,}0028 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -0{,}04; \\ B = -0{,}02; \\ C = -0{,}08; \\ D = 0{,}0028 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -0{,}04; \\ B = -0{,}02; \\ C = -0{,}08; \\ D = 0{,}0028 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div>
+          <p><strong>Atsakymas.</strong> Reikėtų parduoti 1000 plento dviračių, kai \(p_1 = 45\), ir 500 elektrinių dviračių, kai \(p_2 = 60\). Kainos išreikštos šimtais eurų. Didžiausias mėnesio pelnas yra \(P_{\max}(1000;\,500) = 30\,000\) šimtų eurų.</p>
+        </div>
+      </article>
+
+      <!-- 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kavos skrudykla parduoda du kavos mišinius po 250&nbsp;g. Kai A mišinio pakuotė kainuoja \(p\) eurų, o B mišinio – \(r\) eurų, per savaitę parduodama</p>
+          <div class="m-wide">\[ x = 300 - 30p + 10r;\qquad y = 200 + 10p - 20r \]</div><div class="m-narrow">\[ \begin{gathered} x = 300 - 30p + 10r; \\ y = 200 + 10p - 20r \end{gathered} \]</div>
+          <p>pakuočių. Vienos A mišinio pakuotės gamyba kainuoja 3&nbsp;eurus, o B mišinio – 2&nbsp;eurus.</p>
+          <p>Kokiomis kainomis reikėtų parduoti mišinius, kad savaitės pelnas būtų didžiausias? Kiek pakuočių būtų parduota ir koks būtų didžiausias pelnas?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija:</strong></p>
+          <div class="m-wide bp-lg">\[ P(p;\,r) = (p - 3)(300 - 30p + 10r) + (r - 2)(200 + 10p - 20r) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(p;\,r) \\ &amp;= (p - 3)(300 - 30p + 10r) \\ &amp;\phantom{=}\; {}+ (r - 2)(200 + 10p - 20r) \end{aligned} \]</div>
+          <p><strong>Lygčių sistema ir kritinis taškas:</strong></p>
+          <div class="m-wide">\[ \left\{ \begin{aligned} P'_p &amp;= 370 - 60p + 20r = 0 \\ P'_r &amp;= 210 + 20p - 40r = 0 \end{aligned} \right. \;\Longrightarrow\; (9{,}5;\,10) \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} P'_p &amp;= 370 - 60p + 20r = 0 \\ P'_r &amp;= 210 + 20p - 40r = 0 \end{aligned} \right. \\ \Longrightarrow\; (9{,}5;\,10) \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide"><div class="m-wide">\[ A = -60;\quad B = 20;\quad C = -40;\quad D = 2000 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow">\[ \begin{gathered} A = -60; \\ B = 20; \\ C = -40; \\ D = 2000 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -60; \\ B = 20; \\ C = -40; \\ D = 2000 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div>
+          <p><strong>Atsakymas.</strong> A mišinio pakuotė turėtų kainuoti 9,5&nbsp;euro, o B mišinio – 10&nbsp;eurų. Per savaitę būtų parduota atitinkamai 115 ir 95 pakuotės. Didžiausias savaitės pelnas yra \(P_{\max} = 1507{,}5\) euro.</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Sidro gamintojas per savaitę pagamina</p>
+          \[ Q(x;\,y) = 10x^{0{,}5}y^{0{,}25} \]
+          <p>butelių. Čia \(x\) yra darbo valandų skaičius, o \(y\) – spaudimo įrenginio naudojimo valandų skaičius. Butelis parduodamas už 8&nbsp;eurus. Darbo valanda kainuoja 10&nbsp;eurų, spaudimo įrenginio naudojimo valanda – 20&nbsp;eurų, o pastoviosios sąnaudos yra 200&nbsp;eurų per savaitę.</p>
+          <p>Kiek valandų reikėtų skirti darbui ir spaudimo įrenginio naudojimui, kad pelnas būtų didžiausias? Kokia yra gamybos apimtis ir koks didžiausias pelnas?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija ir lygčių sistema:</strong></p>
+          <div class="m-wide bp-lg">\[ P(x;\,y) = 80x^{0{,}5}y^{0{,}25} - 10x - 20y - 200;\qquad \left\{ \begin{aligned} 40x^{-0{,}5}y^{0{,}25} &amp;= 10 \\ 20x^{0{,}5}y^{-0{,}75} &amp;= 20 \end{aligned} \right. \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} P(x;\,y) = 80x^{0{,}5}y^{0{,}25} \\ {}- 10x - 20y - 200 \\ \left\{ \begin{aligned} 40x^{-0{,}5}y^{0{,}25} &amp;= 10 \\ 20x^{0{,}5}y^{-0{,}75} &amp;= 20 \end{aligned} \right. \end{gathered} \]</div>
+          <p><strong>Lygčių dalyba</strong> (sistema netiesinė, Gauso metodas netinka):</p>
+          <div class="m-wide bp-lg">\[ \frac{2y}{x} = \frac{1}{2} \;\Longrightarrow\; x = 4y \;\Longrightarrow\; 40y^{-0{,}25} = 20 \;\Longrightarrow\; y = 16;\qquad x = 64 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{2y}{x} = \frac{1}{2} \;\Longrightarrow\; x = 4y \\ \Longrightarrow\; 40y^{-0{,}25} = 20 \\ \Longrightarrow\; y = 16;\quad x = 64 \end{gathered} \]</div>
+          <p><strong>Kritinio taško rūšis:</strong> Kobo-Daglaso funkcija yra išgaubta, nes \(A = 10 &gt; 0\) ir \(\alpha + \beta = 0{,}75 \le 1\). Todėl \((64;\,16)\) yra maksimumo taškas.</p>
+          <p><strong>Atsakymas.</strong> Reikėtų 64 darbo valandų ir 16 spaudimo įrenginio naudojimo valandų per savaitę. Gamybos apimtis yra \(Q = 160\) butelių, o didžiausias savaitės pelnas yra \(P_{\max}(64;\,16) = 120\) eurų.</p>
+        </div>
+      </article>
+
+      <!-- 5 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Įmonė per metus rengia \(x\) mokymų dienų pardavimo komandai ir \(y\) mokymų dienų klientų aptarnavimo komandai. Papildomas bendrasis pelnas tūkstančiais eurų yra</p>
+          \[ G(x;\,y) = 40\ln(x + 2) + 90\ln(y + 3) \]
+          <p>Pardavimo komandai viena mokymų diena kainuoja 2&nbsp;tūkstančius eurų, o klientų aptarnavimo komandai – 3&nbsp;tūkstančius eurų. Kiek mokymų dienų skirti kiekvienai komandai, kad pelnas, atėmus mokymų sąnaudas, būtų didžiausias? Koks yra šis pelnas?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija:</strong></p>
+          <div class="m-wide">\[ N(x;\,y) = 40\ln(x + 2) + 90\ln(y + 3) - 2x - 3y \]</div><div class="m-narrow">\[ \begin{aligned} &amp;N(x;\,y) \\ &amp;= 40\ln(x + 2) + 90\ln(y + 3) \\ &amp;\phantom{=}\; {}- 2x - 3y \end{aligned} \]</div>
+          <p><strong>Išvestinės su bendru vardikliu ir lygčių sistema:</strong></p>
+          <div class="m-wide bp-lg">\[ N'_x = \frac{40 - 2(x + 2)}{x + 2} = \frac{36 - 2x}{x + 2};\qquad N'_y = \frac{90 - 3(y + 3)}{y + 3} = \frac{81 - 3y}{y + 3} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} N'_x &amp;= \frac{40 - 2(x + 2)}{x + 2} = \frac{36 - 2x}{x + 2} \\ N'_y &amp;= \frac{90 - 3(y + 3)}{y + 3} = \frac{81 - 3y}{y + 3} \end{aligned} \]</div>
+          \[ \left\{ \begin{aligned} 36 - 2x &amp;= 0 \\ x + 2 &amp;\ne 0 \\ 81 - 3y &amp;= 0 \\ y + 3 &amp;\ne 0 \end{aligned} \right. \;\Longrightarrow\; (18;\,27) \]
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide"><div class="m-wide"><div class="m-wide bp-lg"><div class="m-wide bp-lg">\[ A = -\frac{40}{400} = -0{,}1;\quad B = 0;\quad C = -\frac{90}{900} = -0{,}1;\quad D = 0{,}01 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -\frac{40}{400} = -0{,}1; \\ B = 0; \\ C = -\frac{90}{900} = -0{,}1; \\ D = 0{,}01 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -\frac{40}{400} = -0{,}1; \\ B = 0; \\ C = -\frac{90}{900} = -0{,}1; \\ D = 0{,}01 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -\frac{40}{400} = -0{,}1; \\ B = 0; \\ C = -\frac{90}{900} = -0{,}1; \\ D = 0{,}01 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div></div><div class="m-narrow">\[ \begin{gathered} A = -\frac{40}{400} = -0{,}1; \\ B = 0; \\ C = -\frac{90}{900} = -0{,}1; \\ D = 0{,}01 &gt; 0; \\ A &lt; 0 \end{gathered} \]</div>
+          <p><strong>Atsakymas.</strong> Pardavimo komandai reikėtų skirti 18 mokymų dienų, o klientų aptarnavimo komandai – 27. Didžiausias pelnas, atėmus mokymų sąnaudas, yra apytiksliai 308,94 tūkstančio eurų:</p>
+          <div class="m-wide">\[ N_{\max} = 40\ln 20 + 90\ln 30 - 117 \approx 308{,}94 \]</div><div class="m-narrow">\[ \begin{aligned} N_{\max} &amp;= 40\ln 20 + 90\ln 30 - 117 \\ &amp;\approx 308{,}94 \end{aligned} \]</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">8 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.3 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
