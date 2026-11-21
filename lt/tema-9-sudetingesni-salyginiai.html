@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sudėtingesni sąlyginio optimizavimo uždaviniai · Taikomoji matematika</title>
+<meta name="description" content="Sąlyginio optimizavimo uždaviniai, kuriuose tikslo funkciją ir apribojimą reikia nustatyti iš situacijos aprašymo: gamybos galimybių kreivė, vieta prie kelio, stačiakampis elipsėje, artimiausias apskritimo taškas, darbo ir laisvalaikio pasirinkimas, reklamos biudžetas. Keli kritiniai taškai ir atvejis D = 0.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m94">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">9 tema · Taikymai · 4 skyrius</span>
+    <h1>Sudėtingesni sąlyginio optimizavimo uždaviniai</h1>
+    <p class="lead">Ankstesniame skyriuje tikslo funkcija ir apribojimas buvo duoti arba juos buvo galima užrašyti tiesiogiai pagal kainas ir sąnaudas. Šio skyriaus uždaviniuose svarbiausias žingsnis yra <strong>modelio sudarymas</strong>: tikslo funkciją ir apribojimą reikia nustatyti iš situacijos aprašymo, dažnai remiantis geometrija. Sudarytas modelis sprendžiamas kaip <a href="tema-9-salyginis-optimizavimas.html">ankstesniame skyriuje</a>.</p>
+    <ul class="jump">
+      <li><a href="#modelis">Modelis</a></li>
+      <li><a href="#sistema">Lygčių sistema</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. MODELIS ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Sąlyginio optimizavimo modelio sudarymas</h2>
+    <article class="card">
+      <p>Sudarant modelį, padeda trys klausimai.</p>
+      <ol class="steps-list">
+        <li><strong>Kokie yra kintamieji?</strong> Tai gali būti kiekiai, taško koordinatės žemėlapyje, figūros matmenys, pinigų sumos arba laiko trukmė.</li>
+        <li><strong>Kurio dydžio reikia rasti didžiausią arba mažiausią reikšmę?</strong> Taip nustatoma tikslo funkcija \(f(x;\,y)\).</li>
+        <li><strong>Kokią sąlygą turi tenkinti kintamieji?</strong> Iš jos gauname apribojimą \(g(x;\,y) = m\). Jį gali nusakyti kelio ar teritorijos ribos lygtis, gamybos galimybių kreivė, iš kelių šaltinių gaunamas biudžetas arba bendra pinigų suma.</li>
+      </ol>
+
+      <h3 class="subhead">Naudingi geometrijos faktai</h3>
+      <ul>
+        <li>Atstumo tarp taškų \((x;\,y)\) ir \((a;\,b)\) kvadratas yra \((x - a)^2 + (y - b)^2\). Atstumas lygus šio reiškinio kvadratinei šakniai. Abu dydžiai mažiausias reikšmes įgyja tame pačiame taške, todėl pakanka minimizuoti atstumo kvadratą (<a href="#pavyzdys-2">2</a> ir <a href="#pavyzdys-4">4 pavyzdžiai</a>).</li>
+        <li>Tiesų kelią ar kitą tiesę žemėlapyje nusako lygtis \(ax + by = c\). Jei taškas yra kelyje, jo koordinatės tenkina šią lygtį (<a href="#pavyzdys-2">2 pavyzdys</a>).</li>
+        <li>Apskritimo, kurio spindulys \(r\), o centras yra koordinačių pradžioje, lygtis yra \(x^2 + y^2 = r^2\) (<a href="#pavyzdys-4">4 pavyzdys</a>).</li>
+        <li>Elipsės, kurios centras yra koordinačių pradžioje, lygtis yra formos \(ax^2 + by^2 = m\). Jei į elipsę įbrėžto stačiakampio kraštinės lygiagrečios ašims, o viena viršūnė yra \((x;\,y)\), jo kraštinių ilgiai yra \(2x\) ir \(2y\), o plotas – \(4xy\) (<a href="#pavyzdys-3">3 pavyzdys</a>).</li>
+      </ul>
+
+      <h3 class="subhead">Kai apribojimą reikia sudaryti iš kelių dalių</h3>
+      <p>Ekonominiuose uždaviniuose apribojimas dažnai gaunamas sujungus kelis sąlygos teiginius. Pavyzdžiui, jei per dieną galima skirti 16 valandų darbui ir laisvalaikiui, o \(l\) – laisvalaikio valandos, tai darbui lieka \(16 - l\) valandų. Padauginę iš valandinio atlygio ir pridėję kitas pajamas, gauname visas pajamas, kurios lygios vartojimo išlaidoms (<a href="#pavyzdys-5">5 pavyzdys</a>).</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. LYGČIŲ SISTEMA ============ -->
+  <section class="section" id="sistema" aria-labelledby="h-sys">
+    <h2 id="h-sys">Lygčių sistema, keli kritiniai taškai ir pakankamoji sąlyga</h2>
+    <article class="card">
+      <p>Modelį sprendžiame kaip <a href="tema-9-salyginis-optimizavimas.html#sistema">ankstesniame skyriuje</a>. Sudarome Lagranžo funkciją \(L(x;\,y;\,\lambda) = f(x;\,y) - \lambda\big(g(x;\,y) - m\big)\), abi pirmos eilės dalines išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį. Išsprendę trijų lygčių sistemą, kiekviename kritiniame taške \((x_0;\,y_0;\,\lambda_0)\) apskaičiuojame antros eilės išvestinių reikšmes \(A\), \(B\), \(C\) ir \(D = AC - B^2\). Nagrinėdami Kobo-Daglaso funkciją, galime remtis jos išgaubtumu (žr. <a href="tema-9.html#kobo-daglas-l">„Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose“</a>).</p>
+
+      <h3 class="subhead">Sistemos sprendimo būdai</h3>
+      <ul>
+        <li><strong>Tiesinė sistema</strong> (atstumų kvadratų suma ir tiesus kelias) sprendžiama keitimu arba <a href="tema-3.html#gauso-metodas">Gauso metodu</a> (<a href="#pavyzdys-2">2 pavyzdys</a>).</li>
+        <li><strong>Kai apribojimas – kreivė</strong> (apskritimas, elipsė, gamybos galimybių kreivė), lygtyse atsiranda sandaugos \(\lambda x\), \(\lambda y\) ir kvadratai, todėl sistema netiesinė, o Gauso metodas netinka. Išreiškiame \(\lambda\) iš pirmųjų dviejų lygčių, išraiškas sulyginame ir gauname ryšį tarp \(x\) ir \(y\). Jį įstatę į apribojimą, dažnai gauname nepilnąją kvadratinę lygtį, kurią išskaidome dauginamaisiais (<a href="#pavyzdys-1">1</a>, <a href="#pavyzdys-3">3</a> ir <a href="#pavyzdys-4">4 pavyzdžiai</a>).</li>
+        <li><strong>Kobo-Daglaso funkcija</strong> – narius su \(\lambda\) perkeliame į dešiniąsias puses ir vieną lygtį padalijame iš kitos (<a href="#pavyzdys-5">5 pavyzdys</a>).</li>
+        <li><strong>Rodiklinės funkcijos</strong> – sulyginę \(\lambda\) išraiškas, logaritmuojame abi lygties puses (<a href="#pavyzdys-6">6 pavyzdys</a>).</li>
+      </ul>
+      <p>Nepilnoji kvadratinė lygtis turi du priešingų ženklų sprendinius. Jei kintamieji yra kiekiai ar matmenys, neigiamą sprendinį atmetame. Jei kintamieji yra taško koordinatės žemėlapyje, tinka abu sprendiniai.</p>
+
+      <h3 class="subhead">Keli kritiniai taškai</h3>
+      <p>Kai apribojimas apibrėžia kreivę, sistema gali turėti kelis sprendinius. Pakankamąją sąlygą tikriname kiekviename taške. Vienas taškas gali būti maksimumo, kitas – minimumo taškas (<a href="#pavyzdys-4">4 pavyzdys</a>).</p>
+
+      <h3 class="subhead">Kai požymio nepakanka</h3>
+      <p>Jei \(D = 0\), funkciją tiriame išilgai apribojimo kreivės. Kai leistina kreivė yra lankas su galais, palyginame tikslo funkcijos reikšmes jo galuose ir vidiniuose kritiniuose taškuose (<a href="#pavyzdys-3">3 pavyzdys</a>).</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+    <article class="card">
+      <ol class="steps-list">
+        <li>Atsakykite į tris klausimus ir užrašykite modelį: kintamuosius, tikslo funkciją \(f(x;\,y)\) ir apribojimą \(g(x;\,y) = m\) (žr. <a href="#modelis">„Sąlyginio optimizavimo modelio sudarymas“</a>).</li>
+        <li>Sudarykite Lagranžo funkciją \(L = f - \lambda(g - m)\).</li>
+        <li>Raskite \(L'_x\) ir \(L'_y\), prilyginkite jas nuliui ir į sistemą įtraukite apribojimo lygtį. Išspręskite trijų lygčių sistemą ir atmeskite sprendinius, neturinčius prasmės.</li>
+        <li>Kiekviename kritiniame taške patikrinkite pakankamąją sąlygą. Jei \(D = 0\), tirkite tikslo funkciją išilgai apribojimo kreivės.</li>
+        <li>Apskaičiuokite prašomus dydžius ir suformuluokite atsakymą uždavinio kontekste.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Supainioti stačiakampio matmenys ir viršūnės koordinatės.</strong> Jei viršūnė yra \((x;\,y)\), stačiakampio kraštinės yra \(2x\) ir \(2y\), o plotas – \(4xy\), ne \(xy\).</li>
+            <li><strong>Minimizuojamas atstumas su šaknimi.</strong> Skaičiavimai gerokai paprastesni, kai minimizuojamas atstumo kvadratas, – mažiausia reikšmė pasiekiama tame pačiame taške.</li>
+            <li><strong>Atmestas reikalingas sprendinys.</strong> Taško koordinatės žemėlapyje gali būti neigiamos, todėl neigiamas sprendinys atmetamas tik tada, kai kintamasis yra kiekis ar matmuo.</li>
+            <li><strong>Pakankamoji sąlyga patikrinta tik viename taške.</strong> Kai kritinių taškų keli, kiekviename iš jų įstatoma sava \(\lambda\) reikšmė.</li>
+            <li><strong>Išvada daroma, kai \(D = 0\).</strong> Šiuo atveju požymio nepakanka, todėl reikia tirti funkciją išilgai apribojimo kreivės.</li>
+            <li><strong>Gauso metodas taikomas netiesinei sistemai.</strong> Gauso metodas tinka tik tiesinių lygčių sistemoms.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+
+    <!-- 1 pavyzdys: TM 9.4, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Kviečiai ir miežiai ūkyje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Ūkis augina kviečius ir miežius. Turėdamas tam tikrą žemės plotą, įrangą ir darbuotojų skaičių, per metus jis gali užauginti \(x\) tonų kviečių ir \(y\) tonų miežių. Kai visi ištekliai visiškai panaudojami, galimi gamybos deriniai tenkina lygtį
+\[ x^2 + 2y^2 = 6800 \]
+Ši kreivė vadinama <strong>gamybos galimybių kreive</strong>. Norint užauginti daugiau kviečių, reikia auginti mažiau miežių. Kviečių tona parduodama už 60&nbsp;eurų, o miežių – už 80&nbsp;eurų.
+<br>Kiek kviečių ir miežių ūkis turėtų užauginti, kad pajamos būtų didžiausios? Kokios yra didžiausios pajamos?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) – per metus užauginamų kviečių kiekis tonomis, \(y\) – miežių kiekis tonomis.</p>
+          <p><strong>Tikslo funkcija.</strong> Reikia rasti didžiausias pajamas. Kviečių tona parduodama už 60&nbsp;eurų, todėl už \(x\) tonų gaunama \(60x\) eurų. Miežių tona parduodama už 80&nbsp;eurų, todėl už \(y\) tonų gaunama \(80y\) eurų. Pajamos yra šių sumų suma:</p>
+          \[ R(x;\,y) = 60x + 80y \]
+          <p><strong>Apribojimas.</strong> Kai visi ištekliai visiškai panaudojami, gamybos derinys \((x;\,y)\) yra gamybos galimybių kreivėje, todėl jis tenkina jos lygtį \(x^2 + 2y^2 = 6800\).</p>
+          <p>Ieškome didžiausių pajamų pagal \(x\) ir \(y\), kai gamybos derinys yra gamybos galimybių kreivėje:</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; R(x;\,y) = 60x + 80y \\ &amp;\text{kai}\;\; x^2 + 2y^2 = 6800 \end{aligned} \]
+          <p>Brėžinyje pavaizduotos vienodų pajamų tiesės \(60x + 80y = R\). Kuo tiesė toliau nuo koordinačių pradžios, tuo pajamos didesnės. Didžiausios pajamos gaunamos tiesėje, kuri dar turi bendrą tašką su kreive, t.&nbsp;y. ją liečia.</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 360 272" role="img" aria-label="Gamybos galimybių kreivė x² + 2y² = 6800 pirmajame ketvirtyje ir trys vienodų pajamų tiesės 60x + 80y = 4800, 6800 ir 8800. Tiesė R = 6800 liečia kreivę taške (60; 40)"><line class="grid" x1="34.0" y1="18.0" x2="34.0" y2="246.0"/><line class="grid" x1="82.0" y1="18.0" x2="82.0" y2="246.0"/><line class="grid" x1="130.0" y1="18.0" x2="130.0" y2="246.0"/><line class="grid" x1="178.0" y1="18.0" x2="178.0" y2="246.0"/><line class="grid" x1="226.0" y1="18.0" x2="226.0" y2="246.0"/><line class="grid" x1="274.0" y1="18.0" x2="274.0" y2="246.0"/><line class="grid" x1="322.0" y1="18.0" x2="322.0" y2="246.0"/><line class="grid" x1="34.0" y1="246.0" x2="334.0" y2="246.0"/><line class="grid" x1="34.0" y1="198.0" x2="334.0" y2="198.0"/><line class="grid" x1="34.0" y1="150.0" x2="334.0" y2="150.0"/><line class="grid" x1="34.0" y1="102.0" x2="334.0" y2="102.0"/><line class="grid" x1="34.0" y1="54.0" x2="334.0" y2="54.0"/><line class="ax" x1="34.0" y1="246.0" x2="334.0" y2="246.0"/><path class="ah" d="M344.0 246.0L334.0 241.5L334.0 250.5Z"/><line class="ax" x1="34.0" y1="246.0" x2="34.0" y2="18.0"/><path class="ah" d="M34.0 8.0L29.5 18.0L38.5 18.0Z"/><text class="m" x="336.0" y="237.0">x</text><text class="m" x="43.0" y="16.0">y</text><text class="muted" x="82.0" y="262.0" text-anchor="middle">20</text><text class="muted" x="130.0" y="262.0" text-anchor="middle">40</text><text class="muted" x="178.0" y="262.0" text-anchor="middle">60</text><text class="muted" x="226.0" y="262.0" text-anchor="middle">80</text><text class="muted" x="274.0" y="262.0" text-anchor="middle">100</text><text class="muted" x="27.0" y="202.0" text-anchor="end">20</text><text class="muted" x="27.0" y="154.0" text-anchor="end">40</text><text class="muted" x="27.0" y="106.0" text-anchor="end">60</text><text class="muted" x="27.0" y="58.0" text-anchor="end">80</text><text class="muted" x="27.0" y="262.0" text-anchor="end">0</text><path d="M231.9 246.0A197.9 139.9 0 0 0 34.0 106.1L34.0 246.0Z" fill="var(--chart)" fill-opacity=".08"/><line class="lp-iso" x1="34.0" y1="102.0" x2="226.0" y2="246.0"/><line class="lp-iso" x1="34.0" y1="42.0" x2="306.0" y2="246.0"/><line class="lp-iso" x1="82.0" y1="18.0" x2="334.0" y2="207.0"/><path class="ln" d="M231.9 246.0A197.9 139.9 0 0 0 34.0 106.1"/><circle class="pt-hi" cx="178.0" cy="150.0" r="5.5"/><text class="halo exam" x="186.0" y="141.0" text-anchor="start" style="font-weight:700">(60; 40)</text><text class="halo" x="77.2" y="129.4" text-anchor="middle" transform="rotate(36.9 77.2 129.4)" style="font-size:11px;font-weight:700;fill:var(--exam)">R = 4800</text><text class="halo" x="254.8" y="202.6" text-anchor="middle" transform="rotate(36.9 254.8 202.6)" style="font-size:11px;font-weight:700;fill:var(--exam)">R = 6800</text><text class="halo" x="264.4" y="149.8" text-anchor="middle" transform="rotate(36.9 264.4 149.8)" style="font-size:11px;font-weight:700;fill:var(--exam)">R = 8800</text></svg>
+          <figcaption>Gamybos galimybių kreivė ir trys vienodų pajamų tiesės. Didžiausios pajamos gaunamos taške, kuriame pajamų tiesė liečia gamybos galimybių kreivę.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą perrašome forma \(x^2 + 2y^2 - 6800 = 0\) ir sudarome Lagranžo funkciją:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 60x + 80y - \lambda\big(x^2 + 2y^2 - 6800\big) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 60x + 80y \\ &amp;\phantom{=}\; {}- \lambda\big(x^2 + 2y^2 - 6800\big) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Pajamų funkcijos išvestinės yra pastovios: \((60x)'_x = 60\), \((80y)'_y = 80\). Nario \(-\lambda\big(x^2 + 2y^2 - 6800\big)\) išvestinė pagal \(x\) yra \(-2\lambda x\), o pagal \(y\) – \(-4\lambda y\):</p>
+          <div class="m-wide">\[ L'_x = 60 - 2\lambda x;\qquad L'_y = 80 - 4\lambda y \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 60 - 2\lambda x \\ L'_y = 80 - 4\lambda y \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 60 - 2\lambda x &amp;= 0 \\ 80 - 4\lambda y &amp;= 0 \\ x^2 + 2y^2 &amp;= 6800 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: nežinomieji sudauginti tarpusavyje (\(\lambda x\), \(\lambda y\)), o apribojimo lygtyje kintamieji pakelti kvadratu. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmojoje lygtyje narį \(-2\lambda x\) perkeliame į dešiniąją pusę ir abi puses dalijame iš \(2x\). Antrojoje lygtyje narį \(-4\lambda y\) perkeliame ir abi puses dalijame iš \(4y\). Kiekiai teigiami, todėl \(x \ne 0\) ir \(y \ne 0\):</p>
+          <div class="m-wide">\[ \lambda = \frac{60}{2x} = \frac{30}{x};\qquad \lambda = \frac{80}{4y} = \frac{20}{y} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{60}{2x} = \frac{30}{x} \\ \lambda = \frac{80}{4y} = \frac{20}{y} \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Abi išraiškas sulyginame ir sudauginame kryžmiškai. Tada abi puses dalijame iš 30:</p>
+          <div class="m-wide">\[ \frac{30}{x} = \frac{20}{y} \;\Longrightarrow\; 30y = 20x \;\Longrightarrow\; y = \frac{2x}{3} \]</div><div class="m-narrow">\[ \begin{gathered} \frac{30}{x} = \frac{20}{y} \\ \Longrightarrow\; 30y = 20x \\ \Longrightarrow\; y = \frac{2x}{3} \end{gathered} \]</div>
+          <p><strong>Įstatymas į apribojimą.</strong> Reiškinį \(y = \frac{2x}{3}\) įstatome į apribojimo lygtį. Kadangi \(y\) pakeltas kvadratu, \(y^2 = \frac{4x^2}{9}\). Abi puses dauginame iš 9 ir dalijame iš 17:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} x^2 + 2\cdot\frac{4x^2}{9} = 6800 \;\Longrightarrow\; 9x^2 + 8x^2 = 61\,200 \\ \Longrightarrow\; 17x^2 = 61\,200 \;\Longrightarrow\; x^2 = 3600 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2 + 2\cdot\frac{4x^2}{9} = 6800 \\ \Longrightarrow\; 9x^2 + 8x^2 = 61\,200 \\ \Longrightarrow\; 17x^2 = 61\,200 \\ \Longrightarrow\; x^2 = 3600 \end{gathered} \]</div>
+          <p>Gavome nepilnąją kvadratinę lygtį. Skaičių 3600 perkeliame į kairiąją pusę ir išskaidome dauginamaisiais pagal kvadratų skirtumo formulę (\(3600 = 60^2\)):</p>
+          <div class="m-wide bp-lg">\[ x^2 - 3600 = 0 \;\Longrightarrow\; (x - 60)(x + 60) = 0 \;\Longrightarrow\; x = 60\ \text{arba}\ x = -60 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2 - 3600 = 0 \\ \Longrightarrow\; (x - 60)(x + 60) = 0 \\ \Longrightarrow\; x = 60\ \text{arba}\ x = -60 \end{gathered} \]</div>
+          <p>Kviečių kiekis negali būti neigiamas, todėl \(x = 60\). Tada \(y = \frac{2\cdot 60}{3} = 40\), o \(\lambda = \frac{30}{60} = 0{,}5\). Kritinis taškas yra \((60;\,40;\,0{,}5)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės išvestinėse yra \(\lambda\), todėl įstatome \(\lambda = 0{,}5\):</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = -2\lambda = -1;\quad B = L''_{xy} = 0;\quad C = L''_{yy} = -4\lambda = -2 \\ D = AC - B^2 = (-1)\cdot(-2) - 0^2 = 2 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = -2\lambda = -1 \\ B &amp;= L''_{xy} = 0 \\ C &amp;= L''_{yy} = -4\lambda = -2 \\ D &amp;= (-1)\cdot(-2) - 0^2 = 2 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((60;\,40)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausios pajamos</span></h4>
+          <p>Kritinio taško koordinates įstatome į pajamų funkciją:</p>
+          <div class="m-wide">\[ R_{\max}(60;\,40) = 60\cdot 60 + 80\cdot 40 = 3600 + 3200 = 6800 \]</div><div class="m-narrow">\[ \begin{aligned} R_{\max}(60;\,40) &amp;= 60\cdot 60 + 80\cdot 40 \\ &amp;= 3600 + 3200 = 6800 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Ūkis per metus turėtų užauginti 60 tonų kviečių ir 40 tonų miežių. Didžiausios metinės pajamos yra 6800 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 9.4, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Sandėlis prie magistralės</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Paskirstymo įmonė aptarnauja tris parduotuves, žemėlapyje pažymėtas taškais \(A(2;\,8)\), \(B(10;\,6)\) ir \(C(6;\,4)\). Koordinatės nurodytos kilometrais. Įmonė nori pastatyti sandėlį \(D(x;\,y)\) prie pat magistralės, kurios lygtis žemėlapyje yra \(x + y = 8\). Sandėlio vietą reikia parinkti taip, kad atstumų nuo jo iki trijų parduotuvių kvadratų suma būtų mažiausia.
+<br>Kur reikėtų pastatyti sandėlį?
+<figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 335 294" role="img" aria-label="Žemėlapis: parduotuvės A(2; 8), B(10; 6), C(6; 4), magistralė x + y = 8 ir sandėlis D(x; y) prie magistralės, sujungtas su parduotuvėmis brūkšninėmis linijomis"><line class="grid" x1="34" y1="18" x2="34" y2="268"/><line class="grid" x1="84" y1="18" x2="84" y2="268"/><line class="grid" x1="134" y1="18" x2="134" y2="268"/><line class="grid" x1="184" y1="18" x2="184" y2="268"/><line class="grid" x1="234" y1="18" x2="234" y2="268"/><line class="grid" x1="284" y1="18" x2="284" y2="268"/><line class="grid" x1="34" y1="268" x2="309" y2="268"/><line class="grid" x1="34" y1="218" x2="309" y2="218"/><line class="grid" x1="34" y1="168" x2="309" y2="168"/><line class="grid" x1="34" y1="118" x2="309" y2="118"/><line class="grid" x1="34" y1="68" x2="309" y2="68"/><line class="grid" x1="34" y1="18" x2="309" y2="18"/><line class="ax" x1="34" y1="268" x2="309" y2="268"/><path class="ah" d="M319 268L309 263.5L309 272.5Z"/><line class="ax" x1="34" y1="268" x2="34" y2="18"/><path class="ah" d="M34 8L29.5 18L38.5 18Z"/><text class="m" x="311" y="259">x</text><text class="m" x="43" y="16">y</text><text class="muted" x="84" y="284" text-anchor="middle">2</text><text class="muted" x="134" y="284" text-anchor="middle">4</text><text class="muted" x="184" y="284" text-anchor="middle">6</text><text class="muted" x="234" y="284" text-anchor="middle">8</text><text class="muted" x="284" y="284" text-anchor="middle">10</text><text class="muted" x="27" y="222" text-anchor="end">2</text><text class="muted" x="27" y="172" text-anchor="end">4</text><text class="muted" x="27" y="122" text-anchor="end">6</text><text class="muted" x="27" y="72" text-anchor="end">8</text><text class="muted" x="27" y="284" text-anchor="end">0</text><line class="ln2" x1="34" y1="68.0" x2="234.0" y2="268"/><line x1="96.5" y1="130.5" x2="84" y2="68" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="96.5" y1="130.5" x2="284" y2="118" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="96.5" y1="130.5" x2="184" y2="168" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><circle class="pt" cx="84" cy="68" r="5.5"/><text class="halo" x="92" y="60" text-anchor="start" style="font-weight:700">A(2; 8)</text><circle class="pt" cx="284" cy="118" r="5.5"/><text class="halo" x="284" y="106" text-anchor="middle" style="font-weight:700">B(10; 6)</text><circle class="pt" cx="184" cy="168" r="5.5"/><text class="halo" x="193" y="184" text-anchor="start" style="font-weight:700">C(6; 4)</text><circle class="pt-hi" cx="96.5" cy="130.5" r="5.5"/><text class="halo exam" x="104.5" y="120.5" text-anchor="start" style="font-weight:700">D(x; y)</text><text class="halo" x="241.5" y="255.5" text-anchor="start" style="font-weight:700;fill:var(--chart-2)">x + y = 8</text></svg>
+<figcaption>Parduotuvės, magistralė ir sandėlis \(D\) prie magistralės.</figcaption>
+</figure>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kintamieji ir atstumų kvadratai</span></h4>
+          <p>Pasirenkama sandėlio vieta, todėl kintamieji yra taško \(D\) koordinatės \(x\) ir \(y\).</p>
+          <p>Atstumo tarp taškų \((x;\,y)\) ir \((a;\,b)\) kvadratas yra \((x - a)^2 + (y - b)^2\) (žr. <a href="tema-9-sudetingesni-uzdaviniai.html#tikslo">„Tikslo funkcijos sudarymas“</a>). Įrašę kiekvienos parduotuvės koordinates, gauname atstumų nuo \(D\) kvadratus:</p>
+          \[ \begin{aligned} DA^2 &amp;= (x - 2)^2 + (y - 8)^2 \\ DB^2 &amp;= (x - 10)^2 + (y - 6)^2 \\ DC^2 &amp;= (x - 6)^2 + (y - 4)^2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Modelis</span></h4>
+          <p><strong>Tikslo funkcija</strong> yra šių trijų kvadratų suma:</p>
+          <div class="m-wide bp-lg">\[ T(x;\,y) = (x - 2)^2 + (y - 8)^2 + (x - 10)^2 + (y - 6)^2 + (x - 6)^2 + (y - 4)^2 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;T(x;\,y) \\ &amp;= (x - 2)^2 + (y - 8)^2 \\ &amp;\phantom{=}\; {}+ (x - 10)^2 + (y - 6)^2 \\ &amp;\phantom{=}\; {}+ (x - 6)^2 + (y - 4)^2 \end{aligned} \]</div>
+          <p><strong>Apribojimas.</strong> Sandėlis turi būti prie pat magistralės, t.&nbsp;y. taškas \(D\) yra magistralės tiesėje. Todėl jo koordinatės tenkina magistralės lygtį \(x + y = 8\).</p>
+          <p>Ieškome mažiausios atstumų kvadratų sumos pagal \(x\) ir \(y\), kai tenkinamas apribojimas:</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; T(x;\,y) \\ &amp;\text{kai}\;\; x + y = 8 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą perrašome forma \(x + y - 8 = 0\) ir sudarome Lagranžo funkciją:</p>
+          \[ L(x;\,y;\,\lambda) = T(x;\,y) - \lambda(x + y - 8) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Lygčių sistema</span></h4>
+          <p>Pagal sudėtinės funkcijos išvestinės taisyklę \(\big((x - 2)^2\big)'_x = 2(x - 2)\). Diferencijuojant pagal \(x\), nariai, priklausantys tik nuo \(y\), yra konstantos. Atskliaudę ir sutraukę panašiuosius narius, gauname:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} L'_x &amp;= 2(x - 2) + 2(x - 10) + 2(x - 6) - \lambda = 6x - 36 - \lambda \\ L'_y &amp;= 2(y - 8) + 2(y - 6) + 2(y - 4) - \lambda = 6y - 36 - \lambda \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} L'_x &amp;= 2(x - 2) + 2(x - 10) \\ &amp;\phantom{=}\; {}+ 2(x - 6) - \lambda \\ &amp;= 6x - 36 - \lambda \\[4pt] L'_y &amp;= 2(y - 8) + 2(y - 6) \\ &amp;\phantom{=}\; {}+ 2(y - 4) - \lambda \\ &amp;= 6y - 36 - \lambda \end{aligned} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 6x - 36 - \lambda &amp;= 0 \\ 6y - 36 - \lambda &amp;= 0 \\ x + y &amp;= 8 \end{aligned} \right. \]
+          <p>Visi nežinomieji yra pirmojo laipsnio ir nesudauginti tarpusavyje, todėl sistema yra <strong>tiesinė</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Sistemos sprendimas keitimu</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmosiose dviejose lygtyse narį \(-\lambda\) perkeliame į dešiniąją pusę:</p>
+          <div class="m-wide">\[ \lambda = 6x - 36;\qquad \lambda = 6y - 36 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 6x - 36 \\ \lambda = 6y - 36 \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Abi išraiškas sulyginame. Skaičius \(-36\) abiejose pusėse susiprastina, o tada abi puses dalijame iš 6:</p>
+          <div class="m-wide">\[ 6x - 36 = 6y - 36 \;\Longrightarrow\; 6x = 6y \;\Longrightarrow\; x = y \]</div><div class="m-narrow">\[ \begin{gathered} 6x - 36 = 6y - 36 \\ \Longrightarrow\; 6x = 6y \\ \Longrightarrow\; x = y \end{gathered} \]</div>
+          <p><strong>Įstatymas į apribojimą.</strong> Reiškinį \(y = x\) įstatome į apribojimo lygtį \(x + y = 8\):</p>
+          <div class="m-wide">\[ x + x = 8 \;\Longrightarrow\; 2x = 8 \;\Longrightarrow\; x = 4 \]</div><div class="m-narrow">\[ \begin{gathered} x + x = 8 \\ \Longrightarrow\; 2x = 8 \\ \Longrightarrow\; x = 4 \end{gathered} \]</div>
+          <p>Tada \(y = x = 4\), o \(\lambda = 6\cdot 4 - 36 = -12\) (abi išraiškos duoda tą pačią reikšmę). Kritinis taškas yra \((4;\,4;\,-12)\).</p>
+          <p>Ši sistema yra tiesinė, todėl ją galima išspręsti ir <a href="tema-3.html#gauso-metodas">Gauso metodu</a>. Jei šis metodas jums artimesnis, sprendimą rasite žemiau.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Sprendimas Gauso metodu</summary>
+          <div class="more-body">
+          <p>Pirmiausia lygtis pertvarkome: nežinomuosius rašome kairiojoje pusėje tvarka \(x\), \(y\), \(\lambda\), o skaičius perkeliame į dešiniąją:</p>
+          <div class="m-wide">\[ \begin{aligned} 6x - 36 - \lambda = 0 \;&amp;\Longrightarrow\; 6x - \lambda = 36 \\ 6y - 36 - \lambda = 0 \;&amp;\Longrightarrow\; 6y - \lambda = 36 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 6x - 36 - \lambda = 0 \\ \Longrightarrow\; 6x - \lambda = 36 \\[4pt] 6y - 36 - \lambda = 0 \\ \Longrightarrow\; 6y - \lambda = 36 \end{gathered} \]</div>
+          <p>Antrojoje lygtyje nėra \(y\), o trečiojoje – \(x\), todėl atitinkami matricos elementai lygūs 0.</p>
+          <p>Išplėstinės matricos stulpeliai – nežinomųjų \(x\), \(y\) ir \(\lambda\) koeficientai, paskutinis stulpelis – laisvieji nariai (žr. <a href="tema-3.html#isplestine-matrica">3 temą</a>). Apribojimo lygtyje \(x\) koeficientas lygus 1, todėl ją rašome pirmąja eilute:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 8 \\ 6 &amp; 0 &amp; -1 &amp; 36 \\ 0 &amp; 6 &amp; -1 &amp; 36 \end{array}\right) \]
+          <p>Trečiosios eilutės pirmasis elementas jau lygus 0, todėl pirmąją eilutę dauginame iš \(-6\) ir pridedame tik prie antrosios:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 8 \\ 6 &amp; 0 &amp; -1 &amp; 36 \\ 0 &amp; 6 &amp; -1 &amp; 36 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-6)} \\ \htmlClass{ha}{\downarrow} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 8 \\ \htmlClass{hc}{0} &amp; -6 &amp; -1 &amp; -12 \\ 0 &amp; 6 &amp; -1 &amp; 36 \end{array}\right)\)</span></div>
+          <p>Antrosios eilutės pagrindinio elemento \(-6\) nedaliname, kad neatsirastų trupmenų: po juo esantis elementas 6 tampa nuliu, kai antrąją eilutę tiesiog pridedame prie trečiosios (daugiklis 1). Gautą trečiąją eilutę dalijame iš \(-2\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 8 \\ 0 &amp; \htmlClass{hd}{-6} &amp; -1 &amp; -12 \\ 0 &amp; 6 &amp; -1 &amp; 36 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 8 \\ 0 &amp; -6 &amp; -1 &amp; -12 \\ 0 &amp; \htmlClass{hc}{0} &amp; -2 &amp; 24 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-2)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 8 \\ 0 &amp; -6 &amp; -1 &amp; -12 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; -12 \end{array}\right)\)</span></div>
+          <p><strong>Atbulinė eiga.</strong> Iš trečiosios eilutės \(\lambda = -12\). Antroji eilutė reiškia lygtį \(-6y - \lambda = -12\), o pirmoji – \(x + y = 8\):</p>
+          <div class="m-wide">\[ -6y + 12 = -12 \;\Longrightarrow\; y = 4;\qquad x + 4 = 8 \;\Longrightarrow\; x = 4 \]</div><div class="m-narrow">\[ \begin{gathered} -6y + 12 = -12 \;\Longrightarrow\; y = 4 \\ x + 4 = 8 \;\Longrightarrow\; x = 4 \end{gathered} \]</div>
+          <p>Gaunamas tas pats sprendinys: \(x = 4\), \(y = 4\), \(\lambda = -12\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Lagranžo funkcijos antros eilės dalinės išvestinės yra pastovios ir nepriklauso nuo \(\lambda\), todėl jų reikšmės kritiniame taške lygios šiems skaičiams:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = 6;\quad B = L''_{xy} = 0;\quad C = L''_{yy} = 6 \\ D = AC - B^2 = 6\cdot 6 - 0^2 = 36 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = 6 \\ B &amp;= L''_{xy} = 0 \\ C &amp;= L''_{yy} = 6 \\ D &amp;= AC - B^2 \\ &amp;= 6\cdot 6 - 0^2 \\ &amp;= 36 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &gt; 0\), todėl taškas \((4;\,4)\) yra minimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Mažiausia atstumų kvadratų suma</span></h4>
+          <p>Kritinio taško koordinates įstatome į tikslo funkciją:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} T_{\min}(4;\,4) &amp;= \big[(4 - 2)^2 + (4 - 8)^2\big] + \big[(4 - 10)^2 + (4 - 6)^2\big] \\ &amp;\phantom{=}\; {}+ \big[(4 - 6)^2 + (4 - 4)^2\big] \\ &amp;= (4 + 16) + (36 + 4) + (4 + 0) = 64 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;T_{\min}(4;\,4) \\ &amp;= \big[(4 - 2)^2 + (4 - 8)^2\big] \\ &amp;\phantom{=}\; {}+ \big[(4 - 10)^2 + (4 - 6)^2\big] \\ &amp;\phantom{=}\; {}+ \big[(4 - 6)^2 + (4 - 4)^2\big] \\ &amp;= (4 + 16) + (36 + 4) + (4 + 0) \\ &amp;= 64 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Sandėlį reikėtų pastatyti magistralės taške \((4;\,4)\). Mažiausia atstumų kvadratų suma yra 64.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 9.4, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Stačiakampė platforma elipsės formos aikštėje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Renginių organizatoriai ruošia festivalį po atviru dangumi elipsės formos miesto aikštėje. Žemėlapio koordinačių pradžia sutampa su aikštės centru, o aikštės ribą nusako elipsė
+\[ x^2 + 4y^2 = 7200 \]
+kurios koordinatės išreikštos metrais. Organizatoriai nori įrengti stačiakampę platformą žiūrovams. Stačiakampio kraštinės turi būti lygiagrečios koordinačių ašims, o jo viršūnės – elipsėje.
+<br>Kokie yra didžiausio tokio stačiakampio matmenys? Koks jo plotas?
+<figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 413 231" role="img" aria-label="Elipsė x² + 4y² = 7200 su centru koordinačių pradžioje ir į ją įbrėžtas stačiakampis, kurio kraštinės lygiagrečios ašims; viršūnė (x; y), kraštinių ilgiai 2x ir 2y"><line class="ax" x1="34.0" y1="111.8" x2="387.6" y2="111.8"/><path class="ah" d="M397.6 111.8L387.6 107.2L387.6 116.2Z"/><line class="ax" x1="210.8" y1="205.5" x2="210.8" y2="18.0"/><path class="ah" d="M210.8 8.0L206.3 18.0L215.3 18.0Z"/><text class="m" x="389.6" y="102.8">x</text><text class="m" x="219.8" y="16.0">y</text><ellipse class="ln" cx="210.8" cy="111.8" rx="150.0" ry="75.0" fill="var(--chart)" fill-opacity=".08"/><rect x="118.9" y="52.5" width="183.8" height="118.5" fill="var(--exam)" fill-opacity=".12" stroke="var(--exam)" stroke-width="2.4"/><circle class="pt-hi" cx="302.7" cy="52.5" r="5.5"/><text class="halo exam" x="310.7" y="44.5" text-anchor="start" style="font-weight:700">(x; y)</text><text class="m halo" x="210.8" y="164.0" text-anchor="middle">2x</text><text class="m halo" x="125.9" y="105.8" text-anchor="start">2y</text><line x1="302.7" y1="111.8" x2="302.7" y2="52.5" class="guide"/><line x1="210.8" y1="52.5" x2="302.7" y2="52.5" class="guide"/><text class="m halo" x="256.7" y="127.8" text-anchor="middle">x</text><text class="m halo" x="204.8" y="86.1" text-anchor="end">y</text><text class="halo" x="293.3" y="195.8" text-anchor="start" style="font-weight:700;fill:var(--chart)">x² + 4y² = 7200</text></svg>
+<figcaption>Į elipsę įbrėžtas stačiakampis su viršūne \((x;\,y)\).</figcaption>
+</figure>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji.</strong> Pažymėkime pirmajame ketvirtyje esančią stačiakampio viršūnę \((x;\,y)\). Kintamieji yra šios viršūnės koordinatės \(x &gt; 0\) ir \(y &gt; 0\).</p>
+          <p><strong>Tikslo funkcija – plotas.</strong> Elipsė simetriška abiejų koordinačių ašių atžvilgiu, todėl ir stačiakampis simetriškas: kitos jo viršūnės yra \((-x;\,y)\), \((-x;\,-y)\) ir \((x;\,-y)\). Vadinasi, stačiakampio kraštinių ilgiai yra \(2x\) ir \(2y\), o plotas</p>
+          \[ S(x;\,y) = 2x\cdot 2y = 4xy \]
+          <p><strong>Apribojimas.</strong> Viršūnė \((x;\,y)\) yra elipsėje, todėl jos koordinatės tenkina elipsės lygtį \(x^2 + 4y^2 = 7200\).</p>
+          <p>Ieškome didžiausio ploto pagal \(x\) ir \(y\), kai viršūnė yra elipsėje:</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; S(x;\,y) = 4xy \\ &amp;\text{kai}\;\; x^2 + 4y^2 = 7200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą perrašome forma \(x^2 + 4y^2 - 7200 = 0\) ir sudarome Lagranžo funkciją:</p>
+          \[ L(x;\,y;\,\lambda) = 4xy - \lambda\big(x^2 + 4y^2 - 7200\big) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Ploto funkcijos išvestinės yra \((4xy)'_x = 4y\) ir \((4xy)'_y = 4x\). Apribojimo nario išvestinė pagal \(x\) yra \(-2\lambda x\), o pagal \(y\) – \(-8\lambda y\):</p>
+          <div class="m-wide">\[ L'_x = 4y - 2\lambda x;\qquad L'_y = 4x - 8\lambda y \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 4y - 2\lambda x \\ L'_y = 4x - 8\lambda y \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 4y - 2\lambda x &amp;= 0 \\ 4x - 8\lambda y &amp;= 0 \\ x^2 + 4y^2 &amp;= 7200 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: nežinomieji sudauginti tarpusavyje (\(\lambda x\), \(\lambda y\)), o apribojimo lygtyje kintamieji pakelti kvadratu. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmojoje lygtyje narį \(-2\lambda x\) perkeliame į dešiniąją pusę ir abi puses dalijame iš \(2x\). Antrojoje lygtyje narį \(-8\lambda y\) perkeliame ir abi puses dalijame iš \(8y\):</p>
+          <div class="m-wide">\[ \lambda = \frac{4y}{2x} = \frac{2y}{x};\qquad \lambda = \frac{4x}{8y} = \frac{x}{2y} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{4y}{2x} = \frac{2y}{x} \\ \lambda = \frac{4x}{8y} = \frac{x}{2y} \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Abi išraiškas sulyginame ir sudauginame kryžmiškai. Tada visus narius perkeliame į vieną pusę ir išskaidome dauginamaisiais pagal kvadratų skirtumo formulę:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} \frac{2y}{x} = \frac{x}{2y} \;\Longrightarrow\; 4y^2 = x^2 \\ \Longrightarrow\; x^2 - 4y^2 = 0 \;\Longrightarrow\; (x - 2y)(x + 2y) = 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{2y}{x} = \frac{x}{2y} \\ \Longrightarrow\; 4y^2 = x^2 \\ \Longrightarrow\; x^2 - 4y^2 = 0 \\ \Longrightarrow\; (x - 2y)(x + 2y) = 0 \end{gathered} \]</div>
+          <p>Matmenys teigiami, todėl \(x + 2y &gt; 0\). Lieka \(x - 2y = 0\), t.&nbsp;y. \(x = 2y\).</p>
+          <p><strong>Įstatymas į apribojimą.</strong> Reiškinį \(x = 2y\) įstatome į apribojimo lygtį (\((2y)^2 = 4y^2\)) ir abi puses dalijame iš 8:</p>
+          <div class="m-wide bp-lg">\[ (2y)^2 + 4y^2 = 7200 \;\Longrightarrow\; 8y^2 = 7200 \;\Longrightarrow\; y^2 = 900 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} (2y)^2 + 4y^2 = 7200 \\ \Longrightarrow\; 8y^2 = 7200 \\ \Longrightarrow\; y^2 = 900 \end{gathered} \]</div>
+          <p>Nepilnąją kvadratinę lygtį išskaidome dauginamaisiais (\(900 = 30^2\)):</p>
+          <div class="m-wide bp-lg">\[ y^2 - 900 = 0 \;\Longrightarrow\; (y - 30)(y + 30) = 0 \;\Longrightarrow\; y = 30\ \text{arba}\ y = -30 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y^2 - 900 = 0 \\ \Longrightarrow\; (y - 30)(y + 30) = 0 \\ \Longrightarrow\; y = 30\ \text{arba}\ y = -30 \end{gathered} \]</div>
+          <p>Imame teigiamą sprendinį \(y = 30\). Tada \(x = 2\cdot 30 = 60\), o \(\lambda = \frac{2\cdot 30}{60} = 1\). Kritinis taškas yra \((60;\,30;\,1)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės išvestinėse yra \(\lambda\), todėl įstatome \(\lambda = 1\):</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx} = -2\lambda = -2;\quad B = L''_{xy} = 4;\quad C = L''_{yy} = -8\lambda = -8 \\ D = AC - B^2 = (-2)\cdot(-8) - 4^2 = 16 - 16 = 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx} = -2\lambda = -2 \\ B &amp;= L''_{xy} = 4 \\ C &amp;= L''_{yy} = -8\lambda = -8 \\ D &amp;= (-2)\cdot(-8) - 4^2 \\ &amp;= 16 - 16 = 0 \end{aligned} \]</div>
+          <p>\(D = 0\), todėl šio požymio nepakanka (žr. <a href="#sistema">„Kai požymio nepakanka“</a>). Plotą tiriame išilgai leistinos kreivės. Viršūnė \((x;\,y)\) gali būti bet kuriame pirmojo elipsės ketvirčio lanko taške – nuo taško \(\big(\sqrt{7200};\,0\big)\) iki taško \(\big(0;\,\sqrt{1800}\big)\). Ploto funkcija yra tolydi uždarame lanke, todėl didžiausia reikšmė pasiekiama. Lanko galuose vienas matmuo lygus nuliui, tad plotas lygus nuliui. Viduje vienintelis kritinis taškas yra \((60;\,30)\), todėl jame plotas didžiausias.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausias plotas ir matmenys</span></h4>
+          <p>Stačiakampio kraštinės yra \(2x = 2\cdot 60 = 120\) metrų ir \(2y = 2\cdot 30 = 60\) metrų, o plotas</p>
+          \[ S_{\max}(60;\,30) = 4\cdot 60\cdot 30 = 7200 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Stačiakampio ilgis turėtų būti \(2\cdot 60 = 120\) metrų, o plotis – \(2\cdot 30 = 60\) metrų. Jo plotas būtų 7200 kvadratinių metrų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 9.4, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Privažiuojamasis kelias nuo gamyklos iki aplinkkelio</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Miestą juosia žiedinis aplinkkelis. Žemėlapio koordinačių pradžia sutampa su miesto centru. Aplinkkelį nusako apskritimas
+\[ x^2 + y^2 = 25 \]
+kurio koordinatės išreikštos kilometrais. Už miesto esanti gamykla pažymėta tašku \(F(6;\,8)\). Ji nori nutiesti kuo trumpesnį tiesų privažiuojamąjį kelią iki aplinkkelio.
+<br>Kuriame taške privažiuojamasis kelias turėtų susijungti su aplinkkeliu? Koks būtų jo ilgis? Raskite aplinkkelio tašką, kuriame atstumo iki gamyklos kvadratas yra mažiausias.
+<figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 349 333" role="img" aria-label="Aplinkkelis – apskritimas x² + y² = 25 su centru koordinačių pradžioje, gamykla F(6; 8) ir privažiuojamasis kelias nuo F iki aplinkkelio taško (x; y)"><line class="grid" x1="51" y1="18" x2="51" y2="307"/><line class="grid" x1="85" y1="18" x2="85" y2="307"/><line class="grid" x1="119" y1="18" x2="119" y2="307"/><line class="grid" x1="153" y1="18" x2="153" y2="307"/><line class="grid" x1="187" y1="18" x2="187" y2="307"/><line class="grid" x1="221" y1="18" x2="221" y2="307"/><line class="grid" x1="255" y1="18" x2="255" y2="307"/><line class="grid" x1="289" y1="18" x2="289" y2="307"/><line class="grid" x1="323" y1="18" x2="323" y2="307"/><line class="grid" x1="34" y1="290" x2="323" y2="290"/><line class="grid" x1="34" y1="256" x2="323" y2="256"/><line class="grid" x1="34" y1="222" x2="323" y2="222"/><line class="grid" x1="34" y1="188" x2="323" y2="188"/><line class="grid" x1="34" y1="154" x2="323" y2="154"/><line class="grid" x1="34" y1="120" x2="323" y2="120"/><line class="grid" x1="34" y1="86" x2="323" y2="86"/><line class="grid" x1="34" y1="52" x2="323" y2="52"/><line class="grid" x1="34" y1="18" x2="323" y2="18"/><line class="ax" x1="34" y1="188" x2="323" y2="188"/><path class="ah" d="M333 188L323 183.5L323 192.5Z"/><line class="ax" x1="153" y1="307" x2="153" y2="18"/><path class="ah" d="M153 8L148.5 18L157.5 18Z"/><text class="m" x="325" y="179">x</text><text class="m" x="162" y="16">y</text><text class="muted" x="51" y="204" text-anchor="middle">-6</text><text class="muted" x="85" y="204" text-anchor="middle">-4</text><text class="muted" x="119" y="204" text-anchor="middle">-2</text><text class="muted" x="187" y="204" text-anchor="middle">2</text><text class="muted" x="221" y="204" text-anchor="middle">4</text><text class="muted" x="255" y="204" text-anchor="middle">6</text><text class="muted" x="289" y="204" text-anchor="middle">8</text><text class="muted" x="146" y="294" text-anchor="end">-6</text><text class="muted" x="146" y="260" text-anchor="end">-4</text><text class="muted" x="146" y="226" text-anchor="end">-2</text><text class="muted" x="146" y="158" text-anchor="end">2</text><text class="muted" x="146" y="124" text-anchor="end">4</text><text class="muted" x="146" y="90" text-anchor="end">6</text><text class="muted" x="146" y="56" text-anchor="end">8</text><text class="muted" x="146" y="204" text-anchor="end">0</text><ellipse class="ln" cx="153" cy="188" rx="85" ry="85"/><line x1="255" y1="52" x2="117.1" y2="111.0" stroke="var(--exam)" stroke-width="3" stroke-linecap="round"/><circle class="pt" cx="255" cy="52" r="5.5"/><text class="halo" x="263" y="44" text-anchor="start" style="font-weight:700">F(6; 8)</text><circle class="pt-hi" cx="117.1" cy="111.0" r="5.5"/><text class="halo exam" x="108.1" y="102.0" text-anchor="end" style="font-weight:700">(x; y)</text><text class="halo" x="40.8" y="293.4" text-anchor="start" style="font-weight:700;fill:var(--chart)">x² + y² = 25</text></svg>
+<figcaption>Aplinkkelis ir gamykla \(F\). Privažiuojamasis kelias pasiekia aplinkkelį taške \((x;\,y)\).</figcaption>
+</figure>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji</strong> \(x\) ir \(y\) yra taško, kuriame privažiuojamasis kelias susijungia su aplinkkeliu, koordinatės.</p>
+          <p><strong>Tikslo funkcija.</strong> Kelias tiesus, todėl jo ilgis lygus atstumui nuo \(F(6;\,8)\) iki taško \((x;\,y)\):</p>
+          \[ d = \sqrt{(x - 6)^2 + (y - 8)^2} \]
+          <p>Užuot minimizavę atstumą \(d\), minimizuojame jo kvadratą \(d^2 = (x - 6)^2 + (y - 8)^2\). Kadangi kvadratinė šaknis yra didėjanti funkcija, \(d\) ir \(d^2\) mažiausias reikšmes įgyja tame pačiame taške, o atstumo kvadrato išvestines apskaičiuoti paprasčiau.</p>
+          <p><strong>Apribojimas.</strong> Kelias turi pasiekti aplinkkelį, todėl taškas \((x;\,y)\) yra apskritime ir tenkina jo lygtį \(x^2 + y^2 = 25\).</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; f(x;\,y) = (x - 6)^2 + (y - 8)^2 \\ &amp;\text{kai}\;\; x^2 + y^2 = 25 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą perrašome forma \(x^2 + y^2 - 25 = 0\) ir sudarome Lagranžo funkciją:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = (x - 6)^2 + (y - 8)^2 - \lambda\big(x^2 + y^2 - 25\big) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= (x - 6)^2 + (y - 8)^2 \\ &amp;\phantom{=}\; {}- \lambda\big(x^2 + y^2 - 25\big) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Pagal sudėtinės funkcijos išvestinės taisyklę \(\big((x - 6)^2\big)'_x = 2(x - 6)\), o apribojimo nario išvestinė pagal \(x\) yra \(-2\lambda x\). Pagal \(y\) diferencijuojama analogiškai:</p>
+          <div class="m-wide">\[ L'_x = 2(x - 6) - 2\lambda x;\qquad L'_y = 2(y - 8) - 2\lambda y \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 2(x - 6) - 2\lambda x \\ L'_y = 2(y - 8) - 2\lambda y \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 2(x - 6) - 2\lambda x &amp;= 0 \\ 2(y - 8) - 2\lambda y &amp;= 0 \\ x^2 + y^2 &amp;= 25 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: nežinomieji sudauginti tarpusavyje (\(\lambda x\), \(\lambda y\)), o apribojimo lygtyje kintamieji pakelti kvadratu. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmąją lygtį dalijame iš 2 ir gauname \(x - 6 - \lambda x = 0\). Jei būtų \(x = 0\), gautume \(-6 = 0\), todėl \(x \ne 0\). Narį \(-\lambda x\) perkeliame į dešiniąją pusę ir dalijame iš \(x\). Antrąją lygtį pertvarkome taip pat (\(y \ne 0\)):</p>
+          <div class="m-wide">\[ \lambda = \frac{x - 6}{x};\qquad \lambda = \frac{y - 8}{y} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{x - 6}{x} \\ \lambda = \frac{y - 8}{y} \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Išraiškas sulyginame, abi puses dauginame iš \(xy\) ir atskliaudžiame. Narys \(xy\) abiejose pusėse susiprastina:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} \frac{x - 6}{x} = \frac{y - 8}{y} \;\Longrightarrow\; (x - 6)y = (y - 8)x \;\Longrightarrow\; xy - 6y = xy - 8x \\ \Longrightarrow\; -6y = -8x \;\Longrightarrow\; y = \frac{4x}{3} \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{x - 6}{x} = \frac{y - 8}{y} \\ \Longrightarrow\; (x - 6)y = (y - 8)x \\ \Longrightarrow\; xy - 6y = xy - 8x \\ \Longrightarrow\; -6y = -8x \\ \Longrightarrow\; y = \frac{4x}{3} \end{gathered} \]</div>
+          <p><strong>Įstatymas į apribojimą.</strong> Reiškinį \(y = \frac{4x}{3}\) įstatome į apribojimo lygtį (\(y^2 = \frac{16x^2}{9}\)). Abi puses dauginame iš 9 ir dalijame iš 25:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} x^2 + \frac{16x^2}{9} = 25 \;\Longrightarrow\; 9x^2 + 16x^2 = 225 \\ \Longrightarrow\; 25x^2 = 225 \;\Longrightarrow\; x^2 = 9 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2 + \frac{16x^2}{9} = 25 \\ \Longrightarrow\; 9x^2 + 16x^2 = 225 \\ \Longrightarrow\; 25x^2 = 225 \\ \Longrightarrow\; x^2 = 9 \end{gathered} \]</div>
+          <p>Nepilnąją kvadratinę lygtį išskaidome dauginamaisiais:</p>
+          <div class="m-wide">\[ x^2 - 9 = 0 \;\Longrightarrow\; (x - 3)(x + 3) = 0 \;\Longrightarrow\; x = 3\ \text{arba}\ x = -3 \]</div><div class="m-narrow">\[ \begin{gathered} x^2 - 9 = 0 \\ \Longrightarrow\; (x - 3)(x + 3) = 0 \\ \Longrightarrow\; x = 3\ \text{arba}\ x = -3 \end{gathered} \]</div>
+          <p>Koordinatės žemėlapyje gali būti ir neigiamos, todėl tinka abu sprendiniai. Kiekvienam iš jų randame \(y = \frac{4x}{3}\) ir \(\lambda = \frac{x - 6}{x}\):</p>
+          <div class="m-wide">\[ \begin{aligned} x = 3:\quad &amp;y = 4;\quad \lambda = \frac{3 - 6}{3} = -1 \\ x = -3:\quad &amp;y = -4;\quad \lambda = \frac{-3 - 6}{-3} = 3 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} x = 3:\quad &amp;y = 4;\quad \lambda = \frac{3 - 6}{3} = -1 \\ x = -3:\quad &amp;y = -4 \\ &amp;\lambda = \frac{-3 - 6}{-3} = 3 \end{aligned} \]</div>
+          <p>Gauname du kritinius taškus: \((3;\,4;\,-1)\) ir \((-3;\,-4;\,3)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės išvestinėse yra \(\lambda\), todėl jų reikšmes skaičiuojame kiekviename kritiniame taške atskirai:</p>
+          <div class="m-wide">\[ L''_{xx} = 2 - 2\lambda;\qquad L''_{xy} = 0;\qquad L''_{yy} = 2 - 2\lambda \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = 2 - 2\lambda \\ L''_{xy} = 0 \\ L''_{yy} = 2 - 2\lambda \end{gathered} \]</div>
+          <div class="tbl-wrap">
+            <table class="vtable pts">
+              <thead><tr><th scope="col">Taškas</th><th scope="col">\((3;\,4;\,-1)\)</th><th scope="col">\((-3;\,-4;\,3)\)</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">\(A\)</th><td>\(4\)</td><td>\(-4\)</td></tr>
+                <tr><th scope="row">\(B\)</th><td>\(0\)</td><td>\(0\)</td></tr>
+                <tr><th scope="row">\(C\)</th><td>\(4\)</td><td>\(-4\)</td></tr>
+                <tr><th scope="row">\(D\)</th><td>\(16 &gt; 0\)</td><td>\(16 &gt; 0\)</td></tr>
+                <tr><th scope="row">Išvada</th><td>\(A &gt; 0\): minimumas</td><td>\(A &lt; 0\): maksimumas</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Taškas \((3;\,4)\) yra arčiausiai gamyklos, o taškas \((-3;\,-4)\) – toliausiai, kitoje miesto pusėje.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Trumpiausio kelio ilgis</span></h4>
+          <p>Kelio ilgis lygus atstumui nuo \(F(6;\,8)\) iki taško \((3;\,4)\):</p>
+          <div class="m-wide">\[ d = \sqrt{(3 - 6)^2 + (4 - 8)^2} = \sqrt{9 + 16} = 5 \]</div><div class="m-narrow">\[ \begin{aligned} d &amp;= \sqrt{(3 - 6)^2 + (4 - 8)^2} \\ &amp;= \sqrt{9 + 16} = 5 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Privažiuojamasis kelias turėtų pasiekti aplinkkelį taške \((3;\,4)\). Jo ilgis būtų 5&nbsp;km.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 9.4, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Savarankiškai dirbančios dizainerės darbo laikas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Savarankiškai dirbanti dizainerė darbui ir laisvalaikiui gali skirti 16 valandų per dieną. Už darbo valandą ji gauna 20&nbsp;eurų, o iš buto nuomos papildomai gauna 80&nbsp;eurų per dieną. Visas pajamas ji skiria vartojimui. Jos dienos naudingumas, išleidus \(c\) eurų ir turint \(l\) valandų laisvalaikio, yra
+\[ U(c;\,l) = c^{0{,}5}l^{0{,}5} \]
+Kiek valandų per dieną dizainerei reikėtų dirbti, kad naudingumas būtų didžiausias? Kiek ji išleistų ir koks būtų didžiausias naudingumas?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Kintamieji ir apribojimas</span></h4>
+          <p><strong>Kintamieji:</strong> \(c\) – dienos vartojimo išlaidos eurais, \(l\) – laisvalaikio valandų skaičius per dieną. Šįkart kintamieji žymimi ne \(x\) ir \(y\), o raidėmis, primenančiomis jų prasmę.</p>
+          <p><strong>Apribojimą</strong> sudarome nuosekliai:</p>
+          <ul>
+            <li>darbui ir laisvalaikiui skiriama 16 valandų, todėl, turėdama \(l\) valandų laisvalaikio, dizainerė dirba \(16 - l\) valandų;</li>
+            <li>už kiekvieną darbo valandą ji gauna 20&nbsp;eurų, todėl uždirba \(20(16 - l)\) eurų;</li>
+            <li>pridėję nuomos pajamas 80&nbsp;eurų, gauname visas dienos pajamas. Jos visos skiriamos vartojimui, todėl lygios \(c\).</li>
+          </ul>
+          <div class="m-wide bp-lg">\[ \begin{gathered} c = 20(16 - l) + 80 \;\Longrightarrow\; c = 320 - 20l + 80 \\ \Longrightarrow\; c = 400 - 20l \;\Longrightarrow\; c + 20l = 400 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} c = 20(16 - l) + 80 \\ \Longrightarrow\; c = 320 - 20l + 80 \\ \Longrightarrow\; c = 400 - 20l \\ \Longrightarrow\; c + 20l = 400 \end{gathered} \]</div>
+          <p>Skaičius 400 – tai pajamos, kurias dizainerė gautų dirbdama visas 16 valandų (\(20\cdot 16 + 80 = 400\)). Kiekviena laisvalaikio valanda jai kainuoja 20&nbsp;eurų negautų pajamų.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Modelis</span></h4>
+          <p><strong>Tikslo funkcija</strong> – naudingumas \(U(c;\,l)\), duotas sąlygoje. Ieškome didžiausio naudingumo pagal \(c\) ir \(l\), kai tenkinamas apribojimas:</p>
+          \[ \begin{aligned} &amp;\max_{c;\,l}\; U(c;\,l) = c^{0{,}5}l^{0{,}5} \\ &amp;\text{kai}\;\; c + 20l = 400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą perrašome forma \(c + 20l - 400 = 0\) ir sudarome Lagranžo funkciją:</p>
+          \[ L(c;\,l;\,\lambda) = c^{0{,}5}l^{0{,}5} - \lambda(c + 20l - 400) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Lygčių sistema</span></h4>
+          <p>Diferencijuojant pagal \(c\), daugiklis \(l^{0{,}5}\) yra pastovus: \(\big(c^{0{,}5}\big)'_c = 0{,}5c^{-0{,}5}\). Diferencijuojant pagal \(l\), pastovus daugiklis yra \(c^{0{,}5}\). Apribojimo nario išvestinės yra \(-\lambda\) ir \(-20\lambda\):</p>
+          <div class="m-wide">\[ L'_c = 0{,}5c^{-0{,}5}l^{0{,}5} - \lambda;\qquad L'_l = 0{,}5c^{0{,}5}l^{-0{,}5} - 20\lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_c = 0{,}5c^{-0{,}5}l^{0{,}5} - \lambda \\ L'_l = 0{,}5c^{0{,}5}l^{-0{,}5} - 20\lambda \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 0{,}5c^{-0{,}5}l^{0{,}5} - \lambda &amp;= 0 \\ 0{,}5c^{0{,}5}l^{-0{,}5} - 20\lambda &amp;= 0 \\ c + 20l &amp;= 400 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: kintamieji pakelti trupmeniniais laipsniais ir sudauginti tarpusavyje. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Sistemos sprendimas lygčių dalyba</span></h4>
+          <p>Pirmosiose dviejose lygtyse narius su \(\lambda\) perkeliame į dešiniąsias puses:</p>
+          \[ \left\{ \begin{aligned} 0{,}5c^{-0{,}5}l^{0{,}5} &amp;= \lambda \\ 0{,}5c^{0{,}5}l^{-0{,}5} &amp;= 20\lambda \end{aligned} \right. \]
+          <p><strong>Lygčių dalyba.</strong> Pirmąją lygtį padalijame iš antrosios. Daugikliai \(0{,}5\) ir \(\lambda\) susiprastina, o laipsnių rodiklius atimame: \(c^{-0{,}5 - 0{,}5} = c^{-1}\), \(l^{0{,}5 - (-0{,}5)} = l\):</p>
+          <div class="m-wide bp-lg">\[ \frac{0{,}5c^{-0{,}5}l^{0{,}5}}{0{,}5c^{0{,}5}l^{-0{,}5}} = \frac{\lambda}{20\lambda} \;\Longrightarrow\; \frac{l}{c} = \frac{1}{20} \;\Longrightarrow\; c = 20l \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{0{,}5c^{-0{,}5}l^{0{,}5}}{0{,}5c^{0{,}5}l^{-0{,}5}} = \frac{\lambda}{20\lambda} \\ \Longrightarrow\; \frac{l}{c} = \frac{1}{20} \\ \Longrightarrow\; c = 20l \end{gathered} \]</div>
+          <p><strong>Įstatymas į apribojimą.</strong> Reiškinį \(c = 20l\) įstatome į apribojimo lygtį \(c + 20l = 400\):</p>
+          <div class="m-wide">\[ 20l + 20l = 400 \;\Longrightarrow\; 40l = 400 \;\Longrightarrow\; l = 10 \]</div><div class="m-narrow">\[ \begin{gathered} 20l + 20l = 400 \\ \Longrightarrow\; 40l = 400 \\ \Longrightarrow\; l = 10 \end{gathered} \]</div>
+          <p>Tada \(c = 20\cdot 10 = 200\). Kritinis taškas yra \((200;\,10)\). Dizainerė dirba \(16 - 10 = 6\) valandas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Kritinio taško rūšis</span></h4>
+          <p>Naudingumo funkcija yra Kobo-Daglaso funkcija, kurios \(A = 1 &gt; 0\) ir \(\alpha + \beta = 0{,}5 + 0{,}5 = 1 \le 1\), todėl ji išgaubta. Apribojimas tiesinis, todėl ir \(L\) yra išgaubta (žr. <a href="tema-9.html#kobo-daglas-l">„Kobo-Daglaso funkcijos sąlyginio optimizavimo uždaviniuose“</a>), o \((200;\,10)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>Didžiausias naudingumas</span></h4>
+          <p>Kritinio taško koordinates įstatome į naudingumo funkciją. Kadangi \(a^{0{,}5}b^{0{,}5} = \sqrt{ab}\):</p>
+          <div class="m-wide">\[ U_{\max}(200;\,10) = \sqrt{200\cdot 10} = \sqrt{2000} \approx 44{,}72 \]</div><div class="m-narrow">\[ \begin{aligned} U_{\max}(200;\,10) &amp;= \sqrt{200\cdot 10} \\ &amp;= \sqrt{2000} \approx 44{,}72 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Dizainerė turėtų dirbti 6 valandas per dieną, 10 valandų skirti laisvalaikiui ir vartojimui išleisti 200 eurų per dieną. Didžiausias naudingumas yra apytiksliai 44,72.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 9.4, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Reklama dviejuose miestuose</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Prekybos tinklas reklamai dviejuose miestuose skiria 60 tūkstančių eurų. Jei A mieste jis išleidžia \(x\) tūkstančių eurų, o B mieste – \(y\) tūkstančių eurų, papildomas bendrasis pelnas iš pardavimo tūkstančiais eurų yra
+<div class="m-wide">\[ G(x;\,y) = 300\big(1 - e^{-0{,}1x}\big) + 600\big(1 - e^{-0{,}05y}\big) \]</div><div class="m-narrow">\[ \begin{aligned} G(x;\,y) &amp;= 300\big(1 - e^{-0{,}1x}\big) \\ &amp;\phantom{=}\; {}+ 600\big(1 - e^{-0{,}05y}\big) \end{aligned} \]</div>
+Kiekviename mieste papildomas pelnas iš pradžių auga sparčiai, vėliau augimas lėtėja. Pirmieji reklamai išleisti eurai padeda pasiekti daug naujų klientų, o toliau didinant išlaidas papildomų klientų pasiekiama mažiau.
+<br>a) Kaip reikėtų paskirstyti biudžetą abiem miestams, kad papildomas bendrasis pelnas būtų didžiausias? Koks yra didžiausias papildomas bendrasis pelnas?
+<br>b) Kaip ši didžiausia reikšmė pasikeistų, jei biudžetas padidėtų vienu tūkstančiu eurų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Modelis</span></h4>
+          <p><strong>Kintamieji:</strong> \(x\) ir \(y\) – reklamos išlaidos A ir B miestuose tūkstančiais eurų.</p>
+          <p><strong>Tikslo funkcija</strong> – papildomas bendrasis pelnas \(G(x;\,y)\), duotas sąlygoje. Kiekvienas jos narys, pavyzdžiui, \(300\big(1 - e^{-0{,}1x}\big)\), didėja didėjant išlaidoms, tačiau neviršija 300, nes \(e^{-0{,}1x}\) artėja prie nulio. Taip funkcija atspindi sąlygoje aprašytą lėtėjantį pelno augimą.</p>
+          <p><strong>Apribojimas.</strong> Išleidžiamas visas biudžetas, todėl išlaidų abiejuose miestuose suma lygi 60 tūkstančių eurų: \(x + y = 60\).</p>
+          <p>Ieškome didžiausio papildomo bendrojo pelno pagal \(x\) ir \(y\), kai išleidžiamas visas biudžetas:</p>
+          <div class="m-wide">\[ \begin{aligned} &amp;\max_{x;\,y}\; G(x;\,y) = 300\big(1 - e^{-0{,}1x}\big) + 600\big(1 - e^{-0{,}05y}\big) \\ &amp;\text{kai}\;\; x + y = 60 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\max_{x;\,y}\; G(x;\,y) \\ &amp;\text{kai}\;\; x + y = 60 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lagranžo funkcija</span></h4>
+          <p>Apribojimą perrašome forma \(x + y - 60 = 0\) ir sudarome Lagranžo funkciją:</p>
+          <div class="m-wide">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 300\big(1 - e^{-0{,}1x}\big) + 600\big(1 - e^{-0{,}05y}\big) \\ &amp;\phantom{=}\; {}- \lambda(x + y - 60) \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= 300\big(1 - e^{-0{,}1x}\big) \\ &amp;\phantom{=}\; {}+ 600\big(1 - e^{-0{,}05y}\big) \\ &amp;\phantom{=}\; {}- \lambda(x + y - 60) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Lygčių sistema</span></h4>
+          <p>Pagal sudėtinės funkcijos išvestinės taisyklę \(\big(e^{-0{,}1x}\big)'_x = -0{,}1e^{-0{,}1x}\), todėl</p>
+          <div class="m-wide">\[ \Big(300\big(1 - e^{-0{,}1x}\big)\Big)'_x = 300\cdot 0{,}1e^{-0{,}1x} = 30e^{-0{,}1x} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\Big(300\big(1 - e^{-0{,}1x}\big)\Big)'_x \\ &amp;= 300\cdot 0{,}1e^{-0{,}1x} = 30e^{-0{,}1x} \end{aligned} \]</div>
+          <p>Analogiškai \(\big(600(1 - e^{-0{,}05y})\big)'_y = 600\cdot 0{,}05e^{-0{,}05y} = 30e^{-0{,}05y}\). Apribojimo nario išvestinė pagal kiekvieną kintamąjį lygi \(-\lambda\):</p>
+          <div class="m-wide">\[ L'_x = 30e^{-0{,}1x} - \lambda;\qquad L'_y = 30e^{-0{,}05y} - \lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 30e^{-0{,}1x} - \lambda \\ L'_y = 30e^{-0{,}05y} - \lambda \end{gathered} \]</div>
+          <p>Abi išvestines prilyginame nuliui ir į sistemą įtraukiame apribojimo lygtį:</p>
+          \[ \left\{ \begin{aligned} 30e^{-0{,}1x} - \lambda &amp;= 0 \\ 30e^{-0{,}05y} - \lambda &amp;= 0 \\ x + y &amp;= 60 \end{aligned} \right. \]
+          <p>Ši sistema nėra tiesinė: kintamieji \(x\) ir \(y\) yra rodiklinių funkcijų laipsnių rodikliuose. Todėl <strong>Gauso metodas jai netinka</strong> – jis taikomas tik tiesinių lygčių sistemoms.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Sistemos sprendimas</span></h4>
+          <p><strong>Daugiklio \(\lambda\) išraiškos.</strong> Pirmosiose dviejose lygtyse narį \(-\lambda\) perkeliame į dešiniąją pusę:</p>
+          <div class="m-wide">\[ \lambda = 30e^{-0{,}1x};\qquad \lambda = 30e^{-0{,}05y} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 30e^{-0{,}1x} \\ \lambda = 30e^{-0{,}05y} \end{gathered} \]</div>
+          <p><strong>Lygtis su \(x\) ir \(y\).</strong> Abi išraiškas sulyginame ir abi puses dalijame iš 30. Tada logaritmuojame abi lygties puses ir taikome taisykles \(\ln\big(a^n\big) = n\ln a\) bei \(\ln e = 1\):</p>
+          <div class="m-wide bp-lg">\[ 30e^{-0{,}1x} = 30e^{-0{,}05y} \;\Longrightarrow\; e^{-0{,}1x} = e^{-0{,}05y} \;\Longrightarrow\; \ln e^{-0{,}1x} = \ln e^{-0{,}05y} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 30e^{-0{,}1x} = 30e^{-0{,}05y} \\ \Longrightarrow\; e^{-0{,}1x} = e^{-0{,}05y} \\ \Longrightarrow\; \ln e^{-0{,}1x} = \ln e^{-0{,}05y} \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ -0{,}1x\cdot\ln e = -0{,}05y\cdot\ln e \;\Longrightarrow\; -0{,}1x = -0{,}05y \;\Longrightarrow\; y = 2x \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -0{,}1x\cdot\ln e = -0{,}05y\cdot\ln e \\ \Longrightarrow\; -0{,}1x = -0{,}05y \\ \Longrightarrow\; y = 2x \end{gathered} \]</div>
+          <p>Paskutiniame žingsnyje abi puses padalijome iš \(-0{,}05\).</p>
+          <p><strong>Įstatymas į apribojimą.</strong> Reiškinį \(y = 2x\) įstatome į apribojimo lygtį \(x + y = 60\):</p>
+          <div class="m-wide">\[ x + 2x = 60 \;\Longrightarrow\; 3x = 60 \;\Longrightarrow\; x = 20 \]</div><div class="m-narrow">\[ \begin{gathered} x + 2x = 60 \\ \Longrightarrow\; 3x = 60 \\ \Longrightarrow\; x = 20 \end{gathered} \]</div>
+          <p>Tada \(y = 2\cdot 20 = 40\), o \(\lambda = 30e^{-0{,}1\cdot 20} = 30e^{-2} \approx 4{,}06\). Kritinis taškas yra \(\big(20;\,40;\,30e^{-2}\big)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Pakankamoji sąlyga</span></h4>
+          <p>Antros eilės dalinės išvestinės yra</p>
+          <div class="m-wide">\[ L''_{xx} = -3e^{-0{,}1x};\qquad L''_{xy} = 0;\qquad L''_{yy} = -1{,}5e^{-0{,}05y} \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = -3e^{-0{,}1x} \\ L''_{xy} = 0 \\ L''_{yy} = -1{,}5e^{-0{,}05y} \end{gathered} \]</div>
+          <p>Kritiniame taške \(e^{-0{,}1x} = e^{-0{,}05y} = e^{-2}\):</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = -3e^{-2};\quad B = 0;\quad C = -1{,}5e^{-2} \\ D = AC - B^2 = \big(-3e^{-2}\big)\cdot\big(-1{,}5e^{-2}\big) - 0^2 = 4{,}5e^{-4} &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= -3e^{-2};\quad B = 0 \\ C &amp;= -1{,}5e^{-2} \\ D &amp;= \big(-3e^{-2}\big)\cdot\big(-1{,}5e^{-2}\big) - 0^2 \\ &amp;= 4{,}5e^{-4} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) ir \(A &lt; 0\), todėl taškas \((20;\,40)\) yra maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Didžiausias pelnas ir jo pokytis</span></h4>
+          <p><strong>a)</strong> Kritiniame taške \(e^{-0{,}1\cdot 20} = e^{-0{,}05\cdot 40} = e^{-2}\):</p>
+          <div class="m-wide bp-lg">\[ G_{\max}(20;\,40) = 300\big(1 - e^{-2}\big) + 600\big(1 - e^{-2}\big) = 900\big(1 - e^{-2}\big) \approx 778{,}20 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;G_{\max}(20;\,40) \\ &amp;= 300\big(1 - e^{-2}\big) + 600\big(1 - e^{-2}\big) \\ &amp;= 900\big(1 - e^{-2}\big) \approx 778{,}20 \end{aligned} \]</div>
+          <p><strong>b)</strong> Biudžetas padidėja vienu tūkstančiu eurų, t.&nbsp;y. \(\Delta m = 1\). Lagranžo daugiklis \(\lambda = 30e^{-2} \approx 4{,}06\) (žr. <a href="tema-9.html#daugiklis">Lagranžo daugiklio reikšmę</a>):</p>
+          \[ \Delta G^{*} \approx \lambda\cdot\Delta m = 4{,}06\cdot 1 = 4{,}06 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) Prekybos tinklas turėtų skirti 20 tūkstančių eurų reklamai A mieste ir 40 tūkstančių eurų reklamai B mieste. Didžiausias papildomas bendrasis pelnas yra apytiksliai 778,20 tūkstančio eurų. b) Jis padidėtų apytiksliai 4,06 tūkstančio eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: sudarykite modelį ir Lagranžo funkciją, išspręskite lygčių sistemą, nustatykite kritinių taškų rūšį ir apskaičiuokite prašomus dydžius. Atsakyme pateikti pagrindiniai tarpiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 9 rinkinys, 4 sk. 1 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Lentpjūvė per savaitę gali pagaminti \(x\) kubinių metrų lentų ir \(y\) kubinių metrų sijų. Visiškai panaudojus išteklius, galimi gamybos deriniai tenkina lygtį</p>
+          \[ x^2 + 3y^2 = 2800 \]
+          <p>Lentų kubinis metras parduodamas už 20 šimtų eurų, o sijų – už 30 šimtų eurų. Kokį lentų ir sijų kiekį reikėtų pagaminti, kad pajamos būtų didžiausios? Kokios yra didžiausios pajamos?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Modelis:</strong></p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; R(x;\,y) = 20x + 30y \\ &amp;\text{kai}\;\; x^2 + 3y^2 = 2800 \end{aligned} \]
+          <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema netiesinė; \(\lambda = \frac{10}{x} = \frac{5}{y}\), todėl \(x = 2y\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 20 - 2\lambda x &amp;= 0 \\ 30 - 6\lambda y &amp;= 0 \\ x^2 + 3y^2 &amp;= 2800 \end{aligned} \right. \;\Longrightarrow\; x = 2y \;\Longrightarrow\; (40;\,20;\,0{,}25) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 20 - 2\lambda x &amp;= 0 \\ 30 - 6\lambda y &amp;= 0 \\ x^2 + 3y^2 &amp;= 2800 \end{aligned} \right. \\ \Longrightarrow\; x = 2y \\ \Longrightarrow\; (40;\,20;\,0{,}25) \end{gathered} \]</div>
+          <p>Įstačius \(x = 2y\) į apribojimą, gaunama \(7y^2 = 2800\). Nepilnąją kvadratinę lygtį išskaidome dauginamaisiais:</p>
+          <div class="m-wide bp-lg">\[ y^2 - 400 = 0 \;\Longrightarrow\; (y - 20)(y + 20) = 0 \;\Longrightarrow\; y = 20,\quad x = 40 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y^2 - 400 = 0 \\ \Longrightarrow\; (y - 20)(y + 20) = 0 \\ \Longrightarrow\; y = 20,\quad x = 40 \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide bp-lg">\[ A = -2\lambda = -0{,}5;\quad B = 0;\quad C = -6\lambda = -1{,}5;\quad D = 0{,}75 &gt; 0;\quad A &lt; 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -2\lambda = -0{,}5;\quad B = 0 \\ C = -6\lambda = -1{,}5 \\ D = 0{,}75 &gt; 0;\quad A &lt; 0 \end{gathered} \]</div>
+          <p><strong>Atsakymas.</strong> Per savaitę reikėtų pagaminti 40 kubinių metrų lentų ir 20 kubinių metrų sijų. Didžiausios savaitės pajamos yra \(R_{\max} = 1400\) šimtų eurų.</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Siuntų pristatymo įmonė aptarnauja tris prekybos centrus, pažymėtus taškais \(A(1;\,1)\), \(B(5;\,3)\) ir \(C(3;\,8)\). Koordinatės nurodytos kilometrais. Įmonė nori atidaryti siuntų atsiėmimo punktą prie gatvės, kurios lygtis yra \(x + 2y = 16\).</p>
+          <p>Kurioje gatvės vietoje reikėtų įrengti atsiėmimo punktą, kad atstumų iki trijų prekybos centrų kvadratų suma būtų mažiausia?</p>
+          <figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 349 214" role="img" aria-label="Žemėlapis: prekybos centrai A(1; 1), B(5; 3), C(3; 8), gatvė x + 2y = 16 ir galima atsiėmimo punkto vieta P(x; y) gatvėje"><line class="grid" x1="34" y1="18" x2="34" y2="188"/><line class="grid" x1="68" y1="18" x2="68" y2="188"/><line class="grid" x1="102" y1="18" x2="102" y2="188"/><line class="grid" x1="136" y1="18" x2="136" y2="188"/><line class="grid" x1="170" y1="18" x2="170" y2="188"/><line class="grid" x1="204" y1="18" x2="204" y2="188"/><line class="grid" x1="238" y1="18" x2="238" y2="188"/><line class="grid" x1="272" y1="18" x2="272" y2="188"/><line class="grid" x1="306" y1="18" x2="306" y2="188"/><line class="grid" x1="34" y1="188" x2="323" y2="188"/><line class="grid" x1="34" y1="154" x2="323" y2="154"/><line class="grid" x1="34" y1="120" x2="323" y2="120"/><line class="grid" x1="34" y1="86" x2="323" y2="86"/><line class="grid" x1="34" y1="52" x2="323" y2="52"/><line class="grid" x1="34" y1="18" x2="323" y2="18"/><line class="ax" x1="34" y1="188" x2="323" y2="188"/><path class="ah" d="M333 188L323 183.5L323 192.5Z"/><line class="ax" x1="34" y1="188" x2="34" y2="18"/><path class="ah" d="M34 8L29.5 18L38.5 18Z"/><text class="m" x="325" y="179">x</text><text class="m" x="43" y="16">y</text><text class="muted" x="68" y="204" text-anchor="middle">2</text><text class="muted" x="102" y="204" text-anchor="middle">4</text><text class="muted" x="136" y="204" text-anchor="middle">6</text><text class="muted" x="170" y="204" text-anchor="middle">8</text><text class="muted" x="204" y="204" text-anchor="middle">10</text><text class="muted" x="238" y="204" text-anchor="middle">12</text><text class="muted" x="272" y="204" text-anchor="middle">14</text><text class="muted" x="306" y="204" text-anchor="middle">16</text><text class="muted" x="27" y="158" text-anchor="end">2</text><text class="muted" x="27" y="124" text-anchor="end">4</text><text class="muted" x="27" y="90" text-anchor="end">6</text><text class="muted" x="27" y="56" text-anchor="end">8</text><text class="muted" x="27" y="204" text-anchor="end">0</text><line class="ln2" x1="34" y1="52.0" x2="306.0" y2="188"/><line x1="204" y1="137" x2="51" y2="171" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="204" y1="137" x2="119" y2="137" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="204" y1="137" x2="85" y2="52" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><circle class="pt" cx="51" cy="171" r="5.5"/><text class="halo" x="51" y="161" text-anchor="middle" style="font-weight:700">A(1; 1)</text><circle class="pt" cx="119" cy="137" r="5.5"/><text class="halo" x="111" y="129" text-anchor="end" style="font-weight:700">B(5; 3)</text><circle class="pt" cx="85" cy="52" r="5.5"/><text class="halo" x="93" y="44" text-anchor="start" style="font-weight:700">C(3; 8)</text><circle class="pt-hi" cx="204" cy="137" r="5.5"/><text class="halo exam" x="212" y="127" text-anchor="start" style="font-weight:700">P(x; y)</text><text class="halo" x="241.4" y="96.2" text-anchor="start" style="font-weight:700;fill:var(--chart-2)">x + 2y = 16</text></svg>
+<figcaption>Trys prekybos centrai, gatvė ir galima atsiėmimo punkto vieta.</figcaption>
+</figure>
+        </div>
+        <div class="q-answer">
+          <p><strong>Tikslo funkcija ir modelis:</strong></p>
+          <div class="m-wide bp-lg">\[ T(x;\,y) = (x - 1)^2 + (y - 1)^2 + (x - 5)^2 + (y - 3)^2 + (x - 3)^2 + (y - 8)^2 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;T(x;\,y) \\ &amp;= (x - 1)^2 + (y - 1)^2 \\ &amp;\phantom{=}\; {}+ (x - 5)^2 + (y - 3)^2 \\ &amp;\phantom{=}\; {}+ (x - 3)^2 + (y - 8)^2 \end{aligned} \]</div>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; T(x;\,y) \\ &amp;\text{kai}\;\; x + 2y = 16 \end{aligned} \]
+          <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema tiesinė):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 6x - 18 - \lambda &amp;= 0 \\ 6y - 24 - 2\lambda &amp;= 0 \\ x + 2y &amp;= 16 \end{aligned} \right. \;\Longrightarrow\; y = 2x - 2 \;\Longrightarrow\; (4;\,6;\,6) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 6x - 18 - \lambda &amp;= 0 \\ 6y - 24 - 2\lambda &amp;= 0 \\ x + 2y &amp;= 16 \end{aligned} \right. \\ \Longrightarrow\; y = 2x - 2 \\ \Longrightarrow\; (4;\,6;\,6) \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide">\[ A = 6;\quad B = 0;\quad C = 6;\quad D = 36 &gt; 0;\quad A &gt; 0 \]</div><div class="m-narrow">\[ \begin{gathered} A = 6;\quad B = 0;\quad C = 6 \\ D = 36 &gt; 0;\quad A &gt; 0 \end{gathered} \]</div>
+          <p><strong>Atsakymas.</strong> Atsiėmimo punktą reikėtų įrengti taške \((4;\,6)\). Mažiausios atstumų kvadratų sumos reikšmė yra \(T_{\min} = 49\).</p>
+        </div>
+      </article>
+
+      <!-- 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Viešbutis turi elipsės formos kiemą. Žemėlapio koordinačių pradžia sutampa su kiemo centru, o kiemo ribą nusako lygtis \(4x^2 + 9y^2 = 7200\). Koordinatės išreikštos metrais. Kieme planuojama įrengti stačiakampę terasą, kurios kraštinės lygiagrečios ašims, o viršūnės yra ant kiemo ribos.</p>
+          <p>Kokie yra didžiausios tokios terasos matmenys? Koks jos plotas?</p>
+          <figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 413 294" role="img" aria-label="Elipsės formos kiemas 4x² + 9y² = 7200 ir į jį įbrėžta stačiakampė terasa su viršūne (x; y), kraštinių ilgiai 2x ir 2y"><line class="ax" x1="34.0" y1="143.0" x2="387.6" y2="143.0"/><path class="ah" d="M397.6 143.0L387.6 138.5L387.6 147.5Z"/><line class="ax" x1="210.8" y1="268.0" x2="210.8" y2="18.0"/><path class="ah" d="M210.8 8.0L206.3 18.0L215.3 18.0Z"/><text class="m" x="389.6" y="134.0">x</text><text class="m" x="219.8" y="16.0">y</text><ellipse class="ln" cx="210.8" cy="143.0" rx="150.0" ry="100.0" fill="var(--chart)" fill-opacity=".08"/><rect x="118.9" y="64.0" width="183.8" height="158.0" fill="var(--exam)" fill-opacity=".12" stroke="var(--exam)" stroke-width="2.4"/><circle class="pt-hi" cx="302.7" cy="64.0" r="5.5"/><text class="halo exam" x="310.7" y="56.0" text-anchor="start" style="font-weight:700">(x; y)</text><text class="m halo" x="210.8" y="215.0" text-anchor="middle">2x</text><text class="m halo" x="125.9" y="137.0" text-anchor="start">2y</text><line x1="302.7" y1="143.0" x2="302.7" y2="64.0" class="guide"/><line x1="210.8" y1="64.0" x2="302.7" y2="64.0" class="guide"/><text class="m halo" x="256.7" y="159.0" text-anchor="middle">x</text><text class="m halo" x="204.8" y="107.5" text-anchor="end">y</text><text class="halo" x="293.3" y="255.0" text-anchor="start" style="font-weight:700;fill:var(--chart)">4x² + 9y² = 7200</text></svg>
+<figcaption>Į kiemo ribą įbrėžtas terasos stačiakampis su viršūne \((x;\,y)\).</figcaption>
+</figure>
+        </div>
+        <div class="q-answer">
+          <p><strong>Modelis.</strong> Viena terasos viršūnė yra \((x;\,y)\).</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; S(x;\,y) = 4xy \\ &amp;\text{kai}\;\; 4x^2 + 9y^2 = 7200 \end{aligned} \]
+          <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema netiesinė; \(\lambda = \frac{y}{2x} = \frac{2x}{9y}\), todėl \(9y^2 = 4x^2\) ir \(2x = 3y\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 4y - 8\lambda x &amp;= 0 \\ 4x - 18\lambda y &amp;= 0 \\ 4x^2 + 9y^2 &amp;= 7200 \end{aligned} \right. \;\Longrightarrow\; 2x = 3y \;\Longrightarrow\; \Big(30;\,20;\,\frac{1}{3}\Big) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 4y - 8\lambda x &amp;= 0 \\ 4x - 18\lambda y &amp;= 0 \\ 4x^2 + 9y^2 &amp;= 7200 \end{aligned} \right. \\ \Longrightarrow\; 2x = 3y \\ \Longrightarrow\; \Big(30;\,20;\,\frac{1}{3}\Big) \end{gathered} \]</div>
+          <p>Įstačius \(x = 1{,}5y\) į apribojimą, gaunama \(18y^2 = 7200\). Nepilnąją kvadratinę lygtį išskaidome dauginamaisiais:</p>
+          <div class="m-wide bp-lg">\[ y^2 - 400 = 0 \;\Longrightarrow\; (y - 20)(y + 20) = 0 \;\Longrightarrow\; y = 20,\quad x = 30 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y^2 - 400 = 0 \\ \Longrightarrow\; (y - 20)(y + 20) = 0 \\ \Longrightarrow\; y = 20,\quad x = 30 \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="m-wide bp-lg">\[ A = -8\lambda = -\frac{8}{3};\quad B = 4;\quad C = -18\lambda = -6;\quad D = 16 - 16 = 0 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} A = -8\lambda = -\frac{8}{3};\quad B = 4 \\ C = -18\lambda = -6 \\ D = 16 - 16 = 0 \end{gathered} \]</div>
+          <p>Šio požymio nepakanka. Ploto funkcija tolydi uždarame pirmojo elipsės ketvirčio lanke. Lanko galuose plotas yra nulis, o vienintelis vidinis kritinis taškas yra \((30;\,20)\), todėl jame plotas didžiausias.</p>
+          <p><strong>Atsakymas.</strong> Terasos matmenys yra 60&nbsp;m × 40&nbsp;m. Didžiausias plotas yra \(S_{\max} = 2400\) kvadratinių metrų.</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Žiedinę metro liniją žemėlapyje nusako lygtis \(x^2 + y^2 = 100\). Koordinačių pradžia sutampa su miesto centru, o koordinatės išreikštos kilometrais. Verslo parkas yra taške \(F(12;\,9)\). Nuo parko iki metro linijos norima nutiesti kuo trumpesnį dviračių taką.</p>
+          <p>Kuriame taške takas turėtų pasiekti metro liniją ir koks būtų jo ilgis? Minimizuokite atstumo nuo \(F\) iki metro linijos taško kvadratą.</p>
+          <figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 326 291" role="img" aria-label="Žiedinė metro linija x² + y² = 100, verslo parkas F(12; 9) ir dviračių takas nuo F iki metro linijos taško (x; y)"><line class="grid" x1="43.5" y1="18.0" x2="43.5" y2="265.0"/><line class="grid" x1="81.5" y1="18.0" x2="81.5" y2="265.0"/><line class="grid" x1="119.5" y1="18.0" x2="119.5" y2="265.0"/><line class="grid" x1="157.5" y1="18.0" x2="157.5" y2="265.0"/><line class="grid" x1="195.5" y1="18.0" x2="195.5" y2="265.0"/><line class="grid" x1="233.5" y1="18.0" x2="233.5" y2="265.0"/><line class="grid" x1="271.5" y1="18.0" x2="271.5" y2="265.0"/><line class="grid" x1="34.0" y1="255.5" x2="300.0" y2="255.5"/><line class="grid" x1="34.0" y1="217.5" x2="300.0" y2="217.5"/><line class="grid" x1="34.0" y1="179.5" x2="300.0" y2="179.5"/><line class="grid" x1="34.0" y1="141.5" x2="300.0" y2="141.5"/><line class="grid" x1="34.0" y1="103.5" x2="300.0" y2="103.5"/><line class="grid" x1="34.0" y1="65.5" x2="300.0" y2="65.5"/><line class="grid" x1="34.0" y1="27.5" x2="300.0" y2="27.5"/><line class="ax" x1="34.0" y1="141.5" x2="300.0" y2="141.5"/><path class="ah" d="M310.0 141.5L300.0 137.0L300.0 146.0Z"/><line class="ax" x1="157.5" y1="265.0" x2="157.5" y2="18.0"/><path class="ah" d="M157.5 8.0L153.0 18.0L162.0 18.0Z"/><text class="m" x="302.0" y="132.5">x</text><text class="m" x="166.5" y="16.0">y</text><text class="muted" x="43.5" y="157.5" text-anchor="middle">-12</text><text class="muted" x="81.5" y="157.5" text-anchor="middle">-8</text><text class="muted" x="119.5" y="157.5" text-anchor="middle">-4</text><text class="muted" x="195.5" y="157.5" text-anchor="middle">4</text><text class="muted" x="233.5" y="157.5" text-anchor="middle">8</text><text class="muted" x="271.5" y="157.5" text-anchor="middle">12</text><text class="muted" x="150.5" y="259.5" text-anchor="end">-12</text><text class="muted" x="150.5" y="221.5" text-anchor="end">-8</text><text class="muted" x="150.5" y="183.5" text-anchor="end">-4</text><text class="muted" x="150.5" y="107.5" text-anchor="end">4</text><text class="muted" x="150.5" y="69.5" text-anchor="end">8</text><text class="muted" x="150.5" y="157.5" text-anchor="end">0</text><ellipse class="ln" cx="157.5" cy="141.5" rx="95.0" ry="95.0"/><line x1="271.5" y1="56.0" x2="110.0" y2="59.2" stroke="var(--exam)" stroke-width="3" stroke-linecap="round"/><circle class="pt" cx="271.5" cy="56.0" r="5.5"/><text class="halo" x="279.5" y="48.0" text-anchor="start" style="font-weight:700">F(12; 9)</text><circle class="pt-hi" cx="110.0" cy="59.2" r="5.5"/><text class="halo exam" x="101.0" y="50.2" text-anchor="end" style="font-weight:700">(x; y)</text><text class="halo" x="38.8" y="255.5" text-anchor="start" style="font-weight:700;fill:var(--chart)">x² + y² = 100</text></svg>
+<figcaption>Metro linija, verslo parkas \(F\) ir galimas dviračių tako galinis taškas \((x;\,y)\).</figcaption>
+</figure>
+        </div>
+        <div class="q-answer">
+          <p><strong>Modelis:</strong></p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; f(x;\,y) = (x - 12)^2 + (y - 9)^2 \\ &amp;\text{kai}\;\; x^2 + y^2 = 100 \end{aligned} \]
+          <p><strong>Lygčių sistema ir kritiniai taškai</strong> (sistema netiesinė; \(\lambda = \frac{x - 12}{x} = \frac{y - 9}{y}\), todėl \(y = 0{,}75x\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 2(x - 12) - 2\lambda x &amp;= 0 \\ 2(y - 9) - 2\lambda y &amp;= 0 \\ x^2 + y^2 &amp;= 100 \end{aligned} \right. \;\Longrightarrow\; y = 0{,}75x \;\Longrightarrow\; (8;\,6;\,-0{,}5),\ (-8;\,-6;\,2{,}5) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 2(x - 12) - 2\lambda x &amp;= 0 \\ 2(y - 9) - 2\lambda y &amp;= 0 \\ x^2 + y^2 &amp;= 100 \end{aligned} \right. \\ \Longrightarrow\; y = 0{,}75x \\ \Longrightarrow\; (8;\,6;\,-0{,}5), \\ (-8;\,-6;\,2{,}5) \end{gathered} \]</div>
+          <p>Įstačius \(y = 0{,}75x\) į apribojimą, gaunama \(1{,}5625x^2 = 100\). Nepilnąją kvadratinę lygtį išskaidome dauginamaisiais:</p>
+          <div class="m-wide bp-lg">\[ x^2 - 64 = 0 \;\Longrightarrow\; (x - 8)(x + 8) = 0 \;\Longrightarrow\; x = 8\ \text{arba}\ x = -8 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2 - 64 = 0 \\ \Longrightarrow\; (x - 8)(x + 8) = 0 \\ \Longrightarrow\; x = 8\ \text{arba}\ x = -8 \end{gathered} \]</div>
+          <p><strong>Pakankamoji sąlyga:</strong></p>
+          <div class="tbl-wrap">
+  <table class="vtable pts">
+    <thead><tr><th scope="col">Taškas</th><th scope="col">\((8;\,6)\)</th><th scope="col">\((-8;\,-6)\)</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">\(A\)</th><td>\(3\)</td><td>\(-3\)</td></tr>
+      <tr><th scope="row">\(B\)</th><td>\(0\)</td><td>\(0\)</td></tr>
+      <tr><th scope="row">\(C\)</th><td>\(3\)</td><td>\(-3\)</td></tr>
+      <tr><th scope="row">\(D\)</th><td>\(9 &gt; 0\)</td><td>\(9 &gt; 0\)</td></tr>
+      <tr><th scope="row">Išvada</th><td>\(A &gt; 0\): minimumas</td><td>\(A &lt; 0\): maksimumas</td></tr>
+    </tbody>
+  </table>
+</div>
+          <p><strong>Atsakymas.</strong> Takas turėtų pasiekti metro liniją taške \((8;\,6)\). Tako ilgis būtų \(\sqrt{16 + 9} = 5\)&nbsp;km.</p>
+        </div>
+      </article>
+
+      <!-- 5 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Studentas per dieną darbui ne visu etatu ir laisvalaikiui gali skirti 10 valandų. Už darbo valandą jis gauna 15 eurų, o tėvai papildomai duoda 30 eurų per dieną. Visas pajamas studentas išleidžia. Dienos naudingumas, kai studentas išleidžia \(c\) eurų ir turi \(l\) valandų laisvalaikio, yra \(U(c;\,l) = c^{0{,}5}l^{0{,}5}\).</p>
+          <p>Kiek valandų per dieną studentas turėtų dirbti, kad naudingumas būtų didžiausias? Kiek jis išleistų?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>Apribojimas:</strong></p>
+          <div class="m-wide">\[ c = 15(10 - l) + 30 \;\Longrightarrow\; c + 15l = 180 \]</div><div class="m-narrow">\[ \begin{gathered} c = 15(10 - l) + 30 \\ \Longrightarrow\; c + 15l = 180 \end{gathered} \]</div>
+          <p><strong>Modelis:</strong></p>
+          \[ \begin{aligned} &amp;\max_{c;\,l}\; U(c;\,l) = c^{0{,}5}l^{0{,}5} \\ &amp;\text{kai}\;\; c + 15l = 180 \end{aligned} \]
+          <p><strong>Lygčių sistema ir kritinis taškas</strong> (sistema netiesinė; pirmąją lygtį padalijus iš antrosios, gaunama \(\frac{l}{c} = \frac{1}{15}\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 0{,}5c^{-0{,}5}l^{0{,}5} &amp;= \lambda \\ 0{,}5c^{0{,}5}l^{-0{,}5} &amp;= 15\lambda \\ c + 15l &amp;= 180 \end{aligned} \right. \;\Longrightarrow\; c = 15l \;\Longrightarrow\; (90;\,6) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 0{,}5c^{-0{,}5}l^{0{,}5} &amp;= \lambda \\ 0{,}5c^{0{,}5}l^{-0{,}5} &amp;= 15\lambda \\ c + 15l &amp;= 180 \end{aligned} \right. \\ \Longrightarrow\; c = 15l \\ \Longrightarrow\; (90;\,6) \end{gathered} \]</div>
+          <p><strong>Kritinio taško rūšis</strong></p>
+          <p>Kobo-Daglaso funkcijos parametrai tenkina \(A = 1 &gt; 0\) ir \(\alpha + \beta = 1 \le 1\). Funkcija \(L\) yra išgaubta, todėl \((90;\,6)\) yra maksimumo taškas.</p>
+          <p><strong>Atsakymas.</strong> Studentas turėtų dirbti 4 valandas per dieną, 6 valandas skirti laisvalaikiui ir išleisti 90 eurų per dieną. \(U_{\max} = \sqrt{540} \approx 23{,}24\).</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">8 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">12.3 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
