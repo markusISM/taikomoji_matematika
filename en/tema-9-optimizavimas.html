@@ -1,0 +1,1209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standard Optimization Problems · Applied Mathematics</title>
+<meta name="description" content="Unconstrained optimization of functions of two variables: building the objective function, solving the system of the necessary condition by substitution and by Gaussian elimination, the sufficient condition. Maximum profit and minimum cost – step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-9-optimizavimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m91">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 9 · Applications · Section 1</span>
+    <h1>Standard Optimization Problems</h1>
+    <p class="lead">This section looks for the maximum profit, the minimum cost and other optimal decisions when a quantity depends on two variables that are not connected by any additional condition. Most attention is paid to solving the system of equations of the necessary condition.</p>
+    <ul class="jump">
+      <li><a href="#tikslo">The objective function</a></li>
+      <li><a href="#sistema">The system of equations</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. THE OBJECTIVE FUNCTION ============ -->
+  <section class="section" id="tikslo" aria-labelledby="h-goal">
+    <h2 id="h-goal">The objective function</h2>
+    <article class="card">
+      <p>In an applied problem the function whose largest or smallest value has to be found is called the <strong>objective function</strong>. It is often not given directly, so the first step of the solution is to build it. The most common objective functions are:</p>
+      <ul>
+        <li>the <strong>profit</strong> of two products, \(P(x;\,y) = R(x;\,y) - TC(x;\,y)\), with the revenue \(R = p_1x + p_2y\) when the prices are fixed, or \(R = p_1(x;\,y)\cdot x + p_2(x;\,y)\cdot y\) when the prices are given by demand functions (the Topic 8 section <a href="tema-8-ribine-analize.html">“Marginal Analysis”</a>);</li>
+        <li><strong>profit</strong> built from a production function (the Topic 8 section <a href="tema-8-gamybos-funkcija.html">“The Production Function”</a>):
+          <div class="m-wide">\[ P(x;\,y) = p\cdot Q(x;\,y) - c_1x - c_2y - FC \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= p\cdot Q(x;\,y) \\ &amp;\phantom{=}\; {}- c_1x - c_2y - FC \end{aligned} \]</div></li>
+        <li><strong>profit</strong> as a function of the prices, when the quantities sold depend on the prices: each unit sold brings its price minus its unit cost;</li>
+        <li>any other quantity described by a function of two variables: a cost, a yield, a distance.</li>
+      </ul>
+      <p>The objective function that has been built is optimized with the necessary and the sufficient conditions of an extremum, as explained <a href="tema-9.html#be-apribojimu">on the Topic 9 page</a>.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. THE SYSTEM OF EQUATIONS ============ -->
+  <section class="section" id="sistema" aria-labelledby="h-sys">
+    <h2 id="h-sys">The system of the necessary condition</h2>
+    <article class="card">
+      <p>Setting both first order partial derivatives equal to zero gives a system of two equations with two unknowns. Its solution is the critical point. How the system is solved depends on whether it is linear.</p>
+
+      <h3 class="subhead" style="margin-top:18px">A system of linear equations</h3>
+      <p>When the objective function is a polynomial of the second degree, as in most problems of this section, both partial derivatives are linear. This gives a system of linear equations, which is most conveniently solved by <strong>substitution</strong>:</p>
+      <ol class="steps-list">
+        <li><strong>Arrange the equations.</strong> If the equations contain decimals, multiply each equation by a number that makes all the coefficients integers. Every term of the equation is multiplied by the same number, including the constant term. Keep the variables on the left-hand side and move the numbers to the right-hand side. A term that is moved changes its sign.</li>
+        <li><strong>Express one variable.</strong> Choose an equation in which the coefficient of one of the variables is 1 or \(-1\), and express that variable from it. This avoids fractions.</li>
+        <li><strong>Substitute the expression into the other equation.</strong> Write the expression into the other equation in place of the variable that was expressed. If the variable has a coefficient or a minus sign in front of it, write the expression in brackets. This gives an equation in one variable.</li>
+        <li><strong>Solve the equation in one variable.</strong> Expand the brackets, collect like terms, move the numbers to the right-hand side and divide both sides by the coefficient of the variable.</li>
+        <li><strong>Find the second variable.</strong> Substitute the value found into the expression obtained in step 2.</li>
+        <li><strong>Check.</strong> Substitute the values of both variables into both equations – both must give true equalities.</li>
+      </ol>
+      <p>A system of linear equations can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>, which was discussed in Topic 3. Both methods give the same solution. In the examples the system is solved by substitution, and at the end of each solution there is a collapsible box “Solution by Gaussian elimination” for those who prefer this method.</p>
+
+      <h3 class="subhead" style="margin-top:22px">A system of non-linear equations</h3>
+      <p>If the objective function contains powers with fractional exponents, logarithms, exponential functions or fractions with the variable in the denominator, the partial derivatives are not linear, and a system of non-linear equations is obtained. <strong>Gaussian elimination cannot be used for it</strong>: it applies only to systems of linear equations, in which each unknown is of the first degree and is only multiplied by a number. Such systems are solved in other ways:</p>
+      <ul>
+        <li><strong>Cobb-Douglas functions.</strong> Move the costs of the inputs to the right-hand sides of the equations and divide the first equation by the second. After the powers of the same base are combined, express one variable through the other and substitute it into one of the equations (<a href="#pavyzdys-8">Example 8</a>).</li>
+        <li><strong>Fractions.</strong> Write the derivative as a single fraction. A fraction is equal to zero when its numerator is equal to zero and its denominator is not equal to zero (<a href="#pavyzdys-9">Example 9</a>).</li>
+        <li><strong>Exponential functions.</strong> Rearrange the equation into the form \(e^{u} = a\) and take the natural logarithm of both sides (<a href="#pavyzdys-11">Example 11</a>).</li>
+      </ul>
+      <p>Often each equation of such a system contains only one variable. Then the equations are solved separately.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">How to solve</h2>
+    <article class="card">
+      <ol class="steps-list">
+        <li>Build the objective function.</li>
+        <li>Find the first order partial derivatives, set them equal to zero and solve the system of equations (see <a href="#sistema">“The system of the necessary condition”</a>). If the equations contain decimals, first multiply the equations by a suitable number. If a derivative is a fraction, write it as a single fraction and replace the equation by two conditions: the numerator is equal to zero, and the denominator is not equal to zero.</li>
+        <li>Label the critical point with a letter, for example \(K\). Find the second order partial derivatives and substitute the coordinates of \(K\) into them – this gives \(A\), \(B\), \(C\). Calculate \(D = AC - B^2\). Decide whether the point is a maximum or a minimum point (<a href="tema-9.html#pakankamoji">the second derivative test</a>). If the profit function is built from a Cobb-Douglas production function, check the parameters (<a href="tema-9.html#kobo-daglas">Cobb-Douglas functions</a>).</li>
+        <li>Calculate the quantities the problem asks for: the maximum or minimum value, prices, output.</li>
+        <li>Write the answer in the words of the problem.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Not every term of the equation is multiplied.</strong> When an equation is multiplied or divided, all its terms, including the constant term, must be multiplied or divided by the same number.</li>
+            <li><strong>The sign is not changed.</strong> A term moved to the other side of the equation changes its sign. When an equation is multiplied by a negative number, the signs of all its terms change.</li>
+            <li><strong>Brackets are left out when substituting.</strong> If the variable has a coefficient or a minus sign in front of it, the substituted expression is written in brackets: \(2(600 - 3x)\), not \(2\cdot 600 - 3x\).</li>
+            <li><strong>Gaussian elimination is applied to a non-linear system.</strong> Gaussian elimination is suitable only for systems of linear equations.</li>
+            <li><strong>The sufficient condition is not checked.</strong> A critical point can be a minimum point, a maximum point or a saddle point.</li>
+            <li><strong>The optimal value is calculated by substituting the coordinates into something other than the objective function.</strong> The maximum profit or the minimum cost is found by substituting the coordinates of the critical point into the objective function, not into its derivatives.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <h3 class="subhead">Revenue, cost and profit</h3>
+
+    <!-- Example 1: AM 9.1, Example 2 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Office chairs and desks</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A furniture factory produces \(x\) office chairs and \(y\) office desks a month. Its monthly profit, in euros, is
+        <div class="m-wide">\[ P(x;\,y) = -0.3x^2 - 0.2y^2 - 0.2xy + 120x + 100y - 5000 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= -0.3x^2 - 0.2y^2 - 0.2xy \\ &amp;\phantom{=}\; {}+ 120x + 100y - 5000 \end{aligned} \]</div>
+        How many chairs and desks should the factory produce to maximize the profit? What is the maximum profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first order partial derivatives</span></h4>
+          <p>The profit function is given directly, so we find the first order partial derivatives at once. When differentiating with respect to \(x\), the terms \(-0.2y^2\), \(100y\) and \(-5000\) are constants, and with respect to \(y\) – the terms \(-0.3x^2\), \(120x\) and \(-5000\):</p>
+          <div class="m-wide">\[ P'_x = -0.6x - 0.2y + 120;\qquad P'_y = -0.4y - 0.2x + 100 \]</div><div class="m-narrow">\[ \begin{aligned} P'_x &amp;= -0.6x - 0.2y + 120 \\ P'_y &amp;= -0.4y - 0.2x + 100 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} -0.6x - 0.2y + 120 &amp;= 0 \\ -0.2x - 0.4y + 100 &amp;= 0 \end{aligned} \right. \]
+          <p>The equations contain decimals. To make the coefficients integers, we multiply each equation by \(-5\). Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} -0.6x - 0.2y + 120 = 0\;\big|\cdot (-5) \;&amp;\Longrightarrow\; 3x + y - 600 = 0 \\ -0.2x - 0.4y + 100 = 0\;\big|\cdot (-5) \;&amp;\Longrightarrow\; x + 2y - 500 = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} -0.6x - 0.2y + 120 = 0\;\big|\cdot (-5) \\ \Longrightarrow\; 3x + y - 600 = 0 \\[4pt] -0.2x - 0.4y + 100 = 0\;\big|\cdot (-5) \\ \Longrightarrow\; x + 2y - 500 = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} 3x + y &amp;= 600 \\ x + 2y &amp;= 500 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Solving the system by substitution</span></h4>
+          <p>In the first equation the coefficient of \(y\) is 1, so it is most convenient to express \(y\) from it. We move the term \(3x\) to the right-hand side and change its sign:</p>
+          <div class="m-wide">\[ 3x + y = 600 \;\Longrightarrow\; y = 600 - 3x \]</div><div class="m-narrow">\[ \begin{gathered} 3x + y = 600 \\ \Longrightarrow\; y = 600 - 3x \end{gathered} \]</div>
+          <p>We substitute the expression into the second equation in place of \(y\). Since \(y\) is multiplied by 2 in that equation, the substituted expression is written in brackets. This gives an equation in one variable \(x\):</p>
+          \[ x + 2(600 - 3x) = 500 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ x + 1200 - 6x = 500 \;\Longrightarrow\; -5x = 500 - 1200 \;\Longrightarrow\; -5x = -700 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 1200 - 6x = 500 \\ \Longrightarrow\; -5x = 500 - 1200 \\ \Longrightarrow\; -5x = -700 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(-5\):</p>
+          \[ x = \frac{-700}{-5} = 140 \]
+          <p>We substitute the value of \(x\) into the expression \(y = 600 - 3x\):</p>
+          <div class="m-wide">\[ y = 600 - 3\cdot 140 = 600 - 420 = 180 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 600 - 3\cdot 140 \\ &amp;= 600 - 420 = 180 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(140;\,180)\). We check it by substituting the values into both equations: \(3\cdot 140 + 180 = 600\) and \(140 + 2\cdot 180 = 500\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first coefficient of the second equation is 1, so we interchange the equations – this 1 becomes the pivot element:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 2 &amp; 500 \\ 3 &amp; 1 &amp; 600 \end{array}\right) \]
+          <p>To get 0 below the pivot element, we multiply the first row by \(-3\) and add it to the second row, and then divide the new second row by \(-5\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 2 &amp; 500 \\ 3 &amp; 1 &amp; 600 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 2 &amp; 500 \\ \htmlClass{hc}{0} &amp; -5 &amp; -900 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 2 &amp; 500 \\ 0 &amp; \htmlClass{hd}{1} &amp; 180 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(y = 180\). We substitute this value into the first row:</p>
+          \[ x + 2\cdot 180 = 500 \;\Longrightarrow\; x = 140 \]
+          <p>The same solution \((140;\,180)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0.6;\quad B = P''_{xy}(K) = -0.2;\quad C = P''_{yy}(K) = -0.4 \\ D = AC - B^2 = (-0.6)\cdot (-0.4) - (-0.2)^2 = 0.24 - 0.04 = 0.2 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0.6 \\ B &amp;= P''_{xy}(K) = -0.2 \\ C &amp;= P''_{yy}(K) = -0.4 \\ D &amp;= AC - B^2 \\ &amp;= (-0.6)\cdot (-0.4) - (-0.2)^2 \\ &amp;= 0.24 - 0.04 = 0.2 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(140;\,180)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The maximum profit</span></h4>
+          <p>We substitute the coordinates of the critical point into the profit function:</p>
+          <div class="m-wide bp-lg">\[ P_{\max}(140;\,180) = -5880 - 6480 - 5040 + 16\,800 + 18\,000 - 5000 = 12\,400 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(140;\,180) \\ &amp;= -5880 - 6480 - 5040 \\ &amp;\phantom{=}\; {}+ 16\,800 + 18\,000 - 5000 \\ &amp;= 12\,400 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The factory should produce 140 chairs and 180 desks a month. The maximum profit is 12&nbsp;400 euros a month.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 9.1, Example 3 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Garden benches and tables</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A workshop sells a garden bench at 180&nbsp;euros and a garden table at 190&nbsp;euros. When it produces \(x\) benches and \(y\) tables a month, its total cost, in euros, is
+        <div class="m-wide">\[ TC(x;\,y) = 0.4x^2 + 0.3y^2 + 0.2xy + 20x + 40y + 3000 \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 0.4x^2 + 0.3y^2 + 0.2xy \\ &amp;\phantom{=}\; {}+ 20x + 40y + 3000 \end{aligned} \]</div>
+        How many benches and tables should the workshop produce to maximize the profit? What is the maximum profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <p>The prices are fixed, so the revenue is \(R(x;\,y) = 180x + 190y\). The profit is the revenue minus the cost. The cost function is written in brackets because all its terms are subtracted:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= 180x + 190y - (0.4x^2 + 0.3y^2 + 0.2xy + 20x + 40y + 3000) \\ &amp;= 160x + 150y - 0.4x^2 - 0.3y^2 - 0.2xy - 3000 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= 180x + 190y - (0.4x^2 + 0.3y^2 \\ &amp;\phantom{=}\; {}+ 0.2xy + 20x + 40y + 3000) \\ &amp;= 160x + 150y - 0.4x^2 - 0.3y^2 \\ &amp;\phantom{=}\; {}- 0.2xy - 3000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first order partial derivatives</span></h4>
+          <div class="m-wide">\[ P'_x = 160 - 0.8x - 0.2y;\qquad P'_y = 150 - 0.6y - 0.2x \]</div><div class="m-narrow">\[ \begin{aligned} P'_x &amp;= 160 - 0.8x - 0.2y \\ P'_y &amp;= 150 - 0.6y - 0.2x \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 160 - 0.8x - 0.2y &amp;= 0 \\ 150 - 0.6y - 0.2x &amp;= 0 \end{aligned} \right. \]
+          <p>The equations contain decimals. To make the coefficients integers, we multiply each equation by 5. Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} 160 - 0.8x - 0.2y = 0\;\big|\cdot 5 \;&amp;\Longrightarrow\; 800 - 4x - y = 0 \\ 150 - 0.6y - 0.2x = 0\;\big|\cdot 5 \;&amp;\Longrightarrow\; 750 - 3y - x = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 160 - 0.8x - 0.2y = 0\;\big|\cdot 5 \\ \Longrightarrow\; 800 - 4x - y = 0 \\[4pt] 150 - 0.6y - 0.2x = 0\;\big|\cdot 5 \\ \Longrightarrow\; 750 - 3y - x = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} 4x + y &amp;= 800 \\ x + 3y &amp;= 750 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p>In the first equation the coefficient of \(y\) is 1, so it is most convenient to express \(y\) from it. We move the term \(4x\) to the right-hand side and change its sign:</p>
+          <div class="m-wide">\[ 4x + y = 800 \;\Longrightarrow\; y = 800 - 4x \]</div><div class="m-narrow">\[ \begin{gathered} 4x + y = 800 \\ \Longrightarrow\; y = 800 - 4x \end{gathered} \]</div>
+          <p>We substitute the expression into the second equation in place of \(y\). Since \(y\) is multiplied by 3 in that equation, the substituted expression is written in brackets. This gives an equation in one variable \(x\):</p>
+          \[ x + 3(800 - 4x) = 750 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ x + 2400 - 12x = 750 \;\Longrightarrow\; -11x = 750 - 2400 \;\Longrightarrow\; -11x = -1650 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 2400 - 12x = 750 \\ \Longrightarrow\; -11x = 750 - 2400 \\ \Longrightarrow\; -11x = -1650 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(-11\):</p>
+          \[ x = \frac{-1650}{-11} = 150 \]
+          <p>We substitute the value of \(x\) into the expression \(y = 800 - 4x\):</p>
+          <div class="m-wide">\[ y = 800 - 4\cdot 150 = 800 - 600 = 200 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 800 - 4\cdot 150 \\ &amp;= 800 - 600 = 200 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(150;\,200)\). We check it by substituting the values into both equations: \(4\cdot 150 + 200 = 800\) and \(150 + 3\cdot 200 = 750\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first coefficient of the second equation is 1, so we interchange the equations – this 1 becomes the pivot element:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 750 \\ 4 &amp; 1 &amp; 800 \end{array}\right) \]
+          <p>To get 0 below the pivot element, we multiply the first row by \(-4\) and add it to the second row, and then divide the new second row by \(-11\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 750 \\ 4 &amp; 1 &amp; 800 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 750 \\ \htmlClass{hc}{0} &amp; -11 &amp; -2200 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-11)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 750 \\ 0 &amp; \htmlClass{hd}{1} &amp; 200 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(y = 200\). We substitute this value into the first row:</p>
+          \[ x + 3\cdot 200 = 750 \;\Longrightarrow\; x = 150 \]
+          <p>The same solution \((150;\,200)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0.8;\quad B = P''_{xy}(K) = -0.2;\quad C = P''_{yy}(K) = -0.6 \\ D = AC - B^2 = (-0.8)\cdot (-0.6) - (-0.2)^2 = 0.48 - 0.04 = 0.44 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0.8 \\ B &amp;= P''_{xy}(K) = -0.2 \\ C &amp;= P''_{yy}(K) = -0.6 \\ D &amp;= AC - B^2 \\ &amp;= (-0.8)\cdot (-0.6) - (-0.2)^2 \\ &amp;= 0.48 - 0.04 = 0.44 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(150;\,200)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The maximum profit</span></h4>
+          <div class="m-wide bp-lg">\[ P_{\max}(150;\,200) = 24\,000 + 30\,000 - 9000 - 12\,000 - 6000 - 3000 = 24\,000 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(150;\,200) \\ &amp;= 24\,000 + 30\,000 - 9000 \\ &amp;\phantom{=}\; {}- 12\,000 - 6000 - 3000 \\ &amp;= 24\,000 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The workshop should produce 150 benches and 200 tables a month. The maximum profit is 24&nbsp;000 euros a month.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 9.1, Example 4 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Portable and home speakers</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company produces \(x\) portable speakers and \(y\) home speakers a month. The prices, in euros, at which these quantities can be sold are
+        <div class="m-wide">\[ p_1 = 90 - 0.02x - 0.01y;\qquad p_2 = 120 - 0.01x - 0.03y \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 90 - 0.02x - 0.01y; \\ p_2 = 120 - 0.01x - 0.03y \end{gathered} \]</div>
+        The variable cost of one speaker is 30&nbsp;euros for a portable speaker and 40&nbsp;euros for a home speaker. The fixed cost is 8000&nbsp;euros a month.
+        <br>a) How many speakers of each type should the company produce to maximize the profit?
+        <br>b) At what prices should the speakers be sold? What is the maximum profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <p>The price of each type of speaker is multiplied by the quantity of speakers of that type:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} R(x;\,y) &amp;= (90 - 0.02x - 0.01y)x + (120 - 0.01x - 0.03y)y \\ &amp;= 90x + 120y - 0.02x^2 - 0.03y^2 - 0.02xy \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} R(x;\,y) &amp;= (90 - 0.02x - 0.01y)x \\ &amp;\phantom{=}\; {}+ (120 - 0.01x - 0.03y)y \\ &amp;= 90x + 120y - 0.02x^2 \\ &amp;\phantom{=}\; {}- 0.03y^2 - 0.02xy \end{aligned} \]</div>
+          <p>The cost is the sum of the variable and the fixed costs, and the profit is the revenue minus the cost:</p>
+          <div class="m-wide">\[ \begin{aligned} TC(x;\,y) &amp;= 30x + 40y + 8000 \\ P(x;\,y) &amp;= 60x + 80y - 0.02x^2 - 0.03y^2 - 0.02xy - 8000 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 30x + 40y + 8000 \\ P(x;\,y) &amp;= 60x + 80y - 0.02x^2 \\ &amp;\phantom{=}\; {}- 0.03y^2 - 0.02xy - 8000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first order partial derivatives</span></h4>
+          <div class="m-wide">\[ P'_x = 60 - 0.04x - 0.02y;\qquad P'_y = 80 - 0.06y - 0.02x \]</div><div class="m-narrow">\[ \begin{aligned} P'_x &amp;= 60 - 0.04x - 0.02y \\ P'_y &amp;= 80 - 0.06y - 0.02x \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 60 - 0.04x - 0.02y &amp;= 0 \\ 80 - 0.06y - 0.02x &amp;= 0 \end{aligned} \right. \]
+          <p>The equations contain decimals. To make the coefficients integers, we multiply each equation by 50. Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} 60 - 0.04x - 0.02y = 0\;\big|\cdot 50 \;&amp;\Longrightarrow\; 3000 - 2x - y = 0 \\ 80 - 0.06y - 0.02x = 0\;\big|\cdot 50 \;&amp;\Longrightarrow\; 4000 - 3y - x = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 60 - 0.04x - 0.02y = 0\;\big|\cdot 50 \\ \Longrightarrow\; 3000 - 2x - y = 0 \\[4pt] 80 - 0.06y - 0.02x = 0\;\big|\cdot 50 \\ \Longrightarrow\; 4000 - 3y - x = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} 2x + y &amp;= 3000 \\ x + 3y &amp;= 4000 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p>In the first equation the coefficient of \(y\) is 1, so it is most convenient to express \(y\) from it. We move the term \(2x\) to the right-hand side and change its sign:</p>
+          <div class="m-wide">\[ 2x + y = 3000 \;\Longrightarrow\; y = 3000 - 2x \]</div><div class="m-narrow">\[ \begin{gathered} 2x + y = 3000 \\ \Longrightarrow\; y = 3000 - 2x \end{gathered} \]</div>
+          <p>We substitute the expression into the second equation in place of \(y\). Since \(y\) is multiplied by 3 in that equation, the substituted expression is written in brackets. This gives an equation in one variable \(x\):</p>
+          \[ x + 3(3000 - 2x) = 4000 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ x + 9000 - 6x = 4000 \;\Longrightarrow\; -5x = 4000 - 9000 \;\Longrightarrow\; -5x = -5000 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 9000 - 6x = 4000 \\ \Longrightarrow\; -5x = 4000 - 9000 \\ \Longrightarrow\; -5x = -5000 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(-5\):</p>
+          \[ x = \frac{-5000}{-5} = 1000 \]
+          <p>We substitute the value of \(x\) into the expression \(y = 3000 - 2x\):</p>
+          <div class="m-wide">\[ y = 3000 - 2\cdot 1000 = 3000 - 2000 = 1000 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 3000 - 2\cdot 1000 \\ &amp;= 3000 - 2000 = 1000 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(1000;\,1000)\). We check it by substituting the values into both equations: \(2\cdot 1000 + 1000 = 3000\) and \(1000 + 3\cdot 1000 = 4000\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first coefficient of the second equation is 1, so we interchange the equations – this 1 becomes the pivot element:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 4000 \\ 2 &amp; 1 &amp; 3000 \end{array}\right) \]
+          <p>To get 0 below the pivot element, we multiply the first row by \(-2\) and add it to the second row, and then divide the new second row by \(-5\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 4000 \\ 2 &amp; 1 &amp; 3000 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 4000 \\ \htmlClass{hc}{0} &amp; -5 &amp; -5000 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 4000 \\ 0 &amp; \htmlClass{hd}{1} &amp; 1000 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(y = 1000\). We substitute this value into the first row:</p>
+          \[ x + 3\cdot 1000 = 4000 \;\Longrightarrow\; x = 1000 \]
+          <p>The same solution \((1000;\,1000)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0.04;\quad B = P''_{xy}(K) = -0.02;\quad C = P''_{yy}(K) = -0.06 \\ D = AC - B^2 = (-0.04)\cdot (-0.06) - (-0.02)^2 = 0.0024 - 0.0004 = 0.002 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0.04 \\ B &amp;= P''_{xy}(K) = -0.02 \\ C &amp;= P''_{yy}(K) = -0.06 \\ D &amp;= AC - B^2 \\ &amp;= (-0.04)\cdot (-0.06) - (-0.02)^2 \\ &amp;= 0.0024 - 0.0004 = 0.002 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(1000;\,1000)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The prices and the maximum profit</span></h4>
+          <p>We find the prices by substituting \(x = 1000\) and \(y = 1000\) into the price formulas, and the profit by substituting them into the profit function:</p>
+          <div class="m-wide">\[ p_1 = 90 - 20 - 10 = 60;\qquad p_2 = 120 - 10 - 30 = 80 \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 90 - 20 - 10 = 60; \\ p_2 = 120 - 10 - 30 = 80 \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ P_{\max}(1000;\,1000) = 60\,000 + 80\,000 - 20\,000 - 30\,000 - 20\,000 - 8000 = 62\,000 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(1000;\,1000) \\ &amp;= 60\,000 + 80\,000 - 20\,000 \\ &amp;\phantom{=}\; {}- 30\,000 - 20\,000 - 8000 \\ &amp;= 62\,000 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The company should produce 1000 portable and 1000 home speakers a month.</p>
+            <p>b) The portable speakers should be sold at 60&nbsp;euros and the home speakers at 80&nbsp;euros. The maximum profit is 62&nbsp;000 euros a month.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 9.1, Example 5 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Selling in two markets</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company sells the same coffee machine at home and abroad. If it sells \(x\) machines a month in the home market and \(y\) machines abroad, the prices, in euros, are
+        <div class="m-wide">\[ p_1 = 152 - 0.04x;\qquad p_2 = 112 - 0.02y \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 152 - 0.04x; \\ p_2 = 112 - 0.02y \end{gathered} \]</div>
+        All the machines are made in one plant. The monthly cost of producing \(Q\) machines is
+        \[ TC = 8000 + 30Q + 0.005Q^2 \]
+        euros. How many machines should be sold in each market, and at what prices, to maximize the profit? What is the maximum profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <p>The revenue comes from two markets, so the price in each market is multiplied by the quantity sold there:</p>
+          <div class="m-wide bp-lg">\[ R(x;\,y) = (152 - 0.04x)x + (112 - 0.02y)y = 152x - 0.04x^2 + 112y - 0.02y^2 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;R(x;\,y) \\ &amp;= (152 - 0.04x)x + (112 - 0.02y)y \\ &amp;= 152x - 0.04x^2 + 112y - 0.02y^2 \end{aligned} \]</div>
+          <p>The cost depends on the total number of machines produced, \(Q = x + y\):</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} TC(x;\,y) &amp;= 8000 + 30(x + y) + 0.005(x + y)^2 \\ P(x;\,y) &amp;= 152x - 0.04x^2 + 112y - 0.02y^2 - 8000 - 30(x + y) - 0.005(x + y)^2 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} TC(x;\,y) &amp;= 8000 + 30(x + y) \\ &amp;\phantom{=}\; {}+ 0.005(x + y)^2 \\ P(x;\,y) &amp;= 152x - 0.04x^2 + 112y \\ &amp;\phantom{=}\; {}- 0.02y^2 - 8000 \\ &amp;\phantom{=}\; {}- 30(x + y) \\ &amp;\phantom{=}\; {}- 0.005(x + y)^2 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first order partial derivatives</span></h4>
+          <p>By the <a href="tema-8-sudetines-funkcijos-taisykle.html">chain rule</a>, \(\big((x + y)^2\big)'_x = 2(x + y)\). The derivative with respect to \(y\) is found in the same way:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P'_x &amp;= 152 - 0.08x - 30 - 0.01(x + y) = 122 - 0.09x - 0.01y \\ P'_y &amp;= 112 - 0.04y - 30 - 0.01(x + y) = 82 - 0.01x - 0.05y \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} P'_x &amp;= 152 - 0.08x - 30 - 0.01(x + y) \\ &amp;= 122 - 0.09x - 0.01y \\ P'_y &amp;= 112 - 0.04y - 30 - 0.01(x + y) \\ &amp;= 82 - 0.01x - 0.05y \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 122 - 0.09x - 0.01y &amp;= 0 \\ 82 - 0.01x - 0.05y &amp;= 0 \end{aligned} \right. \]
+          <p>The equations contain decimals. To make the coefficients integers, we multiply each equation by 100. Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} 122 - 0.09x - 0.01y = 0\;\big|\cdot 100 \;&amp;\Longrightarrow\; 12\,200 - 9x - y = 0 \\ 82 - 0.01x - 0.05y = 0\;\big|\cdot 100 \;&amp;\Longrightarrow\; 8200 - x - 5y = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 122 - 0.09x - 0.01y = 0\;\big|\cdot 100 \\ \Longrightarrow\; 12\,200 - 9x - y = 0 \\[4pt] 82 - 0.01x - 0.05y = 0\;\big|\cdot 100 \\ \Longrightarrow\; 8200 - x - 5y = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} 9x + y &amp;= 12\,200 \\ x + 5y &amp;= 8200 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p>In the first equation the coefficient of \(y\) is 1, so it is most convenient to express \(y\) from it. We move the term \(9x\) to the right-hand side and change its sign:</p>
+          <div class="m-wide">\[ 9x + y = 12\,200 \;\Longrightarrow\; y = 12\,200 - 9x \]</div><div class="m-narrow">\[ \begin{gathered} 9x + y = 12\,200 \\ \Longrightarrow\; y = 12\,200 - 9x \end{gathered} \]</div>
+          <p>We substitute the expression into the second equation in place of \(y\). Since \(y\) is multiplied by 5 in that equation, the substituted expression is written in brackets. This gives an equation in one variable \(x\):</p>
+          \[ x + 5(12\,200 - 9x) = 8200 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ x + 61\,000 - 45x = 8200 \;\Longrightarrow\; -44x = 8200 - 61\,000 \;\Longrightarrow\; -44x = -52\,800 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 61\,000 - 45x = 8200 \\ \Longrightarrow\; -44x = 8200 - 61\,000 \\ \Longrightarrow\; -44x = -52\,800 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(-44\):</p>
+          \[ x = \frac{-52\,800}{-44} = 1200 \]
+          <p>We substitute the value of \(x\) into the expression \(y = 12\,200 - 9x\):</p>
+          <div class="m-wide">\[ y = 12\,200 - 9\cdot 1200 = 12\,200 - 10\,800 = 1400 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 12\,200 - 9\cdot 1200 \\ &amp;= 12\,200 - 10\,800 = 1400 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(1200;\,1400)\). We check it by substituting the values into both equations: \(9\cdot 1200 + 1400 = 12\,200\) and \(1200 + 5\cdot 1400 = 8200\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first coefficient of the second equation is 1, so we interchange the equations – this 1 becomes the pivot element:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 5 &amp; 8200 \\ 9 &amp; 1 &amp; 12\,200 \end{array}\right) \]
+          <p>To get 0 below the pivot element, we multiply the first row by \(-9\) and add it to the second row, and then divide the new second row by \(-44\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 5 &amp; 8200 \\ 9 &amp; 1 &amp; 12\,200 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-9)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 5 &amp; 8200 \\ \htmlClass{hc}{0} &amp; -44 &amp; -61\,600 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-44)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 5 &amp; 8200 \\ 0 &amp; \htmlClass{hd}{1} &amp; 1400 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(y = 1400\). We substitute this value into the first row:</p>
+          \[ x + 5\cdot 1400 = 8200 \;\Longrightarrow\; x = 1200 \]
+          <p>The same solution \((1200;\,1400)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0.09;\quad B = P''_{xy}(K) = -0.01;\quad C = P''_{yy}(K) = -0.05 \\ D = AC - B^2 = (-0.09)\cdot (-0.05) - (-0.01)^2 = 0.0045 - 0.0001 = 0.0044 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0.09 \\ B &amp;= P''_{xy}(K) = -0.01 \\ C &amp;= P''_{yy}(K) = -0.05 \\ D &amp;= AC - B^2 \\ &amp;= (-0.09)\cdot (-0.05) - (-0.01)^2 \\ &amp;= 0.0045 - 0.0001 = 0.0044 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(1200;\,1400)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The prices and the maximum profit</span></h4>
+          <div class="m-wide">\[ p_1 = 152 - 48 = 104;\qquad p_2 = 112 - 28 = 84 \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 152 - 48 = 104; \\ p_2 = 112 - 28 = 84 \end{gathered} \]</div>
+          <p>We calculate the revenue and the cost separately. In total \(Q = 1200 + 1400 = 2600\) machines are produced:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} R &amp;= 104\cdot 1200 + 84\cdot 1400 = 242\,400 \\ TC &amp;= 8000 + 30\cdot 2600 + 0.005\cdot 2600^2 = 119\,800 \\ P_{\max}(1200;\,1400) &amp;= 242\,400 - 119\,800 = 122\,600 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} R &amp;= 104\cdot 1200 + 84\cdot 1400 = 242\,400 \\ TC &amp;= 8000 + 30\cdot 2600 + 0.005\cdot 2600^2 \\ &amp;= 119\,800 \\ P_{\max} &amp;= 242\,400 - 119\,800 = 122\,600 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The company should sell 1200 machines a month in the home market at 104&nbsp;euros and 1400 machines abroad at 84&nbsp;euros. The maximum profit is 122&nbsp;600 euros a month.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5: AM 9.1, Example 6 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Two quarries acting together</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        Two quarries are the only suppliers of crushed stone in a region. The price depends on the total amount supplied: if the first quarry supplies \(x\) tonnes a week and the second \(y\) tonnes, the price is
+        \[ p = 100 - 0.01(x + y) \]
+        euros per tonne. The weekly costs of the quarries, in euros, are
+        <div class="m-wide">\[ TC_1 = 10x + 0.01x^2;\qquad TC_2 = 5y + 0.02y^2 \]</div><div class="m-narrow">\[ \begin{gathered} TC_1 = 10x + 0.01x^2; \\ TC_2 = 5y + 0.02y^2 \end{gathered} \]</div>
+        The quarries agree to act as one firm and to maximize their total profit. How much should each quarry supply? What should the price be, and what is the maximum total profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <p>Both quarries sell at the same price, so the total revenue is the price multiplied by the total amount \(x + y\). The total profit is</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= \big(100 - 0.01(x + y)\big)(x + y) - (10x + 0.01x^2) - (5y + 0.02y^2) \\ &amp;= 100(x + y) - 0.01(x + y)^2 - 10x - 0.01x^2 - 5y - 0.02y^2 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= \big(100 - 0.01(x + y)\big)(x + y) \\ &amp;\phantom{=}\; {}- (10x + 0.01x^2) - (5y + 0.02y^2) \\ &amp;= 100(x + y) - 0.01(x + y)^2 \\ &amp;\phantom{=}\; {}- 10x - 0.01x^2 - 5y - 0.02y^2 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first order partial derivatives</span></h4>
+          <p>By the chain rule, the derivative of the expression \(0.01(x + y)^2\) with respect to each variable is \(0.02(x + y)\):</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P'_x &amp;= 100 - 0.02(x + y) - 10 - 0.02x = 90 - 0.04x - 0.02y \\ P'_y &amp;= 100 - 0.02(x + y) - 5 - 0.04y = 95 - 0.02x - 0.06y \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} P'_x &amp;= 100 - 0.02(x + y) - 10 - 0.02x \\ &amp;= 90 - 0.04x - 0.02y \\ P'_y &amp;= 100 - 0.02(x + y) - 5 - 0.04y \\ &amp;= 95 - 0.02x - 0.06y \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 90 - 0.04x - 0.02y &amp;= 0 \\ 95 - 0.02x - 0.06y &amp;= 0 \end{aligned} \right. \]
+          <p>The equations contain decimals. To make the coefficients integers, we multiply each equation by 50. Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} 90 - 0.04x - 0.02y = 0\;\big|\cdot 50 \;&amp;\Longrightarrow\; 4500 - 2x - y = 0 \\ 95 - 0.02x - 0.06y = 0\;\big|\cdot 50 \;&amp;\Longrightarrow\; 4750 - x - 3y = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 90 - 0.04x - 0.02y = 0\;\big|\cdot 50 \\ \Longrightarrow\; 4500 - 2x - y = 0 \\[4pt] 95 - 0.02x - 0.06y = 0\;\big|\cdot 50 \\ \Longrightarrow\; 4750 - x - 3y = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} 2x + y &amp;= 4500 \\ x + 3y &amp;= 4750 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p>In the first equation the coefficient of \(y\) is 1, so it is most convenient to express \(y\) from it. We move the term \(2x\) to the right-hand side and change its sign:</p>
+          <div class="m-wide">\[ 2x + y = 4500 \;\Longrightarrow\; y = 4500 - 2x \]</div><div class="m-narrow">\[ \begin{gathered} 2x + y = 4500 \\ \Longrightarrow\; y = 4500 - 2x \end{gathered} \]</div>
+          <p>We substitute the expression into the second equation in place of \(y\). Since \(y\) is multiplied by 3 in that equation, the substituted expression is written in brackets. This gives an equation in one variable \(x\):</p>
+          \[ x + 3(4500 - 2x) = 4750 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ x + 13\,500 - 6x = 4750 \;\Longrightarrow\; -5x = 4750 - 13\,500 \;\Longrightarrow\; -5x = -8750 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + 13\,500 - 6x = 4750 \\ \Longrightarrow\; -5x = 4750 - 13\,500 \\ \Longrightarrow\; -5x = -8750 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(-5\):</p>
+          \[ x = \frac{-8750}{-5} = 1750 \]
+          <p>We substitute the value of \(x\) into the expression \(y = 4500 - 2x\):</p>
+          <div class="m-wide">\[ y = 4500 - 2\cdot 1750 = 4500 - 3500 = 1000 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 4500 - 2\cdot 1750 \\ &amp;= 4500 - 3500 = 1000 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(1750;\,1000)\). We check it by substituting the values into both equations: \(2\cdot 1750 + 1000 = 4500\) and \(1750 + 3\cdot 1000 = 4750\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first coefficient of the second equation is 1, so we interchange the equations – this 1 becomes the pivot element:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 4750 \\ 2 &amp; 1 &amp; 4500 \end{array}\right) \]
+          <p>To get 0 below the pivot element, we multiply the first row by \(-2\) and add it to the second row, and then divide the new second row by \(-5\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; 3 &amp; 4750 \\ 2 &amp; 1 &amp; 4500 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 4750 \\ \htmlClass{hc}{0} &amp; -5 &amp; -5000 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; 3 &amp; 4750 \\ 0 &amp; \htmlClass{hd}{1} &amp; 1000 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(y = 1000\). We substitute this value into the first row:</p>
+          \[ x + 3\cdot 1000 = 4750 \;\Longrightarrow\; x = 1750 \]
+          <p>The same solution \((1750;\,1000)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -0.04;\quad B = P''_{xy}(K) = -0.02;\quad C = P''_{yy}(K) = -0.06 \\ D = AC - B^2 = (-0.04)\cdot (-0.06) - (-0.02)^2 = 0.0024 - 0.0004 = 0.002 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0.04 \\ B &amp;= P''_{xy}(K) = -0.02 \\ C &amp;= P''_{yy}(K) = -0.06 \\ D &amp;= AC - B^2 \\ &amp;= (-0.04)\cdot (-0.06) - (-0.02)^2 \\ &amp;= 0.0024 - 0.0004 = 0.002 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(1750;\,1000)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The price and the maximum profit</span></h4>
+          <p>In total \(1750 + 1000 = 2750\) tonnes are supplied:</p>
+          \[ p = 100 - 0.01\cdot 2750 = 72.5 \]
+          <div class="m-wide bp-lg">\[ P_{\max}(1750;\,1000) = 72.5\cdot 2750 - (17\,500 + 30\,625) - (5000 + 20\,000) = 126\,250 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(1750;\,1000) \\ &amp;= 72.5\cdot 2750 - (17\,500 + 30\,625) \\ &amp;\phantom{=}\; {}- (5000 + 20\,000) = 126\,250 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The first quarry should supply 1750 tonnes and the second 1000 tonnes a week. The price would be 72.5&nbsp;euros per tonne, and the maximum total profit is 126&nbsp;250 euros a week.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6: AM 9.1, Example 7 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Prices in a juice bar</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A juice bar sells fresh juices and smoothies. When a juice costs \(p\) euros and a smoothie costs \(r\) euros, the bar sells
+        <div class="m-wide">\[ x = 250 - 40p + 20r;\qquad y = 350 + 20p - 60r \]</div><div class="m-narrow">\[ \begin{gathered} x = 250 - 40p + 20r; \\ y = 350 + 20p - 60r \end{gathered} \]</div>
+        juices and smoothies a day. Making one juice costs 2&nbsp;euros, and making one smoothie costs 1.5&nbsp;euros. At what prices should the juices and the smoothies be sold to maximize the daily profit? How many of each would be sold, and what is the maximum profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <p>The bar chooses the prices, so the profit is a function of the variables \(p\) and \(r\). Each juice sold brings \(p - 2\) euros of profit, and each smoothie \(r - 1.5\) euros:</p>
+          <div class="m-wide bp-lg">\[ P(p;\,r) = (p - 2)(250 - 40p + 20r) + (r - 1.5)(350 + 20p - 60r) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(p;\,r) \\ &amp;= (p - 2)(250 - 40p + 20r) \\ &amp;\phantom{=}\; {}+ (r - 1.5)(350 + 20p - 60r) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first order partial derivatives</span></h4>
+          <p>For the term in which both factors contain the variable of differentiation we use the <a href="tema-8-sandaugos-taisykle.html">product rule</a>. In the other term the first factor is a constant:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P'_p &amp;= (250 - 40p + 20r) + (p - 2)\cdot(-40) + (r - 1.5)\cdot 20 = 300 - 80p + 40r \\ P'_r &amp;= (p - 2)\cdot 20 + (350 + 20p - 60r) + (r - 1.5)\cdot(-60) = 400 + 40p - 120r \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} P'_p &amp;= (250 - 40p + 20r) \\ &amp;\phantom{=}\; {}+ (p - 2)\cdot(-40) \\ &amp;\phantom{=}\; {}+ (r - 1.5)\cdot 20 \\ &amp;= 300 - 80p + 40r \\[4pt] P'_r &amp;= (p - 2)\cdot 20 \\ &amp;\phantom{=}\; {}+ (350 + 20p - 60r) \\ &amp;\phantom{=}\; {}+ (r - 1.5)\cdot(-60) \\ &amp;= 400 + 40p - 120r \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 300 - 80p + 40r &amp;= 0 \\ 400 + 40p - 120r &amp;= 0 \end{aligned} \right. \]
+          <p>All the coefficients of the equations are divisible by 40, so, to make the numbers smaller, we divide each equation by 40. Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} 300 - 80p + 40r = 0\;\big|{:}\,40 \;&amp;\Longrightarrow\; 7.5 - 2p + r = 0 \\ 400 + 40p - 120r = 0\;\big|{:}\,40 \;&amp;\Longrightarrow\; 10 + p - 3r = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 300 - 80p + 40r = 0\;\big|{:}\,40 \\ \Longrightarrow\; 7.5 - 2p + r = 0 \\[4pt] 400 + 40p - 120r = 0\;\big|{:}\,40 \\ \Longrightarrow\; 10 + p - 3r = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} 2p - r &amp;= 7.5 \\ -p + 3r &amp;= 10 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p>In the second equation the coefficient of \(p\) is \(-1\), so it is most convenient to express \(p\) from it. We move the term \(-p\) to the right-hand side and the number \(10\) to the left-hand side. The terms that are moved change their signs:</p>
+          <div class="m-wide">\[ -p + 3r = 10 \;\Longrightarrow\; 3r - 10 = p \;\Longrightarrow\; p = 3r - 10 \]</div><div class="m-narrow">\[ \begin{gathered} -p + 3r = 10 \\ \Longrightarrow\; 3r - 10 = p \\ \Longrightarrow\; p = 3r - 10 \end{gathered} \]</div>
+          <p>We substitute the expression into the first equation in place of \(p\). Since \(p\) is multiplied by 2 in that equation, the substituted expression is written in brackets. This gives an equation in one variable \(r\):</p>
+          \[ 2(3r - 10) - r = 7.5 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ 6r - 20 - r = 7.5 \;\Longrightarrow\; 5r = 7.5 + 20 \;\Longrightarrow\; 5r = 27.5 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 6r - 20 - r = 7.5 \\ \Longrightarrow\; 5r = 7.5 + 20 \\ \Longrightarrow\; 5r = 27.5 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(5\):</p>
+          \[ r = \frac{27.5}{5} = 5.5 \]
+          <p>We substitute the value of \(r\) into the expression \(p = 3r - 10\):</p>
+          <div class="m-wide">\[ p = 3\cdot 5.5 - 10 = 16.5 - 10 = 6.5 \]</div><div class="m-narrow">\[ \begin{aligned} p &amp;= 3\cdot 5.5 - 10 \\ &amp;= 16.5 - 10 = 6.5 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(6.5;\,5.5)\). We check it by substituting the values into both equations: \(2\cdot 6.5 - 5.5 = 7.5\) and \(-6.5 + 3\cdot 5.5 = 10\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first coefficient of the second equation is \(-1\). We interchange the equations and divide the new first row by \(-1\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} -1 &amp; 3 &amp; 10 \\ 2 &amp; -1 &amp; 7.5 \end{array}\right)\begin{array}{l} \htmlClass{ha}{{:}\,(-1)} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -3 &amp; -10 \\ 2 &amp; -1 &amp; 7.5 \end{array}\right)\)</span></div>
+          <p>To get 0 below the pivot element, we multiply the first row by \(-2\) and add it to the second row, and then divide the new second row by \(5\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -3 &amp; -10 \\ 2 &amp; -1 &amp; 7.5 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -3 &amp; -10 \\ \htmlClass{hc}{0} &amp; 5 &amp; 27.5 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,5} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -3 &amp; -10 \\ 0 &amp; \htmlClass{hd}{1} &amp; 5.5 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(r = 5.5\). We substitute this value into the first row:</p>
+          \[ p - 3\cdot 5.5 = -10 \;\Longrightarrow\; p = 6.5 \]
+          <p>The same solution \((6.5;\,5.5)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{pp}(K) = -80;\quad B = P''_{pr}(K) = 40;\quad C = P''_{rr}(K) = -120 \\ D = AC - B^2 = (-80)\cdot (-120) - 40^2 = 9600 - 1600 = 8000 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{pp}(K) = -80 \\ B &amp;= P''_{pr}(K) = 40 \\ C &amp;= P''_{rr}(K) = -120 \\ D &amp;= AC - B^2 \\ &amp;= (-80)\cdot (-120) - 40^2 \\ &amp;= 9600 - 1600 = 8000 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(6.5;\,5.5)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The quantities and the maximum profit</span></h4>
+          <p>We substitute the prices into the demand formulas and then calculate the profit:</p>
+          <div class="m-wide">\[ x = 250 - 260 + 110 = 100;\qquad y = 350 + 130 - 330 = 150 \]</div><div class="m-narrow">\[ \begin{gathered} x = 250 - 260 + 110 = 100; \\ y = 350 + 130 - 330 = 150 \end{gathered} \]</div>
+          <div class="m-wide">\[ P_{\max}(6.5;\,5.5) = 4.5\cdot 100 + 4\cdot 150 = 1050 \]</div><div class="m-narrow">\[ \begin{aligned} P_{\max}(6.5;\,5.5) &amp;= 4.5\cdot 100 + 4\cdot 150 \\ &amp;= 1050 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>A juice should be sold at 6.5&nbsp;euros and a smoothie at 5.5&nbsp;euros. The bar would then sell 100 juices and 150 smoothies a day. The maximum profit is 1050 euros a day.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 7: AM 9.1, Example 8 -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Workers and machines in a toy workshop</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A workshop with \(x\) workers and \(y\) rented machines makes
+        <div class="m-wide">\[ Q(x;\,y) = 40x + 30y + 0.5xy - x^2 - 0.5y^2 \]</div><div class="m-narrow">\[ \begin{aligned} Q(x;\,y) &amp;= 40x + 30y + 0.5xy \\ &amp;\phantom{=}\; {}- x^2 - 0.5y^2 \end{aligned} \]</div>
+        wooden toys a day. A toy is sold for 12&nbsp;euros. A worker costs 180&nbsp;euros a day, the rent of a machine is 120&nbsp;euros a day, and the fixed cost is 2000&nbsp;euros a day. How many workers and machines are needed to maximize the daily profit? What would the output be, and what is the maximum profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <p>The revenue is the product of the price and the <a href="tema-8-gamybos-funkcija.html">production function</a> . From it we subtract the costs of the inputs and the fixed cost:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P(x;\,y) &amp;= 12(40x + 30y + 0.5xy - x^2 - 0.5y^2) - 180x - 120y - 2000 \\ &amp;= 300x + 240y + 6xy - 12x^2 - 6y^2 - 2000 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= 12(40x + 30y + 0.5xy - x^2 - 0.5y^2) \\ &amp;\phantom{=}\; {}- 180x - 120y - 2000 \\ &amp;= 300x + 240y + 6xy - 12x^2 \\ &amp;\phantom{=}\; {}- 6y^2 - 2000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first order partial derivatives</span></h4>
+          <div class="m-wide">\[ P'_x = 300 + 6y - 24x;\qquad P'_y = 240 + 6x - 12y \]</div><div class="m-narrow">\[ \begin{gathered} P'_x = 300 + 6y - 24x; \\ P'_y = 240 + 6x - 12y \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 300 + 6y - 24x &amp;= 0 \\ 240 + 6x - 12y &amp;= 0 \end{aligned} \right. \]
+          <p>All the coefficients of the equations are divisible by 6, so, to make the numbers smaller, we divide each equation by 6. Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} 300 + 6y - 24x = 0\;\big|{:}\,6 \;&amp;\Longrightarrow\; 50 + y - 4x = 0 \\ 240 + 6x - 12y = 0\;\big|{:}\,6 \;&amp;\Longrightarrow\; 40 + x - 2y = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 300 + 6y - 24x = 0\;\big|{:}\,6 \\ \Longrightarrow\; 50 + y - 4x = 0 \\[4pt] 240 + 6x - 12y = 0\;\big|{:}\,6 \\ \Longrightarrow\; 40 + x - 2y = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} 4x - y &amp;= 50 \\ x - 2y &amp;= -40 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p>In the first equation the coefficient of \(y\) is \(-1\), so it is most convenient to express \(y\) from it. We move the term \(-y\) to the right-hand side and the number \(50\) to the left-hand side. The terms that are moved change their signs:</p>
+          <div class="m-wide">\[ 4x - y = 50 \;\Longrightarrow\; 4x - 50 = y \;\Longrightarrow\; y = 4x - 50 \]</div><div class="m-narrow">\[ \begin{gathered} 4x - y = 50 \\ \Longrightarrow\; 4x - 50 = y \\ \Longrightarrow\; y = 4x - 50 \end{gathered} \]</div>
+          <p>We substitute the expression into the second equation in place of \(y\). Since \(y\) is multiplied by \(-2\) in that equation, the substituted expression is written in brackets. This gives an equation in one variable \(x\):</p>
+          \[ x - 2(4x - 50) = -40 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ x - 8x + 100 = -40 \;\Longrightarrow\; -7x = -40 - 100 \;\Longrightarrow\; -7x = -140 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x - 8x + 100 = -40 \\ \Longrightarrow\; -7x = -40 - 100 \\ \Longrightarrow\; -7x = -140 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(-7\):</p>
+          \[ x = \frac{-140}{-7} = 20 \]
+          <p>We substitute the value of \(x\) into the expression \(y = 4x - 50\):</p>
+          <div class="m-wide">\[ y = 4\cdot 20 - 50 = 80 - 50 = 30 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 4\cdot 20 - 50 \\ &amp;= 80 - 50 = 30 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(20;\,30)\). We check it by substituting the values into both equations: \(4\cdot 20 - 30 = 50\) and \(20 - 2\cdot 30 = -40\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first coefficient of the second equation is 1, so we interchange the equations – this 1 becomes the pivot element:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -2 &amp; -40 \\ 4 &amp; -1 &amp; 50 \end{array}\right) \]
+          <p>To get 0 below the pivot element, we multiply the first row by \(-4\) and add it to the second row, and then divide the new second row by \(7\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -2 &amp; -40 \\ 4 &amp; -1 &amp; 50 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -2 &amp; -40 \\ \htmlClass{hc}{0} &amp; 7 &amp; 210 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,7} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -2 &amp; -40 \\ 0 &amp; \htmlClass{hd}{1} &amp; 30 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(y = 30\). We substitute this value into the first row:</p>
+          \[ x - 2\cdot 30 = -40 \;\Longrightarrow\; x = 20 \]
+          <p>The same solution \((20;\,30)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = P''_{xx}(K) = -24;\quad B = P''_{xy}(K) = 6;\quad C = P''_{yy}(K) = -12 \\ D = AC - B^2 = (-24)\cdot (-12) - 6^2 = 288 - 36 = 252 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -24 \\ B &amp;= P''_{xy}(K) = 6 \\ C &amp;= P''_{yy}(K) = -12 \\ D &amp;= AC - B^2 \\ &amp;= (-24)\cdot (-12) - 6^2 \\ &amp;= 288 - 36 = 252 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(20;\,30)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The output and the maximum profit</span></h4>
+          <div class="m-wide">\[ \begin{gathered} Q(20;\,30) = 800 + 900 + 300 - 400 - 450 = 1150 \\ P_{\max}(20;\,30) = 12\cdot 1150 - 180\cdot 20 - 120\cdot 30 - 2000 = 4600 \end{gathered} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;Q(20;\,30) \\ &amp;= 800 + 900 + 300 - 400 - 450 \\ &amp;= 1150 \\[4pt] &amp;P_{\max}(20;\,30) \\ &amp;= 12\cdot 1150 - 180\cdot 20 \\ &amp;\phantom{=}\; {}- 120\cdot 30 - 2000 \\ &amp;= 4600 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The workshop should employ 20 workers and rent 30 machines. It would then make 1150 toys a day. The maximum profit is 4600 euros a day.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 8: AM 9.1, Example 9 -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">Example 8</span>
+        <h3>Labour and equipment in a craft brewery</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A craft brewery produces
+        \[ Q(x;\,y) = 20x^{0.25}y^{0.5} \]
+        bottles of beer a week, where \(x\) is the number of hours of labour and \(y\) is the number of hours the brewing equipment is used. A bottle is sold for 6&nbsp;euros, an hour of labour costs 20&nbsp;euros, an hour of the equipment costs 10&nbsp;euros, and the fixed cost is 500&nbsp;euros a week. How many hours of labour and of the equipment are needed to maximize the weekly profit? What would the output be, and what is the maximum profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <div class="m-wide bp-lg">\[ P(x;\,y) = 6\cdot 20x^{0.25}y^{0.5} - 20x - 10y - 500 = 120x^{0.25}y^{0.5} - 20x - 10y - 500 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= 6\cdot 20x^{0.25}y^{0.5} - 20x - 10y - 500 \\ &amp;= 120x^{0.25}y^{0.5} - 20x - 10y - 500 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first order partial derivatives</span></h4>
+          <p>By the power rule:</p>
+          <div class="m-wide">\[ P'_x = 30x^{-0.75}y^{0.5} - 20;\qquad P'_y = 60x^{0.25}y^{-0.5} - 10 \]</div><div class="m-narrow">\[ \begin{gathered} P'_x = 30x^{-0.75}y^{0.5} - 20; \\ P'_y = 60x^{0.25}y^{-0.5} - 10 \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero and move the costs of the inputs to the right-hand sides:</p>
+          <div class="m-wide">\[ \left\{ \begin{aligned} 30x^{-0.75}y^{0.5} - 20 &amp;= 0 \\ 60x^{0.25}y^{-0.5} - 10 &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 30x^{-0.75}y^{0.5} &amp;= 20 \\ 60x^{0.25}y^{-0.5} &amp;= 10 \end{aligned} \right. \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} 30x^{-0.75}y^{0.5} - 20 &amp;= 0 \\ 60x^{0.25}y^{-0.5} - 10 &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 30x^{-0.75}y^{0.5} &amp;= 20 \\ 60x^{0.25}y^{-0.5} &amp;= 10 \end{aligned} \right. \end{gathered} \]</div>
+          <p>This system is not linear: the variables are in powers with fractional exponents, and each equation contains both variables. From such an equation one variable cannot simply be expressed through the other. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations, in which each unknown is of the first degree and is only multiplied by a number.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Dividing the equations</span></h4>
+          <p>We divide the first equation by the second: the left-hand side by the left-hand side and the right-hand side by the right-hand side. The coefficients simplify, \(\frac{30}{60} = 0.5\), and powers of the same base are divided by subtracting their exponents: \(x^{-0.75 - 0.25} = x^{-1}\) and \(y^{0.5 - (-0.5)} = y\):</p>
+          <div class="m-wide">\[ \frac{30x^{-0.75}y^{0.5}}{60x^{0.25}y^{-0.5}} = \frac{20}{10} \;\Longrightarrow\; 0.5\cdot x^{-1}y = 2 \;\Longrightarrow\; 0.5\cdot\frac{y}{x} = 2 \]</div><div class="m-narrow">\[ \begin{gathered} \frac{30x^{-0.75}y^{0.5}}{60x^{0.25}y^{-0.5}} = \frac{20}{10} \\ \Longrightarrow\; 0.5\cdot x^{-1}y = 2 \;\Longrightarrow\; 0.5\cdot\frac{y}{x} = 2 \end{gathered} \]</div>
+          <p>Multiplying both sides by \(2x\), we express \(y\) through \(x\):</p>
+          \[ y = 4x \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Substituting into an equation</span></h4>
+          <p>We substitute the expression into the second equation in place of \(y\). The power \((4x)^{-0.5}\) is split into factors: \(4^{-0.5} = \frac{1}{\sqrt{4}} = 0.5\), so \((4x)^{-0.5} = 0.5x^{-0.5}\):</p>
+          <div class="m-wide bp-lg">\[ 60x^{0.25}(4x)^{-0.5} = 10 \;\Longrightarrow\; 60\cdot 0.5\cdot x^{0.25 - 0.5} = 10 \;\Longrightarrow\; 30x^{-0.25} = 10 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 60x^{0.25}(4x)^{-0.5} = 10 \\ \Longrightarrow\; 60\cdot 0.5\cdot x^{0.25 - 0.5} = 10 \\ \Longrightarrow\; 30x^{-0.25} = 10 \end{gathered} \]</div>
+          <p>We divide both sides by 30. A negative exponent means the reciprocal, so:</p>
+          <div class="m-wide">\[ x^{-0.25} = \frac{1}{3} \;\Longrightarrow\; x^{0.25} = 3 \;\Longrightarrow\; x = 3^4 = 81 \]</div><div class="m-narrow">\[ \begin{gathered} x^{-0.25} = \frac{1}{3} \;\Longrightarrow\; x^{0.25} = 3 \\ \Longrightarrow\; x = 3^4 = 81 \end{gathered} \]</div>
+          <p>We substitute \(x\) into the expression \(y = 4x\): \(y = 4\cdot 81 = 324\). We obtain the critical point \(K(81;\,324)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The sufficient condition</span></h4>
+          <p>The production function is a <a href="tema-9.html#kobo-daglas">Cobb-Douglas function</a> with \(A = 20 &gt; 0\) and \(\alpha + \beta = 0.25 + 0.5 = 0.75 \le 1\), so it is concave. The profit function is also concave, so \(K(81;\,324)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The output and the maximum profit</span></h4>
+          <p>Since \(81^{0.25} = 3\) and \(324^{0.5} = 18\),</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} Q(81;\,324) &amp;= 20\cdot 3\cdot 18 = 1080 \\ P_{\max}(81;\,324) &amp;= 6\cdot 1080 - 20\cdot 81 - 10\cdot 324 - 500 = 1120 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;Q(81;\,324) \\ &amp;= 20\cdot 3\cdot 18 = 1080 \\[4pt] &amp;P_{\max}(81;\,324) \\ &amp;= 6\cdot 1080 - 20\cdot 81 \\ &amp;\phantom{=}\; {}- 10\cdot 324 - 500 = 1120 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The brewery should use 81 hours of labour and 324 hours of the equipment a week. It would then produce 1080 bottles. The maximum profit is 1120 euros a week.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 9: AM 9.1, Example 10 -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">Example 9</span>
+        <h3>Sales representatives in two regions</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company employs \(x\) sales representatives in region A and \(y\) representatives in region B. The gross profit they bring, in thousands of euros a month, is
+        \[ G(x;\,y) = 60\ln(x + 1) + 90\ln(y + 1) \]
+        A representative costs the company 3&nbsp;thousand euros a month in region A and 5&nbsp;thousand euros in region B. How many representatives should be employed in each region to maximize the profit after paying them? What is that profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <div class="m-wide">\[ N(x;\,y) = 60\ln(x + 1) + 90\ln(y + 1) - 3x - 5y \]</div><div class="m-narrow">\[ \begin{aligned} N(x;\,y) &amp;= 60\ln(x + 1) + 90\ln(y + 1) \\ &amp;\phantom{=}\; {}- 3x - 5y \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first order partial derivatives</span></h4>
+          <p>By the chain rule, \(\big(\ln(x + 1)\big)'_x = \frac{1}{x + 1}\). The derivative with respect to \(y\) is found in the same way:</p>
+          \[ N'_x = \frac{60}{x + 1} - 3;\qquad N'_y = \frac{90}{y + 1} - 5 \]
+          <p>Each derivative is the difference of a fraction and a number. To subtract, we need a common denominator, so we write the number as a fraction with the denominator \(x + 1\): \(3 = \frac{3(x + 1)}{x + 1}\). Then we subtract the numerators and keep the common denominator:</p>
+          <div class="m-wide bp-lg">\[ N'_x = \frac{60}{x + 1} - \frac{3(x + 1)}{x + 1} = \frac{60 - 3(x + 1)}{x + 1} = \frac{60 - 3x - 3}{x + 1} = \frac{57 - 3x}{x + 1} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} N'_x &amp;= \frac{60}{x + 1} - \frac{3(x + 1)}{x + 1} \\ &amp;= \frac{60 - 3(x + 1)}{x + 1} = \frac{60 - 3x - 3}{x + 1} \\ &amp;= \frac{57 - 3x}{x + 1} \end{aligned} \]</div>
+          <p>In the same way, \(5 = \frac{5(y + 1)}{y + 1}\):</p>
+          <div class="m-wide bp-lg">\[ N'_y = \frac{90}{y + 1} - \frac{5(y + 1)}{y + 1} = \frac{90 - 5(y + 1)}{y + 1} = \frac{90 - 5y - 5}{y + 1} = \frac{85 - 5y}{y + 1} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} N'_y &amp;= \frac{90}{y + 1} - \frac{5(y + 1)}{y + 1} \\ &amp;= \frac{90 - 5(y + 1)}{y + 1} = \frac{90 - 5y - 5}{y + 1} \\ &amp;= \frac{85 - 5y}{y + 1} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} \frac{57 - 3x}{x + 1} &amp;= 0 \\ \frac{85 - 5y}{y + 1} &amp;= 0 \end{aligned} \right. \]
+          <p>This system is not linear: the variables are in the denominators of fractions. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations, in which each unknown is of the first degree and is only multiplied by a number.</p>
+          <p>However, each equation contains only one variable, so the equations can be solved separately. A fraction is equal to zero when its numerator is equal to zero and its denominator is not equal to zero. Therefore each equation is replaced by two conditions:</p>
+          \[ \left\{ \begin{aligned} 57 - 3x &amp;= 0 \\ x + 1 &amp;\ne 0 \\ 85 - 5y &amp;= 0 \\ y + 1 &amp;\ne 0 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system</span></h4>
+          <p>The equations with the numerators set equal to zero give \(x\) and \(y\), and the conditions on the denominators give the values that the variables cannot take:</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 57 - 3x &amp;= 0 \\ x + 1 &amp;\ne 0 \\ 85 - 5y &amp;= 0 \\ y + 1 &amp;\ne 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 3x &amp;= 57 \\ x &amp;\ne -1 \\ 5y &amp;= 85 \\ y &amp;\ne -1 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} x &amp;= 19 \\ x &amp;\ne -1 \\ y &amp;= 17 \\ y &amp;\ne -1 \end{aligned} \right. \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 57 - 3x &amp;= 0 \\ x + 1 &amp;\ne 0 \\ 85 - 5y &amp;= 0 \\ y + 1 &amp;\ne 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 3x &amp;= 57 \\ x &amp;\ne -1 \\ 5y &amp;= 85 \\ y &amp;\ne -1 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} x &amp;= 19 \\ x &amp;\ne -1 \\ y &amp;= 17 \\ y &amp;\ne -1 \end{aligned} \right. \end{gathered} \]</div>
+          <p>The conditions on the denominators show that \(x\) and \(y\) cannot be equal to \(-1\). The solutions found, \(x = 19\) and \(y = 17\), are different from this value, so the conditions are satisfied. Besides, \(-1\) is a negative number, and the number of representatives cannot be negative, so this value is of no interest to us.</p>
+          <p>We obtain the critical point \(K(19;\,17)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>This time the second order partial derivatives depend on \(x\) and \(y\), so they are not numbers:</p>
+          <div class="m-wide">\[ N''_{xx} = -\frac{60}{(x + 1)^2};\qquad N''_{xy} = 0;\qquad N''_{yy} = -\frac{90}{(y + 1)^2} \]</div><div class="m-narrow">\[ \begin{gathered} N''_{xx} = -\frac{60}{(x + 1)^2}; \\ N''_{xy} = 0; \\ N''_{yy} = -\frac{90}{(y + 1)^2} \end{gathered} \]</div>
+          <p>We obtain the numbers \(A\), \(B\) and \(C\) by substituting the coordinates of the critical point \(K(19;\,17)\), \(x = 19\) and \(y = 17\), into the derivatives:</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -\frac{60}{(19 + 1)^2} = -\frac{60}{400} = -0.15 \\ B &amp;= N''_{xy}(K) = 0 \\ C &amp;= N''_{yy}(K) = -\frac{90}{(17 + 1)^2} = -\frac{90}{324} = -\frac{5}{18} \\ D &amp;= AC - B^2 = (-0.15)\cdot\Big(-\frac{5}{18}\Big) - 0^2 = \frac{1}{24} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -\frac{60}{(19 + 1)^2} \\ &amp;= -\frac{60}{400} = -0.15 \\ B &amp;= N''_{xy}(K) = 0 \\ C &amp;= N''_{yy}(K) = -\frac{90}{(17 + 1)^2} \\ &amp;= -\frac{90}{324} = -\frac{5}{18} \\ D &amp;= AC - B^2 \\ &amp;= (-0.15)\cdot\Big(-\frac{5}{18}\Big) - 0^2 \\ &amp;= \frac{1}{24} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(19;\,17)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The maximum profit</span></h4>
+          <div class="m-wide">\[ N_{\max}(19;\,17) = 60\ln 20 + 90\ln 18 - 57 - 85 \approx 297.88 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;N_{\max}(19;\,17) \\ &amp;= 60\ln 20 + 90\ln 18 - 57 - 85 \\ &amp;\approx 297.88 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The company should employ 19 representatives in region A and 17 representatives in region B. The maximum monthly profit after paying the representatives is approximately 297.88 thousand euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 10: AM 9.1, Example 11 -->
+    <article class="card example" id="pavyzdys-10">
+      <header class="example-head">
+        <span class="example-tag">Example 10</span>
+        <h3>Settings of a paint mixer</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The cost, in euros, of producing one batch of paint depends on the temperature of the mixture \(x\) (in degrees Celsius) and the mixing time \(y\) (in minutes):
+        <div class="m-wide">\[ TC(x;\,y) = 0.05x^2 + 0.4y^2 - 0.1xy - 1.5x - 16y + 500 \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 0.05x^2 + 0.4y^2 - 0.1xy \\ &amp;\phantom{=}\; {}- 1.5x - 16y + 500 \end{aligned} \]</div>
+        Find the temperature and the mixing time that minimize the cost of one batch. What is the minimum cost?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first order partial derivatives</span></h4>
+          <div class="m-wide">\[ TC'_x = 0.1x - 0.1y - 1.5;\qquad TC'_y = 0.8y - 0.1x - 16 \]</div><div class="m-narrow">\[ \begin{aligned} TC'_x &amp;= 0.1x - 0.1y - 1.5 \\ TC'_y &amp;= 0.8y - 0.1x - 16 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 0.1x - 0.1y - 1.5 &amp;= 0 \\ 0.8y - 0.1x - 16 &amp;= 0 \end{aligned} \right. \]
+          <p>The equations contain decimals. To make the coefficients integers, we multiply each equation by 10. Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} 0.1x - 0.1y - 1.5 = 0\;\big|\cdot 10 \;&amp;\Longrightarrow\; x - y - 15 = 0 \\ 0.8y - 0.1x - 16 = 0\;\big|\cdot 10 \;&amp;\Longrightarrow\; 8y - x - 160 = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 0.1x - 0.1y - 1.5 = 0\;\big|\cdot 10 \\ \Longrightarrow\; x - y - 15 = 0 \\[4pt] 0.8y - 0.1x - 16 = 0\;\big|\cdot 10 \\ \Longrightarrow\; 8y - x - 160 = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} x - y &amp;= 15 \\ -x + 8y &amp;= 160 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Solving the system by substitution</span></h4>
+          <p>In the first equation the coefficient of \(x\) is 1, so it is most convenient to express \(x\) from it. We move the term \(-y\) to the right-hand side and change its sign:</p>
+          <div class="m-wide">\[ x - y = 15 \;\Longrightarrow\; x = y + 15 \]</div><div class="m-narrow">\[ \begin{gathered} x - y = 15 \\ \Longrightarrow\; x = y + 15 \end{gathered} \]</div>
+          <p>We substitute the expression into the second equation in place of \(x\). There is a minus sign in front of \(x\), so the substituted expression is written in brackets. This gives an equation in one variable \(y\):</p>
+          \[ -(y + 15) + 8y = 160 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ -y - 15 + 8y = 160 \;\Longrightarrow\; 7y = 160 + 15 \;\Longrightarrow\; 7y = 175 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -y - 15 + 8y = 160 \\ \Longrightarrow\; 7y = 160 + 15 \\ \Longrightarrow\; 7y = 175 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(7\):</p>
+          \[ y = \frac{175}{7} = 25 \]
+          <p>We substitute the value of \(y\) into the expression \(x = y + 15\):</p>
+          <div class="m-wide">\[ x = 25 + 15 = 40 \]</div><div class="m-narrow">\[ \begin{aligned} x &amp;= 25 + 15 \\ &amp;= 40 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(40;\,25)\). We check it by substituting the values into both equations: \(40 - 25 = 15\) and \(-40 + 8\cdot 25 = 160\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first element of the first row is already 1, so it is the pivot element:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -1 &amp; 15 \\ -1 &amp; 8 &amp; 160 \end{array}\right) \]
+          <p>To get 0 below the pivot element, we multiply the first row by \(1\) and add it to the second row, and then divide the new second row by \(7\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -1 &amp; 15 \\ -1 &amp; 8 &amp; 160 \end{array}\right)\begin{array}{c} \htmlClass{ha}{1} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -1 &amp; 15 \\ \htmlClass{hc}{0} &amp; 7 &amp; 175 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,7} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -1 &amp; 15 \\ 0 &amp; \htmlClass{hd}{1} &amp; 25 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(y = 25\). We substitute this value into the first row:</p>
+          \[ x - 25 = 15 \;\Longrightarrow\; x = 40 \]
+          <p>The same solution \((40;\,25)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = TC''_{xx}(K) = 0.1;\quad B = TC''_{xy}(K) = -0.1;\quad C = TC''_{yy}(K) = 0.8 \\ D = AC - B^2 = 0.1\cdot 0.8 - (-0.1)^2 = 0.08 - 0.01 = 0.07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = 0.1 \\ B &amp;= TC''_{xy}(K) = -0.1 \\ C &amp;= TC''_{yy}(K) = 0.8 \\ D &amp;= AC - B^2 \\ &amp;= 0.1\cdot 0.8 - (-0.1)^2 \\ &amp;= 0.08 - 0.01 = 0.07 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K(40;\,25)\) is a minimum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The minimum cost</span></h4>
+          <div class="m-wide">\[ TC_{\min}(40;\,25) = 80 + 250 - 100 - 60 - 400 + 500 = 270 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;TC_{\min}(40;\,25) \\ &amp;= 80 + 250 - 100 - 60 - 400 + 500 \\ &amp;= 270 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The paint should be mixed at 40 degrees Celsius for 25 minutes. The minimum cost of one batch is 270 euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 11: AM 9.1, Example 12 -->
+    <article class="card example" id="pavyzdys-11">
+      <header class="example-head">
+        <span class="example-tag">Example 11</span>
+        <h3>Maintenance of two production lines</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A factory has two production lines. If \(x\) hours of maintenance a month are done on line A and \(y\) hours on line B, the monthly cost of maintenance and of breakdowns, in euros, is
+        <div class="m-wide">\[ TC(x;\,y) = 200x + 300y + 40\,000e^{-0.1x} + 90\,000e^{-0.1y} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;TC(x;\,y) \\ &amp;= 200x + 300y \\ &amp;\phantom{=}\; {}+ 40\,000e^{-0.1x} + 90\,000e^{-0.1y} \end{aligned} \]</div>
+        How many hours of maintenance on each line minimize the cost? What is the minimum cost?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first order partial derivatives</span></h4>
+          <p>By the chain rule, \(\big(e^{-0.1x}\big)'_x = -0.1e^{-0.1x}\):</p>
+          <div class="m-wide">\[ TC'_x = 200 - 4000e^{-0.1x};\qquad TC'_y = 300 - 9000e^{-0.1y} \]</div><div class="m-narrow">\[ \begin{gathered} TC'_x = 200 - 4000e^{-0.1x}; \\ TC'_y = 300 - 9000e^{-0.1y} \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 200 - 4000e^{-0.1x} &amp;= 0 \\ 300 - 9000e^{-0.1y} &amp;= 0 \end{aligned} \right. \]
+          <p>This system is not linear: the variables are in the exponents of exponential functions. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations, in which each unknown is of the first degree and is only multiplied by a number.</p>
+          <p>Each equation contains only one variable, so we solve the equations separately. First we leave the exponential function alone on one side: we move the term containing it to the right-hand side and divide both sides by its coefficient:</p>
+          <div class="m-wide">\[ \left\{ \begin{aligned} 4000e^{-0.1x} &amp;= 200 \\ 9000e^{-0.1y} &amp;= 300 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} e^{-0.1x} &amp;= 0.05 \\ e^{-0.1y} &amp;= \frac{1}{30} \end{aligned} \right. \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} 4000e^{-0.1x} &amp;= 200 \\ 9000e^{-0.1y} &amp;= 300 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} e^{-0.1x} &amp;= 0.05 \\ e^{-0.1y} &amp;= \frac{1}{30} \end{aligned} \right. \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Solving the system</span></h4>
+          <p>The variables are in the exponents. To “bring them down”, we take the natural logarithm of both sides of each equation. The equality remains true, because the logarithms of equal numbers are equal:</p>
+          <div class="m-wide">\[ \left\{ \begin{aligned} e^{-0.1x} &amp;= 0.05 \\ e^{-0.1y} &amp;= \frac{1}{30} \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} \ln e^{-0.1x} &amp;= \ln 0.05 \\ \ln e^{-0.1y} &amp;= \ln\frac{1}{30} \end{aligned} \right. \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} e^{-0.1x} &amp;= 0.05 \\ e^{-0.1y} &amp;= \frac{1}{30} \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} \ln e^{-0.1x} &amp;= \ln 0.05 \\ \ln e^{-0.1y} &amp;= \ln\frac{1}{30} \end{aligned} \right. \end{gathered} \]</div>
+          <p>For the logarithm of a power we use the general rule – the exponent is brought in front of the logarithm:</p>
+          \[ \ln\big(a^n\big) = n\ln a \]
+          <p>On the left-hand sides the base is \(e\), and the exponents are \(-0.1x\) and \(-0.1y\), so \(\ln e^{-0.1x} = -0.1x\cdot\ln e\) and \(\ln e^{-0.1y} = -0.1y\cdot\ln e\). Besides, \(\ln e = 1\), because the base of the natural logarithm is the number \(e\):</p>
+          <div class="m-wide">\[ \left\{ \begin{aligned} -0.1x\cdot\ln e &amp;= \ln 0.05 \\ -0.1y\cdot\ln e &amp;= \ln\frac{1}{30} \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} -0.1x &amp;= \ln 0.05 \\ -0.1y &amp;= \ln\frac{1}{30} \end{aligned} \right. \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} -0.1x\cdot\ln e &amp;= \ln 0.05 \\ -0.1y\cdot\ln e &amp;= \ln\frac{1}{30} \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} -0.1x &amp;= \ln 0.05 \\ -0.1y &amp;= \ln\frac{1}{30} \end{aligned} \right. \end{gathered} \]</div>
+          <p>We have obtained two simple linear equations. We divide both sides of each equation by \(-0.1\), i.e. multiply them by \(-10\):</p>
+          \[ \left\{ \begin{aligned} x &amp;= -10\ln 0.05 \\ y &amp;= -10\ln\frac{1}{30} \end{aligned} \right. \]
+          <p>We simplify the logarithms with the same rule. Since \(0.05 = \frac{1}{20} = 20^{-1}\), we get \(\ln 0.05 = \ln 20^{-1} = -\ln 20\). In the same way, \(\ln\frac{1}{30} = \ln 30^{-1} = -\ln 30\). Therefore</p>
+          \[ \begin{aligned} x &amp;= -10\cdot(-\ln 20) = 10\ln 20 \approx 29.96 \\ y &amp;= -10\cdot(-\ln 30) = 10\ln 30 \approx 34.01 \end{aligned} \]
+          <p>We obtain the critical point \(K(10\ln 20;\,10\ln 30)\), approximately \(K(29.96;\,34.01)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives depend on \(x\) and \(y\):</p>
+          <div class="m-wide">\[ TC''_{xx} = 400e^{-0.1x};\qquad TC''_{xy} = 0;\qquad TC''_{yy} = 900e^{-0.1y} \]</div><div class="m-narrow">\[ \begin{gathered} TC''_{xx} = 400e^{-0.1x}; \\ TC''_{xy} = 0; \\ TC''_{yy} = 900e^{-0.1y} \end{gathered} \]</div>
+          <p>We substitute the coordinates of the critical point \(K(10\ln 20;\,10\ln 30)\). From the system of equations we know that at this point \(e^{-0.1x} = 0.05\) and \(e^{-0.1y} = \frac{1}{30}\), so</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = 400\cdot 0.05 = 20 \\ B &amp;= TC''_{xy}(K) = 0 \\ C &amp;= TC''_{yy}(K) = 900\cdot\frac{1}{30} = 30 \\ D &amp;= AC - B^2 = 20\cdot 30 - 0^2 = 600 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= TC''_{xx}(K) = 400\cdot 0.05 = 20 \\ B &amp;= TC''_{xy}(K) = 0 \\ C &amp;= TC''_{yy}(K) = 900\cdot\frac{1}{30} = 30 \\ D &amp;= AC - B^2 = 20\cdot 30 - 0^2 \\ &amp;= 600 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K(10\ln 20;\,10\ln 30)\) is a minimum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The minimum cost</span></h4>
+          <div class="m-wide bp-lg">\[ TC_{\min} = 200\cdot 10\ln 20 + 300\cdot 10\ln 30 + 40\,000\cdot 0.05 + 90\,000\cdot\frac{1}{30} \approx 21\,195.06 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} TC_{\min} &amp;= 200\cdot 10\ln 20 + 300\cdot 10\ln 30 \\ &amp;\phantom{=}\; {}+ 40\,000\cdot 0.05 + 90\,000\cdot\frac{1}{30} \\ &amp;\approx 21\,195.06 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The cost is smallest with approximately 29.96 hours of maintenance a month on line A and 34.01 hours on line B. The minimum cost is approximately 21&nbsp;195.06 euros a month.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead" style="margin-top:22px">Other optimization problems</h3>
+
+    <!-- Example 12: AM 9.1, Example 13 -->
+    <article class="card example" id="pavyzdys-12">
+      <header class="example-head">
+        <span class="example-tag">Example 12</span>
+        <h3>Fertiliser and irrigation</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        The yield of wheat, in kilograms per hectare, depends on the amount of nitrogen fertiliser \(x\) (in kilograms per hectare) and the amount of irrigation water \(y\) (in millimetres):
+        <div class="m-wide">\[ Y(x;\,y) = 2000 + 35x + 35y - 0.2x^2 - 0.1y^2 + 0.1xy \]</div><div class="m-narrow">\[ \begin{aligned} Y(x;\,y) &amp;= 2000 + 35x + 35y \\ &amp;\phantom{=}\; {}- 0.2x^2 - 0.1y^2 + 0.1xy \end{aligned} \]</div>
+        Find the amounts of fertiliser and water that maximize the yield. What is the maximum yield?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The first order partial derivatives</span></h4>
+          <div class="m-wide">\[ Y'_x = 35 - 0.4x + 0.1y;\qquad Y'_y = 35 - 0.2y + 0.1x \]</div><div class="m-narrow">\[ \begin{aligned} Y'_x &amp;= 35 - 0.4x + 0.1y \\ Y'_y &amp;= 35 - 0.2y + 0.1x \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 35 - 0.4x + 0.1y &amp;= 0 \\ 35 - 0.2y + 0.1x &amp;= 0 \end{aligned} \right. \]
+          <p>The equations contain decimals. To make the coefficients integers, we multiply each equation by 10. Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} 35 - 0.4x + 0.1y = 0\;\big|\cdot 10 \;&amp;\Longrightarrow\; 350 - 4x + y = 0 \\ 35 - 0.2y + 0.1x = 0\;\big|\cdot 10 \;&amp;\Longrightarrow\; 350 - 2y + x = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 35 - 0.4x + 0.1y = 0\;\big|\cdot 10 \\ \Longrightarrow\; 350 - 4x + y = 0 \\[4pt] 35 - 0.2y + 0.1x = 0\;\big|\cdot 10 \\ \Longrightarrow\; 350 - 2y + x = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} 4x - y &amp;= 350 \\ -x + 2y &amp;= 350 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Solving the system by substitution</span></h4>
+          <p>In the first equation the coefficient of \(y\) is \(-1\), so it is most convenient to express \(y\) from it. We move the term \(-y\) to the right-hand side and the number \(350\) to the left-hand side. The terms that are moved change their signs:</p>
+          <div class="m-wide">\[ 4x - y = 350 \;\Longrightarrow\; 4x - 350 = y \;\Longrightarrow\; y = 4x - 350 \]</div><div class="m-narrow">\[ \begin{gathered} 4x - y = 350 \\ \Longrightarrow\; 4x - 350 = y \\ \Longrightarrow\; y = 4x - 350 \end{gathered} \]</div>
+          <p>We substitute the expression into the second equation in place of \(y\). Since \(y\) is multiplied by 2 in that equation, the substituted expression is written in brackets. This gives an equation in one variable \(x\):</p>
+          \[ -x + 2(4x - 350) = 350 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ -x + 8x - 700 = 350 \;\Longrightarrow\; 7x = 350 + 700 \;\Longrightarrow\; 7x = 1050 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -x + 8x - 700 = 350 \\ \Longrightarrow\; 7x = 350 + 700 \\ \Longrightarrow\; 7x = 1050 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(7\):</p>
+          \[ x = \frac{1050}{7} = 150 \]
+          <p>We substitute the value of \(x\) into the expression \(y = 4x - 350\):</p>
+          <div class="m-wide">\[ y = 4\cdot 150 - 350 = 600 - 350 = 250 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 4\cdot 150 - 350 \\ &amp;= 600 - 350 = 250 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(150;\,250)\). We check it by substituting the values into both equations: \(4\cdot 150 - 250 = 350\) and \(-150 + 2\cdot 250 = 350\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first coefficient of the second equation is \(-1\). We interchange the equations and divide the new first row by \(-1\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} -1 &amp; 2 &amp; 350 \\ 4 &amp; -1 &amp; 350 \end{array}\right)\begin{array}{l} \htmlClass{ha}{{:}\,(-1)} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -2 &amp; -350 \\ 4 &amp; -1 &amp; 350 \end{array}\right)\)</span></div>
+          <p>To get 0 below the pivot element, we multiply the first row by \(-4\) and add it to the second row, and then divide the new second row by \(7\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -2 &amp; -350 \\ 4 &amp; -1 &amp; 350 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -2 &amp; -350 \\ \htmlClass{hc}{0} &amp; 7 &amp; 1750 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,7} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -2 &amp; -350 \\ 0 &amp; \htmlClass{hd}{1} &amp; 250 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(y = 250\). We substitute this value into the first row:</p>
+          \[ x - 2\cdot 250 = -350 \;\Longrightarrow\; x = 150 \]
+          <p>The same solution \((150;\,250)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = Y''_{xx}(K) = -0.4;\quad B = Y''_{xy}(K) = 0.1;\quad C = Y''_{yy}(K) = -0.2 \\ D = AC - B^2 = (-0.4)\cdot (-0.2) - 0.1^2 = 0.08 - 0.01 = 0.07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= Y''_{xx}(K) = -0.4 \\ B &amp;= Y''_{xy}(K) = 0.1 \\ C &amp;= Y''_{yy}(K) = -0.2 \\ D &amp;= AC - B^2 \\ &amp;= (-0.4)\cdot (-0.2) - 0.1^2 \\ &amp;= 0.08 - 0.01 = 0.07 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(150;\,250)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The maximum yield</span></h4>
+          <div class="m-wide bp-lg">\[ Y_{\max}(150;\,250) = 2000 + 5250 + 8750 - 4500 - 6250 + 3750 = 9000 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;Y_{\max}(150;\,250) \\ &amp;= 2000 + 5250 + 8750 \\ &amp;\phantom{=}\; {}- 4500 - 6250 + 3750 = 9000 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The yield is largest with 150 kilograms of fertiliser and 250 millimetres of water per hectare. The maximum yield is 9000 kilograms per hectare.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 13: AM 9.1, Example 14 -->
+    <article class="card example" id="pavyzdys-13">
+      <header class="example-head">
+        <span class="example-tag">Example 13</span>
+        <h3>Advertising on television and online</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company plans an advertising campaign. If it spends \(x\) thousand euros on television advertising and \(y\) thousand euros on online advertising, the gross profit from the additional sales, in thousands of euros, will be
+        <div class="m-wide">\[ G(x;\,y) = 200 + 21x + 26y - 0.5x^2 - y^2 + 0.5xy \]</div><div class="m-narrow">\[ \begin{aligned} G(x;\,y) &amp;= 200 + 21x + 26y \\ &amp;\phantom{=}\; {}- 0.5x^2 - y^2 + 0.5xy \end{aligned} \]</div>
+        How much should the company spend on each kind of advertising to maximize the profit after paying for the campaign? What is that profit?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <p>The campaign costs \(x + y\) thousand euros, so the net profit is</p>
+          <div class="m-wide bp-lg">\[ N(x;\,y) = G(x;\,y) - x - y = 200 + 20x + 25y - 0.5x^2 - y^2 + 0.5xy \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;N(x;\,y) \\ &amp;= G(x;\,y) - x - y \\ &amp;= 200 + 20x + 25y \\ &amp;\phantom{=}\; {}- 0.5x^2 - y^2 + 0.5xy \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The first order partial derivatives</span></h4>
+          <div class="m-wide">\[ N'_x = 20 - x + 0.5y;\qquad N'_y = 25 - 2y + 0.5x \]</div><div class="m-narrow">\[ \begin{gathered} N'_x = 20 - x + 0.5y; \\ N'_y = 25 - 2y + 0.5x \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We set both partial derivatives equal to zero:</p>
+          \[ \left\{ \begin{aligned} 20 - x + 0.5y &amp;= 0 \\ 25 - 2y + 0.5x &amp;= 0 \end{aligned} \right. \]
+          <p>The equations contain decimals. To make the coefficients integers, we multiply each equation by 2. Every term of the equation is transformed in this way, including the constant term:</p>
+          <div class="m-wide">\[ \begin{aligned} 20 - x + 0.5y = 0\;\big|\cdot 2 \;&amp;\Longrightarrow\; 40 - 2x + y = 0 \\ 25 - 2y + 0.5x = 0\;\big|\cdot 2 \;&amp;\Longrightarrow\; 50 - 4y + x = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 20 - x + 0.5y = 0\;\big|\cdot 2 \\ \Longrightarrow\; 40 - 2x + y = 0 \\[4pt] 25 - 2y + 0.5x = 0\;\big|\cdot 2 \\ \Longrightarrow\; 50 - 4y + x = 0 \end{gathered} \]</div>
+          <p>We keep the variables on the left-hand side and the numbers on the right-hand side. When a term is moved to the other side of the equation, its sign changes. This gives a system of linear equations:</p>
+          \[ \left\{ \begin{aligned} 2x - y &amp;= 40 \\ x - 4y &amp;= -50 \end{aligned} \right. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p>In the first equation the coefficient of \(y\) is \(-1\), so it is most convenient to express \(y\) from it. We move the term \(-y\) to the right-hand side and the number \(40\) to the left-hand side. The terms that are moved change their signs:</p>
+          <div class="m-wide">\[ 2x - y = 40 \;\Longrightarrow\; 2x - 40 = y \;\Longrightarrow\; y = 2x - 40 \]</div><div class="m-narrow">\[ \begin{gathered} 2x - y = 40 \\ \Longrightarrow\; 2x - 40 = y \\ \Longrightarrow\; y = 2x - 40 \end{gathered} \]</div>
+          <p>We substitute the expression into the second equation in place of \(y\). Since \(y\) is multiplied by \(-4\) in that equation, the substituted expression is written in brackets. This gives an equation in one variable \(x\):</p>
+          \[ x - 4(2x - 40) = -50 \]
+          <p>We expand the brackets, collect like terms and move the number to the right-hand side, changing its sign:</p>
+          <div class="m-wide bp-lg">\[ x - 8x + 160 = -50 \;\Longrightarrow\; -7x = -50 - 160 \;\Longrightarrow\; -7x = -210 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x - 8x + 160 = -50 \\ \Longrightarrow\; -7x = -50 - 160 \\ \Longrightarrow\; -7x = -210 \end{gathered} \]</div>
+          <p>We divide both sides of the equation by \(-7\):</p>
+          \[ x = \frac{-210}{-7} = 30 \]
+          <p>We substitute the value of \(x\) into the expression \(y = 2x - 40\):</p>
+          <div class="m-wide">\[ y = 2\cdot 30 - 40 = 60 - 40 = 20 \]</div><div class="m-narrow">\[ \begin{aligned} y &amp;= 2\cdot 30 - 40 \\ &amp;= 60 - 40 = 20 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(30;\,20)\). We check it by substituting the values into both equations: \(2\cdot 30 - 20 = 40\) and \(30 - 4\cdot 20 = -50\) – both equalities hold.</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>The augmented matrix of the system is made up of the coefficients of the unknowns and the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>).</p>
+          <p>The first coefficient of the second equation is 1, so we interchange the equations – this 1 becomes the pivot element:</p>
+          \[ \left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -4 &amp; -50 \\ 2 &amp; -1 &amp; 40 \end{array}\right) \]
+          <p>To get 0 below the pivot element, we multiply the first row by \(-2\) and add it to the second row, and then divide the new second row by \(7\):</p>
+          <div class="mats mats--flow"><span>\(\left(\begin{array}{cc|c} \htmlClass{hd}{1} &amp; -4 &amp; -50 \\ 2 &amp; -1 &amp; 40 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -4 &amp; -50 \\ \htmlClass{hc}{0} &amp; 7 &amp; 140 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,7} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{cc|c} 1 &amp; -4 &amp; -50 \\ 0 &amp; \htmlClass{hd}{1} &amp; 20 \end{array}\right)\)</span></div>
+          <p>Back substitution: the second row gives \(y = 20\). We substitute this value into the first row:</p>
+          \[ x - 4\cdot 20 = -50 \;\Longrightarrow\; x = 30 \]
+          <p>The same solution \((30;\,20)\) is obtained.</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are constant, so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = N''_{xx}(K) = -1;\quad B = N''_{xy}(K) = 0.5;\quad C = N''_{yy}(K) = -2 \\ D = AC - B^2 = (-1)\cdot (-2) - 0.5^2 = 2 - 0.25 = 1.75 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -1 \\ B &amp;= N''_{xy}(K) = 0.5 \\ C &amp;= N''_{yy}(K) = -2 \\ D &amp;= AC - B^2 \\ &amp;= (-1)\cdot (-2) - 0.5^2 \\ &amp;= 2 - 0.25 = 1.75 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(30;\,20)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The maximum net profit</span></h4>
+          <div class="m-wide">\[ N_{\max}(30;\,20) = 200 + 600 + 500 - 450 - 400 + 300 = 750 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;N_{\max}(30;\,20) \\ &amp;= 200 + 600 + 500 - 450 - 400 + 300 \\ &amp;= 750 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The company should spend 30&nbsp;thousand euros on television advertising and 20&nbsp;thousand euros on online advertising. The maximum profit after paying for the campaign is 750&nbsp;thousand euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write your solutions in the same way as in the examples: build the objective function, solve the system of the necessary condition, check the sufficient condition and calculate the quantities asked for. The answers give the main intermediate results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM Topic 9 Problem Set, section 1, problem 1 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A company produces \(x\) e-readers and \(y\) tablets a month. Its monthly profit, in euros, is</p>
+          <div class="m-wide">\[ P(x;\,y) = -0.4x^2 - 0.3y^2 - 0.2xy + 140x + 90y - 6000 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= -0.4x^2 - 0.3y^2 - 0.2xy \\ &amp;\phantom{=}\; {}+ 140x + 90y - 6000 \end{aligned} \]</div>
+          <p>How many e-readers and tablets should be produced to maximize the profit? What is the maximum profit?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The system of equations and the critical point:</strong></p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 140 - 0.8x - 0.2y &amp;= 0 \\ 90 - 0.6y - 0.2x &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 4x + y &amp;= 700 \\ x + 3y &amp;= 450 \end{aligned} \right. \;\Longrightarrow\; K(150;\,100) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 140 - 0.8x - 0.2y &amp;= 0 \\ 90 - 0.6y - 0.2x &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 4x + y &amp;= 700 \\ x + 3y &amp;= 450 \end{aligned} \right. \\ \Longrightarrow\; K(150;\,100) \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0.8 \\ B &amp;= P''_{xy}(K) = -0.2 \\ C &amp;= P''_{yy}(K) = -0.6 \\ D &amp;= 0.44 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0.8 \\ B &amp;= P''_{xy}(K) = -0.2 \\ C &amp;= P''_{yy}(K) = -0.6 \\ D &amp;= 0.44 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> 150 e-readers and 100 tablets should be produced a month. The maximum profit is \(P_{\max}(150;\,100) = 9000\) euros a month.</p>
+        </div>
+      </article>
+
+      <!-- problem 2 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A company sells \(x\) road bikes and \(y\) e-bikes a month at the following prices, in hundreds of euros:</p>
+          <div class="m-wide">\[ p_1 = 70 - 0.02x - 0.01y;\qquad p_2 = 90 - 0.01x - 0.04y \]</div><div class="m-narrow">\[ \begin{gathered} p_1 = 70 - 0.02x - 0.01y; \\ p_2 = 90 - 0.01x - 0.04y \end{gathered} \]</div>
+          <p>The variable cost is 20 for a road bike and 30 for an e-bike, and the fixed cost is 10&nbsp;000. All the costs are in hundreds of euros.</p>
+          <p>How many bikes of each type should be sold, and at what prices, to maximize the profit? What is the maximum profit?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          <div class="m-wide">\[ P(x;\,y) = 50x + 60y - 0.02x^2 - 0.04y^2 - 0.02xy - 10\,000 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;P(x;\,y) \\ &amp;= 50x + 60y - 0.02x^2 \\ &amp;\phantom{=}\; {}- 0.04y^2 - 0.02xy - 10\,000 \end{aligned} \]</div>
+          <p><strong>The system of equations and the critical point:</strong></p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 50 - 0.04x - 0.02y &amp;= 0 \\ 60 - 0.02x - 0.08y &amp;= 0 \end{aligned} \right. \;\Longrightarrow\; \left\{ \begin{aligned} 2x + y &amp;= 2500 \\ x + 4y &amp;= 3000 \end{aligned} \right. \;\Longrightarrow\; K(1000;\,500) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 50 - 0.04x - 0.02y &amp;= 0 \\ 60 - 0.02x - 0.08y &amp;= 0 \end{aligned} \right. \\ \Longrightarrow\; \left\{ \begin{aligned} 2x + y &amp;= 2500 \\ x + 4y &amp;= 3000 \end{aligned} \right. \\ \Longrightarrow\; K(1000;\,500) \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0.04 \\ B &amp;= P''_{xy}(K) = -0.02 \\ C &amp;= P''_{yy}(K) = -0.08 \\ D &amp;= 0.0028 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{xx}(K) = -0.04 \\ B &amp;= P''_{xy}(K) = -0.02 \\ C &amp;= P''_{yy}(K) = -0.08 \\ D &amp;= 0.0028 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> 1000 road bikes should be sold at \(p_1 = 45\) and 500 e-bikes at \(p_2 = 60\). The prices are in hundreds of euros. The maximum profit is \(P_{\max}(1000;\,500) = 30\,000\) hundred euros a month.</p>
+        </div>
+      </article>
+
+      <!-- problem 3 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A coffee roaster sells two blends in 250&nbsp;g packs. When a pack of blend A costs \(p\) euros and a pack of blend B costs \(r\) euros, it sells</p>
+          <div class="m-wide">\[ x = 300 - 30p + 10r;\qquad y = 200 + 10p - 20r \]</div><div class="m-narrow">\[ \begin{gathered} x = 300 - 30p + 10r; \\ y = 200 + 10p - 20r \end{gathered} \]</div>
+          <p>packs a week. A pack of blend A costs 3&nbsp;euros to produce, and a pack of blend B costs 2&nbsp;euros.</p>
+          <p>At what prices should the blends be sold to maximize the weekly profit? How many packs would be sold, and what would the maximum profit be?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          <div class="m-wide bp-lg">\[ P(p;\,r) = (p - 3)(300 - 30p + 10r) + (r - 2)(200 + 10p - 20r) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P(p;\,r) \\ &amp;= (p - 3)(300 - 30p + 10r) \\ &amp;\phantom{=}\; {}+ (r - 2)(200 + 10p - 20r) \end{aligned} \]</div>
+          <p><strong>The system of equations and the critical point:</strong></p>
+          <div class="m-wide">\[ \left\{ \begin{aligned} P'_p &amp;= 370 - 60p + 20r = 0 \\ P'_r &amp;= 210 + 20p - 40r = 0 \end{aligned} \right. \;\Longrightarrow\; K(9.5;\,10) \]</div><div class="m-narrow">\[ \begin{gathered} \left\{ \begin{aligned} P'_p &amp;= 370 - 60p + 20r = 0 \\ P'_r &amp;= 210 + 20p - 40r = 0 \end{aligned} \right. \\ \Longrightarrow\; K(9.5;\,10) \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= P''_{pp}(K) = -60 \\ B &amp;= P''_{pr}(K) = 20 \\ C &amp;= P''_{rr}(K) = -40 \\ D &amp;= 2000 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= P''_{pp}(K) = -60 \\ B &amp;= P''_{pr}(K) = 20 \\ C &amp;= P''_{rr}(K) = -40 \\ D &amp;= 2000 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> A pack of blend A should cost 9.5&nbsp;euros and a pack of blend B 10&nbsp;euros. The roaster would sell 115 and 95 packs a week, respectively. The maximum profit is \(P_{\max} = 1507.5\) euros a week.</p>
+        </div>
+      </article>
+
+      <!-- problem 4 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A cider producer makes</p>
+          \[ Q(x;\,y) = 10x^{0.5}y^{0.25} \]
+          <p>bottles a week, where \(x\) is the number of hours of labour and \(y\) is the number of hours the press is used. A bottle is sold for 8&nbsp;euros. An hour of labour costs 10&nbsp;euros, an hour of the press costs 20&nbsp;euros, and the fixed cost is 200&nbsp;euros a week.</p>
+          <p>How many hours of labour and of the press are needed to maximize the profit? What are the output and the maximum profit?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function and the system of equations:</strong></p>
+          <div class="m-wide bp-lg">\[ P(x;\,y) = 80x^{0.5}y^{0.25} - 10x - 20y - 200;\qquad \left\{ \begin{aligned} 40x^{-0.5}y^{0.25} &amp;= 10 \\ 20x^{0.5}y^{-0.75} &amp;= 20 \end{aligned} \right. \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} P(x;\,y) = 80x^{0.5}y^{0.25} \\ {}- 10x - 20y - 200 \\ \left\{ \begin{aligned} 40x^{-0.5}y^{0.25} &amp;= 10 \\ 20x^{0.5}y^{-0.75} &amp;= 20 \end{aligned} \right. \end{gathered} \]</div>
+          <p><strong>Dividing the equations</strong> (the system is non-linear, so Gaussian elimination cannot be used):</p>
+          <div class="m-wide bp-lg">\[ \frac{2y}{x} = \frac{1}{2} \;\Longrightarrow\; x = 4y \;\Longrightarrow\; 40y^{-0.25} = 20 \;\Longrightarrow\; y = 16;\qquad x = 64 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{2y}{x} = \frac{1}{2} \;\Longrightarrow\; x = 4y \\ \Longrightarrow\; 40y^{-0.25} = 20 \\ \Longrightarrow\; y = 16;\quad x = 64 \end{gathered} \]</div>
+          <p><strong>The type of the critical point:</strong> The Cobb-Douglas function is concave, because \(A = 10 &gt; 0\) and \(\alpha + \beta = 0.75 \le 1\). Therefore \(K(64;\,16)\) is a maximum point.</p>
+          <p><strong>Answer.</strong> 64 hours of labour and 16 hours of the press are needed a week. The output is \(Q = 160\) bottles, and the maximum profit is \(P_{\max}(64;\,16) = 120\) euros a week.</p>
+        </div>
+      </article>
+
+      <!-- problem 5 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A company organises \(x\) training days a year for its sales team and \(y\) training days for its customer service team. The additional gross profit, in thousands of euros, is</p>
+          \[ G(x;\,y) = 40\ln(x + 2) + 90\ln(y + 3) \]
+          <p>A training day costs 2&nbsp;thousand euros for the sales team and 3&nbsp;thousand euros for the customer service team. How many training days should each team be given to maximize the profit after paying for the training? What is that profit?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function:</strong></p>
+          <div class="m-wide">\[ N(x;\,y) = 40\ln(x + 2) + 90\ln(y + 3) - 2x - 3y \]</div><div class="m-narrow">\[ \begin{aligned} &amp;N(x;\,y) \\ &amp;= 40\ln(x + 2) + 90\ln(y + 3) \\ &amp;\phantom{=}\; {}- 2x - 3y \end{aligned} \]</div>
+          <p><strong>The derivatives with a common denominator and the system of equations:</strong></p>
+          <div class="m-wide bp-lg">\[ N'_x = \frac{40 - 2(x + 2)}{x + 2} = \frac{36 - 2x}{x + 2};\qquad N'_y = \frac{90 - 3(y + 3)}{y + 3} = \frac{81 - 3y}{y + 3} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} N'_x &amp;= \frac{40 - 2(x + 2)}{x + 2} = \frac{36 - 2x}{x + 2} \\ N'_y &amp;= \frac{90 - 3(y + 3)}{y + 3} = \frac{81 - 3y}{y + 3} \end{aligned} \]</div>
+          \[ \left\{ \begin{aligned} 36 - 2x &amp;= 0 \\ x + 2 &amp;\ne 0 \\ 81 - 3y &amp;= 0 \\ y + 3 &amp;\ne 0 \end{aligned} \right. \;\Longrightarrow\; K(18;\,27) \]
+          <p><strong>The sufficient condition:</strong></p>
+          <p>The second order partial derivatives are \(N''_{xx} = -\frac{40}{(x + 2)^2}\), \(N''_{xy} = 0\), \(N''_{yy} = -\frac{90}{(y + 3)^2}\). We substitute \(K(18;\,27)\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -\frac{40}{(18 + 2)^2} = -0.1 \\ B &amp;= N''_{xy}(K) = 0 \\ C &amp;= N''_{yy}(K) = -\frac{90}{(27 + 3)^2} = -0.1 \\ D &amp;= 0.01 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= N''_{xx}(K) = -\frac{40}{(18 + 2)^2} \\ &amp;= -0.1 \\ B &amp;= N''_{xy}(K) = 0 \\ C &amp;= N''_{yy}(K) = -\frac{90}{(27 + 3)^2} \\ &amp;= -0.1 \\ D &amp;= 0.01 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> The sales team should be given 18 training days and the customer service team 27. The maximum profit after paying for the training is approximately 308.94 thousand euros:</p>
+          <div class="m-wide">\[ N_{\max} = 40\ln 20 + 90\ln 30 - 117 \approx 308.94 \]</div><div class="m-narrow">\[ \begin{aligned} N_{\max} &amp;= 40\ln 20 + 90\ln 30 - 117 \\ &amp;\approx 308.94 \end{aligned} \]</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 8</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.3</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Calculus for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">Chapter 7.3</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

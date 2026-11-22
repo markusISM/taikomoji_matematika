@@ -471,7 +471,7 @@
         desc: { lt: 'Izokvantės ir kiek vieno ištekliaus gali pakeisti papildomas kito ištekliaus vienetas, nekeičiant gamybos apimties.', en: 'Isoquants and how much of one input one more unit of the other input can replace without changing output.' } }
     ],
     t9: [
-      { id: 'm91', status: 'active', href: { lt: 'tema-9-optimizavimas.html' },
+      { id: 'm91', status: 'active', href: { lt: 'tema-9-optimizavimas.html', en: 'tema-9-optimizavimas.html' },
         title: { lt: 'Pagrindiniai optimizavimo uždaviniai', en: 'Standard Optimization Problems' },
         desc: { lt: 'Kritiniai taškai ir pakankamoji sąlyga: didžiausias dviejų gaminių pelnas, pelnas pagal gamybos funkciją, mažiausios sąnaudos.', en: 'Critical points and the second derivative test: the maximum profit from two products, profit from a production function, the minimum cost.' } },
       { id: 'm92', status: 'active', href: { lt: 'tema-9-sudetingesni-uzdaviniai.html' },
@@ -593,7 +593,7 @@
                title: { lt: 'Ribinė techninio pakeitimo norma', en: 'The Marginal Rate of Technical Substitution' } },
     t9:      { parent: 'home', href: { lt: 'tema-9.html', en: 'tema-9.html' },
                title: { lt: '9 tema', en: 'Topic 9' } },
-    m91:     { parent: 't9', topic: 't9', model: 'm91', href: { lt: 'tema-9-optimizavimas.html', en: null },
+    m91:     { parent: 't9', topic: 't9', model: 'm91', href: { lt: 'tema-9-optimizavimas.html', en: 'tema-9-optimizavimas.html' },
                title: { lt: 'Pagrindiniai optimizavimo uždaviniai', en: 'Standard Optimization Problems' } },
     m92:     { parent: 't9', topic: 't9', model: 'm92', href: { lt: 'tema-9-sudetingesni-uzdaviniai.html', en: null },
                title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' } },
