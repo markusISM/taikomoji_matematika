@@ -480,7 +480,7 @@
       { id: 'm93', status: 'active', href: { lt: 'tema-9-salyginis-optimizavimas.html', en: 'tema-9-salyginis-optimizavimas.html' },
         title: { lt: 'Pagrindiniai sąlyginio optimizavimo uždaviniai', en: 'Standard Constrained Optimization Problems' },
         desc: { lt: 'Lagranžo daugiklių metodas: didžiausia gamybos apimtis esant biudžetui, mažiausios sąnaudos esant užsakymui ir Lagranžo daugiklio interpretacija.', en: 'The method of Lagrange multipliers: the maximum output within a budget, the minimum cost of an order and the interpretation of the Lagrange multiplier.' } },
-      { id: 'm94', status: 'active', href: { lt: 'tema-9-sudetingesni-salyginiai.html' },
+      { id: 'm94', status: 'active', href: { lt: 'tema-9-sudetingesni-salyginiai.html', en: 'tema-9-sudetingesni-salyginiai.html' },
         title: { lt: 'Sudėtingesni sąlyginio optimizavimo uždaviniai', en: 'Advanced Constrained Optimization Problems' },
         desc: { lt: 'Tikslo funkciją ir apribojimą reikia nustatyti iš situacijos aprašymo, dažnai remiantis geometrija.', en: 'The objective function and the constraint have to be found from the description of the situation, often with the help of geometry.' } }
     ]
@@ -599,7 +599,7 @@
                title: { lt: 'Sudėtingesni optimizavimo uždaviniai', en: 'Advanced Optimization Problems' } },
     m93:     { parent: 't9', topic: 't9', model: 'm93', href: { lt: 'tema-9-salyginis-optimizavimas.html', en: 'tema-9-salyginis-optimizavimas.html' },
                title: { lt: 'Pagrindiniai sąlyginio optimizavimo uždaviniai', en: 'Standard Constrained Optimization Problems' } },
-    m94:     { parent: 't9', topic: 't9', model: 'm94', href: { lt: 'tema-9-sudetingesni-salyginiai.html', en: null },
+    m94:     { parent: 't9', topic: 't9', model: 'm94', href: { lt: 'tema-9-sudetingesni-salyginiai.html', en: 'tema-9-sudetingesni-salyginiai.html' },
                title: { lt: 'Sudėtingesni sąlyginio optimizavimo uždaviniai', en: 'Advanced Constrained Optimization Problems' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },

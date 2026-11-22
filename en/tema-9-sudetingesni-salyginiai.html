@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced Constrained Optimization Problems · Applied Mathematics</title>
+<meta name="description" content="Constrained optimization problems in which the objective function and the constraint have to be found from the description of the situation: a production possibilities curve, a location next to a road, a rectangle in an ellipse, the nearest point of a circle, the choice between work and leisure, an advertising budget. Several critical points and the case D = 0.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-9-sudetingesni-salyginiai.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m94">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 9 · Applications · Section 4</span>
+    <h1>Advanced Constrained Optimization Problems</h1>
+    <p class="lead">In the previous section the objective function and the constraint were given, or they could be written directly from prices and costs. In the problems of this section the most important step is <strong>building the model</strong>: the objective function and the constraint have to be found from the description of the situation, often with the help of geometry. The model is then solved as in the <a href="tema-9-salyginis-optimizavimas.html">previous section</a>.</p>
+    <ul class="jump">
+      <li><a href="#modelis">The model</a></li>
+      <li><a href="#sistema">The system of equations</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. THE MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Building a constrained optimization model</h2>
+    <article class="card">
+      <p>Three questions help to build the model.</p>
+      <ol class="steps-list">
+        <li><strong>What are the variables?</strong> They may be quantities, the coordinates of a point on a map, the dimensions of a figure, amounts of money or lengths of time.</li>
+        <li><strong>Which quantity has to be maximized or minimized?</strong> This gives the objective function \(f(x;\,y)\).</li>
+        <li><strong>What condition must the variables satisfy?</strong> It gives the constraint \(g(x;\,y) = m\). The constraint may be given by the equation of a road or of the boundary of an area, by a production possibilities curve, by a budget made up of income from several sources, or by a total amount of money.</li>
+      </ol>
+
+      <h3 class="subhead">Useful geometric facts</h3>
+      <ul>
+        <li>The squared distance between the points \((x;\,y)\) and \((a;\,b)\) is \((x - a)^2 + (y - b)^2\). The distance is the square root of this expression. Both quantities take their smallest values at the same point, so it is enough to minimize the squared distance (Examples <a href="#pavyzdys-2">2</a> and <a href="#pavyzdys-4">4</a>).</li>
+        <li>A straight road or another line on a map is given by an equation \(ax + by = c\). If a point is on the road, its coordinates satisfy this equation (<a href="#pavyzdys-2">Example 2</a>).</li>
+        <li>A circle with the radius \(r\) and the centre at the origin has the equation \(x^2 + y^2 = r^2\) (<a href="#pavyzdys-4">Example 4</a>).</li>
+        <li>An ellipse with the centre at the origin has an equation of the form \(ax^2 + by^2 = m\). If a rectangle inscribed in the ellipse has its sides parallel to the axes and one corner at \((x;\,y)\), its sides are \(2x\) and \(2y\) long, and its area is \(4xy\) (<a href="#pavyzdys-3">Example 3</a>).</li>
+      </ul>
+
+      <h3 class="subhead">When the constraint has to be built from several parts</h3>
+      <p>In economic problems the constraint is often obtained by combining several statements of the problem. For example, if 16 hours a day can be spent on work and leisure, and \(l\) is the number of hours of leisure, then \(16 - l\) hours remain for work. Multiplying by the hourly wage and adding the other income, we get the total income, which is equal to the consumption spending (<a href="#pavyzdys-5">Example 5</a>).</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. THE SYSTEM OF EQUATIONS ============ -->
+  <section class="section" id="sistema" aria-labelledby="h-sys">
+    <h2 id="h-sys">The system of equations, several critical points and the sufficient condition</h2>
+    <article class="card">
+      <p>The model is solved as in the <a href="tema-9-salyginis-optimizavimas.html#sistema">previous section</a>. We build the Lagrangian function \(L(x;\,y;\,\lambda) = f(x;\,y) - \lambda\big(g(x;\,y) - m\big)\), set both first order partial derivatives equal to zero and add the constraint equation to the system. After solving the system of three equations, at each critical point \(K(x_0;\,y_0)\), also substituting the corresponding value \(\lambda_0\) of the multiplier, we calculate the values of the second order derivatives \(A\), \(B\), \(C\) and \(D = AC - B^2\). For a Cobb-Douglas function we can use its concavity (see <a href="tema-9.html#kobo-daglas-l">“Cobb-Douglas functions in constrained optimization problems”</a>).</p>
+
+      <h3 class="subhead">Methods of solving the system</h3>
+      <ul>
+        <li><strong>A linear system</strong> (the sum of the squared distances and a straight road) is solved by substitution or by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a> (<a href="#pavyzdys-2">Example 2</a>).</li>
+        <li><strong>When the constraint is a curve</strong> (a circle, an ellipse, a production possibilities curve), the equations contain the products \(\lambda x\), \(\lambda y\) and squares, so the system is non-linear and Gaussian elimination cannot be used. We express \(\lambda\) from the first two equations, set the expressions equal and get a relation between \(x\) and \(y\). Substituting it into the constraint often gives an incomplete quadratic equation, which we factor (Examples <a href="#pavyzdys-1">1</a>, <a href="#pavyzdys-3">3</a> and <a href="#pavyzdys-4">4</a>).</li>
+        <li><strong>A Cobb-Douglas function</strong> – we move the terms with \(\lambda\) to the right-hand sides and divide one equation by the other (<a href="#pavyzdys-5">Example 5</a>).</li>
+        <li><strong>Exponential functions</strong> – after setting the expressions for \(\lambda\) equal, we take the logarithm of both sides of the equation (<a href="#pavyzdys-6">Example 6</a>).</li>
+      </ul>
+      <p>An incomplete quadratic equation has two solutions of opposite signs. If the variables are quantities or dimensions, the negative solution is rejected. If the variables are the coordinates of a point on a map, both solutions are suitable.</p>
+
+      <h3 class="subhead">Several critical points</h3>
+      <p>When the constraint defines a curve, the system may have several solutions. The sufficient condition is checked at each point. One point may be a maximum point and another a minimum point (<a href="#pavyzdys-4">Example 4</a>).</p>
+
+      <h3 class="subhead">When the test is not sufficient</h3>
+      <p>If \(D = 0\), the function is examined along the constraint curve. When the admissible curve is an arc with endpoints, we compare the values of the objective function at its endpoints and at the interior critical points (<a href="#pavyzdys-3">Example 3</a>).</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">How to solve</h2>
+    <article class="card">
+      <ol class="steps-list">
+        <li>Answer the three questions and write the model: the variables, the objective function \(f(x;\,y)\) and the constraint \(g(x;\,y) = m\) (see <a href="#modelis">“Building a constrained optimization model”</a>).</li>
+        <li>Write down the Lagrangian function \(L = f - \lambda(g - m)\).</li>
+        <li>Find \(L'_x\) and \(L'_y\), set them equal to zero and add the constraint equation to the system. Solve the system of three equations and reject the solutions that have no meaning in the problem. Label the critical points \(K\) or \(K_1\), \(K_2\), and so on, and write the values of \(\lambda\) separately.</li>
+        <li>Check the sufficient condition at each critical point: \(A = L''_{xx}(K)\), \(B = L''_{xy}(K)\), \(C = L''_{yy}(K)\). If \(D = 0\), examine the objective function along the constraint curve.</li>
+        <li>Calculate the quantities asked for and write the answer in the words of the problem.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The dimensions of the rectangle are confused with the coordinates of its corner.</strong> If the corner is \((x;\,y)\), the sides of the rectangle are \(2x\) and \(2y\), and its area is \(4xy\), not \(xy\).</li>
+            <li><strong>The distance with the root is minimized.</strong> The calculations are much simpler when the squared distance is minimized – the smallest value is reached at the same point.</li>
+            <li><strong>A needed solution is rejected.</strong> The coordinates of a point on a map may be negative, so a negative solution is rejected only when the variable is a quantity or a dimension.</li>
+            <li><strong>The sufficient condition is checked at one point only.</strong> When there are several critical points, the value of \(\lambda\) obtained for each of them is substituted at that point.</li>
+            <li><strong>A conclusion is drawn when \(D = 0\).</strong> In this case the test is not sufficient, so the function has to be examined along the constraint curve.</li>
+            <li><strong>Gaussian elimination is applied to a non-linear system.</strong> Gaussian elimination is suitable only for systems of linear equations.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <!-- Example 1: AM 9.4, Example 1 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>Wheat and barley on a farm</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A farm grows wheat and barley. With its land, machines and workers it can produce \(x\) tonnes of wheat and \(y\) tonnes of barley a year. When all the resources are used fully, the possible combinations satisfy the equation
+\[ x^2 + 2y^2 = 6800 \]
+This curve is called the <strong>production possibilities curve</strong>. To produce more wheat, the farm has to produce less barley. Wheat is sold at 60&nbsp;euros and barley at 80&nbsp;euros per tonne.
+<br>How much wheat and barley should the farm produce to maximize the revenue? What is the maximum revenue?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables:</strong> \(x\) is the amount of wheat produced a year, in tonnes, and \(y\) is the amount of barley, in tonnes.</p>
+          <p><strong>The objective function.</strong> The maximum revenue has to be found. A tonne of wheat is sold at 60&nbsp;euros, so \(x\) tonnes bring \(60x\) euros. A tonne of barley is sold at 80&nbsp;euros, so \(y\) tonnes bring \(80y\) euros. The revenue is the sum of these amounts:</p>
+          \[ R(x;\,y) = 60x + 80y \]
+          <p><strong>The constraint.</strong> When all the resources are used fully, the production combination \((x;\,y)\) is on the production possibilities curve, so it satisfies its equation \(x^2 + 2y^2 = 6800\).</p>
+          <p>We look for the maximum revenue with respect to \(x\) and \(y\) when the production combination is on the production possibilities curve:</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; R(x;\,y) = 60x + 80y \\ &amp;\text{subject to}\;\; x^2 + 2y^2 = 6800 \end{aligned} \]
+          <p>The figure shows the lines of equal revenue \(60x + 80y = R\). The further a line is from the origin, the larger the revenue. The largest revenue is reached on the line that still has a common point with the curve, i.e. touches it.</p>
+          <figure class="abs-fig abs-fig--sm">
+          <svg viewBox="0 0 360 272" role="img" aria-label="The production possibilities curve x² + 2y² = 6800 in the first quadrant and three lines of equal revenue 60x + 80y = 4800, 6800 and 8800. The line R = 6800 touches the curve at (60; 40)"><line class="grid" x1="34.0" y1="18.0" x2="34.0" y2="246.0"/><line class="grid" x1="82.0" y1="18.0" x2="82.0" y2="246.0"/><line class="grid" x1="130.0" y1="18.0" x2="130.0" y2="246.0"/><line class="grid" x1="178.0" y1="18.0" x2="178.0" y2="246.0"/><line class="grid" x1="226.0" y1="18.0" x2="226.0" y2="246.0"/><line class="grid" x1="274.0" y1="18.0" x2="274.0" y2="246.0"/><line class="grid" x1="322.0" y1="18.0" x2="322.0" y2="246.0"/><line class="grid" x1="34.0" y1="246.0" x2="334.0" y2="246.0"/><line class="grid" x1="34.0" y1="198.0" x2="334.0" y2="198.0"/><line class="grid" x1="34.0" y1="150.0" x2="334.0" y2="150.0"/><line class="grid" x1="34.0" y1="102.0" x2="334.0" y2="102.0"/><line class="grid" x1="34.0" y1="54.0" x2="334.0" y2="54.0"/><line class="ax" x1="34.0" y1="246.0" x2="334.0" y2="246.0"/><path class="ah" d="M344.0 246.0L334.0 241.5L334.0 250.5Z"/><line class="ax" x1="34.0" y1="246.0" x2="34.0" y2="18.0"/><path class="ah" d="M34.0 8.0L29.5 18.0L38.5 18.0Z"/><text class="m" x="336.0" y="237.0">x</text><text class="m" x="43.0" y="16.0">y</text><text class="muted" x="82.0" y="262.0" text-anchor="middle">20</text><text class="muted" x="130.0" y="262.0" text-anchor="middle">40</text><text class="muted" x="178.0" y="262.0" text-anchor="middle">60</text><text class="muted" x="226.0" y="262.0" text-anchor="middle">80</text><text class="muted" x="274.0" y="262.0" text-anchor="middle">100</text><text class="muted" x="27.0" y="202.0" text-anchor="end">20</text><text class="muted" x="27.0" y="154.0" text-anchor="end">40</text><text class="muted" x="27.0" y="106.0" text-anchor="end">60</text><text class="muted" x="27.0" y="58.0" text-anchor="end">80</text><text class="muted" x="27.0" y="262.0" text-anchor="end">0</text><path d="M231.9 246.0A197.9 139.9 0 0 0 34.0 106.1L34.0 246.0Z" fill="var(--chart)" fill-opacity=".08"/><line class="lp-iso" x1="34.0" y1="102.0" x2="226.0" y2="246.0"/><line class="lp-iso" x1="34.0" y1="42.0" x2="306.0" y2="246.0"/><line class="lp-iso" x1="82.0" y1="18.0" x2="334.0" y2="207.0"/><path class="ln" d="M231.9 246.0A197.9 139.9 0 0 0 34.0 106.1"/><circle class="pt-hi" cx="178.0" cy="150.0" r="5.5"/><text class="halo exam" x="186.0" y="141.0" text-anchor="start" style="font-weight:700">(60; 40)</text><text class="halo" x="77.2" y="129.4" text-anchor="middle" transform="rotate(36.9 77.2 129.4)" style="font-size:11px;font-weight:700;fill:var(--exam)">R = 4800</text><text class="halo" x="254.8" y="202.6" text-anchor="middle" transform="rotate(36.9 254.8 202.6)" style="font-size:11px;font-weight:700;fill:var(--exam)">R = 6800</text><text class="halo" x="264.4" y="149.8" text-anchor="middle" transform="rotate(36.9 264.4 149.8)" style="font-size:11px;font-weight:700;fill:var(--exam)">R = 8800</text></svg>
+          <figcaption>The production possibilities curve and three lines of equal revenue. The largest revenue is reached at the point where a revenue line touches the production possibilities curve.</figcaption>
+          </figure>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We rewrite the constraint in the form \(x^2 + 2y^2 - 6800 = 0\) and build the Lagrangian function:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 60x + 80y - \lambda\big(x^2 + 2y^2 - 6800\big) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 60x + 80y \\ &amp;\phantom{=}\; {}- \lambda\big(x^2 + 2y^2 - 6800\big) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>The derivatives of the revenue function are constant: \((60x)'_x = 60\), \((80y)'_y = 80\). The derivative of the term \(-\lambda\big(x^2 + 2y^2 - 6800\big)\) with respect to \(x\) is \(-2\lambda x\), and with respect to \(y\) – \(-4\lambda y\):</p>
+          <div class="m-wide">\[ L'_x = 60 - 2\lambda x;\qquad L'_y = 80 - 4\lambda y \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 60 - 2\lambda x \\ L'_y = 80 - 4\lambda y \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 60 - 2\lambda x &amp;= 0 \\ 80 - 4\lambda y &amp;= 0 \\ x^2 + 2y^2 &amp;= 6800 \end{aligned} \right. \]
+          <p>This system is not linear: the unknowns are multiplied by each other (\(\lambda x\), \(\lambda y\)), and in the constraint equation the variables are squared. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> In the first equation we move the term \(-2\lambda x\) to the right-hand side and divide both sides by \(2x\). In the second equation we move the term \(-4\lambda y\) and divide both sides by \(4y\). The quantities are positive, so \(x \ne 0\) and \(y \ne 0\):</p>
+          <div class="m-wide">\[ \lambda = \frac{60}{2x} = \frac{30}{x};\qquad \lambda = \frac{80}{4y} = \frac{20}{y} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{60}{2x} = \frac{30}{x} \\ \lambda = \frac{80}{4y} = \frac{20}{y} \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> We set the two expressions equal and cross-multiply. Then we divide both sides by 30:</p>
+          <div class="m-wide">\[ \frac{30}{x} = \frac{20}{y} \;\Longrightarrow\; 30y = 20x \;\Longrightarrow\; y = \frac{2x}{3} \]</div><div class="m-narrow">\[ \begin{gathered} \frac{30}{x} = \frac{20}{y} \\ \Longrightarrow\; 30y = 20x \\ \Longrightarrow\; y = \frac{2x}{3} \end{gathered} \]</div>
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression \(y = \frac{2x}{3}\) into the constraint equation. Since \(y\) is squared, \(y^2 = \frac{4x^2}{9}\). We multiply both sides by 9 and divide them by 17:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} x^2 + 2\cdot\frac{4x^2}{9} = 6800 \;\Longrightarrow\; 9x^2 + 8x^2 = 61\,200 \\ \Longrightarrow\; 17x^2 = 61\,200 \;\Longrightarrow\; x^2 = 3600 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2 + 2\cdot\frac{4x^2}{9} = 6800 \\ \Longrightarrow\; 9x^2 + 8x^2 = 61\,200 \\ \Longrightarrow\; 17x^2 = 61\,200 \\ \Longrightarrow\; x^2 = 3600 \end{gathered} \]</div>
+          <p>We have obtained an incomplete quadratic equation. We move the number 3600 to the left-hand side and factor by the difference of squares formula (\(3600 = 60^2\)):</p>
+          <div class="m-wide bp-lg">\[ x^2 - 3600 = 0 \;\Longrightarrow\; (x - 60)(x + 60) = 0 \;\Longrightarrow\; x = 60\ \text{or}\ x = -60 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2 - 3600 = 0 \\ \Longrightarrow\; (x - 60)(x + 60) = 0 \\ \Longrightarrow\; x = 60\ \text{or}\ x = -60 \end{gathered} \]</div>
+          <p>The amount of wheat cannot be negative, so \(x = 60\). Then \(y = \frac{2\cdot 60}{3} = 40\), and \(\lambda = \frac{30}{60} = 0.5\). We obtain the critical point \(K(60;\,40)\) and the value of the Lagrange multiplier \(\lambda = 0.5\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order derivatives \(L''_{xx} = -2\lambda\), \(L''_{xy} = 0\) and \(L''_{yy} = -4\lambda\) depend on \(\lambda\), so they are not numbers. We substitute into them the value \(\lambda = 0.5\) obtained for the critical point \(K(60;\,40)\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -2\cdot 0.5 = -1 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -4\cdot 0.5 = -2 \\ D &amp;= AC - B^2 = (-1)\cdot(-2) - 0^2 = 2 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -2\cdot 0.5 = -1 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -4\cdot 0.5 = -2 \\ D &amp;= AC - B^2 \\ &amp;= (-1)\cdot(-2) - 0^2 = 2 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(60;\,40)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The maximum revenue</span></h4>
+          <p>We substitute the coordinates of the critical point into the revenue function:</p>
+          <div class="m-wide">\[ R_{\max}(60;\,40) = 60\cdot 60 + 80\cdot 40 = 3600 + 3200 = 6800 \]</div><div class="m-narrow">\[ \begin{aligned} R_{\max}(60;\,40) &amp;= 60\cdot 60 + 80\cdot 40 \\ &amp;= 3600 + 3200 = 6800 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The farm should produce 60 tonnes of wheat and 40 tonnes of barley a year. The maximum revenue is 6800 euros a year.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 9.4, Example 2 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>A depot on a highway</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A distribution company serves three shops located at the points \(A(2;\,8)\), \(B(10;\,6)\) and \(C(6;\,4)\) of a map. The coordinates are in kilometres. The company wants to build a depot \(D(x;\,y)\) right next to a highway whose equation on the map is \(x + y = 8\). The depot should be placed so that the sum of the squared distances from it to the three shops is as small as possible.
+<br>Where should the depot be built?
+<figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 335 294" role="img" aria-label="Map: the shops A(2; 8), B(10; 6), C(6; 4), the highway x + y = 8 and the depot D(x; y) on the highway, joined to the shops by dashed lines"><line class="grid" x1="34" y1="18" x2="34" y2="268"/><line class="grid" x1="84" y1="18" x2="84" y2="268"/><line class="grid" x1="134" y1="18" x2="134" y2="268"/><line class="grid" x1="184" y1="18" x2="184" y2="268"/><line class="grid" x1="234" y1="18" x2="234" y2="268"/><line class="grid" x1="284" y1="18" x2="284" y2="268"/><line class="grid" x1="34" y1="268" x2="309" y2="268"/><line class="grid" x1="34" y1="218" x2="309" y2="218"/><line class="grid" x1="34" y1="168" x2="309" y2="168"/><line class="grid" x1="34" y1="118" x2="309" y2="118"/><line class="grid" x1="34" y1="68" x2="309" y2="68"/><line class="grid" x1="34" y1="18" x2="309" y2="18"/><line class="ax" x1="34" y1="268" x2="309" y2="268"/><path class="ah" d="M319 268L309 263.5L309 272.5Z"/><line class="ax" x1="34" y1="268" x2="34" y2="18"/><path class="ah" d="M34 8L29.5 18L38.5 18Z"/><text class="m" x="311" y="259">x</text><text class="m" x="43" y="16">y</text><text class="muted" x="84" y="284" text-anchor="middle">2</text><text class="muted" x="134" y="284" text-anchor="middle">4</text><text class="muted" x="184" y="284" text-anchor="middle">6</text><text class="muted" x="234" y="284" text-anchor="middle">8</text><text class="muted" x="284" y="284" text-anchor="middle">10</text><text class="muted" x="27" y="222" text-anchor="end">2</text><text class="muted" x="27" y="172" text-anchor="end">4</text><text class="muted" x="27" y="122" text-anchor="end">6</text><text class="muted" x="27" y="72" text-anchor="end">8</text><text class="muted" x="27" y="284" text-anchor="end">0</text><line class="ln2" x1="34" y1="68.0" x2="234.0" y2="268"/><line x1="96.5" y1="130.5" x2="84" y2="68" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="96.5" y1="130.5" x2="284" y2="118" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="96.5" y1="130.5" x2="184" y2="168" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><circle class="pt" cx="84" cy="68" r="5.5"/><text class="halo" x="92" y="60" text-anchor="start" style="font-weight:700">A(2; 8)</text><circle class="pt" cx="284" cy="118" r="5.5"/><text class="halo" x="284" y="106" text-anchor="middle" style="font-weight:700">B(10; 6)</text><circle class="pt" cx="184" cy="168" r="5.5"/><text class="halo" x="193" y="184" text-anchor="start" style="font-weight:700">C(6; 4)</text><circle class="pt-hi" cx="96.5" cy="130.5" r="5.5"/><text class="halo exam" x="104.5" y="120.5" text-anchor="start" style="font-weight:700">D(x; y)</text><text class="halo" x="241.5" y="255.5" text-anchor="start" style="font-weight:700;fill:var(--chart-2)">x + y = 8</text></svg>
+<figcaption>The shops, the highway and the depot \(D\) on the highway.</figcaption>
+</figure>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The variables and the squared distances</span></h4>
+          <p>The location of the depot is chosen, so the variables are the coordinates \(x\) and \(y\) of the point \(D\).</p>
+          <p>The squared distance between the points \((x;\,y)\) and \((a;\,b)\) is \((x - a)^2 + (y - b)^2\) (see <a href="tema-9-sudetingesni-uzdaviniai.html#tikslo">“Building the objective function”</a>). Substituting the coordinates of each shop, we get the squared distances from \(D\):</p>
+          \[ \begin{aligned} DA^2 &amp;= (x - 2)^2 + (y - 8)^2 \\ DB^2 &amp;= (x - 10)^2 + (y - 6)^2 \\ DC^2 &amp;= (x - 6)^2 + (y - 4)^2 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The model</span></h4>
+          <p><strong>The objective function</strong> is the sum of these three squares:</p>
+          <div class="m-wide bp-lg">\[ T(x;\,y) = (x - 2)^2 + (y - 8)^2 + (x - 10)^2 + (y - 6)^2 + (x - 6)^2 + (y - 4)^2 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;T(x;\,y) \\ &amp;= (x - 2)^2 + (y - 8)^2 \\ &amp;\phantom{=}\; {}+ (x - 10)^2 + (y - 6)^2 \\ &amp;\phantom{=}\; {}+ (x - 6)^2 + (y - 4)^2 \end{aligned} \]</div>
+          <p><strong>The constraint.</strong> The depot has to be right next to the highway, i.e. the point \(D\) is on the highway line. Therefore its coordinates satisfy the equation of the highway \(x + y = 8\).</p>
+          <p>We look for the minimum sum of the squared distances with respect to \(x\) and \(y\) subject to the constraint:</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; T(x;\,y) \\ &amp;\text{subject to}\;\; x + y = 8 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The Lagrangian function</span></h4>
+          <p>We rewrite the constraint in the form \(x + y - 8 = 0\) and build the Lagrangian function:</p>
+          \[ L(x;\,y;\,\lambda) = T(x;\,y) - \lambda(x + y - 8) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The system of equations</span></h4>
+          <p>By the chain rule, \(\big((x - 2)^2\big)'_x = 2(x - 2)\). When differentiating with respect to \(x\), the terms that depend only on \(y\) are constants. After expanding the brackets and collecting like terms, we get:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} L'_x &amp;= 2(x - 2) + 2(x - 10) + 2(x - 6) - \lambda = 6x - 36 - \lambda \\ L'_y &amp;= 2(y - 8) + 2(y - 6) + 2(y - 4) - \lambda = 6y - 36 - \lambda \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} L'_x &amp;= 2(x - 2) + 2(x - 10) \\ &amp;\phantom{=}\; {}+ 2(x - 6) - \lambda \\ &amp;= 6x - 36 - \lambda \\[4pt] L'_y &amp;= 2(y - 8) + 2(y - 6) \\ &amp;\phantom{=}\; {}+ 2(y - 4) - \lambda \\ &amp;= 6y - 36 - \lambda \end{aligned} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 6x - 36 - \lambda &amp;= 0 \\ 6y - 36 - \lambda &amp;= 0 \\ x + y &amp;= 8 \end{aligned} \right. \]
+          <p>All the unknowns are of the first degree and are not multiplied by each other, so the system is <strong>linear</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Solving the system by substitution</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> In the first two equations we move the term \(-\lambda\) to the right-hand side:</p>
+          <div class="m-wide">\[ \lambda = 6x - 36;\qquad \lambda = 6y - 36 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 6x - 36 \\ \lambda = 6y - 36 \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> We set the two expressions equal. The number \(-36\) cancels on both sides, and then we divide both sides by 6:</p>
+          <div class="m-wide">\[ 6x - 36 = 6y - 36 \;\Longrightarrow\; 6x = 6y \;\Longrightarrow\; x = y \]</div><div class="m-narrow">\[ \begin{gathered} 6x - 36 = 6y - 36 \\ \Longrightarrow\; 6x = 6y \\ \Longrightarrow\; x = y \end{gathered} \]</div>
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression \(y = x\) into the constraint equation \(x + y = 8\):</p>
+          <div class="m-wide">\[ x + x = 8 \;\Longrightarrow\; 2x = 8 \;\Longrightarrow\; x = 4 \]</div><div class="m-narrow">\[ \begin{gathered} x + x = 8 \\ \Longrightarrow\; 2x = 8 \\ \Longrightarrow\; x = 4 \end{gathered} \]</div>
+          <p>Then \(y = x = 4\), and \(\lambda = 6\cdot 4 - 36 = -12\) (both expressions give the same value). We obtain the critical point \(K(4;\,4)\) and the value of the Lagrange multiplier \(\lambda = -12\).</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>First we rearrange the equations: the unknowns are written on the left-hand side in the order \(x\), \(y\), \(\lambda\), and the numbers are moved to the right-hand side:</p>
+          <div class="m-wide">\[ \begin{aligned} 6x - 36 - \lambda = 0 \;&amp;\Longrightarrow\; 6x - \lambda = 36 \\ 6y - 36 - \lambda = 0 \;&amp;\Longrightarrow\; 6y - \lambda = 36 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 6x - 36 - \lambda = 0 \\ \Longrightarrow\; 6x - \lambda = 36 \\[4pt] 6y - 36 - \lambda = 0 \\ \Longrightarrow\; 6y - \lambda = 36 \end{gathered} \]</div>
+          <p>The second equation does not contain \(y\), and the third does not contain \(x\), so the corresponding elements of the matrix are 0.</p>
+          <p>The columns of the augmented matrix are the coefficients of the unknowns \(x\), \(y\) and \(\lambda\), and the last column contains the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>). In the constraint equation the coefficient of \(x\) is 1, so it is written as the first row:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 8 \\ 6 &amp; 0 &amp; -1 &amp; 36 \\ 0 &amp; 6 &amp; -1 &amp; 36 \end{array}\right) \]
+          <p>The first element of the third row is already 0, so we multiply the first row by \(-6\) and add it to the second row only:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 8 \\ 6 &amp; 0 &amp; -1 &amp; 36 \\ 0 &amp; 6 &amp; -1 &amp; 36 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-6)} \\ \htmlClass{ha}{\downarrow} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 8 \\ \htmlClass{hc}{0} &amp; -6 &amp; -1 &amp; -12 \\ 0 &amp; 6 &amp; -1 &amp; 36 \end{array}\right)\)</span></div>
+          <p>The pivot element \(-6\) of the second row is not divided, to avoid fractions: the element 6 below it becomes zero when the second row is simply added to the third row (multiplier 1). We divide the new third row by \(-2\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 8 \\ 0 &amp; \htmlClass{hd}{-6} &amp; -1 &amp; -12 \\ 0 &amp; 6 &amp; -1 &amp; 36 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(1)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 8 \\ 0 &amp; -6 &amp; -1 &amp; -12 \\ 0 &amp; \htmlClass{hc}{0} &amp; -2 &amp; 24 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-2)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 8 \\ 0 &amp; -6 &amp; -1 &amp; -12 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; -12 \end{array}\right)\)</span></div>
+          <p><strong>Back substitution.</strong> The third row gives \(\lambda = -12\). The second row stands for the equation \(-6y - \lambda = -12\), and the first for \(x + y = 8\):</p>
+          <div class="m-wide">\[ -6y + 12 = -12 \;\Longrightarrow\; y = 4;\qquad x + 4 = 8 \;\Longrightarrow\; x = 4 \]</div><div class="m-narrow">\[ \begin{gathered} -6y + 12 = -12 \;\Longrightarrow\; y = 4 \\ x + 4 = 8 \;\Longrightarrow\; x = 4 \end{gathered} \]</div>
+          <p>The same solution is obtained: \(x = 4\), \(y = 4\), \(\lambda = -12\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives of the Lagrangian function are constant and do not depend on \(\lambda\), so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx}(K) = 6;\quad B = L''_{xy}(K) = 0;\quad C = L''_{yy}(K) = 6 \\ D = AC - B^2 = 6\cdot 6 - 0^2 = 36 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 6 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 6 \\ D &amp;= AC - B^2 \\ &amp;= 6\cdot 6 - 0^2 \\ &amp;= 36 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K(4;\,4)\) is a minimum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The minimum sum of the squared distances</span></h4>
+          <p>We substitute the coordinates of the critical point into the objective function:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} T_{\min}(4;\,4) &amp;= \big[(4 - 2)^2 + (4 - 8)^2\big] + \big[(4 - 10)^2 + (4 - 6)^2\big] \\ &amp;\phantom{=}\; {}+ \big[(4 - 6)^2 + (4 - 4)^2\big] \\ &amp;= (4 + 16) + (36 + 4) + (4 + 0) = 64 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;T_{\min}(4;\,4) \\ &amp;= \big[(4 - 2)^2 + (4 - 8)^2\big] \\ &amp;\phantom{=}\; {}+ \big[(4 - 10)^2 + (4 - 6)^2\big] \\ &amp;\phantom{=}\; {}+ \big[(4 - 6)^2 + (4 - 4)^2\big] \\ &amp;= (4 + 16) + (36 + 4) + (4 + 0) \\ &amp;= 64 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The depot should be built at the point \((4;\,4)\) of the highway. The minimum sum of the squared distances is 64.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 9.4, Example 3 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>A rectangular platform in an elliptical square</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        An events company is preparing an open-air festival in a city square shaped like an ellipse. The origin of the map is at the centre of the square, and the edge of the square is the ellipse
+\[ x^2 + 4y^2 = 7200 \]
+whose coordinates are in metres. The organisers want to set up a rectangular platform for the audience. The sides of the rectangle must be parallel to the coordinate axes, and its corners must be on the ellipse.
+<br>What are the dimensions of the largest such rectangle? What is its area?
+<figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 413 231" role="img" aria-label="The ellipse x² + 4y² = 7200 with its centre at the origin and an inscribed rectangle with sides parallel to the axes; the corner (x; y), the side lengths 2x and 2y"><line class="ax" x1="34.0" y1="111.8" x2="387.6" y2="111.8"/><path class="ah" d="M397.6 111.8L387.6 107.2L387.6 116.2Z"/><line class="ax" x1="210.8" y1="205.5" x2="210.8" y2="18.0"/><path class="ah" d="M210.8 8.0L206.3 18.0L215.3 18.0Z"/><text class="m" x="389.6" y="102.8">x</text><text class="m" x="219.8" y="16.0">y</text><ellipse class="ln" cx="210.8" cy="111.8" rx="150.0" ry="75.0" fill="var(--chart)" fill-opacity=".08"/><rect x="118.9" y="52.5" width="183.8" height="118.5" fill="var(--exam)" fill-opacity=".12" stroke="var(--exam)" stroke-width="2.4"/><circle class="pt-hi" cx="302.7" cy="52.5" r="5.5"/><text class="halo exam" x="310.7" y="44.5" text-anchor="start" style="font-weight:700">(x; y)</text><text class="m halo" x="210.8" y="164.0" text-anchor="middle">2x</text><text class="m halo" x="125.9" y="105.8" text-anchor="start">2y</text><line x1="302.7" y1="111.8" x2="302.7" y2="52.5" class="guide"/><line x1="210.8" y1="52.5" x2="302.7" y2="52.5" class="guide"/><text class="m halo" x="256.7" y="127.8" text-anchor="middle">x</text><text class="m halo" x="204.8" y="86.1" text-anchor="end">y</text><text class="halo" x="293.3" y="195.8" text-anchor="start" style="font-weight:700;fill:var(--chart)">x² + 4y² = 7200</text></svg>
+<figcaption>A rectangle inscribed in the ellipse with the corner \((x;\,y)\).</figcaption>
+</figure>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables.</strong> Let \((x;\,y)\) be the corner of the rectangle in the first quadrant. The variables are the coordinates of this corner, \(x &gt; 0\) and \(y &gt; 0\).</p>
+          <p><strong>The objective function – the area.</strong> The ellipse is symmetric with respect to both coordinate axes, so the rectangle is symmetric too: its other corners are \((-x;\,y)\), \((-x;\,-y)\) and \((x;\,-y)\). Therefore the sides of the rectangle are \(2x\) and \(2y\) long, and its area is</p>
+          \[ S(x;\,y) = 2x\cdot 2y = 4xy \]
+          <p><strong>The constraint.</strong> The corner \((x;\,y)\) is on the ellipse, so its coordinates satisfy the equation of the ellipse \(x^2 + 4y^2 = 7200\).</p>
+          <p>We look for the largest area with respect to \(x\) and \(y\) when the corner is on the ellipse:</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; S(x;\,y) = 4xy \\ &amp;\text{subject to}\;\; x^2 + 4y^2 = 7200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We rewrite the constraint in the form \(x^2 + 4y^2 - 7200 = 0\) and build the Lagrangian function:</p>
+          \[ L(x;\,y;\,\lambda) = 4xy - \lambda\big(x^2 + 4y^2 - 7200\big) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>The derivatives of the area function are \((4xy)'_x = 4y\) and \((4xy)'_y = 4x\). The derivative of the constraint term with respect to \(x\) is \(-2\lambda x\), and with respect to \(y\) – \(-8\lambda y\):</p>
+          <div class="m-wide">\[ L'_x = 4y - 2\lambda x;\qquad L'_y = 4x - 8\lambda y \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 4y - 2\lambda x \\ L'_y = 4x - 8\lambda y \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 4y - 2\lambda x &amp;= 0 \\ 4x - 8\lambda y &amp;= 0 \\ x^2 + 4y^2 &amp;= 7200 \end{aligned} \right. \]
+          <p>This system is not linear: the unknowns are multiplied by each other (\(\lambda x\), \(\lambda y\)), and in the constraint equation the variables are squared. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> In the first equation we move the term \(-2\lambda x\) to the right-hand side and divide both sides by \(2x\). In the second equation we move the term \(-8\lambda y\) and divide both sides by \(8y\):</p>
+          <div class="m-wide">\[ \lambda = \frac{4y}{2x} = \frac{2y}{x};\qquad \lambda = \frac{4x}{8y} = \frac{x}{2y} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{4y}{2x} = \frac{2y}{x} \\ \lambda = \frac{4x}{8y} = \frac{x}{2y} \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> We set the two expressions equal and cross-multiply. Then we move all the terms to one side and factor by the difference of squares formula:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} \frac{2y}{x} = \frac{x}{2y} \;\Longrightarrow\; 4y^2 = x^2 \\ \Longrightarrow\; x^2 - 4y^2 = 0 \;\Longrightarrow\; (x - 2y)(x + 2y) = 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{2y}{x} = \frac{x}{2y} \\ \Longrightarrow\; 4y^2 = x^2 \\ \Longrightarrow\; x^2 - 4y^2 = 0 \\ \Longrightarrow\; (x - 2y)(x + 2y) = 0 \end{gathered} \]</div>
+          <p>The dimensions are positive, so \(x + 2y &gt; 0\). This leaves \(x - 2y = 0\), i.e. \(x = 2y\).</p>
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression \(x = 2y\) into the constraint equation (\((2y)^2 = 4y^2\)) and divide both sides by 8:</p>
+          <div class="m-wide bp-lg">\[ (2y)^2 + 4y^2 = 7200 \;\Longrightarrow\; 8y^2 = 7200 \;\Longrightarrow\; y^2 = 900 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} (2y)^2 + 4y^2 = 7200 \\ \Longrightarrow\; 8y^2 = 7200 \\ \Longrightarrow\; y^2 = 900 \end{gathered} \]</div>
+          <p>We factor the incomplete quadratic equation (\(900 = 30^2\)):</p>
+          <div class="m-wide bp-lg">\[ y^2 - 900 = 0 \;\Longrightarrow\; (y - 30)(y + 30) = 0 \;\Longrightarrow\; y = 30\ \text{or}\ y = -30 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y^2 - 900 = 0 \\ \Longrightarrow\; (y - 30)(y + 30) = 0 \\ \Longrightarrow\; y = 30\ \text{or}\ y = -30 \end{gathered} \]</div>
+          <p>We take the positive solution \(y = 30\). Then \(x = 2\cdot 30 = 60\), and \(\lambda = \frac{2\cdot 30}{60} = 1\). We obtain the critical point \(K(60;\,30)\) and the value of the Lagrange multiplier \(\lambda = 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order derivatives are \(L''_{xx} = -2\lambda\), \(L''_{xy} = 4\) and \(L''_{yy} = -8\lambda\). We substitute into them the value \(\lambda = 1\) obtained for the critical point \(K(60;\,30)\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -2\cdot 1 = -2 \\ B &amp;= L''_{xy}(K) = 4 \\ C &amp;= L''_{yy}(K) = -8\cdot 1 = -8 \\ D &amp;= AC - B^2 = (-2)\cdot(-8) - 4^2 = 16 - 16 = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -2\cdot 1 = -2 \\ B &amp;= L''_{xy}(K) = 4 \\ C &amp;= L''_{yy}(K) = -8\cdot 1 = -8 \\ D &amp;= AC - B^2 \\ &amp;= (-2)\cdot(-8) - 4^2 = 16 - 16 \\ &amp;= 0 \end{aligned} \]</div>
+          <p>\(D = 0\), so this test is not sufficient (see <a href="#sistema">“When the test is not sufficient”</a>). We examine the area along the admissible curve. The corner \((x;\,y)\) can be at any point of the arc of the ellipse in the first quadrant – from the point \(\big(\sqrt{7200};\,0\big)\) to the point \(\big(0;\,\sqrt{1800}\big)\). The area function is continuous on the closed arc, so it reaches a largest value. At the endpoints of the arc one dimension is zero, so the area is zero. Inside the arc the only critical point is \(K(60;\,30)\), so the area is largest there.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The largest area and the dimensions</span></h4>
+          <p>The sides of the rectangle are \(2x = 2\cdot 60 = 120\) metres and \(2y = 2\cdot 30 = 60\) metres, and its area is</p>
+          \[ S_{\max}(60;\,30) = 4\cdot 60\cdot 30 = 7200 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The rectangle should be \(2\cdot 60 = 120\) metres long and \(2\cdot 30 = 60\) metres wide. Its area would be 7200 square metres.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 9.4, Example 4 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Connecting a factory to a ring road</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A city is surrounded by a circular ring road. The origin of the map is at the city centre. The ring road is the circle
+\[ x^2 + y^2 = 25 \]
+whose coordinates are in kilometres. A factory outside the city is located at the point \(F(6;\,8)\). It wants to build a straight access road to the ring road, as short as possible.
+<br>At which point should the access road join the ring road? How long would it be? Find the point of the ring road for which the squared distance to the factory is the smallest.
+<figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 349 333" role="img" aria-label="The ring road – the circle x² + y² = 25 with its centre at the origin, the factory F(6; 8) and the access road from F to the point (x; y) of the ring road"><line class="grid" x1="51" y1="18" x2="51" y2="307"/><line class="grid" x1="85" y1="18" x2="85" y2="307"/><line class="grid" x1="119" y1="18" x2="119" y2="307"/><line class="grid" x1="153" y1="18" x2="153" y2="307"/><line class="grid" x1="187" y1="18" x2="187" y2="307"/><line class="grid" x1="221" y1="18" x2="221" y2="307"/><line class="grid" x1="255" y1="18" x2="255" y2="307"/><line class="grid" x1="289" y1="18" x2="289" y2="307"/><line class="grid" x1="323" y1="18" x2="323" y2="307"/><line class="grid" x1="34" y1="290" x2="323" y2="290"/><line class="grid" x1="34" y1="256" x2="323" y2="256"/><line class="grid" x1="34" y1="222" x2="323" y2="222"/><line class="grid" x1="34" y1="188" x2="323" y2="188"/><line class="grid" x1="34" y1="154" x2="323" y2="154"/><line class="grid" x1="34" y1="120" x2="323" y2="120"/><line class="grid" x1="34" y1="86" x2="323" y2="86"/><line class="grid" x1="34" y1="52" x2="323" y2="52"/><line class="grid" x1="34" y1="18" x2="323" y2="18"/><line class="ax" x1="34" y1="188" x2="323" y2="188"/><path class="ah" d="M333 188L323 183.5L323 192.5Z"/><line class="ax" x1="153" y1="307" x2="153" y2="18"/><path class="ah" d="M153 8L148.5 18L157.5 18Z"/><text class="m" x="325" y="179">x</text><text class="m" x="162" y="16">y</text><text class="muted" x="51" y="204" text-anchor="middle">-6</text><text class="muted" x="85" y="204" text-anchor="middle">-4</text><text class="muted" x="119" y="204" text-anchor="middle">-2</text><text class="muted" x="187" y="204" text-anchor="middle">2</text><text class="muted" x="221" y="204" text-anchor="middle">4</text><text class="muted" x="255" y="204" text-anchor="middle">6</text><text class="muted" x="289" y="204" text-anchor="middle">8</text><text class="muted" x="146" y="294" text-anchor="end">-6</text><text class="muted" x="146" y="260" text-anchor="end">-4</text><text class="muted" x="146" y="226" text-anchor="end">-2</text><text class="muted" x="146" y="158" text-anchor="end">2</text><text class="muted" x="146" y="124" text-anchor="end">4</text><text class="muted" x="146" y="90" text-anchor="end">6</text><text class="muted" x="146" y="56" text-anchor="end">8</text><text class="muted" x="146" y="204" text-anchor="end">0</text><ellipse class="ln" cx="153" cy="188" rx="85" ry="85"/><line x1="255" y1="52" x2="117.1" y2="111.0" stroke="var(--exam)" stroke-width="3" stroke-linecap="round"/><circle class="pt" cx="255" cy="52" r="5.5"/><text class="halo" x="263" y="44" text-anchor="start" style="font-weight:700">F(6; 8)</text><circle class="pt-hi" cx="117.1" cy="111.0" r="5.5"/><text class="halo exam" x="108.1" y="102.0" text-anchor="end" style="font-weight:700">(x; y)</text><text class="halo" x="40.8" y="293.4" text-anchor="start" style="font-weight:700;fill:var(--chart)">x² + y² = 25</text></svg>
+<figcaption>The ring road and the factory \(F\). The access road reaches the ring road at the point \((x;\,y)\).</figcaption>
+</figure>
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables</strong> \(x\) and \(y\) are the coordinates of the point where the access road joins the ring road.</p>
+          <p><strong>The objective function.</strong> The road is straight, so its length is equal to the distance from \(F(6;\,8)\) to the point \((x;\,y)\):</p>
+          \[ d = \sqrt{(x - 6)^2 + (y - 8)^2} \]
+          <p>Instead of minimizing the distance \(d\), we minimize its square \(d^2 = (x - 6)^2 + (y - 8)^2\). Since the square root is an increasing function, \(d\) and \(d^2\) take their smallest values at the same point, and the derivatives of the squared distance are easier to calculate.</p>
+          <p><strong>The constraint.</strong> The road has to reach the ring road, so the point \((x;\,y)\) is on the circle and satisfies its equation \(x^2 + y^2 = 25\).</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; f(x;\,y) = (x - 6)^2 + (y - 8)^2 \\ &amp;\text{subject to}\;\; x^2 + y^2 = 25 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We rewrite the constraint in the form \(x^2 + y^2 - 25 = 0\) and build the Lagrangian function:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = (x - 6)^2 + (y - 8)^2 - \lambda\big(x^2 + y^2 - 25\big) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= (x - 6)^2 + (y - 8)^2 \\ &amp;\phantom{=}\; {}- \lambda\big(x^2 + y^2 - 25\big) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>By the chain rule, \(\big((x - 6)^2\big)'_x = 2(x - 6)\), and the derivative of the constraint term with respect to \(x\) is \(-2\lambda x\). The derivative with respect to \(y\) is found in the same way:</p>
+          <div class="m-wide">\[ L'_x = 2(x - 6) - 2\lambda x;\qquad L'_y = 2(y - 8) - 2\lambda y \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 2(x - 6) - 2\lambda x \\ L'_y = 2(y - 8) - 2\lambda y \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 2(x - 6) - 2\lambda x &amp;= 0 \\ 2(y - 8) - 2\lambda y &amp;= 0 \\ x^2 + y^2 &amp;= 25 \end{aligned} \right. \]
+          <p>This system is not linear: the unknowns are multiplied by each other (\(\lambda x\), \(\lambda y\)), and in the constraint equation the variables are squared. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> We divide the first equation by 2 and get \(x - 6 - \lambda x = 0\). If \(x = 0\), we would get \(-6 = 0\), so \(x \ne 0\). We move the term \(-\lambda x\) to the right-hand side and divide by \(x\). The second equation is rearranged in the same way (\(y \ne 0\)):</p>
+          <div class="m-wide">\[ \lambda = \frac{x - 6}{x};\qquad \lambda = \frac{y - 8}{y} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{x - 6}{x} \\ \lambda = \frac{y - 8}{y} \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> We set the expressions equal, multiply both sides by \(xy\) and expand the brackets. The term \(xy\) cancels on both sides:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} \frac{x - 6}{x} = \frac{y - 8}{y} \;\Longrightarrow\; (x - 6)y = (y - 8)x \;\Longrightarrow\; xy - 6y = xy - 8x \\ \Longrightarrow\; -6y = -8x \;\Longrightarrow\; y = \frac{4x}{3} \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{x - 6}{x} = \frac{y - 8}{y} \\ \Longrightarrow\; (x - 6)y = (y - 8)x \\ \Longrightarrow\; xy - 6y = xy - 8x \\ \Longrightarrow\; -6y = -8x \\ \Longrightarrow\; y = \frac{4x}{3} \end{gathered} \]</div>
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression \(y = \frac{4x}{3}\) into the constraint equation (\(y^2 = \frac{16x^2}{9}\)). We multiply both sides by 9 and divide them by 25:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} x^2 + \frac{16x^2}{9} = 25 \;\Longrightarrow\; 9x^2 + 16x^2 = 225 \\ \Longrightarrow\; 25x^2 = 225 \;\Longrightarrow\; x^2 = 9 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2 + \frac{16x^2}{9} = 25 \\ \Longrightarrow\; 9x^2 + 16x^2 = 225 \\ \Longrightarrow\; 25x^2 = 225 \\ \Longrightarrow\; x^2 = 9 \end{gathered} \]</div>
+          <p>We factor the incomplete quadratic equation:</p>
+          <div class="m-wide">\[ x^2 - 9 = 0 \;\Longrightarrow\; (x - 3)(x + 3) = 0 \;\Longrightarrow\; x = 3\ \text{or}\ x = -3 \]</div><div class="m-narrow">\[ \begin{gathered} x^2 - 9 = 0 \\ \Longrightarrow\; (x - 3)(x + 3) = 0 \\ \Longrightarrow\; x = 3\ \text{or}\ x = -3 \end{gathered} \]</div>
+          <p>Coordinates on a map can also be negative, so both solutions are suitable. For each of them we find \(y = \frac{4x}{3}\) and \(\lambda = \frac{x - 6}{x}\):</p>
+          <div class="m-wide">\[ \begin{aligned} x = 3:\quad &amp;y = 4;\quad \lambda = \frac{3 - 6}{3} = -1 \\ x = -3:\quad &amp;y = -4;\quad \lambda = \frac{-3 - 6}{-3} = 3 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} x = 3:\quad &amp;y = 4;\quad \lambda = \frac{3 - 6}{3} = -1 \\ x = -3:\quad &amp;y = -4 \\ &amp;\lambda = \frac{-3 - 6}{-3} = 3 \end{aligned} \]</div>
+          <p>There are two critical points. We label them \(K_1(3;\,4)\), where \(\lambda = -1\), and \(K_2(-3;\,-4)\), where \(\lambda = 3\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order derivatives contain \(\lambda\), so their values are calculated at each critical point separately:</p>
+          <div class="m-wide">\[ L''_{xx} = 2 - 2\lambda;\qquad L''_{xy} = 0;\qquad L''_{yy} = 2 - 2\lambda \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = 2 - 2\lambda \\ L''_{xy} = 0 \\ L''_{yy} = 2 - 2\lambda \end{gathered} \]</div>
+          <p><strong>The point \(K_1(3;\,4)\).</strong> We substitute the value \(\lambda = -1\) obtained for this point:</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K_1) = 2 - 2\cdot(-1) = 4 \\ B &amp;= L''_{xy}(K_1) = 0 \\ C &amp;= L''_{yy}(K_1) = 2 - 2\cdot(-1) = 4 \\ D &amp;= AC - B^2 = 4\cdot 4 - 0^2 = 16 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K_1) = 2 - 2\cdot(-1) \\ &amp;= 4 \\ B &amp;= L''_{xy}(K_1) = 0 \\ C &amp;= L''_{yy}(K_1) = 2 - 2\cdot(-1) \\ &amp;= 4 \\ D &amp;= AC - B^2 = 4\cdot 4 - 0^2 \\ &amp;= 16 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K_1\) is a minimum point.</p>
+          <p><strong>The point \(K_2(-3;\,-4)\).</strong> We substitute the value \(\lambda = 3\) obtained for this point:</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K_2) = 2 - 2\cdot 3 = -4 \\ B &amp;= L''_{xy}(K_2) = 0 \\ C &amp;= L''_{yy}(K_2) = 2 - 2\cdot 3 = -4 \\ D &amp;= AC - B^2 = (-4)\cdot(-4) - 0^2 = 16 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K_2) = 2 - 2\cdot 3 = -4 \\ B &amp;= L''_{xy}(K_2) = 0 \\ C &amp;= L''_{yy}(K_2) = 2 - 2\cdot 3 = -4 \\ D &amp;= AC - B^2 \\ &amp;= (-4)\cdot(-4) - 0^2 = 16 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K_2\) is a maximum point.</p>
+          <p>The point \(K_1(3;\,4)\) is the closest to the factory, and the point \(K_2(-3;\,-4)\) is the farthest, on the other side of the city.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The length of the shortest road</span></h4>
+          <p>The length of the road is equal to the distance from \(F(6;\,8)\) to the point \(K_1(3;\,4)\):</p>
+          <div class="m-wide">\[ d = \sqrt{(3 - 6)^2 + (4 - 8)^2} = \sqrt{9 + 16} = 5 \]</div><div class="m-narrow">\[ \begin{aligned} d &amp;= \sqrt{(3 - 6)^2 + (4 - 8)^2} \\ &amp;= \sqrt{9 + 16} = 5 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The access road should reach the ring road at the point \((3;\,4)\). It would be 5&nbsp;km long.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 5: AM 9.4, Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Working hours of a freelance designer</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A freelance designer can spend 16 hours a day on work and leisure. She earns 20&nbsp;euros per hour of work and, in addition, receives 80&nbsp;euros a day from renting out a flat. All her income is spent on consumption. Her daily utility from spending \(c\) euros and having \(l\) hours of leisure is
+\[ U(c;\,l) = c^{0.5}l^{0.5} \]
+How many hours a day should the designer work to maximize her utility? How much would she spend, and what would the maximum utility be?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The variables and the constraint</span></h4>
+          <p><strong>The variables:</strong> \(c\) is the daily consumption spending in euros, and \(l\) is the number of hours of leisure a day. This time the variables are denoted not by \(x\) and \(y\) but by letters that remind us of their meaning.</p>
+          <p><strong>The constraint</strong> is built step by step:</p>
+          <ul>
+            <li>16 hours are spent on work and leisure, so with \(l\) hours of leisure the designer works \(16 - l\) hours;</li>
+            <li>she earns 20&nbsp;euros for each hour of work, so she earns \(20(16 - l)\) euros;</li>
+            <li>adding the rental income of 80&nbsp;euros, we get the total daily income. All of it is spent on consumption, so it is equal to \(c\).</li>
+          </ul>
+          <div class="m-wide bp-lg">\[ \begin{gathered} c = 20(16 - l) + 80 \;\Longrightarrow\; c = 320 - 20l + 80 \\ \Longrightarrow\; c = 400 - 20l \;\Longrightarrow\; c + 20l = 400 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} c = 20(16 - l) + 80 \\ \Longrightarrow\; c = 320 - 20l + 80 \\ \Longrightarrow\; c = 400 - 20l \\ \Longrightarrow\; c + 20l = 400 \end{gathered} \]</div>
+          <p>The number 400 is the income the designer would get by working all 16 hours (\(20\cdot 16 + 80 = 400\)). Each hour of leisure costs her 20&nbsp;euros of lost income.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The model</span></h4>
+          <p><strong>The objective function</strong> – the utility \(U(c;\,l)\), given in the problem. We look for the maximum utility with respect to \(c\) and \(l\) subject to the constraint:</p>
+          \[ \begin{aligned} &amp;\max_{c;\,l}\; U(c;\,l) = c^{0.5}l^{0.5} \\ &amp;\text{subject to}\;\; c + 20l = 400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The Lagrangian function</span></h4>
+          <p>We rewrite the constraint in the form \(c + 20l - 400 = 0\) and build the Lagrangian function:</p>
+          \[ L(c;\,l;\,\lambda) = c^{0.5}l^{0.5} - \lambda(c + 20l - 400) \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The system of equations</span></h4>
+          <p>When differentiating with respect to \(c\), the factor \(l^{0.5}\) is constant: \(\big(c^{0.5}\big)'_c = 0.5c^{-0.5}\). When differentiating with respect to \(l\), the constant factor is \(c^{0.5}\). The derivatives of the constraint term are \(-\lambda\) and \(-20\lambda\):</p>
+          <div class="m-wide">\[ L'_c = 0.5c^{-0.5}l^{0.5} - \lambda;\qquad L'_l = 0.5c^{0.5}l^{-0.5} - 20\lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_c = 0.5c^{-0.5}l^{0.5} - \lambda \\ L'_l = 0.5c^{0.5}l^{-0.5} - 20\lambda \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 0.5c^{-0.5}l^{0.5} - \lambda &amp;= 0 \\ 0.5c^{0.5}l^{-0.5} - 20\lambda &amp;= 0 \\ c + 20l &amp;= 400 \end{aligned} \right. \]
+          <p>This system is not linear: the variables are raised to fractional powers and multiplied by each other. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Solving the system by dividing the equations</span></h4>
+          <p>In the first two equations we move the terms with \(\lambda\) to the right-hand sides:</p>
+          \[ \left\{ \begin{aligned} 0.5c^{-0.5}l^{0.5} &amp;= \lambda \\ 0.5c^{0.5}l^{-0.5} &amp;= 20\lambda \end{aligned} \right. \]
+          <p><strong>Dividing the equations.</strong> We divide the first equation by the second. The factors \(0.5\) and \(\lambda\) cancel, and the exponents are subtracted: \(c^{-0.5 - 0.5} = c^{-1}\), \(l^{0.5 - (-0.5)} = l\):</p>
+          <div class="m-wide bp-lg">\[ \frac{0.5c^{-0.5}l^{0.5}}{0.5c^{0.5}l^{-0.5}} = \frac{\lambda}{20\lambda} \;\Longrightarrow\; \frac{l}{c} = \frac{1}{20} \;\Longrightarrow\; c = 20l \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{0.5c^{-0.5}l^{0.5}}{0.5c^{0.5}l^{-0.5}} = \frac{\lambda}{20\lambda} \\ \Longrightarrow\; \frac{l}{c} = \frac{1}{20} \\ \Longrightarrow\; c = 20l \end{gathered} \]</div>
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression \(c = 20l\) into the constraint equation \(c + 20l = 400\):</p>
+          <div class="m-wide">\[ 20l + 20l = 400 \;\Longrightarrow\; 40l = 400 \;\Longrightarrow\; l = 10 \]</div><div class="m-narrow">\[ \begin{gathered} 20l + 20l = 400 \\ \Longrightarrow\; 40l = 400 \\ \Longrightarrow\; l = 10 \end{gathered} \]</div>
+          <p>Then \(c = 20\cdot 10 = 200\). We obtain the critical point \(K(200;\,10)\). The designer works \(16 - 10 = 6\) hours.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The type of the critical point</span></h4>
+          <p>The utility function is a Cobb-Douglas function with \(A = 1 &gt; 0\) and \(\alpha + \beta = 0.5 + 0.5 = 1 \le 1\), so it is concave. The constraint is linear, so \(L\) is also concave (see <a href="tema-9.html#kobo-daglas-l">“Cobb-Douglas functions in constrained optimization problems”</a>), and \(K(200;\,10)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The maximum utility</span></h4>
+          <p>We substitute the coordinates of the critical point into the utility function. Since \(a^{0.5}b^{0.5} = \sqrt{ab}\):</p>
+          <div class="m-wide">\[ U_{\max}(200;\,10) = \sqrt{200\cdot 10} = \sqrt{2000} \approx 44.72 \]</div><div class="m-narrow">\[ \begin{aligned} U_{\max}(200;\,10) &amp;= \sqrt{200\cdot 10} \\ &amp;= \sqrt{2000} \approx 44.72 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>The designer should work 6 hours a day, spend 10 hours on leisure and spend 200 euros a day on consumption. The maximum utility is approximately 44.72.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6: AM 9.4, Example 6 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Advertising in two cities</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A retail chain has 60 thousand euros for advertising in two cities. If it spends \(x\) thousand euros in city A and \(y\) thousand euros in city B, the additional gross profit from sales, in thousands of euros, is
+<div class="m-wide">\[ G(x;\,y) = 300\big(1 - e^{-0.1x}\big) + 600\big(1 - e^{-0.05y}\big) \]</div><div class="m-narrow">\[ \begin{aligned} G(x;\,y) &amp;= 300\big(1 - e^{-0.1x}\big) \\ &amp;\phantom{=}\; {}+ 600\big(1 - e^{-0.05y}\big) \end{aligned} \]</div>
+In each city the additional profit grows quickly at first, and then its growth slows down. The first euros spent on advertising reach many new customers, and when the spending is increased further, fewer additional customers are reached.
+<br>a) How should the budget be divided between the two cities to maximize the additional gross profit? What is the maximum additional gross profit?
+<br>b) How would this maximum change if the budget increased by one thousand euros?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables:</strong> \(x\) and \(y\) are the advertising spending in cities A and B, in thousands of euros.</p>
+          <p><strong>The objective function</strong> – the additional gross profit \(G(x;\,y)\), given in the problem. Each of its terms, for example \(300\big(1 - e^{-0.1x}\big)\), increases as the spending increases, but does not exceed 300, because \(e^{-0.1x}\) approaches zero. In this way the function reflects the slowing growth of profit described in the problem.</p>
+          <p><strong>The constraint.</strong> The whole budget is spent, so the spending in the two cities adds up to 60 thousand euros: \(x + y = 60\).</p>
+          <p>We look for the maximum additional gross profit with respect to \(x\) and \(y\) when the whole budget is spent:</p>
+          <div class="m-wide">\[ \begin{aligned} &amp;\max_{x;\,y}\; G(x;\,y) = 300\big(1 - e^{-0.1x}\big) + 600\big(1 - e^{-0.05y}\big) \\ &amp;\text{subject to}\;\; x + y = 60 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\max_{x;\,y}\; G(x;\,y) \\ &amp;\text{subject to}\;\; x + y = 60 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We rewrite the constraint in the form \(x + y - 60 = 0\) and build the Lagrangian function:</p>
+          <div class="m-wide">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 300\big(1 - e^{-0.1x}\big) + 600\big(1 - e^{-0.05y}\big) \\ &amp;\phantom{=}\; {}- \lambda(x + y - 60) \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= 300\big(1 - e^{-0.1x}\big) \\ &amp;\phantom{=}\; {}+ 600\big(1 - e^{-0.05y}\big) \\ &amp;\phantom{=}\; {}- \lambda(x + y - 60) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>By the chain rule, \(\big(e^{-0.1x}\big)'_x = -0.1e^{-0.1x}\), so</p>
+          <div class="m-wide">\[ \Big(300\big(1 - e^{-0.1x}\big)\Big)'_x = 300\cdot 0.1e^{-0.1x} = 30e^{-0.1x} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\Big(300\big(1 - e^{-0.1x}\big)\Big)'_x \\ &amp;= 300\cdot 0.1e^{-0.1x} = 30e^{-0.1x} \end{aligned} \]</div>
+          <p>In the same way, \(\big(600(1 - e^{-0.05y})\big)'_y = 600\cdot 0.05e^{-0.05y} = 30e^{-0.05y}\). The derivative of the constraint term with respect to each variable is \(-\lambda\):</p>
+          <div class="m-wide">\[ L'_x = 30e^{-0.1x} - \lambda;\qquad L'_y = 30e^{-0.05y} - \lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 30e^{-0.1x} - \lambda \\ L'_y = 30e^{-0.05y} - \lambda \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 30e^{-0.1x} - \lambda &amp;= 0 \\ 30e^{-0.05y} - \lambda &amp;= 0 \\ x + y &amp;= 60 \end{aligned} \right. \]
+          <p>This system is not linear: the variables \(x\) and \(y\) are in the exponents of exponential functions. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> In the first two equations we move the term \(-\lambda\) to the right-hand side:</p>
+          <div class="m-wide">\[ \lambda = 30e^{-0.1x};\qquad \lambda = 30e^{-0.05y} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 30e^{-0.1x} \\ \lambda = 30e^{-0.05y} \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> We set the two expressions equal and divide both sides by 30. Then we take the logarithm of both sides of the equation and use the rules \(\ln\big(a^n\big) = n\ln a\) and \(\ln e = 1\):</p>
+          <div class="m-wide bp-lg">\[ 30e^{-0.1x} = 30e^{-0.05y} \;\Longrightarrow\; e^{-0.1x} = e^{-0.05y} \;\Longrightarrow\; \ln e^{-0.1x} = \ln e^{-0.05y} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 30e^{-0.1x} = 30e^{-0.05y} \\ \Longrightarrow\; e^{-0.1x} = e^{-0.05y} \\ \Longrightarrow\; \ln e^{-0.1x} = \ln e^{-0.05y} \end{gathered} \]</div>
+          <div class="m-wide bp-lg">\[ -0.1x\cdot\ln e = -0.05y\cdot\ln e \;\Longrightarrow\; -0.1x = -0.05y \;\Longrightarrow\; y = 2x \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -0.1x\cdot\ln e = -0.05y\cdot\ln e \\ \Longrightarrow\; -0.1x = -0.05y \\ \Longrightarrow\; y = 2x \end{gathered} \]</div>
+          <p>In the last step both sides were divided by \(-0.05\).</p>
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression \(y = 2x\) into the constraint equation \(x + y = 60\):</p>
+          <div class="m-wide">\[ x + 2x = 60 \;\Longrightarrow\; 3x = 60 \;\Longrightarrow\; x = 20 \]</div><div class="m-narrow">\[ \begin{gathered} x + 2x = 60 \\ \Longrightarrow\; 3x = 60 \\ \Longrightarrow\; x = 20 \end{gathered} \]</div>
+          <p>Then \(y = 2\cdot 20 = 40\), and \(\lambda = 30e^{-0.1\cdot 20} = 30e^{-2} \approx 4.06\). We obtain the critical point \(K(20;\,40)\) and the value of the Lagrange multiplier \(\lambda = 30e^{-2}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives are</p>
+          <div class="m-wide">\[ L''_{xx} = -3e^{-0.1x};\qquad L''_{xy} = 0;\qquad L''_{yy} = -1.5e^{-0.05y} \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = -3e^{-0.1x} \\ L''_{xy} = 0 \\ L''_{yy} = -1.5e^{-0.05y} \end{gathered} \]</div>
+          <p>The derivatives depend on \(x\) and \(y\), so we substitute the coordinates of the critical point \(K(20;\,40)\). At this point \(e^{-0.1x} = e^{-0.1\cdot 20} = e^{-2}\) and \(e^{-0.05y} = e^{-0.05\cdot 40} = e^{-2}\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -3e^{-0.1\cdot 20} = -3e^{-2} \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -1.5e^{-0.05\cdot 40} = -1.5e^{-2} \\ D &amp;= AC - B^2 = \big(-3e^{-2}\big)\cdot\big(-1.5e^{-2}\big) - 0^2 = 4.5e^{-4} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -3e^{-0.1\cdot 20} \\ &amp;= -3e^{-2} \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -1.5e^{-0.05\cdot 40} \\ &amp;= -1.5e^{-2} \\ D &amp;= AC - B^2 \\ &amp;= \big(-3e^{-2}\big)\cdot\big(-1.5e^{-2}\big) - 0^2 \\ &amp;= 4.5e^{-4} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(20;\,40)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The maximum profit and its change</span></h4>
+          <p><strong>a)</strong> At the critical point \(e^{-0.1\cdot 20} = e^{-0.05\cdot 40} = e^{-2}\):</p>
+          <div class="m-wide bp-lg">\[ G_{\max}(20;\,40) = 300\big(1 - e^{-2}\big) + 600\big(1 - e^{-2}\big) = 900\big(1 - e^{-2}\big) \approx 778.20 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;G_{\max}(20;\,40) \\ &amp;= 300\big(1 - e^{-2}\big) + 600\big(1 - e^{-2}\big) \\ &amp;= 900\big(1 - e^{-2}\big) \approx 778.20 \end{aligned} \]</div>
+          <p><strong>b)</strong> The budget increases by one thousand euros, i.e. \(\Delta m = 1\). The Lagrange multiplier is \(\lambda = 30e^{-2} \approx 4.06\) (see <a href="tema-9.html#daugiklis">the meaning of the Lagrange multiplier</a>):</p>
+          \[ \Delta G^{*} \approx \lambda\cdot\Delta m = 4.06\cdot 1 = 4.06 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The chain should spend 20 thousand euros on advertising in city A and 40 thousand euros in city B. The maximum additional gross profit is approximately 778.20 thousand euros. b) It would increase by approximately 4.06 thousand euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write your solutions in the same way as in the examples: build the model and the Lagrangian function, solve the system of equations, decide the type of the critical points and calculate the quantities asked for. The answers give the main intermediate results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM Topic 9 Problem Set, section 4, problem 1 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A sawmill can produce \(x\) cubic metres of boards and \(y\) cubic metres of beams a week. When all its resources are used fully, the possible combinations satisfy the equation</p>
+          \[ x^2 + 3y^2 = 2800 \]
+          <p>A cubic metre of boards is sold at 20 hundred euros, and a cubic metre of beams at 30 hundred euros. How much of the boards and the beams should be produced to maximize the revenue? What is the maximum revenue?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The model:</strong></p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; R(x;\,y) = 20x + 30y \\ &amp;\text{subject to}\;\; x^2 + 3y^2 = 2800 \end{aligned} \]
+          <p><strong>The system of equations and the critical point</strong> (the system is non-linear; \(\lambda = \frac{10}{x} = \frac{5}{y}\), so \(x = 2y\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 20 - 2\lambda x &amp;= 0 \\ 30 - 6\lambda y &amp;= 0 \\ x^2 + 3y^2 &amp;= 2800 \end{aligned} \right. \;\Longrightarrow\; x = 2y \;\Longrightarrow\; K(40;\,20),\ \lambda = 0.25 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 20 - 2\lambda x &amp;= 0 \\ 30 - 6\lambda y &amp;= 0 \\ x^2 + 3y^2 &amp;= 2800 \end{aligned} \right. \\ \Longrightarrow\; x = 2y \\ \Longrightarrow\; K(40;\,20),\ \lambda = 0.25 \end{gathered} \]</div>
+          <p>Substituting \(x = 2y\) into the constraint gives \(7y^2 = 2800\). We factor the incomplete quadratic equation:</p>
+          <div class="m-wide bp-lg">\[ y^2 - 400 = 0 \;\Longrightarrow\; (y - 20)(y + 20) = 0 \;\Longrightarrow\; y = 20,\quad x = 40 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y^2 - 400 = 0 \\ \Longrightarrow\; (y - 20)(y + 20) = 0 \\ \Longrightarrow\; y = 20,\quad x = 40 \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <p>The second order derivatives: \(L''_{xx} = -2\lambda\), \(L''_{xy} = 0\), \(L''_{yy} = -6\lambda\). We substitute \(\lambda = 0.25\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -2\cdot 0.25 = -0.5 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -6\cdot 0.25 = -1.5 \\ D &amp;= 0.75 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -2\cdot 0.25 \\ &amp;= -0.5 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -6\cdot 0.25 \\ &amp;= -1.5 \\ D &amp;= 0.75 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> 40 cubic metres of boards and 20 cubic metres of beams should be produced a week. The maximum revenue is \(R_{\max} = 1400\) hundred euros a week.</p>
+        </div>
+      </article>
+
+      <!-- problem 2 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A courier company serves three shopping centres located at the points \(A(1;\,1)\), \(B(5;\,3)\) and \(C(3;\,8)\). The coordinates are in kilometres. The company wants to open a parcel pick-up point next to a street whose equation is \(x + 2y = 16\).</p>
+          <p>Where on the street should the pick-up point be set up so that the sum of the squared distances to the three shopping centres is the smallest?</p>
+          <figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 349 214" role="img" aria-label="Map: the shopping centres A(1; 1), B(5; 3), C(3; 8), the street x + 2y = 16 and a possible location of the pick-up point P(x; y) on the street"><line class="grid" x1="34" y1="18" x2="34" y2="188"/><line class="grid" x1="68" y1="18" x2="68" y2="188"/><line class="grid" x1="102" y1="18" x2="102" y2="188"/><line class="grid" x1="136" y1="18" x2="136" y2="188"/><line class="grid" x1="170" y1="18" x2="170" y2="188"/><line class="grid" x1="204" y1="18" x2="204" y2="188"/><line class="grid" x1="238" y1="18" x2="238" y2="188"/><line class="grid" x1="272" y1="18" x2="272" y2="188"/><line class="grid" x1="306" y1="18" x2="306" y2="188"/><line class="grid" x1="34" y1="188" x2="323" y2="188"/><line class="grid" x1="34" y1="154" x2="323" y2="154"/><line class="grid" x1="34" y1="120" x2="323" y2="120"/><line class="grid" x1="34" y1="86" x2="323" y2="86"/><line class="grid" x1="34" y1="52" x2="323" y2="52"/><line class="grid" x1="34" y1="18" x2="323" y2="18"/><line class="ax" x1="34" y1="188" x2="323" y2="188"/><path class="ah" d="M333 188L323 183.5L323 192.5Z"/><line class="ax" x1="34" y1="188" x2="34" y2="18"/><path class="ah" d="M34 8L29.5 18L38.5 18Z"/><text class="m" x="325" y="179">x</text><text class="m" x="43" y="16">y</text><text class="muted" x="68" y="204" text-anchor="middle">2</text><text class="muted" x="102" y="204" text-anchor="middle">4</text><text class="muted" x="136" y="204" text-anchor="middle">6</text><text class="muted" x="170" y="204" text-anchor="middle">8</text><text class="muted" x="204" y="204" text-anchor="middle">10</text><text class="muted" x="238" y="204" text-anchor="middle">12</text><text class="muted" x="272" y="204" text-anchor="middle">14</text><text class="muted" x="306" y="204" text-anchor="middle">16</text><text class="muted" x="27" y="158" text-anchor="end">2</text><text class="muted" x="27" y="124" text-anchor="end">4</text><text class="muted" x="27" y="90" text-anchor="end">6</text><text class="muted" x="27" y="56" text-anchor="end">8</text><text class="muted" x="27" y="204" text-anchor="end">0</text><line class="ln2" x1="34" y1="52.0" x2="306.0" y2="188"/><line x1="204" y1="137" x2="51" y2="171" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="204" y1="137" x2="119" y2="137" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><line x1="204" y1="137" x2="85" y2="52" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><circle class="pt" cx="51" cy="171" r="5.5"/><text class="halo" x="51" y="161" text-anchor="middle" style="font-weight:700">A(1; 1)</text><circle class="pt" cx="119" cy="137" r="5.5"/><text class="halo" x="111" y="129" text-anchor="end" style="font-weight:700">B(5; 3)</text><circle class="pt" cx="85" cy="52" r="5.5"/><text class="halo" x="93" y="44" text-anchor="start" style="font-weight:700">C(3; 8)</text><circle class="pt-hi" cx="204" cy="137" r="5.5"/><text class="halo exam" x="212" y="127" text-anchor="start" style="font-weight:700">P(x; y)</text><text class="halo" x="241.4" y="96.2" text-anchor="start" style="font-weight:700;fill:var(--chart-2)">x + 2y = 16</text></svg>
+<figcaption>The three shopping centres, the street and a possible location of the pick-up point.</figcaption>
+</figure>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function and the model:</strong></p>
+          <div class="m-wide bp-lg">\[ T(x;\,y) = (x - 1)^2 + (y - 1)^2 + (x - 5)^2 + (y - 3)^2 + (x - 3)^2 + (y - 8)^2 \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;T(x;\,y) \\ &amp;= (x - 1)^2 + (y - 1)^2 \\ &amp;\phantom{=}\; {}+ (x - 5)^2 + (y - 3)^2 \\ &amp;\phantom{=}\; {}+ (x - 3)^2 + (y - 8)^2 \end{aligned} \]</div>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; T(x;\,y) \\ &amp;\text{subject to}\;\; x + 2y = 16 \end{aligned} \]
+          <p><strong>The system of equations and the critical point</strong> (the system is linear):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 6x - 18 - \lambda &amp;= 0 \\ 6y - 24 - 2\lambda &amp;= 0 \\ x + 2y &amp;= 16 \end{aligned} \right. \;\Longrightarrow\; y = 2x - 2 \;\Longrightarrow\; K(4;\,6),\ \lambda = 6 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 6x - 18 - \lambda &amp;= 0 \\ 6y - 24 - 2\lambda &amp;= 0 \\ x + 2y &amp;= 16 \end{aligned} \right. \\ \Longrightarrow\; y = 2x - 2 \\ \Longrightarrow\; K(4;\,6),\ \lambda = 6 \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 6 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 6 \\ D &amp;= 36 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 6 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 6 \\ D &amp;= 36 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> The pick-up point should be set up at the point \((4;\,6)\). The smallest value of the sum of the squared distances is \(T_{\min} = 49\).</p>
+        </div>
+      </article>
+
+      <!-- problem 3 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A hotel has an elliptical courtyard. The origin of the map is at the centre of the courtyard, and the edge of the courtyard is given by the equation \(4x^2 + 9y^2 = 7200\). The coordinates are in metres. A rectangular terrace is to be built in the courtyard, with its sides parallel to the axes and its corners on the edge of the courtyard.</p>
+          <p>What are the dimensions of the largest such terrace? What is its area?</p>
+          <figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 413 294" role="img" aria-label="The elliptical courtyard 4x² + 9y² = 7200 and an inscribed rectangular terrace with the corner (x; y), the side lengths 2x and 2y"><line class="ax" x1="34.0" y1="143.0" x2="387.6" y2="143.0"/><path class="ah" d="M397.6 143.0L387.6 138.5L387.6 147.5Z"/><line class="ax" x1="210.8" y1="268.0" x2="210.8" y2="18.0"/><path class="ah" d="M210.8 8.0L206.3 18.0L215.3 18.0Z"/><text class="m" x="389.6" y="134.0">x</text><text class="m" x="219.8" y="16.0">y</text><ellipse class="ln" cx="210.8" cy="143.0" rx="150.0" ry="100.0" fill="var(--chart)" fill-opacity=".08"/><rect x="118.9" y="64.0" width="183.8" height="158.0" fill="var(--exam)" fill-opacity=".12" stroke="var(--exam)" stroke-width="2.4"/><circle class="pt-hi" cx="302.7" cy="64.0" r="5.5"/><text class="halo exam" x="310.7" y="56.0" text-anchor="start" style="font-weight:700">(x; y)</text><text class="m halo" x="210.8" y="215.0" text-anchor="middle">2x</text><text class="m halo" x="125.9" y="137.0" text-anchor="start">2y</text><line x1="302.7" y1="143.0" x2="302.7" y2="64.0" class="guide"/><line x1="210.8" y1="64.0" x2="302.7" y2="64.0" class="guide"/><text class="m halo" x="256.7" y="159.0" text-anchor="middle">x</text><text class="m halo" x="204.8" y="107.5" text-anchor="end">y</text><text class="halo" x="293.3" y="255.0" text-anchor="start" style="font-weight:700;fill:var(--chart)">4x² + 9y² = 7200</text></svg>
+<figcaption>The rectangle of the terrace inscribed in the edge of the courtyard, with the corner \((x;\,y)\).</figcaption>
+</figure>
+        </div>
+        <div class="q-answer">
+          <p><strong>The model.</strong> One corner of the terrace is \((x;\,y)\).</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; S(x;\,y) = 4xy \\ &amp;\text{subject to}\;\; 4x^2 + 9y^2 = 7200 \end{aligned} \]
+          <p><strong>The system of equations and the critical point</strong> (the system is non-linear; \(\lambda = \frac{y}{2x} = \frac{2x}{9y}\), so \(9y^2 = 4x^2\) and \(2x = 3y\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 4y - 8\lambda x &amp;= 0 \\ 4x - 18\lambda y &amp;= 0 \\ 4x^2 + 9y^2 &amp;= 7200 \end{aligned} \right. \;\Longrightarrow\; 2x = 3y \;\Longrightarrow\; K(30;\,20),\ \lambda = \frac{1}{3} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 4y - 8\lambda x &amp;= 0 \\ 4x - 18\lambda y &amp;= 0 \\ 4x^2 + 9y^2 &amp;= 7200 \end{aligned} \right. \\ \Longrightarrow\; 2x = 3y \\ \Longrightarrow\; K(30;\,20),\ \lambda = \frac{1}{3} \end{gathered} \]</div>
+          <p>Substituting \(x = 1.5y\) into the constraint gives \(18y^2 = 7200\). We factor the incomplete quadratic equation:</p>
+          <div class="m-wide bp-lg">\[ y^2 - 400 = 0 \;\Longrightarrow\; (y - 20)(y + 20) = 0 \;\Longrightarrow\; y = 20,\quad x = 30 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y^2 - 400 = 0 \\ \Longrightarrow\; (y - 20)(y + 20) = 0 \\ \Longrightarrow\; y = 20,\quad x = 30 \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <p>The second order derivatives: \(L''_{xx} = -8\lambda\), \(L''_{xy} = 4\), \(L''_{yy} = -18\lambda\). We substitute \(\lambda = \frac{1}{3}\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -8\cdot\frac{1}{3} = -\frac{8}{3} \\ B &amp;= L''_{xy}(K) = 4 \\ C &amp;= L''_{yy}(K) = -18\cdot\frac{1}{3} = -6 \\ D &amp;= \Big(-\frac{8}{3}\Big)\cdot(-6) - 4^2 = 16 - 16 = 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -8\cdot\frac{1}{3} = -\frac{8}{3} \\ B &amp;= L''_{xy}(K) = 4 \\ C &amp;= L''_{yy}(K) = -18\cdot\frac{1}{3} = -6 \\ D &amp;= \Big(-\frac{8}{3}\Big)\cdot(-6) - 4^2 \\ &amp;= 16 - 16 = 0 \end{aligned} \]</div>
+          <p>This test is not sufficient. The area function is continuous on the closed arc of the ellipse in the first quadrant. At the endpoints of the arc the area is zero, and the only interior critical point is \(K(30;\,20)\), so the area is largest there.</p>
+          <p><strong>Answer.</strong> The terrace should be 60&nbsp;m × 40&nbsp;m. The largest area is \(S_{\max} = 2400\) square metres.</p>
+        </div>
+      </article>
+
+      <!-- problem 4 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A circular metro line on a map has the equation \(x^2 + y^2 = 100\). The origin is at the city centre, and the coordinates are in kilometres. A business park is located at the point \(F(12;\,9)\). A bicycle path, as short as possible, is to be built from the park to the metro line.</p>
+          <p>At which point should the path reach the metro line, and how long would it be? Minimize the squared distance from \(F\) to a point of the metro line.</p>
+          <figure class="abs-fig abs-fig--sm">
+<svg viewBox="0 0 326 291" role="img" aria-label="The circular metro line x² + y² = 100, the business park F(12; 9) and the bicycle path from F to the point (x; y) of the metro line"><line class="grid" x1="43.5" y1="18.0" x2="43.5" y2="265.0"/><line class="grid" x1="81.5" y1="18.0" x2="81.5" y2="265.0"/><line class="grid" x1="119.5" y1="18.0" x2="119.5" y2="265.0"/><line class="grid" x1="157.5" y1="18.0" x2="157.5" y2="265.0"/><line class="grid" x1="195.5" y1="18.0" x2="195.5" y2="265.0"/><line class="grid" x1="233.5" y1="18.0" x2="233.5" y2="265.0"/><line class="grid" x1="271.5" y1="18.0" x2="271.5" y2="265.0"/><line class="grid" x1="34.0" y1="255.5" x2="300.0" y2="255.5"/><line class="grid" x1="34.0" y1="217.5" x2="300.0" y2="217.5"/><line class="grid" x1="34.0" y1="179.5" x2="300.0" y2="179.5"/><line class="grid" x1="34.0" y1="141.5" x2="300.0" y2="141.5"/><line class="grid" x1="34.0" y1="103.5" x2="300.0" y2="103.5"/><line class="grid" x1="34.0" y1="65.5" x2="300.0" y2="65.5"/><line class="grid" x1="34.0" y1="27.5" x2="300.0" y2="27.5"/><line class="ax" x1="34.0" y1="141.5" x2="300.0" y2="141.5"/><path class="ah" d="M310.0 141.5L300.0 137.0L300.0 146.0Z"/><line class="ax" x1="157.5" y1="265.0" x2="157.5" y2="18.0"/><path class="ah" d="M157.5 8.0L153.0 18.0L162.0 18.0Z"/><text class="m" x="302.0" y="132.5">x</text><text class="m" x="166.5" y="16.0">y</text><text class="muted" x="43.5" y="157.5" text-anchor="middle">-12</text><text class="muted" x="81.5" y="157.5" text-anchor="middle">-8</text><text class="muted" x="119.5" y="157.5" text-anchor="middle">-4</text><text class="muted" x="195.5" y="157.5" text-anchor="middle">4</text><text class="muted" x="233.5" y="157.5" text-anchor="middle">8</text><text class="muted" x="271.5" y="157.5" text-anchor="middle">12</text><text class="muted" x="150.5" y="259.5" text-anchor="end">-12</text><text class="muted" x="150.5" y="221.5" text-anchor="end">-8</text><text class="muted" x="150.5" y="183.5" text-anchor="end">-4</text><text class="muted" x="150.5" y="107.5" text-anchor="end">4</text><text class="muted" x="150.5" y="69.5" text-anchor="end">8</text><text class="muted" x="150.5" y="157.5" text-anchor="end">0</text><ellipse class="ln" cx="157.5" cy="141.5" rx="95.0" ry="95.0"/><line x1="271.5" y1="56.0" x2="110.0" y2="59.2" stroke="var(--exam)" stroke-width="3" stroke-linecap="round"/><circle class="pt" cx="271.5" cy="56.0" r="5.5"/><text class="halo" x="279.5" y="48.0" text-anchor="start" style="font-weight:700">F(12; 9)</text><circle class="pt-hi" cx="110.0" cy="59.2" r="5.5"/><text class="halo exam" x="101.0" y="50.2" text-anchor="end" style="font-weight:700">(x; y)</text><text class="halo" x="38.8" y="255.5" text-anchor="start" style="font-weight:700;fill:var(--chart)">x² + y² = 100</text></svg>
+<figcaption>The metro line, the business park \(F\) and a possible end point \((x;\,y)\) of the bicycle path.</figcaption>
+</figure>
+        </div>
+        <div class="q-answer">
+          <p><strong>The model:</strong></p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; f(x;\,y) = (x - 12)^2 + (y - 9)^2 \\ &amp;\text{subject to}\;\; x^2 + y^2 = 100 \end{aligned} \]
+          <p><strong>The system of equations and the critical points</strong> (the system is non-linear; \(\lambda = \frac{x - 12}{x} = \frac{y - 9}{y}\), so \(y = 0.75x\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 2(x - 12) - 2\lambda x &amp;= 0 \\ 2(y - 9) - 2\lambda y &amp;= 0 \\ x^2 + y^2 &amp;= 100 \end{aligned} \right. \;\Longrightarrow\; y = 0.75x \;\Longrightarrow\; K_1(8;\,6),\ K_2(-8;\,-6) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 2(x - 12) - 2\lambda x &amp;= 0 \\ 2(y - 9) - 2\lambda y &amp;= 0 \\ x^2 + y^2 &amp;= 100 \end{aligned} \right. \\ \Longrightarrow\; y = 0.75x \\ \Longrightarrow\; K_1(8;\,6),\ K_2(-8;\,-6) \end{gathered} \]</div>
+          <p>Substituting \(y = 0.75x\) into the constraint gives \(1.5625x^2 = 100\). We factor the incomplete quadratic equation:</p>
+          <div class="m-wide bp-lg">\[ x^2 - 64 = 0 \;\Longrightarrow\; (x - 8)(x + 8) = 0 \;\Longrightarrow\; x = 8\ \text{or}\ x = -8 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x^2 - 64 = 0 \\ \Longrightarrow\; (x - 8)(x + 8) = 0 \\ \Longrightarrow\; x = 8\ \text{or}\ x = -8 \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <p>The second order derivatives: \(L''_{xx} = 2 - 2\lambda\), \(L''_{xy} = 0\), \(L''_{yy} = 2 - 2\lambda\).</p>
+          <p><strong>The point \(K_1(8;\,6)\)</strong>, where \(\lambda = -0.5\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K_1) = 2 - 2\cdot(-0.5) = 3 \\ B &amp;= L''_{xy}(K_1) = 0 \\ C &amp;= L''_{yy}(K_1) = 3 \\ D &amp;= 3\cdot 3 - 0^2 = 9 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K_1) \\ &amp;= 2 - 2\cdot(-0.5) = 3 \\ B &amp;= L''_{xy}(K_1) = 0 \\ C &amp;= L''_{yy}(K_1) = 3 \\ D &amp;= 3\cdot 3 - 0^2 = 9 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K_1\) is a minimum point.</p>
+          <p><strong>The point \(K_2(-8;\,-6)\)</strong>, where \(\lambda = 2.5\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K_2) = 2 - 2\cdot 2.5 = -3 \\ B &amp;= L''_{xy}(K_2) = 0 \\ C &amp;= L''_{yy}(K_2) = -3 \\ D &amp;= (-3)\cdot(-3) - 0^2 = 9 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K_2) = 2 - 2\cdot 2.5 \\ &amp;= -3 \\ B &amp;= L''_{xy}(K_2) = 0 \\ C &amp;= L''_{yy}(K_2) = -3 \\ D &amp;= (-3)\cdot(-3) - 0^2 \\ &amp;= 9 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K_2\) is a maximum point.</p>
+          <p><strong>Answer.</strong> The path should reach the metro line at the point \((8;\,6)\). The path would be \(\sqrt{16 + 9} = 5\)&nbsp;km long.</p>
+        </div>
+      </article>
+
+      <!-- problem 5 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A student can spend 10 hours a day on a part-time job and leisure. The job pays 15 euros an hour, and the parents give the student another 30 euros a day. The student spends all the income. The daily utility from spending \(c\) euros and having \(l\) hours of leisure is \(U(c;\,l) = c^{0.5}l^{0.5}\).</p>
+          <p>How many hours a day should the student work to maximize the utility? How much would the student spend?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The constraint:</strong></p>
+          <div class="m-wide">\[ c = 15(10 - l) + 30 \;\Longrightarrow\; c + 15l = 180 \]</div><div class="m-narrow">\[ \begin{gathered} c = 15(10 - l) + 30 \\ \Longrightarrow\; c + 15l = 180 \end{gathered} \]</div>
+          <p><strong>The model:</strong></p>
+          \[ \begin{aligned} &amp;\max_{c;\,l}\; U(c;\,l) = c^{0.5}l^{0.5} \\ &amp;\text{subject to}\;\; c + 15l = 180 \end{aligned} \]
+          <p><strong>The system of equations and the critical point</strong> (the system is non-linear; dividing the first equation by the second gives \(\frac{l}{c} = \frac{1}{15}\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 0.5c^{-0.5}l^{0.5} &amp;= \lambda \\ 0.5c^{0.5}l^{-0.5} &amp;= 15\lambda \\ c + 15l &amp;= 180 \end{aligned} \right. \;\Longrightarrow\; c = 15l \;\Longrightarrow\; K(90;\,6) \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 0.5c^{-0.5}l^{0.5} &amp;= \lambda \\ 0.5c^{0.5}l^{-0.5} &amp;= 15\lambda \\ c + 15l &amp;= 180 \end{aligned} \right. \\ \Longrightarrow\; c = 15l \\ \Longrightarrow\; K(90;\,6) \end{gathered} \]</div>
+          <p><strong>The type of the critical point</strong></p>
+          <p>The parameters of the Cobb-Douglas function satisfy \(A = 1 &gt; 0\) and \(\alpha + \beta = 1 \le 1\). The function \(L\) is concave, so \(K(90;\,6)\) is a maximum point.</p>
+          <p><strong>Answer.</strong> The student should work 4 hours a day, spend 6 hours on leisure and spend 90 euros a day. \(U_{\max} = \sqrt{540} \approx 23.24\).</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 8</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Calculus for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">Chapter 7.4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
