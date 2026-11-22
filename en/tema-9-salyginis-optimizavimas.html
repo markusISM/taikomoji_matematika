@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standard Constrained Optimization Problems · Applied Mathematics</title>
+<meta name="description" content="Constrained optimization problems solved by the method of Lagrange multipliers: building the model, the Lagrangian function, solving the system of three equations (by substitution, by Gaussian elimination, by dividing the equations), the sufficient condition and the meaning of the Lagrange multiplier. Step-by-step examples and practice problems.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-9-salyginis-optimizavimas.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m93">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 9 · Applications · Section 3</span>
+    <h1>Standard Constrained Optimization Problems</h1>
+    <p class="lead">This section solves applied problems in which the variables are connected by an additional condition – a constraint: a set quantity has to be produced, an order has to be filled or the whole budget has to be spent. Such problems are solved by the method of Lagrange multipliers, which is described in the Topic 9 part <a href="tema-9.html#salyginis">“Constrained optimization”</a>.</p>
+    <ul class="jump">
+      <li><a href="#modelis">The model</a></li>
+      <li><a href="#sistema">The system of equations</a></li>
+      <li><a href="#eiga">How to solve</a></li>
+      <li><a href="#pavyzdziai">Examples</a></li>
+      <li><a href="#savarankiskai">Practice</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. THE MODEL ============ -->
+  <section class="section" id="modelis" aria-labelledby="h-model">
+    <h2 id="h-model">Building the model</h2>
+    <article class="card">
+      <p>The solution of a constrained optimization problem starts with the model (see <a href="tema-9.html#lagranzo">“The Lagrange problem”</a>). We build it by answering three questions.</p>
+      <ol class="steps-list">
+        <li><strong>Which quantities can be chosen?</strong> These are the variables \(x\) and \(y\), for example the quantities of two products, the amounts delivered from two warehouses, hours of labour and machine hours.</li>
+        <li><strong>Which quantity has to be maximized or minimized?</strong> This is the objective function \(f(x;\,y)\): profit, cost, utility or output. It may be given in the problem, or it has to be built from parts.</li>
+        <li><strong>What condition must the variables satisfy?</strong> This is the constraint \(g(x;\,y) = m\). The constant \(m\) may be a budget, a required amount or a capacity.</li>
+      </ol>
+
+      <h3 class="subhead">The most common constraints</h3>
+      <div class="tbl-wrap">
+        <table class="vtable cmp-tbl">
+          <thead><tr><th scope="col">In the problem</th><th scope="col">Constraint</th></tr></thead>
+          <tbody>
+            <tr><td>A total of exactly \(m\) units has to be produced or delivered</td><td>\(x + y = m\)</td></tr>
+            <tr><td>The whole budget \(m\) is spent on two inputs with the unit prices \(c_1\) and \(c_2\)</td><td>\(c_1x + c_2y = m\)</td></tr>
+            <tr><td>The output \(Q(x;\,y)\) has to meet the order \(m\)</td><td>\(Q(x;\,y) = m\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subhead">The objective function – given or built</h3>
+      <p>A profit, cost, utility or production function is often given in the problem. In other cases we build the objective function ourselves:</p>
+      <ul>
+        <li>if the cost consists of several parts, the objective function is their sum, for example the cost of transportation from two warehouses (<a href="#pavyzdys-3">Example 3</a>);</li>
+        <li>if the unit prices of the inputs \(c_1\) and \(c_2\) are known, the cost is \(TC = c_1x + c_2y\) (Examples <a href="#pavyzdys-7">7</a> and <a href="#pavyzdys-8">8</a>).</li>
+      </ul>
+      <p>The same production function can be either the objective function or the constraint. If a budget is given and the largest output is sought, \(Q(x;\,y)\) is the objective function and \(c_1x + c_2y = m\) is the constraint (<a href="#pavyzdys-6">Example 6</a>). If an order is given and the smallest cost is sought, the objective function is \(c_1x + c_2y\) and \(Q(x;\,y) = m\) is the constraint (<a href="#pavyzdys-8">Example 8</a>).</p>
+
+      <h3 class="subhead">The Lagrangian function and the Lagrange multiplier</h3>
+      <p>We rewrite the constraint in the form \(g(x;\,y) - m = 0\) – the constant \(m\) is moved to the left-hand side. From the objective function we subtract this expression multiplied by \(\lambda\) (see <a href="tema-9.html#metodas">“The method of Lagrange multipliers”</a>):</p>
+      \[ L(x;\,y;\,\lambda) = f(x;\,y) - \lambda\big(g(x;\,y) - m\big) \]
+      <p>For example, if the budget constraint is \(8x + 2y = 200\), then \(L = U(x;\,y) - \lambda(8x + 2y - 200)\).</p>
+      <p>The value of the Lagrange multiplier at the critical point shows approximately how much the optimal value of the objective function changes when the constraint constant \(m\) increases by one unit (see <a href="tema-9.html#daugiklis">“The meaning of the Lagrange multiplier”</a>). When \(m\) changes by \(\Delta m\),</p>
+      \[ \Delta f^{*} \approx \lambda\cdot\Delta m \]
+      <p>The change \(\Delta m\) is measured in the same units as \(m\). If the change is given in per cent, \(\Delta m\) is calculated from \(m\): for example, 10&nbsp;% of 1200 is \(\Delta m = 120\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. THE SYSTEM OF EQUATIONS ============ -->
+  <section class="section" id="sistema" aria-labelledby="h-sys">
+    <h2 id="h-sys">Solving the Lagrange system of equations</h2>
+    <article class="card">
+      <p>The Lagrange system consists of three equations: \(L'_x = 0\), \(L'_y = 0\) and the constraint equation. There are also three unknowns: \(x\), \(y\) and \(\lambda\). The method of solution depends on whether the system is linear.</p>
+
+      <h3 class="subhead">When the system is linear</h3>
+      <p>If the objective function is a polynomial of the second degree and the constraint is linear, for example \(x + y = m\), all three equations are linear. Such a system is conveniently solved by substitution:</p>
+      <ol class="steps-list">
+        <li>In the first two equations we move the term with \(\lambda\) to the other side and obtain two expressions for \(\lambda\).</li>
+        <li>Both expressions are equal to the same \(\lambda\), so we set them equal. This gives an equation in \(x\) and \(y\) only.</li>
+        <li>From this equation or from the constraint equation we express one variable and substitute it into the other equation. This gives an equation in one variable.</li>
+        <li>Having found \(x\) and \(y\), we substitute them into one expression for \(\lambda\) and check with the other expression – the same value must be obtained.</li>
+      </ol>
+      <p>A linear system can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>: the augmented matrix is made up of the coefficients of \(x\), \(y\) and \(\lambda\) and the constant terms. The solution by Gaussian elimination is given in <a href="#pavyzdys-1">Examples 1–4</a> in collapsible boxes.</p>
+
+      <h3 class="subhead">When the system is non-linear</h3>
+      <p>If the objective function or the constraint contains roots, logarithms or a Cobb-Douglas function, the system is <strong>non-linear</strong> and Gaussian elimination cannot be used for it. The examples use the following methods:</p>
+      <ul>
+        <li><strong>Setting the expressions for \(\lambda\) equal.</strong> We express \(\lambda\) from the first two equations and set the expressions equal. If roots remain, we square both sides of the equation (<a href="#pavyzdys-5">Example 5</a>).</li>
+        <li><strong>Dividing the equations.</strong> We move the terms with \(\lambda\) to the right-hand sides and divide one equation by the other. The multiplier \(\lambda\) cancels, and powers of the same base are simplified by subtracting the exponents (Examples <a href="#pavyzdys-6">6</a> and <a href="#pavyzdys-8">8</a>).</li>
+        <li><strong>Substituting into the constraint.</strong> If the constraint contains the same expressions as the first two equations, for example \(\sqrt{x}\) and \(\sqrt{y}\), we express them through \(\lambda\) and substitute them into the constraint equation (<a href="#pavyzdys-7">Example 7</a>).</li>
+      </ul>
+      <p>In applied problems the variables – quantities or hours – are positive. Therefore the equations may be divided by the variables, and an equation whose both sides are positive may be squared.</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. HOW TO SOLVE ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">How to solve</h2>
+    <article class="card">
+      <ol class="steps-list">
+        <li><strong>Write the model.</strong> Define the variables, the objective function \(f(x;\,y)\) and the constraint \(g(x;\,y) = m\). State whether the largest or the smallest value of \(f(x;\,y)\) is sought subject to \(g(x;\,y) = m\).</li>
+        <li>Write down the Lagrangian function \(L = f - \lambda(g - m)\).</li>
+        <li>Find \(L'_x\) and \(L'_y\), set them equal to zero and add the constraint equation to the system. Solve the system of three equations (see <a href="#sistema">“Solving the Lagrange system of equations”</a>). Label the point obtained with a letter, for example \(K(x_0;\,y_0)\), and write the value of the multiplier \(\lambda\) separately – it is not included in the coordinates of the point.</li>
+        <li>Decide the type of the critical point. Check the sufficient condition: substitute the coordinates of the point \(K\) and the value of \(\lambda\) into the second order partial derivatives of \(L\) to get \(A = L''_{xx}(K)\), \(B = L''_{xy}(K)\), \(C = L''_{yy}(K)\) (see <a href="tema-9.html#metodas">“The method of Lagrange multipliers”</a>), or use the concavity of the Cobb-Douglas function (see <a href="tema-9.html#kobo-daglas-l">“Cobb-Douglas functions in constrained optimization problems”</a>).</li>
+        <li>Calculate the optimal value. If you are asked to estimate its change, use \(\Delta f^{*} \approx \lambda\cdot\Delta m\).</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Common mistakes</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>The constraint is set up incorrectly.</strong> For example, the prices of the inputs are left out of the budget constraint: \(x + y = 200\) instead of \(8x + 2y = 200\).</li>
+            <li><strong>Wrong signs in the Lagrangian function.</strong> The constant \(m\) is moved to the left-hand side without changing its sign, or the minus in front of \(\lambda\) is forgotten.</li>
+            <li><strong>The coefficient of \(\lambda\) is forgotten.</strong> The derivative of the term \(-\lambda(8x + 2y - 200)\) with respect to \(x\) is \(-8\lambda\), not \(-\lambda\).</li>
+            <li><strong>The constraint equation is not included in the system.</strong> Three unknowns cannot be found from the two equations \(L'_x = 0\) and \(L'_y = 0\).</li>
+            <li><strong>Gaussian elimination is applied to a non-linear system.</strong> Gaussian elimination is suitable only for systems of linear equations.</li>
+            <li><strong>\(\lambda\) is not substituted into the second order derivatives.</strong> If \(\lambda\) remains in the derivatives, not only the coordinates of the critical point but also the value of \(\lambda\) are substituted.</li>
+            <li><strong>\(\Delta m\) is calculated incorrectly.</strong> It is the change in the constraint constant in the same units as \(m\): for example, 10&nbsp;% of 400 is 40.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. EXAMPLES ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Examples</h2>
+    <p class="section-intro">Try to solve the problem yourself first, then reveal the solution one step at a time.</p>
+
+    <h3 class="subhead">When the system of equations is linear</h3>
+    <!-- Example 1: AM 9.3, Example 2 -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">Example 1</span>
+        <h3>City and mountain bicycles</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A factory produces \(x\) city bicycles and \(y\) mountain bicycles a month. Its monthly profit, in euros, is
+<div class="m-wide">\[ P(x;\,y) = -0.2x^2 - 0.1y^2 - 0.1xy + 100x + 80y - 5000 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= -0.2x^2 - 0.1y^2 - 0.1xy \\ &amp;\phantom{=}\; {}+ 100x + 80y - 5000 \end{aligned} \]</div>
+The factory has to produce exactly 400 bicycles a month.
+<br>a) How many bicycles of each type should be produced to maximize the profit? What is the maximum profit?
+<br>b) How would the maximum profit change if the production capacity increased to 410 bicycles a month?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables:</strong> \(x\) is the number of city bicycles produced a month, and \(y\) is the number of mountain bicycles.</p>
+          <p><strong>The objective function.</strong> The maximum profit has to be found. The profit function \(P(x;\,y)\) is given in the problem.</p>
+          <p><strong>The constraint.</strong> Exactly 400 bicycles of both types together must be produced a month, so their numbers add up to 400: \(x + y = 400\).</p>
+          <p>We look for the maximum profit with respect to \(x\) and \(y\) subject to the constraint:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} &amp;\max_{x;\,y}\; P(x;\,y) = -0.2x^2 - 0.1y^2 - 0.1xy + 100x + 80y - 5000 \\ &amp;\text{subject to}\;\; x + y = 400 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;\max_{x;\,y}\; P(x;\,y) \\ &amp;\text{subject to}\;\; x + y = 400 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We rewrite the constraint so that its right-hand side is zero: we move the number 400 to the left-hand side and get \(x + y - 400 = 0\). From the objective function we subtract this expression multiplied by the Lagrange multiplier \(\lambda\) (see <a href="tema-9.html#metodas">the method of Lagrange multipliers</a>):</p>
+          <div class="m-wide">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= -0.2x^2 - 0.1y^2 - 0.1xy + 100x + 80y - 5000 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 400) \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= -0.2x^2 - 0.1y^2 - 0.1xy \\ &amp;\phantom{=}\; {}+ 100x + 80y - 5000 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 400) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We find the partial derivatives of the Lagrangian function with respect to \(x\) and \(y\). When differentiating with respect to \(x\), the terms \(-0.1y^2\), \(80y\) and \(-5000\) are constants, and \((-0.1xy)'_x = -0.1y\). The derivative of the last term \(-\lambda(x + y - 400)\) both with respect to \(x\) and with respect to \(y\) is \(-\lambda\). The derivative with respect to \(y\) is found in the same way:</p>
+          <div class="m-wide bp-lg">\[ L'_x = -0.4x - 0.1y + 100 - \lambda;\qquad L'_y = -0.2y - 0.1x + 80 - \lambda \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} L'_x = -0.4x - 0.1y + 100 - \lambda \\ L'_y = -0.2y - 0.1x + 80 - \lambda \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} -0.4x - 0.1y + 100 - \lambda &amp;= 0 \\ -0.2y - 0.1x + 80 - \lambda &amp;= 0 \\ x + y &amp;= 400 \end{aligned} \right. \]
+          <p>The system has three equations and three unknowns: \(x\), \(y\) and \(\lambda\). All the unknowns are of the first degree and are not multiplied by each other, so the system is <strong>linear</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> In the first two equations we move the term \(-\lambda\) to the right-hand side (its sign changes):</p>
+          <div class="m-wide">\[ \lambda = -0.4x - 0.1y + 100;\qquad \lambda = -0.2y - 0.1x + 80 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = -0.4x - 0.1y + 100 \\ \lambda = -0.2y - 0.1x + 80 \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> Both expressions are equal to the same \(\lambda\), so we set them equal:</p>
+          <div class="m-wide">\[ -0.4x - 0.1y + 100 = -0.2y - 0.1x + 80 \]</div><div class="m-narrow">\[ \begin{gathered} -0.4x - 0.1y + 100 \\ = -0.2y - 0.1x + 80 \end{gathered} \]</div>
+          <p>We move the terms with the variables to the left-hand side and the numbers to the right-hand side (the signs of the terms moved change). We collect like terms and multiply both sides by 10 to remove the decimals:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} -0.4x + 0.1x - 0.1y + 0.2y = 80 - 100 \\ \Longrightarrow\; -0.3x + 0.1y = -20 \;\Longrightarrow\; -3x + y = -200 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -0.4x + 0.1x - 0.1y + 0.2y = 80 - 100 \\ \Longrightarrow\; -0.3x + 0.1y = -20 \\ \Longrightarrow\; -3x + y = -200 \end{gathered} \]</div>
+          <p>From the equation obtained we express \(y\) – we move the term \(-3x\) to the right-hand side:</p>
+          \[ y = 3x - 200 \]
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression into the constraint equation \(x + y = 400\) in place of \(y\) and solve the equation in one variable:</p>
+          <div class="m-wide bp-lg">\[ x + (3x - 200) = 400 \;\Longrightarrow\; 4x - 200 = 400 \;\Longrightarrow\; 4x = 600 \;\Longrightarrow\; x = 150 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} x + (3x - 200) = 400 \\ \Longrightarrow\; 4x - 200 = 400 \\ \Longrightarrow\; 4x = 600 \\ \Longrightarrow\; x = 150 \end{gathered} \]</div>
+          <p>We substitute \(x\) into the expression \(y = 3x - 200\): \(y = 3\cdot 150 - 200 = 250\).</p>
+          <p><strong>The value of the multiplier.</strong> We substitute the values \(x = 150\) and \(y = 250\) into the first expression for \(\lambda\) and check with the second:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} \lambda &amp;= -0.4\cdot 150 - 0.1\cdot 250 + 100 = -60 - 25 + 100 = 15 \\ \lambda &amp;= -0.2\cdot 250 - 0.1\cdot 150 + 80 = -50 - 15 + 80 = 15 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} \lambda &amp;= -0.4\cdot 150 - 0.1\cdot 250 + 100 \\ &amp;= -60 - 25 + 100 = 15 \\[4pt] \lambda &amp;= -0.2\cdot 250 - 0.1\cdot 150 + 80 \\ &amp;= -50 - 15 + 80 = 15 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(150;\,250)\) and the value of the Lagrange multiplier \(\lambda = 15\).</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>First we rearrange the equations: the unknowns are written on the left-hand side in the order \(x\), \(y\), \(\lambda\), and the numbers are moved to the right-hand side (their signs change). To remove the decimals, the first two equations are multiplied by \(-10\):</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} -0.4x - 0.1y - \lambda = -100\;\big|\cdot(-10) \;&amp;\Longrightarrow\; 4x + y + 10\lambda = 1000 \\ -0.1x - 0.2y - \lambda = -80\;\big|\cdot(-10) \;&amp;\Longrightarrow\; x + 2y + 10\lambda = 800 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} -0.4x - 0.1y - \lambda = -100\;\big|\cdot(-10) \\ \Longrightarrow\; 4x + y + 10\lambda = 1000 \\[4pt] -0.1x - 0.2y - \lambda = -80\;\big|\cdot(-10) \\ \Longrightarrow\; x + 2y + 10\lambda = 800 \end{gathered} \]</div>
+          <p>The columns of the augmented matrix are the coefficients of the unknowns \(x\), \(y\) and \(\lambda\), and the last column contains the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>). In the constraint equation the coefficient of \(x\) is 1, so it is written as the first row:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 400 \\ 4 &amp; 1 &amp; 10 &amp; 1000 \\ 1 &amp; 2 &amp; 10 &amp; 800 \end{array}\right) \]
+          <p>To get zeros below the pivot element, we multiply the first row by \(-4\) and add it to the second row, and multiply it by \(-1\) and add it to the third row:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 400 \\ 4 &amp; 1 &amp; 10 &amp; 1000 \\ 1 &amp; 2 &amp; 10 &amp; 800 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-4)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 400 \\ \htmlClass{hc}{0} &amp; -3 &amp; 10 &amp; -600 \\ \htmlClass{hc}{0} &amp; 1 &amp; 10 &amp; 400 \end{array}\right)\)</span></div>
+          <p>The second element of the third row is 1. We interchange the second and the third rows – this 1 becomes the pivot element. Then we multiply the second row by 3 and add it to the third row, and divide the new third row by 40:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 400 \\ 0 &amp; \htmlClass{hd}{1} &amp; 10 &amp; 400 \\ 0 &amp; -3 &amp; 10 &amp; -600 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 400 \\ 0 &amp; 1 &amp; 10 &amp; 400 \\ 0 &amp; \htmlClass{hc}{0} &amp; 40 &amp; 600 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,40} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 400 \\ 0 &amp; 1 &amp; 10 &amp; 400 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 15 \end{array}\right)\)</span></div>
+          <p><strong>Back substitution.</strong> The third row gives \(\lambda = 15\). The second row stands for the equation \(y + 10\lambda = 400\), and the first for \(x + y = 400\):</p>
+          <div class="m-wide bp-lg">\[ y + 10\cdot 15 = 400 \;\Longrightarrow\; y = 250;\qquad x + 250 = 400 \;\Longrightarrow\; x = 150 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y + 10\cdot 15 = 400 \;\Longrightarrow\; y = 250 \\ x + 250 = 400 \;\Longrightarrow\; x = 150 \end{gathered} \]</div>
+          <p>The same solution is obtained: \(x = 150\), \(y = 250\), \(\lambda = 15\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives of the Lagrangian function are constant and do not depend on \(\lambda\), so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx}(K) = -0.4;\quad B = L''_{xy}(K) = -0.1;\quad C = L''_{yy}(K) = -0.2 \\ D = AC - B^2 = (-0.4)\cdot(-0.2) - (-0.1)^2 = 0.08 - 0.01 = 0.07 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -0.4 \\ B &amp;= L''_{xy}(K) = -0.1 \\ C &amp;= L''_{yy}(K) = -0.2 \\ D &amp;= AC - B^2 \\ &amp;= (-0.4)\cdot(-0.2) - (-0.1)^2 \\ &amp;= 0.08 - 0.01 = 0.07 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(150;\,250)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The maximum profit and its change</span></h4>
+          <p><strong>a)</strong> We substitute the coordinates of the critical point into the profit function:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} P_{\max}(150;\,250) &amp;= -0.2\cdot 150^2 - 0.1\cdot 250^2 - 0.1\cdot 150\cdot 250 \\ &amp;\phantom{=}\; {}+ 100\cdot 150 + 80\cdot 250 - 5000 \\ &amp;= -4500 - 6250 - 3750 + 15\,000 + 20\,000 - 5000 = 15\,500 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;P_{\max}(150;\,250) \\ &amp;= -0.2\cdot 150^2 - 0.1\cdot 250^2 \\ &amp;\phantom{=}\; {}- 0.1\cdot 150\cdot 250 + 100\cdot 150 \\ &amp;\phantom{=}\; {}+ 80\cdot 250 - 5000 \\ &amp;= -4500 - 6250 - 3750 \\ &amp;\phantom{=}\; {}+ 15\,000 + 20\,000 - 5000 \\ &amp;= 15\,500 \end{aligned} \]</div>
+          <p><strong>b)</strong> The production capacity increases from 400 to 410 bicycles, i.e. the constraint constant increases by \(\Delta m = 10\). The Lagrange multiplier \(\lambda = 15\) shows that when the constraint constant increases by one bicycle, the maximum profit increases by approximately 15&nbsp;euros (see <a href="tema-9.html#daugiklis">the meaning of the Lagrange multiplier</a>):</p>
+          \[ \Delta P^{*} \approx \lambda\cdot\Delta m = 15\cdot 10 = 150 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The factory should produce 150 city and 250 mountain bicycles a month. The maximum profit is 15&nbsp;500 euros a month. b) The maximum profit would increase by approximately 150 euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 2: AM 9.3, Example 3 -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">Example 2</span>
+        <h3>Day and night shifts</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A company has to fill an order of 500 units. It can produce \(x\) units in the day shift and \(y\) units in the night shift. The shifts share the same machines, so the cost, in euros, is
+<div class="m-wide">\[ TC(x;\,y) = 0.3x^2 + 0.2y^2 + 0.1xy + 20x + 30y + 2000 \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 0.3x^2 + 0.2y^2 + 0.1xy \\ &amp;\phantom{=}\; {}+ 20x + 30y + 2000 \end{aligned} \]</div>
+a) How many units should be produced in each shift to minimize the cost? What is the minimum cost?
+<br>b) What is the meaning of the Lagrange multiplier in this problem?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables:</strong> \(x\) is the number of units produced in the day shift, and \(y\) is the number of units produced in the night shift.</p>
+          <p><strong>The objective function.</strong> The minimum cost has to be found. The cost function \(TC(x;\,y)\) is given in the problem.</p>
+          <p><strong>The constraint.</strong> The quantity produced in both shifts together must meet the order: \(x + y = 500\).</p>
+          <p>We look for the minimum cost with respect to \(x\) and \(y\) subject to the constraint:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 0.3x^2 + 0.2y^2 + 0.1xy + 20x + 30y + 2000 \\ &amp;\text{subject to}\;\; x + y = 500 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) \\ &amp;\text{subject to}\;\; x + y = 500 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We write the constraint in the form \(x + y - 500 = 0\). From the objective function we subtract this expression multiplied by \(\lambda\):</p>
+          <div class="m-wide">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 0.3x^2 + 0.2y^2 + 0.1xy + 20x + 30y + 2000 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 500) \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= 0.3x^2 + 0.2y^2 + 0.1xy \\ &amp;\phantom{=}\; {}+ 20x + 30y + 2000 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 500) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>When differentiating with respect to \(x\), the terms \(0.2y^2\), \(30y\) and \(2000\) are constants, and \((0.1xy)'_x = 0.1y\). The derivative with respect to \(y\) is found in the same way. The derivative of the term \(-\lambda(x + y - 500)\) with respect to each variable is \(-\lambda\):</p>
+          <div class="m-wide">\[ L'_x = 0.6x + 0.1y + 20 - \lambda;\qquad L'_y = 0.4y + 0.1x + 30 - \lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 0.6x + 0.1y + 20 - \lambda \\ L'_y = 0.4y + 0.1x + 30 - \lambda \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 0.6x + 0.1y + 20 - \lambda &amp;= 0 \\ 0.4y + 0.1x + 30 - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \]
+          <p>All three unknowns \(x\), \(y\) and \(\lambda\) are of the first degree, so the system is <strong>linear</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> In the first two equations we move the term \(-\lambda\) to the right-hand side:</p>
+          <div class="m-wide">\[ \lambda = 0.6x + 0.1y + 20;\qquad \lambda = 0.4y + 0.1x + 30 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 0.6x + 0.1y + 20 \\ \lambda = 0.4y + 0.1x + 30 \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> We set the two expressions equal. We move the terms with the variables to the left-hand side and the numbers to the right-hand side, collect like terms and multiply both sides by 10:</p>
+          <div class="m-wide bp-lg">\[ 0.6x + 0.1y + 20 = 0.4y + 0.1x + 30 \;\Longrightarrow\; 0.5x - 0.3y = 10 \;\Longrightarrow\; 5x - 3y = 100 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 0.6x + 0.1y + 20 = 0.4y + 0.1x + 30 \\ \Longrightarrow\; 0.5x - 0.3y = 10 \\ \Longrightarrow\; 5x - 3y = 100 \end{gathered} \]</div>
+          <p><strong>Substitution.</strong> This time it is more convenient to express \(y = 500 - x\) from the constraint equation \(x + y = 500\) and substitute it into the equation obtained. Since \(y\) is multiplied by \(-3\), the substituted expression is written in brackets:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} 5x - 3(500 - x) = 100 \;\Longrightarrow\; 5x - 1500 + 3x = 100 \\ \Longrightarrow\; 8x = 1600 \;\Longrightarrow\; x = 200 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 5x - 3(500 - x) = 100 \\ \Longrightarrow\; 5x - 1500 + 3x = 100 \\ \Longrightarrow\; 8x = 1600 \\ \Longrightarrow\; x = 200 \end{gathered} \]</div>
+          <p>Then \(y = 500 - 200 = 300\).</p>
+          <p><strong>The value of the multiplier.</strong> We substitute the values into the first expression for \(\lambda\) and check with the second:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} \lambda &amp;= 0.6\cdot 200 + 0.1\cdot 300 + 20 = 120 + 30 + 20 = 170 \\ \lambda &amp;= 0.4\cdot 300 + 0.1\cdot 200 + 30 = 120 + 20 + 30 = 170 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} \lambda &amp;= 0.6\cdot 200 + 0.1\cdot 300 + 20 \\ &amp;= 120 + 30 + 20 = 170 \\[4pt] \lambda &amp;= 0.4\cdot 300 + 0.1\cdot 200 + 30 \\ &amp;= 120 + 20 + 30 = 170 \end{aligned} \]</div>
+          <p>We obtain the critical point \(K(200;\,300)\) and the value of the Lagrange multiplier \(\lambda = 170\).</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>First we rearrange the equations: the unknowns are written on the left-hand side in the order \(x\), \(y\), \(\lambda\), and the numbers are moved to the right-hand side. To remove the decimals, the first two equations are multiplied by 10:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} 0.6x + 0.1y - \lambda = -20\;\big|\cdot 10 \;&amp;\Longrightarrow\; 6x + y - 10\lambda = -200 \\ 0.1x + 0.4y - \lambda = -30\;\big|\cdot 10 \;&amp;\Longrightarrow\; x + 4y - 10\lambda = -300 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 0.6x + 0.1y - \lambda = -20\;\big|\cdot 10 \\ \Longrightarrow\; 6x + y - 10\lambda = -200 \\[4pt] 0.1x + 0.4y - \lambda = -30\;\big|\cdot 10 \\ \Longrightarrow\; x + 4y - 10\lambda = -300 \end{gathered} \]</div>
+          <p>The columns of the augmented matrix are the coefficients of the unknowns \(x\), \(y\) and \(\lambda\), and the last column contains the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>). In the constraint equation the coefficient of \(x\) is 1, so it is written as the first row:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 500 \\ 6 &amp; 1 &amp; -10 &amp; -200 \\ 1 &amp; 4 &amp; -10 &amp; -300 \end{array}\right) \]
+          <p>We multiply the first row by \(-6\) and add it to the second row, and multiply it by \(-1\) and add it to the third row. We divide the new second row by \(-5\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 500 \\ 6 &amp; 1 &amp; -10 &amp; -200 \\ 1 &amp; 4 &amp; -10 &amp; -300 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(-6)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ \htmlClass{hc}{0} &amp; -5 &amp; -10 &amp; -3200 \\ \htmlClass{hc}{0} &amp; 3 &amp; -10 &amp; -800 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-5)} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ 0 &amp; \htmlClass{hd}{1} &amp; 2 &amp; 640 \\ 0 &amp; 3 &amp; -10 &amp; -800 \end{array}\right)\)</span></div>
+          <p>We multiply the second row by \(-3\) and add it to the third row, and divide the new third row by \(-16\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ 0 &amp; \htmlClass{hd}{1} &amp; 2 &amp; 640 \\ 0 &amp; 3 &amp; -10 &amp; -800 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ 0 &amp; 1 &amp; 2 &amp; 640 \\ 0 &amp; \htmlClass{hc}{0} &amp; -16 &amp; -2720 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-16)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 500 \\ 0 &amp; 1 &amp; 2 &amp; 640 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 170 \end{array}\right)\)</span></div>
+          <p><strong>Back substitution.</strong> The third row gives \(\lambda = 170\). The second row stands for the equation \(y + 2\lambda = 640\), and the first for \(x + y = 500\):</p>
+          <div class="m-wide bp-lg">\[ y + 2\cdot 170 = 640 \;\Longrightarrow\; y = 300;\qquad x + 300 = 500 \;\Longrightarrow\; x = 200 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y + 2\cdot 170 = 640 \;\Longrightarrow\; y = 300 \\ x + 300 = 500 \;\Longrightarrow\; x = 200 \end{gathered} \]</div>
+          <p>The same solution is obtained: \(x = 200\), \(y = 300\), \(\lambda = 170\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives of the Lagrangian function are constant and do not depend on \(\lambda\), so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx}(K) = 0.6;\quad B = L''_{xy}(K) = 0.1;\quad C = L''_{yy}(K) = 0.4 \\ D = AC - B^2 = 0.6\cdot 0.4 - 0.1^2 = 0.24 - 0.01 = 0.23 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 0.6 \\ B &amp;= L''_{xy}(K) = 0.1 \\ C &amp;= L''_{yy}(K) = 0.4 \\ D &amp;= AC - B^2 \\ &amp;= 0.6\cdot 0.4 - 0.1^2 \\ &amp;= 0.24 - 0.01 = 0.23 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K(200;\,300)\) is a minimum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The minimum cost</span></h4>
+          <p>We substitute the coordinates of the critical point into the cost function:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} TC_{\min}(200;\,300) &amp;= 0.3\cdot 200^2 + 0.2\cdot 300^2 + 0.1\cdot 200\cdot 300 \\ &amp;\phantom{=}\; {}+ 20\cdot 200 + 30\cdot 300 + 2000 \\ &amp;= 12\,000 + 18\,000 + 6000 + 4000 + 9000 + 2000 = 51\,000 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;TC_{\min}(200;\,300) \\ &amp;= 0.3\cdot 200^2 + 0.2\cdot 300^2 \\ &amp;\phantom{=}\; {}+ 0.1\cdot 200\cdot 300 + 20\cdot 200 \\ &amp;\phantom{=}\; {}+ 30\cdot 300 + 2000 \\ &amp;= 12\,000 + 18\,000 + 6000 \\ &amp;\phantom{=}\; {}+ 4000 + 9000 + 2000 \\ &amp;= 51\,000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The meaning of the Lagrange multiplier</span></h4>
+          <p><strong>b)</strong> The constraint constant in this problem is the size of the order, \(m = 500\) units. The Lagrange multiplier shows approximately how much the minimum cost changes when the order increases by one unit (see <a href="tema-9.html#daugiklis">the meaning of the Lagrange multiplier</a>):</p>
+          \[ \Delta TC^{*} \approx \lambda\cdot\Delta m = 170\cdot 1 = 170 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The company should produce 200 units in the day shift and 300 units in the night shift. The minimum cost is 51&nbsp;000 euros. b) Since \(\lambda = 170\), if the order increased by one unit, the minimum cost would increase by approximately 170 euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 3: AM 9.3, Example 4 -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">Example 3</span>
+        <h3>Deliveries from two warehouses</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A retail chain must deliver 1200 pallets of goods a week to its shops from two warehouses, A and B. The weekly cost of transporting \(x\) pallets from warehouse A is \(0.01x^2 + 6x\) euros, and the cost of transporting \(y\) pallets from warehouse B is \(0.02y^2 + 3y\) euros.
+<br>a) How many pallets should be delivered from each warehouse to minimize the transportation cost? What is the minimum cost?
+<br>b) How would the minimum cost change if the weekly amount delivered increased by 10&nbsp;%?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The objective function</span></h4>
+          <p><strong>The variables:</strong> \(x\) is the number of pallets delivered from warehouse A a week, and \(y\) is the number of pallets delivered from warehouse B.</p>
+          <p>This time the objective function is not given in the problem – we build it ourselves. We need to find the minimum <strong>total</strong> transportation cost. It consists of two parts: the cost of transportation from warehouse A, \(0.01x^2 + 6x\), and the cost of transportation from warehouse B, \(0.02y^2 + 3y\). The total cost is the sum of these parts:</p>
+          <div class="m-wide bp-lg">\[ TC(x;\,y) = \big(0.01x^2 + 6x\big) + \big(0.02y^2 + 3y\big) = 0.01x^2 + 6x + 0.02y^2 + 3y \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;TC(x;\,y) \\ &amp;= \big(0.01x^2 + 6x\big) + \big(0.02y^2 + 3y\big) \\ &amp;= 0.01x^2 + 6x + 0.02y^2 + 3y \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The model</span></h4>
+          <p><strong>The constraint.</strong> The number of pallets delivered from both warehouses together must equal the required amount: \(x + y = 1200\).</p>
+          <p>We look for the minimum total cost with respect to \(x\) and \(y\) subject to the constraint:</p>
+          <div class="m-wide">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 0.01x^2 + 6x + 0.02y^2 + 3y \\ &amp;\text{subject to}\;\; x + y = 1200 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) \\ &amp;\text{subject to}\;\; x + y = 1200 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The Lagrangian function</span></h4>
+          <p>We write the constraint in the form \(x + y - 1200 = 0\) and build the Lagrangian function:</p>
+          <div class="m-wide bp-lg">\[ L(x;\,y;\,\lambda) = 0.01x^2 + 6x + 0.02y^2 + 3y - \lambda(x + y - 1200) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 0.01x^2 + 6x + 0.02y^2 + 3y \\ &amp;\phantom{=}\; {}- \lambda(x + y - 1200) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>The system of equations</span></h4>
+          <p>The cost of transportation from warehouse A depends only on \(x\), and from warehouse B only on \(y\). Therefore \(L'_x\) does not depend on \(y\), and \(L'_y\) does not depend on \(x\):</p>
+          <div class="m-wide">\[ L'_x = 0.02x + 6 - \lambda;\qquad L'_y = 0.04y + 3 - \lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 0.02x + 6 - \lambda \\ L'_y = 0.04y + 3 - \lambda \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 0.02x + 6 - \lambda &amp;= 0 \\ 0.04y + 3 - \lambda &amp;= 0 \\ x + y &amp;= 1200 \end{aligned} \right. \]
+          <p>All the unknowns are of the first degree, so the system is <strong>linear</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Solving the system by substitution</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> In the first two equations we move the term \(-\lambda\) to the right-hand side:</p>
+          <div class="m-wide">\[ \lambda = 0.02x + 6;\qquad \lambda = 0.04y + 3 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 0.02x + 6 \\ \lambda = 0.04y + 3 \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> We set the two expressions equal. From the equation obtained we express \(x\): we move the number 6 to the right-hand side and then divide both sides by \(0.02\):</p>
+          <div class="m-wide bp-lg">\[ 0.02x + 6 = 0.04y + 3 \;\Longrightarrow\; 0.02x = 0.04y - 3 \;\Longrightarrow\; x = 2y - 150 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 0.02x + 6 = 0.04y + 3 \\ \Longrightarrow\; 0.02x = 0.04y - 3 \\ \Longrightarrow\; x = 2y - 150 \end{gathered} \]</div>
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression \(x = 2y - 150\) into the constraint equation \(x + y = 1200\):</p>
+          <div class="m-wide bp-lg">\[ (2y - 150) + y = 1200 \;\Longrightarrow\; 3y - 150 = 1200 \;\Longrightarrow\; 3y = 1350 \;\Longrightarrow\; y = 450 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} (2y - 150) + y = 1200 \\ \Longrightarrow\; 3y - 150 = 1200 \\ \Longrightarrow\; 3y = 1350 \\ \Longrightarrow\; y = 450 \end{gathered} \]</div>
+          <p>Then \(x = 2\cdot 450 - 150 = 750\).</p>
+          <p><strong>The value of the multiplier.</strong> We substitute the values into both expressions for \(\lambda\) – the same value is obtained:</p>
+          <div class="m-wide">\[ \lambda = 0.02\cdot 750 + 6 = 21;\qquad \lambda = 0.04\cdot 450 + 3 = 21 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 0.02\cdot 750 + 6 = 21 \\ \lambda = 0.04\cdot 450 + 3 = 21 \end{gathered} \]</div>
+          <p>We obtain the critical point \(K(750;\,450)\) and the value of the Lagrange multiplier \(\lambda = 21\).</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>First we rearrange the equations: the unknowns are written on the left-hand side, and the numbers are moved to the right-hand side. The coefficients are hundredths, so the first two equations are multiplied by 100:</p>
+          <div class="m-wide">\[ \begin{aligned} 0.02x - \lambda = -6\;\big|\cdot 100 \;&amp;\Longrightarrow\; 2x - 100\lambda = -600 \\ 0.04y - \lambda = -3\;\big|\cdot 100 \;&amp;\Longrightarrow\; 4y - 100\lambda = -300 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 0.02x - \lambda = -6\;\big|\cdot 100 \\ \Longrightarrow\; 2x - 100\lambda = -600 \\[4pt] 0.04y - \lambda = -3\;\big|\cdot 100 \\ \Longrightarrow\; 4y - 100\lambda = -300 \end{gathered} \]</div>
+          <p>The second equation does not contain \(y\), and the third does not contain \(x\), so the corresponding elements of the matrix are 0.</p>
+          <p>The columns of the augmented matrix are the coefficients of the unknowns \(x\), \(y\) and \(\lambda\), and the last column contains the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>). In the constraint equation the coefficient of \(x\) is 1, so it is written as the first row:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 1200 \\ 2 &amp; 0 &amp; -100 &amp; -600 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right) \]
+          <p>The first element of the third row is already 0, so we multiply the first row by \(-2\) and add it to the second row only. We divide the new second row by \(-2\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 1200 \\ 2 &amp; 0 &amp; -100 &amp; -600 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right)\begin{array}{c} \htmlClass{ha}{(-2)} \\ \htmlClass{ha}{\downarrow} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ \htmlClass{hc}{0} &amp; -2 &amp; -100 &amp; -3000 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right)\begin{array}{l} \phantom{0} \\ \htmlClass{ha}{{:}\,(-2)} \\ \phantom{0} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ 0 &amp; \htmlClass{hd}{1} &amp; 50 &amp; 1500 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right)\)</span></div>
+          <p>We multiply the second row by \(-4\) and add it to the third row, and divide the new third row by \(-300\):</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ 0 &amp; \htmlClass{hd}{1} &amp; 50 &amp; 1500 \\ 0 &amp; 4 &amp; -100 &amp; -300 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-4)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ 0 &amp; 1 &amp; 50 &amp; 1500 \\ 0 &amp; \htmlClass{hc}{0} &amp; -300 &amp; -6300 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,(-300)} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 1200 \\ 0 &amp; 1 &amp; 50 &amp; 1500 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 21 \end{array}\right)\)</span></div>
+          <p><strong>Back substitution.</strong> The third row gives \(\lambda = 21\). The second row stands for the equation \(y + 50\lambda = 1500\), and the first for \(x + y = 1200\):</p>
+          <div class="m-wide bp-lg">\[ y + 50\cdot 21 = 1500 \;\Longrightarrow\; y = 450;\qquad x + 450 = 1200 \;\Longrightarrow\; x = 750 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} y + 50\cdot 21 = 1500 \;\Longrightarrow\; y = 450 \\ x + 450 = 1200 \;\Longrightarrow\; x = 750 \end{gathered} \]</div>
+          <p>The same solution is obtained: \(x = 750\), \(y = 450\), \(\lambda = 21\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives of the Lagrangian function are constant and do not depend on \(\lambda\), so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx}(K) = 0.02;\quad B = L''_{xy}(K) = 0;\quad C = L''_{yy}(K) = 0.04 \\ D = AC - B^2 = 0.02\cdot 0.04 - 0^2 = 0.0008 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 0.02 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 0.04 \\ D &amp;= AC - B^2 \\ &amp;= 0.02\cdot 0.04 - 0^2 \\ &amp;= 0.0008 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K(750;\,450)\) is a minimum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The minimum cost and its change</span></h4>
+          <p><strong>a)</strong> We substitute the coordinates of the critical point into the cost function:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} TC_{\min}(750;\,450) &amp;= 0.01\cdot 750^2 + 6\cdot 750 + 0.02\cdot 450^2 + 3\cdot 450 \\ &amp;= 5625 + 4500 + 4050 + 1350 = 15\,525 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;TC_{\min}(750;\,450) \\ &amp;= 0.01\cdot 750^2 + 6\cdot 750 \\ &amp;\phantom{=}\; {}+ 0.02\cdot 450^2 + 3\cdot 450 \\ &amp;= 5625 + 4500 + 4050 + 1350 \\ &amp;= 15\,525 \end{aligned} \]</div>
+          <p><strong>b)</strong> The amount delivered increases by 10&nbsp;%, i.e. the constraint constant increases by \(\Delta m = 0.1\cdot 1200 = 120\) pallets. The Lagrange multiplier is \(\lambda = 21\), so (see <a href="tema-9.html#daugiklis">the meaning of the Lagrange multiplier</a>):</p>
+          \[ \Delta TC^{*} \approx \lambda\cdot\Delta m = 21\cdot 120 = 2520 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) 750 pallets should be delivered from warehouse A and 450 from warehouse B. The minimum cost is 15&nbsp;525 euros a week. b) The minimum cost would increase by approximately 2520 euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 4: AM 9.3, Example 6 -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">Example 4</span>
+        <h3>Workers and machines in a small workshop</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A workshop with \(x\) workers and \(y\) machines produces
+\[ Q(x;\,y) = 30x + 40y + xy - x^2 - 2y^2 \]
+units a day. The workshop has room for exactly 34 workplaces. Each workplace is taken either by one worker or by one machine, so the number of workers and the number of machines together must be 34.
+<br>a) How many workers and machines maximize the output? What is the maximum output?
+<br>b) What is the meaning of the Lagrange multiplier in this problem?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables:</strong> \(x\) is the number of workers, and \(y\) is the number of machines.</p>
+          <p><strong>The objective function.</strong> The maximum output has to be found. The production function \(Q(x;\,y)\) is given in the problem.</p>
+          <p><strong>The constraint.</strong> Each workplace is taken by one worker or by one machine, so the number of workers and the number of machines add up to the number of workplaces: \(x + y = 34\).</p>
+          <p>We look for the maximum output with respect to \(x\) and \(y\) subject to the constraint:</p>
+          <div class="m-wide">\[ \begin{aligned} &amp;\max_{x;\,y}\; Q(x;\,y) = 30x + 40y + xy - x^2 - 2y^2 \\ &amp;\text{subject to}\;\; x + y = 34 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\max_{x;\,y}\; Q(x;\,y) \\ &amp;\text{subject to}\;\; x + y = 34 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We write the constraint in the form \(x + y - 34 = 0\) and build the Lagrangian function:</p>
+          <div class="m-wide bp-lg">\[ L(x;\,y;\,\lambda) = 30x + 40y + xy - x^2 - 2y^2 - \lambda(x + y - 34) \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 30x + 40y + xy - x^2 - 2y^2 \\ &amp;\phantom{=}\; {}- \lambda(x + y - 34) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>The term \(xy\) depends on both variables: \((xy)'_x = y\), \((xy)'_y = x\). The derivative of the term \(-\lambda(x + y - 34)\) with respect to each variable is \(-\lambda\):</p>
+          <div class="m-wide">\[ L'_x = 30 + y - 2x - \lambda;\qquad L'_y = 40 + x - 4y - \lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 30 + y - 2x - \lambda \\ L'_y = 40 + x - 4y - \lambda \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 30 + y - 2x - \lambda &amp;= 0 \\ 40 + x - 4y - \lambda &amp;= 0 \\ x + y &amp;= 34 \end{aligned} \right. \]
+          <p>All the unknowns are of the first degree, so the system is <strong>linear</strong>.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by substitution</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> In the first two equations we move the term \(-\lambda\) to the right-hand side:</p>
+          <div class="m-wide">\[ \lambda = 30 + y - 2x;\qquad \lambda = 40 + x - 4y \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 30 + y - 2x \\ \lambda = 40 + x - 4y \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> We set the two expressions equal. We move the terms with the variables to the left-hand side and the numbers to the right-hand side, and collect like terms:</p>
+          <div class="m-wide bp-lg">\[ 30 + y - 2x = 40 + x - 4y \;\Longrightarrow\; y + 4y - 2x - x = 40 - 30 \;\Longrightarrow\; 5y - 3x = 10 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 30 + y - 2x = 40 + x - 4y \\ \Longrightarrow\; y + 4y - 2x - x = 40 - 30 \\ \Longrightarrow\; 5y - 3x = 10 \end{gathered} \]</div>
+          <p><strong>Substitution.</strong> From the constraint equation \(x + y = 34\) we express \(y = 34 - x\) and substitute it into the equation obtained. Since \(y\) is multiplied by 5, the substituted expression is written in brackets:</p>
+          <div class="m-wide bp-lg">\[ 5(34 - x) - 3x = 10 \;\Longrightarrow\; 170 - 5x - 3x = 10 \;\Longrightarrow\; -8x = -160 \;\Longrightarrow\; x = 20 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 5(34 - x) - 3x = 10 \\ \Longrightarrow\; 170 - 5x - 3x = 10 \\ \Longrightarrow\; -8x = -160 \\ \Longrightarrow\; x = 20 \end{gathered} \]</div>
+          <p>Then \(y = 34 - 20 = 14\).</p>
+          <p><strong>The value of the multiplier.</strong> We substitute the values into both expressions for \(\lambda\) – the same value is obtained:</p>
+          <div class="m-wide">\[ \lambda = 30 + 14 - 2\cdot 20 = 4;\qquad \lambda = 40 + 20 - 4\cdot 14 = 4 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = 30 + 14 - 2\cdot 20 = 4 \\ \lambda = 40 + 20 - 4\cdot 14 = 4 \end{gathered} \]</div>
+          <p>We obtain the critical point \(K(20;\,14)\) and the value of the Lagrange multiplier \(\lambda = 4\).</p>
+          <p>This system is linear, so it can also be solved by <a href="tema-3.html#gauso-metodas">Gaussian elimination</a>. If you prefer this method, the solution is given below.</p>
+          <details class="more more--why gauss-alt">
+          <summary><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/></svg></span>Solution by Gaussian elimination</summary>
+          <div class="more-body">
+          <p>First we rearrange the equations: the unknowns are written on the left-hand side in the order \(x\), \(y\), \(\lambda\), and the numbers are moved to the right-hand side:</p>
+          <div class="m-wide">\[ \begin{aligned} 30 + y - 2x - \lambda = 0 \;&amp;\Longrightarrow\; -2x + y - \lambda = -30 \\ 40 + x - 4y - \lambda = 0 \;&amp;\Longrightarrow\; x - 4y - \lambda = -40 \end{aligned} \]</div><div class="m-narrow">\[ \begin{gathered} 30 + y - 2x - \lambda = 0 \\ \Longrightarrow\; -2x + y - \lambda = -30 \\[4pt] 40 + x - 4y - \lambda = 0 \\ \Longrightarrow\; x - 4y - \lambda = -40 \end{gathered} \]</div>
+          <p>The columns of the augmented matrix are the coefficients of the unknowns \(x\), \(y\) and \(\lambda\), and the last column contains the constant terms (see <a href="tema-3.html#isplestine-matrica">Topic 3</a>). In the constraint equation the coefficient of \(x\) is 1, so it is written as the first row:</p>
+          \[ \left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 34 \\ -2 &amp; 1 &amp; -1 &amp; -30 \\ 1 &amp; -4 &amp; -1 &amp; -40 \end{array}\right) \]
+          <p>We multiply the first row by 2 and add it to the second row, and multiply it by \(-1\) and add it to the third row:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} \htmlClass{hd}{1} &amp; 1 &amp; 0 &amp; 34 \\ -2 &amp; 1 &amp; -1 &amp; -30 \\ 1 &amp; -4 &amp; -1 &amp; -40 \end{array}\right)\begin{array}{cc} \htmlClass{ha}{(2)} &amp; \htmlClass{ha}{(-1)} \\ \htmlClass{ha}{\downarrow} &amp; \htmlClass{ha}{\vert} \\ &amp; \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ \htmlClass{hc}{0} &amp; 3 &amp; -1 &amp; 38 \\ \htmlClass{hc}{0} &amp; -5 &amp; -1 &amp; -74 \end{array}\right)\)</span></div>
+          <p>There is no element equal to 1 in the second column. To avoid dividing and getting fractions, we multiply the second row by 2 and add it to the third row – the second element of the third row becomes 1:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; 3 &amp; -1 &amp; 38 \\ 0 &amp; -5 &amp; -1 &amp; -74 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(2)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; 3 &amp; -1 &amp; 38 \\ 0 &amp; 1 &amp; -3 &amp; 2 \end{array}\right)\)</span></div>
+          <p>We interchange the second and the third rows – this 1 becomes the pivot element. Then we multiply the second row by \(-3\) and add it to the third row, and divide the new third row by 8:</p>
+          <div class="mats mats--flow mats--sm"><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; \htmlClass{hd}{1} &amp; -3 &amp; 2 \\ 0 &amp; 3 &amp; -1 &amp; 38 \end{array}\right)\begin{array}{c} \phantom{0} \\ \htmlClass{ha}{(-3)} \\ \htmlClass{ha}{\downarrow} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; 1 &amp; -3 &amp; 2 \\ 0 &amp; \htmlClass{hc}{0} &amp; 8 &amp; 32 \end{array}\right)\begin{array}{l} \phantom{0} \\ \phantom{0} \\ \htmlClass{ha}{{:}\,8} \end{array}\)</span><span class="arrow rot" aria-hidden="true">\(\Longrightarrow\)</span><span>\(\left(\begin{array}{ccc|c} 1 &amp; 1 &amp; 0 &amp; 34 \\ 0 &amp; 1 &amp; -3 &amp; 2 \\ 0 &amp; 0 &amp; \htmlClass{hd}{1} &amp; 4 \end{array}\right)\)</span></div>
+          <p><strong>Back substitution.</strong> The third row gives \(\lambda = 4\). The second row stands for the equation \(y - 3\lambda = 2\), and the first for \(x + y = 34\):</p>
+          <div class="m-wide">\[ y - 3\cdot 4 = 2 \;\Longrightarrow\; y = 14;\qquad x + 14 = 34 \;\Longrightarrow\; x = 20 \]</div><div class="m-narrow">\[ \begin{gathered} y - 3\cdot 4 = 2 \;\Longrightarrow\; y = 14 \\ x + 14 = 34 \;\Longrightarrow\; x = 20 \end{gathered} \]</div>
+          <p>The same solution is obtained: \(x = 20\), \(y = 14\), \(\lambda = 4\).</p>
+          </div>
+          </details>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>The second order partial derivatives of the Lagrangian function are constant and do not depend on \(\lambda\), so their values at the critical point \(K\) are the same numbers:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} A = L''_{xx}(K) = -2;\quad B = L''_{xy}(K) = 1;\quad C = L''_{yy}(K) = -4 \\ D = AC - B^2 = (-2)\cdot(-4) - 1^2 = 8 - 1 = 7 &gt; 0 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -2 \\ B &amp;= L''_{xy}(K) = 1 \\ C &amp;= L''_{yy}(K) = -4 \\ D &amp;= AC - B^2 \\ &amp;= (-2)\cdot(-4) - 1^2 \\ &amp;= 8 - 1 = 7 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(20;\,14)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The maximum output</span></h4>
+          <p>We substitute the coordinates of the critical point into the production function:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} Q_{\max}(20;\,14) &amp;= 30\cdot 20 + 40\cdot 14 + 20\cdot 14 - 20^2 - 2\cdot 14^2 \\ &amp;= 600 + 560 + 280 - 400 - 392 = 648 \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{aligned} &amp;Q_{\max}(20;\,14) \\ &amp;= 30\cdot 20 + 40\cdot 14 + 20\cdot 14 \\ &amp;\phantom{=}\; {}- 20^2 - 2\cdot 14^2 \\ &amp;= 600 + 560 + 280 - 400 - 392 \\ &amp;= 648 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">7</span><span>The meaning of the Lagrange multiplier</span></h4>
+          <p><strong>b)</strong> The constraint constant in this problem is the number of workplaces, \(m = 34\). The Lagrange multiplier shows approximately how much the maximum output changes when one more workplace is added (see <a href="tema-9.html#daugiklis">the meaning of the Lagrange multiplier</a>):</p>
+          \[ \Delta Q^{*} \approx \lambda\cdot\Delta m = 4\cdot 1 = 4 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The workshop should have 20 workers and 14 machines. The maximum output is 648 units a day. b) Since \(\lambda = 4\), one more workplace would increase the maximum output by approximately 4 units a day.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+    <h3 class="subhead" style="margin-top:22px">When the system of equations is non-linear</h3>
+    <!-- Example 5: AM 9.3, Example 5 -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">Example 5</span>
+        <h3>Cinema tickets and film rentals</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A student spends 200&nbsp;euros a month on entertainment. A cinema ticket costs 8&nbsp;euros, and an online film rental costs 2&nbsp;euros. The utility from \(x\) tickets and \(y\) rentals is
+\[ U(x;\,y) = 6\sqrt{x} + 4\sqrt{y} \]
+a) How many tickets and rentals maximize the utility if the whole budget is spent? What is the maximum utility?
+<br>b) How would the maximum utility change if the budget increased by 20&nbsp;euros?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables:</strong> \(x\) is the number of cinema tickets bought a month, and \(y\) is the number of film rentals.</p>
+          <p><strong>The objective function.</strong> The maximum utility has to be found. The utility function \(U(x;\,y)\) is given in the problem.</p>
+          <p><strong>The constraint</strong> is built from the budget. Each ticket costs 8&nbsp;euros, so \(8x\) euros are spent on tickets. Each film rental costs 2&nbsp;euros, so \(2y\) euros are spent on rentals. When the whole budget is spent, these amounts add up to 200&nbsp;euros: \(8x + 2y = 200\).</p>
+          <p>We look for the maximum utility with respect to \(x\) and \(y\) subject to the constraint:</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; U(x;\,y) = 6\sqrt{x} + 4\sqrt{y} \\ &amp;\text{subject to}\;\; 8x + 2y = 200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We write the constraint in the form \(8x + 2y - 200 = 0\) and build the Lagrangian function:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 6\sqrt{x} + 4\sqrt{y} - \lambda(8x + 2y - 200) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 6\sqrt{x} + 4\sqrt{y} \\ &amp;\phantom{=}\; {}- \lambda(8x + 2y - 200) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>We use the formula \(\big(\sqrt{x}\big)'_x = \frac{1}{2\sqrt{x}}\): \(\big(6\sqrt{x}\big)'_x = \frac{6}{2\sqrt{x}} = \frac{3}{\sqrt{x}}\), \(\big(4\sqrt{y}\big)'_y = \frac{4}{2\sqrt{y}} = \frac{2}{\sqrt{y}}\). After expanding the brackets in the last term we get \(-8\lambda x - 2\lambda y + 200\lambda\), so its derivative with respect to \(x\) is \(-8\lambda\), and with respect to \(y\) – \(-2\lambda\):</p>
+          <div class="m-wide">\[ L'_x = \frac{3}{\sqrt{x}} - 8\lambda;\qquad L'_y = \frac{2}{\sqrt{y}} - 2\lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = \frac{3}{\sqrt{x}} - 8\lambda \\ L'_y = \frac{2}{\sqrt{y}} - 2\lambda \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} \frac{3}{\sqrt{x}} - 8\lambda &amp;= 0 \\ \frac{2}{\sqrt{y}} - 2\lambda &amp;= 0 \\ 8x + 2y &amp;= 200 \end{aligned} \right. \]
+          <p>This system is not linear: the variables \(x\) and \(y\) are under roots in the denominators of fractions. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations.</p>
+          <p>The variables are the numbers of tickets and films, and they are under roots in denominators, so \(x &gt; 0\) and \(y &gt; 0\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system</span></h4>
+          <p><strong>The expressions for the multiplier \(\lambda\).</strong> In the first equation we move the term \(-8\lambda\) to the right-hand side and divide both sides by 8. In the second equation we move the term \(-2\lambda\) to the right-hand side and divide both sides by 2:</p>
+          <div class="m-wide">\[ \lambda = \frac{3}{8\sqrt{x}};\qquad \lambda = \frac{1}{\sqrt{y}} \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{3}{8\sqrt{x}} \\ \lambda = \frac{1}{\sqrt{y}} \end{gathered} \]</div>
+          <p><strong>An equation in \(x\) and \(y\).</strong> We set the two expressions equal. Two fractions are equal, so their cross products are also equal: the numerator of the left fraction multiplied by the denominator of the right one is equal to the numerator of the right fraction multiplied by the denominator of the left one:</p>
+          <div class="m-wide">\[ \frac{3}{8\sqrt{x}} = \frac{1}{\sqrt{y}} \;\Longrightarrow\; 3\sqrt{y} = 8\sqrt{x} \]</div><div class="m-narrow">\[ \begin{gathered} \frac{3}{8\sqrt{x}} = \frac{1}{\sqrt{y}} \\ \Longrightarrow\; 3\sqrt{y} = 8\sqrt{x} \end{gathered} \]</div>
+          <p>To get rid of the roots, we square both sides: \(\big(3\sqrt{y}\big)^2 = 9y\), \(\big(8\sqrt{x}\big)^2 = 64x\). Both sides of the equation are positive, so squaring does not produce extraneous solutions. Then we divide both sides by 9 and express \(y\):</p>
+          <div class="m-wide">\[ 9y = 64x \;\Longrightarrow\; y = \frac{64x}{9} \]</div><div class="m-narrow">\[ \begin{gathered} 9y = 64x \\ \Longrightarrow\; y = \frac{64x}{9} \end{gathered} \]</div>
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression into the constraint equation \(8x + 2y = 200\) in place of \(y\). To remove the fraction, we multiply both sides of the equation by 9:</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} 8x + 2\cdot\frac{64x}{9} = 200 \;\Longrightarrow\; 8x + \frac{128x}{9} = 200 \\ \Longrightarrow\; 72x + 128x = 1800 \;\Longrightarrow\; 200x = 1800 \;\Longrightarrow\; x = 9 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 8x + 2\cdot\frac{64x}{9} = 200 \\ \Longrightarrow\; 8x + \frac{128x}{9} = 200 \\ \Longrightarrow\; 72x + 128x = 1800 \\ \Longrightarrow\; 200x = 1800 \\ \Longrightarrow\; x = 9 \end{gathered} \]</div>
+          <p>Then \(y = \frac{64\cdot 9}{9} = 64\).</p>
+          <p><strong>The value of the multiplier.</strong> We substitute \(y = 64\) into the second expression for \(\lambda\) and check with the first (\(\sqrt{64} = 8\), \(\sqrt{9} = 3\)):</p>
+          <div class="m-wide">\[ \lambda = \frac{1}{\sqrt{64}} = \frac{1}{8} = 0.125;\qquad \lambda = \frac{3}{8\cdot\sqrt{9}} = \frac{3}{24} = 0.125 \]</div><div class="m-narrow">\[ \begin{gathered} \lambda = \frac{1}{\sqrt{64}} = \frac{1}{8} = 0.125 \\ \lambda = \frac{3}{8\cdot\sqrt{9}} = \frac{3}{24} = 0.125 \end{gathered} \]</div>
+          <p>We obtain the critical point \(K(9;\,64)\) and the value of the Lagrange multiplier \(\lambda = 0.125\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>To make the second differentiation easier, we write the fractions as powers: \(\frac{3}{\sqrt{x}} = 3x^{-0.5}\), \(\frac{2}{\sqrt{y}} = 2y^{-0.5}\). The terms with \(\lambda\) in the first order derivatives are constant, so \(\lambda\) does not remain in the second order derivatives:</p>
+          <div class="m-wide">\[ L''_{xx} = -1.5x^{-1.5};\qquad L''_{xy} = 0;\qquad L''_{yy} = -y^{-1.5} \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = -1.5x^{-1.5} \\ L''_{xy} = 0 \\ L''_{yy} = -y^{-1.5} \end{gathered} \]</div>
+          <p>The derivatives contain variables, so we substitute the coordinates of the critical point \(K(9;\,64)\). At this point \(x^{1.5} = 9\cdot\sqrt{9} = 27\), and \(y^{1.5} = 64\cdot\sqrt{64} = 512\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -\frac{1.5}{9^{1.5}} = -\frac{1.5}{27} = -\frac{1}{18} \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -\frac{1}{64^{1.5}} = -\frac{1}{512} \\ D &amp;= AC - B^2 = \Big(-\frac{1}{18}\Big)\cdot\Big(-\frac{1}{512}\Big) - 0^2 = \frac{1}{9216} &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -\frac{1.5}{9^{1.5}} \\ &amp;= -\frac{1.5}{27} = -\frac{1}{18} \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -\frac{1}{64^{1.5}} \\ &amp;= -\frac{1}{512} \\ D &amp;= AC - B^2 \\ &amp;= \Big(-\frac{1}{18}\Big)\cdot\Big(-\frac{1}{512}\Big) - 0^2 \\ &amp;= \frac{1}{9216} &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &lt; 0\), so \(K(9;\,64)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The maximum utility and its change</span></h4>
+          <p><strong>a)</strong> We substitute the coordinates of the critical point into the utility function:</p>
+          <div class="m-wide">\[ U_{\max}(9;\,64) = 6\sqrt{9} + 4\sqrt{64} = 6\cdot 3 + 4\cdot 8 = 50 \]</div><div class="m-narrow">\[ \begin{aligned} U_{\max}(9;\,64) &amp;= 6\sqrt{9} + 4\sqrt{64} \\ &amp;= 6\cdot 3 + 4\cdot 8 = 50 \end{aligned} \]</div>
+          <p><strong>b)</strong> The budget increases by 20&nbsp;euros, i.e. \(\Delta m = 20\). The Lagrange multiplier \(\lambda = 0.125\) shows that when the budget increases by one euro, the maximum utility increases by approximately 0.125 units (see <a href="tema-9.html#daugiklis">the meaning of the Lagrange multiplier</a>):</p>
+          \[ \Delta U^{*} \approx \lambda\cdot\Delta m = 0.125\cdot 20 = 2.5 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The student should buy 9 cinema tickets and rent 64 films a month. The maximum utility is 50. b) The maximum utility would increase by approximately 2.5 units.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 6: AM 9.3, Example 7 -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">Example 6</span>
+        <h3>Labour and machine hours within a budget</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        An assembly plant produces
+\[ Q(x;\,y) = 20x^{0.75}y^{0.25} \]
+units a day, where \(x\) is the number of hours of labour and \(y\) is the number of machine hours. An hour of labour costs 15&nbsp;euros, a machine hour costs 80&nbsp;euros, and the daily budget for both inputs is 3200&nbsp;euros.
+<br>a) How many hours of labour and machine hours maximize the output? What is the maximum output?
+<br>b) How would the maximum output change if the budget increased by 100&nbsp;euros?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables:</strong> \(x\) is the number of hours of labour a day, and \(y\) is the number of machine hours a day.</p>
+          <p><strong>The objective function.</strong> The maximum output has to be found. The production function – the Cobb-Douglas function \(Q(x;\,y)\) – is given in the problem.</p>
+          <p><strong>The constraint</strong> is built from the budget. The hours of labour cost \(15x\) euros, and the machine hours cost \(80y\) euros. Together these amounts must equal the daily budget: \(15x + 80y = 3200\).</p>
+          <p>We look for the maximum output with respect to \(x\) and \(y\) subject to the constraint:</p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; Q(x;\,y) = 20x^{0.75}y^{0.25} \\ &amp;\text{subject to}\;\; 15x + 80y = 3200 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We write the constraint in the form \(15x + 80y - 3200 = 0\) and build the Lagrangian function:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 20x^{0.75}y^{0.25} - \lambda(15x + 80y - 3200) \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= 20x^{0.75}y^{0.25} - \lambda(15x + 80y - 3200) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>When differentiating with respect to \(x\), the factor \(y^{0.25}\) is constant: \(\big(20x^{0.75}\big)'_x = 20\cdot 0.75x^{-0.25} = 15x^{-0.25}\). When differentiating with respect to \(y\), the constant factor is \(x^{0.75}\): \(\big(20y^{0.25}\big)'_y = 20\cdot 0.25y^{-0.75} = 5y^{-0.75}\). The derivatives of the constraint term are \(-15\lambda\) and \(-80\lambda\):</p>
+          <div class="m-wide">\[ L'_x = 15x^{-0.25}y^{0.25} - 15\lambda;\qquad L'_y = 5x^{0.75}y^{-0.75} - 80\lambda \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 15x^{-0.25}y^{0.25} - 15\lambda \\ L'_y = 5x^{0.75}y^{-0.75} - 80\lambda \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 15x^{-0.25}y^{0.25} - 15\lambda &amp;= 0 \\ 5x^{0.75}y^{-0.75} - 80\lambda &amp;= 0 \\ 15x + 80y &amp;= 3200 \end{aligned} \right. \]
+          <p>This system is not linear: the variables are raised to fractional powers and multiplied by each other. Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by dividing the equations</span></h4>
+          <p>In the first two equations we move the terms with \(\lambda\) to the right-hand sides:</p>
+          \[ \left\{ \begin{aligned} 15x^{-0.25}y^{0.25} &amp;= 15\lambda \\ 5x^{0.75}y^{-0.75} &amp;= 80\lambda \end{aligned} \right. \]
+          <p><strong>Dividing the equations.</strong> Both equations contain the same variables, only in different powers, and \(\lambda\) is on the right-hand sides. Therefore we divide the first equation by the second: the left-hand side by the left-hand side and the right-hand side by the right-hand side. The left-hand sides are positive, so \(\lambda \ne 0\), and \(\lambda\) cancels. Powers of the same base are divided by subtracting their exponents: \(x^{-0.25 - 0.75} = x^{-1}\), \(y^{0.25 - (-0.75)} = y^{1}\):</p>
+          <div class="m-wide bp-lg">\[ \frac{15x^{-0.25}y^{0.25}}{5x^{0.75}y^{-0.75}} = \frac{15\lambda}{80\lambda} \;\Longrightarrow\; 3x^{-1}y = \frac{3}{16} \;\Longrightarrow\; \frac{3y}{x} = \frac{3}{16} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{15x^{-0.25}y^{0.25}}{5x^{0.75}y^{-0.75}} = \frac{15\lambda}{80\lambda} \\ \Longrightarrow\; 3x^{-1}y = \frac{3}{16} \\ \Longrightarrow\; \frac{3y}{x} = \frac{3}{16} \end{gathered} \]</div>
+          <p>We divide both sides by 3 and cross-multiply: \(16y = x\), i.e.</p>
+          \[ x = 16y \]
+          <p><strong>Substituting into the constraint.</strong> We substitute the expression \(x = 16y\) into the constraint equation \(15x + 80y = 3200\):</p>
+          <div class="m-wide bp-lg">\[ 15\cdot 16y + 80y = 3200 \;\Longrightarrow\; 240y + 80y = 3200 \;\Longrightarrow\; 320y = 3200 \;\Longrightarrow\; y = 10 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 15\cdot 16y + 80y = 3200 \\ \Longrightarrow\; 240y + 80y = 3200 \\ \Longrightarrow\; 320y = 3200 \\ \Longrightarrow\; y = 10 \end{gathered} \]</div>
+          <p>Then \(x = 16\cdot 10 = 160\).</p>
+          <p><strong>The value of the multiplier.</strong> Dividing the first equation \(15x^{-0.25}y^{0.25} = 15\lambda\) by 15, we get \(\lambda = x^{-0.25}y^{0.25}\). It is convenient to write this expression as a single fraction: \(x^{-0.25}y^{0.25} = \big(\frac{y}{x}\big)^{0.25}\):</p>
+          \[ \lambda = \Big(\frac{10}{160}\Big)^{0.25} = \Big(\frac{1}{16}\Big)^{0.25} = 0.5 \]
+          <p>The last value can be found without a calculator: \(0.5^4 = 0.0625 = \frac{1}{16}\). We obtain the critical point \(K(160;\,10)\) and the value of the Lagrange multiplier \(\lambda = 0.5\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The type of the critical point</span></h4>
+          <p>The production function is a Cobb-Douglas function with \(A = 20 &gt; 0\) and \(\alpha + \beta = 0.75 + 0.25 = 1 \le 1\), so it is concave. The budget constraint term is linear, so the Lagrangian function \(L\) is also concave (see <a href="tema-9.html#kobo-daglas-l">Cobb-Douglas functions in constrained optimization problems</a>). Therefore \(K(160;\,10)\) is a maximum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The maximum output and its change</span></h4>
+          <p><strong>a)</strong> We calculate the product of the powers by noticing that \(160 = 16\cdot 10\) and \(16^{0.75} = \big(16^{0.25}\big)^3 = 2^3 = 8\):</p>
+          <div class="m-wide">\[ 160^{0.75}\cdot 10^{0.25} = 16^{0.75}\cdot 10^{0.75}\cdot 10^{0.25} = 8\cdot 10 = 80 \]</div><div class="m-narrow">\[ \begin{aligned} &amp;160^{0.75}\cdot 10^{0.25} \\ &amp;= 16^{0.75}\cdot 10^{0.75}\cdot 10^{0.25} \\ &amp;= 8\cdot 10 = 80 \end{aligned} \]</div>
+          \[ Q_{\max}(160;\,10) = 20\cdot 80 = 1600 \]
+          <p><strong>b)</strong> The budget increases by 100&nbsp;euros, i.e. \(\Delta m = 100\). The Lagrange multiplier \(\lambda = 0.5\) shows that when the budget increases by one euro, the maximum output increases by approximately 0.5 units (see <a href="tema-9.html#daugiklis">the meaning of the Lagrange multiplier</a>):</p>
+          \[ \Delta Q^{*} \approx \lambda\cdot\Delta m = 0.5\cdot 100 = 50 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The plant should use 160 hours of labour and 10 machine hours a day. The maximum output is 1600 units a day. b) The maximum output would increase by approximately 50 units.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 7: AM 9.3, Example 8 -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">Example 7</span>
+        <h3>Printing an order</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A printing house prints
+\[ Q(x;\,y) = 12\sqrt{x} + 18\sqrt{y} \]
+thousand pages, where \(x\) is the number of hours of the operators' work and \(y\) is the number of machine hours. An operator hour costs 16&nbsp;euros, and a machine hour costs 36&nbsp;euros. The printing house has an order for 360 thousand pages.
+<br>a) How many operator hours and machine hours minimize the cost of the order? What is the minimum cost?
+<br>b) How would the minimum cost change if the order increased by 10 thousand pages?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables:</strong> \(x\) is the number of operator hours, and \(y\) is the number of machine hours.</p>
+          <p><strong>The objective function.</strong> The minimum cost of the order has to be found, and the cost function is not given in the problem – we build it. An operator hour costs 16&nbsp;euros, so \(x\) hours cost \(16x\) euros. A machine hour costs 36&nbsp;euros, so \(y\) hours cost \(36y\) euros. The cost is the sum of these amounts:</p>
+          \[ TC(x;\,y) = 16x + 36y \]
+          <p><strong>The constraint.</strong> The function \(Q(x;\,y)\) shows how many thousand pages are printed. The number of pages printed must meet the order of 360 thousand pages: \(12\sqrt{x} + 18\sqrt{y} = 360\). Note that here the production function is not the objective function but the constraint.</p>
+          <p>We look for the minimum cost with respect to \(x\) and \(y\) subject to the constraint:</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 16x + 36y \\ &amp;\text{subject to}\;\; 12\sqrt{x} + 18\sqrt{y} = 360 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We write the constraint in the form \(12\sqrt{x} + 18\sqrt{y} - 360 = 0\) and build the Lagrangian function:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 16x + 36y - \lambda\big(12\sqrt{x} + 18\sqrt{y} - 360\big) \]</div><div class="m-narrow">\[ \begin{aligned} &amp;L(x;\,y;\,\lambda) \\ &amp;= 16x + 36y \\ &amp;\phantom{=}\; {}- \lambda\big(12\sqrt{x} + 18\sqrt{y} - 360\big) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>Since \(\big(\sqrt{x}\big)'_x = \frac{1}{2\sqrt{x}}\), the derivative of the term \(-12\lambda\sqrt{x}\) with respect to \(x\) is \(-\frac{12\lambda}{2\sqrt{x}} = -\frac{6\lambda}{\sqrt{x}}\). In the same way, the derivative of the term \(-18\lambda\sqrt{y}\) with respect to \(y\) is \(-\frac{9\lambda}{\sqrt{y}}\):</p>
+          <div class="m-wide">\[ L'_x = 16 - \frac{6\lambda}{\sqrt{x}};\qquad L'_y = 36 - \frac{9\lambda}{\sqrt{y}} \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 16 - \frac{6\lambda}{\sqrt{x}} \\ L'_y = 36 - \frac{9\lambda}{\sqrt{y}} \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 16 - \frac{6\lambda}{\sqrt{x}} &amp;= 0 \\ 36 - \frac{9\lambda}{\sqrt{y}} &amp;= 0 \\ 12\sqrt{x} + 18\sqrt{y} &amp;= 360 \end{aligned} \right. \]
+          <p>This system is not linear: the variables are under roots, and \(\lambda\) is divided by \(\sqrt{x}\) and \(\sqrt{y}\). Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system</span></h4>
+          <p>This time it is convenient not to set the expressions for \(\lambda\) equal, but to express the roots \(\sqrt{x}\) and \(\sqrt{y}\) through \(\lambda\) and substitute them into the constraint equation, because it contains the same roots.</p>
+          <p><strong>The roots through \(\lambda\).</strong> In the first equation we move the fraction to the right-hand side, multiply both sides by \(\sqrt{x}\) and divide them by 16. The second equation is rearranged in the same way:</p>
+          <div class="m-wide bp-lg">\[ \begin{aligned} 16 = \frac{6\lambda}{\sqrt{x}} \;&amp;\Longrightarrow\; 16\sqrt{x} = 6\lambda \;\Longrightarrow\; \sqrt{x} = \frac{6\lambda}{16} = 0.375\lambda \\ 36 = \frac{9\lambda}{\sqrt{y}} \;&amp;\Longrightarrow\; 36\sqrt{y} = 9\lambda \;\Longrightarrow\; \sqrt{y} = \frac{9\lambda}{36} = 0.25\lambda \end{aligned} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 16 = \frac{6\lambda}{\sqrt{x}} \;\Longrightarrow\; 16\sqrt{x} = 6\lambda \\ \Longrightarrow\; \sqrt{x} = \frac{6\lambda}{16} = 0.375\lambda \\[6pt] 36 = \frac{9\lambda}{\sqrt{y}} \;\Longrightarrow\; 36\sqrt{y} = 9\lambda \\ \Longrightarrow\; \sqrt{y} = \frac{9\lambda}{36} = 0.25\lambda \end{gathered} \]</div>
+          <p><strong>Substituting into the constraint.</strong> We substitute the expressions obtained into the constraint equation \(12\sqrt{x} + 18\sqrt{y} = 360\) – this gives an equation in one unknown \(\lambda\):</p>
+          <div class="m-wide bp-lg">\[ \begin{gathered} 12\cdot 0.375\lambda + 18\cdot 0.25\lambda = 360 \;\Longrightarrow\; 4.5\lambda + 4.5\lambda = 360 \\ \Longrightarrow\; 9\lambda = 360 \;\Longrightarrow\; \lambda = 40 \end{gathered} \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 12\cdot 0.375\lambda + 18\cdot 0.25\lambda = 360 \\ \Longrightarrow\; 4.5\lambda + 4.5\lambda = 360 \\ \Longrightarrow\; 9\lambda = 360 \\ \Longrightarrow\; \lambda = 40 \end{gathered} \]</div>
+          <p><strong>The values of the variables.</strong> We substitute the value \(\lambda = 40\) into the expressions for the roots, and then square both sides of each equality:</p>
+          <div class="m-wide bp-lg">\[ \sqrt{x} = 0.375\cdot 40 = 15 \;\Longrightarrow\; x = 225;\qquad \sqrt{y} = 0.25\cdot 40 = 10 \;\Longrightarrow\; y = 100 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \sqrt{x} = 0.375\cdot 40 = 15 \;\Longrightarrow\; x = 225 \\ \sqrt{y} = 0.25\cdot 40 = 10 \;\Longrightarrow\; y = 100 \end{gathered} \]</div>
+          <p>We obtain the critical point \(K(225;\,100)\) and the value of the Lagrange multiplier \(\lambda = 40\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The sufficient condition</span></h4>
+          <p>We write the fractions as powers: \(\frac{6\lambda}{\sqrt{x}} = 6\lambda x^{-0.5}\), \(\frac{9\lambda}{\sqrt{y}} = 9\lambda y^{-0.5}\). We differentiate once more, for example \(\big(-6\lambda x^{-0.5}\big)'_x = 3\lambda x^{-1.5}\):</p>
+          <div class="m-wide">\[ L''_{xx} = 3\lambda x^{-1.5};\qquad L''_{xy} = 0;\qquad L''_{yy} = 4.5\lambda y^{-1.5} \]</div><div class="m-narrow">\[ \begin{gathered} L''_{xx} = 3\lambda x^{-1.5} \\ L''_{xy} = 0 \\ L''_{yy} = 4.5\lambda y^{-1.5} \end{gathered} \]</div>
+          <p>This time the second order derivatives contain not only \(x\) and \(y\) but also \(\lambda\). Therefore we substitute the coordinates of the critical point \(K(225;\,100)\) and the value of the multiplier \(\lambda = 40\). At this point \(x^{1.5} = 225\cdot\sqrt{225} = 3375\), and \(y^{1.5} = 100\cdot\sqrt{100} = 1000\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = \frac{3\cdot 40}{225^{1.5}} = \frac{120}{3375} \approx 0.036 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = \frac{4.5\cdot 40}{100^{1.5}} = \frac{180}{1000} = 0.18 \\ D &amp;= AC - B^2 = \frac{120}{3375}\cdot 0.18 - 0^2 = 0.0064 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = \frac{3\cdot 40}{225^{1.5}} \\ &amp;= \frac{120}{3375} \approx 0.036 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = \frac{4.5\cdot 40}{100^{1.5}} \\ &amp;= \frac{180}{1000} = 0.18 \\ D &amp;= AC - B^2 \\ &amp;= \frac{120}{3375}\cdot 0.18 - 0^2 \\ &amp;= 0.0064 &gt; 0 \end{aligned} \]</div>
+          <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K(225;\,100)\) is a minimum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The minimum cost and its change</span></h4>
+          <p><strong>a)</strong> We substitute the coordinates of the critical point into the cost function:</p>
+          <div class="m-wide">\[ TC_{\min}(225;\,100) = 16\cdot 225 + 36\cdot 100 = 3600 + 3600 = 7200 \]</div><div class="m-narrow">\[ \begin{aligned} TC_{\min}(225;\,100) &amp;= 16\cdot 225 + 36\cdot 100 \\ &amp;= 3600 + 3600 = 7200 \end{aligned} \]</div>
+          <p><strong>b)</strong> The constraint constant is measured in thousands of pages, so when the order increases by 10 thousand pages, \(\Delta m = 10\). The Lagrange multiplier is \(\lambda = 40\) (see <a href="tema-9.html#daugiklis">the meaning of the Lagrange multiplier</a>):</p>
+          \[ \Delta TC^{*} \approx \lambda\cdot\Delta m = 40\cdot 10 = 400 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The order needs 225 operator hours and 100 machine hours. The minimum cost is 7200 euros. b) The minimum cost would increase by approximately 400 euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Example 8: AM 9.3, Example 9 -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">Example 8</span>
+        <h3>An order for a furniture factory</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Problem</span>
+        A furniture factory produces
+\[ Q(x;\,y) = 8x^{0.5}y^{0.5} \]
+chairs, where \(x\) is the number of hours of labour and \(y\) is the number of machine hours. An hour of labour costs 16&nbsp;euros, and a machine hour costs 100&nbsp;euros. The factory has to fill an order for 400 chairs.
+<br>a) How many hours of labour and machine hours minimize the cost of the order? What is the minimum cost?
+<br>b) How would the minimum cost change if the order increased by 10&nbsp;%?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>The model</span></h4>
+          <p><strong>The variables:</strong> \(x\) is the number of hours of labour, and \(y\) is the number of machine hours.</p>
+          <p><strong>The objective function.</strong> The minimum cost of the order has to be found. Labour costs \(16x\) euros, and the use of the machines \(100y\) euros, so the cost function is</p>
+          \[ TC(x;\,y) = 16x + 100y \]
+          <p><strong>The constraint.</strong> The number of chairs produced must meet the order: \(8x^{0.5}y^{0.5} = 400\). As in the previous example, the production function here is the constraint. Compare with <a href="#pavyzdys-6">Example 6</a>, in which the Cobb-Douglas function was the objective function and the constraint was set by the budget.</p>
+          <p>We look for the minimum cost with respect to \(x\) and \(y\) subject to the constraint:</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 16x + 100y \\ &amp;\text{subject to}\;\; 8x^{0.5}y^{0.5} = 400 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>The Lagrangian function</span></h4>
+          <p>We write the constraint in the form \(8x^{0.5}y^{0.5} - 400 = 0\) and build the Lagrangian function:</p>
+          <div class="m-wide">\[ L(x;\,y;\,\lambda) = 16x + 100y - \lambda\big(8x^{0.5}y^{0.5} - 400\big) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= 16x + 100y \\ &amp;\phantom{=}\; {}- \lambda\big(8x^{0.5}y^{0.5} - 400\big) \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>The system of equations</span></h4>
+          <p>The derivative of the term \(-8\lambda x^{0.5}y^{0.5}\) with respect to \(x\) is \(-8\lambda\cdot 0.5x^{-0.5}y^{0.5} = -4\lambda x^{-0.5}y^{0.5}\), and with respect to \(y\) – \(-4\lambda x^{0.5}y^{-0.5}\):</p>
+          <div class="m-wide">\[ L'_x = 16 - 4\lambda x^{-0.5}y^{0.5};\qquad L'_y = 100 - 4\lambda x^{0.5}y^{-0.5} \]</div><div class="m-narrow">\[ \begin{gathered} L'_x = 16 - 4\lambda x^{-0.5}y^{0.5} \\ L'_y = 100 - 4\lambda x^{0.5}y^{-0.5} \end{gathered} \]</div>
+          <p>We set both derivatives equal to zero and add the constraint equation to the system:</p>
+          \[ \left\{ \begin{aligned} 16 - 4\lambda x^{-0.5}y^{0.5} &amp;= 0 \\ 100 - 4\lambda x^{0.5}y^{-0.5} &amp;= 0 \\ 8x^{0.5}y^{0.5} &amp;= 400 \end{aligned} \right. \]
+          <p>This system is not linear: the variables are raised to powers and multiplied by each other and by \(\lambda\). Therefore <strong>Gaussian elimination cannot be used for it</strong> – it applies only to systems of linear equations.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Solving the system by dividing the equations</span></h4>
+          <p>In the first two equations we move the terms with \(\lambda\) to the right-hand sides and write the equalities the other way round:</p>
+          \[ \left\{ \begin{aligned} 4\lambda x^{-0.5}y^{0.5} &amp;= 16 \\ 4\lambda x^{0.5}y^{-0.5} &amp;= 100 \end{aligned} \right. \]
+          <p><strong>Dividing the equations.</strong> We divide the first equation by the second. The factor \(4\lambda\) cancels, and the exponents are subtracted: \(x^{-0.5 - 0.5} = x^{-1}\), \(y^{0.5 - (-0.5)} = y\):</p>
+          <div class="m-wide bp-lg">\[ \frac{4\lambda x^{-0.5}y^{0.5}}{4\lambda x^{0.5}y^{-0.5}} = \frac{16}{100} \;\Longrightarrow\; \frac{y}{x} = 0.16 \;\Longrightarrow\; y = 0.16x \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \frac{4\lambda x^{-0.5}y^{0.5}}{4\lambda x^{0.5}y^{-0.5}} = \frac{16}{100} \\ \Longrightarrow\; \frac{y}{x} = 0.16 \\ \Longrightarrow\; y = 0.16x \end{gathered} \]</div>
+          <p><strong>Substituting into the constraint.</strong> Since \(x^{0.5}y^{0.5} = \sqrt{xy}\), substituting \(y = 0.16x\) gives \(\sqrt{x\cdot 0.16x} = \sqrt{0.16x^2} = 0.4x\) (because \(x &gt; 0\)):</p>
+          <div class="m-wide bp-lg">\[ 8\sqrt{x\cdot 0.16x} = 400 \;\Longrightarrow\; 8\cdot 0.4x = 400 \;\Longrightarrow\; 3.2x = 400 \;\Longrightarrow\; x = 125 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} 8\sqrt{x\cdot 0.16x} = 400 \\ \Longrightarrow\; 8\cdot 0.4x = 400 \\ \Longrightarrow\; 3.2x = 400 \\ \Longrightarrow\; x = 125 \end{gathered} \]</div>
+          <p>Then \(y = 0.16\cdot 125 = 20\).</p>
+          <p><strong>The value of the multiplier.</strong> In the first equation \(x^{-0.5}y^{0.5} = \sqrt{\frac{y}{x}} = \sqrt{\frac{20}{125}} = \sqrt{0.16} = 0.4\):</p>
+          <div class="m-wide">\[ 4\lambda\cdot 0.4 = 16 \;\Longrightarrow\; 1.6\lambda = 16 \;\Longrightarrow\; \lambda = 10 \]</div><div class="m-narrow">\[ \begin{gathered} 4\lambda\cdot 0.4 = 16 \\ \Longrightarrow\; 1.6\lambda = 16 \\ \Longrightarrow\; \lambda = 10 \end{gathered} \]</div>
+          <p>We obtain the critical point \(K(125;\,20)\) and the value of the Lagrange multiplier \(\lambda = 10\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>The type of the critical point</span></h4>
+          <p>The left-hand side of the constraint is a Cobb-Douglas function with \(A = 8 &gt; 0\) and \(\alpha + \beta = 0.5 + 0.5 = 1 \le 1\), so it is concave. Since \(\lambda = 10 &gt; 0\), the term \(-\lambda\big(8x^{0.5}y^{0.5} - 400\big)\) is convex. The cost function is linear, so \(L\) is a convex function (see <a href="tema-9.html#kobo-daglas-l">Cobb-Douglas functions in constrained optimization problems</a>), and \(K(125;\,20)\) is a minimum point.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>The minimum cost and its change</span></h4>
+          <p><strong>a)</strong> We substitute the coordinates of the critical point into the cost function:</p>
+          <div class="m-wide">\[ TC_{\min}(125;\,20) = 16\cdot 125 + 100\cdot 20 = 2000 + 2000 = 4000 \]</div><div class="m-narrow">\[ \begin{aligned} TC_{\min}(125;\,20) &amp;= 16\cdot 125 + 100\cdot 20 \\ &amp;= 2000 + 2000 = 4000 \end{aligned} \]</div>
+          <p><strong>b)</strong> The order increases by 10&nbsp;%, i.e. \(\Delta m = 0.1\cdot 400 = 40\) chairs. The Lagrange multiplier is \(\lambda = 10\) (see <a href="tema-9.html#daugiklis">the meaning of the Lagrange multiplier</a>):</p>
+          \[ \Delta TC^{*} \approx \lambda\cdot\Delta m = 10\cdot 40 = 400 \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Answer</span>
+            <p>a) The order needs 125 hours of labour and 20 machine hours. The minimum cost is 4000 euros. b) The minimum cost would increase by approximately 400 euros.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. PRACTICE ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Practice problems</h2>
+    <p class="section-intro">Write your solutions in the same way as in the examples: build the model and the Lagrangian function, solve the system of equations, decide the type of the critical point and calculate the quantities asked for. The answers give the main intermediate results – use them to check your work.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- AM Topic 9 Problem Set, section 3, problem 1 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A dairy produces \(x\) tonnes of plain yogurt and \(y\) tonnes of fruit yogurt a month. Its monthly profit, in euros, is</p>
+          <div class="m-wide">\[ P(x;\,y) = -0.2x^2 - 0.3y^2 - 0.2xy + 190x + 210y - 20\,000 \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= -0.2x^2 - 0.3y^2 - 0.2xy \\ &amp;\phantom{=}\; {}+ 190x + 210y - 20\,000 \end{aligned} \]</div>
+          <p>The dairy produces exactly 500 tonnes of yogurt a month.</p>
+          <p>a) How much yogurt of each type should be produced to maximize the profit? What is the maximum profit?<br>b) How would the maximum profit change if the monthly production capacity increased by 10 tonnes?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The model:</strong></p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; P(x;\,y) \\ &amp;\text{subject to}\;\; x + y = 500 \end{aligned} \]
+          <p><strong>The system of equations and the critical point</strong> (the system is linear; setting the expressions for \(\lambda\) equal gives \(x = 2y - 100\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 190 - 0.4x - 0.2y - \lambda &amp;= 0 \\ 210 - 0.6y - 0.2x - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \;\Longrightarrow\; K(300;\,200),\ \lambda = 30 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 190 - 0.4x - 0.2y - \lambda &amp;= 0 \\ 210 - 0.6y - 0.2x - \lambda &amp;= 0 \\ x + y &amp;= 500 \end{aligned} \right. \\ \Longrightarrow\; K(300;\,200),\ \lambda = 30 \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -0.4 \\ B &amp;= L''_{xy}(K) = -0.2 \\ C &amp;= L''_{yy}(K) = -0.6 \\ D &amp;= 0.2 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -0.4 \\ B &amp;= L''_{xy}(K) = -0.2 \\ C &amp;= L''_{yy}(K) = -0.6 \\ D &amp;= 0.2 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> a) 300 tonnes of plain and 200 tonnes of fruit yogurt should be produced a month. The maximum profit is \(P_{\max}(300;\,200) = 37\,000\) euros a month. b) The change in the profit, in euros, is \(\Delta P^{*} \approx 30\cdot 10 = 300\).</p>
+        </div>
+      </article>
+
+      <!-- problem 2 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A bakery chain must deliver 1000 crates of bread a day to its shops from two bakeries. Delivering \(x\) crates from bakery A costs \(0.02x^2 + 4x\) euros, and delivering \(y\) crates from bakery B costs \(0.01y^2 + 8y\) euros.</p>
+          <p>a) How many crates should each bakery deliver to minimize the total cost? What is the minimum cost?<br>b) How would the minimum cost change if the daily amount delivered increased by 5&nbsp;%?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The objective function</strong> (the sum of the delivery costs of both bakeries) <strong>and the model:</strong></p>
+          <div class="m-wide">\[ TC(x;\,y) = 0.02x^2 + 4x + 0.01y^2 + 8y \]</div><div class="m-narrow">\[ \begin{aligned} TC(x;\,y) &amp;= 0.02x^2 + 4x \\ &amp;\phantom{=}\; {}+ 0.01y^2 + 8y \end{aligned} \]</div>
+          <div class="m-wide">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 0.02x^2 + 4x + 0.01y^2 + 8y \\ &amp;\text{subject to}\;\; x + y = 1000 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) \\ &amp;\text{subject to}\;\; x + y = 1000 \end{aligned} \]</div>
+          <p><strong>The system of equations and the critical point</strong> (the system is linear; setting the expressions for \(\lambda\) equal gives \(y = 2x - 200\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 0.04x + 4 - \lambda &amp;= 0 \\ 0.02y + 8 - \lambda &amp;= 0 \\ x + y &amp;= 1000 \end{aligned} \right. \;\Longrightarrow\; K(400;\,600),\ \lambda = 20 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 0.04x + 4 - \lambda &amp;= 0 \\ 0.02y + 8 - \lambda &amp;= 0 \\ x + y &amp;= 1000 \end{aligned} \right. \\ \Longrightarrow\; K(400;\,600),\ \lambda = 20 \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 0.04 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 0.02 \\ D &amp;= 0.0008 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 0.04 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 0.02 \\ D &amp;= 0.0008 &gt; 0;\quad A &gt; 0 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> a) Bakery A should deliver 400 crates and bakery B 600. The minimum cost is \(TC_{\min}(400;\,600) = 13\,200\) euros a day. b) 5&nbsp;% of 1000 is \(\Delta m = 50\). The change in the cost, in euros, is \(\Delta TC^{*} \approx 20\cdot 50 = 1000\).</p>
+        </div>
+      </article>
+
+      <!-- problem 3 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A consumer spends 500 euros a month on \(x\) restaurant visits at 10 euros each and \(y\) concert tickets at 20 euros each. The utility function is</p>
+          \[ U(x;\,y) = 4\ln x + 6\ln y \]
+          <p>a) How many restaurant visits and concert tickets maximize the utility if the whole budget is spent?<br>b) How would the maximum utility change if the budget increased by 50 euros?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The model:</strong></p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; U(x;\,y) = 4\ln x + 6\ln y \\ &amp;\text{subject to}\;\; 10x + 20y = 500 \end{aligned} \]
+          <p><strong>The system of equations and the critical point</strong> (the system is non-linear; the first two equations give \(\lambda = \frac{0.4}{x} = \frac{0.3}{y}\), so \(y = 0.75x\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} \frac{4}{x} - 10\lambda &amp;= 0 \\ \frac{6}{y} - 20\lambda &amp;= 0 \\ 10x + 20y &amp;= 500 \end{aligned} \right. \;\Longrightarrow\; K(20;\,15),\ \lambda = 0.02 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} \frac{4}{x} - 10\lambda &amp;= 0 \\ \frac{6}{y} - 20\lambda &amp;= 0 \\ 10x + 20y &amp;= 500 \end{aligned} \right. \\ \Longrightarrow\; K(20;\,15),\ \lambda = 0.02 \end{gathered} \]</div>
+          <p><strong>The sufficient condition:</strong></p>
+          <p>The second order derivatives: \(L''_{xx} = -\frac{4}{x^2}\), \(L''_{xy} = 0\), \(L''_{yy} = -\frac{6}{y^2}\). We substitute \(K(20;\,15)\):</p>
+          <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -\frac{4}{20^2} = -0.01 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -\frac{6}{15^2} \approx -0.027 \\ D &amp;= AC - B^2 \approx 0.00027 &gt; 0;\quad A &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = -\frac{4}{20^2} \\ &amp;= -0.01 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = -\frac{6}{15^2} \\ &amp;\approx -0.027 \\ D &amp;= AC - B^2 \approx 0.00027 &gt; 0 \\ A &amp;&lt; 0 \end{aligned} \]</div>
+          <p><strong>Answer.</strong> a) 20 restaurant visits and 15 concert tickets. \(U_{\max} = 4\ln 20 + 6\ln 15 \approx 28.23\). b) \(\Delta U^{*} \approx 0.02\cdot 50 = 1\).</p>
+        </div>
+      </article>
+
+      <!-- problem 4 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A furniture factory produces</p>
+          \[ Q(x;\,y) = 50x^{0.4}y^{0.6} \]
+          <p>tables a month, where \(x\) is the number of hours of labour and \(y\) is the number of machine hours. An hour of labour costs 20 euros, and a machine hour costs 30 euros. The monthly budget for both inputs is 5000 euros.</p>
+          <p>a) How many hours of labour and machine hours maximize the output? What is the maximum output?<br>b) How would the maximum output change if the budget increased by 100 euros?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The model:</strong></p>
+          \[ \begin{aligned} &amp;\max_{x;\,y}\; Q(x;\,y) \\ &amp;\text{subject to}\;\; 20x + 30y = 5000 \end{aligned} \]
+          <p><strong>The system of equations and the critical point</strong> (the system is non-linear; dividing the first equation by the second gives \(\frac{2y}{3x} = \frac{2}{3}\), i.e. \(x = y\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 20x^{-0.6}y^{0.6} &amp;= 20\lambda \\ 30x^{0.4}y^{-0.4} &amp;= 30\lambda \\ 20x + 30y &amp;= 5000 \end{aligned} \right. \;\Longrightarrow\; x = y \;\Longrightarrow\; K(100;\,100),\ \lambda = 1 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 20x^{-0.6}y^{0.6} &amp;= 20\lambda \\ 30x^{0.4}y^{-0.4} &amp;= 30\lambda \\ 20x + 30y &amp;= 5000 \end{aligned} \right. \\ \Longrightarrow\; x = y \\ \Longrightarrow\; K(100;\,100),\ \lambda = 1 \end{gathered} \]</div>
+          <p><strong>The type of the critical point</strong></p>
+          <p>The parameters of the Cobb-Douglas function satisfy \(A = 50 &gt; 0\) and \(\alpha + \beta = 1 \le 1\). The function \(L\) is concave, so \(K(100;\,100)\) is a maximum point.</p>
+          <p><strong>Answer.</strong> a) 100 hours of labour and 100 machine hours are needed a month. The maximum output is \(Q_{\max} = 5000\) tables. b) The change in the output, in tables, is \(\Delta Q^{*} \approx 1\cdot 100 = 100\).</p>
+        </div>
+      </article>
+
+      <!-- problem 5 -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>A cleaning company cleans</p>
+          \[ Q(x;\,y) = 4x^{0.5}y^{0.5} \]
+          <p>hundred square metres, where \(x\) is the number of hours of labour and \(y\) is the number of hours the cleaning machines are used. An hour of labour costs 9 euros, and a machine hour costs 4 euros. The company has to clean an area of 24&nbsp;000 square metres.</p>
+          <p>a) How many hours of labour and machine hours minimize the cost of the order? What is the minimum cost?<br>b) How would the minimum cost change if the order increased by 2000 square metres?</p>
+        </div>
+        <div class="q-answer">
+          <p><strong>The model</strong> (the area is measured in hundreds of square metres, so 24&nbsp;000&nbsp;m² corresponds to 240):</p>
+          \[ \begin{aligned} &amp;\min_{x;\,y}\; TC(x;\,y) = 9x + 4y \\ &amp;\text{subject to}\;\; 4x^{0.5}y^{0.5} = 240 \end{aligned} \]
+          <p><strong>The system of equations and the critical point</strong> (the system is non-linear; dividing the first equation by the second gives \(\frac{y}{x} = 2.25\)):</p>
+          <div class="m-wide bp-lg">\[ \left\{ \begin{aligned} 9 &amp;= 2\lambda x^{-0.5}y^{0.5} \\ 4 &amp;= 2\lambda x^{0.5}y^{-0.5} \\ 4x^{0.5}y^{0.5} &amp;= 240 \end{aligned} \right. \;\Longrightarrow\; y = 2.25x \;\Longrightarrow\; K(40;\,90),\ \lambda = 3 \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} 9 &amp;= 2\lambda x^{-0.5}y^{0.5} \\ 4 &amp;= 2\lambda x^{0.5}y^{-0.5} \\ 4x^{0.5}y^{0.5} &amp;= 240 \end{aligned} \right. \\ \Longrightarrow\; y = 2.25x \\ \Longrightarrow\; K(40;\,90),\ \lambda = 3 \end{gathered} \]</div>
+          <p><strong>The type of the critical point</strong></p>
+          <p>The parameters of the Cobb-Douglas constraint satisfy \(A = 4 &gt; 0\) and \(\alpha + \beta = 1 \le 1\), and \(\lambda = 3 &gt; 0\). The function \(L\) is convex, so \(K(40;\,90)\) is a minimum point.</p>
+          <p><strong>Answer.</strong> a) 40 hours of labour and 90 machine hours are needed. The minimum cost is \(TC_{\min} = 720\) euros. b) 2000&nbsp;m² corresponds to \(\Delta m = 20\). The change in the cost, in euros, is \(\Delta TC^{*} \approx 3\cdot 20 = 60\).</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this section can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 8</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Calculus for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">Chapter 7.4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
