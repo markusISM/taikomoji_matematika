@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 9. Extrema of Functions of Several Variables, the Lagrange Problem · Applied Mathematics</title>
+<meta name="description" content="Extrema of functions of several variables: critical points, the second derivative test and saddle points, with an interactive surface graph. Constrained optimization by the method of Lagrange multipliers and the meaning of the Lagrange multiplier. Applications – in separate sections.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-9.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="t9">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 9</span>
+    <h1>Extrema of Functions of Several Variables, the Lagrange Problem</h1>
+    <ul class="jump">
+      <li><a href="#ekstremumai">Extrema</a></li>
+      <li><a href="#pakankamoji">Second derivative test</a></li>
+      <li><a href="#lagranzo">Lagrange problem</a></li>
+      <li><a href="#daugiklis">Lagrange multiplier</a></li>
+      <li><a href="#taikymai">Applications</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ UNCONSTRAINED OPTIMIZATION ============ -->
+  <section class="section" id="be-apribojimu" aria-labelledby="h-free">
+    <h2 id="h-free">Unconstrained optimization</h2>
+    <p class="section-intro">This part explains how to find the largest or the smallest value of a function of two variables when there is no condition that connects the variables. Such problems are called <strong>unconstrained optimization problems</strong>. The method has two steps: the necessary condition finds the points where an extremum is possible, and the sufficient condition, the second derivative test, decides what kind of point each of them is.</p>
+
+    <article class="card concept" id="ekstremumai">
+      <div class="concept-head"><span class="num">1</span><h3>Relative extrema and critical points</h3></div>
+      <div class="model-note">The function \(z = f(x;\,y)\) has a <strong>relative maximum</strong> at \((a;\,b)\) if \(f(a;\,b) \ge f(x;\,y)\) for all points \((x;\,y)\) that are sufficiently close to \((a;\,b)\).</div>
+      <div class="model-note">The function \(z = f(x;\,y)\) has a <strong>relative minimum</strong> at \((a;\,b)\) if \(f(a;\,b) \le f(x;\,y)\) for all points \((x;\,y)\) that are sufficiently close to \((a;\,b)\).</div>
+      <p>On the graph, a relative maximum is the top of a hill of the surface and a relative minimum is the bottom of a valley. If both first order partial derivatives exist at such a point, the tangent lines of the surface in the direction of \(x\) and in the direction of \(y\) are horizontal, so both derivatives are equal to zero. This gives the <strong>necessary condition</strong> of an extremum.</p>
+      <div class="model-note">A <strong>critical point</strong> of \(f(x;\,y)\) is a point \((a;\,b)\) in the domain of \(f(x;\,y)\) such that
+        \[ \left\{ \begin{aligned} f'_x(a;\,b) &amp;= 0 \\ f'_y(a;\,b) &amp;= 0 \end{aligned} \right. \]
+        or at least one of the partial derivatives does not exist.</div>
+      <p>A relative extremum can only be at a critical point. The converse is not true: a critical point may also be a <strong>saddle point</strong>, where the function increases in one direction and decreases in another, like a mountain pass. In the figure you can compare all three cases: a relative maximum, a relative minimum and a saddle point. At all three critical points both first order partial derivatives are equal to zero.</p>
+      <div data-widget="surface3d" data-mode="crit" data-fns="pk mn sd"></div>
+      <p style="margin-top:12px">Critical points of a function of one variable were discussed in the <a href="tema-6-vietiniai-ekstremumai.html">Topic 6 section “Relative Extrema”</a>, and partial derivatives in <a href="tema-8.html#dalines">Topic 8</a>.</p>
+    </article>
+
+    <article class="card concept" id="pakankamoji">
+      <div class="concept-head"><span class="num">2</span><h3>The second derivative test</h3></div>
+      <p>The type of a critical point is decided by the <a href="tema-8-antros-eiles.html">second order partial derivatives</a>, which is the <strong>sufficient condition</strong>. The critical point is labelled with a letter, usually \(K\), for example \(K(a;\,b)\). If there are several critical points, they are labelled \(K_1\), \(K_2\), and so on. First the second order partial derivatives \(f''_{xx}\), \(f''_{xy}\) and \(f''_{yy}\) are found, and then the coordinates of the critical point are substituted into them. The values obtained are denoted by \(A\), \(B\) and \(C\):</p>
+      <div class="formula"><div class="m-wide">\[ A = f''_{xx}(K);\qquad B = f''_{xy}(K);\qquad C = f''_{yy}(K) \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= f''_{xx}(K) \\ B &amp;= f''_{xy}(K) \\ C &amp;= f''_{yy}(K) \end{aligned} \]</div></div>
+      <p>If a second order partial derivative contains variables, it is not equal to a number – a number is obtained only after the coordinates of the critical point are substituted. So we write, for example, \(f''_{xx} = 6x\) and \(A = f''_{xx}(K) = 6\cdot 1 = 6\), but not \(f''_{xx} = 6x = 6\).</p>
+      <p>We also calculate the <strong>discriminant</strong></p>
+      <div class="formula">\[ D = AC - B^2 \]</div>
+      <p>Then:</p>
+      <div class="tbl-wrap">
+        <table class="vtable">
+          <thead>
+            <tr><th scope="col">Condition</th><th scope="col">Conclusion</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(D &gt; 0\) and \(A &lt; 0\)</td><td>the function is concave at \(K\), and \(K\) is a <strong>relative maximum point</strong></td></tr>
+            <tr><td>\(D &gt; 0\) and \(A &gt; 0\)</td><td>the function is convex at \(K\), and \(K\) is a <strong>relative minimum point</strong></td></tr>
+            <tr><td>\(D &lt; 0\)</td><td>\(K\) is a <strong>saddle point</strong></td></tr>
+            <tr><td>\(D = 0\)</td><td>the test is inconclusive – further investigation is needed</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The sign of \(A\) plays the same role as the sign of the second derivative of a function of one variable in <a href="tema-7.html#zenklas">Topic 7</a>: a negative value means a top, a positive value means the bottom of a valley. The discriminant checks whether the surface bends in the same way in every direction. When \(D &lt; 0\), it bends upwards in one direction and downwards in another, so the point is a saddle point.</p>
+
+      <div class="subtype">
+        <h4>When the function is a polynomial of the second degree</h4>
+        <p>In most applied problems the function is a polynomial of the second degree. Then \(A\), \(B\) and \(C\) are numbers that do not depend on the point, and the necessary condition gives a system of two linear equations. In the problems considered here it has one solution. If \(D &gt; 0\) and \(A &lt; 0\), the function is concave everywhere, so its only relative maximum is also its largest value. In the same way, if \(D &gt; 0\) and \(A &gt; 0\), the only relative minimum is the smallest value of the function.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="kritiniai-taskai">
+      <div class="concept-head"><span class="num">3</span><h3>Finding and classifying critical points</h3></div>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example 1</p>
+        <p>Find the relative extrema of the function \(f(x;\,y) = x^3 - 3x + y^2 - 4y\).</p>
+        <p><strong>The necessary condition.</strong> The first order partial derivatives are</p>
+        \[ f'_x = 3x^2 - 3;\qquad f'_y = 2y - 4 \]
+        <p>Setting them equal to zero, we obtain a system of equations:</p>
+        \[ \left\{ \begin{aligned} 3x^2 - 3 &amp;= 0 \\ 2y - 4 &amp;= 0 \end{aligned} \right. \]
+        <p>The first equation is an incomplete quadratic equation. We divide both of its sides by 3 and factor the left-hand side by the difference of squares formula:</p>
+        <div class="m-wide">\[ 3x^2 - 3 = 0 \;\Longrightarrow\; x^2 - 1 = 0 \;\Longrightarrow\; (x - 1)(x + 1) = 0 \]</div><div class="m-narrow">\[ \begin{gathered} 3x^2 - 3 = 0 \;\Longrightarrow\; x^2 - 1 = 0 \\ \Longrightarrow\; (x - 1)(x + 1) = 0 \end{gathered} \]</div>
+        <p>A product is equal to zero when at least one of its factors is equal to zero, so \(x = 1\) or \(x = -1\). The second equation gives \(y = 2\):</p>
+        \[ \left\{ \begin{aligned} x &amp;= \pm 1 \\ y &amp;= 2 \end{aligned} \right. \]
+        <p>There are two critical points. We label them \(K_1(1;\,2)\) and \(K_2(-1;\,2)\).</p>
+        <p><strong>The sufficient condition.</strong> The second order partial derivatives are</p>
+        \[ f''_{xx} = 6x;\qquad f''_{xy} = 0;\qquad f''_{yy} = 2 \]
+        <p>The derivative \(f''_{xx}\) contains \(x\), so \(A\) depends on the point, and each critical point is tested separately.</p>
+        <p><strong>The point \(K_1(1;\,2)\).</strong> We substitute \(x = 1\), \(y = 2\):</p>
+        <div class="m-wide">\[ \begin{aligned} A &amp;= f''_{xx}(K_1) = 6\cdot 1 = 6 \\ B &amp;= f''_{xy}(K_1) = 0 \\ C &amp;= f''_{yy}(K_1) = 2 \\ D &amp;= AC - B^2 = 6\cdot 2 - 0^2 = 12 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= f''_{xx}(K_1) = 6\cdot 1 = 6 \\ B &amp;= f''_{xy}(K_1) = 0 \\ C &amp;= f''_{yy}(K_1) = 2 \\ D &amp;= AC - B^2 = 6\cdot 2 - 0^2 \\ &amp;= 12 &gt; 0 \end{aligned} \]</div>
+        <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K_1\) is a relative minimum point.</p>
+        <p><strong>The point \(K_2(-1;\,2)\).</strong> We substitute \(x = -1\), \(y = 2\):</p>
+        <div class="m-wide">\[ \begin{aligned} A &amp;= f''_{xx}(K_2) = 6\cdot(-1) = -6 \\ B &amp;= f''_{xy}(K_2) = 0 \\ C &amp;= f''_{yy}(K_2) = 2 \\ D &amp;= AC - B^2 = (-6)\cdot 2 - 0^2 = -12 &lt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= f''_{xx}(K_2) = 6\cdot(-1) = -6 \\ B &amp;= f''_{xy}(K_2) = 0 \\ C &amp;= f''_{yy}(K_2) = 2 \\ D &amp;= AC - B^2 = (-6)\cdot 2 - 0^2 \\ &amp;= -12 &lt; 0 \end{aligned} \]</div>
+        <p>\(D &lt; 0\), so \(K_2\) is a saddle point.</p>
+        \[ f_{\min}(1;\,2) = 1 - 3 + 4 - 8 = -6 \]
+        <p><strong>Answer.</strong> The point \(K_1(1;\,2)\) is a relative minimum point, \(f_{\min}(1;\,2) = -6\); \(K_2(-1;\,2)\) is a saddle point.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="kobo-daglas">
+      <div class="concept-head"><span class="num">4</span><h3>Cobb-Douglas functions</h3></div>
+      <p>For the <a href="tema-8-gamybos-funkcija.html">Cobb-Douglas function</a> \(Q = Ax^{\alpha}y^{\beta}\), with \(x &gt; 0\) and \(y &gt; 0\), the discriminant is not calculated. Whether it is concave or convex is decided by the parameters:</p>
+      <ul>
+        <li>the function is <strong>concave</strong> if \(A &gt; 0\) and \(\alpha + \beta \le 1\);</li>
+        <li>the function is <strong>convex</strong> if \(A &lt; 0\) and \(\alpha + \beta \le 1\).</li>
+      </ul>
+      <p>In a profit problem the production function is multiplied by the price and the costs of the inputs are subtracted:</p>
+      <div class="formula"><div class="m-wide">\[ P(x;\,y) = p\cdot Ax^{\alpha}y^{\beta} - c_1x - c_2y - FC \]</div><div class="m-narrow">\[ \begin{aligned} P(x;\,y) &amp;= p\cdot Ax^{\alpha}y^{\beta} \\ &amp;\phantom{=}\; {}- c_1x - c_2y - FC \end{aligned} \]</div></div>
+      <p>Multiplying by a positive price does not change the concavity. The subtracted terms \(c_1x + c_2y + FC\) are linear, so they do not change it either. Therefore, if \(A &gt; 0\) and \(\alpha + \beta \le 1\), the profit function is concave, and its critical point is a maximum point. The sufficient condition is checked with the parameters \(A\), \(\alpha\) and \(\beta\), without calculating \(D\).</p>
+      <p>To solve the system of the necessary condition, the costs of the inputs are moved to the right-hand sides of the equations, and the first equation is divided by the second. The powers of the same base are combined, and one variable is expressed through the other. This expression is then substituted into one of the equations.</p>
+    </article>
+  </section>
+
+  <!-- ============ CONSTRAINED OPTIMIZATION ============ -->
+  <section class="section" id="salyginis" aria-labelledby="h-cons">
+    <h2 id="h-cons">Constrained optimization</h2>
+    <p class="section-intro">In the problems of the previous part the variables were not connected by any additional condition. In many applied problems such a condition has to be satisfied. For example, the money spent on two inputs must equal the budget, the amounts delivered from two warehouses must add up to the order, and the output must reach the required level. Such a condition is called a <strong>constraint</strong>, and the problem is a <strong>constrained optimization problem</strong>. Such problems are solved by the method of Lagrange multipliers.</p>
+
+    <article class="card concept" id="lagranzo">
+      <div class="concept-head"><span class="num">5</span><h3>The Lagrange problem</h3></div>
+      <p>The problem is to find the relative extrema of the function \(z = f(x;\,y)\) subject to the constraint \(g(x;\,y) = m\). The function \(f(x;\,y)\) is the <strong>objective function</strong>. The values of the variables must satisfy the equation \(g(x;\,y) = m\), and \(m\) is the <strong>constraint constant</strong>, for example the budget, the required amount or the capacity.</p>
+      <p>The problem is written as a <strong>model</strong>. We state which function is maximized or minimized, with respect to which variables, and which constraint they must satisfy:</p>
+      <div class="formula">\[ \begin{aligned} &amp;\max_{x;\,y}\; f(x;\,y) \\ &amp;\text{subject to}\;\; g(x;\,y) = m \end{aligned} \]</div>
+      <p>For a minimization problem we write \(\min_{x;\,y}\).</p>
+      <p>The figure shows how the constraint changes the solution. Without a constraint, the smallest value of \(f(x;\,y) = x^2 + y^2\) is 0, and it is reached at the origin. With the constraint \(x + 2y = 10\) only the points of the line are allowed. The smallest value of \(f\) on the line is reached where the line touches one of the <a href="tema-8.html#lygio-linijos">level curves</a>.</p>
+      <div data-widget="lagrange-chart"></div>
+    </article>
+
+    <article class="card concept" id="metodas">
+      <div class="concept-head"><span class="num">6</span><h3>The method of Lagrange multipliers</h3></div>
+      <p>To find the relative extrema of the function \(z = f(x;\,y)\) subject to the constraint \(g(x;\,y) = m\), follow these steps.</p>
+      <ol class="steps-list">
+        <li><strong>Write down the Lagrangian function.</strong>
+          <div class="formula"><div class="m-wide">\[ L(x;\,y;\,\lambda) = f(x;\,y) - \lambda\big(g(x;\,y) - m\big) \]</div><div class="m-narrow">\[ \begin{gathered} L(x;\,y;\,\lambda) = f(x;\,y) \\ {}- \lambda\big(g(x;\,y) - m\big) \end{gathered} \]</div></div>
+          <p>The new variable \(\lambda\) is called the <strong>Lagrange multiplier</strong>. The constraint is written in the form \(g(x;\,y) - m = 0\), so that its right-hand side is zero. The expression on the left-hand side, multiplied by \(\lambda\), is subtracted from the objective function.</p>
+        </li>
+        <li><strong>Find the critical points of \(L(x;\,y;\,\lambda)\).</strong> Set the first order partial derivatives with respect to \(x\) and \(y\) equal to zero, and add the constraint equation to the system:
+          <div class="formula"><div class="m-wide bp-lg">\[ \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ L'_{\lambda}(x;\,y;\,\lambda) &amp;= 0 \end{aligned} \right. \quad\text{or}\quad \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ g(x;\,y) &amp;= m \end{aligned} \right. \]</div><div class="m-narrow bp-lg">\[ \begin{gathered} \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ L'_{\lambda}(x;\,y;\,\lambda) &amp;= 0 \end{aligned} \right. \\[4pt] \text{or} \\[4pt] \left\{ \begin{aligned} L'_x(x;\,y;\,\lambda) &amp;= 0 \\ L'_y(x;\,y;\,\lambda) &amp;= 0 \\ g(x;\,y) &amp;= m \end{aligned} \right. \end{gathered} \]</div></div>
+          <p>Both systems are equivalent. The derivative with respect to \(\lambda\) is \(L'_{\lambda} = -\big(g(x;\,y) - m\big)\). It is zero exactly when the constraint holds. The system has three equations and three unknowns, \(x\), \(y\) and \(\lambda\). It is usually solved by expressing \(\lambda\) from the first two equations and setting the two expressions equal. This gives an equation in \(x\) and \(y\), which is solved together with the constraint equation. The point that is the candidate for the extremum is labelled with a letter, for example \(K(x_0;\,y_0)\), and the corresponding value of the Lagrange multiplier is denoted \(\lambda_0\). The multiplier \(\lambda\) is not included in the coordinates of the point.</p>
+        </li>
+        <li><strong>Check the sufficient condition.</strong> Calculate the second order partial derivatives of \(L\) with respect to \(x\) and \(y\). Substitute the coordinates of the critical point \(K\), \(x = x_0\) and \(y = y_0\), into the derivatives. If \(\lambda\) remains in the derivatives, also substitute \(\lambda = \lambda_0\). These values of the derivatives are denoted by \(A\), \(B\) and \(C\):
+          <div class="formula"><div class="m-wide">\[ A = L''_{xx}(K);\qquad B = L''_{xy}(K);\qquad C = L''_{yy}(K) \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) \\ B &amp;= L''_{xy}(K) \\ C &amp;= L''_{yy}(K) \end{aligned} \]</div></div>
+          <p>Calculate the discriminant \(D = AC - B^2\). When it is positive, the type of the extremum of the Lagrangian function is decided as in <a href="#pakankamoji">unconstrained optimization problems</a>. The same conclusion holds for the objective function at the points that satisfy the constraint, because at those points the constraint term is equal to zero.</p>
+          <ul>
+            <li>If \(D &gt; 0\) and \(A &lt; 0\), \(K\) is a relative maximum point.</li>
+            <li>If \(D &gt; 0\) and \(A &gt; 0\), \(K\) is a relative minimum point.</li>
+            <li>If \(D &lt; 0\) or \(D = 0\), this test is not sufficient. It has to be examined how the objective function changes along the constraint curve.</li>
+          </ul>
+        </li>
+      </ol>
+    </article>
+
+    <article class="card concept" id="daugiklis">
+      <div class="concept-head"><span class="num">7</span><h3>The meaning of the Lagrange multiplier</h3></div>
+      <p>The Lagrange multiplier \(\lambda\) is the rate at which the optimal value of the objective function changes with respect to changes in the constraint constant \(m\). If \(m\) changes by \(\Delta m\), the change in the optimal value \(f^{*}\) is approximately equal to the product</p>
+      <div class="formula">\[ \Delta f^{*} \approx \lambda\cdot\Delta m \]</div>
+      <p>For example, if the constraint is a budget and \(\lambda = 0.5\), one more euro in the budget increases the maximum output by approximately 0.5 units.</p>
+      <p>This is the same approximate estimate of a change as in the <a href="tema-8-pokyciu-analize.html#pokytis">Topic 8 section “Change Analysis”</a>: the Lagrange multiplier plays the role of the derivative, and \(\Delta m\) the role of the change in the argument.</p>
+    </article>
+
+    <article class="card concept" id="lagranzo-pavyzdys">
+      <div class="concept-head"><span class="num">8</span><h3>A first example</h3></div>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example 2</p>
+        <p>Find the relative extremum of the function \(f(x;\,y) = x^2 + y^2\) subject to the constraint \(x + 2y = 10\).</p>
+        <p><strong>The model.</strong> The function is minimized with respect to \(x\) and \(y\) subject to the given constraint:</p>
+        \[ \begin{aligned} &amp;\min_{x;\,y}\; f(x;\,y) = x^2 + y^2 \\ &amp;\text{subject to}\;\; x + 2y = 10 \end{aligned} \]
+        <p><strong>The Lagrangian function.</strong> The constraint is written as \(x + 2y - 10 = 0\), and the Lagrangian function is built:</p>
+        <div class="m-wide">\[ L(x;\,y;\,\lambda) = x^2 + y^2 - \lambda(x + 2y - 10) \]</div><div class="m-narrow">\[ \begin{aligned} L(x;\,y;\,\lambda) &amp;= x^2 + y^2 \\ &amp;\phantom{=}\; {}- \lambda(x + 2y - 10) \end{aligned} \]</div>
+        <p><strong>The critical point.</strong> The partial derivatives with respect to \(x\) and \(y\) are set equal to zero. The constraint equation is added to the system:</p>
+        \[ L'_x = 2x - \lambda;\qquad L'_y = 2y - 2\lambda \]
+        \[ \left\{ \begin{aligned} 2x - \lambda &amp;= 0 \\ 2y - 2\lambda &amp;= 0 \\ x + 2y &amp;= 10 \end{aligned} \right. \]
+        <p>From the first equation \(\lambda = 2x\), and from the second \(\lambda = y\). Setting the expressions equal gives \(y = 2x\). Substituting this into the constraint equation gives \(x + 4x = 10\), so \(x = 2\), \(y = 4\) and \(\lambda = 4\). We obtain the critical point \(K(2;\,4)\) and the value of the Lagrange multiplier \(\lambda = 4\).</p>
+        <p><strong>The sufficient condition.</strong> The second order partial derivatives \(L''_{xx} = 2\), \(L''_{xy} = 0\) and \(L''_{yy} = 2\) are constant and do not depend on \(\lambda\). Their values at the point \(K\):</p>
+        <div class="m-wide">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 2 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 2 \\ D &amp;= AC - B^2 = 2\cdot 2 - 0^2 = 4 &gt; 0 \end{aligned} \]</div><div class="m-narrow">\[ \begin{aligned} A &amp;= L''_{xx}(K) = 2 \\ B &amp;= L''_{xy}(K) = 0 \\ C &amp;= L''_{yy}(K) = 2 \\ D &amp;= AC - B^2 = 2\cdot 2 - 0^2 \\ &amp;= 4 &gt; 0 \end{aligned} \]</div>
+        <p>\(D &gt; 0\) and \(A &gt; 0\), so \(K(2;\,4)\) is a minimum point.</p>
+        \[ f_{\min}(2;\,4) = 4 + 16 = 20 \]
+        <p><strong>Answer.</strong> Subject to \(x + 2y = 10\), the function has a relative minimum \(f_{\min}(2;\,4) = 20\). Since \(\lambda = 4\), if the constraint constant increased from 10 to 11, the minimum would increase by approximately 4 units.</p>
+      </div>
+      <p>This problem is shown in the <a href="#lagranzo">figure</a> above: at the point \((2;\,4)\) the level curve \(x^2 + y^2 = 20\) touches the line \(x + 2y = 10\).</p>
+    </article>
+
+    <article class="card concept" id="kobo-daglas-l">
+      <div class="concept-head"><span class="num">9</span><h3>Cobb-Douglas functions in constrained optimization problems</h3></div>
+      <p>When the objective function or the left-hand side of the constraint is a Cobb-Douglas function \(Q = Ax^{\alpha}y^{\beta}\), in the problems of this topic the sufficient condition is checked by the concavity. As in <a href="#kobo-daglas">unconstrained optimization problems</a>, with non-negative exponents the function is concave if \(A &gt; 0\) and \(\alpha + \beta \le 1\).</p>
+      <ul>
+        <li><strong>Maximizing a Cobb-Douglas function subject to a linear constraint.</strong> For example, we look for the largest output subject to the budget constraint \(c_1x + c_2y = m\). In the Lagrangian function \(L = Ax^{\alpha}y^{\beta} - \lambda(c_1x + c_2y - m)\) the first term is concave and the second is linear, so \(L\) is a concave function. The critical point is a maximum point.</li>
+        <li><strong>Minimizing a linear function subject to a Cobb-Douglas constraint.</strong> For example, we look for the minimum cost subject to the required output \(Ax^{\alpha}y^{\beta} = Q\). In the Lagrangian function \(L = c_1x + c_2y - \lambda(Ax^{\alpha}y^{\beta} - Q)\) with \(\lambda &gt; 0\), the concave function multiplied by \(-\lambda\) becomes convex. The linear terms do not change this. Therefore \(L\) is a convex function, and the critical point is a minimum point.</li>
+      </ul>
+      <p>In both cases the terms with \(\lambda\) in the first two equations of the system are moved to the right-hand sides, and one equation is divided by the other. The multiplier \(\lambda\) cancels. After the powers of the same base are combined, one variable is expressed through the other.</p>
+    </article>
+  </section>
+
+  <!-- ============ APPLICATIONS ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Applications</h2>
+    <p class="section-intro">Here you will find economic and managerial optimization problems: finding the maximum profit, the minimum cost and other optimal decisions, both when the variables are not connected by any condition and when a budget, an order or another constraint has to be satisfied. In the advanced problems the objective function and the constraint have to be set up from the description of the situation.</p>
+    <div class="model-grid" data-models="t9"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this topic can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 8</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapter 12.3</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">R. A. Barnett, M. R. Ziegler, K. E. Byleen, C. J. Stocker. <cite>Calculus for Business, Economics, Life Sciences, and Social Sciences</cite>. 14th ed. Pearson, 2019.<span class="src-ch">Chapter 7.4</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
