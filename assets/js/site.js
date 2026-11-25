@@ -126,6 +126,13 @@
       lgLine: 'apribojimas x + 2y = 10', lgLevels: 'lygio linijos', lgCur: 'lygio linija per tašką P',
       lgNoteMin: 'Taške (2; 4) lygio linija f = 20 liečia apribojimo tiesę. Kituose tiesės taškuose f > 20, todėl 20 yra mažiausia funkcijos reikšmė, kai x + 2y = 10.',
       lgNote1: 'Lygio linija f = ', lgNote2: ' kerta apribojimo tiesę dviejuose taškuose. Judant tiese link taško (2; 4), funkcijos reikšmė mažėja.',
+      icHintFam: 'Slankikliu C pasirinkite vieną funkcijos f(x) = 2x pirmykštę, o slankikliu x₀ – vietą, kurioje nubrėžtos visų kreivių liestinės.',
+      icHintPt: 'Keiskite konstantą C ir raskite integralinę kreivę, einančią per tašką P(1; 3).',
+      icAria: 'Funkcijos f(x) = 2x pirmykščių funkcijų y = x² + C grafikai – integralinės kreivės',
+      icCur: 'pasirinkta kreivė y = x² + C', icOth: 'kitos šeimos kreivės', icTan: 'liestinės ties x₀', icPt: 'taškas P(1; 3)',
+      icNoteFam: 'Ties ta pačia x₀ reikšme visų kreivių liestinės lygiagrečios – jų nuolydis lygus f(x₀) = 2x₀. Keičiant C, kreivė tik pasislenka vertikaliai.',
+      icNoteYes: 'Kreivė eina per tašką P(1; 3): kai x = 1, y = 1² + 2 = 3. Funkcija F(x) = x² + 2 yra atskiroji funkcija.',
+      icNoteNo1: 'Kai x = 1, šios kreivės y reikšmė lygi ', icNoteNo2: ', o ne 3, todėl kreivė per tašką P neina.',
       sfCdLess: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja mažesne proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, tolsta viena nuo kitos.',
       sfCdEq: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja ta pačia proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, išsidėsčiusios vienodais atstumais.',
       sfCdMore: 'Abu išteklių kiekius padidinus ta pačia proporcija, gamybos apimtis padidėja didesne proporcija. Todėl lygio linijos, atitinkančios vienodu dydžiu didėjančią gamybos apimtį, artėja viena prie kitos.',
@@ -261,6 +268,13 @@
       lgLine: 'constraint x + 2y = 10', lgLevels: 'level curves', lgCur: 'level curve through P',
       lgNoteMin: 'At (2; 4) the level curve f = 20 touches the constraint line. At all other points of the line f > 20, so 20 is the smallest value of the function when x + 2y = 10.',
       lgNote1: 'The level curve f = ', lgNote2: ' crosses the constraint line at two points. Moving along the line towards (2; 4), the value of the function decreases.',
+      icHintFam: 'Use the slider C to choose one antiderivative of f(x) = 2x, and the slider x₀ to choose where the tangent lines of all the curves are drawn.',
+      icHintPt: 'Change the constant C and find the integral curve that passes through P(1; 3).',
+      icAria: 'Graphs of the antiderivatives y = x² + C of f(x) = 2x – integral curves',
+      icCur: 'chosen curve y = x² + C', icOth: 'other curves of the family', icTan: 'tangent lines at x₀', icPt: 'point P(1; 3)',
+      icNoteFam: 'At the same value x₀ the tangent lines of all the curves are parallel – their slope is f(x₀) = 2x₀. Changing C only shifts the curve vertically.',
+      icNoteYes: 'The curve passes through P(1; 3): at x = 1, y = 1² + 2 = 3. The function F(x) = x² + 2 is the particular antiderivative.',
+      icNoteNo1: 'At x = 1 the value of y on this curve is ', icNoteNo2: ', not 3, so the curve does not pass through P.',
       sfCdLess: 'When both inputs are increased in the same proportion, output increases in a smaller proportion. Hence the level curves for equally spaced output levels move further apart.',
       sfCdEq: 'When both inputs are increased in the same proportion, output increases in the same proportion. Hence the level curves for equally spaced output levels are evenly spaced.',
       sfCdMore: 'When both inputs are increased in the same proportion, output increases in a greater proportion. Hence the level curves for equally spaced output levels get closer together.',
@@ -316,7 +330,7 @@
     { id: 't8', num: 8, status: 'active', href: { lt: 'tema-8.html', en: 'tema-8.html' },
       title: { lt: 'Kelių kintamųjų funkcijos ir dalinės išvestinės', en: 'Functions of Several Variables and Partial Derivatives' } },
     { id: 't9', num: 9, status: 'active', href: { lt: 'tema-9.html', en: 'tema-9.html' }, title: { lt: 'Kelių kintamųjų funkcijų ekstremumai', en: 'Extrema of Functions of Several Variables, the Lagrange Problem' } },
-    { id: 't10', num: 10, status: 'soon', title: { lt: 'Neapibrėžtinis integralas', en: 'Indefinite Integral' } },
+    { id: 't10', num: 10, status: 'active', href: { lt: 'tema-10.html' }, title: { lt: 'Neapibrėžtinis integralas', en: 'Indefinite Integral' } },
     { id: 't11', num: 11, status: 'soon', title: { lt: 'Apibrėžtinis integralas', en: 'Definite Integral' } },
     { id: 'final', type: 'exam', href: { lt: 'baigiamasis-egzaminas.html' },
       title: { lt: 'Baigiamasis egzaminas', en: 'Final exam' } }
@@ -483,6 +497,26 @@
       { id: 'm94', status: 'active', href: { lt: 'tema-9-sudetingesni-salyginiai.html', en: 'tema-9-sudetingesni-salyginiai.html' },
         title: { lt: 'Sudėtingesni sąlyginio optimizavimo uždaviniai', en: 'Advanced Constrained Optimization Problems' },
         desc: { lt: 'Tikslo funkciją ir apribojimą reikia nustatyti iš situacijos aprašymo, dažnai remiantis geometrija.', en: 'The objective function and the constraint have to be found from the description of the situation, often with the help of geometry.' } }
+    ],
+    t10: [
+      { id: 'm10a', status: 'soon',
+        title: { lt: 'Pagrindinės integravimo formulės', en: 'Basic Integration Formulas' },
+        desc: { lt: 'Laipsninės, rodiklinės ir trigonometrinės funkcijos, šaknys ir trupmenos; pointegrinės funkcijos pertvarkymas prieš integruojant.', en: 'Power, exponential and trigonometric functions, roots and fractions; rewriting the integrand before integrating.' } },
+      { id: 'm10b', status: 'soon',
+        title: { lt: 'Naudingosios integravimo formulės', en: 'Useful Integration Formulas' },
+        desc: { lt: 'Funkcijos, kurių argumentas yra tiesinė funkcija \\(ax + b\\): laipsniai, šaknys, trupmenos, rodiklinės ir trigonometrinės funkcijos.', en: 'Functions whose argument is a linear function \\(ax + b\\): powers, roots, fractions, exponential and trigonometric functions.' } },
+      { id: 'm10c', status: 'soon',
+        title: { lt: 'Integravimas kintamojo keitimu', en: 'Integration by Substitution' },
+        desc: { lt: 'Naujas kintamasis, jo diferencialas ir grįžimas prie pradinio kintamojo, kai argumentas netiesinis arba po integralu yra funkcija ir jos (beveik) išvestinė.', en: 'A new variable, its differential and the return to the original variable when the argument is non-linear or the integrand contains a function and (almost) its derivative.' } },
+      { id: 'm10d', status: 'soon',
+        title: { lt: 'Įvairūs integravimo uždaviniai', en: 'Mixed Integration Problems' },
+        desc: { lt: 'Integravimo būdo pasirinkimas: pagrindinės ar naudingosios formulės, pointegrinės funkcijos pertvarkymas ar kintamojo keitimas.', en: 'Choosing the method: basic or useful formulas, rewriting the integrand or substitution.' } },
+      { id: 'm101', status: 'soon',
+        title: { lt: 'Ribinė analizė', en: 'Marginal Analysis' },
+        desc: { lt: 'Pajamų, sąnaudų ir pelno funkcijų atkūrimas pagal ribinių dydžių funkcijas.', en: 'Recovering the revenue, cost and profit functions from the marginal functions.' } },
+      { id: 'm102', status: 'soon',
+        title: { lt: 'Funkcijos atstatymas', en: 'Recovering a Function' },
+        desc: { lt: 'Dydžio funkcijos atstatymas pagal jo kitimo tempą ir vieną žinomą reikšmę.', en: 'Recovering the function of a quantity from its rate of change and one known value.' } }
     ]
   };
 
@@ -601,6 +635,8 @@
                title: { lt: 'Pagrindiniai sąlyginio optimizavimo uždaviniai', en: 'Standard Constrained Optimization Problems' } },
     m94:     { parent: 't9', topic: 't9', model: 'm94', href: { lt: 'tema-9-sudetingesni-salyginiai.html', en: 'tema-9-sudetingesni-salyginiai.html' },
                title: { lt: 'Sudėtingesni sąlyginio optimizavimo uždaviniai', en: 'Advanced Constrained Optimization Problems' } },
+    t10:     { parent: 'home', href: { lt: 'tema-10.html', en: null },
+               title: { lt: '10 tema', en: 'Topic 10' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
@@ -2341,6 +2377,111 @@
   }
 
   /* ------------------------------------------------------------------
+     10a. INTEGRALINĖS KREIVĖS  (<div data-widget="int-curves" data-mode="family|point">)
+     f(x) = 2x, pirmykštės F(x) = x² + C (integralinės kreivės).
+     family – slankikliai C ir x₀: paryškinta kreivė ir visų kreivių
+     lygiagrečios liestinės ties x₀ (nuolydis 2x₀).
+     point – taškas P(1; 3) ir slankiklis C: kai C = 2, kreivė eina per P
+     (atskiroji funkcija).
+     ------------------------------------------------------------------ */
+  var icCount = 0;
+  function initIntCurves(box) {
+    var uid = 'ic' + (++icCount), pt = box.getAttribute('data-mode') === 'point';
+    var X0 = -2.5, X1 = 2.5, Y0 = -3, Y1 = 7, CS = [-3, -2, -1, 0, 1, 2, 3, 4, 5];
+    var W = 340, PL = 30, PR = 318, PT = 18, PB = 268, H = PB + 22;
+    var X = function (x) { return PL + (x - X0) / (X1 - X0) * (PR - PL); };
+    var Y = function (y) { return PB - (y - Y0) / (Y1 - Y0) * (PB - PT); };
+    var r1 = function (v) { return Math.round(v * 10) / 10; };
+    var curve = function (c) {
+      var p = [], k;
+      for (k = 0; k <= 100; k++) { var x = X0 + k / 100 * (X1 - X0); p.push(r1(X(x)) + ' ' + r1(Y(x * x + c))); }
+      return 'M' + p.join('L');
+    };
+    var g = '', fl = '', i, ax = r1(X(0)), ay = r1(Y(0));
+    for (i = -2; i <= 2; i++) {
+      g += '<line class="grid" x1="' + r1(X(i)) + '" y1="' + PT + '" x2="' + r1(X(i)) + '" y2="' + PB + '"/>';
+      if (i) g += '<text class="muted" x="' + r1(X(i)) + '" y="' + r1(Y(0) + 16) + '" text-anchor="middle">' + (i < 0 ? '−' + (-i) : i) + '</text>';
+    }
+    for (i = -2; i <= 6; i++) {
+      g += '<line class="grid" x1="' + PL + '" y1="' + r1(Y(i)) + '" x2="' + PR + '" y2="' + r1(Y(i)) + '"/>';
+      if (i && i % 2 === 0) g += '<text class="muted" x="' + r1(X(0) - 6) + '" y="' + r1(Y(i) + 4) + '" text-anchor="end">' + (i < 0 ? '−' + (-i) : i) + '</text>';
+    }
+    g += '<line class="ax" x1="' + PL + '" y1="' + ay + '" x2="' + PR + '" y2="' + ay + '"/><path class="ah" d="M' + (PR + 10) + ' ' + ay + 'L' + PR + ' ' + (ay - 4.5) + 'L' + PR + ' ' + (ay + 4.5) + 'Z"/>';
+    g += '<line class="ax" x1="' + ax + '" y1="' + PB + '" x2="' + ax + '" y2="' + PT + '"/><path class="ah" d="M' + ax + ' ' + (PT - 10) + 'L' + (ax - 4.5) + ' ' + PT + 'L' + (ax + 4.5) + ' ' + PT + 'Z"/>';
+    g += '<text class="m" x="' + (PR + 2) + '" y="' + (ay - 9) + '">x</text><text class="m" x="' + (ax + 9) + '" y="' + (PT - 4) + '">y</text>';
+    CS.forEach(function (c) { fl += '<path class="lv-faint" d="' + curve(c) + '"/>'; });
+    var tans = '';
+    if (!pt) CS.forEach(function () { tans += '<line class="ln3 js-tf" style="stroke-width:1.6;stroke-opacity:.55"/>'; });
+    box.classList.add('tryit');
+    box.innerHTML =
+      '<p class="tryit-title">' + ICON.slider + esc(T.tryIt) + '</p>' +
+      '<p class="tryit-note" style="margin:0 0 6px">' + esc(pt ? T.icHintPt : T.icHintFam) + '</p>' +
+      '<svg class="plot" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(T.icAria) + '">' +
+        '<defs><clipPath id="' + uid + '-clip"><rect x="' + PL + '" y="' + PT + '" width="' + (PR - PL) + '" height="' + (PB - PT) + '"/></clipPath></defs>' +
+        g +
+        '<g clip-path="url(#' + uid + '-clip)">' + fl +
+          (pt ? '' : '<line class="guide js-g"/>') +
+          '<path class="ln js-cur" style="stroke-width:3.2"/>' + tans +
+          (pt ? '' : '<line class="ln3 js-tc" style="stroke-width:2.8"/>') + '</g>' +
+        (pt ? '<circle class="pt js-q" r="4.5"/><circle class="pt-hi" cx="' + r1(X(1)) + '" cy="' + r1(Y(3)) + '" r="6"/>' +
+              '<text class="halo" x="' + r1(X(1) + 9) + '" y="' + r1(Y(3) + 5) + '" style="font-weight:700">P(1; 3)</text>'
+            : '<circle class="pt-hi js-q" r="5.5"/>') +
+      '</svg>' +
+      '<ul class="chart-legend"><li><span class="sw" aria-hidden="true"></span>' + esc(T.icCur) + '</li>' +
+        '<li><span class="sw sw-env" aria-hidden="true"></span>' + esc(T.icOth) + '</li>' +
+        (pt ? '<li><span class="sw sw-e" aria-hidden="true"></span>' + esc(T.icPt) + '</li>'
+            : '<li><span class="sw sw-3" aria-hidden="true"></span>' + esc(T.icTan) + '</li>') + '</ul>' +
+      '<div class="ctrl"><label for="' + uid + '-c" class="js-clab"></label><input id="' + uid + '-c" type="range" min="-2" max="3" step="0.5" value="0"><output for="' + uid + '-c"></output></div>' +
+      (pt ? '' : '<div class="ctrl"><label for="' + uid + '-x" class="js-xlab"></label><input id="' + uid + '-x" type="range" min="-2" max="2" step="0.5" value="1"><output for="' + uid + '-x"></output></div>') +
+      '<div class="tryit-eq js-eq1" aria-live="polite"></div>' +
+      '<div class="tryit-eq js-eq2"></div>' +
+      '<p class="tryit-note js-note"></p>';
+    var el = function (c) { return $('.' + c, box); };
+    var inC = $('#' + uid + '-c', box), outC = $('output[for="' + uid + '-c"]', box);
+    var inX = pt ? null : $('#' + uid + '-x', box), outX = pt ? null : $('output[for="' + uid + '-x"]', box);
+    renderInline(el('js-clab'), 'C');
+    if (!pt) renderInline(el('js-xlab'), 'x_0');
+    var num = function (v) { var t = String(Number(v.toFixed(2))); return T.decimal === ',' ? t.replace('.', '{,}') : t; };
+    var txt = function (v) { var t = String(Number(v.toFixed(2))).replace('-', '−'); return T.decimal === ',' ? t.replace('.', ',') : t; };
+    var par = function (v) { return v < 0 ? '(' + num(v) + ')' : num(v); };
+    var fx = function (c) { return 'x^2' + (c > 0 ? ' + ' + num(c) : c < 0 ? ' - ' + num(-c) : ''); };
+    var seg = function (e, x0, c) {
+      var d = 0.55, y = x0 * x0 + c, m = 2 * x0;
+      e.setAttribute('x1', r1(X(x0 - d))); e.setAttribute('y1', r1(Y(y - m * d)));
+      e.setAttribute('x2', r1(X(x0 + d))); e.setAttribute('y2', r1(Y(y + m * d)));
+    };
+    function draw() {
+      var c = parseFloat(inC.value), q = el('js-q');
+      outC.textContent = txt(c);
+      el('js-cur').setAttribute('d', curve(c));
+      el('js-eq1').innerHTML = '<span class="js-m1"></span>';
+      renderInline(el('js-m1'), 'F(x) = ' + fx(c));
+      el('js-eq2').innerHTML = '<span class="js-m2"></span>';
+      if (pt) {
+        var v = 1 + c;
+        q.setAttribute('cx', r1(X(1))); q.setAttribute('cy', r1(Y(v)));
+        q.style.display = Math.abs(v - 3) < 1e-9 ? 'none' : '';
+        renderInline(el('js-m2'), 'F(1) = 1^2 ' + (c < 0 ? '- ' + num(-c) : '+ ' + num(c)) + ' = ' + num(v));
+        el('js-note').textContent = Math.abs(v - 3) < 1e-9 ? T.icNoteYes : T.icNoteNo1 + txt(v) + T.icNoteNo2;
+      } else {
+        var x0 = parseFloat(inX.value), tf = $all('.js-tf', box);
+        outX.textContent = txt(x0);
+        var gl = el('js-g');
+        gl.setAttribute('x1', r1(X(x0))); gl.setAttribute('x2', r1(X(x0)));
+        gl.setAttribute('y1', PT); gl.setAttribute('y2', PB);
+        CS.forEach(function (cc, k) { seg(tf[k], x0, cc); });
+        seg(el('js-tc'), x0, c);
+        q.setAttribute('cx', r1(X(x0))); q.setAttribute('cy', r1(Y(x0 * x0 + c)));
+        renderInline(el('js-m2'), "F'(" + num(x0) + ') = f(' + num(x0) + ') = 2\\cdot ' + par(x0) + ' = ' + num(2 * x0));
+        el('js-note').textContent = T.icNoteFam;
+      }
+    }
+    inC.addEventListener('input', draw);
+    if (inX) inX.addEventListener('input', draw);
+    draw();
+  }
+
+  /* ------------------------------------------------------------------
      8b4. RIBINĖ PAKEITIMO NORMA  (<div data-widget="mrs-chart">)
      Naudingumo funkcija U = xy, abejingumo kreivės U = 16, 36, 64.
      Slankikliu keičiama krepšelio A(x0; 36/x0) padėtis kreivėje U = 36
@@ -2771,6 +2912,7 @@
     $all('[data-widget="surface3d"]').forEach(initSurface3d);
     $all('[data-widget="mrs-chart"]').forEach(initMrsChart);
     $all('[data-widget="lagrange-chart"]').forEach(initLagrange);
+    $all('[data-widget="int-curves"]').forEach(initIntCurves);
     initTerms();
   }
 
