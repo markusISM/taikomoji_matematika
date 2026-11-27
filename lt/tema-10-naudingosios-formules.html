@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naudingosios integravimo formulės · Taikomoji matematika</title>
+<meta name="description" content="Integralų skaičiavimas pagal naudingąsias integravimo formules žingsnis po žingsnio, kai pointegrinės funkcijos argumentas yra tiesinė funkcija ax + b: laipsniai, šaknys, trupmenos, rodiklinės ir trigonometrinės funkcijos, kelių narių sumos ir pertvarkymai. Uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m10b">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">10 tema · Integralų skaičiavimas · 2 skyrius</span>
+    <h1>Naudingosios integravimo formulės</h1>
+    <p class="lead">Šiame skyriuje rasite integralų, kurių pointegrinės funkcijos argumentas yra tiesinė funkcija \(ax + b\), skaičiavimo pavyzdžių ir uždavinių savarankiškam darbui. Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <ul class="jump">
+      <li><a href="#formules">Formulės</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ TAIKOMOS FORMULĖS ============ -->
+  <section class="section" id="formules" aria-labelledby="h-rules">
+    <h2 id="h-rules">Taikomos formulės</h2>
+    <article class="card">
+      <p>Pointegrinės funkcijos argumentas vietoje \(x\) gali būti tiesinė funkcija \(ax + b\), pavyzdžiui, \((3x - 2)^5\), \(e^{2 - x}\) ar \(\cos\frac{x}{2}\). Visiems tokiems integralams taikoma viena taisyklė (išsamiau – 10 temos puslapio kortelėje <a href="tema-10.html#naudingosios">„Naudingosios integravimo formulės“</a>).</p>
+      <div class="model-note"><p style="margin:0">Jei \(F(u)\) yra funkcijos \(f(u)\) pirmykštė ir \(a \ne 0\), tai</p><div class="fit-sm">\[ \int f(ax + b)\, dx = \frac{1}{a}F(ax + b) + C \]</div></div>
+      <p style="margin-top:12px">Pagrindinę formulę taikome taip, lyg \(ax + b\) būtų integravimo kintamasis, o rezultatą dalijame iš koeficiento \(a\) prie \(x\). Laisvasis narys \(b\) daliklio nekeičia. Pritaikę taisyklę pagrindinėms formulėms, gauname naudingąsias integravimo formules:</p>
+  <div class="anat dtbl dtbl-rows" style="margin-top:12px">
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Laipsnis, šaknis ir trupmena</strong></div>
+            <ul class="flist">
+              <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int (ax + b)^n\, dx = \frac{1}{a}\cdot\frac{(ax + b)^{n+1}}{n+1} + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int (ax + b)^n\, dx \\ &amp;= \frac{1}{a}\cdot\frac{(ax + b)^{n+1}}{n+1} + C\end{aligned}\)</span></li>
+              <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \frac{1}{\sqrt{ax + b}}\, dx = \frac{1}{a}\cdot 2\sqrt{ax + b} + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \frac{1}{\sqrt{ax + b}}\, dx \\ &amp;= \frac{1}{a}\cdot 2\sqrt{ax + b} + C\end{aligned}\)</span></li>
+              <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \frac{1}{ax + b}\, dx = \frac{1}{a}\ln|ax + b| + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \frac{1}{ax + b}\, dx \\ &amp;= \frac{1}{a}\ln|ax + b| + C\end{aligned}\)</span></li>
+            </ul>
+            <p class="lvl-txt">Laipsnio formulėje \(n \ne -1\).</p>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Rodiklinė funkcija</strong></div>
+            <ul class="flist">
+              <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int e^{ax + b}\, dx = \frac{1}{a}e^{ax + b} + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int e^{ax + b}\, dx \\ &amp;= \frac{1}{a}e^{ax + b} + C\end{aligned}\)</span></li>
+            </ul>
+            <p class="lvl-txt">Rodiklinės funkcijos \(k^{mx + n}\) integravimo formulė pateikta temos puslapio <a href="tema-10.html#naudingosios">formulių sąraše</a>.</p>
+          </div>
+          <div class="anat-card">
+            <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Trigonometrinės funkcijos</strong></div>
+            <ul class="flist">
+              <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \sin(ax + b)\, dx = -\frac{1}{a}\cos(ax + b) + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \sin(ax + b)\, dx \\ &amp;= -\frac{1}{a}\cos(ax + b) + C\end{aligned}\)</span></li>
+              <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \cos(ax + b)\, dx = \frac{1}{a}\sin(ax + b) + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \cos(ax + b)\, dx \\ &amp;= \frac{1}{a}\sin(ax + b) + C\end{aligned}\)</span></li>
+              <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \frac{1}{\cos^2(ax + b)}\, dx = \frac{1}{a}\operatorname{tg}(ax + b) + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \frac{1}{\cos^2(ax + b)}\, dx \\ &amp;= \frac{1}{a}\operatorname{tg}(ax + b) + C\end{aligned}\)</span></li>
+              <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \frac{1}{\sin^2(ax + b)}\, dx = -\frac{1}{a}\operatorname{ctg}(ax + b) + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \frac{1}{\sin^2(ax + b)}\, dx \\ &amp;= -\frac{1}{a}\operatorname{ctg}(ax + b) + C\end{aligned}\)</span></li>
+            </ul>
+          </div>
+        </div>
+      <p class="tip"><strong>Kada formulės netinka.</strong> Naudingąsias formules taikome tik tada, kai vidinė funkcija tiesinė. Reiškiniuose \(\left(x^2 + 1\right)^3\) ir \(e^{x^2}\) vidinė funkcija netiesinė, todėl tokius integralus skaičiuojame keisdami kintamąjį (<a href="tema-10.html#keitimas">10 temos puslapio 9 kortelė</a>) arba atskliausdami.</p>
+    </article>
+  </section>
+
+  <!-- ============ SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+    <article class="card">
+      <p>Pavyzdžiuose žingsniai pavadinti taip pat kaip šiame sąraše.</p>
+      <ol class="steps-list">
+        <li><strong>Pertvarkymas.</strong> Jei reikia, pointegrinę funkciją užrašykite kaip narių sumą, o šaknis ir trupmenas – laipsniais, pavyzdžiui, \(\sqrt{2x + 1} = (2x + 1)^{\frac{1}{2}}\), \(\frac{1}{(5 - 2x)^3} = (5 - 2x)^{-3}\). Jei to daryti nereikia, šį žingsnį praleiskite.</li>
+        <li><strong>Vidinė funkcija.</strong> Nustatykite vidinę tiesinę funkciją \(ax + b\) ir koeficientą \(a\) prie \(x\). Atsižvelkite į koeficiento ženklą.</li>
+        <li><strong>Integravimas.</strong> Išorinę funkciją integruokite pagal pagrindinę formulę, argumentą \(ax + b\) palikdami nepakeistą. Rezultatą padalykite iš \(a\) (padauginkite iš \(\frac{1}{a}\)), suprastinkite ir pridėkite integravimo konstantą \(C\).</li>
+        <li><strong>Patikrinimas.</strong> Gautą funkciją diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Vidinės funkcijos išvestinė \(a\) susiprastina su dalikliu, ir gaunama pointegrinė funkcija.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:18px">Kaip nustatyti koeficientą \(a\)</h3>
+      <p>Koeficientas \(a\) – tai skaičius, iš kurio dauginamas \(x\). Jis gali būti neigiamas arba trupmeninis:</p>
+      <div class="tbl-wrap">
+        <table class="vtable cases-tbl">
+          <thead>
+            <tr><th scope="col">Vidinė funkcija</th><th scope="col">\(a\)</th><th scope="col">Dalyba iš \(a\)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(3x - 2\)</td><td>\(3\)</td><td>daugyba iš \(\frac{1}{3}\)</td></tr>
+            <tr><td>\(5 - 2x\)</td><td>\(-2\)</td><td>daugyba iš \(-\frac{1}{2}\)</td></tr>
+            <tr><td>\(2 - x\)</td><td>\(-1\)</td><td>ženklo pakeitimas</td></tr>
+            <tr><td>\(\frac{x}{2} = \frac{1}{2}x\)</td><td>\(\frac{1}{2}\)</td><td>daugyba iš \(2\)</td></tr>
+            <tr><td>\(-0{,}5x\)</td><td>\(-0{,}5\)</td><td>daugyba iš \(-2\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Dauginama iš \(a\), o ne dalijama.</strong> Diferencijuojant vidinės funkcijos išvestinė \(a\) atsiranda kaip daugiklis, todėl integruojant iš \(a\) reikia dalyti: \(\int e^{5x}\, dx = \frac{1}{5}e^{5x} + C\), o ne \(5e^{5x} + C\).</li>
+            <li><strong>Pamirštas koeficiento ženklas.</strong> Vidinės funkcijos \(2 - x\) koeficientas yra \(a = -1\), todėl \(\int e^{2 - x}\, dx\) \(= -e^{2 - x} + C\).</li>
+            <li><strong>Dalijama iš laisvojo nario.</strong> Dalijama tik iš koeficiento prie \(x\). Laisvasis narys \(b\) į daliklį neįeina.</li>
+            <li><strong>Pakeičiamas argumentas.</strong> Integruojant argumentas \(ax + b\) paliekamas toks pat: \(\int\cos(4x - 1)\, dx\) \(= \frac{1}{4}\sin(4x - 1) + C\).</li>
+            <li><strong>Formulė taikoma netiesinei vidinei funkcijai.</strong> Pavyzdžiui, \(\int e^{x^2}\, dx\) \(\ne \frac{1}{2x}e^{x^2} + C\).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+
+    <h3 class="subhead">Tiesinės funkcijos laipsniai ir šaknys</h3>
+
+    <!-- 1 pavyzdys: TM 10.2, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Tiesinės funkcijos laipsnis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int (3x - 2)^5\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Vidinė funkcija</span></h4>
+          <p>Išorinė funkcija yra penktasis laipsnis, o vidinė – tiesinė funkcija \(3x - 2\). Koeficientas prie \(x\) yra \(a = 3\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas</span></h4>
+          <p>Taikome laipsninės funkcijos integravimo formulę, reiškinį \(3x - 2\) laikydami vienu kintamuoju: rodiklį padidiname vienetu ir dalijame iš 6. Tada rezultatą dalijame iš \(a = 3\):</p>
+          \[ \begin{aligned} &amp;\int (3x - 2)^5\, dx \\ &amp;= \frac{1}{3}\cdot\frac{(3x - 2)^6}{6} + C \\ &amp;= \frac{(3x - 2)^6}{18} + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <p>Diferencijuodami pagal sudėtinės funkcijos išvestinės taisyklę, gauname vidinės funkcijos išvestinę 3, kuri susiprastina su daliklio daugikliu:</p>
+          \[ \begin{aligned} &amp;\left(\frac{(3x - 2)^6}{18}\right)' \\ &amp;= \frac{6(3x - 2)^5\cdot 3}{18} = (3x - 2)^5 \end{aligned} \]
+          <p>Atskleidę \((3x - 2)^5\) ir integravę daugianario narius, gautume tą pačią pirmykščių funkcijų šeimą, tačiau skaičiuoti reikėtų daug ilgiau.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int (3x - 2)^5\, dx \\ &amp;= \frac{(3x - 2)^6}{18} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 10.2, 2 b pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Kvadratinė šaknis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \sqrt{2x + 1}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Šaknį užrašome laipsniu:</p>
+          \[ \sqrt{2x + 1} = (2x + 1)^{\frac{1}{2}} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Vidinė funkcija</span></h4>
+          <p>Vidinė funkcija yra \(2x + 1\), todėl \(a = 2\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Integravimas</span></h4>
+          <p>Naujas laipsnio rodiklis yra \(\frac{1}{2} + 1 = \frac{3}{2}\). Dalyba iš \(\frac{3}{2}\) – tai daugyba iš \(\frac{2}{3}\), o \(\frac{1}{2}\cdot\frac{2}{3} = \frac{1}{3}\):</p>
+          \[ \begin{aligned} &amp;\int (2x + 1)^{\frac{1}{2}}\, dx \\ &amp;= \frac{1}{2}\cdot\frac{(2x + 1)^{\frac{3}{2}}}{\frac{3}{2}} + C \\ &amp;= \frac{1}{3}(2x + 1)^{\frac{3}{2}} + C \\ &amp;= \frac{1}{3}(2x + 1)\sqrt{2x + 1} + C \end{aligned} \]
+          <p>Paskutinėje eilutėje pritaikėme lygybę \((2x + 1)^{\frac{3}{2}} = (2x + 1)\cdot(2x + 1)^{\frac{1}{2}}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Patikrinimas</span></h4>
+          \[ \begin{aligned} &amp;\left(\frac{1}{3}(2x + 1)^{\frac{3}{2}}\right)' \\ &amp;= \frac{1}{3}\cdot\frac{3}{2}(2x + 1)^{\frac{1}{2}}\cdot 2 = \sqrt{2x + 1} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int \sqrt{2x + 1}\, dx \\ &amp;= \frac{1}{3}(2x + 1)\sqrt{2x + 1} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 10.2, 2 c pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Neigiamas koeficientas prie \(x\)</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{1}{(5 - 2x)^3}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Trupmeną užrašome laipsniu su neigiamu rodikliu:</p>
+          \[ \frac{1}{(5 - 2x)^3} = (5 - 2x)^{-3} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Vidinė funkcija</span></h4>
+          <p>Vidinė funkcija \(5 - 2x = -2x + 5\), todėl koeficientas prie \(x\) yra neigiamas: \(a = -2\). Dalydami iš \(a\), minuso ženklą išlaikome.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Integravimas</span></h4>
+          <p>Naujas laipsnio rodiklis yra \(-3 + 1 = -2\). Dalijame iš \(-2\) (naujojo rodiklio) ir iš \(a = -2\). Du neigiami dalikliai duoda teigiamą rezultatą: \((-2)\cdot(-2) = 4\):</p>
+          \[ \begin{aligned} &amp;\int (5 - 2x)^{-3}\, dx \\ &amp;= \frac{1}{-2}\cdot\frac{(5 - 2x)^{-2}}{-2} + C \\ &amp;= \frac{1}{4(5 - 2x)^2} + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Patikrinimas</span></h4>
+          \[ \begin{aligned} &amp;\left(\frac{1}{4}(5 - 2x)^{-2}\right)' \\ &amp;= \frac{1}{4}\cdot(-2)(5 - 2x)^{-3}\cdot(-2) \\ &amp;= (5 - 2x)^{-3} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int \frac{1}{(5 - 2x)^3}\, dx \\ &amp;= \frac{1}{4(5 - 2x)^2} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead">Trupmena, rodiklinė ir trigonometrinė funkcijos</h3>
+
+    <!-- 4 pavyzdys: TM 10.2, 4 b pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Tiesinė funkcija vardiklyje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{6}{3 - 4x}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Vidinė funkcija</span></h4>
+          <p>Pointegrinė funkcija yra \(6\cdot\frac{1}{3 - 4x}\). Pastovųjį daugiklį 6 iškeliame. Vidinė funkcija yra \(3 - 4x\), todėl \(a = -4\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas</span></h4>
+          <p>Funkcijos \(\frac{1}{u}\) pirmykštė yra \(\ln|u|\). Argumentą \(3 - 4x\) paliekame nepakeistą ir dalijame iš \(-4\):</p>
+          \[ \begin{aligned} &amp;\int \frac{6}{3 - 4x}\, dx \\ &amp;= 6\cdot\frac{1}{-4}\ln|3 - 4x| + C \\ &amp;= -\frac{3}{2}\ln|3 - 4x| + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          \[ \begin{aligned} &amp;\left(-\frac{3}{2}\ln|3 - 4x|\right)' \\ &amp;= -\frac{3}{2}\cdot\frac{1}{3 - 4x}\cdot(-4) = \frac{6}{3 - 4x} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int \frac{6}{3 - 4x}\, dx \\ &amp;= -\frac{3}{2}\ln|3 - 4x| + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 10.2, 5 b pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Rodiklinė funkcija</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int e^{2 - x}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Vidinė funkcija</span></h4>
+          <p>Vidinė funkcija yra rodiklis \(2 - x\). Prie \(x\) parašytas tik minuso ženklas, todėl \(a = -1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas</span></h4>
+          <p>Funkcijos \(e^u\) pirmykštė yra \(e^u\). Dalyba iš \(-1\) pakeičia ženklą:</p>
+          \[ \begin{aligned} \int e^{2 - x}\, dx &amp;= \frac{1}{-1}e^{2 - x} + C \\ &amp;= -e^{2 - x} + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          \[ \left(-e^{2 - x}\right)' = -e^{2 - x}\cdot(-1) = e^{2 - x} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \int e^{2 - x}\, dx = -e^{2 - x} + C \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 10.2, 6 b pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Trigonometrinė funkcija</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \cos\frac{x}{2}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Vidinė funkcija</span></h4>
+          <p>Kadangi \(\frac{x}{2} = \frac{1}{2}x\), vidinės funkcijos koeficientas yra \(a = \frac{1}{2}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas</span></h4>
+          <p>Kosinuso pirmykštė yra sinusas. Dalybą iš \(\frac{1}{2}\) pakeičiame daugyba iš 2:</p>
+          \[ \begin{aligned} \int \cos\frac{x}{2}\, dx &amp;= \frac{1}{\frac{1}{2}}\sin\frac{x}{2} + C \\ &amp;= 2\sin\frac{x}{2} + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          \[ \left(2\sin\frac{x}{2}\right)' = 2\cos\frac{x}{2}\cdot\frac{1}{2} = \cos\frac{x}{2} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \int \cos\frac{x}{2}\, dx = 2\sin\frac{x}{2} + C \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead">Kelių narių suma ir pertvarkymas</h3>
+
+    <!-- 7 pavyzdys: TM 10.2, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Kelių narių suma</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int\left(8e^{-0{,}5x} + \frac{4}{2x + 1} - 6\cos 3x\right) dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Vidinė funkcija</span></h4>
+          <p>Sumos narius integruojame atskirai. Kiekvienas narys turi savo vidinę funkciją ir koeficientą:</p>
+          <ul>
+            <li>\(8e^{-0{,}5x}\): vidinė funkcija \(-0{,}5x\), \(a = -0{,}5\);</li>
+            <li>\(\frac{4}{2x + 1}\): vidinė funkcija \(2x + 1\), \(a = 2\);</li>
+            <li>\(6\cos 3x\): vidinė funkcija \(3x\), \(a = 3\).</li>
+          </ul>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas</span></h4>
+          <p>Iškeliame pastoviuosius daugiklius ir kiekvienam nariui taikome atitinkamą formulę:</p>
+          \[ \begin{aligned} &amp;= 8\cdot\frac{1}{-0{,}5}e^{-0{,}5x} + 4\cdot\frac{1}{2}\ln|2x + 1| \\ &amp;\phantom{=}\; {}- 6\cdot\frac{1}{3}\sin 3x + C \end{aligned} \]
+          <p>Suprastiname: \(8 : (-0{,}5) = -16\), \(4\cdot\frac{1}{2} = 2\), \(6\cdot\frac{1}{3} = 2\):</p>
+          \[ \begin{aligned} &amp;= -16e^{-0{,}5x} + 2\ln|2x + 1| \\ &amp;\phantom{=}\; {}- 2\sin 3x + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <p>Diferencijuojame kiekvieną narį:</p>
+          <ul>
+            <li>\(\left(-16e^{-0{,}5x}\right)' = -16\cdot(-0{,}5)e^{-0{,}5x}\) \(= 8e^{-0{,}5x}\);</li>
+            <li>\(\big(2\ln|2x + 1|\big)' = 2\cdot\dfrac{2}{2x + 1}\) \(= \dfrac{4}{2x + 1}\);</li>
+            <li>\(\left(-2\sin 3x\right)' = -2\cdot 3\cos 3x\) \(= -6\cos 3x\).</li>
+          </ul>
+          <p>Išvestinių suma lygi pointegrinei funkcijai.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="m-wide bp-lg">\[ \begin{aligned} &amp;\int\left(8e^{-0{,}5x} + \frac{4}{2x + 1} - 6\cos 3x\right) dx \\ &amp;= -16e^{-0{,}5x} + 2\ln|2x + 1| - 2\sin 3x + C \end{aligned} \]</div>
+            <div class="m-narrow bp-lg">\[ \begin{aligned} &amp;\int\Big(8e^{-0{,}5x} + \frac{4}{2x + 1} \\ &amp;\qquad {}- 6\cos 3x\Big)\, dx \\ &amp;= -16e^{-0{,}5x} + 2\ln|2x + 1| \\ &amp;\phantom{=}\; {}- 2\sin 3x + C \end{aligned} \]</div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 10.2, 8 a pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Pertvarkymas prieš integruojant</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{e^{2x} + 1}{e^x}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Vardiklyje yra vienas narys, todėl kiekvieną skaitiklio narį dalijame iš \(e^x\). Dalydami laipsnius su tuo pačiu pagrindu, rodiklius atimame:</p>
+          \[ \frac{e^{2x} + 1}{e^x} = \frac{e^{2x}}{e^x} + \frac{1}{e^x} = e^x + e^{-x} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Vidinė funkcija</span></h4>
+          <p>Pirmajam nariui \(e^x\) taikome pagrindinę formulę. Antrojo nario vidinė funkcija yra \(-x\), todėl \(a = -1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Integravimas</span></h4>
+          \[ \begin{aligned} &amp;\int\left(e^x + e^{-x}\right) dx \\ &amp;= e^x + \frac{1}{-1}e^{-x} + C \\ &amp;= e^x - e^{-x} + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Patikrinimas</span></h4>
+          \[ \begin{aligned} \left(e^x - e^{-x}\right)' &amp;= e^x - e^{-x}\cdot(-1) \\ &amp;= e^x + e^{-x} \end{aligned} \]
+          <p>Gavome pertvarkytą pointegrinę funkciją.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \int \frac{e^{2x} + 1}{e^x}\, dx = e^x - e^{-x} + C \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: jei reikia, pertvarkykite pointegrinę funkciją, nustatykite vidinę funkciją ir koeficientą \(a\), integruokite ir pridėkite konstantą \(C\). Atsakymą patikrinkite diferencijuodami.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 10.1–10.3 rinkinys, 5 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int (5x + 1)^4\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(a = 5\). Atsakymas: \(\dfrac{(5x + 1)^5}{25} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 5 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \sqrt{3x - 2}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(\sqrt{3x - 2} = (3x - 2)^{\frac{1}{2}}\), \(a = 3\).</p>
+          <p>Atsakymas: \(\dfrac{2}{9}(3x - 2)\sqrt{3x - 2} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 5 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \frac{8}{(4x + 3)^3}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(\dfrac{8}{(4x + 3)^3} = 8(4x + 3)^{-3}\), \(a = 4\).</p>
+          <p>Atsakymas: \(-\dfrac{1}{(4x + 3)^2} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 5 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \frac{6}{1 - 2x}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(a = -2\). Atsakymas: \(-3\ln|1 - 2x| + C\)</p>
+        </div>
+      </article>
+
+      <!-- 5 e -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int e^{3 - 4x}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(a = -4\). Atsakymas: \(-\dfrac{1}{4}e^{3 - 4x} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 5 g -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \cos(4x - 1)\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(a = 4\). Atsakymas: \(\dfrac{1}{4}\sin(4x - 1) + C\)</p>
+        </div>
+      </article>
+
+      <!-- 5 j -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int\left(e^{\frac{x}{2}} - \sin 3x + \frac{4}{\sqrt{2x + 1}}\right) dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Koeficientai: \(a = \frac{1}{2}\), \(a = 3\), \(a = 2\).</p>
+          <p>Atsakymas: \(2e^{\frac{x}{2}} + \dfrac{1}{3}\cos 3x + 4\sqrt{2x + 1} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 6 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Suprastinkite pointegrinę funkciją ir apskaičiuokite integralą \(\displaystyle\int e^{3x}\cdot e^{1 - x}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(e^{3x}\cdot e^{1 - x} = e^{2x + 1}\), \(a = 2\).</p>
+          <p>Atsakymas: \(\dfrac{1}{2}e^{2x + 1} + C\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">9 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">11.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
