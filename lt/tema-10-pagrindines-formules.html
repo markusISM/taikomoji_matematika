@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagrindinės integravimo formulės · Taikomoji matematika</title>
+<meta name="description" content="Neapibrėžtinių integralų skaičiavimas pagal pagrindines integravimo formules žingsnis po žingsnio: daugianariai, šaknys ir trupmenos, funkcija 1/x, trigonometrinės funkcijos ir pointegrinės funkcijos pertvarkymas – skliaustų atskleidimas, skaitiklio narių dalyba, skaidymas dauginamaisiais, tapatybės. Uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m10a">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">10 tema · Integralų skaičiavimas · 1 skyrius</span>
+    <h1>Pagrindinės integravimo formulės</h1>
+    <p class="lead">Šiame skyriuje rasite integralų skaičiavimo pagal pagrindines integravimo formules pavyzdžių ir uždavinių savarankiškam darbui. Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <ul class="jump">
+      <li><a href="#formules">Formulės</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ TAIKOMOS FORMULĖS ============ -->
+  <section class="section" id="formules" aria-labelledby="h-rules">
+    <h2 id="h-rules">Taikomos formulės</h2>
+    <article class="card">
+      <p>Šiame skyriuje integralai skaičiuojami pagal neapibrėžtinio integralo savybes ir pagrindines integravimo formules. Jos išsamiau paaiškintos 10 temos puslapio kortelėse <a href="tema-10.html#savybes">„Neapibrėžtinio integralo savybės“</a> ir <a href="tema-10.html#pagrindines">„Pagrindinės integravimo formulės“</a>.</p>
+      <div class="anat dtbl dtbl-rows" style="margin-top:12px">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Integralo savybės</strong></div>
+          <ul class="flist" style="grid-template-columns:1fr">
+            <li style="padding:6px 0">\(\displaystyle\int k f(x)\, dx = k\int f(x)\, dx\)</li>
+            <li style="padding:6px 0"><span class="m-wide bp-lg">\(\displaystyle\int \big(f(x) \pm g(x)\big)\, dx = \int f(x)\, dx \pm \int g(x)\, dx\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \big(f(x) \pm g(x)\big)\, dx \\ &amp;= \int f(x)\, dx \pm \int g(x)\, dx \end{aligned}\)</span></li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Konstanta ir laipsninės funkcijos</strong></div>
+          <ul class="flist">
+            <li style="padding:6px 0">\(\displaystyle\int k\, dx = kx + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int x^n\, dx = \frac{x^{n+1}}{n+1} + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int \frac{1}{x}\, dx = \ln|x| + C\)</li>
+          </ul>
+          <p class="lvl-txt">Laipsninės funkcijos formulėje \(n \ne -1\): rodiklis padidinamas vienetu, o rezultatas dalijamas iš naujojo rodiklio.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Rodiklinė ir trigonometrinės funkcijos</strong></div>
+          <ul class="flist">
+            <li style="padding:6px 0">\(\displaystyle\int e^x\, dx = e^x + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int \sin x\, dx = -\cos x + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int \cos x\, dx = \sin x + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int \frac{1}{\cos^2 x}\, dx = \operatorname{tg} x + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int \frac{1}{\sin^2 x}\, dx = -\operatorname{ctg} x + C\)</li>
+          </ul>
+          <p class="lvl-txt">Rodiklinės funkcijos \(a^x\) integravimo formulė pateikta temos puslapio <a href="tema-10.html#pagrindines">formulių lentelėje</a>.</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">4</span><strong>Šaknys, trupmenos ir laipsnių savybės</strong></div>
+          <ul class="flist">
+            <li style="padding:6px 0">\(\displaystyle\sqrt{x} = x^{\frac{1}{2}};\quad \sqrt[n]{x^m} = x^{\frac{m}{n}}\)</li>
+            <li style="padding:8px 0">\(\displaystyle\frac{1}{x^n} = x^{-n}\)</li>
+            <li style="padding:6px 0">\(\displaystyle x^m\cdot x^n = x^{m+n}\)</li>
+            <li style="padding:8px 0">\(\displaystyle\frac{x^m}{x^n} = x^{m-n}\)</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+    <article class="card">
+      <p>Integralas skaičiuojamas keliais nuosekliais žingsniais. Pavyzdžiuose žingsniai pavadinti taip pat kaip šiame sąraše.</p>
+      <ol class="steps-list">
+        <li><strong>Pertvarkymas.</strong> Pointegrinę funkciją užrašykite kaip narių sumą. Kiekvienas narys turi būti konstanta arba konstanta, padauginta iš lentelės funkcijos, pavyzdžiui, \(kx^n\), \(\frac{k}{x}\), \(ke^x\), \(k\sin x\). Šaknis ir trupmenas, kurių vardiklyje yra \(x\) laipsnis, užrašykite laipsniais. Jei pointegrinė funkcija jau yra tokia suma, šį žingsnį praleiskite.</li>
+        <li><strong>Integravimas panariui.</strong> Pastoviuosius daugiklius iškelkite prieš integralo ženklą ir kiekvieną narį integruokite atskirai pagal formules. Integruodami laipsnį \(x^n\), rodiklį padidinkite vienetu ir padalykite iš naujojo rodiklio.</li>
+        <li><strong>Suprastinimas.</strong> Dalybą iš trupmenos pakeiskite daugyba iš atvirkštinės trupmenos, sutvarkykite ženklus ir, jei reikia, laipsnius vėl užrašykite šaknimis ir trupmenomis. Pabaigoje pridėkite vieną integravimo konstantą \(C\).</li>
+        <li><strong>Patikrinimas.</strong> Gautą funkciją diferencijuokite. Jos išvestinė turi sutapti su pointegrine funkcija arba su pertvarkyta jos išraiška.</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:18px">Kaip pertvarkyti pointegrinę funkciją</h3>
+      <p>Sandaugos ar dalmens integralas nelygus integralų sandaugai ar dalmeniui. Todėl sandaugas ir dalmenis pirmiausia pertvarkome į narių sumą:</p>
+      <ul>
+        <li><strong>atskleidžiame skliaustus</strong>, kai dauginami reiškiniai skliaustuose (<a href="#pavyzdys-5">5 pavyzdys</a>);</li>
+        <li><strong>kiekvieną skaitiklio narį dalijame iš vardiklio</strong>, kai vardiklyje yra vienas narys: \(\frac{a + b}{c} = \frac{a}{c} + \frac{b}{c}\) (<a href="#pavyzdys-6">6</a> ir <a href="#pavyzdys-8">8 pavyzdžiai</a>);</li>
+        <li><strong>skaidome dauginamaisiais ir trumpiname</strong>, kai skaitiklis ir vardiklis turi bendrą daugiklį, pavyzdžiui, pagal kvadratų skirtumo formulę \(a^2 - b^2 = (a - b)(a + b)\) (<a href="#pavyzdys-7">7 pavyzdys</a>);</li>
+        <li><strong>taikome trigonometrines tapatybes</strong> \(\sin^2 x + \cos^2 x = 1\) ir \(\operatorname{tg} x = \frac{\sin x}{\cos x}\) (<a href="#pavyzdys-9">9 pavyzdys</a>).</li>
+      </ul>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Pamiršta integravimo konstanta.</strong> Neapibrėžtinis integralas apima visas pirmykštes funkcijas, todėl prie atsakymo visada pridedama \(C\).</li>
+            <li><strong>Laipsnio formulė taikoma funkcijai \(\frac{1}{x}\).</strong> Kai \(n = -1\), tektų dalyti iš nulio. Funkcijos \(\frac{1}{x}\) integralas yra \(\ln|x| + C\).</li>
+            <li><strong>Neigiamas rodiklis didinamas neteisingai.</strong> Rodiklis visada didinamas vienetu: \(-3 + 1 = -2\), o ne \(-4\). Todėl \(\int x^{-3}\, dx = \frac{x^{-2}}{-2} + C\).</li>
+            <li><strong>Integruojami atskiri sandaugos daugikliai.</strong> Pavyzdžiui, \(\int (2x - 3)(x + 4)\, dx\) nelygus \(\int (2x - 3)\, dx\cdot\int (x + 4)\, dx\). Pirmiausia atskleidžiami skliaustai.</li>
+            <li><strong>Pamirštas minuso ženklas.</strong> \(\int \sin x\, dx = -\cos x + C\) ir \(\int \frac{1}{\sin^2 x}\, dx = -\operatorname{ctg} x + C\).</li>
+            <li><strong>Konstanta integruojama kaip nulis.</strong> Konstantos integralas yra \(\int k\, dx = kx + C\), pavyzdžiui, \(\int 5\, dx = 5x + C\).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+
+    <h3 class="subhead">Pagrindinių formulių taikymas</h3>
+
+    <!-- 1 pavyzdys: TM 10.1, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Daugianaris</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int\left(4x^3 - 6x^2 + 2x - 5\right) dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas panariui</span></h4>
+          <p>Pointegrinė funkcija jau yra narių suma, todėl pertvarkyti jos nereikia. Pastoviuosius daugiklius iškeliame ir kiekvieną narį integruojame atskirai:</p>
+          \[ \begin{aligned} &amp;\int\left(4x^3 - 6x^2 + 2x - 5\right) dx \\ &amp;= 4\int x^3\, dx - 6\int x^2\, dx \\ &amp;\phantom{=}\; {}+ 2\int x\, dx - \int 5\, dx \end{aligned} \]
+          <p>Pirmiesiems trims integralams taikome laipsninės funkcijos formulę, kai \(n = 3\), \(n = 2\) ir \(n = 1\), paskutiniajam – konstantos integravimo formulę:</p>
+          \[ \begin{aligned} &amp;= 4\cdot\frac{x^4}{4} - 6\cdot\frac{x^3}{3} \\ &amp;\phantom{=}\; {}+ 2\cdot\frac{x^2}{2} - 5x + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Suprastinimas</span></h4>
+          <p>Kiekvieno nario daugiklis susiprastina su vardikliu. Atskirų integralų konstantas sujungiame į vieną konstantą \(C\):</p>
+          \[ = x^4 - 2x^3 + x^2 - 5x + C \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <p>Diferencijuojame gautą funkciją:</p>
+          \[ \begin{aligned} &amp;\left(x^4 - 2x^3 + x^2 - 5x + C\right)' \\ &amp;= 4x^3 - 6x^2 + 2x - 5 \end{aligned} \]
+          <p>Gavome pointegrinę funkciją, todėl integralas apskaičiuotas teisingai.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int\left(4x^3 - 6x^2 + 2x - 5\right) dx \\ &amp;= x^4 - 2x^3 + x^2 - 5x + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 10.1, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Šaknys ir trupmenos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int\left(6\sqrt{x} - \frac{4}{x^2} + \frac{1}{\sqrt[3]{x}}\right) dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Šaknis ir trupmenas užrašome laipsniais:</p>
+          <div class="m-wide">\[ 6\sqrt{x} = 6x^{\frac{1}{2}};\qquad \frac{4}{x^2} = 4x^{-2};\qquad \frac{1}{\sqrt[3]{x}} = x^{-\frac{1}{3}} \]</div>
+          <div class="m-narrow">\[ \begin{gathered} 6\sqrt{x} = 6x^{\frac{1}{2}};\qquad \frac{4}{x^2} = 4x^{-2}; \\ \frac{1}{\sqrt[3]{x}} = x^{-\frac{1}{3}} \end{gathered} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas panariui</span></h4>
+          <p>Kiekvieno nario rodiklį padidiname vienetu: \(\frac{1}{2} + 1 = \frac{3}{2}\), \(-2 + 1 = -1\), \(-\frac{1}{3} + 1 = \frac{2}{3}\). Tada dalijame iš naujojo rodiklio:</p>
+          \[ \begin{aligned} &amp;\int\left(6x^{\frac{1}{2}} - 4x^{-2} + x^{-\frac{1}{3}}\right) dx \\ &amp;= 6\cdot\frac{x^{\frac{3}{2}}}{\frac{3}{2}} - 4\cdot\frac{x^{-1}}{-1} + \frac{x^{\frac{2}{3}}}{\frac{2}{3}} + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Suprastinimas</span></h4>
+          <p>Dalybą iš \(\frac{3}{2}\) pakeičiame daugyba iš \(\frac{2}{3}\): \(6\cdot\frac{2}{3} = 4\). Dalyba iš \(-1\) pakeičia nario ženklą. Dalybą iš \(\frac{2}{3}\) pakeičiame daugyba iš \(\frac{3}{2}\):</p>
+          \[ = 4x^{\frac{3}{2}} + 4x^{-1} + \frac{3}{2}x^{\frac{2}{3}} + C \]
+          <p>Laipsnius vėl užrašome šaknimis ir trupmenomis: \(x^{\frac{3}{2}} = x\sqrt{x}\), \(x^{-1} = \frac{1}{x}\), \(x^{\frac{2}{3}} = \sqrt[3]{x^2}\):</p>
+          \[ = 4x\sqrt{x} + \frac{4}{x} + \frac{3}{2}\sqrt[3]{x^2} + C \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Patikrinimas</span></h4>
+          \[ \begin{aligned} &amp;\left(4x^{\frac{3}{2}} + 4x^{-1} + \frac{3}{2}x^{\frac{2}{3}}\right)' \\ &amp;= 4\cdot\frac{3}{2}x^{\frac{1}{2}} - 4x^{-2} + \frac{3}{2}\cdot\frac{2}{3}x^{-\frac{1}{3}} \\ &amp;= 6x^{\frac{1}{2}} - 4x^{-2} + x^{-\frac{1}{3}} \end{aligned} \]
+          <p>Gavome pertvarkytą pointegrinę funkciją.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int\left(6\sqrt{x} - \frac{4}{x^2} + \frac{1}{\sqrt[3]{x}}\right) dx \\ &amp;= 4x\sqrt{x} + \frac{4}{x} + \frac{3}{2}\sqrt[3]{x^2} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 10.1, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Funkcija \(\frac{1}{x}\) ir neigiamieji laipsniai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int\left(\frac{1}{x} + \frac{1}{x^2} + \frac{1}{x^3}\right) dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Pirmojo nario nekeičiame: \(\frac{1}{x} = x^{-1}\), o kai \(n = -1\), laipsninės funkcijos formulės taikyti negalima, nes tektų dalyti iš nulio. Jam taikoma formulė \(\int\frac{1}{x}\, dx = \ln|x| + C\). Kitus du narius užrašome laipsniais:</p>
+          \[ \frac{1}{x^2} = x^{-2};\qquad \frac{1}{x^3} = x^{-3} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas panariui</span></h4>
+          <p>Integravę pirmąjį narį, gauname logaritmą. Kitiems nariams rodiklį padidiname vienetu: \(-2 + 1 = -1\), \(-3 + 1 = -2\):</p>
+          \[ \begin{aligned} &amp;\int\left(\frac{1}{x} + x^{-2} + x^{-3}\right) dx \\ &amp;= \ln|x| + \frac{x^{-1}}{-1} + \frac{x^{-2}}{-2} + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Suprastinimas</span></h4>
+          <p>Dalyba iš neigiamo skaičiaus pakeičia nario ženklą. Laipsnius užrašome trupmenomis: \(x^{-1} = \frac{1}{x}\), \(x^{-2} = \frac{1}{x^2}\):</p>
+          \[ = \ln|x| - \frac{1}{x} - \frac{1}{2x^2} + C \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Patikrinimas</span></h4>
+          \[ \begin{aligned} &amp;\left(\ln|x| - x^{-1} - 0{,}5x^{-2}\right)' \\ &amp;= \frac{1}{x} + x^{-2} + x^{-3} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int\left(\frac{1}{x} + \frac{1}{x^2} + \frac{1}{x^3}\right) dx \\ &amp;= \ln|x| - \frac{1}{x} - \frac{1}{2x^2} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 10.1, 11 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Trigonometrinės funkcijos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int\left(3\cos x - \frac{2}{\sin^2 x} + \frac{4}{\cos^2 x}\right) dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas panariui</span></h4>
+          <p>Pertvarkyti nereikia. Iškeliame daugiklius ir kiekvienam nariui taikome atitinkamą trigonometrinės funkcijos formulę:</p>
+          \[ \begin{aligned} &amp;\int\left(3\cos x - \frac{2}{\sin^2 x} + \frac{4}{\cos^2 x}\right) dx \\ &amp;= 3\int\cos x\, dx - 2\int\frac{dx}{\sin^2 x} \\ &amp;\phantom{=}\; {}+ 4\int\frac{dx}{\cos^2 x} \\ &amp;= 3\sin x - 2\cdot\left(-\operatorname{ctg} x\right) + 4\operatorname{tg} x + C \end{aligned} \]
+          <p>Formulėje \(\int\frac{1}{\sin^2 x}\, dx = -\operatorname{ctg} x + C\) yra minuso ženklas, todėl jos rezultatą rašome skliaustuose.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Suprastinimas</span></h4>
+          <p>Du minuso ženklai duoda pliusą:</p>
+          \[ = 3\sin x + 2\operatorname{ctg} x + 4\operatorname{tg} x + C \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <p>Kadangi \((\operatorname{ctg} x)' = -\frac{1}{\sin^2 x}\) ir \((\operatorname{tg} x)' = \frac{1}{\cos^2 x}\):</p>
+          \[ \begin{aligned} &amp;\left(3\sin x + 2\operatorname{ctg} x + 4\operatorname{tg} x\right)' \\ &amp;= 3\cos x - \frac{2}{\sin^2 x} + \frac{4}{\cos^2 x} \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int\left(3\cos x - \frac{2}{\sin^2 x} + \frac{4}{\cos^2 x}\right) dx \\ &amp;= 3\sin x + 2\operatorname{ctg} x + 4\operatorname{tg} x + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead">Pointegrinės funkcijos pertvarkymas</h3>
+
+    <!-- 5 pavyzdys: TM 10.1, 12 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Skliaustų atskleidimas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int (2x - 3)(x + 4)\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Pointegrinė funkcija yra sandauga, o sandaugos integralas nelygus daugiklių integralų sandaugai. Todėl pirmiausia sudauginame skliaustuose esančius reiškinius ir sutraukiame panašiuosius narius:</p>
+          \[ \begin{aligned} &amp;(2x - 3)(x + 4) \\ &amp;= 2x^2 + 8x - 3x - 12 \\ &amp;= 2x^2 + 5x - 12 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas panariui</span></h4>
+          <p>Gautą daugianarį integruojame panariui:</p>
+          \[ \begin{aligned} &amp;\int\left(2x^2 + 5x - 12\right) dx \\ &amp;= 2\cdot\frac{x^3}{3} + 5\cdot\frac{x^2}{2} - 12x + C \\ &amp;= \frac{2}{3}x^3 + \frac{5}{2}x^2 - 12x + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          \[ \begin{aligned} &amp;\left(\frac{2}{3}x^3 + \frac{5}{2}x^2 - 12x\right)' \\ &amp;= 2x^2 + 5x - 12 \\ &amp;= (2x - 3)(x + 4) \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int (2x - 3)(x + 4)\, dx \\ &amp;= \frac{2}{3}x^3 + \frac{5}{2}x^2 - 12x + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 10.1, 15 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Skaitiklio narių dalyba iš vardiklio</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int\frac{x^2 - 3x + 2}{\sqrt{x}}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Vardiklyje yra vienas narys \(\sqrt{x} = x^{\frac{1}{2}}\), todėl kiekvieną skaitiklio narį dalijame iš jo. Dalydami laipsnius su tuo pačiu pagrindu, iš rodiklių atimame \(\frac{1}{2}\):</p>
+          \[ \begin{aligned} \frac{x^2 - 3x + 2}{\sqrt{x}} &amp;= \frac{x^2}{x^{\frac{1}{2}}} - \frac{3x}{x^{\frac{1}{2}}} + \frac{2}{x^{\frac{1}{2}}} \\ &amp;= x^{\frac{3}{2}} - 3x^{\frac{1}{2}} + 2x^{-\frac{1}{2}} \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas panariui</span></h4>
+          <p>Nauji laipsnių rodikliai yra \(\frac{5}{2}\), \(\frac{3}{2}\) ir \(\frac{1}{2}\):</p>
+          \[ \begin{aligned} &amp;\int\left(x^{\frac{3}{2}} - 3x^{\frac{1}{2}} + 2x^{-\frac{1}{2}}\right) dx \\ &amp;= \frac{x^{\frac{5}{2}}}{\frac{5}{2}} - 3\cdot\frac{x^{\frac{3}{2}}}{\frac{3}{2}} + 2\cdot\frac{x^{\frac{1}{2}}}{\frac{1}{2}} + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Suprastinimas</span></h4>
+          <p>Dalybą iš trupmenų pakeičiame daugyba iš atvirkštinių trupmenų: \(3\cdot\frac{2}{3} = 2\), \(2\cdot 2 = 4\). Tada laipsnius užrašome šaknimis: \(x^{\frac{5}{2}} = x^2\sqrt{x}\), \(x^{\frac{3}{2}} = x\sqrt{x}\):</p>
+          \[ \begin{aligned} &amp;= \frac{2}{5}x^{\frac{5}{2}} - 2x^{\frac{3}{2}} + 4x^{\frac{1}{2}} + C \\ &amp;= \frac{2}{5}x^2\sqrt{x} - 2x\sqrt{x} + 4\sqrt{x} + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Patikrinimas</span></h4>
+          \[ \begin{aligned} &amp;\left(\frac{2}{5}x^{\frac{5}{2}} - 2x^{\frac{3}{2}} + 4x^{\frac{1}{2}}\right)' \\ &amp;= x^{\frac{3}{2}} - 3x^{\frac{1}{2}} + 2x^{-\frac{1}{2}} \end{aligned} \]
+          <p>Gavome pertvarkytą pointegrinę funkciją.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int\frac{x^2 - 3x + 2}{\sqrt{x}}\, dx \\ &amp;= \frac{2}{5}x^2\sqrt{x} - 2x\sqrt{x} + 4\sqrt{x} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 10.1, 17 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Skaidymas dauginamaisiais ir trumpinimas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int\frac{x - 1}{\sqrt{x} - 1}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Vardiklyje yra du nariai, todėl dalyti panariui negalima. Kadangi \(x = \left(\sqrt{x}\right)^2\), skaitiklį išskaidome pagal kvadratų skirtumo formulę \(a^2 - b^2 = (a - b)(a + b)\):</p>
+          \[ \begin{aligned} x - 1 &amp;= \left(\sqrt{x}\right)^2 - 1^2 \\ &amp;= \left(\sqrt{x} - 1\right)\left(\sqrt{x} + 1\right) \end{aligned} \]
+          <p>Sutrumpiname bendrąjį daugiklį \(\sqrt{x} - 1\):</p>
+          \[ \begin{aligned} \frac{\left(\sqrt{x} - 1\right)\left(\sqrt{x} + 1\right)}{\sqrt{x} - 1} &amp;= \sqrt{x} + 1 \\ &amp;= x^{\frac{1}{2}} + 1 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas panariui</span></h4>
+          \[ \begin{aligned} \int\left(x^{\frac{1}{2}} + 1\right) dx &amp;= \frac{x^{\frac{3}{2}}}{\frac{3}{2}} + x + C \\ &amp;= \frac{2}{3}x\sqrt{x} + x + C \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          \[ \left(\frac{2}{3}x^{\frac{3}{2}} + x\right)' = x^{\frac{1}{2}} + 1 = \sqrt{x} + 1 \]
+          <p>Gavome suprastintą pointegrinę funkciją.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int\frac{x - 1}{\sqrt{x} - 1}\, dx \\ &amp;= \frac{2}{3}x\sqrt{x} + x + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 10.1, 18 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Dalyba iš rodiklinės funkcijos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int\frac{e^x + e^x\sin x}{e^x}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Vardiklyje yra vienas narys \(e^x\), todėl kiekvieną skaitiklio narį dalijame iš jo:</p>
+          \[ \begin{aligned} \frac{e^x + e^x\sin x}{e^x} &amp;= \frac{e^x}{e^x} + \frac{e^x\sin x}{e^x} \\ &amp;= 1 + \sin x \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas panariui</span></h4>
+          \[ \int\left(1 + \sin x\right) dx = x - \cos x + C \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          \[ \left(x - \cos x\right)' = 1 + \sin x \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int\frac{e^x + e^x\sin x}{e^x}\, dx \\ &amp;= x - \cos x + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 9 pavyzdys: TM 10.1, 20 pavyzdys -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">9 pavyzdys</span>
+        <h3>Trigonometrinė tapatybė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int\operatorname{tg}^2 x\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pertvarkymas</span></h4>
+          <p>Funkcijos \(\operatorname{tg}^2 x\) formulių lentelėje nėra. Tangentą užrašome dalmeniu \(\operatorname{tg} x = \frac{\sin x}{\cos x}\), o \(\sin^2 x\) pakeičiame išraiška \(1 - \cos^2 x\) (iš tapatybės \(\sin^2 x + \cos^2 x = 1\)). Tada trupmeną dalijame panariui:</p>
+          \[ \begin{aligned} \operatorname{tg}^2 x &amp;= \frac{\sin^2 x}{\cos^2 x} = \frac{1 - \cos^2 x}{\cos^2 x} \\ &amp;= \frac{1}{\cos^2 x} - 1 \end{aligned} \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimas panariui</span></h4>
+          \[ \int\left(\frac{1}{\cos^2 x} - 1\right) dx = \operatorname{tg} x - x + C \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          \[ \left(\operatorname{tg} x - x\right)' = \frac{1}{\cos^2 x} - 1 = \operatorname{tg}^2 x \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \int\operatorname{tg}^2 x\, dx = \operatorname{tg} x - x + C \]
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: pertvarkykite pointegrinę funkciją, integruokite panariui, suprastinkite ir pridėkite konstantą \(C\). Atsakymą patikrinkite diferencijuodami.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 10.1–10.3 rinkinys, 1 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int\left(0{,}6x^2 + 1{,}4x - 0{,}5\right) dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(0{,}2x^3 + 0{,}7x^2 - 0{,}5x + C\)</p>
+        </div>
+      </article>
+
+      <!-- 2 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int\left(\frac{3}{\sqrt{x}} - \frac{2}{x^2}\right) dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Pertvarkymas: \(3x^{-\frac{1}{2}} - 2x^{-2}\).</p>
+          <p>Atsakymas: \(6\sqrt{x} + \dfrac{2}{x} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 2 f -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int\left(x^2\sqrt{x} + \frac{1}{2\sqrt[3]{x}}\right) dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Pertvarkymas: \(x^{\frac{5}{2}} + \dfrac{1}{2}x^{-\frac{1}{3}}\).</p>
+          <p>Atsakymas: \(\dfrac{2}{7}x^3\sqrt{x} + \dfrac{3}{4}\sqrt[3]{x^2} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 3 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int\left(\frac{5}{x} + 2e^x\right) dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(5\ln|x| + 2e^x + C\)</p>
+        </div>
+      </article>
+
+      <!-- 3 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int\left(2\cos x - 3\sin x\right) dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(2\sin x + 3\cos x + C\)</p>
+        </div>
+      </article>
+
+      <!-- 4 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int x(x + 2)^2\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Pertvarkymas: \(x(x + 2)^2 = x^3 + 4x^2 + 4x\).</p>
+          <p>Atsakymas: \(\dfrac{x^4}{4} + \dfrac{4x^3}{3} + 2x^2 + C\)</p>
+        </div>
+      </article>
+
+      <!-- 4 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int\frac{x^3 - 4x + 5}{x^2}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Pertvarkymas: \(x - \dfrac{4}{x} + 5x^{-2}\).</p>
+          <p>Atsakymas: \(\dfrac{x^2}{2} - 4\ln|x| - \dfrac{5}{x} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 4 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int\frac{x^2 - 9}{x + 3}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Pertvarkymas: \(x^2 - 9 = (x - 3)(x + 3)\), todėl pointegrinė funkcija lygi \(x - 3\).</p>
+          <p>Atsakymas: \(\dfrac{x^2}{2} - 3x + C\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">9 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">11.1 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

@@ -499,7 +499,7 @@
         desc: { lt: 'Tikslo funkciją ir apribojimą reikia nustatyti iš situacijos aprašymo, dažnai remiantis geometrija.', en: 'The objective function and the constraint have to be found from the description of the situation, often with the help of geometry.' } }
     ],
     t10: [
-      { id: 'm10a', status: 'soon',
+      { id: 'm10a', status: 'active', href: { lt: 'tema-10-pagrindines-formules.html' },
         title: { lt: 'Pagrindinės integravimo formulės', en: 'Basic Integration Formulas' },
         desc: { lt: 'Laipsninės, rodiklinės ir trigonometrinės funkcijos, šaknys ir trupmenos; pointegrinės funkcijos pertvarkymas prieš integruojant.', en: 'Power, exponential and trigonometric functions, roots and fractions; rewriting the integrand before integrating.' } },
       { id: 'm10b', status: 'soon',
@@ -637,6 +637,8 @@
                title: { lt: 'Sudėtingesni sąlyginio optimizavimo uždaviniai', en: 'Advanced Constrained Optimization Problems' } },
     t10:     { parent: 'home', href: { lt: 'tema-10.html', en: null },
                title: { lt: '10 tema', en: 'Topic 10' } },
+    m10a:    { parent: 't10', topic: 't10', model: 'm10a', href: { lt: 'tema-10-pagrindines-formules.html', en: null },
+               title: { lt: 'Pagrindinės integravimo formulės', en: 'Basic Integration Formulas' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
