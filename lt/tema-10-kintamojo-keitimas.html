@@ -136,6 +136,7 @@
         <li><strong>Integravimas ir grįžimas prie \(x\).</strong> Integralą apskaičiuokite kintamojo \(a\) atžvilgiu pagal žinomas formules. Gautoje pirmykštėje funkcijoje vietoje \(a\) įrašykite jo išraišką kintamuoju \(x\).</li>
         <li><strong>Patikrinimas.</strong> Gautą funkciją diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Turi gautis pointegrinė funkcija.</li>
       </ol>
+      <p>Pavyzdžiuose kiekvienas žingsnis parodytas atskirai, o paskutiniame žingsnyje „Visas sprendimas“ tas pats sprendimas užrašytas viena lygybių grandine. Taip sprendimą užrašykite ir spręsdami uždavinius.</p>
       <p>Bendruoju atveju, pakeitus kintamąjį \(u = u(x)\), gaunama lygybė</p>
       <div class="formula m-wide">\[ \int f\big(u(x)\big)\cdot u'(x)\, dx = \int f(u)\, du = F(u) + C \]</div>
       <div class="formula m-narrow">\[ \begin{aligned} &amp;\int f\big(u(x)\big)\cdot u'(x)\, dx \\ &amp;= \int f(u)\, du = F(u) + C \end{aligned} \]</div>
@@ -246,6 +247,12 @@
           <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
           <div class="fit-sm">\[ \begin{aligned} &amp;\left(\frac{2}{3}\left(x^3 + 2\right)^{\frac{3}{2}}\right)^{\prime} \\ &amp;= \frac{2}{3}\cdot\frac{3}{2}\left(x^3 + 2\right)^{\frac{1}{2}}\cdot 3x^2 \\ &amp;= 3x^2\sqrt{x^3 + 2} \end{aligned} \]</div>
         </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
+          <p>Visą sprendimą užrašome viena lygybių grandine:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int 3x^2\sqrt{x^3 + 2}\, dx &amp;= \left[\begin{array}{l} a = x^3 + 2 \\ da = a^{\prime}\,dx = 3x^2\,dx \;\big|:3x^2 \\ dx = \dfrac{da}{3x^2} \end{array}\right] \\ &amp;= \int \cancel{3x^2}\sqrt{a}\cdot\frac{da}{\cancel{3x^2}} = \int a^{\frac{1}{2}}\, da \\ &amp;= \frac{a^{\frac{3}{2}}}{\frac{3}{2}} + C = \frac{2}{3}\left(x^3 + 2\right)\sqrt{x^3 + 2} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int 3x^2\sqrt{x^3 + 2}\, dx \\ &amp;= \left[\begin{array}{l} a = x^3 + 2 \\ da = a^{\prime}\,dx = 3x^2\,dx \;\big|:3x^2 \\ dx = \dfrac{da}{3x^2} \end{array}\right] \\ &amp;= \int \cancel{3x^2}\sqrt{a}\cdot\frac{da}{\cancel{3x^2}} \\ &amp;= \int a^{\frac{1}{2}}\, da = \frac{a^{\frac{3}{2}}}{\frac{3}{2}} + C \\ &amp;= \frac{2}{3}\left(x^3 + 2\right)\sqrt{x^3 + 2} + C \end{aligned} \]</div>
+        </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
@@ -286,6 +293,12 @@
         <section class="step">
           <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
           <div class="fit-sm">\[ \begin{aligned} &amp;\left(-\frac{1}{80}\left(5x^4 + 3\right)^{-4}\right)^{\prime} \\ &amp;= -\frac{1}{80}\cdot(-4)\left(5x^4 + 3\right)^{-5}\cdot 20x^3 \\ &amp;= \frac{x^3}{\left(5x^4 + 3\right)^5} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
+          <p>Visą sprendimą užrašome viena lygybių grandine:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{x^3}{\left(5x^4 + 3\right)^5}\, dx &amp;= \left[\begin{array}{l} a = 5x^4 + 3 \\ da = a^{\prime}\,dx = 20x^3\,dx \;\big|:20x^3 \\ dx = \dfrac{da}{20x^3} \end{array}\right] \\ &amp;= \int \frac{\cancel{x^3}}{a^5}\cdot\frac{da}{20\cancel{x^3}} = \frac{1}{20}\int a^{-5}\, da \\ &amp;= \frac{1}{20}\cdot\frac{a^{-4}}{-4} + C = -\frac{1}{80\left(5x^4 + 3\right)^4} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{x^3}{\left(5x^4 + 3\right)^5}\, dx \\ &amp;= \left[\begin{array}{l} a = 5x^4 + 3 \\ da = a^{\prime}\,dx = 20x^3\,dx \;\big|:20x^3 \\ dx = \dfrac{da}{20x^3} \end{array}\right] \\ &amp;= \int \frac{\cancel{x^3}}{a^5}\cdot\frac{da}{20\cancel{x^3}} \\ &amp;= \frac{1}{20}\int a^{-5}\, da = \frac{1}{20}\cdot\frac{a^{-4}}{-4} + C \\ &amp;= -\frac{1}{80\left(5x^4 + 3\right)^4} + C \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
@@ -332,6 +345,12 @@
           <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
           <div class="fit-sm">\[ \begin{aligned} &amp;\left(\ln\left|x^3 - 1\right|\right)^{\prime} \\ &amp;= \frac{1}{x^3 - 1}\cdot 3x^2 = \frac{3x^2}{x^3 - 1} \end{aligned} \]</div>
         </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
+          <p>Visą sprendimą užrašome viena lygybių grandine:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{3x^2}{x^3 - 1}\, dx &amp;= \left[\begin{array}{l} a = x^3 - 1 \\ da = a^{\prime}\,dx = 3x^2\,dx \;\big|:3x^2 \\ dx = \dfrac{da}{3x^2} \end{array}\right] \\ &amp;= \int \frac{\cancel{3x^2}}{a}\cdot\frac{da}{\cancel{3x^2}} = \int \frac{1}{a}\, da \\ &amp;= \ln|a| + C = \ln\left|x^3 - 1\right| + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{3x^2}{x^3 - 1}\, dx \\ &amp;= \left[\begin{array}{l} a = x^3 - 1 \\ da = a^{\prime}\,dx = 3x^2\,dx \;\big|:3x^2 \\ dx = \dfrac{da}{3x^2} \end{array}\right] \\ &amp;= \int \frac{\cancel{3x^2}}{a}\cdot\frac{da}{\cancel{3x^2}} = \int \frac{1}{a}\, da \\ &amp;= \ln|a| + C = \ln\left|x^3 - 1\right| + C \end{aligned} \]</div>
+        </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
@@ -373,6 +392,12 @@
         <section class="step">
           <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
           <div class="fit-sm">\[ \begin{aligned} &amp;\left(\ln\left(1 + e^x\right)\right)^{\prime} \\ &amp;= \frac{1}{1 + e^x}\cdot e^x = \frac{e^x}{1 + e^x} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
+          <p>Visą sprendimą užrašome viena lygybių grandine:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{e^x}{1 + e^x}\, dx &amp;= \left[\begin{array}{l} a = 1 + e^x \\ da = a^{\prime}\,dx = e^x\,dx \;\big|:e^x \\ dx = \dfrac{da}{e^x} \end{array}\right] \\ &amp;= \int \frac{\cancel{e^x}}{a}\cdot\frac{da}{\cancel{e^x}} = \int \frac{1}{a}\, da \\ &amp;= \ln|a| + C = \ln\left(1 + e^x\right) + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{e^x}{1 + e^x}\, dx \\ &amp;= \left[\begin{array}{l} a = 1 + e^x \\ da = a^{\prime}\,dx = e^x\,dx \;\big|:e^x \\ dx = \dfrac{da}{e^x} \end{array}\right] \\ &amp;= \int \frac{\cancel{e^x}}{a}\cdot\frac{da}{\cancel{e^x}} = \int \frac{1}{a}\, da \\ &amp;= \ln|a| + C = \ln\left(1 + e^x\right) + C \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
@@ -418,6 +443,12 @@
           <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
           <div class="fit-sm">\[ \begin{aligned} &amp;\left(-\frac{1}{2}e^{-x^2}\right)^{\prime} \\ &amp;= -\frac{1}{2}e^{-x^2}\cdot(-2x) = xe^{-x^2} \end{aligned} \]</div>
         </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
+          <p>Visą sprendimą užrašome viena lygybių grandine:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int xe^{-x^2}\, dx &amp;= \left[\begin{array}{l} a = -x^2 \\ da = a^{\prime}\,dx = -2x\,dx \;\big|:(-2x) \\ dx = -\dfrac{da}{2x} \end{array}\right] \\ &amp;= \int \cancel{x}\,e^{a}\cdot\left(-\frac{da}{2\cancel{x}}\right) = -\frac{1}{2}\int e^{a}\, da \\ &amp;= -\frac{1}{2}e^{a} + C = -\frac{1}{2}e^{-x^2} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int xe^{-x^2}\, dx \\ &amp;= \left[\begin{array}{l} a = -x^2 \\ da = a^{\prime}\,dx = -2x\,dx \;\big|:(-2x) \\ dx = -\dfrac{da}{2x} \end{array}\right] \\ &amp;= \int \cancel{x}\,e^{a}\cdot\left(-\frac{da}{2\cancel{x}}\right) \\ &amp;= -\frac{1}{2}\int e^{a}\, da = -\frac{1}{2}e^{a} + C \\ &amp;= -\frac{1}{2}e^{-x^2} + C \end{aligned} \]</div>
+        </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
@@ -460,6 +491,12 @@
           <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
           <div class="fit-sm">\[ \begin{aligned} &amp;\left(2e^{\sqrt{x}}\right)^{\prime} \\ &amp;= 2e^{\sqrt{x}}\cdot\frac{1}{2\sqrt{x}} = \frac{e^{\sqrt{x}}}{\sqrt{x}} \end{aligned} \]</div>
         </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
+          <p>Visą sprendimą užrašome viena lygybių grandine:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx &amp;= \left[\begin{array}{l} a = \sqrt{x} \\ da = a^{\prime}\,dx = \frac{1}{2\sqrt{x}}\,dx \;\big|:\frac{1}{2\sqrt{x}} \\ dx = 2\sqrt{x}\,da \end{array}\right] \\ &amp;= \int \frac{e^{a}}{\cancel{\sqrt{x}}}\cdot 2\cancel{\sqrt{x}}\, da = 2\int e^{a}\, da \\ &amp;= 2e^{a} + C = 2e^{\sqrt{x}} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx \\ &amp;= \left[\begin{array}{l} a = \sqrt{x} \\ da = a^{\prime}\,dx = \frac{1}{2\sqrt{x}}\,dx \;\big|:\frac{1}{2\sqrt{x}} \\ dx = 2\sqrt{x}\,da \end{array}\right] \\ &amp;= \int \frac{e^{a}}{\cancel{\sqrt{x}}}\cdot 2\cancel{\sqrt{x}}\, da \\ &amp;= 2\int e^{a}\, da = 2e^{a} + C \\ &amp;= 2e^{\sqrt{x}} + C \end{aligned} \]</div>
+        </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
@@ -500,6 +537,12 @@
         <section class="step">
           <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
           <div class="fit-sm">\[ \begin{aligned} &amp;\left(-\frac{\cos^4 x}{4}\right)^{\prime} \\ &amp;= -\frac{1}{4}\cdot 4\cos^3 x\cdot(-\sin x) \\ &amp;= \sin x\cos^3 x \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
+          <p>Visą sprendimą užrašome viena lygybių grandine:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \sin x\cos^3 x\, dx &amp;= \left[\begin{array}{l} a = \cos x \\ da = a^{\prime}\,dx = -\sin x\,dx \;\big|:(-\sin x) \\ dx = -\dfrac{da}{\sin x} \end{array}\right] \\ &amp;= \int \cancel{\sin x}\cdot a^3\cdot\left(-\frac{da}{\cancel{\sin x}}\right) = -\int a^3\, da \\ &amp;= -\frac{a^4}{4} + C = -\frac{\cos^4 x}{4} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \sin x\cos^3 x\, dx \\ &amp;= \left[\begin{array}{l} a = \cos x \\ da = a^{\prime}\,dx = -\sin x\,dx \;\big|:(-\sin x) \\ dx = -\dfrac{da}{\sin x} \end{array}\right] \\ &amp;= \int \cancel{\sin x}\cdot a^3\cdot\left(-\frac{da}{\cancel{\sin x}}\right) \\ &amp;= -\int a^3\, da = -\frac{a^4}{4} + C \\ &amp;= -\frac{\cos^4 x}{4} + C \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
