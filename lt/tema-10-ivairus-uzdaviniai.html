@@ -21,7 +21,7 @@
   <nav id="crumbs" class="crumbs"></nav>
 
   <header class="page-head">
-    <span class="eyebrow">10 tema · Integralų skaičiavimas · 4 skyrius</span>
+    <span class="eyebrow">10 tema · Integralų skaičiavimas · <span class="nw">4 skyrius</span></span>
     <h1>Įvairūs integravimo uždaviniai</h1>
     <p class="lead">Šiame skyriuje integravimo būdą reikia pasirinkti patiems: pagrindinės ar naudingosios formulės, pointegrinės funkcijos pertvarkymas ar kintamojo keitimas. Pavyzdžiai pateikti įvairia tvarka. Prieš atskleisdami sprendimą, pabandykite patys nuspręsti, kurį būdą taikytumėte.</p>
     <ul class="jump">
@@ -35,13 +35,39 @@
   <section class="section" id="budas" aria-labelledby="h-choice">
     <h2 id="h-choice">Kaip pasirinkti integravimo būdą</h2>
     <article class="card">
-      <p>Ankstesniuose skyriuose integravimo būdas buvo žinomas iš anksto. Spręsdami įvairius uždavinius, jį pasirenkame patys. Prieš integruodami įsižiūrėkite į pointegrinę funkciją ir atsakykite į šiuos klausimus tokia tvarka:</p>
-      <ol class="steps-list">
-        <li><strong>Ar tinka pagrindinės formulės?</strong> Jei pointegrinė funkcija yra laipsnių, šaknų, trupmenų \(\frac{1}{x^n}\), funkcijų \(e^x\), \(\sin x\), \(\cos x\) suma, integruojame panariui (<a href="tema-10-pagrindines-formules.html">1 skyrius</a>).</li>
-        <li><strong>Ar argumentas tiesinis?</strong> Jei vietoje \(x\) yra tiesinė funkcija \(ax + b\), taikome naudingąsias formules (<a href="tema-10-naudingosios-formules.html">2 skyrius</a>).</li>
-        <li><strong>Ar pointegrinę funkciją galima pertvarkyti?</strong> Atskliaudžiame, trupmeną su vienu nariu vardiklyje dalijame narys po nario, skaitiklį skaidome dauginamaisiais ir trupmeną suprastiname, laipsnius su tuo pačiu pagrindu sujungiame, taikome trigonometrines tapatybes. Tada grįžtame prie pirmojo ar antrojo klausimo.</li>
-        <li><strong>Ar yra funkcija ir jos (beveik) išvestinė?</strong> Jei vidinė funkcija netiesinė, o jos (beveik) išvestinė yra daugiklis arba skaitiklis, keičiame kintamąjį (<a href="tema-10-kintamojo-keitimas.html">3 skyrius</a>).</li>
-      </ol>
+      <p>Ankstesniuose skyriuose integravimo būdas buvo žinomas iš anksto. Spręsdami įvairius uždavinius, jį pasirenkame patys. Prieš integruodami įsižiūrėkite į pointegrinę funkciją ir eikite per schemą iš viršaus: atsakę „Taip“, taikykite nurodytą būdą, atsakę „Ne“, pereikite prie kito klausimo.</p>
+
+      <h3 class="subhead" style="margin-top:18px">Mąstymo schema</h3>
+      <div class="dsch" role="group" aria-label="Integravimo būdo pasirinkimo schema">
+        <div class="dsch-start">Pointegrinė funkcija</div>
+        <div class="dsch-no" aria-hidden="true"><span></span></div>
+
+        <div class="dsch-step">
+          <div class="dsch-q"><span class="dsch-n">1</span><div><p class="dsch-qt">Ar tinka pagrindinės formulės?</p><p class="dsch-ex">Pointegrinė funkcija yra laipsnių, šaknų, trupmenų \(\frac{1}{x^n}\), funkcijų \(e^x\), \(\sin x\), \(\cos x\) suma.</p></div></div>
+          <div class="dsch-yes"><span class="dsch-lab">Taip</span><a class="dsch-out" href="tema-10-pagrindines-formules.html"><strong>Pagrindinės formulės</strong><span class="dsch-sub">Integruojame panariui · <span class="nw">1 skyrius</span></span></a></div>
+        </div>
+        <div class="dsch-no"><span>Ne</span></div>
+
+        <div class="dsch-step">
+          <div class="dsch-q"><span class="dsch-n">2</span><div><p class="dsch-qt">Ar argumentas tiesinis?</p><p class="dsch-ex">Vietoje \(x\) yra tiesinė funkcija \(ax + b\), pavyzdžiui, \((3x - 2)^5\), \(e^{2 - x}\).</p></div></div>
+          <div class="dsch-yes"><span class="dsch-lab">Taip</span><a class="dsch-out" href="tema-10-naudingosios-formules.html"><strong>Naudingosios formulės</strong><span class="dsch-sub">Rezultatą dalijame iš \(a\) · <span class="nw">2 skyrius</span></span></a></div>
+        </div>
+        <div class="dsch-no"><span>Ne</span></div>
+
+        <div class="dsch-step">
+          <div class="dsch-q"><span class="dsch-n">3</span><div><p class="dsch-qt">Ar pointegrinę funkciją galima pertvarkyti?</p><p class="dsch-ex">Atskliausti, padalyti narys po nario (kai vardiklyje vienas narys), išskaidyti dauginamaisiais ir suprastinti, sujungti laipsnius su tuo pačiu pagrindu, pritaikyti trigonometrinę tapatybę.</p></div></div>
+          <div class="dsch-yes"><span class="dsch-lab">Taip</span><div class="dsch-out loop"><strong>Pertvarkome</strong><span class="dsch-sub">ir grįžtame prie 1 klausimo</span></div></div>
+        </div>
+        <div class="dsch-no"><span>Ne</span></div>
+
+        <div class="dsch-step">
+          <div class="dsch-q"><span class="dsch-n">4</span><div><p class="dsch-qt">Ar yra funkcija ir jos (beveik) išvestinė?</p><p class="dsch-ex">Vidinė funkcija netiesinė, o jos (beveik) išvestinė yra daugiklis arba skaitiklis, pavyzdžiui, \(\frac{\ln x}{x} = \ln x\cdot\frac{1}{x}\).</p></div></div>
+          <div class="dsch-yes"><span class="dsch-lab">Taip</span><a class="dsch-out" href="tema-10-kintamojo-keitimas.html"><strong>Kintamojo keitimas</strong><span class="dsch-sub">Naujas kintamasis \(a\) · <span class="nw">3 skyrius</span></span></a></div>
+        </div>
+        <div class="dsch-no"><span>Ne</span></div>
+
+        <div class="dsch-end">Dar kartą peržiūrėkite 3 ir 4 klausimus: galbūt pointegrinę funkciją galima pertvarkyti kitaip arba pasirinkti kitą naują kintamąjį.</div>
+      </div>
 
       <h3 class="subhead" style="margin-top:18px">Ką matome ir ką darome</h3>
       <div class="tbl-wrap">

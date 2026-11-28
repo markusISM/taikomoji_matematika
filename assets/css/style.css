@@ -1157,3 +1157,30 @@ svg .ln-faint { stroke: var(--chart); stroke-width: 1.8; stroke-opacity: .4; fil
 svg .lv-faint { stroke: var(--muted); stroke-width: 1.4; stroke-opacity: .5; fill: none; }
 @media (max-width: 440px) { .vtable.cmp-tbl th, .vtable.cmp-tbl td { padding: 5px 6px; font-size: .9rem; } }
 @media (max-width: 480px) { .vtable.pts { font-size: .88rem; } .vtable.pts th, .vtable.pts td { padding: 5px 7px; } }
+
+/* Integravimo būdo pasirinkimo (mąstymo) schema – 10 tema, 4 skyrius (.dsch).
+   Plačiame ekrane: klausimas kairėje, atsakymo „Taip“ šaka dešinėje, „Ne“ rodyklė žemyn.
+   Siaurame (≤560 px): „Taip“ šaka po klausimu, kairėje tęsiasi „Ne“ linija. */
+.dsch { margin: 10px 0 14px; }
+.dsch-start { display: table; padding: 6px 14px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: .92rem; }
+.dsch-step { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 0 14px; align-items: center; }
+.dsch-q { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+.dsch-n { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: .85rem; }
+.dsch-qt { margin: 1px 0 0; font-weight: 700; line-height: 1.35; }
+.dsch-ex { margin: 4px 0 0; font-size: .88rem; line-height: 1.45; color: var(--muted); }
+.dsch-yes { display: flex; align-items: center; gap: 8px; }
+.dsch-lab { flex: none; font-size: .8rem; font-weight: 700; color: var(--success); white-space: nowrap; }
+.dsch-lab::after { content: " →"; }
+.dsch-out { flex: 1; min-width: 0; display: block; padding: 8px 12px; border-radius: 12px; background: var(--success-soft); border: 1px solid color-mix(in srgb, var(--success) 40%, transparent); color: var(--success); text-decoration: none; }
+a.dsch-out:hover strong, a.dsch-out:focus-visible strong { text-decoration: underline; }
+.dsch-out strong { display: block; line-height: 1.3; }
+.dsch-out .dsch-sub { display: block; margin-top: 2px; font-size: .85rem; line-height: 1.35; }
+.dsch-out.loop { background: var(--exam-soft); border-color: color-mix(in srgb, var(--exam) 40%, transparent); color: var(--exam); }
+.dsch-no { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 0 14px; }
+.dsch-no > span { position: relative; justify-self: start; display: flex; align-items: center; height: 34px; margin-left: 24px; padding-left: 10px; border-left: 2px solid var(--muted); font-size: .8rem; font-weight: 700; color: var(--muted); }
+.dsch-no > span::after { content: ""; position: absolute; left: -7px; bottom: -1px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid var(--muted); }
+.dsch-end { padding: 10px 12px; border-radius: 12px; border: 1px dashed var(--muted); color: var(--muted); font-size: .9rem; line-height: 1.45; }
+@media (max-width: 560px) {
+  .dsch-step, .dsch-no { grid-template-columns: minmax(0, 1fr); }
+  .dsch-yes { margin-left: 24px; padding: 8px 0 0 10px; border-left: 2px solid var(--muted); }
+}
