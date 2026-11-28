@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integravimas kintamojo keitimu · Taikomoji matematika</title>
+<meta name="description" content="Kada integralas skaičiuojamas keičiant kintamąjį, kaip pasirinkti naują kintamąjį ir kaip žingsnis po žingsnio atlikti skaičiavimus: laipsniai, šaknys, trupmenos, rodiklinės, logaritminės ir trigonometrinės funkcijos. Uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m10c">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">10 tema · Integralų skaičiavimas · 3 skyrius</span>
+    <h1>Integravimas kintamojo keitimu</h1>
+    <p class="lead">Šiame skyriuje paaiškinta, kada integralą reikia skaičiuoti keičiant kintamąjį, kaip pasirinkti naują kintamąjį ir kaip atlikti skaičiavimus. Toliau rasite pavyzdžių ir uždavinių savarankiškam darbui. Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <ul class="jump">
+      <li><a href="#kada">Kada taikoma</a></li>
+      <li><a href="#pasirinkimas">Naujas kintamasis</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ KADA TAIKOMA ============ -->
+  <section class="section" id="kada" aria-labelledby="h-when">
+    <h2 id="h-when">Kada taikomas integravimas kintamojo keitimu</h2>
+    <article class="card">
+      <p>Ankstesniuose skyriuose integralus skaičiavome tiesiogiai pagal formules. Kai kurių integralų, pavyzdžiui, \(\int 2xe^{x^2 + 5}\, dx\), \(\int \frac{\ln x}{x}\, dx\) ar \(\int 3x^2\sqrt{x^3 + 2}\, dx\), pagal formules tiesiogiai apskaičiuoti negalima. Tada dalį pointegrinės funkcijos pažymime nauju kintamuoju \(a\) ir integralą užrašome taip, kad galėtume pritaikyti žinomas formules. Keičiant kintamąjį, naudojamas diferencialas \(da = a'\, dx\) (žr. 10 temos puslapio kortelę <a href="tema-10.html#diferencialas">„Diferencialas“</a>).</p>
+
+      <h3 class="subhead">Pirmiausia patikrinkite, ar kintamąjį keisti reikia</h3>
+      <p>Kintamojo keisti <strong>nereikia</strong>, kai tenkinama bent viena iš šių sąlygų:</p>
+      <ul>
+        <li>galima taikyti pagrindines integravimo formules, pavyzdžiui, \(\int\left(x^3 - \frac{2}{x}\right) dx\) (<a href="tema-10-pagrindines-formules.html">1 skyrius</a>);</li>
+        <li>pointegrinės funkcijos argumentas tiesinis ir tinka naudingosios integravimo formulės, pavyzdžiui, \(\int e^{5x + 2}\, dx\) (<a href="tema-10-naudingosios-formules.html">2 skyrius</a>);</li>
+        <li>formules galima taikyti pertvarkius pointegrinę funkciją: atskliaudus, padalijus skaitiklio narius iš vardiklio ar pritaikius tapatybę, pavyzdžiui, \(\int \frac{(x + 1)^2}{x^2}\, dx\).</li>
+      </ul>
+      <p>Jei šių būdų nepakanka, tikriname, ar galima keisti kintamąjį. Jis keičiamas dviem atvejais.</p>
+
+      <h3 class="subhead">1 atvejis. Argumentas nesutampa su integravimo kintamuoju</h3>
+      <div class="model-note"><p style="margin:0">Pointegrinės funkcijos argumentas nesutampa su integravimo kintamuoju. Naujas kintamasis yra <strong>nesutampantis argumentas</strong>.</p></div>
+      <p style="margin-top:12px">Šiuo atveju po integralu yra <strong>sudėtinė funkcija</strong> \(f\big(u(x)\big)\): išorinės funkcijos \(f\) argumentas yra vidinė funkcija \(u(x)\). Integravimo kintamasis yra \(x\), kaip rodo žymuo \(dx\). Jei vidinė funkcija skiriasi nuo \(x\), argumentas nesutampa su integravimo kintamuoju:</p>
+      <div class="tbl-wrap">
+        <table class="vtable compact">
+          <thead>
+            <tr><th scope="col">Integralas</th><th scope="col" style="text-align:left">Išorinė funkcija</th><th scope="col" style="text-align:left">Argumentas</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(\displaystyle\int 2xe^{x^2 + 5}\, dx\)</td><td style="text-align:left">rodiklinė funkcija</td><td style="text-align:left">\(x^2 + 5\)</td></tr>
+            <tr><td>\(\displaystyle\int 3x^2\sqrt{x^3 + 2}\, dx\)</td><td style="text-align:left">kvadratinė šaknis</td><td style="text-align:left">\(x^3 + 2\)</td></tr>
+            <tr><td>\(\displaystyle\int \frac{4x}{\left(2x^2 + 3\right)^3}\, dx\)</td><td style="text-align:left">laipsninė funkcija</td><td style="text-align:left">\(2x^2 + 3\)</td></tr>
+            <tr><td>\(\displaystyle\int \frac{3x^2}{x^3 - 1}\, dx\)</td><td style="text-align:left">\(\frac{1}{u}\)</td><td style="text-align:left">\(x^3 - 1\)</td></tr>
+            <tr><td>\(\displaystyle\int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx\)</td><td style="text-align:left">rodiklinė funkcija</td><td style="text-align:left">\(\sqrt{x}\)</td></tr>
+            <tr><td>\(\displaystyle\int \cos(2x + 1)\, dx\)</td><td style="text-align:left">kosinusas</td><td style="text-align:left">\(2x + 1\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Tiesinis argumentas.</strong> Funkcijos \(\cos(2x + 1)\) argumentas \(2x + 1\) skiriasi nuo \(x\), todėl kintamąjį keisti galima. Tačiau kai argumentas tiesinis, patogiau taikyti <a href="tema-10-naudingosios-formules.html">naudingąsias integravimo formules</a>. Abu būdai palyginami 4 skyriuje.</p>
+      <p><strong>Netiesinis argumentas.</strong> Kai vidinė funkcija netiesinė, pavyzdžiui, \(x^2 + 5\), \(x^3 + 2\) ar \(\sqrt{x}\), tikriname, ar pointegrinėje funkcijoje yra jos (beveik) išvestinė. Tai – antrasis atvejis.</p>
+
+      <h3 class="subhead">2 atvejis. Funkcija ir jos (beveik) išvestinė</h3>
+      <div class="model-note"><p style="margin:0">Po integralu yra funkcija ir jos (beveik) išvestinė. Naujas kintamasis yra <strong>funkcija, kurios (beveik) išvestinė yra po integralu</strong>.</p></div>
+      <p style="margin-top:12px">Tarkime, vidinė funkcija yra \(x^2 + 5\). Jos išvestinė \(\left(x^2 + 5\right)' = 2x\). Kad kintamąjį galėtume pakeisti, pointegrinėje funkcijoje ieškome daugiklio \(2x\) arba jo pastoviojo kartotinio. <strong>Beveik išvestinė</strong> – tai išvestinė, padauginta iš <strong>pastovaus daugiklio</strong>. Jei išvestinė yra \(2x\), tinka \(6x = 3\cdot 2x\) ir \(x = \frac{1}{2}\cdot 2x\), tačiau netinka \(2x^2\):</p>
+      <div class="tbl-wrap">
+        <table class="vtable compact">
+          <thead>
+            <tr><th scope="col">Integralas</th><th scope="col" style="text-align:left">Daugiklis</th><th scope="col" style="text-align:left">Ar tai (beveik) išvestinė \(2x\)?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(\displaystyle\int 2xe^{x^2 + 5}\, dx\)</td><td style="text-align:left">\(2x\)</td><td style="text-align:left">taip, pati išvestinė</td></tr>
+            <tr><td>\(\displaystyle\int 6xe^{x^2 + 5}\, dx\)</td><td style="text-align:left">\(6x\)</td><td style="text-align:left">taip, \(6x = 3\cdot 2x\)</td></tr>
+            <tr><td>\(\displaystyle\int xe^{x^2 + 5}\, dx\)</td><td style="text-align:left">\(x\)</td><td style="text-align:left">taip, \(x = \frac{1}{2}\cdot 2x\)</td></tr>
+            <tr><td>\(\displaystyle\int 2x^2e^{x^2 + 5}\, dx\)</td><td style="text-align:left">\(2x^2\)</td><td style="text-align:left">ne, \(2x^2 = x\cdot 2x\), o \(x\) nėra pastovus daugiklis</td></tr>
+            <tr><td>\(\displaystyle\int e^{x^2 + 5}\, dx\)</td><td style="text-align:left">nėra</td><td style="text-align:left">ne</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Pirmuose trijuose integraluose kintamąjį keisti galima, paskutiniuose dviejuose – ne.</p>
+      <p><strong>Kodėl daugiklis turi būti pastovus?</strong> Pakeitus kintamąjį, išvestinė susiprastina, o pastovusis daugiklis iškeliamas prieš integralo ženklą. Jei liktų daugiklis su \(x\), po integralu būtų abu kintamieji \(x\) ir \(a\), ir integruoti \(a\) atžvilgiu negalėtume.</p>
+      <p><strong>Kai nėra sudėtinės funkcijos.</strong> Kintamąjį galima keisti ir tada, kai po integralu yra paprasta funkcija ir jos išvestinė. Integrale \(\int \frac{\ln x}{x}\, dx = \int \ln x\cdot\frac{1}{x}\, dx\) funkcija \(\ln x\) yra atskiras daugiklis, o šalia yra jos išvestinė \(\frac{1}{x}\).</p>
+    </article>
+  </section>
+
+  <!-- ============ NAUJO KINTAMOJO PASIRINKIMAS ============ -->
+  <section class="section" id="pasirinkimas" aria-labelledby="h-choice">
+    <h2 id="h-choice">Kaip pasirinkti naują kintamąjį</h2>
+    <article class="card">
+      <p>Nauju kintamuoju \(a\) žymime <strong>nesutampantį argumentą</strong> arba <strong>funkciją, kurios (beveik) išvestinė yra po integralu</strong>. Dažniausiai tai yra laipsnio pagrindas, šaknies pošaknis, rodiklinės funkcijos rodiklis, trupmenos vardiklis arba trigonometrinės funkcijos argumentas. Trupmeną naudinga užrašyti kaip sandaugą, pavyzdžiui, \(\frac{3x^2}{x^3 - 1} = \frac{1}{x^3 - 1}\cdot 3x^2\).</p>
+      <div class="tbl-wrap">
+        <table class="vtable compact">
+          <thead>
+            <tr><th scope="col">Integralas</th><th scope="col">Naujas kintamasis</th><th scope="col" style="text-align:left">Kodėl</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>\(\displaystyle\int \frac{4x}{\left(2x^2 + 3\right)^3}\, dx\)</td><td>\(a = 2x^2 + 3\)</td><td style="text-align:left">laipsnio pagrindas, jo išvestinė \(4x\) yra skaitiklyje</td></tr>
+            <tr><td>\(\displaystyle\int 3x^2\sqrt{x^3 + 2}\, dx\)</td><td>\(a = x^3 + 2\)</td><td style="text-align:left">pošaknis, jo išvestinė \(3x^2\) yra daugiklis</td></tr>
+            <tr><td>\(\displaystyle\int \frac{3x^2}{x^3 - 1}\, dx\)</td><td>\(a = x^3 - 1\)</td><td style="text-align:left">vardiklis, jo išvestinė \(3x^2\) yra skaitiklyje</td></tr>
+            <tr><td>\(\displaystyle\int x\sin\left(x^2 + 1\right) dx\)</td><td>\(a = x^2 + 1\)</td><td style="text-align:left">sinuso argumentas, jo beveik išvestinė \(x\) yra daugiklis</td></tr>
+            <tr><td>\(\displaystyle\int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx\)</td><td>\(a = \sqrt{x}\)</td><td style="text-align:left">rodiklis, daugiklis \(\frac{1}{\sqrt{x}}\) yra jo beveik išvestinė</td></tr>
+            <tr><td>\(\displaystyle\int \frac{e^x}{1 + e^x}\, dx\)</td><td>\(a = 1 + e^x\)</td><td style="text-align:left">vardiklis, jo išvestinė \(e^x\) yra skaitiklyje</td></tr>
+            <tr><td>\(\displaystyle\int \frac{\sqrt{1 + \ln x}}{x}\, dx\)</td><td>\(a = 1 + \ln x\)</td><td style="text-align:left">pošaknis, jo išvestinė \(\frac{1}{x}\) yra daugiklis</td></tr>
+            <tr><td>\(\displaystyle\int \frac{\ln x}{x}\, dx\)</td><td>\(a = \ln x\)</td><td style="text-align:left">funkcija \(\ln x\) ir jos išvestinė \(\frac{1}{x}\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tip"><strong>Visas argumentas, ne jo dalis.</strong> Integrale \(\int \frac{\sqrt{1 + \ln x}}{x}\, dx\) nauju kintamuoju žymime visą pošaknį \(1 + \ln x\). Pasirinkę pačią šaknį \(\sqrt{1 + \ln x}\) arba tik \(\ln x\), turėtume integralą pertvarkyti kitaip ir sudėtingiau.</p>
+    </article>
+  </section>
+
+  <!-- ============ SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-steps">
+    <h2 id="h-steps">Sprendimo eiga</h2>
+    <article class="card">
+      <p>Kintamojo keitimas atliekamas penkiais nuosekliais žingsniais. Pavyzdžiuose žingsniai pavadinti taip pat kaip šiame sąraše.</p>
+      <ol class="steps-list">
+        <li><strong>Naujas kintamasis.</strong> Nustatykite, kuris atvejis tinka, ir pasirinkite naują kintamąjį \(a\).</li>
+        <li><strong>Pasiruošimas.</strong> Šalia integralo laužtiniuose skliaustuose užrašykite tris eilutes:
+          <ul>
+            <li>naują kintamąjį \(a = \ldots\);</li>
+            <li>jo diferencialą \(da = a'\, dx\);</li>
+            <li>iš diferencialo lygybės išreikštą \(dx\): abi puses padalykite iš \(a'\) (kai \(a' \ne 0\)).</li>
+          </ul>
+        </li>
+        <li><strong>Keitimas ir prastinimas.</strong> Pointegrinėje funkcijoje pasirinktą reiškinį pakeiskite kintamuoju \(a\), o \(dx\) – trečiosios skliaustų eilutės išraiška. Suprastinkite reiškinius su \(x\): turi likti tik kintamasis \(a\). Pastovųjį daugiklį iškelkite prieš integralo ženklą. Jei \(x\) nesusiprastina, pasirinktas naujas kintamasis netinka.</li>
+        <li><strong>Integravimas ir grįžimas prie \(x\).</strong> Integralą apskaičiuokite kintamojo \(a\) atžvilgiu pagal žinomas formules. Gautoje pirmykštėje funkcijoje vietoje \(a\) įrašykite jo išraišką kintamuoju \(x\).</li>
+        <li><strong>Patikrinimas.</strong> Gautą funkciją diferencijuokite pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a>. Turi gautis pointegrinė funkcija.</li>
+      </ol>
+      <p>Bendruoju atveju, pakeitus kintamąjį \(u = u(x)\), gaunama lygybė</p>
+      <div class="formula m-wide">\[ \int f\big(u(x)\big)\cdot u'(x)\, dx = \int f(u)\, du = F(u) + C \]</div>
+      <div class="formula m-narrow">\[ \begin{aligned} &amp;\int f\big(u(x)\big)\cdot u'(x)\, dx \\ &amp;= \int f(u)\, du = F(u) + C \end{aligned} \]</div>
+      <p>Joje matyti, kodėl reikia išvestinės \(u'(x)\): ji kartu su \(dx\) sudaro diferencialą \(du\).</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Pakeičiama tik pointegrinė funkcija, o \(dx\) paliekamas.</strong> Po keitimo integralas turi būti užrašytas tik su \(a\) ir \(da\).</li>
+            <li><strong>Neteisingai išreikštas \(dx\).</strong> Iš \(da = 2x\, dx\) gauname \(dx = \frac{da}{2x}\), o ne \(dx = 2x\, da\).</li>
+            <li><strong>Pamirštas grįžimas prie \(x\).</strong> Atsakymas užrašomas pradiniu kintamuoju \(x\), o ne \(a\).</li>
+            <li><strong>Prarandamas pastovusis daugiklis ar minuso ženklas.</strong> Pavyzdžiui, kai \(a = -x^2\), tai \(dx = -\frac{da}{2x}\), ir prieš integralą lieka \(-\frac{1}{2}\).</li>
+            <li><strong>Kintamasis keičiamas, kai daugiklis nėra beveik išvestinė.</strong> Jei po prastinimo lieka \(x\), keitimas netinka.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <h3 class="subhead">Laipsniai ir šaknys</h3>
+
+    <!-- 1 pavyzdys: TM 10.3, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Funkcija ir jos išvestinė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{\ln x}{x}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
+          <p>Pointegrinę funkciją užrašome sandauga \(\frac{\ln x}{x} = \ln x\cdot\frac{1}{x}\). Joje yra funkcija \(\ln x\) ir jos išvestinė \((\ln x)^{\prime} = \frac{1}{x}\) (2 atvejis). Naujas kintamasis \(a = \ln x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
+          <div class="fit-sm">\[ \left[\begin{array}{l} a = \ln x \\ da = a^{\prime}\,dx = \frac{1}{x}\,dx \;\big|:\frac{1}{x} \\ dx = x\,da \end{array}\right] \]</div>
+          <p>Pirmoje eilutėje įvedame naują kintamąjį, antroje apskaičiuojame jo diferencialą, trečioje išreiškiame \(dx\): dalyba iš \(\frac{1}{x}\) – tai daugyba iš \(x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
+          <p>Vietoje \(\ln x\) rašome \(a\), o vietoje \(dx\) – \(x\,da\). Kintamasis \(x\) susiprastina:</p>
+          <div class="fit-sm">\[ \int \frac{\ln x}{x}\, dx = \int \frac{a}{\cancel{x}}\cdot\cancel{x}\, da = \int a\, da \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
+          <p>Integralui \(\int a\, da\) taikome laipsninės funkcijos formulę, tada vietoje \(a\) įrašome \(\ln x\):</p>
+          <div class="fit-sm">\[ \int a\, da = \frac{a^2}{2} + C = \frac{\ln^2 x}{2} + C \]</div>
+          <p>Čia \(\ln^2 x = (\ln x)^2\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \left(\frac{\ln^2 x}{2}\right)^{\prime} = \frac{1}{2}\cdot 2\ln x\cdot\frac{1}{x} = \frac{\ln x}{x} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
+          <p>Sprendimą užrašome viena lygybių grandine. Taip jį užrašykite ir spręsdami uždavinius:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{\ln x}{x}\, dx &amp;= \left[\begin{array}{l} a = \ln x \\ da = a^{\prime}\,dx = \frac{1}{x}\,dx \;\big|:\frac{1}{x} \\ dx = x\,da \end{array}\right] \\ &amp;= \int \frac{a}{\cancel{x}}\cdot\cancel{x}\, da = \int a\, da \\ &amp;= \frac{a^2}{2} + C = \frac{\ln^2 x}{2} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{\ln x}{x}\, dx \\ &amp;= \left[\begin{array}{l} a = \ln x \\ da = a^{\prime}\,dx = \frac{1}{x}\,dx \;\big|:\frac{1}{x} \\ dx = x\,da \end{array}\right] \\ &amp;= \int \frac{a}{\cancel{x}}\cdot\cancel{x}\, da = \int a\, da \\ &amp;= \frac{a^2}{2} + C = \frac{\ln^2 x}{2} + C \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \int \frac{\ln x}{x}\, dx = \frac{\ln^2 x}{2} + C \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 10.3, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Šaknis ir jos argumento išvestinė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int 3x^2\sqrt{x^3 + 2}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
+          <p>Šaknies argumentas \(x^3 + 2\) nesutampa su \(x\) (1 atvejis). Jo išvestinė \(\left(x^3 + 2\right)^{\prime} = 3x^2\) yra pointegrinės funkcijos daugiklis (2 atvejis). Naujas kintamasis \(a = x^3 + 2\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
+          <div class="fit-sm">\[ \left[\begin{array}{l} a = x^3 + 2 \\ da = a^{\prime}\,dx = 3x^2\,dx \;\big|:3x^2 \\ dx = \dfrac{da}{3x^2} \end{array}\right] \]</div>
+          <p>Iš diferencialo lygybės \(dx\) išreiškiame abi puses padaliję iš \(3x^2\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
+          <p>Vietoje \(x^3 + 2\) rašome \(a\), o vietoje \(dx\) – \(\frac{da}{3x^2}\). Daugiklis \(3x^2\) susiprastina, o šaknį užrašome laipsniu:</p>
+          <div class="fit-sm">\[ \begin{aligned} \int 3x^2\sqrt{x^3 + 2}\, dx &amp;= \int \cancel{3x^2}\sqrt{a}\cdot\frac{da}{\cancel{3x^2}} \\ &amp;= \int a^{\frac{1}{2}}\, da \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
+          <p>Laipsnio rodiklį padidiname vienetu: \(\frac{1}{2} + 1 = \frac{3}{2}\). Dalyba iš \(\frac{3}{2}\) – tai daugyba iš \(\frac{2}{3}\). Tada vietoje \(a\) įrašome \(x^3 + 2\):</p>
+          <div class="fit-sm">\[ \begin{aligned} \int a^{\frac{1}{2}}\, da &amp;= \frac{a^{\frac{3}{2}}}{\frac{3}{2}} + C = \frac{2}{3}a^{\frac{3}{2}} + C \\ &amp;= \frac{2}{3}\left(x^3 + 2\right)^{\frac{3}{2}} + C \\ &amp;= \frac{2}{3}\left(x^3 + 2\right)\sqrt{x^3 + 2} + C \end{aligned} \]</div>
+          <p>Paskutinėje eilutėje pritaikėme lygybę \(\left(x^3 + 2\right)^{\frac{3}{2}}\) \(= \left(x^3 + 2\right)\cdot\left(x^3 + 2\right)^{\frac{1}{2}}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\frac{2}{3}\left(x^3 + 2\right)^{\frac{3}{2}}\right)^{\prime} \\ &amp;= \frac{2}{3}\cdot\frac{3}{2}\left(x^3 + 2\right)^{\frac{1}{2}}\cdot 3x^2 \\ &amp;= 3x^2\sqrt{x^3 + 2} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int 3x^2\sqrt{x^3 + 2}\, dx \\ &amp;= \frac{2}{3}\left(x^3 + 2\right)\sqrt{x^3 + 2} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 10.3, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Beveik išvestinė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{x^3}{\left(5x^4 + 3\right)^5}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
+          <p>Laipsnio pagrindas yra \(5x^4 + 3\), jo išvestinė \(20x^3\). Skaitiklyje yra beveik išvestinė \(x^3\), nes \(x^3 = \frac{1}{20}\cdot 20x^3\). Naujas kintamasis \(a = 5x^4 + 3\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
+          <div class="fit-sm">\[ \left[\begin{array}{l} a = 5x^4 + 3 \\ da = a^{\prime}\,dx = 20x^3\,dx \;\big|:20x^3 \\ dx = \dfrac{da}{20x^3} \end{array}\right] \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
+          <p>Daugiklis \(x^3\) susiprastina, o pastovusis daugiklis \(\frac{1}{20}\) lieka – jį iškeliame prieš integralo ženklą. Būtent todėl tinka beveik išvestinė: nuo išvestinės ji skiriasi tik pastoviu daugikliu.</p>
+          <div class="fit-sm">\[ \begin{aligned} \int \frac{x^3}{\left(5x^4 + 3\right)^5}\, dx &amp;= \int \frac{\cancel{x^3}}{a^5}\cdot\frac{da}{20\cancel{x^3}} \\ &amp;= \frac{1}{20}\int a^{-5}\, da \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} \frac{1}{20}\int a^{-5}\, da &amp;= \frac{1}{20}\cdot\frac{a^{-4}}{-4} + C \\ &amp;= -\frac{1}{80a^4} + C \\ &amp;= -\frac{1}{80\left(5x^4 + 3\right)^4} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(-\frac{1}{80}\left(5x^4 + 3\right)^{-4}\right)^{\prime} \\ &amp;= -\frac{1}{80}\cdot(-4)\left(5x^4 + 3\right)^{-5}\cdot 20x^3 \\ &amp;= \frac{x^3}{\left(5x^4 + 3\right)^5} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int \frac{x^3}{\left(5x^4 + 3\right)^5}\, dx \\ &amp;= -\frac{1}{80\left(5x^4 + 3\right)^4} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead">Trupmenos, kurių integralas išreiškiamas logaritmu</h3>
+
+    <!-- 4 pavyzdys: TM 10.3, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Vardiklis ir jo išvestinė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{3x^2}{x^3 - 1}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
+          <p>Trupmeną užrašome sandauga \(\frac{3x^2}{x^3 - 1} = \frac{1}{x^3 - 1}\cdot 3x^2\). Vardiklis \(x^3 - 1\) yra funkcijos \(\frac{1}{u}\) argumentas, o jo išvestinė \(3x^2\) yra skaitiklyje. Naujas kintamasis \(a = x^3 - 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
+          <div class="fit-sm">\[ \left[\begin{array}{l} a = x^3 - 1 \\ da = a^{\prime}\,dx = 3x^2\,dx \;\big|:3x^2 \\ dx = \dfrac{da}{3x^2} \end{array}\right] \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
+          <p>Daugiklis \(3x^2\) susiprastina:</p>
+          <div class="fit-sm">\[ \begin{aligned} \int \frac{3x^2}{x^3 - 1}\, dx &amp;= \int \frac{\cancel{3x^2}}{a}\cdot\frac{da}{\cancel{3x^2}} \\ &amp;= \int \frac{1}{a}\, da \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
+          <p>Funkcijos \(\frac{1}{a}\) pirmykštė yra \(\ln|a|\):</p>
+          <div class="fit-sm">\[ \begin{aligned} \int \frac{1}{a}\, da &amp;= \ln|a| + C \\ &amp;= \ln\left|x^3 - 1\right| + C \end{aligned} \]</div>
+          <p>Kai skaitiklis yra vardiklio išvestinė, integralas visada išreiškiamas logaritmu: \(\int \frac{u^{\prime}(x)}{u(x)}\, dx\) \(= \ln\left|u(x)\right| + C\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\ln\left|x^3 - 1\right|\right)^{\prime} \\ &amp;= \frac{1}{x^3 - 1}\cdot 3x^2 = \frac{3x^2}{x^3 - 1} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="fit-sm">\[ \int \frac{3x^2}{x^3 - 1}\, dx = \ln\left|x^3 - 1\right| + C \]</div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 10.3, 11 a pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Rodiklinė funkcija vardiklyje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{e^x}{1 + e^x}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
+          <p>Vardiklio \(1 + e^x\) išvestinė yra \(e^x\), ir ji sutampa su skaitikliu. Naujas kintamasis \(a = 1 + e^x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
+          <div class="fit-sm">\[ \left[\begin{array}{l} a = 1 + e^x \\ da = a^{\prime}\,dx = e^x\,dx \;\big|:e^x \\ dx = \dfrac{da}{e^x} \end{array}\right] \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
+          <p>Daugiklis \(e^x\) susiprastina:</p>
+          <div class="fit-sm">\[ \begin{aligned} \int \frac{e^x}{1 + e^x}\, dx &amp;= \int \frac{\cancel{e^x}}{a}\cdot\frac{da}{\cancel{e^x}} \\ &amp;= \int \frac{1}{a}\, da \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} \int \frac{1}{a}\, da &amp;= \ln|a| + C \\ &amp;= \ln\left(1 + e^x\right) + C \end{aligned} \]</div>
+          <p>Reiškinys \(1 + e^x\) visada teigiamas, todėl modulio ženklo galima nerašyti.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\ln\left(1 + e^x\right)\right)^{\prime} \\ &amp;= \frac{1}{1 + e^x}\cdot e^x = \frac{e^x}{1 + e^x} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="fit-sm">\[ \int \frac{e^x}{1 + e^x}\, dx = \ln\left(1 + e^x\right) + C \]</div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead">Rodiklinės ir trigonometrinės funkcijos</h3>
+
+    <!-- 6 pavyzdys: TM 10.3, 9 b pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Neigiama išvestinė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int xe^{-x^2}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
+          <p>Rodiklinės funkcijos argumentas \(-x^2\) nesutampa su \(x\). Jo išvestinė yra \(-2x\), o daugiklis \(x\) yra beveik išvestinė, nes \(x = -\frac{1}{2}\cdot(-2x)\). Naujas kintamasis \(a = -x^2\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
+          <div class="fit-sm">\[ \left[\begin{array}{l} a = -x^2 \\ da = a^{\prime}\,dx = -2x\,dx \;\big|:(-2x) \\ dx = -\dfrac{da}{2x} \end{array}\right] \]</div>
+          <p>Dalydami iš \(-2x\), minuso ženklą išlaikome.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
+          <p>Daugiklis \(x\) susiprastina, o pastovųjį daugiklį \(-\frac{1}{2}\) kartu su minuso ženklu iškeliame prieš integralo ženklą:</p>
+          <div class="fit-sm">\[ \begin{aligned} \int xe^{-x^2}\, dx &amp;= \int \cancel{x}\,e^{a}\cdot\left(-\frac{da}{2\cancel{x}}\right) \\ &amp;= -\frac{1}{2}\int e^{a}\, da \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} -\frac{1}{2}\int e^{a}\, da &amp;= -\frac{1}{2}e^{a} + C \\ &amp;= -\frac{1}{2}e^{-x^2} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(-\frac{1}{2}e^{-x^2}\right)^{\prime} \\ &amp;= -\frac{1}{2}e^{-x^2}\cdot(-2x) = xe^{-x^2} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \int xe^{-x^2}\, dx = -\frac{1}{2}e^{-x^2} + C \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 10.3, 10 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Šaknis rodiklyje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
+          <p>Rodiklinės funkcijos argumentas \(\sqrt{x}\) nesutampa su \(x\). Jo išvestinė \(\left(\sqrt{x}\right)^{\prime} = \frac{1}{2\sqrt{x}}\), o daugiklis \(\frac{1}{\sqrt{x}}\) yra beveik išvestinė, nes \(\frac{1}{\sqrt{x}} = 2\cdot\frac{1}{2\sqrt{x}}\). Naujas kintamasis \(a = \sqrt{x}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
+          <div class="fit-sm">\[ \left[\begin{array}{l} a = \sqrt{x} \\ da = a^{\prime}\,dx = \frac{1}{2\sqrt{x}}\,dx \;\big|:\frac{1}{2\sqrt{x}} \\ dx = 2\sqrt{x}\,da \end{array}\right] \]</div>
+          <p>Dalyba iš \(\frac{1}{2\sqrt{x}}\) – tai daugyba iš \(2\sqrt{x}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
+          <p>Daugiklis \(\sqrt{x}\) susiprastina, o pastovųjį daugiklį 2 iškeliame prieš integralo ženklą:</p>
+          <div class="fit-sm">\[ \begin{aligned} \int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx &amp;= \int \frac{e^{a}}{\cancel{\sqrt{x}}}\cdot 2\cancel{\sqrt{x}}\, da \\ &amp;= 2\int e^{a}\, da \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
+          <div class="fit-sm">\[ 2\int e^{a}\, da = 2e^{a} + C = 2e^{\sqrt{x}} + C \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(2e^{\sqrt{x}}\right)^{\prime} \\ &amp;= 2e^{\sqrt{x}}\cdot\frac{1}{2\sqrt{x}} = \frac{e^{\sqrt{x}}}{\sqrt{x}} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx = 2e^{\sqrt{x}} + C \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 10.3, 15 b pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Trigonometrinės funkcijos laipsnis</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \sin x\cos^3 x\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
+          <p>Reiškinys \(\cos^3 x = (\cos x)^3\) yra laipsninė funkcija, kurios argumentas \(\cos x\) nesutampa su \(x\) (1 atvejis). Argumento išvestinė \((\cos x)^{\prime} = -\sin x\), o daugiklis \(\sin x\) yra beveik išvestinė. Naujas kintamasis \(a = \cos x\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
+          <div class="fit-sm">\[ \left[\begin{array}{l} a = \cos x \\ da = a^{\prime}\,dx = -\sin x\,dx \;\big|:(-\sin x) \\ dx = -\dfrac{da}{\sin x} \end{array}\right] \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
+          <p>Daugiklis \(\sin x\) susiprastina, o minuso ženklą iškeliame prieš integralo ženklą:</p>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\int \sin x\cos^3 x\, dx \\ &amp;= \int \cancel{\sin x}\cdot a^3\cdot\left(-\frac{da}{\cancel{\sin x}}\right) \\ &amp;= -\int a^3\, da \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} -\int a^3\, da &amp;= -\frac{a^4}{4} + C \\ &amp;= -\frac{\cos^4 x}{4} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(-\frac{\cos^4 x}{4}\right)^{\prime} \\ &amp;= -\frac{1}{4}\cdot 4\cos^3 x\cdot(-\sin x) \\ &amp;= \sin x\cos^3 x \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="fit-sm">\[ \int \sin x\cos^3 x\, dx = -\frac{\cos^4 x}{4} + C \]</div>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: pasirinkite naują kintamąjį, laužtiniuose skliaustuose apskaičiuokite jo diferencialą ir išreikškite \(dx\), pakeiskite kintamąjį, integruokite ir grįžkite prie \(x\). Atsakymą patikrinkite diferencijuodami.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 10.1–10.3 rinkinys, 7 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int 6x\left(x^2 - 4\right)^5\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naujas kintamasis \(a = x^2 - 4\), \(dx = \dfrac{da}{2x}\), integralas \(3\int a^5\, da\).</p>
+          <p>Atsakymas: \(\dfrac{\left(x^2 - 4\right)^6}{2} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 7 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \frac{x^2}{\left(x^3 + 2\right)^4}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naujas kintamasis \(a = x^3 + 2\), \(dx = \dfrac{da}{3x^2}\), integralas \(\dfrac{1}{3}\int a^{-4}\, da\).</p>
+          <p>Atsakymas: \(-\dfrac{1}{9\left(x^3 + 2\right)^3} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 7 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int x\sqrt{5 + x^2}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naujas kintamasis \(a = 5 + x^2\), \(dx = \dfrac{da}{2x}\), integralas \(\dfrac{1}{2}\int a^{\frac{1}{2}}\, da\).</p>
+          <p>Atsakymas: \(\dfrac{1}{3}\left(5 + x^2\right)\sqrt{5 + x^2} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 7 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \frac{2x + 3}{x^2 + 3x + 7}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naujas kintamasis \(a = x^2 + 3x + 7\), \(dx = \dfrac{da}{2x + 3}\), integralas \(\int \dfrac{1}{a}\, da\).</p>
+          <p>Atsakymas: \(\ln\left|x^2 + 3x + 7\right| + C\)</p>
+        </div>
+      </article>
+
+      <!-- 7 e -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int x^3e^{x^4}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naujas kintamasis \(a = x^4\), \(dx = \dfrac{da}{4x^3}\), integralas \(\dfrac{1}{4}\int e^{a}\, da\).</p>
+          <p>Atsakymas: \(\dfrac{1}{4}e^{x^4} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 7 i -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \frac{\ln^2 x}{x}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naujas kintamasis \(a = \ln x\), \(dx = x\, da\), integralas \(\int a^2\, da\).</p>
+          <p>Atsakymas: \(\dfrac{\ln^3 x}{3} + C\)</p>
+        </div>
+      </article>
+
+      <!-- 7 l -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \cos x\cdot e^{\sin x}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naujas kintamasis \(a = \sin x\), \(dx = \dfrac{da}{\cos x}\), integralas \(\int e^{a}\, da\).</p>
+          <p>Atsakymas: \(e^{\sin x} + C\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">9 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">11.2 skyrius</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
