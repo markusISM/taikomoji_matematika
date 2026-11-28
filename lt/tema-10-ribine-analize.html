@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ribinė analizė · Taikomoji matematika</title>
+<meta name="description" content="Pajamų, bendrųjų sąnaudų ir pelno funkcijų atkūrimas integruojant ribinių dydžių funkcijas: integravimo konstanta pagal sąlygas R(0) = 0, TC(0) = FC, P(0) = −FC, kaina, vidutinės sąnaudos ir didžiausias pelnas. Pavyzdžiai ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m101">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">10 tema · Taikymai · 1 skyrius</span>
+    <h1>Ribinė analizė</h1>
+    <p class="lead">Šiame skyriuje sprendžiamas atvirkštinis 6 temos uždavinys: žinant ribines pajamas, ribines sąnaudas ar ribinį pelną, integruojant atkuriamos pajamų, bendrųjų sąnaudų ir pelno funkcijos. Pagal jas randamos pajamos, sąnaudos, pelnas, kaina ir didžiausias pelnas.</p>
+    <ul class="jump">
+      <li><a href="#atkurimas">Funkcijų atkūrimas</a></li>
+      <li><a href="#konstanta">Integravimo konstanta</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. FUNKCIJŲ ATKŪRIMAS ============ -->
+  <section class="section" id="atkurimas" aria-labelledby="h-rec">
+    <h2 id="h-rec">Pajamų, sąnaudų ir pelno funkcijų atkūrimas</h2>
+    <article class="card">
+      <p><a href="tema-6-ribine-analize.html">6 temoje</a> ribinių dydžių funkcijas radome diferencijuodami pajamų, bendrųjų sąnaudų ir pelno funkcijas. Praktikoje dažnai sprendžiame atvirkštinį uždavinį. Pirmiausia įvertiname ribinį dydį, pavyzdžiui, pagal papildomo gaminio sąnaudas. Tada, integruodami ribinio dydžio funkciją, atkuriame atitinkamą pajamų, sąnaudų ar pelno funkciją.</p>
+      <p>Tegul \(x\) žymi pagamintą ir parduotą kiekį. Ribinės pajamos, ribinės sąnaudos ir ribinis pelnas apytiksliai nusako, kiek pasikeičia atitinkamas dydis, kai gamybos ir pardavimo kiekis padidėja vienetu. Kadangi ribinio dydžio funkcija yra atitinkamos funkcijos išvestinė, pačią funkciją randame integruodami:</p>
+      <div class="anat dtbl dtbl-rows">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Pajamos</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Ribinės pajamos</span>\(MR(x) = R'(x)\)</li>
+            <li><span class="fl-lab">Atkuriama funkcija</span>\(R(x)\)&#8203;\({}= \displaystyle\int MR(x)\, dx\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Bendrosios sąnaudos</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Ribinės sąnaudos</span>\(MC(x) = TC'(x)\)</li>
+            <li><span class="fl-lab">Atkuriama funkcija</span>\(TC(x)\)&#8203;\({}= \displaystyle\int MC(x)\, dx\)</li>
+          </ul>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Pelnas</strong></div>
+          <ul class="flist">
+            <li><span class="fl-lab">Ribinis pelnas</span>\(MP(x)\)&#8203;\({}= P'(x)\)&#8203;\({}= MR(x) - MC(x)\)</li>
+            <li><span class="fl-lab">Atkuriama funkcija</span>\(P(x)\)&#8203;\({}= \displaystyle\int MP(x)\, dx\)</li>
+          </ul>
+        </div>
+      </div>
+      <p>Integralus apskaičiuojame <a href="tema-10.html#skaiciavimas">integralų skaičiavimo skyriuose</a> nagrinėtais būdais: taikome pagrindines arba naudingąsias integravimo formules ar keičiame kintamąjį.</p>
+
+      <h3 class="subhead" style="margin-top:20px">Kiti dydžiai</h3>
+      <p>Atkūrę funkcijas, pagal jas randame ir kitus dydžius:</p>
+      <ul>
+        <li><strong>pelną</strong> – kai žinomos pajamos ir bendrosios sąnaudos: \(P(x) = R(x) - TC(x)\);</li>
+        <li><strong>bendrąsias sąnaudas</strong> – kai vieneto kintamosios sąnaudos \(V\) pastovios: \(TC(x) = Vx + FC\);</li>
+        <li><strong>kainą</strong> – pajamos lygios kainos ir kiekio sandaugai, \(R = p\cdot x\), todėl \(p = \dfrac{R(x)}{x}\);</li>
+        <li><strong>vidutines bendrąsias sąnaudas</strong> – \(\dfrac{TC(x)}{x}\);</li>
+        <li><strong>didžiausią pelną</strong> – kaip <a href="tema-7-optimizavimas.html">optimizavimo uždaviniuose</a>: kritinis taškas randamas iš lygties \(P'(x) = MP(x) = 0\).</li>
+      </ul>
+      <p class="tip"><strong>Nesupainiokite žymėjimų.</strong> Mažoji raidė \(p\) žymi vieneto kainą, o didžioji raidė \(P\) – pelną.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. INTEGRAVIMO KONSTANTA ============ -->
+  <section class="section" id="konstanta" aria-labelledby="h-const">
+    <h2 id="h-const">Integravimo konstantos radimas</h2>
+    <article class="card">
+      <p>Neapibrėžtinis integralas nusako funkcijų šeimą, kurios funkcijos skiriasi konstanta \(C\). Konkrečiai pajamų, bendrųjų sąnaudų ar pelno funkcijai nustatyti reikia papildomos sąlygos – taip pat, kaip randama <a href="tema-10.html#atskiroji">atskiroji funkcija</a>. Ją parenkame atsižvelgdami į <strong>pastoviąsias sąnaudas</strong> \(FC\) ir nagrinėdami atvejį, kai \(x = 0\):</p>
+      <div class="anat dtbl dtbl-rows lvl">
+        <div class="anat-card k0">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Pajamos</strong></div>
+          <ul class="flist"><li style="padding:6px 0">\(R(0) = 0\)</li></ul>
+          <p class="lvl-txt">Kai nieko neparduodama, pajamos lygios nuliui.</p>
+        </div>
+        <div class="anat-card k1">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Bendrosios sąnaudos</strong></div>
+          <ul class="flist"><li style="padding:6px 0">\(TC(0) = FC\)</li></ul>
+          <p class="lvl-txt">Kai nieko negaminama, kintamųjų sąnaudų nėra, tad bendrosios sąnaudos lygios pastoviosioms.</p>
+        </div>
+        <div class="anat-card k2">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Pelnas</strong></div>
+          <ul class="flist"><li style="padding:6px 0">\(P(0) = -FC\)</li></ul>
+          <p class="lvl-txt">Kai nieko negaminama ir neparduodama, \(P(0) = R(0) - TC(0)\) \(= 0 - FC = -FC\). Nuostolis lygus pastoviosioms sąnaudoms.</p>
+        </div>
+      </div>
+      <p>Uždavinio sąlygoje paprastai nurodomos pastoviosios sąnaudos. Papildomą sąlygą pasirenkame pagal tai, kurią funkciją atkuriame.</p>
+      <p class="tip"><strong>Svarbu.</strong> Konstanta \(C\) lygi \(0\), \(FC\) arba \(-FC\) tik tada, kai kitų pirmykštės funkcijos narių suma, kai \(x = 0\), lygi nuliui. Pavyzdžiui, daugianario nariai be laisvojo nario ir \(\sqrt{x}\) tuomet lygūs nuliui. Tačiau nariai \(e^{-0{,}01x}\), \(\ln(x + 10)\) ir \(\sqrt{x + 25}\), kai \(x = 0\), įgyja nenulines reikšmes. Todėl į visą pirmykštės funkcijos išraišką įrašome \(x = 0\) ir iš gautos lygties randame \(C\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+    <article class="card">
+      <ol class="steps-list">
+        <li>Nustatykite, kuri ribinio dydžio funkcija duota – \(MR\), \(MC\) ar \(MP\).</li>
+        <li>Integruokite duotąją funkciją ir užrašykite gautą funkciją su integravimo konstanta \(C\).</li>
+        <li>Raskite \(C\), įrašę \(x = 0\), pagal atitinkamą sąlygą \(R(0) = 0\), \(TC(0) = FC\) arba \(P(0) = -FC\).</li>
+        <li>Užrašykite atkurtą funkciją. Jei duotos \(MR\) ir \(MC\), pelno funkciją rasite pagal formulę \(P(x) = R(x) - TC(x)\).</li>
+        <li>Atsakykite į uždavinio klausimus. Pavyzdžiui, raskite funkcijos reikšmę, kai duotas kiekis, vidutines bendrąsias sąnaudas \(\frac{TC(x)}{x}\), kainą \(\frac{R(x)}{x}\) arba didžiausią pelną.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Pamirštama integravimo konstanta.</strong> Be \(C\) negalima pritaikyti papildomos sąlygos, o atkurta funkcija būtų neteisinga.</li>
+            <li><strong>Iš karto rašoma \(C = FC\).</strong> Taip galima tik tada, kai kiti nariai, kai \(x = 0\), lygūs nuliui. Narių \(e^{-0{,}01x}\), \(\ln(x + 10)\), \(\sqrt{x + 25}\) reikšmės, kai \(x = 0\), nelygios nuliui.</li>
+            <li><strong>Supainiojamos sąlygos.</strong> Pajamoms – \(R(0) = 0\), bendrosioms sąnaudoms – \(TC(0) = FC\), pelnui – \(P(0) = -FC\), o ne \(P(0) = FC\).</li>
+            <li><strong>Viena konstanta kelioms funkcijoms.</strong> Kai atkuriamos ir pajamos, ir sąnaudos, kiekviena funkcija turi savo konstantą, pavyzdžiui, \(C_1\) ir \(C_2\).</li>
+            <li><strong>Kaina tapatinama su ribinėmis pajamomis.</strong> Kaina randama iš pajamų: \(p = \frac{R(x)}{x}\), o ne \(p = MR(x)\).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <h3 class="subhead">Ribinių dydžių funkcijos – daugianariai</h3>
+
+    <!-- 1 pavyzdys: TM 10.4, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Baldų dirbtuvių bendrosios sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Gaminant \(x\) kėdžių per mėnesį, baldų dirbtuvių ribinės sąnaudos yra \(MC(x)\)&#8203;\({}= 0{,}006x^2 - 1{,}2x + 90\) eurų už kėdę. Pastoviosios sąnaudos – 2&nbsp;000 eurų per mėnesį. a) Raskite bendrųjų sąnaudų funkciją. b) Apskaičiuokite bendrąsias sąnaudas, kai per mėnesį pagaminama 100 kėdžių.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Duotos ribinės sąnaudos, todėl bendrųjų sąnaudų funkciją randame jas integruodami. Kiekvienam nariui taikome laipsninės funkcijos formulę:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(x) &amp;= \int\left(0{,}006x^2 - 1{,}2x + 90\right) dx \\ &amp;= 0{,}006\cdot\frac{x^3}{3} - 1{,}2\cdot\frac{x^2}{2} + 90x + C \\ &amp;= 0{,}002x^3 - 0{,}6x^2 + 90x + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(x) \\ &amp;= \int\left(0{,}006x^2 - 1{,}2x + 90\right) dx \\ &amp;= 0{,}006\cdot\frac{x^3}{3} - 1{,}2\cdot\frac{x^2}{2} + 90x + C \\ &amp;= 0{,}002x^3 - 0{,}6x^2 + 90x + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Kai nieko negaminama, bendrosios sąnaudos lygios pastoviosioms sąnaudoms: \(TC(0) = FC = 2000\). Įrašome \(x = 0\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(0) &amp;= 0{,}002\cdot 0^3 - 0{,}6\cdot 0^2 + 90\cdot 0 + C = C \;\Longrightarrow\; C = 2000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(0) \\ &amp;= 0{,}002\cdot 0^3 - 0{,}6\cdot 0^2 + 90\cdot 0 + C \\ &amp;= C \\ &amp;\Longrightarrow\; C = 2000 \end{aligned} \]</div>
+          <div class="fit-sm">\[ TC(x) = 0{,}002x^3 - 0{,}6x^2 + 90x + 2000 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sąnaudos, kai \(x = 100\)</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(100) &amp;= 0{,}002\cdot 100^3 - 0{,}6\cdot 100^2 + 90\cdot 100 + 2000 \\ &amp;= 2000 - 6000 + 9000 + 2000 = 7000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(100) \\ &amp;= 0{,}002\cdot 100^3 - 0{,}6\cdot 100^2 \\ &amp;\phantom{=}\; {}+ 90\cdot 100 + 2000 \\ &amp;= 2000 - 6000 + 9000 + 2000 \\ &amp;= 7000 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(TC(x)\)&#8203;\({}= 0{,}002x^3 - 0{,}6x^2\)&#8203;\({}+ 90x + 2000\).</p><p style="margin:0">b) Per mėnesį pagaminti 100 kėdžių kainuoja 7&nbsp;000 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 10.4, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Virdulių pajamos ir paklausa</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Parduodant \(x\) elektrinių virdulių per savaitę, parduotuvės ribinės pajamos yra \(MR(x) = 120 - 0{,}4x\) eurų už virdulį. a) Raskite bendrųjų pajamų funkciją. b) Apskaičiuokite savaitės pajamas ir vieno virdulio kainą, kai parduodama 200 virdulių. c) Raskite paklausos funkciją.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Duotos ribinės pajamos, todėl jas integruojame:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(x) &amp;= \int (120 - 0{,}4x)\, dx \\ &amp;= 120x - 0{,}4\cdot\frac{x^2}{2} + C = 120x - 0{,}2x^2 + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(x) = \int (120 - 0{,}4x)\, dx \\ &amp;= 120x - 0{,}4\cdot\frac{x^2}{2} + C \\ &amp;= 120x - 0{,}2x^2 + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Kai nieko neparduodama, pajamos lygios nuliui: \(R(0) = 0\).</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(0) &amp;= 0 + C = 0 \;\Longrightarrow\; C = 0 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(0) = 0 + C = 0 \\ &amp;\Longrightarrow\; C = 0 \end{aligned} \]</div>
+          <div class="fit-sm">\[ R(x) = 120x - 0{,}2x^2 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pajamos ir kaina, kai \(x = 200\)</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(200) &amp;= 120\cdot 200 - 0{,}2\cdot 200^2 = 24\,000 - 8000 = 16\,000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(200) = 120\cdot 200 - 0{,}2\cdot 200^2 \\ &amp;= 24\,000 - 8000 = 16\,000 \end{aligned} \]</div>
+          <p>Pajamos lygios kainos ir kiekio sandaugai, \(R = p\cdot x\), todėl kainą randame pajamas padaliję iš parduoto kiekio:</p>
+          <div class="fit-sm">\[ p = \frac{R(200)}{200} = \frac{16\,000}{200} = 80 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Paklausos funkcija</span></h4>
+          <p>Taip pat apskaičiuojame kainą, kai parduodamas bet koks teigiamas kiekis \(x\):</p>
+          <div class="fit-sm">\[ p = \frac{R(x)}{x} = \frac{120x - 0{,}2x^2}{x} = 120 - 0{,}2x \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(R(x) = 120x - 0{,}2x^2\).</p><p>b) Pardavus 200 virdulių, savaitės pajamos yra 16&nbsp;000 eurų, o vieno virdulio kaina – 80 eurų.</p><p style="margin:0">c) \(p = 120 - 0{,}2x\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 10.4, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Kavos aparatų gamintojo pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kavos aparatų gamintojo ribinis pelnas yra \(MP(x) = 36 - 0{,}012x\) eurų už aparatą. Čia \(x\) yra per mėnesį pagaminamų ir parduodamų aparatų skaičius. Pastoviosios sąnaudos yra 25&nbsp;000 eurų per mėnesį. a) Raskite pelno funkciją. b) Kiek aparatų gamintojas turi pagaminti ir parduoti, kad mėnesio pelnas būtų didžiausias? Apskaičiuokite šį pelną.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Duotas ribinis pelnas, todėl jį integruojame:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(x) &amp;= \int (36 - 0{,}012x)\, dx \\ &amp;= 36x - 0{,}012\cdot\frac{x^2}{2} + C = 36x - 0{,}006x^2 + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(x) = \int (36 - 0{,}012x)\, dx \\ &amp;= 36x - 0{,}012\cdot\frac{x^2}{2} + C \\ &amp;= 36x - 0{,}006x^2 + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Kai nieko negaminama ir neparduodama, nuostolis lygus pastoviosioms sąnaudoms: \(P(0) = -FC = -25\,000\).</p>
+          <div class="fit-sm">\[ P(0) = C = -25\,000 \]</div>
+          <div class="fit-sm">\[ P(x) = 36x - 0{,}006x^2 - 25\,000 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Kritinį tašką randame iš lygties \(P^{\prime}(x)\)&#8203;\({}= MP(x)\)&#8203;\({}= 0\):</p>
+          <div class="fit-sm">\[ 36 - 0{,}012x = 0 \;\Longrightarrow\; x = 3000 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Antrasis pakankamasis požymis</span></h4>
+          <p>Taikome <a href="tema-7-optimizavimas.html#pozymis">antrąjį pakankamąjį ekstremumo požymį</a>:</p>
+          <div class="fit-sm">\[ \begin{aligned} P^{\prime\prime}(x) &amp;= -0{,}012 \\ P^{\prime\prime}(3000) &amp;= -0{,}012 &lt; 0 \end{aligned} \]</div>
+          <p>Antroji išvestinė kritiniame taške neigiama, todėl \(x = 3000\) – maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Didžiausias pelnas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(3000) &amp;= 36\cdot 3000 - 0{,}006\cdot 3000^2 - 25\,000 \\ &amp;= 108\,000 - 54\,000 - 25\,000 = 29\,000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(3000) \\ &amp;= 36\cdot 3000 - 0{,}006\cdot 3000^2 \\ &amp;\phantom{=}\; {}- 25\,000 \\ &amp;= 108\,000 - 54\,000 - 25\,000 \\ &amp;= 29\,000 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(P(x)\)&#8203;\({}= 36x - 0{,}006x^2 - 25\,000\).</p><p style="margin:0">b) Didžiausias mėnesio pelnas siekia 29&nbsp;000 eurų, kai pagaminama ir parduodama 3&nbsp;000 aparatų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 10.4, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Tešlos maišyklių pajamos, sąnaudos ir pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kepyklų įrangos gamintojas įvertino ribines pajamas ir ribines sąnaudas, kai per mėnesį pagamina ir parduoda \(x\) tešlos maišyklių. Atitinkami įverčiai yra \(MR(x) = 150 - 0{,}2x\) ir \(MC(x)\)&#8203;\({}= 0{,}003x^2 - 0{,}8x + 60\) (eurais už maišyklę). Pastoviosios sąnaudos yra 8&nbsp;000 eurų per mėnesį. a) Raskite pajamų, bendrųjų sąnaudų ir pelno funkcijas. b) Apskaičiuokite mėnesio pelną ir vienos maišyklės kainą, kai pagaminama ir parduodama 200 maišyklių.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Pajamų funkcija</span></h4>
+          <p>Integruojame ribines pajamas ir taikome sąlygą \(R(0) = 0\). Kiekviena funkcija turi savo integravimo konstantą, todėl jas žymime \(C_1\) ir \(C_2\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(x) &amp;= \int (150 - 0{,}2x)\, dx = 150x - 0{,}1x^2 + C_1 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(x) = \int (150 - 0{,}2x)\, dx \\ &amp;= 150x - 0{,}1x^2 + C_1 \end{aligned} \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(0) &amp;= C_1 = 0 \;\Longrightarrow\; R(x) = 150x - 0{,}1x^2 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(0) = C_1 = 0 \\ &amp;\Longrightarrow\; R(x) = 150x - 0{,}1x^2 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Bendrųjų sąnaudų funkcija</span></h4>
+          <p>Integruojame ribines sąnaudas ir taikome sąlygą \(TC(0) = FC = 8000\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(x) &amp;= \int\left(0{,}003x^2 - 0{,}8x + 60\right) dx \\ &amp;= 0{,}001x^3 - 0{,}4x^2 + 60x + C_2 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(x) \\ &amp;= \int\left(0{,}003x^2 - 0{,}8x + 60\right) dx \\ &amp;= 0{,}001x^3 - 0{,}4x^2 + 60x + C_2 \end{aligned} \]</div>
+          <div class="fit-sm">\[ TC(0) = C_2 = 8000 \]</div>
+          <div class="fit-sm">\[ TC(x) = 0{,}001x^3 - 0{,}4x^2 + 60x + 8000 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pelno funkcija</span></h4>
+          <p>Pelnas yra pajamų ir bendrųjų sąnaudų skirtumas:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(x) &amp;= R(x) - TC(x) \\ &amp;= 150x - 0{,}1x^2 - \left(0{,}001x^3 - 0{,}4x^2 + 60x + 8000\right) \\ &amp;= -0{,}001x^3 + 0{,}3x^2 + 90x - 8000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(x) = R(x) - TC(x) \\ &amp;= 150x - 0{,}1x^2 \\ &amp;\phantom{=}\; {}- \left(0{,}001x^3 - 0{,}4x^2 + 60x + 8000\right) \\ &amp;= -0{,}001x^3 + 0{,}3x^2 + 90x - 8000 \end{aligned} \]</div>
+          <p>Tą patį rezultatą gauname integruodami ribinį pelną \(MP(x) = MR(x) - MC(x)\) \(= -0{,}003x^2 + 0{,}6x + 90\) ir taikydami sąlygą \(P(0) = -8000\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Pelnas ir kaina, kai \(x = 200\)</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(200) &amp;= -0{,}001\cdot 200^3 + 0{,}3\cdot 200^2 + 90\cdot 200 - 8000 \\ &amp;= -8000 + 12\,000 + 18\,000 - 8000 = 14\,000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(200) \\ &amp;= -0{,}001\cdot 200^3 + 0{,}3\cdot 200^2 \\ &amp;\phantom{=}\; {}+ 90\cdot 200 - 8000 \\ &amp;= -8000 + 12\,000 + 18\,000 - 8000 \\ &amp;= 14\,000 \end{aligned} \]</div>
+          <p>Pagal pajamų formulę \(R = p\cdot x\) kainą randame pajamas padaliję iš parduoto kiekio:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p = \frac{R(200)}{200} &amp;= \frac{150\cdot 200 - 0{,}1\cdot 200^2}{200} \\ &amp;= 150 - 0{,}1\cdot 200 = 130 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p = \frac{R(200)}{200} = \frac{150\cdot 200 - 0{,}1\cdot 200^2}{200} \\ &amp;= 150 - 0{,}1\cdot 200 = 130 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(R(x) = 150x - 0{,}1x^2\), \(TC(x)\)&#8203;\({}= 0{,}001x^3 - 0{,}4x^2\)&#8203;\({}+ 60x + 8000\), \(P(x)\)&#8203;\({}= -0{,}001x^3 + 0{,}3x^2\)&#8203;\({}+ 90x - 8000\).</p><p style="margin:0">b) Per mėnesį pagaminus ir pardavus 200 maišyklių, pelnas yra 14&nbsp;000 eurų, o maišyklės kaina – 130 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead">Kitos elementariosios funkcijos ir naudingosios formulės</h3>
+
+    <!-- 5 pavyzdys: TM 10.4, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Alaus daryklos sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Mažoji alaus darykla įvertino, kad gaminant \(x\) hektolitrų alaus per mėnesį ribinės sąnaudos yra \(MC(x)\)&#8203;\({}= 40 + \frac{300}{\sqrt{x}}\) eurų už hektolitrą. Pastoviosios sąnaudos yra 5&nbsp;000 eurų per mėnesį. a) Raskite bendrųjų sąnaudų funkciją. b) Apskaičiuokite bendrąsias ir vienam hektolitrui tenkančias vidutines sąnaudas, kai per mėnesį pagaminama 400 hektolitrų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Trupmeną užrašome laipsniu \(\frac{300}{\sqrt{x}}\)&#8203;\({}= 300x^{-\frac{1}{2}}\) ir taikome laipsninės funkcijos formulę:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(x) &amp;= \int\left(40 + 300x^{-\frac{1}{2}}\right) dx \\ &amp;= 40x + 300\cdot\frac{x^{\frac{1}{2}}}{\frac{1}{2}} + C = 40x + 600\sqrt{x} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(x) \\ &amp;= \int\left(40 + 300x^{-\frac{1}{2}}\right) dx \\ &amp;= 40x + 300\cdot\frac{x^{\frac{1}{2}}}{\frac{1}{2}} + C \\ &amp;= 40x + 600\sqrt{x} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Ribinės sąnaudos, kai \(x = 0\), neapibrėžtos, tačiau gauta bendrųjų sąnaudų funkcija apibrėžta ir nuliniam kiekiui. Todėl sąlygą \(TC(0) = FC = 5000\) taikome jai:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(0) &amp;= 0 + 0 + C = 5000 \;\Longrightarrow\; C = 5000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(0) = 0 + 0 + C = 5000 \\ &amp;\Longrightarrow\; C = 5000 \end{aligned} \]</div>
+          <div class="fit-sm">\[ TC(x) = 40x + 600\sqrt{x} + 5000 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Bendrosios ir vidutinės sąnaudos</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(400) &amp;= 40\cdot 400 + 600\sqrt{400} + 5000 \\ &amp;= 16\,000 + 12\,000 + 5000 = 33\,000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(400) \\ &amp;= 40\cdot 400 + 600\sqrt{400} + 5000 \\ &amp;= 16\,000 + 12\,000 + 5000 = 33\,000 \end{aligned} \]</div>
+          <div class="fit-sm">\[ \frac{TC(400)}{400} = \frac{33\,000}{400} = 82{,}5 \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(TC(x)\)&#8203;\({}= 40x + 600\sqrt{x} + 5000\).</p><p style="margin:0">b) Per mėnesį pagaminti 400 hektolitrų kainuoja 33&nbsp;000 eurų, vidutiniškai 82,5 euro už hektolitrą.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 10.4, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Kalbų mokyklos pajamos ir pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Internetinė kalbų mokykla įvertino, kad parduodant \(x\) kursų abonementų per mėnesį ribinės pajamos yra \(MR(x)\)&#8203;\({}= 60 + 40e^{-0{,}01x}\) eurų už abonementą. Didesnėms grupėms taikomos nuolaidos. Vieno abonemento kintamosios sąnaudos mokyklai yra 45 eurai, o pastoviosios sąnaudos – 2&nbsp;000 eurų per mėnesį. a) Raskite pajamų funkciją. b) Raskite pelno funkciją. c) Apskaičiuokite pajamas ir pelną pardavus 100 abonementų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Rodiklinės funkcijos argumentas tiesinis (\(a = -0{,}01\)), todėl taikome naudingąją integravimo formulę:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(x) &amp;= \int\left(60 + 40e^{-0{,}01x}\right) dx \\ &amp;= 60x + 40\cdot\frac{1}{-0{,}01}e^{-0{,}01x} + C = 60x - 4000e^{-0{,}01x} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(x) \\ &amp;= \int\left(60 + 40e^{-0{,}01x}\right) dx \\ &amp;= 60x + 40\cdot\frac{1}{-0{,}01}e^{-0{,}01x} + C \\ &amp;= 60x - 4000e^{-0{,}01x} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Narys su \(e^{-0{,}01x}\), kai \(x = 0\), nelygus nuliui, nes \(e^0 = 1\). Todėl \(x = 0\) įrašome į visą išraišką ir taikome sąlygą \(R(0) = 0\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(0) &amp;= 60\cdot 0 - 4000e^0 + C = -4000 + C = 0 \;\Longrightarrow\; C = 4000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(0) = 60\cdot 0 - 4000e^0 + C \\ &amp;= -4000 + C = 0 \\ &amp;\Longrightarrow\; C = 4000 \end{aligned} \]</div>
+          <div class="fit-sm">\[ R(x) = 60x - 4000e^{-0{,}01x} + 4000 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pelno funkcija</span></h4>
+          <p>Vieno abonemento kintamosios sąnaudos pastovios (\(V = 45\) eurai), o pastoviosios sąnaudos \(FC = 2000\) eurų. Sudarome bendrųjų sąnaudų funkciją:</p>
+          <div class="fit-sm">\[ TC(x) = Vx + FC = 45x + 2000 \]</div>
+          <p>Pelną randame iš pajamų atėmę bendrąsias sąnaudas:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(x) &amp;= R(x) - TC(x) = 60x - 4000e^{-0{,}01x} + 4000 - 45x - 2000 \\ &amp;= 15x - 4000e^{-0{,}01x} + 2000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(x) = R(x) - TC(x) \\ &amp;= 60x - 4000e^{-0{,}01x} + 4000 \\ &amp;\phantom{=}\; {}- 45x - 2000 \\ &amp;= 15x - 4000e^{-0{,}01x} + 2000 \end{aligned} \]</div>
+          <p>Patikriname: \(P(0)\)&#8203;\({}= -4000 + 2000\)&#8203;\({}= -2000\)&#8203;\({}= -FC\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Pajamos ir pelnas, kai \(x = 100\)</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(100) &amp;= 6000 - 4000e^{-1} + 4000 \\ &amp;\approx 8528{,}48 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(100) = 6000 - 4000e^{-1} + 4000 \\ &amp;\approx 8528{,}48 \end{aligned} \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(100) &amp;= 1500 - 4000e^{-1} + 2000 \\ &amp;\approx 2028{,}48 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(100) = 1500 - 4000e^{-1} + 2000 \\ &amp;\approx 2028{,}48 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(R(x)\)&#8203;\({}= 60x - 4000e^{-0{,}01x}\)&#8203;\({}+ 4000\).</p><p>b) \(P(x)\)&#8203;\({}= 15x - 4000e^{-0{,}01x}\)&#8203;\({}+ 2000\).</p><p style="margin:0">c) Per mėnesį pardavus 100 abonementų, pajamos siekia apie 8&nbsp;528,48 euro, o pelnas – apie 2&nbsp;028,48 euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 10.4, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Maitinimo įmonės sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Maitinimo įmonės ribinės sąnaudos ruošiant \(x\) porcijų per dieną yra \(MC(x)\)&#8203;\({}= 20 + \frac{300}{x + 10}\) eurų už porciją. Pastoviosios sąnaudos yra 1&nbsp;500 eurų per dieną. a) Raskite bendrųjų sąnaudų funkciją. b) Kiek kainuoja per dieną paruošti 90 porcijų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Antrojo nario vardiklis yra tiesinė funkcija (\(a = 1\)), todėl taikome naudingąją formulę. Kadangi \(x + 10 &gt; 0\), logaritmo argumentas teigiamas ir modulio ženklų nereikia:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(x) &amp;= \int\left(20 + \frac{300}{x + 10}\right) dx = 20x + 300\ln(x + 10) + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(x) = \int\left(20 + \frac{300}{x + 10}\right) dx \\ &amp;= 20x + 300\ln(x + 10) + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Logaritminis narys, kai \(x = 0\), nelygus nuliui. Taikome sąlygą \(TC(0) = FC = 1500\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(0) &amp;= 300\ln 10 + C = 1500 \;\Longrightarrow\; C = 1500 - 300\ln 10 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(0) = 300\ln 10 + C = 1500 \\ &amp;\Longrightarrow\; C = 1500 - 300\ln 10 \end{aligned} \]</div>
+          <p>Pritaikę logaritmų savybę \(\ln a - \ln b\)&#8203;\({}= \ln\frac{a}{b}\), funkciją užrašome trumpiau:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(x) &amp;= 20x + 300\ln(x + 10) - 300\ln 10 + 1500 \\ &amp;= 20x + 300\ln\frac{x + 10}{10} + 1500 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(x) = 20x + 300\ln(x + 10) \\ &amp;\phantom{=}\; {}- 300\ln 10 + 1500 \\ &amp;= 20x + 300\ln\frac{x + 10}{10} + 1500 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sąnaudos, kai \(x = 90\)</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(90) &amp;= 20\cdot 90 + 300\ln\frac{100}{10} + 1500 \\ &amp;= 3300 + 300\ln 10 \approx 3990{,}78 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(90) = 20\cdot 90 + 300\ln\frac{100}{10} + 1500 \\ &amp;= 3300 + 300\ln 10 \approx 3990{,}78 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(TC(x)\)&#8203;\({}= 20x\)&#8203;\({}+ 300\ln\frac{x + 10}{10}\)&#8203;\({}+ 1500\).</p><p style="margin:0">b) Per dieną paruošti 90 porcijų kainuoja apie 3&nbsp;990,78 euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 10.4, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Automobilių plovyklos pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Automobilių plovyklos ribinis pelnas yra \(MP(x)\)&#8203;\({}= \frac{300}{\sqrt{x + 25}}\)&#8203;\({}- 6\) eurų už plovimą. Čia \(x\) yra plovimų skaičius per mėnesį. Pastoviosios sąnaudos yra 4&nbsp;000 eurų per mėnesį. a) Raskite pelno funkciją. b) Raskite plovimų skaičių, kai mėnesio pelnas didžiausias, ir apskaičiuokite šį pelną.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Pirmąjį narį integruojame pagal naudingąją formulę \(\int\frac{1}{\sqrt{ax + b}}\, dx\) \(= \frac{1}{a}\cdot 2\sqrt{ax + b}\)&#8203;\({}+ C\), kai \(a = 1\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(x) &amp;= \int\left(\frac{300}{\sqrt{x + 25}} - 6\right) dx \\ &amp;= 300\cdot 2\sqrt{x + 25} - 6x + C = 600\sqrt{x + 25} - 6x + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(x) \\ &amp;= \int\left(\frac{300}{\sqrt{x + 25}} - 6\right) dx \\ &amp;= 300\cdot 2\sqrt{x + 25} - 6x + C \\ &amp;= 600\sqrt{x + 25} - 6x + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Taikome sąlygą \(P(0) = -FC = -4000\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(0) &amp;= 600\sqrt{25} + C = 3000 + C = -4000 \;\Longrightarrow\; C = -7000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(0) = 600\sqrt{25} + C \\ &amp;= 3000 + C = -4000 \\ &amp;\Longrightarrow\; C = -7000 \end{aligned} \]</div>
+          <div class="fit-sm">\[ P(x) = 600\sqrt{x + 25} - 6x - 7000 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kritinis taškas</span></h4>
+          <p>Kritinį tašką randame iš lygties \(P^{\prime}(x)\)&#8203;\({}= MP(x)\)&#8203;\({}= 0\). Ribinį pelną užrašome viena trupmena. Bendras vardiklis yra \(\sqrt{x + 25}\), todėl 6 padauginame ir padalijame iš \(\sqrt{x + 25}\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \frac{300}{\sqrt{x + 25}} - 6 &amp;= \frac{300}{\sqrt{x + 25}} - \frac{6\sqrt{x + 25}}{\sqrt{x + 25}} \\ &amp;= \frac{300 - 6\sqrt{x + 25}}{\sqrt{x + 25}} \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\frac{300}{\sqrt{x + 25}} - 6 = \frac{300}{\sqrt{x + 25}} - \frac{6\sqrt{x + 25}}{\sqrt{x + 25}} \\ &amp;= \frac{300 - 6\sqrt{x + 25}}{\sqrt{x + 25}} \end{aligned} \]</div>
+          <p>Trupmena lygi nuliui, kai jos skaitiklis lygus nuliui, o vardiklis nelygus nuliui:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} &amp;\frac{300 - 6\sqrt{x + 25}}{\sqrt{x + 25}} = 0 \;\Longrightarrow\; \begin{cases} 300 - 6\sqrt{x + 25} = 0 \\ \sqrt{x + 25} \ne 0 \end{cases} \\ &amp;\Longrightarrow\; \begin{cases} \sqrt{x + 25} = 50 \\ x \ne -25 \end{cases} \;\Longrightarrow\; x + 25 = 2500 \;\Longrightarrow\; x = 2475 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\frac{300 - 6\sqrt{x + 25}}{\sqrt{x + 25}} = 0 \\ &amp;\Longrightarrow\; \begin{cases} 300 - 6\sqrt{x + 25} = 0 \\ \sqrt{x + 25} \ne 0 \end{cases} \\ &amp;\Longrightarrow\; \begin{cases} \sqrt{x + 25} = 50 \\ x \ne -25 \end{cases} \\ &amp;\Longrightarrow\; x + 25 = 2500 \;\Longrightarrow\; x = 2475 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Antrasis pakankamasis požymis</span></h4>
+          <p>Diferencijuojame ribinį pelną \(MP(x)\)&#8203;\({}= 300(x + 25)^{-\frac{1}{2}}\)&#8203;\({}- 6\) ir įstatome kritinį tašką:</p>
+          <div class="fit-sm">\[ P^{\prime\prime}(x) = -150(x + 25)^{-\frac{3}{2}} \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P^{\prime\prime}(2475) &amp;= -150\cdot 2500^{-\frac{3}{2}} = -\frac{150}{125\,000} = -0{,}0012 &lt; 0 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P^{\prime\prime}(2475) \\ &amp;= -150\cdot 2500^{-\frac{3}{2}} \\ &amp;= -\frac{150}{125\,000} = -0{,}0012 &lt; 0 \end{aligned} \]</div>
+          <p>Antroji išvestinė kritiniame taške neigiama, todėl \(x = 2475\) – maksimumo taškas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">5</span><span>Didžiausias pelnas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(2475) &amp;= 600\cdot 50 - 6\cdot 2475 - 7000 \\ &amp;= 30\,000 - 14\,850 - 7000 = 8150 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(2475) \\ &amp;= 600\cdot 50 - 6\cdot 2475 - 7000 \\ &amp;= 30\,000 - 14\,850 - 7000 = 8150 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(P(x)\)&#8203;\({}= 600\sqrt{x + 25} - 6x\)&#8203;\({}- 7000\).</p><p style="margin:0">b) Didžiausias mėnesio pelnas siekia 8&nbsp;150 eurų, kai atliekami 2&nbsp;475 plovimai.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead">Integravimas kintamojo keitimu</h3>
+    <p class="section-intro">Šiuose pavyzdžiuose po integralu yra funkcija su netiesiniu argumentu ir to argumento (beveik) išvestinė, todėl integruojame <a href="tema-10-kintamojo-keitimas.html">keisdami kintamąjį</a>.</p>
+
+    <!-- 9 pavyzdys: TM 10.4, 9 pavyzdys -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">9 pavyzdys</span>
+        <h3>Suvenyrų gamintojo pajamos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Suvenyrų gamintojo ribinės pajamos yra \(MR(x)\)&#8203;\({}= 30 + 0{,}8xe^{-0{,}002x^2}\) eurų už suvenyrą. Čia \(x\) yra per dieną parduotų suvenyrų skaičius. a) Raskite pajamų funkciją. b) Apskaičiuokite dienos pajamas, kai parduodama 50 suvenyrų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Pajamų funkciją randame integruodami du narius atskirai. Pirmajam nariui taikome pagrindinę formulę:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(x) &amp;= \int\left(30 + 0{,}8xe^{-0{,}002x^2}\right) dx = 30x + \int 0{,}8xe^{-0{,}002x^2}\, dx \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(x) = \int\left(30 + 0{,}8xe^{-0{,}002x^2}\right) dx \\ &amp;= 30x + \int 0{,}8xe^{-0{,}002x^2}\, dx \end{aligned} \]</div>
+          <p>Rodiklinės funkcijos argumentas \(-0{,}002x^2\) yra netiesinis. Jo išvestinė yra \(-0{,}004x\), o daugiklis \(0{,}8x\) – beveik išvestinė. Todėl antrąjį narį integruojame keisdami kintamąjį, \(a = -0{,}002x^2\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int 0{,}8xe^{-0{,}002x^2}\, dx &amp;= \left[\begin{array}{l} a = -0{,}002x^2 \\ da = a^{\prime}\,dx = -0{,}004x\,dx \;\big|:(-0{,}004x) \\ dx = -\dfrac{da}{0{,}004x} \end{array}\right] \\ &amp;= \int 0{,}8\cancel{x}\,e^{a}\cdot\left(-\frac{da}{0{,}004\cancel{x}}\right) = -200\int e^{a}\, da \\ &amp;= -200e^{a} + C = -200e^{-0{,}002x^2} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg" style="font-size:.9em">\[ \begin{aligned} &amp;\int 0{,}8xe^{-0{,}002x^2}\, dx \\ &amp;= \left[\begin{array}{l} a = -0{,}002x^2 \\ da = a^{\prime}\,dx = -0{,}004x\,dx \;\big|:(-0{,}004x) \\ dx = -\dfrac{da}{0{,}004x} \end{array}\right] \\ &amp;= \int 0{,}8\cancel{x}\,e^{a}\cdot\left(-\frac{da}{0{,}004\cancel{x}}\right) \\ &amp;= -200\int e^{a}\, da = -200e^{a} + C \\ &amp;= -200e^{-0{,}002x^2} + C \end{aligned} \]</div>
+          <p>Taigi \(R(x)\)&#8203;\({}= 30x\)&#8203;\({}- 200e^{-0{,}002x^2} + C\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Taikome sąlygą \(R(0) = 0\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(0) &amp;= 0 - 200e^0 + C = -200 + C = 0 \;\Longrightarrow\; C = 200 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(0) = 0 - 200e^0 + C \\ &amp;= -200 + C = 0 \\ &amp;\Longrightarrow\; C = 200 \end{aligned} \]</div>
+          <div class="fit-sm">\[ R(x) = 30x - 200e^{-0{,}002x^2} + 200 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pajamos, kai \(x = 50\)</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(50) &amp;= 30\cdot 50 - 200e^{-0{,}002\cdot 2500} + 200 \\ &amp;= 1700 - 200e^{-5} \approx 1698{,}65 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(50) \\ &amp;= 30\cdot 50 - 200e^{-0{,}002\cdot 2500} + 200 \\ &amp;= 1700 - 200e^{-5} \approx 1698{,}65 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(R(x)\)&#8203;\({}= 30x\)&#8203;\({}- 200e^{-0{,}002x^2}\)&#8203;\({}+ 200\).</p><p style="margin:0">b) Per dieną pardavus 50 suvenyrų, pajamos siekia apie 1&nbsp;698,65 euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 10 pavyzdys: TM 10.4, 10 pavyzdys -->
+    <article class="card example" id="pavyzdys-10">
+      <header class="example-head">
+        <span class="example-tag">10 pavyzdys</span>
+        <h3>3D spausdinimo studijos sąnaudos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        3D spausdinimo studijos ribinės sąnaudos gaminant \(x\) prototipų per mėnesį yra \(MC(x)\)&#8203;\({}= 10\)&#8203;\({}+ \frac{3x}{\sqrt{x^2 + 1600}}\) eurų už prototipą. Pastoviosios sąnaudos – 2&nbsp;000 eurų per mėnesį. a) Raskite bendrųjų sąnaudų funkciją. b) Apskaičiuokite bendrąsias sąnaudas, kai per mėnesį pagaminama 30 prototipų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(x) &amp;= \int\left(10 + \frac{3x}{\sqrt{x^2 + 1600}}\right) dx = 10x + \int \frac{3x}{\sqrt{x^2 + 1600}}\, dx \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(x) = \int\left(10 + \frac{3x}{\sqrt{x^2 + 1600}}\right) dx \\ &amp;= 10x + \int \frac{3x}{\sqrt{x^2 + 1600}}\, dx \end{aligned} \]</div>
+          <p>Šaknies argumento \(x^2 + 1600\) išvestinė yra \(2x\), o skaitiklis \(3x\) – beveik išvestinė. Naujas kintamasis \(a = x^2 + 1600\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{3x}{\sqrt{x^2 + 1600}}\, dx &amp;= \left[\begin{array}{l} a = x^2 + 1600 \\ da = a^{\prime}\,dx = 2x\,dx \;\big|:2x \\ dx = \dfrac{da}{2x} \end{array}\right] \\ &amp;= \int \frac{3\cancel{x}}{\sqrt{a}}\cdot\frac{da}{2\cancel{x}} = \frac{3}{2}\int a^{-\frac{1}{2}}\, da \\ &amp;= \frac{3}{2}\cdot 2\sqrt{a} + C = 3\sqrt{x^2 + 1600} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{3x}{\sqrt{x^2 + 1600}}\, dx \\ &amp;= \left[\begin{array}{l} a = x^2 + 1600 \\ da = a^{\prime}\,dx = 2x\,dx \;\big|:2x \\ dx = \dfrac{da}{2x} \end{array}\right] \\ &amp;= \int \frac{3\cancel{x}}{\sqrt{a}}\cdot\frac{da}{2\cancel{x}} = \frac{3}{2}\int a^{-\frac{1}{2}}\, da \\ &amp;= \frac{3}{2}\cdot 2\sqrt{a} + C = 3\sqrt{x^2 + 1600} + C \end{aligned} \]</div>
+          <p>Taigi \(TC(x)\)&#8203;\({}= 10x\)&#8203;\({}+ 3\sqrt{x^2 + 1600} + C\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Šaknies narys, kai \(x = 0\), nelygus nuliui. Taikome sąlygą \(TC(0) = FC = 2000\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(0) &amp;= 3\sqrt{1600} + C = 120 + C = 2000 \;\Longrightarrow\; C = 1880 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(0) = 3\sqrt{1600} + C \\ &amp;= 120 + C = 2000 \\ &amp;\Longrightarrow\; C = 1880 \end{aligned} \]</div>
+          <div class="fit-sm">\[ TC(x) = 10x + 3\sqrt{x^2 + 1600} + 1880 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sąnaudos, kai \(x = 30\)</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} TC(30) &amp;= 300 + 3\sqrt{900 + 1600} + 1880 \\ &amp;= 300 + 150 + 1880 = 2330 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;TC(30) = 300 + 3\sqrt{900 + 1600} + 1880 \\ &amp;= 300 + 150 + 1880 = 2330 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(TC(x)\)&#8203;\({}= 10x\)&#8203;\({}+ 3\sqrt{x^2 + 1600}\)&#8203;\({}+ 1880\).</p><p style="margin:0">b) Per mėnesį pagaminti 30 prototipų kainuoja 2&nbsp;330 eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 11 pavyzdys: TM 10.4, 11 pavyzdys -->
+    <article class="card example" id="pavyzdys-11">
+      <header class="example-head">
+        <span class="example-tag">11 pavyzdys</span>
+        <h3>Stalo žaidimų parduotuvės pelnas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Internetinė stalo žaidimų parduotuvė įvertino, kad parduodant \(x\) žaidimų per savaitę ribinės pajamos yra \(MR(x)\)&#8203;\({}= 60\)&#8203;\({}+ \frac{4x}{1 + 0{,}01x^2}\) eurų už žaidimą. Populiarūs žaidimai pritraukia daugiau pirkėjų. Vienas žaidimas parduotuvei kainuoja 50 eurų, o pastoviosios sąnaudos yra 800 eurų per savaitę. a) Raskite pajamų funkciją. b) Raskite pelno funkciją. c) Apskaičiuokite savaitės pelną pardavus 100 žaidimų.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} R(x) &amp;= \int\left(60 + \frac{4x}{1 + 0{,}01x^2}\right) dx = 60x + \int \frac{4x}{1 + 0{,}01x^2}\, dx \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;R(x) = \int\left(60 + \frac{4x}{1 + 0{,}01x^2}\right) dx \\ &amp;= 60x + \int \frac{4x}{1 + 0{,}01x^2}\, dx \end{aligned} \]</div>
+          <p>Vardiklio išvestinė yra \(0{,}02x\), o skaitiklis \(4x\) – beveik išvestinė. Naujas kintamasis \(a = 1 + 0{,}01x^2\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{4x}{1 + 0{,}01x^2}\, dx &amp;= \left[\begin{array}{l} a = 1 + 0{,}01x^2 \\ da = a^{\prime}\,dx = 0{,}02x\,dx \;\big|:0{,}02x \\ dx = \dfrac{da}{0{,}02x} \end{array}\right] \\ &amp;= \int \frac{4\cancel{x}}{a}\cdot\frac{da}{0{,}02\cancel{x}} = 200\int \frac{1}{a}\, da \\ &amp;= 200\ln|a| + C = 200\ln\left(1 + 0{,}01x^2\right) + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{4x}{1 + 0{,}01x^2}\, dx \\ &amp;= \left[\begin{array}{l} a = 1 + 0{,}01x^2 \\ da = a^{\prime}\,dx = 0{,}02x\,dx \;\big|:0{,}02x \\ dx = \dfrac{da}{0{,}02x} \end{array}\right] \\ &amp;= \int \frac{4\cancel{x}}{a}\cdot\frac{da}{0{,}02\cancel{x}} = 200\int \frac{1}{a}\, da \\ &amp;= 200\ln|a| + C \\ &amp;= 200\ln\left(1 + 0{,}01x^2\right) + C \end{aligned} \]</div>
+          <p>Kadangi \(1 + 0{,}01x^2 &gt; 0\), modulio ženklų nereikia.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Integravimo konstanta</span></h4>
+          <p>Taikome sąlygą \(R(0) = 0\):</p>
+          <div class="fit-sm">\[ R(0) = 0 + 200\ln 1 + C = C = 0 \]</div>
+          <div class="fit-sm">\[ R(x) = 60x + 200\ln\left(1 + 0{,}01x^2\right) \]</div>
+          <p>Gavome \(C = 0\), nes \(\ln 1 = 0\): logaritminis narys, kai \(x = 0\), lygus nuliui.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pelno funkcija</span></h4>
+          <p>Vieno žaidimo kintamosios sąnaudos pastovios (\(V = 50\) eurų), o pastoviosios sąnaudos \(FC = 800\) eurų. Sudarome bendrųjų sąnaudų funkciją:</p>
+          <div class="fit-sm">\[ TC(x) = Vx + FC = 50x + 800 \]</div>
+          <p>Pelną randame iš pajamų atėmę bendrąsias sąnaudas:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(x) &amp;= 60x + 200\ln\left(1 + 0{,}01x^2\right) - 50x - 800 \\ &amp;= 10x + 200\ln\left(1 + 0{,}01x^2\right) - 800 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(x) = 60x + 200\ln\left(1 + 0{,}01x^2\right) \\ &amp;\phantom{=}\; {}- 50x - 800 \\ &amp;= 10x + 200\ln\left(1 + 0{,}01x^2\right) - 800 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Pelnas, kai \(x = 100\)</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} P(100) &amp;= 1000 + 200\ln(1 + 100) - 800 \\ &amp;= 200 + 200\ln 101 \approx 1123{,}02 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;P(100) = 1000 + 200\ln(1 + 100) - 800 \\ &amp;= 200 + 200\ln 101 \approx 1123{,}02 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(R(x)\)&#8203;\({}= 60x\)&#8203;\({}+ 200\ln\left(1 + 0{,}01x^2\right)\).</p><p>b) \(P(x)\)&#8203;\({}= 10x\)&#8203;\({}+ 200\ln\left(1 + 0{,}01x^2\right)\)&#8203;\({}- 800\).</p><p style="margin:0">c) Per savaitę pardavus 100 žaidimų, pelnas siekia apie 1&nbsp;123,02 euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: integruokite ribinio dydžio funkciją, pagal pastoviąsias sąnaudas raskite integravimo konstantą ir atsakykite į klausimus. Atsakyme pateiktos funkcijos, tarpiniai skaičiavimai ir galutiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 10.4–10.5 rinkinys, 1 sk. 1 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kepyklos vertinimu, per dieną kepant \(x\) tortų, ribinės sąnaudos yra \(MC(x)\)&#8203;\({}= 0{,}03x^2 - 1{,}8x + 40\) eurų už tortą. Pastoviosios sąnaudos yra 300 eurų per dieną. Raskite bendrųjų sąnaudų funkciją ir apskaičiuokite, kiek kainuoja per dieną iškepti 50 tortų.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(TC(x)\)&#8203;\({}= \int\left(0{,}03x^2 - 1{,}8x + 40\right) dx\) \(= 0{,}01x^3 - 0{,}9x^2\)&#8203;\({}+ 40x + C\); \(TC(0) = C = 300\).</p>
+          <p>Atsakymas: \(TC(x)\)&#8203;\({}= 0{,}01x^3 - 0{,}9x^2\)&#8203;\({}+ 40x + 300\). \(TC(50) = 1300\) eurų.</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Per savaitę parduodant \(x\) porų ausinių, parduotuvės ribinės pajamos yra \(MR(x) = 80 - 0{,}06x\) eurų už porą. Raskite pajamų ir paklausos funkcijas. Kokios pajamos ir poros kaina pardavus 1&nbsp;000 porų per savaitę?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(R(x)\)&#8203;\({}= \int (80 - 0{,}06x)\, dx\)&#8203;\({}= 80x - 0{,}03x^2 + C\); \(R(0) = C = 0\); \(p\)&#8203;\({}= \dfrac{R(x)}{x}\)&#8203;\({}= 80 - 0{,}03x\).</p>
+          <p>Atsakymas: \(R(x) = 80x - 0{,}03x^2\), \(p = 80 - 0{,}03x\). \(R(1000) = 50\,000\) eurų, kai poros kaina 50 eurų.</p>
+        </div>
+      </article>
+
+      <!-- 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Elektrinių paspirtukų gamintojo ribinis pelnas yra \(MP(x) = 48 - 0{,}016x\) eurų už paspirtuką. Čia \(x\) yra per mėnesį pagaminamų ir parduodamų paspirtukų skaičius. Pastoviosios sąnaudos yra 40&nbsp;000 eurų per mėnesį. Raskite pelno funkciją ir didžiausią pelną. Kiek paspirtukų tam reikia pagaminti ir parduoti?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(P(x)\)&#8203;\({}= \int (48 - 0{,}016x)\, dx\)&#8203;\({}= 48x - 0{,}008x^2 + C\); \(P(0) = C = -40\,000\).</p>
+          <p>\(P^{\prime}(x)\)&#8203;\({}= 48 - 0{,}016x\)&#8203;\({}= 0\)&#8203;\({}\Longrightarrow x\)&#8203;\({}= 3000\); \(P^{\prime\prime}(3000)\)&#8203;\({}= -0{,}016 &lt; 0\).</p>
+          <p>Atsakymas: \(P(x)\)&#8203;\({}= 48x - 0{,}008x^2 - 40\,000\). Kai per mėnesį parduodama 3&nbsp;000 paspirtukų, \(P_{\max}\)&#8203;\({}= P(3000)\)&#8203;\({}= 32\,000\) eurų.</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Gaminant ir parduodant \(x\) spintų per mėnesį, fabriko ribinės pajamos yra \(MR(x) = 200 - 0{,}4x\), o ribinės sąnaudos – \(MC(x)\)&#8203;\({}= 0{,}006x^2 - 1{,}2x + 110\) eurų už spintą. Pastoviosios sąnaudos yra 5&nbsp;000 eurų per mėnesį. Raskite pajamų, bendrųjų sąnaudų ir pelno funkcijas. Apskaičiuokite mėnesio pelną atskirai 100 ir 200 spintų atvejams.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(R(x) = 200x - 0{,}2x^2\); \(TC(x)\)&#8203;\({}= 0{,}002x^3 - 0{,}6x^2\)&#8203;\({}+ 110x + 5000\).</p>
+          <p>\(P(x) = R(x) - TC(x)\) \(= -0{,}002x^3 + 0{,}4x^2\)&#8203;\({}+ 90x - 5000\).</p>
+          <p>Atsakymas: \(P(100) = 6000\) eurų. \(P(200) = 13\,000\) eurų.</p>
+        </div>
+      </article>
+
+      <!-- 5 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Mažos sidro daryklos ribinės sąnaudos, per mėnesį gaminant \(x\) litrų sidro, yra \(MC(x)\)&#8203;\({}= 25 + \frac{120}{\sqrt{x}}\) eurų už litrą. Pastoviosios sąnaudos yra 3&nbsp;000 eurų per mėnesį. Raskite bendrųjų sąnaudų funkciją. Kai per mėnesį pagaminama 900 litrų sidro, apskaičiuokite bendrąsias sąnaudas ir vidutines sąnaudas vienam litrui.</p>
+        </div>
+        <div class="q-answer">
+          <p>\(TC(x)\)&#8203;\({}= \int\left(25 + 120x^{-\frac{1}{2}}\right) dx\) \(= 25x + 240\sqrt{x} + C\); \(TC(0) = C = 3000\).</p>
+          <p>Atsakymas: \(TC(x)\)&#8203;\({}= 25x + 240\sqrt{x} + 3000\). \(TC(900) = 32\,700\) eurų. \(\dfrac{TC(900)}{900} \approx 36{,}33\) euro už litrą.</p>
+        </div>
+      </article>
+
+      <!-- 6 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Parduodant \(x\) ekskursijų po miestą per mėnesį, organizatoriaus ribinės pajamos yra \(MR(x)\)&#8203;\({}= 40 + 60e^{-0{,}05x}\) eurų už ekskursiją. Vieneto sąnaudos yra 35 eurai, pastoviosios sąnaudos – 500 eurų per mėnesį. Raskite pajamų ir pelno funkcijas. Kokios mėnesio pajamos ir pelnas, kai parduodama 20 ekskursijų?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(R(x)\)&#8203;\({}= 40x - 1200e^{-0{,}05x} + C\); \(R(0)\)&#8203;\({}= -1200 + C\)&#8203;\({}= 0\)&#8203;\({}\Longrightarrow C\)&#8203;\({}= 1200\).</p>
+          <p>\(TC(x)\)&#8203;\({}= Vx + FC\)&#8203;\({}= 35x + 500\); \(P(x) = R(x) - TC(x)\) \(= 5x - 1200e^{-0{,}05x}\)&#8203;\({}+ 700\).</p>
+          <p>Atsakymas: \(R(x)\)&#8203;\({}= 40x - 1200e^{-0{,}05x}\)&#8203;\({}+ 1200\). \(R(20)\)&#8203;\({}= 2000\)&#8203;\({}- 1200e^{-1} \approx 1558{,}54\) euro, \(P(20) \approx 358{,}54\) euro.</p>
+        </div>
+      </article>
+
+      <!-- 7 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Odontologijos klinikos vertinimu, per mėnesį atliekant \(x\) dantų balinimo procedūrų, ribinis pelnas yra \(MP(x)\)&#8203;\({}= \frac{2000}{x + 40} - 10\) eurų už procedūrą. Šios paslaugos pastoviosios sąnaudos yra 1&nbsp;000 eurų per mėnesį. Raskite pelno funkciją ir didžiausią pelną. Kiek procedūrų tam reikia atlikti per mėnesį?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(P(x)\)&#8203;\({}= 2000\ln(x + 40) - 10x + C\); \(P(0)\)&#8203;\({}= 2000\ln 40 + C\)&#8203;\({}= -1000\) \(\Longrightarrow P(x)\)&#8203;\({}= 2000\ln\dfrac{x + 40}{40}\)&#8203;\({}- 10x - 1000\).</p>
+          <p>\(\dfrac{2000}{x + 40} - 10\)&#8203;\({}= \dfrac{1600 - 10x}{x + 40}\)&#8203;\({}= 0\) \(\Longrightarrow x\)&#8203;\({}= 160\); \(P^{\prime\prime}(160)\)&#8203;\({}= -\dfrac{2000}{200^2}\)&#8203;\({}= -0{,}05 &lt; 0\).</p>
+          <p>Atsakymas: Atliekant 160 procedūrų per mėnesį, \(P_{\max}\)&#8203;\({}= 2000\ln 5\)&#8203;\({}- 2600 \approx 618{,}88\) euro.</p>
+        </div>
+      </article>
+
+      <!-- 8 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Laboratorijos ribinės sąnaudos, per dieną atliekant \(x\) tyrimų, yra \(MC(x)\)&#8203;\({}= 12\)&#8203;\({}+ \frac{4\ln(x + 1)}{x + 1}\) eurų už tyrimą. Pastoviosios sąnaudos yra 900 eurų per dieną. Raskite bendrųjų sąnaudų funkciją ir apskaičiuokite, kiek kainuoja per dieną atlikti 99 tyrimus.</p>
+        </div>
+        <div class="q-answer">
+          <p>Kintamojo keitimas: \(a = \ln(x + 1)\), \(dx = (x + 1)\, da\); \(\int \dfrac{4\ln(x + 1)}{x + 1}\, dx\)&#8203;\({}= 4\int a\, da\) \(= 2\ln^2(x + 1) + C\).</p>
+          <p>\(TC(0)\)&#8203;\({}= 2\ln^2 1 + C\)&#8203;\({}= C\)&#8203;\({}= 900\).</p>
+          <p>Atsakymas: \(TC(x)\)&#8203;\({}= 12x + 2\ln^2(x + 1) + 900\). \(TC(99)\)&#8203;\({}= 2088\)&#8203;\({}+ 2\ln^2 100 \approx 2130{,}42\) euro.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">9 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">11.1–11.2 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
