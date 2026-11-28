@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funkcijos atstatymas · Taikomoji matematika</title>
+<meta name="description" content="Funkcijos atstatymas pagal jos kitimo tempą: integruojant kitimo tempo funkciją ir pagal pradinę sąlygą randant integravimo konstantą atstatomi klientų skaičius, pardavimo kiekis, kaina, turto vertė ar gamybos apimtis. Pavyzdžiai ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m102">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">10 tema · Taikymai · 2 skyrius</span>
+    <h1>Funkcijos atstatymas</h1>
+    <p class="lead">Šiame skyriuje integruojant atstatoma funkcija, kuri aprašo, kaip kinta klientų skaičius, pardavimo kiekis, kaina, turto vertė ar gamybos apimtis, kai žinomas šio dydžio kitimo tempas ir viena jo reikšmė.</p>
+    <ul class="jump">
+      <li><a href="#tempas">Kitimo tempas</a></li>
+      <li><a href="#salyga">Pradinė sąlyga</a></li>
+      <li><a href="#eiga">Sprendimo eiga</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ 1. KITIMO TEMPAS ============ -->
+  <section class="section" id="tempas" aria-labelledby="h-rate">
+    <h2 id="h-rate">Kitimo tempas ir pradinė funkcija</h2>
+    <article class="card">
+      <p><a href="tema-10-ribine-analize.html">Ribinės analizės skyriuje</a> pajamų, bendrųjų sąnaudų ir pelno funkcijas radome integruodami ribinių dydžių funkcijas. Tą patį metodą galime taikyti, kai nagrinėjame klientų skaičių, pardavimo kiekį, kainą, turto vertę ar gamybos apimtį. Jei žinome dydžio <strong>kitimo tempą</strong> ir bent vieną to dydžio reikšmę, integruodami galime atstatyti funkciją, kuri aprašo, kaip dydis kinta.</p>
+      <p>Dydis \(f(t)\) priklauso nuo laiko \(t\) ar kito kintamojo, pavyzdžiui, kiekio \(x\). Jo išvestinė \(f'(t)\) parodo, kaip sparčiai kinta šis dydis (žr. <a href="tema-6-pokyciu-analize.html">6 temos pokyčio analizę</a>). Kitimo tempas nurodomas vienam \(t\) vienetui, pavyzdžiui, savaitei, mėnesiui ar metams. Intervaluose, kuriuose \(f'(t) &gt; 0\), dydis didėja, o ten, kur \(f'(t) &lt; 0\), – mažėja. Funkcija \(f(t)\) yra savo išvestinės pirmykštė:</p>
+      <div class="formula">\[ f(t) = \int f'(t)\, dt = F(t) + C \]</div>
+      <p>Iš kitimo tempo matavimo vienetų galime nustatyti dydžio matavimo vienetus. Jei \(p'(t)\) matuojama eurais per mėnesį, tai \(p(t)\) matuojama eurais.</p>
+      <p>Integralus apskaičiuojame <a href="tema-10.html#skaiciavimas">integralų skaičiavimo skyriuose</a> nagrinėtais būdais: taikome pagrindines arba naudingąsias integravimo formules ar keičiame kintamąjį.</p>
+    </article>
+  </section>
+
+  <!-- ============ 2. PRADINĖ SĄLYGA ============ -->
+  <section class="section" id="salyga" aria-labelledby="h-init">
+    <h2 id="h-init">Pradinė sąlyga</h2>
+    <article class="card">
+      <p>Neapibrėžtinis integralas nusako funkcijų šeimą. Konkrečiai funkcijai nustatyti reikia žinoti vieną jos reikšmę \(f(t_0) = y_0\). Tai <strong>pradinė sąlyga</strong> – taip pat, kaip randama <a href="tema-10.html#atskiroji">atskiroji funkcija</a>. Ribinės analizės skyriuje ją nustatėme pagal pastoviąsias sąnaudas, kai \(x = 0\). Tačiau funkcijos reikšmė gali būti žinoma bet kuriame taške. Pradinę sąlygą nustatome iš uždavinio teksto:</p>
+      <div class="tbl-wrap">
+        <table class="vtable compact">
+          <thead>
+            <tr><th scope="col">Uždavinio tekstas</th><th scope="col">Pradinė sąlyga</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>„Šiuo metu klubas turi 200 narių“ (po \(t\) mėnesių nuo dabar)</td><td>\(N(0) = 200\)</td></tr>
+            <tr><td>„2023 m. kaina buvo 2,274 tūkst. eurų“ (\(t\) metų po 2020 m.)</td><td>\(p(3) = 2{,}274\)</td></tr>
+            <tr><td>„Investavus 16 tūkst. eurų, pagaminama 2&nbsp;600 vienetų“</td><td>\(Q(16) = 2600\)</td></tr>
+            <tr><td>„Kai kaina 200 eurų, ausinių paklausos kiekis lygus nuliui“</td><td>\(p(0) = 200\)</td></tr>
+            <tr><td>„Prieš kampaniją prekės ženklas turėjo 2&nbsp;000 sekėjų“</td><td>\(N(0) = 2000\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tip"><strong>Svarbu.</strong> Reikšmę \(t_0\) įrašome į visą pirmykštės funkcijos išraišką, gautą reiškinį prilyginame žinomai reikšmei \(y_0\) ir iš gautos lygties randame \(C\). Konstanta \(C\) sutampa su žinoma funkcijos reikšme tik tada, kai kitų pirmykštės funkcijos narių suma taške \(t_0\) lygi nuliui. Pavyzdžiui, kai \(t_0 = 0\), jų sumą skaičiuojame taške \(t = 0\).</p>
+    </article>
+  </section>
+
+  <!-- ============ 3. SPRENDIMO EIGA ============ -->
+  <section class="section" id="eiga" aria-labelledby="h-how">
+    <h2 id="h-how">Sprendimo eiga</h2>
+    <article class="card">
+      <ol class="steps-list">
+        <li>Nustatykite ieškomą funkciją, jos kintamąjį ir duotą kitimo tempą.</li>
+        <li>Integruokite kitimo tempo funkciją pagal pagrindines ar naudingąsias integravimo formules arba keisdami kintamąjį. Užrašykite gautą funkciją su integravimo konstanta \(C\).</li>
+        <li>Iš uždavinio teksto užrašykite pradinę sąlygą \(f(t_0) = y_0\).</li>
+        <li>Į funkcijos išraišką įrašykite \(t_0\), prilyginkite \(y_0\), iš lygties raskite \(C\) ir užrašykite gautą funkciją.</li>
+        <li>Atsakykite į uždavinio klausimus. Pavyzdžiui, raskite reikšmę nurodytu laiku, nustatykite, kada bus pasiekta duota reikšmė, arba apskaičiuokite didžiausią reikšmę.</li>
+      </ol>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Pradinė sąlyga visada užrašoma su \(t = 0\).</strong> Jei žinoma 2023 m. reikšmė, o \(t\) skaičiuojamas nuo 2020 m., sąlyga yra \(f(3) = y_0\).</li>
+            <li><strong>Iš karto rašoma \(C = y_0\).</strong> Taip galima tik tada, kai kiti nariai taške \(t_0\) lygūs nuliui. Narių \(\ln(t + 10)\), \(\sqrt{t + 4}\), \(e^{-0{,}2t}\) reikšmės, kai \(t = 0\), nelygios nuliui.</li>
+            <li><strong>Supainiojamas dydis ir jo kitimo tempas.</strong> Dydžio reikšmę nurodytu laiku randame iš atstatytos funkcijos \(f(t)\), o ne iš kitimo tempo \(f'(t)\).</li>
+            <li><strong>Neatsižvelgiama į matavimo vienetus.</strong> Jei dydis matuojamas šimtais ar tūkstančiais, pradinę sąlygą ir atsakymą užrašome tais pačiais vienetais.</li>
+            <li><strong>Nepatikrinamas lygties sprendinys.</strong> Ieškodami, kada bus pasiekta duota reikšmė, atmetame sprendinius, kurie neturi prasmės (pavyzdžiui, neigiamą laiką).</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ 4. PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pirmiausia pabandykite išspręsti patys, tada sprendimą atskleiskite žingsnis po žingsnio.</p>
+    <h3 class="subhead">Daugianariai ir laipsninės funkcijos</h3>
+
+    <!-- 1 pavyzdys: TM 10.5, 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Sporto klubo narių skaičius</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Naujo sporto klubo vadovas prognozuoja, kad praėjus \(t\) mėnesių nuo atidarymo narių skaičiaus \(N(t)\) augimo tempas bus \(N'(t) = 60 - 3t\) narių per mėnesį (\(0 \le t \le 20\)). Atidarymo dieną klubas turi 200 narių. a) Užrašykite narių skaičių kaip laiko funkciją. b) Kiek narių klubas turės po metų? c) Kada narių skaičius nustos augti ir koks bus didžiausias narių skaičius?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Integruojame narių skaičiaus augimo tempą:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(t) &amp;= \int (60 - 3t)\, dt \\ &amp;= 60t - 3\cdot\frac{t^2}{2} + C = 60t - 1{,}5t^2 + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(t) = \int (60 - 3t)\, dt \\ &amp;= 60t - 3\cdot\frac{t^2}{2} + C \\ &amp;= 60t - 1{,}5t^2 + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>Klubo atidarymą atitinka \(t = 0\), todėl pradinė sąlyga yra \(N(0) = 200\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(0) &amp;= 60\cdot 0 - 1{,}5\cdot 0^2 + C = 200 \;\Longrightarrow\; C = 200 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(0) = 60\cdot 0 - 1{,}5\cdot 0^2 + C \\ &amp;= 200 \\ &amp;\Longrightarrow\; C = 200 \end{aligned} \]</div>
+          <div class="fit-sm">\[ N(t) = 60t - 1{,}5t^2 + 200 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Narių skaičius po metų</span></h4>
+          <p>Metai – tai 12 mėnesių, todėl \(t = 12\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(12) &amp;= 60\cdot 12 - 1{,}5\cdot 12^2 + 200 \\ &amp;= 720 - 216 + 200 = 704 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(12) = 60\cdot 12 - 1{,}5\cdot 12^2 + 200 \\ &amp;= 720 - 216 + 200 = 704 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Didžiausias narių skaičius</span></h4>
+          <p>Narių skaičius auga, kol kitimo tempas teigiamas. Augimas sustoja, kai \(N'(t) = 0\):</p>
+          <div class="fit-sm">\[ 60 - 3t = 0 \;\Longrightarrow\; t = 20 \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(20) &amp;= 60\cdot 20 - 1{,}5\cdot 20^2 + 200 \\ &amp;= 1200 - 600 + 200 = 800 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(20) = 60\cdot 20 - 1{,}5\cdot 20^2 + 200 \\ &amp;= 1200 - 600 + 200 = 800 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(N(t)\)&#8203;\({}= 60t - 1{,}5t^2 + 200\).</p><p>b) Po metų klubas turės 704 narius.</p><p style="margin:0">c) Narių skaičius nustos augti praėjus 20 mėnesių nuo atidarymo, kai pasieks 800.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 10.5, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Buto kvadratinio metro kaina</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Rinkos analitikai apskaičiavo, kad praėjus \(t\) metų nuo 2020 m. vidutinės naujos statybos buto kvadratinio metro kainos \(p(t)\) kitimo tempas mieste yra \(p'(t)\)&#8203;\({}= 0{,}006t^2 - 0{,}04t\)&#8203;\({}+ 0{,}2\) tūkst. eurų už kvadratinį metrą per metus. 2023 m. kvadratinis metras vidutiniškai kainavo 2,274 tūkst. eurų. a) Raskite kainos funkciją. b) Kokia vidutinė kaina prognozuojama 2028 m.?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(t) &amp;= \int\left(0{,}006t^2 - 0{,}04t + 0{,}2\right) dt \\ &amp;= 0{,}006\cdot\frac{t^3}{3} - 0{,}04\cdot\frac{t^2}{2} + 0{,}2t + C \\ &amp;= 0{,}002t^3 - 0{,}02t^2 + 0{,}2t + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p(t) \\ &amp;= \int\left(0{,}006t^2 - 0{,}04t + 0{,}2\right) dt \\ &amp;= 0{,}006\cdot\frac{t^3}{3} - 0{,}04\cdot\frac{t^2}{2} + 0{,}2t + C \\ &amp;= 0{,}002t^3 - 0{,}02t^2 + 0{,}2t + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>2023 m. atitinka \(t = 2023 - 2020 = 3\), todėl pradinė sąlyga yra \(p(3) = 2{,}274\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(3) &amp;= 0{,}002\cdot 27 - 0{,}02\cdot 9 + 0{,}2\cdot 3 + C \\ &amp;= 0{,}474 + C = 2{,}274 \;\Longrightarrow\; C = 1{,}8 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p(3) \\ &amp;= 0{,}002\cdot 27 - 0{,}02\cdot 9 + 0{,}2\cdot 3 + C \\ &amp;= 0{,}474 + C = 2{,}274 \\ &amp;\Longrightarrow\; C = 1{,}8 \end{aligned} \]</div>
+          <div class="fit-sm">\[ p(t) = 0{,}002t^3 - 0{,}02t^2 + 0{,}2t + 1{,}8 \]</div>
+          <p>Kai \(t = 0\), iš modelio gauname 2020 m. kainą: \(p(0) = C = 1{,}8\) tūkst. eurų už kvadratinį metrą.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kaina 2028 m.</span></h4>
+          <p>2028 metus atitinka \(t = 8\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(8) &amp;= 0{,}002\cdot 512 - 0{,}02\cdot 64 + 0{,}2\cdot 8 + 1{,}8 \\ &amp;= 1{,}024 - 1{,}28 + 1{,}6 + 1{,}8 = 3{,}144 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p(8) \\ &amp;= 0{,}002\cdot 512 - 0{,}02\cdot 64 + 0{,}2\cdot 8 + 1{,}8 \\ &amp;= 1{,}024 - 1{,}28 + 1{,}6 + 1{,}8 = 3{,}144 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(p(t)\)&#8203;\({}= 0{,}002t^3 - 0{,}02t^2\)&#8203;\({}+ 0{,}2t + 1{,}8\).</p><p style="margin:0">b) Prognozuojama, kad 2028 m. vidutinė kaina bus 3,144 tūkst. eurų, arba 3&nbsp;144 eurai už kvadratinį metrą.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 10.5, 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Lauko baldų gamybos apimtis ir investicijos</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Lauko baldų gamintojas planuoja investuoti į naują įrangą. Investavus \(K\) tūkst. eurų, mėnesio gamybos apimties \(Q\) kitimo tempas yra \(Q'(K)\)&#8203;\({}= \frac{150}{\sqrt{K}}\) gaminių vienam papildomam investicijų tūkstančiui eurų. Investavus 16 tūkst. eurų, per mėnesį pagaminama 2&nbsp;600 gaminių. a) Užrašykite gamybos apimtį kaip investicijų funkciją. b) Kiek gaminių per mėnesį tikimasi pagaminti investavus 36 tūkst. eurų? c) Kiek reikia investuoti norint per mėnesį pagaminti 4&nbsp;400 gaminių?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Kitimo tempą užrašome laipsniu \(\frac{150}{\sqrt{K}}\)&#8203;\({}= 150K^{-\frac{1}{2}}\) ir integruojame kintamojo \(K\) atžvilgiu:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} Q(K) &amp;= \int 150K^{-\frac{1}{2}}\, dK \\ &amp;= 150\cdot\frac{K^{\frac{1}{2}}}{\frac{1}{2}} + C = 300\sqrt{K} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;Q(K) = \int 150K^{-\frac{1}{2}}\, dK \\ &amp;= 150\cdot\frac{K^{\frac{1}{2}}}{\frac{1}{2}} + C \\ &amp;= 300\sqrt{K} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>Investavus 16 tūkst. eurų, pagaminama 2&nbsp;600 gaminių, todėl \(Q(16) = 2600\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} Q(16) &amp;= 300\sqrt{16} + C = 1200 + C = 2600 \;\Longrightarrow\; C = 1400 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;Q(16) = 300\sqrt{16} + C \\ &amp;= 1200 + C = 2600 \\ &amp;\Longrightarrow\; C = 1400 \end{aligned} \]</div>
+          <div class="fit-sm">\[ Q(K) = 300\sqrt{K} + 1400 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Gamyba, kai \(K = 36\)</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} Q(36) &amp;= 300\sqrt{36} + 1400 = 1800 + 1400 = 3200 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;Q(36) = 300\sqrt{36} + 1400 \\ &amp;= 1800 + 1400 = 3200 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Reikalingos investicijos</span></h4>
+          <p>Sprendžiame lygtį \(Q(K) = 4400\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ 300\sqrt{K} + 1400 = 4400 \;\Longrightarrow\; \sqrt{K} = 10 \;\Longrightarrow\; K = 100 \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;300\sqrt{K} + 1400 = 4400 \\ &amp;\Longrightarrow\; \sqrt{K} = 10 \;\Longrightarrow\; K = 100 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(Q(K)\)&#8203;\({}= 300\sqrt{K} + 1400\).</p><p>b) Investavus 36 tūkst. eurų, per mėnesį būtų pagaminama 3&nbsp;200 gaminių.</p><p style="margin:0">c) Norint pagaminti 4&nbsp;400 gaminių per mėnesį, reikia investuoti 100 tūkst. eurų.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 10.5, 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Automobilių modelio pardavimai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Šiuo metu per mėnesį parduodama 1&nbsp;500 vieno modelio automobilių. Prognozuojama, kad praėjus \(t\) mėnesių nuo dabar mėnesio pardavimo kiekio \(S(t)\) kitimo tempas bus \(S'(t) = -20\sqrt[3]{t}\) automobilių per mėnesį. Įmonė nutrauks šio modelio gamybą, kai per mėnesį bus parduodami 285 automobiliai. a) Raskite pardavimo kiekio funkciją. b) Kiek laiko įmonė dar gamins šio modelio automobilius?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Kubinę šaknį užrašome laipsniu \(\sqrt[3]{t}\)&#8203;\({}= t^{\frac{1}{3}}\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} S(t) &amp;= \int\left(-20t^{\frac{1}{3}}\right) dt \\ &amp;= -20\cdot\frac{t^{\frac{4}{3}}}{\frac{4}{3}} + C = -15t^{\frac{4}{3}} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;S(t) = \int\left(-20t^{\frac{1}{3}}\right) dt \\ &amp;= -20\cdot\frac{t^{\frac{4}{3}}}{\frac{4}{3}} + C \\ &amp;= -15t^{\frac{4}{3}} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>„Šiuo metu“ atitinka \(t = 0\), todėl pradinė sąlyga yra \(S(0) = 1500\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} S(0) &amp;= -15\cdot 0^{\frac{4}{3}} + C = 1500 \;\Longrightarrow\; C = 1500 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;S(0) = -15\cdot 0^{\frac{4}{3}} + C \\ &amp;= 1500 \\ &amp;\Longrightarrow\; C = 1500 \end{aligned} \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} S(t) &amp;= 1500 - 15t^{\frac{4}{3}} = 1500 - 15t\sqrt[3]{t} \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;S(t) = 1500 - 15t^{\frac{4}{3}} \\ &amp;= 1500 - 15t\sqrt[3]{t} \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Gamybos trukmė</span></h4>
+          <p>Laiką, kada pardavimo kiekis sumažės iki 285 automobilių, randame iš lygties \(S(t) = 285\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} 1500 - 15t^{\frac{4}{3}} = 285 &amp;\;\Longrightarrow\; 15t^{\frac{4}{3}} = 1215 \;\Longrightarrow\; t^{\frac{4}{3}} = 81 \\ &amp;\;\Longrightarrow\; t = 81^{\frac{3}{4}} = \left(\sqrt[4]{81}\right)^3 = 3^3 = 27 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;1500 - 15t^{\frac{4}{3}} = 285 \\ &amp;\Longrightarrow\; 15t^{\frac{4}{3}} = 1215 \;\Longrightarrow\; t^{\frac{4}{3}} = 81 \\ &amp;\Longrightarrow\; t = 81^{\frac{3}{4}} = \left(\sqrt[4]{81}\right)^3 \\ &amp;\phantom{\Longrightarrow\; t} = 3^3 = 27 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(S(t)\)&#8203;\({}= 1500 - 15t\sqrt[3]{t}\).</p><p style="margin:0">b) Įmonė šio modelio automobilius gamins dar 27 mėnesius.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead">Rodiklinės, logaritminės ir trigonometrinės funkcijos</h3>
+
+    <!-- 5 pavyzdys: TM 10.5, 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Spausdinimo mašinos vertė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Spaustuvė už 52&nbsp;000 eurų įsigijo naują spausdinimo mašiną. Mašinai senstant jos vertė \(V(t)\) mažėja. Kai mašina yra \(t\) metų senumo, jos vertės kitimo tempas yra \(V'(t)\)&#8203;\({}= -9600e^{-0{,}2t}\) eurų per metus. a) Užrašykite mašinos vertę kaip jos amžiaus funkciją. b) Kokia bus mašinos vertė po penkerių metų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Rodiklinės funkcijos argumentas tiesinis (\(a = -0{,}2\)), todėl taikome naudingąją integravimo formulę:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} V(t) &amp;= \int\left(-9600e^{-0{,}2t}\right) dt \\ &amp;= -9600\cdot\frac{1}{-0{,}2}e^{-0{,}2t} + C = 48\,000e^{-0{,}2t} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;V(t) \\ &amp;= \int\left(-9600e^{-0{,}2t}\right) dt \\ &amp;= -9600\cdot\frac{1}{-0{,}2}e^{-0{,}2t} + C \\ &amp;= 48\,000e^{-0{,}2t} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>Pirkimo kaina lygi naujos mašinos vertei, kai \(t = 0\), todėl \(V(0) = 52\,000\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} V(0) &amp;= 48\,000e^0 + C = 48\,000 + C = 52\,000 \;\Longrightarrow\; C = 4000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;V(0) \\ &amp;= 48\,000e^0 + C \\ &amp;= 48\,000 + C = 52\,000 \\ &amp;\Longrightarrow\; C = 4000 \end{aligned} \]</div>
+          <div class="fit-sm">\[ V(t) = 48\,000e^{-0{,}2t} + 4000 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Vertė po penkerių metų</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} V(5) &amp;= 48\,000e^{-0{,}2\cdot 5} + 4000 \\ &amp;= 48\,000e^{-1} + 4000 \approx 21\,658{,}21 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;V(5) = 48\,000e^{-0{,}2\cdot 5} + 4000 \\ &amp;= 48\,000e^{-1} + 4000 \approx 21\,658{,}21 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(V(t)\)&#8203;\({}= 48\,000e^{-0{,}2t} + 4000\).</p><p style="margin:0">b) Po penkerių metų mašinos vertė bus apie 21&nbsp;658,21 euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 10.5, 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Internetinės parduotuvės naudotojai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Prieš reklamos kampaniją internetinė parduotuvė turėjo 4&nbsp;000 registruotų naudotojų. Rinkodaros skyriaus vertinimu, praėjus \(t\) savaičių nuo kampanijos pradžios registruotų naudotojų skaičiaus \(N(t)\) augimo tempas bus \(N'(t)\)&#8203;\({}= \frac{3000}{t + 10}\) naudotojų per savaitę. a) Užrašykite registruotų naudotojų skaičių kaip laiko funkciją. b) Kiek registruotų naudotojų bus po 10 savaičių? c) Kada šis skaičius pasieks 10&nbsp;000?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Vardiklyje yra tiesinė funkcija (\(a = 1\)), todėl taikome naudingąją formulę. Kadangi \(t + 10 &gt; 0\), modulio ženklų nereikia:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(t) &amp;= \int \frac{3000}{t + 10}\, dt = 3000\ln(t + 10) + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(t) = \int \frac{3000}{t + 10}\, dt \\ &amp;= 3000\ln(t + 10) + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>Kampanijos pradžią atitinka \(t = 0\), todėl \(N(0) = 4000\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(0) &amp;= 3000\ln(0 + 10) + C = 4000 \;\Longrightarrow\; C = 4000 - 3000\ln 10 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(0) \\ &amp;= 3000\ln(0 + 10) + C = 4000 \\ &amp;\Longrightarrow\; C = 4000 - 3000\ln 10 \end{aligned} \]</div>
+          <p>Pritaikę logaritmų savybę \(\ln a - \ln b\)&#8203;\({}= \ln\frac{a}{b}\) ir lygybę \(\frac{t + 10}{10}\)&#8203;\({}= 0{,}1t + 1\), funkciją užrašome trumpiau:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(t) &amp;= 3000\ln(t + 10) - 3000\ln 10 + 4000 \\ &amp;= 3000\ln\frac{t + 10}{10} + 4000 \\ &amp;= 3000\ln(0{,}1t + 1) + 4000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(t) = 3000\ln(t + 10) \\ &amp;\phantom{=}\; {}- 3000\ln 10 + 4000 \\ &amp;= 3000\ln\frac{t + 10}{10} + 4000 \\ &amp;= 3000\ln(0{,}1t + 1) + 4000 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Naudotojų skaičius po 10 savaičių</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(10) &amp;= 3000\ln(0{,}1\cdot 10 + 1) + 4000 \\ &amp;= 3000\ln 2 + 4000 \approx 6079 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(10) = 3000\ln(0{,}1\cdot 10 + 1) + 4000 \\ &amp;= 3000\ln 2 + 4000 \approx 6079 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Kada bus 10 000 naudotojų</span></h4>
+          <p>Sprendžiame lygtį \(N(t) = 10\,000\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} 3000\ln(0{,}1t + 1) + 4000 = 10\,000 &amp;\;\Longrightarrow\; \ln(0{,}1t + 1) = 2 \;\Longrightarrow\; 0{,}1t + 1 = e^2 \\ &amp;\;\Longrightarrow\; t = 10e^2 - 10 \approx 63{,}9 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;3000\ln(0{,}1t + 1) + 4000 = 10\,000 \\ &amp;\Longrightarrow\; \ln(0{,}1t + 1) = 2 \\ &amp;\Longrightarrow\; 0{,}1t + 1 = e^2 \\ &amp;\Longrightarrow\; t = 10e^2 - 10 \approx 63{,}9 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(N(t)\)&#8203;\({}= 3000\ln(0{,}1t + 1) + 4000\).</p><p>b) Po 10 savaičių parduotuvė turės apie 6&nbsp;079 registruotus naudotojus.</p><p style="margin:0">c) Registruotų naudotojų skaičius pasieks 10&nbsp;000 maždaug po 64 savaičių.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 10.5, 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Išmaniojo telefono kaina</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Pradėjus prekiauti naujo modelio išmaniuoju telefonu, jo kaina \(p(t)\) mažėja. Praėjus \(t\) mėnesių nuo prekybos pradžios, kainos kitimo tempas yra \(p'(t)\)&#8203;\({}= -\frac{40}{\sqrt{t + 4}}\) eurų per mėnesį. Prekybos pradžioje telefonas kainavo 900 eurų. a) Užrašykite kainą kaip laiko funkciją. b) Kiek telefonas kainuos po metų? c) Kada kaina sumažės iki 580 eurų?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Taikome naudingąją formulę \(\int\frac{1}{\sqrt{ax + b}}\, dx\) \(= \frac{1}{a}\cdot 2\sqrt{ax + b}\)&#8203;\({}+ C\), kai \(a = 1\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(t) &amp;= \int\left(-\frac{40}{\sqrt{t + 4}}\right) dt \\ &amp;= -40\cdot 2\sqrt{t + 4} + C = -80\sqrt{t + 4} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p(t) = \int\left(-\frac{40}{\sqrt{t + 4}}\right) dt \\ &amp;= -40\cdot 2\sqrt{t + 4} + C \\ &amp;= -80\sqrt{t + 4} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>Kai \(t = 0\), narys su šaknimi nelygus nuliui. Taikome pradinę sąlygą \(p(0) = 900\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(0) &amp;= -80\sqrt{0 + 4} + C = -160 + C = 900 \;\Longrightarrow\; C = 1060 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p(0) = -80\sqrt{0 + 4} + C \\ &amp;= -160 + C = 900 \\ &amp;\Longrightarrow\; C = 1060 \end{aligned} \]</div>
+          <div class="fit-sm">\[ p(t) = 1060 - 80\sqrt{t + 4} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kaina po metų</span></h4>
+          <p>Metai – tai 12 mėnesių:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(12) &amp;= 1060 - 80\sqrt{16} = 1060 - 320 = 740 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p(12) = 1060 - 80\sqrt{16} \\ &amp;= 1060 - 320 = 740 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Kada kaina bus 580 eurų</span></h4>
+          <p>Sprendžiame lygtį \(p(t) = 580\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} 1060 - 80\sqrt{t + 4} = 580 &amp;\;\Longrightarrow\; \sqrt{t + 4} = 6 \;\Longrightarrow\; t + 4 = 36 \;\Longrightarrow\; t = 32 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;1060 - 80\sqrt{t + 4} = 580 \\ &amp;\Longrightarrow\; \sqrt{t + 4} = 6 \\ &amp;\Longrightarrow\; t + 4 = 36 \;\Longrightarrow\; t = 32 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(p(t)\)&#8203;\({}= 1060 - 80\sqrt{t + 4}\).</p><p>b) Po metų telefonas kainuos 740 eurų.</p><p style="margin:0">c) Kaina sumažės iki 580 eurų praėjus 32 mėnesiams nuo prekybos pradžios.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 10.5, 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Sezoninė ledų paklausa</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Pieno produktų įmonės gaminamų ledų mėnesio paklausa \(D(t)\) priklauso nuo sezono. Analitikų vertinimu, praėjus \(t\) mėnesių nuo metų pradžios, paklausos kitimo tempas yra \(D'(t)\)&#8203;\({}= 5\pi\sin\frac{\pi t}{6}\) tūkst. litrų per mėnesį. Metų pradžioje (\(t = 0\)) mėnesio paklausa yra 20 tūkst. litrų. a) Raskite paklausos funkciją. b) Apskaičiuokite mėnesio paklausą balandžio (\(t = 3\)) ir liepos (\(t = 6\)) pradžioje.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Argumentas \(\frac{\pi t}{6}\)&#8203;\({}= \frac{\pi}{6}t\) yra tiesinis (\(a = \frac{\pi}{6}\)), todėl taikome naudingąją formulę funkcijai \(\sin(ax + b)\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} D(t) &amp;= \int 5\pi\sin\frac{\pi t}{6}\, dt \\ &amp;= 5\pi\cdot\left(-\frac{1}{\frac{\pi}{6}}\right)\cos\frac{\pi t}{6} + C = -30\cos\frac{\pi t}{6} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;D(t) \\ &amp;= \int 5\pi\sin\frac{\pi t}{6}\, dt \\ &amp;= 5\pi\cdot\left(-\frac{1}{\frac{\pi}{6}}\right)\cos\frac{\pi t}{6} + C \\ &amp;= -30\cos\frac{\pi t}{6} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>Taikome sąlygą \(D(0) = 20\) ir atsižvelgiame į tai, kad \(\cos 0 = 1\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} D(0) &amp;= -30\cos 0 + C = -30 + C = 20 \;\Longrightarrow\; C = 50 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;D(0) = -30\cos 0 + C \\ &amp;= -30 + C = 20 \\ &amp;\Longrightarrow\; C = 50 \end{aligned} \]</div>
+          <div class="fit-sm">\[ D(t) = 50 - 30\cos\frac{\pi t}{6} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Paklausa balandžio ir liepos pradžioje</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} D(3) &amp;= 50 - 30\cos\frac{\pi}{2} = 50 - 0 = 50 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;D(3) = 50 - 30\cos\frac{\pi}{2} \\ &amp;= 50 - 0 = 50 \end{aligned} \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} D(6) &amp;= 50 - 30\cos\pi = 50 + 30 = 80 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;D(6) = 50 - 30\cos\pi \\ &amp;= 50 + 30 = 80 \end{aligned} \]</div>
+          <p>Kosinuso reikšmė yra ne mažesnė kaip \(-1\), todėl didžiausia paklausa yra \(50 + 30 = 80\) tūkst. litrų. Ji pasiekiama liepos pradžioje.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(D(t)\)&#8203;\({}= 50 - 30\cos\frac{\pi t}{6}\).</p><p style="margin:0">b) Balandžio pradžioje mėnesio paklausa yra 50 tūkst. litrų, o liepos pradžioje – 80 tūkst. litrų; tai didžiausia mėnesio paklausa.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <h3 class="subhead">Integravimas kintamojo keitimu</h3>
+    <p class="section-intro">Šiuose pavyzdžiuose po integralu yra funkcija ir jos (beveik) išvestinė, todėl integruojame <a href="tema-10-kintamojo-keitimas.html">keisdami kintamąjį</a>.</p>
+
+    <!-- 9 pavyzdys: TM 10.5, 9 pavyzdys -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">9 pavyzdys</span>
+        <h3>Prekės ženklo sekėjai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Kosmetikos prekės ženklas pradeda reklamos kampaniją socialiniuose tinkluose. Rinkodaros komanda prognozuoja, kad praėjus \(t\) dienų nuo kampanijos pradžios sekėjų skaičiaus \(N(t)\) augimo tempas bus \(N'(t)\)&#8203;\({}= \frac{600\ln(t + 1)}{t + 1}\) sekėjų per dieną. Prieš kampaniją prekės ženklas turėjo 2&nbsp;000 sekėjų. a) Užrašykite sekėjų skaičių kaip laiko funkciją. b) Kiek sekėjų prekės ženklas turės po 9 dienų? c) Kada sekėjų skaičius pasieks 3&nbsp;200?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Pointegrinę funkciją užrašome sandauga \(\frac{600\ln(t + 1)}{t + 1}\)&#8203;\({}= 600\ln(t + 1)\cdot\frac{1}{t + 1}\). Joje yra funkcija \(\ln(t + 1)\) ir jos išvestinė \(\frac{1}{t + 1}\), todėl keičiame kintamąjį, \(a = \ln(t + 1)\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(t) = \int \frac{600\ln(t + 1)}{t + 1}\, dt &amp;= \left[\begin{array}{l} a = \ln(t + 1) \\ da = a^{\prime}\,dt = \frac{1}{t + 1}\,dt \;\big|:\frac{1}{t + 1} \\ dt = (t + 1)\,da \end{array}\right] \\ &amp;= \int \frac{600a}{\cancel{(t + 1)}}\cdot\cancel{(t + 1)}\, da = 600\int a\, da \\ &amp;= 600\cdot\frac{a^2}{2} + C = 300\ln^2(t + 1) + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(t) = \int \frac{600\ln(t + 1)}{t + 1}\, dt \\ &amp;= \left[\begin{array}{l} a = \ln(t + 1) \\ da = a^{\prime}\,dt = \frac{1}{t + 1}\,dt \;\big|:\frac{1}{t + 1} \\ dt = (t + 1)\,da \end{array}\right] \\ &amp;= \int \frac{600a}{\cancel{(t + 1)}}\cdot\cancel{(t + 1)}\, da \\ &amp;= 600\int a\, da = 600\cdot\frac{a^2}{2} + C \\ &amp;= 300\ln^2(t + 1) + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>Kampanijos pradžią atitinka \(t = 0\), todėl \(N(0) = 2000\). Skaičiuodami taikome lygybę \(\ln 1 = 0\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(0) &amp;= 300\ln^2(0 + 1) + C = 2000 \;\Longrightarrow\; C = 2000 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(0) = 300\ln^2(0 + 1) + C \\ &amp;= 2000 \\ &amp;\Longrightarrow\; C = 2000 \end{aligned} \]</div>
+          <div class="fit-sm">\[ N(t) = 300\ln^2(t + 1) + 2000 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Sekėjų skaičius po 9 dienų</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} N(9) &amp;= 300\ln^2 10 + 2000 \approx 3591 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;N(9) = 300\ln^2 10 + 2000 \approx 3591 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Kada bus 3 200 sekėjų</span></h4>
+          <p>Sprendžiame lygtį \(N(t) = 3200\). Kai \(t \ge 0\), logaritmas neneigiamas, todėl imame teigiamą šaknį:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} 300\ln^2(t + 1) + 2000 = 3200 &amp;\;\Longrightarrow\; \ln^2(t + 1) = 4 \;\Longrightarrow\; \ln(t + 1) = 2 \\ &amp;\;\Longrightarrow\; t + 1 = e^2 \;\Longrightarrow\; t = e^2 - 1 \approx 6{,}39 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;300\ln^2(t + 1) + 2000 = 3200 \\ &amp;\Longrightarrow\; \ln^2(t + 1) = 4 \;\Longrightarrow\; \ln(t + 1) = 2 \\ &amp;\Longrightarrow\; t + 1 = e^2 \;\Longrightarrow\; t = e^2 - 1 \approx 6{,}39 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(N(t)\)&#8203;\({}= 300\ln^2(t + 1) + 2000\).</p><p>b) Po 9 dienų prekės ženklas turės apie 3&nbsp;591 sekėją.</p><p style="margin:0">c) Sekėjų skaičius pasieks 3&nbsp;200 praėjus maždaug 6,4 dienos nuo kampanijos pradžios.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 10 pavyzdys: TM 10.5, 10 pavyzdys -->
+    <article class="card example" id="pavyzdys-10">
+      <header class="example-head">
+        <span class="example-tag">10 pavyzdys</span>
+        <h3>Belaidžių ausinių kaina ir paklausa</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Pardavėjo vertinimu, belaidžių ausinių kainos \(p\) kitimo tempas yra \(p'(x)\)&#8203;\({}= -12xe^{-0{,}04x^2}\) eurų šimtui porų. Kaina matuojama eurais, o \(x\) žymi savaitės paklausos kiekį šimtais porų. Kai kaina 200 eurų, ausinių paklausos kiekis lygus nuliui. a) Raskite paklausos (kainos) funkciją. b) Kokia kaina atitinka 500 porų (\(x = 5\)) paklausą? c) Kokia kaina atitinka 1&nbsp;000 porų paklausą?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Rodiklinės funkcijos argumentas \(-0{,}04x^2\) yra netiesinis. Jo išvestinė yra \(-0{,}08x\), o daugiklis \(-12x\) – beveik išvestinė, todėl keičiame kintamąjį, \(a = -0{,}04x^2\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(x) = \int\left(-12xe^{-0{,}04x^2}\right) dx &amp;= \left[\begin{array}{l} a = -0{,}04x^2 \\ da = a^{\prime}\,dx = -0{,}08x\,dx \;\big|:(-0{,}08x) \\ dx = -\dfrac{da}{0{,}08x} \end{array}\right] \\ &amp;= \int\left(-12\cancel{x}\,e^{a}\right)\cdot\left(-\frac{da}{0{,}08\cancel{x}}\right) = 150\int e^{a}\, da \\ &amp;= 150e^{a} + C = 150e^{-0{,}04x^2} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg" style="font-size:.9em">\[ \begin{aligned} &amp;p(x) = \int\left(-12xe^{-0{,}04x^2}\right) dx \\ &amp;= \left[\begin{array}{l} a = -0{,}04x^2 \\ da = a^{\prime}\,dx = -0{,}08x\,dx \;\big|:(-0{,}08x) \\ dx = -\dfrac{da}{0{,}08x} \end{array}\right] \\ &amp;= \int\left(-12\cancel{x}\,e^{a}\right)\cdot\left(-\frac{da}{0{,}08\cancel{x}}\right) \\ &amp;= 150\int e^{a}\, da = 150e^{a} + C \\ &amp;= 150e^{-0{,}04x^2} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>Nulinį paklausos kiekį atitinka \(x = 0\), todėl \(p(0) = 200\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(0) &amp;= 150e^0 + C = 150 + C = 200 \;\Longrightarrow\; C = 50 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p(0) = 150e^0 + C \\ &amp;= 150 + C = 200 \\ &amp;\Longrightarrow\; C = 50 \end{aligned} \]</div>
+          <div class="fit-sm">\[ p(x) = 150e^{-0{,}04x^2} + 50 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Kainos</span></h4>
+          <p>500 porų atitinka \(x = 5\), o 1&nbsp;000 porų – \(x = 10\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(5) &amp;= 150e^{-0{,}04\cdot 25} + 50 = 150e^{-1} + 50 \approx 105{,}18 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p(5) = 150e^{-0{,}04\cdot 25} + 50 \\ &amp;= 150e^{-1} + 50 \approx 105{,}18 \end{aligned} \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} p(10) &amp;= 150e^{-0{,}04\cdot 100} + 50 = 150e^{-4} + 50 \approx 52{,}75 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;p(10) = 150e^{-0{,}04\cdot 100} + 50 \\ &amp;= 150e^{-4} + 50 \approx 52{,}75 \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(p(x)\)&#8203;\({}= 150e^{-0{,}04x^2} + 50\).</p><p>b) Kai savaitės paklausa 500 porų, kaina yra apie 105,18 euro.</p><p style="margin:0">c) Kai savaitės paklausa 1&nbsp;000 porų, kaina yra apie 52,75 euro.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 11 pavyzdys: TM 10.5, 11 pavyzdys -->
+    <article class="card example" id="pavyzdys-11">
+      <header class="example-head">
+        <span class="example-tag">11 pavyzdys</span>
+        <h3>Sezoniniai kondicionierių pardavimai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Elektronikos parduotuvėje per mėnesį parduodamų oro kondicionierių kiekis \(S(t)\) (šimtais vienetų) priklauso nuo sezono. Praėjus \(t\) mėnesių nuo balandžio pradžios, pardavimo kiekio kitimo tempas yra \(S'(t)\)&#8203;\({}= 2\pi\sin\frac{\pi t}{6}\cos\frac{\pi t}{6}\) šimtų vienetų per mėnesį. Balandžio pradžioje mėnesio pardavimo kiekis yra 200 vienetų. a) Raskite pardavimo kiekio funkciją. b) Apskaičiuokite mėnesio pardavimo kiekį birželio (\(t = 2\)) ir liepos (\(t = 3\)) pradžioje. c) Koks didžiausias mėnesio pardavimo kiekis?
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Integravimas</span></h4>
+          <p>Pointegrinėje funkcijoje yra funkcija \(\sin\frac{\pi t}{6}\) ir jos beveik išvestinė \(\cos\frac{\pi t}{6}\): pagal <a href="tema-6.html#sudetines">sudėtinės funkcijos išvestinės taisyklę</a> \(\left(\sin\frac{\pi t}{6}\right)'\)&#8203;\({}= \frac{\pi}{6}\cos\frac{\pi t}{6}\). Todėl keičiame kintamąjį:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} S(t) = \int 2\pi\sin\frac{\pi t}{6}\cos\frac{\pi t}{6}\, dt &amp;= \left[\begin{array}{l} a = \sin\frac{\pi t}{6} \\ da = a^{\prime}\,dt = \frac{\pi}{6}\cos\frac{\pi t}{6}\,dt \;\big|:\frac{\pi}{6}\cos\frac{\pi t}{6} \\ dt = \dfrac{6\,da}{\pi\cos\frac{\pi t}{6}} \end{array}\right] \\ &amp;= \int 2\cancel{\pi}\,a\,\cancel{\cos\frac{\pi t}{6}}\cdot\frac{6\, da}{\cancel{\pi}\cancel{\cos\frac{\pi t}{6}}} = 12\int a\, da \\ &amp;= 12\cdot\frac{a^2}{2} + C = 6\sin^2\frac{\pi t}{6} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg" style="font-size:.9em">\[ \begin{aligned} &amp;S(t) = \int 2\pi\sin\frac{\pi t}{6}\cos\frac{\pi t}{6}\, dt \\ &amp;= \left[\begin{array}{l} a = \sin\frac{\pi t}{6} \\ da = a^{\prime}\,dt = \frac{\pi}{6}\cos\frac{\pi t}{6}\,dt \;\big|:\frac{\pi}{6}\cos\frac{\pi t}{6} \\ dt = \dfrac{6\,da}{\pi\cos\frac{\pi t}{6}} \end{array}\right] \\ &amp;= \int 2\cancel{\pi}\,a\,\cancel{\cos\frac{\pi t}{6}}\cdot\frac{6\, da}{\cancel{\pi}\cancel{\cos\frac{\pi t}{6}}} \\ &amp;= 12\int a\, da = 12\cdot\frac{a^2}{2} + C \\ &amp;= 6\sin^2\frac{\pi t}{6} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Pradinė sąlyga</span></h4>
+          <p>Pardavimo kiekis matuojamas šimtais vienetų, todėl pradinė sąlyga yra \(S(0) = 2\). Skaičiuodami taikome lygybę \(\sin 0 = 0\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} S(0) &amp;= 6\sin^2 0 + C = 2 \;\Longrightarrow\; C = 2 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;S(0) = 6\sin^2 0 + C \\ &amp;= 2 \\ &amp;\Longrightarrow\; C = 2 \end{aligned} \]</div>
+          <div class="fit-sm">\[ S(t) = 6\sin^2\frac{\pi t}{6} + 2 \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Pardavimai birželio ir liepos pradžioje</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} S(2) &amp;= 6\sin^2\frac{\pi}{3} + 2 = 6\cdot\frac{3}{4} + 2 = 6{,}5 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;S(2) = 6\sin^2\frac{\pi}{3} + 2 \\ &amp;= 6\cdot\frac{3}{4} + 2 = 6{,}5 \end{aligned} \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} S(3) &amp;= 6\sin^2\frac{\pi}{2} + 2 = 6 + 2 = 8 \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;S(3) = 6\sin^2\frac{\pi}{2} + 2 \\ &amp;= 6 + 2 = 8 \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Didžiausias pardavimo kiekis</span></h4>
+          <p>Kadangi \(\sin^2\frac{\pi t}{6} \le 1\), didžiausias mėnesio pardavimo kiekis yra \(6 + 2 = 8\) šimtai vienetų. Jis pasiekiamas liepos pradžioje, kai \(t = 3\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a) \(S(t)\)&#8203;\({}= 6\sin^2\frac{\pi t}{6} + 2\).</p><p>b) Birželio pradžioje mėnesio pardavimo kiekis yra 650 oro kondicionierių, liepos pradžioje – 800.</p><p style="margin:0">c) Didžiausias mėnesio pardavimo kiekis – 800 oro kondicionierių (liepos pradžioje).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 5. SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Sprendimus užrašykite taip pat kaip pavyzdžiuose: integruokite kitimo tempo funkciją, iš uždavinio teksto užrašykite pradinę sąlygą, raskite integravimo konstantą ir atsakykite į klausimus. Atsakyme pateiktos funkcijos, tarpiniai skaičiavimai ir galutiniai rezultatai – pagal juos pasitikrinkite.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 10.4–10.5 rinkinys, 2 sk. 1 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Naujos bendradarbystės erdvės vadovas prognozuoja, kad praėjus \(t\) mėnesių nuo atidarymo narių skaičiaus \(N(t)\) augimo tempas bus \(N'(t)\)&#8203;\({}= 40 + 6t - 0{,}3t^2\) narių per mėnesį (\(0 \le t \le 20\)). Atidarymo dieną erdvė turi 150 narių. Užrašykite narių skaičių kaip laiko funkciją. Kiek narių bus po 10 mėnesių?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(N(t)\)&#8203;\({}= 40t + 3t^2 - 0{,}1t^3 + C\).</p>
+          <p>\(N(0) = 0 + C = 150\) \(\Longrightarrow C = 150\).</p>
+          <p>Atsakymas: \(N(t)\)&#8203;\({}= 40t + 3t^2 - 0{,}1t^3\)&#8203;\({}+ 150\). \(N(10) = 750\) narių.</p>
+        </div>
+      </article>
+
+      <!-- 2 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Miesto biurų vidutinė mėnesio nuoma po \(t\) metų nuo 2020 m. kinta tempu \(r'(t)\)&#8203;\({}= 0{,}3 + 0{,}04t\) eurų už kvadratinį metrą per metus. 2024 m. mėnesio nuoma vidutiniškai siekė 14,92 euro už kvadratinį metrą. Raskite nuomos kainos funkciją. Kokia vidutinė mėnesio nuomos kaina prognozuojama 2030 m.?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(r(t)\)&#8203;\({}= 0{,}3t + 0{,}02t^2 + C\).</p>
+          <p>\(r(4)\)&#8203;\({}= 1{,}52 + C\)&#8203;\({}= 14{,}92\) \(\Longrightarrow C = 13{,}4\).</p>
+          <p>Atsakymas: \(r(t)\)&#8203;\({}= 0{,}02t^2 + 0{,}3t\)&#8203;\({}+ 13{,}4\). \(r(10) = 18{,}4\) euro už kvadratinį metrą.</p>
+        </div>
+      </article>
+
+      <!-- 3 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Pakavimo įmonės savaitės gamybos apimtis \(Q\) (vienetais) priklauso nuo darbuotojų skaičiaus \(L\). Gamybos apimties kitimo tempas yra \(Q'(L)\)&#8203;\({}= \frac{90}{\sqrt{L}}\) vienetų vienam darbuotojui. Kai dirba 25 darbuotojai, per savaitę pagaminama 1&nbsp;200 vienetų. Užrašykite gamybos apimtį kaip darbuotojų skaičiaus funkciją. Kiek vienetų tikimasi pagaminti per savaitę, kai dirba 64 darbuotojai? Kiek darbuotojų reikia norint per savaitę pagaminti 2&nbsp;100 vienetų?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(Q(L)\)&#8203;\({}= \int 90L^{-\frac{1}{2}}\, dL\)&#8203;\({}= 180\sqrt{L} + C\).</p>
+          <p>\(Q(25) = 900 + C = 1200\) \(\Longrightarrow C = 300\).</p>
+          <p>\(180\sqrt{L} + 300\)&#8203;\({}= 2100\)&#8203;\({}\Longrightarrow \sqrt{L}\)&#8203;\({}= 10\)&#8203;\({}\Longrightarrow L\)&#8203;\({}= 100\).</p>
+          <p>Atsakymas: \(Q(L)\)&#8203;\({}= 180\sqrt{L} + 300\). \(Q(64) = 1740\) vienetų. Reikia 100 darbuotojų.</p>
+        </div>
+      </article>
+
+      <!-- 4 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Spausdintas regioninis laikraštis turi 50 tūkst. prenumeratorių. Prognozuojama, kad po \(t\) mėnesių jų skaičius \(S(t)\) (tūkstančiais) kis tempu \(S'(t)\)&#8203;\({}= -0{,}75\sqrt{t}\) tūkst. prenumeratorių per mėnesį. Prenumeratorių skaičiui sumažėjus iki 18 tūkst., spausdintą leidybą ketinama nutraukti. Užrašykite prenumeratorių skaičių kaip laiko funkciją. Kiek prenumeratorių bus po 9 mėnesių? Kada bus nutraukta spausdinta leidyba?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(S(t)\)&#8203;\({}= \int\left(-0{,}75t^{\frac{1}{2}}\right) dt\)&#8203;\({}= -0{,}5t^{\frac{3}{2}} + C\).</p>
+          <p>\(S(0) = 0 + C = 50\) \(\Longrightarrow C = 50\).</p>
+          <p>\(50 - 0{,}5t^{\frac{3}{2}}\)&#8203;\({}= 18\)&#8203;\({}\Longrightarrow t^{\frac{3}{2}}\)&#8203;\({}= 64\)&#8203;\({}\Longrightarrow t\)&#8203;\({}= 64^{\frac{2}{3}}\)&#8203;\({}= 16\).</p>
+          <p>Atsakymas: \(S(t)\)&#8203;\({}= 50 - 0{,}5t\sqrt{t}\). \(S(9) = 36{,}5\) tūkst. prenumeratorių. Leidyba bus nutraukta po 16 mėnesių.</p>
+        </div>
+      </article>
+
+      <!-- 5 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Parodžius televizijos reklamą, naujo energinio gėrimo dienos pardavimo kiekis \(S(t)\) siekė 500 pakuočių. Praėjus \(t\) dienų nuo reklamos, pardavimo kiekio kitimo tempas yra \(S'(t)\)&#8203;\({}= -36e^{-0{,}12t}\) pakuočių per dieną. Užrašykite dienos pardavimo kiekį kaip laiko funkciją. Kiek pakuočių per dieną bus parduodama praėjus 10 dienų nuo reklamos? Kada šis kiekis sumažės iki 260 pakuočių?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(S(t)\)&#8203;\({}= \int\left(-36e^{-0{,}12t}\right) dt\)&#8203;\({}= 300e^{-0{,}12t} + C\).</p>
+          <p>\(S(0) = 300 + C = 500\) \(\Longrightarrow C = 200\).</p>
+          <p>\(300e^{-0{,}12t} + 200\)&#8203;\({}= 260\)&#8203;\({}\Longrightarrow e^{-0{,}12t}\)&#8203;\({}= 0{,}2\)&#8203;\({}\Longrightarrow t\)&#8203;\({}= \dfrac{\ln 5}{0{,}12} \approx 13{,}4\).</p>
+          <p>Atsakymas: \(S(t)\)&#8203;\({}= 300e^{-0{,}12t} + 200\). \(S(10) \approx 290\) pakuočių. 260 pakuočių riba pasiekiama maždaug po 13,4 dienos.</p>
+        </div>
+      </article>
+
+      <!-- 6 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Kavinių tinklas šiuo metu turi 25 pagal franšizę veikiančias kavines. Vadovybė prognozuoja, kad po \(t\) metų kavinių skaičiaus \(N(t)\) augimo tempas bus \(N'(t)\)&#8203;\({}= \frac{60}{2t + 3}\) kavinių per metus. Užrašykite kavinių skaičių kaip laiko funkciją. Kiek kavinių tinklas turės po 6 metų?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(N(t)\)&#8203;\({}= 60\cdot\dfrac{1}{2}\ln(2t + 3)\)&#8203;\({}+ C\)&#8203;\({}= 30\ln(2t + 3) + C\).</p>
+          <p>\(N(0)\)&#8203;\({}= 30\ln 3 + C\)&#8203;\({}= 25\) \(\Longrightarrow C = 25 - 30\ln 3\).</p>
+          <p>Atsakymas: \(N(t)\)&#8203;\({}= 30\ln\dfrac{2t + 3}{3}\)&#8203;\({}+ 25\). \(N(6)\)&#8203;\({}= 30\ln 5 + 25 \approx 73\) kavinės.</p>
+        </div>
+      </article>
+
+      <!-- 7 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Pajūrio viešbučio mėnesio rezervacijų skaičius \(B(t)\) (šimtais) priklauso nuo sezono. Praėjus \(t\) mėnesių nuo sausio pradžios, jo kitimo tempas yra \(B'(t)\)&#8203;\({}= \frac{5\pi}{6}\cos\frac{\pi(t - 3)}{6}\) šimtų rezervacijų per mėnesį. Balandžio pradžioje (\(t = 3\)) mėnesio rezervacijų skaičius yra 800. Raskite mėnesio rezervacijų skaičiaus funkciją. Kiek rezervacijų per mėnesį viešbutis gauna liepos ir sausio pradžioje?</p>
+        </div>
+        <div class="q-answer">
+          <p>\(B(t)\)&#8203;\({}= \dfrac{5\pi}{6}\cdot\dfrac{6}{\pi}\sin\dfrac{\pi(t - 3)}{6}\)&#8203;\({}+ C\)&#8203;\({}= 5\sin\dfrac{\pi(t - 3)}{6}\)&#8203;\({}+ C\).</p>
+          <p>\(B(3) = 5\sin 0 + C = 8\) \(\Longrightarrow C = 8\).</p>
+          <p>Atsakymas: \(B(t)\)&#8203;\({}= 5\sin\dfrac{\pi(t - 3)}{6}\)&#8203;\({}+ 8\). Liepos pradžioje \(B(6) = 13\), arba 1&nbsp;300 rezervacijų. Sausio pradžioje \(B(0) = 3\), arba 300 rezervacijų.</p>
+        </div>
+      </article>
+
+      <!-- 8 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Prekybos centrų tinklas pradeda lojalumo programą, kurioje dalyvauja 500 narių. Praėjus \(t\) savaičių nuo programos pradžios, narių skaičiaus \(N(t)\) augimo tempas yra \(N'(t)\)&#8203;\({}= 50te^{-0{,}01t^2}\) narių per savaitę. Užrašykite programos narių skaičių kaip laiko funkciją. Kiek narių programa turės po 10 savaičių?</p>
+        </div>
+        <div class="q-answer">
+          <p>Kintamojo keitimas: \(a = -0{,}01t^2\), \(dt\)&#8203;\({}= -\dfrac{da}{0{,}02t}\).</p>
+          <p>\(\int 50te^{-0{,}01t^2}\, dt\)&#8203;\({}= -2500\int e^{a}\, da\) \(= -2500e^{-0{,}01t^2} + C\).</p>
+          <p>\(N(0) = -2500 + C = 500\) \(\Longrightarrow C = 3000\).</p>
+          <p>Atsakymas: \(N(t)\)&#8203;\({}= 3000 - 2500e^{-0{,}01t^2}\). \(N(10)\)&#8203;\({}= 3000\)&#8203;\({}- 2500e^{-1} \approx 2080\) narių.</p>
+        </div>
+      </article>
+
+      <!-- 9 uždavinys -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Išmaniojo laikrodžio kainos \(p\) (eurais) kitimo tempas yra \(p'(x)\)&#8203;\({}= -\frac{40\ln(x + 1)}{x + 1}\) eurų tūkstančiui laikrodžių. Čia \(x\) yra mėnesio paklausos kiekis tūkstančiais (\(0 \le x \le 12\)). Kai kaina 150 eurų, paklausos kiekis lygus nuliui. Raskite paklausos (kainos) funkciją. Kokia kaina atitinka 9 tūkst. laikrodžių mėnesio paklausą?</p>
+        </div>
+        <div class="q-answer">
+          <p>Kintamojo keitimas: \(a = \ln(x + 1)\), \(dx = (x + 1)\, da\).</p>
+          <p>\(\int\left(-\dfrac{40\ln(x + 1)}{x + 1}\right) dx\)&#8203;\({}= -40\int a\, da\) \(= -20\ln^2(x + 1) + C\).</p>
+          <p>\(p(0)\)&#8203;\({}= -20\ln^2 1 + C\)&#8203;\({}= 150\) \(\Longrightarrow C = 150\), nes \(\ln 1 = 0\).</p>
+          <p>Atsakymas: \(p(x)\)&#8203;\({}= 150 - 20\ln^2(x + 1)\). \(p(9)\)&#8203;\({}= 150\)&#8203;\({}- 20\ln^2 10 \approx 43{,}96\) euro.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">9 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">11.1–11.2 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

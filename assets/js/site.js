@@ -514,7 +514,7 @@
       { id: 'm101', status: 'active', href: { lt: 'tema-10-ribine-analize.html' },
         title: { lt: 'Ribinė analizė', en: 'Marginal Analysis' },
         desc: { lt: 'Pajamų, sąnaudų ir pelno funkcijų atkūrimas pagal ribinių dydžių funkcijas.', en: 'Recovering the revenue, cost and profit functions from the marginal functions.' } },
-      { id: 'm102', status: 'soon',
+      { id: 'm102', status: 'active', href: { lt: 'tema-10-funkcijos-atstatymas.html' },
         title: { lt: 'Funkcijos atstatymas', en: 'Recovering a Function' },
         desc: { lt: 'Dydžio funkcijos atstatymas pagal jo kitimo tempą ir vieną žinomą reikšmę.', en: 'Recovering the function of a quantity from its rate of change and one known value.' } }
     ]
@@ -647,6 +647,8 @@
                title: { lt: 'Įvairūs integravimo uždaviniai', en: 'Mixed Integration Problems' } },
     m101:    { parent: 't10', topic: 't10', model: 'm101', href: { lt: 'tema-10-ribine-analize.html', en: null },
                title: { lt: 'Ribinė analizė', en: 'Marginal Analysis' } },
+    m102:    { parent: 't10', topic: 't10', model: 'm102', href: { lt: 'tema-10-funkcijos-atstatymas.html', en: null },
+               title: { lt: 'Funkcijos atstatymas', en: 'Recovering a Function' } },
     means:   { parent: 't1', topic: 't1', model: 'means', href: { lt: 'tema-1-gamybos-priemoniu-pasirinkimas.html', en: 'tema-1-gamybos-priemoniu-pasirinkimas.html' },
                title: { lt: 'Gamybos priemonių pasirinkimas', en: 'Choice of the Means of Production' } },
     midterm: { parent: 'home', href: { lt: 'tarpinis-egzaminas.html', en: 'tarpinis-egzaminas.html' },
