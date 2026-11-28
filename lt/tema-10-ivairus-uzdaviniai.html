@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Įvairūs integravimo uždaviniai · Taikomoji matematika</title>
+<meta name="description" content="Kaip pasirinkti integravimo būdą: pagrindinės ar naudingosios formulės, pointegrinės funkcijos pertvarkymas ar kintamojo keitimas. Įvairia tvarka pateikti pavyzdžiai su būdo pasirinkimo paaiškinimu ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="m10d">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">10 tema · Integralų skaičiavimas · 4 skyrius</span>
+    <h1>Įvairūs integravimo uždaviniai</h1>
+    <p class="lead">Šiame skyriuje integravimo būdą reikia pasirinkti patiems: pagrindinės ar naudingosios formulės, pointegrinės funkcijos pertvarkymas ar kintamojo keitimas. Pavyzdžiai pateikti įvairia tvarka. Prieš atskleisdami sprendimą, pabandykite patys nuspręsti, kurį būdą taikytumėte.</p>
+    <ul class="jump">
+      <li><a href="#budas">Būdo pasirinkimas</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ BŪDO PASIRINKIMAS ============ -->
+  <section class="section" id="budas" aria-labelledby="h-choice">
+    <h2 id="h-choice">Kaip pasirinkti integravimo būdą</h2>
+    <article class="card">
+      <p>Ankstesniuose skyriuose integravimo būdas buvo žinomas iš anksto. Spręsdami įvairius uždavinius, jį pasirenkame patys. Prieš integruodami įsižiūrėkite į pointegrinę funkciją ir atsakykite į šiuos klausimus tokia tvarka:</p>
+      <ol class="steps-list">
+        <li><strong>Ar tinka pagrindinės formulės?</strong> Jei pointegrinė funkcija yra laipsnių, šaknų, trupmenų \(\frac{1}{x^n}\), funkcijų \(e^x\), \(\sin x\), \(\cos x\) suma, integruojame panariui (<a href="tema-10-pagrindines-formules.html">1 skyrius</a>).</li>
+        <li><strong>Ar argumentas tiesinis?</strong> Jei vietoje \(x\) yra tiesinė funkcija \(ax + b\), taikome naudingąsias formules (<a href="tema-10-naudingosios-formules.html">2 skyrius</a>).</li>
+        <li><strong>Ar pointegrinę funkciją galima pertvarkyti?</strong> Atskliaudžiame, trupmeną su vienu nariu vardiklyje dalijame narys po nario, skaitiklį skaidome dauginamaisiais ir trupmeną suprastiname, laipsnius su tuo pačiu pagrindu sujungiame, taikome trigonometrines tapatybes. Tada grįžtame prie pirmojo ar antrojo klausimo.</li>
+        <li><strong>Ar yra funkcija ir jos (beveik) išvestinė?</strong> Jei vidinė funkcija netiesinė, o jos (beveik) išvestinė yra daugiklis arba skaitiklis, keičiame kintamąjį (<a href="tema-10-kintamojo-keitimas.html">3 skyrius</a>).</li>
+      </ol>
+
+      <h3 class="subhead" style="margin-top:18px">Ką matome ir ką darome</h3>
+      <div class="tbl-wrap">
+        <table class="vtable compact">
+          <thead>
+            <tr><th scope="col">Pointegrinėje funkcijoje</th><th scope="col" style="text-align:left">Būdas</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>laipsnių, šaknų ir trupmenų \(\frac{1}{x^n}\) suma</td><td style="text-align:left">pagrindinės formulės</td></tr>
+            <tr><td>\((ax + b)^n\), \(\sqrt{ax + b}\), \(e^{ax + b}\), \(\cos(ax + b)\)</td><td style="text-align:left">naudingosios formulės</td></tr>
+            <tr><td>sandauga ar laipsnis, kurį paprasta atskliausti;<br>trupmena su vienu nariu vardiklyje</td><td style="text-align:left">pertvarkymas, tada formulės</td></tr>
+            <tr><td>\(\sin^2 x\), \(\cos^2 x\), \(\sin x\cos x\), \(\operatorname{tg}^2 x\)</td><td style="text-align:left">trigonometrinė tapatybė, tada formulės</td></tr>
+            <tr><td>sudėtinė funkcija su netiesiniu argumentu<br>ir jo (beveik) išvestinė</td><td style="text-align:left">kintamojo keitimas</td></tr>
+            <tr><td>trupmena, kurios skaitiklis yra<br>vardiklio (beveik) išvestinė</td><td style="text-align:left">kintamojo keitimas</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tip"><strong>Kai tinka keli būdai.</strong> Tą patį integralą kartais galima apskaičiuoti keliais būdais. Rinkitės trumpesnį: kai argumentas tiesinis, naudingoji formulė greitesnė už kintamojo keitimą. Skirtingais būdais gauti atsakymai gali atrodyti skirtingai, bet skirtis tik pastoviu dėmeniu. Ar atsakymas teisingas, visada galima patikrinti diferencijuojant.</p>
+
+      <details class="more more--mistake">
+        <summary><span class="ico" aria-hidden="true">!</span>Tipinės klaidos</summary>
+        <div class="more-body">
+          <ul>
+            <li><strong>Naudingoji formulė taikoma netiesiniam argumentui.</strong> Pavyzdžiui, \(\int e^{x^2}\, dx \ne \frac{1}{2x}e^{x^2} + C\).</li>
+            <li><strong>Sandauga ar dalmuo integruojami kaip atskiri daugikliai.</strong> Integralas nėra daugiklių integralų sandauga ar dalmuo: pirmiausia pertvarkome arba keičiame kintamąjį.</li>
+            <li><strong>Trupmena dalijama narys po nario, kai vardiklyje keli nariai.</strong> Taip galima daryti tik tada, kai vardiklyje yra vienas narys.</li>
+            <li><strong>Kintamasis keičiamas, kai daugiklis nėra beveik išvestinė.</strong> Jei po prastinimo lieka \(x\), reikia ieškoti kito būdo.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ============ PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Pavyzdžiai</h2>
+    <p class="section-intro">Pavyzdžiai pateikti įvairia tvarka, kad būdą tektų pasirinkti patiems. Pirmajame kiekvieno pavyzdžio žingsnyje paaiškinta, kodėl pasirinktas būtent toks būdas. Prieš jį atskleisdami, nuspręskite patys.</p>
+    <!-- 1 pavyzdys: TM 10.1, 14 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Daugianario ir laipsnio dalmuo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{x^3 - 2x^5 + 1}{x^4}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Vardiklyje yra vienas narys \(x^4\), todėl kiekvieną skaitiklio narį galima padalyti iš vardiklio. Gausime laipsnių sumą, kuriai tinka pagrindinės formulės. Sudėtinės funkcijos čia nėra, todėl kintamojo keisti nereikia.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <p>Dalijame narys po nario, laipsnius užrašome su neigiamais rodikliais ir integruojame panariui:</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{x^3 - 2x^5 + 1}{x^4}\, dx &amp;= \int\left(\frac{x^3}{x^4} - \frac{2x^5}{x^4} + \frac{1}{x^4}\right) dx \\ &amp;= \int\left(\frac{1}{x} - 2x + x^{-4}\right) dx \\ &amp;= \ln|x| - x^2 + \frac{x^{-3}}{-3} + C = \ln|x| - x^2 - \frac{1}{3x^3} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{x^3 - 2x^5 + 1}{x^4}\, dx \\ &amp;= \int\left(\frac{x^3}{x^4} - \frac{2x^5}{x^4} + \frac{1}{x^4}\right) dx \\ &amp;= \int\left(\frac{1}{x} - 2x + x^{-4}\right) dx \\ &amp;= \ln|x| - x^2 + \frac{x^{-3}}{-3} + C \\ &amp;= \ln|x| - x^2 - \frac{1}{3x^3} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\ln|x| - x^2 - \frac{1}{3}x^{-3}\right)^{\prime} \\ &amp;= \frac{1}{x} - 2x + x^{-4} \end{aligned} \]</div>
+          <p>Gavome pertvarkytą pointegrinę funkciją.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int \frac{x^3 - 2x^5 + 1}{x^4}\, dx \\ &amp;= \ln|x| - x^2 - \frac{1}{3x^3} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys: TM 10.3, 3 pavyzdys (pakeista: rodiklis 4; su rodikliu 3 sutapo su Tan 11.2 pratimu 5) -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Laipsnis vardiklyje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{4x}{\left(2x^2 + 3\right)^4}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Vardiklyje yra laipsnis, kurio pagrindas \(2x^2 + 3\) – netiesinė funkcija, todėl naudingosios formulės netinka, o atskliausti ketvirtąjį laipsnį ir dalyti būtų sudėtinga. Pagrindo išvestinė \(\left(2x^2 + 3\right)^{\prime} = 4x\) yra skaitiklyje, todėl keičiame kintamąjį: \(a = 2x^2 + 3\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{4x}{\left(2x^2 + 3\right)^4}\, dx &amp;= \left[\begin{array}{l} a = 2x^2 + 3 \\ da = a^{\prime}\,dx = 4x\,dx \;\big|:4x \\ dx = \dfrac{da}{4x} \end{array}\right] \\ &amp;= \int \frac{\cancel{4x}}{a^4}\cdot\frac{da}{\cancel{4x}} = \int a^{-4}\, da \\ &amp;= \frac{a^{-3}}{-3} + C = -\frac{1}{3\left(2x^2 + 3\right)^3} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{4x}{\left(2x^2 + 3\right)^4}\, dx \\ &amp;= \left[\begin{array}{l} a = 2x^2 + 3 \\ da = a^{\prime}\,dx = 4x\,dx \;\big|:4x \\ dx = \dfrac{da}{4x} \end{array}\right] \\ &amp;= \int \frac{\cancel{4x}}{a^4}\cdot\frac{da}{\cancel{4x}} = \int a^{-4}\, da \\ &amp;= \frac{a^{-3}}{-3} + C \\ &amp;= -\frac{1}{3\left(2x^2 + 3\right)^3} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(-\frac{1}{3}\left(2x^2 + 3\right)^{-3}\right)^{\prime} \\ &amp;= -\frac{1}{3}\cdot(-3)\left(2x^2 + 3\right)^{-4}\cdot 4x \\ &amp;= \frac{4x}{\left(2x^2 + 3\right)^4} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int \frac{4x}{\left(2x^2 + 3\right)^4}\, dx \\ &amp;= -\frac{1}{3\left(2x^2 + 3\right)^3} + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys: TM 10.1, 23 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Sinusų dalmuo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{\sin 2x}{\sin x}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Tokiai trupmenai tinkamos formulės nėra. Skaitiklį galima pertvarkyti dvigubo kampo formule \(\sin 2x = 2\sin x\cos x\). Tada \(\sin x\) susiprastina, ir lieka funkcija, kuriai tinka pagrindinė formulė.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{\sin 2x}{\sin x}\, dx &amp;= \int \frac{2\cancel{\sin x}\cos x}{\cancel{\sin x}}\, dx = \int 2\cos x\, dx = 2\sin x + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{\sin 2x}{\sin x}\, dx \\ &amp;= \int \frac{2\cancel{\sin x}\cos x}{\cancel{\sin x}}\, dx \\ &amp;= \int 2\cos x\, dx = 2\sin x + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} (2\sin x)^{\prime} &amp;= 2\cos x \\ &amp;= \frac{2\sin x\cos x}{\sin x} = \frac{\sin 2x}{\sin x} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \int \frac{\sin 2x}{\sin x}\, dx = 2\sin x + C \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys: TM 10.2, 3 a pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Šaknis vardiklyje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{1}{\sqrt{4x + 1}}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Šaknies argumentas \(4x + 1\) – tiesinė funkcija, todėl tinka naudingoji formulė \(\int \frac{1}{\sqrt{ax + b}}\, dx\) \(= \frac{1}{a}\cdot 2\sqrt{ax + b} + C\), kai \(a = 4\). Kintamąjį keisti taip pat galima, bet tai ilgiau.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \int \frac{1}{\sqrt{4x + 1}}\, dx = \frac{1}{4}\cdot 2\sqrt{4x + 1} + C = \frac{1}{2}\sqrt{4x + 1} + C \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{1}{\sqrt{4x + 1}}\, dx \\ &amp;= \frac{1}{4}\cdot 2\sqrt{4x + 1} + C \\ &amp;= \frac{1}{2}\sqrt{4x + 1} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\frac{1}{2}(4x + 1)^{\frac{1}{2}}\right)^{\prime} \\ &amp;= \frac{1}{2}\cdot\frac{1}{2}(4x + 1)^{-\frac{1}{2}}\cdot 4 = \frac{1}{\sqrt{4x + 1}} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="fit-sm">\[ \int \frac{1}{\sqrt{4x + 1}}\, dx = \frac{1}{2}\sqrt{4x + 1} + C \]</div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys: TM 10.3, 12 pavyzdys (pakeista: skaitiklis 2; su 1 sutapo su Tan 11.2 pratimu 37) -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Logaritmas vardiklyje</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{2}{x\ln x}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Pointegrinę funkciją užrašome sandauga \(\frac{2}{x\ln x} = \frac{2}{\ln x}\cdot\frac{1}{x}\). Joje yra funkcija \(\ln x\) ir jos išvestinė \(\frac{1}{x}\), todėl keičiame kintamąjį: \(a = \ln x\). Pagrindinių formulių čia tiesiogiai pritaikyti negalima, o trupmenos pertvarkyti nėra kaip.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{2}{x\ln x}\, dx &amp;= \left[\begin{array}{l} a = \ln x \\ da = a^{\prime}\,dx = \frac{1}{x}\,dx \;\big|:\frac{1}{x} \\ dx = x\,da \end{array}\right] \\ &amp;= \int \frac{2}{\cancel{x}\,a}\cdot\cancel{x}\, da = 2\int \frac{1}{a}\, da \\ &amp;= 2\ln|a| + C = 2\ln\left|\ln x\right| + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{2}{x\ln x}\, dx \\ &amp;= \left[\begin{array}{l} a = \ln x \\ da = a^{\prime}\,dx = \frac{1}{x}\,dx \;\big|:\frac{1}{x} \\ dx = x\,da \end{array}\right] \\ &amp;= \int \frac{2}{\cancel{x}\,a}\cdot\cancel{x}\, da = 2\int \frac{1}{a}\, da \\ &amp;= 2\ln|a| + C = 2\ln\left|\ln x\right| + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \big(2\ln\left|\ln x\right|\big)^{\prime} = 2\cdot\frac{1}{\ln x}\cdot\frac{1}{x} = \frac{2}{x\ln x} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \int \frac{2}{x\ln x}\, dx = 2\ln\left|\ln x\right| + C \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys: TM 10.3, 11 b pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Rodiklinės funkcijos trupmena</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{e^{2x}}{1 - 3e^{2x}}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Vardiklyje yra du nariai, todėl trupmenos negalima išskaidyti narys po nario, o naudingosios formulės tinka tik funkcijai su tiesiniu argumentu. Vardiklio išvestinė \(\left(1 - 3e^{2x}\right)^{\prime} = -6e^{2x}\), o skaitiklyje yra beveik išvestinė \(e^{2x}\). Todėl keičiame kintamąjį: \(a = 1 - 3e^{2x}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{e^{2x}}{1 - 3e^{2x}}\, dx &amp;= \left[\begin{array}{l} a = 1 - 3e^{2x} \\ da = a^{\prime}\,dx = -6e^{2x}\,dx \;\big|:\left(-6e^{2x}\right) \\ dx = -\dfrac{da}{6e^{2x}} \end{array}\right] \\ &amp;= \int \frac{\cancel{e^{2x}}}{a}\cdot\left(-\frac{da}{6\cancel{e^{2x}}}\right) = -\frac{1}{6}\int \frac{1}{a}\, da \\ &amp;= -\frac{1}{6}\ln|a| + C = -\frac{1}{6}\ln\left|1 - 3e^{2x}\right| + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg" style="font-size:.9em">\[ \begin{aligned} &amp;\int \frac{e^{2x}}{1 - 3e^{2x}}\, dx \\ &amp;= \left[\begin{array}{l} a = 1 - 3e^{2x} \\ da = a^{\prime}\,dx = -6e^{2x}\,dx \;\big|:\left(-6e^{2x}\right) \\ dx = -\dfrac{da}{6e^{2x}} \end{array}\right] \\ &amp;= \int \frac{\cancel{e^{2x}}}{a}\cdot\left(-\frac{da}{6\cancel{e^{2x}}}\right) \\ &amp;= -\frac{1}{6}\int \frac{1}{a}\, da = -\frac{1}{6}\ln|a| + C \\ &amp;= -\frac{1}{6}\ln\left|1 - 3e^{2x}\right| + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(-\frac{1}{6}\ln\left|1 - 3e^{2x}\right|\right)^{\prime} \\ &amp;= -\frac{1}{6}\cdot\frac{1}{1 - 3e^{2x}}\cdot\left(-6e^{2x}\right) = \frac{e^{2x}}{1 - 3e^{2x}} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int \frac{e^{2x}}{1 - 3e^{2x}}\, dx \\ &amp;= -\frac{1}{6}\ln\left|1 - 3e^{2x}\right| + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys: TM 10.3, 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Kosinusas: du būdai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \cos(2x + 1)\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Kosinuso argumentas \(2x + 1\) nesutampa su \(x\), todėl kintamąjį keisti galima. Tačiau argumentas tiesinis, todėl tinka ir naudingoji formulė. Išspręskime abiem būdais ir palyginkime.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>1 būdas: naudingoji formulė</span></h4>
+          <p>Taikome formulę \(\int \cos(ax + b)\, dx\) \(= \frac{1}{a}\sin(ax + b) + C\), kai \(a = 2\):</p>
+          <div class="fit-sm">\[ \begin{aligned} \int \cos(2x + 1)\, dx &amp;= \frac{1}{2}\sin(2x + 1) + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>2 būdas: kintamojo keitimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \cos(2x + 1)\, dx &amp;= \left[\begin{array}{l} a = 2x + 1 \\ da = a^{\prime}\,dx = 2\,dx \;\big|:2 \\ dx = \dfrac{da}{2} \end{array}\right] \\ &amp;= \int \cos a\cdot\frac{da}{2} = \frac{1}{2}\int \cos a\, da \\ &amp;= \frac{1}{2}\sin a + C = \frac{1}{2}\sin(2x + 1) + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \cos(2x + 1)\, dx \\ &amp;= \left[\begin{array}{l} a = 2x + 1 \\ da = a^{\prime}\,dx = 2\,dx \;\big|:2 \\ dx = \dfrac{da}{2} \end{array}\right] \\ &amp;= \int \cos a\cdot\frac{da}{2} = \frac{1}{2}\int \cos a\, da \\ &amp;= \frac{1}{2}\sin a + C = \frac{1}{2}\sin(2x + 1) + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Palyginimas ir patikrinimas</span></h4>
+          <p>Abu būdai duoda tą patį rezultatą, bet naudingoji formulė trumpesnė. Todėl, kai argumentas tiesinis, taikome ją, o kintamąjį keičiame, kai argumentas netiesinis.</p>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\frac{1}{2}\sin(2x + 1)\right)^{\prime} \\ &amp;= \frac{1}{2}\cos(2x + 1)\cdot 2 = \cos(2x + 1) \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int \cos(2x + 1)\, dx \\ &amp;= \frac{1}{2}\sin(2x + 1) + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys: TM 10.1, 16 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Trupmena su šaknimi</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{4 - x}{2 + \sqrt{x}}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Vardiklyje yra du nariai, todėl skaitiklio narių iš jo dalyti negalima. Tačiau \(x = \left(\sqrt{x}\right)^2\), todėl skaitiklį galima išskaidyti pagal kvadratų skirtumo formulę: \(4 - x = 2^2 - \left(\sqrt{x}\right)^2\) \(= \left(2 - \sqrt{x}\right)\left(2 + \sqrt{x}\right)\). Suprastinę trupmeną, gausime funkcijas, kurioms tinka pagrindinės formulės.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{4 - x}{2 + \sqrt{x}}\, dx &amp;= \int \frac{\left(2 - \sqrt{x}\right)\cancel{\left(2 + \sqrt{x}\right)}}{\cancel{2 + \sqrt{x}}}\, dx = \int\left(2 - x^{\frac{1}{2}}\right) dx \\ &amp;= 2x - \frac{x^{\frac{3}{2}}}{\frac{3}{2}} + C = 2x - \frac{2}{3}x\sqrt{x} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{4 - x}{2 + \sqrt{x}}\, dx \\ &amp;= \int \frac{\left(2 - \sqrt{x}\right)\cancel{\left(2 + \sqrt{x}\right)}}{\cancel{2 + \sqrt{x}}}\, dx \\ &amp;= \int\left(2 - x^{\frac{1}{2}}\right) dx = 2x - \frac{x^{\frac{3}{2}}}{\frac{3}{2}} + C \\ &amp;= 2x - \frac{2}{3}x\sqrt{x} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \left(2x - \frac{2}{3}x^{\frac{3}{2}}\right)^{\prime} = 2 - \frac{2}{3}\cdot\frac{3}{2}x^{\frac{1}{2}} = 2 - \sqrt{x} \]</div>
+          <p>Gavome suprastintą pointegrinę funkciją.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="fit-sm">\[ \int \frac{4 - x}{2 + \sqrt{x}}\, dx = 2x - \frac{2}{3}x\sqrt{x} + C \]</div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 9 pavyzdys: TM 10.2, 9 a pavyzdys -->
+    <article class="card example" id="pavyzdys-9">
+      <header class="example-head">
+        <span class="example-tag">9 pavyzdys</span>
+        <h3>Sinuso kvadratas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \sin^2 x\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Funkcijos \(\sin^2 x\) pagrindinėse formulėse nėra. Kintamojo keitimas netinka: \(\sin^2 x = (\sin x)^2\), bet šalia nėra argumento \(\sin x\) išvestinės \(\cos x\). Laipsnį pašaliname dvigubo kampo tapatybe \(\sin^2 x = \frac{1 - \cos 2x}{2}\) ir taikome naudingąją formulę.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \sin^2 x\, dx &amp;= \int\left(\frac{1}{2} - \frac{1}{2}\cos 2x\right) dx \\ &amp;= \frac{x}{2} - \frac{1}{2}\cdot\frac{1}{2}\sin 2x + C = \frac{x}{2} - \frac{1}{4}\sin 2x + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \sin^2 x\, dx \\ &amp;= \int\left(\frac{1}{2} - \frac{1}{2}\cos 2x\right) dx \\ &amp;= \frac{x}{2} - \frac{1}{2}\cdot\frac{1}{2}\sin 2x + C \\ &amp;= \frac{x}{2} - \frac{1}{4}\sin 2x + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\frac{x}{2} - \frac{1}{4}\sin 2x\right)^{\prime} \\ &amp;= \frac{1}{2} - \frac{1}{4}\cdot 2\cos 2x \\ &amp;= \frac{1 - \cos 2x}{2} = \sin^2 x \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="fit-sm">\[ \int \sin^2 x\, dx = \frac{x}{2} - \frac{1}{4}\sin 2x + C \]</div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 10 pavyzdys: TM 10.3, 8 pavyzdys (pakeista: skaitiklis 2x^2 - 2; su x^2 - 1 sutapo su Tan 11.2 pratimu 18) -->
+    <article class="card example" id="pavyzdys-10">
+      <header class="example-head">
+        <span class="example-tag">10 pavyzdys</span>
+        <h3>Daugianarių dalmuo</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \frac{2x^2 - 2}{x^3 - 3x + 1}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Vardiklyje yra trys nariai, todėl trupmenos išskaidyti negalima. Palyginkime skaitiklį su vardiklio išvestine: \(\left(x^3 - 3x + 1\right)^{\prime} = 3x^2 - 3\) \(= 3\left(x^2 - 1\right)\), o skaitiklis \(2x^2 - 2 = 2\left(x^2 - 1\right)\). Skaitiklis yra beveik išvestinė, todėl keičiame kintamąjį: \(a = x^3 - 3x + 1\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <p>Skaitiklį užrašome \(2\left(x^2 - 1\right)\), o išvestinę – \(3\left(x^2 - 1\right)\):</p>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{2x^2 - 2}{x^3 - 3x + 1}\, dx &amp;= \left[\begin{array}{l} a = x^3 - 3x + 1 \\ da = a^{\prime}\,dx = 3\left(x^2 - 1\right)dx \;\big|:3\left(x^2 - 1\right) \\ dx = \dfrac{da}{3\left(x^2 - 1\right)} \end{array}\right] \\ &amp;= \int \frac{2\cancel{\left(x^2 - 1\right)}}{a}\cdot\frac{da}{3\cancel{\left(x^2 - 1\right)}} = \frac{2}{3}\int \frac{1}{a}\, da \\ &amp;= \frac{2}{3}\ln|a| + C = \frac{2}{3}\ln\left|x^3 - 3x + 1\right| + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg" style="font-size:.9em">\[ \begin{aligned} &amp;\int \frac{2x^2 - 2}{x^3 - 3x + 1}\, dx \\ &amp;= \left[\begin{array}{l} a = x^3 - 3x + 1 \\ da = a^{\prime}\,dx = 3\left(x^2 - 1\right)dx \;\big|:3\left(x^2 - 1\right) \\ dx = \dfrac{da}{3\left(x^2 - 1\right)} \end{array}\right] \\ &amp;= \int \frac{2\cancel{\left(x^2 - 1\right)}}{a}\cdot\frac{da}{3\cancel{\left(x^2 - 1\right)}} \\ &amp;= \frac{2}{3}\int \frac{1}{a}\, da = \frac{2}{3}\ln|a| + C \\ &amp;= \frac{2}{3}\ln\left|x^3 - 3x + 1\right| + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\frac{2}{3}\ln\left|x^3 - 3x + 1\right|\right)^{\prime} \\ &amp;= \frac{2}{3}\cdot\frac{3x^2 - 3}{x^3 - 3x + 1} = \frac{2x^2 - 2}{x^3 - 3x + 1} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} &amp;\int \frac{2x^2 - 2}{x^3 - 3x + 1}\, dx \\ &amp;= \frac{2}{3}\ln\left|x^3 - 3x + 1\right| + C \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 11 pavyzdys: TM 10.2, 8 b pavyzdys -->
+    <article class="card example" id="pavyzdys-11">
+      <header class="example-head">
+        <span class="example-tag">11 pavyzdys</span>
+        <h3>Rodiklinių funkcijų sandauga</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int e^x\cdot e^{3x + 1}\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Sandaugai integruoti formulės nėra, tačiau laipsnius su tuo pačiu pagrindu galima sujungti, sudėjus rodiklius: \(e^x\cdot e^{3x + 1} = e^{4x + 1}\). Gautos funkcijos argumentas tiesinis, todėl taikome naudingąją formulę, kai \(a = 4\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sprendimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int e^x\cdot e^{3x + 1}\, dx &amp;= \int e^{4x + 1}\, dx = \frac{1}{4}e^{4x + 1} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int e^x\cdot e^{3x + 1}\, dx \\ &amp;= \int e^{4x + 1}\, dx = \frac{1}{4}e^{4x + 1} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Patikrinimas</span></h4>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\frac{1}{4}e^{4x + 1}\right)^{\prime} = \frac{1}{4}e^{4x + 1}\cdot 4 \\ &amp;= e^{4x + 1} = e^x\cdot e^{3x + 1} \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="fit-sm">\[ \int e^x\cdot e^{3x + 1}\, dx = \frac{1}{4}e^{4x + 1} + C \]</div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 12 pavyzdys: TM 10.2, 9 b pavyzdys -->
+    <article class="card example" id="pavyzdys-12">
+      <header class="example-head">
+        <span class="example-tag">12 pavyzdys</span>
+        <h3>Sinuso ir kosinuso sandauga: du būdai</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Apskaičiuokite integralą \(\displaystyle\int \sin x\cos x\, dx\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Būdo pasirinkimas</span></h4>
+          <p>Sandaugai integruoti formulės nėra. Šį integralą galima apskaičiuoti dviem būdais: pertvarkyti sandaugą dvigubo kampo formule \(\sin x\cos x = \frac{1}{2}\sin 2x\) arba keisti kintamąjį, nes \(\cos x\) yra funkcijos \(\sin x\) išvestinė.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>1 būdas: tapatybė ir naudingoji formulė</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \sin x\cos x\, dx &amp;= \frac{1}{2}\int \sin 2x\, dx = \frac{1}{2}\cdot\left(-\frac{1}{2}\cos 2x\right) + C = -\frac{1}{4}\cos 2x + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \sin x\cos x\, dx \\ &amp;= \frac{1}{2}\int \sin 2x\, dx \\ &amp;= \frac{1}{2}\cdot\left(-\frac{1}{2}\cos 2x\right) + C \\ &amp;= -\frac{1}{4}\cos 2x + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>2 būdas: kintamojo keitimas</span></h4>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \sin x\cos x\, dx &amp;= \left[\begin{array}{l} a = \sin x \\ da = a^{\prime}\,dx = \cos x\,dx \;\big|:\cos x \\ dx = \dfrac{da}{\cos x} \end{array}\right] \\ &amp;= \int a\cancel{\cos x}\cdot\frac{da}{\cancel{\cos x}} = \int a\, da \\ &amp;= \frac{a^2}{2} + C = \frac{\sin^2 x}{2} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \sin x\cos x\, dx \\ &amp;= \left[\begin{array}{l} a = \sin x \\ da = a^{\prime}\,dx = \cos x\,dx \;\big|:\cos x \\ dx = \dfrac{da}{\cos x} \end{array}\right] \\ &amp;= \int a\cancel{\cos x}\cdot\frac{da}{\cancel{\cos x}} = \int a\, da \\ &amp;= \frac{a^2}{2} + C = \frac{\sin^2 x}{2} + C \end{aligned} \]</div>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">4</span><span>Palyginimas ir patikrinimas</span></h4>
+          <p>Atsakymai atrodo skirtingai, bet abu teisingi. Pagal tapatybę \(\cos 2x = 1 - 2\sin^2 x\):</p>
+          <div class="fit-sm">\[ \begin{aligned} -\frac{1}{4}\cos 2x &amp;= -\frac{1}{4}\left(1 - 2\sin^2 x\right) \\ &amp;= \frac{\sin^2 x}{2} - \frac{1}{4} \end{aligned} \]</div>
+          <p>Funkcijos skiriasi tik pastoviu dėmeniu \(-\frac{1}{4}\), kuris įeina į integravimo konstantą \(C\). Abiejų funkcijų išvestinė ta pati:</p>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\frac{\sin^2 x}{2}\right)^{\prime} \\ &amp;= \frac{1}{2}\cdot 2\sin x\cos x = \sin x\cos x \end{aligned} \]</div>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(-\frac{1}{4}\cos 2x\right)^{\prime} = \frac{1}{4}\cdot 2\sin 2x \\ &amp;= \frac{1}{2}\sin 2x = \sin x\cos x \end{aligned} \]</div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="fit-sm">\[ \int \sin x\cos x\, dx = -\frac{1}{4}\cos 2x + C \]</div>
+            <p style="margin:0;text-align:center">arba, keičiant kintamąjį, \(\dfrac{\sin^2 x}{2} + C\)</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SAVARANKIŠKAI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Uždaviniai taip pat pateikti įvairia tvarka. Pirmiausia nuspręskite, kurį būdą taikysite, ir trumpai pagrįskite, tada apskaičiuokite integralą. Atsakymą patikrinkite diferencijuodami.</p>
+
+    <div class="quiz" data-numbering="task">
+      <!-- TM 10.1–10.3 rinkinys 8 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int x\left(x^2 + 1\right)^3 dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Kintamojo keitimas: argumentas \(x^2 + 1\) netiesinis, o daugiklis \(x\) – jo beveik išvestinė; \(a = x^2 + 1\), \(dx = \dfrac{da}{2x}\).</p>
+          <p>Atsakymas: \(\dfrac{\left(x^2 + 1\right)^4}{8} + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 8 c -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \frac{1}{x + 1}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naudingoji formulė: argumentas tiesinis, \(a = 1\).</p>
+          <p>Atsakymas: \(\ln|x + 1| + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 6 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \cos^2 x\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Tapatybė \(\cos^2 x = \dfrac{1 + \cos 2x}{2}\), tada naudingoji formulė.</p>
+          <p>Atsakymas: \(\dfrac{x}{2} + \dfrac{1}{4}\sin 2x + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 8 f -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int xe^{-2x^2}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Kintamojo keitimas: \(a = -2x^2\), \(dx = -\dfrac{da}{4x}\).</p>
+          <p>Atsakymas: \(-\dfrac{1}{4}e^{-2x^2} + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 8 a -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int (x + 1)^3\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naudingoji formulė: argumentas tiesinis, \(a = 1\).</p>
+          <p>Atsakymas: \(\dfrac{(x + 1)^4}{4} + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 7 g -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int e^x\left(e^x + 5\right)^3 dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Kintamojo keitimas: \(a = e^x + 5\), \(dx = \dfrac{da}{e^x}\).</p>
+          <p>Atsakymas: \(\dfrac{\left(e^x + 5\right)^4}{4} + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 8 e (pakeista: daugiklis 4; e^{-2x} sutapo su Tan 11.2 pratimu 19) -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int 4e^{-2x}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naudingoji formulė: argumentas tiesinis, \(a = -2\).</p>
+          <p>Atsakymas: \(-2e^{-2x} + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 7 k -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \frac{\sin x}{\cos^3 x}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Kintamojo keitimas: \(a = \cos x\), \(dx = -\dfrac{da}{\sin x}\); integralas \(-\int a^{-3}\, da\).</p>
+          <p>Atsakymas: \(\dfrac{1}{2\cos^2 x} + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 8 h -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \sin^2 x\cos x\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Kintamojo keitimas: \(a = \sin x\), \(dx = \dfrac{da}{\cos x}\).</p>
+          <p>Atsakymas: \(\dfrac{\sin^3 x}{3} + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 8 g (pakeista: daugiklis 6; cos 3x sutapo su Tan Applied Calculus 12.4 1 pavyzdžiu) -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int 6\cos 3x\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Naudingoji formulė: argumentas tiesinis, \(a = 3\).</p>
+          <p>Atsakymas: \(2\sin 3x + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 6 b -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \left(e^x + e^{-x}\right)^2 dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Atskliaudžiame: \(e^{2x} + 2 + e^{-2x}\), nes \(e^x\cdot e^{-x} = 1\); tada naudingosios formulės.</p>
+          <p>Atsakymas: \(\dfrac{e^{2x}}{2} + 2x - \dfrac{e^{-2x}}{2} + C\)</p>
+        </div>
+      </article>
+
+      <!-- rinkinys 8 d -->
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite integralą \(\displaystyle\int \frac{x}{x^2 + 1}\, dx\).</p>
+        </div>
+        <div class="q-answer">
+          <p>Kintamojo keitimas: skaitiklis \(x\) – vardiklio beveik išvestinė; \(a = x^2 + 1\), \(dx = \dfrac{da}{2x}\).</p>
+          <p>Atsakymas: \(\dfrac{1}{2}\ln\left(x^2 + 1\right) + C\)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šį skyrių rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">9 skyrius</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">11.1–11.2 skyriai</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

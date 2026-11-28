@@ -59,9 +59,9 @@
           <tbody>
             <tr><td>\(\displaystyle\int 2xe^{x^2 + 5}\, dx\)</td><td style="text-align:left">rodiklinė funkcija</td><td style="text-align:left">\(x^2 + 5\)</td></tr>
             <tr><td>\(\displaystyle\int 3x^2\sqrt{x^3 + 2}\, dx\)</td><td style="text-align:left">kvadratinė šaknis</td><td style="text-align:left">\(x^3 + 2\)</td></tr>
-            <tr><td>\(\displaystyle\int \frac{4x}{\left(2x^2 + 3\right)^3}\, dx\)</td><td style="text-align:left">laipsninė funkcija</td><td style="text-align:left">\(2x^2 + 3\)</td></tr>
+            <tr><td>\(\displaystyle\int \frac{4x}{\left(2x^2 + 3\right)^4}\, dx\)</td><td style="text-align:left">laipsninė funkcija</td><td style="text-align:left">\(2x^2 + 3\)</td></tr>
             <tr><td>\(\displaystyle\int \frac{3x^2}{x^3 - 1}\, dx\)</td><td style="text-align:left">\(\frac{1}{u}\)</td><td style="text-align:left">\(x^3 - 1\)</td></tr>
-            <tr><td>\(\displaystyle\int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx\)</td><td style="text-align:left">rodiklinė funkcija</td><td style="text-align:left">\(\sqrt{x}\)</td></tr>
+            <tr><td>\(\displaystyle\int \frac{3e^{\sqrt{x}}}{\sqrt{x}}\, dx\)</td><td style="text-align:left">rodiklinė funkcija</td><td style="text-align:left">\(\sqrt{x}\)</td></tr>
             <tr><td>\(\displaystyle\int \cos(2x + 1)\, dx\)</td><td style="text-align:left">kosinusas</td><td style="text-align:left">\(2x + 1\)</td></tr>
           </tbody>
         </table>
@@ -103,12 +103,12 @@
             <tr><th scope="col">Integralas</th><th scope="col">Naujas kintamasis</th><th scope="col" style="text-align:left">Kodėl</th></tr>
           </thead>
           <tbody>
-            <tr><td>\(\displaystyle\int \frac{4x}{\left(2x^2 + 3\right)^3}\, dx\)</td><td>\(a = 2x^2 + 3\)</td><td style="text-align:left">laipsnio pagrindas, jo išvestinė \(4x\) yra skaitiklyje</td></tr>
+            <tr><td>\(\displaystyle\int \frac{4x}{\left(2x^2 + 3\right)^4}\, dx\)</td><td>\(a = 2x^2 + 3\)</td><td style="text-align:left">laipsnio pagrindas, jo išvestinė \(4x\) yra skaitiklyje</td></tr>
             <tr><td>\(\displaystyle\int 3x^2\sqrt{x^3 + 2}\, dx\)</td><td>\(a = x^3 + 2\)</td><td style="text-align:left">pošaknis, jo išvestinė \(3x^2\) yra daugiklis</td></tr>
             <tr><td>\(\displaystyle\int \frac{3x^2}{x^3 - 1}\, dx\)</td><td>\(a = x^3 - 1\)</td><td style="text-align:left">vardiklis, jo išvestinė \(3x^2\) yra skaitiklyje</td></tr>
             <tr><td>\(\displaystyle\int x\sin\left(x^2 + 1\right) dx\)</td><td>\(a = x^2 + 1\)</td><td style="text-align:left">sinuso argumentas, jo beveik išvestinė \(x\) yra daugiklis</td></tr>
-            <tr><td>\(\displaystyle\int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx\)</td><td>\(a = \sqrt{x}\)</td><td style="text-align:left">rodiklis, daugiklis \(\frac{1}{\sqrt{x}}\) yra jo beveik išvestinė</td></tr>
-            <tr><td>\(\displaystyle\int \frac{e^x}{1 + e^x}\, dx\)</td><td>\(a = 1 + e^x\)</td><td style="text-align:left">vardiklis, jo išvestinė \(e^x\) yra skaitiklyje</td></tr>
+            <tr><td>\(\displaystyle\int \frac{3e^{\sqrt{x}}}{\sqrt{x}}\, dx\)</td><td>\(a = \sqrt{x}\)</td><td style="text-align:left">rodiklis, daugiklis \(\frac{3}{\sqrt{x}}\) yra jo beveik išvestinė</td></tr>
+            <tr><td>\(\displaystyle\int \frac{e^x}{3 + e^x}\, dx\)</td><td>\(a = 3 + e^x\)</td><td style="text-align:left">vardiklis, jo išvestinė \(e^x\) yra skaitiklyje</td></tr>
             <tr><td>\(\displaystyle\int \frac{\sqrt{1 + \ln x}}{x}\, dx\)</td><td>\(a = 1 + \ln x\)</td><td style="text-align:left">pošaknis, jo išvestinė \(\frac{1}{x}\) yra daugiklis</td></tr>
             <tr><td>\(\displaystyle\int \frac{\ln x}{x}\, dx\)</td><td>\(a = \ln x\)</td><td style="text-align:left">funkcija \(\ln x\) ir jos išvestinė \(\frac{1}{x}\)</td></tr>
           </tbody>
@@ -360,7 +360,7 @@
       </div>
     </article>
 
-    <!-- 5 pavyzdys: TM 10.3, 11 a pavyzdys -->
+    <!-- 5 pavyzdys: TM 10.3, 11 a pavyzdys (pakeista: 3 + e^x; 1 + e^x sutapo su Tan 11.2 pratimu 27) -->
     <article class="card example" id="pavyzdys-5">
       <header class="example-head">
         <span class="example-tag">5 pavyzdys</span>
@@ -368,41 +368,41 @@
       </header>
       <div class="problem">
         <span class="label">Sąlyga</span>
-        Apskaičiuokite integralą \(\displaystyle\int \frac{e^x}{1 + e^x}\, dx\).
+        Apskaičiuokite integralą \(\displaystyle\int \frac{e^x}{3 + e^x}\, dx\).
       </div>
       <div class="steps">
         <section class="step">
           <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
-          <p>Vardiklio \(1 + e^x\) išvestinė yra \(e^x\), ir ji sutampa su skaitikliu. Naujas kintamasis \(a = 1 + e^x\).</p>
+          <p>Vardiklio \(3 + e^x\) išvestinė yra \(e^x\), ir ji sutampa su skaitikliu. Naujas kintamasis \(a = 3 + e^x\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
-          <div class="fit-sm">\[ \left[\begin{array}{l} a = 1 + e^x \\ da = a^{\prime}\,dx = e^x\,dx \;\big|:e^x \\ dx = \dfrac{da}{e^x} \end{array}\right] \]</div>
+          <div class="fit-sm">\[ \left[\begin{array}{l} a = 3 + e^x \\ da = a^{\prime}\,dx = e^x\,dx \;\big|:e^x \\ dx = \dfrac{da}{e^x} \end{array}\right] \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
           <p>Daugiklis \(e^x\) susiprastina:</p>
-          <div class="fit-sm">\[ \begin{aligned} \int \frac{e^x}{1 + e^x}\, dx &amp;= \int \frac{\cancel{e^x}}{a}\cdot\frac{da}{\cancel{e^x}} \\ &amp;= \int \frac{1}{a}\, da \end{aligned} \]</div>
+          <div class="fit-sm">\[ \begin{aligned} \int \frac{e^x}{3 + e^x}\, dx &amp;= \int \frac{\cancel{e^x}}{a}\cdot\frac{da}{\cancel{e^x}} \\ &amp;= \int \frac{1}{a}\, da \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
-          <div class="fit-sm">\[ \begin{aligned} \int \frac{1}{a}\, da &amp;= \ln|a| + C \\ &amp;= \ln\left(1 + e^x\right) + C \end{aligned} \]</div>
-          <p>Reiškinys \(1 + e^x\) visada teigiamas, todėl modulio ženklo galima nerašyti.</p>
+          <div class="fit-sm">\[ \begin{aligned} \int \frac{1}{a}\, da &amp;= \ln|a| + C \\ &amp;= \ln\left(3 + e^x\right) + C \end{aligned} \]</div>
+          <p>Reiškinys \(3 + e^x\) visada teigiamas, todėl modulio ženklo galima nerašyti.</p>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
-          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\ln\left(1 + e^x\right)\right)^{\prime} \\ &amp;= \frac{1}{1 + e^x}\cdot e^x = \frac{e^x}{1 + e^x} \end{aligned} \]</div>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(\ln\left(3 + e^x\right)\right)^{\prime} \\ &amp;= \frac{1}{3 + e^x}\cdot e^x = \frac{e^x}{3 + e^x} \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
           <p>Visą sprendimą užrašome viena lygybių grandine:</p>
-          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{e^x}{1 + e^x}\, dx &amp;= \left[\begin{array}{l} a = 1 + e^x \\ da = a^{\prime}\,dx = e^x\,dx \;\big|:e^x \\ dx = \dfrac{da}{e^x} \end{array}\right] \\ &amp;= \int \frac{\cancel{e^x}}{a}\cdot\frac{da}{\cancel{e^x}} = \int \frac{1}{a}\, da \\ &amp;= \ln|a| + C = \ln\left(1 + e^x\right) + C \end{aligned} \]</div>
-          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{e^x}{1 + e^x}\, dx \\ &amp;= \left[\begin{array}{l} a = 1 + e^x \\ da = a^{\prime}\,dx = e^x\,dx \;\big|:e^x \\ dx = \dfrac{da}{e^x} \end{array}\right] \\ &amp;= \int \frac{\cancel{e^x}}{a}\cdot\frac{da}{\cancel{e^x}} = \int \frac{1}{a}\, da \\ &amp;= \ln|a| + C = \ln\left(1 + e^x\right) + C \end{aligned} \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{e^x}{3 + e^x}\, dx &amp;= \left[\begin{array}{l} a = 3 + e^x \\ da = a^{\prime}\,dx = e^x\,dx \;\big|:e^x \\ dx = \dfrac{da}{e^x} \end{array}\right] \\ &amp;= \int \frac{\cancel{e^x}}{a}\cdot\frac{da}{\cancel{e^x}} = \int \frac{1}{a}\, da \\ &amp;= \ln|a| + C = \ln\left(3 + e^x\right) + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{e^x}{3 + e^x}\, dx \\ &amp;= \left[\begin{array}{l} a = 3 + e^x \\ da = a^{\prime}\,dx = e^x\,dx \;\big|:e^x \\ dx = \dfrac{da}{e^x} \end{array}\right] \\ &amp;= \int \frac{\cancel{e^x}}{a}\cdot\frac{da}{\cancel{e^x}} = \int \frac{1}{a}\, da \\ &amp;= \ln|a| + C = \ln\left(3 + e^x\right) + C \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
-            <div class="fit-sm">\[ \int \frac{e^x}{1 + e^x}\, dx = \ln\left(1 + e^x\right) + C \]</div>
+            <div class="fit-sm">\[ \int \frac{e^x}{3 + e^x}\, dx = \ln\left(3 + e^x\right) + C \]</div>
           </div>
         </section>
       </div>
@@ -458,7 +458,7 @@
       </div>
     </article>
 
-    <!-- 7 pavyzdys: TM 10.3, 10 pavyzdys -->
+    <!-- 7 pavyzdys: TM 10.3, 10 pavyzdys (pakeista: daugiklis 3; sutapo su Tan 11.2 pratimu 29) -->
     <article class="card example" id="pavyzdys-7">
       <header class="example-head">
         <span class="example-tag">7 pavyzdys</span>
@@ -466,12 +466,12 @@
       </header>
       <div class="problem">
         <span class="label">Sąlyga</span>
-        Apskaičiuokite integralą \(\displaystyle\int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx\).
+        Apskaičiuokite integralą \(\displaystyle\int \frac{3e^{\sqrt{x}}}{\sqrt{x}}\, dx\).
       </div>
       <div class="steps">
         <section class="step">
           <h4><span class="step-no">1</span><span>Naujas kintamasis</span></h4>
-          <p>Rodiklinės funkcijos argumentas \(\sqrt{x}\) nesutampa su \(x\). Jo išvestinė \(\left(\sqrt{x}\right)^{\prime} = \frac{1}{2\sqrt{x}}\), o daugiklis \(\frac{1}{\sqrt{x}}\) yra beveik išvestinė, nes \(\frac{1}{\sqrt{x}} = 2\cdot\frac{1}{2\sqrt{x}}\). Naujas kintamasis \(a = \sqrt{x}\).</p>
+          <p>Rodiklinės funkcijos argumentas \(\sqrt{x}\) nesutampa su \(x\). Jo išvestinė \(\left(\sqrt{x}\right)^{\prime} = \frac{1}{2\sqrt{x}}\), o daugiklis \(\frac{3}{\sqrt{x}}\) yra beveik išvestinė, nes \(\frac{3}{\sqrt{x}} = 6\cdot\frac{1}{2\sqrt{x}}\). Naujas kintamasis \(a = \sqrt{x}\).</p>
         </section>
         <section class="step">
           <h4><span class="step-no">2</span><span>Pasiruošimas</span></h4>
@@ -480,27 +480,27 @@
         </section>
         <section class="step">
           <h4><span class="step-no">3</span><span>Keitimas ir prastinimas</span></h4>
-          <p>Daugiklis \(\sqrt{x}\) susiprastina, o pastovųjį daugiklį 2 iškeliame prieš integralo ženklą:</p>
-          <div class="fit-sm">\[ \begin{aligned} \int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx &amp;= \int \frac{e^{a}}{\cancel{\sqrt{x}}}\cdot 2\cancel{\sqrt{x}}\, da \\ &amp;= 2\int e^{a}\, da \end{aligned} \]</div>
+          <p>Daugiklis \(\sqrt{x}\) susiprastina, o pastovųjį daugiklį \(3\cdot 2 = 6\) iškeliame prieš integralo ženklą:</p>
+          <div class="fit-sm">\[ \begin{aligned} \int \frac{3e^{\sqrt{x}}}{\sqrt{x}}\, dx &amp;= \int \frac{3e^{a}}{\cancel{\sqrt{x}}}\cdot 2\cancel{\sqrt{x}}\, da \\ &amp;= 6\int e^{a}\, da \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">4</span><span>Integravimas ir grįžimas prie \(x\)</span></h4>
-          <div class="fit-sm">\[ 2\int e^{a}\, da = 2e^{a} + C = 2e^{\sqrt{x}} + C \]</div>
+          <div class="fit-sm">\[ 6\int e^{a}\, da = 6e^{a} + C = 6e^{\sqrt{x}} + C \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">5</span><span>Patikrinimas</span></h4>
-          <div class="fit-sm">\[ \begin{aligned} &amp;\left(2e^{\sqrt{x}}\right)^{\prime} \\ &amp;= 2e^{\sqrt{x}}\cdot\frac{1}{2\sqrt{x}} = \frac{e^{\sqrt{x}}}{\sqrt{x}} \end{aligned} \]</div>
+          <div class="fit-sm">\[ \begin{aligned} &amp;\left(6e^{\sqrt{x}}\right)^{\prime} \\ &amp;= 6e^{\sqrt{x}}\cdot\frac{1}{2\sqrt{x}} = \frac{3e^{\sqrt{x}}}{\sqrt{x}} \end{aligned} \]</div>
         </section>
         <section class="step">
           <h4><span class="step-no">6</span><span>Visas sprendimas</span></h4>
           <p>Visą sprendimą užrašome viena lygybių grandine:</p>
-          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx &amp;= \left[\begin{array}{l} a = \sqrt{x} \\ da = a^{\prime}\,dx = \frac{1}{2\sqrt{x}}\,dx \;\big|:\frac{1}{2\sqrt{x}} \\ dx = 2\sqrt{x}\,da \end{array}\right] \\ &amp;= \int \frac{e^{a}}{\cancel{\sqrt{x}}}\cdot 2\cancel{\sqrt{x}}\, da = 2\int e^{a}\, da \\ &amp;= 2e^{a} + C = 2e^{\sqrt{x}} + C \end{aligned} \]</div>
-          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx \\ &amp;= \left[\begin{array}{l} a = \sqrt{x} \\ da = a^{\prime}\,dx = \frac{1}{2\sqrt{x}}\,dx \;\big|:\frac{1}{2\sqrt{x}} \\ dx = 2\sqrt{x}\,da \end{array}\right] \\ &amp;= \int \frac{e^{a}}{\cancel{\sqrt{x}}}\cdot 2\cancel{\sqrt{x}}\, da \\ &amp;= 2\int e^{a}\, da = 2e^{a} + C \\ &amp;= 2e^{\sqrt{x}} + C \end{aligned} \]</div>
+          <div class="fit-sm m-wide bp-lg">\[ \begin{aligned} \int \frac{3e^{\sqrt{x}}}{\sqrt{x}}\, dx &amp;= \left[\begin{array}{l} a = \sqrt{x} \\ da = a^{\prime}\,dx = \frac{1}{2\sqrt{x}}\,dx \;\big|:\frac{1}{2\sqrt{x}} \\ dx = 2\sqrt{x}\,da \end{array}\right] \\ &amp;= \int \frac{3e^{a}}{\cancel{\sqrt{x}}}\cdot 2\cancel{\sqrt{x}}\, da = 6\int e^{a}\, da \\ &amp;= 6e^{a} + C = 6e^{\sqrt{x}} + C \end{aligned} \]</div>
+          <div class="fit-sm m-narrow bp-lg">\[ \begin{aligned} &amp;\int \frac{3e^{\sqrt{x}}}{\sqrt{x}}\, dx \\ &amp;= \left[\begin{array}{l} a = \sqrt{x} \\ da = a^{\prime}\,dx = \frac{1}{2\sqrt{x}}\,dx \;\big|:\frac{1}{2\sqrt{x}} \\ dx = 2\sqrt{x}\,da \end{array}\right] \\ &amp;= \int \frac{3e^{a}}{\cancel{\sqrt{x}}}\cdot 2\cancel{\sqrt{x}}\, da \\ &amp;= 6\int e^{a}\, da = 6e^{a} + C \\ &amp;= 6e^{\sqrt{x}} + C \end{aligned} \]</div>
         </section>
         <section class="step step--answer">
           <div class="answer-box">
             <span class="label">Atsakymas</span>
-            \[ \int \frac{e^{\sqrt{x}}}{\sqrt{x}}\, dx = 2e^{\sqrt{x}} + C \]
+            \[ \int \frac{3e^{\sqrt{x}}}{\sqrt{x}}\, dx = 6e^{\sqrt{x}} + C \]
           </div>
         </section>
       </div>
