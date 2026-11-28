@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 10. Indefinite Integral · Applied Mathematics</title>
+<meta name="description" content="Antiderivatives and the indefinite integral: the family of antiderivatives, integral curves, the particular antiderivative, the properties of the integral, the basic and useful integration formulas, the differential and integration by substitution. Examples of calculating integrals and applications – in separate sections.">
+<meta name="theme-color" content="#001a52">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="lt" href="../lt/tema-10.html">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=104">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=104"></script>
+</head>
+<body data-page="t10">
+<noscript><p class="noscript">Please enable JavaScript for this website to work.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">Topic 10</span>
+    <h1>Indefinite Integral</h1>
+    <ul class="jump">
+      <li><a href="#pirmykste">Antiderivative</a></li>
+      <li><a href="#integralas">Integral</a></li>
+      <li><a href="#formules">Formulas</a></li>
+      <li><a href="#keitimas">Substitution</a></li>
+      <li><a href="#skaiciavimas">Calculating</a></li>
+      <li><a href="#taikymai">Applications</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ THE CONCEPT OF THE INDEFINITE INTEGRAL ============ -->
+  <section class="section" id="savokos" aria-labelledby="h-concepts">
+    <h2 id="h-concepts">The concept of the indefinite integral</h2>
+
+    <article class="card concept" id="pirmykste">
+      <div class="concept-head"><span class="num">1</span><h3>The antiderivative</h3></div>
+      <p>By differentiating we find how fast a function changes. By integrating we solve the opposite problem: we know the derivative, i.e. how fast a quantity changes, and look for the function that describes this quantity.</p>
+      <p class="model-note">A function \(F(x)\) is called an <strong>antiderivative</strong> of \(f(x)\) on an interval \(I\) if for every \(x\) in this interval \(F'(x) = f(x)\).</p>
+      <p style="margin-top:12px">In other words, an antiderivative is a function whose derivative is the given function. Therefore we check by differentiation whether a function is an antiderivative.</p>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example</p>
+        <p>Show that the function \(F(x) = x^3 - 2x + 5\) is an antiderivative of \(f(x) = 3x^2 - 2\).</p>
+        <p>The derivative of \(F\) is calculated by the <a href="tema-6.html#taisykles">rules of Topic 6</a>:</p>
+        \[ \begin{aligned} F'(x) &amp;= \left(x^3 - 2x + 5\right)' \\ &amp;= 3x^2 - 2 = f(x) \end{aligned} \]
+        <p>So \(F\) is an antiderivative of \(f\).</p>
+      </div>
+      <p>The functions \(x^3 - 2x\) and \(x^3 - 2x - 7\) are antiderivatives of \(f\) as well, because the derivative of a constant is zero. So a function has not just one antiderivative but infinitely many.</p>
+    </article>
+
+    <article class="card concept" id="seima">
+      <div class="concept-head"><span class="num">2</span><h3>The family of antiderivatives and integral curves</h3></div>
+      <p>If \(G(x)\) is an antiderivative of a function \(f(x)\), then any other antiderivative \(F(x)\) of it on the same interval differs from \(G(x)\) only by a constant:</p>
+      <div class="formula">\[ F(x) = G(x) + C \]</div>
+      <p>Here \(C\) is any number. All these functions form the <strong>family of antiderivatives</strong> of \(f(x)\).</p>
+      <p>The graphs of the antiderivatives are called <strong>integral curves</strong>. Since the antiderivatives differ only by a constant, all integral curves have the same shape: each of them is obtained by shifting another curve vertically. At the same value of \(x\) all their tangent lines have the same slope, equal to \(f(x)\), because \(\big(G(x) + C\big)' = f(x)\). Therefore at such points the tangent lines are parallel.</p>
+      <p>For example, the antiderivatives of \(f(x) = 2x\) are \(F(x) = x^2 + C\), because \(\left(x^2 + C\right)' = 2x\). The graph shows several curves of this family.</p>
+      <div data-widget="int-curves" data-mode="family"></div>
+    </article>
+
+    <article class="card concept" id="atskiroji">
+      <div class="concept-head"><span class="num">3</span><h3>The particular antiderivative</h3></div>
+      <p>In problems we usually need not the whole family of antiderivatives but one particular function of it. It is chosen by an additional condition – a known value of the function at one point, \(F(x_0) = y_0\). Geometrically, this means that among all the integral curves we look for the one that passes through the point \((x_0;\, y_0)\).</p>
+      <p class="model-note">The antiderivative whose graph passes through a given point \((x_0;\, y_0)\) is called the <strong>particular antiderivative</strong>.</p>
+      <p style="margin-top:12px">It is found in three steps:</p>
+      <ol>
+        <li>find the whole family of antiderivatives \(F(x) = G(x) + C\);</li>
+        <li>substitute \(x = x_0\) and set the value of the function equal to \(y_0\): \(G(x_0) + C = y_0\);</li>
+        <li>find \(C\) from this equation and substitute it into \(F(x)\).</li>
+      </ol>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example</p>
+        <p>Find the antiderivative of \(f(x) = 2x\) whose graph passes through the point \((1;\, 3)\).</p>
+        <p>The family of antiderivatives: \(F(x) = x^2 + C\). We substitute \(x = 1\) and set the value of the function equal to 3:</p>
+        <div class="m-wide">\[ F(1) = 1^2 + C = 3 \quad\Longrightarrow\quad C = 2 \]</div>
+        <div class="m-narrow">\[ \begin{gathered} F(1) = 1^2 + C = 3 \\ \Longrightarrow\quad C = 2 \end{gathered} \]</div>
+        <p>The particular antiderivative: \(F(x) = x^2 + 2\).</p>
+      </div>
+      <div data-widget="int-curves" data-mode="point"></div>
+      <p class="tip">In applied problems this condition is usually stated in words. For example, “the fixed costs are 120 euros” means that \(TC(0) = 120\), and “the club currently has 200 members” means that \(N(0) = 200\). Such a condition is called the <strong>initial condition</strong>. It is used in both <a href="#taikymai">applications</a> sections of this topic.</p>
+    </article>
+
+    <article class="card concept" id="integralas">
+      <div class="concept-head"><span class="num">4</span><h3>The indefinite integral</h3></div>
+      <p>The process of finding all antiderivatives of a function is called <strong>integration</strong>. The general form of the antiderivative, i.e. the whole family of antiderivatives, is called the <strong>indefinite integral</strong> and is written as follows:</p>
+      <div class="formula">\[ \int f(x)\, dx = F(x) + C \]</div>
+      <ul>
+        <li>\(\displaystyle\int\) is the <strong>integral sign</strong>;</li>
+        <li>\(f(x)\) is the <strong>integrand</strong>;</li>
+        <li>\(dx\) shows that the <strong>variable of integration</strong> is \(x\);</li>
+        <li>\(C\) is the <strong>integration constant</strong>. It must always be written, because the indefinite integral stands for all antiderivatives of the function.</li>
+      </ul>
+      <p>If the variable of the function is denoted by another letter, for example time \(t\), the integral is written \(\int f(t)\, dt\).</p>
+      <div class="subtype">
+        <h4>Integration and differentiation are opposite operations</h4>
+        <p>The derivative of an indefinite integral is the integrand:</p>
+        <div class="formula">\[ \begin{aligned} \left(\int f(x)\, dx\right)' &amp;= \big(F(x) + C\big)' \\ &amp;= f(x) \end{aligned} \]</div>
+        <p>Therefore the result of integration can always be <strong>checked</strong>: differentiate the antiderivative obtained, and the integrand must come back.</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="savybes">
+      <div class="concept-head"><span class="num">5</span><h3>Properties of the indefinite integral</h3></div>
+      <div class="formula m-wide">\[ \begin{gathered} \int k f(x)\, dx = k\int f(x)\, dx \\[4pt] \int \big(f(x) \pm g(x)\big)\, dx = \int f(x)\, dx \pm \int g(x)\, dx \end{gathered} \]</div>
+        <div class="formula m-narrow">\[ \begin{gathered} \int k f(x)\, dx = k\int f(x)\, dx \\[6pt] \begin{aligned} &amp;\int \big(f(x) \pm g(x)\big)\, dx \\ &amp;= \int f(x)\, dx \pm \int g(x)\, dx \end{aligned} \end{gathered} \]</div>
+      <p>A constant factor can be taken out of the integral, and the terms of a sum or a difference can be integrated separately. These properties correspond to the <a href="tema-6.html#daugiklio">constant multiple</a> and the <a href="tema-6.html#sumos">sum and difference</a> rules of Topic 6.</p>
+      <div class="tip">
+        <p style="margin:0"><strong>There are no such rules for a product or a quotient.</strong> The integral of a product is in general not the product of the integrals of the factors, and the integral of a quotient is not the quotient of the integrals:</p>
+        <div class="formula fit m-wide">\[ \begin{gathered} \int f(x)g(x)\, dx \ne \int f(x)\, dx \cdot \int g(x)\, dx \\[4pt] \int \frac{f(x)}{g(x)}\, dx \ne \frac{\int f(x)\, dx}{\int g(x)\, dx} \end{gathered} \]</div>
+        <div class="formula fit m-narrow">\[ \begin{gathered} \begin{aligned} &amp;\int f(x)g(x)\, dx \\ &amp;\ne \int f(x)\, dx \cdot \int g(x)\, dx \end{aligned} \\[8pt] \int \frac{f(x)}{g(x)}\, dx \ne \frac{\int f(x)\, dx}{\int g(x)\, dx} \end{gathered} \]</div>
+        <p style="margin:0">For example, \(\int x\cdot x\, dx = \int x^2\, dx = \dfrac{x^3}{3} + C\), while the product of the integrals \(\int x\, dx\) without the constants would be \(\dfrac{x^2}{2}\cdot\dfrac{x^2}{2} = \dfrac{x^4}{4}\). Its derivative is \(x^3\), not \(x^2\). Before a product or a quotient is integrated, the integrand is rearranged into a sum of terms, or the variable is substituted (<a href="#keitimas">card 9</a>).</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ INTEGRATION FORMULAS AND METHODS ============ -->
+  <section class="section" id="formules" aria-labelledby="h-formulas">
+    <h2 id="h-formulas">Integration formulas and methods</h2>
+    <p class="section-intro">Integrals are found by the basic integration formulas, by the useful integration formulas or by substitution. The first three sections of <a href="#skaiciavimas">Calculating integrals</a> deal with these methods.</p>
+
+    <article class="card concept" id="pagrindines">
+      <div class="concept-head"><span class="num">6</span><h3>Basic integration formulas</h3></div>
+      <p>Each integration formula is the corresponding <a href="tema-6.html#lentele">derivative formula</a> read backwards. For example, \(\left(\dfrac{x^{n+1}}{n+1}\right)' = x^n\), so \(\dfrac{x^{n+1}}{n+1}\) is an antiderivative of \(x^n\).</p>
+      <div class="anat dtbl dtbl-rows">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>Constants and powers</strong></div>
+          <ul class="flist">
+            <li style="padding:6px 0">\(\displaystyle\int 0\, dx = C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int k\, dx = kx + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int x^n\, dx = \frac{x^{n+1}}{n+1} + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int \frac{1}{x}\, dx = \ln|x| + C\)</li>
+          </ul>
+          <p class="lvl-txt">In the power formula \(n \ne -1\).</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Exponential functions</strong></div>
+          <ul class="flist">
+            <li style="padding:6px 0">\(\displaystyle\int e^x\, dx = e^x + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int a^x\, dx = \frac{a^x}{\ln a} + C\)</li>
+          </ul>
+          <p class="lvl-txt">Here \(a &gt; 0\), \(a \ne 1\).</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Trigonometric functions</strong></div>
+          <ul class="flist">
+            <li style="padding:6px 0">\(\displaystyle\int \sin x\, dx = -\cos x + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int \cos x\, dx = \sin x + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int \frac{1}{\cos^2 x}\, dx = \tan x + C\)</li>
+            <li style="padding:6px 0">\(\displaystyle\int \frac{1}{\sin^2 x}\, dx = -\cot x + C\)</li>
+          </ul>
+        </div>
+      </div>
+      <p>When \(n = -1\), the power formula cannot be used, because it would mean dividing by zero. Therefore the function \(\dfrac{1}{x} = x^{-1}\) is integrated by a separate formula. The absolute value in \(\ln|x|\) is needed because \(\dfrac{1}{x}\) is defined for negative \(x\) too, while the logarithm is defined only for positive numbers.</p>
+      <div class="subtype">
+        <h4>Roots and fractions as powers</h4>
+        <p>Roots and fractions with a power of \(x\) in the denominator are first written as powers. Then the power formula is applied:</p>
+        <div class="formula m-wide">\[ \sqrt{x} = x^{\frac{1}{2}}; \qquad \sqrt[n]{x^m} = x^{\frac{m}{n}}; \qquad \frac{1}{x^n} = x^{-n} \]</div>
+        <div class="formula m-narrow">\[ \begin{gathered} \sqrt{x} = x^{\frac{1}{2}}; \qquad \sqrt[n]{x^m} = x^{\frac{m}{n}}; \\ \frac{1}{x^n} = x^{-n} \end{gathered} \]</div>
+      </div>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example</p>
+        <p>Find the integral \(\displaystyle\int\left(2e^x + \frac{1}{\sqrt[4]{x}}\right) dx\).</p>
+        <p>Each term is integrated separately. The second term is written as a power, \(\dfrac{1}{\sqrt[4]{x}} = x^{-\frac{1}{4}}\). The new exponent is \(-\dfrac{1}{4} + 1 = \dfrac{3}{4}\):</p>
+        \[ \begin{aligned} &amp;\int\left(2e^x + x^{-\frac{1}{4}}\right) dx \\ &amp;= 2\int e^x\, dx + \int x^{-\frac{1}{4}}\, dx \\ &amp;= 2e^x + \frac{x^{\frac{3}{4}}}{\frac{3}{4}} + C \\ &amp;= 2e^x + \frac{4}{3}\sqrt[4]{x^3} + C \end{aligned} \]
+        <p><strong>Check.</strong> \(\left(2e^x + \frac{4}{3}x^{\frac{3}{4}} + C\right)'\) \(= 2e^x + \frac{4}{3}\cdot\frac{3}{4}x^{-\frac{1}{4}}\) \(= 2e^x + \dfrac{1}{\sqrt[4]{x}}\).</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="naudingosios">
+      <div class="concept-head"><span class="num">7</span><h3>Useful integration formulas</h3></div>
+      <p>Instead of \(x\), the argument of the integrand can be a <strong>linear function</strong> \(ax + b\), for example \(\cos(5x + 8)\) or \(e^{-0.2x}\). Such integrals are found by one rule.</p>
+      <div class="model-note"><p style="margin:0">If \(F(u)\) is an antiderivative of \(f(u)\) and \(a \ne 0\), then</p><div class="fit-sm">\[ \int f(ax + b)\, dx = \frac{1}{a}F(ax + b) + C \]</div></div>
+      <p style="margin-top:12px">The basic formula is applied as if \(ax + b\) were the variable of integration, and the result is divided by \(a\), the coefficient of \(x\). The constant term \(b\) does not change the divisor.</p>
+      <div class="subtype">
+        <h4>Why the result is divided by \(a\)</h4>
+        <p>Differentiate the right-hand side by the <a href="tema-6.html#sudetines">chain rule</a>. The derivative of the inner function, \((ax + b)' = a\), cancels with the factor \(\frac{1}{a}\):</p>
+        <div class="formula">\[ \begin{aligned} &amp;\left(\frac{1}{a}F(ax + b)\right)' \\ &amp;= \frac{1}{a}\cdot F'(ax + b)\cdot a \\ &amp;= F'(ax + b) = f(ax + b) \end{aligned} \]</div>
+      </div>
+      <p>Applying this rule to the basic formulas gives the <strong>useful integration formulas</strong> (\(a \ne 0\)):</p>
+      <div class="anat dtbl dtbl-rows">
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">1</span><strong>A power, a root and a fraction</strong></div>
+          <ul class="flist">
+            <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int (ax + b)^n\, dx = \frac{1}{a}\cdot\frac{(ax + b)^{n+1}}{n+1} + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int (ax + b)^n\, dx \\ &amp;= \frac{1}{a}\cdot\frac{(ax + b)^{n+1}}{n+1} + C\end{aligned}\)</span></li>
+            <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \frac{1}{\sqrt{ax + b}}\, dx = \frac{1}{a}\cdot 2\sqrt{ax + b} + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \frac{1}{\sqrt{ax + b}}\, dx \\ &amp;= \frac{1}{a}\cdot 2\sqrt{ax + b} + C\end{aligned}\)</span></li>
+            <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \frac{1}{ax + b}\, dx = \frac{1}{a}\ln|ax + b| + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \frac{1}{ax + b}\, dx \\ &amp;= \frac{1}{a}\ln|ax + b| + C\end{aligned}\)</span></li>
+          </ul>
+          <p class="lvl-txt">In the power formula \(n \ne -1\).</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">2</span><strong>Exponential functions</strong></div>
+          <ul class="flist">
+            <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int e^{ax + b}\, dx = \frac{1}{a}e^{ax + b} + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int e^{ax + b}\, dx \\ &amp;= \frac{1}{a}e^{ax + b} + C\end{aligned}\)</span></li>
+            <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int k^{mx + n}\, dx = \frac{1}{m}\cdot\frac{k^{mx + n}}{\ln k} + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int k^{mx + n}\, dx \\ &amp;= \frac{1}{m}\cdot\frac{k^{mx + n}}{\ln k} + C\end{aligned}\)</span></li>
+          </ul>
+          <p class="lvl-txt">The base of the exponential function is denoted \(k\) (\(k &gt; 0\), \(k \ne 1\)), and \(m\) is the non-zero coefficient of \(x\).</p>
+        </div>
+        <div class="anat-card">
+          <div class="anat-head"><span class="ph-ico" aria-hidden="true">3</span><strong>Trigonometric functions</strong></div>
+          <ul class="flist">
+            <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \sin(ax + b)\, dx = -\frac{1}{a}\cos(ax + b) + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \sin(ax + b)\, dx \\ &amp;= -\frac{1}{a}\cos(ax + b) + C\end{aligned}\)</span></li>
+            <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \cos(ax + b)\, dx = \frac{1}{a}\sin(ax + b) + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \cos(ax + b)\, dx \\ &amp;= \frac{1}{a}\sin(ax + b) + C\end{aligned}\)</span></li>
+            <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \frac{1}{\cos^2(ax + b)}\, dx = \frac{1}{a}\tan(ax + b) + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \frac{1}{\cos^2(ax + b)}\, dx \\ &amp;= \frac{1}{a}\tan(ax + b) + C\end{aligned}\)</span></li>
+            <li style="padding:8px 0"><span class="m-wide bp-lg">\(\displaystyle\int \frac{1}{\sin^2(ax + b)}\, dx = -\frac{1}{a}\cot(ax + b) + C\)</span><span class="m-narrow bp-lg">\(\displaystyle\begin{aligned} &amp;\int \frac{1}{\sin^2(ax + b)}\, dx \\ &amp;= -\frac{1}{a}\cot(ax + b) + C\end{aligned}\)</span></li>
+          </ul>
+        </div>
+      </div>
+      <p>When \(a = 1\) (or \(m = 1\)) and the constant term is zero, the basic formulas are obtained.</p>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example</p>
+        <p>Find the integral \(\displaystyle\int \cos(5x + 8)\, dx\).</p>
+        <p>The inner function is \(5x + 8\), so \(a = 5\). The antiderivative of the cosine is the sine: the argument \(5x + 8\) is kept unchanged, and the result is divided by 5:</p>
+        <div class="m-wide">\[ \int \cos(5x + 8)\, dx = \frac{1}{5}\sin(5x + 8) + C \]</div>
+        <div class="m-narrow">\[ \begin{aligned} &amp;\int \cos(5x + 8)\, dx \\ &amp;= \frac{1}{5}\sin(5x + 8) + C \end{aligned} \]</div>
+        <p><strong>Check.</strong> \(\left(\frac{1}{5}\sin(5x + 8)\right)'\) \(= \frac{1}{5}\cos(5x + 8)\cdot 5\) \(= \cos(5x + 8)\).</p>
+      </div>
+      <p class="tip"><strong>Important.</strong> The useful formulas are used only when the inner function is linear. In \(\left(x^2 + 1\right)^3\) and \(e^{x^2}\) the derivative of the inner function is not a constant, so such integrals are found in another way, for example by substitution (<a href="#keitimas">card 9</a>) or by expanding.</p>
+    </article>
+
+    <article class="card concept" id="diferencialas">
+      <div class="concept-head"><span class="num">8</span><h3>The differential</h3></div>
+      <p>Integration by substitution uses the concept of the differential.</p>
+      <div class="model-note"><p style="margin:0">If \(y = f(x)\) is a differentiable function, its <strong>differential</strong> \(dy\) is the product of the derivative \(f'(x)\) and the change of the argument \(dx = \Delta x\):</p>\[ dy = f'(x)\, dx \]</div>
+      <p style="margin-top:12px"><strong>What the differential shows.</strong> Draw the tangent line to the graph of the function at the point \(P\). When the argument changes by \(dx\), the value of the function changes by \(\Delta y\) (along the graph we rise to the point \(Q\)), and the tangent line changes by \(dy\) (to the point \(R\)). The slope of the tangent line is \(f'(x)\), so its change is \(f'(x)\, dx\). So the differential is the change along the tangent line.</p>
+      <figure class="abs-fig">
+        <svg viewBox="0 0 480 320" role="img" aria-label="The graph of the function y = f(x) and its tangent line at P. When the argument changes by dx, the tangent line changes by dy and the function changes by Δy">
+        <line class="ax" x1="42" y1="282" x2="468" y2="282"/><path class="ah" d="M478 282L468 277.5L468 286.5Z"/>
+        <line class="ax" x1="56" y1="296" x2="56" y2="14"/><path class="ah" d="M56 4L51.5 14L60.5 14Z"/>
+        <text class="m" x="470" y="272">x</text><text class="m" x="66" y="18">y</text>
+        <line class="guide" x1="182.4" y1="282" x2="182.4" y2="204.3"/>
+        <line class="guide" x1="308.8" y1="282" x2="308.8" y2="96.3"/>
+        <path class="ln" d="M68.6 253.3L70.7 252.8L72.9 252.3L75.0 251.8L77.1 251.2L79.2 250.7L81.3 250.1L83.4 249.5L85.5 248.9L87.6 248.3L89.7 247.7L91.8 247.0L93.9 246.3L96.0 245.7L98.1 245.0L100.2 244.3L102.3 243.5L104.4 242.8L106.6 242.0L108.7 241.3L110.8 240.5L112.9 239.7L115.0 238.8L117.1 238.0L119.2 237.1L121.3 236.3L123.4 235.4L125.5 234.5L127.6 233.6L129.7 232.6L131.8 231.7L133.9 230.7L136.0 229.8L138.1 228.8L140.3 227.8L142.4 226.7L144.5 225.7L146.6 224.6L148.7 223.6L150.8 222.5L152.9 221.4L155.0 220.3L157.1 219.1L159.2 218.0L161.3 216.8L163.4 215.6L165.5 214.4L167.6 213.2L169.7 212.0L171.9 210.7L174.0 209.5L176.1 208.2L178.2 206.9L180.3 205.6L182.4 204.3L184.5 202.9L186.6 201.6L188.7 200.2L190.8 198.8L192.9 197.4L195.0 196.0L197.1 194.6L199.2 193.1L201.3 191.7L203.4 190.2L205.6 188.7L207.7 187.2L209.8 185.7L211.9 184.1L214.0 182.6L216.1 181.0L218.2 179.4L220.3 177.8L222.4 176.2L224.5 174.6L226.6 172.9L228.7 171.2L230.8 169.6L232.9 167.9L235.0 166.1L237.1 164.4L239.3 162.7L241.4 160.9L243.5 159.1L245.6 157.3L247.7 155.5L249.8 153.7L251.9 151.9L254.0 150.0L256.1 148.2L258.2 146.3L260.3 144.4L262.4 142.4L264.5 140.5L266.6 138.6L268.7 136.6L270.9 134.6L273.0 132.6L275.1 130.6L277.2 128.6L279.3 126.6L281.4 124.5L283.5 122.4L285.6 120.3L287.7 118.2L289.8 116.1L291.9 114.0L294.0 111.8L296.1 109.7L298.2 107.5L300.3 105.3L302.4 103.1L304.6 100.8L306.7 98.6L308.8 96.3L310.9 94.0L313.0 91.8L315.1 89.4L317.2 87.1L319.3 84.8L321.4 82.4L323.5 80.1L325.6 77.7L327.7 75.3L329.8 72.9L331.9 70.4L334.0 68.0L336.1 65.5L338.3 63.0L340.4 60.5L342.5 58.0L344.6 55.5L346.7 52.9L348.8 50.4L350.9 47.8L353.0 45.2L355.1 42.6L357.2 40.0L359.3 37.4L361.4 34.7L363.5 32.0L365.6 29.4L367.7 26.7L369.9 23.9L372.0 21.2L374.1 18.5"/>
+        <line class="ln3" x1="81.3" y1="268.1" x2="409.9" y2="60.6"/>
+        <line class="leg" x1="182.4" y1="204.3" x2="308.8" y2="204.3"/>
+        <line class="ln3" style="stroke-width:4" x1="308.8" y1="204.3" x2="308.8" y2="124.5"/>
+        <path class="leg" d="M335.8 204.3H342.8V96.3H335.8"/>
+        <line class="guide" x1="308.8" y1="96.3" x2="335.8" y2="96.3"/>
+        <circle class="pt-hi" cx="182.4" cy="204.3" r="6"/>
+        <circle class="pt-hi" cx="308.8" cy="96.3" r="6"/>
+        <circle class="pt" cx="308.8" cy="124.5" r="4.5"/>
+        <circle class="pt" cx="308.8" cy="204.3" r="4.5"/>
+        <text x="174.4" y="194.3" text-anchor="end" style="font-weight:700;font-size:15px">P</text>
+        <text x="298.8" y="90.3" text-anchor="end" style="font-weight:700;font-size:15px">Q</text>
+        <text x="299.8" y="129.5" text-anchor="end" style="font-weight:700;font-size:15px">R</text>
+        <text class="exam" x="245.6" y="224.3" text-anchor="middle" style="font-size:15px"><tspan class="i">dx</tspan> = Δ<tspan class="i">x</tspan></text>
+        <text class="c3" x="317.8" y="169.4" style="font-size:15px;font-weight:700"><tspan class="i">dy</tspan></text>
+        <text class="exam" x="349.8" y="155.3" style="font-size:15px">Δ<tspan class="i">y</tspan></text>
+        <text class="m" x="182.4" y="302" text-anchor="middle">x</text>
+        <text class="m" x="308.8" y="302" text-anchor="middle">x<tspan class="n"> + </tspan>dx</text>
+        <text class="c3" x="413.9" y="76.6" text-anchor="start" style="font-size:14px;font-weight:600">tangent</text>
+        <text class="c1 m" x="366.1" y="22.5" text-anchor="end">y = f(x)</text>
+        </svg>
+        <figcaption>When the argument changes by \(dx\), the function changes by \(\Delta y\) and the tangent line by \(dy\).</figcaption>
+      </figure>
+      <p>When \(dx\) is small, the graph and the tangent line almost coincide, so \(\Delta y \approx dy\). This is the same approximation \(\Delta y \approx f'(x)\cdot\Delta x\) that was used in <a href="tema-6.html#interpretacijos">Topic 6</a>. For example, for the consumption function \(C(x) = 100 + 0.9x - 0.0001x^2\), when the income \(x = 1000\) euros increases by \(dx = 20\) euros, the differential is \(dC = C'(1000)\cdot dx\) \(= 0.7\cdot 20 = 14\) euros, while the exact change is \(\Delta C = C(1020) - C(1000)\) \(= 913.96 - 900 = 13.96\) euros.</p>
+      <div class="subtype">
+        <h4>The differential in the substitution method</h4>
+        <p>In the substitution method the new variable is denoted \(a\). If \(a\) is a function of \(x\), its differential is written as follows:</p>
+        <div class="formula">\[ da = a'\, dx \]</div>
+        <p>For example, if \(a = x^2 + 5\), then \(da = \left(x^2 + 5\right)'dx = 2x\, dx\). From this equality \(dx\) is expressed by dividing both sides by the derivative \(a' = 2x\) (when it is not zero): \(dx = \dfrac{da}{2x}\).</p>
+        <p>The symbol \(dx\) in \(\int f(x)\, dx\) shows the variable of integration. After the substitution the integration is done with respect to the new variable, so the integral ends with \(da\).</p>
+      </div>
+    </article>
+
+    <article class="card concept" id="keitimas">
+      <div class="concept-head"><span class="num">9</span><h3>Integration by substitution</h3></div>
+      <p>Some integrals, for example \(\int 4x\left(x^2 - 3\right)^{100} dx\), cannot be found directly by the formulas, and expanding \(\left(x^2 - 3\right)^{100}\) would be impractical. Then the method of <strong>integration by substitution</strong> is used: a part of the integrand is replaced by a new variable, and the integral is rewritten so that the known formulas can be applied.</p>
+      <div class="subtype">
+        <h4>When substitution is applied</h4>
+        <ol>
+          <li><strong>The argument of a function differs from the variable of integration.</strong> The new variable is this argument. For example, in the integral \(\int 6xe^{x^2 + 2}\, dx\) the argument of the exponential function is \(x^2 + 2\), while the variable of integration is \(x\), so \(a = x^2 + 2\).</li>
+          <li><strong>The integrand includes a function and its (almost) derivative.</strong> The new variable is the function whose (almost) derivative is in the integrand. For example, the integral \(\int 4x\left(x^2 - 3\right)^{100} dx\) includes the function \(x^2 - 3\) and the factor \(4x\), and \(\left(x^2 - 3\right)' = 2x\), so \(a = x^2 - 3\).</li>
+        </ol>
+        <p>An <strong>almost derivative</strong> is the derivative multiplied by a constant factor. If the derivative is \(2x\), both \(4x = 2\cdot 2x\) and \(x = \frac{1}{2}\cdot 2x\) are suitable. In both cases we obtain the general formula:</p>
+        <div class="formula m-wide">\[ \int f\big(u(x)\big)\cdot u'(x)\, dx = \int f(u)\, du = F(u) + C \]</div>
+        <div class="formula m-narrow">\[ \begin{aligned} &amp;\int f\big(u(x)\big)\cdot u'(x)\, dx \\ &amp;= \int f(u)\, du = F(u) + C \end{aligned} \]</div>
+        <p>When the argument is linear, for example \(\cos(5x + 8)\), substitution also works, but the useful formulas are more convenient (<a href="#naudingosios">card 7</a>).</p>
+      </div>
+      <div class="subtype">
+        <h4>Writing the solution</h4>
+        <ol>
+          <li>Next to the integral, in square brackets, introduce the new variable \(a = \ldots\), calculate the differential \(da = a'\, dx\) and express \(dx\) from it.</li>
+          <li>In the integrand, replace the chosen expression with \(a\), and \(dx\) with the expression obtained.</li>
+          <li>Simplify the expression so that only the variable \(a\) remains.</li>
+          <li>Integrate with respect to \(a\) by the known formulas.</li>
+          <li>Return to the original variable: replace \(a\) with its expression in \(x\).</li>
+        </ol>
+      </div>
+      <div class="rule-ex">
+        <p class="rule-ex-h">Example</p>
+        <p>Find the integral \(\displaystyle\int 4x\left(x^2 - 3\right)^{100} dx\).</p>
+        <p>The derivative of the function \(x^2 - 3\), equal to \(2x\), is in the integrand as the factor \(4x = 2\cdot 2x\) (an almost derivative). The new variable is \(a = x^2 - 3\):</p>
+        <div class="formula m-wide bp-lg">\[ \begin{aligned} \int 4x\left(x^2 - 3\right)^{100} dx &amp;= \left[\begin{array}{l} a = x^2 - 3 \\ da = a'\,dx = 2x\, dx \;\;|:2x \\ dx = \dfrac{da}{2x} \end{array}\right] \\ &amp;= \int 4x\cdot a^{100}\cdot\frac{da}{2x} = 2\int a^{100}\, da \\ &amp;= 2\cdot\frac{a^{101}}{101} + C = \frac{2}{101}\left(x^2 - 3\right)^{101} + C \end{aligned} \]</div>
+        <div class="formula fit m-narrow bp-lg">\[ \begin{aligned} &amp;\int 4x\left(x^2 - 3\right)^{100} dx \\ &amp;= \left[\begin{array}{l} a = x^2 - 3 \\ da = a'dx = 2x\,dx \;|:2x \\ dx = \dfrac{da}{2x} \end{array}\right] \\ &amp;= \int 4x\cdot a^{100}\cdot\frac{da}{2x} \\ &amp;= 2\int a^{100}\, da \\ &amp;= 2\cdot\frac{a^{101}}{101} + C \\ &amp;= \frac{2}{101}\left(x^2 - 3\right)^{101} + C \end{aligned} \]</div>
+        <p>Since \(\dfrac{4x}{2x} = 2\), the variable \(x\) cancels and only \(a\) remains in the integral. In the last step \(a\) was replaced with \(x^2 - 3\).</p>
+        <p><strong>Check.</strong> \(\left(\frac{2}{101}\left(x^2 - 3\right)^{101}\right)'\) \(= \frac{2}{101}\cdot 101\left(x^2 - 3\right)^{100}\cdot 2x\) \(= 4x\left(x^2 - 3\right)^{100}\).</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ CALCULATING INTEGRALS ============ -->
+  <section class="section" id="skaiciavimas" aria-labelledby="h-calc">
+    <h2 id="h-calc">Calculating integrals</h2>
+    <p class="section-intro">Here you will find examples of calculating integrals and practice problems. Each of the first three sections uses one method of integration, and in the fourth section you have to choose the appropriate method yourself.</p>
+    <div class="model-grid" data-models="t10" data-only="m10a m10b m10c m10d"></div>
+  </section>
+
+  <!-- ============ APPLICATIONS ============ -->
+  <section class="section" id="taikymai" aria-labelledby="h-apps">
+    <h2 id="h-apps">Applications</h2>
+    <p class="section-intro">Here you will find examples of economic and managerial problems in which the indefinite integral is used: how to recover the revenue, cost and profit functions from the marginal functions, and how to recover the function that describes a quantity from its rate of change.</p>
+    <div class="model-grid" data-models="t10" data-skip="m10a m10b m10c m10d"></div>
+  </section>
+
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="section-intro">More information on this topic can be found in:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Būda. <cite>Matematiniai ekonominės analizės pagrindai</cite>. Vilnius, TEV, 2008.<span class="src-ch">Chapter 9</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Cengage Learning, 2010.<span class="src-ch">Chapters 11.1–11.2</span></span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Pages"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
